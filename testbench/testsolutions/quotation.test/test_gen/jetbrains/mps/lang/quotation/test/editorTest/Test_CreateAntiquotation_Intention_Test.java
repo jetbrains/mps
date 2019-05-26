@@ -37,9 +37,7 @@ public class Test_CreateAntiquotation_Intention_Test extends BaseTransformationT
       Assert.assertTrue(isIntentionApplicable("jetbrains.mps.lang.quotation.intentions.CreateAntiquotation_Intention", myStart.getNode()));
       invokeIntention("jetbrains.mps.lang.quotation.intentions.CreateAntiquotation_Intention", myStart.getNode());
       // todo this is done because antiquotation "antisuppress" the errors and typesystem test is failing 
-
       // todo remove it when it will be possible to have the antiquotation with an error under the test 
-
       typeString("theNode");
     }
   }

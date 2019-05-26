@@ -48,7 +48,6 @@ public class XMLSAXAttributeReference_SmartReference extends SubstituteMenuBase 
 
     public SMP_ReferenceScope_k75wpb_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2c9L, "jetbrains.mps.core.xml.sax.structure.XMLSAXAttributeReference"), MetaAdapterFactory.getReferenceLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2c9L, 0x1f6c736337b5e2caL, "attribute"));
     }
     @NotNull

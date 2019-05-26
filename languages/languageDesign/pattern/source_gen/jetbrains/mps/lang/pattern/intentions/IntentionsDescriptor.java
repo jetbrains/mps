@@ -34,7 +34,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 0:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[7];
           intentions[0] = new CreatePatternVariable_Intention();
           intentions[1] = new CreatePropertyPatternVariable_Intention();

@@ -64,9 +64,7 @@ public class CloneModule_Test extends EnvironmentAwareTestCase {
     CustomGenerationModuleFacet customGenerationModuleFacet = copyFacetsModule.getFacet(CustomGenerationModuleFacet.class);
     Assert.assertNotNull(customGenerationModuleFacet);
     // TODO Current behavior is that reference in facets is not updated in module clone 
-
     // TODO Fix this test when facets copying become done right 
-
     Assert.assertEquals(PersistenceFacade.getInstance().createModelReference("r:785f2a6c-c64a-4974-9501-91ce4789a01c(FACETS.genplan@genplan)"), customGenerationModuleFacet.getPlanModelReference());
   }
   public void test_cloneLanguage() throws Exception {

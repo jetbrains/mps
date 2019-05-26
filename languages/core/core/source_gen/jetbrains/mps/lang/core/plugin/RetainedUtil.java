@@ -32,7 +32,6 @@ public final class RetainedUtil {
       MResource mres = ((MResource) it);
       SModule module = mres.module();
       // XXX why only generateable models? 
-
       Iterable<SModel> modelsToRetain = generateableModels(module);
       MapSequence.fromMap(retainedModels).put(module, Sequence.fromIterable(modelsToRetain).subtract(Sequence.fromIterable(mres.models())).toListSequence());
     }
@@ -49,20 +48,15 @@ public final class RetainedUtil {
 
   public static Iterable<IDelta> retainedDeltas(final SModule module, Iterable<SModel> smd, _FunctionTypes._return_P1_E0<? extends IFile, ? super String> getFile) {
     // builds deltas that mark output locations of specified models to persist generation (respective folders marked as 'kept') 
-
     assert Sequence.fromIterable(smd).all(new IWhereFilter<SModel>() {
       public boolean accept(SModel it) {
         return it.getModule() == module;
       }
     });
     // XXX delta doesn't uilize IFile, it's merely an indication of a location. Perhaps, it should be caller responsibility 
-
     // to translate delta's IFile to proper location (make.pathToFile) and leave this class straighforward delta builder without 
-
     // knowledge of path translation? 
-
     // FIXME need make.pathToFile to take IFile instead of String, it's odd to go there and back 
-
     final List<FilesDelta> deltas = ListSequence.fromList(new ArrayList<FilesDelta>());
 
     for (SModuleFacet mf : module.getFacets()) {
@@ -81,12 +75,10 @@ public final class RetainedUtil {
             IFile actualOutput = getFile.invoke(f.getPath());
             fd.kept(actualOutput);
             // sort of workaround, report files to keep explicitly, otherwise a directory[kept] with subdirectories[kept] doesn't protect files under directory/ itself 
-
             List<IFile> children = actualOutput.getChildren();
             if (children != null && children.size() > 0) {
               for (IFile child : children) {
                 // folders are output locations and therefore those to kept would get retained, if necessary, with the code above. 
-
                 if (child.isDirectory()) {
                   continue;
                 }

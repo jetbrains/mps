@@ -130,9 +130,7 @@ public class MPSToolTipManager implements ApplicationComponent {
       @Override
       protected boolean canAutohideOn(TooltipEvent event) {
         // masking mouse events to prevent tooltip from hiding using default IDEA tooltips logic 
-
         // event will be hidden as a result of notification received by myMouseListener 
-
         if (event.getInputEvent() instanceof MouseEvent) {
           return false;
         }

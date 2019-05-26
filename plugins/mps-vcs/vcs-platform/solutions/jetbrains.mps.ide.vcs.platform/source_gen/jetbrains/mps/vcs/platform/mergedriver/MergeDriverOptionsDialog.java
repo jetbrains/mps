@@ -34,7 +34,6 @@ public class MergeDriverOptionsDialog extends DialogWrapper {
     super(project);
     setTitle("MPS VCS Add-ons");
     // TODO get rid of code duplication 
-
     myProject = project;
     myGitFixes = new MergeDriverOptionsDialog.InstallerCheckBox<GitGlobalConfigFixesInstaller>(new GitGlobalConfigFixesInstaller(myProject));
     myGitGlobal = new MergeDriverOptionsDialog.InstallerCheckBox<GitGlobalInstaller>(new GitGlobalInstaller(myProject));

@@ -48,7 +48,6 @@ public class GeneratorInternal_ProjectDependency_SubstituteMenu extends Substitu
 
     public SMP_ReferenceScope_jp6td_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x5830b38e16a0164cL, "jetbrains.mps.build.structure.GeneratorInternal_ProjectDependency"), MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x5830b38e16a0164cL, 0x5830b38e16d823d3L, "project"));
     }
     @NotNull

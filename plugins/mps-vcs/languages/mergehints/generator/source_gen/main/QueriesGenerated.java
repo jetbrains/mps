@@ -51,12 +51,10 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean createRootRule_Condition_0_0(final CreateRootRuleContext _context) {
     // see MPS-24613 
-
     return SModuleOperations.isAspect(_context.getOriginalInputModel(), "vcs");
   }
   public static boolean rule_Condition_2_0(final BaseMappingRuleContext _context) {
     // see MPS-24613 
-
     return SModuleOperations.isAspect(((SModel) _context.getVariable("model")), "vcs");
   }
   public static Object referenceMacro_GetReferent_1_0(final ReferenceMacroContext _context) {
@@ -82,7 +80,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object referenceMacro_GetReferent_2_0(final ReferenceMacroContext _context) {
     // TODO genContext.get output VCSDescriptorCons for model model; 
-
     return SModelOperations.getModelName(((SModel) _context.getVariable("model"))) + ".VCSDescriptor";
   }
   public static boolean ifMacro_Condition_1_0(final IfMacroContext _context) {
@@ -104,7 +101,6 @@ public class QueriesGenerated extends QueryProviderBase {
     Iterable<SNode> props = SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x37e03aa1728949bcL, 0x826930de5eceec76L, 0x39744cf955c648fcL, 0x4f2cc0d970a4f8c9L, "features")), MetaAdapterFactory.getConcept(0x37e03aa1728949bcL, 0x826930de5eceec76L, 0x4f2cc0d970a4f9d0L, "jetbrains.mps.vcs.mergehints.structure.PropertyVCSDescriptor"));
 
     // check for duplicates 
-
     final Set<SNode> used = new HashSet<SNode>();
     Sequence.fromIterable(props).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
@@ -124,7 +120,6 @@ public class QueriesGenerated extends QueryProviderBase {
     });
 
     // check for duplicates 
-
     final Set<SNode> used = new HashSet<SNode>();
     Sequence.fromIterable(children).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
@@ -144,7 +139,6 @@ public class QueriesGenerated extends QueryProviderBase {
     });
 
     // check for duplicates 
-
     final Set<SNode> used = new HashSet<SNode>();
     Sequence.fromIterable(refs).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
@@ -164,7 +158,6 @@ public class QueriesGenerated extends QueryProviderBase {
     });
 
     // check for duplicates 
-
     final Set<SNode> used = new HashSet<SNode>();
     Sequence.fromIterable(concepts).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {

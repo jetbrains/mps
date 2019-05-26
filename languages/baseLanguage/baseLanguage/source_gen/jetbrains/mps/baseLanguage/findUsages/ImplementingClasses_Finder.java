@@ -50,7 +50,6 @@ public class ImplementingClasses_Finder extends GeneratedFinder {
                     public void invoke(SNode interfaceNode) {
                       if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(interfaceNode), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"))) {
                         // class implements interface case 
-
                         if (SNodeOperations.hasRole(interfaceNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface"))) {
                           callback.onUsageFound(createSingleResult(SNodeOperations.getParent(interfaceNode)));
                           FindUtils.searchForResults(monitor.subTask(1), new IFinder.FindCallback() {
@@ -69,7 +68,6 @@ public class ImplementingClasses_Finder extends GeneratedFinder {
                         }
                       } else if (SNodeOperations.isInstanceOf(interfaceNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass"))) {
                         // anonymous class case 
-
                         callback.onUsageFound(createSingleResult(interfaceNode));
                       }
                     }

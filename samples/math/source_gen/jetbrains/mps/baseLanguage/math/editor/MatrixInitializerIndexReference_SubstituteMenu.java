@@ -48,7 +48,6 @@ public class MatrixInitializerIndexReference_SubstituteMenu extends SubstituteMe
 
     public SMP_ReferenceScope_2x2usv_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d4240f252L, "jetbrains.mps.baseLanguage.math.structure.MatrixInitializerIndexReference"), MetaAdapterFactory.getReferenceLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d4240f252L, 0x5650ac0d4240f275L, "index"));
     }
     @NotNull

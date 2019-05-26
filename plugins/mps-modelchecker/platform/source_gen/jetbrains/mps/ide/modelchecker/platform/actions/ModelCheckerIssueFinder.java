@@ -57,11 +57,8 @@ public class ModelCheckerIssueFinder implements SearchTask {
         List<IChecker<?, ? extends IssueKindReportItem>> specificCheckers = ListSequence.fromList(new ArrayList<IChecker<?, ? extends IssueKindReportItem>>());
         ListSequence.fromList(specificCheckers).addSequence(ListSequence.fromList(getSpecificCheckers()));
         // FIXME it's odd to create checker here provided outer code cares about ModelCheckerSettings and IssueKindReportItem anyway. 
-
         //       We could have passed IAbstractChecker (created the way from the line below) to the cons, however, can't do it right away 
-
         //       as I don't like to expose ModelCheckerBuilder.ItemsToCheck, and need to refactor this. 
-
         new ModelCheckerBuilder(ModelCheckerSettings.getInstance().isCheckStubs()).createChecker(specificCheckers).check(itemsToCheck, myRepository, errorCollector, monitor);
         SearchResults<IssueKindReportItem> result = new SearchResults<IssueKindReportItem>();
         for (IssueKindReportItem error : errorCollector.getResult()) {

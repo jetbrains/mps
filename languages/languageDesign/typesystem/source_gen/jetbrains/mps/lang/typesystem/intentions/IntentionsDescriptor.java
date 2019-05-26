@@ -34,7 +34,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 0:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[2];
           intentions[0] = new FlipInequality_Intention();
           intentions[1] = new MakeInequalityCheckOnly_Intention();
@@ -43,7 +42,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 1:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[1];
           intentions[0] = new CreateTypesystemIntention_Intention();
         }

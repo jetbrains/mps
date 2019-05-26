@@ -44,7 +44,6 @@ public class SModelSearchUtil {
   @ToRemove(version = 2018.1)
   public static List<SNode> getPropertyDeclarations(SNode concept) {
     // uses in mbeddr 
-
     return ((List<SNode>) BHReflection.invoke0(SNodeOperations.cast(concept, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration")), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"), SMethodTrimmedId.create("getPropertyDeclarations", MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"), "hEwILLM")));
   }
   @Nullable

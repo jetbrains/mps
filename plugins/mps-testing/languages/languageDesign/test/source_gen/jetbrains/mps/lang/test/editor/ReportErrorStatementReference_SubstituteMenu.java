@@ -48,7 +48,6 @@ public class ReportErrorStatementReference_SubstituteMenu extends SubstituteMenu
 
     public SMP_ReferenceScope_v50uv8_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x3ee2cbee8b19b06dL, "jetbrains.mps.lang.test.structure.ReportErrorStatementReference"), MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x6abc06f5f4afab9dL, 0x73a7cdcfba51f755L, "declaration"));
     }
     @NotNull

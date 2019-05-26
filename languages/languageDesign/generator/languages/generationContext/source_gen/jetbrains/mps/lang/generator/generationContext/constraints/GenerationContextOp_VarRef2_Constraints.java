@@ -48,7 +48,6 @@ public class GenerationContextOp_VarRef2_Constraints extends BaseConstraintsDesc
           @Override
           public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
             // inherited doesn't work as we can't pass TemplateQueryBase boundary (it's a scope provider with empty scope due to MPS-16711, 67f60e4712c88) 
-
             SNode contextNode = _context.getContextNode();
             List<SNode> vars = new ArrayList<SNode>();
             while ((contextNode != null)) {

@@ -145,9 +145,7 @@ public class GenTestWorker extends BaseGeneratorWorker {
     try {
       BuildMakeService bms = new BuildMakeService();
       // FIXME I've got a solid feeling that without Test make facet, myReporter makes no sense, as well as both ITestReporter implementations 
-
       //       Though they do not bother me at the moment, hence left alive. 
-
       myReporter.finishRun();
       myReporter.startRun(myWhatToDo.getProperty("ant.project.name"));
       Future<IResult> result = bms.make(ms, collectResources(project, modules), null, ctl);
@@ -169,12 +167,10 @@ public class GenTestWorker extends BaseGeneratorWorker {
           @Override
           public void step(String text) {
             // silently 
-
           }
           @Override
           public void start(@NotNull String taskName, int work) {
             // silently 
-
           }
         }, myJavaCompilerOptions);
       }
@@ -182,7 +178,6 @@ public class GenTestWorker extends BaseGeneratorWorker {
     access.runWriteAction(new Runnable() {
       public void run() {
         // the following updates stub models that could change due to the compilation happened (webr, 3.0 migration case) 
-
         for (SModule m : project.getRepository().getModules()) {
           if (!((m instanceof AbstractModule))) {
             continue;

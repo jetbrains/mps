@@ -158,11 +158,9 @@ public class FullASTConverter extends ASTConverterWithExpressions {
   protected SNode convertEnumConst(FieldDeclaration x) throws JavaParseException {
     SNode constr = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration"));
     // TODO 
-
     SNode enm = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367388b3L, "jetbrains.mps.baseLanguage.structure.EnumConstantDeclaration"));
     SPropertyOperations.assign(enm, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), enumConstantName(x));
     // arguments of enum constant 
-
     Expression[] args = ((AllocationExpression) x.initialization).arguments;
     if (args != null) {
       for (Expression arg : args) {
@@ -251,13 +249,11 @@ public class FullASTConverter extends ASTConverterWithExpressions {
     SLinkOperations.setTarget(result, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02ec241L, "expression"), expression);
     SLinkOperations.setTarget(result, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02c1b6eL, "defaultBlock"), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
     // defaultCase is not set for me. Maybe eclipse sets it after resolving work 
-
     if (x.statements != null) {
       SNode currentSwitchCase = null;
       for (Statement stmt : x.statements) {
         if (stmt instanceof CaseStatement) {
           // advance end of previous case block 
-
           if ((currentSwitchCase != null)) {
             getBlock(currentSwitchCase).setEndPos(stmt.sourceStart);
           }
@@ -275,13 +271,11 @@ public class FullASTConverter extends ASTConverterWithExpressions {
         } else
         if ((currentSwitchCase != null)) {
           // advance end of case block 
-
           getBlock(currentSwitchCase).setEndPos(stmt.sourceEnd);
           ListSequence.fromList(SLinkOperations.getChildren(currentSwitchCase, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"))).addElement(convertStatementWrap(stmt));
         }
       }
       // adjust end of last case block up to the end of switch statement 
-
       if ((currentSwitchCase != null)) {
         getBlock(currentSwitchCase).setEndPos(x.sourceEnd);
       }
@@ -300,7 +294,6 @@ public class FullASTConverter extends ASTConverterWithExpressions {
     SNode result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbf3043726L, "jetbrains.mps.baseLanguage.structure.ContinueStatement"));
     if (x.label != null) {
       // using new labels is commented out for now, something seems to be wrong with their scopes 
-
       SPropertyOperations.assign(result, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbf3043726L, 0x11745fca58eL, "label"), new String(x.label));
     }
     return result;
@@ -373,7 +366,6 @@ public class FullASTConverter extends ASTConverterWithExpressions {
       }
     })) {
       // we don't support for ( a=5, b=6; ...) {} in baseLanguage, workaround here 
-
       result = _quotation_createNode_f46ocm_a0b0d0gb(init, forStatement);
     } else if (!(init.isEmpty())) {
       boolean first = true;
@@ -422,10 +414,8 @@ public class FullASTConverter extends ASTConverterWithExpressions {
     SLinkOperations.setTarget(result, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xfc092b6b76L, "ifFalseStatement"), convertStatementWrap(x.elseStatement));
     SNode ifTrue = getStatementListFromStatement(thenStmt, x.thenStatement);
     // adjust start of the "if" statement list block to get comments from "if (...)" there 
-
     getBlock(ifTrue).setStartPos(x.sourceStart);
     // replacing the ifTrue node 
-
     SLinkOperations.setTarget(result, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue"), ifTrue);
     return result;
   }
@@ -437,9 +427,7 @@ public class FullASTConverter extends ASTConverterWithExpressions {
 
     if (x.statement instanceof ForStatement) {
       // we do a trick to get our resulting mps LoopStatement here 
-
       // because it could be converted into BlockStatement with the real loop inside 
-
       SNode loopStatement = ListSequence.fromList(SNodeOperations.getNodeDescendants(statement, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, "jetbrains.mps.baseLanguage.structure.AbstractLoopStatement"), true, new SAbstractConcept[]{})).first();
       if ((loopStatement == null)) {
         return null;
@@ -555,7 +543,6 @@ public class FullASTConverter extends ASTConverterWithExpressions {
     if (SNodeOperations.isInstanceOf(possibleBlock, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, "jetbrains.mps.baseLanguage.structure.BlockStatement"))) {
       result = SLinkOperations.getTarget(SNodeOperations.cast(possibleBlock, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, "jetbrains.mps.baseLanguage.structure.BlockStatement")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, 0xfc092b6b78L, "statements"));
       // FIXME should detach be called here? it depends on whether we're already in a model... 
-
     } else {
       result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList"));
       addBlock(result, x.sourceStart(), x.sourceEnd());
@@ -595,9 +582,7 @@ public class FullASTConverter extends ASTConverterWithExpressions {
     SNode stmt = null;
 
     // we could maintain the stack of blocks 
-
     // then we would just take the topmost element from the stack 
-
     for (FullASTConverter.CodeBlock block : ListSequence.fromList(myBlocks).where(new IWhereFilter<FullASTConverter.CodeBlock>() {
       public boolean accept(FullASTConverter.CodeBlock it) {
         return it.getStartPos() <= sourcePos && sourcePos <= it.getEndPos();

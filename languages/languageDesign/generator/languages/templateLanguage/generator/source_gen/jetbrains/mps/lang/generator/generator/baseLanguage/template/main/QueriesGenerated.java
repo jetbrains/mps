@@ -180,7 +180,6 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Object propertyMacro_GetValue_0_15(final PropertyMacroContext _context) {
     SNode root = SNodeOperations.getContainingRoot(_context.getNode());
     // there's only 1 code block per script, no need to add more than one identity key, hence sequence from 1 (name sequence left just in case assumption fails) 
-
     return _context.createIndexedName("mappingScript_CodeBlock_" + root.getUserObject("identityKey"), null, true);
   }
   public static Object propertyMacro_GetValue_0_16(final PropertyMacroContext _context) {
@@ -190,7 +189,6 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Object propertyMacro_GetValue_0_17(final PropertyMacroContext _context) {
     SNode root = SNodeOperations.getContainingRoot(_context.getNode());
     // there's only 1 applicability condition per MC, which is root. No need for extra identity key, though name seq. of global context is still here to catch failed assumptions 
-
     return _context.createIndexedName("mc_Condition_" + root.getUserObject("identityKey"), null, true);
   }
   public static Object propertyMacro_GetValue_0_18(final PropertyMacroContext _context) {
@@ -219,9 +217,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object propertyMacro_GetValue_8_1(final PropertyMacroContext _context) {
     // to keep name of the variable "context" even if I need to create subContext with name, alter name of the parameter 
-
     // if there's ML, local variable "context" would get declared 
-
     return ((SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff1b29b76cL, 0x1179c366b2fL, "labelDeclaration")) != null) ? "contextNoLabel" : "context");
   }
   public static Object propertyMacro_GetValue_8_2(final PropertyMacroContext _context) {
@@ -476,9 +472,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object propertyMacro_GetValue_27_2(final PropertyMacroContext _context) {
     // XXX I hate this code, but there's no mechanism yet to generate a.b().b().b() calls, hence this index dance 
-
     // Hope, number of args always matches number of parameters 
-
     int argIndex = ((Integer) _context.getVariable("cv:c")) + 1;
     return SPropertyOperations.getString(ListSequence.fromList(((List<SNode>) _context.getVariable("var:params"))).getElement(argIndex), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
   }
@@ -631,7 +625,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object propertyMacro_GetValue_43_1(final PropertyMacroContext _context) {
     // XXX copied from reduce_TemplateDeclarationReferenceConsequence 
-
     int argIndex = ((Integer) _context.getVariable("cv:c")) + 1;
     return SPropertyOperations.getString(ListSequence.fromList(((List<SNode>) _context.getVariable("var:params"))).getElement(argIndex), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
   }
@@ -654,11 +647,8 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object propertyMacro_GetValue_48_0(final PropertyMacroContext _context) {
     // FIXME can't use saveListVar as it doesn't force value override, 
-
     // which is essential as there's already another name associated with the node 
-
     // (i.e. its name inside applyNode() method) 
-
     String name = "tlist" + ++((int[]) _context.getVariable("varindex"))[0];
     _context.putTransientObject(_context.getNode(), name);
     return name;
@@ -885,7 +875,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object propertyMacro_GetValue_70_6(final PropertyMacroContext _context) {
     // in case porperty value contains backslash or anything else not suited for Java 
-
     return NameUtil.escapeString(SNodeOperations.getParent(_context.getNode()).getProperty(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(_context.getNode())));
   }
   public static Object propertyMacro_GetValue_70_7(final PropertyMacroContext _context) {
@@ -921,9 +910,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Object propertyMacro_GetValue_78_2(final PropertyMacroContext _context) {
     SNode templateTarget = SNodeOperations.getParent(_context.getNode()).getReferenceTarget(LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(_context.getNode()));
     // This is what MacroResolver used to do in getDefaultResolveInfo(). 
-
     // I wonder why IResolveInfo case wasn't considered 
-
     return (templateTarget == null ? "null" : templateTarget.getName());
   }
   public static Object propertyMacro_GetValue_78_3(final PropertyMacroContext _context) {
@@ -982,7 +969,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object propertyMacro_GetValue_82_0(final PropertyMacroContext _context) {
     // use macro's id, not the one of the query to match QueryKey.getTemplateNode() 
-
     return SNodeOperations.getParent(_context.getNode()).getNodeId().toString();
   }
   public static Object propertyMacro_GetValue_82_1(final PropertyMacroContext _context) {
@@ -993,7 +979,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object propertyMacro_GetValue_83_0(final PropertyMacroContext _context) {
     // use macro's id, not the one of the post-processing block to match QueryKey.getTemplateNode() 
-
     return SNodeOperations.getParent(_context.getNode()).getNodeId().toString();
   }
   public static Object propertyMacro_GetValue_83_1(final PropertyMacroContext _context) {
@@ -1437,7 +1422,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object referenceMacro_GetReferent_41_3(final ReferenceMacroContext _context) {
     //  we know there are no arguments for root templates 
-
     return _context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "templateDeclNoArgCons");
   }
   public static Object referenceMacro_GetReferent_43_0(final ReferenceMacroContext _context) {
@@ -1556,7 +1540,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object referenceMacro_GetReferent_59_0(final ReferenceMacroContext _context) {
     // method parameter 
-
     return "_context";
   }
   public static Object referenceMacro_GetReferent_60_0(final ReferenceMacroContext _context) {
@@ -2082,7 +2065,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean ifMacro_Condition_20_0(final IfMacroContext _context) {
     //  FIXME resembles reduce_fragmentParts a lot 
-
     Iterable<SNode> selected = Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("nodes"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return GenUtil.getVarHack(_context, it) != null;
@@ -2206,9 +2188,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean ifMacro_Condition_32_4(final IfMacroContext _context) {
     // switch may not necessarily end up with created node (e.g. dismiss rule exception) 
-
     // that's why after switch_Consequence can't use return unconditionally 
-
     return GenUtil.getVarHack(_context, SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10313ed7688L, 0x11013877b73L, "defaultConsequence"))) != null;
   }
   public static boolean ifMacro_Condition_32_5(final IfMacroContext _context) {
@@ -2298,16 +2278,13 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean ifMacro_Condition_43_0(final IfMacroContext _context) {
     // reduce_TemplateDeclarationReferenceConsequence checks for node.template.parameter, 
-
     // though the rest of the code uses actualArguments to tell presense of arguments. Which one is right? 
-
     return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3125L, "actualArgument"))).isNotEmpty();
   }
   public static boolean ifMacro_Condition_44_0(final IfMacroContext _context) {
     boolean directRef = SNodeOperations.getModel(((SNode) _context.getVariable("template"))) == SNodeOperations.getModel(_context.getNode());
     if (directRef && !(SNodeOperations.isInstanceOf(((SNode) _context.getVariable("template")), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, "jetbrains.mps.lang.generator.structure.TemplateDeclaration")))) {
       // check template 
-
       if (AttributeOperations.getAttribute(((SNode) _context.getVariable("template")), new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, "jetbrains.mps.lang.generator.structure.RootTemplateAnnotation"))) == null) {
         _context.showErrorMessage(_context.getNode(), "cannot refer template root without template annotation");
         return false;
@@ -2317,9 +2294,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean ifMacro_Condition_45_0(final IfMacroContext _context) {
     // generate templates option is per module, any template from the same model 
-
     // would be generated 
-
     return SModelOperations.getModuleStub(SNodeOperations.getModel(((SNode) _context.getVariable("template")))) == SModelOperations.getModuleStub(SNodeOperations.getModel(_context.getNode()));
   }
   public static boolean ifMacro_Condition_46_0(final IfMacroContext _context) {
@@ -2582,7 +2557,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static SNode sourceNodeQuery_0_20(final SourceSubstituteMacroNodeContext _context) {
     // need a fake node, otherwise INCLUDE won't proceed 
-
     return SModelOperations.createNewNode(_context.getOutputModel(), null, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept"));
   }
   public static SNode sourceNodeQuery_6_0(final SourceSubstituteMacroNodeContext _context) {
@@ -2856,9 +2830,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static SNode sourceNodeQuery_93_0(final SourceSubstituteMacroNodeContext _context) {
     // FIXME why not node.type, and do the rest with typesystem inference rules? 
-
     // FIXME why do we need ClassifierTypeUtil here, are types not capable to reduce at the proper time? 
-
     SNode classifierType = ClassifierTypeUtil.getTypeCoercedToClassifierType(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f9584aee0fL, 0xe8e73f9584aee10L, "vardecl")), MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b86L, 0xe8e73f957fc2b89L, "type")));
     return ((classifierType != null) ? classifierType : SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f9584aee0fL, 0xe8e73f9584aee10L, "vardecl")), MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b86L, 0xe8e73f957fc2b89L, "type")));
   }
@@ -3115,19 +3087,12 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Iterable<SNode> sourceNodesQuery_0_3(final SourceSubstituteMacroNodesContext _context) {
     // If we found condition or a rule with condition inside a template declaration or under rule 
-
     // consequence (argh! except inline switch - corner case), 
-
     // we assume it's  lang.generator as target language then, and do not generate any code for it. 
-
     // Altenatively, shall filter by condition's parent and grandparent (reduction rules could be 
-
     // inside Switch and MC, while Pattern and RootMR could be inside MC only) 
-
     // which I consider more complicated query compared to the one with ancestors, though I don't 
-
     // like that conditions here and in inject_DirectMethodAccess are different 
-
     return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b05beaL, "jetbrains.mps.lang.generator.structure.BaseMappingRule_Condition"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11644fdbf49L, "jetbrains.mps.lang.generator.structure.InlineSwitch_Case")) || SNodeOperations.getNodeAncestorWhereConceptInList(it, new SAbstractConcept[]{MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x110138ccc4bL, "jetbrains.mps.lang.generator.structure.RuleConsequence"), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, "jetbrains.mps.lang.generator.structure.TemplateDeclaration")}, false, false) == null;
@@ -3136,11 +3101,8 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Iterable<SNode> sourceNodesQuery_0_4(final SourceSubstituteMacroNodesContext _context) {
     // isAttribute check is to ensure we don't process PropertyMacro which is template target (i.e. if one generates template models) 
-
     // Note, this check (containmentLink == smodelAttributes) won't suffice once we we have PropertyMacro not as a top template node 
-
     // (i.e. if we produce a template with few PropertyMacro inside it), although not sure if we ever get to such scenario. 
-
     return SLinkOperations.collect(ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47e9f6f0L, "jetbrains.mps.lang.generator.structure.PropertyMacro"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isAttribute(it);
@@ -3149,7 +3111,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Iterable<SNode> sourceNodesQuery_0_5(final SourceSubstituteMacroNodesContext _context) {
     // see LOOP propertyMacro, above, for isAttribute reasoning 
-
     return SLinkOperations.collect(ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd7f44d616L, "jetbrains.mps.lang.generator.structure.ReferenceMacro"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isAttribute(it);
@@ -3161,7 +3122,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Iterable<SNode> sourceNodesQuery_0_7(final SourceSubstituteMacroNodesContext _context) {
     // see LOOP propertyMacro, above, for isAttribute reasoning 
-
     return SLinkOperations.collect(ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1047c1472deL, "jetbrains.mps.lang.generator.structure.IfMacro"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isAttribute(it);
@@ -3170,7 +3130,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Iterable<SNode> sourceNodesQuery_0_8(final SourceSubstituteMacroNodesContext _context) {
     // see LOOP propertyMacro, above, for isAttribute reasoning 
-
     return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10ff3acfa74L, "jetbrains.mps.lang.generator.structure.SourceSubstituteMacro_SourceNodeQuery"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isAttribute(SNodeOperations.getParent(it));
@@ -3189,7 +3148,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Iterable<SNode> sourceNodesQuery_0_11(final SourceSubstituteMacroNodesContext _context) {
     // see LOOP propertyMacro, above, for isAttribute reasoning 
-
     return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fef5bd603L, "jetbrains.mps.lang.generator.structure.SourceSubstituteMacro_SourceNodesQuery"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1104fcac3b1L, "jetbrains.mps.lang.generator.structure.WeaveEach_RuleConsequence")) || SNodeOperations.isAttribute(SNodeOperations.getParent(it));
@@ -3198,7 +3156,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Iterable<SNode> sourceNodesQuery_0_12(final SourceSubstituteMacroNodesContext _context) {
     // see LOOP propertyMacro, above, for isAttribute reasoning 
-
     return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11094af4e18L, "jetbrains.mps.lang.generator.structure.MapSrcMacro_MapperFunction"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isAttribute(SNodeOperations.getParent(it));
@@ -3207,7 +3164,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Iterable<SNode> sourceNodesQuery_0_13(final SourceSubstituteMacroNodesContext _context) {
     // see LOOP propertyMacro, above, for isAttribute reasoning 
-
     return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11d455674bfL, "jetbrains.mps.lang.generator.structure.MapSrcMacro_PostMapperFunction"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isAttribute(SNodeOperations.getParent(it));
@@ -3223,7 +3179,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Iterable<SNode> sourceNodesQuery_0_15(final SourceSubstituteMacroNodesContext _context) {
     // WeaveAnchorQuery could be hosted both in $WEAVE$ macro and under a rule 
-
     return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe2b8adb3aba4b3bL, "jetbrains.mps.lang.generator.structure.WeavingAnchorQuery"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isAttribute(SNodeOperations.getParent(it)) || SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0d8c573L, "jetbrains.mps.lang.generator.structure.Weaving_MappingRule"));
@@ -3253,7 +3208,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Iterable<SNode> sourceNodesQuery_0_19(final SourceSubstituteMacroNodesContext _context) {
     // see LOOP propertyMacro, above, for isAttribute reasoning 
-
     return SLinkOperations.collect(ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1231e32ff7a958ceL, "jetbrains.mps.lang.generator.structure.InsertMacro"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isAttribute(it);
@@ -3262,7 +3216,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Iterable<SNode> sourceNodesQuery_0_20(final SourceSubstituteMacroNodesContext _context) {
     // see LOOP propertyMacro, above, for isAttribute reasoning 
-
     return SLinkOperations.collect(ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x45991daad6a3d34eL, "jetbrains.mps.lang.generator.structure.VarMacro"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isAttribute(it);
@@ -3271,7 +3224,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Iterable<SNode> sourceNodesQuery_0_21(final SourceSubstituteMacroNodesContext _context) {
     // see LOOP propertyMacro, above, for isAttribute reasoning 
-
     return SLinkOperations.collect(SLinkOperations.collectMany(ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b7eL, "jetbrains.mps.lang.generator.structure.VarMacro2"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isAttribute(it);
@@ -3327,7 +3279,6 @@ public class QueriesGenerated extends QueryProviderBase {
       SNode referenceNode;
       if (SNodeOperations.getModel(targetNode) == SNodeOperations.getModel(_context.getNode())) {
         // internal reference 
-
         SNode refNode = SModelOperations.createNewNode(_context.getInputModel(), null, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x2073070af8a4bc1bL, "jetbrains.mps.lang.generator.structure.GeneratorInternal_InternalReferenceDescriptor"));
         SPropertyOperations.assign(refNode, MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x2073070af8a4bc1bL, 0x2073070af8a4e533L, "templateNodeId"), GeneratorUtil.getTemplateNodeId(_context.getOriginalCopiedInputNode(targetNode)));
 
@@ -3417,11 +3368,8 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Iterable<SNode> sourceNodesQuery_18_0(final SourceSubstituteMacroNodesContext _context) {
     // see comment in the same code in reduce_TemplateDeclarationReferenceConsequence 
-
     // for reason why we iterate arguments, not parameter declarations 
-
     // Besides, actualArgument.isNotEmpty is condition for the field, above 
-
     return SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3125L, "actualArgument"));
   }
   public static Iterable<SNode> sourceNodesQuery_20_0(final SourceSubstituteMacroNodesContext _context) {
@@ -3448,19 +3396,12 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Iterable<SNode> sourceNodesQuery_27_0(final SourceSubstituteMacroNodesContext _context) {
     // XXX It's not obvious whether it's better to iterate over actual arguments 
-
     //     or declared parameters. If both match, it's all the same, however, 
-
     //     we may face cases when it's not true. Iterating over parameter declarations 
-
     //     looks safer (we can always inject null value for missing argument). 
-
     //     Nevertheless, I decided to iterate over arguments as I hope some day to 
-
     //     have parameters with default values, so that we'd need to take only 
-
     //     actual arguments here anyway 
-
     return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3125L, "actualArgument"))).skip(1);
   }
   public static Iterable<SNode> sourceNodesQuery_28_0(final SourceSubstituteMacroNodesContext _context) {
@@ -3490,9 +3431,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Iterable<SNode> sourceNodesQuery_43_0(final SourceSubstituteMacroNodesContext _context) {
     // see reduce_TemplateDeclarationReferenceConsequence for details 
-
     // of atualArgument choice for iteration 
-
     return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3125L, "actualArgument"))).skip(1);
   }
   public static Iterable<SNode> sourceNodesQuery_47_0(final SourceSubstituteMacroNodesContext _context) {
@@ -3500,7 +3439,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Iterable<SNode> sourceNodesQuery_51_0(final SourceSubstituteMacroNodesContext _context) {
     // for reasons to iterate actualArgument, not parameter role look into reduce_TemplateDeclarationReferenceConsequence 
-
     return SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x300c02df884235d3L, 0x300c02df884261edL, "ruleConsequence")), MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3125L, "actualArgument"));
   }
   public static Iterable<SNode> sourceNodesQuery_55_0(final SourceSubstituteMacroNodesContext _context) {
@@ -3707,15 +3645,10 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static void mappingScript_CodeBlock_2(final MappingScriptContext _context) {
     // There seems to be no reason to keep hint for TemplateFunctionParameter_sourceNode as it gets translated 
-
     // at the first step, with TLB_main. GenerationContextOp IOperations listed below, however, are processed 
-
     // when generator model is dropped and only QueriesGenerated class is present - hence can't access types from 
-
     //  referenced elements (e.g. _VarRef can't reach VarMacro to find out its type and name (which, by the way, got 
-
     // into name_intern with ReduceReferenceToText neighbour script)) 
-
     List<SNode> nodes = new ArrayList<SNode>();
     ListSequence.fromList(nodes).addSequence(ListSequence.fromList(SModelOperations.nodes(_context.getModel(), MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x186874d40edb6a16L, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_PatternRef"))));
     ListSequence.fromList(nodes).addSequence(ListSequence.fromList(SModelOperations.nodes(_context.getModel(), MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x4806ea5d84d8a2caL, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_ParameterRef"))));
@@ -3733,15 +3666,11 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static void mappingScript_CodeBlock_3(final MappingScriptContext _context) {
     // references on mapping label will be lost because 
-
     // TLBase generator executes first and doesn't copy 
-
     // mapping configs (where labels are declared) to output model 
-
     // 
     {
       // references in 'get by label' 
-
       List<SNode> ops = SModelOperations.nodes(_context.getModel(), MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x11b5282d0d6L, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_GetOutputByLabel"));
       for (SNode op : ops) {
         SNode label = SLinkOperations.getTarget(op, MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x11b5282d0d6L, 0x11b5282d0d7L, "label"));
@@ -3755,7 +3684,6 @@ public class QueriesGenerated extends QueryProviderBase {
     }
     {
       // references in 'get by label and node' 
-
       List<SNode> ops = SModelOperations.nodes(_context.getModel(), MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x11b5282d0dbL, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_GetOutputByLabelAndInput"));
       for (SNode op : ops) {
         SNode label = SLinkOperations.getTarget(op, MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x11b5282d0dbL, 0x11b5282d0dcL, "label"));
@@ -3769,7 +3697,6 @@ public class QueriesGenerated extends QueryProviderBase {
     }
     {
       // references in 'get by label and node and ref.scope' 
-
       List<SNode> ops = SModelOperations.nodes(_context.getModel(), MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x11c5652e4d5L, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_GetOutputByLabelAndInputAndReferenceScope"));
       for (SNode op : ops) {
         SNode label = SLinkOperations.getTarget(op, MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x11c5652e4d5L, 0x11c5658ea6fL, "label"));
@@ -3783,7 +3710,6 @@ public class QueriesGenerated extends QueryProviderBase {
     }
     {
       // references in 'get all by label and node' 
-
       List<SNode> ops = SModelOperations.nodes(_context.getModel(), MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x11c529a6c83L, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_GetOutputListByLabelAndInput"));
       for (SNode op : ops) {
         SNode label = SLinkOperations.getTarget(op, MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x11c529a6c83L, 0x11c529a6c85L, "label"));
@@ -3797,7 +3723,6 @@ public class QueriesGenerated extends QueryProviderBase {
     }
     {
       // references in 'get prev input by label' 
-
       List<SNode> ops = SModelOperations.nodes(_context.getModel(), MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x11b8f6c38c2L, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_GetPrevInputByLabel"));
       for (SNode op : ops) {
         SNode label = SLinkOperations.getTarget(op, MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x11b8f6c38c2L, 0x11b8f6c38c3L, "label"));
@@ -3812,7 +3737,6 @@ public class QueriesGenerated extends QueryProviderBase {
     {
       {
         // references in 'parameter reference' 
-
         List<SNode> ops = SModelOperations.nodes(_context.getModel(), MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x4806ea5d84d8a2caL, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_ParameterRef"));
         for (SNode op : ops) {
           SNode param = SLinkOperations.getTarget(op, MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x4806ea5d84d8a2caL, 0x4806ea5d84d8d50aL, "parameter"));
@@ -3825,7 +3749,6 @@ public class QueriesGenerated extends QueryProviderBase {
         }
       }
       // references in 'variable reference' 
-
       List<SNode> ops = SModelOperations.nodes(_context.getModel(), MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x25c655ce6e80fdd8L, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_VarRef"));
       for (SNode op : ops) {
         SNode param = SLinkOperations.getTarget(op, MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x25c655ce6e80fdd8L, 0x25c655ce6e80fddaL, "varmacro"));
@@ -3845,7 +3768,6 @@ public class QueriesGenerated extends QueryProviderBase {
     }
     {
       // references in 'get prev input by label' 
-
       List<SNode> ops = SModelOperations.nodes(_context.getModel(), MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x186874d40edb6a16L, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_PatternRef"));
       for (SNode op : ops) {
         SNode patternVar = GenerationContextOp_PatternRef__BehaviorDescriptor.getTarget_id1xCtdgeTQHC.invoke(op);
@@ -3859,7 +3781,6 @@ public class QueriesGenerated extends QueryProviderBase {
     }
     {
       // references in 'get prev input by label' 
-
       List<SNode> ops = SModelOperations.nodes(_context.getModel(), MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x22cdba820a9a0583L, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_GenParameterRef"));
       for (SNode op : ops) {
         SNode paramref = SLinkOperations.getTarget(op, MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x22cdba820a9a0583L, 0x22cdba820a9a0584L, "importClause"));
@@ -3918,16 +3839,11 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static void mappingScript_CodeBlock_89(final MappingScriptContext _context) {
     // Purpose of this script is to give an unique key to group macros within containing template/switch/mc and to generate query method names in a way 
-
     // that a change in another template/switch/mc won't renumerate all methods for queries of the same kind. 
 
-
     // XXX I know 'modifies model' says 'false', though I do modify model here by changing SNode's user object. 
-
     //     However, for generator purposes change of user object doesn't constitute a 'model change' (which is rather structural/attribute change) 
-
     //     and to save extra model copy I mark the script as 'read-only' 
-
     int i = 0;
     for (SNode r : ListSequence.fromList(SModelOperations.roots(_context.getModel(), null))) {
       r.putUserObject("identityKey", Integer.toString(i++));
@@ -3947,9 +3863,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Object varMacro_Value_0_0(final TemplateVarContext _context) {
     SNode generator = SNodeOperations.cast(SModelOperations.getModuleStub(_context.getOriginalInputModel()), MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, "jetbrains.mps.lang.project.structure.Generator"));
     // XXX At the moment, we don't utilize non-reflective queries in generated templates (static methods 
-
     // get invoked directly) 
-
     return (generator != null) && !(SPropertyOperations.getBoolean(generator, MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, 0x29a5716c5dfed280L, "generateTemplates")));
   }
   public static Object varMacro_Value_8_0(final TemplateVarContext _context) {
@@ -4040,7 +3954,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object varMacro_Value_58_8(final TemplateVarContext _context) {
     // see QueriesGenerated, LOOP propertyMacro, for isAttribute reasoning 
-
     return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x300c02df884235d3L, "jetbrains.mps.lang.generator.structure.WeaveMacro"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isAttribute(it) && (SLinkOperations.getTarget(it, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x300c02df884235d3L, 0x2449b12bc386c28dL, "anchorQuery")) != null);
@@ -4063,7 +3976,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object varMacro_Value_58_11(final TemplateVarContext _context) {
     // see QueriesGenerated, LOOP propertyMacro, for isAttribute reasoning 
-
     return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10ff3acfa74L, "jetbrains.mps.lang.generator.structure.SourceSubstituteMacro_SourceNodeQuery"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isAttribute(SNodeOperations.getParent(it));
@@ -4072,7 +3984,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object varMacro_Value_58_12(final TemplateVarContext _context) {
     // see QueriesGenerated, LOOP propertyMacro, for isAttribute reasoning 
-
     return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fef5bd603L, "jetbrains.mps.lang.generator.structure.SourceSubstituteMacro_SourceNodesQuery"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1104fcac3b1L, "jetbrains.mps.lang.generator.structure.WeaveEach_RuleConsequence")) || SNodeOperations.isAttribute(SNodeOperations.getParent(it));
@@ -4081,7 +3992,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object varMacro_Value_58_13(final TemplateVarContext _context) {
     // see QueriesGenerated, LOOP propertyMacro, for isAttribute reasoning 
-
     return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47e9f6f0L, "jetbrains.mps.lang.generator.structure.PropertyMacro"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isAttribute(it);
@@ -4090,7 +4000,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object varMacro_Value_58_14(final TemplateVarContext _context) {
     // see QueriesGenerated, LOOP propertyMacro, for isAttribute reasoning 
-
     return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1047c1472deL, "jetbrains.mps.lang.generator.structure.IfMacro"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isAttribute(it);
@@ -4102,7 +4011,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object varMacro_Value_58_16(final TemplateVarContext _context) {
     // see QueriesGenerated, LOOP propertyMacro, for isAttribute reasoning 
-
     return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd7f44d616L, "jetbrains.mps.lang.generator.structure.ReferenceMacro"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isAttribute(it);
@@ -4114,7 +4022,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object varMacro_Value_58_18(final TemplateVarContext _context) {
     // see QueriesGenerated, LOOP propertyMacro, for isAttribute reasoning 
-
     return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x45991daad6a3d34eL, "jetbrains.mps.lang.generator.structure.VarMacro"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isAttribute(it);
@@ -4123,7 +4030,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object varMacro_Value_58_19(final TemplateVarContext _context) {
     // see QueriesGenerated, LOOP propertyMacro, for isAttribute reasoning 
-
     return Sequence.fromIterable(SLinkOperations.collectMany(ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b7eL, "jetbrains.mps.lang.generator.structure.VarMacro2"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isAttribute(it);
@@ -4142,7 +4048,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object varMacro_Value_58_22(final TemplateVarContext _context) {
     // see QueriesGenerated, LOOP propertyMacro, for isAttribute reasoning 
-
     return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1231e32ff7a958ceL, "jetbrains.mps.lang.generator.structure.InsertMacro"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isAttribute(it);
@@ -4151,7 +4056,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object varMacro_Value_58_23(final TemplateVarContext _context) {
     // see QueriesGenerated, LOOP propertyMacro, for isAttribute reasoning 
-
     return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11094af4e18L, "jetbrains.mps.lang.generator.structure.MapSrcMacro_MapperFunction"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isAttribute(SNodeOperations.getParent(it));
@@ -4160,7 +4064,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object varMacro_Value_58_24(final TemplateVarContext _context) {
     // see QueriesGenerated, LOOP propertyMacro, for isAttribute reasoning 
-
     return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11d455674bfL, "jetbrains.mps.lang.generator.structure.MapSrcMacro_PostMapperFunction"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isAttribute(SNodeOperations.getParent(it));

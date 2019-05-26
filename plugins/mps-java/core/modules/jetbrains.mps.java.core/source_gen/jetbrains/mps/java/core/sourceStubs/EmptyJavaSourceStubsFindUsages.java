@@ -25,9 +25,7 @@ public class EmptyJavaSourceStubsFindUsages implements FindUsagesParticipant, Ap
   }
   public void findUsages(Collection<SModel> models, Set<SNode> set, Consumer<SReference> consumer, Consumer<SModel> processedConsumer) {
     // just skipping java psi stub models from find usages 
-
     // usages in java should be found via idea ReferenceSearch 
-
     for (SModel model : models) {
       if (model instanceof JavaSourceStubModelDescriptor) {
         processedConsumer.consume(model);
@@ -36,11 +34,9 @@ public class EmptyJavaSourceStubsFindUsages implements FindUsagesParticipant, Ap
   }
   public void findInstances(Collection<SModel> collection, Set<SAbstractConcept> set, Consumer<SNode> consumer, Consumer<SModel> consumer1) {
     // let's not skip this, it's not going to slow down anything 
-
   }
   public void findModelUsages(Collection<SModel> collection, Set<SModelReference> set, Consumer<SModel> consumer, Consumer<SModel> consumer1) {
     // let's not skip this, it's not going to slow down anything 
-
   }
   public void initComponent() {
     PersistenceFacade.getInstance().addFindUsagesParticipant(this);

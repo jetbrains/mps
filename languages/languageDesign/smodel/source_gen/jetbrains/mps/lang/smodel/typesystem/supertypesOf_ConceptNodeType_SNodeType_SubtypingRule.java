@@ -26,13 +26,9 @@ public class supertypesOf_ConceptNodeType_SNodeType_SubtypingRule extends Subtyp
         return _quotation_createNode_aqm90v_a0a0a1a1();
       }
       // commented out because: 
-
       // in a node of type concept<SomeInterfaceConcept> could be stored a value node<SomeConcreteConcept> 
-
       // if SomeConcreteConcept is a subconcept of SomeInterfaceConcept. 
-
       // (see rule supertypesOf_SConceptTypeType_SConceptTypeType) 
-
     }
     return _quotation_createNode_aqm90v_a2a1();
   }

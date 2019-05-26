@@ -81,7 +81,6 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0x157a9668bf58417bL, 0x893e53d86388dc56L, 0x1164564a526L, 0x117f047d47fL, "outputChild"), child3);
           }
           // TODO validate child 
-
         }
       } finally {
       }
@@ -137,7 +136,6 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0x157a9668bf58417bL, 0x893e53d86388dc56L, 0x1164564a526L, 0x117f047d47fL, "outputChild"), child3);
           }
           // TODO validate child 
-
         }
       } finally {
       }
@@ -182,7 +180,6 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
               }
               tnode2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type"), tnode3);
               // TODO validate child 
-
             }
             {
               final SNode tnode4 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc59b314L, "IntegerConstant"));
@@ -192,13 +189,11 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
               }
               tnode2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer"), tnode4);
               // TODO validate child 
-
             }
           } finally {
           }
           tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration"), tnode2);
           // TODO validate child 
-
         }
       } finally {
       }
@@ -217,7 +212,6 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
               }
               tnode6.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type"), tnode7);
               // TODO validate child 
-
             }
             {
               final SNode tnode8 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfe476b758fL, "MulExpression"));
@@ -231,7 +225,6 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
                   }
                   tnode8.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression"), tnode9);
                   // TODO validate child 
-
                 }
                 {
                   final SNode tnode10 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc59b314L, "IntegerConstant"));
@@ -241,19 +234,16 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
                   }
                   tnode8.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression"), tnode10);
                   // TODO validate child 
-
                 }
               } finally {
               }
               tnode6.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer"), tnode8);
               // TODO validate child 
-
             }
           } finally {
           }
           tnode5.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration"), tnode6);
           // TODO validate child 
-
         }
       } finally {
       }
@@ -314,13 +304,11 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
                         tnode4.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, 0xfbcf6c30a4L, "expression"), child6);
                       }
                       // TODO validate child 
-
                     }
                   } finally {
                   }
                   tnode3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression"), tnode4);
                   // TODO validate child 
-
                 }
                 {
                   final SNode tnode7 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfbcf6bd10dL, "NotExpression"));
@@ -334,25 +322,21 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
                         tnode7.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, 0xfbcf6c30a4L, "expression"), child9);
                       }
                       // TODO validate child 
-
                     }
                   } finally {
                   }
                   tnode3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression"), tnode7);
                   // TODO validate child 
-
                 }
               } finally {
               }
               tnode2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression"), tnode3);
               // TODO validate child 
-
             }
           } finally {
           }
           tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, 0xfbcf6c30a4L, "expression"), tnode2);
           // TODO validate child 
-
         }
       } finally {
       }
@@ -382,7 +366,6 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression"), child3);
           }
           // TODO validate child 
-
         }
         {
           Collection<SNode> tlist4 = null;
@@ -392,7 +375,6 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression"), child5);
           }
           // TODO validate child 
-
         }
       } finally {
       }
@@ -447,7 +429,6 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
               }
               tnode2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression"), tnode3);
               // TODO validate child 
-
             }
             {
               final SNode tnode4 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x116b46a08c4L, "DotExpression"));
@@ -461,7 +442,6 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
                   }
                   tnode4.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand"), tnode5);
                   // TODO validate child 
-
                 }
                 {
                   final SNode tnode6 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x118154a6332L, "InstanceMethodCallOperation"));
@@ -471,19 +451,16 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
                   }
                   tnode4.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation"), tnode6);
                   // TODO validate child 
-
                 }
               } finally {
               }
               tnode2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression"), tnode4);
               // TODO validate child 
-
             }
           } finally {
           }
           tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression"), tnode2);
           // TODO validate child 
-
         }
       } finally {
       }
@@ -534,7 +511,6 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
               }
               tnode2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression"), tnode3);
               // TODO validate child 
-
             }
             {
               Collection<SNode> tlist4 = null;
@@ -545,13 +521,11 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
                 tnode2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression"), child5);
               }
               // TODO validate child 
-
             }
           } finally {
           }
           tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression"), tnode2);
           // TODO validate child 
-
         }
       } finally {
       }

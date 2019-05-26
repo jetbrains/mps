@@ -36,7 +36,6 @@ public class ModuleProperties_Action extends BaseAction {
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
     // see MPS-19850 
-
     return ((SModule) MapSequence.fromMap(_params).get("module")) instanceof AbstractModule && ((AbstractModule) ((SModule) MapSequence.fromMap(_params).get("module"))).getModuleDescriptor() != null;
   }
   @Override
@@ -74,13 +73,9 @@ public class ModuleProperties_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     // save all is sort of hack - changes to a module might lead to module re-load 
-
     // (happens for Generator) and close of all respective modified editors (and changes lost) 
-
     // The best way to fix would be Generator module not changing its language (which in turn triggers 
-
     // removal of all generator models), but preserving everything intact as it is for e.g. language module changes 
-
     new SaveRepositoryCommand(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository()).execute();
     MPSPropertiesConfigurable configurable = new ModulePropertiesConfigurable(((SModule) MapSequence.fromMap(_params).get("module")), ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")));
     final SingleConfigurableEditor configurableEditor = new SingleConfigurableEditor(((Project) MapSequence.fromMap(_params).get("ideaProject")), configurable, "#MPSPropertiesConfigurable");

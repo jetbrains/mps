@@ -38,7 +38,6 @@ public class MPSMake extends ComponentPlugin implements ComponentHost {
       return aClass.cast(myFacetRegistry);
     }
     // I don't expose other core components unless there's need to. 
-
     return null;
   }
 }

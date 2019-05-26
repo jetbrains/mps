@@ -15,7 +15,6 @@ public class Workbench_ApplicationPlugin extends BaseApplicationPlugin {
   }
   public void createGroups() {
     // actions w/o parameters 
-
     addAction(new ExecuteRerunnableMigrations_Action());
     addAction(new FindDeprecatedCodeWithNoUsages_Action());
     addAction(new FindDeprecatedCode_Action());
@@ -24,7 +23,6 @@ public class Workbench_ApplicationPlugin extends BaseApplicationPlugin {
     addAction(new RunPreUpdateCheck_Action());
     addAction(new TestMigrationWizard_Action());
     // groups 
-
     addGroup(new LanguageMigrations_ActionGroup());
     addGroup(new MigrationsMenuLegacyCode_ActionGroup());
     addGroup(new MigrationsMenu_ActionGroup());

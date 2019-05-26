@@ -88,7 +88,6 @@ public class ConceptDeclaration_Constraints extends BaseConstraintsDescriptor {
           @Override
           public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
             // don't allow cycling 
-
             return Scopes.forConceptDeclarationExtends(_context.getReferenceNode(), _context.getContextNode());
           }
         };

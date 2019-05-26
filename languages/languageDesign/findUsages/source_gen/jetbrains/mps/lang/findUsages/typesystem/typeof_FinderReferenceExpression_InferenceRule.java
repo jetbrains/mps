@@ -19,7 +19,6 @@ public class typeof_FinderReferenceExpression_InferenceRule extends AbstractInfe
   }
   public void applyRule(final SNode expr, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     //  we point to FinderDeclaration, not any class that implements IFinder/Finder, hence IInterfacedFinder 
-
     {
       SNode _nodeToCheck_1029348928467 = expr;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959035a(jetbrains.mps.lang.findUsages.typesystem)", "6818267381900881959", 0, null);

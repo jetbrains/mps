@@ -34,7 +34,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 0:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[3];
           intentions[0] = new AddOrRemoveRegularAttribute_Intention();
           intentions[1] = new AddOrRemoveTransientAttribute_Intention();

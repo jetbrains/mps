@@ -59,7 +59,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean createRootRule_Condition_0_0(final CreateRootRuleContext _context) {
     // see MPS-24613 
-
     return SModuleOperations.isAspect(_context.getOriginalInputModel(), "actions");
   }
   public static boolean rule_Condition_10_0(final BaseMappingRuleContext _context) {
@@ -67,7 +66,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean rule_Condition_14_0(final BaseMappingRuleContext _context) {
     // see MPS-24613 
-
     return SModuleOperations.isAspect(((SModel) _context.getVariable("model")), "actions");
   }
   public static Object propertyMacro_GetValue_11_0(final PropertyMacroContext _context) {
@@ -123,7 +121,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object referenceMacro_GetReferent_14_0(final ReferenceMacroContext _context) {
     // TODO genContext.get output ActionAspectDescriptorClass for model model; 
-
     return SModelOperations.getModelName(((SModel) _context.getVariable("model"))) + ".ActionAspectDescriptorImpl";
   }
   public static Object referenceMacro_GetReferent_15_0(final ReferenceMacroContext _context) {
@@ -219,7 +216,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static SNode sourceNodeQuery_5_0(final SourceSubstituteMacroNodeContext _context) {
     // <expr-to-copy> . linklist-access . add-new-child-op 
-
     return (SNode) SNodeOperation__BehaviorDescriptor.getLeftExpressionLeftExpression_idhEwJdGS.invoke(_context.getNode());
   }
   public static SNode sourceNodeQuery_5_1(final SourceSubstituteMacroNodeContext _context) {
@@ -230,7 +226,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static SNode sourceNodeQuery_5_3(final SourceSubstituteMacroNodeContext _context) {
     // <expr-to-copy> . link-access . set-new-child-op 
-
     return (SNode) SNodeOperation__BehaviorDescriptor.getLeftExpressionLeftExpression_idhEwJdGS.invoke(_context.getNode());
   }
   public static SNode sourceNodeQuery_5_4(final SourceSubstituteMacroNodeContext _context) {
@@ -246,7 +241,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static SNode sourceNodeQuery_6_0(final SourceSubstituteMacroNodeContext _context) {
     // <expr-to-copy> . link-access . set-new-child-op 
-
     return (SNode) SNodeOperation__BehaviorDescriptor.getLeftExpressionLeftExpression_idhEwJdGS.invoke(_context.getNode());
   }
   public static SNode sourceNodeQuery_6_1(final SourceSubstituteMacroNodeContext _context) {
@@ -257,7 +251,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static SNode sourceNodeQuery_6_3(final SourceSubstituteMacroNodeContext _context) {
     // <expr-to-copy> . link-access . set-new-child-op 
-
     return (SNode) SNodeOperation__BehaviorDescriptor.getLeftExpressionLeftExpression_idhEwJdGS.invoke(_context.getNode());
   }
   public static SNode sourceNodeQuery_6_4(final SourceSubstituteMacroNodeContext _context) {

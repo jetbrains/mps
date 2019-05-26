@@ -87,7 +87,6 @@ public class GoToDeclaration_Action extends BaseAction {
         }
       }
       // todo show notification: can't navigate 
-
     }
   }
 }

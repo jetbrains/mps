@@ -86,27 +86,19 @@ public class JUnit_Command {
   }
   public ProcessHandler createProcess(List<ITestNodeWrapper> tests) throws ExecutionException {
     //  
-
     // NOT TO BE USED 
-
     //  
-
     if (myProject_Project == null) {
       // XXX we tolerate null project for transition period, clients have to supply one always 
-
       //     we shall fail with exception once legacy usages gone 
-
       // FIXME and mark project parameter as 'required' 
-
       if (LOG.isEnabledFor(Level.WARN)) {
         LOG.warn("This is deprecated (since MPS 2018.3) way to execute JUnit tests, please refactor", new Throwable());
       }
     }
     TestsWithParameters testsWithParams = TestsWithParameters.createFromTest2RunList(tests);
     // XXX use of global repository here is provisional, until legacy calls are here. 
-
     // It's fine to demand an MPS project when we launch MPS tests from ITestNodeWrapper 
-
     SRepository repo = (myProject_Project == null ? MPSModuleRepository.getInstance() : myProject_Project.getRepository());
     TestsWithParametersAndConfiguration settings = new TestsWithParametersAndConfiguration(repo, testsWithParams, null);
 

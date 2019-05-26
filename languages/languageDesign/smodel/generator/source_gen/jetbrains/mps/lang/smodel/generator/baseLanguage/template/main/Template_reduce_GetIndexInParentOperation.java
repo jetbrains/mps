@@ -51,7 +51,6 @@ public class Template_reduce_GetIndexInParentOperation extends TemplateDeclarati
           tnode1.addChild(myAggregationLinks[0], child3);
         }
         // TODO validate child 
-
       }
     } finally {
     }

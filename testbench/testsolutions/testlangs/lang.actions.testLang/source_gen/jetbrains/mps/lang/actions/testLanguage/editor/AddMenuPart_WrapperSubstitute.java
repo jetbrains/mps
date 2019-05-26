@@ -117,7 +117,6 @@ public class AddMenuPart_WrapperSubstitute extends SubstituteMenuBase {
           public SNode createNode(@NotNull String pattern) {
             SNode nodeToWrap = super.createNode(pattern);
             // additional compilation test for all passed parameters 
-
             boolean tmpVar = nodeToWrap != null;
             tmpVar = tmpVar && _context.getParentNode() != null;
             tmpVar = tmpVar && _context.getCurrentTargetNode() != null;
@@ -128,7 +127,6 @@ public class AddMenuPart_WrapperSubstitute extends SubstituteMenuBase {
             tmpVar = tmpVar && nodeToWrap != null;
 
             // Check if we have read access here 
-
             String name = SPropertyOperations.getString(nodeToWrap, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
 
             SNode wrapperNode = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x47ad1fca2ec9ad4dL, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestChildWrapper"));
@@ -148,7 +146,6 @@ public class AddMenuPart_WrapperSubstitute extends SubstituteMenuBase {
           @Override
           public void select(@NotNull SNode createdNode, @NotNull String pattern) {
             // compilation test for all passed parameters 
-
             boolean tmpVar = _context.getParentNode() != null;
             tmpVar = tmpVar && createdNode != null;
             tmpVar = tmpVar && _context.getLink() != null;
@@ -156,14 +153,12 @@ public class AddMenuPart_WrapperSubstitute extends SubstituteMenuBase {
             tmpVar = tmpVar && _context.getEditorContext() != null;
 
             // Check if we have read access here 
-
             String name = SPropertyOperations.getString(SLinkOperations.getTarget(createdNode, MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x47ad1fca2ec9ad4dL, 0x47ad1fca2ec9ad5fL, "childToWrap")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
             if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(createdNode, MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x47ad1fca2ec9ad4dL, 0x47ad1fca2ec9ad5fL, "childToWrap")), MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2622c47afd434fd2L, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestChildToWrap2"))) {
               SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(createdNode, MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x47ad1fca2ec9ad4dL, 0x47ad1fca2ec9ad5fL, "childToWrap")), SelectionManager.FIRST_CELL, 5);
               return;
             }
             // selecting a custom cell 
-
             _context.getEditorContext().flushEvents();
             EditorCell createdNodeCell = _context.getEditorContext().getEditorComponent().findNodeCell(createdNode);
             if (createdNodeCell != null) {

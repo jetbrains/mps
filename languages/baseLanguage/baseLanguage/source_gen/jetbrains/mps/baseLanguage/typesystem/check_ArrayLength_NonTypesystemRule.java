@@ -27,7 +27,6 @@ public class check_ArrayLength_NonTypesystemRule extends AbstractNonTypesystemRu
   }
   public void applyRule(final SNode fieldRefOperation, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     // FIXME: almost duplicate code with MultipleFilesParser 
-
     SReference fieldRef = SNodeOperations.getReference(fieldRefOperation, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration"));
     if (!((fieldRef instanceof DynamicReference && "length".equals((((DynamicReference) fieldRef).getResolveInfo()))))) {
       return;
@@ -41,7 +40,6 @@ public class check_ArrayLength_NonTypesystemRule extends AbstractNonTypesystemRu
       }
     })) {
       // let's not mess with dynamic references 
-
       return;
     }
 

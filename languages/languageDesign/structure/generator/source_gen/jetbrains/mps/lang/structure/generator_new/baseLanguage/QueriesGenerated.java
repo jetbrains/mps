@@ -81,12 +81,10 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean createRootRule_Condition_1_0(final CreateRootRuleContext _context) {
     // see MPS-24613 
-
     return SModuleOperations.isAspect(_context.getOriginalInputModel(), "structure");
   }
   public static boolean createRootRule_Condition_1_1(final CreateRootRuleContext _context) {
     // see MPS-24613 
-
     return SModuleOperations.isAspect(_context.getOriginalInputModel(), "structure");
   }
   public static boolean createRootRule_Condition_1_2(final CreateRootRuleContext _context) {
@@ -94,7 +92,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean rule_Condition_5_0(final BaseMappingRuleContext _context) {
     // see MPS-24613 
-
     return SModuleOperations.isAspect(((SModel) _context.getVariable("model")), "structure");
   }
   public static boolean rule_Condition_9_0(final BaseMappingRuleContext _context) {
@@ -136,7 +133,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object propertyMacro_GetValue_2_6(final PropertyMacroContext _context) {
     // FIXME implicit assumption name of the language matches model name minus last segment 
-
     return NameUtil.namespaceFromLongName(SModelOperations.getModelName(SNodeOperations.getModel(_context.getNode())));
   }
   public static Object propertyMacro_GetValue_2_7(final PropertyMacroContext _context) {
@@ -249,9 +245,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object propertyMacro_GetValue_7_1(final PropertyMacroContext _context) {
     // Likely, we shall mangle the name to avoid non-Java characters, however, 
-
     // both StructureAspectDescriptor and PresentationAspect use concept name for Java fields, that's why I follow 
-
     return SPropertyOperations.getString(_context.getNode(), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
   }
   public static Object propertyMacro_GetValue_7_2(final PropertyMacroContext _context) {
@@ -338,7 +332,6 @@ public class QueriesGenerated extends QueryProviderBase {
     SNode xmodelTarget = _context.getOutputNodeByMappingLabel("StructureAspectDescriptorCons", ((SModel) _context.getVariable("model")));
     if ((xmodelTarget == null)) {
       // Compatibility code for non-migrated structure aspect models (those without devkit/plan) 
-
       return SModelOperations.getModelName(((SModel) _context.getVariable("model"))) + ".StructureAspectDescriptor";
     }
     return xmodelTarget;
@@ -347,7 +340,6 @@ public class QueriesGenerated extends QueryProviderBase {
     SNode xmodelTarget = _context.getOutputNodeByMappingLabel("ConceptPresentationAspectClass", ((SModel) _context.getVariable("model")));
     if ((xmodelTarget == null)) {
       // Compatibility code for non-migrated structure aspect models (those without devkit/plan) 
-
       return SModelOperations.getModelName(((SModel) _context.getVariable("model"))) + ".ConceptPresentationAspectImpl";
     } else {
       return xmodelTarget;
@@ -384,19 +376,16 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean ifMacro_Condition_2_5(final IfMacroContext _context) {
     // inspired by respective code from incl_Prop. We don't have sourceNode reference in PropertyDeclaration, hence need to look at the owner 
-
     SNode acd = SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"));
     return (SLinkOperations.getTarget(acd, MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x45b8a887cfd27b2cL, "sourceNode")) == null || SLinkOperations.getTarget(acd, MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x45b8a887cfd27b2cL, "sourceNode")) == acd) && TracingUtil.getInput(_context.getNode()) != null;
   }
   public static boolean ifMacro_Condition_2_6(final IfMacroContext _context) {
     // inspired by respective code from incl_Prop. We don't have sourceNode reference in PropertyDeclaration, hence need to look at the owner 
-
     SNode acd = SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"));
     return (SLinkOperations.getTarget(acd, MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x45b8a887cfd27b2cL, "sourceNode")) == null || SLinkOperations.getTarget(acd, MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x45b8a887cfd27b2cL, "sourceNode")) == acd) && TracingUtil.getInput(_context.getNode()) != null;
   }
   public static boolean ifMacro_Condition_2_7(final IfMacroContext _context) {
     // inspired by respective code from incl_Prop. We don't have sourceNode reference in PropertyDeclaration, hence need to look at the owner 
-
     SNode acd = SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"));
     return (SLinkOperations.getTarget(acd, MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x45b8a887cfd27b2cL, "sourceNode")) == null || SLinkOperations.getTarget(acd, MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x45b8a887cfd27b2cL, "sourceNode")) == acd) && TracingUtil.getInput(_context.getNode()) != null;
   }
@@ -513,11 +502,8 @@ public class QueriesGenerated extends QueryProviderBase {
       }
     });
     // XXX here's hidden an assumption that extends points to 'orignal' models (not e.g. an intermediate checkpoint), as we need to figure out SLanguage 
-
     // of extended concept, and we do that based on module reference here. If this leads to an issue, we may want to use language identity information 
-
     // from concept, yet would be less efficient (assuming multiple concepts extended from a language) than by unique model 
-
     Iterable<Language> extendedLanguages = Sequence.fromIterable(foreign).select(new ISelector<SNode, SModel>() {
       public SModel select(SNode it) {
         return SNodeOperations.getModel(it);
@@ -547,7 +533,6 @@ public class QueriesGenerated extends QueryProviderBase {
       }
     });
     // check LOOP extendedLanguage, above, for explanation of hidden assumptions here 
-
     Iterable<Language> aggregatedLanguages = Sequence.fromIterable(foreign).select(new ISelector<SNode, SModel>() {
       public SModel select(SNode it) {
         return SNodeOperations.getModel(it);
@@ -727,15 +712,12 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object varMacro_Value_2_3(final TemplateVarContext _context) {
     //  source node not specified or (likely, erroneously) points to the same (transient) model, 
-
     // therefore, we try to use generator's trace to original 
-
     if (SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x45b8a887cfd27b2cL, "sourceNode")) == null || SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x45b8a887cfd27b2cL, "sourceNode")) == _context.getNode()) {
       return TracingUtil.getInput(_context.getNode());
     }
     if (SNodeOperations.getModel(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x45b8a887cfd27b2cL, "sourceNode"))) == SNodeOperations.getModel(_context.getNode())) {
       // if it points to a node in the same transient model, use it, but warn user not to expect anything good. 
-
       _context.showWarningMessage(_context.getNode(), "Concept's source node is from the same transient model");
     }
     return SLinkOperations.getPointer(_context.getNode(), MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x45b8a887cfd27b2cL, "sourceNode"));
@@ -743,7 +725,6 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Object varMacro_Value_2_4(final TemplateVarContext _context) {
     final String stubConceptName = "Stub" + SPropertyOperations.getString(_context.getNode(), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
     // XXX would be great to utilize the fact concepts sequence is sorted, otherwise n^2 searches might get slow. 
-
     return Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("var:concepts"))).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return stubConceptName.equals(SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
@@ -757,9 +738,7 @@ public class QueriesGenerated extends QueryProviderBase {
     final SNodeReference implStubNode = new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "6999738288738427190");
     final SNodeReference implNode = new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1319728274783077719");
     // order copied from BaseConceptDescriptor.getConceptKind 
-
     // FIXME introduce SNodeReference return value from RM and use it here 
-
     if ((Sequence.fromIterable(allSuperConcepts).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.getPointer(it).equals(ifacePartNode);

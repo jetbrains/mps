@@ -47,7 +47,6 @@ public class SampleDeclMigration extends MigrationScriptBase {
   }
   public void doExecute(final SModule m) {
     // migrate everything except migration aspects 
-
     SearchScope searchScope = new ConditionalScope(new ModulesScope(m), null, new Condition<SModel>() {
       public boolean met(SModel it) {
         return !(SModuleOperations.isAspect(it, "migration"));
@@ -64,27 +63,22 @@ public class SampleDeclMigration extends MigrationScriptBase {
       };
 
       // get all old instances in all models of the module 
-
       List<SNode> components = CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0x9de7c5ceea6f4fb4L, 0xa7ba45e62b53cbadL, 0x6aff2c1049316cdaL, "decl.structure.OldComponent"), true)).toListSequence();
 
       // for each old instance create a new one 
-
       ListSequence.fromList(components).visitAll(new IVisitor<SNode>() {
         public void visit(SNode oldNode) {
           SNode newNode = _quotation_createNode_i4ro0d_a0a0a0a5a3a5(SLinkOperations.getChildren(oldNode, MetaAdapterFactory.getContainmentLink(0x9de7c5ceea6f4fb4L, 0xa7ba45e62b53cbadL, 0x6aff2c1049316cdaL, 0x6aff2c104931bb27L, "member")), SPropertyOperations.getString(oldNode, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
           // add it to the model 
-
           SModelOperations.addRootNode(SNodeOperations.getModel(oldNode), newNode);
 
           // create the data annotation to hold mapping between old and new ids of the instances 
-
           SPropertyOperations.set(SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.setTarget(AttributeOperations.createAndAddAttribute(newNode, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625990591L, "jetbrains.mps.lang.core.structure.MigrationDataAnnotation")), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625990591L, "jetbrains.mps.lang.core.structure.MigrationDataAnnotation")), MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625990591L, 0x5e7aa366c292fcceL, "dataNode"), createDeclMigrationData_i4ro0d_a0f0a0a5a3a5(oldNode.getNodeId().toString(), newNode.getNodeId().toString()))), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625990591L, "jetbrains.mps.lang.core.structure.MigrationDataAnnotation")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e13L, 0x78c7e79625a38e14L, "createdByScript"), SampleDeclMigration.this.getReference().serialize());
 
         }
       });
 
       // remove the old instances from their models 
-
       ListSequence.fromList(components).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           SNodeOperations.deleteNode(it);

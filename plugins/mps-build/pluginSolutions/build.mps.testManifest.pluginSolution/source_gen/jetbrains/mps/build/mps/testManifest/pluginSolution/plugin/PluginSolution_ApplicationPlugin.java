@@ -15,10 +15,8 @@ public class PluginSolution_ApplicationPlugin extends BaseApplicationPlugin {
   }
   public void createGroups() {
     // actions w/o parameters 
-
     addAction(new RefreshTestProject_Action());
     // groups 
-
     addGroup(new TestBuildProject_ActionGroup());
   }
   public void adjustRegularGroups() {

@@ -57,11 +57,8 @@ public class CurrentDifferenceRegistry implements ProjectComponent {
     myFileStatusManager.addFileStatusListener(myFileStatusListener);
     new RepoListenerRegistrar(myMpsProject.getRepository(), myModelRepositoryListener).attach();
     // do not start the command thread immediately, let project refresh its structures and components. 
-
     // Not sure whether to use StartupManager.registerPostStartupActivity or runWhenSmart; chose latter as its javadoc 
-
     // promises initialized project in addition to indexing done (to some extent). 
-
     DumbService.getInstance(getProject()).runWhenSmart(new Runnable() {
       public void run() {
         myCommandQueue.startThread();
@@ -112,7 +109,6 @@ public class CurrentDifferenceRegistry implements ProjectComponent {
       return;
     }
     //  FIXME updateModel and CurrentDifference shall use SModelReference 
-
     updateModel(modelDescriptor);
   }
 
@@ -190,7 +186,6 @@ public class CurrentDifferenceRegistry implements ProjectComponent {
     protected void startListening(SModel model) {
       if (model instanceof EditableSModel) {
         // we care about modelReplaced event 
-
         model.addModelListener(this);
         updateModel(model);
       }
@@ -232,7 +227,6 @@ public class CurrentDifferenceRegistry implements ProjectComponent {
     public void addListener(SModel model, SModelCommandListener listener) {
       if (!(myListeners.containsKey(model.getReference()))) {
         //  first time we see the model, tell EventCollector we are interested 
-
         startListeningToModel(model);
       }
       myListeners.putValue(model.getReference(), listener);
@@ -241,7 +235,6 @@ public class CurrentDifferenceRegistry implements ProjectComponent {
       myListeners.remove(model.getReference(), listener);
       if (!(myListeners.containsKey(model.getReference()))) {
         // no more listeners, no reason to listen any more 
-
         stopListeningToModel(model);
       }
     }

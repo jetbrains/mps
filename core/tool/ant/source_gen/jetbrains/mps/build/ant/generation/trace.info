@@ -93,54 +93,54 @@
     <file name="MpsRunnerTask.java">
       <node id="2220861080746432548" at="11,0,12,0" concept="2" trace="myProperties" />
       <node id="2460127487306036370" at="13,26,14,68" concept="8" />
-      <node id="2220861080746434487" at="16,0,17,55" concept="1" />
-      <node id="2460127487305943835" at="20,59,21,30" concept="5" />
-      <node id="2460127487305943843" at="22,23,23,13" concept="6" />
-      <node id="2460127487305943847" at="24,5,25,24" concept="1" />
-      <node id="6102524510012602328" at="28,31,29,38" concept="6" />
-      <node id="6102524510012602338" at="31,45,32,40" concept="1" />
-      <node id="2220861080746445818" at="34,33,35,40" concept="6" />
-      <node id="2220861080746447689" at="37,48,38,43" concept="1" />
-      <node id="2220861080746391117" at="40,34,41,41" concept="6" />
-      <node id="2220861080746449519" at="43,50,44,45" concept="1" />
-      <node id="3358939477504219655" at="14,68,16,0" concept="7" />
-      <node id="2460127487305943841" at="21,30,24,5" concept="3" />
-      <node id="6102524510012602326" at="28,0,31,0" concept="4" trace="getSolution#()Ljava/lang/String;" />
-      <node id="6102524510012602334" at="31,0,34,0" concept="4" trace="setSolution#(Ljava/lang/String;)V" />
-      <node id="4271560773252623558" at="34,0,37,0" concept="4" trace="getStartClass#()Ljava/lang/String;" />
-      <node id="4271560773252623570" at="37,0,40,0" concept="4" trace="setStartClass#(Ljava/lang/String;)V" />
-      <node id="2220861080746391115" at="40,0,43,0" concept="4" trace="getStartMethod#()Ljava/lang/String;" />
-      <node id="2220861080746391128" at="43,0,46,0" concept="4" trace="setStartMethod#(Ljava/lang/String;)V" />
-      <node id="2220861080746434088" at="13,0,19,0" concept="0" trace="MpsRunnerTask#()V" />
-      <node id="2460127487305943831" at="20,0,27,0" concept="4" trace="addConfiguredLibrary#(Ljetbrains/mps/build/ant/ModuleJarDataType;)V" />
-      <scope id="2460127487305943842" at="22,23,23,13" />
-      <scope id="6102524510012602327" at="28,31,29,38" />
-      <scope id="6102524510012602337" at="31,45,32,40" />
-      <scope id="4271560773252623559" at="34,33,35,40" />
-      <scope id="4271560773252623573" at="37,48,38,43" />
-      <scope id="2220861080746391116" at="40,34,41,41" />
-      <scope id="2220861080746391131" at="43,50,44,45" />
-      <scope id="6102524510012602326" at="28,0,31,0" />
-      <scope id="6102524510012602334" at="31,0,34,0">
+      <node id="3358939477504219655" at="14,68,15,177" concept="7" />
+      <node id="2220861080746434487" at="15,177,16,55" concept="1" />
+      <node id="2460127487305943835" at="19,59,20,30" concept="5" />
+      <node id="2460127487305943843" at="21,23,22,13" concept="6" />
+      <node id="2460127487305943847" at="23,5,24,24" concept="1" />
+      <node id="6102524510012602328" at="27,31,28,38" concept="6" />
+      <node id="6102524510012602338" at="30,45,31,40" concept="1" />
+      <node id="2220861080746445818" at="33,33,34,40" concept="6" />
+      <node id="2220861080746447689" at="36,48,37,43" concept="1" />
+      <node id="2220861080746391117" at="39,34,40,41" concept="6" />
+      <node id="2220861080746449519" at="42,50,43,45" concept="1" />
+      <node id="2460127487305943841" at="20,30,23,5" concept="3" />
+      <node id="6102524510012602326" at="27,0,30,0" concept="4" trace="getSolution#()Ljava/lang/String;" />
+      <node id="6102524510012602334" at="30,0,33,0" concept="4" trace="setSolution#(Ljava/lang/String;)V" />
+      <node id="4271560773252623558" at="33,0,36,0" concept="4" trace="getStartClass#()Ljava/lang/String;" />
+      <node id="4271560773252623570" at="36,0,39,0" concept="4" trace="setStartClass#(Ljava/lang/String;)V" />
+      <node id="2220861080746391115" at="39,0,42,0" concept="4" trace="getStartMethod#()Ljava/lang/String;" />
+      <node id="2220861080746391128" at="42,0,45,0" concept="4" trace="setStartMethod#(Ljava/lang/String;)V" />
+      <node id="2220861080746434088" at="13,0,18,0" concept="0" trace="MpsRunnerTask#()V" />
+      <node id="2460127487305943831" at="19,0,26,0" concept="4" trace="addConfiguredLibrary#(Ljetbrains/mps/build/ant/ModuleJarDataType;)V" />
+      <scope id="2460127487305943842" at="21,23,22,13" />
+      <scope id="6102524510012602327" at="27,31,28,38" />
+      <scope id="6102524510012602337" at="30,45,31,40" />
+      <scope id="4271560773252623559" at="33,33,34,40" />
+      <scope id="4271560773252623573" at="36,48,37,43" />
+      <scope id="2220861080746391116" at="39,34,40,41" />
+      <scope id="2220861080746391131" at="42,50,43,45" />
+      <scope id="2220861080746434092" at="13,26,16,55" />
+      <scope id="6102524510012602326" at="27,0,30,0" />
+      <scope id="6102524510012602334" at="30,0,33,0">
         <var name="solutioun" id="6102524510012602343" />
       </scope>
-      <scope id="4271560773252623558" at="34,0,37,0" />
-      <scope id="4271560773252623570" at="37,0,40,0">
+      <scope id="4271560773252623558" at="33,0,36,0" />
+      <scope id="4271560773252623570" at="36,0,39,0">
         <var name="startClass" id="4271560773252623581" />
       </scope>
-      <scope id="2220861080746391115" at="40,0,43,0" />
-      <scope id="2220861080746391128" at="43,0,46,0">
+      <scope id="2220861080746391115" at="39,0,42,0" />
+      <scope id="2220861080746391128" at="42,0,45,0">
         <var name="startMethod" id="2220861080746391137" />
       </scope>
-      <scope id="2220861080746434092" at="13,26,17,55" />
-      <scope id="2460127487305943834" at="20,59,25,24">
+      <scope id="2220861080746434088" at="13,0,18,0" />
+      <scope id="2460127487305943834" at="19,59,24,24">
         <var name="file" id="2460127487305943836" />
       </scope>
-      <scope id="2220861080746434088" at="13,0,19,0" />
-      <scope id="2460127487305943831" at="20,0,27,0">
+      <scope id="2460127487305943831" at="19,0,26,0">
         <var name="jar" id="2460127487305943850" />
       </scope>
-      <unit id="4271560773252437472" at="10,0,47,0" name="jetbrains.mps.build.ant.generation.MpsRunnerTask" />
+      <unit id="4271560773252437472" at="10,0,46,0" name="jetbrains.mps.build.ant.generation.MpsRunnerTask" />
     </file>
   </root>
   <root nodeRef="r:f80180a9-2bac-487b-83fc-3ef65f97aea3(jetbrains.mps.build.ant.generation)/861826518923203126">

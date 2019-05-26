@@ -52,13 +52,9 @@ public final class BuildLayout_File__BehaviorDescriptor extends BaseBHDescriptor
     if (artifactId instanceof SNode) {
       SNode node = (SNode) artifactId;
       // check node.containing root == this.containing root is from initial commit e0a6b1f), but I don't see a reason 
-
       // why a file from an external layout shall not match requested BuildSourcePath. Perhaps, it's due to 'source' part of the name, i.e. 
-
       // that the path is supposed to reference smth from project source. However, we've got BuildSourceArchiveRelativePath which may 
-
       // legitimately point to a file from an external layout, and the restriction is not clear here. 
-
       if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafacdc3eL, "jetbrains.mps.build.structure.BuildSourcePath")) && SNodeOperations.getContainingRoot(node) == SNodeOperations.getContainingRoot(__thisNode__)) {
         SNode required = SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafacdc3eL, "jetbrains.mps.build.structure.BuildSourcePath"));
         return Objects.equals(BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(required), BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7ea63ceef6e8c0edL, 0x7ea63ceef6e8c11aL, "path"))));

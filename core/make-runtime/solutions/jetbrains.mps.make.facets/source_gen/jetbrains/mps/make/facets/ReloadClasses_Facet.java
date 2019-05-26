@@ -73,7 +73,6 @@ public class ReloadClasses_Facet extends IFacet.Stub {
               final ProgressMonitor subProgress_c0a0a = progressMonitor.subTask(1000);
               subProgress_c0a0a.start("Reloading classes", 1);
               // FIXME pass progressMonitor down to reloadModules 
-
               monitor.getSession().getProject().getModelAccess().runWriteAction(new Runnable() {
                 public void run() {
                   ClassLoaderManager.getInstance().reloadModules(toReload);

@@ -26,7 +26,6 @@ public class check_GenerationContextOp_GetOutputByLabel_NonTypesystemRule extend
       return;
     }
     // I'm confused whether to use inference rule with check only == true or checking rule to ensure proper type of child expression 
-
     SNode modelExprType = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(op, MetaAdapterFactory.getContainmentLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x11b5282d0d6L, 0x5f171e4376fc8e82L, "forModel")));
     if (!(TypecheckingFacade.getFromContext().isSubtype(modelExprType, createClassifierType_jqceor_b0a0d0b()))) {
       MessageTarget errorTarget = new NodeMessageTarget();

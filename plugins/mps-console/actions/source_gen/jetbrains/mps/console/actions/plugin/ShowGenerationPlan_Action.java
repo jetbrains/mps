@@ -36,11 +36,8 @@ public class ShowGenerationPlan_Action extends BaseAction {
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
     // I'd love to update presentation to reflect alternative action with keyboard modifier, but IDEA 
-
     // doesn't update action on key pressed once menu is visible, and doesn't pass initial modifiers, 
-
     // see com.intellij.openapi.actionSystem.impl.Util#expandActionGroup:135 (always 0). 
-
     return GenerationFacade.canGenerate(event.getData(MPSCommonDataKeys.MODEL));
   }
   @Override

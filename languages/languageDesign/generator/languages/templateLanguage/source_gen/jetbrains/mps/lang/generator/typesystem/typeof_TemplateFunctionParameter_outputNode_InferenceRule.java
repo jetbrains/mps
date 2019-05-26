@@ -37,7 +37,6 @@ public class typeof_TemplateFunctionParameter_outputNode_InferenceRule extends A
       mapperFunc = SLinkOperations.getTarget(SNodeOperations.cast(parentMacro, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x107ce4fbf98L, "jetbrains.mps.lang.generator.structure.MapSrcListMacro")), MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x107ce4fbf98L, 0x1109d5f7af9L, "mapperFunction"));
     }
     //  ---- 
-
     if (mapperFunc != null) {
       {
         SNode _nodeToCheck_1029348928467 = node;
@@ -46,7 +45,6 @@ public class typeof_TemplateFunctionParameter_outputNode_InferenceRule extends A
       }
     } else {
       //  concept of the wrapped template code 
-
       {
         SNode _nodeToCheck_1029348928467 = node;
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "1225234961708", 0, null);

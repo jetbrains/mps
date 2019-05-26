@@ -48,7 +48,6 @@ public class GeneratorInternal_BuildSource_SingleFile_SubstituteMenu extends Sub
 
     public SMP_ReferenceScope_j0jkyf_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x44e5dd192e7c0d4aL, "jetbrains.mps.build.structure.GeneratorInternal_BuildSource_SingleFile"), MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x44e5dd192e7c0d4aL, 0x44e5dd192e7c0d4bL, "targetFile"));
     }
     @NotNull

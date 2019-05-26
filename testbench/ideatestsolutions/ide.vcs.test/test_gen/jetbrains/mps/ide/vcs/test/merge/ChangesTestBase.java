@@ -74,7 +74,6 @@ public abstract class ChangesTestBase implements EnvironmentAware {
 
   public ChangesTestBase() {
     // todo add group changes tests 
-
   }
 
 
@@ -93,7 +92,6 @@ public abstract class ChangesTestBase implements EnvironmentAware {
   public static void tearDown() {
     ourEnabled = false;
     // the right way to close project is Environment.closeProject(myProject), but at the momen PushEnvironmentRunnerBuilder does it with instance method only 
-
     ourProject.dispose();
     ourProject = null;
   }
@@ -109,7 +107,6 @@ public abstract class ChangesTestBase implements EnvironmentAware {
     ApplicationManager.getApplication().invokeAndWait(new Runnable() {
       public void run() {
         // ensure `fileStatusesChanged' evens are fired 
-
         UIUtil.dispatchAllInvocationEvents();
       }
     }, ModalityState.any());
@@ -119,13 +116,10 @@ public abstract class ChangesTestBase implements EnvironmentAware {
   public void init() {
     if (ourProject == null) {
       // Point to current directory with MPS project 
-
       File mpsProject = new File("").getAbsoluteFile();
       ourProject = ((MPSProject) myEnv.openProject(mpsProject));
       // For whatever reason, tests with this superclass work only if there's 1 project dispose per class (open/close of the project in Before/After doesn't work) 
-
       // Given there's odd magic with ourEnabled and the fact it's VCS, I don't want to dive into this sh!t now. 
-
     }
 
     myIdeaProject = ourProject.getProject();
@@ -197,7 +191,6 @@ public abstract class ChangesTestBase implements EnvironmentAware {
     final NodeFileStatusMappingExt fsm = myIdeaProject.getComponent(NodeFileStatusMappingExt.class);
     final SModel model = myDiff.getModelDescriptor();
     // query for first time 
-
     ourProject.getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
         ListSequence.fromList(SModelOperations.roots(model, null)).visitAll(new IVisitor<SNode>() {
@@ -208,7 +201,6 @@ public abstract class ChangesTestBase implements EnvironmentAware {
       }
     });
     // wait while statuses update 
-
     myWaitHelper.waitForDiffRegistry();
     ourProject.getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {

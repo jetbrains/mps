@@ -43,7 +43,6 @@ public class ConceptSubstitutePartTest extends SubstituteMenuBase {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
       // additional compilation test for all passed parameters 
-
       boolean tmpVar = _context.getParentNode() != null;
       tmpVar = tmpVar && _context.getCurrentTargetNode() != null;
       tmpVar = tmpVar && _context.getLink() != null;

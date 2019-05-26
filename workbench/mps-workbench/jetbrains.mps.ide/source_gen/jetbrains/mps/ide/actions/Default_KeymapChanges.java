@@ -12,7 +12,6 @@ import java.util.ArrayList;
 public class Default_KeymapChanges extends BaseKeymapChanges {
   public Default_KeymapChanges() {
     // simple 
-
     addSimpleShortcut("jetbrains.mps.ide.actions.CloneModel_Action", getShortcut("shift F5"));
     addSimpleShortcut("jetbrains.mps.ide.actions.CloneModule_Action", getShortcut("shift F5"));
     addSimpleShortcut("jetbrains.mps.ide.actions.CloneRoot_Action", getShortcut("shift F5"));
@@ -59,14 +58,12 @@ public class Default_KeymapChanges extends BaseKeymapChanges {
     addSimpleShortcut("jetbrains.mps.ide.actions.ShowNodeInfo_Action", getShortcut("ctrl Q"));
     addSimpleShortcut("jetbrains.mps.ide.actions.ShowParameters_Action", getShortcut("ctrl P"));
     // simple parameterized 
-
     addComplexShortcut("jetbrains.mps.ide.actions.FileDelete_Action", new BaseKeymapChanges.ComplexShortcut.ParameterizedSimpleShortcut(getShortcut(" DELETE")));
     addComplexShortcut("jetbrains.mps.ide.actions.GoToAction_Action", new BaseKeymapChanges.ComplexShortcut.ParameterizedSimpleShortcut(getShortcut("ctrl shift A")));
     addComplexShortcut("jetbrains.mps.ide.actions.GoToFile_Action", new BaseKeymapChanges.ComplexShortcut.ParameterizedSimpleShortcut(getShortcut("ctrl shift N")));
     addComplexShortcut("jetbrains.mps.ide.actions.GoToNamedNode_Action", new BaseKeymapChanges.ComplexShortcut.ParameterizedSimpleShortcut(getShortcut("ctrl alt shift N")));
     addComplexShortcut("jetbrains.mps.ide.actions.GoToRootNode_Action", new BaseKeymapChanges.ComplexShortcut.ParameterizedSimpleShortcut(getShortcut("ctrl N")));
     // complex 
-
     addComplexShortcut("jetbrains.mps.ide.actions.GoToBookmark_Action", new Default_KeymapChanges.GoToBookmark_ShortcutChange_qjewi8_yb());
     addComplexShortcut("jetbrains.mps.ide.actions.SetBookmark_Action", new Default_KeymapChanges.SetBookmark_ShortcutChange_qjewi8_zb());
   }

@@ -54,7 +54,6 @@ public class Template_NodeOrConceptCommon extends TemplateDeclarationBase implem
             tnode2.addChild(myAggregationLinks[0], child4);
           }
           // TODO validate child 
-
         }
       } finally {
       }

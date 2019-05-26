@@ -15,7 +15,6 @@ public class LocalSourcePathArtifact {
     this.sourcePath = sourcePath;
     this.isFolder = isFolder;
     // unless already intialized, record whatever random value, I just utilize the fact user objects get propagated through transformation steps unchanged 
-
     myMarkValue = markRoot(root, root.hashCode());
   }
   public SNode getRoot() {
@@ -59,7 +58,6 @@ public class LocalSourcePathArtifact {
 
   private boolean matchingRoot(SNode another) {
     // although I check for null root, I'm unaware of a case when LSPA could get created with no root node 
-
     if (root == null || another == null) {
       return another == root;
     }
@@ -67,17 +65,14 @@ public class LocalSourcePathArtifact {
       return true;
     }
     // Need to match LSPA(root@2_0) with LSPA(root@4_1) 
-
     Integer mine = getMarkValue(root);
     Integer foreign = getMarkValue(another);
     // mine couldn't be null, we initialize/check the mark at construction time 
-
     return mine.equals(foreign);
   }
 
   public static Integer markRoot(SNode n, int value) {
     // generally, root can't be null, check is just for safety 
-
     if ((n == null)) {
       return -1;
     }

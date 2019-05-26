@@ -23,9 +23,7 @@ public class PropEscapeUtil {
     for (int x = 0; x < len; x++) {
       char aChar = text.charAt(x);
       //  Handle common case first, selecting largest block that 
-
       //  avoids the specials below 
-
       if ((aChar > 61) && (aChar < 127)) {
         if (aChar == '\\') {
           outBuffer.append('\\');
@@ -60,13 +58,10 @@ public class PropEscapeUtil {
           break;
         case '=':
           //  Fall through 
-
         case ':':
           //  Fall through 
-
         case '#':
           //  Fall through 
-
         case '!':
           outBuffer.append('\\');
           outBuffer.append(aChar);

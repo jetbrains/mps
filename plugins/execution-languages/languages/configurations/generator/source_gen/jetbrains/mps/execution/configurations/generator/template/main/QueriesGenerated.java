@@ -100,9 +100,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean rule_Condition_0_4(final BaseMappingRuleContext _context) {
     // FIXME RunConfigurationKind doesn't use this rule any more, and COPY-SRC in RunConfiguration has to 
-
     //       be replaced with SWITCH switch_FileIcon along with explicit field declaration 
-
     return SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(_context.getNode()), MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f46e49L, "jetbrains.mps.execution.configurations.structure.RunConfiguration")) || SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(_context.getNode()), MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f46e4aL, "jetbrains.mps.execution.configurations.structure.RunConfigurationKind"));
   }
   public static boolean rule_Condition_0_5(final BaseMappingRuleContext _context) {
@@ -197,7 +195,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object propertyMacro_GetValue_9_2(final PropertyMacroContext _context) {
     // I'd like tolerate empty description value and generate "" in this case. 
-
     if (SPropertyOperations.getString(_context.getNode(), MetaAdapterFactory.getProperty(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f46e4aL, 0x73ca83ced1d489acL, "description")) != null) {
       return SPropertyOperations.getString(_context.getNode(), MetaAdapterFactory.getProperty(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f46e4aL, 0x73ca83ced1d489acL, "description"));
     }
@@ -502,7 +499,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Iterable<SNode> sourceNodesQuery_9_2(final SourceSubstituteMacroNodesContext _context) {
     // XXX in fact, with generic addFactoryFor(), there's no sense to distinguish 'foreign' factories, 
-
     return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f46e49L, "jetbrains.mps.execution.configurations.structure.RunConfiguration"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return (boolean) RunConfiguration__BehaviorDescriptor.isForeign_id3wpI_WC06mf.invoke(it);

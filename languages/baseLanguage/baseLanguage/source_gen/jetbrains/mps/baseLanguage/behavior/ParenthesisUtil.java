@@ -71,13 +71,11 @@ public class ParenthesisUtil {
       }
 
       // Remember the first parenthing result for the editor to set focus to 
-
       if (expressionToSetFocusOn == null) {
         expressionToSetFocusOn = localExpToSetFocusOn;
       }
 
       // Put back the parens that were on the wrapping parentheses and belong to the mating expr 
-
       if (completingByRightParen && leftParenOnParens != null) {
         setOrMergeParen(localExpToSetFocusOn, false, leftParenOnParens);
       }
@@ -86,7 +84,6 @@ public class ParenthesisUtil {
       }
 
       // Put back the parens that were on the wrapping parentheses and belong to the new expressionToProcess 
-
       if (completingByRightParen && rightParenOnParens != null) {
         setOrMergeParen(expressionToProcess, true, rightParenOnParens);
       }
@@ -164,7 +161,6 @@ public class ParenthesisUtil {
     });
     if (topExp == null) {
       // No IBinaryLike ancestor of myExpression exists 
-
       topExp = myExpression;
     }
 
@@ -174,15 +170,12 @@ public class ParenthesisUtil {
     SNode candidateExpression = null;
     final Wrappers._T<List<SNode>> candidateParentPath = new Wrappers._T<List<SNode>>(null);
     // The bottom-most common ancestor 
-
     SNode firstCommonAncestor = null;
     // Find a matching parenthesis among candidates, going from the back of the list 
-
     while (index >= 0) {
       candidateExpression = ListSequence.fromList(candidateParenthedNodes).getElement(index);
       if (Objects.equals(candidateExpression, myExpression)) {
         // they are both the same node 
-
         SNode parens = SNodeFactoryOperations.replaceWithNewChild(candidateExpression, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression"));
         SLinkOperations.setTarget(parens, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression"), candidateExpression);
         ParenthesisUtil.clearIncompleteParens(candidateExpression, completingByRightParen, parens);
@@ -190,7 +183,6 @@ public class ParenthesisUtil {
       }
 
       // Find the bottom-most common ancestor 
-
       candidateParentPath.value = parentPath(candidateExpression, !(completingByRightParen));
       if (ListSequence.fromList(myParentPath).contains(ListSequence.fromList(candidateParentPath.value).last()) || ListSequence.fromList(candidateParentPath.value).contains(ListSequence.fromList(myParentPath).last())) {
         firstCommonAncestor = ListSequence.fromList(myParentPath).findFirst(new IWhereFilter<SNode>() {
@@ -209,7 +201,6 @@ public class ParenthesisUtil {
         List<SNode> myAncestors = SNodeOperations.getNodeAncestors(myExpression, null, true);
 
         // Validate the bottom-most ancestor, whether the two parentheses can be paired legally 
-
         if (completingByRightParen && (ListSequence.fromList(candidateAncestors).contains(leftSideExpression) || leftSideExpression == null) && (ListSequence.fromList(myAncestors).contains(rightSideExpression) || rightSideExpression == null)) {
           break;
         }
@@ -217,15 +208,12 @@ public class ParenthesisUtil {
           break;
         }
         // Break out if found a valid match 
-
       }
       // Continue to try another candidate parenthesis 
-
       index--;
     }
     if (index == -1) {
       // no common ancestor with any of the candidate parens or swapped left-right -> can't parenthesise 
-
       if (completingByRightParen) {
         setOrIncreaseParen(myExpression, true);
       } else {
@@ -236,11 +224,9 @@ public class ParenthesisUtil {
 
 
     // Let's call them left and right parens from now, instead of 'my' and 'candidate' 
-
     SNode leftExpression = (completingByRightParen ? candidateExpression : myExpression);
     SNode rightExpression = (completingByRightParen ? myExpression : candidateExpression);
     // Find the turning points, if exist, otherwise just wrap in parens 
-
     SNode leftTurn = ParenthesisUtil.findLeftTurn(leftExpression, firstCommonAncestor);
     SNode rightTurn = ParenthesisUtil.findRightTurn(rightExpression, firstCommonAncestor);
 
@@ -319,14 +305,10 @@ public class ParenthesisUtil {
   private static SNode rebalance(SNode leftTurn, SNode firstCommonAncestor, SNode rightTurn) {
 
     // Accumulate expressions between the leftTurn and firstCommon to include inside the parens. 
-
     // These would be the nodes into which we come from the left child. 
-
     SNode leftAccumulator = buildAccumulator(firstCommonAncestor, leftTurn, true);
     // Accumulate expressions between the rightTurn and firstCommon to include inside the parens. 
-
     // These would be the nodes into which we come from the right child. 
-
     SNode rightAccumulator = buildAccumulator(firstCommonAncestor, rightTurn, false);
 
     SNode parens = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression"), null);
@@ -410,7 +392,6 @@ public class ParenthesisUtil {
     SNode accumulator;
     if (turn != null && !(Objects.equals(turn, firstCommonAncestor))) {
       // Accumulate nodes on the path up from the left/right paren 
-
       accumulator = (left ? IBinaryLike__BehaviorDescriptor.getSyntacticallyRightSideExpression_id1wHCnsn590i.invoke(turn) : IBinaryLike__BehaviorDescriptor.getSyntacticallyLeftSideExpression_id1wHCnsn590c.invoke(turn));
       SNodeOperations.deleteNode(accumulator);
       SNode current = SNodeOperations.cast(SNodeOperations.getParent(turn), MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x182da1771714863eL, "jetbrains.mps.baseLanguage.structure.IBinaryLike"));
@@ -432,7 +413,6 @@ public class ParenthesisUtil {
       }
     } else {
       // Nothing to accumulate 
-
       SNode firstCommonAncestorChild = (left ? IBinaryLike__BehaviorDescriptor.getSyntacticallyLeftSideExpression_id1wHCnsn590c.invoke(firstCommonAncestor) : IBinaryLike__BehaviorDescriptor.getSyntacticallyRightSideExpression_id1wHCnsn590i.invoke(firstCommonAncestor));
       if (firstCommonAncestorChild != null) {
         accumulator = firstCommonAncestorChild;
@@ -460,7 +440,6 @@ public class ParenthesisUtil {
     }
 
     // One paren has been matched, so we should decrease the count 
-
     count -= 1;
     if (count < 1) {
       return;
@@ -526,7 +505,6 @@ public class ParenthesisUtil {
   public static void checkWholeExpressionPriorities(SNode expr) {
     SNode current = expr;
     // find the top-most expression 
-
     while (SNodeOperations.isInstanceOf(SNodeOperations.getParent(current), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"))) {
       current = SNodeOperations.cast(SNodeOperations.getParent(current), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"));
     }

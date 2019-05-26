@@ -30,7 +30,6 @@ public class check_TemplateFragment_NonTypesystemRule extends AbstractNonTypesys
     }
     if (SNodeOperations.isAttribute(fragmentNode) && (AttributeOperations.getAttribute(SNodeOperations.getParent(fragmentNode), new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff1b29b76cL, "jetbrains.mps.lang.generator.structure.TemplateFragment"))) != null)) {
       // https://youtrack.jetbrains.com/issue/MPS-20691 
-
       {
         MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(fragmentNode, "Node Attribute is a template fragment, and its attributed node is a template fragment as well. Generator doesn't support such templates", "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "3852116826972491939", null, errorTarget);

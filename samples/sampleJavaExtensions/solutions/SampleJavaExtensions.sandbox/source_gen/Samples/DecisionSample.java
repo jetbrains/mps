@@ -14,16 +14,13 @@ public class DecisionSample {
     Map<String, Object> person = this.createPerson();
 
     // A decision table gets translated into a series of nested "if" statements 
-
     // A table can be manipulated just like any other expression - try selecting one and invoke e.g. "Extract Method" 
-
 
     String title = decisionTable_1dgfoj_a0f0b(person);
     System.out.println("The title is: " + title);
 
 
     // The cells in a table may contain more complex expressions 
-
 
     Money discount;
     discount = create(person);
@@ -36,7 +33,6 @@ public class DecisionSample {
     System.out.println("Your discount: " + discount);
 
     // type "dectab" and Control + Space to create a new table 
-
 
   }
   private Money create(Map<String, Object> person) {

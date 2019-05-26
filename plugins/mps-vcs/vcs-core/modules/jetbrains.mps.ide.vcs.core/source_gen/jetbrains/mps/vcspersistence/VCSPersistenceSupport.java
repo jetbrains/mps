@@ -97,13 +97,9 @@ public class VCSPersistenceSupport {
   @Nullable
   private static IModelPersistence getPersistence(int version) {
     // Assert here was replaced with LOG.error before 3.3 as we've found a couple 
-
     // places where this incompatibility with older version introduced new bugs 
-
     // Actually, these places must be fixed (see e.g. MPS-22503). Still, we 
-
     // leave error here till 3.4 or later to minimize the number of real issues [MM] 
-
     if (version < 4) {
       LOG.error("unsupported version requested " + version, new Throwable());
     }
@@ -125,7 +121,6 @@ public class VCSPersistenceSupport {
     }
 
     // todo remove this after removing usages of VCSPersistenceSupport from everywhere except VCSPersistenceUtil 
-
     return ModelPersistence.getPersistence(version);
   }
 
@@ -154,7 +149,6 @@ public class VCSPersistenceSupport {
     final SModelHeader result = new SModelHeader();
     loadDescriptor(result, source);
     // for old persistences try to load header from metadata 
-
     if (result.getPersistenceVersion() < 7 && source instanceof FileDataSource) {
       Map<String, String> metadata = loadMetadata(((FileDataSource) source).getFile());
       if (metadata != null) {
@@ -178,20 +172,16 @@ public class VCSPersistenceSupport {
     }
 
     // first try to use SAX parser 
-
     XMLSAXHandler<ModelLoadResult> handler = mp.getModelReaderHandler(state, header);
     if (handler != null) {
       parseAndHandleExceptions(source, handler, "model");
       final ModelLoadResult result = handler.getResult();
       // in case persistence version could change during IModelPersistence activities, might need to update header: 
-
       // header.setPersistenceVersion(mp.getVersion()); 
-
       return result;
     }
 
     // then try to use DOM reader 
-
     if (!(mp instanceof IPersistenceWithReader)) {
       throw new PersistenceVersionNotFoundException(m);
     }
@@ -282,7 +272,6 @@ public class VCSPersistenceSupport {
       JDOMUtil.createSAXParser().parse(source, handler);
     } catch (BreakParseSAXException e) {
       // used to break SAX parsing flow 
-
     } catch (ParserConfigurationException e) {
       LOG.error(e.toString(), e);
       throw new IOException(String.format("Couldn't read %s: %s", what, e.getMessage()), e);

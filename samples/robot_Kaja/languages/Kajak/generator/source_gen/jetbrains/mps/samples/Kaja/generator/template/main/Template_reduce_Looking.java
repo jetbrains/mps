@@ -66,7 +66,6 @@ public class Template_reduce_Looking extends TemplateDeclarationBase implements 
           tnode1.addChild(myAggregationLinks[0], child4);
         }
         // TODO validate child 
-
       }
     } finally {
     }

@@ -22,7 +22,6 @@ import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 public class NamedTuples_Test extends TestCase {
   public void test_createAndAssign() throws Exception {
     // this test no longer applies 
-
     if (true || true) {
       return;
     }

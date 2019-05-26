@@ -49,7 +49,6 @@ public class SaveAllJavaStubMethodRefsToShortForeignFormat extends BaseProjectMi
                 module.updateExternalReferences();
                 if (!((module instanceof Generator))) {
                   // generators are saved as part of owning Language's save, no need to do it twice 
-
                   module.save();
                 }
               }
@@ -60,7 +59,6 @@ public class SaveAllJavaStubMethodRefsToShortForeignFormat extends BaseProjectMi
               SNode targetNode = it.getTargetNode();
               if (targetNode == null) {
                 // broken? 
-
                 return false;
               }
               return ((SReference) it) instanceof StaticReference && SModelStereotype.isStubModel(targetNode.getModel());
@@ -84,10 +82,8 @@ public class SaveAllJavaStubMethodRefsToShortForeignFormat extends BaseProjectMi
               EditableSModel model = (EditableSModel) it;
               try {
                 // ensure model is loaded 
-
                 model.load();
                 // and force to save model 
-
                 model.setChanged(true);
                 if (model.isChanged()) {
                   model.save();

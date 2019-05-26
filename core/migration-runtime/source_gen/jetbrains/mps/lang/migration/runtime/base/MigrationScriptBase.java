@@ -176,7 +176,6 @@ public abstract class MigrationScriptBase implements MigrationScript {
     AttributeOperations.setAttribute(n, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e06L, "jetbrains.mps.lang.core.structure.ReviewMigration")), ann);
 
     // we want this annotation to be shown as outermost one 
-
     SNode firstAnnot = ListSequence.fromList(AttributeOperations.getAttributeList(n, new IAttributeDescriptor.AllAttributes())).first();
     if ((firstAnnot != null) && !(Objects.equals(firstAnnot, ann))) {
       SNodeOperations.insertPrevSiblingChild(firstAnnot, ann);
@@ -195,15 +194,12 @@ public abstract class MigrationScriptBase implements MigrationScript {
 
     if (migrated == null) {
       // origin should be removed 
-
       pointer.remove();
     } else {
       if (!(ListSequence.fromList(descendants).contains(migrated)) && migrated instanceof jetbrains.mps.smodel.SNode) {
         // returned value is new created node 
-
         if (!(ListSequence.fromList(SNodeOperations.getNodeAncestors(origin, null, false)).contains(migrated))) {
           // origin is not keeped 
-
           ((jetbrains.mps.smodel.SNode) migrated).setId(origin.getNodeId());
         }
       }

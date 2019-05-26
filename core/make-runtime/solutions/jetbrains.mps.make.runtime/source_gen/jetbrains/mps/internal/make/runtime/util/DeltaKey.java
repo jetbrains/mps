@@ -17,11 +17,8 @@ public final class DeltaKey {
 
   public DeltaKey(Object... key) {
     // for safety, may want to copy array (with distinct copy cons for internal uses) 
-
     // however, expect this class to be used from within MPS only, by qualified developers that 
-
     // in most cases would pass just a list of values (not Object[]), and even if they pass Object[], they won't modify in afterwards 
-
     myKey = key;
   }
 

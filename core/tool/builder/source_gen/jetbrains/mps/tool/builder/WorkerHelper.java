@@ -22,7 +22,6 @@ public final class WorkerHelper {
 
   public void make(final JavaCompilerOptions opts) {
     // FIXME why do I care to make these modules? 
-
     final MPSModuleRepository repo = myEnv.getPlatform().findComponent(MPSModuleRepository.class);
     MPSCompilationResult mpsCompilationResult = new ModelAccessHelper(repo).runReadAction(new Computable<MPSCompilationResult>() {
       public MPSCompilationResult compute() {

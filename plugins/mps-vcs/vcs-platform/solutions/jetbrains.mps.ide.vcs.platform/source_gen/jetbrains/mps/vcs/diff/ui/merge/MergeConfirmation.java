@@ -72,7 +72,6 @@ public class MergeConfirmation {
       return MergeConfirmation.RESOLVE_AUTOMATICALLY;
     } else if (answer == 1) {
       // Do nothing, leave unresolved changes as is 
-
       return MergeConfirmation.SAVE_AS_IS;
     } else {
       return MergeConfirmation.RETURN;

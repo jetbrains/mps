@@ -10,6 +10,5 @@ public class Parent_Test extends TestCase {
   }
   public void testStub() {
     // do nothing 
-
   }
 }

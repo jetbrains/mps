@@ -48,7 +48,6 @@ public class AnnotationDataDependency_SubstituteMenu extends SubstituteMenuBase 
 
     public SMP_ReferenceScope_xc2g0a_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x5e7aa366c2b3ece9L, "jetbrains.mps.lang.migration.structure.AnnotationDataDependency"), MetaAdapterFactory.getReferenceLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x5e7aa366c2b3ece9L, 0x5e7aa366c2b3eceaL, "script"));
     }
     @NotNull

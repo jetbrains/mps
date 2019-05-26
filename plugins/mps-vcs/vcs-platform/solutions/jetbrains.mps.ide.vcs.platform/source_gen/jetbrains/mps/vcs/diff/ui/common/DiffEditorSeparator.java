@@ -36,15 +36,10 @@ public class DiffEditorSeparator extends JComponent implements TooltipComponent 
   public DiffEditorSeparator(SRepository repoWithChanges, ChangeGroupLayout changeGroupLayout) {
     myChangeGroupLayout = changeGroupLayout;
     // FIXME It seems that changes in ChangeGroupLayout may be tied to live models in a repository, therfore, access to model 
-
     //       properties e.g. in ModelChange.getDescription() shall be guarded by model read. It's odd to guard each distinct getDescription 
-
     //       from within ModelChange, therefore looks reasonable to do it at this level, where we do bulk analyze of all the changes. However, 
-
     //       EditorSeparator doesn't sound like a proper place to require some SRepository, and I wonder if we can make ModelChange to be 'weakly' 
-
     //       tied to attached models or otherwise relax requirement to have model read for them. 
-
     myRepoWithChanges = repoWithChanges;
     ChangeListener viewportListener = new ChangeListener() {
       public void stateChanged(ChangeEvent e) {

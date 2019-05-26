@@ -40,13 +40,9 @@ public class CreateLink_Test extends BaseTransformationTest {
         int y_rsydnf_a0 = 60;
         Component eventTargetComponent_rsydnf_a0 = processMouseEvent(x_rsydnf_a0, y_rsydnf_a0, MouseEvent.MOUSE_PRESSED);
         // This is a work-around for existing problem with connection creation: 
-
         // for now connection source will be selected on receiving first mouse drag event 
-
         // in general connection source should be selected on mouse-pressed event 
-
         // TODO: remove first drag mouse statement. 
-
         processSecondaryMouseEvent(eventTargetComponent_rsydnf_a0, x_rsydnf_a0 = 106, y_rsydnf_a0 = 60, MouseEvent.MOUSE_DRAGGED);
         processSecondaryMouseEvent(eventTargetComponent_rsydnf_a0, x_rsydnf_a0 = 195, y_rsydnf_a0 = 240, MouseEvent.MOUSE_DRAGGED);
         processSecondaryMouseEvent(eventTargetComponent_rsydnf_a0, x_rsydnf_a0, y_rsydnf_a0, MouseEvent.MOUSE_RELEASED);

@@ -33,11 +33,8 @@ public class ConceptEditorOpenHelper {
       return null;
     }
     // We should be sure that node and base node are inside the same module. 
-
     // Otherwise, tabbed editor for base node will be opened, but there will be no tab for "node" 
-
     // So, the user will not be able to open node by a double-click 
-
     SModel baseModelDescriptor = SNodeOperations.getModel(baseNode);
     SModel mainModelDescriptor = SNodeOperations.getModel(node);
     if (mainModelDescriptor == null) {

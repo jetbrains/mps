@@ -35,7 +35,6 @@ public class check_SuppressErrorsAnnotation_NonTypesystemRule extends AbstractNo
       }
     }
     // todo: message should be not empty, add migration if necessary 
-
   }
   public SAbstractConcept getApplicableConcept() {
     return MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, "jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation");

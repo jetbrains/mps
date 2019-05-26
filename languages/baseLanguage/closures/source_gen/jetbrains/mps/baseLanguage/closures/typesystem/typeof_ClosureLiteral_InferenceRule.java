@@ -233,7 +233,6 @@ with_allThrows:
           break;
         }
         //  fall through 
-
       default:
         yieldsValue = true;
         {

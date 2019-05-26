@@ -30,7 +30,6 @@ public class ClassifierUnitContext implements RootDependencies.Source {
 
   public ClassifierUnitContext(SNode topClassifierNode) {
     // FIXME don't really need to keep a node, just don't want to refactor NameUtil.nodeFQName uses right now 
-
     myClassifierNode = topClassifierNode;
     myImports = new ImportsContext(topClassifierNode);
     myDepends = new HashSet<String>();
@@ -40,17 +39,13 @@ public class ClassifierUnitContext implements RootDependencies.Source {
   public ImportEntry getClassifierRefText(String packageName, String fqName, SNode contextNode) {
     addDependency(packageName, fqName);
     // FIXME there's likely no reason to pass package name and fqName (except, perhaps, for nested classes) 
-
     // Could we instead pass node<Classifier> here directly? Indeed, although it's a major refactoring of crapy 
-
     // BaseLanguageTextGen, where we go back and forth from node<Classifier> to strings 
-
     return myImports.getClassifierRefText(packageName, fqName, contextNode);
   }
 
   private void addDependency(String packageName, String fqName) {
     // using only root classifiers as dependencies 
-
     String nestedName = JavaNameUtil.nestedClassName(packageName, fqName);
     int dotIndex = nestedName.indexOf('.');
     String dependencyFqName;
@@ -60,7 +55,6 @@ public class ClassifierUnitContext implements RootDependencies.Source {
       dependencyFqName = packageName + '.' + nestedName.substring(0, dotIndex);
     }
     // set<string> dependencies = getUserObjects(TextGen.DEPENDENCY); 
-
     myDepends.add(InternUtil.intern(dependencyFqName));
   }
 
@@ -81,12 +75,9 @@ public class ClassifierUnitContext implements RootDependencies.Source {
    */
   private void registerExtendsRelation(Iterable<SNode> classifiers, boolean isTopClassifier) {
     // if an inner class extends/implements outer classifier, we shall not record this dependency as 'extends' of a 
-
     // top-level unit (see sample in MPS-17604). Perhaps, we shall not record this dependency at all? 
 
-
     // set<string> dependencies = getUserObjects(isTopClassifier ? TextGen.EXTENDS : TextGen.DEPENDENCY); 
-
     HashSet<String> deps = (isTopClassifier ? myExtends : myDepends);
     for (SNode c : SLinkOperations.collect(classifiers, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"))) {
       deps.add(getTopmostClassifierName(c));
@@ -95,35 +86,25 @@ public class ClassifierUnitContext implements RootDependencies.Source {
 
   private String getTopmostClassifierName(SNode c) {
     // Classifier could be inner, for our purposes it's sufficent to record dependency from the top-most classifier 
-
     //     We use these to build module dependency graph for compilation, nested classes are irrelevant as 
-
     //     (a) they are in the same module anyway 
-
     //     (b) reverse map of class to module is built for top classifiers only, we won't find anything there for nested class 
-
     //         (see j.m.make.Dependencies) 
-
     return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(ListSequence.fromList(SNodeOperations.getNodeAncestors(c, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), true)).last());
     // I don't need list of ancestors, but c.ancestor<root,concept> looks at the root node only (which is not right, IMO) 
-
     // Why not Java-specific naming utility here, e.g. JavaNameUtil? Because getFqName does the same better (respects nested classifiers) and without any statics. 
-
   }
 
   @Override
   public RootDependencies getDependencies() {
     // 1. nodeFQName comes from legacy TextGen 
-
     String nodeFQName = NameUtil.nodeFQName(myClassifierNode);
     // 3. Filtering and sorting of dependencies originate from TextGen legacy, left as is for now 
-
     myDepends.removeAll(myExtends);
     myDepends.remove(nodeFQName);
     myDepends.remove(null);
     myExtends.remove(nodeFQName);
     // registerExtendsRelation(singleton(classifier.extends)) yields null for classes without superclass\n 
-
     myExtends.remove(null);
     ArrayList<String> dep = new ArrayList<String>(myDepends);
     ArrayList<String> ext = new ArrayList<String>(myExtends);

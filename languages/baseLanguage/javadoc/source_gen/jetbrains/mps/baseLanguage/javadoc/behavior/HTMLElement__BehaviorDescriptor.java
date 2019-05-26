@@ -59,7 +59,6 @@ public final class HTMLElement__BehaviorDescriptor extends BaseBHDescriptor {
       return new NodeCaretPair(prev, caret);
     } else {
       //  Merging first line 
-
       for (SNode part : ListSequence.fromList(SLinkOperations.getChildren(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5bc4aa08e154b399L, 0x5bc4aa08e154b39bL, "line"))).first(), MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, 0x7c7f5b2f3199028dL, "part")))) {
         SNodeOperations.insertPrevSiblingChild(__thisNode__, part);
       }
@@ -71,7 +70,6 @@ public final class HTMLElement__BehaviorDescriptor extends BaseBHDescriptor {
       CommentLine__BehaviorDescriptor.tryMergeToRight_idooaTF_3fF3.invoke(line, ((int) (index - 1)));
 
       //  Merging other lines 
-
       SNode lastElementLine = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5bc4aa08e154b399L, 0x5bc4aa08e154b39bL, "line"))).last();
       for (SNode elementLine : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5bc4aa08e154b399L, 0x5bc4aa08e154b39bL, "line"))).reversedList()) {
         SNodeOperations.insertNextSiblingChild(line, elementLine);
@@ -87,7 +85,6 @@ public final class HTMLElement__BehaviorDescriptor extends BaseBHDescriptor {
         CommentLine__BehaviorDescriptor.tryMergeToRight_idooaTF_3fF3.invoke(line, ((int) (index - 1)));
       } else {
         //  Merging last line parts 
-
         index = ListSequence.fromList(SLinkOperations.getChildren(lastElementLine, MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, 0x7c7f5b2f3199028dL, "part"))).count() - 1;
         for (SNode linePart : ListSequence.fromList(SNodeOperations.getNextSiblings(__thisNode__, false))) {
           ListSequence.fromList(SLinkOperations.getChildren(lastElementLine, MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, 0x7c7f5b2f3199028dL, "part"))).addElement(SNodeOperations.cast(linePart, MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990286L, "jetbrains.mps.baseLanguage.javadoc.structure.CommentLinePart")));

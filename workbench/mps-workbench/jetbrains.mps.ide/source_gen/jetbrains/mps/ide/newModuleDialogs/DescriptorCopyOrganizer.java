@@ -66,7 +66,6 @@ import jetbrains.mps.project.structure.modules.DeploymentDescriptor;
           gd.setSourceLanguage(copyDescriptor.getModuleReference());
           setNewIdAndTimestamp(gd);
           // copied from Generator.generateGeneratorUID(Language sourceLanguage), I got no language instance here 
-
           gd.setNamespace(myNewName + '#' + SModel.generateUniqueId());
         }
       });
@@ -98,17 +97,12 @@ import jetbrains.mps.project.structure.modules.DeploymentDescriptor;
 
   private void resetModelRootsAndFacets(final ModuleDescriptor copyDescriptor) {
     // these are descriptors not the model roots themselves and thus we have a problem 
-
     // model roots will be copied later via CopyableModelRoot functionality 
-
     copyDescriptor.getModelRootDescriptors().clear();
 
     // facet cloning should be implemented similarly to how it is implemented for model roots 
-
     // but currently we just copy facet descriptors, since all current facets has trivial logic of cloning 
-
     // so no need to reset descriptors here 
-
   }
 
   private static void setNewIdAndTimestamp(final ModuleDescriptor descriptor) {

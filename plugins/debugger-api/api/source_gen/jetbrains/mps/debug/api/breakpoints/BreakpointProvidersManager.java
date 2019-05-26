@@ -32,7 +32,6 @@ public class BreakpointProvidersManager implements ApplicationComponent {
   }
   public void registerProvider(IBreakpointsProvider<? extends IBreakpoint, ? extends IBreakpointKind<? extends IBreakpoint>> provider) {
     //  I just love generics in java 
-
     for (IBreakpointKind kind : provider.getAllKinds()) {
       myKindToProvider.put(kind, provider);
       myNameToKind.put(kind.getName(), kind);

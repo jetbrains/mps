@@ -78,7 +78,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean createRootRule_Condition_0_0(final CreateRootRuleContext _context) {
     // see MPS-24613 
-
     return SModuleOperations.isAspect(_context.getOriginalInputModel(), "typesystem");
   }
   public static boolean rule_Condition_0_0(final BaseMappingRuleContext _context) {
@@ -304,7 +303,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean rule_Condition_95_0(final BaseMappingRuleContext _context) {
     // see MPS-24613 
-
     return SModuleOperations.isAspect(((SModel) _context.getVariable("model")), "typesystem");
   }
   public static Object propertyMacro_GetValue_1_0(final PropertyMacroContext _context) {
@@ -967,13 +965,11 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object referenceMacro_GetReferent_95_0(final ReferenceMacroContext _context) {
     // TODO genContext.get output TypesystemDescriptorCons for model model; 
-
     SNode descriptorClass = _context.getOutputNodeByMappingLabel("descriptorClass", ((SModel) _context.getVariable("model")));
     if (descriptorClass != null) {
       return descriptorClass;
     }
     // fallback for legacy code 
-
     return SModelOperations.getModelName(((SModel) _context.getVariable("model"))) + ".TypesystemDescriptor";
   }
   public static Object referenceMacro_GetReferent_96_0(final ReferenceMacroContext _context) {
@@ -1956,15 +1952,10 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static void mappingScript_CodeBlock_59(final MappingScriptContext _context) {
     // Inference and Checking methods are for typesystem use, don't look for them in models that simply 
-
     // utilize (not define) type system. 
-
     // The right way to accomplish would be refactoring of main and Inequations map configurations, to 
-
     // split generation of TS definition from TS use (i.e. everything related to rules including this script 
-
     // goes to former, while .type, coerce() and others go to latter) 
-
     if (!((SModuleOperations.isAspect(_context.getOriginalInputModel(), "typesystem")))) {
       return;
     }
@@ -2002,9 +1993,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static void mappingScript_CodeBlock_64(final MappingScriptContext _context) {
     // this code change add for all quotations method with TypeCheckingContext. For now MPS works without this script 
-
     // btw generator for quotations is changed so if we need this script it should be rewritten 
-
   }
   public static void mappingScript_CodeBlock_65(final MappingScriptContext _context) {
     final SNode getRTSupportExpression = _quotation_createNode_x583g4_a0a0ur();
@@ -2016,7 +2005,6 @@ public class QueriesGenerated extends QueryProviderBase {
       }
       SNode baseMethodDeclaration = SNodeOperations.getNodeAncestor(instanceMethodCall, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration"), false, false);
       // anonymous inner classes 
-
       SNode oldBMD = null;
       while (baseMethodDeclaration != null) {
         oldBMD = baseMethodDeclaration;

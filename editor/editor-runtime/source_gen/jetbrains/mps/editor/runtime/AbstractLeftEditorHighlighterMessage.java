@@ -61,7 +61,6 @@ public abstract class AbstractLeftEditorHighlighterMessage extends DefaultEditor
   @Override
   public EditorCell getNodeCell(jetbrains.mps.openapi.editor.EditorComponent editorComponent) {
     // DefaultEditorMessage has getNode but with legacy API component. 
-
     if (editorComponent instanceof EditorComponent) {
       return getCell((EditorComponent) editorComponent);
     }

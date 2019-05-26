@@ -29,7 +29,6 @@ import jetbrains.mps.ide.newSolutionDialog.NewModuleUtil;
         SModel model = mr.createModel(modelName.getValue());
         if (model instanceof EditableSModel) {
           //  XXX is there true need to setChanged newly created model? 
-
           ((EditableSModel) model).setChanged(true);
         }
         return model;

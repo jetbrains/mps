@@ -46,7 +46,6 @@ public class Template_OutputRoot_by_MappingRule extends TemplateDeclarationBase 
           tnode1.addChild(myAggregationLinks[0], child3);
         }
         // TODO validate child 
-
       }
     } finally {
     }

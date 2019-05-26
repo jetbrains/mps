@@ -34,17 +34,11 @@ public class typeOf_VarRef_InferenceRule extends AbstractInferenceRule_Runtime i
       SNode contextClassifier = Classifier__BehaviorDescriptor.getContextClassifier_id5mDmeD1aaq0.invoke(SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier")), varRef);
       if (contextClassifier == null) {
         // referencing the field from an unknown non-java context 
-
         // todo Should expandGenerics to something general like Object in case it's a generic type 
-
         // but if we give an empty subst we'll get the same node with no substitutions 
-
         // (expandGenerics impls are written in a way to return node as is if subst doesn't map it) 
-
         // So we have to know the list of generic params, but there seems to be no link 
-
         // from IGenericType to GenericDeclaration (its type params) 
-
         {
           SNode _nodeToCheck_1029348928467 = varRef;
           EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7723500226000485921", 0, null);
@@ -78,7 +72,6 @@ public class typeOf_VarRef_InferenceRule extends AbstractInferenceRule_Runtime i
     }
 
     // main code 
-
     SNode variableDeclaration = SLinkOperations.getTarget(varRef, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration"));
     {
       SNode matchedNode_lcu2lp_e0 = SLinkOperations.getTarget(variableDeclaration, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type"));

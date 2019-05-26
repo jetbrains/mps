@@ -37,9 +37,7 @@ public class DispatchUtil {
   }
   public static Iterable<SNode> ancestors(final SNode arg, boolean concreteFirst) {
     // true for baseLanguage, 
-
     // for smodel it would be node<BaseConcept> 
-
     final SNode rootOfHierarchy = SNodeOperations.cast(SLinkOperations.getTarget(_quotation_createNode_pzuztq_a0a0c0d(), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"));
 
     Iterable<SNode> classes = Sequence.fromClosure(new ISequenceClosure<SNode>() {
@@ -116,11 +114,9 @@ __switch__:
 
     if (concreteFirst) {
       // lazy seqeunce 
-
       return classes;
     } else {
       // becomes strict 
-
       return ListSequence.fromList(Sequence.fromIterable(classes).toListSequence()).reversedList();
     }
   }
@@ -132,7 +128,6 @@ __switch__:
         c = SNodeOperations.cast(SLinkOperations.getTarget(SLinkOperations.getTarget(c, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass")), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"));
       }
       // either c==base or c is null 
-
       return (c != null);
     }
 

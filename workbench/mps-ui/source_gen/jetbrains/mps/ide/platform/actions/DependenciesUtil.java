@@ -52,7 +52,6 @@ public final class DependenciesUtil {
     DependencyViewerScope scopeTo = new DependencyViewerScope(mpsProject.getRepository());
     scopeTo.add(to);
     // FIXME would be great to stop after first result to save the time 
-
     SearchResults<SNode> refsBetweenScopes = new ReferencesFinder(scopeFrom).getRefsBetweenScopes(scopeFrom, scopeTo, new EmptyProgressMonitor());
     return !(refsBetweenScopes.getSearchResults2().isEmpty());
   }

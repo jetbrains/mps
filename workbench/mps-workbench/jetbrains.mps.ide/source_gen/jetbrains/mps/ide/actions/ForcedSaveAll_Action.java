@@ -68,7 +68,6 @@ public class ForcedSaveAll_Action extends BaseAction {
       module.updateExternalReferences();
       if (!(module instanceof Generator)) {
         // generators are saved as part of owning Language's save, no need to do it twice 
-
         module.save();
       }
     }
@@ -79,10 +78,8 @@ public class ForcedSaveAll_Action extends BaseAction {
       }
       try {
         // ensure model is loaded 
-
         model.load();
         //  and force to save model 
-
         model.setChanged(true);
         if (model.isChanged()) {
           model.save();

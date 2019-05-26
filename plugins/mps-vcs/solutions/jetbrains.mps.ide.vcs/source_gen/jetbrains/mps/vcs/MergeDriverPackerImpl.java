@@ -32,20 +32,15 @@ public class MergeDriverPackerImpl extends MergeDriverPacker implements Applicat
     Set<String> classpathItems = SetSequence.fromSet(new LinkedHashSet<String>());
     final String fsep = File.separator;
     // XXX Guess, the reason we use IDEA's PathManager instead of MPS's own copy is that we are running from sources here, and no chances to get <project home>/lib location 
-
     //     by using resource root of our own PathManager class. 
-
     SetSequence.fromSet(classpathItems).addSequence(Sequence.fromIterable(MergeDriverPacker.mpsAddJars).select(new ISelector<String, String>() {
       public String select(String it) {
         return PathManager.getLibPath() + fsep + it;
       }
     }));
     // IMPORTANT 
-
     //       MergeDriverMain uses 'PERSISTENCE' level of the Platform, hence doesn't need to load MPSDataFlow or MPSTextGenerator classes. 
-
     //       Here, we shall satisfy relevant 'PERSISTANCE'-level dependencies only, not complete mps-core.jar content 
-
     String homePath = PathManager.getHomePath();
     ArrayList<ClassType> coreTypes = new ArrayList<ClassType>();
     coreTypes.add(ClassType.OPENAPI);

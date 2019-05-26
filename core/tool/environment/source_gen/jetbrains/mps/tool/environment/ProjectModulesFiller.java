@@ -29,9 +29,7 @@ public final class ProjectModulesFiller {
           SModule module = rf.instantiateModule(moduleHandle, myProject);
           if (module instanceof Generator) {
             // With MM delivering GeneratorDescriptors and MRF capable of instantiating them, we can face Generator here 
-
             // FIXME at the moment, Project is not ready to receive Generator as a module to add need to refactor it first. 
-
             continue;
           }
           myProject.addModule(module);

@@ -53,7 +53,6 @@ public class NotEditableVaraileReference_SubstituteMenu extends SubstituteMenuBa
 
     public SMP_ReferenceScope_n4m6b3_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x44e7cb3605ec4004L, "jetbrains.mps.lang.editor.editorTest.structure.NotEditableVaraileReference"), MetaAdapterFactory.getReferenceLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x44e7cb3605ec4004L, 0x44e7cb3605ec4005L, "variableDeclaration"));
     }
     @NotNull

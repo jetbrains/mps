@@ -43,7 +43,6 @@ public class ModelProperties {
   }
   public List<SLanguage> getUsedLanguages() {
     // imported directly only. Languages coming from devkits are separate 
-
     return myUsedLanguages;
   }
   public List<SModuleReference> getUsedDevKits() {
@@ -131,13 +130,11 @@ public class ModelProperties {
     Set<SLanguage> languagesInProps = new HashSet<SLanguage>(getLanguagesEngagedOnGeneration());
     for (SLanguage l : languagesInModel) {
       // remove if not from actual state 
-
       if (!(languagesInProps.remove(l))) {
         modelInternal.removeEngagedOnGenerationLanguage(l);
       }
     }
     // add those left 
-
     for (SLanguage l : languagesInProps) {
       modelInternal.addEngagedOnGenerationLanguage(l);
     }

@@ -28,14 +28,11 @@ public abstract class AbstractPaletteCreationAction implements PaletteToggleActi
   protected abstract ViewTrait getTrait();
   private Icon createIcon() {
     // todo code is duplicated from the diagram cell 
-
     Icon icon;
     SNode iconNode = mySubstituteAction.getIconNode("");
     if (iconNode != null) {
       // todo should pass concept here, not concept node 
-
       // FIXME the moment there's SConcept, not SNode, #init() down here doesn't need model read any more 
-
       SAbstractConcept concept = SNodeOperations.asSConcept(((SNode) iconNode));
       icon = ((SNodeOperations.isInstanceOf(iconNode, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration")) && !((mySubstituteAction.isReferentPresentation()))) ? GlobalIconManager.getInstance().getIconFor(concept) : GlobalIconManager.getInstance().getIconFor(iconNode));
     } else {

@@ -53,9 +53,7 @@ public final class RuntimeDependencies {
     List<SNode> allUsedLang = Sequence.fromIterable(ul).concat(Sequence.fromIterable(devkitLanguages)).where(new NotNullWhereFilter<SNode>()).toListSequence();
     myUsedLanguages.addAll(allUsedLang);
     // Don't want to find out RTs of extended languages at execution time, record them at once. 
-
     // Besides, we care about RTs state the moment code was generated, if newer language version decides to change RT, deployed module won't get affected. 
-
     for (SNode rts : Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.collectMany(includingExtendedLanguages(allUsedLang), MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, 0x2c4467914643be24L, "runtime")), MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914644b6e3L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleSolutionRuntime")), MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914644b6e3L, 0x2c4467914644b6e4L, "solution"))).where(new NotNullWhereFilter<SNode>())) {
       myLangRuntimes.add(rts);
     }
@@ -78,7 +76,6 @@ public final class RuntimeDependencies {
 
   public Iterable<SNode> deploymentDependencies() {
     // excluding RT solutions, that technically are compilation/deployment dependencies of the module 
-
     return myCompileDeps;
   }
 

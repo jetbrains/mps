@@ -31,10 +31,8 @@ public class RuleInstanceofExpression implements DataFlowConstructor {
     NextProgramPoint pp = IConditional__BehaviorDescriptor.getNextProgramPoint_id3F8BxGibk8h.invoke(conditional, node, ((boolean) true));
     if (pp != null) {
       // instanceof match branch 
-
       if (pp.willJump()) {
         // XXX no idea what willJump means, just copied from RuleNotEqualsExpression 
-
         {
           Object object = node;
           if (((Program) o).contains(object)) {
@@ -61,6 +59,5 @@ public class RuleInstanceofExpression implements DataFlowConstructor {
       }
     }
     // If instanceof didn't match, no idea whether leftExpression is nullable or not. 
-
   }
 }

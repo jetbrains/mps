@@ -50,7 +50,6 @@ public class MoveNodeRefactoringLogParticipant extends RefactoringParticipantBas
     }
     public Iterable<RefactoringParticipant.PersistentRefactoringParticipant<?, ?, ?, ?>> get() {
       // here lazyness is important because extension objects should never be saved for long time 
-
       return Sequence.fromIterable(new ExtensionPoint<MoveNodeRefactoringParticipant<?, ?>>("jetbrains.mps.refactoring.participant.MoveNodeParticipantEP").getObjects()).ofType(RefactoringParticipant.PersistentRefactoringParticipant.class).select(new ISelector<RefactoringParticipant.PersistentRefactoringParticipant, RefactoringParticipant.PersistentRefactoringParticipant<?, ?, ?, ?>>() {
         public RefactoringParticipant.PersistentRefactoringParticipant<?, ?, ?, ?> select(RefactoringParticipant.PersistentRefactoringParticipant it) {
           return (RefactoringParticipant.PersistentRefactoringParticipant<?, ?, ?, ?>) it;
@@ -135,7 +134,6 @@ public class MoveNodeRefactoringLogParticipant extends RefactoringParticipantBas
     results.add(new SearchResult<SModule>(sourceModule, "refactoring log"));
 
     // todo: write guard migration with 'execute after' 
-
 
     RefactoringParticipant.Change<SNodeReference, SNodeReference> change = new MoveNodeRefactoringParticipant.ChangeBase<SNodeReference, SNodeReference>() {
       public SearchResults getSearchResults() {

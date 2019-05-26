@@ -98,11 +98,8 @@ public class VisibleModules {
 
   public SNode resolve(SLanguage language) {
     // FIXME need a better fix, shall record language modules using their id separately from 
-
     // solutions and generators, so that I can find by SLanguageId object 
-
     // i.e. take SLanguageId from SModuleReference from module descriptor, and use it as a map key instead of string 
-
     ModuleId langModuleId = ModuleId.regular(MetaIdHelper.getLanguage(language).getIdValue());
     return SNodeOperations.as(resolve(language.getQualifiedName(), langModuleId.toString()), MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, "jetbrains.mps.build.mps.structure.BuildMps_Language"));
   }

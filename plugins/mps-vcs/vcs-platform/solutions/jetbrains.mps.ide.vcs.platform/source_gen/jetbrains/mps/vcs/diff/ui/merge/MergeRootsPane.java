@@ -238,9 +238,7 @@ public class MergeRootsPane {
   }
   private void linkEditors(boolean mine, boolean inspector) {
     // create change group builder, trapecium strip and merge buttons painter 
-
     // 'mine' parameter means mine changeset, 'inspector' - highlight inspector editor component 
-
     ChangeGroupLayout layout = createChangeGroupLayout(mine, inspector);
     ChangeGroupMessages.startMaintaining(layout);
     ListSequence.fromList(myChangeGroupLayouts).addElement(layout);

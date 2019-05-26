@@ -59,7 +59,6 @@ public final class BuildNamedLayout__BehaviorDescriptor extends BaseBHDescriptor
   }
   /*package*/ static void unpack_id6IqTD4bJTWZ(@NotNull SNode __thisNode__, UnpackHelper helper) {
     // nop 
-
   }
   /*package*/ static String location_id6b4RkXS8sT2(@NotNull SNode __thisNode__, DependenciesHelper helper, Object artifactId) {
     return null;

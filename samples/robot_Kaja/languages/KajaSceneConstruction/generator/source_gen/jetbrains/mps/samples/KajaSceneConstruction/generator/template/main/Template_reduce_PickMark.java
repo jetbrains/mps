@@ -72,7 +72,6 @@ public class Template_reduce_PickMark extends TemplateDeclarationBase implements
                             }
                             tnode6.addChild(myAggregationLinks[0], tnode7);
                             // TODO validate child 
-
                           }
                           {
                             final SNode tnode8 = environment.createOutputNode(myConcepts[4]);
@@ -82,13 +81,11 @@ public class Template_reduce_PickMark extends TemplateDeclarationBase implements
                             }
                             tnode6.addChild(myAggregationLinks[0], tnode8);
                             // TODO validate child 
-
                           }
                         } finally {
                         }
                         tnode5.addChild(myAggregationLinks[1], tnode6);
                         // TODO validate child 
-
                       }
                       {
                         final SNode tnode9 = environment.createOutputNode(myConcepts[1]);
@@ -111,7 +108,6 @@ public class Template_reduce_PickMark extends TemplateDeclarationBase implements
                                     }
                                     tnode11.addChild(myAggregationLinks[0], tnode12);
                                     // TODO validate child 
-
                                   }
                                   {
                                     final SNode tnode13 = environment.createOutputNode(myConcepts[4]);
@@ -121,19 +117,16 @@ public class Template_reduce_PickMark extends TemplateDeclarationBase implements
                                     }
                                     tnode11.addChild(myAggregationLinks[0], tnode13);
                                     // TODO validate child 
-
                                   }
                                 } finally {
                                 }
                                 tnode10.addChild(myAggregationLinks[2], tnode11);
                                 // TODO validate child 
-
                               }
                             } finally {
                             }
                             tnode9.addChild(myAggregationLinks[3], tnode10);
                             // TODO validate child 
-
                           }
                           {
                             final SNode tnode14 = environment.createOutputNode(myConcepts[5]);
@@ -147,19 +140,16 @@ public class Template_reduce_PickMark extends TemplateDeclarationBase implements
                                 }
                                 tnode14.addChild(myAggregationLinks[2], tnode15);
                                 // TODO validate child 
-
                               }
                             } finally {
                             }
                             tnode9.addChild(myAggregationLinks[3], tnode14);
                             // TODO validate child 
-
                           }
                         } finally {
                         }
                         tnode5.addChild(myAggregationLinks[4], tnode9);
                         // TODO validate child 
-
                       }
                       {
                         final SNode tnode16 = environment.createOutputNode(myConcepts[0]);
@@ -186,19 +176,16 @@ public class Template_reduce_PickMark extends TemplateDeclarationBase implements
                                         }
                                         tnode19.addChild(myAggregationLinks[0], tnode20);
                                         // TODO validate child 
-
                                       }
                                     } finally {
                                     }
                                     tnode18.addChild(myAggregationLinks[2], tnode19);
                                     // TODO validate child 
-
                                   }
                                 } finally {
                                 }
                                 tnode17.addChild(myAggregationLinks[3], tnode18);
                                 // TODO validate child 
-
                               }
                               {
                                 final SNode tnode21 = environment.createOutputNode(myConcepts[7]);
@@ -207,31 +194,26 @@ public class Template_reduce_PickMark extends TemplateDeclarationBase implements
                                 }
                                 tnode17.addChild(myAggregationLinks[3], tnode21);
                                 // TODO validate child 
-
                               }
                             } finally {
                             }
                             tnode16.addChild(myAggregationLinks[5], tnode17);
                             // TODO validate child 
-
                           }
                         } finally {
                         }
                         tnode5.addChild(myAggregationLinks[6], tnode16);
                         // TODO validate child 
-
                       }
                     } finally {
                     }
                     tnode4.addChild(myAggregationLinks[3], tnode5);
                     // TODO validate child 
-
                   }
                 } finally {
                 }
                 tnode3.addChild(myAggregationLinks[4], tnode4);
                 // TODO validate child 
-
               }
               {
                 final SNode tnode22 = environment.createOutputNode(myConcepts[8]);
@@ -250,13 +232,11 @@ public class Template_reduce_PickMark extends TemplateDeclarationBase implements
                         }
                         tnode23.addChild(myAggregationLinks[0], tnode24);
                         // TODO validate child 
-
                       }
                     } finally {
                     }
                     tnode22.addChild(myAggregationLinks[7], tnode23);
                     // TODO validate child 
-
                   }
                   {
                     final SNode tnode25 = environment.createOutputNode(myConcepts[3]);
@@ -271,19 +251,16 @@ public class Template_reduce_PickMark extends TemplateDeclarationBase implements
                         }
                         tnode25.addChild(myAggregationLinks[0], tnode26);
                         // TODO validate child 
-
                       }
                     } finally {
                     }
                     tnode22.addChild(myAggregationLinks[8], tnode25);
                     // TODO validate child 
-
                   }
                 } finally {
                 }
                 tnode3.addChild(myAggregationLinks[1], tnode22);
                 // TODO validate child 
-
               }
               {
                 final SNode tnode27 = environment.createOutputNode(myConcepts[0]);
@@ -310,37 +287,31 @@ public class Template_reduce_PickMark extends TemplateDeclarationBase implements
                                 }
                                 tnode30.addChild(myAggregationLinks[0], tnode31);
                                 // TODO validate child 
-
                               }
                             } finally {
                             }
                             tnode29.addChild(myAggregationLinks[2], tnode30);
                             // TODO validate child 
-
                           }
                         } finally {
                         }
                         tnode28.addChild(myAggregationLinks[3], tnode29);
                         // TODO validate child 
-
                       }
                     } finally {
                     }
                     tnode27.addChild(myAggregationLinks[5], tnode28);
                     // TODO validate child 
-
                   }
                 } finally {
                 }
                 tnode3.addChild(myAggregationLinks[6], tnode27);
                 // TODO validate child 
-
               }
             } finally {
             }
             tnode2.addChild(myAggregationLinks[3], tnode3);
             // TODO validate child 
-
           }
           {
             final SNode tnode32 = environment.createOutputNode(myConcepts[9]);
@@ -349,13 +320,11 @@ public class Template_reduce_PickMark extends TemplateDeclarationBase implements
             }
             tnode2.addChild(myAggregationLinks[3], tnode32);
             // TODO validate child 
-
           }
         } finally {
         }
         tnode1.addChild(myAggregationLinks[5], tnode2);
         // TODO validate child 
-
       }
     } finally {
     }

@@ -69,7 +69,6 @@ public class check_ConceptEditorDeclaration_concextHintUniqueness_NonTypesystemR
     while (DequeSequence.fromDequeNew(languagesToVisit).isNotEmpty()) {
       Language nextLanguage = DequeSequence.fromDequeNew(languagesToVisit).removeFirstElement();
       // TODO: check extending languages as well 
-
       for (SModuleReference extendedLanguageRef : SetSequence.fromSet(nextLanguage.getExtendedLanguageRefs())) {
         SModule module = extendedLanguageRef.resolve(nextLanguage.getRepository());
         if (module instanceof Language && !(SetSequence.fromSet(visitedLanguages).contains(module.getModuleName()))) {

@@ -72,7 +72,6 @@ public final class NodePointersInReferenceMacorQueries_MigrationScript extends B
       }
     });
     // whitespace 
-
   }
 
   @Nullable

@@ -46,7 +46,6 @@ public class Template_OutputRoot extends TemplateDeclarationBase implements Temp
         Collection<SNode> tlist2 = null;
         try {
           // XXX is innerContext in use during reduce_Node? 
-
           SNode tnode3 = null;
           final SNode insertInput3 = QueriesGenerated.insertMacro_Query_1_0(new InsertMacroContext(context1, insertMacro_38z9ys_b0a0a2a1a4a1a4));
           if (insertInput3 != null) {
@@ -76,7 +75,6 @@ public class Template_OutputRoot extends TemplateDeclarationBase implements Temp
           tnode1.addChild(myAggregationLinks[0], child4);
         }
         // TODO validate child 
-
       }
       {
         Collection<SNode> tlist5 = null;
@@ -86,7 +84,6 @@ public class Template_OutputRoot extends TemplateDeclarationBase implements Temp
           tnode1.addChild(myAggregationLinks[0], child6);
         }
         // TODO validate child 
-
       }
       {
         final SNode tnode7 = environment.createOutputNode(myConcepts[1]);
@@ -96,7 +93,6 @@ public class Template_OutputRoot extends TemplateDeclarationBase implements Temp
         }
         tnode1.addChild(myAggregationLinks[0], tnode7);
         // TODO validate child 
-
       }
     } finally {
     }

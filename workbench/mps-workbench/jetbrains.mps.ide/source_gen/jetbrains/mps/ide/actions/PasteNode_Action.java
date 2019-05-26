@@ -131,7 +131,6 @@ public class PasteNode_Action extends BaseAction {
         }
         ResolverComponent.getInstance().resolveScopesOnly(refsToResolve, ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository());
         // make sure editor will be open 
-
         if (((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")) == null) {
           SNode root = pasteNodes.get(0).getContainingRoot();
           assert root != null;

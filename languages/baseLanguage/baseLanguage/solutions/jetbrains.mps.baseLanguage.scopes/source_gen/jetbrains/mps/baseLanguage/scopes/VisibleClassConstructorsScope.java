@@ -25,7 +25,6 @@ public class VisibleClassConstructorsScope extends Scope {
   private final Scope classifiers;
   public VisibleClassConstructorsScope(@NotNull SNode contextNode) {
     // todo: find not all classifiers, only class concept! 
-
     classifiers = new FilteringScope(ClassifierScopes.getVisibleClassifiersScope(contextNode, true)) {
       @Override
       public boolean isExcluded(SNode node) {
@@ -48,7 +47,6 @@ public class VisibleClassConstructorsScope extends Scope {
   @Override
   public boolean contains(SNode node) {
     // todo: visibility check! 
-
     return SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration")) && classifiers.contains(SNodeOperations.getParent(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration"))));
   }
   @Nullable
@@ -65,14 +63,12 @@ public class VisibleClassConstructorsScope extends Scope {
     }
 
     // resolve only by name 
-
     List<SNode> constructors = Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SNodeOperations.cast(classifier, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept")))).toListSequence();
     if (ListSequence.fromList(constructors).count() == 1) {
       return ListSequence.fromList(constructors).first();
     }
 
     // use arguments 
-
     if (!(SNodeOperations.isInstanceOf(contextNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, "jetbrains.mps.baseLanguage.structure.ClassCreator")))) {
       return null;
     }
@@ -80,14 +76,12 @@ public class VisibleClassConstructorsScope extends Scope {
     List<SNode> typeParameters = SLinkOperations.getChildren(SNodeOperations.cast(contextNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, "jetbrains.mps.baseLanguage.structure.ClassCreator")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, 0x11a59c8ffe0L, "typeParameter"));
 
     // use arguments count 
-
     constructors = (List<SNode>) MethodResolveUtil.selectByParmCount(constructors, actualArguments);
     if (constructors.size() == 1) {
       return ListSequence.fromList(constructors).first();
     }
 
     // use types 
-
     Iterator<SNode> typeParms = (Iterator<SNode>) typeParameters.iterator();
     Iterator<SNode> typeVars = (Iterator<SNode>) SLinkOperations.getChildren(classifier, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration")).iterator();
     Map<SNode, SNode> typeByTypeVar = new HashMap<SNode, SNode>();

@@ -89,7 +89,6 @@ public class typeof_ClassCreator_InferenceRule extends AbstractInferenceRule_Run
       newType = _quotation_createNode_4w0o2k_a0a0r0b(classifier);
     } else {
       // TODO: this is to avoid collecting generics from explicitly substituted types 
-
       List<SNode> typeParam = ListSequence.fromList(SLinkOperations.getChildren(creator, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, 0x11a59c8ffe0L, "typeParameter"))).select(new ISelector<SNode, SNode>() {
         public SNode select(SNode tp) {
           final SNode TP_typevar_4340163696368051056 = typeCheckingContext.createNewRuntimeTypesVariable();

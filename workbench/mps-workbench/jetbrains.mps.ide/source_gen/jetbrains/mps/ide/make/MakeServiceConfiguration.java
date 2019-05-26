@@ -18,7 +18,6 @@ public final class MakeServiceConfiguration implements PersistentStateComponent<
   private boolean myMakeInBackground = false;
   public static MakeServiceConfiguration getInstance(Project project) {
     // implementation inspired by c.i.openapi.vcs.VcsConfiguration 
-
     return ServiceManager.getService(project, MakeServiceConfiguration.class);
   }
 

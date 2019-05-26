@@ -153,7 +153,6 @@ __switch__:
   }
   public void test_mps19134() throws Exception {
     // testing compilation 
-
     ListSequence.fromList(ListSequence.fromListAndArray(new ArrayList<Integer>(), 111, 112, 113)).translate(new ITranslator2<Integer, String>() {
       public Iterable<String> translate(Integer it) {
         return ListSequence.fromList(ListSequence.fromListAndArray(new ArrayList<String>(), "foo", "bar")).select(new ISelector<String, String>() {

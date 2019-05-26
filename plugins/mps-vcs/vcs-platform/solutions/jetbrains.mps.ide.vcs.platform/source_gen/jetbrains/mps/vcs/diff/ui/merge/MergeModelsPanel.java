@@ -97,13 +97,9 @@ public class MergeModelsPanel extends JPanel {
     myContentTitles = request.getContentTitles().toArray(myContentTitles);
     assert myContentTitles.length == 3;
     // FIXME code below requires thorough refactoring. Models that come here are IMO loaded from disk and are not 
-
     // attached to any repository, hence there's no reason to grab lock to deal with them. OTOH, there's code that 
-
     // registers and exposes model artifacts with a temp module, which is part of global repository now and hence 
-
     // requires model lock. 
-
     myProjectRepository = ProjectHelper.getProjectRepository(project);
     assert myProjectRepository != null;
     myProjectRepository.getModelAccess().runReadAction(new Runnable() {
@@ -181,9 +177,7 @@ public class MergeModelsPanel extends JPanel {
   }
   public boolean saveResults() {
     // true - everything is OK 
-
     // false - saving was cancelled 
-
     applyMetadataChanges();
 
     int result = MergeConfirmation.showMergeConfirmationAndTakeAction(this, myMergeSession, Sequence.fromIterable(myMergeSession.getAllChanges()).where(new IWhereFilter<ModelChange>() {
@@ -217,13 +211,11 @@ public class MergeModelsPanel extends JPanel {
     SModel resultModel = new ModelAccessHelper(myProjectRepository).runReadAction(new Computable<MergeTemporaryModel>() {
       public MergeTemporaryModel compute() {
         // copy to avoid problems with de-registration 
-
         return MergeTemporaryModel.writableCloneOf(myMergeSession.getResultModel());
       }
     });
     DiffModelUtil.restoreModelName(resultModel);
     // fix??? 
-
     for (SModel m : new SModel[]{myMergeSession.getMyModel(), myMergeSession.getRepositoryModel()}) {
       DiffModelUtil.fixModelReferences(resultModel, SModelOperations.getPointer(m));
     }
@@ -343,7 +335,6 @@ public class MergeModelsPanel extends JPanel {
       applyMetadataChanges();
     }
     // XXX tree.rebuildNow as model command, really? 
-
     myProjectRepository.getModelAccess().executeCommand(new Runnable() {
       public void run() {
         myMergeTree.rebuildNow();

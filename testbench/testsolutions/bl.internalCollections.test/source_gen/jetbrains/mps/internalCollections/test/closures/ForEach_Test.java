@@ -59,7 +59,6 @@ public class ForEach_Test extends Util_Test {
   }
   public void test_mps10737() throws Exception {
     //  testing compilation only 
-
     IFoo foo = new IFoo() {
       @Override
       public Iterable<? extends IBar> get() {

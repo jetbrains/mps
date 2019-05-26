@@ -77,7 +77,6 @@ public class MethodBreakpoint extends JavaBreakpoint implements ILocationBreakpo
     } catch (ClassNotPreparedException ex) {
       LOG.warn("ClassNotPreparedException: " + ex.getMessage());
       //  there's a chance to add a breakpoint when the class is prepared 
-
     } catch (ObjectCollectedException ex) {
       LOG.warn("ObjectCollectedException: " + ex.getMessage());
     } catch (InternalException ex) {
@@ -100,7 +99,6 @@ public class MethodBreakpoint extends JavaBreakpoint implements ILocationBreakpo
       return false;
     }
     //  todo property string format should be described in one place 
-
     String[] split = propertyString.split("#");
     if (split.length != 2) {
       return false;

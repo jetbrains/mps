@@ -156,9 +156,7 @@ public class IdeCommandUtil {
     Sequence.fromIterable(_modules.value).visitAll(new IVisitor<SModule>() {
       public void visit(SModule module) {
         // would be nice to handle all GenerationTargetFacet here, but for transition, rely on only facets we are aware at the moment (and those with single-root output) 
-
         // FWIF, DeleteModuleHelper.deleteModuleFiles is pretty much about the same. 
-
         ArrayList<IFile> roots = new ArrayList<IFile>(5);
         JavaModuleFacet jmf = module.getFacet(JavaModuleFacet.class);
         if (jmf != null) {

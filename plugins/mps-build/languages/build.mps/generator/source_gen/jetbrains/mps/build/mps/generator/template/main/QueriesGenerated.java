@@ -112,7 +112,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean rule_Condition_7_0(final BaseMappingRuleContext _context) {
     // FIXME template for this case was copied from reduce_BuildMpsLayout_ModuleJars, shall refactor to avoid duplication 
-
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x11918e0f209b83e7L, 0x11918e0f209b83e9L, "module")), MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, "jetbrains.mps.build.mps.structure.BuildMps_Solution"))) {
       SNode solution = SNodeOperations.as(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x11918e0f209b83e7L, 0x11918e0f209b83e9L, "module")), MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, "jetbrains.mps.build.mps.structure.BuildMps_Solution"));
       return SPropertyOperations.getBoolean(solution, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x14d3fb6fb84ac614L, "doNotCompile")) && ListSequence.fromList(SLinkOperations.getChildren(solution, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x48e82d5083341cb8L, "dependencies"))).all(new IWhereFilter<SNode>() {
@@ -134,36 +133,23 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean rule_Condition_13_0(final BaseMappingRuleContext _context) {
     // FIXME the only reason I check for same project, not same model here 
-
     // is that to introduce least possible change now. Once I've got this functional, 
-
     // shall get back and refactor this condition, as well as inspiring match in reduceMPSModule. 
-
     // Check comment in the IF macro there for extra insight. 
-
     // 
     // For the time being, for any layout node not from the same project (even from the same model, 
-
     // i.e. being transformed simultaneously), take jar classpath element directly (like reduceMPSModule 
-
     // does for dependencies between MpsModules). The problem with external jar is that BuildLayout_Node 
-
     // comes from a different transformation step (now we collect them in a pre-processing script in a distinct 
-
     // step (e.g @2_0), hence reference macro (@4_1->@5_0) yields a stale target) and generation fails unless 
-
     // transient models are turned on. 
-
     // 
     // In fact, this condition would never be true, provided BL_File comes from DependenciesHelper artifacts 
-
     // that are collected at distinct step, however, I'd like to keep both alternatives for completeness. 
-
     return SNodeOperations.getContainingRoot(((SNode) _context.getVariable("currentModule"))) != SNodeOperations.getContainingRoot(_context.getNode());
   }
   public static boolean rule_Condition_13_1(final BaseMappingRuleContext _context) {
     // see above for the explanation 
-
     return SNodeOperations.getContainingRoot(((SNode) _context.getVariable("currentModule"))) != SNodeOperations.getContainingRoot(_context.getNode());
   }
   public static boolean rule_Condition_18_0(final BaseMappingRuleContext _context) {
@@ -186,7 +172,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object propertyMacro_GetValue_0_5(final PropertyMacroContext _context) {
     // constants from DeploymentDescriptor.TYPE_* 
-
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6a3e160a3efe6274L, 0x6a3e160a3efe6275L, "module")), MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, "jetbrains.mps.build.mps.structure.BuildMps_Solution"))) {
       return "solution";
     }
@@ -212,9 +197,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object propertyMacro_GetValue_0_9(final PropertyMacroContext _context) {
     // FIXME BuildMps_AM.getModuleReference doesn't use PersistenceFacade or anything else but hardcoded knowledge about module reference format 
-
     //       and the fact it's uuid-based! 
-
     SLanguage language = MetaAdapterFactory.getLanguage(PersistenceFacade.getInstance().createModuleReference(BuildMps_AbstractModule__BehaviorDescriptor.getModuleReference_id41K1b4v5ZCB.invoke(_context.getNode())));
     return PersistenceFacade.getInstance().asString(language);
   }
@@ -224,7 +207,6 @@ public class QueriesGenerated extends QueryProviderBase {
     }
     final String pathText = BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(_context.getNode());
     // first, check if there's overriden location for the path 
-
     String result = ListSequence.fromList(SLinkOperations.getChildren(((Tuples._3<VisibleArtifacts, SNode, SNode>) _context.getVariable("var:files"))._2(), MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6a3e160a3efe6274L, 0x3c765492deb1ce79L, "jarLocations"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return Objects.equals(BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(it, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3c765492deb1a384L, 0x3c765492deb1a385L, "path"))), pathText);
@@ -239,7 +221,6 @@ public class QueriesGenerated extends QueryProviderBase {
     }
 
     // if not, try to find matching path in the project's layout 
-
     VisibleArtifacts outputFiles = ((Tuples._3<VisibleArtifacts, SNode, SNode>) _context.getVariable("var:files"))._0();
     SNode container = ((Tuples._3<VisibleArtifacts, SNode, SNode>) _context.getVariable("var:files"))._1();
     try {
@@ -276,13 +257,9 @@ public class QueriesGenerated extends QueryProviderBase {
     sb.append(SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4c6db07d2e56a8b4L, 0xc0f2d501dbb734cL, "sourceLanguage")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
     if (((Integer) _context.getVariable("cv:c")) > 0) {
       // for compatibility with legacy code, do not use index for the first generator. 
-
       // as there is at most 1 generator per language now, this code is effectively dead. 
-
       // When we move towards multiple generators, we need to change BuildMpsLayout_Plugin behavior (unpack and location), 
-
       // as well as BuildMpsLayout_ModuleJars.location (and, perhaps, other locations that assume lagnuage.name-generator.jar pattern). 
-
       sb.append('-');
       sb.append(Integer.toString(((Integer) _context.getVariable("cv:c"))));
     }
@@ -568,12 +545,10 @@ public class QueriesGenerated extends QueryProviderBase {
 
     int heapSize;
     // 0 as default value and 0 as heap size should be distinguished 
-
     if ((mpsAspect != null) && (isNotEmptyString(mpsAspect.getProperty(MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5a408fb8c80220a9L, 0x6ec3e043947b1eedL, "generationMaxHeapSizeInMb"))))) {
       heapSize = SPropertyOperations.getInteger(mpsAspect, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5a408fb8c80220a9L, 0x6ec3e043947b1eedL, "generationMaxHeapSizeInMb"));
     } else {
       // default size 
-
       heapSize = 512;
     }
 
@@ -599,12 +574,10 @@ public class QueriesGenerated extends QueryProviderBase {
 
     int heapSize;
     // 0 as default value and 0 as heap size should be distinguished 
-
     if ((mpsAspect != null) && (isNotEmptyString(mpsAspect.getProperty(MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5a408fb8c80220a9L, 0x6ec3e043947b1eedL, "generationMaxHeapSizeInMb"))))) {
       heapSize = SPropertyOperations.getInteger(mpsAspect, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5a408fb8c80220a9L, 0x6ec3e043947b1eedL, "generationMaxHeapSizeInMb"));
     } else {
       // default size 
-
       heapSize = 512;
     }
 
@@ -652,11 +625,8 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object propertyMacro_GetValue_14_0(final PropertyMacroContext _context) {
     // FIXME no reason for MM to assume DD.descriptorFile always goes under module, we shall keep this knowledge here 
-
     //       right now it's MM that prepends "module/" to the path we construct here, although it's this code that actually knowsn 
-
     //       about module/ folder in the jar 
-
     return ((String) _context.getVariable("descriptorSourceFile"));
   }
   public static Object propertyMacro_GetValue_14_1(final PropertyMacroContext _context) {
@@ -812,15 +782,10 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean ifMacro_Condition_2_1(final IfMacroContext _context) {
     // FIXME this is compatibility code to get identical .xml files when BuildMps_ModuleResources has been introduced 
-
     // Shall remove this code once got better idea about template structure for layout of a module (model roots shall 
-
     // be handled the same way as other roots, and this template likely to cease existence). 
-
     //  We used to copy resource files (icons/*, resources/*) here, although these resources are deemed for deployed location, 
-
     // need to remove this switch and go through all changed cases to check if these resources were indeed necessary. 
-
     return (SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x177c2feaf3463710L, 0x177c2feaf3463711L, "module")), MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d47f25L, "path")) != null) && !(SPropertyOperations.getBoolean(_context.getNode(), MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x177c2feaf3463710L, 0x407004b11f167886L, "modelsOnly")));
   }
   public static boolean ifMacro_Condition_2_2(final IfMacroContext _context) {
@@ -840,21 +805,13 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean ifMacro_Condition_4_0(final IfMacroContext _context) {
     // XXX I've got no idea why we restrict to modules from the same project, technically 
-
     // any module from the same model could be referenced here with BS_JavaDependencyModule 
-
     // as it's done for dependencies to regular BuildSource_JavaModule at the template's call site (main, MpsModule->JavaModule) 
-
     // With current approach, it looks odd to see e.g. mpsDevkit@5_0, where its solutions got translated to JavaModule and depend from 
-
     // mpsBootstrapCore and mpsTesting languages via classpath element, while dependencies to mpsBootstrapCore's java modules (e.g. openapi, kernel) 
-
     // are plain BuildSource_JavaModule references. 
-
     // OTOH, if we move towards partial model regeneration, we might need to reconsider assumptions like 'same model/root' and always rely on x-model 
-
     // reference restore mechanism (i.e. go on with BS_JavaModule and let generator restore the reference). 
-
     return SNodeOperations.getContainingRoot(_context.getNode()) == SNodeOperations.getContainingRoot(((SNode) _context.getVariable("dependency")));
   }
   public static boolean ifMacro_Condition_7_0(final IfMacroContext _context) {
@@ -1000,7 +957,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean ifMacro_Condition_9_3(final IfMacroContext _context) {
     // generated by default 
-
     return (SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4dee437cL, 0x5b7be37b4dee437dL, "plugin")), MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x1131bde13f3dbe2aL, "pluginXml")) == null);
   }
   public static boolean ifMacro_Condition_10_0(final IfMacroContext _context) {
@@ -1109,11 +1065,8 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static SNode sourceNodeQuery_7_2(final SourceSubstituteMacroNodeContext _context) {
     // XXX I know I could have delegated to 'sources of ->$aaa', but I don't like contentOf_BuildMpsLayout_ModuleSources 
-
     //     template due to the way resources get copied depending on modelsOnly flag, and gonna refactor it. Once refactored, 
-
     //     and the single jar deployment story is complete, may change this 'copy file .' to become 'sources of'. 
-
     return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x11918e0f209b83e7L, 0x11918e0f209b83e9L, "module")), MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d47f25L, "path"));
   }
   public static SNode sourceNodeQuery_7_3(final SourceSubstituteMacroNodeContext _context) {
@@ -1352,11 +1305,8 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Iterable<SNode> sourceNodesQuery_0_11(final SourceSubstituteMacroNodesContext _context) {
     // XXX though it's not apparent if deployed module shall tell their used languages (seems that RTs of these languages should be sufficient), 
-
     //     there's a lot of code in MPS that asks for module's languages and it seems(!) we'd better give some reasonable values there. 
-
     // FIXME revisit to justify true need for deployed module to tell its used languages 
-
     return Sequence.fromIterable(((RuntimeDependencies) _context.getVariable("var:rtDeps")).usedLanguages()).sort(new ISelector<SNode, String>() {
       public String select(SNode it) {
         return SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
@@ -1619,9 +1569,7 @@ public class QueriesGenerated extends QueryProviderBase {
       ml.checkAllModules(ModuleChecker.CheckType.LOAD_ALL);
 
       // move generators outside language, respect languages under Group project parts (hence, descendants), and 
-
       // do not touch Generators that are not child of a generator (i.e. standalone generator modules, once we have them) 
-
 
       for (SNode generator : SLinkOperations.collect(ListSequence.fromList(SLinkOperations.getChildren(project, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x668c6cfbafacf6f2L, "parts"))).translate(new ITranslator2<SNode, SNode>() {
         public Iterable<SNode> translate(SNode it) {
@@ -1637,7 +1585,6 @@ public class QueriesGenerated extends QueryProviderBase {
           ListSequence.fromList(SLinkOperations.getChildren(lang, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, 0x6d1df6c2700aeb88L, "managedGenerators"))).addElement(generatorRef);
         } else {
           // make sure 'owned' generator comes first in the list and receives default langname-generator.jar, not langname-x-generator.jar 
-
           ListSequence.fromList(SLinkOperations.getChildren(lang, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, 0x6d1df6c2700aeb88L, "managedGenerators"))).insertElement(0, generatorRef);
         }
       }
@@ -1678,7 +1625,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object varMacro_Value_3_0(final TemplateVarContext _context) {
     // need one to access template input from inside the nested loop 
-
     return _context.getNode();
   }
   public static Object varMacro_Value_6_0(final TemplateVarContext _context) {
@@ -1715,22 +1661,14 @@ public class QueriesGenerated extends QueryProviderBase {
       return MultiTuple.<Object,String>from(null, BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(((SNode) _context.getVariable("remotePath"))));
     }
     // Since our layout nodes are pre-collected from transient models at a distinct step, we can't use them as reference targets for newly created dependencies, 
-
     // and need to replace them with strings/classpath elements. Guess, the origin of the issue is that external jar dependency element may reference layout node, 
-
     // which breaks the idea of BL being description of build parts, and dependency direction from BL to the part, not vice versa. 
-
     // Even though this BL dependencies are often look reasonable and point to external layout nodes, I feel this part of build story is inconsistent, perhaps 
-
     // 'java library' element shall get jars assigned with layout rather than reference layout node with extenal jar? OTOH, it's not clear what to do if I don't want 
-
     // to include jar into layout, but would like to depend from it for compilation/build time? 
-
     // 
     // Here's small discrepancy, for a _SingleFolder node, getContentLocation is invoked inside switch_ExternalJar, while for _SingleFile I do getLocation 
-
     // here right away. It's only to save extra DependenciesHelper initialization and to stay with existing two-element tuple. 
-
     return MultiTuple.<SNode,String>from(layoutNode, helper.getLocation(layoutNode));
   }
   public static Object varMacro_Value_7_0(final TemplateVarContext _context) {
@@ -1739,7 +1677,6 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Object varMacro_Value_10_0(final TemplateVarContext _context) {
     if (((Boolean) _context.getVariable("var:mpsBootCore"))) {
       // in fact, with ant-mps residing in mpsTrueBootstrap project, its artifact shall become available by regular means (helper.getArtifact("ant-mps"), registered by BuildMPSPlugin.fetchDependencies()) 
-
       return "${build.tmp}/antTasks/ant-mps.jar";
     }
     DependenciesHelper helper = new DependenciesHelper(_context, _context.getNode());
@@ -1791,32 +1728,19 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object varMacro_Value_10_3(final TemplateVarContext _context) {
     //  FIXME this hack is to allow mpsBootstrapCore to assemble MPS sources into jars 
-
     // using the same mechanism as for any other MPS-orchestrated build project. 
-
     // In fact, it seems that only copyModels task is important (hence, Platform of 'PERSISTENCE' level) 
-
     // as MPS itself has been already generated and compiled (i.e no need for generate, migrate or runMPS tasks, see 
-
     // antlib.xml for full list). Therefore, with PlatformBase capable to load only deisred ComponentPlugin classes, 
-
     // we limit this hack to a smaller subset and don't include java/out of mps-generator, mps-textgen, mps-make-rt or kernel-resources 
-
     // (last two facilitates project make). We don't care to split classes into different jars as 
-
     // MPSClasspathUtil#getClassPathRootsFromDependencies and #getAntJARRelativeHome care to find only mps-core.jar somewhere up to 3 
-
     // levels from ant-mps.jar 
-
     // Note, alternative workaround is to specify proper 'mpsHome' for each task we'd like to execute (value of the home set overrides the 
-
     // logic to locate mps-core.jar. However, that would require copy of IDEA libraries into the home location as well, and would give much more cluttered ant xml as each 
-
     // copyModels task would need the value) 
-
     // 
     // Besisdes, we used to copy ${artifacts.IDEA}/lib/trove4j.jar into antTasks/. With MPSClasspathUtil#getClassPathRootsFromDependencies adding IDEA/lib to classpath, we no longer have to do it here. 
-
     return SPropertyOperations.getString(_context.getNode(), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")).equals("mpsBootstrapCore") && SModelOperations.getModelName(SNodeOperations.getModel(_context.getNode())).equals("jetbrains.mps.ide.build");
   }
   public static Object varMacro_Value_10_4(final TemplateVarContext _context) {
@@ -1827,7 +1751,6 @@ public class QueriesGenerated extends QueryProviderBase {
       SNode defaults = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3ba296405b6f3b1bL, "jetbrains.mps.build.mps.structure.BuildMps_GeneratorOptions"));
       SPropertyOperations.assign(defaults, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3ba296405b6f3b1bL, 0x3ba296405b6f720eL, "parallel"), true);
       // 8 is the value BaseGenerationWorker uses when parallel is true 
-
       SPropertyOperations.assign(defaults, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3ba296405b6f3b1bL, 0x3ba296405b6f7211L, "parallelThreads"), 8);
       SPropertyOperations.assign(defaults, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3ba296405b6f3b1bL, 0x3ba296405b6f720cL, "strict"), true);
       SPropertyOperations.assign(defaults, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3ba296405b6f3b1bL, 0x3ba296405b7040e4L, "inplace"), false);

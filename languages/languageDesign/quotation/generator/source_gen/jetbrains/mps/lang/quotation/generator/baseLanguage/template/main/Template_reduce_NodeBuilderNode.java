@@ -81,7 +81,6 @@ public class Template_reduce_NodeBuilderNode extends TemplateDeclarationBase imp
                   tnode5.addChild(myAggregationLinks[0], child7);
                 }
                 // TODO validate child 
-
               }
               {
                 Collection<SNode> tlist8 = null;
@@ -108,7 +107,6 @@ public class Template_reduce_NodeBuilderNode extends TemplateDeclarationBase imp
                   tnode5.addChild(myAggregationLinks[0], child11);
                 }
                 // TODO validate child 
-
               }
               {
                 final SNode tnode12 = environment.createOutputNode(myConcepts[4]);
@@ -117,7 +115,6 @@ public class Template_reduce_NodeBuilderNode extends TemplateDeclarationBase imp
                 }
                 tnode5.addChild(myAggregationLinks[0], tnode12);
                 // TODO validate child 
-
               }
               {
                 final SNode tnode13 = environment.createOutputNode(myConcepts[5]);
@@ -126,13 +123,11 @@ public class Template_reduce_NodeBuilderNode extends TemplateDeclarationBase imp
                 }
                 tnode5.addChild(myAggregationLinks[0], tnode13);
                 // TODO validate child 
-
               }
             } finally {
             }
             tnode4.addChild(myAggregationLinks[1], tnode5);
             // TODO validate child 
-
           }
           {
             final SNode tnode14 = environment.createOutputNode(myConcepts[6]);
@@ -142,7 +137,6 @@ public class Template_reduce_NodeBuilderNode extends TemplateDeclarationBase imp
             }
             tnode4.addChild(myAggregationLinks[2], tnode14);
             // TODO validate child 
-
           }
         } finally {
         }
@@ -152,7 +146,6 @@ public class Template_reduce_NodeBuilderNode extends TemplateDeclarationBase imp
           tnode2.addChild(myAggregationLinks[3], child15);
         }
         // TODO validate child 
-
       }
     } finally {
     }
@@ -203,13 +196,11 @@ public class Template_reduce_NodeBuilderNode extends TemplateDeclarationBase imp
                           }
                           tnode6.addChild(myAggregationLinks[5], tnode7);
                           // TODO validate child 
-
                         }
                       } finally {
                       }
                       tnode5.addChild(myAggregationLinks[6], tnode6);
                       // TODO validate child 
-
                     }
                   } finally {
                   }
@@ -227,13 +218,11 @@ public class Template_reduce_NodeBuilderNode extends TemplateDeclarationBase imp
               tnode2.addChild(myAggregationLinks[4], child8);
             }
             // TODO validate child 
-
           }
         } finally {
         }
         tnode1.addChild(myAggregationLinks[7], tnode2);
         // TODO validate child 
-
       }
     } finally {
     }

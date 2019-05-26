@@ -60,12 +60,10 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean createRootRule_Condition_0_0(final CreateRootRuleContext _context) {
     // see MPS-24613 
-
     return SModuleOperations.isAspect(_context.getOriginalInputModel(), "intentions");
   }
   public static boolean rule_Condition_6_0(final BaseMappingRuleContext _context) {
     // see MPS-24613 
-
     return SModuleOperations.isAspect(((SModel) _context.getVariable("model")), "intentions");
   }
   public static Object propertyMacro_GetValue_1_0(final PropertyMacroContext _context) {
@@ -160,7 +158,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object referenceMacro_GetReferent_6_0(final ReferenceMacroContext _context) {
     // TODO genContext.get output IntentionsDescriptorCons for model model; 
-
     return SModelOperations.getModelName(((SModel) _context.getVariable("model"))) + ".IntentionsDescriptor";
   }
   public static boolean ifMacro_Condition_2_0(final IfMacroContext _context) {
@@ -210,7 +207,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean ifMacro_Condition_7_0(final IfMacroContext _context) {
     //  XXX kind of odd way to check != null, provided priority is declared as ErrorIntentionPriority[0..1] 
-
     return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x71ffad1474b12a0bL, 0x59427edd75744671L, "priority")), MetaAdapterFactory.getConcept(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x59427edd75744615L, "jetbrains.mps.lang.intentions.structure.ErrorIntentionPriority"));
   }
   public static SNode sourceNodeQuery_0_0(final SourceSubstituteMacroNodeContext _context) {

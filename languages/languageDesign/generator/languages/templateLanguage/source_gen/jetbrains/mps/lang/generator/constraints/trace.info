@@ -459,21 +459,21 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e2(jetbrains.mps.lang.generator.constraints)/5740396897827770061">
     <file name="MappingRuleTemplateNodeSearchScope.java">
-      <node id="445563756713589064" at="18,40,19,53" concept="5" />
-      <node id="445563756713614107" at="14,59,16,0" concept="6" />
-      <node id="445563756713588330" at="18,0,21,0" concept="3" trace="accept#(Lorg/jetbrains/mps/openapi/model/SModel;)Z" />
-      <node id="445563756713594653" at="16,0,21,163" concept="10" />
-      <node id="5740396897827770074" at="14,0,23,0" concept="0" trace="MappingRuleTemplateNodeSearchScope#(Lorg/jetbrains/mps/openapi/model/SModel;)V" />
-      <scope id="445563756713588331" at="18,40,19,53" />
-      <scope id="445563756713588330" at="18,0,21,0">
+      <node id="445563756713614107" at="14,59,15,89" concept="6" />
+      <node id="445563756713589064" at="17,40,18,53" concept="5" />
+      <node id="445563756713588330" at="17,0,20,0" concept="3" trace="accept#(Lorg/jetbrains/mps/openapi/model/SModel;)Z" />
+      <node id="445563756713594653" at="15,89,20,163" concept="10" />
+      <node id="5740396897827770074" at="14,0,22,0" concept="0" trace="MappingRuleTemplateNodeSearchScope#(Lorg/jetbrains/mps/openapi/model/SModel;)V" />
+      <scope id="445563756713588331" at="17,40,18,53" />
+      <scope id="445563756713588330" at="17,0,20,0">
         <var name="it" id="445563756713588330" />
       </scope>
-      <scope id="5740396897827770081" at="14,59,21,163" />
-      <scope id="5740396897827770074" at="14,0,23,0">
+      <scope id="5740396897827770081" at="14,59,20,163" />
+      <scope id="5740396897827770074" at="14,0,22,0">
         <var name="model" id="5740396897827770077" />
       </scope>
-      <unit id="445563756713588330" at="17,170,21,5" name="jetbrains.mps.lang.generator.constraints.MappingRuleTemplateNodeSearchScope$1" />
-      <unit id="5740396897827770061" at="13,0,24,0" name="jetbrains.mps.lang.generator.constraints.MappingRuleTemplateNodeSearchScope" />
+      <unit id="445563756713588330" at="16,170,20,5" name="jetbrains.mps.lang.generator.constraints.MappingRuleTemplateNodeSearchScope$1" />
+      <unit id="5740396897827770061" at="13,0,23,0" name="jetbrains.mps.lang.generator.constraints.MappingRuleTemplateNodeSearchScope" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e2(jetbrains.mps.lang.generator.constraints)/5858775738865267759">

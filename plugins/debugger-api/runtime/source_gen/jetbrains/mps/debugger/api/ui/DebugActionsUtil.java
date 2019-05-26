@@ -41,18 +41,14 @@ public class DebugActionsUtil {
     RunContentDescriptor runContentDescriptor = RunContentManager.RUN_CONTENT_DESCRIPTOR.getData(dataContext);
     if (runContentDescriptor != null) {
       // tool window 
-
       return DebugSessionManagerComponent.getInstance(project).getDebugSession(runContentDescriptor.getProcessHandler());
     }
 
     // main menu 
-
     RunContentDescriptor selectedContent = ExecutionManager.getInstance(project).getContentManager().getSelectedContent();
     if (selectedContent == null) {
       // when Debug is first started for the first time, the debug tool window is shown but not activated 
-
       // here we deal with this situation 
-
       selectedContent = ExecutionManager.getInstance(project).getContentManager().getSelectedContent(DefaultDebugExecutor.getDebugExecutorInstance());
       if (selectedContent == null) {
         return null;

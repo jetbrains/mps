@@ -48,9 +48,7 @@ public final class TrivialNodeId__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static SNode instantiate_id39TODbGt9gR(@NotNull SNode __thisNode__, SModel model) {
     SNodeId identity = PersistenceFacade.getInstance().createNodeId(SPropertyOperations.getString(__thisNode__, MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7d58bd9fd9b64463L, 0x7d58bd9fd9b64468L, "nodeId")));
     // could use SModelOperations.createNewNode (which does Behavior.init() in addition to instantiation) 
-
     // want to be minimalistic, yet not adding new API (#createNode(SConcept) is way too tempting) 
-
     return SModelUtil_new.instantiateConceptDeclaration(ConceptIdentity__BehaviorDescriptor.getConcept_id5ZE7FBYYOpv.invoke(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7d58bd9fd9b64463L, 0x76c27c67a4605f07L, "cncpt"))), model, identity, false);
   }
   /*package*/ static SNode create_id7PoJpZpIp9n(@NotNull SAbstractConcept __thisConcept__, SModel where, SNode n) {

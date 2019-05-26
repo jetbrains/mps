@@ -99,14 +99,12 @@ public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
     ModelReader9Handler.ElementHandler current = (myHandlersStack.empty() ? (ModelReader9Handler.ElementHandler) null : myHandlersStack.peek());
     if (current == null) {
       // root 
-
       current = modelHandler;
     } else {
       current = current.createChild(myValues.peek(), qName, attributes);
     }
 
     // check required 
-
     for (String attr : current.requiredAttributes()) {
       if (attributes.getValue(attr) == null) {
         throw new SAXParseException("attribute " + attr + " is absent", null);
@@ -119,7 +117,6 @@ public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
     }
 
     // handle attributes 
-
     for (int i = 0; i < attributes.getLength(); i++) {
       String name = attributes.getQName(i);
       String value = attributes.getValue(i);
@@ -387,9 +384,7 @@ public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
     private void handleChild_5480414999147804036(Object resultObject, Object value) throws SAXException {
       SModuleReference child = (SModuleReference) value;
       // FIXME this is transition code to support pre-MPS 3.4 engaged languages as SModuleReference 
-
       // for contemporary SLanguage dependency, there's engage tag, above 
-
       new SModelLegacy(my_modelField).addEngagedOnGenerationLanguage(child);
     }
     private void handleChild_5480414999147804044(Object resultObject, Object value) throws SAXException {
@@ -419,9 +414,7 @@ public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
     protected Object createObject(Attributes attrs) throws SAXException {
       SLanguageId langId = my_idEncoderField.parseLanguageId(attrs.getValue("id"));
       // use of read helper is not 100% clean code (as well as in used_languages above) 
-
       // as readHelper deals with registry information, but doesn't use it for this particular call (serving merely as a factory). 
-
       SLanguage lang = my_readHelperParam.getLanguage(langId, attrs.getValue("name"));
       my_modelField.addEngagedOnGenerationLanguage(lang);
       return null;
@@ -481,7 +474,6 @@ public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
       }
       SNode result = (interfaceNode ? new InterfaceSNode(concept, nodeId) : new SNode(concept, nodeId));
       // can be root 
-
       return MultiTuple.<org.jetbrains.mps.openapi.model.SNode,SContainmentLink>from(((org.jetbrains.mps.openapi.model.SNode) result), my_readHelperParam.readAggregation(attrs.getValue("role")));
     }
     @Override
@@ -586,7 +578,6 @@ public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
       SReferenceLink association = my_readHelperParam.readAssociation(attrs.getValue("role"));
       if (attrs.getValue("node") != null) {
         // local reference 
-
         SNodeId targetNode = my_idEncoderField.parseLocalNodeReference(attrs.getValue("node"));
         return MultiTuple.<SReferenceLink,SModelReference,SNodeId,String>from(association, my_modelField.getReference(), targetNode, attrs.getValue("resolve"));
       } else {

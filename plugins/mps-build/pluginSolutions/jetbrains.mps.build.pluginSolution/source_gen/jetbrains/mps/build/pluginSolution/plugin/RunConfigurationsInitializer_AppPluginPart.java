@@ -24,7 +24,6 @@ public class RunConfigurationsInitializer_AppPluginPart extends ApplicationPlugi
   @Override
   public void init() {
     // register kinds 
-
     ExtensionPoint<ConfigurationType> configurationExtensionPoint = Extensions.getRootArea().getExtensionPoint(ConfigurationType.CONFIGURATION_TYPE_EP);
     {
       ConfigTypeEnvoy runConfigurationKind = new ConfigTypeEnvoy("Build Script", AllIcons.RunConfigurations.Application, "Build Script", "Build Script");
@@ -35,9 +34,7 @@ public class RunConfigurationsInitializer_AppPluginPart extends ApplicationPlugi
 
     // add foreign factories 
 
-
     // register creators 
-
     ExtensionPoint<RuntimeConfigurationProducer> producerExtensionPoint = Extensions.getArea(null).getExtensionPoint(RuntimeConfigurationProducer.RUNTIME_CONFIGURATION_PRODUCER);
     for (ConfigurationType ext : configurationExtensionPoint.getExtensions()) {
       if ("Build Script".equals(ext.getId())) {
@@ -56,9 +53,7 @@ public class RunConfigurationsInitializer_AppPluginPart extends ApplicationPlugi
 
     // invalidate factories from this plugin for types declared elsewhere (we have no idea whether that plugins would be reloaded/invalidated as well) 
 
-
     // factories from this plugin would get invalidated along with configuration types, no need to do that explicitly (although it wouldn't hurt either) 
-
     for (Iterator<ConfigTypeEnvoy> it = RunConfigurationsInitializer_AppPluginPart.this.myRegisteredKinds.descendingIterator(); it.hasNext();) {
       ConfigTypeEnvoy configKind = it.next();
       configKind.invalidate();

@@ -39,7 +39,6 @@ import java.io.FileNotFoundException;
       return AbstractInstaller.State.NOT_ENABLED;
     }
     // TODO rewrite it using git4idea util classes 
-
     if (!(myConfigFile.exists())) {
       if (dryRun) {
         return AbstractInstaller.State.NOT_INSTALLED;
@@ -53,7 +52,6 @@ import java.io.FileNotFoundException;
 
     if (!(dryRun)) {
       // copy driver files to the proper place 
-
       MergeDriverPacker.getInstance().pack(myProject);
     }
 
@@ -88,7 +86,6 @@ import java.io.FileNotFoundException;
       }));
       if (sectionEnd == -1) {
         // last section 
-
         sectionEnd = ListSequence.fromList(configLines).count();
       } else {
         sectionEnd = sectionEnd + toSkip;

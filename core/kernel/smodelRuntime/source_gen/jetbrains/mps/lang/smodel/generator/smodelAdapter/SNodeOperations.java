@@ -75,7 +75,6 @@ public class SNodeOperations {
     int metaLevel = (sameMetaLevel ? SModelUtil_new.getMetaLevel(node) : 0);
 
     // look up for certain concept 
-
     if (root) {
       SNode rootParent = node.getContainingRoot();
       if (rootParent.getModel() != null && isInstanceOf(rootParent, ancestorConcept)) {
@@ -87,7 +86,6 @@ public class SNodeOperations {
     }
 
     // look-up parent of required type 
-
     SNode outputNode;
     if (inclusion) {
       outputNode = node;
@@ -133,7 +131,6 @@ public class SNodeOperations {
     }
 
     // look-up parent of required type 
-
     SNode outputNode;
     if (inclusion) {
       outputNode = node;
@@ -204,9 +201,7 @@ public class SNodeOperations {
     }
     if (childConcept == null) {
       // It's odd to ignore stop condition when there's no designated childConcept, 
-
       // but this is how it used to be from revision ad249caf since 2009. 
-
       return getNodeDescendants(node, null, inclusion);
     }
     return descendantsAsList(node, inclusion, new InstanceOfCondition(childConcept), new InstanceOfCondition(stopConceptFqNames));
@@ -228,7 +223,6 @@ public class SNodeOperations {
   }
   private static List<SNode> descendantsAsList(SNode node, boolean inclusion, Condition<SNode> condition, Condition<SNode> stopCondition) {
     // can't use TreeFilterIterator as nodes that match both condition and stopCondition are proper return values 
-
     ArrayList<SNode> rv = new ArrayList<SNode>();
     final DescendantsTreeIterator it = new DescendantsTreeIterator(node);
     if (!(inclusion) && it.hasNext()) {
@@ -472,7 +466,6 @@ public class SNodeOperations {
         SProperty property = ((SProperty) BHReflection.invoke0(SNodeOperations.cast(attribute, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute")), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute"), SMethodTrimmedId.create("getProperty", MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute"), "1avfQ4BBzOo")));
         if (!(newChild.getConcept().getProperties().contains(property))) {
           // no such property in new child : don't copy the attribute 
-
           LOG.error("couldn't copy attribute " + attribute.getConcept().getName() + " for property '" + property.getName() + "' : so such property in concept " + newChild.getConcept().getName(), newChild);
           continue;
         }
@@ -481,7 +474,6 @@ public class SNodeOperations {
         SReferenceLink link = ((SReferenceLink) BHReflection.invoke0(SNodeOperations.cast(attribute, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da51L, "jetbrains.mps.lang.core.structure.LinkAttribute")), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da51L, "jetbrains.mps.lang.core.structure.LinkAttribute"), SMethodTrimmedId.create("getLink", MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da51L, "jetbrains.mps.lang.core.structure.LinkAttribute"), "1avfQ4BEFo6")));
         if (!(newChild.getConcept().getReferenceLinks().contains(link))) {
           // no such link in new child : don't copy the attribute 
-
           LOG.error("couldn't copy attribute " + attribute.getConcept().getName() + " for link '" + link.getName() + "' : so such link in concept " + newChild.getConcept().getName(), newChild);
           continue;
         }
@@ -694,7 +686,6 @@ public class SNodeOperations {
   public static SNode copyIfNecessary(SNode node) {
     if (node != null && (node.getParent() != null || node.getModel() != null)) {
       // this copies all the attributes, because can be used in migration scripts 
-
       return CopyUtil.copy(node, true);
     } else {
       return node;

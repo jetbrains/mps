@@ -14,7 +14,6 @@ public class MPS14653_Test extends TestCase {
       Assert.fail();
     } catch (Exception e) {
       // expected exception 
-
     }
   }
   public void test_acceptFunction() throws Exception {
@@ -28,7 +27,6 @@ public class MPS14653_Test extends TestCase {
       Assert.fail();
     } catch (Exception e) {
       // expected exception 
-
     }
   }
 }

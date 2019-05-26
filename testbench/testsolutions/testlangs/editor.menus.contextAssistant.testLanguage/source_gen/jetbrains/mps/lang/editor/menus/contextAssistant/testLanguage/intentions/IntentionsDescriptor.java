@@ -34,7 +34,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 0:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[1];
           intentions[0] = new AddLetterToName_Intention();
         }

@@ -42,9 +42,7 @@ public final class ModuleReference__BehaviorDescriptor extends BaseBHDescriptor 
   }
   /*package*/ static SModuleReference toModuleReference_id2BHFktfnkjF(@NotNull SNode __thisNode__) {
     //  FIXME consider deprecating ModuleReference in favor of lang.smodel.ModuleIdentity/ModulePointer. 
-
     // Why does not lang.project use lang.smodel is unclear to me 
-
     PersistenceFacade pf = PersistenceFacade.getInstance();
     return pf.createModuleReference(pf.createModuleId(SPropertyOperations.getString(__thisNode__, MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x19bfb4173fb5210cL, 0x19bfb4173fb5210dL, "uuid"))), SPropertyOperations.getString(__thisNode__, MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x19bfb4173fb5210cL, 0x19bfb4173fb5210eL, "qualifiedName")));
   }

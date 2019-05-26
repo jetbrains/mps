@@ -59,11 +59,9 @@ public final class UpdateRuntimeUtil_MigrationScript extends BaseMigrationScript
         }
 
         // these will be replaced with new contents 
-
         ListSequence.fromList(SLinkOperations.getChildren(ssw, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02edcafL, "case"))).clear();
 
         // this reference must point to the @java_stub model 
-
         SNode fncls = SPointerOperations.resolveNode(new SNodePointer("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.baseLanguage.closures.runtime(MPS.Core/)", "~_FunctionTypes"), SNodeOperations.getModel(node).getRepository());
 
         for (SNode ifc : SNodeOperations.ofConcept(SLinkOperations.getChildren(fncls, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface"))) {

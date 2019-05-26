@@ -41,14 +41,12 @@ public final class ExpressionStatement__BehaviorDescriptor extends BaseBHDescrip
     }
 
     // no return inside void methods or constructors 
-
     SNode retType = IMethodLike__BehaviorDescriptor.getExpectedRetType_idi2fhBNC.invoke(methodLike);
     if (retType == null || SNodeOperations.isInstanceOf(retType, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType"))) {
       return false;
     }
 
     // statement 'a.b()' where b returns void can't produce return value 
-
     SNode methodCall = null;
     SNode expression = SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression"));
     if (SNodeOperations.isInstanceOf(expression, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall"))) {
@@ -61,15 +59,12 @@ public final class ExpressionStatement__BehaviorDescriptor extends BaseBHDescrip
     }
 
     // Check our position within IMethodLike 
-
     SNode lastStatement = IMethodLike__BehaviorDescriptor.getLastStatement_idi2fhS7A.invoke(methodLike);
     // trivial case: this statement is the last one 
-
     if (lastStatement == __thisNode__) {
       return true;
     }
     // check if body ends with if and this statement completes this if 
-
     if (SNodeOperations.isInstanceOf(lastStatement, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement")) && SNodeOperations.getNodeAncestor(__thisNode__, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement"), false, false) == lastStatement) {
       SNode ifStmt = SNodeOperations.cast(lastStatement, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement"));
       if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(ifStmt, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"))).last() == __thisNode__ || SLinkOperations.getTarget(ifStmt, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xfc092b6b76L, "ifFalseStatement")) == __thisNode__) {

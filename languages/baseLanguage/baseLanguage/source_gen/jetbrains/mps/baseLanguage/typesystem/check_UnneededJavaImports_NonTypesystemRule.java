@@ -85,15 +85,12 @@ public class check_UnneededJavaImports_NonTypesystemRule extends AbstractNonType
     }
 
     // retain all imports if 'unknown' concepts still present 
-
     if (unknownPresent) {
       return;
     }
     // on the other hand, if everything is resolved, remove all imports altogether 
-
     if (dynRefsPresent == false) {
       // quick-fix 
-
       {
         MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(clas, "Java imports annotation is present", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2235632002330933633", null, errorTarget);
@@ -105,9 +102,7 @@ public class check_UnneededJavaImports_NonTypesystemRule extends AbstractNonType
       return;
     }
     // removing only those single-type imports that didn't get into retain set 
-
     // quick fix 
-
     Iterable<SNode> unneeded = Sequence.fromIterable(MapSequence.fromMap(importsByName).values()).subtract(SetSequence.fromSet(retain));
     if (Sequence.fromIterable(unneeded).count() < ListSequence.fromList(SLinkOperations.getChildren(AttributeOperations.getAttribute(clas, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53f7c33f069862f2L, "jetbrains.mps.baseLanguage.structure.JavaImports"))), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53f7c33f069862f2L, 0x64c0181e6020a7L, "entries"))).count()) {
       {
@@ -121,7 +116,6 @@ public class check_UnneededJavaImports_NonTypesystemRule extends AbstractNonType
       }
     } else {
       // removing all imports at once 
-
       {
         MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(clas, "Java imports annotation is present", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4988876388990444236", null, errorTarget);

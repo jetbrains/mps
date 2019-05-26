@@ -181,7 +181,6 @@ public class Set_Test extends Util_Test {
       Assert.fail();
     } catch (UnsupportedOperationException e) {
       // expected exception 
-
     }
     SetSequence.fromSet(hss).removeElement("a");
     Assert.assertEquals("c d", IterableUtils.join(SetSequence.fromSet(uhss).sort(new ISelector<String, String>() {
@@ -194,7 +193,6 @@ public class Set_Test extends Util_Test {
       Assert.fail();
     } catch (UnsupportedOperationException e) {
       // expected exception 
-
     }
   }
 }

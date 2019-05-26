@@ -48,7 +48,6 @@ public class StyleClassReference_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_3j1ixm_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2ef3b3796a130c0dL, "jetbrains.mps.lang.editor.structure.StyleClassReference"), MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2ef3b3796a130c0dL, 0x2ef3b3796a130c0eL, "styleClass"));
     }
     @NotNull

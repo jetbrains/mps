@@ -13,13 +13,13 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <root>
     <file name="IntentionsDescriptor.java">
-      <unit at="18,0,65,0" name="jetbrains.mps.lang.core.intentions.IntentionsDescriptor" />
+      <unit at="18,0,64,0" name="jetbrains.mps.lang.core.intentions.IntentionsDescriptor" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590285(jetbrains.mps.lang.core.intentions)/243673576855293524">
     <file name="IntentionsDescriptor.java">
-      <node id="243673576855293524" at="40,69,41,65" concept="2" />
-      <node id="243673576855293524" at="57,55,58,51" concept="2" />
+      <node id="243673576855293524" at="39,69,40,65" concept="2" />
+      <node id="243673576855293524" at="56,55,57,51" concept="2" />
     </file>
     <file name="SuppressSpecificErrors_Intention.java">
       <node id="243673576855293524" at="34,45,35,146" concept="10" />
@@ -123,8 +123,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590285(jetbrains.mps.lang.core.intentions)/2552824637550060934">
     <file name="IntentionsDescriptor.java">
-      <node id="2552824637550060934" at="41,65,42,71" concept="2" />
-      <node id="2552824637550060934" at="58,51,59,57" concept="2" />
+      <node id="2552824637550060934" at="40,65,41,71" concept="2" />
+      <node id="2552824637550060934" at="57,51,58,57" concept="2" />
     </file>
     <file name="SuppressAllTypesystemWarning_Intention.java">
       <node id="2552824637550060934" at="35,0,36,0" concept="3" trace="myCachedExecutable" />
@@ -230,8 +230,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590285(jetbrains.mps.lang.core.intentions)/4222318806802430725">
     <file name="IntentionsDescriptor.java">
-      <node id="4222318806802430725" at="38,47,39,69" concept="2" />
-      <node id="4222318806802430725" at="55,52,56,55" concept="2" />
+      <node id="4222318806802430725" at="37,47,38,69" concept="2" />
+      <node id="4222318806802430725" at="54,52,55,55" concept="2" />
     </file>
     <file name="SuppressAllTypesystemError_Intention.java">
       <node id="4222318806802430725" at="35,0,36,0" concept="3" trace="myCachedExecutable" />
@@ -337,8 +337,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590285(jetbrains.mps.lang.core.intentions)/5310388462667233252">
     <file name="IntentionsDescriptor.java">
-      <node id="5310388462667233252" at="42,71,43,58" concept="2" />
-      <node id="5310388462667233252" at="59,57,60,44" concept="2" />
+      <node id="5310388462667233252" at="41,71,42,58" concept="2" />
+      <node id="5310388462667233252" at="58,57,59,44" concept="2" />
     </file>
     <file name="UnsuppressError_Intention.java">
       <node id="5310388462667233252" at="28,38,29,148" concept="10" />
@@ -436,8 +436,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590285(jetbrains.mps.lang.core.intentions)/869282237627508178">
     <file name="IntentionsDescriptor.java">
-      <node id="869282237627508178" at="39,69,40,69" concept="2" />
-      <node id="869282237627508178" at="56,55,57,55" concept="2" />
+      <node id="869282237627508178" at="38,69,39,69" concept="2" />
+      <node id="869282237627508178" at="55,55,56,55" concept="2" />
     </file>
     <file name="SuppressSpecificInspection_Intention.java">
       <node id="869282237627508178" at="33,49,34,147" concept="10" />

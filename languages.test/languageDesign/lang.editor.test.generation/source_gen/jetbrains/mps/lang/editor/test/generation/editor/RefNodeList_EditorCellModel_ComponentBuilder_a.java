@@ -144,7 +144,6 @@ import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Replace
       boolean var = parameterObject != null || node != null || model != null || editorContext != null || operationContext != null;
       if (var) {
         // just usage of var 
-
       }
     }
     public boolean isReferentPresentation() {
@@ -342,7 +341,6 @@ import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Replace
       boolean var = node != null || model != null || editorContext != null || operationContext != null;
       if (var) {
         // just usage of var 
-
       }
     }
     public String getMatchingText() {

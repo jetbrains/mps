@@ -43,9 +43,7 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
   public TransformatorImpl(@NotNull SNode node) {
     myModel = SNodeOperations.getModel(node);
     // I know the exact way to reproduce a bug: 
-
     // write an assertion with a comment 'this can't happen' 
-
     assert myModel != null : "This can't happen. " + node;
     myWhatToEvaluate = node;
   }
@@ -68,9 +66,7 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
 
     boolean finished = false;
     // we need to repeat replacing instance/static method calls, array operations 
-
     // because operand they are applied to might change and suddenly become ValueProxy during those changes 
-
     int count = 0;
     while (!(finished)) {
 
@@ -101,7 +97,6 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
   }
   private void postprocess() {
     // clean annotations 
-
     for (SNode node : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, null, false, new SAbstractConcept[]{}))) {
       if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x50b810dd5c871ea2L, "jetbrains.mps.debugger.java.evaluation.structure.UnprocessedAnnotation"))) != null)) {
         SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x50b810dd5c871ea2L, "jetbrains.mps.debugger.java.evaluation.structure.UnprocessedAnnotation"))));
@@ -109,7 +104,6 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
     }
 
     // clean rtypes and ltypes 
-
     for (SNode node : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, null, false, new SAbstractConcept[]{}))) {
       node.putUserObject(LTYPE, null);
       node.putUserObject(RTYPE, null);
@@ -117,7 +111,6 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
     }
 
     // remove low-level vars 
-
     for (SNode var : ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getContainingRoot(myWhatToEvaluate), MetaAdapterFactory.getConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d926L, "jetbrains.mps.debugger.java.evaluation.structure.LowLevelVariable"), false, new SAbstractConcept[]{}))) {
       SNodeOperations.deleteNode(var);
     }
@@ -135,31 +128,24 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
 
   private void preprocess() {
     // Import baseLanguageInternal to properly compute types of its constructs (the .type operation) 
-
     addLanguageImport(myModel, MetaAdapterFactory.getLanguage(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, "jetbrains.mps.baseLanguageInternal"));
 
     // remove downcasts 
-
     for (SNode downcast : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, MetaAdapterFactory.getConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x6dd9f7bd221bb1d5L, "jetbrains.mps.debugger.java.evaluation.structure.DownCastToLowLevel"), false, new SAbstractConcept[]{}))) {
       SNodeOperations.replaceWithAnother(downcast, SLinkOperations.getTarget(downcast, MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0x6dd9f7bd221bb1d5L, 0x6dd9f7bd221bb39eL, "expression")));
     }
 
     // we need normalized dot expression for wrapping method calls 
-
     // i.e. we need the structure of a dot expression to look like ((().op1).op2).op3 
-
     normalizeAllDotExpressions(myWhatToEvaluate);
 
     // add unprocessed annotations to everything 
-
     for (SNode node : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, null, false, new SAbstractConcept[]{}))) {
       AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x50b810dd5c871ea2L, "jetbrains.mps.debugger.java.evaluation.structure.UnprocessedAnnotation")), MetaAdapterFactory.getConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x50b810dd5c871ea2L, "jetbrains.mps.debugger.java.evaluation.structure.UnprocessedAnnotation"));
     }
 
     // here we must calculate type for all binary operations and remeber it 
-
     // so when we replace binary ops we knew to which type we should cast 
-
     for (SNode binaryOperation : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation"), false, new SAbstractConcept[]{}))) {
       SNode ltype = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(binaryOperation, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression")));
       SNode rtype = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(binaryOperation, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression")));
@@ -168,14 +154,12 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
     }
 
     // we also calculate types for all array access operations 
-
     for (SNode arrayAccess : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11126b40c25L, "jetbrains.mps.baseLanguage.structure.ArrayAccessExpression"), false, new SAbstractConcept[]{}))) {
       SNode ltype = TypecheckingFacade.getFromContext().getTypeOf(arrayAccess);
       arrayAccess.putUserObject(TransformatorImpl.LTYPE, SNodeOperations.copyNode(ltype));
     }
 
     // and for all assignments 
-
     for (SNode baseAssignment : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, "jetbrains.mps.baseLanguage.structure.BaseAssignmentExpression"), false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return !(SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e96L, "jetbrains.mps.baseLanguage.structure.AssignmentExpression")));
@@ -186,7 +170,6 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
     }
 
     // and for all ternary operators 
-
     for (SNode ternaryOperator : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, "jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression"), false, new SAbstractConcept[]{}))) {
       ternaryOperator.putUserObject(TransformatorImpl.LTYPE, TransformationUtil.getBoxedTypeIfNeeded(SNodeOperations.copyNode(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(ternaryOperator, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012a1c0L, "ifTrue"))))));
       ternaryOperator.putUserObject(TransformatorImpl.RTYPE, TransformationUtil.getBoxedTypeIfNeeded(SNodeOperations.copyNode(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(ternaryOperator, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012cedcL, "ifFalse"))))));
@@ -197,14 +180,12 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
 
     SNode evaluateMethod = SNodeOperations.getNodeAncestor(myWhatToEvaluate, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1208f458d37L, "jetbrains.mps.baseLanguage.structure.IMethodLike"), true, false);
     // find return statements 
-
     for (SNode returnStatement : ListSequence.fromList(SNodeOperations.getNodeDescendants(evaluateMethod, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, "jetbrains.mps.baseLanguage.structure.ReturnStatement"), false, new SAbstractConcept[]{}))) {
       SNode expression = SLinkOperations.getTarget(returnStatement, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression"));
       TransformationUtil.replaceReturnedExpressionIfNeeded(expression);
     }
 
     // last statement might become return statement during generation 
-
     SNode statement = ((SNode) BHReflection.invoke0(evaluateMethod, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1208f458d37L, "jetbrains.mps.baseLanguage.structure.IMethodLike"), SMethodTrimmedId.create("getLastStatement", null, "i2fhS7A")));
     if (TransformationUtil.canMakeReturnStatement(statement)) {
       TransformationUtil.replaceReturnedExpressionIfNeeded(SLinkOperations.getTarget(SNodeOperations.cast(statement, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression")));
@@ -233,7 +214,6 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
           fqNameNode = TransformationUtil.createStringLiteral(SConceptOperations.conceptAlias(SNodeOperations.getConcept(componentType)));
         }
         // todo multi-arraycal 
-
         SNode size = SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(newExpression, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, 0x10ab847b486L, "creator")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x113e4952f12L, "jetbrains.mps.baseLanguage.structure.ArrayCreator")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x113e4952f12L, 0x113e4b36742L, "dimensionExpression"))).first(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x113e4b2dfdaL, 0x113e4b846d4L, "expression"));
 
         TransformationUtil.replaceArrayConstructor(newExpression, fqNameNode, size);
@@ -355,7 +335,6 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
   }
   private void replaceLocalMemberReferences() {
     // convert local static method calls to qualified static method calls 
-
     for (SNode localStaticMethodCall : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9404L, "jetbrains.mps.baseLanguage.structure.LocalMethodCall"), false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration"));
@@ -367,7 +346,6 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
     })) {
       SNode staticMethodCall = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, "jetbrains.mps.baseLanguage.structure.StaticMethodCall"));
       // some concepts, such as :eq: extract static methods 
-
       if (ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getContainingRoot(myWhatToEvaluate), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration"), false, new SAbstractConcept[]{})).contains(SNodeOperations.cast(SLinkOperations.getTarget(localStaticMethodCall, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration")))) {
         continue;
       }
@@ -378,7 +356,6 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
       SNodeOperations.replaceWithAnother(localStaticMethodCall, staticMethodCall);
     }
     // convert local instance method calls to qualified instance method calls 
-
     for (SNode localInstanceMethodCall : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9404L, "jetbrains.mps.baseLanguage.structure.LocalMethodCall"), false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration"));
@@ -395,7 +372,6 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
       SNodeOperations.replaceWithAnother(localInstanceMethodCall, _quotation_createNode_s72qk1_a0a4a3a02(instanceMethodCall, TransformationUtil.createThisNodeReplacement()));
     }
     // convert local static field references to static field references 
-
     for (SNode localStaticFieldReference : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference"), false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference")), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration"));
@@ -412,7 +388,6 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
       SNodeOperations.replaceWithAnother(localStaticFieldReference, staticFieldReference);
     }
     // convert local instance field references to fied reference operations 
-
     for (SNode localInstanceFieldReference : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference"), false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference")), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration"));
@@ -560,7 +535,6 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
       }
     })) {
       // TODO we really process all(?) static field references now, so might wanna move this code out of while cycle 
-
       TransformationUtil.replaceStaticFieldReference(staticFieldReference, SPropertyOperations.getString(SLinkOperations.getTarget(staticFieldReference, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), SLinkOperations.getTarget(SLinkOperations.getTarget(staticFieldReference, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type")), TransformationUtil.createClassFqNameNode(myModel, SNodeOperations.cast(SLinkOperations.getTarget(staticFieldReference, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, 0x10a75869f9bL, "classifier")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"))));
       finished = false;
     }
@@ -616,7 +590,6 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
       }
     })) {
       // TODO what if we are inside of an inner class? 
-
       TransformationUtil.replaceStaticMethodCall(staticMethodCall, TransformationUtil.createClassFqNameNode(myModel, SLinkOperations.getTarget(staticMethodCall, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept"))), SPropertyOperations.getString(SLinkOperations.getTarget(staticMethodCall, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), TransformationUtil.getJniSignature(SLinkOperations.getTarget(staticMethodCall, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"))), SLinkOperations.getTarget(SLinkOperations.getTarget(staticMethodCall, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType")), SLinkOperations.getChildren(staticMethodCall, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument")));
       finished = false;
     }
@@ -646,7 +619,6 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
       }
     })) {
       // TODO should we check for parameter types, like we did for static method calls? 
-
       if (TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(methodCall, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression"), false, false), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand"))), _quotation_createNode_s72qk1_b0a1a1a43())) {
 
         SNode originalMethodDeclaration = SLinkOperations.getTarget(methodCall, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"));
@@ -741,7 +713,6 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
       public void visit(SNode node) {
         if (firstTime.value) {
           // we are at the first node in the order 
-
           SLinkOperations.setTarget(normalizedDotExpression.value, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand"), SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression")));
           firstTime.value = false;
         } else {

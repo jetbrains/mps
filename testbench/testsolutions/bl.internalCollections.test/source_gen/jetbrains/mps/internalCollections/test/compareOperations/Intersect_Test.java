@@ -44,7 +44,6 @@ public class Intersect_Test extends Util_Test {
       Assert.fail();
     } catch (NoSuchElementException e) {
       // expected exception 
-
     }
   }
 }

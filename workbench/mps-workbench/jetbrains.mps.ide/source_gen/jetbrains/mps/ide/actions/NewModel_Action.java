@@ -122,7 +122,6 @@ public class NewModel_Action extends BaseAction {
 
         if (result != null) {
           // Model creation will lead to indexes update, dialog and navigation should be perfomed after that 
-
           ApplicationManager.getApplication().invokeLater(new Runnable() {
             public void run() {
               MPSPropertiesConfigurable configurable = new ModelPropertiesConfigurable(result, ((MPSProject) MapSequence.fromMap(_params).get("project")));
@@ -173,7 +172,6 @@ public class NewModel_Action extends BaseAction {
     String namespace = ((SModule) MapSequence.fromMap(_params).get("module")).getModuleName();
     if (((SModule) MapSequence.fromMap(_params).get("module")) instanceof Generator) {
       // in fact, we could check any module name for # char. Though, at the moment one may encounter # in generator modules only. 
-
       int sharpIndex = namespace.indexOf('#');
       if (sharpIndex != -1) {
         namespace = namespace.substring(0, sharpIndex);

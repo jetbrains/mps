@@ -111,7 +111,6 @@ public final class ConceptMethodDeclaration__BehaviorDescriptor extends BaseBHDe
   }
   /*package*/ static SNode getNearestOverriddenMethod_id4DuBHEkPTzU(@NotNull SNode __thisNode__) {
     // fixme 
-
     return SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d4348057fL, "overriddenMethod"));
   }
   /*package*/ static boolean supportsCheckedExceptions_id7orZYjMoFMH(@NotNull SNode __thisNode__) {

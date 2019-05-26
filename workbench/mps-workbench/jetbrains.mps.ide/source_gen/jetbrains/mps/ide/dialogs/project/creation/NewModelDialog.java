@@ -119,7 +119,6 @@ public class NewModelDialog extends DialogWrapper {
         model.addElement(root);
       } else if (myModule instanceof Language && root instanceof FileBasedModelRoot) {
         // Can fix only FileBased model root (default for language) 
-
         model.addElement(root);
       }
     }

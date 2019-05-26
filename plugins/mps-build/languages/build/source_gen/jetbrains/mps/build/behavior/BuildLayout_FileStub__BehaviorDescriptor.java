@@ -59,21 +59,16 @@ public final class BuildLayout_FileStub__BehaviorDescriptor extends BaseBHDescri
   }
   /*package*/ static boolean exports_id5FtnUVJQES1(@NotNull SNode __thisNode__, Object artifactId) {
     //  turn off, see BuildSourceArchiveRelativePath#unpack 
-
     final boolean BuildSourceArchiveRelativePath_support = Boolean.FALSE.booleanValue();
     if (artifactId instanceof SNode && BuildSourceArchiveRelativePath_support) {
       //  copied from BuildLayout_File, with narrow cast, BuildRelativePath instead of BuildSourcePath as I need to match a tail part only (BRP.getPathTail), without any macro or project 
-
       //  I would recieve from BuildSourcePath.getRelativePath() otherwise 
-
       SNode node = (SNode) artifactId;
       if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, "jetbrains.mps.build.structure.BuildRelativePath"))) {
         StringBuilder layoutRelativeName = new StringBuilder(BuildSource_SingleFile__BehaviorDescriptor.getApproximateName_id4RsV8qJDnFm.invoke(__thisNode__));
         // HACK. match against re-constructed layout-relative path, respecting named containers (usually, folders) only. 
-
         SNode namedParent = SNodeOperations.as(SNodeOperations.getParent(__thisNode__), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac7f8cL, "jetbrains.mps.build.structure.BuildLayout_NamedContainer"));
         // XXX alternatively, _AbstractContainer + BL_Node.isFolder()? Jars are NamedContainers, too. 
-
         while (namedParent != null) {
           layoutRelativeName.insert(0, '/');
           layoutRelativeName.insert(0, BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(namedParent, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac7f8cL, 0x3cca41cd0fe75496L, "containerName")), null));

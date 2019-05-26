@@ -139,11 +139,8 @@ public class Java_Configuration extends BaseMpsRunConfiguration implements IPers
           SNode source = nodePointer.resolve(repository);
           if (!(SNodeOperations.isInstanceOf(source, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier")))) {
             // XXX Seems that this code assumes source to be descendant of a classifier, exactly as described in MPS-25114 
-
             //     If, however, source points to a non-classifier root (e.g. samples.shapes.Canvas which implements IMainClass) 
-
             //     the code below looks odd (StaticMethodDeclaration ancestor?!). 
-
             SNode mainMethodCandidate = SNodeOperations.getNodeAncestor(source, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration"), true, false);
             if (mainMethodCandidate != null && (boolean) StaticMethodDeclaration__BehaviorDescriptor.isMainMethod_idhEwJkuu.invoke(mainMethodCandidate)) {
               SNode classifier = SNodeOperations.getNodeAncestor(mainMethodCandidate, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), false, false);

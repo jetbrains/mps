@@ -85,7 +85,6 @@ public class check_FieldDeclarationCanBeLocalVariable_NonTypesystemRule extends 
       Program program = new MPSProgramBuilder().buildProgram(SLinkOperations.getTarget(method, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body")));
 
       // find a read instruction for variableDeclaration not preceeded by a write instruction 
-
       boolean uninitializedRead = ListSequence.fromList(ListSequence.fromListWithValues(new ArrayList<ReadInstruction>(), program.getUninitializedReads())).any(new IWhereFilter<ReadInstruction>() {
         public boolean accept(ReadInstruction it) {
           return Objects.equals(it.getVariable(), variableDeclaration);

@@ -84,7 +84,6 @@ public class MigrationTask {
     if (checkAndIncStage(0)) {
       if (resave) {
         // add label to local history if requested 
-
         runResave(myMonitor.subTask((migrate ? 10 : 100)));
         if (!(migrate)) {
           return;
@@ -114,7 +113,6 @@ public class MigrationTask {
 
     if (checkAndIncStage(4)) {
       // null - no error, true - must stop, false - can ignore 
-
       boolean errors = checkModels(myMonitor.subTask(20));
       if (errors) {
         throw new PreCheckError(mySession.getProject(), errors);
@@ -122,7 +120,6 @@ public class MigrationTask {
     }
 
     // from here, we don't ignore errors 
-
     addGlobalLabel(mySession.getProject(), STARTED);
     if (!((runProjectMigrations(myMonitor.subTask(5))))) {
       throw new MigrationExceptionError();
@@ -133,7 +130,6 @@ public class MigrationTask {
     addGlobalLabel(mySession.getProject(), FINISHED);
 
     // todo move from here to migration annotations 
-
     if (findNotMigrated(myMonitor.subTask(15))) {
       throw new PostCheckError(mySession.getProject(), myWereRun, false, mySession.getChecker());
     }
@@ -171,9 +167,7 @@ public class MigrationTask {
     final Wrappers._boolean noException = new Wrappers._boolean(true);
 
     // todo pass ModalityState to constructor/via session? 
-
     // in tests, we have EmptyProgressIndicator and use NON_MODAL 
-
     JComponent modalityComponent = check_ajmasp_a0e0bb(as_ajmasp_a0a0e0cb(myMonitor.getIndicator(), InlineProgressIndicator.class));
     ModalityState modalityState = (modalityComponent == null ? ModalityState.NON_MODAL : ModalityState.stateForComponent(modalityComponent));
     ApplicationManager.getApplication().invokeAndWait(new Runnable() {

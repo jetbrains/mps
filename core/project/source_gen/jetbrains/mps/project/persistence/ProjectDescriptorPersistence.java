@@ -51,7 +51,6 @@ public class ProjectDescriptorPersistence {
       }
     }, true)) {
       // TODO: move from MacrosFactory to PathMacroUtil 
-
       XmlUtil.tagWithAttributes(projectModules, MODULE_PATH_TAG, PATH_TAG, shrinkPath(path), FOLDER_TAG, path.getVirtualFolder());
     }
     project.addContent(projectModules);
@@ -61,7 +60,6 @@ public class ProjectDescriptorPersistence {
   private String shrinkPath(@NotNull ModulePath p) {
     String shrinkedPath = myMacroHelper.shrinkPath(p.getPath());
     // fixme such filepath convertation is not supported by Path (IDEA stores windows paths as C:/smth !) 
-
     return shrinkedPath.replace(Path.WIN_SEPARATOR, Path.UNIX_SEPARATOR);
   }
 
@@ -75,7 +73,6 @@ public class ProjectDescriptorPersistence {
     ProjectDescriptor result_jnk9az_a3a71 = descriptor;
     List<Element> moduleList = ListSequence.fromList(new ArrayList<Element>());
     // AP : these are deprecated, aren't they? 
-
     ListSequence.fromList(moduleList).addSequence(Sequence.fromIterable(XmlUtil.children(XmlUtil.first(root, "projectSolutions"), "solutionPath")));
     ListSequence.fromList(moduleList).addSequence(Sequence.fromIterable(XmlUtil.children(XmlUtil.first(root, "projectLanguages"), "languagePath")));
     ListSequence.fromList(moduleList).addSequence(Sequence.fromIterable(XmlUtil.children(XmlUtil.first(root, "projectDevkits"), "devkitPath")));

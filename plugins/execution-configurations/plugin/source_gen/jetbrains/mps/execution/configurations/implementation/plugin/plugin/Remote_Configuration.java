@@ -57,9 +57,7 @@ public class Remote_Configuration extends BaseMpsRunConfiguration implements IPe
     Remote_Configuration clone = createCloneTemplate();
     try {
       // beware, PersistenceConfiguration.this of newly created MyState instance would be the same as 
-
       // the value of myState, and != clone as regular Java passer-by would expect. 
-
       clone.myState = (Remote_Configuration.MyState) myState.clone();
     } catch (CloneNotSupportedException ex) {
       if (LOG.isEnabledFor(Level.ERROR)) {

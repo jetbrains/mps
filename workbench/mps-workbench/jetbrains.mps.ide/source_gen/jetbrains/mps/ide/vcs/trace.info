@@ -41,27 +41,27 @@
       <node id="5015601397718560606" at="16,0,17,0" concept="2" trace="myProject" />
       <node id="5015601397718560615" at="17,56,18,19" concept="9" />
       <node id="5015601397718560617" at="18,19,19,24" concept="1" />
-      <node id="7491858234833090012" at="25,0,26,83" concept="4" />
-      <node id="7491858234833104765" at="28,45,29,28" concept="5" />
-      <node id="7491858234833090010" at="23,50,25,0" concept="6" />
-      <node id="7491858234833104637" at="28,0,31,0" concept="3" trace="select#(Lcom/intellij/openapi/vcs/VcsRoot;)Lcom/intellij/openapi/vfs/VirtualFile;" />
+      <node id="7491858234833090010" at="23,50,24,26" concept="6" />
+      <node id="7491858234833090012" at="24,26,25,83" concept="4" />
+      <node id="7491858234833104765" at="27,45,28,28" concept="5" />
+      <node id="7491858234833104637" at="27,0,30,0" concept="3" trace="select#(Lcom/intellij/openapi/vcs/VcsRoot;)Lcom/intellij/openapi/vfs/VirtualFile;" />
       <node id="5015601397718560609" at="17,0,21,0" concept="0" trace="ExtendedDefaultVcsRootPolicy#(Lcom/intellij/openapi/project/Project;)V" />
-      <node id="7491858234833103006" at="26,83,31,24" concept="5" />
-      <node id="7491858234833066889" at="21,0,33,0" concept="3" trace="getDirtyRoots#()Ljava/util/Collection;" />
-      <scope id="7491858234833104638" at="28,45,29,28" />
+      <node id="7491858234833103006" at="25,83,30,24" concept="5" />
+      <node id="7491858234833066889" at="21,0,32,0" concept="3" trace="getDirtyRoots#()Ljava/util/Collection;" />
+      <scope id="7491858234833104638" at="27,45,28,28" />
       <scope id="5015601397718560614" at="17,56,19,24" />
-      <scope id="7491858234833104637" at="28,0,31,0">
+      <scope id="7491858234833104637" at="27,0,30,0">
         <var name="it" id="7491858234833104637" />
       </scope>
       <scope id="5015601397718560609" at="17,0,21,0">
         <var name="project" id="5015601397718560612" />
       </scope>
-      <scope id="7491858234833066895" at="23,50,31,24">
+      <scope id="7491858234833066895" at="23,50,30,24">
         <var name="manager" id="7491858234833090013" />
       </scope>
-      <scope id="7491858234833066889" at="21,0,33,0" />
-      <unit id="7491858234833104637" at="27,90,31,5" name="jetbrains.mps.ide.vcs.ExtendedDefaultVcsRootPolicy$1" />
-      <unit id="5015601397718560603" at="15,0,34,0" name="jetbrains.mps.ide.vcs.ExtendedDefaultVcsRootPolicy" />
+      <scope id="7491858234833066889" at="21,0,32,0" />
+      <unit id="7491858234833104637" at="26,90,30,5" name="jetbrains.mps.ide.vcs.ExtendedDefaultVcsRootPolicy$1" />
+      <unit id="5015601397718560603" at="15,0,33,0" name="jetbrains.mps.ide.vcs.ExtendedDefaultVcsRootPolicy" />
     </file>
   </root>
 </debug-info>

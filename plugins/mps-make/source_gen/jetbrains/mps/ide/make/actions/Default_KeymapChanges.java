@@ -10,14 +10,11 @@ import javax.swing.KeyStroke;
 public class Default_KeymapChanges extends BaseKeymapChanges {
   public Default_KeymapChanges() {
     // simple 
-
     addSimpleShortcut("jetbrains.mps.ide.make.actions.MakeSelectedModules_Action", getShortcut("ctrl F9"));
     addSimpleShortcut("jetbrains.mps.ide.make.actions.RebuildSelectedModels_Action", getShortcut("ctrl shift F9"));
     addSimpleShortcut("jetbrains.mps.ide.make.actions.TextPreviewModel_Action", getShortcut("ctrl alt shift F9"));
     // simple parameterized 
-
     // complex 
-
   }
   public String getScheme() {
     return "$default";

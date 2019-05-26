@@ -352,7 +352,6 @@ public class KeyMapKeystroke_TransformationMenu extends TransformationMenuBase {
         SNode keyStrokeConverted = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11919c665d4L, "jetbrains.mps.lang.plugin.structure.KeyMapKeystroke"));
         SPropertyOperations.set(keyStrokeConverted, MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11919c665d4L, 0x11919c665d5L, "modifiers"), "alt+shift");
         // Use simple replacement here instead of VK_F([1-9]) -> VK_$1 
-
         SPropertyOperations.set(keyStrokeConverted, MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11919c665d4L, 0x11919c665d6L, "keycode"), SPropertyOperations.getString(_context.getNode(), MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11919c665d4L, 0x11919c665d6L, "keycode")).replaceAll("VK_F", "VK_"));
         SPropertyOperations.set(keyStrokeConverted, MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11919c665d4L, 0x5e2b603c8f03ab4dL, "change"), "replace all");
         ListSequence.fromList(SLinkOperations.getChildren(shortcut, MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb076L, 0x15afe07f2a9bb07eL, "keystroke"))).addElement(keyStrokeConverted);

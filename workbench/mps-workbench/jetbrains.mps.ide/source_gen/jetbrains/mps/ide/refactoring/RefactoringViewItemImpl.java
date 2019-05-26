@@ -121,7 +121,6 @@ public abstract class RefactoringViewItemImpl implements RefactoringViewItem.Ref
   }
   public void requestFocus() {
     // TODO: why does it invokes later? 
-
     ApplicationManager.getApplication().invokeLater(new Runnable() {
       @Override
       public void run() {

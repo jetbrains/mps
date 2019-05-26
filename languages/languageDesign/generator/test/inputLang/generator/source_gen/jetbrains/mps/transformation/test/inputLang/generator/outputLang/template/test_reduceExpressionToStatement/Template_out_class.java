@@ -43,7 +43,6 @@ public class Template_out_class extends TemplateDeclarationBase implements Templ
         }
         tnode1.addChild(myAggregationLinks[0], tnode2);
         // TODO validate child 
-
       }
       {
         final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
@@ -57,7 +56,6 @@ public class Template_out_class extends TemplateDeclarationBase implements Templ
             }
             tnode3.addChild(myAggregationLinks[1], tnode4);
             // TODO validate child 
-
           }
           {
             final SNode tnode5 = environment.createOutputNode(myConcepts[1]);
@@ -66,7 +64,6 @@ public class Template_out_class extends TemplateDeclarationBase implements Templ
             }
             tnode3.addChild(myAggregationLinks[0], tnode5);
             // TODO validate child 
-
           }
           {
             Collection<SNode> tlist6 = null;
@@ -76,13 +73,11 @@ public class Template_out_class extends TemplateDeclarationBase implements Templ
               tnode3.addChild(myAggregationLinks[2], child7);
             }
             // TODO validate child 
-
           }
         } finally {
         }
         tnode1.addChild(myAggregationLinks[3], tnode3);
         // TODO validate child 
-
       }
     } finally {
     }

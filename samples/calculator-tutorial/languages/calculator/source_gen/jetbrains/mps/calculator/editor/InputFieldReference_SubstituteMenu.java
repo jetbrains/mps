@@ -48,7 +48,6 @@ public class InputFieldReference_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_i4w2se_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0x26b3d6d5b99a4ed6L, 0x83bed2ea6f3627a1L, 0x12107017046L, "jetbrains.mps.calculator.structure.InputFieldReference"), MetaAdapterFactory.getReferenceLink(0x26b3d6d5b99a4ed6L, 0x83bed2ea6f3627a1L, 0x12107017046L, 0x1210701c618L, "field"));
     }
     @NotNull

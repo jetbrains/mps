@@ -16,7 +16,6 @@ public class CommitNumberSubcolumn extends AnnotationAspectSubcolumn {
     super(annotationColumn, null);
     myRightAligned = true;
     // Utilize the fact FileAnnotation.getRevision gives ordered list, from newest to oldest; index in reversed order (rev #1 means oldest) 
-
     List<VcsFileRevision> revisions = annotationColumn.getRevisions();
     for (int i = ListSequence.fromList(revisions).count(), j = 0; i > 0; i--, j++) {
       MapSequence.fromMap(myRevisionsToNumbers).put(ListSequence.fromList(revisions).getElement(j), i);

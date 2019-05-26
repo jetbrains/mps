@@ -15,7 +15,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1076505808687:jetbrains.mps.baseLanguage.structure.WhileStatement" />
   <root>
     <file name="IntentionsDescriptor.java">
-      <unit at="18,0,98,0" name="jetbrains.mps.lang.test.intentions.IntentionsDescriptor" />
+      <unit at="18,0,94,0" name="jetbrains.mps.lang.test.intentions.IntentionsDescriptor" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590386(jetbrains.mps.lang.test.intentions)/1210673906861">
@@ -89,8 +89,8 @@
       <unit id="1210673906861" at="25,0,73,0" name="jetbrains.mps.lang.test.intentions.AddTestAnnotation_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="1210673906861" at="38,47,39,60" concept="2" />
-      <node id="1210673906861" at="82,53,83,46" concept="2" />
+      <node id="1210673906861" at="37,47,38,60" concept="2" />
+      <node id="1210673906861" at="78,53,79,46" concept="2" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590386(jetbrains.mps.lang.test.intentions)/1215604006108">
@@ -164,8 +164,8 @@
       <unit id="1215604006108" at="24,0,72,0" name="jetbrains.mps.lang.test.intentions.AddOperationsAnnotation_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="1215604006108" at="39,60,40,66" concept="2" />
-      <node id="1215604006108" at="83,46,84,52" concept="2" />
+      <node id="1215604006108" at="38,60,39,66" concept="2" />
+      <node id="1215604006108" at="79,46,80,52" concept="2" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590386(jetbrains.mps.lang.test.intentions)/1225963656881">
@@ -284,8 +284,8 @@
       <unit id="1225963656881" at="32,0,112,0" name="jetbrains.mps.lang.test.intentions.AddCellAnnotation_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="1225963656881" at="40,66,41,60" concept="2" />
-      <node id="1225963656881" at="84,52,85,46" concept="2" />
+      <node id="1225963656881" at="39,66,40,60" concept="2" />
+      <node id="1225963656881" at="80,52,81,46" concept="2" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590386(jetbrains.mps.lang.test.intentions)/1230224371548">
@@ -358,8 +358,8 @@
       <unit id="1230224371548" at="22,0,69,0" name="jetbrains.mps.lang.test.intentions.AddMockAnnotation_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="1230224371548" at="41,60,42,60" concept="2" />
-      <node id="1230224371548" at="85,46,86,46" concept="2" />
+      <node id="1230224371548" at="40,60,41,60" concept="2" />
+      <node id="1230224371548" at="81,46,82,46" concept="2" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590386(jetbrains.mps.lang.test.intentions)/3100207102208970627">
@@ -452,8 +452,8 @@
       <unit id="3100207102208970627" at="28,0,88,0" name="jetbrains.mps.lang.test.intentions.AddScopeTestAnnotation_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="3100207102208970627" at="43,68,44,65" concept="2" />
-      <node id="3100207102208970627" at="87,54,88,51" concept="2" />
+      <node id="3100207102208970627" at="42,68,43,65" concept="2" />
+      <node id="3100207102208970627" at="83,54,84,51" concept="2" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590386(jetbrains.mps.lang.test.intentions)/3100207102209325314">
@@ -535,8 +535,8 @@
       <unit id="3100207102209325314" at="24,0,75,0" name="jetbrains.mps.lang.test.intentions.AddScopeExpectedNodes_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="3100207102209325314" at="69,47,70,64" concept="2" />
-      <node id="3100207102209325314" at="88,51,89,50" concept="2" />
+      <node id="3100207102209325314" at="65,47,66,64" concept="2" />
+      <node id="3100207102209325314" at="84,51,85,50" concept="2" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590386(jetbrains.mps.lang.test.intentions)/5872607264962809265">
@@ -613,8 +613,8 @@
       <unit id="5872607264962809265" at="28,0,78,0" name="jetbrains.mps.lang.test.intentions.AddNodeHasWarningAnnotation_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="5872607264962809265" at="44,65,45,70" concept="2" />
-      <node id="5872607264962809265" at="89,50,90,56" concept="2" />
+      <node id="5872607264962809265" at="43,65,44,70" concept="2" />
+      <node id="5872607264962809265" at="85,50,86,56" concept="2" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590386(jetbrains.mps.lang.test.intentions)/6017652711700380617">
@@ -691,14 +691,14 @@
       <unit id="6017652711700380617" at="28,0,78,0" name="jetbrains.mps.lang.test.intentions.AddNodeHasErrorAnnotation_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="6017652711700380617" at="42,60,43,68" concept="2" />
-      <node id="6017652711700380617" at="86,46,87,54" concept="2" />
+      <node id="6017652711700380617" at="41,60,42,68" concept="2" />
+      <node id="6017652711700380617" at="82,46,83,54" concept="2" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590386(jetbrains.mps.lang.test.intentions)/7796829026680792390">
     <file name="IntentionsDescriptor.java">
-      <node id="7796829026680792390" at="45,70,46,64" concept="2" />
-      <node id="7796829026680792390" at="91,49,92,50" concept="2" />
+      <node id="7796829026680792390" at="44,70,45,64" concept="2" />
+      <node id="7796829026680792390" at="87,49,88,50" concept="2" />
     </file>
     <file name="SpecifyRuleReferences_Intention.java">
       <node id="7796829026680792390" at="20,0,21,0" concept="3" trace="myCachedExecutable" />
@@ -927,8 +927,8 @@
       <unit id="8951526261572128727" at="38,0,139,0" name="jetbrains.mps.lang.test.intentions.GenerateOutput_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="8951526261572128727" at="61,47,62,57" concept="2" />
-      <node id="8951526261572128727" at="92,50,93,44" concept="2" />
+      <node id="8951526261572128727" at="58,47,59,57" concept="2" />
+      <node id="8951526261572128727" at="88,50,89,44" concept="2" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590386(jetbrains.mps.lang.test.intentions)/9057440207251474622">
@@ -999,8 +999,8 @@
       <unit id="9057440207251474622" at="23,0,70,0" name="jetbrains.mps.lang.test.intentions.AddMessageAnnotation_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="9057440207251474622" at="53,47,54,63" concept="2" />
-      <node id="9057440207251474622" at="90,56,91,49" concept="2" />
+      <node id="9057440207251474622" at="51,47,52,63" concept="2" />
+      <node id="9057440207251474622" at="86,56,87,49" concept="2" />
     </file>
   </root>
 </debug-info>

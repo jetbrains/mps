@@ -46,7 +46,6 @@ public class UpdateConceptReferencesParticipant extends UpdateReferencesParticip
       super.doUpdateReference(selectedOptions, repository, containingNode, role, newTarget, resolveInfo);
     } else {
       // do nothing 
-
     }
   }
   @Override

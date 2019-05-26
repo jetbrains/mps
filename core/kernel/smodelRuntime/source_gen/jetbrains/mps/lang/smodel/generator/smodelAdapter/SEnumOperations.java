@@ -77,16 +77,12 @@ public class SEnumOperations {
     }
 
     // structure aspect of this enumeration is not regenerated 
-
     // TODO remove this code after 2018.3 
-
 
     SLanguage language = MetaAdapterFactory.getLanguage(uuidHigh, uuidLow, languageNameHint);
     // XXX I know getSourceModule is wrong, but I hope this code won't last long and we replace it with generated EnumDescriptor in structure aspect. 
-
     SModule sourceModule = language.getSourceModule();
     // and this one is an ugly way to find out structure aspect model 
-
     SModel structureAspect = SModuleOperations.getAspect(sourceModule, "structure");
     if (structureAspect != null) {
       SNode enumDecl = structureAspect.getNode(new SNodeId.Regular(enumId));
@@ -103,7 +99,6 @@ public class SEnumOperations {
   }
   public static SEnumerationLiteral getMember(long uuidHigh, long uuidLow, String languageNameHint, long enumId, String enumNameHint, long memberId, String memberValueHint) {
     // FIXME we don't support identity of enum literals yet, resort to liternal name 
-
     SEnumeration e = getEnum(uuidHigh, uuidLow, languageNameHint, enumId, enumNameHint);
     return e.getLiteral(memberValueHint);
   }
@@ -122,9 +117,7 @@ public class SEnumOperations {
     SEnumerationLiteral literal = e.getLiteral(value);
 
     // RS Why there is special case `value == null`? It looks strange that `memberFromValue(null)` returns a default member but 
-
     // RS `memberFromValue("not-a-value")` returns null, and `memberForName(null)` also returns null. See `EnumerationDatatypes` nullsafety tests 
-
     return (literal == null && value == null ? e.getDefault() : literal);
   }
   public static String getMemberName(SEnumerationLiteral enumMember) {

@@ -51,7 +51,6 @@ public class TypeVariableDeclaration_addAuxBoundAfterBound_KeyMap extends KeyMap
       }
 
       // Selected node should be within TypeVariableDeclaration 
-
       SNode selectedNode = ListSequence.fromList(selectedNodes).first();
       SNode typeVarDeclaration = SNodeOperations.getNodeAncestor(selectedNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, "jetbrains.mps.baseLanguage.structure.TypeVariableDeclaration"), true, false);
       if (typeVarDeclaration == null) {
@@ -59,7 +58,6 @@ public class TypeVariableDeclaration_addAuxBoundAfterBound_KeyMap extends KeyMap
       }
 
       // Next cell should belong to some other SNode, not our typeVarDeclaration 
-
       EditorCell selectedCell = editorContext.getSelectedCell();
       EditorCell nextLeaf = CellTraversalUtil.getNextLeaf(selectedCell);
       if (nextLeaf == null) {

@@ -346,7 +346,6 @@ public class QueriesGenerated extends QueryProviderBase {
       expression = _quotation_createNode_x583g4_a0e0b0ed(expression, ref, name);
     }
     // todo resolve a problem the other way 
-
     return expression;
   }
   public static SNode mapSrcMacro_map_12_0(final MapSrcMacroContext _context) {
@@ -402,7 +401,6 @@ public class QueriesGenerated extends QueryProviderBase {
     for (SNode commandRef : ListSequence.fromList(SModelOperations.nodes(_context.getModel(), MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2bdcL, "jetbrains.mps.execution.commands.structure.CommandParameterReference")))) {
       SPropertyOperations.set(commandRef, MetaAdapterFactory.getProperty(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2bdcL, 0xbe3a0d5ba1a2bddL, "resolveInfo"), SPropertyOperations.getString(SLinkOperations.getTarget(commandRef, MetaAdapterFactory.getReferenceLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2bdcL, 0xbe3a0d5ba1a2bdeL, "parameter")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
       // this is a hack to generate command parameter references into field references incide of process builder expression 
-
     }
   }
   public static void mappingScript_CodeBlock_10(final MappingScriptContext _context) {

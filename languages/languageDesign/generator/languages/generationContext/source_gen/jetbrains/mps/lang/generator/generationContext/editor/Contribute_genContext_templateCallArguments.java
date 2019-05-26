@@ -47,9 +47,7 @@ public class Contribute_genContext_templateCallArguments extends SubstituteMenuB
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
       // Allow use of genContext expression inside template calls without need to wrap them with ConceptFunction instance 
-
       // but don't show it twice inside a CF, where CFPs get contributed by dedicated menu contributor 
-
       return (SNodeOperations.getNodeAncestor(_context.getParentNode(), MetaAdapterFactory.getInterfaceConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, "jetbrains.mps.lang.generator.structure.ITemplateCall"), true, false) != null) && (SNodeOperations.getNodeAncestor(_context.getParentNode(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction"), true, false) == null);
     }
     @NotNull

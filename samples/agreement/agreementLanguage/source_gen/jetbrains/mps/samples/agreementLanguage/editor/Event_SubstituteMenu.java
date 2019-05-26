@@ -48,7 +48,6 @@ public class Event_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_lx4afj_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dbe8f094L, "jetbrains.mps.samples.agreementLanguage.structure.Event"), MetaAdapterFactory.getReferenceLink(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dbe8f094L, 0x102dc111024L, "type"));
     }
     @NotNull

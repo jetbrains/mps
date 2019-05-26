@@ -82,7 +82,6 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
               tnode2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child4);
             }
             // TODO validate child 
-
           }
           {
             Collection<SNode> tlist5 = null;
@@ -92,7 +91,6 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
               tnode2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child6);
             }
             // TODO validate child 
-
           }
         } finally {
         }
@@ -111,7 +109,6 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
               tnode7.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child9);
             }
             // TODO validate child 
-
           }
           {
             Collection<SNode> tlist10 = null;
@@ -121,7 +118,6 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
               tnode7.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child11);
             }
             // TODO validate child 
-
           }
         } finally {
         }
@@ -140,7 +136,6 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
               tnode12.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child14);
             }
             // TODO validate child 
-
           }
           {
             Collection<SNode> tlist15 = null;
@@ -150,7 +145,6 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
               tnode12.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child16);
             }
             // TODO validate child 
-
           }
         } finally {
         }
@@ -169,7 +163,6 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
               tnode17.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child19);
             }
             // TODO validate child 
-
           }
           {
             Collection<SNode> tlist20 = null;
@@ -179,7 +172,6 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
               tnode17.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child21);
             }
             // TODO validate child 
-
           }
         } finally {
         }
@@ -198,7 +190,6 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
               tnode22.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child24);
             }
             // TODO validate child 
-
           }
           {
             Collection<SNode> tlist25 = null;
@@ -208,7 +199,6 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
               tnode22.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child26);
             }
             // TODO validate child 
-
           }
         } finally {
         }
@@ -237,7 +227,6 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
           }
           tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), tnode2);
           // TODO validate child 
-
         }
         {
           Collection<SNode> tlist3 = null;
@@ -247,7 +236,6 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child4);
           }
           // TODO validate child 
-
         }
       } finally {
       }
@@ -274,7 +262,6 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
           }
           tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), tnode2);
           // TODO validate child 
-
         }
         {
           final SNode tnode3 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf93d565d10L, "StringLiteral"));
@@ -284,7 +271,6 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
           }
           tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), tnode3);
           // TODO validate child 
-
         }
         {
           final SNode tnode4 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf93d565d10L, "StringLiteral"));
@@ -294,7 +280,6 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
           }
           tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), tnode4);
           // TODO validate child 
-
         }
       } finally {
       }
@@ -353,7 +338,6 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child3);
           }
           // TODO validate child 
-
         }
       } finally {
       }

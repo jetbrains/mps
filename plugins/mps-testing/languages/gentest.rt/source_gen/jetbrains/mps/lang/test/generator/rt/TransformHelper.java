@@ -42,7 +42,6 @@ public final class TransformHelper {
 
   public TransformHelper transform() {
     // XXX Guess, I shall re-use TMP if TransformHelper is reused. 
-
     myTransientsProvider = new TransientModelsProvider(myRepository, null);
     myTransientsProvider.getRepository().getModelAccess().runWriteAction(new Runnable() {
       public void run() {

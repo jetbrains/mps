@@ -49,7 +49,6 @@ public class ModulesClusterizer {
     Iterable<IResource> rest = Sequence.fromIterable(((Iterable<IResource>) res)).subtract(ListSequence.fromList(mres));
     ModulesCluster clst = new ModulesCluster(myLanguageRegistry);
     // FIXME use ProgressMonitor as graph ordering may take some time 
-
     Iterable<? extends Iterable<SModule>> moduleBuildOrder = clst.buildOrder(mods);
     Iterable<? extends Iterable<MResource>> mresBuildOrder = Sequence.fromIterable(moduleBuildOrder).select(new ISelector<Iterable<SModule>, ISequence<MResource>>() {
       public ISequence<MResource> select(final Iterable<SModule> cl) {
@@ -82,9 +81,7 @@ public class ModulesClusterizer {
     Queue<SLanguage> nsq = QueueSequence.fromQueue(new LinkedList<SLanguage>());
     QueueSequence.fromQueue(nsq).addSequence(Sequence.fromIterable(usedLanguages).distinct());
     // We need to care about used languages of employed generators as we need to respect 
-
     // all facets of all languages that may appear during generation of a model/module in the make script 
-
     while (QueueSequence.fromQueue(nsq).isNotEmpty()) {
       SLanguage ns = QueueSequence.fromQueue(nsq).removeFirstElement();
       if (SetSequence.fromSet(namespaces).contains(ns)) {

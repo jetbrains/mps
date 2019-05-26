@@ -65,9 +65,7 @@ public final class B__BehaviorDescriptor extends BaseBHDescriptor {
     A__BehaviorDescriptor.staticVirtualMethod_id46FlynTbAGG.invoke(__thisNode__.getConcept(), "from A", ((int) 0));
     // 
     // FIXME it's possible to declare static virtual abstract method, but impossible to call it 
-
     // staticAbstractVirtualMethod() 
-
   }
 
   /*package*/ B__BehaviorDescriptor() {

@@ -46,7 +46,6 @@ public class Template_map_outputNode extends TemplateDeclarationBase implements 
         }
         tnode2.addChild(myAggregationLinks[0], tnode3);
         // TODO validate child 
-
       }
     } finally {
     }

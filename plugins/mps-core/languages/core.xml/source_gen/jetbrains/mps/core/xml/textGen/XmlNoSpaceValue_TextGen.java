@@ -11,6 +11,5 @@ public class XmlNoSpaceValue_TextGen extends TextGenDescriptorBase {
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     // empty 
-
   }
 }

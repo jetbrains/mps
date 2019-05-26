@@ -43,7 +43,6 @@ public class UseDevkit extends MigrationScriptBase {
       }
     })) {
       // Transition code, in case aspect uses custom extensions, do not turn GP on for it yet. 
-
       return;
     }
     mi.deleteLanguageId(MetaAdapterFactory.getLanguage(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, "jetbrains.mps.lang.typesystem"));

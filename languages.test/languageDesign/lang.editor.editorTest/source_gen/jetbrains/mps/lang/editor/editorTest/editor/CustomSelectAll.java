@@ -43,13 +43,10 @@ public class CustomSelectAll {
     CellAction originalBackspace = editorCell.getAction(CellActionType.BACKSPACE);
 
     // set actions that were actually defined 
-
     setDefinedCellActions(editorCell, node, context);
 
     // If we set a DELETE action but no BACKSPACE action, 
-
     // use the DELETE action for BACKSPACE as well. 
-
     CellAction deleteAction = editorCell.getAction(CellActionType.DELETE);
     CellAction backspaceAction = editorCell.getAction(CellActionType.BACKSPACE);
     if (deleteAction != originalDelete && backspaceAction == originalBackspace) {
@@ -61,9 +58,7 @@ public class CustomSelectAll {
 
     // set cell actions from all imported action maps 
 
-
     // set cell actions defined directly in this action map 
-
     editorCell.setAction(CellActionType.SELECT_ALL, createAction_SELECT_ALL(node));
 
   }
@@ -72,9 +67,7 @@ public class CustomSelectAll {
 
     // set cell action(s) of the given type from imported action maps 
 
-
     // set cell action of the given type defined directly in this action map 
-
     if (Objects.equals(actionType, CellActionType.SELECT_ALL)) {
       editorCell.setAction(actionType, createAction_SELECT_ALL(node));
     }

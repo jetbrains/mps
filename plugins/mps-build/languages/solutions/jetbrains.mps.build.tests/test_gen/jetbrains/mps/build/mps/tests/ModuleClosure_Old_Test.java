@@ -22,11 +22,8 @@ public class ModuleClosure_Old_Test extends EnvironmentAwareTestCase {
   public void test_mps21769() throws Exception {
     SModel m = null;
     // first build script, with L1 and L2 (which extends L1), and corresponding generators 
-
     // (generators shall extend each other as well, but this sort of depdendency is not considered by ModuleChecker anyway - it looks into 
-
     // GeneratorDescriptor.getDependencies() only) 
-
     SNode project1 = SModelOperations.createNewNode(m, null, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject"));
     SNode l1 = SModelOperations.createNewNode(m, null, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, "jetbrains.mps.build.mps.structure.BuildMps_Language"));
     SNode g1 = SModelOperations.createNewNode(m, null, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4c6db07d2e56a8b4L, "jetbrains.mps.build.mps.structure.BuildMps_Generator"));
@@ -38,7 +35,6 @@ public class ModuleClosure_Old_Test extends EnvironmentAwareTestCase {
     ListSequence.fromList(SLinkOperations.getChildren(project1, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x668c6cfbafacf6f2L, "parts"))).addElement(l1);
     ListSequence.fromList(SLinkOperations.getChildren(project1, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x668c6cfbafacf6f2L, "parts"))).addElement(l2);
     // second build script, with a model that uses L2 
-
     SNode project2 = SModelOperations.createNewNode(m, null, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject"));
     SNode s2 = SModelOperations.createNewNode(m, null, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, "jetbrains.mps.build.mps.structure.BuildMps_Solution"));
     ListSequence.fromList(SLinkOperations.getChildren(project2, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x668c6cfbafacf6f2L, "parts"))).addElement(s2);

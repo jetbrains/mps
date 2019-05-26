@@ -48,7 +48,6 @@ public class InPlaceCheckpointRefSpec_SubstituteMenu extends SubstituteMenuBase 
 
     public SMP_ReferenceScope_nb3zbu_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x340cd07aed7cb32cL, "jetbrains.mps.lang.generator.plan.structure.InPlaceCheckpointRefSpec"), MetaAdapterFactory.getReferenceLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x340cd07aed7cb32cL, 0x340cd07aed7cb32fL, "checkpoint"));
     }
     @NotNull

@@ -94,7 +94,6 @@ public class GenerateImages_Facet extends IFacet.Stub {
                   public void run() {
                     progressMonitor.step("Collecting models to print");
                     // TODO: check status & outputPath... see TextGen facet 
-
                     Iterable<GResource> resourcesWithOutput = Sequence.fromIterable(input).where(new IWhereFilter<GResource>() {
                       public boolean accept(GResource it) {
                         return SModelOperations.getOutputLocation(it.model()) != null && it.status().getOutputModel() != null;
@@ -114,7 +113,6 @@ public class GenerateImages_Facet extends IFacet.Stub {
                     for (Tuples._2<SModel, SModel> modelsPair : Sequence.fromIterable(allModels)) {
                       collectingNodesMonitor.step(jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.getModelName(modelsPair._0()));
                       // XXX what if there are multiple GenerationTargetFacet (now it's only JavaModuleFacet), shall we generate into each? Or identify them somehow? 
-
                       IFile modelOutputLocation = SModelOperations.getOutputLocation(modelsPair._0());
                       IFile outputDir = Target_make.vars(pa.global()).pathToFile().invoke(modelOutputLocation.getPath());
                       if (!(MapSequence.fromMap(folder2PrintRunnables).containsKey(outputDir))) {

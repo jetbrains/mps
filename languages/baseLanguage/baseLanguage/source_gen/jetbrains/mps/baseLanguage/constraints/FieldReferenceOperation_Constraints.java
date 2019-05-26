@@ -50,7 +50,6 @@ public class FieldReferenceOperation_Constraints extends BaseConstraintsDescript
           @Override
           public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
             // fields declared in hierarhy of class specified by left expression. only applicable to expressions of classifier-type 
-
             final SNode instance = SLinkOperations.getTarget(SNodeOperations.cast((((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode()))), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand"));
             SNode instanceType = TypeContextManager.getInstance().runResolveAction(new Computable<SNode>() {
               public SNode compute() {

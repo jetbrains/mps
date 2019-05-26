@@ -332,13 +332,13 @@
       <unit id="6573717177323430736" at="31,0,174,0" name="jetbrains.mps.baseLanguage.pluginSolution.plugin.CreateMethodDeclaration_Action" />
     </file>
     <file name="PluginSolution_ApplicationPlugin.java">
-      <node id="6573717177323430736" at="18,0,19,52" concept="4" />
+      <node id="6573717177323430736" at="17,30,18,52" concept="4" />
     </file>
   </root>
   <root nodeRef="r:dfc27cab-2d08-4c79-ac99-e95209e18392(jetbrains.mps.baseLanguage.pluginSolution.plugin)/6573717177323581090">
     <file name="PluginSolution_ApplicationPlugin.java">
-      <node id="6573717177323581090" at="23,49,24,52" concept="4" />
-      <node id="6573717177323583612" at="26,37,27,137" concept="4" />
+      <node id="6573717177323581090" at="21,49,22,52" concept="4" />
+      <node id="6573717177323583612" at="24,37,25,137" concept="4" />
     </file>
     <file name="ShowAsIntentions_BL_ActionGroup.java">
       <node id="6573717177323581090" at="8,0,9,0" concept="12" trace="ID" />
@@ -354,7 +354,7 @@
   </root>
   <root nodeRef="r:dfc27cab-2d08-4c79-ac99-e95209e18392(jetbrains.mps.baseLanguage.pluginSolution.plugin)/6573807532044005480">
     <file name="PluginSolution_ApplicationPlugin.java">
-      <node id="6573807532044005480" at="19,52,20,40" concept="4" />
+      <node id="6573807532044005480" at="18,52,19,40" concept="4" />
     </file>
     <file name="ShowNullDFA_Action.java">
       <node id="6573807532044005480" at="24,0,25,0" concept="12" trace="ICON" />
@@ -429,29 +429,29 @@
       <unit id="6573807532044005513" at="7,0,16,0" name="jetbrains.mps.baseLanguage.pluginSolution.plugin.AnalyzersActions_ActionGroup" />
     </file>
     <file name="PluginSolution_ApplicationPlugin.java">
-      <node id="6573807532044005513" at="22,0,23,49" concept="4" />
-      <node id="6573807532044005514" at="27,137,28,93" concept="4" />
+      <node id="6573807532044005513" at="20,14,21,49" concept="4" />
+      <node id="6573807532044005514" at="25,137,26,93" concept="4" />
     </file>
   </root>
   <root nodeRef="r:dfc27cab-2d08-4c79-ac99-e95209e18392(jetbrains.mps.baseLanguage.pluginSolution.plugin)/7162597690965088109">
     <file name="PluginSolution_ApplicationPlugin.java">
       <node id="7162597690965088109" at="10,0,11,0" concept="5" trace="myId" />
       <node id="7162597690965088109" at="13,27,14,16" concept="10" />
+      <node id="7162597690965088109" at="16,30,17,30" concept="11" />
+      <node id="7162597690965088109" at="19,40,20,14" concept="11" />
       <node id="7162597690965088109" at="11,0,13,0" concept="3" trace="PluginSolution_ApplicationPlugin#()V" />
-      <node id="7162597690965088109" at="16,30,18,0" concept="11" />
-      <node id="7162597690965088109" at="20,40,22,0" concept="11" />
       <node id="7162597690965088109" at="13,0,16,0" concept="8" trace="getId#()Lcom/intellij/openapi/extensions/PluginId;" />
-      <node id="7162597690965088109" at="26,0,30,0" concept="8" trace="adjustRegularGroups#()V" />
-      <node id="7162597690965088109" at="16,0,26,0" concept="8" trace="createGroups#()V" />
+      <node id="7162597690965088109" at="24,0,28,0" concept="8" trace="adjustRegularGroups#()V" />
+      <node id="7162597690965088109" at="16,0,24,0" concept="8" trace="createGroups#()V" />
       <scope id="7162597690965088109" at="11,45,11,45" />
       <scope id="7162597690965088109" at="13,27,14,16" />
       <scope id="7162597690965088109" at="11,0,13,0" />
-      <scope id="7162597690965088109" at="26,37,28,93" />
+      <scope id="7162597690965088109" at="24,37,26,93" />
       <scope id="7162597690965088109" at="13,0,16,0" />
-      <scope id="7162597690965088109" at="26,0,30,0" />
-      <scope id="7162597690965088109" at="16,30,24,52" />
-      <scope id="7162597690965088109" at="16,0,26,0" />
-      <unit id="7162597690965088109" at="9,0,31,0" name="jetbrains.mps.baseLanguage.pluginSolution.plugin.PluginSolution_ApplicationPlugin" />
+      <scope id="7162597690965088109" at="24,0,28,0" />
+      <scope id="7162597690965088109" at="16,30,22,52" />
+      <scope id="7162597690965088109" at="16,0,24,0" />
+      <unit id="7162597690965088109" at="9,0,29,0" name="jetbrains.mps.baseLanguage.pluginSolution.plugin.PluginSolution_ApplicationPlugin" />
     </file>
   </root>
   <root nodeRef="r:dfc27cab-2d08-4c79-ac99-e95209e18392(jetbrains.mps.baseLanguage.pluginSolution.plugin)/9088427053754135058">

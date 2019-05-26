@@ -34,7 +34,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 0:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[1];
           intentions[0] = new DeleteTemplateMacro_Intention();
         }
@@ -42,7 +41,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 1:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[12];
           intentions[0] = new AddNodeMacro_Intention();
           intentions[1] = new AddPropertyMacro_Intention();
@@ -61,7 +59,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 2:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[1];
           intentions[0] = new ConvertClassConceptToExtract_Intention();
         }
@@ -69,7 +66,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 3:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[1];
           intentions[0] = new NewTemplateInCreateRootRule_Intention();
         }
@@ -77,7 +73,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 4:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[1];
           intentions[0] = new ReplaceIncludeWithCall_Intention();
         }
@@ -85,7 +80,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 5:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[1];
           intentions[0] = new NewTemplateInInlineSwitchCase_Intention();
         }
@@ -93,7 +87,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 6:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[1];
           intentions[0] = new NewTemplateInInlineSwitchDefault_Intention();
         }
@@ -101,7 +94,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 7:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[2];
           intentions[0] = new ConvertInlineTemplateToTemplateFragment_Intention();
           intentions[1] = new AddContext_Intention();
@@ -110,7 +102,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 8:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[1];
           intentions[0] = new ConvertToReferenceCall_Intention();
         }
@@ -118,7 +109,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 9:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[1];
           intentions[0] = new ConvertLoopWithCopySrc_Intention();
         }
@@ -126,7 +116,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 10:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[1];
           intentions[0] = new CreateScript_Intention();
         }
@@ -134,7 +123,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 11:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[2];
           intentions[0] = new NewTemplateInReductionRule_Intention();
           intentions[1] = new NewTemplateInSwitchCase_Intention();
@@ -143,7 +131,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 12:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[1];
           intentions[0] = new NewTemplateInRootMappingRule_Intention();
         }
@@ -151,7 +138,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 13:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[1];
           intentions[0] = new UnwrapQueryExpression_Intention();
         }
@@ -159,7 +145,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 14:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[1];
           intentions[0] = new ConvertTemplateDeclRefToInlineTemplate_Intention();
         }
@@ -167,7 +152,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 15:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[1];
           intentions[0] = new NewTemplateInSwitchDefault_Intention();
         }
@@ -175,7 +159,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 16:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[1];
           intentions[0] = new NewTemplateInWeaveEach_Intention();
         }
@@ -183,7 +166,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 17:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[1];
           intentions[0] = new NewTemplateInWeavingRule_Intention();
         }

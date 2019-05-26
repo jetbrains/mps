@@ -82,7 +82,6 @@ public class NodeCopier {
     for (SNodeId id : SetSequence.fromSet(MapSequence.fromMap(myIdReplacementCache).keySet())) {
       if (MapSequence.fromMap(myIdReplacementCache).get(id) != null && myModel.getNode(id) == null) {
         // node id is free now! 
-
         setId(myModel.getNode(MapSequence.fromMap(myIdReplacementCache).get(id)), id);
 
         MapSequence.fromMap(myIdReplacementCache).put(id, null);

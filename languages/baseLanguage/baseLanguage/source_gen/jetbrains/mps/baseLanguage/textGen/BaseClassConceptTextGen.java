@@ -27,11 +27,9 @@ public abstract class BaseClassConceptTextGen {
   public static void members(SNode classifier, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     // just for first element 
-
     boolean isWrappedElementBefore = true;
     SNode lastMember = Sequence.fromIterable(Classifier__BehaviorDescriptor.members_id1hodSy8nQmC.invoke(classifier)).last();
     // FIXME can't use members child as there are still uses of deprecated containment roles (e.g. Classifier.method) 
-
     for (SNode member : Classifier__BehaviorDescriptor.members_id1hodSy8nQmC.invoke(classifier)) {
       boolean needsLineBefore = (boolean) ClassifierMember__BehaviorDescriptor.needsEmptyLineBefore_idzB21h1tQit.invoke(member);
       boolean needsLineAfter = (boolean) ClassifierMember__BehaviorDescriptor.needsEmptyLineAfter_idzB21h1tQNm.invoke(member);

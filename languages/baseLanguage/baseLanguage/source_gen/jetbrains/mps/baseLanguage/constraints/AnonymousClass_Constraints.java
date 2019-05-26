@@ -92,7 +92,6 @@ public class AnonymousClass_Constraints extends BaseConstraintsDescriptor {
           @Override
           public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
             // false is essential here: not include parent hierarchy into the scope (will lead to infinite rescursion) 
-
             if ((SNodeOperations.getNodeAncestor(_context.getContextNode(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x650f9fedfcb5b664L, "jetbrains.mps.baseLanguage.structure.NestedNewExpression"), true, false) == null)) {
               return ClassifierScopes.getVisibleClassifiersScope(_context.getContextNode(), false);
             }

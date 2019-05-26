@@ -61,9 +61,7 @@ public class ClassifierUpdater {
   private final ASMClass myParsedClass;
   public ClassifierUpdater(ASMClass asmClass, boolean skipPrivate, ReferenceFactory handler) {
     // we treat skipPrivate here as 'hide implementation details', thus only public and protected 
-
     // members are visible if skipPrivate == true (i.e. those visible to outer code) 
-
     mySkipPrivate = skipPrivate;
     myHandler = handler;
     myParsedClass = asmClass;
@@ -129,7 +127,6 @@ public class ClassifierUpdater {
   private void updateVisibility() {
     if (SLinkOperations.getTarget(myClassifier, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility")) == null) {
       // for inner classes, visibility and other access fields is initialized at creation time 
-
       SLinkOperations.setTarget(myClassifier, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility"), (myParsedClass.isPublic() ? createPublicVisibility_ol94f8_a0a1a0a21() : null));
     }
   }
@@ -149,7 +146,6 @@ public class ClassifierUpdater {
             ListSequence.fromList(SLinkOperations.getChildren(tvd, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, 0x11ae913a476L, "auxBounds"))).addElement(SNodeOperations.cast(typeByASMType, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType")));
           } else {
             // TODO: avoid this quick fix for SchemeProcessor class in scheme.kt from IDEA platform 
-
             if (LOG.isEnabledFor(Level.WARN)) {
               LOG.warn("ClassifierType was expected, but received: " + typeByASMType + " when parsing the " + myClassifier);
             }
@@ -179,7 +175,6 @@ public class ClassifierUpdater {
             ListSequence.fromList(SLinkOperations.getChildren(tvd, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, 0x11ae913a476L, "auxBounds"))).addElement(SNodeOperations.cast(typeByASMType, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType")));
           } else {
             // TODO: avoid this quick fix for SchemeProcessor class in scheme.kt from IDEA platform 
-
             if (LOG.isEnabledFor(Level.WARN)) {
               LOG.warn("ClassifierType was expected, but received: " + typeByASMType);
             }

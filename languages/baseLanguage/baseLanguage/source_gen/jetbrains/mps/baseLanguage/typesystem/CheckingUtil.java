@@ -116,24 +116,19 @@ public class CheckingUtil {
 
 
       // Beware, an Integer constant is not a guarantee that the expr is of type IntegerType. 
-
       // This must be checked in the caller rules. 
-
       int value = ((Integer) compileTimeConstantValue).intValue();
 
       return (SNodeOperations.isInstanceOf(expectedType, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d5b617L, "jetbrains.mps.baseLanguage.structure.ByteType")) && value >= Byte.MIN_VALUE && value <= Byte.MAX_VALUE) || SNodeOperations.isInstanceOf(expectedType, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940cc380dL, "jetbrains.mps.baseLanguage.structure.ShortType")) && value >= Short.MIN_VALUE && value <= Short.MAX_VALUE || SNodeOperations.isInstanceOf(expectedType, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d4f826L, "jetbrains.mps.baseLanguage.structure.CharType")) && value >= Character.MIN_VALUE && value <= Character.MAX_VALUE;
     } catch (IllegalStateException e) {
       // the process of retrieving compile-time constants is flaky ATM 
-
       // e.g. StaticFieldReference pointing to a stub model may fail 
-
       if (LOG.isTraceEnabled()) {
         LOG.trace("Using a default compile time constant for " + expr + ".");
       }
       return false;
     } catch (UnsupportedOperationException e) {
       // Some expressions may not implement the compile-time constant retrieval method 
-
       if (LOG.isEnabledFor(Level.WARN)) {
         LOG.warn("Unable to obtain a compile time constant for " + expr + ". Resorting to default.");
       }

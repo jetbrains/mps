@@ -82,7 +82,6 @@ public class expression_Contribution extends TransformationMenuBase {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
       // use weak coerce because we want ':' to be applicable to SNode (class), linkAccess etc. 
-
       SNode nodeType = TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(_context.getNode()), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, "jetbrains.mps.lang.smodel.structure.SNodeType"));
       return nodeType != null;
     }

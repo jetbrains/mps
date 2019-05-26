@@ -51,14 +51,11 @@ public final class BuildSourcePath__BehaviorDescriptor extends BaseBHDescriptor 
   @Deprecated
   /*package*/ static String getLastSegment_id1bWeed$oUb5(@NotNull SNode __thisNode__, MacroHelper helper) {
     // There're a lot of uses with null argument, and the only implementation present ignores MacroHelper althogether 
-
     return ((String) BuildSourcePath__BehaviorDescriptor.getLastSegment_id5dwDdJ8yckN.invoke(__thisNode__));
   }
   /*package*/ static String getLastSegment_id5dwDdJ8yckN(@NotNull SNode __thisNode__) {
     // FIXME pay attention to uses of the method. Its uses may expect certain layout. E.g. its uses with 'module descriptor of' (BuildMpsLayout_ModuleJars) suggest 
-
     //       module descriptors always reside under module root (otherwise, LAST segment makes no sense) 
-
     return null;
   }
   /*package*/ static SNode getParent_id7wpYgMyTXsR(@NotNull SNode __thisNode__) {

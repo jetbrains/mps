@@ -13,7 +13,6 @@ public class DelegatingScope extends Scope {
   }
   protected DelegatingScope() {
     // setup wrapped field later, before using the scope! 
-
   }
   @Override
   public SNode resolve(SNode contextNode, String refText) {

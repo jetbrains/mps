@@ -89,7 +89,6 @@ public abstract class UpdateReferencesParticipantBase<T> extends RefactoringPart
     @Override
     protected boolean shouldUpdateReference(final List<RefactoringParticipant.Option> selectedOptions, final SRepository repository, final SNode containingNode, final SReferenceLink role, final SNode movingNode, final RefactoringSession refactoringSession) {
       // check other references participants 
-
       if (Sequence.fromIterable(new ExtensionPoint<MoveNodeRefactoringParticipant<?, ?>>("jetbrains.mps.refactoring.participant.MoveNodeParticipantEP").getObjects()).ofType(UpdateReferencesParticipantBase.UpdateReferencesParticipant.class).where(new IWhereFilter<UpdateReferencesParticipantBase.UpdateReferencesParticipant>() {
         public boolean accept(UpdateReferencesParticipantBase.UpdateReferencesParticipant it) {
           return isOverridingParticipant(it);
@@ -191,7 +190,6 @@ public abstract class UpdateReferencesParticipantBase<T> extends RefactoringPart
       };
       if (!(ListSequence.fromList(movedNodes).contains(null))) {
         // all source nodes are present, so we can run find usages (we are probably inside in-project refactoring) 
-
         progressMonitor.start("References in current project", 1);
         usages = (Set<SReference>) FindUsagesFacade.getInstance().findUsages(searchScope, SetSequence.fromSetWithValues(new HashSet<SNode>(), movedNodes), progressMonitor.subTask(1));
       } else {
@@ -256,7 +254,6 @@ public abstract class UpdateReferencesParticipantBase<T> extends RefactoringPart
       return false;
     }
     // do not update reference from old node to other old node 
-
     if (MapSequence.fromMap(copyMap.getCopyMap()).containsKey(containingNode) && movingNode != null && movingNode.getModel() != null) {
       return false;
     }

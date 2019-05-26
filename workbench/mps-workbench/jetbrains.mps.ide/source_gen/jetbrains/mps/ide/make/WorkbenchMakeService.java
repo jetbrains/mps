@@ -253,7 +253,6 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
 
     } catch (RuntimeException rex) {
       // abort session 
-
       if (currentProcess.get() == null) {
         abortSession();
       }
@@ -333,7 +332,6 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
     @Override
     public void setup(IPropertiesPool ppool, Iterable<ITarget> targets, Iterable<? extends IResource> input) {
       // todo: why should we specify project only for Generate facet? 
-
       ppool.setPredecessor(predParamPool);
       predParamPool = ppool;
       new GenerateFacetInitializer().populate(ppool);

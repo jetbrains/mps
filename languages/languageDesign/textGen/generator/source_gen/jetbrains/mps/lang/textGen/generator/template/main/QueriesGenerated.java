@@ -63,7 +63,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean createRootRule_Condition_0_0(final CreateRootRuleContext _context) {
     // see MPS-24613 
-
     return SModuleOperations.isAspect(_context.getOriginalInputModel(), "textGen");
   }
   public static boolean rule_Condition_0_0(final BaseMappingRuleContext _context) {
@@ -77,12 +76,10 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean rule_Condition_22_0(final BaseMappingRuleContext _context) {
     // see MPS-24613 
-
     return SModuleOperations.isAspect(((SModel) _context.getVariable("model")), "textGen");
   }
   public static boolean rule_Condition_23_0(final BaseMappingRuleContext _context) {
     // CASE for a class declaration with default or no-arg constructor 
-
     Iterable<SNode> constructors = ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x377692d961ac9073L, 0x377692d961ac9076L, "classifier")));
     if (Sequence.fromIterable(constructors).isEmpty()) {
       return true;
@@ -95,7 +92,6 @@ public class QueriesGenerated extends QueryProviderBase {
       return false;
     }
     // coerce below is my desperate attempt to write a check if parameter type is SNode. If you know better way, go ahead and change this 
-
     if ((Sequence.fromIterable(constructors).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return ListSequence.fromList(SLinkOperations.getChildren(it, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"))).count() == 1 && SLinkOperations.hasPointer(TypecheckingFacade.getFromContext().coerceType(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(it, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"))).first(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType")), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), new SNodePointer("8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)", "~SNode"));
@@ -151,22 +147,18 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object propertyMacro_GetValue_25_0(final PropertyMacroContext _context) {
     // FIXME this is a hack to construct name of class from structure aspect, once x-model generation is here, internal type would get replaced with reference macro 
-
     return NameUtil.conceptFQNameFromNamespaceAndShortName(SPropertyOperations.getString(SModelOperations.getModuleStub(_context.getOriginalInputModel()), MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x5869770da61dfe23L, "namespace")), _context.getTemplateValue());
   }
   public static Object propertyMacro_GetValue_25_1(final PropertyMacroContext _context) {
     // FIXME this is a hack to construct name of class from structure aspect, once x-model generation is here, internal type would get replaced with reference macro 
-
     return NameUtil.conceptFQNameFromNamespaceAndShortName(SPropertyOperations.getString(SModelOperations.getModuleStub(_context.getOriginalInputModel()), MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x5869770da61dfe23L, "namespace")), _context.getTemplateValue());
   }
   public static Object propertyMacro_GetValue_25_2(final PropertyMacroContext _context) {
     // FIXME this is a hack to construct name of the constant from LCS, once x-model generation is here, would get replaced with reference macro 
-
     return SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f3c776369L, 0x11f3c7a3d4dL, "conceptDeclaration")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
   }
   public static Object propertyMacro_GetValue_25_3(final PropertyMacroContext _context) {
     // FIXME this is a hack to construct name of class from structure aspect, once x-model generation is here, internal type would get replaced with reference macro 
-
     return NameUtil.conceptFQNameFromNamespaceAndShortName(SPropertyOperations.getString(SModelOperations.getModuleStub(_context.getOriginalInputModel()), MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x5869770da61dfe23L, "namespace")), _context.getTemplateValue());
   }
   public static Object propertyMacro_GetValue_25_4(final PropertyMacroContext _context) {
@@ -214,7 +206,6 @@ public class QueriesGenerated extends QueryProviderBase {
       return descriptorCons;
     }
     // fallback, for textgen aspect models that do not use devkit with GP 
-
     return SModelOperations.getModelName(((SModel) _context.getVariable("model"))) + ".TextGenAspectDescriptor";
   }
   public static Object referenceMacro_GetReferent_23_0(final ReferenceMacroContext _context) {

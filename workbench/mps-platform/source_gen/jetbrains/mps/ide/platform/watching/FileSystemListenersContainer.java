@@ -154,7 +154,6 @@ public class FileSystemListenersContainer {
 
     /*package*/ FileSystemListenersContainer.Node child(String part, boolean create) {
       // we keep children list sorted and use binary search 
-
       int index = childIndex(part);
       if (index >= 0) {
         return myChildren.get(index);

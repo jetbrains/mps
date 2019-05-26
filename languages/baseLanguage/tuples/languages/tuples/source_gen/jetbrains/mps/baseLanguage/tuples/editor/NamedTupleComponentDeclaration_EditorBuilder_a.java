@@ -215,7 +215,6 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.SemicolonS
 
     public List<String> getPostfixes(SNode node, IOperationContext operationContext, EditorContext editorContext) {
       //  copied from VariableDeclaration's editor 
-
       List<String> result;
       SNode nodeType = SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12095b3e54fL, 0x12095c0134fL, "type"));
       if (nodeType != null) {
@@ -224,9 +223,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.SemicolonS
         result = ListSequence.fromList(new ArrayList<String>());
       }
       // we need this because of smart input 
-
       // DO NOT REMOVE IT 
-
       if (SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) != null) {
         ListSequence.fromList(result).addElement(SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
       }

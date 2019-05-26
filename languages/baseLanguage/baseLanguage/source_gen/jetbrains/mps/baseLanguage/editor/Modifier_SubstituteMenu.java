@@ -87,9 +87,7 @@ public class Modifier_SubstituteMenu extends SubstituteMenuBase {
       }
       private boolean filterConcept(SubstituteMenuContext _context, SAbstractConcept concept) {
         // link is null when it is called from the transformation menu so constraints are not checked, 
-
         // and we check them again 
-
         List<SNode> modifiers = SLinkOperations.getChildren(SNodeOperations.cast(_context.getParentNode(), MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, "jetbrains.mps.baseLanguage.structure.IHasModifiers")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers"));
         return ListSequence.fromList(modifiers).all(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {

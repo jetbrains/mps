@@ -122,7 +122,6 @@ public final class SNodeUtil {
   @ToRemove(version = 2018.3)
   public static boolean isDefaultSubstitutable(SAbstractConcept concept) {
     // 1 use in mbeddr 
-
     return !(concept.isAbstract()) && !(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(concept), MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x19796fa16a19888bL, "jetbrains.mps.lang.core.structure.IDontSubstituteByDefault")));
   }
   public static int getMetaLevel(SNode node) {
@@ -263,16 +262,12 @@ public final class SNodeUtil {
   }
   private static String defaultCardinalityIfNotSet(String cardinality) {
     // couldn't use type for cardinality (enummember<Cardinality> is SNode) 
-
     // can't use link.sourceCardinality.is because I need sourceCardinality to be *bootstrap* property, which is possible at the moment 
-
     // only for PropertyIdRefExpression, and not for SPropertyAccess 
-
     return (cardinality == null ? "0..1" : cardinality);
   }
   public static boolean isAssociationLink(String metaclass) {
     // same as cardinality, would like to access LinkDeclaration.metaClass via bootstrap property 
-
     return metaclass == null || "reference".equals(metaclass);
   }
   public static String getConstrainedDataTypeDeclaration_constraint(SNode constrainedDataType) {

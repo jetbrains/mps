@@ -17,7 +17,6 @@ public class typeOf_Link_SetTargetOperation_InferenceRule extends AbstractInfere
   }
   public void applyRule(final SNode op, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     // checking 
-
     SNode parameter = SLinkOperations.getTarget(op, MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1099887af60L, 0x1099887af61L, "linkTarget"));
     if ((parameter != null)) {
       final SNode ExpectedType_typevar_1206101371703 = typeCheckingContext.createNewRuntimeTypesVariable();
@@ -30,7 +29,6 @@ public class typeOf_Link_SetTargetOperation_InferenceRule extends AbstractInfere
       }
     }
     // op returns node passed in parameter 
-
     {
       SNode _nodeToCheck_1029348928467 = op;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1225406438063", 0, null);

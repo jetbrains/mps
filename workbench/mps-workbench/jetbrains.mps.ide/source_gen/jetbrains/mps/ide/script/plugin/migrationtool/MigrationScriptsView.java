@@ -149,9 +149,7 @@ public abstract class MigrationScriptsView implements ResultsListener {
 
     final TaskInfo task = createTaskInfo();
     // There's no hidden knowledge in use of task.getProcessId(), just picked first string that might serve as group indicator, 
-
     // as groupId is irrelevant for us anyway 
-
     UndoRunnable ur = new UndoRunnable.Base(task.getTitle(), "migration", true) {
       public void run() {
         myController.process(new ProgressMonitorAdapter(myIndicator), aliveIncludedResults);

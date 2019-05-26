@@ -26,7 +26,6 @@ public final class ExecutorScript {
    */
   public void addTest(ITestNodeWrapper testWrap) {
     // XXX have to tell test class from test method here 
-
     PersistenceFacade pf = PersistenceFacade.getInstance();
 
     final String testModule = pf.asString(testWrap.getTestNodeModule());

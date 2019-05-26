@@ -48,7 +48,6 @@ public class RegexpDeclarationReferenceRegexp_SubstituteMenu extends SubstituteM
 
     public SMP_ReferenceScope_xnowcq_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117f58ea2aL, "jetbrains.mps.baseLanguage.regexp.structure.RegexpDeclarationReferenceRegexp"), MetaAdapterFactory.getReferenceLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117f58ea2aL, 0x1117f594636L, "regexp"));
     }
     @NotNull

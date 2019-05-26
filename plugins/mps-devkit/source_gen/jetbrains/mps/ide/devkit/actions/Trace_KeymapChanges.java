@@ -10,12 +10,9 @@ import javax.swing.KeyStroke;
 public class Trace_KeymapChanges extends BaseKeymapChanges {
   public Trace_KeymapChanges() {
     // simple 
-
     addSimpleShortcut("jetbrains.mps.ide.devkit.actions.ShowTypeSystemTrace_Action", getShortcut("ctrl shift X"));
     // simple parameterized 
-
     // complex 
-
   }
   public String getScheme() {
     return "$default";

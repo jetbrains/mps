@@ -75,7 +75,6 @@ public class ConceptDeclaration_TransformationMenu extends TransformationMenuBas
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
       // suppressing assistant for incomplete concept / BaseConcept 
-
       return SPropertyOperations.getString(_context.getNode(), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) != null && !(SNodeOperations.is(_context.getNode(), new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626")));
     }
 
@@ -165,13 +164,11 @@ public class ConceptDeclaration_TransformationMenu extends TransformationMenuBas
               }
             })) {
               // there is an editor defined 
-
               return false;
             }
 
             if (ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6cL, "propertyDeclaration"))).isEmpty() && ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6bL, "linkDeclaration"))).isEmpty()) {
               // concept has no own features -> looking for an editor defined for structurally-equal super-concept 
-
               if (ListSequence.fromList(new ConceptDeclarationAssistantUtil(_context.getNode()).getStructurallyEqualSuperConcepts()).any(new IWhereFilter<SNode>() {
                 public boolean accept(SNode it) {
                   return ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.findConceptAspectCollection_id1n18fON7w20.invoke(it, LanguageAspect.EDITOR)).any(new IWhereFilter<SNode>() {
@@ -187,7 +184,6 @@ public class ConceptDeclaration_TransformationMenu extends TransformationMenuBas
 
             if (SPropertyOperations.getBoolean(_context.getNode(), MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract"))) {
               // Suppressing assistant for abstract concepts if any sub-concept has an editor defined 
-
               if (ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(_context.getNode()), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"))).where(new IWhereFilter<SNode>() {
                 public boolean accept(SNode it) {
                   return Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.getAllSuperConcepts_id2A8AB0rAWpG.invoke(it, ((boolean) false))).contains(_context.getNode());
@@ -272,7 +268,6 @@ public class ConceptDeclaration_TransformationMenu extends TransformationMenuBas
               }
             })) {
               // there is an editor for this concept - not necessary to suggest new editor creation for super-concepts 
-
               return false;
             }
 
@@ -344,11 +339,8 @@ public class ConceptDeclaration_TransformationMenu extends TransformationMenuBas
         @Override
         public boolean canExecute(@NotNull String pattern) {
           // Suggesting to make the concept rootable if: 
-
           // 1. Concept has no super-concepts 
-
           // 2. There is no other ceoncepts in this model with the containment link to this concept 
-
           if (SPropertyOperations.getBoolean(_context.getNode(), MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xff49c1d648L, "rootable")) || SPropertyOperations.getBoolean(_context.getNode(), MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract"))) {
             return false;
           }
@@ -386,7 +378,6 @@ public class ConceptDeclaration_TransformationMenu extends TransformationMenuBas
           }
         });
         // skipping abstract nodes & smart references 
-
         return !(SPropertyOperations.getBoolean(_context.getNode(), MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract"))) && (Sequence.fromIterable(links).count() != 1 || !(SPropertyOperations.hasEnumValue(Sequence.fromIterable(links).first(), MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass"), "reference")));
       }
 
@@ -455,13 +446,9 @@ public class ConceptDeclaration_TransformationMenu extends TransformationMenuBas
 
             final Set<SNode> superContepts = SetSequence.fromSetWithValues(new HashSet<SNode>(), AbstractConceptDeclaration__BehaviorDescriptor.getAllSuperConcepts_id2A8AB0rAWpG.invoke(_context.getNode(), ((boolean) false)));
             // Suggesting to specify alias if: 
-
             // 1. one of super-concepts has alias specified 
-
             // 2. any concept has chid reference containing super-concept of this one 
-
             //    this means: the node will be available in the list of competion menu items 
-
             return SetSequence.fromSet(superContepts).any(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
                 return isNotEmptyString(SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x46ab0ad5826c74caL, "conceptAlias")));

@@ -77,7 +77,6 @@ public class TestTree extends MPSTree implements Disposable, TestStateListener {
   private void updateState1(@NotNull ITestNodeWrapper node, TestState testState, boolean propagateToParent) {
     updateState0(node, testState);
     // propagate to children by default 
-
     for (ITestNodeWrapper child : ListSequence.fromList(getChildren(node))) {
       updateState1(child, testState, false);
     }
@@ -129,7 +128,6 @@ public class TestTree extends MPSTree implements Disposable, TestStateListener {
         return;
       }
       // not yet set 
-
       TestState newState = terminalNonErrorState;
       for (ITestNodeWrapper child : ListSequence.fromList(getChildren(testNode))) {
         TestState childState = getTestNodeState(child);
@@ -138,7 +136,6 @@ public class TestTree extends MPSTree implements Disposable, TestStateListener {
           return;
         }
         // all children are finished and no errors 
-
         if (newState.ordinal() < childState.ordinal()) {
           newState = childState;
         }
@@ -351,6 +348,5 @@ public class TestTree extends MPSTree implements Disposable, TestStateListener {
   @Override
   public void onTextAvailable(@NotNull TextTestEvent event) {
     // nop 
-
   }
 }

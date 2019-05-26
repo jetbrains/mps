@@ -47,7 +47,6 @@ public class ClosureLiteralTarget {
       matcher.matchReturnType(SLinkOperations.getTarget(meth, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType")), FunctionType__BehaviorDescriptor.getNormalizedReturnType_idhEwIOp4.invoke(funType));
       if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(meth, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"))) {
         // TODO: refactor this code 
-
         SNode absRetCT = SNodeOperations.copyNode(SNodeOperations.cast(SLinkOperations.getTarget(meth, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType")));
         SNode ftResCT = FunctionTypeUtil.unmeet(FunctionType__BehaviorDescriptor.getNormalizedReturnType_idhEwIOp4.invoke(funType));
         String adapterName = JavaNameUtil.shortName(SPropertyOperations.getString(SLinkOperations.getTarget(absRetCT, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"))) + JavaNameUtil.shortName(SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.as(FunctionTypeUtil.unmeet(FunctionTypeUtil.unbound(ftResCT)), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType")), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"))) + "Adapter";
@@ -75,7 +74,6 @@ public class ClosureLiteralTarget {
 
     {
       // TODO: rewrite throws types matching algorithm 
-
       List<SNode> normFunThrowsTypes = FunctionType__BehaviorDescriptor.getNormalizedThrowsTypes_id2ZrgyPlTDZP.invoke(funType);
       Iterator<SNode> funThrIt = ListSequence.fromList(normFunThrowsTypes).sort(new ISelector<SNode, Comparable<?>>() {
         @Override
@@ -97,7 +95,6 @@ public class ClosureLiteralTarget {
     Values.TYPE_MAP.set(genContext, targetIfaceErase, matcher.getMap());
 
     // Copy reified target ClassifierType parameters to the erasure target ClassifierType 
-
     Map<SNode, SNode> map = matcher.getMap();
     if (map != null) {
       Iterator<SNode> reifiedTypeIt = ListSequence.fromList(reifiedTargetIfaceTypeParams).iterator();
@@ -107,11 +104,8 @@ public class ClosureLiteralTarget {
         SNode rtp = reifiedTypeIt.next();
         SNode substituteType = (MapSequence.fromMap(map).containsKey(typeVar) ? SNodeOperations.copyNode(MapSequence.fromMap(map).get(typeVar)) : SNodeOperations.copyNode(rtp));
         // TODO: we need a better way to handle wildcards in the substitutes 
-
         // Any (completely) reified type has precedence over calculated function type's parameter 
-
         // Example: String s = { => null; } must use String, not Object as the return value 
-
         if (!(hasTypeVariable(rtp)) && !(TypecheckingFacade.getFromContext().isSubtype(substituteType, rtp))) {
           substituteType = ClassifierTypeUtil.getTypeCoercedToClassifierType(SNodeOperations.copyNode(rtp));
         }

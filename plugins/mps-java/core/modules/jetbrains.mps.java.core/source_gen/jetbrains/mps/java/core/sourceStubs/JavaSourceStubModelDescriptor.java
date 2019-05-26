@@ -88,12 +88,10 @@ public class JavaSourceStubModelDescriptor extends RegularModelDescriptor implem
   public void changed(DataSource source, Iterable<String> changedItems) {
     // FIXME it works, but is not incremental and is ugly 
 
-
     assertCanChange();
 
     SModel oldModel = getCurrentModelInternal();
     // already attached but not createModel'd yet 
-
     if (oldModel == null) {
       return;
     }
@@ -105,7 +103,6 @@ public class JavaSourceStubModelDescriptor extends RegularModelDescriptor implem
   @Override
   public void changed(DataSource source) {
     // ignore 
-
   }
 
   public void processStreams(Iterable<String> names, SModelData into) {
@@ -117,7 +114,6 @@ public class JavaSourceStubModelDescriptor extends RegularModelDescriptor implem
 
         InputStream is = getSource().openInputStream(fileName);
         // we've come from event and file has been deleted 
-
         if (is == null) {
           SetSequence.fromSet(oldNodes).visitAll(new IVisitor<SNode>() {
             public void visit(SNode it) {
@@ -139,7 +135,6 @@ public class JavaSourceStubModelDescriptor extends RegularModelDescriptor implem
           for (SNode newNode : ListSequence.fromList(parseResult.getNodes())) {
             final SNodeId newNodeId = newNode.getNodeId();
             // oldNodes is usually very very small (number of root classes in java file) 
-
             SNode oldNode = SetSequence.fromSet(oldNodes).where(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
                 return it.getNodeId().equals(newNodeId);
@@ -182,7 +177,6 @@ public class JavaSourceStubModelDescriptor extends RegularModelDescriptor implem
       ModelLoadingState oldState = getLoadingState();
       if (oldState == ModelLoadingState.FULLY_LOADED) {
         // double check 
-
         return;
       }
       final SModel mi = getSModel();
@@ -245,7 +239,6 @@ public class JavaSourceStubModelDescriptor extends RegularModelDescriptor implem
       }
 
       // Attention: default platform charset used. 
-
       return new String(wholeBuffer);
 
     } else {

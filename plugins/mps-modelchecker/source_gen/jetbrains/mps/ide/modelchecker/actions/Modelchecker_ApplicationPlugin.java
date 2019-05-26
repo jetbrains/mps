@@ -24,7 +24,6 @@ public class Modelchecker_ApplicationPlugin extends BaseApplicationPlugin {
   }
   public void createGroups() {
     // actions w/o parameters 
-
     addAction(new CheckModel_Action());
     addAction(new CheckModule_Action());
     addAction(new CheckNamespace_Action());
@@ -34,7 +33,6 @@ public class Modelchecker_ApplicationPlugin extends BaseApplicationPlugin {
     addAction(new FindWrongAspectDependencies_Action());
     addAction(new ShowModelChecker_Action());
     // groups 
-
     addGroup(new CheckModel_ActionGroup());
     addGroup(new CheckModule_ActionGroup());
     addGroup(new CheckNamespace_ActionGroup());

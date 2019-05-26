@@ -63,13 +63,11 @@ public class Template_reduce_LeftTurn extends TemplateDeclarationBase implements
                         }
                         tnode5.addChild(myAggregationLinks[0], tnode6);
                         // TODO validate child 
-
                       }
                     } finally {
                     }
                     tnode4.addChild(myAggregationLinks[1], tnode5);
                     // TODO validate child 
-
                   }
                   {
                     final SNode tnode7 = environment.createOutputNode(myConcepts[3]);
@@ -83,19 +81,16 @@ public class Template_reduce_LeftTurn extends TemplateDeclarationBase implements
                         }
                         tnode7.addChild(myAggregationLinks[0], tnode8);
                         // TODO validate child 
-
                       }
                     } finally {
                     }
                     tnode4.addChild(myAggregationLinks[1], tnode7);
                     // TODO validate child 
-
                   }
                 } finally {
                 }
                 tnode3.addChild(myAggregationLinks[2], tnode4);
                 // TODO validate child 
-
               }
               {
                 final SNode tnode9 = environment.createOutputNode(myConcepts[1]);
@@ -104,19 +99,16 @@ public class Template_reduce_LeftTurn extends TemplateDeclarationBase implements
                 }
                 tnode3.addChild(myAggregationLinks[3], tnode9);
                 // TODO validate child 
-
               }
             } finally {
             }
             tnode2.addChild(myAggregationLinks[1], tnode3);
             // TODO validate child 
-
           }
         } finally {
         }
         tnode1.addChild(myAggregationLinks[4], tnode2);
         // TODO validate child 
-
       }
     } finally {
     }

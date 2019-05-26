@@ -64,7 +64,6 @@ public class ModelCheckerTool extends BaseTabbedProjectTool {
     SearchResults<IssueKindReportItem> searchResults = newViewer.getSearchResults();
     if (searchResults == null) {
       // Search was cancelled, do nothing 
-
       return;
     }
     if (searchResults.getSearchResults().isEmpty()) {
@@ -101,16 +100,13 @@ public class ModelCheckerTool extends BaseTabbedProjectTool {
       int dialogAnswer = Messages.showDialog(myProject, dialogMessage, "Model Checking", new String[]{"Review", "Commit", "Cancel"}, 0, null);
       if (dialogAnswer == 0) {
         // review errors and warnings, don't commit 
-
         this.showTabWithResults(viewer, "Pre-commit check", IdeIcons.MODEL_ICON);
         return CheckinHandler.ReturnResult.CLOSE_WINDOW;
       } else if (dialogAnswer == 1) {
         // ignore errors and warnings 
-
         return CheckinHandler.ReturnResult.COMMIT;
       } else if (dialogAnswer == 2 || dialogAnswer == -1) {
         // Cancel 
-
         return CheckinHandler.ReturnResult.CANCEL;
       }
     }
@@ -118,7 +114,6 @@ public class ModelCheckerTool extends BaseTabbedProjectTool {
   }
   private ModelCheckerViewer createViewerForTab() {
     // viewer that knows how to close tool's tab 
-
     return new ModelCheckerViewer(myProject) {
       @Override
       protected void close() {

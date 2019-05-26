@@ -48,7 +48,6 @@ public class EditorTabReference_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_psw2q2_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x22035699bdd7814bL, "jetbrains.mps.lang.plugin.structure.EditorTabReference"), MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x22035699bdd7814bL, 0x22035699bdd7814cL, "editorTab"));
     }
     @NotNull

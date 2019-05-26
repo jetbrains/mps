@@ -36,9 +36,7 @@ public class ContributionScopes_Test extends BaseTransformationTest {
     public void testMethodImpl() throws Exception {
       initEditorComponent("6869361321631669331", "6869361321631669870");
       // Can't put cell annotation directly on the red "missing concept" cell since it has no ID, so move to it from 
-
       // a neighboring cell. 
-
       invokeAction("jetbrains.mps.ide.editor.actions.MoveRight_Action");
       invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
       pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " ENTER"));

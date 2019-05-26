@@ -55,12 +55,10 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean createRootRule_Condition_0_0(final CreateRootRuleContext _context) {
     // see MPS-24613 
-
     return SModuleOperations.isAspect(_context.getOriginalInputModel(), "scripts");
   }
   public static boolean rule_Condition_11_0(final BaseMappingRuleContext _context) {
     // see MPS-24613 
-
     return SModuleOperations.isAspect(((SModel) _context.getVariable("model")), "scripts");
   }
   public static Object propertyMacro_GetValue_1_0(final PropertyMacroContext _context) {
@@ -289,7 +287,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object referenceMacro_GetReferent_11_0(final ReferenceMacroContext _context) {
     // TODO genContext.get output ScriptsDescriptorCons for model model; 
-
     return SModelOperations.getModelName(((SModel) _context.getVariable("model"))) + ".ScriptsDescriptor";
   }
   public static boolean ifMacro_Condition_2_0(final IfMacroContext _context) {

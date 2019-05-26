@@ -16,7 +16,6 @@ public class HierarchyTreeNode extends MPSTreeNode {
   public HierarchyTreeNode(@NotNull SNode declaration) {
     super(declaration);
     //  note, for node<> coming from typesystem (hung in the air), pointer likely to be null/null 
-
     myNodeRef = SNodeOperations.getPointer(declaration);
     String name = declaration.getName();
     setText((name == null ? "no name" : name));

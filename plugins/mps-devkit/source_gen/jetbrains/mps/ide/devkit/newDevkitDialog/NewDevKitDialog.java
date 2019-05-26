@@ -89,7 +89,6 @@ public class NewDevKitDialog extends DialogWrapper {
     check();
 
     // Testing stuff 
-
     myDevkitName.setName("Name");
     myDevkitLocation.setName("Path");
   }

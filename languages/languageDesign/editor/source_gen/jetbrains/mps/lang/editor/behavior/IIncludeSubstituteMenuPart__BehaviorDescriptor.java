@@ -46,13 +46,11 @@ public final class IIncludeSubstituteMenuPart__BehaviorDescriptor extends BaseBH
       if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"))) {
         noneMatched = false;
         // Default scope of AbstractConceptDeclaration 
-
         return new FilteringScope(Scopes.forConcepts(__thisNode__, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration")));
       }
       if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x33e0267905fba6fdL, "jetbrains.mps.lang.editor.structure.SubstituteMenu_Named"))) {
         noneMatched = false;
         // Default scope of SubstituteMenu_Named - more or less 
-
         return new ModelPlusImportedScope(SNodeOperations.getModel(__thisNode__), true, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x33e0267905fba6fdL, "jetbrains.mps.lang.editor.structure.SubstituteMenu_Named"));
       }
     }

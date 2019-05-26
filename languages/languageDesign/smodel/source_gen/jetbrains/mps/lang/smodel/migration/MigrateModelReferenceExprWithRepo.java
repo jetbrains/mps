@@ -59,7 +59,6 @@ public class MigrateModelReferenceExprWithRepo extends MigrationScriptBase {
           final SNode repoAccessExpr = SLinkOperations.getTarget(it, MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x7c3f2da20e92b62L, 0x13bfe1ec0ddbc5f8L, "repo"));
           SNode imco = SModelOperations.createNewNode(where, null, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation"));
           // FIXME node// here awaits when node.reference.set(nodePointer) operation is added to get replaced with the one. 
-
           SLinkOperations.setPointer(imco, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"), new SNodePointer("8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)", "~SModelReference.resolve(org.jetbrains.mps.openapi.module.SRepository)"));
           SNode dotExp = SNodeOperations.replaceWithNewChild(it, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression"));
           SLinkOperations.setTarget(dotExp, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand"), newRef);

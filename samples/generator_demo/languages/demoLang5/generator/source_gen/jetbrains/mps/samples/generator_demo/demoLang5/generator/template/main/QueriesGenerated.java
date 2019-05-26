@@ -128,15 +128,12 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static void mappingScript_CodeBlock_8(final MappingScriptContext _context) {
     // find all text nodes 
-
     List<SNode> texts = SModelOperations.nodes(_context.getModel(), MetaAdapterFactory.getConcept(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8c1L, "jetbrains.mps.sampleXML.structure.Text"));
     for (SNode text : ListSequence.fromList(texts)) {
       // replace with a 'label' element 
-
       SNode label = SNodeOperations.replaceWithNewChild(text, MetaAdapterFactory.getConcept(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8b9L, "jetbrains.mps.sampleXML.structure.Element"));
       SPropertyOperations.assign(label, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "label");
       // Add a text attribute to the 'label' element 
-
       SNode attribute = SLinkOperations.addNewChild(label, MetaAdapterFactory.getContainmentLink(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8b9L, 0x11d45f8a8baL, "attribute"), null);
       SPropertyOperations.assign(attribute, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "text");
       SPropertyOperations.assign(attribute, MetaAdapterFactory.getProperty(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8a1L, 0x11d45f8a8a3L, "value"), SPropertyOperations.getString(text, MetaAdapterFactory.getProperty(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8c1L, 0x11d45f8a8c2L, "text")));

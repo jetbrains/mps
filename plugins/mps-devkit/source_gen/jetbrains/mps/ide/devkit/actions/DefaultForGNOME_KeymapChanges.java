@@ -10,15 +10,11 @@ import javax.swing.KeyStroke;
 public class DefaultForGNOME_KeymapChanges extends BaseKeymapChanges {
   public DefaultForGNOME_KeymapChanges() {
     // simple 
-
     // simple with remove/replace 
-
     addSimpleShortcut("jetbrains.mps.ide.devkit.actions.FindLanguageConceptsUsages_Action", new BaseKeymapChanges.ShortcutWrapper(getShortcut("alt shift 8"), false, true));
     addSimpleShortcut("jetbrains.mps.ide.devkit.actions.FindModuleUsage_Action", new BaseKeymapChanges.ShortcutWrapper(getShortcut("alt shift 7"), false, true));
     // simple parameterized 
-
     // complex 
-
   }
   public String getScheme() {
     return "Default for GNOME";

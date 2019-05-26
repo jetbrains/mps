@@ -47,11 +47,8 @@ public class MethodCallsFixer extends BaseEditorChecker {
     final UpdateSessionEventVisitor visitor = new UpdateSessionEventVisitor(myCurrentSession);
 
     // Start a read action here since MethodDeclarationFixer used to process events in a read action. 
-
     // Ideally we should not need read action and we should avoid walking through the model since we receive events 
-
     // asynchronously and with a delay, so the model may be in an unexpected state. 
-
     myRepository.getModelAccess().runReadAction(new Runnable() {
       public void run() {
         for (SModelEvent event : ListSequence.fromList(events)) {

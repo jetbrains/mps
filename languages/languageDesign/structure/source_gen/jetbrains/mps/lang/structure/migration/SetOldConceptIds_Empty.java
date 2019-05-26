@@ -22,7 +22,6 @@ public class SetOldConceptIds_Empty extends MigrationScriptBase {
   }
   public void doExecute(final SModule m) {
     // body was removed as it's not needed. We use another ids already and never used those set by this migration 
-
   }
   public MigrationScriptReference getDescriptor() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, "jetbrains.mps.lang.structure"), 0);

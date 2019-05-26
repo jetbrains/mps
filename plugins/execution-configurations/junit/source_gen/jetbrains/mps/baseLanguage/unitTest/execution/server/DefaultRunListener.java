@@ -77,7 +77,6 @@ public class DefaultRunListener extends RunListener {
     StringBuilder builder = new StringBuilder();
     builder.append(tokenPrefix);
     // Beware, description.getTestClass may be null. 
-
     builder.append(description.getClassName());
     String methodName = description.getMethodName();
     if (methodName != null) {

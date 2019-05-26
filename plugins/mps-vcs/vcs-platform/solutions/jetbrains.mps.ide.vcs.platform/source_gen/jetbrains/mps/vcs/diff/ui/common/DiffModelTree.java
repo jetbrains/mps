@@ -53,13 +53,10 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
 
   public DiffModelTree(SRepository repo) {
     // FIXME This code deserves a refactoring much like MergeModelsPanel, as there's unlikely need for repository lock when we diff detached models. 
-
     // Besides, it's ugly to build a tree during construction time! 
-
     myRepo = repo;
     rebuildNow();
     // FIXME oh, no, abstract method called from a constructor! 
-
     myActions = getRootActions();
     Sequence.fromIterable(myActions).visitAll(new IVisitor<BaseAction>() {
       public void visit(BaseAction a) {
@@ -71,7 +68,6 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
       public void customizeCellRenderer(JTree p0, final Object value, boolean p2, boolean p3, boolean p4, int p5, boolean p6) {
         if (value instanceof DiffModelTree.TreeNode) {
           // FIXME this code is poor, need to check TreeNode subclasses if they really care to have model access 
-
           myRepo.getModelAccess().runReadAction(new Runnable() {
             public void run() {
               ((DiffModelTree.TreeNode) value).doUpdatePresentation();
@@ -83,7 +79,6 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
     });
     setPopupGroup(ActionUtils.groupFromActions(Sequence.fromIterable(myActions).toGenericArray(BaseAction.class)), ActionPlaces.CHANGES_VIEW_POPUP);
     // listen for selection changes 
-
     getSelectionModel().addTreeSelectionListener(new TreeSelectionListener() {
       public void valueChanged(TreeSelectionEvent e) {
         DiffModelTree.RootTreeNode[] node = getSelectedNodes(DiffModelTree.RootTreeNode.class, null);
@@ -144,7 +139,6 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
 
   public void setSelected(@Nullable SNodeId rootId) {
     // todo: find path by rootId 
-
     TreePath path = null;
     for (int i = 0; i < getRowCount(); ++i) {
       DiffModelTree.RootTreeNode node = as_5x0uld_a0a0a2a9(getPathForRow(i).getLastPathComponent(), DiffModelTree.RootTreeNode.class);

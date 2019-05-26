@@ -146,7 +146,6 @@ public class MPSProjectIDEHandler extends UnicastRemoteObject implements IMPSIDE
             }
           };
           // we first look up in models with the given name (better chance to succeed), then in all other models 
-
           ListSequence.fromList(modelsByName).addSequence(Sequence.fromIterable(CommandUtil.models(CommandUtil.selectScope(null, context))).where(new IWhereFilter<SModel>() {
             public boolean accept(SModel it) {
               return Objects.equals(SModelOperations.getModelName(it), modelHint);
@@ -169,7 +168,6 @@ public class MPSProjectIDEHandler extends UnicastRemoteObject implements IMPSIDE
             continue;
           }
           // IMPORTANT: line+1 because the line parameter means "line, starting with 0", while in debug info it starts from 1 
-
           SNodePointer np = getBestNodeForPosition(di, fileName, line + 1);
           bestNode = np.resolve(mpsProject.getRepository());
           if (bestNode != null) {
@@ -202,7 +200,6 @@ public class MPSProjectIDEHandler extends UnicastRemoteObject implements IMPSIDE
     })) {
       Collection<TraceablePositionInfo> positions = root.getPositions();
       // for each root we get the nearest position that contains the given line 
-
       TraceablePositionInfo info = CollectionSequence.fromCollection(positions).where(new IWhereFilter<TraceablePositionInfo>() {
         public boolean accept(TraceablePositionInfo it) {
           return it.contains(fileName, line);
@@ -225,7 +222,6 @@ public class MPSProjectIDEHandler extends UnicastRemoteObject implements IMPSIDE
     }
 
     // now, between all those "best local" positions, we select the global best one 
-
     Pair<TraceablePositionInfo, DebugInfoRoot> bestPosition = ListSequence.fromList(nicePositions).sort(new ISelector<Pair<TraceablePositionInfo, DebugInfoRoot>, Integer>() {
       public Integer select(Pair<TraceablePositionInfo, DebugInfoRoot> it) {
         return it.o1.getStartLine();
@@ -321,9 +317,7 @@ public class MPSProjectIDEHandler extends UnicastRemoteObject implements IMPSIDE
   }
   private static SNode findClassByName(SearchScope scope, String classFqName) {
     // This is slightly updated SModelUtil.findNodeByFQName, which moved here as it's the only place we use it 
-
     // FIXME however, it's ugly and needs rework 
-
     String modelName = NameUtil.namespaceFromLongName(classFqName);
     String name = NameUtil.shortNameFromLongName(classFqName);
     for (SModel m : Sequence.fromIterable(scope.getModels())) {

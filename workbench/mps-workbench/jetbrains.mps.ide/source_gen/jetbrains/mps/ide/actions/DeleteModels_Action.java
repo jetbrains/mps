@@ -87,7 +87,6 @@ public class DeleteModels_Action extends BaseAction {
     repository.getModelAccess().executeCommandInEDT(new Runnable() {
       public void run() {
         // see MPS-18743 
-
         new SaveRepositoryCommand(repository).execute();
         for (SModel model : ListSequence.fromList(((List<SModel>) MapSequence.fromMap(_params).get("models")))) {
           if (SModelStereotype.isStubModel(model) || SModelStereotype.isDescriptorModel(model)) {

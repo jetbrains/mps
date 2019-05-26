@@ -43,7 +43,6 @@ public class LinkInstances_Finder extends GeneratedFinder {
   protected void doFind0(@NotNull SNode node, SearchScope scope, IFinder.FindCallback callback, ProgressMonitor monitor) {
     try {
       // collect roles 
-
       Set<String> roles = SetSequence.fromSet(new HashSet<String>());
       SNode curNode = node;
       do {
@@ -51,14 +50,12 @@ public class LinkInstances_Finder extends GeneratedFinder {
         curNode = SLinkOperations.getTarget(curNode, MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98051c244L, "specializedLink"));
       } while (curNode != null);
       // find concept 
-
       SNode conceptDeclaration = SNodeOperations.getNodeAncestor(node, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"), false, false);
       if ((conceptDeclaration == null)) {
         return;
       }
       boolean isChild = SPropertyOperations.hasEnumValue(node, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass"), "aggregation");
       // find instances and link examples 
-
       for (SNode instance : ListSequence.fromList(FindUtils.executeFinder("jetbrains.mps.lang.structure.findUsages.ConceptInstances_Finder", conceptDeclaration, scope, monitor))) {
         for (String role : roles) {
           if (isChild) {

@@ -11,7 +11,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <root>
     <file name="IntentionsDescriptor.java">
-      <unit at="18,0,61,0" name="testDefaultEditor.intentions.IntentionsDescriptor" />
+      <unit at="18,0,60,0" name="testDefaultEditor.intentions.IntentionsDescriptor" />
     </file>
   </root>
   <root nodeRef="r:be519384-ff73-407d-8bb6-1d18a1417684(testDefaultEditor.intentions)/2870455723671212067">
@@ -82,8 +82,8 @@
       <unit id="2870455723671212067" at="23,0,72,0" name="testDefaultEditor.intentions.AddDefaultNodeAttribute_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="2870455723671212067" at="39,70,40,66" concept="2" />
-      <node id="2870455723671212067" at="54,56,55,52" concept="2" />
+      <node id="2870455723671212067" at="38,70,39,66" concept="2" />
+      <node id="2870455723671212067" at="53,56,54,52" concept="2" />
     </file>
   </root>
   <root nodeRef="r:be519384-ff73-407d-8bb6-1d18a1417684(testDefaultEditor.intentions)/2870455723671213010">
@@ -155,8 +155,8 @@
       <unit id="2870455723671213010" at="23,0,73,0" name="testDefaultEditor.intentions.AddDefaultReferenceAttribute_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="2870455723671213010" at="40,66,41,71" concept="2" />
-      <node id="2870455723671213010" at="55,52,56,57" concept="2" />
+      <node id="2870455723671213010" at="39,66,40,71" concept="2" />
+      <node id="2870455723671213010" at="54,52,55,57" concept="2" />
     </file>
   </root>
   <root nodeRef="r:be519384-ff73-407d-8bb6-1d18a1417684(testDefaultEditor.intentions)/5527270534710867991">
@@ -228,8 +228,8 @@
       <unit id="5527270534710867991" at="23,0,73,0" name="testDefaultEditor.intentions.AddDefaultPropertyAttribute_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="5527270534710867991" at="38,47,39,70" concept="2" />
-      <node id="5527270534710867991" at="53,52,54,56" concept="2" />
+      <node id="5527270534710867991" at="37,47,38,70" concept="2" />
+      <node id="5527270534710867991" at="52,52,53,56" concept="2" />
     </file>
   </root>
 </debug-info>

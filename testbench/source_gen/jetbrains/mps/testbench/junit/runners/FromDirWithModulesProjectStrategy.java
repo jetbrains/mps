@@ -53,7 +53,6 @@ public class FromDirWithModulesProjectStrategy extends ProjectStrategyBase {
     return Sequence.fromIterable(minedHandles).where(new IWhereFilter<ModulesMiner.ModuleHandle>() {
       public boolean accept(ModulesMiner.ModuleHandle it) {
         // temporary ignore .iml files 
-
         return !(it.getFile().getName().endsWith(".iml"));
       }
     }).toListSequence();

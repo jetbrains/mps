@@ -26,14 +26,12 @@ public class Iterator_Test extends Util_Test {
       Assert.fail();
     } catch (NoSuchElementException e) {
       // expected exception 
-
     }
     try {
       Sequence.fromIterable(test).enumerator().current();
       Assert.fail();
     } catch (NoSuchElementException e) {
       // expected exception 
-
     }
   }
   public void test_singleton() throws Exception {
@@ -47,7 +45,6 @@ public class Iterator_Test extends Util_Test {
       Assert.fail();
     } catch (NoSuchElementException e) {
       // expected exception 
-
     }
     IEnumerator<Integer> is2 = Sequence.fromIterable(test).enumerator();
     Assert.assertTrue(is2.moveNext());
@@ -58,7 +55,6 @@ public class Iterator_Test extends Util_Test {
       Assert.fail();
     } catch (NoSuchElementException e) {
       // expected exception 
-
     }
   }
   public void test_iterating() throws Exception {

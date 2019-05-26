@@ -34,7 +34,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 0:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[1];
           intentions[0] = new ToggleConceptAbstract_Intention();
         }
@@ -42,7 +41,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 1:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[4];
           intentions[0] = new ToggleConceptMethodAbstract_Intention();
           intentions[1] = new ToggleConceptMethodVirtual_Intention();

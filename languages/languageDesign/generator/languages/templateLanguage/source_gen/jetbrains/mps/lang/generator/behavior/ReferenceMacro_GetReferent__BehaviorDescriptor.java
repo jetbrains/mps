@@ -55,7 +55,6 @@ public final class ReferenceMacro_GetReferent__BehaviorDescriptor extends BaseBH
     }
     SNode targetConcept = SLinkOperations.getTarget(link, MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target"));
     // reference may be resolved dynamically? 
-
     if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(targetConcept), MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x116b17c6e46L, "jetbrains.mps.lang.core.structure.IResolveInfo"))) {
       return _quotation_createNode_mxwyp3_a0a5a0(targetConcept, targetConcept);
     } else {
@@ -65,10 +64,8 @@ public final class ReferenceMacro_GetReferent__BehaviorDescriptor extends BaseBH
   /*package*/ static SNode fromMacro_id2I_OWQO_cV$(@NotNull SNode __thisNode__, SNode refMacro) {
     SNode attributedNode = SNodeOperations.getParent(refMacro);
     // todo rewrite using S-entities 
-
     String linkRole = LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(refMacro).getName();
     // here we are still looking at language sources because there is no information about specialized links in compiled language 
-
     return SNodeOperations.cast(ConceptAndSuperConceptsCache.getInstance(SNodeOperations.getConceptDeclaration(attributedNode)).getMostSpecificLinkDeclarationByRole(linkRole), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, "jetbrains.mps.lang.structure.structure.LinkDeclaration"));
   }
   /*package*/ static SNode fromRefReductionRule_id2I_OWQO_d$v(@NotNull SNode __thisNode__, SNode reductionRule) {

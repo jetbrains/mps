@@ -187,7 +187,6 @@ public class ChangesTracking {
           FileStatus status = (isConflict ? FileStatus.MERGED_WITH_CONFLICTS : getStatus(myModelDescriptor));
 
           // todo: make !force working for per-root persistence (here status==null) 
-
           if (status != null && myStatusOnLastUpdate == status && !(force)) {
             return;
           }
@@ -287,7 +286,6 @@ public class ChangesTracking {
       return (file == null ? FileStatus.UNKNOWN : FileStatusManager.getInstance(myProject).getStatus(file));
     } else if (ds instanceof FilePerRootDataSource) {
       // todo: do we need status at all? 
-
       return null;
     }
     return FileStatus.UNKNOWN;
@@ -382,7 +380,6 @@ public class ChangesTracking {
             }
           })) {
             // ignore 
-
           } else {
             if (myEventConsumingMapping.removeEvent(event)) {
               myDifference.getBroadcaster().changeUpdateStarted();
@@ -443,7 +440,6 @@ public class ChangesTracking {
       childChanged = null;
 
       // make model file[s] dirty 
-
       Set<IFile> affectedFiles = SetSequence.fromSet(new HashSet<IFile>());
       DataSource dataSource = myModelDescriptor.getSource();
       if (dataSource instanceof FileDataSource) {
@@ -458,7 +454,6 @@ public class ChangesTracking {
           }
         }
         // model file can be affected also 
-
         SetSequence.fromSet(affectedFiles).addElement(ds.getFile(FilePerRootDataSource.HEADER_FILE));
       }
       VcsFileStatusProvider provider = myProject.getComponent(VcsFileStatusProvider.class);
@@ -483,7 +478,6 @@ public class ChangesTracking {
       final SProperty property = event.getProperty();
 
       // get more info for debugging 
-
       assert node.getModel().getNode(nodeId) != null : "cannot find node " + nodeId + " in model " + node.getModel();
 
       runUpdateTask(new _FunctionTypes._void_P0_E0() {
@@ -537,7 +531,6 @@ public class ChangesTracking {
       final SContainmentLink childRole = (SNodeOperations.isInstanceOf(child, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute")) ? ((SContainmentLink) BHReflection.invoke0(SNodeOperations.cast(child, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute")), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute"), SMethodTrimmedId.create("getLink", MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute"), "BpxLfMirzf"))) : event.getAggregationLink());
 
       // trying to avoid update task execution for the same child role twice 
-
       Set<SContainmentLink> changedChildRoles = MapSequence.fromMap(childChanged).get(parent);
       if (changedChildRoles == null) {
         changedChildRoles = SetSequence.fromSet(new HashSet<SContainmentLink>());
@@ -591,11 +584,8 @@ public class ChangesTracking {
         }
       } else {
         // there are two almost identical SModelRootEvent generated: from beforeRootRemoved and from rootRemoved 
-
         // rootRemoved event has SModelRootEvent with rootRef = (null, null) 
-
         //  we skip the first one 
-
         if (event.getRootRef().getNodeId() != null) {
           return;
         }
@@ -621,7 +611,6 @@ public class ChangesTracking {
               }
             }) == 0) {
               // root was not added 
-
               removeDescendantChanges(rootId);
               buildAndAddChanges(new _FunctionTypes._void_P1_E0<ChangeSetBuilder>() {
                 public void invoke(ChangeSetBuilder b) {
@@ -641,9 +630,7 @@ public class ChangesTracking {
       runUpdateTask(new _FunctionTypes._void_P0_E0() {
         public void invoke() {
           // XXX I have no idea why we skip adding a change object if we successfully removed one or more queued earlier. 
-
           //  just kept it the way it is in #moduleDependencyEvent 
-
           if (removeChanges(null, UsedLanguageChange.class, new _FunctionTypes._return_P1_E0<Boolean, UsedLanguageChange>() {
             public Boolean invoke(UsedLanguageChange ulc) {
               return eventLang.equals(ulc.getLanguage());

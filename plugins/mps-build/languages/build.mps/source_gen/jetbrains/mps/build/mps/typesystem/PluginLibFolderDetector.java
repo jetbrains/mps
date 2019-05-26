@@ -35,7 +35,6 @@ import jetbrains.mps.build.behavior.BuildSource_SingleFolder__BehaviorDescriptor
     List<SNode> result = ListSequence.fromList(new ArrayList<SNode>());
     Queue<SNode> libLikeContainers = QueueSequence.fromQueueWithValues(new LinkedList<SNode>(), PluginLibFolderDetector.getLibLikeContainers(container));
     // here we unfold all the impor files of construction directly under our 'lib' folders 
-
     while (QueueSequence.fromQueue(libLikeContainers).isNotEmpty()) {
       SNode top = QueueSequence.fromQueue(libLikeContainers).removeFirstElement();
       ListSequence.fromList(result).addElement(top);

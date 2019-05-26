@@ -11,7 +11,6 @@ public class MigrationExceptionError extends MigrationError {
   }
   public MigrationExceptionError(Throwable t) {
     // todo 
-
   }
   @Override
   public String getShortMessage() {

@@ -58,7 +58,6 @@ public final class StaticFieldReference__BehaviorDescriptor extends BaseBHDescri
         }
       } catch (Throwable t) {
         // do nothing 
-
       }
     }
     if (module == null) {

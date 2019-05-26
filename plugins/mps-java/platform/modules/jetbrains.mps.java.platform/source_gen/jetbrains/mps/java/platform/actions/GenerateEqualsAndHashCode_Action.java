@@ -154,7 +154,6 @@ public class GenerateEqualsAndHashCode_Action extends BaseAction {
         ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(equalsDeclaration, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"))).addElement(_quotation_createNode_x9xljz_a0a31a0m0a());
         ListSequence.fromList(SLinkOperations.getChildren(classConcept.value, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member"))).addElement(equalsDeclaration);
         // Method equals() is generated, now hashCode method body generation begins 
-
         SNode hashCodeDeclaration = ListSequence.fromList(SLinkOperations.getChildren(classConcept.value, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member"))).addElement(_quotation_createNode_x9xljz_a0a0q0a21a0());
         SNode resultDeclaration = _quotation_createNode_x9xljz_a0r0a21a0();
         SNode resultReference = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference"), null);

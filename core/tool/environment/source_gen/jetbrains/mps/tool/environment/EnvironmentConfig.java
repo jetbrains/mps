@@ -136,13 +136,11 @@ public class EnvironmentConfig {
 
   public EnvironmentConfig withMigrationPlugin() {
     // migration plugin depends on modelchecker, add both 
-
     return addDistributedPlugin("mps-modelchecker", "jetbrains.mps.ide.modelchecker").addDistributedPlugin("mps-migration", "jetbrains.mps.ide.migration.workbench");
   }
 
   private EnvironmentConfig addDistributedPlugin(String folder, String id) {
     // for internal use only, accepts a folder in /plugins 
-
     File preinstalledPluginFolder = new File(PathManager.getPreInstalledPluginsPath());
     return addPlugin(new File(preinstalledPluginFolder, folder).getAbsolutePath(), id);
   }

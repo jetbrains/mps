@@ -35,16 +35,11 @@ public class supertypesOf_ClassifierType_SubtypingRule extends SubtypingRule_Run
     if (SNodeOperations.isInstanceOf(classifier, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface")) || SPropertyOperations.getBoolean(SNodeOperations.as(classifier, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept")), MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass"))) {
 
       // Here used to be cache of ['is functional interface', single method] tuple, which used to save tens of microseconds. 
-
       // If it's indeed a bottleneck, I'd rather introduce 'cache' statement to keep data like that in TypeCheckingContext of ISubtypingRule_Runtime.getSubOrSuperTypes() 
-
       // or fix SubtypingResolver to cache immediateSuperTypes values in searchInSuperTypes() rather than do it on a per-rule basis using a cache associated with a global model access. 
 
-
       // here, use of classifier.member.ofConceptM<> instead of methods() is intentional. First of all, we don't care about legacy roles (man, they have been deprecated centuries ago!), 
-
       //  second, I'd like to benefit from lazy sequences rather than heavy-weight list of members() to speed things up. 
-
       Iterable<SNode> methods = SNodeOperations.ofConcept(SLinkOperations.getChildren(classifier, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration"));
       Iterator<SNode> cands = Sequence.fromIterable(methods).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode m) {

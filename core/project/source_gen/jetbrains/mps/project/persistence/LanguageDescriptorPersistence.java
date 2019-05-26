@@ -84,7 +84,6 @@ public class LanguageDescriptorPersistence {
           Element autoImports = XmlUtil.first(languageElement, "accessoryModels");
           if (autoImports == null) {
             // deprecated name 
-
             autoImports = XmlUtil.first(languageElement, "library");
           }
           for (Element modelElement : Sequence.fromIterable(XmlUtil.children(autoImports, "model"))) {
@@ -95,15 +94,12 @@ public class LanguageDescriptorPersistence {
           for (Element generatorElement : Sequence.fromIterable(XmlUtil.children(XmlUtil.first(languageElement, "generators"), "generator"))) {
             GeneratorDescriptor gd = gdp.load(generatorElement);
             // as long as generator descriptors are part of language descriptor, no need to persist identity of a source language, we can 
-
             // re-construct it here at loading time. 
-
             gd.setSourceLanguage(result_v3r4p8_a0a0a0c0g.getModuleReference());
             result_v3r4p8_a0a0a0c0g.getGenerators().add(gd);
           }
 
           // odd 'stubModelEntry' name for auxiliary classpath is due to legacy 
-
           Element stubModelEntries = XmlUtil.first(languageElement, "stubModelEntries");
           if (stubModelEntries != null) {
             List<String> roots = ModuleDescriptorPersistence.loadStubModelEntries(stubModelEntries, myMacroHelper);

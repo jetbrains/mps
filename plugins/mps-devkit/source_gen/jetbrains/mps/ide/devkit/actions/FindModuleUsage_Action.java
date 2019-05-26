@@ -60,7 +60,6 @@ public class FindModuleUsage_Action extends BaseAction {
     final IResultProvider provider;
     if (module instanceof Language) {
       // Given language context module, we are not certain whether intention is to look up module uses or its uses as a language, hence include both 
-
       provider = FindUtils.makeProvider(new ModuleUsagesFinder(), new LanguageImportFinder());
     } else {
       provider = FindUtils.makeProvider(new ModuleUsagesFinder());

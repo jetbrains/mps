@@ -35,7 +35,6 @@ public class FileMPSProject extends ProjectBase implements FileBasedProject {
   @NotNull
   private MacroHelper createMacroHelper() {
     // todo [MM] investigate why it fails when using just path (where those . and .. come from) 
-
     return MacrosFactory.forProjectFile(LocalIoFileSystem.getInstance().getFile(PathUtil.toSystemIndependent(FileUtil.getCanonicalPath(getProjectFile().getPath()))));
   }
 

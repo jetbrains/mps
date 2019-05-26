@@ -32,7 +32,6 @@ public class typeof_EditorOperation_InferenceRule extends AbstractInferenceRule_
     List<SConcept> parameters = ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invoke(SLinkOperations.getTarget(editorOperation, MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91012eL, 0xd244b712f910131L, "editorOperationDeclaration")));
 
     // all editor operation parameters are declared 
-
     for (int i = 0; i < ListSequence.fromList(SLinkOperations.getChildren(editorOperation, MetaAdapterFactory.getContainmentLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91012eL, 0xd244b712f91012fL, "arguments"))).count(); i++) {
       if (i >= ListSequence.fromList(parameters).count()) {
         {
@@ -42,7 +41,6 @@ public class typeof_EditorOperation_InferenceRule extends AbstractInferenceRule_
         return;
       }
       // todo [MM] isn't it wrong? Why type of a concept node? 
-
       {
         SNode _nodeToCheck_1029348928467 = SLinkOperations.getChildren(editorOperation, MetaAdapterFactory.getContainmentLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91012eL, 0xd244b712f91012fL, "arguments")).get(i);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:e115237b-80f4-4ca3-87d6-2ac891492994(jetbrains.mps.execution.settings.typesystem)", "5313207397360251117", 0, null);
@@ -51,7 +49,6 @@ public class typeof_EditorOperation_InferenceRule extends AbstractInferenceRule_
     }
 
     // all declared parameters present 
-
     if (ListSequence.fromList(SLinkOperations.getChildren(editorOperation, MetaAdapterFactory.getContainmentLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91012eL, 0xd244b712f91012fL, "arguments"))).count() < ListSequence.fromList(parameters).count()) {
       {
         MessageTarget errorTarget = new NodeMessageTarget();

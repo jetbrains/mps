@@ -236,9 +236,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object referenceMacro_GetReferent_3_0(final ReferenceMacroContext _context) {
     //  FIXME need a ML ITestMethod->InstanceMethodDeclaration, but first (a) need a switch for ITestMethod implementations 
-
     //        (b) have to decide if intermediate BaseTestBody class makes any sense at all 
-
     return (String) ITestMethod__BehaviorDescriptor.getTestName_idhGBohAB.invoke(_context.getNode());
   }
   public static Object referenceMacro_GetReferent_8_0(final ReferenceMacroContext _context) {
@@ -258,13 +256,9 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean ifMacro_Condition_3_0(final IfMacroContext _context) {
     // XXX at the moment, tests without write action make little sense, if they are truly tests for nodes. SimpleNodeTest adds copies 
-
     // of referenced nodes, therefore BaseTestBody.addNodeById() resorts model command. Then, model checks would need model read, but we can't grab 
-
     // read here at the top just not to block addNodeById (can't write from read), therefore test methods have to come up with some ugly way to obtain 
-
     // model read or to always use 'runInWrite'. 
-
     return (boolean) NodesTestCase__BehaviorDescriptor.needsWriteAction_id5vTxdEzuQjU.invoke(_context.getNode());
   }
   public static boolean ifMacro_Condition_3_1(final IfMacroContext _context) {

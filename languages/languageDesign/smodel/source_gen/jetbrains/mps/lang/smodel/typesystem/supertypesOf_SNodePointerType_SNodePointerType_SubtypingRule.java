@@ -25,9 +25,7 @@ public class supertypesOf_SNodePointerType_SNodePointerType_SubtypingRule extend
     List<SNode> list = new ArrayList<SNode>();
     SNode concept = SLinkOperations.getTarget(type, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fad6b29eL, 0x66b228a4fad6b2adL, "concept"));
     // COPIED FROM supertypesOf_SNodeType_SNodeType 
-
     // DO NOT TOUCH THIS. CONCEPT MIGHT BE A TYPE VARIABLE 
-
     if (concept != null && SNodeOperations.isInstanceOf(concept, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"))) {
       List<SNode> superConcepts = AbstractConceptDeclaration__BehaviorDescriptor.getImmediateSuperconcepts_idhMuxyK2.invoke(SNodeOperations.cast(concept, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration")));
       for (SNode superConcept : ListSequence.fromList(superConcepts)) {

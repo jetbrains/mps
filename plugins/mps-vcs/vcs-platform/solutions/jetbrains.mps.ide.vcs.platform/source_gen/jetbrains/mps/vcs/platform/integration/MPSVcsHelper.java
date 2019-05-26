@@ -42,7 +42,6 @@ public class MPSVcsHelper extends AbstractVcsHelperImpl {
         ConflictingModelsUtil.ModelConflictResolver modelConflictResolverTask = ConflictingModelsUtil.getModelConflictResolverTask(myProject, provider, session, files);
         ProgressManager.getInstance().run(modelConflictResolverTask);
         // update list of files 
-
         List<VirtualFile> autoResolvedFiles = modelConflictResolverTask.getResolvedFiles();
         List<VirtualFile> unresolvedFiles = modelConflictResolverTask.getUnresolvedFiles();
         if (ListSequence.fromList(unresolvedFiles).isNotEmpty()) {

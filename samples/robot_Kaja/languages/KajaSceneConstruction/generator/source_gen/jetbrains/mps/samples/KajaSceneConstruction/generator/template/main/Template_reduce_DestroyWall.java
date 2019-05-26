@@ -72,7 +72,6 @@ public class Template_reduce_DestroyWall extends TemplateDeclarationBase impleme
                             }
                             tnode6.addChild(myAggregationLinks[0], tnode7);
                             // TODO validate child 
-
                           }
                           {
                             final SNode tnode8 = environment.createOutputNode(myConcepts[5]);
@@ -82,19 +81,16 @@ public class Template_reduce_DestroyWall extends TemplateDeclarationBase impleme
                             }
                             tnode6.addChild(myAggregationLinks[0], tnode8);
                             // TODO validate child 
-
                           }
                         } finally {
                         }
                         tnode5.addChild(myAggregationLinks[1], tnode6);
                         // TODO validate child 
-
                       }
                     } finally {
                     }
                     tnode4.addChild(myAggregationLinks[2], tnode5);
                     // TODO validate child 
-
                   }
                   {
                     final SNode tnode9 = environment.createOutputNode(myConcepts[3]);
@@ -108,19 +104,16 @@ public class Template_reduce_DestroyWall extends TemplateDeclarationBase impleme
                         }
                         tnode9.addChild(myAggregationLinks[1], tnode10);
                         // TODO validate child 
-
                       }
                     } finally {
                     }
                     tnode4.addChild(myAggregationLinks[2], tnode9);
                     // TODO validate child 
-
                   }
                 } finally {
                 }
                 tnode3.addChild(myAggregationLinks[3], tnode4);
                 // TODO validate child 
-
               }
               {
                 final SNode tnode11 = environment.createOutputNode(myConcepts[6]);
@@ -139,13 +132,11 @@ public class Template_reduce_DestroyWall extends TemplateDeclarationBase impleme
                         }
                         tnode12.addChild(myAggregationLinks[0], tnode13);
                         // TODO validate child 
-
                       }
                     } finally {
                     }
                     tnode11.addChild(myAggregationLinks[4], tnode12);
                     // TODO validate child 
-
                   }
                   {
                     final SNode tnode14 = environment.createOutputNode(myConcepts[4]);
@@ -160,19 +151,16 @@ public class Template_reduce_DestroyWall extends TemplateDeclarationBase impleme
                         }
                         tnode14.addChild(myAggregationLinks[0], tnode15);
                         // TODO validate child 
-
                       }
                     } finally {
                     }
                     tnode11.addChild(myAggregationLinks[5], tnode14);
                     // TODO validate child 
-
                   }
                 } finally {
                 }
                 tnode3.addChild(myAggregationLinks[6], tnode11);
                 // TODO validate child 
-
               }
               {
                 final SNode tnode16 = environment.createOutputNode(myConcepts[0]);
@@ -199,43 +187,36 @@ public class Template_reduce_DestroyWall extends TemplateDeclarationBase impleme
                                 }
                                 tnode19.addChild(myAggregationLinks[0], tnode20);
                                 // TODO validate child 
-
                               }
                             } finally {
                             }
                             tnode18.addChild(myAggregationLinks[1], tnode19);
                             // TODO validate child 
-
                           }
                         } finally {
                         }
                         tnode17.addChild(myAggregationLinks[2], tnode18);
                         // TODO validate child 
-
                       }
                     } finally {
                     }
                     tnode16.addChild(myAggregationLinks[7], tnode17);
                     // TODO validate child 
-
                   }
                 } finally {
                 }
                 tnode3.addChild(myAggregationLinks[8], tnode16);
                 // TODO validate child 
-
               }
             } finally {
             }
             tnode2.addChild(myAggregationLinks[2], tnode3);
             // TODO validate child 
-
           }
         } finally {
         }
         tnode1.addChild(myAggregationLinks[7], tnode2);
         // TODO validate child 
-
       }
     } finally {
     }

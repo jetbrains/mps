@@ -119,14 +119,10 @@ public class JDOMUtil {
       if (buffer == null) {
         if (quotation != null) {
           //  An quotation occurred, so we'll have to use StringBuilder 
-
           //  (allocate room for it plus a few more entities). 
-
           buffer = new StringBuilder(text.length() + 20);
           //  Copy previous skipped characters and fall through 
-
           //  to pickup current character 
-
           buffer.append(text.substring(0, i));
           buffer.append(quotation);
         }
@@ -139,11 +135,8 @@ public class JDOMUtil {
       }
     }
     //  If there were any entities, return the escaped characters 
-
     //  that we put in the StringBuilder. Otherwise, just return 
-
     //  the unmodified input string. 
-
     return (buffer == null ? text : buffer.toString());
   }
   /**
@@ -197,7 +190,6 @@ public class JDOMUtil {
               }
             } catch (NumberFormatException ex) {
               //  ignore, skip 
-
             }
           } else {
             if (val.length() == 2) {
@@ -227,9 +219,7 @@ public class JDOMUtil {
         if (quotation != null) {
           buffer = new StringBuilder(text.length());
           //  Copy previous skipped characters and fall through 
-
           //  to pickup current character 
-
           buffer.append(text.substring(0, start));
           buffer.append(quotation);
         }
@@ -242,11 +232,8 @@ public class JDOMUtil {
       }
     }
     //  If there were any entities, return the escaped characters 
-
     //  that we put in the StringBuilder. Otherwise, just return 
-
     //  the unmodified input string. 
-
     return (buffer == null ? text : buffer.toString());
   }
 }

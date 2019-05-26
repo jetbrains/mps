@@ -15,7 +15,6 @@ public class Sequence_iteration1 extends TestCase {
   }
   public void test_shortSequence1() {
     // sequence with no memory 
-
     Iterable<String> ss = Sequence.fromClosure(new ISequenceClosure<String>() {
       public Iterable<String> iterable() {
         return new Iterable<String>() {
@@ -78,7 +77,6 @@ __switch__:
   }
   public void test_shortSequence2() {
     // sequence with memory 
-
     final Wrappers._int yield_count = new Wrappers._int(0);
     Iterable<String> ss = Sequence.fromClosure(new ISequenceClosure<String>() {
       public Iterable<String> iterable() {
@@ -149,7 +147,6 @@ __switch__:
   }
   public void test_longSequence1() {
     // sequence with no memory 
-
     final int sequence_size = 1234;
     Iterable<String> ss = Sequence.fromClosure(new ISequenceClosure<String>() {
       public Iterable<String> iterable() {
@@ -214,7 +211,6 @@ __switch__:
   }
   public void test_longSequence2() {
     // sequence with memory 
-
     final int sequence_size = 1234;
     final Wrappers._int yield_count = new Wrappers._int(0);
     Iterable<String> ss = Sequence.fromClosure(new ISequenceClosure<String>() {

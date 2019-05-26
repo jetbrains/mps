@@ -38,7 +38,6 @@ public class DebugSession extends AbstractDebugSession<JavaUiStateImpl> {
       return;
     }
     //  context is null => already resumed 
-
     myEventsProcessor.resume(context);
   }
   @Override
@@ -117,7 +116,6 @@ public class DebugSession extends AbstractDebugSession<JavaUiStateImpl> {
                 if (mute) {
                   requestManager.deleteRequests(breakpoint);
                   //  todo enabling and disabling breakpoints should be symmetrical 
-
                 } else {
                   if (breakpoint.isValid()) {
                     breakpoint.createOrWaitPrepare(myEventsProcessor);
@@ -167,7 +165,6 @@ public class DebugSession extends AbstractDebugSession<JavaUiStateImpl> {
       setState(getUiState(), new RunningJavaUiState(DebugSession.this), false);
       fireSessionResumed(DebugSession.this);
       // TODO hack 
-
     }
   }
 }

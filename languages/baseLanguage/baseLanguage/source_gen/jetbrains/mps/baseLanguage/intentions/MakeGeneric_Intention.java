@@ -37,7 +37,6 @@ public final class MakeGeneric_Intention extends AbstractIntentionDescriptor imp
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
     // todo: maybe not "everything except" but "just something"? 
-
     return ListSequence.fromList(SLinkOperations.getChildren(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration"))).isEmpty() && !(SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration")));
   }
   @Override

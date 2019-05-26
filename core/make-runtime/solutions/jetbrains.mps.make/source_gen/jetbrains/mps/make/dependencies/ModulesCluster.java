@@ -45,13 +45,10 @@ public class ModulesCluster {
 
   private void collectRequired(Iterable<SModule> pool) {
     // keep graph with dependencies, with vertexes for modules being clusterized only (i.e. no vertex for a module that is among dependencies but not being built) 
-
     MapSequence.fromMap(myDepsGraph).clear();
     // keep track of a module that results in a deployed language; these need to be build prior to their uses 
-
     MapSequence.fromMap(languageModules).clear();
     // ensure we've got all the vertexes of our graph ready 
-
     for (SModule m : Sequence.fromIterable(pool)) {
       SModuleReference mr = m.getModuleReference();
       ModulesCluster.ModuleDeps md = new ModulesCluster.ModuleDeps(m);
@@ -83,16 +80,13 @@ public class ModulesCluster {
 
   public Iterable<SLanguage> usedLanguage(SModule m) {
     // we need used languages to determine build order (in case language/generator module is among those being built) 
-
     // and also we need these languages to detect facets to activate in build script. Not to build this set twice, re-use once computed 
-
     assert MapSequence.fromMap(myDepsGraph).containsKey(m.getModuleReference());
     return MapSequence.fromMap(myDepsGraph).get(m.getModuleReference()).usedLanguages;
   }
 
   private Iterable<? extends Iterable<SModuleReference>> compact(List<List<SModuleReference>> order) {
     // XXX what's the point of this code, what do we 'compact' here? Do we merge cycles so that they are built together and later has a chance to load ok? 
-
     final Wrappers._T<Iterable<SModuleReference>> prev = new Wrappers._T<Iterable<SModuleReference>>(null);
     return ListSequence.fromList(order).concat(Sequence.fromIterable(Sequence.<List<SModuleReference>>singleton(null))).translate(new ITranslator2<List<SModuleReference>, Iterable<SModuleReference>>() {
       public Iterable<Iterable<SModuleReference>> translate(final List<SModuleReference> cycle) {
@@ -185,33 +179,25 @@ __switch__:
   private void fillEdges(ModulesCluster.ModuleDeps rv) {
     final SModule mod = rv.getModule();
     // get a set of modules we are going to build transitive dependencies for 
-
     ArrayList<SModule> modExt = new ArrayList<SModule>();
     modExt.add(mod);
 
     Set<SLanguage> moduleUsedLanguages;
     // inv: reference existing vertexes only 
-
     Set<SModuleReference> reqs = SetSequence.fromSet(new HashSet<SModuleReference>());
     if (mod instanceof Generator) {
       Generator generator = (Generator) mod;
       // Unfortunately, GMDM doesn't recognize generator's source language as COMPILE or VISIBLE dependency, therefore have to add it here 
-
       assert mod.getRepository() != null;
       SModule sourceLang = generator.sourceLanguage().getSourceModuleReference().resolve(mod.getRepository());
       if (sourceLang != null) {
         // perhaps, we could use slanguage.sourceModuleReference only (right into reqs if among vertexes), i.e. no resolve, but this would 
-
         // affect transitive dependencies, and it's unlikely what I need here. It's seems better to collect more than to get unpleasant compile errors due 
-
         // to improper make order. 
-
         modExt.add(sourceLang);
       }
       // XXX though it looks suspicious that we require source language module to build a generator, the reason to have it there 
-
       //     is likely the need to satisfy module load dependency (not the need to have language available the moment generator module is being generated/textgen'ed) 
-
       moduleUsedLanguages = SetSequence.fromSet(new HashSet<SLanguage>());
       for (SModel m : generator.getModels()) {
         SetSequence.fromSet(moduleUsedLanguages).addSequence(CollectionSequence.fromCollection(ModelContentUtil.getUsedLanguages(m)));
@@ -219,20 +205,15 @@ __switch__:
     } else {
       moduleUsedLanguages = mod.getUsedLanguages();
       // XXX ModelContentUtil adds auto-imported and engaged on generation lagnuages as well, shall I use it here, too? 
-
       //     I didn't add them as previous version relied on SModule.getUsedLanguages() collection, which does not include engaged nor auto-imports, and is working for years 
-
 
     }
     Set<SLanguage> allUsedLanguages = new SLanguageHierarchy(myLanguageRegistry, moduleUsedLanguages).getExtended();
     SetSequence.fromSet(rv.usedLanguages).addSequence(SetSequence.fromSet(allUsedLanguages));
 
     // if a module of any used language happens to be among modules to build, ensure it's build first, as well as their generators... 
-
     // Note with this approach we ignore workspace dependencies of a deployed language. E.g. if there's a changed RT solution, its language module unchanged, 
-
     // and we mak RT solution and the one that uses the language, we may miss the dependency that RT needs to be 'Make' first 
-
     for (Language l : SetSequence.fromSet(allUsedLanguages).where(new IWhereFilter<SLanguage>() {
       public boolean accept(SLanguage it) {
         return MapSequence.fromMap(languageModules).containsKey(it);
@@ -243,26 +224,22 @@ __switch__:
       }
     })) {
       //  there's vertex for this language module, don't care to calculate its dependencies, will get to that anyway at respective fillEdges call 
-
       SetSequence.fromSet(reqs).addElement(l.getModuleReference());
       for (Generator g : CollectionSequence.fromCollection(l.getGenerators())) {
         if (MapSequence.fromMap(myDepsGraph).containsKey(g.getModuleReference())) {
           SetSequence.fromSet(reqs).addElement(g.getModuleReference());
         } else {
           // we aren't going to cluserize required generator, but perhaps we do some of its dependencies 
-
           modExt.add(g);
         }
       }
     }
     // XXX in fact, don't need to build complete set of dependencies, more effective is to follow one by one to see if it's vertex in the graph or it's known not to give any new dependency 
-
     GlobalModuleDependenciesManager depman = new GlobalModuleDependenciesManager(modExt);
     Set<SModule> reqmods = SetSequence.fromSet(new HashSet<SModule>());
     SetSequence.fromSet(reqmods).addSequence(CollectionSequence.fromCollection(depman.getModules(GlobalModuleDependenciesManager.Deptype.COMPILE)));
     SetSequence.fromSet(reqmods).addSequence(CollectionSequence.fromCollection(depman.getModules(GlobalModuleDependenciesManager.Deptype.VISIBLE)));
     // record edges only to existing vertexes 
-
     SetSequence.fromSet(reqs).addSequence(SetSequence.fromSet(reqmods).select(new ISelector<SModule, SModuleReference>() {
       public SModuleReference select(SModule m) {
         return m.getModuleReference();
@@ -275,9 +252,7 @@ __switch__:
 
 
     // XXX perhaps, we shall respect target languages of used languages as well, as they may appear while generating this module. 
-
     //     We need them anyway to build required facets in ModulesClusterizer.allLanguagesToActivateFacets 
-
 
     ListSequence.fromList(rv.required).addSequence(SetSequence.fromSet(reqs));
     for (SModuleReference req : rv.required) {

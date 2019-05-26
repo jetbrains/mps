@@ -57,14 +57,11 @@ public class SConceptHierarchy_Test extends BaseTransformationTest {
       Assert.assertTrue(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept")), SNodeOperations.asSConcept(MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept"))));
       Assert.assertTrue(MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept") instanceof SInterfaceConcept);
       //  there's suspicious code in SConceptAdapter.getSuperInterfaces, make sure it didn't get out elsewhere 
-
       Assert.assertTrue(MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x612410e32cf46136L, "jetbrains.mps.lang.core.structure.ImplementationWithStubPart").getSuperInterfaces().iterator().next().equals(MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x12509ddfaa7c0557L, "jetbrains.mps.lang.core.structure.ImplementationPart")));
     }
     public void test_conceptSuperConcept() throws Exception {
       // state the fact we do not report BaseConcept as its own super-concept 
-
       // it's questionable, as it makes BC the only concept without superconcept. 
-
       SConcept baseConcept = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
       Assert.assertNull(baseConcept.getSuperConcept());
       Assert.assertFalse(baseConcept.getSuperInterfaces().iterator().hasNext());
@@ -76,7 +73,6 @@ public class SConceptHierarchy_Test extends BaseTransformationTest {
       Assert.assertTrue(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(defaultIfaceConcept), MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept")));
       Assert.assertTrue(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(defaultIfaceConcept), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept")));
       // next two checks are questionable, as it puzzles users (see mbeddr slack Sep 17, 2016) 
-
       Assert.assertFalse(defaultIfaceConcept.equals(MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept")));
       Assert.assertFalse(SConceptOperations.isExactly(SNodeOperations.asSConcept(defaultIfaceConcept), MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept")));
 

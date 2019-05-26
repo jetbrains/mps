@@ -25,9 +25,7 @@ public class DiffModelUtil {
   private static Map<SModel, TempModuleOptions> myRegisteredModels = MapSequence.fromMap(new HashMap<SModel, TempModuleOptions>());
   public static void renameModelAndRegister(SModel model, String version) {
     // takes a model, changes its reference if version is specified, and registers a model with a newly created 
-
     // module which is registered with a global repository. 
-
     if (version != null) {
       renameModel(model, version);
     }
@@ -58,14 +56,11 @@ public class DiffModelUtil {
   }
   public static void fixModelReferences(SModel model, final SModelReference modelRef) {
     // modelRef - generated references, will be replaced with original one through the model 
-
     assert modelRef.getModelId() instanceof SModelId.ForeignSModelId;
     final SModelReference oldModelRef = getOriginalSModelRef(modelRef);
     for (SNode node : ListSequence.fromList(SModelOperations.nodes(model, null))) {
       // XXX FWIW, there's similar code in smodel.SModel.updateExternalReferences() 
-
       //     Would be great to keep it in a single place 
-
       ListSequence.fromList(SNodeOperations.getReferences(node)).ofType(SReferenceBase.class).where(new IWhereFilter<SReferenceBase>() {
         public boolean accept(SReferenceBase it) {
           return modelRef.equals(it.getTargetSModelReference());

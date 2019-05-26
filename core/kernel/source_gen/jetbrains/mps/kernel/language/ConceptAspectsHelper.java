@@ -32,7 +32,6 @@ public class ConceptAspectsHelper {
 
   public static <T extends SNode> T attachNewConceptAspect(LanguageAspect aspect, SNode conceptNode, T aspectNode) {
     // [MM] this LanguageAspect usage is reviewed 
-
     Language language = SModelUtil.getDeclaringLanguage(conceptNode);
     assert language != null : "Language shouldn't be null for " + conceptNode;
 

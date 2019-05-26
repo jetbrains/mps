@@ -75,7 +75,6 @@ public class ModelMergeViewer implements MergeTool.MergeViewer {
       final String ext;
       if (FilePerRootDataSource.isPerRootPersistenceFile(FileSystem.getInstance().getFile(file.getPath()))) {
         // load model partially from per-root persistence with "normal" persistence loading 
-
         ext = MPSExtentions.MODEL;
       } else {
         ext = file.getExtension();
@@ -97,7 +96,6 @@ public class ModelMergeViewer implements MergeTool.MergeViewer {
               resultContent.value = ModelMergeViewer.saveModel(resultModel, file, ext);
             } catch (Throwable error) {
               // this can be when saving in 9 persistence after merge with 8 persistence => trying to save in 8th 
-
               if (baseModel instanceof PersistenceVersionAware && resultModel instanceof PersistenceVersionAware && ((PersistenceVersionAware) baseModel).getPersistenceVersion() == 8 && ((PersistenceVersionAware) resultModel).getPersistenceVersion() == 9) {
                 String message = "The merged model cannot be saved using the new 9th persistence." + " The most-likely reason: one of the languages used in this model has not yet been generated." + " You can revert the changes, merge and generate the used languages first and only then merge this model again." + " Alternatively, you can save the model in old 8th persistence version and then migrate it to the latest persistence, after all used languages will have been merged manually.";
                 int result = Messages.showYesNoCancelDialog(viewer.getComponent(), message, "Save model " + SModelOperations.getModelName(resultModel), "Save in 8th persistence", "Revert changes", "Return to merge", Messages.getWarningIcon());
@@ -190,11 +188,8 @@ public class ModelMergeViewer implements MergeTool.MergeViewer {
         };
       default:
         // Accept LEFT or Accept RIGHT 
-
         // can't call finishMerge(LEFT/RIGHT) directly, as we probably want accept only one root 
-
         // we can't just accept old byte[] content, because this could break model 
-
         return null;
     }
   }
@@ -225,7 +220,6 @@ public class ModelMergeViewer implements MergeTool.MergeViewer {
   @Nullable
   private static String saveModel(SModel resultModel, VirtualFile file, String ext) {
     // file is just to check and select proper format for per-root persistence 
-
     if (FilePerRootDataSource.isPerRootPersistenceFile(FileSystem.getInstance().getFile(file.getPath()))) {
       return PersistenceUtil.savePerRootModel(resultModel, MPSExtentions.MODEL_HEADER.equals(file.getExtension()));
     } else {

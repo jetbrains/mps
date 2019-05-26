@@ -48,7 +48,6 @@ public class GeneratorInternal_BuildSource_JarFolder_SubstituteMenu extends Subs
 
     public SMP_ReferenceScope_o5vowq_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x508044c9892402f6L, "jetbrains.mps.build.structure.GeneratorInternal_BuildSource_JarFolder"), MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x508044c9892402f6L, 0x508044c9892402f7L, "targetFolder"));
     }
     @NotNull

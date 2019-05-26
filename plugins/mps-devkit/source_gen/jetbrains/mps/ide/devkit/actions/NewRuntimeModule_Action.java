@@ -113,7 +113,6 @@ public class NewRuntimeModule_Action extends BaseAction {
           public void run() {
             language.getModuleDescriptor().getRuntimeModules().add((SModuleReference) p0);
             // next code has been copied from ModulePropertiesConfigurable.RuntimeTableModel#apply() 
-
             for (Generator g : language.getOwnedGenerators()) {
               new VersionFixer(((MPSProject) MapSequence.fromMap(_params).get("project")), g, true).updateImportVersions();
             }

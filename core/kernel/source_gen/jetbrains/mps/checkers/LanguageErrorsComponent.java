@@ -101,9 +101,7 @@ public class LanguageErrorsComponent extends LanguageErrorsCollector {
   }
   private Set<SNode> removeDependencyFromMapping(@NotNull SNode dependency) {
     // removing dependency node from any mappings together with all checked nodes 
-
     // depending on this dependency node 
-
     Set<SNode> nodes = SetSequence.fromSetWithValues(new HashSet<SNode>(), myDependenciesToNodesAndViceVersa.getByFirst(dependency));
     for (SNode node : SetSequence.fromSet(nodes)) {
       myDependenciesToNodesAndViceVersa.clearSecond(node);
@@ -127,7 +125,6 @@ public class LanguageErrorsComponent extends LanguageErrorsCollector {
     }
     if (!(SetSequence.fromSet(myListenedModels).contains(modelDescriptor))) {
       // XX why access to myListenedModels is not synchronized? 
-
       modelDescriptor.addChangeListener(myChangeListener);
       modelDescriptor.addModelListener(myUnloadListener);
       SetSequence.fromSet(myListenedModels).addElement(modelDescriptor);
@@ -153,7 +150,6 @@ public class LanguageErrorsComponent extends LanguageErrorsCollector {
     if (checkedNodes != null) {
       for (SNode node : checkedNodes) {
         // avoid searching for _already_removed_ node later in check() 
-
         if (SNodeOperations.getModel(node) != null) {
           SetSequence.fromSet(myInvalidNodes).addElement(node);
         }
@@ -189,10 +185,8 @@ public class LanguageErrorsComponent extends LanguageErrorsCollector {
     } else {
       assert SetSequence.fromSet(myInvalidNodes).isEmpty();
       // Visit and check all nodes, continuing from last position, if available 
-
       if (myFullCheckIterator == null) {
         // Never checked since the last reset, start from the beginning 
-
         myFullCheckIterator = new DescendantsTreeIterator(root);
       }
 
@@ -213,7 +207,6 @@ public class LanguageErrorsComponent extends LanguageErrorsCollector {
     }
 
     // traversed the whole root, all invalid nodes should have been removed 
-
     assert SetSequence.fromSet(myInvalidNodes).isEmpty();
     myUpdateInspector = true;
     return true;
@@ -223,7 +216,6 @@ public class LanguageErrorsComponent extends LanguageErrorsCollector {
 
     if (myFullCheckIterator != null && !(SetSequence.fromSet(myInvalidNodes).isEmpty())) {
       // Full check interrupted and something invalidated: recheck everything from the beginning 
-
       clear();
     }
   }
@@ -331,9 +323,7 @@ public class LanguageErrorsComponent extends LanguageErrorsCollector {
     @Override
     public void nodeRemoved(@NotNull SNodeRemoveEvent event) {
       // XXX old listener ignored root change events (listened to childAdded/childRemoved only). 
-
       // While I can understand why not rootAdded, I don't why rootRemoved was ignored - imo, the root may appear in dependencies and we shall invalidate it here. 
-
       processEvent(event);
     }
     @Override

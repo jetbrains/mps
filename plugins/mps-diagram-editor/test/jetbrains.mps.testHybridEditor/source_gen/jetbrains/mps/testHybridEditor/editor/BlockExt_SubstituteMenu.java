@@ -48,7 +48,6 @@ public class BlockExt_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_u1n2gi_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x471a0145ea2e78cL, "jetbrains.mps.testHybridEditor.structure.BlockExt"), MetaAdapterFactory.getReferenceLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x471a0145ea2e78cL, 0x471a0145ea2f5ffL, "mb"));
     }
     @NotNull

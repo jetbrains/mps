@@ -126,7 +126,6 @@ public class ProcessRunnerForConfigurationTests {
     @Override
     public void onTextAvailable(ProcessEvent event, Key key) {
       // assuming everything comes in lines 
-
       String text = event.getText();
       List<Pattern> patternsWeEncountered = getPatternsForWhichMsgExpected(text);
       myPrintedExpectedPatterns.addAll(patternsWeEncountered);

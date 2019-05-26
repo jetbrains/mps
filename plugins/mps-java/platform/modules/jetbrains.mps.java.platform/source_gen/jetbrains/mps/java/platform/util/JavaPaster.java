@@ -82,7 +82,6 @@ public class JavaPaster {
 
     try {
       // JavaParser.tryResolveUnknowns(nodes) ==> YetUnknownResolver 
-
       SNode context = null;
       if (FeatureKind.CLASS_CONTENT.equals(featureKind)) {
         context = SNodeOperations.getNodeAncestor(anchor, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), true, false);
@@ -91,7 +90,6 @@ public class JavaPaster {
 
       if (ListSequence.fromList(nodes).isEmpty()) {
         // Avoid AWT event inside write action (action calls this code from command) 
-
         ApplicationManager.getApplication().invokeLater(new Runnable() {
           public void run() {
             Messages.showInfoMessage(String.format("Text buffer does not contain data that can be parsed as %s", (featureKind == FeatureKind.CLASS_CONTENT ? "Class content" : "Java")), "Buffer Data Is Unsuitable");
@@ -135,7 +133,6 @@ public class JavaPaster {
       }
 
       // trying to resolve names when nodes are already in a model 
-
       JavaToMpsConverter mfParser = new JavaToMpsConverter(model, project.getRepository(), project.getComponent(MessagesViewTool.class).newHandler());
       mfParser.tryResolveRefs(nodes, featureKind, new EmptyProgressMonitor());
 

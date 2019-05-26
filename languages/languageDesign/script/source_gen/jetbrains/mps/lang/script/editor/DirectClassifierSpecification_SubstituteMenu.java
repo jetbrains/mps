@@ -48,7 +48,6 @@ public class DirectClassifierSpecification_SubstituteMenu extends SubstituteMenu
 
     public SMP_ReferenceScope_clc4cv_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x4b6b6d7b2a638d23L, "jetbrains.mps.lang.script.structure.DirectClassifierSpecification"), MetaAdapterFactory.getReferenceLink(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x4b6b6d7b2a638d23L, 0x4b6b6d7b2a638e5dL, "classifier"));
     }
     @NotNull

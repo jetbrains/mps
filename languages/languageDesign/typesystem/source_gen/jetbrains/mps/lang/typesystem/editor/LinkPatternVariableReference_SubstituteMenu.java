@@ -48,7 +48,6 @@ public class LinkPatternVariableReference_SubstituteMenu extends SubstituteMenuB
 
     public SMP_ReferenceScope_kemif3_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11192d92ad3L, "jetbrains.mps.lang.typesystem.structure.LinkPatternVariableReference"), MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11192d92ad3L, 0x11192da25efL, "patternVarDecl"));
     }
     @NotNull

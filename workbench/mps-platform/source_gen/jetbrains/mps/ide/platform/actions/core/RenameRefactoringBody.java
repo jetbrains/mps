@@ -36,7 +36,6 @@ public class RenameRefactoringBody implements RefactoringProcessor.RefactoringBo
   }
   public void prepareRefactoring() {
     // do nothing 
-
   }
   public void doRefactor(Iterable<RefactoringParticipant.ParticipantApplied<?, ?, SNode, String, SNode, String>> participantStates, RefactoringSession refactoringSession) {
     SPropertyOperations.assign(myNode, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), myNewNodeName);
@@ -51,7 +50,6 @@ public class RenameRefactoringBody implements RefactoringProcessor.RefactoringBo
   }
   public void doCleanup() {
     // do nothing 
-
   }
 
 

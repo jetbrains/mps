@@ -49,9 +49,7 @@ public class JUnitSettings_Configuration implements IPersistentConfiguration {
       throw new RuntimeConfigurationError("Type of test is not selected");
     }
     // We do not validate, only check if there is something to test, since validating everything be very slow 
-
     // see MPS-8781 JUnit run configuration check method performance. 
-
     Project project = myProject;
     MPSProject mpsProject = ProjectHelper.fromIdeaProject(project);
     checkCachesDirIsFreeToLock();
@@ -75,7 +73,6 @@ public class JUnitSettings_Configuration implements IPersistentConfiguration {
 
   private String getDefaultPathForSettings() {
     // must be called only once! 
-
     return new DefaultSettingsPathChooser().chooseDir();
   }
   public String getSettingsLocation() {
@@ -159,9 +156,7 @@ public class JUnitSettings_Configuration implements IPersistentConfiguration {
     JUnitSettings_Configuration clone = createCloneTemplate();
     try {
       // beware, PersistenceConfiguration.this of newly created MyState instance would be the same as 
-
       // the value of myState, and != clone as regular Java passer-by would expect. 
-
       clone.myState = (JUnitSettings_Configuration.MyState) myState.clone();
     } catch (CloneNotSupportedException ex) {
       if (LOG.isEnabledFor(Level.ERROR)) {

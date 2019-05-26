@@ -61,7 +61,6 @@ public class StubRootChooser implements Computable<List<String>> {
       List<String> modelRootNames = ListSequence.fromList(modelRootTypes).select(new ISelector<String, String>() {
         public String select(String it) {
           // TODO 
-
           return it;
         }
       }).toListSequence();
@@ -72,7 +71,6 @@ public class StubRootChooser implements Computable<List<String>> {
             String type = ListSequence.fromList(modelRootTypes).getElement(res);
             ModelRoot root = PersistenceFacade.getInstance().getModelRootFactory(type).create();
             // FIXME here used to be instanceof for FolderModelRootBased, deprecated and unused. Present code looks no-op as there's nothing saved in the memento of a blank new model root 
-
             Memento m = new MementoImpl();
             root.save(m);
             return new ModelRootDescriptor(type, m);

@@ -10,7 +10,6 @@ import javax.swing.KeyStroke;
 public class Debugger_KeymapChanges extends BaseKeymapChanges {
   public Debugger_KeymapChanges() {
     // simple 
-
     addSimpleShortcut("jetbrains.mps.debugger.api.ui.actions.EvaluateExpression_Action", getShortcut("alt F8"));
     addSimpleShortcut("jetbrains.mps.debugger.api.ui.actions.Resume_Action", getShortcut(" F9"));
     addSimpleShortcut("jetbrains.mps.debugger.api.ui.actions.StepInto_Action", getShortcut(" F7"));
@@ -19,9 +18,7 @@ public class Debugger_KeymapChanges extends BaseKeymapChanges {
     addSimpleShortcut("jetbrains.mps.debugger.api.ui.actions.ToggleBreakpoint_Action", getShortcut("ctrl F8"));
     addSimpleShortcut("jetbrains.mps.debugger.api.ui.actions.ViewBreakpoints_Action", getShortcut("ctrl shift F8"));
     // simple parameterized 
-
     // complex 
-
   }
   public String getScheme() {
     return "$default";

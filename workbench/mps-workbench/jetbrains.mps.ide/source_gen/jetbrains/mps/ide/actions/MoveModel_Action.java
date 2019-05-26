@@ -162,7 +162,6 @@ public class MoveModel_Action extends BaseAction {
       }
       public void doCleanup() {
         // do nothing 
-
       }
     };
 

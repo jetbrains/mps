@@ -58,7 +58,6 @@ public class JavaExportUtil {
 
         } else {
           // fatal, unknown element 
-
           ListSequence.fromList(result).clear();
           break;
         }
@@ -100,11 +99,9 @@ public class JavaExportUtil {
   public static void requireModule(VisibleArtifacts artifacts, SNode target, SNode contextNode, RequiredDependenciesBuilder builder) {
 
     // dependencies closure 
-
     JavaModulesClosure closure = new JavaModulesClosure(target).closure(true);
 
     // searh for artifacts 
-
     Iterable<SNode> required = Sequence.fromIterable(((Iterable<SNode>) closure.getModules())).concat(Sequence.fromIterable(((Iterable<SNode>) closure.getJars())).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode it) {
         return SLinkOperations.getTarget(it, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x11779a1dbcff551aL, 0x3395e884b61c23e2L, "path"));
@@ -166,7 +163,6 @@ public class JavaExportUtil {
   @Nullable
   public static Tuples._2<SNode, Boolean> requireJar(VisibleArtifacts artifacts, SNode jar, SNode contextNode) {
     // FIXME there's little value in contextNode, perhaps, shall leave the check to outer code (in case it cares at all) 
-
     if (SNodeOperations.getContainingRoot(jar) == SNodeOperations.getContainingRoot(contextNode)) {
       return null;
     }

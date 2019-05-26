@@ -53,7 +53,6 @@ public class TestRefConstraints_SubReference_ScopingSuperHandler_SubstituteMenu 
 
     public SMP_ReferenceScope_k4yk1d_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a3066058dc08eL, "constraints.test.structure.TestRefConstraints_SubReference_ScopingSuperHandler"), MetaAdapterFactory.getReferenceLink(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a30660588e212L, 0x244a30660588e2f1L, "target"));
     }
     @NotNull

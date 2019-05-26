@@ -119,7 +119,6 @@ public class MigrationCheckerImpl implements MigrationChecker {
     myProject.getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
         // todo inline 
-
         List<SModule> modules = Sequence.fromIterable(MigrationModuleUtil.getMigrateableModulesFromProject(myProject)).toListSequence();
         pm.start("Checking...", 10 + ListSequence.fromList(modules).count());
 
@@ -153,9 +152,7 @@ public class MigrationCheckerImpl implements MigrationChecker {
             ProgressMonitor moduleSubtask = pm.subTask(1, SubProgressKind.AS_COMMENT);
             moduleSubtask.start(NameUtil.compactNamespace(module.getModuleName()), ListSequence.fromList(models).count());
             // find missing concepts, when language's not missing 
-
             // find missing concept features when concept's not missing 
-
             for (EditableSModel model : ListSequence.fromList(models)) {
               final Wrappers._boolean stop = new Wrappers._boolean(false);
               IChecker.AbstractModelChecker<NodeReportItem> checker = new StructureChecker().withoutCardinalities().asModelChecker();
@@ -240,7 +237,6 @@ public class MigrationCheckerImpl implements MigrationChecker {
         }
 
         // todo show only annotations left by our run migrations 
-
         for (ScriptApplied sa : Sequence.fromIterable(migrations)) {
           for (Problem p : Sequence.fromIterable(((MigrationScriptReference) sa.getScriptReference()).resolve(myProject, false).check(sa.getModule()))) {
             if (!(processor.process(p))) {

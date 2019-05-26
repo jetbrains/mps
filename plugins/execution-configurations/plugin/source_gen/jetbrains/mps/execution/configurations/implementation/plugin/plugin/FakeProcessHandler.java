@@ -67,7 +67,6 @@ public abstract class FakeProcessHandler extends BaseOSProcessHandler {
 
   protected void requestTerminate() {
     // no-op 
-
   }
 
   @Override

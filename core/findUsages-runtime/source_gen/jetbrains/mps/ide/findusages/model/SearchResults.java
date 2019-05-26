@@ -69,11 +69,8 @@ public class SearchResults<T> implements UsagesList {
   @Deprecated
   public Set<Object> getSearchedNodes() {
     // mySearchNodes lists elements we looked for; elements our results 'derived' from. They are not necessarily of the same 
-
     // kind as our results, hence we use <?>, not <T> (I don't feel there's reason introduce <E> as it 
-
     // (a) limits where we can look; (b) complicates the code 
-
     return (Set<Object>) mySearchedObjects.getElements0();
   }
 

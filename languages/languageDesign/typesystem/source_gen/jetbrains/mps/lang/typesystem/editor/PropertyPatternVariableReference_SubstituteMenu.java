@@ -48,7 +48,6 @@ public class PropertyPatternVariableReference_SubstituteMenu extends SubstituteM
 
     public SMP_ReferenceScope_wbk7fm_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11192d97ff9L, "jetbrains.mps.lang.typesystem.structure.PropertyPatternVariableReference"), MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11192d97ff9L, 0x11192d9d83cL, "patternVarDecl"));
     }
     @NotNull

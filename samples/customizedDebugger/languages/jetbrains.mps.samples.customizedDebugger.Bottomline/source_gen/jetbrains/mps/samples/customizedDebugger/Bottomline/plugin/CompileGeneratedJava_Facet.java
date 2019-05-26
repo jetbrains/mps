@@ -102,7 +102,6 @@ public class CompileGeneratedJava_Facet extends IFacet.Stub {
               }
               final IMessageHandler msgHandler = new ErrorsLoggingHandler(LogManager.getLogger(new IFacet.Name("jetbrains.mps.samples.customizedDebugger.Bottomline.CompileGeneratedJava").getName())).compose(monitor.getSession().getMessageHandler());
               // XXX in fact, shall lock repository of a module from TResource, which is not necessarily the same as project's 
-
               MPSCompilationResult cr = new ModelAccessHelper(monitor.getSession().getProject().getModelAccess()).runReadAction(new Computable<MPSCompilationResult>() {
                 public MPSCompilationResult compute() {
                   return new ModuleMaker(msgHandler).make(toCompile, progressMonitor, vars(pa.global()).options());
@@ -241,7 +240,6 @@ public class CompileGeneratedJava_Facet extends IFacet.Stub {
               }
 
               // collect modules to compile 
-
               final Iterable<TResource> toCompile = Sequence.fromIterable(input).where(new IWhereFilter<TResource>() {
                 public boolean accept(TResource it) {
                   return SModuleOperations.isCompileInIdea(it.module());
@@ -249,7 +247,6 @@ public class CompileGeneratedJava_Facet extends IFacet.Stub {
               });
 
               // compile modules 
-
               if (Sequence.fromIterable(toCompile).isEmpty()) {
                 return new IResult.SUCCESS(_output_widgfz_a0b);
               }

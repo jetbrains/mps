@@ -48,7 +48,6 @@ public class RefactoringParameterReference_SubstituteMenu extends SubstituteMenu
 
     public SMP_ReferenceScope_f634ej_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a77cda06L, "jetbrains.mps.lang.refactoring.structure.RefactoringParameterReference"), MetaAdapterFactory.getReferenceLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a77cda06L, 0x5fb04b74a77cda07L, "refactoringParameter"));
     }
     @NotNull

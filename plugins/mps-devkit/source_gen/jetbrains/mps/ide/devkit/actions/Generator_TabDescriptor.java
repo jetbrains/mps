@@ -142,7 +142,6 @@ public class Generator_TabDescriptor extends RelationDescriptor {
             return;
           }
           // this means there are generators, but no template models 
-
           Generator firstGen = ListSequence.fromList(genList.value).first();
           EditableSModel templateModelDescriptor = SModuleOperations.createModelWithAdjustments(language.value.getModuleName() + ".generator.template.main@" + SModelStereotype.GENERATOR, firstGen.getModelRoots().iterator().next());
           templateModelDescriptor.save();
@@ -164,7 +163,6 @@ public class Generator_TabDescriptor extends RelationDescriptor {
 
     if (ListSequence.fromList(mappings).isEmpty()) {
       // generator is present - this means we don't have template models or mappings 
-
       mpsProject.getRepository().getModelAccess().executeCommand(new Runnable() {
         public void run() {
           SModel model = null;

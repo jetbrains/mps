@@ -96,7 +96,6 @@ public class SuspiciousModelIndex implements ApplicationComponent {
 
   /*package*/ void mergeLater(List<Conflictable> tasks) {
     // invoked from non-EDT thread (usually one of Application's pooled threads) 
-
     final Map<Project, List<VirtualFile>> toMerge = new HashMap<Project, List<VirtualFile>>();
     final Map<VirtualFile, Conflictable> fileToConflictable = new LinkedHashMap<VirtualFile, Conflictable>();
     final Set<Conflictable> toReload = new HashSet<Conflictable>();
@@ -126,11 +125,9 @@ public class SuspiciousModelIndex implements ApplicationComponent {
     });
 
     // runnable to get executed in EDT 
-
     final Computable<Object> conflictableReload = new Computable<Object>() {
       public Object compute() {
         // see MPS-18743 
-
         for (Project project : toMerge.keySet()) {
           SRepository projectRepo = ProjectHelper.getProjectRepository(project);
           if (projectRepo == null) {
@@ -159,9 +156,7 @@ public class SuspiciousModelIndex implements ApplicationComponent {
           }
         }
         // XXX no idea what to do with conflicts not from a project 
-
         // For now, use global repository with deployed modules. Note, it's not capable of commands, hence just write access 
-
         myMPSPlatform.findComponent(MPSModuleRepository.class).getModelAccess().runWriteAction(new Runnable() {
           public void run() {
             for (Conflictable conflictable : toReload) {
@@ -195,9 +190,7 @@ public class SuspiciousModelIndex implements ApplicationComponent {
 
   private boolean isInConflict(IFile ifile) {
     // use of deprecated method not to get warning for non-project files (see VFU.getProjectVirtualFile impl) 
-
     // However, is it possible to get IFile not from a project here (e.g. reloaded model from distribution)? 
-
     VirtualFile vfile = VirtualFileUtils.getVirtualFile(ifile);
     if ((vfile != null) && (vfile.exists())) {
       for (Project project : myProjectManager.getOpenProjects()) {

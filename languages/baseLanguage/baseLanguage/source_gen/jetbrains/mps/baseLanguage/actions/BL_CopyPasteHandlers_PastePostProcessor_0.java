@@ -20,7 +20,6 @@ public final class BL_CopyPasteHandlers_PastePostProcessor_0 implements PastePos
   @Override
   public void postProcessNode(SNode pastedNode) {
     // todo: not working for IVariableReference. Unify and fix it. 
-
     if (Scope.parent(pastedNode) != null) {
       Scope surroundingScope = Scope.getScope(Scope.parent(pastedNode), pastedNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration"));
       if (surroundingScope != null && surroundingScope.contains(IVariableReference__BehaviorDescriptor.getVariable_idSORzhOpB6t.invoke(pastedNode))) {

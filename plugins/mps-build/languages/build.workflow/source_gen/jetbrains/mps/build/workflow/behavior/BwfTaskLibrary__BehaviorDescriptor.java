@@ -38,7 +38,6 @@ public final class BwfTaskLibrary__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static Set<SNode> closureWithImported_id2U15YDCRefA(@NotNull SNode __thisNode__) {
     //  build a closure with this library and all its imports, recursively 
-
     Set<SNode> rv = SetSequence.fromSet(new LinkedHashSet<SNode>());
     SetSequence.fromSet(rv).addElement(__thisNode__);
     ArrayDeque<SNode> queue = new ArrayDeque<SNode>();

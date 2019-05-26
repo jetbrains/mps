@@ -115,13 +115,10 @@ public class WorkbenchMigrationProblemHandler implements ProjectComponent, Migra
             myMpsProject.getComponent(ModelGenerationStatusManager.class).discard(modelsToClean);
 
             // todo the following is copied from MakeActionImpl, it's better to make MAI to be compilied in Idea 
-
             // todo (and contributed by xml); this code should use idea-compiled class then 
-
             SwingUtilities.invokeLater(new Runnable() {
               public void run() {
                 // save all before launching make 
-
                 new SaveRepositoryCommand(myMpsProject.getRepository()).execute();
                 MakeSession session = new MakeSession(myMpsProject, new DefaultMakeMessageHandler(myMpsProject), false);
                 final IMakeService makeService = myMpsProject.getComponent(MakeServiceComponent.class).get();

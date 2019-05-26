@@ -150,11 +150,8 @@ public class SPropertyOperations {
   }
   private static Object deserializeIfNeeded(String string, SProperty property) {
     // While regenerated smodel code calls proper `assign` and `set` methods (by respecting type of a property) 
-
     // old code serialize properties and then invokes `assign` and `set` with `String propertyValue` argument 
-
     // To handle not-regenerated code we have this compatiblity aux until 18.3 will be released 
-
     SDataType type = property.getType();
     if (type == SPrimitiveTypes.BOOLEAN || type == SPrimitiveTypes.INTEGER) {
       return type.fromString(string);

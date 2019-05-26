@@ -49,7 +49,6 @@ public class Template_reduce_IsNotNullOperation extends TemplateDeclarationBase 
             }
             tnode2.addChild(myAggregationLinks[0], tnode3);
             // TODO validate child 
-
           }
           {
             Collection<SNode> tlist4 = null;
@@ -59,13 +58,11 @@ public class Template_reduce_IsNotNullOperation extends TemplateDeclarationBase 
               tnode2.addChild(myAggregationLinks[1], child5);
             }
             // TODO validate child 
-
           }
         } finally {
         }
         tnode1.addChild(myAggregationLinks[2], tnode2);
         // TODO validate child 
-
       }
     } finally {
     }

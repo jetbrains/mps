@@ -61,7 +61,6 @@ public class TransformationUtil {
   }
   public static void replaceAssignment(SNode baseAssignment) {
     // todo get rid of copy & paste 
-
     SNode lvalueType = ((SNode) baseAssignment.getUserObject(TransformatorImpl.LTYPE));
     SNode rvalueType = ((SNode) baseAssignment.getUserObject(TransformatorImpl.RTYPE));
 
@@ -128,7 +127,6 @@ public class TransformationUtil {
   }
   public static void checkForAnonimousClassCreations(SNode evaluator) {
     // TODO in some cases, we might actually support anonymous classes creation 
-
     SNode evalMethod = findEvaluateMethod(evaluator);
     if (ListSequence.fromList(SNodeOperations.getNodeDescendants(evalMethod, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass"), false, new SAbstractConcept[]{})).isNotEmpty()) {
       throw new UnsupportedOperationException("Anonimous classes evaluation is not supported.");
@@ -152,7 +150,6 @@ public class TransformationUtil {
   }
   private static SNode findEvaluateMethod(SNode evaluator) {
     // TODO use this method everywhere 
-
     return ListSequence.fromList(SNodeOperations.getNodeDescendants(evaluator, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration"), false, new SAbstractConcept[]{})).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")).equals("evaluate");
@@ -164,11 +161,8 @@ public class TransformationUtil {
       rawType = SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(rawType, MetaAdapterFactory.getConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x3f11b1341fa25ed8L, "jetbrains.mps.debugger.java.evaluation.structure.DebuggedType")), MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0x3f11b1341fa25ed8L, 0x3f11b1341fa25ed9L, "lowType")));
     }
     // we can't cast from Object to primitive, so we must box primitive types 
-
     // stupid java "everything is an object, except the things which are not" 
-
     // "and we do not care that MS with C# is taking over the world" 
-
     if (SNodeOperations.isInstanceOf(rawType, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d22479L, "jetbrains.mps.baseLanguage.structure.IntegerType"))) {
       return _quotation_createNode_crriw5_a0a4a02();
     } else if (SNodeOperations.isInstanceOf(rawType, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d5b617L, "jetbrains.mps.baseLanguage.structure.ByteType"))) {
@@ -195,7 +189,6 @@ public class TransformationUtil {
   public static SNode createClassFqNameNode(SModel model, SNode classConcept) {
     SNode fqNameNode;
     // TODO this is not completely correct: model can contain several classes 
-
     if (ListSequence.fromList(SModelOperations.nodes(model, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"))).contains(classConcept)) {
       fqNameNode = _quotation_createNode_crriw5_a0a0c0w();
     } else {
@@ -251,9 +244,7 @@ public class TransformationUtil {
       type = SLinkOperations.getTarget(SNodeOperations.cast(type, MetaAdapterFactory.getConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x3f11b1341fa25ed8L, "jetbrains.mps.debugger.java.evaluation.structure.DebuggedType")), MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0x3f11b1341fa25ed8L, 0x3f11b1341fa25ed9L, "lowType"));
     }
     // why subtyping? 
-
     // I do not know 
-
     if (TypecheckingFacade.getFromContext().isSubtype(type, _quotation_createNode_crriw5_b0a4a72())) {
       return "Z";
     } else if (TypecheckingFacade.getFromContext().isSubtype(type, _quotation_createNode_crriw5_b0a0e0bb())) {
@@ -284,7 +275,6 @@ public class TransformationUtil {
       SNode classifier = SLinkOperations.getTarget(SNodeOperations.cast(typeCopy, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType")), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"));
       assert classifier != null;
       // we have to deal with the fact that inners in stubs are not inners 
-
       String realFqName;
       if (SPropertyOperations.getString(classifier, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")).contains(".")) {
         String fqName = ((String) BHReflection.invoke0(classifier, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept"), SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
@@ -352,7 +342,6 @@ public class TransformationUtil {
       SLinkOperations.setTarget(foreachStatement, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a6933ce33L, 0x10a6934ab66L, "iterable"), _quotation_createNode_crriw5_a0a0a0b0jb(SLinkOperations.getTarget(foreachStatement, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a6933ce33L, 0x10a6934ab66L, "iterable"))));
     }
     // next two lines add type parameters in a specific magical way so the test would pass 
-
     ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(foreachStatement, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a6933ce33L, 0x10a6934ab66L, "iterable")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0x4500f31eb02a7788L, "typeArgument"))).addElement(SNodeOperations.copyNode(valueProxyType));
     SLinkOperations.setTarget(SLinkOperations.getTarget(foreachStatement, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a697996feL, 0x10a6979f36bL, "variable")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type"), _quotation_createNode_crriw5_a0a4a53(valueProxyType));
   }

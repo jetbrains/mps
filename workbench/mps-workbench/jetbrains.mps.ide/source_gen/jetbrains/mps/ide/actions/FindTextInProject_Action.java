@@ -60,7 +60,6 @@ public class FindTextInProject_Action extends BaseAction {
       return;
     }
     // FIXME transient == true just because result provider (and, perhaps, search query) could not get serialized 
-
     UsageToolOptions opt = new UsageToolOptions().navigateIfSingle(true).notFoundMessage("No matching property values found").transientView(true);
     IResultProvider rp = new BaseNode() {
       @Override
@@ -71,7 +70,6 @@ public class FindTextInProject_Action extends BaseAction {
           @Override
           public void accept(SNode n) {
             // FIXME look up particular property and match it against text, index just gives 'possible' locations 
-
             cb.onUsageFound(new SearchResult<SNode>(n, "property value"));
           }
         };

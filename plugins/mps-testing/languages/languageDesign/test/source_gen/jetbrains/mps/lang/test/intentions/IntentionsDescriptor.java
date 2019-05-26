@@ -34,7 +34,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 0:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[8];
           intentions[0] = new AddTestAnnotation_Intention();
           intentions[1] = new AddOperationsAnnotation_Intention();
@@ -49,7 +48,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 1:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[1];
           intentions[0] = new AddMessageAnnotation_Intention();
         }
@@ -57,7 +55,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 2:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[1];
           intentions[0] = new GenerateOutput_Intention();
         }
@@ -65,7 +62,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 3:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[1];
           intentions[0] = new AddScopeExpectedNodes_Intention();
         }

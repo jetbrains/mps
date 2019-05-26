@@ -48,7 +48,6 @@ public class ExternalViewFigureParameter_SubstituteMenu extends SubstituteMenuBa
 
     public SMP_ReferenceScope_b4e0kx_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0xd7722d504b934c3aL, 0xae061903d05f95a7L, 0x1e3b9cbb9f749406L, "jetbrains.mps.lang.editor.figures.structure.ExternalViewFigureParameter"), MetaAdapterFactory.getReferenceLink(0xd7722d504b934c3aL, 0xae061903d05f95a7L, 0x1e3b9cbb9f749406L, 0x1e3b9cbb9f749431L, "fieldDeclaration"));
     }
     @NotNull

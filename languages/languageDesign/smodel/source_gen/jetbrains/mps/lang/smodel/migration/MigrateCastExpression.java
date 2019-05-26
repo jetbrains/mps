@@ -53,9 +53,7 @@ public class MigrateCastExpression extends MigrationScriptBase {
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10975850da7L, "jetbrains.mps.lang.smodel.structure.SNodeTypeCastExpression"), false)).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           // left_expression_old was completely removed 
-
           // concept_old was completely removed 
-
           if ((SLinkOperations.getTarget(it, MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2143399c0554e687L, 0x3636a984eed504f9L, "conceptArgument")) == null)) {
             SReference conceptRef = SNodeOperations.getReference(it, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2143399c0554e687L, 0x5d71a86e0b67ce04L, "concept"));
             SLinkOperations.setTarget(it, MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2143399c0554e687L, 0x3636a984eed504f9L, "conceptArgument"), _quotation_createNode_r15y35_a0b0c0a0a0a0a6(SLinkOperations.getTargetNode(conceptRef)));

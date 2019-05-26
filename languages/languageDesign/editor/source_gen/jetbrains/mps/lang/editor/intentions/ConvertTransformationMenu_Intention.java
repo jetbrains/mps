@@ -86,7 +86,6 @@ public final class ConvertTransformationMenu_Intention extends AbstractIntention
 
       if ((SNodeOperations.getParent(newNode) == null)) {
         // We replaced a root node with a root node, open the new node in the editor 
-
         EditorPanelManager editorPanelManager = editorContext.getEditorPanelManager();
         if (editorPanelManager != null) {
           editorPanelManager.openEditor(newNode);

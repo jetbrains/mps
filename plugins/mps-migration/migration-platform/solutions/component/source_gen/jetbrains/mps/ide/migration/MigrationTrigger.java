@@ -159,13 +159,11 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
 
   public void projectOpened() {
     // this is a hack for migration task purposes 
-
     if (RuntimeFlags.getTestMode().isInsideTestEnvironment()) {
       return;
     }
 
     // wait until project is fully loaded (if not yet) 
-
     StartupManager.getInstance(myProject).runWhenProjectIsInitialized(new Runnable() {
       public void run() {
         ApplicationManager.getApplication().invokeLater(new Runnable() {
@@ -195,13 +193,9 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
           }
 
           // this code should be removed when we are sure there are no modules without language 
-
           // version information persisted 
-
           // this code should be executed when all models are already there in the module to 
-
           // produce a correct list of used languages 
-
           ModuleDescriptor desc = ((AbstractModule) m).getModuleDescriptor();
           if (!(desc.hasLanguageVersions())) {
             SLanguageHierarchy languageHierarchy = new SLanguageHierarchy(m.getUsedLanguages());
@@ -295,9 +289,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
     }
 
     // if a new language is added to a repo, all modules in project using it 
-
     // should be checked for whether their migration is needed 
-
     final Set<SModule> modules2Check = SetSequence.fromSet(new HashSet<SModule>());
     Sequence.fromIterable(MigrationModuleUtil.getMigrateableModulesFromProject(myMpsProject)).visitAll(new IVisitor<SModule>() {
       public void visit(SModule it) {
@@ -327,11 +319,9 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
     myMigrationForbiddenMessage = null;
 
     // wait until project is fully loaded (if not yet) 
-
     StartupManager.getInstance(ideaProject).runWhenProjectIsInitialized(new Runnable() {
       public void run() {
         // as we use ui, postpone to EDT 
-
         ApplicationManager.getApplication().invokeLater(new Runnable() {
           public void run() {
             ProgressManager.getInstance().run(new Task.Modal(ideaProject, "Synchronizing Files...", false) {
@@ -397,7 +387,6 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
     final MigrationError errors = session.getError();
     if (!(finished) && errors == null) {
       // user has postponed migration 
-
       return true;
     }
 
@@ -523,9 +512,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
     @Override
     public void startListening(@NotNull SRepository repository) {
       // Here we imply MyRepoListener is attached to a single repository. Otherwise, 
-
       // each next repo it starts listening to would override myModelListener value 
-
       assert myModelListener == null;
       myModelListener = new ModelsEventsCollector(repository.getModelAccess()) {
         @Override
@@ -550,9 +537,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
     public void moduleAdded(@NotNull SModule module) {
       super.moduleAdded(module);
       // here we do not filter out non-project modules because this method is called from 'New Language' action 
-
       // before module is attached to project 
-
       if (MigrationModuleUtil.isModuleMigrateable(module)) {
         triggerOnModuleChanged(module);
       }
@@ -641,9 +626,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
     @Override
     public void beforeLanguagesUnloaded(Iterable<LanguageRuntime> iterable) {
       // languages are still loaded when this notification comes, no way we can notice any change here, therefore we don't 
-
       // check for changed conditions, e.g. with checkNotDeployedLanguages() 
-
     }
   }
 
@@ -662,12 +645,10 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
       }
       // migrations already blocked, warning is showing 
 
-
       if (myLastDeployWarning == null) {
         blockMigrationsCheck("some languages are not deployed");
       } else {
         // expire old, show new to get the balloon again 
-
         if (!((myLastDeployWarning.isExpired()))) {
           myLastDeployWarning.expire();
         }
@@ -739,7 +720,6 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
       }
     }));
     // remove deployed languages (i.e. known to LanguageRegistry) from the set 
-
     myLanguageRegistry.withAvailableLanguages(new Consumer<LanguageRuntime>() {
       public void accept(LanguageRuntime lr) {
         SetSequence.fromSet(allUsedLanguages).removeElement(lr.getIdentity());

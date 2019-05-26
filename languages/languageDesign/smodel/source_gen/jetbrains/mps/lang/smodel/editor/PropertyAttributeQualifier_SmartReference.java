@@ -47,7 +47,6 @@ public class PropertyAttributeQualifier_SmartReference extends SubstituteMenuBas
 
     public SMP_ReferenceScope_b4lfv3_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x58ea5217b045c9b9L, "jetbrains.mps.lang.smodel.structure.PropertyAttributeQualifier"), MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x58ea5217b045c9b9L, 0x58ea5217b045c9baL, "attributeConcept"));
     }
     @NotNull

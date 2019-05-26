@@ -82,14 +82,11 @@ public class FetchDependenciesProcessor {
     @Override
     public void needsFetch(SNode node) {
       // copied as is from VisibleArtifacts.needsFetch. VA has to become 'initialize once' container, 
-
       // while this builder is intended for composing fetch state. 
-
       if ((node == null)) {
         return;
       }
       // helper.requiresFetch() is invoked with gc.getOriginaInput, hence need originalNode here. 
-
       node = helper.getOriginalNode(node);
       if ((node == null)) {
         return;

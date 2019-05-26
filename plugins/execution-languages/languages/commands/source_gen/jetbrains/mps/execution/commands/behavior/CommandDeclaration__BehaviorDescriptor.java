@@ -64,7 +64,6 @@ public final class CommandDeclaration__BehaviorDescriptor extends BaseBHDescript
   }
   /*package*/ static List<SNode> getDistinctFieldParameters_id5keEkmeCrcX(@NotNull SNode __thisNode__) {
     // we get all parameters generated into fields and select a list with uniquie names 
-
     final Iterable<SNode> parameterDeclarations = CommandDeclaration__BehaviorDescriptor.getFieldParameters_id3gpm$NHlR5N.invoke(__thisNode__);
     Iterable<String> fieldNames = Sequence.fromIterable(parameterDeclarations).select(new ISelector<SNode, String>() {
       public String select(SNode it) {

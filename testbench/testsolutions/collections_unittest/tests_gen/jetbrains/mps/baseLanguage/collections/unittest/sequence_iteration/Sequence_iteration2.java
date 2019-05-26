@@ -14,7 +14,6 @@ public class Sequence_iteration2 extends TestCase {
   }
   public void test_1() {
     // inner iteration 
-
     Iterable<String> ss = Sequence.fromClosure(new ISequenceClosure<String>() {
       public Iterable<String> iterable() {
         return new Iterable<String>() {

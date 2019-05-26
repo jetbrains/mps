@@ -50,7 +50,6 @@ public class Template_gen_static_method extends TemplateDeclarationBase implemen
         }
         tnode1.addChild(myAggregationLinks[0], tnode2);
         // TODO validate child 
-
       }
       {
         final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
@@ -76,19 +75,16 @@ public class Template_gen_static_method extends TemplateDeclarationBase implemen
                         }
                         tnode6.addChild(myAggregationLinks[1], tnode7);
                         // TODO validate child 
-
                       }
                     } finally {
                     }
                     tnode5.addChild(myAggregationLinks[2], tnode6);
                     // TODO validate child 
-
                   }
                 } finally {
                 }
                 tnode4.addChild(myAggregationLinks[3], tnode5);
                 // TODO validate child 
-
               }
               {
                 final SNode tnode8 = environment.createOutputNode(myConcepts[6]);
@@ -102,7 +98,6 @@ public class Template_gen_static_method extends TemplateDeclarationBase implemen
                     }
                     tnode8.addChild(myAggregationLinks[4], tnode9);
                     // TODO validate child 
-
                   }
                   {
                     final SNode tnode10 = environment.createOutputNode(myConcepts[5]);
@@ -112,19 +107,16 @@ public class Template_gen_static_method extends TemplateDeclarationBase implemen
                     }
                     tnode8.addChild(myAggregationLinks[5], tnode10);
                     // TODO validate child 
-
                   }
                 } finally {
                 }
                 tnode4.addChild(myAggregationLinks[6], tnode8);
                 // TODO validate child 
-
               }
             } finally {
             }
             tnode3.addChild(myAggregationLinks[2], tnode4);
             // TODO validate child 
-
           }
           {
             final SNode tnode11 = environment.createOutputNode(myConcepts[4]);
@@ -142,7 +134,6 @@ public class Template_gen_static_method extends TemplateDeclarationBase implemen
                     }
                     tnode12.addChild(myAggregationLinks[4], tnode13);
                     // TODO validate child 
-
                   }
                   {
                     final SNode tnode14 = environment.createOutputNode(myConcepts[9]);
@@ -161,7 +152,6 @@ public class Template_gen_static_method extends TemplateDeclarationBase implemen
                             }
                             tnode15.addChild(myAggregationLinks[5], tnode16);
                             // TODO validate child 
-
                           }
                           {
                             final SNode tnode17 = environment.createOutputNode(myConcepts[7]);
@@ -171,37 +161,31 @@ public class Template_gen_static_method extends TemplateDeclarationBase implemen
                             }
                             tnode15.addChild(myAggregationLinks[4], tnode17);
                             // TODO validate child 
-
                           }
                         } finally {
                         }
                         tnode14.addChild(myAggregationLinks[7], tnode15);
                         // TODO validate child 
-
                       }
                     } finally {
                     }
                     tnode12.addChild(myAggregationLinks[5], tnode14);
                     // TODO validate child 
-
                   }
                 } finally {
                 }
                 tnode11.addChild(myAggregationLinks[1], tnode12);
                 // TODO validate child 
-
               }
             } finally {
             }
             tnode3.addChild(myAggregationLinks[2], tnode11);
             // TODO validate child 
-
           }
         } finally {
         }
         tnode1.addChild(myAggregationLinks[8], tnode3);
         // TODO validate child 
-
       }
       {
         final SNode tnode18 = environment.createOutputNode(myConcepts[11]);
@@ -210,7 +194,6 @@ public class Template_gen_static_method extends TemplateDeclarationBase implemen
         }
         tnode1.addChild(myAggregationLinks[9], tnode18);
         // TODO validate child 
-
       }
       {
         final SNode tnode19 = environment.createOutputNode(myConcepts[12]);
@@ -225,13 +208,11 @@ public class Template_gen_static_method extends TemplateDeclarationBase implemen
             }
             tnode19.addChild(myAggregationLinks[10], tnode20);
             // TODO validate child 
-
           }
         } finally {
         }
         tnode1.addChild(myAggregationLinks[11], tnode19);
         // TODO validate child 
-
       }
     } finally {
     }
@@ -252,7 +233,6 @@ public class Template_gen_static_method extends TemplateDeclarationBase implemen
         }
         tnode1.addChild(myAggregationLinks[9], tnode2);
         // TODO validate child 
-
       }
       {
         final SNode tnode3 = environment.createOutputNode(myConcepts[1]);
@@ -261,7 +241,6 @@ public class Template_gen_static_method extends TemplateDeclarationBase implemen
         }
         tnode1.addChild(myAggregationLinks[0], tnode3);
         // TODO validate child 
-
       }
       {
         final SNode tnode4 = environment.createOutputNode(myConcepts[2]);
@@ -289,25 +268,21 @@ public class Template_gen_static_method extends TemplateDeclarationBase implemen
                     }
                     tnode6.addChild(myAggregationLinks[7], tnode7);
                     // TODO validate child 
-
                   }
                 } finally {
                 }
                 tnode5.addChild(myAggregationLinks[13], tnode6);
                 // TODO validate child 
-
               }
             } finally {
             }
             tnode4.addChild(myAggregationLinks[2], tnode5);
             // TODO validate child 
-
           }
         } finally {
         }
         tnode1.addChild(myAggregationLinks[8], tnode4);
         // TODO validate child 
-
       }
     } finally {
     }

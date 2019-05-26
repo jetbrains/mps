@@ -105,7 +105,6 @@ public class AddMenuPart_ParameterizedSubstitute extends SubstituteMenuBase {
       @Override
       protected Iterable<? extends SConcept> getParameters(SubstituteMenuContext _context) {
         // additional compilation test for all passed parameters 
-
         boolean tmpVar = _context.getParentNode() != null;
         tmpVar = tmpVar && _context.getCurrentTargetNode() != null;
         tmpVar = tmpVar && _context.getLink() != null;
@@ -163,7 +162,6 @@ public class AddMenuPart_ParameterizedSubstitute extends SubstituteMenuBase {
           @Override
           public SNode createNode(@NotNull String pattern) {
             // compilation test for all passed parameters 
-
             boolean tmpVar = pattern != null;
             tmpVar = tmpVar && myParameterObject != null;
             tmpVar = tmpVar && _context.getParentNode() != null;
@@ -190,7 +188,6 @@ public class AddMenuPart_ParameterizedSubstitute extends SubstituteMenuBase {
           @Override
           public String getMatchingText(@NotNull String pattern) {
             // compilation test for all passed parameters 
-
             boolean tmpVar = pattern != null;
             tmpVar = tmpVar && myParameterObject != null;
             tmpVar = tmpVar && _context.getParentNode() != null;
@@ -204,7 +201,6 @@ public class AddMenuPart_ParameterizedSubstitute extends SubstituteMenuBase {
           @Override
           public String getDescriptionText(@NotNull String pattern) {
             // compilation test for all passed parameters 
-
             boolean tmpVar = pattern != null;
             tmpVar = tmpVar && myParameterObject != null;
             tmpVar = tmpVar && _context.getParentNode() != null;
@@ -218,7 +214,6 @@ public class AddMenuPart_ParameterizedSubstitute extends SubstituteMenuBase {
           @Override
           public SNode getType(@NotNull String pattern) {
             // compilation test for all passed parameters 
-
             boolean tmpVar = pattern != null;
             tmpVar = tmpVar && myParameterObject != null;
             tmpVar = tmpVar && _context.getParentNode() != null;
@@ -233,7 +228,6 @@ public class AddMenuPart_ParameterizedSubstitute extends SubstituteMenuBase {
           @Override
           public IconResource getIcon(@NotNull String pattern) {
             // compilation test for all passed parameters 
-
             boolean tmpVar = pattern != null;
             tmpVar = tmpVar && myParameterObject != null;
             tmpVar = tmpVar && _context.getParentNode() != null;
@@ -246,7 +240,6 @@ public class AddMenuPart_ParameterizedSubstitute extends SubstituteMenuBase {
           @Override
           public void select(@NotNull SNode createdNode, @NotNull String pattern) {
             // compilation test for all passed parameters 
-
             boolean tmpVar = pattern != null;
             tmpVar = tmpVar && myParameterObject != null;
             tmpVar = tmpVar && _context.getParentNode() != null;
@@ -257,7 +250,6 @@ public class AddMenuPart_ParameterizedSubstitute extends SubstituteMenuBase {
 
             if (Objects.equals(myParameterObject, MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1672224dL, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestChild2"))) {
               // selecting a custom cell 
-
               _context.getEditorContext().flushEvents();
               EditorCell createdNodeCell = _context.getEditorContext().getEditorComponent().findNodeCell(createdNode);
               if (createdNodeCell != null) {
@@ -271,7 +263,6 @@ public class AddMenuPart_ParameterizedSubstitute extends SubstituteMenuBase {
             }
             if (Objects.equals(myParameterObject, MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e167220f9L, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestChild1"))) {
               // returning node to select 
-
               SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(createdNode, MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e167220f9L, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestChild1")), MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e167220f9L, 0x7f805f0c2dd46343L, "child1"))).first(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
               return;
             }

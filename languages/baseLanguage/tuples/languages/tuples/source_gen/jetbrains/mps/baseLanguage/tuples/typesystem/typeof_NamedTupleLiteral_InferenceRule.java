@@ -48,7 +48,6 @@ public class typeof_NamedTupleLiteral_InferenceRule extends AbstractInferenceRul
 
     final Map<SNode, SNode> subs = MapSequence.fromMap(new HashMap<SNode, SNode>());
     // all generics are inferred in a tuple literal 
-
     List<SNode> typeParam = ListSequence.fromList(SLinkOperations.getChildren(tdecl, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration"))).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode tp) {
         final SNode TP_typevar_4340163696368051056 = typeCheckingContext.createNewRuntimeTypesVariable();

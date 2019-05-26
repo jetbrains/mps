@@ -46,7 +46,6 @@ public final class AnnotationMethodDeclaration__BehaviorDescriptor extends BaseB
       SNode componentType = SLinkOperations.getTarget(SNodeOperations.cast(type, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType"));
       if (SNodeOperations.isInstanceOf(componentType, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType"))) {
         // nested array types are prohibited 
-
         return false;
       }
       return ((boolean) AnnotationMethodDeclaration__BehaviorDescriptor.isGoodReturnType_id5JI19Xbr7EK.invoke(__thisNode__, componentType));

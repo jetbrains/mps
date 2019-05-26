@@ -22,7 +22,6 @@ import com.sun.jdi.request.EventRequest;
   }
   /*package*/ void resume() {
     // todo when we get some other suspend policies, add some code here 
-
     myEventsProcessor.getVirtualMachine().resume();
   }
 }

@@ -69,12 +69,10 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean createRootRule_Condition_0_0(final CreateRootRuleContext _context) {
     // see MPS-24613 
-
     return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c13L, "jetbrains.mps.make.facet.structure.FacetDeclaration"))).isNotEmpty();
   }
   public static boolean createRootRule_Condition_0_1(final CreateRootRuleContext _context) {
     // see MPS-24613 
-
     return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c13L, "jetbrains.mps.make.facet.structure.FacetDeclaration"))).isNotEmpty();
   }
   public static boolean rule_Condition_0_0(final BaseMappingRuleContext _context) {
@@ -106,7 +104,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean rule_Condition_15_0(final BaseMappingRuleContext _context) {
     // see MPS-24613 
-
     return SModuleOperations.isAspect(((SModel) _context.getVariable("model")), "plugin") && ListSequence.fromList(SModelOperations.roots(((SModel) _context.getVariable("model")), MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c13L, "jetbrains.mps.make.facet.structure.FacetDeclaration"))).isNotEmpty();
   }
   public static Object propertyMacro_GetValue_0_0(final PropertyMacroContext _context) {
@@ -135,7 +132,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object propertyMacro_GetValue_2_0(final PropertyMacroContext _context) {
     // node.classifierName() should be nested class of node.facetDeclaration().classifierName 
-
     return JavaNameUtil.shortName(IWillBeClassifier__BehaviorDescriptor.classifierName_id3ZSHU3pg$b_.invoke(_context.getNode()));
   }
   public static Object propertyMacro_GetValue_2_1(final PropertyMacroContext _context) {
@@ -239,7 +235,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object referenceMacro_GetReferent_15_0(final ReferenceMacroContext _context) {
     // TODO genContext.get output FacetAspectDescriptorCons for model model; 
-
     return SModelOperations.getModelName(((SModel) _context.getVariable("model"))) + ".FacetAspectDescriptor";
   }
   public static boolean ifMacro_Condition_1_0(final IfMacroContext _context) {

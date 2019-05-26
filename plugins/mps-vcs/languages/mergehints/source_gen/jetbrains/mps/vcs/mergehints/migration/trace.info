@@ -15,28 +15,28 @@
       <node id="4140018591229954546" at="16,33,17,16" concept="2" />
       <node id="4140018591229954546" at="19,41,20,17" concept="0" />
       <node id="4140018591229954546" at="20,17,21,16" concept="2" />
-      <node id="4140018591229954546" at="27,51,28,149" concept="2" />
-      <node id="2061039933209923145" at="23,42,25,0" concept="3" />
+      <node id="2061039933209923145" at="23,42,24,42" concept="3" />
+      <node id="4140018591229954546" at="26,51,27,149" concept="2" />
       <node id="4140018591229954546" at="12,0,15,0" concept="1" trace="getCaption#()Ljava/lang/String;" />
-      <node id="4140018591229954546" at="27,0,30,0" concept="1" trace="getDescriptor#()Ljetbrains/mps/lang/migration/runtime/base/MigrationScriptReference;" />
+      <node id="4140018591229954546" at="23,0,26,0" concept="1" trace="doExecute#(Lorg/jetbrains/mps/openapi/module/SModule;)V" />
+      <node id="4140018591229954546" at="26,0,29,0" concept="1" trace="getDescriptor#()Ljetbrains/mps/lang/migration/runtime/base/MigrationScriptReference;" />
       <node id="4140018591229954546" at="15,0,19,0" concept="1" trace="isRerunnable#()Z" />
       <node id="4140018591229954546" at="19,0,23,0" concept="1" trace="execute#(Lorg/jetbrains/mps/openapi/module/SModule;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="4140018591229954546" at="23,0,27,0" concept="1" trace="doExecute#(Lorg/jetbrains/mps/openapi/module/SModule;)V" />
       <scope id="4140018591229954546" at="12,30,13,33" />
       <scope id="4140018591229954546" at="16,33,17,16" />
-      <scope id="4140018591229954546" at="27,51,28,149" />
+      <scope id="4140018591229954546" at="23,42,24,42" />
+      <scope id="4140018591229954546" at="26,51,27,149" />
       <scope id="4140018591229954546" at="19,41,21,16" />
-      <scope id="4140018591229954546" at="23,42,25,0" />
       <scope id="4140018591229954546" at="12,0,15,0" />
-      <scope id="4140018591229954546" at="27,0,30,0" />
+      <scope id="4140018591229954546" at="23,0,26,0">
+        <var name="m" id="4140018591229954546" />
+      </scope>
+      <scope id="4140018591229954546" at="26,0,29,0" />
       <scope id="4140018591229954546" at="15,0,19,0" />
       <scope id="4140018591229954546" at="19,0,23,0">
         <var name="m" id="4140018591229954546" />
       </scope>
-      <scope id="4140018591229954546" at="23,0,27,0">
-        <var name="m" id="4140018591229954546" />
-      </scope>
-      <unit id="4140018591229954546" at="11,0,34,0" name="jetbrains.mps.vcs.mergehints.migration.ConvertOldMergeHints" />
+      <unit id="4140018591229954546" at="11,0,33,0" name="jetbrains.mps.vcs.mergehints.migration.ConvertOldMergeHints" />
     </file>
   </root>
 </debug-info>

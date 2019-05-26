@@ -169,14 +169,12 @@ public class NodeWrappersTestsContributor implements TestsContributor {
         }
       }
       // todo show balloon and ignore the tests 
-
       throw new RuntimeException(String.format("Test project '%s' is not opened. Aborted.", projectFile));
     }
 
     @Override
     public void closeProject(@NotNull Project project) {
       // no-op, do not allow to close project 
-
     }
 
 

@@ -48,7 +48,6 @@ public class FieldDocReference_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_6r9obp_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1ec532ec252c9a28L, "jetbrains.mps.baseLanguage.javadoc.structure.FieldDocReference"), MetaAdapterFactory.getReferenceLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4d316b5973d644c2L, 0x4d316b5973d644c4L, "declaration"));
     }
     @NotNull

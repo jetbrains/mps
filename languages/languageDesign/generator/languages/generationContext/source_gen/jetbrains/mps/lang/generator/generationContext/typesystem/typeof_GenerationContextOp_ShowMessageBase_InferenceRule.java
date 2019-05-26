@@ -19,7 +19,6 @@ public class typeof_GenerationContextOp_ShowMessageBase_InferenceRule extends Ab
   }
   public void applyRule(final SNode op, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     //  parameters: string, node 
-
     {
       SNode _nodeToCheck_1029348928467 = op;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902f1(jetbrains.mps.lang.generator.generationContext.typesystem)", "654553635094958668", 0, null);

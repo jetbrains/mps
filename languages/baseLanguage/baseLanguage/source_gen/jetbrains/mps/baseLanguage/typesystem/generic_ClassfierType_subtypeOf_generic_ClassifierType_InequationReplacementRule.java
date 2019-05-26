@@ -121,7 +121,6 @@ public class generic_ClassfierType_subtypeOf_generic_ClassifierType_InequationRe
             }
           } else if (SNodeOperations.isInstanceOf(rightParam, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae5f4a3L, "jetbrains.mps.baseLanguage.structure.WildCardType"))) {
             // nothing to do 
-
           } else if (SNodeOperations.isInstanceOf(leftParam, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType")) && SNodeOperations.isInstanceOf(rightParam, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"))) {
             {
               SNode _nodeToCheck_1029348928467 = equationInfo.getNodeWithError();
@@ -138,7 +137,6 @@ public class generic_ClassfierType_subtypeOf_generic_ClassifierType_InequationRe
             }
           } else {
             // TODO this is actually an equivalence relation 
-
             {
               SNode _nodeToCheck_1029348928467 = equationInfo.getNodeWithError();
               EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3216938209399927487", 0, null);
@@ -199,14 +197,12 @@ public class generic_ClassfierType_subtypeOf_generic_ClassifierType_InequationRe
             result_14532009 = result_14532009 && MatchingUtil.matchNodes((SNode) rightParam, (SNode) leftParam);
           } else if (SNodeOperations.isInstanceOf(rightParam, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae5f4a3L, "jetbrains.mps.baseLanguage.structure.WildCardType"))) {
             // nothing to do 
-
           } else if (SNodeOperations.isInstanceOf(leftParam, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType")) && SNodeOperations.isInstanceOf(rightParam, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"))) {
             result_14532009 = result_14532009 && MatchingUtil.matchNodes((SNode) leftParam, (SNode) rightParam);
           } else if (SNodeOperations.isInstanceOf(leftParam, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType")) && SNodeOperations.isInstanceOf(rightParam, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"))) {
             result_14532009 = result_14532009 && MatchingUtil.matchNodes((SNode) leftParam, (SNode) rightParam);
           } else {
             // TODO this is actually an equivalence relation 
-
             result_14532009 = result_14532009 && TypecheckingFacade.getFromContext().isSubtype((SNode) leftParam, (SNode) rightParam);
             result_14532009 = result_14532009 && TypecheckingFacade.getFromContext().isSubtype((SNode) rightParam, (SNode) leftParam);
           }

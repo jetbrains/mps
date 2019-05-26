@@ -42,7 +42,6 @@ public class typeof_AsNodeOperation_InferenceRule extends AbstractInferenceRule_
           }
           if (SNodeOperations.isInstanceOf(typeCheckingContext.getExpandedNode(operandType), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5cab42cd97571ceeL, "jetbrains.mps.lang.smodel.structure.SConceptType"))) {
             // todo: use something like isInterfaceConcept() or isConcreteConcept() methods in SConcept instead? 
-
             if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(typeCheckingContext.getExpandedNode(operandType), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5cab42cd97571ceeL, "jetbrains.mps.lang.smodel.structure.SConceptType")), MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5cab42cd97571ceeL, 0x5cab42cd97571cefL, "conceptDeclaraton")), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration"))) {
               {
                 SNode _nodeToCheck_1029348928467 = operation;
@@ -74,13 +73,9 @@ public class typeof_AsNodeOperation_InferenceRule extends AbstractInferenceRule_
             }
           }
           // logic like for ConceptDeclaration is impossible for InterfaceConceptDeclaration because: 
-
           // in a node of type concept<SomeInterfaceConcept> could be stored a value node<SomeConcreteConcept> 
-
           // if SomeConcreteConcept is a subconcept of SomeInterfaceConcept. 
-
           // (see rule supertypesOf_SConceptTypeType_SConceptTypeType) 
-
         }
       }, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "8866923313515936417", false, false);
     }

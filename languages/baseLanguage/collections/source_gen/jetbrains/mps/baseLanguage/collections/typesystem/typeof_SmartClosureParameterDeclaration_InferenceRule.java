@@ -58,7 +58,6 @@ public class typeof_SmartClosureParameterDeclaration_InferenceRule extends Abstr
       }
     } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(scpd), MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, "jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral")) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(SNodeOperations.getParent(scpd)), MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall"))) {
       // to support closure's type inference in webr-dnq 
-
       SNode mcall = SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.getParent(scpd)), MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall"));
       SNode mdecl = SLinkOperations.getTarget(mcall, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"));
       if (mdecl == null) {
@@ -67,11 +66,9 @@ public class typeof_SmartClosureParameterDeclaration_InferenceRule extends Abstr
 
       final Map<SNode, SNode> subs = MapSequence.fromMap(new HashMap<SNode, SNode>());
       // check the inference context 
-
       if (!((boolean) IMethodCall__BehaviorDescriptor.isInTypeInferenceContext_id4cxv$9$kw67.invoke(mcall))) {
         for (SNode tvd : ListSequence.fromList(BaseMethodDeclaration__BehaviorDescriptor.getInferrableTypeVars_id5W9RYt5baxk.invoke(mdecl))) {
           // assume all unbound type vars outside an inference context are Object 
-
           MapSequence.fromMap(subs).put(tvd, _quotation_createNode_5rdbtv_a0b0a0h0a0a1());
         }
       }

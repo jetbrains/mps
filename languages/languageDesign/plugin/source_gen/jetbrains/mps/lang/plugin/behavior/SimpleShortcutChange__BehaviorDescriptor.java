@@ -61,11 +61,9 @@ public final class SimpleShortcutChange__BehaviorDescriptor extends BaseBHDescri
           if ((keyMap.value == null)) {
             keyMap.value = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb075L, "jetbrains.mps.lang.plugin.structure.KeymapChangesDeclaration"));
             // Enum value has not got any constraint, so it needs to be converted to valid identifier 
-
             SPropertyOperations.set(keyMap.value, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), NameUtil.toValidCamelIdentifier(SEnumOperations.getMemberValue(it)));
             SPropertyOperations.set(keyMap.value, MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb075L, 0x15afe07f2a9bb0c9L, "keymap"), SEnumOperations.getMemberValue(it));
             // If IdeaConfigurationXml exists, take it in account 
-
             SPropertyOperations.set(keyMap.value, MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb075L, 0x77ff578948f6b772L, "isPluginXmlKeymap"), ListSequence.fromList(SModelOperations.roots(model, MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x2c7d36ab0e3b095aL, "jetbrains.mps.lang.plugin.structure.IdeaConfigurationXml"))).isNotEmpty());
             if (ListSequence.fromList(SModelOperations.roots(model, MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x2c7d36ab0e3b095aL, "jetbrains.mps.lang.plugin.structure.IdeaConfigurationXml"))).isNotEmpty()) {
               ListSequence.fromList(SModelOperations.roots(model, MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x2c7d36ab0e3b095aL, "jetbrains.mps.lang.plugin.structure.IdeaConfigurationXml"))).where(new IWhereFilter<SNode>() {
@@ -88,14 +86,12 @@ public final class SimpleShortcutChange__BehaviorDescriptor extends BaseBHDescri
           }
 
           // Have to copy node, because can't add same node to several concepts as child 
-
           _shortcutChange.value = SNodeOperations.copyNode(_shortcutChange.value);
           ListSequence.fromList(SLinkOperations.getChildren(keyMap.value, MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb075L, 0x15afe07f2a9bb077L, "shortcutChange"))).addElement(_shortcutChange.value);
 
           EditorPanelManager editorPanelManager = editorContext.getEditorPanelManager();
           if (editorPanelManager != null) {
             // Focus on last keystroke as newly added will be last 
-
             editorPanelManager.openEditor(ListSequence.fromList(SLinkOperations.getChildren(_shortcutChange.value, MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb076L, 0x15afe07f2a9bb07eL, "keystroke"))).last());
           }
         }

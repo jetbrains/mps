@@ -54,9 +54,7 @@ public class ReadHelper {
   @NotNull
   public Pair<Boolean, SNodeReference> readLink_internal(String src) {
     // returns <true, xxx> - if src is Dynamic Reference 
-
     // [modelID.]nodeID | [modelID.]^ 
-
     Pair<Boolean, SNodeReference> result = new Pair<Boolean, SNodeReference>(false, null);
     if (src == null) {
       return result;
@@ -71,7 +69,6 @@ public class ReadHelper {
   }
   public SNodeReference readLinkId(String src) {
     // [modelID.]nodeID[:version] | [modelID.]^[:version] 
-
     return readLink_internal(src).o2;
   }
   public String getStubConceptQualifiedName(String type) {
@@ -86,7 +83,6 @@ public class ReadHelper {
     int ix = s.indexOf(MODEL_SEPARATOR_CHAR);
     if (ix <= 0) {
       // no model ID - fqName is here 
-
       if (LOG.isEnabledFor(Level.ERROR)) {
         LOG.error("Broken reference to type=" + s + " in model " + myModelRef);
       }

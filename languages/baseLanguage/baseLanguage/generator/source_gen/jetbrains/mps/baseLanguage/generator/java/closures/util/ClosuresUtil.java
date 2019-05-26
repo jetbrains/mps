@@ -71,7 +71,6 @@ public class ClosuresUtil {
   }
   private static Map<SNode, ClosuresUtil.ClosureContextData> getClosureContext(TemplateQueryContext genContext) {
     // init ClosureContextData 
-
     synchronized (CLOSURE_CONTEXT_DATA) {
       Map<SNode, ClosuresUtil.ClosureContextData> closureContexts = ((Map<SNode, ClosuresUtil.ClosureContextData>) genContext.getTransientObject(CLOSURE_CONTEXT_DATA));
       if (closureContexts == null) {
@@ -126,7 +125,6 @@ public class ClosuresUtil {
     boolean outerVarsFound = false;
     for (SNode child : ListSequence.fromList(SNodeOperations.getChildren(node))) {
       // skip inner closure 
-
       if (SNodeOperations.isInstanceOf(child, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10c63f4f3f3L, "jetbrains.mps.baseLanguage.structure.Closure"))) {
         continue;
       }

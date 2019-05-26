@@ -52,7 +52,6 @@ public class Template_reduce_ConceptMethodCallWithSuper extends TemplateDeclarat
                 tnode3.addChild(myAggregationLinks[0], child5);
               }
               // TODO validate child 
-
             }
             {
               Collection<SNode> tlist6 = null;
@@ -62,13 +61,11 @@ public class Template_reduce_ConceptMethodCallWithSuper extends TemplateDeclarat
                 tnode3.addChild(myAggregationLinks[1], child7);
               }
               // TODO validate child 
-
             }
           } finally {
           }
           tnode2.addChild(myAggregationLinks[2], tnode3);
           // TODO validate child 
-
         }
       } finally {
       }

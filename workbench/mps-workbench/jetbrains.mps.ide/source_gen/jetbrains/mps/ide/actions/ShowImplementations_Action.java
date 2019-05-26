@@ -116,7 +116,6 @@ public class ShowImplementations_Action extends BaseAction {
     }
     final ModelAccess modelAccess = ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess();
     // FIXME we are already inside a command ('execute outside' == false), do we need another one? Besides, dialog from within a command is not a nice idea 
-
     modelAccess.executeCommandInEDT(new Runnable() {
       public void run() {
         String title = "Definition of " + ((SNode) MapSequence.fromMap(_params).get("node")).getPresentation();

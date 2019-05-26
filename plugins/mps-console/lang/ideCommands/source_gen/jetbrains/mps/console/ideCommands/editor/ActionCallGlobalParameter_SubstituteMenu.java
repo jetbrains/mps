@@ -48,7 +48,6 @@ public class ActionCallGlobalParameter_SubstituteMenu extends SubstituteMenuBase
 
     public SMP_ReferenceScope_m01yxv_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x4d7759afce9587a9L, "jetbrains.mps.console.ideCommands.structure.ActionCallGlobalParameter"), MetaAdapterFactory.getReferenceLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x4d7759afce9587a9L, 0x4d7759afce9587aaL, "declaration"));
     }
     @NotNull

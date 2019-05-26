@@ -51,7 +51,6 @@ public class RenameModuleDialog extends RenameDialog {
           }
 
           // module.getModuleName() can be null 
-
           if (fqName.equals(module.getModuleName())) {
             checkResult.value = "Module with the same name already exists in repository";
             break;
@@ -94,7 +93,6 @@ public class RenameModuleDialog extends RenameDialog {
    */
   private void updateCentralPanel() {
     // If folder and module name are different, folder will not be renamed, so no need to check submodules 
-
     if (myModule.getModuleName() != null && myModule.getModuleName().equals(myModule.getModuleSourceDir().getName())) {
       mySubModules = Renamer.getSubModules(myProject.getRepository(), myModule);
     } else {

@@ -46,9 +46,7 @@ public final class BuildMpsLayout_PluginDescriptor__BehaviorDescriptor extends B
     if (artifactId instanceof jetbrains.mps.smodel.SNode) {
       SNode node = (SNode) artifactId;
       // todo (in 3.0+) plugin should be exported by folder, not by xml 
-
       // weeeeell? 
-
       if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPlugin"))) {
         return SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4dee437cL, 0x5b7be37b4dee437dL, "plugin")) == node;
       }
@@ -57,11 +55,8 @@ public final class BuildMpsLayout_PluginDescriptor__BehaviorDescriptor extends B
   }
   /*package*/ static boolean reexportsFromJar_id5bqm540K$Gb(@NotNull SNode __thisNode__, Object o) {
     // XXX We imply here parent node is BuildLayout_Jar as it's the only place to use InJarNode.reexportsFromJar 
-
     //     For folder with BML_PD, #exports shall work, and I don't care yet to remove that as (a) for folder, no unneccesary unzip (in dependants) happens 
-
     //     (b) no idea how to let BL_Folder know about BML_PD without introducing something like BL_InFolderNode similar to BL_InJarNode 
-
     return o == SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4dee437cL, 0x5b7be37b4dee437dL, "plugin"));
   }
   /*package*/ static String location_id6b4RkXS8sT2(@NotNull SNode __thisNode__, DependenciesHelper helper, Object artifactId) {

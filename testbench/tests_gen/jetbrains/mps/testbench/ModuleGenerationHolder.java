@@ -88,7 +88,6 @@ public class ModuleGenerationHolder {
       return;
     }
     // sanity check build() doesn't come after diff() (due to broken test method ordering) 
-
     assert tmpPath != null;
     final GenerationOptions.OptionsBuilder optBuilder = GenerationOptions.getDefaults();
     boolean isParallel = "true".equalsIgnoreCase(System.getProperty("parallel.generation"));
@@ -100,9 +99,7 @@ public class ModuleGenerationHolder {
     IScript scr = ModuleGenerationHolder.defaultScriptBuilder().toScript();
     final MakeSession session = new MakeSession(project, myMessageHandler, true);
     // trace.info is useless for tests, however we do keep these files in repo, and diffModule test 
-
     // fails if we don't generate one here 
-
     TextGenFacetInitializer tgfi = new TextGenFacetInitializer().generateDebugInfo(true);
     MakeFacetInitializer mfi = new MakeFacetInitializer().setPathToFile(new _FunctionTypes._return_P1_E0<IFile, String>() {
       public IFile invoke(String path) {
@@ -135,7 +132,6 @@ public class ModuleGenerationHolder {
         diffDirs(orig, revd, diffs);
       } else if (!(orig.exists()) && !(revd.exists())) {
         // Don't assume there shall be anything just based on the fact make asked for a path 
-
       } else if (!(orig.exists())) {
         ListSequence.fromList(diffs).addElement("Created: " + revd);
       } else if (!(revd.exists())) {
@@ -191,7 +187,6 @@ public class ModuleGenerationHolder {
           }
           if ((onext.length() == 0 || rnext.length() == 0) && onext.length() != rnext.length()) {
             //  no reason to dump whole file single diff for a completely replaced file. 
-
             ListSequence.fromList(diffs).addElement(String.format("Content replaced: %s (%d -> %d)", onext.getPath(), onext.length(), rnext.length()));
             continue;
           }

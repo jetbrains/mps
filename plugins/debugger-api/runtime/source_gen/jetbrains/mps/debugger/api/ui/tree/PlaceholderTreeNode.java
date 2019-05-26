@@ -21,11 +21,8 @@ import java.util.ArrayList;
 public final class PlaceholderTreeNode extends MPSTreeNode {
   /*package*/ PlaceholderTreeNode(String escapedNodeIdentifier) {
     // escapedNodeIdentifier means it's not the value to match directly with WatchableNode.calculateNodeId value 
-
     // Instead, calculateNodeId.replaceAll(TREE_PATH_SEPARATOR, '-') shall be compared against escapedNodeIdentifier to get matched 
-
     // This is due to the fact we use escape mechanism that lose information (we can't reverse the escape). 
-
     setText("...");
     setNodeIdentifier(escapedNodeIdentifier);
   }
@@ -39,20 +36,15 @@ public final class PlaceholderTreeNode extends MPSTreeNode {
       String pathComponent = components.next();
       if ((pathComponent == null || pathComponent.length() == 0)) {
         // it's odd to expect empty components, but we need to account for this case at least for the root element 
-
         // which seems to be always empty (i.e. pathString always(?) starts with '/') 
-
         continue;
       }
       // pathComponent has TREE_PATH_SEPARATOR == '/' escaped as '-' 
-
       boolean found = false;
       for (int i = 0; i < current.getChildCount(); i++) {
         MPSTreeNode node = (MPSTreeNode) current.getChildAt(i);
         // nodeIdentifier of PlaceholderTreeNode is already an escaped path component, replaceAll() would be no-op for it, but it doesn't hurt 
-
         // to make it apparent I've thought about this scenario 
-
         found = node instanceof PlaceholderTreeNode && ((PlaceholderTreeNode) node).getNodeIdentifier().equals(pathComponent);
         found = found || node.getNodeIdentifier().replaceAll(MPSTree.TREE_PATH_SEPARATOR, "-").equals(pathComponent);
         if (found) {
@@ -66,27 +58,19 @@ public final class PlaceholderTreeNode extends MPSTreeNode {
       }
       if (current instanceof PlaceholderTreeNode || !(current.isInitialized())) {
         // Don't care if PTN is initialized here, just move to add placeholders further on. 
-
         // Perhaps, could make PlaceholderTreeNode.isInitialized() == false constantly (or until otherwise empty doInit() call) for uniformity 
-
         PlaceholderTreeNode placeholder = new PlaceholderTreeNode(pathComponent);
         // placeholder child for the un-initialized node, would get replaced once current completes its initialization 
-
         current.add(placeholder);
         // use it as tree path element 
-
         path.add(placeholder);
         // schedule init for the current node 
-
         current.init();
         // and get ready for the next path component, if any 
-
         current = placeholder;
       } else {
         // we've got initialized node, but no child matched expected path component, we assume the tree structure has changed and 
-
         // therefore we stop path trace here. 
-
         return new TreePath(path.toArray());
       }
     }

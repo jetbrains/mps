@@ -112,7 +112,6 @@ public class Refactoring_Test extends AbstractRefactoringTest {
     });
 
     // not really needed, but still let's end the transaction before checking 
-
     project.getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
         Collection<ReportItem> sourceErrors = getErrors(SModelOperations.roots(SModuleOperations.getAspect(mySourceLanguage, "constraints"), null));
@@ -137,7 +136,6 @@ public class Refactoring_Test extends AbstractRefactoringTest {
     });
 
     // !!! a separate read action is needed as otherwise we'll not see broken refs due to UnregisteredNodes 
-
     project.getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
         Assert.assertTrue(CollectionSequence.fromCollection(getErrors(SModelOperations.roots(SModuleOperations.getAspect(myTargetLanguage, "editor"), null))).isEmpty());
@@ -199,7 +197,6 @@ public class Refactoring_Test extends AbstractRefactoringTest {
 
   public void setUp() throws Exception {
     // XXX can't use beforeTest as it doesn't call super.setUp()! 
-
     super.setUp();
     project.getModelAccess().runReadAction(new Runnable() {
       public void run() {

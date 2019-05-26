@@ -44,7 +44,6 @@ public final class BuildLayout_Node__BehaviorDescriptor extends BaseBHDescriptor
 
   /*package*/ static void unpack_id6IqTD4bJTWZ(@NotNull SNode __thisNode__, UnpackHelper helper) {
     // nop 
-
   }
   /*package*/ static boolean exports_id5FtnUVJQES1(@NotNull SNode __thisNode__, Object artifactId) {
     return false;

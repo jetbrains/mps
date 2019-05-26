@@ -102,7 +102,6 @@ public class Template_reduce_LocalBehaviorMethodCall extends TemplateDeclaration
                     }
                     tnode8.addChild(myAggregationLinks[0], tnode9);
                     // TODO validate child 
-
                   }
                   {
                     final SNode tnode10 = environment.createOutputNode(myConcepts[1]);
@@ -112,7 +111,6 @@ public class Template_reduce_LocalBehaviorMethodCall extends TemplateDeclaration
                     }
                     tnode8.addChild(myAggregationLinks[1], tnode10);
                     // TODO validate child 
-
                   }
                 } finally {
                 }
@@ -124,7 +122,6 @@ public class Template_reduce_LocalBehaviorMethodCall extends TemplateDeclaration
               tnode3.addChild(myAggregationLinks[2], child11);
             }
             // TODO validate child 
-
           }
           {
             final List<SNode> tlist12 = new ArrayList<SNode>();
@@ -158,7 +155,6 @@ public class Template_reduce_LocalBehaviorMethodCall extends TemplateDeclaration
                           tnode16.addChild(myAggregationLinks[3], child18);
                         }
                         // TODO validate child 
-
                       }
                       {
                         Collection<SNode> tlist19 = null;
@@ -168,13 +164,11 @@ public class Template_reduce_LocalBehaviorMethodCall extends TemplateDeclaration
                           tnode16.addChild(myAggregationLinks[4], child20);
                         }
                         // TODO validate child 
-
                       }
                     } finally {
                     }
                     tnode15.addChild(myAggregationLinks[5], tnode16);
                     // TODO validate child 
-
                   }
                 } finally {
                 }
@@ -188,13 +182,11 @@ public class Template_reduce_LocalBehaviorMethodCall extends TemplateDeclaration
               tnode3.addChild(myAggregationLinks[2], child21);
             }
             // TODO validate child 
-
           }
         } finally {
         }
         tnode2.addChild(myAggregationLinks[1], tnode3);
         // TODO validate child 
-
       }
       {
         final SNode tnode22 = environment.createOutputNode(myConcepts[5]);
@@ -215,19 +207,16 @@ public class Template_reduce_LocalBehaviorMethodCall extends TemplateDeclaration
                   tnode23.addChild(myAggregationLinks[6], child25);
                 }
                 // TODO validate child 
-
               }
             } finally {
             }
             tnode22.addChild(myAggregationLinks[7], tnode23);
             // TODO validate child 
-
           }
         } finally {
         }
         tnode2.addChild(myAggregationLinks[0], tnode22);
         // TODO validate child 
-
       }
     } finally {
     }

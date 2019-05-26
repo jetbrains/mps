@@ -101,7 +101,6 @@ public class ShowImplementationComponent extends JPanel {
     group.add(showSource);
     showSource = new ShowImplementationComponent.ShowSourceAction("Show Source", AllIcons.Actions.ShowViewer, false);
     // TODO: choose better icon 
-
     showSource.registerCustomShortcutSet(new CompositeShortcutSet(CommonShortcuts.getViewSource(), CommonShortcuts.CTRL_ENTER), this);
     group.add(showSource);
     return ActionManager.getInstance().createActionToolbar(ActionPlaces.UNKNOWN, group, true);

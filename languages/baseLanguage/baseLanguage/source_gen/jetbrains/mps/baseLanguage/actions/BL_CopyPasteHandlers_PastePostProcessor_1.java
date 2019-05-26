@@ -47,11 +47,9 @@ public final class BL_CopyPasteHandlers_PastePostProcessor_1 implements PastePos
         SReference fieldDeclarationReference = SNodeOperations.getReference(fieldReferenceOperation, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration"));
 
         // External reference 
-
         final String resolveInfo = SLinkOperations.getResolveInfo(fieldDeclarationReference);
 
         // Collecting possible classConcepts (this. targets) 
-
         List<SNode> possibleClassConcepts = new ArrayList<SNode>();
         for (SNode clazz = containingClass; clazz != null; clazz = ((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(clazz) ? null : SNodeOperations.getNodeAncestor(clazz, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"), false, false))) {
           ListSequence.fromList(possibleClassConcepts).addElement(clazz);

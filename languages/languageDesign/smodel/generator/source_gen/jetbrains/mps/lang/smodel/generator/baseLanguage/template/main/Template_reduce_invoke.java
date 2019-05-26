@@ -57,7 +57,6 @@ public class Template_reduce_invoke extends TemplateDeclarationBase implements T
               tnode2.addChild(myAggregationLinks[0], child4);
             }
             // TODO validate child 
-
           }
           {
             Collection<SNode> tlist5 = null;
@@ -68,13 +67,11 @@ public class Template_reduce_invoke extends TemplateDeclarationBase implements T
               tnode2.addChild(myAggregationLinks[0], child6);
             }
             // TODO validate child 
-
           }
         } finally {
         }
         tnode1.addChild(myAggregationLinks[1], tnode2);
         // TODO validate child 
-
       }
       {
         final SNode tnode7 = environment.createOutputNode(myConcepts[2]);
@@ -95,19 +92,16 @@ public class Template_reduce_invoke extends TemplateDeclarationBase implements T
                   tnode8.addChild(myAggregationLinks[2], child10);
                 }
                 // TODO validate child 
-
               }
             } finally {
             }
             tnode7.addChild(myAggregationLinks[3], tnode8);
             // TODO validate child 
-
           }
         } finally {
         }
         tnode1.addChild(myAggregationLinks[4], tnode7);
         // TODO validate child 
-
       }
     } finally {
     }

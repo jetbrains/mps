@@ -31,7 +31,6 @@ public class supertypesOf_SNodeListType_SubtypingRule extends SubtypingRule_Runt
         ListSequence.fromList(supertypes).addElement(_quotation_createNode_f6ipu3_a0a0a1a2a1(superConcept));
       }
       // ========== 
-
       ListSequence.fromList(supertypes).addElement(_quotation_createNode_f6ipu3_a0a3a2a1());
     }
     ListSequence.fromList(supertypes).addElement(_quotation_createNode_f6ipu3_a0a3a1(elementConcept));

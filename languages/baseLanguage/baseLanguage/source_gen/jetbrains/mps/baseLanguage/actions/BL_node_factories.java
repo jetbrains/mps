@@ -144,7 +144,6 @@ public class BL_node_factories {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       SNodeFactoryOperations.setNewChild(newNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType"));
       // else keep package (null) visibility for constructors in Enums 
-
       if (!(SNodeOperations.isInstanceOf(enclosingNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass")))) {
         if (enclosingNode != null && SNodeOperations.isInstanceOf(enclosingNode, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, "jetbrains.mps.baseLanguage.structure.IVisible"))) {
           SLinkOperations.setTarget(newNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility"), SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(enclosingNode, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, "jetbrains.mps.baseLanguage.structure.IVisible")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility"))));
@@ -183,7 +182,6 @@ public class BL_node_factories {
   public static class NodeFactory_1187945171249 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       //  moved to substitute/expression/new 
-
     }
   }
   public static class NodeFactory_1158938591701 implements NodeFactory {

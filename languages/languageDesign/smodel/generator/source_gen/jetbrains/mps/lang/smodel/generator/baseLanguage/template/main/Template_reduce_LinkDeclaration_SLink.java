@@ -56,7 +56,6 @@ public class Template_reduce_LinkDeclaration_SLink extends TemplateDeclarationBa
           }
           tnode2.addChild(myAggregationLinks[0], tnode3);
           // TODO validate child 
-
         }
         {
           final SNode tnode4 = environment.createOutputNode(myConcepts[1]);
@@ -66,7 +65,6 @@ public class Template_reduce_LinkDeclaration_SLink extends TemplateDeclarationBa
           }
           tnode2.addChild(myAggregationLinks[0], tnode4);
           // TODO validate child 
-
         }
         {
           final SNode tnode5 = environment.createOutputNode(myConcepts[1]);
@@ -76,7 +74,6 @@ public class Template_reduce_LinkDeclaration_SLink extends TemplateDeclarationBa
           }
           tnode2.addChild(myAggregationLinks[0], tnode5);
           // TODO validate child 
-
         }
         {
           final SNode tnode6 = environment.createOutputNode(myConcepts[1]);
@@ -86,7 +83,6 @@ public class Template_reduce_LinkDeclaration_SLink extends TemplateDeclarationBa
           }
           tnode2.addChild(myAggregationLinks[0], tnode6);
           // TODO validate child 
-
         }
         {
           final SNode tnode7 = environment.createOutputNode(myConcepts[2]);
@@ -96,7 +92,6 @@ public class Template_reduce_LinkDeclaration_SLink extends TemplateDeclarationBa
           }
           tnode2.addChild(myAggregationLinks[0], tnode7);
           // TODO validate child 
-
         }
       } finally {
       }
@@ -115,7 +110,6 @@ public class Template_reduce_LinkDeclaration_SLink extends TemplateDeclarationBa
           }
           tnode8.addChild(myAggregationLinks[0], tnode9);
           // TODO validate child 
-
         }
         {
           final SNode tnode10 = environment.createOutputNode(myConcepts[1]);
@@ -125,7 +119,6 @@ public class Template_reduce_LinkDeclaration_SLink extends TemplateDeclarationBa
           }
           tnode8.addChild(myAggregationLinks[0], tnode10);
           // TODO validate child 
-
         }
         {
           final SNode tnode11 = environment.createOutputNode(myConcepts[1]);
@@ -135,7 +128,6 @@ public class Template_reduce_LinkDeclaration_SLink extends TemplateDeclarationBa
           }
           tnode8.addChild(myAggregationLinks[0], tnode11);
           // TODO validate child 
-
         }
         {
           final SNode tnode12 = environment.createOutputNode(myConcepts[1]);
@@ -145,7 +137,6 @@ public class Template_reduce_LinkDeclaration_SLink extends TemplateDeclarationBa
           }
           tnode8.addChild(myAggregationLinks[0], tnode12);
           // TODO validate child 
-
         }
         {
           final SNode tnode13 = environment.createOutputNode(myConcepts[2]);
@@ -155,7 +146,6 @@ public class Template_reduce_LinkDeclaration_SLink extends TemplateDeclarationBa
           }
           tnode8.addChild(myAggregationLinks[0], tnode13);
           // TODO validate child 
-
         }
       } finally {
       }

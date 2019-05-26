@@ -10,7 +10,6 @@ import javax.swing.KeyStroke;
 public class Default_KeymapChanges extends BaseKeymapChanges {
   public Default_KeymapChanges() {
     // simple 
-
     addSimpleShortcut("jetbrains.mps.ide.devkit.actions.DeleteGenerator_Action", getShortcut(" DELETE"));
     addSimpleShortcut("jetbrains.mps.ide.devkit.actions.FindLanguageConceptsUsages_Action", getShortcut("alt F8"));
     addSimpleShortcut("jetbrains.mps.ide.devkit.actions.FindModuleUsage_Action", getShortcut("alt F7"));
@@ -25,9 +24,7 @@ public class Default_KeymapChanges extends BaseKeymapChanges {
     addSimpleShortcut("jetbrains.mps.ide.devkit.actions.ShowNodeInExplorer_Action", getShortcut("alt X"));
     addSimpleShortcut("jetbrains.mps.ide.devkit.actions.ShowStructure_Action", getShortcut("ctrl F10"));
     // simple parameterized 
-
     // complex 
-
   }
   public String getScheme() {
     return "$default";

@@ -78,13 +78,10 @@ public class StatementList_Actions {
     CellAction originalBackspace = editorCell.getAction(CellActionType.BACKSPACE);
 
     // set actions that were actually defined 
-
     setDefinedCellActions(editorCell, node, context);
 
     // If we set a DELETE action but no BACKSPACE action, 
-
     // use the DELETE action for BACKSPACE as well. 
-
     CellAction deleteAction = editorCell.getAction(CellActionType.DELETE);
     CellAction backspaceAction = editorCell.getAction(CellActionType.BACKSPACE);
     if (deleteAction != originalDelete && backspaceAction == originalBackspace) {
@@ -96,9 +93,7 @@ public class StatementList_Actions {
 
     // set cell actions from all imported action maps 
 
-
     // set cell actions defined directly in this action map 
-
     editorCell.setAction(CellActionType.COMMENT, createAction_COMMENT(node));
     editorCell.setAction(CellActionType.INSERT_PLACEHOLDER, createAction_INSERT_PLACEHOLDER(node));
     editorCell.setAction(CellActionType.INSERT_PLACEHOLDER_BEFORE, createAction_INSERT_PLACEHOLDER_BEFORE(node));
@@ -109,9 +104,7 @@ public class StatementList_Actions {
 
     // set cell action(s) of the given type from imported action maps 
 
-
     // set cell action of the given type defined directly in this action map 
-
     if (Objects.equals(actionType, CellActionType.COMMENT)) {
       editorCell.setAction(actionType, createAction_COMMENT(node));
     }

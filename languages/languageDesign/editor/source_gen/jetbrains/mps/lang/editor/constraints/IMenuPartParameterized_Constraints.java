@@ -41,11 +41,8 @@ public class IMenuPartParameterized_Constraints extends BaseConstraintsDescripto
   private static boolean staticCanBeAParent(SNode node, SNode childNode, SAbstractConcept childConcept, SContainmentLink link) {
     if (Objects.equals(IMenuPartParameterized__BehaviorDescriptor.getLinkNodeOfParameterizedPart_id1quYWAD03b2.invoke(node), link)) {
       // Only allow parameterizable or abstract menu parts as children 
-
       // be child of parameterized' and 
-
       // instead let the typesystem rule show the message about the concept being abstract). 
-
       return childConcept.isAbstract() || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(childConcept), MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9002d0dL, "jetbrains.mps.lang.editor.structure.IParameterizableMenuPart"));
     }
     return true;

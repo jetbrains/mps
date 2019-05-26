@@ -26,7 +26,6 @@ public class check_SequenceOperation_NonTypesystemRule extends AbstractNonTypesy
     final SNode opType = TypecheckingFacade.getFromContext().getTypeOf(IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(so));
     if (SNodeOperations.isInstanceOf(so, MetaAdapterFactory.getInterfaceConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x53310200e8d9eaf6L, "jetbrains.mps.baseLanguage.collections.structure.IApplicableToNothing"))) {
       // casting twice to avoid "not comparable" type error 
-
       SAbstractConcept conceptNode = SNodeOperations.getConcept(so);
       if (!(SetSequence.fromSet((IApplicableToNothing__BehaviorDescriptor.getAllApplicableTypes_id5cL0w3DYWgB.invoke(SNodeOperations.asSConcept((SAbstractConcept) conceptNode)))).any(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {

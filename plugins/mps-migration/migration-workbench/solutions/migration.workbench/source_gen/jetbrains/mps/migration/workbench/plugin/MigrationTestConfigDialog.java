@@ -98,7 +98,6 @@ public class MigrationTestConfigDialog extends DialogWrapper {
     panel.setBorder(IdeBorderFactory.createTitledBorder("Cleanup"));
     panel.setLayout(new VerticalFlowLayout());
     // todo 
-
     return panel;
   }
 
@@ -205,7 +204,6 @@ public class MigrationTestConfigDialog extends DialogWrapper {
 
       public PMigration(String id1, boolean hasOptions1, boolean error1) {
         // todo cleanup 
-
         id = id1;
         hasOptions = hasOptions1;
         error = error1;

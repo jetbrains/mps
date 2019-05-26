@@ -35,7 +35,6 @@ public class check_CaughtWasThrown_NonTypesystemRule extends AbstractNonTypesyst
       SNode caughtClassifier = SLinkOperations.getTarget(SNodeOperations.cast(caughtType, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType")), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"));
       if (TypecheckingFacade.getFromContext().isSubtype(caughtType, _quotation_createNode_r5g8rc_b0a0a0b0b0b()) || TypecheckingFacade.getFromContext().isSubtype(caughtType, _quotation_createNode_r5g8rc_b0a0a0b0b0b_0()) || SNodeOperations.is(caughtClassifier, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Exception")) || SNodeOperations.is(caughtClassifier, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Throwable"))) {
         // ignore 
-
       } else {
         Set<SNode> thrown = SetSequence.fromSet(new HashSet<SNode>());
         {

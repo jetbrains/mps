@@ -46,7 +46,6 @@ public class ReplaceSingleLineCommentsWithGenericComments extends MigrationScrip
       public void visit(SModel model) {
 
         // Remove meaningless empty text comment parts 
-
         ListSequence.fromList(SModelOperations.nodes(model, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, "jetbrains.mps.baseLanguage.structure.TextCommentPart"))).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             return SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, "jetbrains.mps.baseLanguage.structure.SingleLineComment")) && isEmptyString(trim_o7ozeo_a0a0a0a0a0a0a0c0a0a0a0b0d(SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, 0x57d533a7af15ed3eL, "text")))) && ListSequence.fromList(SNodeOperations.getAllSiblings(it, false)).isNotEmpty();

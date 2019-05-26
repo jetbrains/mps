@@ -48,7 +48,6 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
   private List<String> calcForPlatformWithoutMPS() {
     final List<String> classpath = ListSequence.fromList(new LinkedList<String>());
     // when no MPS is started, we just build a regular Java classpath with everything test classes may need. 
-
     myRepo.getModelAccess().runReadAction(new Runnable() {
       public void run() {
         Set<SModule> uniqueModules = SetSequence.fromSet(new HashSet<SModule>());
@@ -75,15 +74,11 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
     final SModuleReference moduleWithExecutors = MODULE_WITH_EXECUTORS();
     final List<String> classpath = ListSequence.fromList(new LinkedList<String>());
     // WithPlatformTestExecutor starts IDEA, therefore needs it in CP 
-
     ListSequence.fromList(classpath).addSequence(ListSequence.fromList(collectFromLibFolder()).distinct());
     // Module classpath would get managed by IdeaEnvironment based on set of modules to load 
-
     // 
     // next is to ensure TestExecutor is loaded. Though it's part of execution plugin, it's a regular mps module 
-
     // and is managed by MPS classloader once MPS starts, while we need it first, to start MPS. 
-
     myRepo.getModelAccess().runReadAction(new Runnable() {
       public void run() {
         SModule m = moduleWithExecutors.resolve(myRepo);
@@ -92,7 +87,6 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
         } else {
           String msg = String.format("No test module %s is available, execution classpath may be invalid.", moduleWithExecutors.getModuleName());
           // we likely to fail anyway, error is better than warn 
-
           if (LOG.isEnabledFor(Level.ERROR)) {
             LOG.error(msg);
           }
@@ -105,7 +99,6 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
   private List<String> collectFromLibFolder() {
     LinkedHashSet<String> libPaths = new LinkedHashSet<String>();
     // mps lib and platform lib may be the same 
-
     libPaths.add(PathManager.getPlatformLibPath());
     libPaths.add(PathManager.getLibPath());
     libPaths.add(PathManager.getLibExtPath());
@@ -121,11 +114,8 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
         }
       }
       // don't get into nested dir. though this is different e.g. 
-
       // from ant tasks (see MPSClasspathUtil#gatherAllClassesAndJarsUnder() 
-
       // this is how it was with ClassloaderUtil.addIDEALibraries that used to be here. 
-
     }
     return rv;
   }
@@ -133,9 +123,7 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
   private List<String> collectFromPreInstalledPluginsFolder() {
     List<String> result = ListSequence.fromList(new ArrayList<String>());
     // XXX why pre-installed only, and not any locally-deployed (getPluginsPath())? 
-
     // Why not MPS's PathManager but IDEA's? 
-
     File preinstalledFolder = new File(com.intellij.openapi.application.PathManager.getPreInstalledPluginsPath());
     final File[] pluginFiles = preinstalledFolder.listFiles();
     if (pluginFiles != null) {
@@ -181,25 +169,15 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
   @NotNull
   private static SModuleReference MODULE_WITH_EXECUTORS() {
     // next module used to be in defaults of TestParameters, don't see a reason why can't do it here, though. 
-
     // With classpath, we have to 
-
     // ensure *TestExecutor classes get loaded (unitTest.execution.server package). The best approach in that case 
-
     // would be for TestParameters to tell set of required modules (instead of/in addition to classpath list) 
-
     // as it's TestParameters class that knows specific contributor class location, however, such a change would 
-
     // require changes in TestParameters#comprises() logic, which needs a thorough refactoring to get rid of 
-
     // Class<> in getExecutorClass() anyway. 
-
     // The reason I put it here is that I lean towards no executorClass in TestParameters at all, so that 
-
     // this command would pick executor class based on information whether need to start MPS or not, and therfore 
-
     // would add relevant module into classpath here anyway. 
-
 
     return PersistenceFacade.getInstance().createModuleReference("f618e99a-2641-465c-bb54-31fe76f9e285(jetbrains.mps.baseLanguage.unitTest.execution)");
   }

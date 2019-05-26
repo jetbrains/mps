@@ -103,9 +103,7 @@ public class PolygonContentView extends PolygonView implements ResizableContentV
     contentHeight.set(height);
     if (!(myPolyLine.valid().get())) {
       // Calling super.doValidate() once again because myPolyLine can be invalidated as a result of setting 
-
       // myPreferredSize property 
-
       super.validate();
     }
   }

@@ -42,7 +42,6 @@ public final class CellActionMapImportWildcardSelector__BehaviorDescriptor exten
   }
   /*package*/ static SNode getNavigatableNodeWithin_id5Sx2dSLnDj7(@NotNull SNode __thisNode__, SNode actionMap) {
     // wildcard import navigates to the whole actionMap 
-
     return actionMap;
   }
 

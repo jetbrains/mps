@@ -65,19 +65,16 @@ public class Template_processStatement extends TemplateDeclarationBase implement
                     }
                     tnode4.addChild(myAggregationLinks[0], tnode5);
                     // TODO validate child 
-
                   }
                 } finally {
                 }
                 tnode3.addChild(myAggregationLinks[1], tnode4);
                 // TODO validate child 
-
               }
             } finally {
             }
             tnode2.addChild(myAggregationLinks[2], tnode3);
             // TODO validate child 
-
           }
           {
             final SNode tnode6 = environment.createOutputNode(myConcepts[5]);
@@ -95,7 +92,6 @@ public class Template_processStatement extends TemplateDeclarationBase implement
                     }
                     tnode7.addChild(myAggregationLinks[3], tnode8);
                     // TODO validate child 
-
                   }
                   {
                     Collection<SNode> tlist9 = null;
@@ -105,25 +101,21 @@ public class Template_processStatement extends TemplateDeclarationBase implement
                       tnode7.addChild(myAggregationLinks[4], child10);
                     }
                     // TODO validate child 
-
                   }
                 } finally {
                 }
                 tnode6.addChild(myAggregationLinks[5], tnode7);
                 // TODO validate child 
-
               }
             } finally {
             }
             tnode2.addChild(myAggregationLinks[2], tnode6);
             // TODO validate child 
-
           }
         } finally {
         }
         tnode1.addChild(myAggregationLinks[6], tnode2);
         // TODO validate child 
-
       }
     } finally {
     }
@@ -156,19 +148,16 @@ public class Template_processStatement extends TemplateDeclarationBase implement
                     }
                     tnode4.addChild(myAggregationLinks[3], tnode5);
                     // TODO validate child 
-
                   }
                 } finally {
                 }
                 tnode3.addChild(myAggregationLinks[5], tnode4);
                 // TODO validate child 
-
               }
             } finally {
             }
             tnode2.addChild(myAggregationLinks[2], tnode3);
             // TODO validate child 
-
           }
           {
             final SNode tnode6 = environment.createOutputNode(myConcepts[8]);
@@ -186,7 +175,6 @@ public class Template_processStatement extends TemplateDeclarationBase implement
                     }
                     tnode7.addChild(myAggregationLinks[7], tnode8);
                     // TODO validate child 
-
                   }
                   {
                     final SNode tnode9 = environment.createOutputNode(myConcepts[11]);
@@ -196,25 +184,21 @@ public class Template_processStatement extends TemplateDeclarationBase implement
                     }
                     tnode7.addChild(myAggregationLinks[8], tnode9);
                     // TODO validate child 
-
                   }
                 } finally {
                 }
                 tnode6.addChild(myAggregationLinks[9], tnode7);
                 // TODO validate child 
-
               }
             } finally {
             }
             tnode2.addChild(myAggregationLinks[2], tnode6);
             // TODO validate child 
-
           }
         } finally {
         }
         tnode1.addChild(myAggregationLinks[6], tnode2);
         // TODO validate child 
-
       }
     } finally {
     }

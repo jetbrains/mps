@@ -152,7 +152,6 @@ public class SuperConceptExpression_TransformationMenu extends TransformationMen
             SLinkOperations.setTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x69a9d7dcb057a7a7L, 0x69a9d7dcb057a7a8L, "superConcept"), result);
           }
           // I expect superConcept to be the only editable cell there, so didn't bother with custom cell id 
-
           SelectionUtil.selectCell(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_EDITABLE_CELL);
         }
 

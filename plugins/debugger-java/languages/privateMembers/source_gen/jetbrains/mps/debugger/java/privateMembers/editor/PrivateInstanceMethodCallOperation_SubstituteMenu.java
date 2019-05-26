@@ -48,7 +48,6 @@ public class PrivateInstanceMethodCallOperation_SubstituteMenu extends Substitut
 
     public SMP_ReferenceScope_j9hbfo_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0x802088974572437dL, 0xb50e8f050cba9566L, 0x5eb820f649bb7006L, "jetbrains.mps.debugger.java.privateMembers.structure.PrivateInstanceMethodCallOperation"), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"));
     }
     @NotNull

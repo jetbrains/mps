@@ -43,7 +43,6 @@ public class Template_map_RootConcept extends TemplateDeclarationBase implements
         }
         tnode1.addChild(myAggregationLinks[0], tnode2);
         // TODO validate child 
-
       }
       {
         final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
@@ -56,7 +55,6 @@ public class Template_map_RootConcept extends TemplateDeclarationBase implements
             }
             tnode3.addChild(myAggregationLinks[1], tnode4);
             // TODO validate child 
-
           }
           {
             final SNode tnode5 = environment.createOutputNode(myConcepts[1]);
@@ -65,7 +63,6 @@ public class Template_map_RootConcept extends TemplateDeclarationBase implements
             }
             tnode3.addChild(myAggregationLinks[0], tnode5);
             // TODO validate child 
-
           }
           {
             final SNode tnode6 = environment.createOutputNode(myConcepts[4]);
@@ -74,13 +71,11 @@ public class Template_map_RootConcept extends TemplateDeclarationBase implements
             }
             tnode3.addChild(myAggregationLinks[2], tnode6);
             // TODO validate child 
-
           }
         } finally {
         }
         tnode1.addChild(myAggregationLinks[3], tnode3);
         // TODO validate child 
-
       }
     } finally {
     }

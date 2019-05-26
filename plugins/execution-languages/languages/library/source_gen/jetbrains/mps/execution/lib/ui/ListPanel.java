@@ -187,7 +187,6 @@ public abstract class ListPanel<T> extends JBPanel {
       final SNodeReference resultNode = chooserDialog.getResult();
 
       // FIXME please refactor this, please, please!!! 
-
       if (resultNode == null) {
         return;
       }
@@ -207,7 +206,6 @@ public abstract class ListPanel<T> extends JBPanel {
       ListPanel.this.myListComponent.updateUI();
       ListPanel.this.myListModel.fireSomethingChanged();
       // return value used to be an index to select (though, in a bit cryptic manner, see BaseAddAction) 
-
       myList.setSelectedIndex(ListSequence.fromList(ListPanel.this.myValues).indexOf(wrapper.value));
     }
 
@@ -234,11 +232,8 @@ public abstract class ListPanel<T> extends JBPanel {
       }
       int minSelectionIndex = myList.getMinSelectionIndex();
       // XXX I cried with blood tears over the code below. 
-
       //  ListPanel.this.myListComponent == myList, 
-
       // and access to myListModel is mind-blowing. Need to find enough courage to refactor this mess. 
-
       for (Object value : ListPanel.this.myListComponent.getSelectedValuesList()) {
         for (final T node : ListPanel.this.myValues) {
           final Wrappers._T<String> fqName = new Wrappers._T<String>();
@@ -259,7 +254,6 @@ public abstract class ListPanel<T> extends JBPanel {
       ListPanel.this.myListComponent.updateUI();
       ListPanel.this.myListModel.fireSomethingChanged();
       // index restore code came from base ListRemoveAction 
-
       myList.setSelectedIndex(Math.min(myList.getModel().getSize() - 1, minSelectionIndex));
     }
 

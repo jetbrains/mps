@@ -57,9 +57,7 @@ public final class ConceptMethodSuperCall {
       specifiedSuperConcept = SuperExpression__BehaviorDescriptor.getSpecifiedSuperConcept_id2k7p7sTvKkb.invoke((SNodeOperations.cast(leftExpression, MetaAdapterFactory.getInterfaceConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x25076477397f04e3L, "jetbrains.mps.lang.behavior.structure.SuperExpression"))));
       if (specifiedSuperConcept != null) {
         // if there is no implementation in the provided concept we will fail on runtime 
-
         // fixme quickfix for this case 
-
         return new ConceptMethodSuperCall.InvokationTarget(specifiedSuperConcept, methodDecl, ConceptMethodSuperCall.InvokationType.INVOKE);
       } else {
         SNode behavior = SNodeOperations.getNodeAncestor(myCall, MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, "jetbrains.mps.lang.behavior.structure.ConceptBehavior"), false, true);

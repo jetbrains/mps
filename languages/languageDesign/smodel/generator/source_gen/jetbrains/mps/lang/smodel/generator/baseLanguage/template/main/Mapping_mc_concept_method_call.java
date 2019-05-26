@@ -84,7 +84,6 @@ public class Mapping_mc_concept_method_call extends MapConfigBase implements Tem
                   tnode3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4bL, "type"), child5);
                 }
                 // TODO validate child 
-
               }
               {
                 Collection<SNode> tlist6 = null;
@@ -93,13 +92,11 @@ public class Mapping_mc_concept_method_call extends MapConfigBase implements Tem
                   tnode3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4cL, "expression"), child7);
                 }
                 // TODO validate child 
-
               }
             } finally {
             }
             tnode2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression"), tnode3);
             // TODO validate child 
-
           }
         } finally {
         }

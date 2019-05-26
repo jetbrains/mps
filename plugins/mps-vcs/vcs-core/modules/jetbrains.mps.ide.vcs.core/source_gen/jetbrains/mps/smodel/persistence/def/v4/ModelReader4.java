@@ -41,7 +41,6 @@ public class ModelReader4 implements IModelReader {
     SModelReference modelReference = VCSPersistenceUtil.createModelReference(rootElement.getAttributeValue(VCSPersistenceSupport.MODEL_UID));
     DefaultSModel model = new DefaultSModel(modelReference, header);
     // languages 
-
     List languages = rootElement.getChildren(VCSPersistenceSupport.LANGUAGE);
     for (Object language : languages) {
       Element element = (Element) language;
@@ -49,15 +48,12 @@ public class ModelReader4 implements IModelReader {
       new SModelLegacy(model).addLanguage(PersistenceFacade.getInstance().createModuleReference(languageNamespace));
       List<Element> aspectElements = element.getChildren(VCSPersistenceSupport.LANGUAGE_ASPECT);
       // aspect models versions 
-
       readLanguageAspects(model, aspectElements);
     }
     // additional aspects 
-
     List<Element> aspectElements = rootElement.getChildren(VCSPersistenceSupport.LANGUAGE_ASPECT);
     readLanguageAspects(model, aspectElements);
     // languages engaged on generation 
-
     List languagesEOG = rootElement.getChildren(VCSPersistenceSupport.LANGUAGE_ENGAGED_ON_GENERATION);
     for (Object languageEOG : languagesEOG) {
       Element element = (Element) languageEOG;
@@ -65,7 +61,6 @@ public class ModelReader4 implements IModelReader {
       new SModelLegacy(model).addEngagedOnGenerationLanguage(PersistenceFacade.getInstance().createModuleReference(languageNamespace));
     }
     // devkits 
-
     List devkits = rootElement.getChildren(VCSPersistenceSupport.DEVKIT);
     for (Object devkit : devkits) {
       Element element = (Element) devkit;
@@ -73,7 +68,6 @@ public class ModelReader4 implements IModelReader {
       model.addDevKit(PersistenceFacade.getInstance().createModuleReference(devkitNamespace));
     }
     // imports 
-
     List imports = rootElement.getChildren(VCSPersistenceSupport.IMPORT_ELEMENT);
     for (Object anImport : imports) {
       Element element = (Element) anImport;
@@ -82,7 +76,6 @@ public class ModelReader4 implements IModelReader {
       String importedModelUIDString = element.getAttributeValue(VCSPersistenceSupport.MODEL_UID);
       if (importedModelUIDString == null) {
         // read in old manner... 
-
         importedModelUIDString = getLegacyImportedModelUIDString(element);
       }
       if (importedModelUIDString == null) {
@@ -95,7 +88,6 @@ public class ModelReader4 implements IModelReader {
     ArrayList<IReferencePersister> referenceDescriptors = new ArrayList<IReferencePersister>();
     readRefactorings(rootElement, model);
     // nodes 
-
     List children = rootElement.getChildren(VCSPersistenceSupport.NODE);
     for (Object child : children) {
       Element element = (Element) child;
@@ -113,7 +105,6 @@ public class ModelReader4 implements IModelReader {
   protected void readRefactorings(Element rootElement, DefaultSModel model) {
     rootElement.getChild("refactoringHistory");
     // no-op, we do not care about refactorings in that old persistence versions 
-
   }
   protected void readLanguageAspects(DefaultSModel model, List<Element> aspectElements) {
     for (Element aspectElement : aspectElements) {

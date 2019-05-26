@@ -223,9 +223,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
         result = ListSequence.fromList(new ArrayList<String>());
       }
       // we need this because of smart input 
-
       // DO NOT REMOVE IT 
-
       if (SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x111fb5bb1f2L, 0x111fb5dbc49L, "name")) != null) {
         ListSequence.fromList(result).addElement(SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x111fb5bb1f2L, 0x111fb5dbc49L, "name")));
       }

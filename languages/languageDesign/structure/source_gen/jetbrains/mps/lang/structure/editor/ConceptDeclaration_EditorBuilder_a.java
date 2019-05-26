@@ -472,7 +472,6 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_ContextAssistantComponent;
   }
   private boolean nodeCondition_ueqr71_a2b2a() {
     // todo: temporary disabled, see MPS-18470 
-
     return false;
   }
   private boolean nodeCondition_ueqr71_a61b2a() {

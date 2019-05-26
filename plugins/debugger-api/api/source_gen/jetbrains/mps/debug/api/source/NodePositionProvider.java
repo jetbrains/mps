@@ -41,9 +41,7 @@ public class NodePositionProvider implements IPositionProvider<NodeSourcePositio
   protected SNodeReference getSNodePointer(@NotNull final ILocation location, @NotNull final AbstractDebugSession session) {
     final SRepository repo = session.getProject().getRepository();
     // XXX we need model read just to make sure reference could get resolved. Instead, a dedicated operation 
-
     // in the SRepository might be worth adding (once this access is over, it's all the same about whether next attempt to resolve the reference would succeed or not) 
-
     return new ModelAccessHelper(repo).runReadAction(new Computable<SNodeReference>() {
       public SNodeReference compute() {
         for (Iterator<DebugInfo> it = session.getTraceProvider().debugInfo(NameUtil.namespaceFromLongName(location.getUnitName())).iterator(); it.hasNext();) {

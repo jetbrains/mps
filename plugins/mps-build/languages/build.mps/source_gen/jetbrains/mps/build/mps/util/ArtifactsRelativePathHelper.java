@@ -34,7 +34,6 @@ public class ArtifactsRelativePathHelper {
       MapSequence.fromMap(prefixes).put(parent.value, sb.toString());
       if (SNodeOperations.isInstanceOf(parent.value, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c78L, "jetbrains.mps.build.structure.BuildLayout_Folder"))) {
         // Although not sure, the code below seems to address multiple folder entiries with the same name under single parent (build language allows that) 
-
         for (SNode sfolder : Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(parent.value, false), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c78L, "jetbrains.mps.build.structure.BuildLayout_Folder"))).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             return it != parent.value && equalFolders(SNodeOperations.as(parent.value, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c78L, "jetbrains.mps.build.structure.BuildLayout_Folder")), it);
@@ -60,7 +59,6 @@ public class ArtifactsRelativePathHelper {
     SNode node = location._0();
 
     //  names: build path to bsp from a location that is common with 'container' node 
-
     Stack<SNode> names = new Stack<SNode>();
     names.push(node);
     SNode parent = artifacts.parent(node);

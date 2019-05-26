@@ -48,7 +48,6 @@ public class NodeReferencePresentation_SubstituteMenu extends SubstituteMenuBase
 
     public SMP_ReferenceScope_rjm0ai_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x2095ece53bbb600cL, "jetbrains.mps.console.base.structure.NodeReferencePresentation"), MetaAdapterFactory.getReferenceLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x36ac6f29ae8c1fb5L, 0x4904fd89e74fc6fL, "target"));
     }
     @NotNull

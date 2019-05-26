@@ -21,7 +21,6 @@ public class check_UnknownDotCall_NonTypesystemRule extends AbstractNonTypesyste
   public void applyRule(final SNode unkCall, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (IYetUnresolved__BehaviorDescriptor.evaluateSubst_id73E7sj5sxxG.invoke(unkCall) != null) {
       // success 
-
       {
         MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(unkCall, "Resolved unknown call", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4872723285943445605", null, errorTarget);

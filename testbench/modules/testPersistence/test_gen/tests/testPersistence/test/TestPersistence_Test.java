@@ -96,7 +96,6 @@ public class TestPersistence_Test extends BaseTransformationTest {
     }
     public void test_testPersistenceReadWrite() throws Exception {
       // tests write and read in each supported persistence, check that model is not changed after write/read cycle 
-
       TestPersistenceHelper helper = new TestPersistenceHelper(myProject.getRepository());
       for (int i = TestPersistenceHelper.START_PERSISTENCE_TEST_VERSION; i <= ModelPersistence.LAST_VERSION; ++i) {
         PersistenceUtil.InMemoryStreamDataSource dataSource = new PersistenceUtil.InMemoryStreamDataSource();
@@ -122,30 +121,24 @@ public class TestPersistence_Test extends BaseTransformationTest {
       TestPersistenceHelper helper = new TestPersistenceHelper(myProject.getRepository());
 
       // tests that it's possible to upgrade to the latest persistence from any supported persistence 
-
       for (int fromVersion = TestPersistenceHelper.START_PERSISTENCE_TEST_VERSION; fromVersion < ModelPersistence.LAST_VERSION; fromVersion++) {
         // prepare data source in requested version 
-
         PersistenceUtil.InMemoryStreamDataSource notUpgradedData = new PersistenceUtil.InMemoryStreamDataSource();
         helper.saveTestModelInPersistence(notUpgradedData, fromVersion);
 
         // load model from source version 
-
         String notUpgradedContent = notUpgradedData.getContent(FileUtil.DEFAULT_CHARSET_NAME);
         SModelBase notUpgradedModel = ((SModelBase) PersistenceUtil.loadModel(notUpgradedContent));
 
         // save model in last persistence 
-
         PersistenceUtil.InMemoryStreamDataSource upgradedData = new PersistenceUtil.InMemoryStreamDataSource();
         ModelPersistence.saveModel(notUpgradedModel.getSModel(), upgradedData, ModelPersistence.LAST_VERSION);
 
         // load model in last persistence from saved 
-
         String upgradedContent = upgradedData.getContent(FileUtil.DEFAULT_CHARSET_NAME);
         SModelBase upgradedModel = ((SModelBase) PersistenceUtil.loadModel(upgradedContent));
 
         // do test 
-
         this.assertDeepModelEquals(notUpgradedModel.getSModel(), upgradedModel.getSModel());
 
         notUpgradedModel.getSModel().dispose();
@@ -288,7 +281,6 @@ public class TestPersistence_Test extends BaseTransformationTest {
       }
       Assert.assertNotNull(errorString, actualReference);
       // assertIdEqualsOrBothNull(errorString, expectedReference.getTargetNode(), actualReference.getTargetNode()); 
-
       Assert.assertEquals(errorString, ((jetbrains.mps.smodel.SReference) expectedReference).getResolveInfo(), ((jetbrains.mps.smodel.SReference) actualReference).getResolveInfo());
       Assert.assertEquals(errorString, expectedReference.getRole(), actualReference.getRole());
       Assert.assertEquals(errorString, expectedReference.getTargetNodeId(), actualReference.getTargetNodeId());

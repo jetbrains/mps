@@ -64,7 +64,6 @@ public final class InvertIfCondition_Intention extends AbstractIntentionDescript
 
 
       // Invert condition 
-
       SNode condition = SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition"));
       if ((condition != null)) {
         if (SNodeOperations.isInstanceOf(condition, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, "jetbrains.mps.baseLanguage.structure.NotExpression"))) {
@@ -99,13 +98,11 @@ public final class InvertIfCondition_Intention extends AbstractIntentionDescript
         }
       }
       // Flip ifTrue and ifFalse 
-
       SNode ifTrue = SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue"));
       SNode ifFalse = SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xfc092b6b76L, "ifFalseStatement"));
       SNode newIfTrue;
       SNode newIfFalse;
       // Set new ifFalse 
-
       if (ListSequence.fromList(SLinkOperations.getChildren(ifTrue, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"))).isEmpty()) {
         newIfFalse = null;
       } else
@@ -116,7 +113,6 @@ public final class InvertIfCondition_Intention extends AbstractIntentionDescript
         SLinkOperations.setTarget(SNodeOperations.cast(newIfFalse, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, "jetbrains.mps.baseLanguage.structure.BlockStatement")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, 0xfc092b6b78L, "statements"), ifTrue);
       }
       // Set new ifTrue 
-
       if (SNodeOperations.isInstanceOf(ifFalse, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, "jetbrains.mps.baseLanguage.structure.BlockStatement"))) {
         newIfTrue = SLinkOperations.getTarget(SNodeOperations.cast(ifFalse, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, "jetbrains.mps.baseLanguage.structure.BlockStatement")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, 0xfc092b6b78L, "statements"));
       } else {

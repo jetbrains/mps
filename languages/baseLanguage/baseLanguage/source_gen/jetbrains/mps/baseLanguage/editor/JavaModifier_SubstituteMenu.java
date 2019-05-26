@@ -59,13 +59,9 @@ public class JavaModifier_SubstituteMenu extends SubstituteMenuBase {
     }
     private boolean filterConcept(SubstituteMenuContext _context, SAbstractConcept concept) {
       // Simon, Alex, I need to put it in every next modifier down the hierarchy 
-
       // in order for the descendant modifiers to work properly (if we are using the subconcepts construction) 
-
       // this is totally about the case of wrapping this substitute menu into a transformation menu -- 
-
       // because of that I cannot put it simply into the constraints aspect 
-
       if (!(SNodeOperations.isInstanceOf(_context.getParentNode(), MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, "jetbrains.mps.baseLanguage.structure.IHasModifiers")))) {
         return true;
       }

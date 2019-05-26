@@ -13,7 +13,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <root nodeRef="r:97aec248-a91c-439e-a7f1-5184e2da6816(jetbrains.mps.lang.dataFlow.pluginSolution.plugin)/5487985028841896545">
     <file name="PluginSolution_ApplicationPlugin.java">
-      <node id="5487985028841896545" at="18,0,19,43" concept="2" />
+      <node id="5487985028841896545" at="17,30,18,43" concept="2" />
     </file>
     <file name="PrintDFAResult_Action.java">
       <node id="5487985028841896545" at="17,0,18,0" concept="9" trace="ICON" />
@@ -79,13 +79,13 @@
       <unit id="5487985028841896569" at="7,0,16,0" name="jetbrains.mps.lang.dataFlow.pluginSolution.plugin.DFAActions_ActionGroup" />
     </file>
     <file name="PluginSolution_ApplicationPlugin.java">
-      <node id="5487985028841896569" at="24,0,25,43" concept="2" />
-      <node id="5487985028841896570" at="28,37,29,127" concept="2" />
+      <node id="5487985028841896569" at="22,14,23,43" concept="2" />
+      <node id="5487985028841896570" at="26,37,27,127" concept="2" />
     </file>
   </root>
   <root nodeRef="r:97aec248-a91c-439e-a7f1-5184e2da6816(jetbrains.mps.lang.dataFlow.pluginSolution.plugin)/5487985028841896573">
     <file name="PluginSolution_ApplicationPlugin.java">
-      <node id="5487985028841896573" at="21,65,22,36" concept="2" />
+      <node id="5487985028841896573" at="20,65,21,36" concept="2" />
     </file>
     <file name="ShowDFA_Action.java">
       <node id="5487985028841896573" at="23,0,24,0" concept="9" trace="ICON" />
@@ -149,7 +149,7 @@
   </root>
   <root nodeRef="r:97aec248-a91c-439e-a7f1-5184e2da6816(jetbrains.mps.lang.dataFlow.pluginSolution.plugin)/5487985028841896603">
     <file name="PluginSolution_ApplicationPlugin.java">
-      <node id="5487985028841896603" at="20,59,21,65" concept="2" />
+      <node id="5487985028841896603" at="19,59,20,65" concept="2" />
     </file>
     <file name="PrintReachingDefinintionsInformation_Action.java">
       <node id="5487985028841896603" at="21,0,22,0" concept="9" trace="ICON" />
@@ -206,7 +206,7 @@
   </root>
   <root nodeRef="r:97aec248-a91c-439e-a7f1-5184e2da6816(jetbrains.mps.lang.dataFlow.pluginSolution.plugin)/5487985028841896636">
     <file name="PluginSolution_ApplicationPlugin.java">
-      <node id="5487985028841896636" at="19,43,20,59" concept="2" />
+      <node id="5487985028841896636" at="18,43,19,59" concept="2" />
     </file>
     <file name="PrintInitializationInformation_Action.java">
       <node id="5487985028841896636" at="20,0,21,0" concept="9" trace="ICON" />
@@ -276,28 +276,28 @@
       <unit id="5487985028841896728" at="7,0,18,0" name="jetbrains.mps.lang.dataFlow.pluginSolution.plugin.DataFlowInternal_ActionGroup" />
     </file>
     <file name="PluginSolution_ApplicationPlugin.java">
-      <node id="5487985028841896728" at="25,43,26,49" concept="2" />
+      <node id="5487985028841896728" at="23,43,24,49" concept="2" />
     </file>
   </root>
   <root nodeRef="r:97aec248-a91c-439e-a7f1-5184e2da6816(jetbrains.mps.lang.dataFlow.pluginSolution.plugin)/7162597690967657576">
     <file name="PluginSolution_ApplicationPlugin.java">
       <node id="7162597690967657576" at="10,0,11,0" concept="3" trace="myId" />
       <node id="7162597690967657576" at="13,27,14,16" concept="7" />
+      <node id="7162597690967657576" at="16,30,17,30" concept="8" />
+      <node id="7162597690967657576" at="21,36,22,14" concept="8" />
       <node id="7162597690967657576" at="11,0,13,0" concept="1" trace="PluginSolution_ApplicationPlugin#()V" />
-      <node id="7162597690967657576" at="16,30,18,0" concept="8" />
-      <node id="7162597690967657576" at="22,36,24,0" concept="8" />
       <node id="7162597690967657576" at="13,0,16,0" concept="5" trace="getId#()Lcom/intellij/openapi/extensions/PluginId;" />
-      <node id="7162597690967657576" at="28,0,31,0" concept="5" trace="adjustRegularGroups#()V" />
-      <node id="7162597690967657576" at="16,0,28,0" concept="5" trace="createGroups#()V" />
+      <node id="7162597690967657576" at="26,0,29,0" concept="5" trace="adjustRegularGroups#()V" />
+      <node id="7162597690967657576" at="16,0,26,0" concept="5" trace="createGroups#()V" />
       <scope id="7162597690967657576" at="11,45,11,45" />
       <scope id="7162597690967657576" at="13,27,14,16" />
-      <scope id="7162597690967657576" at="28,37,29,127" />
+      <scope id="7162597690967657576" at="26,37,27,127" />
       <scope id="7162597690967657576" at="11,0,13,0" />
       <scope id="7162597690967657576" at="13,0,16,0" />
-      <scope id="7162597690967657576" at="28,0,31,0" />
-      <scope id="7162597690967657576" at="16,30,26,49" />
-      <scope id="7162597690967657576" at="16,0,28,0" />
-      <unit id="7162597690967657576" at="9,0,32,0" name="jetbrains.mps.lang.dataFlow.pluginSolution.plugin.PluginSolution_ApplicationPlugin" />
+      <scope id="7162597690967657576" at="26,0,29,0" />
+      <scope id="7162597690967657576" at="16,30,24,49" />
+      <scope id="7162597690967657576" at="16,0,26,0" />
+      <unit id="7162597690967657576" at="9,0,30,0" name="jetbrains.mps.lang.dataFlow.pluginSolution.plugin.PluginSolution_ApplicationPlugin" />
     </file>
   </root>
 </debug-info>

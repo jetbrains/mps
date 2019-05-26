@@ -82,9 +82,7 @@ public class MPSStackTraceFilter implements Filter {
         continue;
       }
       // XXX could benefit from repo.isAccessible(SNodeReference) that finds out whether reference could be resolved but doesn't provide node and thus doesn't require external model access 
-
       //     though takes one internally to find out 
-
       return new Filter.Result(hlStart, hlEnd, new HyperlinkInfo() {
         @Override
         public void navigate(Project ideaProject) {

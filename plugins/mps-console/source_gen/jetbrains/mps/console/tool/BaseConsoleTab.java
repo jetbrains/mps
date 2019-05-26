@@ -179,7 +179,6 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
   protected void initConsoleTab(@Nullable final Element history) {
     if (myProject.getModelAccess().canWrite()) {
       // non-undoable actions should not affect project files 
-
       throw new IllegalStateException();
     }
     getProject().getModelAccess().executeCommand(new DefaultCommand(getProject().getRepository()) {
@@ -275,7 +274,6 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
     modelImports.clearUsedLanguages();
     modelImports.clearImportedModels();
     // XXX why don't we clear engagedOnGeneration as well? 
-
     addBuiltInImports();
     TemporaryModels.getInstance().addMissingImports(myModel);
   }
@@ -299,11 +297,8 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
 
   protected void registerActions(DefaultActionGroup group) {
     // wrapping action with a special action 
-
     // because usual action cannot be attached to an additional shortcut 
-
     // using AnAction.setShortcutSet() 
-
     registerMouseShortcut(new BaseConsoleTab.ExecuteClosureAction());
   }
 
@@ -490,7 +485,6 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
       public void run() {
         if (myProject.getModelAccess().canWrite()) {
           // non-undoable actions should not affect project files 
-
           throw new IllegalStateException();
         }
         myProject.getModelAccess().executeCommand(new EditorCommand(myEditor) {

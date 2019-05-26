@@ -18,15 +18,12 @@ public class CursorFocusUtils {
       editorContext.selectWRTFocusPolicy(cellToSelect);
       if (!(backspace)) {
         // TODO: should we set caret to the end of cell if backspace ? 
-
         cellToSelect.setCaretX(0);
       }
       return;
     } else if (!(backspace)) {
       // TODO: shold we do same process if backspace? 
-
       // try cells one level up (needed only for methods when Delete) 
-
       EditorCell_Collection parentParent = parent.getParent();
       cellToSelect = getNextCell(parentParent, parent, !(backspace));
       if (cellToSelect != null) {

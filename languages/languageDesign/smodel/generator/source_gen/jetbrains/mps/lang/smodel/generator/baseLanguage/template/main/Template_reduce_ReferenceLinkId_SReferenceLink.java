@@ -57,7 +57,6 @@ public class Template_reduce_ReferenceLinkId_SReferenceLink extends TemplateDecl
         }
         tnode2.addChild(myAggregationLinks[0], tnode3);
         // TODO validate child 
-
       }
       {
         final SNode tnode4 = environment.createOutputNode(myConcepts[1]);
@@ -67,7 +66,6 @@ public class Template_reduce_ReferenceLinkId_SReferenceLink extends TemplateDecl
         }
         tnode2.addChild(myAggregationLinks[0], tnode4);
         // TODO validate child 
-
       }
       {
         final SNode tnode5 = environment.createOutputNode(myConcepts[1]);
@@ -77,7 +75,6 @@ public class Template_reduce_ReferenceLinkId_SReferenceLink extends TemplateDecl
         }
         tnode2.addChild(myAggregationLinks[0], tnode5);
         // TODO validate child 
-
       }
       {
         final SNode tnode6 = environment.createOutputNode(myConcepts[1]);
@@ -87,7 +84,6 @@ public class Template_reduce_ReferenceLinkId_SReferenceLink extends TemplateDecl
         }
         tnode2.addChild(myAggregationLinks[0], tnode6);
         // TODO validate child 
-
       }
       {
         final SNode tnode7 = environment.createOutputNode(myConcepts[2]);
@@ -97,7 +93,6 @@ public class Template_reduce_ReferenceLinkId_SReferenceLink extends TemplateDecl
         }
         tnode2.addChild(myAggregationLinks[0], tnode7);
         // TODO validate child 
-
       }
     } finally {
     }

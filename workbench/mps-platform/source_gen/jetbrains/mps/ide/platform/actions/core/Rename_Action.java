@@ -106,7 +106,6 @@ public class Rename_Action extends BaseAction {
   }
   private boolean canBeRenamed(final Map<String, Object> _params) {
     // we won't rename nodes, for which there is getter without setter 
-
     SAbstractConcept concept = SNodeOperations.getConcept(((SNode) MapSequence.fromMap(_params).get("target")));
     ConstraintsDescriptor cd = ConceptRegistry.getInstance().getConstraintsDescriptor(concept);
     PropertyConstraintsDescriptor propertyConstraint = cd.getProperty(MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));

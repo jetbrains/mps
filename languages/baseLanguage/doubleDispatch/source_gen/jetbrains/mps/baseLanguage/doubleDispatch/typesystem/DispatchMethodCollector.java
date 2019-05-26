@@ -24,7 +24,6 @@ public class DispatchMethodCollector {
 
     // Instance methods 
 
-
     SNode clas = classToCheck;
 
     while ((clas != null)) {
@@ -44,7 +43,6 @@ public class DispatchMethodCollector {
     }
 
     // Now static methods. They're simpler. No need to take superclasses into account 
-
     for (SNode m : Sequence.fromIterable(ClassConcept__BehaviorDescriptor.staticMethods_id4_LVZ3pCeXr.invoke(classToCheck)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return DispatchUtil.isReadyMethod(it);

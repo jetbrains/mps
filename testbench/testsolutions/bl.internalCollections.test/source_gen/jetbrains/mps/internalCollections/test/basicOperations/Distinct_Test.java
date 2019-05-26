@@ -34,7 +34,6 @@ public class Distinct_Test extends Util_Test {
       Assert.fail();
     } catch (NoSuchElementException e) {
       // expected exception 
-
     }
   }
   public void test_distinctLazy() throws Exception {

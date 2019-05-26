@@ -64,7 +64,6 @@ public class OverriddenMethods_Finder extends GeneratedFinder {
     monitor.start(getDescription(), 1);
     try {
       // top-most ancestor by the lang.behavior 
-
       final SNode topMostOverriddenMethod = ConceptMethodDeclaration__BehaviorDescriptor.getOverridenMethod_idhP3pnNO.invoke(node);
       FindUtils.searchForResults(monitor.subTask(1), new IFinder.FindCallback() {
         public void onUsageFound(@NotNull SearchResult<?> searchResult) {
@@ -95,7 +94,6 @@ public class OverriddenMethods_Finder extends GeneratedFinder {
                 }
               }).toListSequence();
               // supposedly there are no more than one method 
-
               for (SNode candidateMethod : ListSequence.fromList(candidateMethodsInAncestor)) {
                 callback.onUsageFound(createSingleResult(candidateMethod));
               }

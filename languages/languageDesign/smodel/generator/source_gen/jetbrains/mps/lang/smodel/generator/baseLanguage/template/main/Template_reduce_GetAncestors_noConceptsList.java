@@ -54,7 +54,6 @@ public class Template_reduce_GetAncestors_noConceptsList extends TemplateDeclara
           tnode1.addChild(myAggregationLinks[0], child3);
         }
         // TODO validate child 
-
       }
       {
         Collection<SNode> tlist4 = null;
@@ -63,7 +62,6 @@ public class Template_reduce_GetAncestors_noConceptsList extends TemplateDeclara
           tnode1.addChild(myAggregationLinks[0], child5);
         }
         // TODO validate child 
-
       }
       {
         final SNode tnode6 = environment.createOutputNode(myConcepts[1]);
@@ -73,7 +71,6 @@ public class Template_reduce_GetAncestors_noConceptsList extends TemplateDeclara
         }
         tnode1.addChild(myAggregationLinks[0], tnode6);
         // TODO validate child 
-
       }
     } finally {
     }

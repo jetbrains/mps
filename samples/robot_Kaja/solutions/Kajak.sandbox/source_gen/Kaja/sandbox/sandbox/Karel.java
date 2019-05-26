@@ -13,7 +13,6 @@ public class Karel extends KajaFrame {
       traceStep_routine();
     }
     // this is a comment 
-
   }
   public void traceStep_routine() {
     if (!(isFull())) {

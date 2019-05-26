@@ -60,7 +60,6 @@ public class AttachMappingLabelDialog extends DialogWrapper {
       textField.setSelectionEnd(selectedItem.length());
     }
     // myNameCombo.setSelectedItem above triggers actionPerformed event, attach listener once combo is initialized 
-
     myNameCombo.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent p0) {
@@ -116,7 +115,6 @@ public class AttachMappingLabelDialog extends DialogWrapper {
           return;
         }
         // create new Label macro 
-
         SNode newMacro = SNodeFactoryOperations.addNewAttribute(AttachMappingLabelDialog.this.myTemplateNode, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47ed6742L, "jetbrains.mps.lang.generator.structure.NodeMacro")), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x473cc5baf8a1e7a4L, "jetbrains.mps.lang.generator.structure.LabelMacro"));
         SLinkOperations.setTarget(newMacro, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47ed6742L, 0x1179bf24befL, "mappingLabel"), mappingLabel);
       }

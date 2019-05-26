@@ -34,7 +34,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 0:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[6];
           intentions[0] = new AddAuthorBlockDocTag_Intention();
           intentions[1] = new AddSinceBlockDocTag_Intention();
@@ -47,7 +46,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 1:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[1];
           intentions[0] = new AddMethodDocComment_Intention();
         }
@@ -55,7 +53,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 2:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[1];
           intentions[0] = new AddClassifierDocComment_Intention();
         }
@@ -63,7 +60,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 3:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[1];
           intentions[0] = new AddFieldDocComment_Intention();
         }
@@ -71,7 +67,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 4:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[1];
           intentions[0] = new FoldHTMLElement_Intention();
         }
@@ -79,7 +74,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 5:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[3];
           intentions[0] = new AddParameterBlockDocTag_Intention();
           intentions[1] = new AddReturnBlockTag_Intention();
@@ -89,7 +83,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 6:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[1];
           intentions[0] = new AddStaticFieldDocComment_Intention();
         }

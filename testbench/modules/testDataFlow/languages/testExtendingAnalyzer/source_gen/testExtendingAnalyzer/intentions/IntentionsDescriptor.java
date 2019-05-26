@@ -34,7 +34,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 0:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[2];
           intentions[0] = new SwitchToNullUnsafe_Intention();
           intentions[1] = new SwitchToNullSafe_Intention();

@@ -53,9 +53,7 @@ public class DependenciesHelper {
     String rv = locationMap.get(layoutNode);
     if (rv == null) {
       // See aliases MC, where BuildLayout_File, recorded in locations, is wrapped with BuildLayout_Copy 
-
       // MAP-SRC in BuildLayout_File's rule, default case. 
-
       rv = (String) layoutNode.getUserObject(myLocationKey);
     }
     return rv;
@@ -78,9 +76,7 @@ public class DependenciesHelper {
 
   public void preserveLocations(SNode from, SNode to) {
     // this method is invoked from generation for specific usecases (wrap of a File wuth Copy), 
-
     // hence we expect nodes to be free-floating/transient, never from a regular model 
-
     assert SNodeOperations.getModel(to) == null || SNodeOperations.getModel(to) instanceof TransientSModel;
     to.putUserObject(myLocationKey, from.getUserObject(myLocationKey));
     to.putUserObject(myContentLocationKey, from.getUserObject(myContentLocationKey));
@@ -95,9 +91,7 @@ public class DependenciesHelper {
    */
   public void putLayoutRelativePath(SNode layoutNode, SNode key, String location) {
     // FIXME shall respect layoutNode as there are chances to have same 'key' (e.g. BuildMps_AbstractModule) exposed through 
-
     // different layout nodes, just left simplest possible variant to test and get further 
-
     key.putUserObject(myLayoutRelativeKey, location);
   }
 
@@ -109,7 +103,6 @@ public class DependenciesHelper {
    */
   public String getLayoutRelativePath(SNode layoutNode, SNode key) {
     // FIXME see putLayoutRelativePath for details 
-
     return (String) key.getUserObject(myLayoutRelativeKey);
   }
 
@@ -168,7 +161,6 @@ public class DependenciesHelper {
   private boolean isFromTransformedModel(SNode n) {
     SNode ancestorProject = SNodeOperations.getNodeAncestor(n, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject"), false, false);
     // ancestorProject could be null for a layout node from external layout root 
-
     return ancestorProject == myProject || (SNodeOperations.getModel(n) == SNodeOperations.getModel(myProject) && SNodeOperations.getModel(n) instanceof TransientSModel);
   }
 
@@ -178,15 +170,10 @@ public class DependenciesHelper {
 
   public static SNode getOriginalNode(SNode node, TemplateQueryContext genContext) {
     // node.model could be legitimately == null for a node from transient model which is already disposed. 
-
     // however, we need to answer its original node anyway, or the whole build process would fail: 
-
     // RequiredPlugins records transient nodes and getArtifact(node<>) needs to find out original node of that node. 
-
     // If generation doesn't keep transient models (or uses in-place transformation), check for node.model==null here 
-
     // would effectively prevent from using getArtifacts(recordedTransientNode). 
-
     if (SNodeOperations.getModel(node) != null && !((SNodeOperations.getModel(node) instanceof TransientSModel))) {
       return node;
     }

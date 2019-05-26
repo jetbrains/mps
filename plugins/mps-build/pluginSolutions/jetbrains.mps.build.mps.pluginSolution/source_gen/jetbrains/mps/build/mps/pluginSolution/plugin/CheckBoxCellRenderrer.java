@@ -23,7 +23,6 @@ public class CheckBoxCellRenderrer extends JBPanel implements TreeCellRenderer {
   @Deprecated
   public CheckBoxCellRenderrer() {
     // Use CheckboxTree.CheckboxTreeCellRenderer instead 
-
     super(new BorderLayout());
 
     myCheckBox = new JBCheckBox();
@@ -38,7 +37,6 @@ public class CheckBoxCellRenderrer extends JBPanel implements TreeCellRenderer {
     invalidate();
 
     // We only expect instance of CheckBoxNode here 
-
     assert value instanceof CheckBoxNode;
     CheckBoxNode node = ((CheckBoxNode) value);
 
@@ -53,7 +51,6 @@ public class CheckBoxCellRenderrer extends JBPanel implements TreeCellRenderer {
     setBackground(null);
 
     // Copy/Paste from com.intellij.ui.CheckboxTreeBase.CheckboxTreeCellRendererBase#getTreeCellRendererComponent 
-
     if (UIUtil.isUnderWin10LookAndFeel()) {
       Object hoverValue = getClientProperty(UIUtil.CHECKBOX_ROLLOVER_PROPERTY);
       myCheckBox.getModel().setRollover(hoverValue == value);

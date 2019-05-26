@@ -111,9 +111,7 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
     getProjectRepository().getModelAccess().runReadInEDT(new Runnable() {
       public void run() {
         // FIXME likely EDT is needed to walk myTree safely, but model read is questionable. 
-
         // if myFeatureExtractor needs model read, perhaps, it shall grab one itself? OTOH, too many small model reads may get poor. 
-
         MPSTreeNode rootNode = myTree.getRootNode();
         if (rootNode != null) {
           recordNodeRecursively(rootNode);
@@ -162,11 +160,8 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
     Feature feature = recordFeature(node);
     if (feature != null) {
       // FIXME why do we need some command queue to schedule rehighlightNode() call, while there's also myQueue for 'all feature' re-highlight? 
-
       // FIXME this is the only place we care to use myCommandQueue! 
-
       // TODO replace with Update(node) into myQueue, and change rehighlightAllFeaturesUpdate.canEat to consume single node update 
-
       myQueue.queue(new TreeHighlighter.HighlightNodeAndFeature(node, feature));
     }
   }
@@ -209,7 +204,6 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
           EditableSModel emd = (EditableSModel) model;
           if (feature instanceof ModelFeature) {
             // do not try to compute changes in case we need only model status 
-
             return getMessage(emd);
           }
 
@@ -229,7 +223,6 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
       }
     };
     // FWIW, tree message manipulation doesn't require EDT 
-
     boolean hadMessages = !(node.removeTreeMessages(this).isEmpty());
 
     getProjectRepository().getModelAccess().runReadAction(cr);
@@ -270,7 +263,6 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
       public void run() {
         for (Feature anotherFeature : ListSequence.fromList(toCheck)) {
           // getAncestors might require (see NodeFeature) model read access, which shall not be under myFeaturesHolder lock 
-
           if (Sequence.fromIterable(Sequence.fromArray(anotherFeature.getAncestors(getProjectRepository()))).any(new IWhereFilter<Feature>() {
             public boolean accept(Feature a) {
               return feature.equals(a);
@@ -299,13 +291,9 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
     /*package*/ HighlightNodeAndFeature(MPSTreeNode node, Feature feature) {
       super(new Object[]{TreeHighlighter.this, "Highlight", node, feature}, false, HIGHLIGHT_PRIO);
       // perhaps, shall use hashCode/identityHashCode of node/feature instead of object references in super() call, to avoid scenarios when MPSTreeNode or Feature start implementing hashCode/equals 
-
       // thus changing my assumption here that all I care about is identity matching (sufficient for the purposes of this update). However, as long as I keep references to the node anyway 
-
       // Important: use enclosing instance in the equality key as MUQ instance is shared between all TreeHighlighters, have to prevent update queued from one 
-
       //            TH to replace (due to equals) some other update from another TH. 
-
       myTreeNode = node;
       myFeature = feature;
     }
@@ -318,7 +306,6 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
       final boolean featureIsStillThere;
       synchronized (myFeaturesHolder) {
         // check if node isn't already removed from tree 
-
         featureIsStillThere = myFeaturesHolder.getNodesByFeature(myFeature).contains(myTreeNode);
       }
       return !(featureIsStillThere);
@@ -331,7 +318,6 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
 
     /*package*/ boolean isSameHighlighter(TreeHighlighter th) {
       // Few TreeHighlighter share same MergingUpdateQueue, need to make sure update of one of them doesn't 'eat' updates from others 
-
       return TreeHighlighter.this == th;
     }
   }
@@ -355,7 +341,6 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
     @Override
     public void run() {
       // schedules node update to run in correct thread 
-
       getProjectRepository().getModelAccess().runReadInEDT(new Runnable() {
         public void run() {
           myTreeNode.renewPresentation();
@@ -365,7 +350,6 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
 
     /*package*/ boolean isSameHighlighter(TreeHighlighter th) {
       // see HighlightNodeAndFeature#isSameHighlighter, above, for details 
-
       return TreeHighlighter.this == th;
     }
   }
@@ -383,7 +367,6 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
     @Override
     public boolean canEat(Update update) {
       // this one would re-highlight all, why bother with a single request 
-
       if (update instanceof TreeHighlighter.HighlightNodeAndFeature) {
         return ((TreeHighlighter.HighlightNodeAndFeature) update).isSameHighlighter(TreeHighlighter.this);
       }
@@ -398,7 +381,6 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
       MPSProject mpsProject = myRegistry.getMPSProject();
       if (mpsProject.getComponent(MakeServiceComponent.class).isSessionActive()) {
         // re-queue, it will be executed in next batch after delay 
-
         rehighlightAllFeaturesLater();
       } else {
         rehighlightAllFeaturesNow();
@@ -414,9 +396,7 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
 
   private void rehighlightAllFeaturesNow() {
     //  FIXME it's not apparent whether this method needs EDT or not - guess, there's no guarantee about EDT in listeners 
-
     //        that invoke rehighlightFeatureAndDescendants() as well. If not, shall not use MergingUpdateQueue with EDT==true 
-
     List<Feature> toUpdate = new ArrayList<Feature>();
     synchronized (myFeaturesHolder) {
       toUpdate.addAll(myFeaturesHolder.getAllModelFeatures());
@@ -507,9 +487,7 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
     @Override
     public void featureStateChanged(Feature feature) {
       // TODO AFAIK, this notification comes from the same thread CurrentDifferenceBroadcaster fires event from 
-
       //      which is *NOT* EDT, but rather a 'command' thread started from SimpleCommandQueue 
-
       rehighlightFeatureAndDescendants(feature);
     }
   }
@@ -519,7 +497,6 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
     @Override
     public void fileStatusChanged(@NotNull VirtualFile file) {
       // this event comes in EDT (see IDEA's FileStatusManagerImpl.fileStatusChanged()) 
-
       IFile ifile = myRegistry.getMPSProject().getFileSystem().fromVirtualFile(file);
       SModelReference emd = SModelFileTracker.getInstance(getProjectRepository()).modelFor(ifile);
       if (emd != null) {

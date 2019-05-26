@@ -47,9 +47,7 @@ public class ASMMethod {
       myGenericParameterTypes = myParameterTypes;
     }
     // with isEmpty==true it's a very strange situation, though this happens as shown in 
-
     // http://youtrack.jetbrains.com/issue/MPS-19080 
-
     if (isVarArg() && !(myGenericParameterTypes.isEmpty())) {
       int lastIndex = myGenericParameterTypes.size() - 1;
       ASMType lastParamType = myGenericParameterTypes.get(lastIndex);

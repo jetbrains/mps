@@ -7,7 +7,6 @@ public abstract class BaseFinder implements Finder {
   @Override
   public String getDescription() {
     // to remove after 3.4, it's simpler to refactor with this body 
-
     return getClass().getSimpleName();
   }
 }

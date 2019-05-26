@@ -62,9 +62,7 @@ public final class ShowGenPlan__BehaviorDescriptor extends BaseBHDescriptor {
     MessagesViewTool messagesView = context.getProject().getComponent(MessagesViewTool.class);
 
     // by default, show generation plan as Make/Generate would see it. 
-
     // If forced, however, may ignore context and show default (model content based) plan. 
-
 
     GenPlanExtractor gpExtractor = new GenPlanExtractor(repo, messagesView.newHandler());
     final ModelGenerationPlan externalPlan = (gpExtractor.hasPlan(model) ? gpExtractor.getPlan(model) : null);
@@ -81,7 +79,6 @@ public final class ShowGenPlan__BehaviorDescriptor extends BaseBHDescriptor {
       gp = externalPlan;
     } else {
       // regular sequence, do not ignore external plan, but there's none 
-
       gp = new GenerationPlan(model);
     }
 

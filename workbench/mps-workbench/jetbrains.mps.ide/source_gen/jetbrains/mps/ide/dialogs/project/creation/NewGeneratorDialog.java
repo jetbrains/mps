@@ -51,9 +51,7 @@ public class NewGeneratorDialog extends DialogWrapper {
     setTitle("New Generator");
     mySourceLanguage = sourceLanguage;
     // I don't know what's proper mechanism to obtain FS for the project. Could use one from sourceLanguage's descriptor file 
-
     // but would prefer not to access module's descriptor file at all. 
-
     myProjectFS = FileSystem.getInstance();
     myContenetPane = new JPanel(new GridLayout(4, 1));
     myContenetPane.setPreferredSize(new Dimension(600, 100));
@@ -130,22 +128,17 @@ public class NewGeneratorDialog extends DialogWrapper {
       public void invoke() {
         try {
           // see MPS-18743 
-
           myProject.getRepository().saveAll();
           // XXX why saveAll is not part of NewModuleUtil.runModuleCreation? 
-
           templateModelsPath.mkdirs();
           // FIXME I know it's ugly to assume templateModelsPath always points to a descendant of generator module location, just don't want to deal with UI update 
-
           //       right now, nor to introduce a hack to guess whether it's relative to mySourceLanguage.getModuleSourceDir() and how many separators are there. 
-
           final GeneratorDescriptor generatorDescriptor = NewModuleUtil.createGeneratorDescriptor(Generator.generateGeneratorUID(mySourceLanguage), templateModelsPath.getParent(), templateModelsPath);
           generatorDescriptor.setAlias(name);
           newGenerator.value = createNewGenerator(mySourceLanguage, generatorDescriptor);
           NewModuleUtil.createTemplateModelIfNoneYet(newGenerator.value);
         } catch (Exception e) {
           // XXX again, why it's not common for any runModuleCreation? 
-
           if (LOG.isEnabledFor(Level.ERROR)) {
             LOG.error("Failed to create new generator module", e);
           }

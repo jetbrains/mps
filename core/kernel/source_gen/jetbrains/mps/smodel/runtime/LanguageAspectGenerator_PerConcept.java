@@ -93,7 +93,6 @@ public abstract class LanguageAspectGenerator_PerConcept extends LanguageAspectG
     }
 
     // resulting class 
-
     SNode result = _quotation_createNode_mxlioj_a0g0f(getInterfaceClass(), methods, getGeneratedClassShortName());
 
     return result;

@@ -51,7 +51,6 @@ public class NewClassLike_Action extends BaseAction {
     SNode pc = SLinkOperations.getTarget(NewClassLike_Action.this.descr, MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d160L, 0x1955e1ca83e5ed92L, "preferredConcept"));
     if (pc != null) {
       // viva la interpretation! 
-
       SAbstractConcept concept = SNodeOperations.asSConcept(pc);
       icon = GlobalIconManager.getInstance().getIconFor(concept);
     } else {

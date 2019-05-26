@@ -17,9 +17,7 @@ public class PluginSolution_ApplicationPlugin extends BaseApplicationPlugin {
   }
   public void createGroups() {
     // actions w/o parameters 
-
     // groups 
-
     addGroup(new ScriptsForSelection_ActionGroup());
     addGroup(new ScriptsGlobally_ActionGroup());
   }

@@ -16,7 +16,6 @@ import jetbrains.mps.ide.findusages.model.SearchResult;
 public class UsagesFormattingUtil {
   public static void addResults(final SearchResults<SNode> results, final Pair<CategoryKind, String> topCategory, Map<SNode, DeprecatedNodeProperties> nodes) {
     // todo support category kinds, uncomment following code 
-
     final CategoryKind versionKind = CategoryKind.DEFAULT_CATEGORY_KIND;
     final CategoryKind categoryKind = CategoryKind.DEFAULT_CATEGORY_KIND;
 

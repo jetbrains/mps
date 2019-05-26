@@ -25,7 +25,6 @@ public class typeof_Link_SetTargetPointerOperation_InferenceRule extends Abstrac
     }
 
     // checking 
-
     SNode parameter = SLinkOperations.getTarget(op, MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0xd13da596bcfef4eL, 0xd13da596bcfef4fL, "linkTarget"));
     if ((parameter != null)) {
       final SNode ExpectedType_typevar_942336824646366871 = typeCheckingContext.createNewRuntimeTypesVariable();

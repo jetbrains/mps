@@ -27,7 +27,6 @@ public class TaskLibrariesHelper {
   private TemplateQueryContext genContext;
   public TaskLibrariesHelper(SNode project, TemplateQueryContext genContext) {
     // XXX if want to reuse this code, replace gencontext with e.g. IMessageHandler, as its only use is to report errors 
-
     this.project = project;
     this.genContext = genContext;
   }
@@ -68,7 +67,6 @@ public class TaskLibrariesHelper {
       }
     }
     // we add everything in the beginning 
-
     for (int i = parts.size() - 1; i >= 0; i--) {
       ListSequence.fromList(SLinkOperations.getChildren(project, MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6271L, 0x2670d5989d5ace60L, "parts"))).insertElement(0, parts.get(i));
     }

@@ -125,64 +125,64 @@
       <node id="8300239536160237346" at="22,59,23,0" concept="9" />
       <node id="7705742079275757998" at="24,45,25,13" concept="7" />
       <node id="8300239536160137432" at="26,5,27,85" concept="6" />
-      <node id="8300239536160250728" at="29,0,30,50" concept="2" />
-      <node id="7705742079275758074" at="34,53,35,55" concept="6" />
-      <node id="7705742079275758088" at="36,36,37,18" concept="7" />
-      <node id="7705742079275758090" at="38,5,39,28" concept="7" />
-      <node id="8300239536160209291" at="43,54,44,45" concept="6" />
-      <node id="8300239536160210235" at="45,26,46,18" concept="7" />
-      <node id="7540523421683676137" at="47,5,48,92" concept="6" />
-      <node id="8300239536160223060" at="49,29,50,18" concept="7" />
-      <node id="8300239536160214040" at="51,5,52,47" concept="7" />
-      <node id="8300239536160224216" at="56,75,57,48" concept="6" />
-      <node id="7705742079275758102" at="57,48,58,59" concept="6" />
-      <node id="7705742079275758107" at="58,59,59,159" concept="2" />
+      <node id="8300239536160253604" at="27,85,28,133" concept="8" />
+      <node id="8300239536160250728" at="28,133,29,50" concept="2" />
+      <node id="7705742079275758074" at="33,53,34,55" concept="6" />
+      <node id="7705742079275758088" at="35,36,36,18" concept="7" />
+      <node id="7705742079275758090" at="37,5,38,28" concept="7" />
+      <node id="8300239536160209291" at="42,54,43,45" concept="6" />
+      <node id="8300239536160210235" at="44,26,45,18" concept="7" />
+      <node id="7540523421683676137" at="46,5,47,92" concept="6" />
+      <node id="8300239536160223060" at="48,29,49,18" concept="7" />
+      <node id="8300239536160214040" at="50,5,51,47" concept="7" />
+      <node id="8300239536160224216" at="55,75,56,48" concept="6" />
+      <node id="7705742079275758102" at="56,48,57,59" concept="6" />
+      <node id="7705742079275758107" at="57,59,58,159" concept="2" />
       <node id="7705742079275757972" at="16,0,18,0" concept="1" trace="ShowInLogicalView#()V" />
-      <node id="8300239536160253604" at="27,85,29,0" concept="8" />
       <node id="7705742079275757993" at="23,0,26,5" concept="4" />
-      <node id="7705742079275758081" at="35,55,38,5" concept="4" />
-      <node id="8300239536160209535" at="44,45,47,5" concept="4" />
-      <node id="8300239536160221299" at="48,92,51,5" concept="4" />
-      <node id="7705742079275758094" at="55,0,61,0" concept="5" trace="update#(Lcom/intellij/openapi/vcs/actions/VcsContext;Lcom/intellij/openapi/actionSystem/Presentation;)V" />
-      <node id="7705742079275758068" at="33,0,41,0" concept="5" trace="getSelectedFile#(Lcom/intellij/openapi/vcs/actions/VcsContext;)Lcom/intellij/openapi/vfs/VirtualFile;" />
-      <node id="8300239536160204374" at="42,0,54,0" concept="5" trace="getProjectPane#(Lcom/intellij/openapi/vcs/actions/VcsContext;)Ljetbrains/mps/ide/projectPane/ProjectPane;" />
-      <node id="7705742079275757976" at="19,0,32,0" concept="5" trace="actionPerformed#(Lcom/intellij/openapi/vcs/actions/VcsContext;)V" />
+      <node id="7705742079275758081" at="34,55,37,5" concept="4" />
+      <node id="8300239536160209535" at="43,45,46,5" concept="4" />
+      <node id="8300239536160221299" at="47,92,50,5" concept="4" />
+      <node id="7705742079275758094" at="54,0,60,0" concept="5" trace="update#(Lcom/intellij/openapi/vcs/actions/VcsContext;Lcom/intellij/openapi/actionSystem/Presentation;)V" />
+      <node id="7705742079275758068" at="32,0,40,0" concept="5" trace="getSelectedFile#(Lcom/intellij/openapi/vcs/actions/VcsContext;)Lcom/intellij/openapi/vfs/VirtualFile;" />
+      <node id="7705742079275757976" at="19,0,31,0" concept="5" trace="actionPerformed#(Lcom/intellij/openapi/vcs/actions/VcsContext;)V" />
+      <node id="8300239536160204374" at="41,0,53,0" concept="5" trace="getProjectPane#(Lcom/intellij/openapi/vcs/actions/VcsContext;)Ljetbrains/mps/ide/projectPane/ProjectPane;" />
       <scope id="7705742079275757975" at="16,30,16,30" />
       <scope id="7705742079275757997" at="24,45,25,13" />
-      <scope id="7705742079275758087" at="36,36,37,18" />
-      <scope id="8300239536160209537" at="45,26,46,18" />
-      <scope id="8300239536160221301" at="49,29,50,18" />
+      <scope id="7705742079275758087" at="35,36,36,18" />
+      <scope id="8300239536160209537" at="44,26,45,18" />
+      <scope id="8300239536160221301" at="48,29,49,18" />
       <scope id="7705742079275757972" at="16,0,18,0" />
-      <scope id="7705742079275758101" at="56,75,59,159">
+      <scope id="7705742079275758101" at="55,75,58,159">
         <var name="pp" id="8300239536160224217" />
         <var name="selectedFile" id="7705742079275758103" />
       </scope>
-      <scope id="7705742079275758073" at="34,53,39,28">
+      <scope id="7705742079275758073" at="33,53,38,28">
         <var name="selectedFiles" id="7705742079275758075" />
       </scope>
-      <scope id="7705742079275758094" at="55,0,61,0">
+      <scope id="7705742079275758094" at="54,0,60,0">
         <var name="presentation" id="7705742079275758099" />
         <var name="vcsContext" id="7705742079275758097" />
       </scope>
-      <scope id="7705742079275758068" at="33,0,41,0">
+      <scope id="7705742079275758068" at="32,0,40,0">
         <var name="e" id="7705742079275758071" />
       </scope>
-      <scope id="8300239536160204377" at="43,54,52,47">
-        <var name="mpsProject" id="7540523421683676138" />
-        <var name="project" id="8300239536160209292" />
-      </scope>
-      <scope id="7705742079275757981" at="20,57,30,50">
+      <scope id="7705742079275757981" at="20,57,29,50">
         <var name="ctx" id="8300239536160137433" />
         <var name="pp" id="8300239536160237931" />
         <var name="selectedFile" id="8300239536160237936" />
       </scope>
-      <scope id="8300239536160204374" at="42,0,54,0">
-        <var name="ctx" id="8300239536160205156" />
+      <scope id="8300239536160204377" at="42,54,51,47">
+        <var name="mpsProject" id="7540523421683676138" />
+        <var name="project" id="8300239536160209292" />
       </scope>
-      <scope id="7705742079275757976" at="19,0,32,0">
+      <scope id="7705742079275757976" at="19,0,31,0">
         <var name="vcsContext" id="7705742079275757979" />
       </scope>
-      <unit id="7705742079275757969" at="15,0,62,0" name="jetbrains.mps.vcs.actions.ShowInLogicalView" />
+      <scope id="8300239536160204374" at="41,0,53,0">
+        <var name="ctx" id="8300239536160205156" />
+      </scope>
+      <unit id="7705742079275757969" at="15,0,61,0" name="jetbrains.mps.vcs.actions.ShowInLogicalView" />
     </file>
   </root>
 </debug-info>

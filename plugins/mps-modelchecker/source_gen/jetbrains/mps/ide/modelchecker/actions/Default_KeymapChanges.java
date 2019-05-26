@@ -10,12 +10,9 @@ import javax.swing.KeyStroke;
 public class Default_KeymapChanges extends BaseKeymapChanges {
   public Default_KeymapChanges() {
     // simple 
-
     addSimpleShortcut("jetbrains.mps.ide.modelchecker.actions.ShowModelChecker_Action", getShortcut("ctrl alt C"));
     // simple parameterized 
-
     // complex 
-
   }
   public String getScheme() {
     return "$default";

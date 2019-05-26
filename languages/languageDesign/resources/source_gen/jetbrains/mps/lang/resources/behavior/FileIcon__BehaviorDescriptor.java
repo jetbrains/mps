@@ -60,7 +60,6 @@ public final class FileIcon__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static List<Tuples._2<IFile, byte[]>> generate_id7Mb2akaesv8(@NotNull SNode __thisNode__, IFile outputDir) {
     if (isEmptyString(SPropertyOperations.getString(__thisNode__, MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6bbL, 0x26417c377428f6b3L, "file")))) {
       // todo compatibility code to be removed after 3.4 
-
       return null;
     }
 
@@ -71,11 +70,9 @@ public final class FileIcon__BehaviorDescriptor extends BaseBHDescriptor {
     final String ext = FileUtil.getExtension(source);
 
     // copy 
-
     List<Tuples._2<IFile, byte[]>> res = ListSequence.fromList(new ArrayList<Tuples._2<IFile, byte[]>>());
     ListSequence.fromList(res).addElement(FileIcon__BehaviorDescriptor.copyFile_id34SjXUxB1C6.invoke(__thisNode__, source, outputDir));
     // list of suffixes can be found in ImageLoader.ImgeDescList.create() 
-
     ListSequence.fromList(res).addElement(FileIcon__BehaviorDescriptor.copyFile_id34SjXUxB1C6.invoke(__thisNode__, name + "@2x." + ext, outputDir));
     ListSequence.fromList(res).addElement(FileIcon__BehaviorDescriptor.copyFile_id34SjXUxB1C6.invoke(__thisNode__, name + "@2x_dark." + ext, outputDir));
     ListSequence.fromList(res).addElement(FileIcon__BehaviorDescriptor.copyFile_id34SjXUxB1C6.invoke(__thisNode__, name + "_dark." + ext, outputDir));

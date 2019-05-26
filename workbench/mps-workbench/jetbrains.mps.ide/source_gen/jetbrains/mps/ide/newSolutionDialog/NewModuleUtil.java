@@ -121,7 +121,6 @@ public class NewModuleUtil {
     templateModelsLocation.mkdirs();
 
     //  it's the first and only generator in the language, no need to generate some unique long value 
-
     final GeneratorDescriptor generatorDescriptor = createGeneratorDescriptor(languageDescriptor.getNamespace() + "#01", generatorLocation, templateModelsLocation);
     generatorDescriptor.setSourceLanguage(languageDescriptor.getModuleReference());
     languageDescriptor.getGenerators().add(generatorDescriptor);
@@ -134,7 +133,6 @@ public class NewModuleUtil {
       createMainLanguageAspects(language);
     } catch (IOException e) {
       // todo: ??? 
-
       throw new RuntimeException(e);
     }
 
@@ -142,7 +140,6 @@ public class NewModuleUtil {
 
     project.addModule(language);
     // as long as generator lives under the language, and Project doesn't support standalone generators, no need for project.addModule(generator) 
-
     new VersionFixer(project, language, false).updateImportVersions();
     new VersionFixer(project, generator, false).updateImportVersions();
     language.save();
@@ -199,7 +196,6 @@ public class NewModuleUtil {
       return "Namespace should be specified";
     }
     // If don't have repository then there are no duplicated module name 
-
     boolean duplicateName = (repo == null ? false : new ModelAccessHelper(repo).runReadAction(new Computable<Boolean>() {
       public Boolean compute() {
         return !(new ModuleRepositoryFacade(repo).getModulesByName(namespace).isEmpty());
@@ -213,9 +209,7 @@ public class NewModuleUtil {
     }
     IFile moduleDir = getModuleFile(namespace, rootPath, extension).getParent();
     // FIXME it's suspicious to check existence of a model directory to tell existence of a module 
-
     // E.g. it might be empty, or named differently. Left intact for now, although deserves a refactoring 
-
     if (moduleDir.findChild(Language.LANGUAGE_MODELS).exists() || moduleDir.findChild(Language.LEGACY_LANGUAGE_MODELS).exists() || moduleDir.findChild(Solution.SOLUTION_MODELS).exists()) {
       return "Module already exists in this folder";
     }
@@ -235,7 +229,6 @@ public class NewModuleUtil {
       SModel templateModel = SModuleOperations.createModelWithAdjustments(new SModelName(null, "main", SModelStereotype.GENERATOR).getValue(), newGenerator.getModelRoots().iterator().next());
       SNode mappingConfiguration = SModelOperations.createNewNode(templateModel, null, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, "jetbrains.mps.lang.generator.structure.MappingConfiguration"));
       // both model and MC named 'main' is a bit confusing 
-
       SPropertyOperations.assign(mappingConfiguration, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "main");
       SModelOperations.addRootNode(templateModel, mappingConfiguration);
       ((EditableSModel) templateModel).save();
@@ -265,13 +258,10 @@ public class NewModuleUtil {
     final GeneratorDescriptor generatorDescriptor = new GeneratorDescriptor();
     generatorDescriptor.setNamespace(namespace);
     // unlike other modules, in outburst of pure antagonism, namespace in generator used to mean alias. Now, it's the way it has to be. 
-
     generatorDescriptor.setAlias("main");
     IFile modelsDir = (templateModelsLocation == null ? generatorModuleLocation.findChild("template") : templateModelsLocation);
     // there used to be 2 approaches, contentRoot = moduleRoot + sourceRoot descendant, and the one with both pointing to the same location 
-
     // no idea how to reason to pick one, go ahead and change if you're brave to prove. 
-
     generatorDescriptor.getModelRootDescriptors().add(DefaultModelRoot.createSingleFolderDescriptor(modelsDir));
     ProjectPathUtil.setGeneratorOutputPath(generatorDescriptor, generatorModuleLocation.findChild("source_gen").getPath());
     return generatorDescriptor;
@@ -292,7 +282,6 @@ public class NewModuleUtil {
       throw new IllegalStateException("Trying to create a solution in an existing solution's directory: " + moduleLocation);
     } else {
       // we assume create happens under proper application write lock, would be odd to manage locks here 
-
       modelsDir.mkdirs();
     }
 
@@ -327,11 +316,8 @@ public class NewModuleUtil {
       if (root.canCreateModels() && root.canCreateModel(modelName)) {
         EditableSModel model = (EditableSModel) root.createModel(modelName);
         // todo: ??? 
-
         // this is strict model loading. without it save() not working - isLoaded() returns false in save method 
-
         // model.getSModel() 
-
         model.save();
         return model;
       }

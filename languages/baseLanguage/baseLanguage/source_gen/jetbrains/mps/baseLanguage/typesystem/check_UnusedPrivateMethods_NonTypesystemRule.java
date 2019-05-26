@@ -40,7 +40,6 @@ public class check_UnusedPrivateMethods_NonTypesystemRule extends AbstractNonTyp
             {
               if (SNodeOperations.isInstanceOf(matchedNode_sl9v9q_a0a0, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration")) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(matchedNode_sl9v9q_a0a0, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"))).isEmpty() && Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SNodeOperations.as(SNodeOperations.getParent(matchedNode_sl9v9q_a0a0), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept")))).count() == 1) {
                 // an idiom - uninstantiable class 
-
                 return;
               }
               SNode topClassifier = SNodeOperations.getNodeAncestor(matchedNode_sl9v9q_a0a0, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), false, false);

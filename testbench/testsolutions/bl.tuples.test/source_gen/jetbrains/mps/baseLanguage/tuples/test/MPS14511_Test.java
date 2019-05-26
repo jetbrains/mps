@@ -15,7 +15,6 @@ public class MPS14511_Test extends TestCase {
       Assert.fail();
     } catch (RuntimeException e) {
       // expected exception 
-
     }
   }
 }

@@ -46,14 +46,11 @@ public class InPlaceCheckpointRefSpec_Constraints extends BaseConstraintsDescrip
           @Override
           public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
             // reference checkpoint steps with in-place cp declaration only 
-
             return new FilteringScope(new ModelPlusImportedScope(SNodeOperations.getModel(_context.getContextNode()), false, MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071801L, "jetbrains.mps.lang.generator.plan.structure.Checkpoint"))) {
               @Override
               public boolean isExcluded(SNode node) {
                 // node == contextNode is neccessary to avoid cycle when there's already a cp step with in-place declaration, 
-
                 // and we ask for replacement - do not suggest itself as possible replacement, wrapped into InPlaceCheckpointRefSpec 
-
                 return node == _context.getContextNode() || !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.as(node, MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071801L, "jetbrains.mps.lang.generator.plan.structure.Checkpoint")), MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071801L, 0x340cd07aed7cb2d2L, "cpSpec")), MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x340cd07aed7ca161L, "jetbrains.mps.lang.generator.plan.structure.InPlaceCheckpointSpec")));
               }
             };

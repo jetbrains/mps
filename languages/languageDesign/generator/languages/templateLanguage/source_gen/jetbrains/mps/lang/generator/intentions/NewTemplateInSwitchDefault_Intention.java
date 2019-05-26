@@ -68,7 +68,6 @@ public final class NewTemplateInSwitchDefault_Intention extends AbstractIntentio
       SPropertyOperations.set(t, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), name);
       MacroIntentionsUtil.copyVirtualPackage(t, node);
       // make reference 
-
       SNode tr = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11013906056L, "jetbrains.mps.lang.generator.structure.TemplateDeclarationReference"), null);
       SLinkOperations.setTarget(tr, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3173L, "template"), t);
       SLinkOperations.setTarget(node, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10313ed7688L, 0x11013877b73L, "defaultConsequence"), tr);

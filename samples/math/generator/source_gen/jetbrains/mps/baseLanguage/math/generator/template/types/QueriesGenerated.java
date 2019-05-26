@@ -52,22 +52,18 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean rule_Condition_0_0(final BaseMappingRuleContext _context) {
     // unknown expression 
-
     return SPropertyOperations.getInteger(_context.getNode(), MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1200fb8bcedL, 0x1200fbb56e7L, "target")) == 0;
   }
   public static boolean rule_Condition_0_1(final BaseMappingRuleContext _context) {
     // long to biginteger 
-
     return SPropertyOperations.getInteger(_context.getNode(), MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1200fb8bcedL, 0x1200fbb56e7L, "target")) == 1;
   }
   public static boolean rule_Condition_0_2(final BaseMappingRuleContext _context) {
     // double to complex 
-
     return SPropertyOperations.getInteger(_context.getNode(), MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1200fb8bcedL, 0x1200fbb56e7L, "target")) == 2;
   }
   public static boolean rule_Condition_0_3(final BaseMappingRuleContext _context) {
     // double to bigdecimal 
-
     return SPropertyOperations.getInteger(_context.getNode(), MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1200fb8bcedL, 0x1200fbb56e7L, "target")) == 3;
   }
   public static boolean rule_Condition_0_4(final BaseMappingRuleContext _context) {
@@ -75,7 +71,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean rule_Condition_0_5(final BaseMappingRuleContext _context) {
     // double to bigcomplex 
-
     return SPropertyOperations.getInteger(_context.getNode(), MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1200fb8bcedL, 0x1200fbb56e7L, "target")) == 5;
   }
   public static boolean rule_Condition_0_6(final BaseMappingRuleContext _context) {
@@ -83,12 +78,10 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean rule_Condition_0_7(final BaseMappingRuleContext _context) {
     // bigdecimal -> bigcomplex 
-
     return SPropertyOperations.getInteger(_context.getNode(), MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1200fb8bcedL, 0x1200fbb56e7L, "target")) == 7;
   }
   public static boolean rule_Condition_0_8(final BaseMappingRuleContext _context) {
     // complex to bigcomplex 
-
     return SPropertyOperations.getInteger(_context.getNode(), MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1200fb8bcedL, 0x1200fbb56e7L, "target")) == 8;
   }
   public static boolean rule_Condition_0_9(final BaseMappingRuleContext _context) {

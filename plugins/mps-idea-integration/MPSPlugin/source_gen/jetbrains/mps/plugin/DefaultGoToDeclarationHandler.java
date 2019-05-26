@@ -89,7 +89,6 @@ import java.io.File;
         IProjectHandler handler = MPSPlugin.getInstance().getProjectHandler(check_tz3sru_a0a0a0a0a1a5(p.getProjectFile()));
         if (handler != null) {
           // unsuppress 2 errors here 
-
           try {
             todo.invoke(handler);
             result.value = true;

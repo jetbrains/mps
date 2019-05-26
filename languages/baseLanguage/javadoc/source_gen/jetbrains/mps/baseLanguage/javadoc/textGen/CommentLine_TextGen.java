@@ -15,7 +15,6 @@ public class CommentLine_TextGen extends TextGenDescriptorBase {
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     // first line in tags needs to stay on the same line with the tag, DocComments prepend a new line explicitly 
-
     if (SNodeOperations.getIndexInParent(ctx.getPrimaryInput()) != 0) {
       tgs.newLine();
       DocCommentTextGen.javadocIndent(ctx);

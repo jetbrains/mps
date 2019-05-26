@@ -19,9 +19,7 @@ public class check_ReturnStatement_NonTypesystemRule extends AbstractNonTypesyst
   }
   public void applyRule(final SNode returnStatement, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     // returns must be allowed until we find a way to implement early returns 
-
     // http://www.javac.info 
-
     if (false && (SNodeOperations.getNodeAncestor(returnStatement, MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, "jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral"), false, false) != null)) {
       if (!(false)) {
         MessageTarget errorTarget = new NodeMessageTarget();

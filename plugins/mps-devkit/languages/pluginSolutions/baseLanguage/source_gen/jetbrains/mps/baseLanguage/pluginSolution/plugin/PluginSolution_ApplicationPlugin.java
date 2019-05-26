@@ -15,11 +15,9 @@ public class PluginSolution_ApplicationPlugin extends BaseApplicationPlugin {
   }
   public void createGroups() {
     // actions w/o parameters 
-
     addAction(new CreateMethodDeclaration_Action());
     addAction(new ShowNullDFA_Action());
     // groups 
-
     addGroup(new AnalyzersActions_ActionGroup());
     addGroup(new ShowAsIntentions_BL_ActionGroup());
   }

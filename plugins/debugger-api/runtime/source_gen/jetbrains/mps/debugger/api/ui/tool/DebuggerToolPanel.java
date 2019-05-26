@@ -156,7 +156,6 @@ public class DebuggerToolPanel {
         myStackFramesListModel.updateFrames();
         myFramesList.setSelectedValue(myUiState.getStackFrame(), true);
         //  TODO not good 
-
         myVariablesTree.setUiState(myUiState);
         myVariablesTree.rebuildNow();
       }

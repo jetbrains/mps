@@ -110,11 +110,8 @@ public class DependencyTree extends MPSTree implements DataProvider {
         n.addTreeMessage(DEPENDENCY_CYCLE);
       } else {
         // if there's any dependency with loop to itself, and role of each element of this path isDependency, then it's dependency cycle 
-
         //  NOTE, selectMany ends up as TranslatingSequence, it we don't want cycles to be recalculated again and again on any 
-
         // ModuleDependencyNode.isLeaf call, shall keep it calcualted in a collection once and for all (e.g. with toList) 
-
         List<DepPath> cycles = Sequence.fromIterable(moduleDeps).translate(new ITranslator2<DepLink, DepPath>() {
           public Iterable<DepPath> translate(DepLink dep) {
             return cbDeps.cyclePaths(dep);

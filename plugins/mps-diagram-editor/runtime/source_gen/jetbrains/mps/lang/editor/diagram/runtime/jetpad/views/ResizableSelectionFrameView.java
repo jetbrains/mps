@@ -32,7 +32,6 @@ public class ResizableSelectionFrameView extends AbstractExternalFrameView {
       protected void registerSynchronizers(Mapper.SynchronizersConfiguration configuration) {
         super.registerSynchronizers(configuration);
         // corner resize handle positions 
-
         configuration.add(Synchronizers.forProperty(resizable, new Runnable() {
           public void run() {
             updateCornerResizeHandlePositions(resizable.get(), frameRectangle.get());
@@ -44,7 +43,6 @@ public class ResizableSelectionFrameView extends AbstractExternalFrameView {
           }
         }));
         // side resize handle positions 
-
         configuration.add(Synchronizers.forProperty(resizable, new Runnable() {
           public void run() {
             updateSideResizeHandlePositions(resizable.get(), showSideHandler.get(), frameRectangle.get());
@@ -77,7 +75,6 @@ public class ResizableSelectionFrameView extends AbstractExternalFrameView {
         }));
 
         // corner resize handles 
-
         configuration.add(Synchronizers.forObservableRole(this, myCornerResizeHandlePositions, childSubList(), new MapperFactory<Vector, ResizeHandleView>() {
           public Mapper<? extends Vector, ? extends ResizeHandleView> createMapper(Vector position) {
             int index = myCornerResizeHandlePositions.indexOf(position);
@@ -97,7 +94,6 @@ public class ResizableSelectionFrameView extends AbstractExternalFrameView {
           }
         }));
         // side resize handles 
-
         configuration.add(Synchronizers.forObservableRole(this, mySideResizeHandlePositions, childSubList(), new MapperFactory<Vector, ResizeHandleView>() {
           public Mapper<? extends Vector, ? extends ResizeHandleView> createMapper(Vector position) {
             int index = mySideResizeHandlePositions.indexOf(position);

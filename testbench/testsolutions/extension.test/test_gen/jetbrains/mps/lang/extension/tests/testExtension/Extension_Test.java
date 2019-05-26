@@ -31,7 +31,6 @@ public class Extension_Test extends TestCase {
       Assert.fail("unexpected value");
     } catch (NoSuchElementException e) {
       // expected exception 
-
     }
     TestObject to = ext.get();
     TEST_OBJECT = to;

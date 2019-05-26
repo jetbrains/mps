@@ -35,7 +35,6 @@ public final class IYetUnresolved__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static SNode findClass_id4ykJ8Y83bdr(@NotNull SNode __thisNode__, SNode from, String className) {
     // FIXME remove this: it's here only to give idea-compiled solutions access to language classes 
-
     return ResolveUnknownUtil.findClass(from, className);
   }
 

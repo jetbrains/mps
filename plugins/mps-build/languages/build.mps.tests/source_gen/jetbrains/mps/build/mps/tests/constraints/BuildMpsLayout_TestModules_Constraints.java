@@ -41,17 +41,14 @@ public class BuildMpsLayout_TestModules_Constraints extends BaseConstraintsDescr
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
     if ((boolean) BaseConcept__BehaviorDescriptor.isInTemplates_idhEwIMij.invoke(parentNode)) {
       // anything in generator 
-
       return true;
     }
     SNode buildProject = SNodeOperations.getNodeAncestor(parentNode, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject"), true, false);
     if ((buildProject != null)) {
       // limit use of this concept in a project with MPS plugin 
-
       return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(buildProject, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x5c3f3e2c1ce9ac70L, "plugins")), MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x37967cbe67d9eca4L, "jetbrains.mps.build.mps.tests.structure.BuildModuleTestsPlugin"))).isNotEmpty();
     }
     // XXX here used to be a check project.getVisibleProjects(false).findFirst(name == "mps"), but I see no justification to keep that 
-
     return false;
   }
   private static SNodePointer canBeChildBreakingPoint = new SNodePointer("r:09cf4c23-1b4d-4723-ac0b-a240d2fdcc67(jetbrains.mps.build.mps.tests.constraints)", "1227128029536566784");

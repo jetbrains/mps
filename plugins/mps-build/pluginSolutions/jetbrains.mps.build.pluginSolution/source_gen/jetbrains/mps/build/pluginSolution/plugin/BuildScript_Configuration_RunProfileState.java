@@ -71,19 +71,13 @@ public class BuildScript_Configuration_RunProfileState implements RunProfileStat
         String scriptsPath = (projectNode != null ? BuildProject__BehaviorDescriptor.getScriptsPath_id4ahc858UcHk.invoke(projectNode, Context.defaultContext()) : null);
         if (scriptsPath != null) {
           // XXX in fact, don't need IFile here, especially the one from project's FS. Script could get generated anywhere, io.File would be better 
-
           file.value = mpsProject.getFileSystem().getFile(scriptsPath);
           // todo 
-
           file.value = file.value.findChild(BuildProject__BehaviorDescriptor.getOutputFileName_id4gSHdTptyu0.invoke(projectNode));
           // todo select task 
-
           // here used to be odd code that took name of the first BwfTask under 'common' node in presets, which happen to be 'assemble' 
-
           // It dated back to initial revision, and I see no reason to keep it, assume default target is better. 
-
           // Perhaps, shall ask user to specify one (or leave it to extra ant options 
-
           mainTaskName.value = null;
           undefinedMacro.value = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(projectNode, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a22L, "macros")), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafadd002L, "jetbrains.mps.build.structure.BuildFolderMacro"))).where(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {

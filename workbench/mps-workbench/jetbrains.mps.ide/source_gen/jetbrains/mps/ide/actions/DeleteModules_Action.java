@@ -51,7 +51,6 @@ public class DeleteModules_Action extends BaseAction {
         event.getPresentation().setText("&Delete Modules...", true);
       } else {
         // If isApplicable and !(modules > 1) => modules == 1 
-
         SModule module = ((List<SModule>) MapSequence.fromMap(_params).get("modules")).get(0);
         if (module instanceof Solution) {
           event.getPresentation().setText("&Delete Solution...", true);
@@ -61,7 +60,6 @@ public class DeleteModules_Action extends BaseAction {
           event.getPresentation().setText("&Delete DevKit...", true);
         } else if (module instanceof Generator) {
           // For fututre implementation 
-
           event.getPresentation().setText("&Delete Generator...", true);
         } else {
           event.getPresentation().setText("&Delete Module...", true);
@@ -123,7 +121,6 @@ public class DeleteModules_Action extends BaseAction {
 
     ModelAccess modelAccess = ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess();
     // While don't support undo no need for command here 
-
     modelAccess.runWriteAction(new Runnable() {
       public void run() {
         new ModuleDeleteHelper(((MPSProject) MapSequence.fromMap(_params).get("project"))).deleteModules(((List<SModule>) MapSequence.fromMap(_params).get("modules")), false, filesOption.selected);

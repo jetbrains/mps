@@ -40,7 +40,6 @@ public class typeof_DefaultClassCreator_InferenceRule extends AbstractInferenceR
       }
     }
     // --- 
-
     SNode constructedType = _quotation_createNode_9il0ce_a0d0b(SLinkOperations.getTarget(defaultClassCreator, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0ac833a6L, "classifier")), SLinkOperations.getChildren(defaultClassCreator, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0accfdb3L, "typeParameter")));
     {
       SNode _nodeToCheck_1029348928467 = defaultClassCreator;

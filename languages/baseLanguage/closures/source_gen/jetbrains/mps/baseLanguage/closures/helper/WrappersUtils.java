@@ -82,9 +82,7 @@ public class WrappersUtils {
       }
     }
     // vdecls got VarDeclarations that are outside of this closure but are referenced from it 
-
     // now, check if any such variable is being modified in the scope it's declared in (i.e. out of the closure?) 
-
 with_decls:
     for (Iterator<SNode> it = ListSequence.fromList(vdecls).iterator(); it.hasNext();) {
       SNode vd = it.next();
@@ -109,7 +107,6 @@ with_decls:
         }
       }
       // didn't find any assignment with the var reference in the lvalue 
-
       it.remove();
     }
     return vdecls;

@@ -48,7 +48,6 @@ public class SimplePropertyReference_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_3e0a16_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0xc457c5de60274104L, 0xab9ca31c5404ae8bL, 0x346ead2c08ccfa10L, "jetbrains.mps.samples.highlevel.simpleEditor.structure.SimplePropertyReference"), MetaAdapterFactory.getReferenceLink(0xc457c5de60274104L, 0xab9ca31c5404ae8bL, 0x346ead2c08ccfa10L, 0x346ead2c08ccfa1fL, "prop"));
     }
     @NotNull

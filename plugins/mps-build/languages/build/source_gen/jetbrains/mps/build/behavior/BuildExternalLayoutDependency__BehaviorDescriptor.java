@@ -47,7 +47,6 @@ public final class BuildExternalLayoutDependency__BehaviorDescriptor extends Bas
   }
   /*package*/ static String location_id6b4RkXS8sT2(@NotNull SNode __thisNode__, DependenciesHelper helper, Object artifactId) {
     // also see BuildProjectDependency_Behavior#location 
-
     return helper.getContentLocation(__thisNode__);
   }
 

@@ -72,7 +72,6 @@ public final class BuildProject__BehaviorDescriptor extends BaseBHDescriptor {
     RelativePathHelper relativePathHelper = context.getRelativePathHelper(SNodeOperations.getModel(__thisNode__));
     if (relativePathHelper == null) {
       // model is packaged, i.e. no base path for it 
-
       return null;
     }
     if (isNotEmptyString(SPropertyOperations.getString(__thisNode__, MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x48387ebae1a07a23L, "internalBaseDirectory")))) {
@@ -80,7 +79,6 @@ public final class BuildProject__BehaviorDescriptor extends BaseBHDescriptor {
         return relativePathHelper.makeAbsolute(SPropertyOperations.getString(__thisNode__, MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x48387ebae1a07a23L, "internalBaseDirectory")));
       } catch (RelativePathHelper.PathException ex) {
         // no idea - use default path 
-
       }
     }
     return relativePathHelper.getBasePath();
@@ -123,9 +121,7 @@ public final class BuildProject__BehaviorDescriptor extends BaseBHDescriptor {
     }
 
     // NOTE: references in project structure and layout should be unordered, thus 
-
     //       we do not need index/child parameters here 
-
     if (MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a1cL, "layout").equals(link)) {
       if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), MetaAdapterFactory.getInterfaceConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x6b9a2011083f9402L, "jetbrains.mps.build.structure.BuildSource_FilesetProjectPart"))) {
         return DescendantsScope.forNamedElements(__thisNode__, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x668c6cfbafacf6f2L, "parts"), kind);
@@ -197,7 +193,6 @@ public final class BuildProject__BehaviorDescriptor extends BaseBHDescriptor {
     SNode containingProject = SNodeOperations.getNodeAncestor(child, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject"), false, false);
     if (!(Objects.equals(containingProject, __thisNode__))) {
       // we are imported => give away only public macro 
-
       rootScope = ScopeUtil.where(rootScope, new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
         public Boolean invoke(SNode node) {
           return (boolean) BuildMacro__BehaviorDescriptor.isPublic_id5FtnUVJQZyL.invoke(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a1fL, "jetbrains.mps.build.structure.BuildMacro")));
@@ -217,7 +212,6 @@ public final class BuildProject__BehaviorDescriptor extends BaseBHDescriptor {
       }
       if ((definedMacro.value != null)) {
         // we can only see what was strictly before us 
-
         rootScope = ScopeUtil.where(rootScope, new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
           public Boolean invoke(SNode visibleNode) {
             return !(ListSequence.fromList(SNodeOperations.getNextSiblings(definedMacro.value, false)).contains(visibleNode)) && !((Objects.equals(definedMacro.value, visibleNode)));

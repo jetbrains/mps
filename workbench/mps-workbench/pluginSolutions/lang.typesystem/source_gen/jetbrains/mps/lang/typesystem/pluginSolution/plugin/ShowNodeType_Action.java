@@ -121,7 +121,6 @@ public class ShowNodeType_Action extends BaseAction {
       ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess().executeUndoTransparentCommand(new Runnable() {
         public void run() {
           // XXX what's the need to remove type node from the model we dispose anyway? 
-
           tmpModel.value.removeRootNode(type.value);
           TemporaryModels.getInstance().dispose(tmpModel.value);
         }

@@ -78,7 +78,6 @@ public class EventConsumingMapping {
   }
   public synchronized boolean removeEvent(SModelEvent event) {
     // return true if this event should be processed 
-
     myAddedNodesToEvents.removeValue(event);
     return myNodesToUnconsumedEvents.removeValue(event);
   }

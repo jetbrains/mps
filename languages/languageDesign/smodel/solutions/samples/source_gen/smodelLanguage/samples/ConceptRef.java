@@ -36,35 +36,26 @@ public class ConceptRef {
     SConcept c1 = exprConcept;
     SConcept c2 = (SConcept) c1;
     // ====== to node 
-
     // - ok - 
-
     SNode n1 = SNodeOperations.asNode(exprConcept);
     SNode n2 = SNodeOperations.asNode(exprConcept);
     // -- not ok -- 
-
     // ====== to concept 
-
     // - ok - 
-
     SConcept exprConc = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
     SConcept bExprConc = SNodeOperations.castConcept(exprConc, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation"));
     exprConc = bExprConc;
     // -- not ok -- 
-
   }
 
   public void concept_hierarchy1(SAbstractConcept concept) {
     // supers 
-
     List<SAbstractConcept> supers_all = SConceptOperations.getAllSuperConcepts(concept, false);
     List<SAbstractConcept> supers_all_inclusive = SConceptOperations.getAllSuperConcepts(concept, true);
     // direct supers 
-
     List<SAbstractConcept> supers_direct = SConceptOperations.getDirectSuperConcepts(concept, false);
     List<SAbstractConcept> supers_direct_inclusive = SConceptOperations.getDirectSuperConcepts(concept, true);
     // ====== 
-
     boolean yes1 = SConceptOperations.isSuperConceptOf(SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation"));
     boolean yes2 = SConceptOperations.isSuperConceptOf(SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression")), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation")));
     boolean yes3 = SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"));

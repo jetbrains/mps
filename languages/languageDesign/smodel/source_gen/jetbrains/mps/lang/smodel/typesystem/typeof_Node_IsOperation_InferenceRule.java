@@ -28,7 +28,6 @@ public class typeof_Node_IsOperation_InferenceRule extends AbstractInferenceRule
     }
 
     // checking 
-
     SNode target = NodeIdentity__BehaviorDescriptor.toNode_id46J8CTY3sAt.invoke(SLinkOperations.getTarget(op, MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x32d13e7d44145b36L, 0x32d13e7d44145b8cL, "ref")), SNodeOperations.getModel(op).getRepository());
     SNode targetConcept = RulesUtil.closestConceptNode(SNodeOperations.getConcept(target));
 

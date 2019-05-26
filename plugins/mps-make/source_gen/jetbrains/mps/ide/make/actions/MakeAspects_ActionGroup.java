@@ -29,7 +29,6 @@ public class MakeAspects_ActionGroup extends GeneratedActionGroup {
   public void doUpdate(AnActionEvent event) {
     removeAll();
     // do not change this to build() because aspect set can change dynamically 
-
     Collection<LanguageAspectDescriptor> aspects = LanguageAspectSupport.collectAspects();
     for (LanguageAspectDescriptor aspect : CollectionSequence.fromCollection(aspects)) {
       MakeAspects_ActionGroup.this.addParameterizedAction(new BuildAspect_Action(aspect), PluginId.getId("jetbrains.mps.ide.make"), aspect);

@@ -58,18 +58,15 @@ public class HeadlessRefactoringUI implements RefactoringUI {
       }
 
       // this stops the process 
-
       return null;
     }
     @Override
     public void runSearch(final _FunctionTypes._void_P1_E0<? super ProgressMonitor> task) {
       // do nothing 
-
     }
     @Override
     public void showRefactoringView(final Runnable task, String refactoringName, SearchResults searchResults, SearchTask searchTask, RefactoringSession session) {
       // do nothing, no need to perform refactoring 
-
     }
   }
 
@@ -98,7 +95,6 @@ public class HeadlessRefactoringUI implements RefactoringUI {
         Assert.assertTrue("SearchNode " + idString((SNode) node) + " was shown but is not expected.", SetSequence.fromSet(mySearchedNodes).contains((SNode) node));
       }
       // do nothing, this in fact stops the process 
-
     }
     private String idString(SNode n) {
       return n.getReference().toString() + "(" + n + ")";

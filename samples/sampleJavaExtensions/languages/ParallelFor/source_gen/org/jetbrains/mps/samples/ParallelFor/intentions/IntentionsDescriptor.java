@@ -34,7 +34,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 0:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[4];
           intentions[0] = new MarkAsThreadSafe_Intention();
           intentions[1] = new UnmarkAsThreadSafe_Intention();
@@ -45,7 +44,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 1:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[2];
           intentions[0] = new MarkInstanceMethodCallAsThreadSafe_Intention();
           intentions[1] = new UnmarkInstanceMethodCallAsThreadSafe_Intention();
@@ -54,7 +52,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 2:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[1];
           intentions[0] = new TurnToParallelForEachStatement_Intention();
         }
@@ -62,7 +59,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 3:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[4];
           intentions[0] = new MarkLocalStaticMethodCallAsThreadSafe_Intention();
           intentions[1] = new UnmarkLocalStaticMethodCallAsThreadSafe_Intention();
@@ -73,7 +69,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 4:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[2];
           intentions[0] = new DetachFromThreadPool_Intention();
           intentions[1] = new TurnToForEachStatement_Intention();
@@ -82,7 +77,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 5:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[2];
           intentions[0] = new MarkStaticMethodCallAsThreadSafe_Intention();
           intentions[1] = new UnmarkStaticMethodCallAsThreadSafe_Intention();
@@ -91,7 +85,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 6:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[2];
           intentions[0] = new MarkVariableDeclarationAsThreadSafe_Intention();
           intentions[1] = new UnmarkVariableAsThreadSafe_Intention();

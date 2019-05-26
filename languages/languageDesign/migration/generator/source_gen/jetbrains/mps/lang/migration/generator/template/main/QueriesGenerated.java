@@ -77,7 +77,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean createRootRule_Condition_0_0(final CreateRootRuleContext _context) {
     // see MPS-24613 
-
     return SModuleOperations.isAspect(_context.getOriginalInputModel(), "migration");
   }
   public static boolean rule_Condition_0_0(final BaseMappingRuleContext _context) {
@@ -106,7 +105,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean rule_Condition_16_0(final BaseMappingRuleContext _context) {
     // see MPS-24613 
-
     return SModuleOperations.isAspect(((SModel) _context.getVariable("model")), "migration");
   }
   public static Object propertyMacro_GetValue_0_0(final PropertyMacroContext _context) {
@@ -206,7 +204,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object referenceMacro_GetReferent_16_0(final ReferenceMacroContext _context) {
     // TODO genContext.get output MigrationDescriptorClass for model model; 
-
     return SModelOperations.getModelName(((SModel) _context.getVariable("model"))) + ".MigrationDescriptor";
   }
   public static Object referenceMacro_GetReferent_17_0(final ReferenceMacroContext _context) {

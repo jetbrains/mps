@@ -25,13 +25,11 @@ public class CommentHelper {
   }
   public static List<String> processLines(Iterable<String> lines, String start, String end) {
     // remove start and end (if any) tags, indent 
-
     List<String> result = ListSequence.fromListWithValues(new ArrayList<String>(), lines);
     if (ListSequence.fromList(result).isEmpty()) {
       return result;
     }
     // remove start prefix 
-
     if (trim_rf742u_a0a4a2(ListSequence.fromList(result).first()).equals(start)) {
       ListSequence.fromList(result).removeElementAt(0);
     } else if (ListSequence.fromList(result).first().startsWith(start)) {
@@ -55,7 +53,6 @@ public class CommentHelper {
     }
 
     // find common indent for nonempty lines 
-
     if (ListSequence.fromList(result).isNotEmpty()) {
       int mintrim = ListSequence.fromList(result).first().length();
       for (String line : result) {

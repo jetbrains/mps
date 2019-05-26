@@ -131,7 +131,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean createRootRule_Condition_64_0(final CreateRootRuleContext _context) {
     // see MPS-24613 
-
     return SModuleOperations.isAspect(_context.getOriginalInputModel(), "editor");
   }
   public static boolean createRootRule_Condition_64_1(final CreateRootRuleContext _context) {
@@ -338,7 +337,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean rule_Condition_119_0(final BaseMappingRuleContext _context) {
     // see MPS-24613 
-
     return SModuleOperations.isAspect(((SModel) _context.getVariable("model")), "editor");
   }
   public static boolean rule_Condition_126_0(final BaseMappingRuleContext _context) {
@@ -1541,7 +1539,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object referenceMacro_GetReferent_119_0(final ReferenceMacroContext _context) {
     // TODO genContext.get output EditorAspectDescriptorClass for model model; 
-
     return SModelOperations.getModelName(((SModel) _context.getVariable("model"))) + ".EditorAspectDescriptorImpl";
   }
   public static Object referenceMacro_GetReferent_124_0(final ReferenceMacroContext _context) {
@@ -1714,7 +1711,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean ifMacro_Condition_1_0(final IfMacroContext _context) {
     // setting canBeSynchronized flag for root collection cells only 
-
     return !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel"))) && (boolean) Synchronizeable__BehaviorDescriptor.shellBeSynchronized_id3TPTV99_TMT.invoke(_context.getNode()) && (boolean) Synchronizeable__BehaviorDescriptor.canBeSynchronized_id3wXm3h1AYM7.invoke(_context.getNode());
   }
   public static boolean ifMacro_Condition_1_1(final IfMacroContext _context) {
@@ -2330,7 +2326,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean ifMacro_Condition_149_1(final IfMacroContext _context) {
     // TODO: remove. It is here only for the compatibility with mbeddr generator 
-
     return ConceptFunctionParameter__BehaviorDescriptor.findConceptFunction_idhEwJh7Q.invoke(_context.getNode()) != null;
   }
   public static boolean ifMacro_Condition_154_0(final IfMacroContext _context) {
@@ -3420,7 +3415,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Iterable<SNode> sourceNodesQuery_72_8(final SourceSubstituteMacroNodesContext _context) {
     // Select the matching menu and any contributions to it 
-
     return Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("var:menusAndContributionsForConcept"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return it == _context.getNode() || (SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0c10ff0L, "jetbrains.mps.lang.editor.structure.TransformationMenuContribution")) && SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(it, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0c10ff0L, "jetbrains.mps.lang.editor.structure.TransformationMenuContribution")), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0c10ff0L, 0x5d3b34577b60a0bfL, "menuReference")), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5d3b34577b3cff09L, "jetbrains.mps.lang.editor.structure.TransformationMenuReference_Named")), MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5d3b34577b3cff09L, 0x5d3b34577b3cff0aL, "menu")) == _context.getNode());
@@ -3429,9 +3423,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Iterable<SNode> sourceNodesQuery_72_9(final SourceSubstituteMacroNodesContext _context) {
     // Select original menus (i.e. for a contribution select the menu it extends, for a menu select 
-
     // itself) 
-
     return Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("var:menusAndContributionsForConcept"))).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode it) {
         return (SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0ac4ee8L, "jetbrains.mps.lang.editor.structure.TransformationMenu_Named")) ? SNodeOperations.cast(it, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0ac4ee8L, "jetbrains.mps.lang.editor.structure.TransformationMenu_Named")) : SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(it, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0c10ff0L, "jetbrains.mps.lang.editor.structure.TransformationMenuContribution")), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0c10ff0L, 0x5d3b34577b60a0bfL, "menuReference")), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5d3b34577b3cff09L, "jetbrains.mps.lang.editor.structure.TransformationMenuReference_Named")), MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5d3b34577b3cff09L, 0x5d3b34577b3cff0aL, "menu")));
@@ -3469,7 +3461,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Iterable<SNode> sourceNodesQuery_72_13(final SourceSubstituteMacroNodesContext _context) {
     // Select the matching menu and any contributions to it 
-
     return Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("var:menusAndContributionsForConcept"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return it == _context.getNode() || (SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2de9c932f4e5cb53L, "jetbrains.mps.lang.editor.structure.SubstituteMenu_Contribution")) && SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(it, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2de9c932f4e5cb53L, "jetbrains.mps.lang.editor.structure.SubstituteMenu_Contribution")), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2de9c932f4e5cb53L, 0x638d10740d3d77d4L, "menuReference")), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5480a271c0d1df1fL, "jetbrains.mps.lang.editor.structure.SubstituteMenuReference_Named")), MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5480a271c0d1df1fL, 0x5480a271c0d2a27eL, "menu")) == _context.getNode());
@@ -3479,9 +3470,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Iterable<SNode> sourceNodesQuery_72_14(final SourceSubstituteMacroNodesContext _context) {
     // Select original menus (i.e. for a contribution select the menu it extends, for a menu select 
-
     // itself) 
-
     return Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("var:menusAndContributionsForConcept"))).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode it) {
         return (SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x33e0267905fba6fdL, "jetbrains.mps.lang.editor.structure.SubstituteMenu_Named")) ? SNodeOperations.cast(it, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x33e0267905fba6fdL, "jetbrains.mps.lang.editor.structure.SubstituteMenu_Named")) : SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(it, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2de9c932f4e5cb53L, "jetbrains.mps.lang.editor.structure.SubstituteMenu_Contribution")), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2de9c932f4e5cb53L, 0x638d10740d3d77d4L, "menuReference")), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5480a271c0d1df1fL, "jetbrains.mps.lang.editor.structure.SubstituteMenuReference_Named")), MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5480a271c0d1df1fL, 0x5480a271c0d2a27eL, "menu")));
@@ -3684,7 +3673,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static void mappingScript_CodeBlock_170(final MappingScriptContext _context) {
     // see MPS-24613 
-
     if (!(SModuleOperations.isAspect(_context.getOriginalInputModel(), "editor"))) {
       return;
     }
@@ -3727,7 +3715,6 @@ public class QueriesGenerated extends QueryProviderBase {
       SNode attr = SmartRefAttributeUtil.extractAttribute(SNodeOperations.cast(IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke(_context.getNode()), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration")));
       if ((SNodeOperations.getParent(attr) == null)) {
         // implicit attribute - refer to concept instead 
-
         nodePtr = new SNodePointer(IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke(_context.getNode()));
       } else {
         nodePtr = new SNodePointer(attr);

@@ -48,7 +48,6 @@ public class SimpleMathVarReference_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_rxkll9_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b832e4e1L, "jetbrains.mps.samples.Expressions.structure.SimpleMathVarReference"), MetaAdapterFactory.getReferenceLink(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b832e4e1L, 0x1cc69153b832e4e2L, "declaration"));
     }
     @NotNull

@@ -65,9 +65,7 @@ public class LanguageEditorChecker extends BaseEditorChecker implements Disposab
   @Override
   public boolean isLaterThan(EditorChecker checker) {
     // since this is default editor checker, 
-
     // every other checker knows whether it should be later or earlier than this one 
-
     if (checker instanceof LanguageEditorChecker) {
       return false;
     }
@@ -110,9 +108,7 @@ public class LanguageEditorChecker extends BaseEditorChecker implements Disposab
     }
     if (node.getModel() == null || SNodeOperations.getModel(editedNode) == null) {
       // descriptor is null for a replaced model 
-
       // after model is replaced but before it is disposed (this can happen asyncronously) 
-
       return Collections.emptySet();
     }
 
@@ -129,7 +125,6 @@ public class LanguageEditorChecker extends BaseEditorChecker implements Disposab
 
     if (!(myMessagesChanged)) {
       // skipping further processing if nothing was changed 
-
       return Collections.emptySet();
     }
 
@@ -159,7 +154,6 @@ public class LanguageEditorChecker extends BaseEditorChecker implements Disposab
     final List<QuickFixBase> quickFixesToExecute = ListSequence.fromList(new ArrayList<QuickFixBase>());
     for (NodeReportItem errorReporter : errorsComponent.getErrors()) {
       // todo here should be processor-based architecture, like in other checkers 
-
       SNode nodeWithError = errorReporter.getNode().resolve(editorContext.getRepository());
       if (!(ErrorReportUtil.shouldReportError(errorReporter, editorContext.getRepository()))) {
         continue;
@@ -167,7 +161,6 @@ public class LanguageEditorChecker extends BaseEditorChecker implements Disposab
 
       if (!(ListSequence.fromList(SNodeOperations.getNodeAncestors(nodeWithError, null, true)).contains(editedNode))) {
         // in inspector skipping all messages for invisible nodes 
-
         continue;
       }
       HighlighterMessage message = new HighlighterMessage(this, errorReporter, errorReporter.getNode().resolve(editorContext.getRepository()));
@@ -184,7 +177,6 @@ public class LanguageEditorChecker extends BaseEditorChecker implements Disposab
       return result;
     }
     // running quick fixes in main editor only 
-
     final boolean wasForceRunQuickFixes = myForceRunQuickFixes;
     myForceRunQuickFixes = false;
     if (ListSequence.fromList(quickFixesToExecute).isNotEmpty()) {
@@ -197,7 +189,6 @@ public class LanguageEditorChecker extends BaseEditorChecker implements Disposab
                   QuickFixRuntimeEditorWrapper.getInstance(fix).execute(editorContext, false);
                   if (wasForceRunQuickFixes) {
                     // forcing to execute quickFixes for all errors reported on the modified model 
-
                     myForceRunQuickFixes = true;
                   }
                 }

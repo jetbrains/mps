@@ -76,7 +76,6 @@ public class ChangeEditorMessage extends EditorMessageWithTarget {
   }
   private boolean isDirectCell(EditorCell cell) {
     // Return true if and only if this cell should be painted, not only set in frame 
-
     if (cell == null) {
       return false;
     }
@@ -137,9 +136,7 @@ public class ChangeEditorMessage extends EditorMessageWithTarget {
   }
   private void repaintConflictedMessages(Graphics graphics, EditorCell cell) {
     // This is a workaround for case when any change message is going to be painted over 
-
     // "conflicted" red frame. In this case, we repaint conflicted red frame again 
-
     EditorCell_Collection parent = cell.getParent();
     if (parent != null && parent.getCellsCount() == 1) {
       SimpleEditorMessage messageToRepaint = Sequence.fromIterable(((Iterable<ChangeEditorMessage>) CellMessagesUtil.getMessages(parent, ChangeEditorMessage.class))).findFirst(new IWhereFilter<ChangeEditorMessage>() {

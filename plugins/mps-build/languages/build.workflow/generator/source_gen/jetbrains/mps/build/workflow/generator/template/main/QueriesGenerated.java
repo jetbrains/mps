@@ -154,7 +154,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object propertyMacro_GetValue_3_1(final PropertyMacroContext _context) {
     // fixme 
-
     return (isNotEmptyString(SPropertyOperations.getString(_context.getNode(), MetaAdapterFactory.getProperty(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0x1c936d31d30fdf98L, "compiler"))) && SPropertyOperations.getString(_context.getNode(), MetaAdapterFactory.getProperty(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0x1c936d31d30fdf98L, "compiler")).equals("IntelliJ") ? "javac2" : "javac");
   }
   public static Object propertyMacro_GetValue_3_2(final PropertyMacroContext _context) {
@@ -440,19 +439,12 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static void mapSrcMacro_post_4_0(final MapSrcMacroPostProcContext _context) {
     // FIXME this is a provisional hack to deal with MPS-26881, to deal with duplication of CopyOutcome 
-
     // annotation when BwfProject is split into xml and properties file. 
-
     // The proper (nay better) way is to attach this annotation at xml script, rather than to 
-
     // BwfProject, but this requires a place to keep this value from BuildProject to BwfProject. 
-
     // I can't use drop attribute rule or a reduction rule as input node is the same 
-
     // (BwfProject instance), and there's no output node information to tell when 
-
     // I shall and shall not drop/reduce the attribute 
-
     if ((AttributeOperations.getAttribute(_context.getOutputNode(), new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xedf22a442bc4e5dL, 0x954f06aaaf51df00L, 0x10f9f9812b8fca93L, "jetbrains.mps.lang.makeup.structure.CopyOutcome"))) != null)) {
       String loc = SPropertyOperations.getString(AttributeOperations.getAttribute(_context.getOutputNode(), new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xedf22a442bc4e5dL, 0x954f06aaaf51df00L, 0x10f9f9812b8fca93L, "jetbrains.mps.lang.makeup.structure.CopyOutcome"))), MetaAdapterFactory.getProperty(0xedf22a442bc4e5dL, 0x954f06aaaf51df00L, 0x10f9f9812b8fca93L, 0x10f9f9812b8fca94L, "location"));
       if ((loc != null && loc.length() > 0)) {

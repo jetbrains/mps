@@ -18,7 +18,6 @@ public class Ide_ApplicationPlugin extends BaseApplicationPlugin {
   }
   public void createGroups() {
     // actions w/o parameters 
-
     addAction(new AddToNewFavoritesList_Action());
     addAction(new AnalyzeModuleDependencies_Action());
     addAction(new AnalyzeStacktrace_Action());
@@ -109,7 +108,6 @@ public class Ide_ApplicationPlugin extends BaseApplicationPlugin {
     addAction(new ShowTodoViewer_Action());
     addAction(new SubmitToTracker_Action());
     // groups 
-
     addGroup(new AbstractFileActions_ActionGroup());
     addGroup(new AddToFavoritesGroup_ActionGroup());
     addGroup(new AnalyzeModule_ActionGroup());

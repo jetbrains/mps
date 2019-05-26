@@ -26,9 +26,7 @@ public class ChangesTestUtil {
 
   public static void addCommentedMethod(SNode clazz, SNode anchor) {
     // attributes have to reside in smodelAttribute role, although their position relative to 
-
     // other children is important to find out precise location of commented out node 
-
     clazz.insertChildAfter(MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute"), createCommentedMethod(), anchor);
   }
 

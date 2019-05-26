@@ -63,7 +63,6 @@ public class Template_reduce_ConceptSwitch_SubconceptCases extends TemplateDecla
               }
               tnode3.addChild(myAggregationLinks[0], tnode4);
               // TODO validate child 
-
             }
             {
               final SNode tnode5 = environment.createOutputNode(myConcepts[3]);
@@ -73,13 +72,11 @@ public class Template_reduce_ConceptSwitch_SubconceptCases extends TemplateDecla
               }
               tnode3.addChild(myAggregationLinks[1], tnode5);
               // TODO validate child 
-
             }
           } finally {
           }
           tnode2.addChild(myAggregationLinks[2], tnode3);
           // TODO validate child 
-
         }
       } finally {
       }
@@ -120,7 +117,6 @@ public class Template_reduce_ConceptSwitch_SubconceptCases extends TemplateDecla
                       }
                       tnode5.addChild(myAggregationLinks[4], tnode6);
                       // TODO validate child 
-
                     }
                     {
                       final SNode tnode7 = environment.createOutputNode(myConcepts[8]);
@@ -130,19 +126,16 @@ public class Template_reduce_ConceptSwitch_SubconceptCases extends TemplateDecla
                       }
                       tnode5.addChild(myAggregationLinks[5], tnode7);
                       // TODO validate child 
-
                     }
                   } finally {
                   }
                   tnode4.addChild(myAggregationLinks[6], tnode5);
                   // TODO validate child 
-
                 }
               } finally {
               }
               tnode3.addChild(myAggregationLinks[3], tnode4);
               // TODO validate child 
-
             }
             {
               Collection<SNode> tlist8 = null;
@@ -152,13 +145,11 @@ public class Template_reduce_ConceptSwitch_SubconceptCases extends TemplateDecla
                 tnode3.addChild(myAggregationLinks[3], child9);
               }
               // TODO validate child 
-
             }
           } finally {
           }
           tnode2.addChild(myAggregationLinks[7], tnode3);
           // TODO validate child 
-
         }
         {
           final SNode tnode10 = environment.createOutputNode(myConcepts[9]);
@@ -172,7 +163,6 @@ public class Template_reduce_ConceptSwitch_SubconceptCases extends TemplateDecla
               }
               tnode10.addChild(myAggregationLinks[8], tnode11);
               // TODO validate child 
-
             }
             {
               final SNode tnode12 = environment.createOutputNode(myConcepts[10]);
@@ -193,7 +183,6 @@ public class Template_reduce_ConceptSwitch_SubconceptCases extends TemplateDecla
                   }
                   tnode12.addChild(myAggregationLinks[9], tnode13);
                   // TODO validate child 
-
                 }
                 {
                   Collection<SNode> tlist14 = null;
@@ -207,19 +196,16 @@ public class Template_reduce_ConceptSwitch_SubconceptCases extends TemplateDecla
                     tnode12.addChild(myAggregationLinks[9], child15);
                   }
                   // TODO validate child 
-
                 }
               } finally {
               }
               tnode10.addChild(myAggregationLinks[10], tnode12);
               // TODO validate child 
-
             }
           } finally {
           }
           tnode2.addChild(myAggregationLinks[11], tnode10);
           // TODO validate child 
-
         }
       } finally {
       }
@@ -251,13 +237,11 @@ public class Template_reduce_ConceptSwitch_SubconceptCases extends TemplateDecla
                   tnode4.addChild(myAggregationLinks[3], child6);
                 }
                 // TODO validate child 
-
               }
             } finally {
             }
             tnode3.addChild(myAggregationLinks[7], tnode4);
             // TODO validate child 
-
           }
           {
             final SNode tnode7 = environment.createOutputNode(myConcepts[8]);
@@ -267,7 +251,6 @@ public class Template_reduce_ConceptSwitch_SubconceptCases extends TemplateDecla
             }
             tnode3.addChild(myAggregationLinks[11], tnode7);
             // TODO validate child 
-
           }
         } finally {
         }

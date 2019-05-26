@@ -51,11 +51,9 @@ public class ModelCreateHelper {
 
   private SourceRoot prepareAccessorySourceRootIfNeeded(final FileBasedModelRoot selectedModelRoot) {
     // next constant is purely for documentation purposes, just to indicate what's the intention of getOrCreateAccessortySourceRoot method 
-
     final boolean distinctSrcRoot4Accessory = false;
 
     // FIXME distinct write with subsequent command. Is it the way we would like to go? 
-
     return new ModelAccessHelper(myProject.getModelAccess()).runWriteAction(new Computable<SourceRoot>() {
       public SourceRoot compute() {
         if (distinctSrcRoot4Accessory || !(selectedModelRoot.canCreateModel(myFqName.getLongName()))) {
@@ -68,7 +66,6 @@ public class ModelCreateHelper {
           DefaultSourceRoot rv = new DefaultSourceRoot(dedicatedSourceRootName, selectedModelRoot.getContentDirectory());
           selectedModelRoot.addSourceRoot(SourceRootKinds.SOURCES, rv);
           // it's up to model root impl to ensure module is marked changed on source root addition 
-
           return rv;
         } else {
           return null;
@@ -113,14 +110,11 @@ public class ModelCreateHelper {
           }
           if (!(result instanceof EditableSModel)) {
             // XXX there seems to be no true need to get EditableSModel return value, please revisit 
-
             throw new ModelCannotBeCreatedException(String.format("Could not create EditableSModel, got %s", result));
           }
           // XXX do we need autoimports in case there's myClone we would copy from? 
-
           myProject.getComponent(ModelsAutoImportsManager.class).performImports(myModule, result);
           // XXX Perhaps, shall fix module dependencies only once imports of myClone has been copied? 
-
           new MissingDependenciesFixer(result).fixModuleDependencies();
         } catch (ModelCannotBeCreatedException e) {
           refException.set(e);
@@ -128,19 +122,13 @@ public class ModelCreateHelper {
         }
         final EditableSModel rv = ((EditableSModel) result);
         // newly created model is not marked as changed, won't get saved unless we tell it is. 
-
         rv.setChanged(true);
         if (myClone == null) {
           // due to threading issues and invokeLater processing, we have to do save here, in this platform write action 
-
           // so that dumb mode triggered from ProjectRootManagerComponent (wicked processing of a new model file created event) 
-
           // has a chance to get queued in EDT (see DumbServiceImpl.queueTaskOnEdt, invokeLater call) prior to our invokeLater in doOkAction(), above. 
-
           // DumbServiceImpl then clears dumb flag prior to model configurable dialog show up and eventually model imports popup has chances to get populated. 
-
           // see https://youtrack.jetbrains.com/issue/MPS-28999 
-
           rv.save();
           return rv;
         }

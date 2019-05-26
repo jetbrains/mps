@@ -30,7 +30,6 @@ public class PreCheckError extends MigrationError {
   public Iterable<IssueKindReportItem> getProblems(ProgressIndicator progressIndicator) {
     final List<IssueKindReportItem> res = ListSequence.fromList(new ArrayList<IssueKindReportItem>());
     // todo remove this hacky code after reload elimination and intoducing migration annotations 
-
     new MigrationCheckerImpl(myProject, myProject.getComponent(MigrationRegistry.class)).checkProject(new ProgressMonitorAdapter(progressIndicator), new Processor<IssueKindReportItem>() {
       public boolean process(IssueKindReportItem p) {
         ListSequence.fromList(res).addElement(p);

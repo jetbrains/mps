@@ -32,7 +32,6 @@ public class AnnotationUtil {
 
   public static void attachUniqueAnnotation(SNode target, final SNodeReference targetAnnotation) {
     // unique: if there's such annotation already, do nothing 
-
     if (ListSequence.fromList(SLinkOperations.getChildren(target, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation"))).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return Objects.equals(SLinkOperations.getPointer(it, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation")), targetAnnotation);

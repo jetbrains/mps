@@ -106,9 +106,7 @@ public abstract class BaseGeneratorWorker extends CoreWorker {
 
   protected Iterable<MResource> collectResources(final Project project, final Collection<SModule> modules) {
     // FIXME it's odd to have distinct set of modules but lock repository to access its modules. 
-
     // Shall rather keem modules as part of the project 
-
     final Wrappers._T<Iterable<SModel>> models = new Wrappers._T<Iterable<SModel>>(null);
     project.getModelAccess().runReadAction(new Runnable() {
       public void run() {
@@ -128,7 +126,6 @@ public abstract class BaseGeneratorWorker extends CoreWorker {
     });
 
     // XXX resources() needs model access, isn't it? 
-
     return Sequence.fromIterable(new ModelsToResources(models.value).resources()).ofType(MResource.class);
   }
 

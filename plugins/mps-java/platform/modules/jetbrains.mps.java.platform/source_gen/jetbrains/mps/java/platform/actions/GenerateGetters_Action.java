@@ -116,7 +116,6 @@ public class GenerateGetters_Action extends BaseAction {
 
           final String getterName = GenerateGettersAndSettersUtil.getFieldGetterName(field, ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")));
           // Method creation begins 
-
           if (SNodeOperations.isInstanceOf(field, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration"))) {
             lastAdded.value = ListSequence.fromList(SLinkOperations.getChildren(classConcept.value, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member"))).addElement(_quotation_createNode_xzx12x_a0a0a0h0a0a31a0(SLinkOperations.getTarget(field, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type")), dotExpr, getterName));
           } else {

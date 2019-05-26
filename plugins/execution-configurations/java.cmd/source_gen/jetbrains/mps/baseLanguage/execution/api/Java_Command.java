@@ -125,24 +125,15 @@ public class Java_Command {
     }
     File java = Java_Command.getJavaCommand(myJrePath_String);
     // FIXME need better logic to decide when to use java -jar, and when directly java -classpath 
-
     // Now I just throw in some magic number I consider too big to get tired of looking at long CP 
-
     // XXX Besides, I'd like to test this, therefore would like to see this branch to trigger often (MPS JUnit 
-
     // tests shall get into it, I believe). Earlier approach relied on dedicated ClassRunner, capable of reading 
-
     // classpath and arguments from serialized form in temp files, I don't think we can ever get to the limit 
-
     // with program arguments (and even if we do, e.g. enumerating all test methods from JUnit command, we can still 
-
     // address huge argument list with -f or piping input from file (i.e. runner would need to support arguments other than 
-
     // String[] args in main())) 
-
     if (ListSequence.fromList(classPath).count() > 20) {
       // next is to deal with very long cp 
-
       try {
         JarManifestBuilder jmb = new JarManifestBuilder();
         File jar = jmb.withMainClass(className).withFilesClassPath(classPath).toTempFile();
@@ -218,7 +209,6 @@ public class Java_Command {
         return unitsForNode.get(0).getUnitName();
       } else {
         // if there's more than 1 unit, find one holding position that matches main method 
-
         final SConcept staticMethodConcept = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration");
         final String mainMethodTraceableProperty = TraceableConcept__BehaviorDescriptor.getTraceableProperty_id4pl5GY7LKmH.invoke(_quotation_createNode_yvpt_a0a2a0b0a5a1());
         for (TraceablePositionInfo position : debugInfo.getRootInfo(SNodeOperations.getContainingRoot(node)).getPositions()) {
@@ -236,27 +226,18 @@ public class Java_Command {
   }
   private static int getMaxCommandLine() {
     // FIXME KEPT THIS METHOD FOR FUTURE CONSIDERATION, see classPath comment above regarding cmdline length 
-
     // the command line limit on win is 32767 characters 
-
     // (see http://blogs.msdn.com/b/oldnewthing/archive/2003/12/10/56028.aspx) 
-
     // we set the limit to 16384 (half as many) just in case 
-
     return 16384;
   }
   public static List<String> getClasspath(Iterable<SModule> modules) {
     Set<String> classpath = JavaModuleOperations.collectExecuteClasspath(Sequence.fromIterable(modules).toListSequence().toGenericArray(SModule.class));
     // Here used to be module/JDK/.getAdditionalJavaStubPaths, introduced in 6f53b9c0 with no explanation, 
-
     // which replaced CommonPaths.getJDKPath() introduced with no explanation either in b4a00256. 
-
     // As long as getAdditionalJavaStubPaths() are populated from CommonPaths.getJDKPath (see Solution) 
-
     // I see no reason to go though global module to retrieve these. To be honest, I don't quite get the need 
-
     // to remove java paths at all. 
-
     classpath.removeAll(CommonPaths.getJDKPath());
     return new ArrayList<String>(classpath);
   }

@@ -39,7 +39,6 @@ public class TextCommentLinePart_ActionMap {
         if (isFirstPart) {
           if (isFirstLine) {
             //  This is beginning of comment lines container 
-
             if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(SNodeOperations.getParent(currentNode)), MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, "jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment"))) {
               if (DeletionApproverUtil.approve(editorContext, SNodeOperations.getParent(SNodeOperations.getParent(currentNode)))) {
                 return;
@@ -53,7 +52,6 @@ public class TextCommentLinePart_ActionMap {
             return;
           } else {
             //  This is the beginning of line 
-
             SNode curLine = SNodeOperations.cast(SNodeOperations.getParent(currentNode), MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, "jetbrains.mps.baseLanguage.javadoc.structure.CommentLine"));
             SNode prevLine = SNodeOperations.cast(SNodeOperations.getPrevSibling(curLine), MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, "jetbrains.mps.baseLanguage.javadoc.structure.CommentLine"));
             nodeToSelect = ListSequence.fromList(SLinkOperations.getChildren(prevLine, MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, 0x7c7f5b2f3199028dL, "part"))).last();
@@ -73,7 +71,6 @@ public class TextCommentLinePart_ActionMap {
           }
         } else {
           //  Caret is at the beginning of text part inside comment line 
-
           if (SNodeOperations.isInstanceOf(SNodeOperations.getPrevSibling(currentNode), MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, "jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart"))) {
             nodeToSelect = SNodeOperations.getPrevSibling(currentNode);
             SNode linePart = SNodeOperations.cast(nodeToSelect, MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, "jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart"));
@@ -175,7 +172,6 @@ public class TextCommentLinePart_ActionMap {
             return;
           } else if (selectedCell.getCaretPosition() == selectedCell.getText().length()) {
             //  Caret is at the end of part 
-
             boolean isLastPart;
             boolean isLastLine;
             SNode currentNode = editorContext.getSelectedNode();
@@ -184,10 +180,8 @@ public class TextCommentLinePart_ActionMap {
             if (isLastPart) {
               if (isLastLine) {
                 //  This is end of comment lines container 
-
                 if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(SNodeOperations.getParent(currentNode)), MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, "jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment"))) {
                   //  Shouldn't delete documentation comment 
-
                 } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(SNodeOperations.getParent(currentNode)), MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990286L, "jetbrains.mps.baseLanguage.javadoc.structure.CommentLinePart"))) {
                   NodeCaretPair nodeCaret = CommentLinePart__BehaviorDescriptor.smartDelete_id7PYAiugbmRz.invoke(SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.getParent(currentNode)), MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990286L, "jetbrains.mps.baseLanguage.javadoc.structure.CommentLinePart")), ((boolean) false));
                   editorContext.selectWRTFocusPolicy(nodeCaret.myNode);
@@ -196,7 +190,6 @@ public class TextCommentLinePart_ActionMap {
                 return;
               } else {
                 //  This is the end of line 
-
                 SNode curLine = SNodeOperations.cast(SNodeOperations.getParent(currentNode), MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, "jetbrains.mps.baseLanguage.javadoc.structure.CommentLine"));
                 SNode nextLine = SNodeOperations.cast(SNodeOperations.getNextSibling(curLine), MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, "jetbrains.mps.baseLanguage.javadoc.structure.CommentLine"));
                 nodeToSelect = ListSequence.fromList(SLinkOperations.getChildren(curLine, MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, 0x7c7f5b2f3199028dL, "part"))).last();
@@ -216,7 +209,6 @@ public class TextCommentLinePart_ActionMap {
               }
             } else {
               //  Caret is at the end of text part inside comment line 
-
               if (SNodeOperations.isInstanceOf(SNodeOperations.getNextSibling(currentNode), MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, "jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart"))) {
                 nodeToSelect = SNodeOperations.getNextSibling(currentNode);
                 if (isEmptyString(SPropertyOperations.getString(SNodeOperations.cast(nodeToSelect, MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, "jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart")), MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, 0x7c7f5b2f31990288L, "text")))) {
@@ -250,13 +242,10 @@ public class TextCommentLinePart_ActionMap {
     CellAction originalBackspace = editorCell.getAction(CellActionType.BACKSPACE);
 
     // set actions that were actually defined 
-
     setDefinedCellActions(editorCell, node, context);
 
     // If we set a DELETE action but no BACKSPACE action, 
-
     // use the DELETE action for BACKSPACE as well. 
-
     CellAction deleteAction = editorCell.getAction(CellActionType.DELETE);
     CellAction backspaceAction = editorCell.getAction(CellActionType.BACKSPACE);
     if (deleteAction != originalDelete && backspaceAction == originalBackspace) {
@@ -268,9 +257,7 @@ public class TextCommentLinePart_ActionMap {
 
     // set cell actions from all imported action maps 
 
-
     // set cell actions defined directly in this action map 
-
     editorCell.setAction(CellActionType.BACKSPACE, createAction_BACKSPACE(node));
     editorCell.setAction(CellActionType.DELETE, createAction_DELETE(node));
 
@@ -280,9 +267,7 @@ public class TextCommentLinePart_ActionMap {
 
     // set cell action(s) of the given type from imported action maps 
 
-
     // set cell action of the given type defined directly in this action map 
-
     if (Objects.equals(actionType, CellActionType.BACKSPACE)) {
       editorCell.setAction(actionType, createAction_BACKSPACE(node));
     }

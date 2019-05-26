@@ -48,7 +48,6 @@ public class OldComponentRef_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_buu76l_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0x1610048531ac4899L, 0x91122289e22843ddL, 0x6aff2c104931574dL, "references.structure.OldComponentRef"), MetaAdapterFactory.getReferenceLink(0x1610048531ac4899L, 0x91122289e22843ddL, 0x6aff2c104931574dL, 0x6aff2c104932a69aL, "target"));
     }
     @NotNull

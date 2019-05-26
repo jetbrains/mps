@@ -193,9 +193,7 @@ public class NewModelFromSource_Action extends BaseAction {
       }
     });
     // workaround for project pane not rebuilding itself when a model has been added 
-
     // not in a command but in a write action 
-
     ProjectPane.getInstance(((MPSProject) MapSequence.fromMap(_params).get("project"))).rebuild();
 
     if (!(parseException.isNull())) {

@@ -90,7 +90,6 @@ public final class AbstractConceptDeclaration__BehaviorDescriptor extends BaseBH
   @ToRemove(version = 3.3)
   /*package*/ static SModel getAspectModel_id7g4OXB0yli3(@NotNull SNode __thisNode__, LanguageAspect aspect) {
     // [MM] this usage of LanguageAspect is reviewed 
-
     Language language = SModelUtil.getDeclaringLanguage(__thisNode__);
     if (language == null) {
       return null;
@@ -105,7 +104,6 @@ public final class AbstractConceptDeclaration__BehaviorDescriptor extends BaseBH
   @ToRemove(version = 3.3)
   /*package*/ static List<SNode> findConceptAspectCollection_id1n18fON7w20(@NotNull SNode __thisNode__, LanguageAspect aspect) {
     // [MM] this usage of LanguageAspect is reviewed 
-
     List<SNode> result = new ArrayList<SNode>();
     SModel model = AbstractConceptDeclaration__BehaviorDescriptor.getAspectModel_id7g4OXB0yli3.invoke(__thisNode__, aspect);
     AbstractConceptDeclaration__BehaviorDescriptor.findConceptAspectCollection_id7g4OXB0yl26.invoke(__thisNode__, model, result);
@@ -166,7 +164,6 @@ public final class AbstractConceptDeclaration__BehaviorDescriptor extends BaseBH
             ListSequence.fromList(result).addElement(node);
           } else if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, "jetbrains.mps.lang.generator.structure.MappingConfiguration")) || SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10313ed7688L, "jetbrains.mps.lang.generator.structure.TemplateSwitch"))) {
             // generator rules 
-
             for (SNode r : ListSequence.fromList(SNodeOperations.getNodeDescendants(node, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, "jetbrains.mps.lang.generator.structure.BaseMappingRule"), false, new SAbstractConcept[]{}))) {
               if (SLinkOperations.getTarget(r, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, 0x10fc0b6e730L, "applicableConcept")) == __thisNode__ || (SPropertyOperations.getBoolean(r, MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, 0x10fc6d8f674L, "applyToConceptInheritors")) && Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.getAllSuperConcepts_id2A8AB0rAWpG.invoke(__thisNode__, ((boolean) false))).contains(SLinkOperations.getTarget(r, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, 0x10fc0b6e730L, "applicableConcept"))))) {
                 ListSequence.fromList(result).addElement(r);
@@ -315,7 +312,6 @@ public final class AbstractConceptDeclaration__BehaviorDescriptor extends BaseBH
   }
   /*package*/ static SNode computeInHierarchy_id3CiBrVcn5fe(@NotNull SNode __thisNode__, _FunctionTypes._return_P1_E0<? extends SNode, ? super SNode> predicate) {
     // todo: comment method!, use generics 
-
     SNode result = predicate.invoke(__thisNode__);
     if (result != null) {
       return result;
@@ -336,7 +332,6 @@ public final class AbstractConceptDeclaration__BehaviorDescriptor extends BaseBH
   }
   /*package*/ static Pair<Set<SNode>, Set<SNode>> getInLanguageAndNotInLanguageAncestors_id54xSEBmK0MK(@NotNull SNode __thisNode__) {
     // todo: use tuple 
-
     Set<SNode> inLanguageAncestors = SetSequence.fromSet(new HashSet<SNode>());
     Set<SNode> notInLanguageAncestors = SetSequence.fromSet(new HashSet<SNode>());
 
@@ -350,7 +345,6 @@ public final class AbstractConceptDeclaration__BehaviorDescriptor extends BaseBH
           SetSequence.fromSet(notInLanguageAncestors).addSequence(SetSequence.fromSet(superconceptResult.o2));
         } else {
           // other language 
-
           SetSequence.fromSet(notInLanguageAncestors).addElement(superconcept);
         }
       }

@@ -57,7 +57,6 @@ public class CheckForReexportExtendedClassifier_NonTypesystemRule extends Abstra
       assert classifierModule != null;
       if (jdkModuleRef.equals(classifierModule.getModuleReference())) {
         // assume JDK is always there, don't force to re-export it from any module that extend regular Java classes. 
-
         continue;
       }
       if (deps.contains(classifierModule) && !(depsReexport.contains(classifierModule))) {

@@ -24,7 +24,6 @@ public class typeof_Node_ReplaceWithAnotherOperation_InferenceRule extends Abstr
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1206488003353", true), (SNode) _quotation_createNode_wjy3ci_a1a0c0a0b(), false, true, _info_12389875345);
     }
     // op returns node passed in parameter 
-
     {
       SNode _nodeToCheck_1029348928467 = op;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1225408872682", 0, null);

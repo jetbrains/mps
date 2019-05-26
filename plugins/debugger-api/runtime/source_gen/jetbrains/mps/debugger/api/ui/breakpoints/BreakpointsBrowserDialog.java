@@ -86,7 +86,6 @@ public class BreakpointsBrowserDialog extends DialogWrapper implements DataProvi
     myMainPanel.add(actionToolbar.getComponent(), BorderLayout.NORTH);
     myMainPanel.setMinimumSize(new Dimension(500, 500));
     //  register keyboard/mouse actions on all views 
-
     registerActionsOnViews();
 
     initPropertiesUi();
@@ -146,7 +145,6 @@ public class BreakpointsBrowserDialog extends DialogWrapper implements DataProvi
   }
   private ActionGroup createActionGroup() {
     //  create actions 
-
     DefaultActionGroup group = new DefaultActionGroup();
     group.add(((BaseAction) ActionManager.getInstance().getAction("jetbrains.mps.debugger.api.ui.actions.GoToBreakpointSourceAction_Action")));
     group.add(((BaseAction) ActionManager.getInstance().getAction("jetbrains.mps.debugger.api.ui.actions.ViewBreakpointSourceAction_Action")));
@@ -231,7 +229,6 @@ public class BreakpointsBrowserDialog extends DialogWrapper implements DataProvi
       @Override
       public void update(AnActionEvent e) {
         //  todo refactor actions: each view should provide their own actions 
-
         e.getPresentation().setEnabled(isTreeView());
       }
       @Override
@@ -271,7 +268,6 @@ public class BreakpointsBrowserDialog extends DialogWrapper implements DataProvi
       IBreakpointsProvider provider = myProvidersManager.getProvider(kind);
       if (provider != null && provider.canCreateFromUi(kind)) {
         //  TODO can't we ask this from kind?? 
-
         AnAction addBreakpoointAction = new AnAction(kind.getPresentation(), "Create " + kind.getPresentation(), null) {
           @Override
           public void actionPerformed(AnActionEvent e) {
@@ -305,17 +301,13 @@ public class BreakpointsBrowserDialog extends DialogWrapper implements DataProvi
   private void registerActionsOnViews() {
     for (BreakpointsView myView : myViews) {
       //  show on enter 
-
       myView.getMainComponent().getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), COMMAND_SHOW_NODE);
       myView.getMainComponent().getActionMap().put(COMMAND_SHOW_NODE, createWrapper(((BaseAction) ActionManager.getInstance().getAction("jetbrains.mps.debugger.api.ui.actions.ViewBreakpointSourceAction_Action"))));
       //  open on f4 
-
       myView.getMainComponent().registerKeyboardAction(createWrapper(((BaseAction) ActionManager.getInstance().getAction("jetbrains.mps.debugger.api.ui.actions.GoToBreakpointSourceAction_Action"))), KeyStroke.getKeyStroke("F4"), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
       //  delete on del 
-
       myView.getMainComponent().registerKeyboardAction(createWrapper(((BaseAction) ActionManager.getInstance().getAction("jetbrains.mps.debugger.api.ui.actions.DeleteBreakpointAction_Action"))), KeyStroke.getKeyStroke("DELETE"), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
       //  open on double click 
-
       myView.getMainComponent().addMouseListener(new MouseAdapter() {
         @Override
         public void mouseClicked(MouseEvent e) {

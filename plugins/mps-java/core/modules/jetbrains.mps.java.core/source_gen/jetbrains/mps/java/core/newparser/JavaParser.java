@@ -50,9 +50,7 @@ public class JavaParser {
   @NotNull
   public JavaParser.JavaParseResult parse(String code, FeatureKind what, SNode context, boolean recovery) throws JavaParseException {
     // in eclipse there is full recovery and statement recovery 
-
     // TODO use full recovery 
-
 
     boolean stubsMode = FeatureKind.CLASS_STUB.equals(what);
     CodeSnippetParsingUtil util = new CodeSnippetParsingUtil(stubsMode);
@@ -70,7 +68,6 @@ public class JavaParser {
     switch (what) {
       case CLASS:
         // fall-through 
-
       case CLASS_STUB:
 
         CompilationUnitDeclaration compRes = util.parseCompilationUnit(source, settings, true);
@@ -92,12 +89,9 @@ public class JavaParser {
         attachComments(source, converter, util.recordedParsingInformation);
 
         // there may be no types and still no compilation errors 
-
         // e.g. package-info.java only includes 'package pkg'; 
 
-
         // getting package out of the parsed source code 
-
         if (compRes.currentPackage != null) {
           StringBuffer sb = new StringBuffer();
           compRes.currentPackage.print(0, sb, false);
@@ -110,7 +104,6 @@ public class JavaParser {
 
         ASTNode[] astNodes = util.parseClassBodyDeclarations(source, 0, source.length, settings, true, recovery);
         // type decl (inner), field, method 
-
         if (astNodes != null && astNodes.length > 0) {
           resultNodes = converter.convertClassContents(astNodes, context);
         }
@@ -129,13 +122,11 @@ public class JavaParser {
 
         if (stmts != null && stmts.length > 0) {
           // TODO construct typeResolver from parent node context 
-
           SNode stmtList = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList"));
           ((FullASTConverter) converter).convertStatementsInto(absMethod, stmtList);
           attachComments(source, converter, util.recordedParsingInformation);
           resultNodes = ListSequence.fromList(new ArrayList<SNode>());
           // stmtList may have new statements (comments) by now, after attachComments 
-
           for (SNode stmt : ListSequence.fromList(SLinkOperations.getChildren(stmtList, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement")))) {
             SNodeOperations.deleteNode(stmt);
             ListSequence.fromList(resultNodes).addElement(stmt);
@@ -174,7 +165,6 @@ public class JavaParser {
     for (int[] comment : comments) {
       if (comment[1] > 0) {
         // javadoc 
-
         SNode doc = MapSequence.fromMap(javadocs).get(comment[0]);
         if (doc == null) {
           continue;
@@ -194,7 +184,6 @@ public class JavaParser {
 
       final int linestart = Math.abs(comment[0]);
       // find appropriate block 
-
       SNode block = null;
       for (FullASTConverter.CodeBlock blk : Sequence.fromIterable(blcks)) {
         if (blk.getStartPos() <= linestart && linestart <= blk.getEndPos()) {
@@ -219,13 +208,9 @@ public class JavaParser {
         }
       } else {
         // no place to insert comment 
-
         // this is most likely because the comment is not a javadoc and is between declarations 
-
         // (not inside statement list) 
-
         // we could issue a warning... 
-
       }
     }
   }
@@ -233,7 +218,6 @@ public class JavaParser {
     SNode imports = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53f7c33f069862f2L, "jetbrains.mps.baseLanguage.structure.JavaImports"));
 
     // putting first: current package in terms of source code 
-
     if (compResult.currentPackage != null) {
       SNode currPkg = makeImport(compResult.currentPackage);
       SPropertyOperations.assign(currPkg, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x64c0181e603bcfL, 0x64c0181e603bd0L, "onDemand"), true);
@@ -247,13 +231,10 @@ public class JavaParser {
     }
 
     // inserting it in the beginning 
-
     clas.addChild(MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute"), imports);
 
     // we want to insert imports section before any javadoc 
-
     // because javadoc is data while imports section is meta-data for assisting class resolving 
-
 
   }
   private SNode makeImport(ImportReference impRef) {
@@ -288,7 +269,6 @@ public class JavaParser {
   @Nullable
   public static String peekPackage(String source) {
     // WILL GO AWAY COMPLETELY 
-
     final String str = "package ";
     StringBuilder packageName = new StringBuilder();
     for (int i = source.indexOf(str) + str.length(); i < source.length(); i++) {
@@ -341,7 +321,6 @@ public class JavaParser {
           continue;
         }
         // FIXME temp hack around typesystem looping when resolving certain dyn.references 
-
 
         SNode target = ref.getTargetNode();
         if (target == null) {

@@ -48,7 +48,6 @@ public class BwfTaskDependency_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_r5fbgr_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5ace56L, "jetbrains.mps.build.workflow.structure.BwfTaskDependency"), MetaAdapterFactory.getReferenceLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5ace56L, 0x2670d5989d5ace57L, "target"));
     }
     @NotNull

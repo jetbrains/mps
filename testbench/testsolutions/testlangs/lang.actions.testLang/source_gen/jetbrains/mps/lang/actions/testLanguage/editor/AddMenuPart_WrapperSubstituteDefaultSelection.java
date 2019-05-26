@@ -112,7 +112,6 @@ public class AddMenuPart_WrapperSubstituteDefaultSelection extends SubstituteMen
           public SNode createNode(@NotNull String pattern) {
             SNode nodeToWrap = super.createNode(pattern);
             // additional compilation test for all passed parameters 
-
             boolean tmpVar = nodeToWrap != null;
             tmpVar = tmpVar && _context.getParentNode() != null;
             tmpVar = tmpVar && _context.getCurrentTargetNode() != null;

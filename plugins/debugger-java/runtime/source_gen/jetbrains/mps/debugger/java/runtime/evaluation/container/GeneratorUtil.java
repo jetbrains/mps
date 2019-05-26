@@ -49,9 +49,7 @@ public class GeneratorUtil {
         IResult result = makeService.make(makeSession, resources, script, new IScriptController.Stub2(makeSession, new PropertyPoolInitializer() {
           public void populate(IPropertiesPool ppool) {
             // FIXME this is an ugly hack to pass a module to take classpath from when compiling a generated Evaluator class. 
-
             //       Since there's only transient model after textgen, classpath could not get calculated 
-
             Tuples._1<SModule> pp = (Tuples._1<SModule>) ppool.properties(new ITarget.Name("jetbrains.mps.debugger.java.evaluation.JavaDebugEvaluate.compileEvaluator"), Object.class);
             if (pp != null) {
               pp._0(model.getModule());
@@ -61,34 +59,24 @@ public class GeneratorUtil {
         if (result.isSucessful()) {
           final String fullClassName = JavaNameUtil.packageName(model) + '.' + className;
           // FIXME I know ICResource is deprecated and FResource replaced with CResource looks a bit odd, however my point is to 
-
           //       drop FResource from TextGen facet ASAP, not to make java.evaluation perfect. That activity requires thorough redesign of a whole piece 
-
           //       and I'm not the brave one (too much of a hate flows in me). 
-
           // In fact, to get anything out from Make facet (MPS-compiled code) to this place (IDEA-compiled code), I still need an IResource declared somewhere 
-
           // in a module accessible to both lang java.evaluation and this debugger.java.runtime solution. As there's not too many options to put this class to, 
-
           // I'll end up with IResource declared in this (IDEA-compiled) solution, introducing yet another dependency cycle (this solutuin references Make facet 
-
           // and JavaDebugEvaluate would reference IResource class), which is not the way I like. Indeed, depedency from solution to language works, as JavaDebugEvaluate 
-
           // facet reference is translated into a string AND solution is not loaded by MPS (therefore, MPS classloader doesn't deal with the cycle). Nevertheless, I don't like it. 
-
           for (CResource cres : Sequence.fromIterable(result.output()).ofType(CResource.class)) {
             try {
               ClassLoader cl = cres.classes().getClassLoader(parentloader);
               return cl.loadClass(fullClassName);
             } catch (ClassNotFoundException ex) {
               // ignore silently, try another resource 
-
             }
           }
           throw new EvaluationException(String.format("Can not load evaluator class %s", fullClassName));
         }
         // else fall-through, up to throws EvaluationException below 
-
       } catch (InterruptedException e) {
         throw new EvaluationException(e);
       } catch (ExecutionException e) {

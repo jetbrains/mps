@@ -93,14 +93,12 @@ public class ModelReader8Handler extends XMLSAXHandler<ModelLoadResult> {
     ModelReader8Handler.ElementHandler current = (myHandlersStack.empty() ? (ModelReader8Handler.ElementHandler) null : myHandlersStack.peek());
     if (current == null) {
       // root 
-
       current = modelHandler;
     } else {
       current = current.createChild(myValues.peek(), qName, attributes);
     }
 
     // check required 
-
     for (String attr : current.requiredAttributes()) {
       if (attributes.getValue(attr) == null) {
         throw new SAXParseException("attribute " + attr + " is absent", null);
@@ -113,7 +111,6 @@ public class ModelReader8Handler extends XMLSAXHandler<ModelLoadResult> {
     }
 
     // handle attributes 
-
     for (int i = 0; i < attributes.getLength(); i++) {
       String name = attributes.getQName(i);
       String value = attributes.getValue(i);
@@ -179,7 +176,6 @@ public class ModelReader8Handler extends XMLSAXHandler<ModelLoadResult> {
       }
       if ("version".equals(name)) {
         // do nothing 
-
         return;
       }
       if ("doNotGenerate".equals(name)) {

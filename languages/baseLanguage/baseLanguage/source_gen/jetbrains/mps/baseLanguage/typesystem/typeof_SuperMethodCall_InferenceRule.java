@@ -47,7 +47,6 @@ public class typeof_SuperMethodCall_InferenceRule extends AbstractInferenceRule_
 
     final Map<SNode, SNode> subs = MapSequence.fromMap(new HashMap<SNode, SNode>());
     // check the inference context 
-
     if (!((boolean) IMethodCall__BehaviorDescriptor.isInTypeInferenceContext_id4cxv$9$kw67.invoke(methodCall))) {
       List<SNode> inferrableTypeVars = ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(mdecl, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, "jetbrains.mps.baseLanguage.structure.TypeVariableReference"), false, new SAbstractConcept[]{})).select(new ISelector<SNode, SNode>() {
         public SNode select(SNode it) {
@@ -73,7 +72,6 @@ public class typeof_SuperMethodCall_InferenceRule extends AbstractInferenceRule_
       }).toListSequence();
       for (SNode tvd : ListSequence.fromList(inferrableTypeVars).subtract(ListSequence.fromList(boundTypeVars))) {
         // assume all unbound type vars outside an inference context are Object 
-
         MapSequence.fromMap(subs).put(tvd, _quotation_createNode_okooqp_a0b0c0k0b());
       }
     }

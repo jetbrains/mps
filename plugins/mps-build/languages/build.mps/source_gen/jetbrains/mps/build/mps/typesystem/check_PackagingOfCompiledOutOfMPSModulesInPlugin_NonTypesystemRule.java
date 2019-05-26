@@ -50,9 +50,7 @@ public class check_PackagingOfCompiledOutOfMPSModulesInPlugin_NonTypesystemRule 
     }
 
     // the descriptor must be together with its classes (183) for the correct compilation of the dependent modules 
-
     // classes must be in the lib folder since IDEA loads classes only from there 
-
     String msg = "' is marked with 'doNotCompile=false',\n but its descriptor could not be found in the layout under the 'lib' folders of the plugin, where currently the IDEA plugin module sources together with its classes should reside";
     for (SNode layoutModule : ListSequence.fromList(SNodeOperations.getNodeDescendants(plugin, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x11918e0f209b83e7L, "jetbrains.mps.build.mps.structure.BuildMpsLayout_ModuleJars"), false, new SAbstractConcept[]{}))) {
       if (SetSequence.fromSet(fineModules).contains(SLinkOperations.getTarget(layoutModule, MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x11918e0f209b83e7L, 0x11918e0f209b83e9L, "module")))) {
@@ -70,7 +68,6 @@ public class check_PackagingOfCompiledOutOfMPSModulesInPlugin_NonTypesystemRule 
     }
 
     // ------------------------------------------------------ 
-
     Iterable<SNode> fineModuleSources = fineModules;
     ListSequence.fromList(declaredPluginContentModules).removeSequence(Sequence.fromIterable(fineModuleSources));
     for (SNode notFineDeclaredPluginModule : ListSequence.fromList(declaredPluginContentModules).where(new IWhereFilter<SNode>() {

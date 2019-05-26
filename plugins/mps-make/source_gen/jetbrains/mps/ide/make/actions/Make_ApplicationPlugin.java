@@ -25,7 +25,6 @@ public class Make_ApplicationPlugin extends BaseApplicationPlugin {
   }
   public void createGroups() {
     // actions w/o parameters 
-
     addAction(new BuildAllGeneratableGenerators_Action());
     addAction(new BuildAllGenerators_Action());
     addAction(new BuildAllLanguageDescriptors_Action());
@@ -46,7 +45,6 @@ public class Make_ApplicationPlugin extends BaseApplicationPlugin {
     addAction(new RecompileProject_Action());
     addAction(new TextPreviewModel_Action());
     // groups 
-
     addGroup(new GenerateOptions_ActionGroup());
     addGroup(new GlobalMake_ActionGroup());
     addGroup(new JavaModuleActions_ActionGroup());

@@ -48,7 +48,6 @@ public class OperationCall_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_pkbewp_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f4ba6faaaL, "jetbrains.mps.lang.textGen.structure.OperationCall"), MetaAdapterFactory.getReferenceLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f4ba6faaaL, 0x11f5b7f02d9L, "function"));
     }
     @NotNull

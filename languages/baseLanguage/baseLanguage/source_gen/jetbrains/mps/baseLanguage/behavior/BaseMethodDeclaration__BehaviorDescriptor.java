@@ -104,7 +104,6 @@ public final class BaseMethodDeclaration__BehaviorDescriptor extends BaseBHDescr
     SNode expectedRetType = SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType"));
     if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(expectedRetType)), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type")) || SNodeOperations.isInstanceOf(expectedRetType, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType")) || ((boolean) BaseMethodDeclaration__BehaviorDescriptor.isReturnsVoid_idhX_$1pM.invoke(__thisNode__))) {
       // actually - no return type 
-
       expectedRetType = null;
     }
     return expectedRetType;
@@ -293,7 +292,6 @@ public final class BaseMethodDeclaration__BehaviorDescriptor extends BaseBHDescr
     if (SNodeOperations.isInstanceOf(ListSequence.fromList(result).last(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c08f42e7bL, "jetbrains.mps.baseLanguage.structure.VariableArityType"))) {
       int formalParams = ListSequence.fromList(result).count();
       // replace the vararg formal param for easier computations 
-
       SNode last = ListSequence.fromList(result).removeLastElement();
       if (actualArgs > formalParams) {
         while (actualArgs > ListSequence.fromList(result).count()) {
@@ -301,7 +299,6 @@ public final class BaseMethodDeclaration__BehaviorDescriptor extends BaseBHDescr
         }
       } else if (actualArgs == formalParams) {
         // array may be passed as value for vararg 
-
         ListSequence.fromList(result).addElement(_quotation_createNode_tq0gdw_a0a1a0d0d0bb(SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(last, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c08f42e7bL, "jetbrains.mps.baseLanguage.structure.VariableArityType")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c08f42e7bL, 0x11c08f5f38cL, "componentType"))), SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(last, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c08f42e7bL, "jetbrains.mps.baseLanguage.structure.VariableArityType")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c08f42e7bL, 0x11c08f5f38cL, "componentType")))));
       }
     }

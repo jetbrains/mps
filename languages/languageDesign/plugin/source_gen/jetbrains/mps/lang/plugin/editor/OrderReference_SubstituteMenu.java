@@ -48,7 +48,6 @@ public class OrderReference_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_fi7th9_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x22035699bdd79211L, "jetbrains.mps.lang.plugin.structure.OrderReference"), MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x22035699bdd79211L, 0x22035699bdd79212L, "order"));
     }
     @NotNull

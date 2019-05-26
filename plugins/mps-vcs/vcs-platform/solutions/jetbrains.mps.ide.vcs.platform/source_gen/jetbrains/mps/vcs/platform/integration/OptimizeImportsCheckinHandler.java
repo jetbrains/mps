@@ -86,7 +86,6 @@ public class OptimizeImportsCheckinHandler extends CheckinHandler {
       }
       ThreadUtils.assertEDT();
       // TODO: extract common code from OptimizeModelImports 
-
       Task.Modal task = new Task.Modal(this.myProject, "Optimizing model imports", true) {
         public void run(@NotNull ProgressIndicator indicator) {
           final ProgressMonitorAdapter monitor = new ProgressMonitorAdapter(indicator);

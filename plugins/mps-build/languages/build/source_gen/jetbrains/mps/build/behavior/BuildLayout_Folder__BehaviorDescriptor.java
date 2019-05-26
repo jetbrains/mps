@@ -59,7 +59,6 @@ public final class BuildLayout_Folder__BehaviorDescriptor extends BaseBHDescript
     for (SNode ic : Sequence.fromIterable(BuildLayout_Folder__BehaviorDescriptor.getImportContentChildren_id675BBdHStY4.invoke(__thisNode__))) {
       SNode node = SLinkOperations.getTarget(ic, MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86af9fdb53L, 0x4ddcec86af9fdb55L, "target"));
       // note: if node is imported directly - do not override its original location 
-
       if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c85L, "jetbrains.mps.build.structure.BuildLayout_Node")) && helper.getLocation(SNodeOperations.as(node, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c85L, "jetbrains.mps.build.structure.BuildLayout_Node"))) == null) {
         helper.putLocation(SNodeOperations.as(node, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c85L, "jetbrains.mps.build.structure.BuildLayout_Node")), folderLocation);
       }

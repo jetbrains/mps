@@ -420,9 +420,7 @@ public class ClassifierCacher {
     } else if (type instanceof ASMTypeVariable) {
       instance(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, "jetbrains.mps.baseLanguage.structure.TypeVariableReference"));
       // usages handled on upper level as for resolve we should load model 
-
       // another variant is just to search for occurence in the same model 
-
     } else if (type instanceof ASMClassType) {
       ASMClassType c = (ASMClassType) type;
       instance(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"));

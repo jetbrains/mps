@@ -51,7 +51,6 @@ public final class TransientModelBallonDisplayer implements Disposable {
 
   /*package*/ void showBalloon() {
     // Assumes EDT 
-
     Notification notification = new Notification(ID, "Saving transient models", "Saving transient models is on", NotificationType.WARNING);
     boolean sticky = NotificationsConfigurationImpl.getSettings(ID).getDisplayType() == NotificationDisplayType.STICKY_BALLOON;
     BalloonBuilder builder = JBPopupFactory.getInstance().createHtmlTextBalloonBuilder("Saving transient models is on", null, LightColors.YELLOW, null).setHideOnAction(!(sticky)).setHideOnClickOutside(!(sticky)).setHideOnKeyOutside(!(sticky));

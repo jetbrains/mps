@@ -48,7 +48,6 @@ public class InlineVariableReferenceRefactoring extends InlineVariableRefactorin
         }
       }).isNotEmpty()) {
         // Assigments referring to the variable from their right side should not be inlined, since the resulting code will have different semantics than the original 
-
         return myAssignment;
       }
       nodeToSelect = SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(myAssignment, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e96L, "jetbrains.mps.baseLanguage.structure.AssignmentExpression")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue")));
@@ -56,7 +55,6 @@ public class InlineVariableReferenceRefactoring extends InlineVariableRefactorin
       this.optimizeAssignment(SNodeOperations.cast(myAssignment, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e96L, "jetbrains.mps.baseLanguage.structure.AssignmentExpression")), variable);
     } else {
       // ATM we do not inline if the last update was through a++ nor a+=1 type-of expressions 
-
       return myAssignment;
     }
     InlinePrecedenceUtil.parenthesiseIfNecessary(nodeToSelect);
@@ -77,7 +75,6 @@ public class InlineVariableReferenceRefactoring extends InlineVariableRefactorin
           if (instruction.getVariable() == variable) {
             SNode assignmentNode = (SNode) instruction.getSource();
             // We need to avoid inlining a self-assignment 
-
             if (!(ListSequence.fromList(SNodeOperations.getNodeAncestors(node, null, false)).contains(assignmentNode))) {
               myAssignment = (assignmentNode);
             }

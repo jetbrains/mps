@@ -85,7 +85,6 @@ public class ASTConverter {
   protected ASTConverter(ASTConverter base) {
     myOnlyStubs = base.myOnlyStubs;
     // FIXME do it more carefully (State?) 
-
     myJavadocs = base.myJavadocs;
   }
 
@@ -97,7 +96,6 @@ public class ASTConverter {
         return convertTypeDecl(decl);
       } finally {
         // FIXME remove empty finally 
-
       }
     } else {
       throw new JavaParseException("Root is not type decl");
@@ -137,7 +135,6 @@ public class ASTConverter {
       SPropertyOperations.assign(cls, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), new String(x.name));
       SLinkOperations.setTarget(cls, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility"), convertVisibility(x.modifiers));
       // FIXME work around. what's with interface here 
-
       if (SNodeOperations.isInstanceOf(cls, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"))) {
         SPropertyOperations.assign(SNodeOperations.cast(cls, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept")), MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x451f9e9f920b7f7dL, "isStatic"), flagSet(x.modifiers, ClassFileConstants.AccStatic));
       } else if (SNodeOperations.isInstanceOf(cls, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface"))) {
@@ -152,33 +149,26 @@ public class ASTConverter {
     }
 
     // handling type params 
-
     ASTConverter childConverter = prefixedConverter;
     childConverter = childConverter.convertTypeVars(x.typeParameters, cls);
 
     // handling nested classes 
-
     if (x.memberTypes != null) {
 
       // now actually processing them 
-
       for (TypeDeclaration innerTyp : x.memberTypes) {
         try {
           SNode nested = childConverter.convertTypeDecl(innerTyp);
           if (SNodeOperations.isInstanceOf(cls, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface"))) {
             // container type is interface: it means member type must public static 
-
             SLinkOperations.setTarget(nested, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility"), createPublicVisibility_rbndtb_a0a1a1a0a2a61a01());
             // no need to explicitly set static, as isStatic() handles this for interfaces 
-
           }
           SLinkOperations.getChildren(cls, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member")).add(nested);
           MapSequence.fromMap(memberStartPositions).put(nested, innerTyp.sourceStart);
         } finally {
           // maintaining valid state of ClassNameResolver 
-
           // FIXME remove empty finally 
-
         }
       }
     }
@@ -189,7 +179,6 @@ public class ASTConverter {
       final SNode claz = cls;
       if (SNodeOperations.isInstanceOf(claz, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"))) {
         // we're either class or enum 
-
         SLinkOperations.setTarget(claz, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass"), SNodeOperations.cast(childConverter.convertTypeReference(x.superclass), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType")));
         if (x.superInterfaces != null) {
           for (TypeReference i : x.superInterfaces) {
@@ -229,7 +218,6 @@ public class ASTConverter {
     }
 
     // handle class fields 
-
     if (x.fields != null) {
       for (FieldDeclaration f : x.fields) {
         if (isEnumConstant(f)) {
@@ -241,7 +229,6 @@ public class ASTConverter {
     }
 
     // handling methods 
-
     if (x.methods != null) {
       for (AbstractMethodDeclaration method : x.methods) {
         if (method.isDefaultConstructor()) {
@@ -259,7 +246,6 @@ public class ASTConverter {
 
     if (SNodeOperations.isInstanceOf(cls, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a69dc80cL, "jetbrains.mps.baseLanguage.structure.Annotation"))) {
       // ! Annotation methods are stored in a deprecated child list 'methods' (not 'members') 
-
       Iterable<SNode> annoMethods = ListSequence.fromList(SLinkOperations.getChildren(cls, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member"))).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6a17a27L, "jetbrains.mps.baseLanguage.structure.AnnotationMethodDeclaration"));
@@ -278,7 +264,6 @@ public class ASTConverter {
     }
 
     // sort classifier members according to their start positions 
-
     List<SNode> sortedMembers = ListSequence.fromList(SLinkOperations.getChildren(cls, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member"))).sort(new ISelector<SNode, Integer>() {
       public Integer select(SNode it) {
         return MapSequence.fromMap(memberStartPositions).get(it);
@@ -315,7 +300,6 @@ public class ASTConverter {
 
     if (flagSet(f.modifiers, ClassFileConstants.AccStatic) || SNodeOperations.isInstanceOf(cls, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface"))) {
       // interfaces in java can have fields not declared as static, but they are static 
-
       SNode staticDecl = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration"));
       fDecl = staticDecl;
     } else {
@@ -367,15 +351,12 @@ public class ASTConverter {
 
   public SNode convertInitializer(Initializer x) throws JavaParseException {
     // don't need it in stubs 
-
     return null;
   }
 
   public SNode convertMethod(AbstractMethodDeclaration x, SNode container) throws JavaParseException {
     // false = we don't attach the method to the container for external clients 
-
     // they'll do it themselves 
-
     return convertMethod(container, x, false);
   }
 
@@ -384,7 +365,6 @@ public class ASTConverter {
 
     org.jetbrains.mps.openapi.model.SNodeId sNodeId = cls.getNodeId();
     // FIXME 
-
     String clsStringId = (SNodeOperations.isInstanceOf(cls, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass")) || sNodeId instanceof SNodeId.Regular ? null : cls.getNodeId().toString());
 
     if (method instanceof MethodDeclaration) {
@@ -462,9 +442,7 @@ public class ASTConverter {
     }
 
     // we have to convert type variables with a converter that already knows about type var names 
-
     // because in typevar list there can be forward references 
-
     Set<String> typeVarNames = SetSequence.fromSetWithValues(new HashSet<String>(), Sequence.fromIterable(Sequence.fromArray(pars)).select(new ISelector<TypeParameter, String>() {
       public String select(TypeParameter it) {
         return new String(it.name);
@@ -478,7 +456,6 @@ public class ASTConverter {
     }
 
     // return ASTConverter equipped with typevar declarations 
-
     return this.withTypeVarDecls(SLinkOperations.getChildren(result, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration")));
   }
 
@@ -491,11 +468,8 @@ public class ASTConverter {
     if (par.bounds != null) {
       for (TypeReference b : par.bounds) {
         // According to what Idea does: resolve shouldn't be only for classes, rather for general type refs 
-
         // i.e. Java only allows interfaces in aux bounds, however the name is resolved in all "namespaces" 
-
         // (other type vars included) and error is reported if it's not an interface 
-
         SNode typ = convertTypeReference(b);
         if (SNodeOperations.isInstanceOf(typ, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"))) {
           ListSequence.fromList(SLinkOperations.getChildren(tvar, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, 0x11ae913a476L, "auxBounds"))).addElement(SNodeOperations.cast(typ, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType")));
@@ -579,7 +553,6 @@ public class ASTConverter {
         check_rbndtb_a8a0a21a23(idBuilder);
       }
       // delete the last comma 
-
       if (x.arguments.length > 0) {
         check_rbndtb_a0a2a21a23(idBuilder, idBuilder);
       }
@@ -594,7 +567,6 @@ public class ASTConverter {
 
     if (myOnlyStubs) {
       // make a different stub statement list 'source code' ? 
-
       SLinkOperations.setTarget(result, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body"), _quotation_createNode_rbndtb_a0b0r0gb());
 
     } else {
@@ -612,13 +584,11 @@ public class ASTConverter {
     }
 
     // doesn't make sense for constructor, but it's how it's done in baseLanguage.structure 
-
     SPropertyOperations.assign(result, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x113294bffd2L, "isFinal"), flagSet(x.modifiers, ClassFileConstants.AccFinal));
     SPropertyOperations.assign(result, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x3b576cda23612c7aL, "isSynchronized"), flagSet(x.modifiers, ClassFileConstants.AccSynchronized));
 
     if (x instanceof MethodDeclaration) {
       // Not a constructor 
-
 
       MethodDeclaration mDecl = (MethodDeclaration) x;
       SLinkOperations.setTarget(result, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType"), childConverter.convertTypeReference(mDecl.returnType));
@@ -636,7 +606,6 @@ public class ASTConverter {
     SNode enm = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367388b3L, "jetbrains.mps.baseLanguage.structure.EnumConstantDeclaration"));
     SPropertyOperations.assign(enm, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), enumConstantName(x));
     // TODO state should have a flag: foreign ids needed or not 
-
     ((jetbrains.mps.smodel.SNode) enm).setId(new SNodeId.Foreign(getState().getIdPrefix() + SPropertyOperations.getString(enm, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"))));
     Expression[] args = ((AllocationExpression) x.initialization).arguments;
     if (args != null) {
@@ -654,7 +623,6 @@ public class ASTConverter {
 
   protected String enumConstantName(FieldDeclaration x) {
     // Unsafe. supposed to be used after isEnumConstant 
-
     return new String(((AllocationExpression) x.initialization).enumConstant.name);
   }
 
@@ -699,9 +667,7 @@ public class ASTConverter {
 
       if (isArray) {
         // it turns out this is an array, wrap base type in arraytype 
-
         // (in elicpse ParamSingleTypRef is subclass of ArrayTypRef) 
-
         ArrayTypeReference arrTypeRef = (ArrayTypeReference) typRef;
         boolean vararg = flagSet(arrTypeRef.bits, ASTNode.IsVarArgs);
         return buildArrayType(typ, arrTypeRef.dimensions(), vararg);
@@ -714,21 +680,18 @@ public class ASTConverter {
 
   public SNode convertUnqualifiedType(String typ, TypeReference typRef) {
     // first see if it's a primitive type 
-
     SNode primType = tryConvertPrimitiveType(typ);
     if ((primType != null)) {
       return primType;
     }
 
     // then try type var in our state 
-
     SNode tvarDecl = getState().resolveTypeVar(typ);
     if ((tvarDecl != null)) {
       return tvarDecl;
     }
 
     // it must be a class name 
-
     SNode base = buildClassifierType(typ, typRef);
     return base;
   }
@@ -758,7 +721,6 @@ public class ASTConverter {
 
   public SNode convertTypeRef(Wildcard typRef) {
     // it's a wildcard type of the form ? or ? extends ... or ? super ... 
-
 
     switch (typRef.kind) {
       case Wildcard.UNBOUND:
@@ -830,7 +792,6 @@ public class ASTConverter {
 
     if (typRef instanceof ParameterizedQualifiedTypeReference) {
       // FIXME hack: ignoring type args of intermediate classes; like A,B in Cl1.Cl2<A>.Cl3<B>.FinalClass<T> 
-
       ParameterizedQualifiedTypeReference parQRef = (ParameterizedQualifiedTypeReference) typRef;
       int last = parQRef.typeArguments.length - 1;
       typeArgs = parQRef.typeArguments[last];
@@ -897,7 +858,6 @@ public class ASTConverter {
       return SConceptOperations.conceptAlias(SNodeOperations.getConcept(SNodeOperations.cast(type, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f0ad8bde4L, "jetbrains.mps.baseLanguage.structure.PrimitiveType"))));
     } else if (SNodeOperations.isInstanceOf(type, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"))) {
       //  we'll do assert later when parser always returns dynamic refs 
-
       if (SNodeOperations.cast(type, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType")).getReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier")) instanceof DynamicReference) {
         DynamicReference dynRef = (DynamicReference) SNodeOperations.cast(type, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType")).getReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"));
         return dynRef.getResolveInfo();
@@ -917,13 +877,11 @@ public class ASTConverter {
 
   protected void handleMethodBody(SNode result, AbstractMethodDeclaration method) throws JavaParseException {
     // ignore by default: only stub structure 
-
     SLinkOperations.setTarget(result, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body"), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
   }
 
   public SNode convertExpression(Expression x) throws JavaParseException {
     // FIXME do expressions in annotations properly 
-
     return _quotation_createNode_rbndtb_a1a77();
   }
 
@@ -1047,7 +1005,6 @@ public class ASTConverter {
 
   protected ASTConverter.State getState() {
     // default state 
-
     return new ASTConverter.State(null, SNodeId.Foreign.ID_PREFIX);
   }
   /**
@@ -1083,9 +1040,7 @@ public class ASTConverter {
     }
     public String getIdPrefix() {
       // going up by parent states, and concatenating all id preifixes to build one final id prefix 
-
       // FIXME move it to constructor (since everything is immutable) 
-
       StringBuilder sb = new StringBuilder();
       ASTConverter.State s = this;
       do {
@@ -1105,21 +1060,16 @@ public class ASTConverter {
 
       if (myTypeVars == null || !(MapSequence.fromMap(myTypeVars).containsKey(name))) {
         // Either type var map is not initialized, this means that this State object was created with something else: 
-
         // e.g. with id prefix. 
-
         // Or type var is not part of this state 
-
         return (parentState == null ? null : parentState.resolveTypeVar(name));
 
       } else {
         // we have this var name 
-
         SNode typeVar = MapSequence.fromMap(myTypeVars).get(name);
         SNode typeVarRef = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, "jetbrains.mps.baseLanguage.structure.TypeVariableReference"));
         SReference ref;
         // let's see if var has been parsed already 
-
         if (typeVar != null) {
           ref = new StaticReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, 0x1024673a581L, "typeVariableDeclaration"), typeVarRef, typeVar);
         } else {

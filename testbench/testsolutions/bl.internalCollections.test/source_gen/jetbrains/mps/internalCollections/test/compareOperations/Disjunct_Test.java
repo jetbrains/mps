@@ -52,7 +52,6 @@ public class Disjunct_Test extends Util_Test {
       Assert.fail();
     } catch (NoSuchElementException e) {
       // expected exception 
-
     }
   }
 }

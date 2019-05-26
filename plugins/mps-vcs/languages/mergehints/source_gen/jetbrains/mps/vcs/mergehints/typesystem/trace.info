@@ -18,61 +18,61 @@
     <file name="CheckNoDuplicatedConceptHints_NonTypesystemRule.java">
       <node id="6556262262332932692" at="29,180,30,13" concept="6" />
       <node id="6556262262332932695" at="31,5,32,0" concept="8" />
-      <node id="6556262262332689284" at="36,50,37,182" concept="6" />
-      <node id="6556262262332689293" at="40,39,41,338" concept="6" />
-      <node id="6556262262332720020" at="45,7,46,60" concept="5" />
-      <node id="6556262262332720020" at="46,60,47,58" concept="2" />
-      <node id="6556262262332720020" at="47,58,48,561" concept="5" />
-      <node id="6556262262332625094" at="52,50,53,167" concept="6" />
-      <node id="6556262262332625094" at="55,68,56,102" concept="6" />
-      <node id="6556262262332625094" at="58,30,59,17" concept="6" />
+      <node id="6556262262332744354" at="32,0,33,58" concept="7" />
+      <node id="6556262262332689284" at="35,50,36,182" concept="6" />
+      <node id="6556262262332689293" at="39,39,40,338" concept="6" />
+      <node id="6556262262332720020" at="44,7,45,60" concept="5" />
+      <node id="6556262262332720020" at="45,60,46,58" concept="2" />
+      <node id="6556262262332720020" at="46,58,47,561" concept="5" />
+      <node id="6556262262332625094" at="51,50,52,167" concept="6" />
+      <node id="6556262262332625094" at="54,68,55,102" concept="6" />
+      <node id="6556262262332625094" at="57,30,58,17" concept="6" />
       <node id="6556262262332625094" at="26,0,28,0" concept="1" trace="CheckNoDuplicatedConceptHints_NonTypesystemRule#()V" />
-      <node id="6556262262332744354" at="32,0,34,0" concept="7" />
       <node id="6556262262332924468" at="28,115,31,5" concept="3" />
-      <node id="6556262262332689282" at="36,0,39,0" concept="4" trace="translate#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Iterable;" />
-      <node id="6556262262332689291" at="40,0,43,0" concept="4" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="6556262262332625094" at="52,0,55,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="6556262262332625094" at="55,0,58,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-      <node id="6556262262332625094" at="58,0,61,0" concept="4" trace="overrides#()Z" />
-      <node id="6556262262332720020" at="44,63,49,7" concept="0" />
-      <node id="6556262262332668954" at="43,7,50,5" concept="3" />
-      <node id="6556262262332689272" at="34,0,43,7" concept="5" />
-      <node id="6556262262332625094" at="28,0,52,0" concept="4" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <node id="6556262262332689282" at="35,0,38,0" concept="4" trace="translate#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Iterable;" />
+      <node id="6556262262332689291" at="39,0,42,0" concept="4" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="6556262262332625094" at="51,0,54,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="6556262262332625094" at="54,0,57,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="6556262262332625094" at="57,0,60,0" concept="4" trace="overrides#()Z" />
+      <node id="6556262262332720020" at="43,63,48,7" concept="0" />
+      <node id="6556262262332668954" at="42,7,49,5" concept="3" />
+      <node id="6556262262332689272" at="33,58,42,7" concept="5" />
+      <node id="6556262262332625094" at="28,0,51,0" concept="4" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
       <scope id="6556262262332625094" at="26,60,26,60" />
       <scope id="6556262262332924470" at="29,180,30,13" />
-      <scope id="6556262262332689283" at="36,50,37,182" />
-      <scope id="6556262262332689292" at="40,39,41,338" />
-      <scope id="6556262262332625094" at="52,50,53,167" />
-      <scope id="6556262262332625094" at="55,68,56,102" />
-      <scope id="6556262262332625094" at="58,30,59,17" />
+      <scope id="6556262262332689283" at="35,50,36,182" />
+      <scope id="6556262262332689292" at="39,39,40,338" />
+      <scope id="6556262262332625094" at="51,50,52,167" />
+      <scope id="6556262262332625094" at="54,68,55,102" />
+      <scope id="6556262262332625094" at="57,30,58,17" />
       <scope id="6556262262332625094" at="26,0,28,0" />
-      <scope id="6556262262332689282" at="36,0,39,0">
+      <scope id="6556262262332689282" at="35,0,38,0">
         <var name="it" id="6556262262332689282" />
       </scope>
-      <scope id="6556262262332689291" at="40,0,43,0">
+      <scope id="6556262262332689291" at="39,0,42,0">
         <var name="it" id="6556262262332689291" />
       </scope>
-      <scope id="6556262262332720020" at="45,7,48,561">
+      <scope id="6556262262332720020" at="44,7,47,561">
         <var name="_reporter_2309309498" id="6556262262332720020" />
         <var name="errorTarget" id="6556262262332720020" />
       </scope>
-      <scope id="6556262262332625094" at="52,0,55,0" />
-      <scope id="6556262262332625094" at="55,0,58,0">
+      <scope id="6556262262332625094" at="51,0,54,0" />
+      <scope id="6556262262332625094" at="54,0,57,0">
         <var name="argument" id="6556262262332625094" />
       </scope>
-      <scope id="6556262262332625094" at="58,0,61,0" />
-      <scope id="6556262262332668956" at="44,63,49,7" />
-      <scope id="6556262262332625095" at="28,115,50,5">
+      <scope id="6556262262332625094" at="57,0,60,0" />
+      <scope id="6556262262332668956" at="43,63,48,7" />
+      <scope id="6556262262332625095" at="28,115,49,5">
         <var name="sameConceptHints" id="6556262262332689273" />
       </scope>
-      <scope id="6556262262332625094" at="28,0,52,0">
+      <scope id="6556262262332625094" at="28,0,51,0">
         <var name="cd" id="6556262262332625094" />
         <var name="status" id="6556262262332625094" />
         <var name="typeCheckingContext" id="6556262262332625094" />
       </scope>
-      <unit id="6556262262332689282" at="35,274,39,5" name="jetbrains.mps.vcs.mergehints.typesystem.CheckNoDuplicatedConceptHints_NonTypesystemRule$1" />
-      <unit id="6556262262332689291" at="39,17,43,5" name="jetbrains.mps.vcs.mergehints.typesystem.CheckNoDuplicatedConceptHints_NonTypesystemRule$2" />
-      <unit id="6556262262332625094" at="25,0,62,0" name="jetbrains.mps.vcs.mergehints.typesystem.CheckNoDuplicatedConceptHints_NonTypesystemRule" />
+      <unit id="6556262262332689282" at="34,274,38,5" name="jetbrains.mps.vcs.mergehints.typesystem.CheckNoDuplicatedConceptHints_NonTypesystemRule$1" />
+      <unit id="6556262262332689291" at="38,17,42,5" name="jetbrains.mps.vcs.mergehints.typesystem.CheckNoDuplicatedConceptHints_NonTypesystemRule$2" />
+      <unit id="6556262262332625094" at="25,0,61,0" name="jetbrains.mps.vcs.mergehints.typesystem.CheckNoDuplicatedConceptHints_NonTypesystemRule" />
     </file>
     <file name="TypesystemDescriptor.java">
       <node id="6556262262332625094" at="10,5,11,106" concept="5" />

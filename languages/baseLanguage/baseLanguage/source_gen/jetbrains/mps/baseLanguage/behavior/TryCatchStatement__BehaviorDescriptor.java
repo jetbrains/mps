@@ -54,7 +54,6 @@ public final class TryCatchStatement__BehaviorDescriptor extends BaseBHDescripto
     StatementList__BehaviorDescriptor.collectUncaughtThrowables_id4Gt7ANIVHca.invoke(body, thrownsFromBody, ((boolean) ignoreMayBeThrowables));
 
     // remove what we have catched 
-
     for (SNode caatch : ListSequence.fromList(catchClause)) {
       SLinkOperations.getTarget(caatch, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, 0x10f39a6a2f1L, "throwable"));
       Set<SNode> toRemove = SetSequence.fromSet(new HashSet<SNode>());
@@ -69,7 +68,6 @@ public final class TryCatchStatement__BehaviorDescriptor extends BaseBHDescripto
     SetSequence.fromSet(throwables).addSequence(SetSequence.fromSet(thrownsFromBody));
 
     // now collect what was thrown in catch blocks 
-
     for (SNode caatch : ListSequence.fromList(catchClause)) {
       StatementList__BehaviorDescriptor.collectUncaughtThrowables_id4Gt7ANIVHca.invoke(SLinkOperations.getTarget(caatch, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, 0x10f39a6a2f2L, "catchBody")), throwables, ((boolean) ignoreMayBeThrowables));
     }

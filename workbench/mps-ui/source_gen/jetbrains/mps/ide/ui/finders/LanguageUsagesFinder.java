@@ -78,7 +78,6 @@ public class LanguageUsagesFinder extends BaseFinder {
       return Collections.emptyList();
     }
     // FIXME likely it's smarter to unwrap devkit at the caller's, wrapped with CompositeFinder 
-
     if (searchedModule instanceof DevKit) {
       ArrayList<SLanguage> rv = new ArrayList<SLanguage>();
       rv.addAll(IterableUtil.asCollection(((DevKit) searchedModule).getAllExportedLanguageIds()));

@@ -40,7 +40,6 @@ public class ChangesManagerTestWaitHelper {
   public void waitForFileStatusChange(@NotNull final VirtualFile file, @NotNull final FileStatus expectedFileStatus) {
     final FileStatusManager fsm = FileStatusManager.getInstance(myProject);
     // In case fs is not updated, we need to stop waiting, so set timeout to 5 seconds 
-
     int fsUpdateTimeout = 5000;
     waitForSomething(new Runnable() {
       public void run() {
@@ -50,7 +49,6 @@ public class ChangesManagerTestWaitHelper {
             if (expectedFileStatus == fsm.getStatus(file)) {
               fsm.removeFileStatusListener(listener.value);
               // Wait until changes manager is notified about changed file status 
-
               try {
                 Thread.sleep(100);
               } catch (InterruptedException e) {
@@ -120,7 +118,6 @@ public class ChangesManagerTestWaitHelper {
           } finally {
             if (!(myWaitCompleted)) {
               // Reset flag for next calls 
-
               myWaitCompleted = true;
               System.err.print("Runnable did not call waitCompleted. Ended by timeout");
             }

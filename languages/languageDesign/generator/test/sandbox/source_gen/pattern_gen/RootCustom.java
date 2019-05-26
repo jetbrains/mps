@@ -9,43 +9,24 @@ public class RootCustom {
     int i = 42;
     q = i;
     // to ctor 
-
     // to ctor 
-
     // to ctor 
-
     // to ctor 
-
     // to ctor 
-
     // to ctor 
-
     // to ctor 
-
     // to ctor 
-
     // to ctor 
-
     // to ctor 
-
     // to ctor 
-
     // to ctor 
-
     // to ctor 
-
     // to ctor 
-
     // to ctor 
-
     // to ctor 
-
     // to ctor 
-
     // to ctor 
-
     // to ctor 
-
   }
   public void main() {
     {
@@ -63,10 +44,8 @@ public class RootCustom {
       }
       // Block 
 
-
       {
         // ss 
-
         int var12 = 55;
       }
       {
@@ -75,7 +54,6 @@ public class RootCustom {
       }
       {
         // ss 
-
         int var12 = 175 * (1 + e2);
       }
       {
@@ -84,7 +62,6 @@ public class RootCustom {
       }
       {
         // ss 
-
         int var12 = 175 * (1 + e2);
       }
       {
@@ -102,78 +79,59 @@ public class RootCustom {
   }
   public static void statement2681305894288275125() {
     // a 
-
   }
   public static void statement4146564171992399882() {
     // a 
-
   }
   public static void statement4146564171992399888() {
     // a 
-
   }
   public static void statement2681305894288275132() {
     // a 
-
   }
   public static void statement2681305894288275179() {
     // a 
-
   }
   public static void statement2681305894288379455() {
     // a 
-
   }
   public static void statement2681305894288379457() {
     // a 
-
   }
   public static void statement3571912445010045823() {
     // a 
-
   }
   public static void statement6266395626233624824() {
     // a 
-
   }
   public static void statement5857536350883158504() {
     // a 
-
   }
   public static void statement6266395626233719470() {
     // a 
-
   }
   public static void statement6509983489804965801() {
     // a 
-
   }
   public static void statement2163819695913718896() {
     // a 
-
   }
   public static void statement2163819695913721858() {
     // a 
-
   }
   public static void statement5857536350883158508() {
     // a 
-
   }
   public static void statement7870321878390043349() {
     // a 
-
   }
   public static void statement6509983489804965645() {
     // a 
-
   }
   public static void statement6010543442198725792() {
     // a 
-
   }
   public static void statement3571912445010045826() {
     // a 
-
   }
 }

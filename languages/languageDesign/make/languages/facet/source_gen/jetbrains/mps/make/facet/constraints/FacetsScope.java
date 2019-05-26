@@ -55,7 +55,6 @@ public class FacetsScope extends SimpleScope {
     SetSequence.fromSet(contextModules).addElement(contextModule);
 
     // collect models 
-
     Iterable<SModel> models = SetSequence.fromSet(contextModules).translate(new ITranslator2<SModule, SModel>() {
       public Iterable<SModel> translate(SModule it) {
         return it.getModels();
@@ -63,7 +62,6 @@ public class FacetsScope extends SimpleScope {
     });
 
     // collect facets 
-
     return SNodeOperations.ofConcept(Sequence.fromIterable(models).where(new NotNullWhereFilter<SModel>()).translate(new ITranslator2<SModel, SNode>() {
       public Iterable<SNode> translate(SModel it) {
         return it.getRootNodes();

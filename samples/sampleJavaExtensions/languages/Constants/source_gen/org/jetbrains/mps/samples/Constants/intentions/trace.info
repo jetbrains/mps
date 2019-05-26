@@ -10,7 +10,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <root>
     <file name="IntentionsDescriptor.java">
-      <unit at="18,0,75,0" name="org.jetbrains.mps.samples.Constants.intentions.IntentionsDescriptor" />
+      <unit at="18,0,72,0" name="org.jetbrains.mps.samples.Constants.intentions.IntentionsDescriptor" />
     </file>
   </root>
   <root nodeRef="r:42e1ac37-7eb5-465e-8f7a-fef5bc98a099(org.jetbrains.mps.samples.Constants.intentions)/3986994675334573650">
@@ -73,14 +73,14 @@
       <unit id="3986994675334573650" at="20,0,61,0" name="org.jetbrains.mps.samples.Constants.intentions.InlineConstant_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="3986994675334573650" at="46,47,47,57" concept="1" />
-      <node id="3986994675334573650" at="67,52,68,43" concept="1" />
+      <node id="3986994675334573650" at="44,47,45,57" concept="1" />
+      <node id="3986994675334573650" at="64,52,65,43" concept="1" />
     </file>
   </root>
   <root nodeRef="r:42e1ac37-7eb5-465e-8f7a-fef5bc98a099(org.jetbrains.mps.samples.Constants.intentions)/3986994675334573802">
     <file name="IntentionsDescriptor.java">
-      <node id="3986994675334573802" at="38,47,39,61" concept="1" />
-      <node id="3986994675334573802" at="68,43,69,47" concept="1" />
+      <node id="3986994675334573802" at="37,47,38,61" concept="1" />
+      <node id="3986994675334573802" at="65,43,66,47" concept="1" />
     </file>
     <file name="SafeRemoveConstant_Intention.java">
       <node id="3986994675334573802" at="26,0,27,0" concept="2" trace="myCachedExecutable" />
@@ -158,8 +158,8 @@
   </root>
   <root nodeRef="r:42e1ac37-7eb5-465e-8f7a-fef5bc98a099(org.jetbrains.mps.samples.Constants.intentions)/3986994675334574125">
     <file name="IntentionsDescriptor.java">
-      <node id="3986994675334574125" at="54,47,55,60" concept="1" />
-      <node id="3986994675334574125" at="69,47,70,46" concept="1" />
+      <node id="3986994675334574125" at="51,47,52,60" concept="1" />
+      <node id="3986994675334574125" at="66,47,67,46" concept="1" />
     </file>
     <file name="IntroduceConstant_Intention.java">
       <node id="3986994675334574125" at="22,0,23,0" concept="2" trace="myCachedExecutable" />

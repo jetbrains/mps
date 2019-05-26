@@ -72,7 +72,6 @@ public class Template_reduce_Parameters extends TemplateDeclarationBase implemen
                   tnode5.addChild(myAggregationLinks[0], child7);
                 }
                 // TODO validate child 
-
               }
               {
                 Collection<SNode> tlist8 = null;
@@ -82,13 +81,11 @@ public class Template_reduce_Parameters extends TemplateDeclarationBase implemen
                   tnode5.addChild(myAggregationLinks[1], child9);
                 }
                 // TODO validate child 
-
               }
             } finally {
             }
             tnode4.addChild(myAggregationLinks[2], tnode5);
             // TODO validate child 
-
           }
         } finally {
         }

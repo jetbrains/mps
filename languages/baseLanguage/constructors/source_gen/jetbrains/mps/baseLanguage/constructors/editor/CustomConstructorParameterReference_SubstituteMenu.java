@@ -48,7 +48,6 @@ public class CustomConstructorParameterReference_SubstituteMenu extends Substitu
 
     public SMP_ReferenceScope_x2t0ti_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b745ce64L, "jetbrains.mps.baseLanguage.constructors.structure.CustomConstructorParameterReference"), MetaAdapterFactory.getReferenceLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b745ce64L, 0x4aa85872b745ce65L, "parameter"));
     }
     @NotNull

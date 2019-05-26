@@ -22,7 +22,6 @@ public class ConceptAndSuperConceptsScope extends Scope {
   @Override
   public SNode resolve(SNode anchor, String refText) {
     // [MM] left intact, change if needed 
-
     return null;
   }
 
@@ -59,7 +58,6 @@ public class ConceptAndSuperConceptsScope extends Scope {
     }
     List<SNode> result = new ArrayList<SNode>();
     //  filter by condition 
-
     for (SNode node : ConceptAndSuperConceptsCache.getInstance(myTopConcept).getConcepts()) {
       if (node == null) {
         continue;

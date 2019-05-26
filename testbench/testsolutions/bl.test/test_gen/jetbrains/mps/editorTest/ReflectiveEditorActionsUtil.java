@@ -13,7 +13,6 @@ import javax.swing.SwingUtilities;
       @Override
       public void run() {
         // empty task 
-
       }
     });
   }

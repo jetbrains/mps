@@ -30,7 +30,6 @@ public class typeof_SemanticDowncastExpression_InferenceRule extends AbstractInf
         typeCheckingContext.createEquation((SNode) typeCheckingContext.getRepresentative(LeftType_typevar_1186060911559), (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1186060928458", true), _info_12389875345);
       }
       //  this when concrete has a sense of overloading 
-
       {
         final SNode v = typeCheckingContext.getRepresentative(LeftType_typevar_1186060911559);
         typeCheckingContext.whenConcrete(v, new Runnable() {
@@ -89,7 +88,6 @@ public class typeof_SemanticDowncastExpression_InferenceRule extends AbstractInf
               }
             } else if (SNodeOperations.isInstanceOf(typeCheckingContext.getRepresentative(LeftType_typevar_1186060911559), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x11c52ebfbe2L, "jetbrains.mps.lang.smodel.structure.SearchScopeType"))) {
               // see Node_GetReferentSearchScopeOperation deprecation 
-
               {
                 SNode _nodeToCheck_1029348928467 = expr;
                 EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1221162518298", 0, null);

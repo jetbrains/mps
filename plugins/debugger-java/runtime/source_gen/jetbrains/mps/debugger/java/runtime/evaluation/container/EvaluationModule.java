@@ -65,9 +65,7 @@ public final class EvaluationModule extends AbstractModule implements SModule {
     if (!(SetSequence.fromSet(myClassPaths).contains(path))) {
       SetSequence.fromSet(myClassPaths).addElement(path);
       // XXX Here, we use IFile just to populate MRD, which keeps strings, therefore we don't care to use anything but 
-
       //     a mechanism to access parent/name. It could be java.io.File, if MRD.getJavaStubsModelRoot pleases to support one 
-
       IFile file = IoFileSystem.INSTANCE.getFile(path);
       ModelRootDescriptor javaStubRoot = ModelRootDescriptor.getJavaStubsModelRoot(file, myDescriptor.getModelRootDescriptors());
       if (javaStubRoot != null) {

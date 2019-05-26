@@ -1050,34 +1050,34 @@
       <node id="2389096682426212159" at="26,85,27,87" concept="1" />
       <node id="2389096682426212159" at="32,52,33,19" concept="8" />
       <node id="2389096682426212159" at="37,51,38,72" concept="1" />
-      <node id="2389096682426212165" at="42,0,43,73" concept="1" />
-      <node id="2389096682426214128" at="43,73,44,73" concept="1" />
-      <node id="2389096682426214642" at="44,73,45,39" concept="1" />
-      <node id="2389096682426226373" at="45,39,46,0" concept="6" />
-      <node id="2389096682426216171" at="48,0,49,73" concept="1" />
-      <node id="2389096682426226055" at="49,73,50,73" concept="1" />
-      <node id="2389096682426226068" at="50,73,51,73" concept="1" />
-      <node id="2389096682426226846" at="51,73,52,0" concept="6" />
-      <node id="2389096682426228615" at="54,0,55,71" concept="1" />
-      <node id="2389096682426228814" at="55,71,56,76" concept="1" />
-      <node id="2389096682426228953" at="56,76,57,76" concept="1" />
-      <node id="2389096682426229037" at="57,76,58,76" concept="1" />
-      <node id="2389096682426229527" at="58,76,59,0" concept="6" />
-      <node id="2389096682426231013" at="59,0,60,30" concept="1" />
-      <node id="2389096682426230218" at="60,30,61,75" concept="1" />
-      <node id="2389096682426376590" at="61,75,62,86" concept="1" />
-      <node id="2389096682426376500" at="62,86,63,0" concept="6" />
-      <node id="2389096682426215510" at="65,16,66,0" concept="6" />
+      <node id="2389096682426215438" at="40,44,41,46" concept="5" />
+      <node id="2389096682426212165" at="41,46,42,73" concept="1" />
+      <node id="2389096682426214128" at="42,73,43,73" concept="1" />
+      <node id="2389096682426214642" at="43,73,44,39" concept="1" />
+      <node id="2389096682426226373" at="44,39,45,0" concept="6" />
+      <node id="2389096682426226140" at="45,0,46,33" concept="5" />
+      <node id="2389096682426216171" at="46,33,47,73" concept="1" />
+      <node id="2389096682426226055" at="47,73,48,73" concept="1" />
+      <node id="2389096682426226068" at="48,73,49,73" concept="1" />
+      <node id="2389096682426226846" at="49,73,50,0" concept="6" />
+      <node id="2389096682426227199" at="50,0,51,41" concept="5" />
+      <node id="2389096682426228615" at="51,41,52,71" concept="1" />
+      <node id="2389096682426228814" at="52,71,53,76" concept="1" />
+      <node id="2389096682426228953" at="53,76,54,76" concept="1" />
+      <node id="2389096682426229037" at="54,76,55,76" concept="1" />
+      <node id="2389096682426229527" at="55,76,56,0" concept="6" />
+      <node id="2389096682426231013" at="56,0,57,30" concept="1" />
+      <node id="2389096682426230218" at="57,30,58,75" concept="1" />
+      <node id="2389096682426376590" at="58,75,59,86" concept="1" />
+      <node id="2389096682426376500" at="59,86,60,0" concept="6" />
+      <node id="2389096682426215510" at="62,16,63,0" concept="6" />
       <node id="2389096682426212159" at="18,0,20,0" concept="7" trace="ourParamCache" />
-      <node id="2389096682426215438" at="40,44,42,0" concept="5" />
-      <node id="2389096682426226140" at="46,0,48,0" concept="5" />
-      <node id="2389096682426227199" at="52,0,54,0" concept="5" />
       <node id="2389096682426212159" at="21,0,24,0" concept="0" trace="SubstituteSmartInvalidReference_CaretInCenter_Test#()V" />
       <node id="2389096682426212159" at="32,0,35,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
       <node id="2389096682426212159" at="25,0,29,0" concept="3" trace="test_SubstituteSmartInvalidReference_CaretInCenter#()V" />
-      <node id="2389096682426212163" at="40,0,65,0" concept="3" trace="run#()V" />
-      <node id="2389096682426212161" at="38,72,65,16" concept="1" />
-      <node id="2389096682426212159" at="36,0,68,0" concept="3" trace="testMethodImpl#()V" />
+      <node id="2389096682426212163" at="40,0,62,0" concept="3" trace="run#()V" />
+      <node id="2389096682426212161" at="38,72,62,16" concept="1" />
+      <node id="2389096682426212159" at="36,0,65,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="2389096682426212159" at="21,63,22,25" />
       <scope id="2389096682426212159" at="26,85,27,87" />
       <scope id="2389096682426212159" at="32,52,33,19" />
@@ -1086,13 +1086,13 @@
         <var name="owner" id="2389096682426212159" />
       </scope>
       <scope id="2389096682426212159" at="25,0,29,0" />
-      <scope id="2389096682426212164" at="40,44,63,0" />
-      <scope id="2389096682426212163" at="40,0,65,0" />
-      <scope id="2389096682426212159" at="37,51,66,0" />
-      <scope id="2389096682426212159" at="36,0,68,0" />
-      <unit id="2389096682426212163" at="39,48,65,7" name="jetbrains.mps.lang.editor.actions.test.SubstituteSmartInvalidReference_CaretInCenter_Test$TestBody$1" />
-      <unit id="2389096682426212159" at="30,0,69,0" name="jetbrains.mps.lang.editor.actions.test.SubstituteSmartInvalidReference_CaretInCenter_Test$TestBody" />
-      <unit id="2389096682426212159" at="16,0,70,0" name="jetbrains.mps.lang.editor.actions.test.SubstituteSmartInvalidReference_CaretInCenter_Test" />
+      <scope id="2389096682426212164" at="40,44,60,0" />
+      <scope id="2389096682426212163" at="40,0,62,0" />
+      <scope id="2389096682426212159" at="37,51,63,0" />
+      <scope id="2389096682426212159" at="36,0,65,0" />
+      <unit id="2389096682426212163" at="39,48,62,7" name="jetbrains.mps.lang.editor.actions.test.SubstituteSmartInvalidReference_CaretInCenter_Test$TestBody$1" />
+      <unit id="2389096682426212159" at="30,0,66,0" name="jetbrains.mps.lang.editor.actions.test.SubstituteSmartInvalidReference_CaretInCenter_Test$TestBody" />
+      <unit id="2389096682426212159" at="16,0,67,0" name="jetbrains.mps.lang.editor.actions.test.SubstituteSmartInvalidReference_CaretInCenter_Test" />
     </file>
   </root>
   <root nodeRef="r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)/2389096682426283890">
@@ -1101,38 +1101,38 @@
       <node id="2389096682426283890" at="26,85,27,87" concept="1" />
       <node id="2389096682426283890" at="32,52,33,19" concept="8" />
       <node id="2389096682426283890" at="37,51,38,72" concept="1" />
-      <node id="2389096682426283898" at="42,0,43,73" concept="1" />
-      <node id="2389096682426283900" at="43,73,44,73" concept="1" />
-      <node id="2389096682426283902" at="44,73,45,39" concept="1" />
-      <node id="2389096682426283903" at="45,39,46,0" concept="6" />
-      <node id="2389096682426331083" at="48,0,49,71" concept="1" />
-      <node id="2389096682426283906" at="49,71,50,73" concept="1" />
-      <node id="2389096682426283908" at="50,73,51,73" concept="1" />
-      <node id="2389096682426283910" at="51,73,52,73" concept="1" />
-      <node id="2389096682426285317" at="52,73,53,73" concept="1" />
-      <node id="2389096682426285352" at="53,73,54,73" concept="1" />
-      <node id="2389096682426285446" at="54,73,55,73" concept="1" />
-      <node id="2389096682426283912" at="55,73,56,0" concept="6" />
-      <node id="2389096682426283915" at="58,0,59,71" concept="1" />
-      <node id="2389096682426286348" at="59,71,60,84" concept="1" />
-      <node id="2389096682426283917" at="60,84,61,76" concept="1" />
-      <node id="2389096682426283919" at="61,76,62,76" concept="1" />
-      <node id="2389096682426283921" at="62,76,63,76" concept="1" />
-      <node id="2389096682426283923" at="63,76,64,0" concept="6" />
-      <node id="2389096682426283924" at="64,0,65,30" concept="1" />
-      <node id="2389096682426283925" at="65,30,66,75" concept="1" />
-      <node id="2389096682426376131" at="66,75,67,86" concept="1" />
-      <node id="2389096682426283928" at="69,16,70,0" concept="6" />
+      <node id="2389096682426283896" at="40,44,41,46" concept="5" />
+      <node id="2389096682426283898" at="41,46,42,73" concept="1" />
+      <node id="2389096682426283900" at="42,73,43,73" concept="1" />
+      <node id="2389096682426283902" at="43,73,44,39" concept="1" />
+      <node id="2389096682426283903" at="44,39,45,0" concept="6" />
+      <node id="2389096682426283904" at="45,0,46,33" concept="5" />
+      <node id="2389096682426331083" at="46,33,47,71" concept="1" />
+      <node id="2389096682426283906" at="47,71,48,73" concept="1" />
+      <node id="2389096682426283908" at="48,73,49,73" concept="1" />
+      <node id="2389096682426283910" at="49,73,50,73" concept="1" />
+      <node id="2389096682426285317" at="50,73,51,73" concept="1" />
+      <node id="2389096682426285352" at="51,73,52,73" concept="1" />
+      <node id="2389096682426285446" at="52,73,53,73" concept="1" />
+      <node id="2389096682426283912" at="53,73,54,0" concept="6" />
+      <node id="2389096682426283913" at="54,0,55,41" concept="5" />
+      <node id="2389096682426283915" at="55,41,56,71" concept="1" />
+      <node id="2389096682426286348" at="56,71,57,84" concept="1" />
+      <node id="2389096682426283917" at="57,84,58,76" concept="1" />
+      <node id="2389096682426283919" at="58,76,59,76" concept="1" />
+      <node id="2389096682426283921" at="59,76,60,76" concept="1" />
+      <node id="2389096682426283923" at="60,76,61,0" concept="6" />
+      <node id="2389096682426283924" at="61,0,62,30" concept="1" />
+      <node id="2389096682426283925" at="62,30,63,75" concept="1" />
+      <node id="2389096682426376131" at="63,75,64,86" concept="1" />
+      <node id="2389096682426283928" at="66,16,67,0" concept="6" />
       <node id="2389096682426283890" at="18,0,20,0" concept="7" trace="ourParamCache" />
-      <node id="2389096682426283896" at="40,44,42,0" concept="5" />
-      <node id="2389096682426283904" at="46,0,48,0" concept="5" />
-      <node id="2389096682426283913" at="56,0,58,0" concept="5" />
       <node id="2389096682426283890" at="21,0,24,0" concept="0" trace="SubstituteUsualInvalidReference_CaretInCenter_Test#()V" />
       <node id="2389096682426283890" at="32,0,35,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
       <node id="2389096682426283890" at="25,0,29,0" concept="3" trace="test_SubstituteUsualInvalidReference_CaretInCenter#()V" />
-      <node id="2389096682426283894" at="40,0,69,0" concept="3" trace="run#()V" />
-      <node id="2389096682426283892" at="38,72,69,16" concept="1" />
-      <node id="2389096682426283890" at="36,0,72,0" concept="3" trace="testMethodImpl#()V" />
+      <node id="2389096682426283894" at="40,0,66,0" concept="3" trace="run#()V" />
+      <node id="2389096682426283892" at="38,72,66,16" concept="1" />
+      <node id="2389096682426283890" at="36,0,69,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="2389096682426283890" at="21,63,22,25" />
       <scope id="2389096682426283890" at="26,85,27,87" />
       <scope id="2389096682426283890" at="32,52,33,19" />
@@ -1141,13 +1141,13 @@
         <var name="owner" id="2389096682426283890" />
       </scope>
       <scope id="2389096682426283890" at="25,0,29,0" />
-      <scope id="2389096682426283895" at="40,44,67,86" />
-      <scope id="2389096682426283894" at="40,0,69,0" />
-      <scope id="2389096682426283890" at="37,51,70,0" />
-      <scope id="2389096682426283890" at="36,0,72,0" />
-      <unit id="2389096682426283894" at="39,48,69,7" name="jetbrains.mps.lang.editor.actions.test.SubstituteUsualInvalidReference_CaretInCenter_Test$TestBody$1" />
-      <unit id="2389096682426283890" at="30,0,73,0" name="jetbrains.mps.lang.editor.actions.test.SubstituteUsualInvalidReference_CaretInCenter_Test$TestBody" />
-      <unit id="2389096682426283890" at="16,0,74,0" name="jetbrains.mps.lang.editor.actions.test.SubstituteUsualInvalidReference_CaretInCenter_Test" />
+      <scope id="2389096682426283895" at="40,44,64,86" />
+      <scope id="2389096682426283894" at="40,0,66,0" />
+      <scope id="2389096682426283890" at="37,51,67,0" />
+      <scope id="2389096682426283890" at="36,0,69,0" />
+      <unit id="2389096682426283894" at="39,48,66,7" name="jetbrains.mps.lang.editor.actions.test.SubstituteUsualInvalidReference_CaretInCenter_Test$TestBody$1" />
+      <unit id="2389096682426283890" at="30,0,70,0" name="jetbrains.mps.lang.editor.actions.test.SubstituteUsualInvalidReference_CaretInCenter_Test$TestBody" />
+      <unit id="2389096682426283890" at="16,0,71,0" name="jetbrains.mps.lang.editor.actions.test.SubstituteUsualInvalidReference_CaretInCenter_Test" />
     </file>
   </root>
   <root nodeRef="r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)/2420730201805048185">
@@ -3377,25 +3377,25 @@
       <node id="6528040262366991161" at="30,52,31,19" concept="8" />
       <node id="6528040262366991161" at="35,51,36,72" concept="1" />
       <node id="6528040262366991167" at="38,44,39,76" concept="1" />
-      <node id="6528040262366991169" at="41,0,42,73" concept="1" />
-      <node id="6528040262366991171" at="42,73,43,73" concept="1" />
-      <node id="6528040262366991173" at="43,73,44,73" concept="1" />
-      <node id="6528040262367049624" at="44,73,45,73" concept="1" />
-      <node id="6528040262367049622" at="45,73,46,73" concept="1" />
-      <node id="6528040262367049620" at="46,73,47,73" concept="1" />
-      <node id="7487379546350079285" at="47,73,48,70" concept="1" />
-      <node id="6528040262367049699" at="48,70,49,75" concept="1" />
-      <node id="5675213876799649669" at="49,75,50,75" concept="1" />
-      <node id="6528040262366991175" at="50,75,51,76" concept="1" />
-      <node id="5675213876799649871" at="51,76,52,76" concept="1" />
+      <node id="6528040262367050112" at="39,76,40,36" concept="5" />
+      <node id="6528040262366991169" at="40,36,41,73" concept="1" />
+      <node id="6528040262366991171" at="41,73,42,73" concept="1" />
+      <node id="6528040262366991173" at="42,73,43,73" concept="1" />
+      <node id="6528040262367049624" at="43,73,44,73" concept="1" />
+      <node id="6528040262367049622" at="44,73,45,73" concept="1" />
+      <node id="6528040262367049620" at="45,73,46,73" concept="1" />
+      <node id="7487379546350079285" at="46,73,47,70" concept="1" />
+      <node id="6528040262367049699" at="47,70,48,75" concept="1" />
+      <node id="5675213876799649669" at="48,75,49,75" concept="1" />
+      <node id="6528040262366991175" at="49,75,50,76" concept="1" />
+      <node id="5675213876799649871" at="50,76,51,76" concept="1" />
       <node id="6528040262366991161" at="16,0,18,0" concept="7" trace="ourParamCache" />
-      <node id="6528040262367050112" at="39,76,41,0" concept="5" />
       <node id="6528040262366991161" at="19,0,22,0" concept="0" trace="DelUsualInvalidReference_Test#()V" />
       <node id="6528040262366991161" at="30,0,33,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
       <node id="6528040262366991161" at="23,0,27,0" concept="3" trace="test_DelUsualInvalidReference#()V" />
-      <node id="6528040262366991165" at="38,0,54,0" concept="3" trace="run#()V" />
-      <node id="6528040262366991163" at="36,72,54,16" concept="1" />
-      <node id="6528040262366991161" at="34,0,56,0" concept="3" trace="testMethodImpl#()V" />
+      <node id="6528040262366991165" at="38,0,53,0" concept="3" trace="run#()V" />
+      <node id="6528040262366991163" at="36,72,53,16" concept="1" />
+      <node id="6528040262366991161" at="34,0,55,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="6528040262366991161" at="19,42,20,25" />
       <scope id="6528040262366991161" at="24,64,25,66" />
       <scope id="6528040262366991161" at="30,52,31,19" />
@@ -3404,13 +3404,13 @@
         <var name="owner" id="6528040262366991161" />
       </scope>
       <scope id="6528040262366991161" at="23,0,27,0" />
-      <scope id="6528040262366991166" at="38,44,52,76" />
-      <scope id="6528040262366991165" at="38,0,54,0" />
-      <scope id="6528040262366991161" at="35,51,54,16" />
-      <scope id="6528040262366991161" at="34,0,56,0" />
-      <unit id="6528040262366991165" at="37,48,54,7" name="jetbrains.mps.lang.editor.actions.test.DelUsualInvalidReference_Test$TestBody$1" />
-      <unit id="6528040262366991161" at="28,0,57,0" name="jetbrains.mps.lang.editor.actions.test.DelUsualInvalidReference_Test$TestBody" />
-      <unit id="6528040262366991161" at="14,0,58,0" name="jetbrains.mps.lang.editor.actions.test.DelUsualInvalidReference_Test" />
+      <scope id="6528040262366991166" at="38,44,51,76" />
+      <scope id="6528040262366991165" at="38,0,53,0" />
+      <scope id="6528040262366991161" at="35,51,53,16" />
+      <scope id="6528040262366991161" at="34,0,55,0" />
+      <unit id="6528040262366991165" at="37,48,53,7" name="jetbrains.mps.lang.editor.actions.test.DelUsualInvalidReference_Test$TestBody$1" />
+      <unit id="6528040262366991161" at="28,0,56,0" name="jetbrains.mps.lang.editor.actions.test.DelUsualInvalidReference_Test$TestBody" />
+      <unit id="6528040262366991161" at="14,0,57,0" name="jetbrains.mps.lang.editor.actions.test.DelUsualInvalidReference_Test" />
     </file>
   </root>
   <root nodeRef="r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)/6739703022154441044">

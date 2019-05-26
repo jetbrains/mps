@@ -41,12 +41,10 @@ public class RulesUtil {
   public static void checkAppliedCorrectly_generic(final TypeCheckingContext typeCheckingContext, final SNode op) {
     if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(op)), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1090ea2ebacL, "jetbrains.mps.lang.smodel.structure.SNodeOperation"))) {
       // don't check - it is red anyway 
-
       return;
     }
     if (!(SNodeOperations.hasRole(op, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation")))) {
       // don't check - is may be quotation 
-
       return;
     }
     final SNode leftExpression = SNodeOperation__BehaviorDescriptor.getLeftExpression_idhEwJdGu.invoke(op);
@@ -73,14 +71,12 @@ public class RulesUtil {
       }
     }
     // =========== 
-
     if ((boolean) SNodeOperation__BehaviorDescriptor.applicableToLink_id1653mnvAgvK.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(op)))) {
       SNode linkAccess = SNodeOperations.as(SNodeOperation__BehaviorDescriptor.getLeftExpressionOperation_idhEwJdHi.invoke(op), MetaAdapterFactory.getInterfaceConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x37d97a5712d396cbL, "jetbrains.mps.lang.smodel.structure.ILinkAccess"));
       if (linkAccess != null) {
         isGood = (boolean) ILinkAccess__BehaviorDescriptor.isSingularCardinality_id3vpu_siOTrf.invoke(linkAccess);
         if (isGood) {
           // some of ops applicable to 'link' require left-expr to be a concept 
-
           if ((boolean) SNodeOperation__BehaviorDescriptor.applicableToConcept_id1653mnvAgvQ.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(op))) && !((boolean) SNodeOperation__BehaviorDescriptor.applicableToNode_id1653mnvAgrs.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(op))))) {
             isGood = TypecheckingFacade.getFromContext().isSubtype(LeftType, _quotation_createNode_yxkngc_b0a0a0b0b0b0k0a());
           }
@@ -94,7 +90,6 @@ public class RulesUtil {
       }
     }
     // =========== 
-
     SNode leftOperation = SNodeOperation__BehaviorDescriptor.getLeftExpressionOperation_idhEwJdHi.invoke(op);
     if ((boolean) SNodeOperation__BehaviorDescriptor.applicableToSimpleProperty_id1653mnvAgrO.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(op)))) {
       if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(leftOperation)), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, "jetbrains.mps.lang.smodel.structure.SPropertyAccess"))) {
@@ -120,7 +115,6 @@ public class RulesUtil {
   @CheckingMethod
   public static void checkAppliedTo_LinkAccess_aggregation(final TypeCheckingContext typeCheckingContext, final SNode op) {
     // expect access to an aggregation link with singular cardinality 
-
     final SNode leftExpressionOp = SNodeOperation__BehaviorDescriptor.getLeftExpressionOperation_idhEwJdHi.invoke(op);
     boolean isGood = false;
     if (SNodeOperations.isInstanceOf(leftExpressionOp, MetaAdapterFactory.getInterfaceConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x37d97a5712d396cbL, "jetbrains.mps.lang.smodel.structure.ILinkAccess"))) {
@@ -129,7 +123,6 @@ public class RulesUtil {
       }
     }
     // ---- 
-
     if (!(isGood)) {
       MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(op, "operation is only applicable to aggregation-link-access", "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1205272067893", null, errorTarget);
@@ -138,9 +131,7 @@ public class RulesUtil {
   @CheckingMethod
   public static void checkAppliedNotTo_LinkAccess_reference(final TypeCheckingContext typeCheckingContext, SNode op) {
     // expect access to an aggregation link with singular cardinality 
-
     // left expression could also be something else (like just 'node') but not access to a reference link 
-
     SNode leftExpressionOp = SNodeOperation__BehaviorDescriptor.getLeftExpressionOperation_idhEwJdHi.invoke(op);
     boolean isGood = true;
     if (SNodeOperations.isInstanceOf(leftExpressionOp, MetaAdapterFactory.getInterfaceConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x37d97a5712d396cbL, "jetbrains.mps.lang.smodel.structure.ILinkAccess"))) {
@@ -149,7 +140,6 @@ public class RulesUtil {
       }
     }
     // ---- 
-
     if (!(isGood)) {
       MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(op, "operation is not applicable to reference-link-access", "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1230333667606", null, errorTarget);
@@ -232,7 +222,6 @@ public class RulesUtil {
       }
     } else if (SNodeOperations.isInstanceOf(conceptDeclaration, MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x113f84956fbL, "jetbrains.mps.lang.typesystem.structure.RuntimeTypeVariable"))) {
       // todo [MM] always false, introduced in 6b8f810722d9d5733105c471d4b54f83e6462863, asked Fedor to review this 
-
       conceptDeclaration = SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626");
     } else {
       SNode nodeType = TypecheckingFacade.getFromContext().strongCoerceType(leftType, MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, "jetbrains.mps.lang.smodel.structure.SNodeType"));

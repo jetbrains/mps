@@ -34,7 +34,6 @@ public class Maze extends KajaFrame {
     }
     sniffAround_routine();
     // this is a comment 
-
   }
   public void findDoor_routine() {
     while (isWall()) {

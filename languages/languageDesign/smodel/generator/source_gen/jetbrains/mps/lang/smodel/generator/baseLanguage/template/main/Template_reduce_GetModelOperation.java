@@ -51,7 +51,6 @@ public class Template_reduce_GetModelOperation extends TemplateDeclarationBase i
           tnode1.addChild(myAggregationLinks[0], child3);
         }
         // TODO validate child 
-
       }
     } finally {
     }

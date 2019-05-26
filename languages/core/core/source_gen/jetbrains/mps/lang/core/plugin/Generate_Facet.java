@@ -94,7 +94,6 @@ public class Generate_Facet extends IFacet.Stub {
           switch (0) {
             case 0:
               // no-op now 
-
             default:
               progressMonitor.done();
               return new IResult.SUCCESS(_output_fi61u2_a0a);
@@ -424,13 +423,10 @@ public class Generate_Facet extends IFacet.Stub {
               progressMonitor.start("Generating", 110);
               try {
                 // in fact, transientsModuleRepo == mpsProject.getRepository, but I keep them separate to stress different lock scope 
-
                 final SRepository transientsModuleRepo = Generate_Facet.Target_configure.vars(pa.global()).transientModelsProvider().getRepository();
 
                 // XXX write is to tmm.createModule() and tmm.initCheckpointModule, although the moment transients live in a separate repository, we may 
-
                 // write-lock transients repository only, and read-lock the one with source models. 
-
                 final List<GeneratorTask> tasks = new ModelAccessHelper(transientsModuleRepo).runWriteAction(new Computable<List<GeneratorTask>>() {
                   public List<GeneratorTask> compute() {
                     Generate_Facet.Target_configure.vars(pa.global()).transientModelsProvider().initCheckpointModule();

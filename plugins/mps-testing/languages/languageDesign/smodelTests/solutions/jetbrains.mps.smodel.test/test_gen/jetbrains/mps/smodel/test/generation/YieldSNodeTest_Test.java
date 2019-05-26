@@ -25,7 +25,6 @@ import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 public class YieldSNodeTest_Test extends TestCase {
   public void test_MPS29957() throws Exception {
     // This test is to ensure that the code is generated and compiled correctly 
-
     Assert.assertEquals(Sequence.fromIterable(createCollection1()).count(), 3);
     Assert.assertEquals(Sequence.fromIterable(createCollection2()).count(), 1);
     Assert.assertEquals(Sequence.fromIterable(createCollection3()).count(), 1);

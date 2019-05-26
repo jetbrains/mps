@@ -28,9 +28,7 @@ public abstract class AbstractMutableChildrenList extends AbstractList<SNode> {
   @Override
   public Iterator<SNode> iterator() {
     // TODO this is not fair, since there's no guarantee any iterator will work after we remove an element already returned by next() 
-
     // TODO it's better to somehow provide "remove" method for the result of SNode.getChildren(role), e.g. removing the "non-modifiable" contract 
-
     return new Iterator<SNode>() {
       private SNode last = null;
       private Iterator<SNode> ci = childrenIterator();

@@ -52,7 +52,6 @@ public class Template_reduce_ModulePointer_SModuleReference extends TemplateDecl
         }
         tnode1.addChild(myAggregationLinks[0], tnode2);
         // TODO validate child 
-
       }
       {
         final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
@@ -67,13 +66,11 @@ public class Template_reduce_ModulePointer_SModuleReference extends TemplateDecl
             }
             tnode3.addChild(myAggregationLinks[1], tnode4);
             // TODO validate child 
-
           }
         } finally {
         }
         tnode1.addChild(myAggregationLinks[2], tnode3);
         // TODO validate child 
-
       }
     } finally {
     }

@@ -74,7 +74,6 @@ public final class BuildMps_Module__BehaviorDescriptor extends BaseBHDescriptor 
         SNode file = SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.cast(artifact, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a394d9b91L, "jetbrains.mps.build.structure.BuildLayout_AbstractCopy")), MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a394d9b91L, 0x48d5d03db92339baL, "fileset")), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db9224596L, "jetbrains.mps.build.structure.BuildInputSingleFile"));
         if ((file != null)) {
           // again, register real path here to enable "import jar ...." construction 
-
           artifacts.findArtifact(SLinkOperations.getTarget(file, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db9224596L, 0x48d5d03db922459aL, "path")));
         }
       }
@@ -132,17 +131,11 @@ public final class BuildMps_Module__BehaviorDescriptor extends BaseBHDescriptor 
     for (SNode dep : Sequence.fromIterable(BuildMps_Module__BehaviorDescriptor.getJarDeps_id3WZD5LHqufx.invoke(__thisNode__.getConcept(), dependency))) {
       if ((SLinkOperations.getTarget(dep, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c197e19L, 0x26d578f4b6e3757fL, "customLocation")) != null)) {
         // XXX here used to be dep.customLocation.getDependencyTarget() that didn't work in scenario, when there's module A with 'jar' dependency using external location 
-
         //     within the same project, and module B that depends on A. B.fetchDependencies() discovered A's jar, but getDependencyTarget() == null as both A and its external jar 
-
         //     live under the same root. Here, however, I need to decide whether I shall fetch anything for either A or its jar, so I don't care about them being in the same root 
-
         //     Here it's important to me that the external jar is foreign to the dependant module, so I can not use BuildSource_JavaExternalJarRef.getDependencyTarget, 
-
         //     and stick to JavaExportUtil directly 
-
         // Truth is I have no idea why there's 'same root' check is in getDependencyTarget(), what's good about it, but am afraid to change it. 
-
         Tuples._2<SNode, Boolean> dependencyTarget = JavaExportUtil.requireJar(artifacts, SLinkOperations.getTarget(SLinkOperations.getTarget(dep, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c197e19L, 0x26d578f4b6e3757fL, "customLocation")), MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86afb2f64cL, 0x4ddcec86afb2f64dL, "jar")), __thisNode__);
         if (dependencyTarget != null) {
           if ((boolean) dependencyTarget._1()) {
@@ -155,9 +148,7 @@ public final class BuildMps_Module__BehaviorDescriptor extends BaseBHDescriptor 
       } else {
         if (dependencyComesFromAnotherRoot) {
           // guess, dependencyComesFromAnotherRoot condition here is sort of assumption that jars referenced from a same-root dependency don't need to get fetched 
-
           // and are universally available, yet I don't know if it's true. Why not to check containment root of the jar, rather than that of module dependency? 
-
           needsFetch |= ((boolean) BuildMps_Module__BehaviorDescriptor.addJarPath_id3WZD5LHqnU8.invoke(__thisNode__.getConcept(), SLinkOperations.getTarget(dep, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c197e19L, 0x3b60c4a45c197e1aL, "path")), artifacts, builder));
         }
       }

@@ -15,9 +15,9 @@
       <unit at="16,0,48,0" name="jetbrains.mps.build.mps.runner.editor.EditorAspectDescriptorImpl" />
     </file>
     <file name="RequiredPlugin_SubstituteMenu.java">
-      <unit at="47,0,67,0" name="jetbrains.mps.build.mps.runner.editor.RequiredPlugin_SubstituteMenu$SMP_ReferenceScope_cpu6qr_a" />
-      <unit at="67,0,88,0" name="jetbrains.mps.build.mps.runner.editor.RequiredPlugin_SubstituteMenu$SMP_Subconcepts_cpu6qr_b" />
-      <unit at="24,0,89,0" name="jetbrains.mps.build.mps.runner.editor.RequiredPlugin_SubstituteMenu" />
+      <unit at="47,0,66,0" name="jetbrains.mps.build.mps.runner.editor.RequiredPlugin_SubstituteMenu$SMP_ReferenceScope_cpu6qr_a" />
+      <unit at="66,0,87,0" name="jetbrains.mps.build.mps.runner.editor.RequiredPlugin_SubstituteMenu$SMP_Subconcepts_cpu6qr_b" />
+      <unit at="24,0,88,0" name="jetbrains.mps.build.mps.runner.editor.RequiredPlugin_SubstituteMenu" />
     </file>
   </root>
   <root nodeRef="r:a874629d-0982-4f95-a5f4-d979f0120bd1(jetbrains.mps.build.mps.runner.editor)/3639941018584596222">

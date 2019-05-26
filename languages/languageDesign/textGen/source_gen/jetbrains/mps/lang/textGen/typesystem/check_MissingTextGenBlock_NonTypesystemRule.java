@@ -22,7 +22,6 @@ public class check_MissingTextGenBlock_NonTypesystemRule extends AbstractNonType
     if ((SLinkOperations.getTarget(tgDecl, MetaAdapterFactory.getContainmentLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f3c776369L, 0x11f41304578L, "textGenBlock")) == null)) {
       if ((boolean) ConceptTextGenDeclaration__BehaviorDescriptor.shallProduceOutputUnit_id3fG6dkhfrk3.invoke(tgDecl)) {
         // allow empty textgen block for concepts we would produce files from, see MPS-22220 
-
         return;
       }
       {

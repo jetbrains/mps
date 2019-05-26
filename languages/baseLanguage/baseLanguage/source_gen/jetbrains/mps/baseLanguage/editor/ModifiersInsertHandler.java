@@ -73,9 +73,7 @@ public class ModifiersInsertHandler {
         if (SNodeOperations.isInstanceOf(contextNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x21592d9e7375c5a6L, "jetbrains.mps.baseLanguage.structure.Modifier"))) {
           if (ListSequence.fromList(SLinkOperations.getChildren(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers"))).count() <= 1) {
             // here I calculate whether there are some modifier concepts to insert at all. 
-
             // if yes then we allow to add a child into node.modifiers collection 
-
             SModel model = SNodeOperations.getModel(node);
             List<SNode> modifiers = SLinkOperations.getChildren(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers"));
             return !(ListSequence.fromList(modifiers).select(new ISelector<SNode, SConcept>() {
@@ -102,13 +100,10 @@ public class ModifiersInsertHandler {
     CellAction originalBackspace = editorCell.getAction(CellActionType.BACKSPACE);
 
     // set actions that were actually defined 
-
     setDefinedCellActions(editorCell, node, context);
 
     // If we set a DELETE action but no BACKSPACE action, 
-
     // use the DELETE action for BACKSPACE as well. 
-
     CellAction deleteAction = editorCell.getAction(CellActionType.DELETE);
     CellAction backspaceAction = editorCell.getAction(CellActionType.BACKSPACE);
     if (deleteAction != originalDelete && backspaceAction == originalBackspace) {
@@ -120,9 +115,7 @@ public class ModifiersInsertHandler {
 
     // set cell actions from all imported action maps 
 
-
     // set cell actions defined directly in this action map 
-
     editorCell.setAction(CellActionType.INSERT_BEFORE, createAction_INSERT_BEFORE(node));
     editorCell.setAction(CellActionType.INSERT, createAction_INSERT(node));
 
@@ -132,9 +125,7 @@ public class ModifiersInsertHandler {
 
     // set cell action(s) of the given type from imported action maps 
 
-
     // set cell action of the given type defined directly in this action map 
-
     if (Objects.equals(actionType, CellActionType.INSERT_BEFORE)) {
       editorCell.setAction(actionType, createAction_INSERT_BEFORE(node));
     }

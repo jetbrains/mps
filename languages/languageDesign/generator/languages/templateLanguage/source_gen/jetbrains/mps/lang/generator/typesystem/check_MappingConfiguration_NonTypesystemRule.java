@@ -27,7 +27,6 @@ public class check_MappingConfiguration_NonTypesystemRule extends AbstractNonTyp
       }
     }
     // -- 
-
     for (SNode scriptReference : ListSequence.fromList(SLinkOperations.getChildren(mc, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x116597e20a5L, "postMappingScript")))) {
       if (!(SPropertyOperations.hasEnumValue(SLinkOperations.getTarget(scriptReference, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x116597b27aaL, 0x116597b663aL, "mappingScript")), MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1165958fcd6L, 0x1165f0cf1aaL, "scriptKind"), "post_processing"))) {
         MessageTarget errorTarget = new NodeMessageTarget();

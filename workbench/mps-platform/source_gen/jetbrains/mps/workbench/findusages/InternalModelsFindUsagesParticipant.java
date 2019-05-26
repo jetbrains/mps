@@ -50,7 +50,6 @@ public class InternalModelsFindUsagesParticipant implements ApplicationComponent
       } else
       if (model instanceof LanguageDescriptorModelProvider.LanguageModelDescriptor) {
         // language descriptor models are empty 
-
         processedConsumer.consume(model);
       }
     }
@@ -73,7 +72,6 @@ public class InternalModelsFindUsagesParticipant implements ApplicationComponent
       } else
       if (model instanceof LanguageDescriptorModelProvider.LanguageModelDescriptor) {
         // language descriptor models are empty 
-
         processedConsumer.consume(model);
       }
     }
@@ -83,12 +81,10 @@ public class InternalModelsFindUsagesParticipant implements ApplicationComponent
     for (SModel model : scope) {
       if (model instanceof ProjectStructureModule.ProjectStructureSModelDescriptor) {
         // project structure models have no imports 
-
         processedConsumer.consume(model);
       } else
       if (model instanceof LanguageDescriptorModelProvider.LanguageModelDescriptor) {
         // language descriptor models are empty 
-
         processedConsumer.consume(model);
       }
     }

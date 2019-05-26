@@ -70,7 +70,6 @@ public class AnnotationHelper {
 
   private boolean annotate(@NotNull final EditorComponent editorComponent, boolean dryRun) {
     // check if annotation is in progress (always called from ui thread) 
-
     if (SetSequence.fromSet(ourProgress).contains(editorComponent)) {
       return false;
     }
@@ -139,7 +138,6 @@ public class AnnotationHelper {
       @Override
       public void onSuccess() {
         // (in UI thread) 
-
         SetSequence.fromSet(ourProgress).removeElement(editorComponent);
 
         if (myException != null) {
@@ -148,14 +146,12 @@ public class AnnotationHelper {
 
         if (myFileAnnotation != null) {
           // Now annotation is build asynchroniously, and is reloaded after build finished (can be done several times) 
-
           myFileAnnotation.setReloader(new Consumer<FileAnnotation>() {
             public void consume(FileAnnotation newFA) {
               annotate(editorComponent);
             }
           });
           // if annotation is not ready yet - just wait for reload 
-
           if (myFileAnnotation.getRevisions() == null) {
             return;
           }

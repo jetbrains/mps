@@ -18,7 +18,6 @@ public class check_NoFinalOverrides_NonTypesystemRule extends AbstractNonTypesys
     SNode overriddenMethod = SLinkOperations.getTarget(method, MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d4348057fL, "overriddenMethod"));
     if (overriddenMethod != null) {
       // todo 
-
     }
   }
   public SAbstractConcept getApplicableConcept() {

@@ -71,7 +71,6 @@ public abstract class AbstractBreakpoint implements IBreakpoint {
   }
   protected void fireBreakpointEnabledStateToggled(boolean enabled) {
     //  todo come up with better name 
-
     for (IBreakpointListener listener : myListeners) {
       listener.breakpointEnabledStateToggled(this, enabled);
     }

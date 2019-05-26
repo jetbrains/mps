@@ -34,7 +34,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 0:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[1];
           intentions[0] = new SafeRemoveConstant_Intention();
         }
@@ -42,7 +41,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 1:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[1];
           intentions[0] = new InlineConstant_Intention();
         }
@@ -50,7 +48,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 2:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[1];
           intentions[0] = new IntroduceConstant_Intention();
         }

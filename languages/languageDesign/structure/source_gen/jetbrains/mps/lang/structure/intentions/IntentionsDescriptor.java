@@ -34,7 +34,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 0:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[1];
           intentions[0] = new ForbidIncomingReferencesInSubconcepts_Intention();
         }
@@ -42,7 +41,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 1:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[5];
           intentions[0] = new MakeRootable_Intention();
           intentions[1] = new MakeFinal_Intention();
@@ -54,7 +52,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 2:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[1];
           intentions[0] = new AnnotateToDocument_Intention();
         }
@@ -62,7 +59,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 3:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[1];
           intentions[0] = new AddSeeAlso_Intention();
         }
@@ -70,7 +66,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 4:
         if (true) {
           // concept 
-
           intentions = new IntentionFactory[1];
           intentions[0] = new AddDeprecatedAnnotation_Intention();
         }

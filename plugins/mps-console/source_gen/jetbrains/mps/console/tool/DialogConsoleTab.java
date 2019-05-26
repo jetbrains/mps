@@ -92,13 +92,11 @@ public class DialogConsoleTab extends BaseConsoleTab implements DataProvider {
 
   private void setSelection() {
     // here we call invokeLater() to be sheduled after invokeLater() from ConsoleStream.addResponse() 
-
     ApplicationManager.getApplication().invokeLater(new Runnable() {
       public void run() {
         getProject().getRepository().getModelAccess().runReadAction(new Runnable() {
           public void run() {
             // call editNode here to update undo node 
-
             getEditorComponent().editNode(myRoot);
             SelectionUtil.selectLabelCellAnSetCaret(getEditorComponent().getEditorContext(), SLinkOperations.getTarget(myRoot, MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x15fb34051f725a2cL, 0x15fb34051f725bb1L, "commandHolder")), SelectionManager.LAST_CELL, -1);
             getEditorComponent().ensureSelectionVisible();
@@ -147,7 +145,6 @@ public class DialogConsoleTab extends BaseConsoleTab implements DataProvider {
     }
     protected void doExecute(AnActionEvent event, Map<String, Object> arg) {
       // current command does not involve anything else 
-
       getProject().getModelAccess().executeCommand(new DefaultCommand(getProject().getRepository()) {
         public void run() {
           SNode currentCommand = SLinkOperations.getTarget(SLinkOperations.getTarget(myRoot, MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x15fb34051f725a2cL, 0x15fb34051f725bb1L, "commandHolder")), MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e27160acb4484bL, 0x4e27160acb44924L, "command"));

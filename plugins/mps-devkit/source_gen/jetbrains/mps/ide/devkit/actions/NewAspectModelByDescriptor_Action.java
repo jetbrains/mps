@@ -78,7 +78,6 @@ public class NewAspectModelByDescriptor_Action extends BaseAction {
     ad.create(((Language) ((SModule) MapSequence.fromMap(_params).get("module"))));
 
     // we need it since tree is updated later 
-
     final Collection<SModel> aspectModels = ad.getAspectModels(((SModule) MapSequence.fromMap(_params).get("module")));
     if (aspectModels.size() == 1) {
       ApplicationManager.getApplication().invokeLater(new Runnable() {

@@ -55,9 +55,7 @@ public class ClosureLiteralType_subtypeOf_ClassifierType_InequationReplacementRu
             errorMsg = ": no result type in function type";
           }
           // handle the specific case: {=> Object} <: Computable<?> 
-
           // also take into account bounded wildcard types 
-
           if (SNodeOperations.isInstanceOf(retType, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae9d53dL, "jetbrains.mps.baseLanguage.structure.LowerBoundType"))) {
             {
               SNode _nodeToCheck_1029348928467 = equationInfo.getNodeWithError();
@@ -100,7 +98,6 @@ public class ClosureLiteralType_subtypeOf_ClassifierType_InequationReplacementRu
           }
         }
         // dont report error, return immediately 
-
         if (errorMsg == null) {
           return;
         }
@@ -139,9 +136,7 @@ public class ClosureLiteralType_subtypeOf_ClassifierType_InequationReplacementRu
               errorMsg = ": no result type in function type";
             }
             // handle the specific case: {=> Object} <: Computable<?> 
-
             // also take into account bounded wildcard types 
-
             if (SNodeOperations.isInstanceOf(retType, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae9d53dL, "jetbrains.mps.baseLanguage.structure.LowerBoundType"))) {
               result_14532009 = result_14532009 && TypecheckingFacade.getFromContext().isSubtype((SNode) SLinkOperations.getTarget(SNodeOperations.cast(retType, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae9d53dL, "jetbrains.mps.baseLanguage.structure.LowerBoundType")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae9d53dL, 0x110dae9f25bL, "bound")), (SNode) SLinkOperations.getTarget(subtype, MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x1174a4d5371L, "resultType")));
 
@@ -164,7 +159,6 @@ public class ClosureLiteralType_subtypeOf_ClassifierType_InequationReplacementRu
             }
           }
           // dont report error, return immediately 
-
           if (errorMsg == null) {
             return result_14532009;
           }

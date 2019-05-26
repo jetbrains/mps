@@ -13,7 +13,6 @@ public class MPS14656_Test extends TestCase {
       Assert.fail();
     } catch (IOException e) {
       // expected exception 
-
     }
   }
   public void test_invalid() throws Exception {
@@ -22,7 +21,6 @@ public class MPS14656_Test extends TestCase {
       Assert.fail();
     } catch (IOException e) {
       // expected exception 
-
     }
   }
 }

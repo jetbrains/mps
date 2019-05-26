@@ -143,7 +143,6 @@ public class QueriesGenerated {
   }
   public static boolean rule_Condition_46_1(final BaseMappingRuleContext _context) {
     // role? 
-
     SNode operation = SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation"));
     return SNodeOperations.isInstanceOf(operation, MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96ea2caL, "jetbrains.mps.lang.smodel.structure.SLinkAccess"));
   }
@@ -156,7 +155,6 @@ public class QueriesGenerated {
   public static boolean rule_Condition_50_1(final BaseMappingRuleContext _context) {
     SNode ld = SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation")), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x316f884c72a4157dL, "jetbrains.mps.lang.smodel.structure.SLinkImplicitSelect")), MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x316f884c72a4157dL, 0x316f884c72a41783L, "link"));
     // our association links are either [0..1] or [1] 
-
     return SPropertyOperations.hasEnumValue(ld, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass"), "reference");
   }
   public static boolean rule_Condition_50_2(final BaseMappingRuleContext _context) {
@@ -745,7 +743,6 @@ public class QueriesGenerated {
   public static Object propertyMacro_GetValue_107_0(final PropertyMacroContext _context) {
     SModuleId mid = PersistenceFacade.getInstance().createModuleId(SPropertyOperations.getString(_context.getNode(), MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x38130dc4e3db5af1L, 0x38130dc4e3db5af3L, "moduleId")));
     // input node could be from transient model not attached to a repository, that's why originalModel provides a repository (and why node.getModule is not used) 
-
     SModule module = _context.getOriginalInputModel().getRepository().getModule(mid);
     if (module == null) {
       _context.showErrorMessage(_context.getNode(), "module `" + SPropertyOperations.getString(_context.getNode(), MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x38130dc4e3db5af1L, 0x38130dc4e3db5af3L, "moduleId")) + "` is not found");
@@ -818,14 +815,11 @@ public class QueriesGenerated {
   }
   public static Object propertyMacro_GetValue_119_2(final PropertyMacroContext _context) {
     // XXX not sure this gonna work for nodes that are tranient (i.e. if we generate enums from 
-
     // another, high-level, language). Perhaps, would need resort to NameUtil.namespaceFromLongName(node.model.name). 
-
     return SNodeOperations.getModel(_context.getNode()).getModule().getModuleName();
   }
   public static Object propertyMacro_GetValue_119_3(final PropertyMacroContext _context) {
     // FIXME likely, need a dedicated property in EnumerationDataTypeDeclaration to hold id value, but for now, live with SNodeId 
-
     long v = ((SNodeId.Regular) _context.getNode().getNodeId()).getId();
     return "0x" + Long.toHexString(v) + 'L';
   }
@@ -898,9 +892,7 @@ public class QueriesGenerated {
         targetConcept = SLinkOperations.getTarget(SNodeOperations.as(operandType, MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5cab42cd97571ceeL, "jetbrains.mps.lang.smodel.structure.SConceptType")), MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5cab42cd97571ceeL, 0x5cab42cd97571cefL, "conceptDeclaraton"));
       } else if (SNodeOperations.isInstanceOf(operandType, MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x4bf20760d53f89eaL, "jetbrains.mps.lang.smodel.structure.SConceptTypeLiteral"))) {
         // XXX I'm not quite sure SConceptTypeLiteral being independent from SConceptType (i.e. extending Type) directly) 
-
         // is the right way to go 
-
         targetConcept = SLinkOperations.getTarget(SNodeOperations.as(operandType, MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x4bf20760d53f89eaL, "jetbrains.mps.lang.smodel.structure.SConceptTypeLiteral")), MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x4bf20760d53f89eaL, 0x4bf20760d53f89ebL, "conceptDeclaraton"));
       }
       if (SNodeOperations.isInstanceOf(targetConcept, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration"))) {
@@ -955,7 +947,6 @@ public class QueriesGenerated {
   }
   public static Object referenceMacro_GetReferent_130_0(final ReferenceMacroContext _context) {
     // shall return pointer to a method with 2 arguments 
-
     SNode datatype = SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, 0x108f9727bcdL, "property")), MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType"));
     if ((boolean) DataTypeDeclaration__BehaviorDescriptor.isSimpleIntegerOrEnumOfInteger_idhKtGTZR.invoke(datatype)) {
       return new SNodePointer("r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6599163591527298601");
@@ -978,7 +969,6 @@ public class QueriesGenerated {
   }
   public static Object referenceMacro_GetReferent_130_2(final ReferenceMacroContext _context) {
     // shall return pointer to a method with 2 arguments 
-
     SNode datatype = SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, 0x108f9727bcdL, "property")), MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType"));
     if ((boolean) DataTypeDeclaration__BehaviorDescriptor.isSimpleIntegerOrEnumOfInteger_idhKtGTZR.invoke(datatype)) {
       return new SNodePointer("r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "7019756663678718264");
@@ -1100,11 +1090,8 @@ public class QueriesGenerated {
   }
   public static boolean ifMacro_Condition_106_0(final IfMacroContext _context) {
     // FIXME in fact, if all SubconceptCase statement lists ends with return (and break?) statement, I don't need 
-
     // to check noneMatched at all. But it's complicated to write a template like this now, and hopefully 
-
     // Java compiler is smart enough to drop unused boolean variables. 
-
     return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x527e98a73771f42dL, 0x527e98a73771f431L, "case")), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x527e98a73771f432L, "jetbrains.mps.lang.smodel.structure.SubconceptCase"))).isNotEmpty();
   }
   public static boolean ifMacro_Condition_106_1(final IfMacroContext _context) {
@@ -1112,10 +1099,8 @@ public class QueriesGenerated {
   }
   public static boolean ifMacro_Condition_106_2(final IfMacroContext _context) {
     // I don't want to have noneMatched = true; in each concept switch 
-
     Iterable<SNode> seq = SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x527e98a73771f42dL, 0x527e98a73771f431L, "case")), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x527e98a73771f432L, "jetbrains.mps.lang.smodel.structure.SubconceptCase"));
     // if all alternatives are with return, shall inject default block without condition, see MPS-28799 
-
     return Sequence.fromIterable(seq).isNotEmpty() && !(Sequence.fromIterable(seq).all(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(it, MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x527e98a73771f432L, 0x10ef02d8048L, "body")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"))).last(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, "jetbrains.mps.baseLanguage.structure.ReturnStatement"));
@@ -1269,7 +1254,6 @@ public class QueriesGenerated {
   }
   public static SNode sourceNodeQuery_2_2(final SourceSubstituteMacroNodeContext _context) {
     // <expr-to-copy> . link-access . set-new-child-op 
-
     return (SNode) SNodeOperation__BehaviorDescriptor.getLeftExpressionLeftExpression_idhEwJdGS.invoke(_context.getNode());
   }
   public static SNode sourceNodeQuery_2_3(final SourceSubstituteMacroNodeContext _context) {
@@ -1280,7 +1264,6 @@ public class QueriesGenerated {
   }
   public static SNode sourceNodeQuery_2_5(final SourceSubstituteMacroNodeContext _context) {
     // <expr-to-copy> . link-access . set-target-op 
-
     return (SNode) SNodeOperation__BehaviorDescriptor.getLeftExpressionLeftExpression_idhEwJdGS.invoke(_context.getNode());
   }
   public static SNode sourceNodeQuery_2_6(final SourceSubstituteMacroNodeContext _context) {
@@ -1291,7 +1274,6 @@ public class QueriesGenerated {
   }
   public static SNode sourceNodeQuery_2_8(final SourceSubstituteMacroNodeContext _context) {
     // <expr-to-copy> . link-access . set-target-pointer-op 
-
     return (SNode) SNodeOperation__BehaviorDescriptor.getLeftExpressionLeftExpression_idhEwJdGS.invoke(_context.getNode());
   }
   public static SNode sourceNodeQuery_2_9(final SourceSubstituteMacroNodeContext _context) {
@@ -1302,7 +1284,6 @@ public class QueriesGenerated {
   }
   public static SNode sourceNodeQuery_2_11(final SourceSubstituteMacroNodeContext _context) {
     // <expr-to-copy> . link-access . pointer-op 
-
     return (SNode) SNodeOperation__BehaviorDescriptor.getLeftExpressionLeftExpression_idhEwJdGS.invoke(_context.getNode());
   }
   public static SNode sourceNodeQuery_2_12(final SourceSubstituteMacroNodeContext _context) {
@@ -1310,7 +1291,6 @@ public class QueriesGenerated {
   }
   public static SNode sourceNodeQuery_2_13(final SourceSubstituteMacroNodeContext _context) {
     // <expr-to-copy> . link-access . is-op 
-
     return (SNode) SNodeOperation__BehaviorDescriptor.getLeftExpressionLeftExpression_idhEwJdGS.invoke(_context.getNode());
   }
   public static SNode sourceNodeQuery_2_14(final SourceSubstituteMacroNodeContext _context) {
@@ -1402,7 +1382,6 @@ public class QueriesGenerated {
   }
   public static SNode sourceNodeQuery_21_2(final SourceSubstituteMacroNodeContext _context) {
     // <expr-to-copy> . linklist-access . add-new-child-op 
-
     return (SNode) SNodeOperation__BehaviorDescriptor.getLeftExpressionLeftExpression_idhEwJdGS.invoke(_context.getNode());
   }
   public static SNode sourceNodeQuery_21_3(final SourceSubstituteMacroNodeContext _context) {
@@ -1990,12 +1969,10 @@ public class QueriesGenerated {
   }
   public static SNode sourceNodeQuery_129_0(final SourceSubstituteMacroNodeContext _context) {
     // <expr>.<property-access>.<operation> 
-
     return (SNode) SNodeOperation__BehaviorDescriptor.getLeftExpressionLeftExpression_idhEwJdGS.invoke(_context.getNode());
   }
   public static SNode sourceNodeQuery_129_1(final SourceSubstituteMacroNodeContext _context) {
     // <expr>.<property-access>.<operation> 
-
     SNode operation = SNodeOperation__BehaviorDescriptor.getLeftExpressionOperation_idhEwJdHi.invoke(_context.getNode());
     SNode op = SNodeOperations.cast(operation, MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, "jetbrains.mps.lang.smodel.structure.SPropertyAccess"));
     return SLinkOperations.getTarget(op, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, 0x108f9727bcdL, "property"));
@@ -2041,16 +2018,12 @@ public class QueriesGenerated {
   }
   public static SNode sourceNodeQuery_133_0(final SourceSubstituteMacroNodeContext _context) {
     // <expr>.<property-access>.<operation> 
-
     // <operation> : our input node 
-
     return (SNode) SNodeOperation__BehaviorDescriptor.getLeftExpressionLeftExpression_idhEwJdGS.invoke(_context.getNode());
   }
   public static SNode sourceNodeQuery_133_1(final SourceSubstituteMacroNodeContext _context) {
     // <expr>.<property-access>.<operation> 
-
     // <operation> : our input node 
-
     SNode operation = SNodeOperation__BehaviorDescriptor.getLeftExpressionOperation_idhEwJdHi.invoke(_context.getNode());
     SNode op = SNodeOperations.cast(operation, MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, "jetbrains.mps.lang.smodel.structure.SPropertyAccess"));
     return SLinkOperations.getTarget(op, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, 0x108f9727bcdL, "property"));
@@ -2060,12 +2033,10 @@ public class QueriesGenerated {
   }
   public static SNode sourceNodeQuery_134_0(final SourceSubstituteMacroNodeContext _context) {
     // <expr>.<property-access>.<operation> 
-
     return (SNode) SNodeOperation__BehaviorDescriptor.getLeftExpressionLeftExpression_idhEwJdGS.invoke(_context.getNode());
   }
   public static SNode sourceNodeQuery_134_1(final SourceSubstituteMacroNodeContext _context) {
     // <expr>.<property-access>.<operation> 
-
     SNode operation = SNodeOperation__BehaviorDescriptor.getLeftExpressionOperation_idhEwJdHi.invoke(_context.getNode());
     SNode op = SNodeOperations.cast(operation, MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, "jetbrains.mps.lang.smodel.structure.SPropertyAccess"));
     return SLinkOperations.getTarget(op, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, 0x108f9727bcdL, "property"));
@@ -2075,12 +2046,10 @@ public class QueriesGenerated {
   }
   public static SNode sourceNodeQuery_135_0(final SourceSubstituteMacroNodeContext _context) {
     // <expr>.<property-access>.<operation> 
-
     return (SNode) SNodeOperation__BehaviorDescriptor.getLeftExpressionLeftExpression_idhEwJdGS.invoke(_context.getNode());
   }
   public static SNode sourceNodeQuery_135_1(final SourceSubstituteMacroNodeContext _context) {
     // <expr>.<property-access>.<operation> 
-
     SNode operation = SNodeOperation__BehaviorDescriptor.getLeftExpressionOperation_idhEwJdHi.invoke(_context.getNode());
     SNode op = SNodeOperations.cast(operation, MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, "jetbrains.mps.lang.smodel.structure.SPropertyAccess"));
     return SLinkOperations.getTarget(op, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, 0x108f9727bcdL, "property"));
@@ -2175,16 +2144,12 @@ public class QueriesGenerated {
   }
   public static boolean mc_Condition_3(final TemplateQueryContext _context) {
     // FIXME Blank MC left as an empty placeholder as there are generator priority rules that reference it 
-
     // FIXME Remove once 2017.2 is out 
-
     return false;
   }
   public static boolean mc_Condition_10(final TemplateQueryContext _context) {
     // FIXME Blank MC left as an empty placeholder as there are generator priority rules that reference it 
-
     // FIXME Remove once 2017.2 is out 
-
     return false;
   }
   public static boolean mc_Condition_48(final TemplateQueryContext _context) {
@@ -2219,9 +2184,7 @@ public class QueriesGenerated {
   }
   public static Object varMacro_Value_96_0(final TemplateVarContext _context) {
     // XXX perhaps, makes sense to add ConceptIdentity.getConceptId() instead? 
-
     // Just not sure it's right for xIdentity, and don't want to cast to ConceptId here 
-
     return MetaIdHelper.getConcept(ConceptIdentity__BehaviorDescriptor.getConcept_id5ZE7FBYYOpv.invoke(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefc235cL, 0x5fea1eb9fefc2364L, "conceptIdentity"))));
   }
   public static Object varMacro_Value_98_0(final TemplateVarContext _context) {
@@ -2229,16 +2192,12 @@ public class QueriesGenerated {
   }
   public static Object varMacro_Value_102_0(final TemplateVarContext _context) {
     // XXX perhaps, makes sense to add ConceptIdentity.getConceptId() instead? 
-
     // Just not sure it's right for xIdentity, and don't want to cast to ConceptId here 
-
     return MetaIdHelper.getConcept(ConceptIdentity__BehaviorDescriptor.getConcept_id5ZE7FBYYOpv.invoke(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x74cb131f5923b6ecL, 0x74cb131f5923b6edL, "conceptIdentity"))));
   }
   public static Object varMacro_Value_103_0(final TemplateVarContext _context) {
     // XXX perhaps, makes sense to add ConceptIdentity.getConceptId() instead? 
-
     // Just not sure it's right for xIdentity, and don't want to cast to ConceptId here 
-
     return MetaIdHelper.getConcept(ConceptIdentity__BehaviorDescriptor.getConcept_id5ZE7FBYYOpv.invoke(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x74cb131f5923b6e7L, 0x74cb131f5923b6e8L, "conceptIdentity"))));
   }
   public static Object varMacro_Value_113_0(final TemplateVarContext _context) {

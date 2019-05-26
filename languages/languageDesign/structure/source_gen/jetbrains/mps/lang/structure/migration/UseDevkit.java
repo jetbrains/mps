@@ -43,14 +43,12 @@ public class UseDevkit extends MigrationScriptBase {
       }
     })) {
       // Transition code, in case aspect uses custom extensions, do not turn GP on for it yet. 
-
       return;
     }
 
     mi.deleteLanguageId(MetaAdapterFactory.getLanguage(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, "jetbrains.mps.lang.structure"));
     mi.deleteLanguageId(MetaAdapterFactory.getLanguage(0x982eb8df2c964bd7L, 0x996311712ea622e5L, "jetbrains.mps.lang.resources"));
     // sometimes there are devkits either too broad for the task (language design) or unrelated (general purpose is about BL), drop them 
-
     mi.deleteDevKit(PersistenceFacade.getInstance().createModuleReference("fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)"));
     mi.deleteDevKit(PersistenceFacade.getInstance().createModuleReference("2677cb18-f558-4e33-bc38-a5139cee06dc(jetbrains.mps.devkit.language-design)"));
     mi.addDevKit(structAspectDevkit);

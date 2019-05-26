@@ -118,7 +118,6 @@ public class UnitTestViewComponent extends JPanel implements Disposable {
   public void addNotify() {
     super.addNotify();
     // progress line goes until the text output bar with actions 
-
     myProgressLineComponent.setBorder(BorderFactory.createEmptyBorder(3, 0, 0, myOutputToolbarComponent.getPreferredSize().width));
   }
 
@@ -209,9 +208,7 @@ public class UnitTestViewComponent extends JPanel implements Disposable {
         }
         ITestNodeWrapper testWrapper = (ITestNodeWrapper) currentNode.getUserObject();
         // XXX it's unclear whether we shall assume model read lock here, or obtain it ourselves 
-
         // I didn't get the lock here as it's stupid to ask for SNode not inside a lock already. 
-
         return testWrapper.getNodePointer().resolve(myProject.getRepository());
       }
       return null;

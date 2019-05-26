@@ -13,13 +13,13 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <root>
     <file name="IntentionsDescriptor.java">
-      <unit at="18,0,75,0" name="jetbrains.mps.baseLanguage.unitTest.intentions.IntentionsDescriptor" />
+      <unit at="18,0,72,0" name="jetbrains.mps.baseLanguage.unitTest.intentions.IntentionsDescriptor" />
     </file>
   </root>
   <root nodeRef="r:ae5a3427-e70c-4b57-99b6-7ec8fc28a394(jetbrains.mps.baseLanguage.unitTest.intentions)/2230548360390192818">
     <file name="IntentionsDescriptor.java">
-      <node id="2230548360390192818" at="46,47,47,77" concept="2" />
-      <node id="2230548360390192818" at="67,52,68,63" concept="2" />
+      <node id="2230548360390192818" at="44,47,45,77" concept="2" />
+      <node id="2230548360390192818" at="64,52,65,63" concept="2" />
     </file>
     <file name="convert_test_case_to_unittest_case_Intention.java">
       <node id="2230548360390192818" at="32,0,33,0" concept="3" trace="myCachedExecutable" />
@@ -208,8 +208,8 @@
       <unit id="7080278351417190887" at="20,0,64,0" name="jetbrains.mps.baseLanguage.unitTest.intentions.AddRemoveMessage_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="7080278351417190887" at="54,47,55,59" concept="2" />
-      <node id="7080278351417190887" at="68,63,69,45" concept="2" />
+      <node id="7080278351417190887" at="51,47,52,59" concept="2" />
+      <node id="7080278351417190887" at="65,63,66,45" concept="2" />
     </file>
   </root>
   <root nodeRef="r:ae5a3427-e70c-4b57-99b6-7ec8fc28a394(jetbrains.mps.baseLanguage.unitTest.intentions)/7523560072226634120">
@@ -275,8 +275,8 @@
       <unit id="7523560072226634120" at="20,0,63,0" name="jetbrains.mps.baseLanguage.unitTest.intentions.FlipAssertEquals_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="7523560072226634120" at="38,47,39,59" concept="2" />
-      <node id="7523560072226634120" at="69,45,70,45" concept="2" />
+      <node id="7523560072226634120" at="37,47,38,59" concept="2" />
+      <node id="7523560072226634120" at="66,45,67,45" concept="2" />
     </file>
   </root>
 </debug-info>

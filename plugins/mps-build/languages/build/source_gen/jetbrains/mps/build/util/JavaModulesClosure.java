@@ -48,7 +48,6 @@ public class JavaModulesClosure {
         if (modules.add(depModule)) {
           moduleClosure(depModule, true);
           // re-add to move to the end of the list 
-
           modules.remove(depModule);
           modules.add(depModule);
         }

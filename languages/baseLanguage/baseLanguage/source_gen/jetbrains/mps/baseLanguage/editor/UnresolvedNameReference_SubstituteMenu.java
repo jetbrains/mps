@@ -120,7 +120,6 @@ public class UnresolvedNameReference_SubstituteMenu extends SubstituteMenuBase {
             SReferenceLink role = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
             SReference sReference = SNodeOperations.cast(SLinkOperations.getTarget(dotExpression, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation")).getReference(role);
             // XXX why model of source node is considered for target, not sReference.getTargetModelReference? 
-
             smc.setReference(role, new StaticReference(role, smc, SModelOperations.getPointer(SNodeOperations.getModel(smc)), null, ((jetbrains.mps.smodel.SReference) sReference).getResolveInfo()));
             SNodeOperations.replaceWithAnother(dotExpression, smc);
             return smc;

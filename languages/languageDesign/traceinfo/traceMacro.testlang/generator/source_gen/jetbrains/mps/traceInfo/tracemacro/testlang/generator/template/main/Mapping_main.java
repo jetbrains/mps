@@ -55,7 +55,6 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac65f399L, 0x10cac72911aL, "inputSequence"), child3);
           }
           // TODO validate child 
-
         }
         {
           Collection<SNode> tlist4 = null;
@@ -65,15 +64,12 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x10cb1ada6e8L, "body"), child5);
           }
           // TODO validate child 
-
         }
         {
           Collection<SNode> tlist6 = null;
           // calculate input 
-
           final SNode copySrcInput6 = QueriesGenerated.sourceNodeQuery_0_2(new SourceSubstituteMacroNodeContext(context1, traceMacro_ief6mt_b0a0a2a3a2a1d));
           // calculate output 
-
           final SNode tnode7 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, "jetbrains.mps.baseLanguage.collections"), 0x10cac6f0962L, "ForEachVariable"));
           try {
             SNodeAccessUtil.setProperty(tnode7, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_0_0(new PropertyMacroContext(context1, "var", propertyMacro_ief6mt_c0a0c0a0f0d0c0b3))));
@@ -81,7 +77,6 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
           }
           tlist6 = TemplateUtil.singletonList(tnode7);
           // put input node 
-
           for (SNode resultNode : CollectionSequence.fromCollection(tlist6)) {
             TracingUtil.fillOriginalNode(copySrcInput6, resultNode, false);
           }
@@ -89,7 +84,6 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac65f399L, 0x10cac7231f1L, "variable"), child8);
           }
           // TODO validate child 
-
         }
       } finally {
       }

@@ -151,7 +151,6 @@ public class CustomViewersManagerImpl extends CustomViewersManager {
   }
   private DebugSession getSession(@NotNull IValueProxy value) {
     // this is just wrong 
-
     for (Project project : ProjectManager.getInstance().getOpenProjects()) {
       for (AbstractDebugSession session : SetSequence.fromSet(DebugSessionManagerComponent.getInstance(project).getDebugSessions())) {
         if (session instanceof DebugSession) {

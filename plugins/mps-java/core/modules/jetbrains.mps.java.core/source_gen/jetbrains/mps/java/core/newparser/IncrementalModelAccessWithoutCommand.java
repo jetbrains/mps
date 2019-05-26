@@ -14,7 +14,6 @@ import jetbrains.mps.messages.IMessageHandler;
   @Override
   public void replaceNodes(Runnable runnable) {
     // replacing nodes in update mode, without command, to avoid command listeners 
-
     executeInUpdateMode(runnable);
   }
 

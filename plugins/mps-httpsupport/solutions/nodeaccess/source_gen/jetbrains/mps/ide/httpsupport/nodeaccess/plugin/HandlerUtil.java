@@ -63,7 +63,6 @@ public class HandlerUtil {
 
   /*package*/ static void requestFocus(final Project project) {
     // requires EDT 
-
     if (project instanceof MPSProject) {
       ThreadUtils.assertEDT();
       ProjectUtil.focusProjectWindow(((MPSProject) project).getProject(), true);

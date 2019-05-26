@@ -31,7 +31,6 @@ public class CheckNoDuplicatedConceptHints_NonTypesystemRule extends AbstractNon
     }
 
     // check only one hint is specified for exact concept 
-
     Iterable<SNode> sameConceptHints = ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(cd), MetaAdapterFactory.getConcept(0x37e03aa1728949bcL, 0x826930de5eceec76L, 0x39744cf955c648f9L, "jetbrains.mps.vcs.mergehints.structure.VCSHints"))).translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(SNode it) {
         return SLinkOperations.getChildren(it, MetaAdapterFactory.getContainmentLink(0x37e03aa1728949bcL, 0x826930de5eceec76L, 0x39744cf955c648f9L, 0x39744cf955c648faL, "concepts"));

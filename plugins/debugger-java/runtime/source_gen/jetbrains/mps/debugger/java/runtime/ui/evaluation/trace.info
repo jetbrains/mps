@@ -295,63 +295,63 @@
       <node id="7406771907178598565" at="185,0,186,0" concept="7" trace="rebuild#(Ljetbrains/mps/ide/ui/tree/MPSTreeNode;Ljetbrains/mps/debugger/java/runtime/evaluation/container/IEvaluationContainer;)V" />
       <node id="7704359791231500632" at="188,0,189,0" concept="7" trace="getModel#()Ljetbrains/mps/debugger/java/runtime/evaluation/container/IEvaluationContainer;" />
       <node id="4157161565487791228" at="194,79,195,66" concept="2" />
-      <node id="7406771907178598604" at="204,79,205,69" concept="2" />
-      <node id="7406771907178598619" at="211,0,212,0" concept="3" trace="myThreadReference" />
-      <node id="148720074658494222" at="212,0,213,0" concept="3" trace="myPresentation" />
-      <node id="612015978684684282" at="213,0,214,0" concept="3" trace="myCachedWatchable" />
-      <node id="148720074658494227" at="214,95,215,36" concept="2" />
-      <node id="7406771907178598633" at="215,36,216,22" concept="2" />
-      <node id="7406771907178598641" at="216,22,217,42" concept="2" />
-      <node id="8590356478998757174" at="220,79,221,87" concept="8" />
-      <node id="612015978684709572" at="222,24,223,96" concept="2" />
-      <node id="6647443673251181369" at="229,30,230,36" concept="9" />
-      <node id="6647443673251181372" at="231,13,232,24" concept="9" />
-      <node id="612015978684709604" at="234,10,235,40" concept="2" />
-      <node id="612015978684709611" at="236,14,237,68" concept="2" />
-      <node id="7704359791231501400" at="241,0,242,0" concept="3" trace="myModel" />
-      <node id="1278811218404158505" at="242,89,243,54" concept="14" />
-      <node id="7704359791231501405" at="243,54,244,24" concept="2" />
-      <node id="7704359791231501417" at="247,46,248,23" concept="9" />
-      <node id="7406771907178598672" at="255,0,256,0" concept="3" trace="myError" />
-      <node id="7406771907178598680" at="256,43,257,30" concept="2" />
-      <node id="7406771907178598690" at="259,43,260,22" concept="2" />
-      <node id="7406771907178598705" at="264,28,265,75" concept="2" />
-      <node id="7406771907178598717" at="266,14,267,79" concept="2" />
-      <node id="7406771907178599375" at="272,0,273,0" concept="3" trace="myExtendedMessage" />
-      <node id="7704359791231500696" at="273,0,274,0" concept="3" trace="myModel" />
-      <node id="4893181994832024712" at="274,0,275,0" concept="3" trace="myThrowable" />
-      <node id="7406771907178599393" at="275,103,276,52" concept="14" />
-      <node id="7704359791231500700" at="276,52,277,22" concept="2" />
-      <node id="7406771907178599403" at="279,58,280,82" concept="2" />
-      <node id="7406771907178599469" at="282,7,283,26" concept="2" />
-      <node id="7406771907178599472" at="283,26,284,32" concept="2" />
-      <node id="7406771907178599426" at="284,32,285,0" concept="11" />
-      <node id="7406771907178599427" at="285,0,286,15" concept="2" />
-      <node id="7406771907178599433" at="288,67,289,109" concept="16" />
-      <node id="4893181994832024725" at="289,109,290,22" concept="2" />
-      <node id="7406771907178599455" at="293,29,294,64" concept="9" />
-      <node id="7406771907178599484" at="298,52,299,58" concept="8" />
-      <node id="7406771907178599502" at="299,58,300,39" concept="2" />
-      <node id="7406771907178599499" at="300,39,301,18" concept="2" />
-      <node id="7704359791231500713" at="305,44,306,21" concept="9" />
-      <node id="6803133305480958674" at="308,37,309,25" concept="9" />
-      <node id="7704359791231500669" at="313,0,314,0" concept="3" trace="myModel" />
-      <node id="7406771907178599561" at="314,59,315,63" concept="14" />
-      <node id="7704359791231500674" at="315,63,316,22" concept="2" />
-      <node id="7406771907178599577" at="316,22,317,27" concept="2" />
-      <node id="7406771907178599580" at="317,27,318,38" concept="2" />
-      <node id="7704359791231500686" at="321,44,322,21" concept="9" />
-      <node id="4120145653580383637" at="326,56,327,45" concept="14" />
-      <node id="4120145653580383643" at="327,45,328,62" concept="2" />
+      <node id="4120145653580383006" at="195,66,196,15" concept="10" />
+      <node id="7406771907178598604" at="203,79,204,69" concept="2" />
+      <node id="7406771907178598619" at="210,0,211,0" concept="3" trace="myThreadReference" />
+      <node id="148720074658494222" at="211,0,212,0" concept="3" trace="myPresentation" />
+      <node id="612015978684684282" at="212,0,213,0" concept="3" trace="myCachedWatchable" />
+      <node id="148720074658494227" at="213,95,214,36" concept="2" />
+      <node id="7406771907178598633" at="214,36,215,22" concept="2" />
+      <node id="7406771907178598641" at="215,22,216,42" concept="2" />
+      <node id="8590356478998757174" at="219,79,220,87" concept="8" />
+      <node id="612015978684709572" at="221,24,222,96" concept="2" />
+      <node id="6647443673251181369" at="228,30,229,36" concept="9" />
+      <node id="6647443673251181372" at="230,13,231,24" concept="9" />
+      <node id="612015978684709604" at="233,10,234,40" concept="2" />
+      <node id="612015978684709611" at="235,14,236,68" concept="2" />
+      <node id="7704359791231501400" at="240,0,241,0" concept="3" trace="myModel" />
+      <node id="1278811218404158505" at="241,89,242,54" concept="14" />
+      <node id="7704359791231501405" at="242,54,243,24" concept="2" />
+      <node id="7704359791231501417" at="246,46,247,23" concept="9" />
+      <node id="7406771907178598672" at="254,0,255,0" concept="3" trace="myError" />
+      <node id="7406771907178598680" at="255,43,256,30" concept="2" />
+      <node id="7406771907178598690" at="258,43,259,22" concept="2" />
+      <node id="7406771907178598705" at="263,28,264,75" concept="2" />
+      <node id="7406771907178598717" at="265,14,266,79" concept="2" />
+      <node id="7406771907178599375" at="271,0,272,0" concept="3" trace="myExtendedMessage" />
+      <node id="7704359791231500696" at="272,0,273,0" concept="3" trace="myModel" />
+      <node id="4893181994832024712" at="273,0,274,0" concept="3" trace="myThrowable" />
+      <node id="7406771907178599393" at="274,103,275,52" concept="14" />
+      <node id="7704359791231500700" at="275,52,276,22" concept="2" />
+      <node id="7406771907178599403" at="278,58,279,82" concept="2" />
+      <node id="7406771907178599469" at="281,7,282,26" concept="2" />
+      <node id="7406771907178599472" at="282,26,283,32" concept="2" />
+      <node id="7406771907178599426" at="283,32,284,0" concept="11" />
+      <node id="7406771907178599427" at="284,0,285,15" concept="2" />
+      <node id="7406771907178599433" at="287,67,288,109" concept="16" />
+      <node id="4893181994832024725" at="288,109,289,22" concept="2" />
+      <node id="7406771907178599455" at="292,29,293,64" concept="9" />
+      <node id="7406771907178599484" at="297,52,298,58" concept="8" />
+      <node id="7406771907178599502" at="298,58,299,39" concept="2" />
+      <node id="7406771907178599499" at="299,39,300,18" concept="2" />
+      <node id="7704359791231500713" at="304,44,305,21" concept="9" />
+      <node id="6803133305480958674" at="307,37,308,25" concept="9" />
+      <node id="7704359791231500669" at="312,0,313,0" concept="3" trace="myModel" />
+      <node id="7406771907178599561" at="313,59,314,63" concept="14" />
+      <node id="7704359791231500674" at="314,63,315,22" concept="2" />
+      <node id="7406771907178599577" at="315,22,316,27" concept="2" />
+      <node id="7406771907178599580" at="316,27,317,38" concept="2" />
+      <node id="7704359791231500686" at="320,44,321,21" concept="9" />
+      <node id="4120145653580383637" at="325,56,326,45" concept="14" />
+      <node id="4120145653580383643" at="326,45,327,62" concept="2" />
       <node id="2202960751294089827" at="45,0,47,0" concept="3" trace="myActionGroup" />
       <node id="7406771907178598572" at="183,0,185,0" concept="1" trace="EvaluationState#()V" />
       <node id="7406771907178598578" at="191,0,193,0" concept="1" trace="InitializedState#()V" />
-      <node id="4120145653580383006" at="195,66,197,0" concept="10" />
-      <node id="7406771907178598593" at="201,0,203,0" concept="1" trace="EvaluationInProgressState#()V" />
-      <node id="7406771907178598611" at="209,0,211,0" concept="3" trace="myValue" />
-      <node id="612015978684709609" at="236,12,238,7" concept="0" />
-      <node id="7406771907178598668" at="253,0,255,0" concept="3" trace="myErrorText" />
-      <node id="7406771907178598715" at="266,12,268,7" concept="0" />
+      <node id="7406771907178598593" at="200,0,202,0" concept="1" trace="EvaluationInProgressState#()V" />
+      <node id="7406771907178598611" at="208,0,210,0" concept="3" trace="myValue" />
+      <node id="612015978684709609" at="235,12,237,7" concept="0" />
+      <node id="7406771907178598668" at="252,0,254,0" concept="3" trace="myErrorText" />
+      <node id="7406771907178598715" at="265,12,267,7" concept="0" />
       <node id="4519228156633480337" at="55,0,58,0" concept="7" trace="updateLocation#(Lcom/sun/jdi/ThreadReference;)V" />
       <node id="7100887043396008951" at="58,57,61,5" concept="15" />
       <node id="7100887043396034310" at="63,60,66,5" concept="15" />
@@ -366,24 +366,24 @@
       <node id="6803133305480966811" at="162,44,165,7" concept="6" />
       <node id="6803133305480977764" at="167,44,170,7" concept="6" />
       <node id="2202960751294089854" at="174,0,177,0" concept="7" trace="setActionGroup#(Lcom/intellij/openapi/actionSystem/ActionGroup;)V" />
-      <node id="612015978684709561" at="221,87,224,7" concept="6" />
-      <node id="6647443673251181367" at="228,35,231,13" concept="6" />
-      <node id="7406771907178598676" at="256,0,259,0" concept="1" trace="FailureState#(Ljava/lang/String;)V" />
-      <node id="7406771907178598686" at="259,0,262,0" concept="1" trace="FailureState#(Ljava/lang/Throwable;)V" />
-      <node id="7406771907178599398" at="278,66,281,9" concept="4" />
-      <node id="6803133305480958640" at="308,0,311,0" concept="7" trace="getThrowable#()Ljava/lang/Throwable;" />
+      <node id="612015978684709561" at="220,87,223,7" concept="6" />
+      <node id="6647443673251181367" at="227,35,230,13" concept="6" />
+      <node id="7406771907178598676" at="255,0,258,0" concept="1" trace="FailureState#(Ljava/lang/String;)V" />
+      <node id="7406771907178598686" at="258,0,261,0" concept="1" trace="FailureState#(Ljava/lang/Throwable;)V" />
+      <node id="7406771907178599398" at="277,66,280,9" concept="4" />
+      <node id="6803133305480958640" at="307,0,310,0" concept="7" trace="getThrowable#()Ljava/lang/Throwable;" />
       <node id="3766037951089852932" at="100,50,104,5" concept="5" />
       <node id="7059155213108323316" at="109,57,113,5" concept="5" />
       <node id="7100887043395734670" at="117,0,121,0" concept="7" trace="runRebuildAction#(Ljava/lang/Runnable;Z)V" />
       <node id="6053191321461498153" at="124,56,128,5" concept="6" />
-      <node id="7406771907178598598" at="203,0,207,0" concept="7" trace="rebuild#(Ljetbrains/mps/ide/ui/tree/MPSTreeNode;Ljetbrains/mps/debugger/java/runtime/evaluation/container/IEvaluationContainer;)V" />
-      <node id="7704359791231501371" at="242,0,246,0" concept="1" trace="MyWatchableNode#(Ljetbrains/mps/debugger/java/runtime/evaluation/container/IEvaluationContainer;Ljetbrains/mps/debug/api/programState/IWatchable;)V" />
-      <node id="7704359791231501411" at="246,0,250,0" concept="7" trace="getModel#()Ljetbrains/mps/debugger/java/runtime/evaluation/container/IEvaluationContainer;" />
-      <node id="7406771907178599429" at="288,0,292,0" concept="1" trace="ErrorTreeNode#(Ljetbrains/mps/debugger/java/runtime/evaluation/container/IEvaluationContainer;Ljava/lang/Throwable;)V" />
-      <node id="7406771907178599451" at="292,0,296,0" concept="7" trace="isLeaf#()Z" />
-      <node id="7704359791231500707" at="304,0,308,0" concept="7" trace="getModel#()Ljetbrains/mps/debugger/java/runtime/evaluation/container/IEvaluationContainer;" />
-      <node id="7704359791231500661" at="320,0,324,0" concept="7" trace="getModel#()Ljetbrains/mps/debugger/java/runtime/evaluation/container/IEvaluationContainer;" />
-      <node id="4120145653580383633" at="326,0,330,0" concept="1" trace="InitialTreeNode#(Ljetbrains/mps/debugger/java/runtime/evaluation/container/IEvaluationContainer;)V" />
+      <node id="7406771907178598598" at="202,0,206,0" concept="7" trace="rebuild#(Ljetbrains/mps/ide/ui/tree/MPSTreeNode;Ljetbrains/mps/debugger/java/runtime/evaluation/container/IEvaluationContainer;)V" />
+      <node id="7704359791231501371" at="241,0,245,0" concept="1" trace="MyWatchableNode#(Ljetbrains/mps/debugger/java/runtime/evaluation/container/IEvaluationContainer;Ljetbrains/mps/debug/api/programState/IWatchable;)V" />
+      <node id="7704359791231501411" at="245,0,249,0" concept="7" trace="getModel#()Ljetbrains/mps/debugger/java/runtime/evaluation/container/IEvaluationContainer;" />
+      <node id="7406771907178599429" at="287,0,291,0" concept="1" trace="ErrorTreeNode#(Ljetbrains/mps/debugger/java/runtime/evaluation/container/IEvaluationContainer;Ljava/lang/Throwable;)V" />
+      <node id="7406771907178599451" at="291,0,295,0" concept="7" trace="isLeaf#()Z" />
+      <node id="7704359791231500707" at="303,0,307,0" concept="7" trace="getModel#()Ljetbrains/mps/debugger/java/runtime/evaluation/container/IEvaluationContainer;" />
+      <node id="7704359791231500661" at="319,0,323,0" concept="7" trace="getModel#()Ljetbrains/mps/debugger/java/runtime/evaluation/container/IEvaluationContainer;" />
+      <node id="4120145653580383633" at="325,0,329,0" concept="1" trace="InitialTreeNode#(Ljetbrains/mps/debugger/java/runtime/evaluation/container/IEvaluationContainer;)V" />
       <node id="7406771907178597990" at="58,0,63,0" concept="7" trace="addModel#(Ljetbrains/mps/debugger/java/runtime/evaluation/container/IEvaluationContainer;)V" />
       <node id="671257137235333029" at="63,0,68,0" concept="7" trace="removeModel#(Ljetbrains/mps/debugger/java/runtime/evaluation/container/IEvaluationContainer;)V" />
       <node id="7406771907178598003" at="68,0,73,0" concept="7" trace="setResultValue#(Ljetbrains/mps/debugger/java/api/state/proxy/JavaValue;Ljetbrains/mps/debugger/java/runtime/evaluation/container/IEvaluationContainer;)V" />
@@ -392,32 +392,32 @@
       <node id="7406771907178598055" at="83,0,88,0" concept="7" trace="setEvaluating#(Ljetbrains/mps/debugger/java/runtime/evaluation/container/IEvaluationContainer;)V" />
       <node id="7100887043396170606" at="90,69,95,5" concept="15" />
       <node id="2915139105446498560" at="177,0,182,0" concept="13" trace="getStackTrace#(Ljava/lang/Throwable;)[Ljava/lang/String;" />
-      <node id="7406771907178598623" at="214,0,219,0" concept="1" trace="ResultState#(Ljava/lang/String;Ljetbrains/mps/debugger/java/api/state/proxy/JavaValue;Lcom/sun/jdi/ThreadReference;)V" />
-      <node id="7406771907178598703" at="263,79,268,7" concept="6" />
-      <node id="7406771907178599396" at="277,22,282,7" concept="6" />
-      <node id="7406771907178599480" at="297,29,302,7" concept="5" />
+      <node id="7406771907178598583" at="193,0,198,0" concept="7" trace="rebuild#(Ljetbrains/mps/ide/ui/tree/MPSTreeNode;Ljetbrains/mps/debugger/java/runtime/evaluation/container/IEvaluationContainer;)V" />
+      <node id="7406771907178598623" at="213,0,218,0" concept="1" trace="ResultState#(Ljava/lang/String;Ljetbrains/mps/debugger/java/api/state/proxy/JavaValue;Lcom/sun/jdi/ThreadReference;)V" />
+      <node id="7406771907178598703" at="262,79,267,7" concept="6" />
+      <node id="7406771907178599396" at="276,22,281,7" concept="6" />
+      <node id="7406771907178599480" at="296,29,301,7" concept="5" />
       <node id="6803133305480959097" at="142,39,148,5" concept="6" />
-      <node id="7406771907178598583" at="193,0,199,0" concept="7" trace="rebuild#(Ljetbrains/mps/ide/ui/tree/MPSTreeNode;Ljetbrains/mps/debugger/java/runtime/evaluation/container/IEvaluationContainer;)V" />
-      <node id="7406771907178599557" at="314,0,320,0" concept="1" trace="EvaluatingTreeNode#(Ljetbrains/mps/debugger/java/runtime/evaluation/container/IEvaluationContainer;)V" />
+      <node id="7406771907178599557" at="313,0,319,0" concept="1" trace="EvaluatingTreeNode#(Ljetbrains/mps/debugger/java/runtime/evaluation/container/IEvaluationContainer;)V" />
       <node id="7406771907178597966" at="47,0,54,0" concept="1" trace="EvaluationTree#(Ljetbrains/mps/debugger/java/runtime/state/DebugSession;)V" />
       <node id="3766037951089852927" at="99,0,106,0" concept="7" trace="expandPaths#(Ljava/util/List;)V" />
-      <node id="6647443673251181360" at="227,0,234,0" concept="7" trace="isLeaf#()Z" />
+      <node id="6647443673251181360" at="226,0,233,0" concept="7" trace="isLeaf#()Z" />
       <node id="4613278401347199465" at="132,0,140,0" concept="7" trace="dispose#()V" />
-      <node id="7406771907178598697" at="262,0,270,0" concept="7" trace="rebuild#(Ljetbrains/mps/ide/ui/tree/MPSTreeNode;Ljetbrains/mps/debugger/java/runtime/evaluation/container/IEvaluationContainer;)V" />
-      <node id="7406771907178599476" at="296,0,304,0" concept="7" trace="doInit#()V" />
+      <node id="7406771907178598697" at="261,0,269,0" concept="7" trace="rebuild#(Ljetbrains/mps/ide/ui/tree/MPSTreeNode;Ljetbrains/mps/debugger/java/runtime/evaluation/container/IEvaluationContainer;)V" />
+      <node id="7406771907178599476" at="295,0,303,0" concept="7" trace="doInit#()V" />
       <node id="3766037951089855146" at="107,0,116,0" concept="7" trace="selectPaths#(Ljava/util/List;)V" />
-      <node id="612015978684709596" at="225,38,234,10" concept="8" />
+      <node id="612015978684709596" at="224,38,233,10" concept="8" />
       <node id="7406771907178598068" at="88,0,98,0" concept="7" trace="rebuild#()Ljetbrains/mps/ide/ui/tree/MPSTreeNode;" />
       <node id="3443113933323653226" at="122,0,132,0" concept="7" trace="createPopupActionGroup#(Ljetbrains/mps/ide/ui/tree/MPSTreeNode;)Lcom/intellij/openapi/actionSystem/ActionGroup;" />
       <node id="6803133305480959080" at="140,0,151,0" concept="7" trace="findSelectedNode#()Ljetbrains/mps/ide/ui/tree/MPSTreeNode;" />
-      <node id="7406771907178599383" at="275,0,288,0" concept="1" trace="ErrorTreeNode#(Ljetbrains/mps/debugger/java/runtime/evaluation/container/IEvaluationContainer;Ljava/lang/String;null)V" />
-      <node id="612015978684709586" at="224,7,238,7" concept="6" />
+      <node id="7406771907178599383" at="274,0,287,0" concept="1" trace="ErrorTreeNode#(Ljetbrains/mps/debugger/java/runtime/evaluation/container/IEvaluationContainer;Ljava/lang/String;null)V" />
+      <node id="612015978684709586" at="223,7,237,7" concept="6" />
       <node id="7704359791231500439" at="153,48,171,5" concept="6" />
-      <node id="7406771907178598646" at="219,0,240,0" concept="7" trace="rebuild#(Ljetbrains/mps/ide/ui/tree/MPSTreeNode;Ljetbrains/mps/debugger/java/runtime/evaluation/container/IEvaluationContainer;)V" />
+      <node id="7406771907178598646" at="218,0,239,0" concept="7" trace="rebuild#(Ljetbrains/mps/ide/ui/tree/MPSTreeNode;Ljetbrains/mps/debugger/java/runtime/evaluation/container/IEvaluationContainer;)V" />
       <node id="7704359791231500428" at="151,0,174,0" concept="7" trace="getData#(Ljava/lang/String;)Ljava/lang/Object;" />
       <scope id="7406771907178598575" at="183,30,183,30" />
       <scope id="7406771907178598581" at="191,31,191,31" />
-      <scope id="7406771907178598596" at="201,40,201,40" />
+      <scope id="7406771907178598596" at="200,40,200,40" />
       <scope id="4519228156633480339" at="55,63,56,40" />
       <scope id="7100887043396008955" at="59,29,60,86" />
       <scope id="7100887043396034314" at="64,29,65,53" />
@@ -439,20 +439,20 @@
         <var name="rootTreeNode" id="7406771907178598569" />
       </scope>
       <scope id="7704359791231500632" at="188,0,189,0" />
-      <scope id="7406771907178598603" at="204,79,205,69" />
-      <scope id="612015978684709562" at="222,24,223,96" />
-      <scope id="6647443673251181368" at="229,30,230,36" />
-      <scope id="612015978684709610" at="236,14,237,68" />
-      <scope id="7704359791231501414" at="247,46,248,23" />
-      <scope id="7406771907178598679" at="256,43,257,30" />
-      <scope id="7406771907178598689" at="259,43,260,22" />
-      <scope id="7406771907178598704" at="264,28,265,75" />
-      <scope id="7406771907178598716" at="266,14,267,79" />
-      <scope id="7406771907178599402" at="279,58,280,82" />
-      <scope id="7406771907178599454" at="293,29,294,64" />
-      <scope id="7704359791231500710" at="305,44,306,21" />
-      <scope id="6803133305480958643" at="308,37,309,25" />
-      <scope id="7704359791231500664" at="321,44,322,21" />
+      <scope id="7406771907178598603" at="203,79,204,69" />
+      <scope id="612015978684709562" at="221,24,222,96" />
+      <scope id="6647443673251181368" at="228,30,229,36" />
+      <scope id="612015978684709610" at="235,14,236,68" />
+      <scope id="7704359791231501414" at="246,46,247,23" />
+      <scope id="7406771907178598679" at="255,43,256,30" />
+      <scope id="7406771907178598689" at="258,43,259,22" />
+      <scope id="7406771907178598704" at="263,28,264,75" />
+      <scope id="7406771907178598716" at="265,14,266,79" />
+      <scope id="7406771907178599402" at="278,58,279,82" />
+      <scope id="7406771907178599454" at="292,29,293,64" />
+      <scope id="7704359791231500710" at="304,44,305,21" />
+      <scope id="6803133305480958643" at="307,37,308,25" />
+      <scope id="7704359791231500664" at="320,44,321,21" />
       <scope id="3766037951089852934" at="101,31,103,27">
         <var name="treePath" id="7059155213108231770" />
       </scope>
@@ -462,10 +462,11 @@
       <scope id="6053191321461498154" at="125,32,127,33" />
       <scope id="7406771907178598572" at="183,0,185,0" />
       <scope id="7406771907178598578" at="191,0,193,0" />
-      <scope id="7406771907178598593" at="201,0,203,0" />
-      <scope id="7704359791231501374" at="242,89,244,24" />
-      <scope id="7406771907178599432" at="288,67,290,22" />
-      <scope id="4120145653580383636" at="326,56,328,62" />
+      <scope id="7406771907178598588" at="194,79,196,15" />
+      <scope id="7406771907178598593" at="200,0,202,0" />
+      <scope id="7704359791231501374" at="241,89,243,24" />
+      <scope id="7406771907178599432" at="287,67,289,22" />
+      <scope id="4120145653580383636" at="325,56,327,62" />
       <scope id="4519228156633480337" at="55,0,58,0">
         <var name="threadReference" id="4519228156633494909" />
       </scope>
@@ -485,22 +486,21 @@
       <scope id="2915139105446498539" at="177,53,180,41">
         <var name="writer" id="2915139105446498541" />
       </scope>
-      <scope id="7406771907178598588" at="194,79,197,0" />
-      <scope id="7406771907178598632" at="214,95,217,42" />
-      <scope id="7406771907178598676" at="256,0,259,0">
+      <scope id="7406771907178598632" at="213,95,216,42" />
+      <scope id="7406771907178598676" at="255,0,258,0">
         <var name="errorText" id="7406771907178598684" />
       </scope>
-      <scope id="7406771907178598686" at="259,0,262,0">
+      <scope id="7406771907178598686" at="258,0,261,0">
         <var name="error" id="7406771907178598694" />
       </scope>
-      <scope id="7406771907178599397" at="278,66,281,9" />
-      <scope id="7406771907178599398" at="278,66,281,9">
+      <scope id="7406771907178599397" at="277,66,280,9" />
+      <scope id="7406771907178599398" at="277,66,280,9">
         <var name="i" id="7406771907178599399" />
       </scope>
-      <scope id="7406771907178599483" at="298,52,301,18">
+      <scope id="7406771907178599483" at="297,52,300,18">
         <var name="node" id="7406771907178599485" />
       </scope>
-      <scope id="6803133305480958640" at="308,0,311,0" />
+      <scope id="6803133305480958640" at="307,0,310,0" />
       <scope id="3766037951089852931" at="100,50,104,5" />
       <scope id="3766037951089852932" at="100,50,104,5">
         <var name="path" id="3766037951089852952" />
@@ -524,25 +524,25 @@
       <scope id="6803133305480959000" at="166,70,170,7">
         <var name="node" id="6803133305480977758" />
       </scope>
-      <scope id="7406771907178598598" at="203,0,207,0">
+      <scope id="7406771907178598598" at="202,0,206,0">
         <var name="model" id="7704359791231501424" />
         <var name="rootTreeNode" id="7406771907178598601" />
       </scope>
-      <scope id="6647443673251181363" at="228,35,232,24" />
-      <scope id="7704359791231501371" at="242,0,246,0">
+      <scope id="6647443673251181363" at="227,35,231,24" />
+      <scope id="7704359791231501371" at="241,0,245,0">
         <var name="model" id="7704359791231501395" />
         <var name="watchable" id="7704359791231501377" />
       </scope>
-      <scope id="7704359791231501411" at="246,0,250,0" />
-      <scope id="7406771907178599429" at="288,0,292,0">
+      <scope id="7704359791231501411" at="245,0,249,0" />
+      <scope id="7406771907178599429" at="287,0,291,0">
         <var name="model" id="7704359791231500738" />
         <var name="t" id="7406771907178599448" />
       </scope>
-      <scope id="7406771907178599451" at="292,0,296,0" />
-      <scope id="7704359791231500707" at="304,0,308,0" />
-      <scope id="7406771907178599560" at="314,59,318,38" />
-      <scope id="7704359791231500661" at="320,0,324,0" />
-      <scope id="4120145653580383633" at="326,0,330,0">
+      <scope id="7406771907178599451" at="291,0,295,0" />
+      <scope id="7704359791231500707" at="303,0,307,0" />
+      <scope id="7406771907178599560" at="313,59,317,38" />
+      <scope id="7704359791231500661" at="319,0,323,0" />
+      <scope id="4120145653580383633" at="325,0,329,0">
         <var name="model" id="4120145653580383646" />
       </scope>
       <scope id="7406771907178597968" at="47,47,52,17" />
@@ -571,24 +571,24 @@
       <scope id="2915139105446498560" at="177,0,182,0">
         <var name="t" id="2915139105446498537" />
       </scope>
-      <scope id="7406771907178598623" at="214,0,219,0">
+      <scope id="7406771907178598583" at="193,0,198,0">
+        <var name="model" id="7704359791231501632" />
+        <var name="rootTreeNode" id="7406771907178598586" />
+      </scope>
+      <scope id="7406771907178598623" at="213,0,218,0">
         <var name="presentation" id="148720074658494218" />
         <var name="threadReference" id="7406771907178598628" />
         <var name="value" id="7406771907178598624" />
       </scope>
-      <scope id="7406771907178598702" at="263,79,268,7" />
-      <scope id="7406771907178599479" at="297,29,302,7" />
-      <scope id="7406771907178599480" at="297,29,302,7">
+      <scope id="7406771907178598702" at="262,79,267,7" />
+      <scope id="7406771907178599479" at="296,29,301,7" />
+      <scope id="7406771907178599480" at="296,29,301,7">
         <var name="messagePart" id="7406771907178599481" />
       </scope>
       <scope id="3766037951089855150" at="108,50,114,73">
         <var name="treePaths" id="3766037951089855151" />
       </scope>
-      <scope id="7406771907178598583" at="193,0,199,0">
-        <var name="model" id="7704359791231501632" />
-        <var name="rootTreeNode" id="7406771907178598586" />
-      </scope>
-      <scope id="7406771907178599557" at="314,0,320,0">
+      <scope id="7406771907178599557" at="313,0,319,0">
         <var name="model" id="7704359791231500667" />
       </scope>
       <scope id="7406771907178597966" at="47,0,54,0">
@@ -603,16 +603,16 @@
       <scope id="3443113933323653232" at="123,66,130,17">
         <var name="group" id="6053191321461498149" />
       </scope>
-      <scope id="6647443673251181360" at="227,0,234,0" />
+      <scope id="6647443673251181360" at="226,0,233,0" />
       <scope id="4613278401347199465" at="132,0,140,0" />
       <scope id="6803133305480959082" at="141,42,149,16">
         <var name="path" id="6803133305480959094" />
       </scope>
-      <scope id="7406771907178598697" at="262,0,270,0">
+      <scope id="7406771907178598697" at="261,0,269,0">
         <var name="model" id="7704359791231501434" />
         <var name="rootTreeNode" id="7406771907178598700" />
       </scope>
-      <scope id="7406771907178599476" at="296,0,304,0" />
+      <scope id="7406771907178599476" at="295,0,303,0" />
       <scope id="3766037951089855146" at="107,0,116,0">
         <var name="paths" id="3766037951089855147" />
       </scope>
@@ -620,21 +620,21 @@
       <scope id="3443113933323653226" at="122,0,132,0">
         <var name="node" id="3443113933323653230" />
       </scope>
-      <scope id="612015978684709587" at="225,38,235,40">
+      <scope id="612015978684709587" at="224,38,234,40">
         <var name="watchableNode" id="612015978684709597" />
       </scope>
       <scope id="6803133305480959080" at="140,0,151,0" />
-      <scope id="7406771907178599392" at="275,103,286,15" />
-      <scope id="7406771907178599383" at="275,0,288,0">
+      <scope id="7406771907178599392" at="274,103,285,15" />
+      <scope id="7406771907178599383" at="274,0,287,0">
         <var name="extendedMessage" id="7406771907178599387" />
         <var name="model" id="7704359791231500691" />
         <var name="text" id="7406771907178599384" />
       </scope>
-      <scope id="7406771907178598651" at="220,79,238,7">
+      <scope id="7406771907178598651" at="219,79,237,7">
         <var name="canEvalaute" id="8590356478998757175" />
       </scope>
       <scope id="7704359791231500435" at="153,48,172,16" />
-      <scope id="7406771907178598646" at="219,0,240,0">
+      <scope id="7406771907178598646" at="218,0,239,0">
         <var name="model" id="7704359791231501429" />
         <var name="rootTreeNode" id="7406771907178598649" />
       </scope>
@@ -643,16 +643,16 @@
       </scope>
       <unit id="7704359791231500630" at="187,0,190,0" name="jetbrains.mps.debugger.java.runtime.ui.evaluation.EvaluationTree$EvaluationModelNode" />
       <unit id="7406771907178598564" at="182,0,187,0" name="jetbrains.mps.debugger.java.runtime.ui.evaluation.EvaluationTree$EvaluationState" />
-      <unit id="4120145653580383632" at="325,0,331,0" name="jetbrains.mps.debugger.java.runtime.ui.evaluation.EvaluationTree$InitialTreeNode" />
-      <unit id="7406771907178598591" at="200,0,208,0" name="jetbrains.mps.debugger.java.runtime.ui.evaluation.EvaluationTree$EvaluationInProgressState" />
-      <unit id="6647443673251181321" at="226,42,234,9" name="jetbrains.mps.debugger.java.runtime.ui.evaluation.EvaluationTree$ResultState$1" />
-      <unit id="7406771907178598576" at="190,0,200,0" name="jetbrains.mps.debugger.java.runtime.ui.evaluation.EvaluationTree$InitializedState" />
-      <unit id="7704359791231501369" at="240,0,251,0" name="jetbrains.mps.debugger.java.runtime.ui.evaluation.EvaluationTree$ResultState$MyWatchableNode" />
-      <unit id="7406771907178599555" at="312,0,325,0" name="jetbrains.mps.debugger.java.runtime.ui.evaluation.EvaluationTree$EvaluatingTreeNode" />
-      <unit id="7406771907178598667" at="252,0,271,0" name="jetbrains.mps.debugger.java.runtime.ui.evaluation.EvaluationTree$FailureState" />
-      <unit id="7406771907178599348" at="271,0,312,0" name="jetbrains.mps.debugger.java.runtime.ui.evaluation.EvaluationTree$ErrorTreeNode" />
-      <unit id="7406771907178598610" at="208,0,252,0" name="jetbrains.mps.debugger.java.runtime.ui.evaluation.EvaluationTree$ResultState" />
-      <unit id="7406771907178597948" at="41,0,332,0" name="jetbrains.mps.debugger.java.runtime.ui.evaluation.EvaluationTree" />
+      <unit id="4120145653580383632" at="324,0,330,0" name="jetbrains.mps.debugger.java.runtime.ui.evaluation.EvaluationTree$InitialTreeNode" />
+      <unit id="7406771907178598591" at="199,0,207,0" name="jetbrains.mps.debugger.java.runtime.ui.evaluation.EvaluationTree$EvaluationInProgressState" />
+      <unit id="6647443673251181321" at="225,42,233,9" name="jetbrains.mps.debugger.java.runtime.ui.evaluation.EvaluationTree$ResultState$1" />
+      <unit id="7406771907178598576" at="190,0,199,0" name="jetbrains.mps.debugger.java.runtime.ui.evaluation.EvaluationTree$InitializedState" />
+      <unit id="7704359791231501369" at="239,0,250,0" name="jetbrains.mps.debugger.java.runtime.ui.evaluation.EvaluationTree$ResultState$MyWatchableNode" />
+      <unit id="7406771907178599555" at="311,0,324,0" name="jetbrains.mps.debugger.java.runtime.ui.evaluation.EvaluationTree$EvaluatingTreeNode" />
+      <unit id="7406771907178598667" at="251,0,270,0" name="jetbrains.mps.debugger.java.runtime.ui.evaluation.EvaluationTree$FailureState" />
+      <unit id="7406771907178599348" at="270,0,311,0" name="jetbrains.mps.debugger.java.runtime.ui.evaluation.EvaluationTree$ErrorTreeNode" />
+      <unit id="7406771907178598610" at="207,0,251,0" name="jetbrains.mps.debugger.java.runtime.ui.evaluation.EvaluationTree$ResultState" />
+      <unit id="7406771907178597948" at="41,0,331,0" name="jetbrains.mps.debugger.java.runtime.ui.evaluation.EvaluationTree" />
     </file>
   </root>
   <root nodeRef="r:b4456070-b665-4c03-b3d3-15a7362ba923(jetbrains.mps.debugger.java.runtime.ui.evaluation)/7406771907178600108">

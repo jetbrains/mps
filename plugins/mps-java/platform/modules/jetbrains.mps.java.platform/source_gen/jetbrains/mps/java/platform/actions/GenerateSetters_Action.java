@@ -113,7 +113,6 @@ public class GenerateSetters_Action extends BaseAction {
           final SNode field = SNodeOperations.cast(fieldPtr.resolve(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration"));
           final String setterName = GenerateGettersAndSettersUtil.getFieldSetterName(field, ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")));
           // Method creation begins 
-
           String parameterName = GenerateGettersAndSettersUtil.getParameterNameForField(field, ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")));
 
           SNode dotExpr = _quotation_createNode_fimngf_a0f0a0a41a0();

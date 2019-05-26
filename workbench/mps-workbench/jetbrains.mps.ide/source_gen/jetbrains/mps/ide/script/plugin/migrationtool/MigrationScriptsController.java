@@ -29,7 +29,6 @@ public class MigrationScriptsController {
 
   public Collection<SearchResult<SNode>> computeAliveIncludedResults(final List<SNodeReference> includedResultNodes, SRepository repo) {
     // apparently, requires model read. why does it demand EDT, is unclear 
-
     ThreadUtils.assertEDT();
     final List<SearchResult<SNode>> aliveIncludedResults = new ArrayList<SearchResult<SNode>>();
     final Set aliveIncludedNodes = new HashSet<SNode>();
@@ -51,7 +50,6 @@ public class MigrationScriptsController {
 
   public void process(final ProgressMonitor pmonitor, final Collection<SearchResult<SNode>> searchResults) {
     // requires model write 
-
     pmonitor.start("", searchResults.size());
     for (SearchResult<SNode> seachResult : searchResults) {
       pmonitor.advance(1);

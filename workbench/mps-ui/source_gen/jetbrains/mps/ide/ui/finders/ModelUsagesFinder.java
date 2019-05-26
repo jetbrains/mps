@@ -46,7 +46,6 @@ public class ModelUsagesFinder extends BaseFinder {
 
   /*package*/ void doFind(SModelReference what, Collection<SModel> where, @NotNull IFinder.FindCallback callback, ProgressMonitor monitor) {
     // arguments != null 
-
     monitor.start("Looking up references to a model", where.size());
     try {
       for (SModel modelDescriptor : where) {

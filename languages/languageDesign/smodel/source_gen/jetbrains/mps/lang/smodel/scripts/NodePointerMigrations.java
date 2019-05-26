@@ -62,7 +62,6 @@ public final class NodePointerMigrations {
   public static SNode extractNodeFromQuotation(SNode quotation, SNode linkDeclaration) {
     SReferenceLink link = MetaAdapterByDeclaration.getReferenceLink(linkDeclaration);
     // FIXME Error suppressed. Fix typing rules for `reference< >` operation. See MPS-27616 
-
     SReference reference = SNodeOperations.getReference(SLinkOperations.getTarget(quotation, MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, 0x1168c10465aL, "quotedNode")), link);
     if (reference == null) {
       return null;

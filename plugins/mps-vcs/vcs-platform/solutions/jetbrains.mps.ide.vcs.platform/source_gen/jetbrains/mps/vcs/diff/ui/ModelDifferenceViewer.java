@@ -73,7 +73,6 @@ public class ModelDifferenceViewer implements DataProvider {
     myNewRegistered = SNodeOperations.isRegistered(newModel);
     myEditable = newModel instanceof EditableSModel && myNewRegistered;
     // register models in repository and create changeset 
-
     project.getRepository().getModelAccess().runWriteAction(new Runnable() {
       public void run() {
         if (!(myNewRegistered)) {
@@ -98,7 +97,6 @@ public class ModelDifferenceViewer implements DataProvider {
     });
 
     // create panels 
-
     myPanel.setSplitterProportionKey(getClass().getName() + "ModelTreeSplitter");
 
     myPanel.setSecondComponent(myNoRootPanel);
@@ -107,7 +105,6 @@ public class ModelDifferenceViewer implements DataProvider {
       myPanel.setFirstComponent(ScrollPaneFactory.createScrollPane(myTree));
 
       // actions connected to model tree 
-
       myGoToNeighbourRootActions = new ModelDifferenceViewer.MyGoToNeighbourRootActions();
       myGoToNeighbourRootActions.previous().registerCustomShortcutSet(GoToNeighbourRootActions.PREV_ROOT_SHORTCUT, myComponent);
       myGoToNeighbourRootActions.next().registerCustomShortcutSet(GoToNeighbourRootActions.NEXT_ROOT_SHORTCUT, myComponent);

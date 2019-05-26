@@ -95,7 +95,6 @@ public class Util_Test extends TestCase {
       Assert.fail();
     } catch (NoSuchElementException e) {
       // expected exception 
-
     }
   }
 }

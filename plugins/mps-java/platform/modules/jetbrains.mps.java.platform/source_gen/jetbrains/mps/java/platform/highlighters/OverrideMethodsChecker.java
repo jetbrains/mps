@@ -81,14 +81,11 @@ public class OverrideMethodsChecker extends BaseEventProcessingEditorChecker {
     Set<EditorMessage> result = SetSequence.fromSet(new HashSet<EditorMessage>());
     for (SNode containedClassifier : Sequence.fromIterable(classifiers)) {
       // each classifier here is instance of ClassConcept or Interface 
-
       try {
         collectOverriddenMethods(containedClassifier, result);
       } catch (IndexNotReadyException indexNotReady) {
         // Catching IndexNotReadyException for now. In general suggestion of IDEA developers was to start using 
-
         // DaemonCodeAnalyzer for background highlighting processes execution 
-
         myIndexWasNotReady = true;
       }
       collectOverridingMethods(containedClassifier, result);
@@ -223,7 +220,6 @@ public class OverrideMethodsChecker extends BaseEventProcessingEditorChecker {
       return true;
     }
     // TODO rewrite without read action, see doc of EditorChecker#processEvents 
-
     return new ModelAccessHelper(myProject.getRepository()).runReadAction(new Computable<Boolean>() {
       public Boolean compute() {
         for (SModelEvent event : ListSequence.fromList(events)) {
@@ -236,22 +232,18 @@ public class OverrideMethodsChecker extends BaseEventProcessingEditorChecker {
             SNode parent = childEvent.getParent();
             String childRole = childEvent.getChildRole();
             // Class or Interface was added/removed 
-
             if (SNodeOperations.isInstanceOf(child, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface")) || SNodeOperations.isInstanceOf(child, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept")) || SNodeOperations.isInstanceOf(child, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass")) || SNodeOperations.isInstanceOf(child, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1133e3b449aL, "jetbrains.mps.baseLanguage.structure.AnonymousClassCreator"))) {
               return true;
             }
             // method was added/removed from containing Classifier 
-
             if (SNodeOperations.isInstanceOf(child, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration")) && SNodeOperations.isInstanceOf(parent, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"))) {
               return true;
             }
             // one of extendedInterface/superclass/implementedInterface child elements was added/removed 
-
             if (SNodeOperations.isInstanceOf(child, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType")) && (MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface").getName().equals(childRole) || MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass").getName().equals(childRole) || MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface").getName().equals(childRole))) {
               return true;
             }
             // parameter was added/removed 
-
             if (SNodeOperations.isInstanceOf(child, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration")) && MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter").getName().equals(childRole)) {
               return true;
             }

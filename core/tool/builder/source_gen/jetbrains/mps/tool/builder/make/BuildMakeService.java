@@ -76,20 +76,14 @@ public class BuildMakeService extends AbstractMakeService implements IMakeServic
 
   private IScriptController completeController(MakeSession msess, final IScriptController ctl) {
     // Assume if client supplied IScriptController, he knows what he's doing and bears full responsibility 
-
     // to supply correct IConfigMonitor and IJobMonitor instances 
-
     if (ctl != null) {
       return ctl;
     }
     // Although there's knowledge about default make targets (see #defaultMakeScript(), below), 
-
     // I don't want IMakeService to configure any target here explicitly. It's up to caller to configure 
-
     // actual targets (yes, they are not necessarily the same as in default script) with desired values, not 
-
     // service's to guess defaults. Id rather fail and see which targets were not configured. 
-
     return new IScriptController.Stub2(msess);
   }
 

@@ -41,13 +41,9 @@ public final class JUnitTests_Producer {
   public static List<RuntimeConfigurationProducer> getProducers(ConfigurationType configurationType) {
     ConfigurationFactory configurationFactory = null;
     // assume the one with id matching configuration kind is the primary one. 
-
     // In fact, though technically we support more that one factory per type (aka 'foreign' factories), all factories 
-
     // bear same id (due to overlook of template author, I believe), and we effectively take the fist registerd one, which I don't 
-
     // mind as 'foreign' factories do not work anyway. 
-
     for (ConfigurationFactory f : configurationType.getConfigurationFactories()) {
       if (f.getId().equals(configurationType.getId())) {
         configurationFactory = f;
@@ -205,13 +201,11 @@ public final class JUnitTests_Producer {
     protected JUnitTests_Configuration doCreateConfiguration(final SNode source) {
       setSourceElement(MPSPsiElement.createFor(source, getMpsProject()));
       // this is a producer for root; below you can find the producer for a test method 
-
       SNode testableMethod = TestNodeWrapperFactory.findWrappableAncestor(source, false);
       if (testableMethod != null) {
         ITestNodeWrapper testWrapper = TestNodeWrapperFactory.tryToWrap(testableMethod);
         if (testWrapper != null && !(testWrapper.isTestCase())) {
           // no need to run the whole test case if we are inside a test method 
-
           return null;
         }
       }
@@ -261,7 +255,6 @@ public final class JUnitTests_Producer {
         }
         final SNode sourceNode = (SNode) mpsItem;
         // no test for testableMethod since the run type are different for these two producers 
-
         SNode testableRoot = mah.runReadAction(new Computable<SNode>() {
           public SNode compute() {
             return TestNodeWrapperFactory.findWrappableAncestor(sourceNode, true);
@@ -295,7 +288,6 @@ public final class JUnitTests_Producer {
     protected JUnitTests_Configuration doCreateConfiguration(final SNode source) {
       setSourceElement(MPSPsiElement.createFor(source, getMpsProject()));
       // this is a producer for test method 
-
       SNode method = TestNodeWrapperFactory.findWrappableAncestor(source, false);
       if (method == null) {
         return null;

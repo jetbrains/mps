@@ -59,7 +59,6 @@ public class NewVarMacro extends MigrationScriptBase {
 
   private static void replaceWithNew(SModel md, final SNode vm) {
     //  identical to ReplaceWithNewVarMacro intention 
-
     List<SNode> taVarRef = ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getParent(vm), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x3d6f2506d88aa028L, "jetbrains.mps.lang.generator.structure.TemplateArgumentVariableRefExpression"), false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SLinkOperations.getTarget(it, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x3d6f2506d88aa028L, 0x25c655ce6e80fddaL, "varmacro")) == vm;

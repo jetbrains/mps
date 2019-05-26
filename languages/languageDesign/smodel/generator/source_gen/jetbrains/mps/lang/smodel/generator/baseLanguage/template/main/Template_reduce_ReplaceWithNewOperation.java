@@ -52,7 +52,6 @@ public class Template_reduce_ReplaceWithNewOperation extends TemplateDeclaration
           tnode1.addChild(myAggregationLinks[0], child3);
         }
         // TODO validate child 
-
       }
       {
         final SNode tnode4 = environment.createOutputNode(myConcepts[1]);
@@ -67,7 +66,6 @@ public class Template_reduce_ReplaceWithNewOperation extends TemplateDeclaration
         }
         tnode1.addChild(myAggregationLinks[0], tnode4);
         // TODO validate child 
-
       }
     } finally {
     }

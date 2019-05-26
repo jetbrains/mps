@@ -31,7 +31,6 @@ public class ASMClass {
       reader.accept(myNode, ((needParamNames ? 0 : ClassReader.SKIP_CODE | ClassReader.SKIP_DEBUG)) | ClassReader.SKIP_FRAMES);
     } catch (RuntimeException e) {
       // see MPS-17590 
-
       return;
     }
     if (myNode.signature != null) {

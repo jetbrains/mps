@@ -66,10 +66,8 @@ public class SetNodePackageDialog extends DialogWrapper {
   @Override
   public JComponent getPreferredFocusedComponent() {
     // TODO: remove this condition after JRE-1071 is fixed 
-
     if (SystemInfo.isMac && SystemInfo.isJetBrainsJvm) {
       // For some reason MacOS & JB JDK require direct point to editor of ComboBox to avoid problems like MPS-28806 
-
       Component editorComponent = myCbPackage.getEditor().getEditorComponent();
       return (editorComponent instanceof JComponent ? ((JComponent) editorComponent) : null);
     }

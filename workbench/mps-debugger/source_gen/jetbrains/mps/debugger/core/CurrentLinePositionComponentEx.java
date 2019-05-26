@@ -96,7 +96,6 @@ public abstract class CurrentLinePositionComponentEx<S> {
       final boolean visible = getCurrentSession() == null || getCurrentSession() == debugSession;
       newPainter.setVisible(visible);
       //  we lock here, since we do not want to acquire read lock inside while having mySessionToContextPainterMap 
-
       synchronized (mySessionToContextPainterMap) {
         MapSequence.fromMap(mySessionToContextPainterMap).put(debugSession, newPainter);
         return new Runnable() {

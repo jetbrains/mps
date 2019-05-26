@@ -124,7 +124,6 @@ public final class InstanceMethodDeclaration__BehaviorDescriptor extends BaseBHD
     } else if (SNodeOperations.isInstanceOf(parent, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"))) {
       SNode superclass = SLinkOperations.getTarget(SNodeOperations.cast(parent, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass"));
       // XXX is there a need to access extendedClassifiers of Object? Can't we just use empty set for extendedClassifiers? 
-
       parent = ((superclass == null) ? SNodeOperations.getNode("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object") : SLinkOperations.getTarget(superclass, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier")));
     }
     Set<SNode> extendedClassifiers = ClassifierScopeUtils.getExtendedClassifiers(parent);

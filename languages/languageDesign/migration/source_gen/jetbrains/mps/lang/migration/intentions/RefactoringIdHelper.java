@@ -38,7 +38,6 @@ public class RefactoringIdHelper {
 
   public static void migrate(SRepository repo, SNode node) {
     // todo try to remove duplication here 
-
     SNode movePart = SNodeOperations.getNodeAncestor(node, MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5830221eL, "jetbrains.mps.lang.migration.structure.MoveNodeMigrationPart"), false, false);
     if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c1741b6L, "jetbrains.mps.lang.migration.structure.MoveConcept"))) {
       SNode mc = SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c1741b6L, "jetbrains.mps.lang.migration.structure.MoveConcept"));

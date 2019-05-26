@@ -43,9 +43,7 @@ public final class BuildProjectDependency__BehaviorDescriptor extends BaseBHDesc
   }
   /*package*/ static String location_id6b4RkXS8sT2(@NotNull SNode __thisNode__, DependenciesHelper helper, Object artifactId) {
     // it's unexpected for anyone to call location for this BL_PathElement, 
-
     // as its location makes sense only as a content holder, but doesn't hurt to have this method implemented anyway 
-
     return helper.getContentLocation(__thisNode__);
   }
   /*package*/ static void appendName_id1bWeed$ownT(@NotNull SNode __thisNode__, SNode parent, StringBuilder sb) {

@@ -24,9 +24,7 @@ public class classifierTypeWithSameClassifier_InequationReplacementRule extends 
   }
   public void processInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, final TypeCheckingContext typeCheckingContext, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
     // todo this is a hack helping to avoid type errors when mps code compiled in idea returns back to mps as stubs 
-
     // we definitely need proper solution that allows fully functional clear subtyping for such things 
-
 
     SNode subTypeReplaced = SNodeOperations.copyNode(subtype);
     SLinkOperations.setTarget(subTypeReplaced, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), SLinkOperations.getTarget(supertype, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier")));
@@ -41,9 +39,7 @@ public class classifierTypeWithSameClassifier_InequationReplacementRule extends 
     boolean result_14532009 = true;
     {
       // todo this is a hack helping to avoid type errors when mps code compiled in idea returns back to mps as stubs 
-
       // we definitely need proper solution that allows fully functional clear subtyping for such things 
-
 
       SNode subTypeReplaced = SNodeOperations.copyNode(subtype);
       SLinkOperations.setTarget(subTypeReplaced, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), SLinkOperations.getTarget(supertype, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier")));

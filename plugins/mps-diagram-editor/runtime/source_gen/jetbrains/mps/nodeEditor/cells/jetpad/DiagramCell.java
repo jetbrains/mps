@@ -317,11 +317,8 @@ public abstract class DiagramCell extends AbstractJetpadCell implements EditorCe
   }
   public SubstituteInfoPartExt createNewDiagramConnectorActions(final SNode container, final SAbstractConcept childNodeConcept, final SContainmentLink containingLink, final _FunctionTypes._return_P4_E0<? extends Boolean, ? super SNode, ? super Object, ? super SNode, ? super Object> canCreateConnector, final _FunctionTypes._void_P5_E0<? super SNode, ? super SNode, ? super Object, ? super SNode, ? super Object> setConnectorCallback) {
     // TMP solution: manually creating instance of connection instead of using 
-
     // ModelActions.createChildNodeSubstituteActions() because of mbeddr reqirements: 
-
     // hiding text-specific connection substitute actions from the diagram 
-
     return new SubstituteInfoPartExt() {
       public List<SubstituteAction> createActions(CellContext cellContext, final EditorContext editorContext) {
         AbstractNodeSubstituteAction action = new AbstractNodeSubstituteAction(childNodeConcept.getDeclarationNode(), childNodeConcept, container) {
@@ -372,7 +369,6 @@ public abstract class DiagramCell extends AbstractJetpadCell implements EditorCe
   }
   private java.awt.event.KeyEvent getAWTKeyEvent(KeyEvent jetPadKeyEvent, boolean isTyped) {
     // TODO: better integration with MPS substitute editor is required here 
-
     int id = (isTyped ? java.awt.event.KeyEvent.KEY_TYPED : java.awt.event.KeyEvent.KEY_PRESSED);
     long when = System.currentTimeMillis();
     int modifiers = 0;

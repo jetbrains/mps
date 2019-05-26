@@ -70,7 +70,6 @@ public class SortedSet_Test extends Util_Test {
       Assert.fail();
     } catch (UnsupportedOperationException e) {
       // expected exception 
-
     }
     SortedSetSequence.fromSet(ts).removeElement("a");
     Assert.assertEquals("c d", IterableUtils.join(SetSequence.fromSet(uts), " "));
@@ -79,7 +78,6 @@ public class SortedSet_Test extends Util_Test {
       Assert.fail();
     } catch (UnsupportedOperationException e) {
       // expected exception 
-
     }
   }
 }

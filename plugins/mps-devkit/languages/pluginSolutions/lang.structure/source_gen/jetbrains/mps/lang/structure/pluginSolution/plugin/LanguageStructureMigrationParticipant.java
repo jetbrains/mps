@@ -185,7 +185,6 @@ public class LanguageStructureMigrationParticipant<I, F> extends RefactoringPart
 
     // todo: write guard migration with 'execute after' 
 
-
     RefactoringParticipant.Change<Tuples._2<I, SNodeReference>, Tuples._2<F, SNodeReference>> change = new MoveNodeRefactoringParticipant.ChangeBase<Tuples._2<I, SNodeReference>, Tuples._2<F, SNodeReference>>() {
       public SearchResults getSearchResults() {
         return results;

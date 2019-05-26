@@ -56,7 +56,6 @@ public class Template_reduce_GetDescendants_noConceptsList extends TemplateDecla
           tnode1.addChild(myAggregationLinks[0], child3);
         }
         // TODO validate child 
-
       }
       {
         Collection<SNode> tlist4 = null;
@@ -65,7 +64,6 @@ public class Template_reduce_GetDescendants_noConceptsList extends TemplateDecla
           tnode1.addChild(myAggregationLinks[0], child5);
         }
         // TODO validate child 
-
       }
       {
         final SNode tnode6 = environment.createOutputNode(myConcepts[1]);
@@ -75,7 +73,6 @@ public class Template_reduce_GetDescendants_noConceptsList extends TemplateDecla
         }
         tnode1.addChild(myAggregationLinks[0], tnode6);
         // TODO validate child 
-
       }
       {
         final SNode tnode7 = environment.createOutputNode(myConcepts[2]);
@@ -93,7 +90,6 @@ public class Template_reduce_GetDescendants_noConceptsList extends TemplateDecla
                 }
                 tnode8.addChild(myAggregationLinks[1], tnode9);
                 // TODO validate child 
-
               }
               {
                 final List<SNode> tlist10 = new ArrayList<SNode>();
@@ -118,19 +114,16 @@ public class Template_reduce_GetDescendants_noConceptsList extends TemplateDecla
                   tnode8.addChild(myAggregationLinks[2], child12);
                 }
                 // TODO validate child 
-
               }
             } finally {
             }
             tnode7.addChild(myAggregationLinks[3], tnode8);
             // TODO validate child 
-
           }
         } finally {
         }
         tnode1.addChild(myAggregationLinks[0], tnode7);
         // TODO validate child 
-
       }
     } finally {
     }

@@ -72,7 +72,6 @@ public class Switch_switch_EnumOperation extends TemplateSwitchBase implements T
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child3);
           }
           // TODO validate child 
-
         }
         {
           final SNode tnode4 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x3b418722717710b4L, "LongLiteral"));
@@ -82,7 +81,6 @@ public class Switch_switch_EnumOperation extends TemplateSwitchBase implements T
           }
           tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), tnode4);
           // TODO validate child 
-
         }
         {
           Collection<SNode> tlist5 = null;
@@ -104,7 +102,6 @@ public class Switch_switch_EnumOperation extends TemplateSwitchBase implements T
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child8);
           }
           // TODO validate child 
-
         }
       } finally {
       }
@@ -135,7 +132,6 @@ public class Switch_switch_EnumOperation extends TemplateSwitchBase implements T
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child3);
           }
           // TODO validate child 
-
         }
       } finally {
       }
@@ -162,7 +158,6 @@ public class Switch_switch_EnumOperation extends TemplateSwitchBase implements T
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child3);
           }
           // TODO validate child 
-
         }
         {
           Collection<SNode> tlist4 = null;
@@ -176,7 +171,6 @@ public class Switch_switch_EnumOperation extends TemplateSwitchBase implements T
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child5);
           }
           // TODO validate child 
-
         }
       } finally {
       }
@@ -209,7 +203,6 @@ public class Switch_switch_EnumOperation extends TemplateSwitchBase implements T
                 }
                 tnode3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression"), tnode4);
                 // TODO validate child 
-
               }
               {
                 Collection<SNode> tlist5 = null;
@@ -219,7 +212,6 @@ public class Switch_switch_EnumOperation extends TemplateSwitchBase implements T
                   tnode3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression"), child6);
                 }
                 // TODO validate child 
-
               }
             } finally {
             }
@@ -234,7 +226,6 @@ public class Switch_switch_EnumOperation extends TemplateSwitchBase implements T
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child8);
           }
           // TODO validate child 
-
         }
         {
           Collection<SNode> tlist9 = null;
@@ -248,7 +239,6 @@ public class Switch_switch_EnumOperation extends TemplateSwitchBase implements T
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child10);
           }
           // TODO validate child 
-
         }
       } finally {
       }

@@ -32,7 +32,6 @@ public class AddLanguageImport_Action extends BaseAction {
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
     // 'editable' flag for a context parameter implies 'required', hence the check 
-
     return (((SModel) MapSequence.fromMap(_params).get("model")) instanceof EditableSModel && !(((SModel) MapSequence.fromMap(_params).get("model")).isReadOnly())) || (((SModel) MapSequence.fromMap(_params).get("model")) == null && ((SModule) MapSequence.fromMap(_params).get("module")) instanceof DevKit);
   }
   @Override

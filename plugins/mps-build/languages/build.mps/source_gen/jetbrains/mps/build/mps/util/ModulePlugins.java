@@ -62,7 +62,6 @@ public class ModulePlugins {
 
   public Iterable<SNode> getDependency() {
     // XXX here, usage suggests return value may list elements from transient (non-original) model 
-
     return myPluginDependencies;
   }
 
