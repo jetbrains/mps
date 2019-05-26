@@ -72,7 +72,7 @@ public abstract class BaseMpsProducer<T> extends RuntimeConfigurationProducer {
    */
   @Override
   @Nullable
-  protected RunnerAndConfigurationSettings findExistingByElement(Location location, @NotNull List<RunnerAndConfigurationSettings> existingConfigurations, ConfigurationContext context) {
+  protected RunnerAndConfigurationSettings findExistingByElement(Location location, @NotNull List<? extends RunnerAndConfigurationSettings> existingConfigurations, ConfigurationContext context) {
     RunnerAndConfigurationSettings given = getConfiguration();
     for (RunnerAndConfigurationSettings existing : existingConfigurations) {
       if (Objects.equals(existing.getType(), given.getType())) {
