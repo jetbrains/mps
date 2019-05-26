@@ -36,10 +36,6 @@
       <add-to-group group-id="MainMenu" anchor="after" relative-to-action="CodeMenu"/>
     </group>
 
-    <group id="BuildMenu" popup="true">
-      <add-to-group group-id="MainMenu" anchor="before" relative-to-action="RunMenu"/>
-    </group>
-
     <!-- Help -->
     <action id="WhatsNewAction" class="com.intellij.ide.actions.WhatsNewAction">
       <add-to-group group-id="HelpMenu" anchor="after" relative-to-action="ShowTips"/>

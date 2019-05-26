@@ -41,7 +41,14 @@
       <group id="GenerateFromTestCreatorsGroup" class="com.intellij.testIntegration.GenerateFromTestCreatorsGroup"/>
     </group>
 
-    <action id="ShowIntentionActions" class="com.intellij.codeInsight.intention.actions.ShowIntentionActionsAction"/>
+    <action id="ShowIntentionActions" class="com.intellij.codeInsight.intention.actions.ShowIntentionActionsAction"
+            icon="AllIcons.Actions.IntentionBulbGrey"/>
+
+    <group id="ShowIntentionsGroup" compact="true">
+      <reference ref="ShowIntentionActions"/>
+      <separator/>
+      <add-to-group group-id="EditorPopupMenu" anchor="first"/>
+    </group>
 
     <action id="TogglePopupHints" class="com.intellij.codeInsight.daemon.impl.TogglePopupHintsAction"/>
     <action id="FindModal" class="com.intellij.openapi.editor.actions.FindAction" icon="AllIcons.Actions.Find"/>
@@ -117,6 +124,10 @@
       <add-to-group group-id="EditorPopupMenu" anchor="after" relative-to-action="$Copy"/>
     </action>
 
+    <action id="CopyTBXReference" class="com.intellij.ide.actions.CopyTBXReferenceAction" >
+      <add-to-group group-id="CutCopyPasteGroup" anchor="after" relative-to-action="CopyReference"/>
+    </action>
+
     <action id="CopyAsRichText" class="com.intellij.openapi.editor.richcopy.CopyAsRichTextAction">
       <add-to-group group-id="CutCopyPasteGroup" anchor="after" relative-to-action="CopyPaths"/>
       <add-to-group group-id="EditorPopupMenu" anchor="after" relative-to-action="$Copy"/>
@@ -152,6 +163,7 @@
       <action id="SelectIn" class="com.intellij.ide.actions.SelectInAction"/>
       <!--
       <action id="ShowNavBar" class="com.intellij.ide.navigationToolbar.ShowNavBarAction"/>
+      <action id="GotoDeclarationOnly" class="com.intellij.codeInsight.navigation.actions.GotoDeclarationOnlyAction"/>
       <action id="GotoDeclaration" class="com.intellij.codeInsight.navigation.actions.GotoDeclarationAction"/>
       -->
       <!-- MPS Patch TODO remove after fix in OpenInEditorWithMouseAction constructor -->
@@ -412,6 +424,10 @@
       <add-to-group group-id="MainMenu" anchor="after" relative-to-action="CodeMenu"/>
     </group>
 
+    <group id="BuildMenu" popup="true" class="com.intellij.ide.actions.NonEmptyActionGroup">
+      <add-to-group group-id="MainMenu" anchor="before" relative-to-action="RunMenu"/>
+    </group>
+
 
     <!-- Tools -->
     <!--
@@ -440,7 +456,7 @@
       <action id="NewFile" class="com.intellij.ide.actions.CreateFileAction"/>
       <action id="NewScratchFile" class="com.intellij.ide.scratch.ScratchFileActions$NewFileAction" />
       <action id="NewDir" class="com.intellij.ide.actions.CreateDirectoryOrPackageAction"/>
-      <separator/>
+      <group class="com.intellij.ide.fileTemplates.actions.FileTemplateSeparator"/>
       <action id="NewFromTemplate" class="com.intellij.ide.fileTemplates.actions.CreateFromTemplateGroup"/>
     -->
     </group>
@@ -450,6 +466,9 @@
 
     <group id="RevealGroup">
       <action id="RevealIn" class="com.intellij.ide.actions.RevealFileAction"/>
+      <!--
+      <reference ref="ShowFilePath"/>
+      -->
 
       <add-to-group group-id="RunContextPopupGroup" anchor="last"/>
     </group>
@@ -549,6 +568,8 @@
       <separator/>
       -->
       <reference ref="CutCopyPasteGroup"/>
+      <action id="ProjectViewEditSource" use-shortcut-of="EditSource" class="com.intellij.ide.actions.ProjectViewEditSourceAction"
+        text="Edit Source"/>
       <reference ref="ChangesView.ApplyPatch"/>
       <!--
       <separator/>
@@ -685,7 +706,7 @@
     </group>
 
     <!--
-    <group id="EditorPopupMenu1.FindRefactor">
+    <group id="EditorPopupMenu1.FindRefactor" compact="true">
       <reference ref="FindUsages"/>
       <reference ref="RefactoringMenu"/>
       <separator/>
@@ -749,12 +770,13 @@
       <reference ref="TreeNodeExclusion"/>
       <action id="UsageView.Remove" class="com.intellij.usages.actions.RemoveUsageAction" use-shortcut-of="$Cut"/>
       <separator/>
-      <action id="UsageView.ShowRecentFindUsages" class="com.intellij.find.impl.ShowRecentFindUsagesAction" icon="AllIcons.Actions.Back"
-              use-shortcut-of="RecentFiles"/>
+      <action id="UsageView.ShowRecentFindUsages" class="com.intellij.find.impl.ShowRecentFindUsagesAction" use-shortcut-of="ShowSearchHistory"/>
       <separator/>
       <reference ref="AddToFavorites"/>
       <separator/>
       <reference ref="RunContextGroup"/>
+      <separator/>
+      <reference ref="ExportToTextFile"/>
     </group>
 
     <action id="NewElementSamePlace" class="com.intellij.ide.actions.NewElementSamePlaceAction"/>
@@ -999,9 +1021,9 @@
     -->
 
     <group id="RunnerLayoutActions">
-      <group id="Runner.Layout">
         <action id="Runner.RestoreLayout" class="com.intellij.execution.ui.layout.actions.RestoreLayoutAction"
                 icon="AllIcons.Debugger.RestoreLayout"/>
+      <group id="Runner.Layout">
       </group>
       <group id="Runner.View.Close.Group" popup="false">
         <action id="Runner.CloseView" class="com.intellij.execution.ui.layout.actions.CloseViewAction" icon="AllIcons.Actions.Close"/>
@@ -1239,15 +1261,21 @@
       <action id="RunDashboard.UngroupConfigurations" class="com.intellij.execution.dashboard.actions.UngroupConfigurationsActions"
               text="Ungroup Configurations" icon="AllIcons.General.Remove"
               use-shortcut-of="$Delete"/>
+      <separator/>
     </group>
 
-    <group id="ServiceViewTreeToolbar"/>
+    <group id="ServiceViewTreeToolbar">
+      <action id="ExtractServiceAction" class="com.intellij.execution.services.ExtractServiceAction"
+              text="Extract" icon="AllIcons.Actions.Forward"/>
+      <group id="ServiceViewTreeSettings" popup="true" text="Settings" icon="AllIcons.General.Settings"
+             class="com.intellij.ide.actions.NonEmptyActionGroup"/>
+    </group>
     <group id="ServiceViewNodeToolbar">
-      <group class="com.intellij.execution.services.ServiceView$ItemToolbarActionGroup"/>
+      <group class="com.intellij.execution.services.ServiceViewActionProvider$ItemToolbarActionGroup"/>
       <separator/>
     </group>
     <group id="ServiceViewNodePopup">
-      <group class="com.intellij.execution.services.ServiceView$ItemPopupActionGroup"/>
+      <group class="com.intellij.execution.services.ServiceViewActionProvider$ItemPopupActionGroup"/>
       <separator/>
     </group>
 
@@ -1294,12 +1322,16 @@
           <separator text="type.flexible"/>
           -->
           <!-- MPS Patch: there is no similar MPS action for now -->
-          <!--<reference ref="ShowUsages"/>-->
+          <!--
+          <reference ref="ShowUsages"/>
+          -->
         </group>
         <group id="TouchBarDefault_cmd.alt" text="Default with Alt+Cmd key">
           <separator text="type.flexible"/>
           <!-- MPS Patch: use our find usages action -->
-          <!--<reference ref="FindUsages"/>-->
+          <!--
+          <reference ref="FindUsages"/>
+          -->
         </group>
         <group id="TouchBarDefault_shift" text="Default with Shift key">
           <!--Use Shift to show Refactor actions/-->
@@ -1323,7 +1355,9 @@
         -->
         <reference ref="Stop"/>
         <separator text="type.small"/>
-        <!--<reference ref="XDebugger.MuteBreakpoints"/>-->
+        <!--
+        <reference ref="XDebugger.MuteBreakpoints"/>
+        -->
         <separator text="type.flexible"/>
         <group id="TouchBarDebug.StepButtons" compact="true" text="Debugger Step Actions">
           <!--
@@ -1334,7 +1368,9 @@
         </group>
         <separator text="type.small"/>
         <group id="TouchBarDebug_alt" text="Debugger with Alt key">
-          <!--<reference ref="ViewBreakpoints"/>-->
+          <!--
+          <reference ref="ViewBreakpoints"/>
+          -->
           <separator text="type.flexible"/>
           <group id="TouchBarDebug.ForceStepButtons" compact="true" text="Debugger ForceStep Actions">
             <!-- There is no such actions in MPS -->
@@ -1358,23 +1394,28 @@
       <add-to-group group-id="Internal.Performance" anchor="last"/>
     </action>
 
+    <action id="CompletionQualityStats" text="Completion Quality Statistics" class="com.intellij.internal.CompletionQualityStatsAction" internal="true">
+      <add-to-group group-id="Internal" anchor="last"/>
+    </action>
+
     <action id="ShowControlFlowAction" class="com.intellij.internal.cfgView.ShowControlFlowAction"
             text="Show control flow" internal="true">
       <add-to-group group-id="Internal" anchor="last"/>
     </action>
-
+    <group id="TodoMainGroup" text="TODO">
+      <add-to-group group-id="Other.KeymapGroup"/>
     <group id="TodoViewGroupByGroup" class="com.intellij.ide.todo.TodoPanel$GroupByActionGroup">
-      <separator text="Group by"/>
+        <separator text="Group By"/>
       <action class="com.intellij.ide.todo.TodoPanel$MyShowModulesAction" id="TodoViewGroupByShowModules">
-        <keyboard-shortcut first-keystroke="control M" keymap="$default" />
+          <keyboard-shortcut first-keystroke="control M" keymap="$default"/>
       </action>
 
       <action class="com.intellij.ide.todo.TodoPanel$MyShowPackagesAction" id="TodoViewGroupByShowPackages">
-        <keyboard-shortcut first-keystroke="control P" keymap="$default" />
+          <keyboard-shortcut first-keystroke="control P" keymap="$default"/>
       </action>
 
       <action class="com.intellij.ide.todo.TodoPanel$MyFlattenPackagesAction" id="TodoViewGroupByFlattenPackage">
-        <keyboard-shortcut first-keystroke="control F" keymap="$default" />
+          <keyboard-shortcut first-keystroke="control F" keymap="$default"/>
       </action>
 
     </group>
