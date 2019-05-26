@@ -16,7 +16,6 @@ import java.util.List;
 import org.jetbrains.mps.openapi.module.SModule;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.openapi.vcs.changes.ui.IgnoreUnversionedDialog;
 
 public class IgnoreModuleInVcs_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -60,6 +59,6 @@ public class IgnoreModuleInVcs_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     List<VirtualFile> unversionedFiles = VcsActionsUtil.getUnversionedFilesForModules(event.getData(CommonDataKeys.PROJECT), event.getData(MPSCommonDataKeys.MODULES));
-    IgnoreUnversionedDialog.ignoreSelectedFiles(event.getData(CommonDataKeys.PROJECT), unversionedFiles);
+//    IgnoreUnversionedDialog.ignoreSelectedFiles(event.getData(CommonDataKeys.PROJECT), unversionedFiles);
   }
 }
