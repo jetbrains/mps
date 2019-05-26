@@ -38,8 +38,8 @@ public class SingleLineComment_TextGen extends TextGenDescriptorBase {
             tgs.append("<node>");
           }
         }
-        tgs.append("\n");
         if ((SNodeOperations.getNextSibling(line) != null)) {
+          tgs.append("\n");
           tgs.indent();
           tgs.append("// ");
         }
