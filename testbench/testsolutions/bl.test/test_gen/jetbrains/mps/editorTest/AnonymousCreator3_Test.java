@@ -37,6 +37,7 @@ public class AnonymousCreator3_Test extends BaseTransformationTest {
       initEditorComponent("4466519855950263105", "4466519855950263135");
       typeString("CCC");
       invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
+      pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " DOWN"));
       pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " ENTER"));
     }
   }

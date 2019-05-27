@@ -74134,6 +74134,11 @@
           <ref role="1iFR8X" to="ekwn:2XByp9s_j7f" resolve="Complete" />
         </node>
       </node>
+      <node concept="yd1bK" id="2e9i6X9aG1A" role="3cqZAp">
+        <node concept="pLAjd" id="2e9i6X9aG1B" role="yd6KS">
+          <property role="pLAjf" value="VK_DOWN" />
+        </node>
+      </node>
       <node concept="yd1bK" id="6u_Rdby4jCU" role="3cqZAp">
         <node concept="pLAjd" id="6u_Rdby4jCV" role="yd6KS">
           <property role="pLAjf" value="VK_ENTER" />
@@ -74366,6 +74371,11 @@
       <node concept="2HxZob" id="3RWh2jO9fdr" role="3cqZAp">
         <node concept="1iFQzN" id="3RWh2jO9fds" role="3iKnsn">
           <ref role="1iFR8X" to="ekwn:2XByp9s_j7f" resolve="Complete" />
+        </node>
+      </node>
+      <node concept="yd1bK" id="2e9i6X9aGwJ" role="3cqZAp">
+        <node concept="pLAjd" id="2e9i6X9aGwK" role="yd6KS">
+          <property role="pLAjf" value="VK_DOWN" />
         </node>
       </node>
       <node concept="yd1bK" id="3RWh2jO9fdt" role="3cqZAp">

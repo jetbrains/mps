@@ -21274,7 +21274,7 @@
           </node>
         </node>
         <node concept="Xl_RD" id="4qDoJntCHzi" role="2MkJ7o">
-          <property role="Xl_RC" value="can't instantiate abstract class" />
+          <property role="Xl_RC" value="can't instantiate an abstract class" />
         </node>
         <node concept="1YBJjd" id="4qDoJntCHzj" role="2OEOjV">
           <ref role="1YBMHb" node="4qDoJntCFsJ" resolve="classCreator" />
@@ -68887,6 +68887,66 @@
     <node concept="1YaCAy" id="18hJXlRbYPy" role="1YuTPh">
       <property role="TrG5h" value="method" />
       <ref role="1YaFvo" to="tpee:fzclF8t" resolve="InstanceMethodDeclaration" />
+    </node>
+  </node>
+  <node concept="18kY7G" id="2e9i6X94g6L">
+    <property role="TrG5h" value="checkAbstractClassDefaultCreators" />
+    <node concept="3clFbS" id="2e9i6X94g6M" role="18ibNy">
+      <node concept="3cpWs8" id="2e9i6X94g6N" role="3cqZAp">
+        <node concept="3cpWsn" id="2e9i6X94g6O" role="3cpWs9">
+          <property role="TrG5h" value="classifier" />
+          <node concept="3Tqbb2" id="2e9i6X94g6P" role="1tU5fm">
+            <ref role="ehGHo" to="tpee:g7pOWCK" resolve="Classifier" />
+          </node>
+          <node concept="2OqwBi" id="2e9i6X94g6R" role="33vP2m">
+            <node concept="1YBJjd" id="2e9i6X94g6S" role="2Oq$k0">
+              <ref role="1YBMHb" node="2e9i6X94g74" resolve="defaultClassCreator" />
+            </node>
+            <node concept="3TrEf2" id="2e9i6X94i0g" role="2OqNvi">
+              <ref role="3Tt5mk" to="tpee:2s$p4KaM3eA" resolve="classifier" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2Mj0R9" id="2e9i6X94g6X" role="3cqZAp">
+        <node concept="1Wc70l" id="2e9i6X94n5Q" role="2MkoU_">
+          <node concept="2OqwBi" id="2e9i6X94g6Z" role="3uHU7B">
+            <node concept="37vLTw" id="2e9i6X94g70" role="2Oq$k0">
+              <ref role="3cqZAo" node="2e9i6X94g6O" resolve="classifier" />
+            </node>
+            <node concept="1mIQ4w" id="2e9i6X94lAY" role="2OqNvi">
+              <node concept="chp4Y" id="2e9i6X94lIQ" role="cj9EA">
+                <ref role="cht4Q" to="tpee:fz12cDA" resolve="ClassConcept" />
+              </node>
+            </node>
+          </node>
+          <node concept="3fqX7Q" id="2e9i6X94tRR" role="3uHU7w">
+            <node concept="2OqwBi" id="2e9i6X94tRT" role="3fr31v">
+              <node concept="1PxgMI" id="2e9i6X94tRU" role="2Oq$k0">
+                <node concept="chp4Y" id="2e9i6X94tRV" role="3oSUPX">
+                  <ref role="cht4Q" to="tpee:fz12cDA" resolve="ClassConcept" />
+                </node>
+                <node concept="37vLTw" id="2e9i6X94tRW" role="1m5AlR">
+                  <ref role="3cqZAo" node="2e9i6X94g6O" resolve="classifier" />
+                </node>
+              </node>
+              <node concept="3TrcHB" id="2e9i6X94tRX" role="2OqNvi">
+                <ref role="3TsBF5" to="tpee:fDsVARU" resolve="abstractClass" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="Xl_RD" id="2e9i6X94g72" role="2MkJ7o">
+          <property role="Xl_RC" value="can't instantiate an abstract class" />
+        </node>
+        <node concept="1YBJjd" id="2e9i6X94g73" role="2OEOjV">
+          <ref role="1YBMHb" node="2e9i6X94g74" resolve="defaultClassCreator" />
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="2e9i6X94g74" role="1YuTPh">
+      <property role="TrG5h" value="defaultClassCreator" />
+      <ref role="1YaFvo" to="tpee:2s$p4KaM3e_" resolve="DefaultClassCreator" />
     </node>
   </node>
 </model>

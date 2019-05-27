@@ -23,7 +23,7 @@ public class checkAbstractClassCreators_NonTypesystemRule extends AbstractNonTyp
     SNode classConcept = SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(classCreator, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"), false, false);
     if (!(!(SPropertyOperations.getBoolean(classConcept, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass"))))) {
       MessageTarget errorTarget = new NodeMessageTarget();
-      IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(classCreator, "can't instantiate abstract class", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5091709661844003008", null, errorTarget);
+      IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(classCreator, "can't instantiate an abstract class", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5091709661844003008", null, errorTarget);
     }
   }
   public SAbstractConcept getApplicableConcept() {
