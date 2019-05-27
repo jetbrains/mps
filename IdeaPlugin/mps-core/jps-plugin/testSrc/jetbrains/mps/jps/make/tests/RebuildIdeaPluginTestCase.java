@@ -19,6 +19,7 @@ package jetbrains.mps.jps.make.tests;
 import com.intellij.openapi.application.PathManager;
 import com.intellij.testFramework.PlatformTestUtil;
 import com.intellij.testFramework.TestDataPath;
+import com.intellij.util.SystemProperties;
 import jetbrains.mps.jps.make.testEnvironment.SimpleJpsEnvironment;
 import jetbrains.mps.jps.make.testEnvironment.SimpleJpsTestBean;
 import org.jetbrains.annotations.NonNls;
@@ -103,7 +104,7 @@ public class RebuildIdeaPluginTestCase extends MpsJpsBuildTestCaseWithEnvironmen
 
   private void setUpJdk() {
     JpsTypedLibrary<JpsSdk<JpsDummyElement>> jdk = myModel.getGlobal().addSdk(JDK_NAME, JAVA_HOME, "1.8", JpsJavaSdkType.INSTANCE);
-    jdk.addRoot(JpsPathUtil.pathToUrl(PlatformTestUtil.getRtJarPath()), JpsOrderRootType.COMPILED);
+    jdk.addRoot(JpsPathUtil.pathToUrl(SystemProperties.getJavaHome() + "/lib/rt.jar"), JpsOrderRootType.COMPILED);
     if (getToolsJarPath().exists()) {
       jdk.addRoot(JpsPathUtil.pathToUrl(getToolsJarPath().getAbsolutePath()), JpsOrderRootType.COMPILED);
     }
