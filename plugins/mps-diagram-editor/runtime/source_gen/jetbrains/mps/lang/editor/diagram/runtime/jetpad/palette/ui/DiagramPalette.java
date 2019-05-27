@@ -48,7 +48,7 @@ public class DiagramPalette extends JPanel {
   }
   protected void createPalette() {
     GridConstraints gridConstraints = new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_NORTH, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null);
-    ActionToolbar myToolbar = new DiagramPaletteActionToolbar(ActionPlaces.UNKNOWN, myMainActionGroup, false, DataManager.getInstance(), ActionManagerEx.getInstanceEx(), KeymapManagerEx.getInstanceEx());
+    ActionToolbar myToolbar = new DiagramPaletteActionToolbar(ActionPlaces.UNKNOWN, myMainActionGroup, false, KeymapManagerEx.getInstanceEx());
     JComponent actionPanel = myToolbar.getComponent();
     add(actionPanel, gridConstraints);
   }

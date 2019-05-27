@@ -17,8 +17,8 @@ import com.intellij.openapi.actionSystem.DataContext;
 import java.awt.event.MouseEvent;
 
 /*package*/ class DiagramPaletteActionToolbar extends ActionToolbarImpl {
-  public DiagramPaletteActionToolbar(String place, @NotNull ActionGroup actionGroup, boolean horizontal, DataManager dataManager, ActionManagerEx actionManager, KeymapManagerEx keymapManager) {
-    super(place, actionGroup, horizontal, dataManager, actionManager, keymapManager);
+  public DiagramPaletteActionToolbar(String place, @NotNull ActionGroup actionGroup, boolean horizontal, KeymapManagerEx keymapManager) {
+    super(place, actionGroup, horizontal, keymapManager);
   }
 
   @Override
