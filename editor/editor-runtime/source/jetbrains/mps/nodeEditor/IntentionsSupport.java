@@ -44,6 +44,7 @@ import jetbrains.mps.openapi.intentions.IntentionExecutable;
 import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.SModelOperations;
+import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.typesystem.inference.TypeContextManager;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.util.annotation.ToRemove;
@@ -188,11 +189,12 @@ public class IntentionsSupport {
 
           final Kind intentionKind = new ModelAccessHelper(getModelAccess()).runReadAction(() -> {
             // TODO check for ActionsAsIntentions
-            return TypeContextManager.getInstance().runTypeCheckingComputation(myEditor.getTypecheckingContextOwner(), myEditor.getEditedNode(),
-                                                                               context -> IntentionsManager.getInstance()
-                                                                                                           .getHighestAvailableBaseIntentionType(
-                                                                                                               myEditor.getSelectedNode(),
-                                                                                                               myEditor.getEditorContext()));
+            return TypecheckingFacade.getFromContext().runWithSession(myEditor.getTypecheckingSession(), () ->
+               IntentionsManager.getInstance()
+                                .getHighestAvailableBaseIntentionType(
+                                    myEditor.getSelectedNode(),
+                                    myEditor.getEditorContext())
+            );
           });
 
           if (intentionKind == null || interrupted()) {
@@ -391,9 +393,9 @@ public class IntentionsSupport {
       final QueryDescriptor query = new QueryDescriptor();
       query.setEnabledOnly(true);
       final Collection<Pair<IntentionExecutable, SNode>> availableIntentions =
-          TypeContextManager.getInstance().runTypeCheckingComputation(myEditor.getTypecheckingContextOwner(), myEditor.getEditedNode(),
-                                                                      context -> IntentionsManager.getInstance()
-                                                                                                  .getAvailableIntentions(query, node, editorContext));
+        TypecheckingFacade.getFromContext().runWithSession(myEditor.getTypecheckingSession(), () ->
+           IntentionsManager.getInstance()
+                            .getAvailableIntentions(query, node, editorContext));
       result.addAll(availableIntentions);
     }
     return result;

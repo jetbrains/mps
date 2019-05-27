@@ -222,7 +222,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
 
   private String myDefaultPopupGroupId = MPSActions.EDITOR_POPUP_GROUP;
   private InputMethodRequests myInputMethodRequests;
-  private TypecheckingSession myTypecheckingSession;
+  protected TypecheckingSession myTypecheckingSession;
 
   public static void turnOnAliasingIfPossible(Graphics2D g) {
     if (EditorSettings.getInstance().isUseAntialiasing()) {
@@ -2212,6 +2212,10 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   @NotNull
   public ITypeContextOwner getTypecheckingContextOwner() {
     return this;
+  }
+
+  public TypecheckingSession getTypecheckingSession() {
+    return myTypecheckingSession;
   }
 
   /**
