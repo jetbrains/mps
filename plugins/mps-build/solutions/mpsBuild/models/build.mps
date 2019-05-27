@@ -18460,12 +18460,12 @@
       <node concept="3$GE4K" id="57dcfYPx6EW" role="3$GE96">
         <node concept="3_J27D" id="57dcfYPx6EX" role="3$GE4B">
           <node concept="3Mxwew" id="57dcfYPx6F4" role="3MwsjC">
-            <property role="3MwjfP" value="https://www.jetbrains.com/help/mps/2019.1/default-keymap-reference.html" />
+            <property role="3MwjfP" value="https://www.jetbrains.com/help/mps/2019.2/default-keymap-reference.html" />
           </node>
         </node>
         <node concept="3_J27D" id="57dcfYPx6EY" role="3$GE4G">
           <node concept="3Mxwew" id="57dcfYPx6F2" role="3MwsjC">
-            <property role="3MwjfP" value="https://www.jetbrains.com/help/mps/2019.1/default-keymap-reference.html" />
+            <property role="3MwjfP" value="https://www.jetbrains.com/help/mps/2019.2/default-keymap-reference.html" />
           </node>
         </node>
       </node>
