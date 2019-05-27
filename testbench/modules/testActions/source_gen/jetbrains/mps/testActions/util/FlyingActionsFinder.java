@@ -35,7 +35,7 @@ public class FlyingActionsFinder {
     if (descriptor == null) {
       return ideaCoreActions;
     }
-    for (Element element : descriptor.getActionsDescriptionElements()) {
+    for (Element element : descriptor.getAndClearActionDescriptionElements()) {
       ideaCoreActions.add(element.getAttributeValue("id"));
     }
     return ideaCoreActions;
