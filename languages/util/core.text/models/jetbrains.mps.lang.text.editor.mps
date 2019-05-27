@@ -390,7 +390,9 @@
       <concept id="1140131837776" name="jetbrains.mps.lang.smodel.structure.Node_ReplaceWithAnotherOperation" flags="nn" index="1P9Npp">
         <child id="1140131861877" name="replacementNode" index="1P9ThW" />
       </concept>
-      <concept id="1140137987495" name="jetbrains.mps.lang.smodel.structure.SNodeTypeCastExpression" flags="nn" index="1PxgMI" />
+      <concept id="1140137987495" name="jetbrains.mps.lang.smodel.structure.SNodeTypeCastExpression" flags="nn" index="1PxgMI">
+        <property id="1238684351431" name="asCast" index="1BlNFB" />
+      </concept>
       <concept id="1138055754698" name="jetbrains.mps.lang.smodel.structure.SNodeType" flags="in" index="3Tqbb2">
         <reference id="1138405853777" name="concept" index="ehGHo" />
       </concept>
@@ -2845,6 +2847,7 @@
               <ref role="ehGHo" to="zqge:8D0iRqSPVB" resolve="TextElement" />
             </node>
             <node concept="1PxgMI" id="5MT8pi2AJKk" role="33vP2m">
+              <property role="1BlNFB" value="true" />
               <node concept="chp4Y" id="5MT8pi2AK1$" role="3oSUPX">
                 <ref role="cht4Q" to="zqge:8D0iRqSPVB" resolve="TextElement" />
               </node>
@@ -3052,6 +3055,7 @@
                     <ref role="ehGHo" to="zqge:2cLqkTm6J5A" resolve="Line" />
                   </node>
                   <node concept="1PxgMI" id="2cLqkTmc8i5" role="33vP2m">
+                    <property role="1BlNFB" value="true" />
                     <node concept="chp4Y" id="2cLqkTmc8im" role="3oSUPX">
                       <ref role="cht4Q" to="zqge:2cLqkTm6J5A" resolve="Line" />
                     </node>
@@ -3133,16 +3137,11 @@
                       <node concept="2ShNRf" id="2cLqkTmciq1" role="3cqZAk">
                         <node concept="1pGfFk" id="2cLqkTmciq2" role="2ShVmc">
                           <ref role="37wK5l" node="2cLqkTmaz7N" resolve="TextDeleteStrategyFactory.RemoveWholeTextStrategy" />
-                          <node concept="1PxgMI" id="2cLqkTmclWv" role="37wK5m">
-                            <node concept="chp4Y" id="2cLqkTmgP0s" role="3oSUPX">
-                              <ref role="cht4Q" to="zqge:2cLqkTm6vgh" resolve="Text" />
+                          <node concept="2OqwBi" id="2cLqkTmckx6" role="37wK5m">
+                            <node concept="37vLTw" id="2cLqkTmckdg" role="2Oq$k0">
+                              <ref role="3cqZAo" node="2cLqkTmc6_w" resolve="currentLine" />
                             </node>
-                            <node concept="2OqwBi" id="2cLqkTmckx6" role="1m5AlR">
-                              <node concept="37vLTw" id="2cLqkTmckdg" role="2Oq$k0">
-                                <ref role="3cqZAo" node="2cLqkTmc6_w" resolve="currentLine" />
-                              </node>
-                              <node concept="1mfA1w" id="2cLqkTmckXE" role="2OqNvi" />
-                            </node>
+                            <node concept="1mfA1w" id="2cLqkTmckXE" role="2OqNvi" />
                           </node>
                           <node concept="37vLTw" id="2cLqkTmciq5" role="37wK5m">
                             <ref role="3cqZAo" node="2cLqkTmc5Jq" resolve="editorContext" />
@@ -3993,9 +3992,7 @@
         </node>
         <node concept="37vLTG" id="2cLqkTmaz84" role="3clF46">
           <property role="TrG5h" value="text" />
-          <node concept="3Tqbb2" id="2cLqkTmaz85" role="1tU5fm">
-            <ref role="ehGHo" to="zqge:2cLqkTm6vgh" resolve="Text" />
-          </node>
+          <node concept="3Tqbb2" id="2cLqkTmaz85" role="1tU5fm" />
         </node>
         <node concept="37vLTG" id="2cLqkTmaz82" role="3clF46">
           <property role="TrG5h" value="editorContext" />

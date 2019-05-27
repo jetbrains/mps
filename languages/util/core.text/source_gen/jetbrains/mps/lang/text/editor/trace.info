@@ -1525,15 +1525,15 @@
       <node id="6681408443910511436" at="23,0,24,0" concept="3" trace="myIsForward" />
       <node id="6681408443911218492" at="25,80,26,27" concept="11" />
       <node id="6681408443911218503" at="26,27,27,30" concept="2" />
-      <node id="2535923850360675260" at="31,123,32,292" concept="6" />
+      <node id="2535923850360675260" at="31,123,32,290" concept="6" />
       <node id="2535923850360652248" at="34,187,35,435" concept="7" />
       <node id="6681408443910875426" at="36,357,37,276" concept="7" />
       <node id="474718489010822697" at="41,187,42,267" concept="7" />
       <node id="2535923850360691499" at="43,14,44,106" concept="7" />
-      <node id="2535923850360678749" at="46,12,47,223" concept="6" />
-      <node id="2535923850360708133" at="47,223,48,292" concept="6" />
+      <node id="2535923850360678749" at="46,12,47,221" concept="6" />
+      <node id="2535923850360708133" at="47,221,48,292" concept="6" />
       <node id="2535923850360714965" at="49,36,50,131" concept="7" />
-      <node id="2535923850360727168" at="51,14,52,293" concept="7" />
+      <node id="2535923850360727168" at="51,14,52,135" concept="7" />
       <node id="2535923850360685857" at="54,5,55,0" concept="9" />
       <node id="2535923850360431200" at="59,0,60,0" concept="3" trace="myCurrentWord" />
       <node id="2535923850360129542" at="60,0,61,0" concept="3" trace="myNeighbour" />
@@ -1627,7 +1627,7 @@
       <node id="2535923850360293986" at="192,233,197,11" concept="2" />
       <node id="2535923850360585263" at="199,232,204,11" concept="2" />
       <node id="2535923850360277408" at="181,0,187,0" concept="1" trace="RemoveLineStrategy#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;Z)V" />
-      <node id="2535923850360793873" at="32,292,39,5" concept="4" />
+      <node id="2535923850360793873" at="32,290,39,5" concept="4" />
       <node id="2535923850360125292" at="64,0,71,0" concept="1" trace="GlueNeighbourWordStrategy#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;Z)V" />
       <node id="2535923850360133539" at="87,50,94,7" concept="4" />
       <node id="2535923850361806858" at="98,0,105,0" concept="5" trace="getValueOrEmpty#(Ljava/lang/String;)Ljava/lang/String;" />
@@ -1649,7 +1649,7 @@
       <scope id="474718489010810504" at="41,187,42,267" />
       <scope id="474718489010815782" at="43,14,44,106" />
       <scope id="2535923850360710237" at="49,36,50,131" />
-      <scope id="2535923850360726493" at="51,14,52,293" />
+      <scope id="2535923850360726493" at="51,14,52,135" />
       <scope id="3133179214568735687" at="76,77,77,56" />
       <scope id="3133179214568754710" at="78,14,79,58" />
       <scope id="2535923850361817219" at="99,26,100,18" />
