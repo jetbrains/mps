@@ -461,25 +461,29 @@ public class SNodeOperations {
     return newChild;
   }
   private static void copyAllAttributes(SNode oldChild, SNode newChild) {
+    final SAbstractConcept attrProperty = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
+    final SAbstractConcept attrLink = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da51L, "jetbrains.mps.lang.core.structure.LinkAttribute");
+    final SContainmentLink smodelAttr = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
     for (SNode attribute : AttributeOperations.getAllAttributes(oldChild)) {
-      if (SNodeOperations.isInstanceOf(attribute, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute"))) {
-        SProperty property = ((SProperty) BHReflection.invoke0(SNodeOperations.cast(attribute, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute")), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute"), SMethodTrimmedId.create("getProperty", MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute"), "1avfQ4BBzOo")));
+      if (SNodeOperations.isInstanceOf(attribute, SNodeOperations.asSConcept(attrProperty))) {
+        SProperty property = ((SProperty) BHReflection.invoke0(SNodeOperations.cast(attribute, SNodeOperations.asSConcept(attrProperty)), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute"), SMethodTrimmedId.create("getProperty", MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute"), "1avfQ4BBzOo")));
         if (!(newChild.getConcept().getProperties().contains(property))) {
           // no such property in new child : don't copy the attribute 
-          LOG.error("couldn't copy attribute " + attribute.getConcept().getName() + " for property '" + property.getName() + "' : so such property in concept " + newChild.getConcept().getName(), newChild);
+          String m = "couldn't copy attribute %s for property '%s': no such property in concept %s";
+          LOG.error(String.format(m, attribute.getConcept().getName(), property.getName(), newChild.getConcept().getName()), newChild);
           continue;
         }
       }
-      if (SNodeOperations.isInstanceOf(attribute, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da51L, "jetbrains.mps.lang.core.structure.LinkAttribute"))) {
-        SReferenceLink link = ((SReferenceLink) BHReflection.invoke0(SNodeOperations.cast(attribute, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da51L, "jetbrains.mps.lang.core.structure.LinkAttribute")), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da51L, "jetbrains.mps.lang.core.structure.LinkAttribute"), SMethodTrimmedId.create("getLink", MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da51L, "jetbrains.mps.lang.core.structure.LinkAttribute"), "1avfQ4BEFo6")));
+      if (SNodeOperations.isInstanceOf(attribute, SNodeOperations.asSConcept(attrLink))) {
+        SReferenceLink link = ((SReferenceLink) BHReflection.invoke0(SNodeOperations.cast(attribute, SNodeOperations.asSConcept(attrLink)), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da51L, "jetbrains.mps.lang.core.structure.LinkAttribute"), SMethodTrimmedId.create("getLink", MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da51L, "jetbrains.mps.lang.core.structure.LinkAttribute"), "1avfQ4BEFo6")));
         if (!(newChild.getConcept().getReferenceLinks().contains(link))) {
           // no such link in new child : don't copy the attribute 
-          LOG.error("couldn't copy attribute " + attribute.getConcept().getName() + " for link '" + link.getName() + "' : so such link in concept " + newChild.getConcept().getName(), newChild);
+          String m = "couldn't copy attribute %s for link '%s': no such link in concept %s";
+          LOG.error(String.format(m, attribute.getConcept().getName(), link.getName(), newChild.getConcept().getName()), newChild);
           continue;
         }
       }
-
-      newChild.addChild(MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute"), SNodeOperations.copyNode(attribute));
+      newChild.addChild(smodelAttr, SNodeOperations.copyNode(attribute));
     }
   }
   public static SNode replaceWithAnother(SNode node, SNode anotherNode) {

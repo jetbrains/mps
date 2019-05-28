@@ -14,7 +14,11 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import org.jetbrains.mps.openapi.language.SProperty;
+import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 
 public class ProperIdentityInModuleRef extends MigrationScriptBase {
@@ -44,9 +48,25 @@ public class ProperIdentityInModuleRef extends MigrationScriptBase {
         }
       })) {
         SNode mpOld = SNodeOperations.cast(SLinkOperations.getTarget(mre, MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1749acf3d038bbe2L, 0x1749acf3d038bbe5L, "moduleId")), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5ef5a1e853388b3L, "jetbrains.mps.lang.smodel.structure.ModulePointer"));
-        SNode mpNew = SNodeOperations.replaceWithNewChild(SLinkOperations.getTarget(mre, MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1749acf3d038bbe2L, 0x1749acf3d038bbe5L, "moduleId")), MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e361L, "jetbrains.mps.lang.modelapi.structure.ModulePointer"));
+        SNode mpNew = SModelOperations.createNewNode(SNodeOperations.getModel(mre), null, MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e361L, "jetbrains.mps.lang.modelapi.structure.ModulePointer"));
         SPropertyOperations.assign(mpNew, MetaAdapterFactory.getProperty(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e361L, 0x19dc9460645ae969L, "moduleName"), SPropertyOperations.getString(mpOld, MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5ef5a1e853388b3L, 0x5ef5a1e85338e19L, "moduleName")));
         SPropertyOperations.assign(mpNew, MetaAdapterFactory.getProperty(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e361L, 0x19dc9460645c7f5cL, "moduleId"), SPropertyOperations.getString(mpOld, MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5ef5a1e853388b3L, 0x5ef5a1e85338e1bL, "moduleId")));
+        // unlike 'replace with new(concept), replace with(node) doesn't copy attributes; we are going to process and update attributes manually. 
+        SNodeOperations.replaceWithAnother(mpOld, mpNew);
+        SProperty oldModuleIdPropAttr = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5ef5a1e853388b3L, 0x5ef5a1e85338e1bL, "moduleId");
+        SProperty oldModuleNamePropAttr = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5ef5a1e853388b3L, 0x5ef5a1e85338e19L, "moduleName");
+        for (SNode attr : SLinkOperations.getChildren(mpOld, MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute"))) {
+          if (SNodeOperations.isInstanceOf(attr, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute"))) {
+            SNode pa = SNodeOperations.as(attr, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute"));
+            if (oldModuleIdPropAttr.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(pa))) {
+              PropertyAttribute__BehaviorDescriptor.setProperty_id6Gg5Klvu8CV.invoke(pa, MetaAdapterFactory.getProperty(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e361L, 0x19dc9460645c7f5cL, "moduleId"));
+            } else if (oldModuleNamePropAttr.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(pa))) {
+              PropertyAttribute__BehaviorDescriptor.setProperty_id6Gg5Klvu8CV.invoke(pa, MetaAdapterFactory.getProperty(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e361L, 0x19dc9460645ae969L, "moduleName"));
+            }
+            // fall-through 
+          }
+          ListSequence.fromList(SLinkOperations.getChildren(mpNew, MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute"))).addElement(attr);
+        }
       }
     }
   }
