@@ -49,16 +49,25 @@ final class InspectorToolWindowFixer {
 
     boolean weAreInInspector = isInspectorWasLastActive(toolWindowManager);
     if (weAreInInspector) {
-      return null;
+      // sic(!)
+      // This class covers scenario when last tool window was MPS Inspector and shall return null otherwise, in which case clients
+      // delegate to IDEA's default logic
+      //
+      // FIXME next code navigates to wrong results in case we have more than 1 tool utilizing UsagesView (e.g. Find Usages and Model Checker)
+      // as it always picks only the one from UsagesViewTool. This might lead to an odd behavior like described in MPS-30190
+      // Instead, we shall introduce another logic to find OccurenceNavigator instances rather than relying on specific tool.
+      // Likely, it has to use conditional iteration over last active tool windows:
+      // ToolWindowManagerEx.getLastActiveToolWindowId(component -> OccurenceNavigatorActionBase.findNavigator(component) != null)
+      // Unfortunately, findNavigator() is private and I don't want to duplicate its logic here
+      UsagesViewTool usagesViewTool = project.getComponent(UsagesViewTool.class);
+      int currentTabIndex = usagesViewTool.getCurrentTabIndex();
+      if (currentTabIndex < 0) {
+        return null;
+      }
+      UsagesView usagesView = usagesViewTool.getUsagesView(currentTabIndex);
+      return usagesView.getOccurrenceNavigator();
     }
-
-    UsagesViewTool usagesViewTool = project.getComponent(UsagesViewTool.class);
-    int currentTabIndex = usagesViewTool.getCurrentTabIndex();
-    if (currentTabIndex < 0) {
-      return null;
-    }
-    UsagesView usagesView = usagesViewTool.getUsagesView(currentTabIndex);
-    return usagesView.getOccurrenceNavigator();
+    return null;
   }
 
   private boolean isInspectorWasLastActive(ToolWindowManagerEx toolWindowManager) {

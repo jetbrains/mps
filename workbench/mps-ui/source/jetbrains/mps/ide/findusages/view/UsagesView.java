@@ -278,7 +278,13 @@ public class UsagesView implements IExternalizeable {
     return myOccurrenceNavigator;
   }
 
-  private class RootPanel extends JPanel implements DataProvider {
+  /**
+   * the need to implement OccurenceNavigator is unfortunate consequence of IDEA approach to discover one
+   * using awt.Component hierarchy, see {@code OccurenceNavigatorActionBase#getNavigator()} implementation.
+   * Even though MPS controls the way OccurenceNavigator is discovered (e.g. check {@link InspectorRespectingPreviousOccurrenceAction}),
+   * it seems unreasonable to introduce own mechanism in addition to IDEA's.
+   */
+  private class RootPanel extends JPanel implements DataProvider, OccurenceNavigator {
     public RootPanel() {
       super(new BorderLayout());
     }
@@ -296,6 +302,38 @@ public class UsagesView implements IExternalizeable {
         return UsagesView.this;
       }
       return null;
+    }
+
+    @Override
+    public boolean hasNextOccurence() {
+      return getOccurrenceNavigator().hasNextOccurence();
+    }
+
+    @Override
+    public boolean hasPreviousOccurence() {
+      return getOccurrenceNavigator().hasPreviousOccurence();
+    }
+
+    @Override
+    public OccurenceInfo goNextOccurence() {
+      return getOccurrenceNavigator().goNextOccurence();
+    }
+
+    @Override
+    public OccurenceInfo goPreviousOccurence() {
+      return getOccurrenceNavigator().goPreviousOccurence();
+    }
+
+    @NotNull
+    @Override
+    public String getNextOccurenceActionName() {
+      return getOccurrenceNavigator().getNextOccurenceActionName();
+    }
+
+    @NotNull
+    @Override
+    public String getPreviousOccurenceActionName() {
+      return getOccurrenceNavigator().getPreviousOccurenceActionName();
     }
   }
 
