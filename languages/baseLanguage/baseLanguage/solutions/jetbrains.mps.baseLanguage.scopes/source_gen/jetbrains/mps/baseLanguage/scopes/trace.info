@@ -380,54 +380,78 @@
   </root>
   <root nodeRef="r:89c0fb70-0977-4113-a076-5906f9d8630f(jetbrains.mps.baseLanguage.scopes)/3155342362529678200">
     <file name="DefaultConstructorUtils.java">
-      <node id="570774914957996684" at="19,60,20,111" concept="13" />
-      <node id="3155342362529769218" at="21,93,22,19" concept="12" />
-      <node id="3155342362529769362" at="24,120,25,19" concept="12" />
-      <node id="3155342362529769452" at="27,243,28,19" concept="12" />
-      <node id="3155342362529769231" at="29,5,30,443" concept="12" />
-      <node id="3155342362529769796" at="35,41,36,206" concept="12" />
-      <node id="3155342362529769837" at="39,34,40,21" concept="12" />
-      <node id="3155342362529769841" at="41,7,42,130" concept="12" />
-      <node id="3155342362529769609" at="44,252,45,21" concept="12" />
-      <node id="3155342362529769618" at="46,7,47,457" concept="12" />
-      <node id="3155342362529678202" at="17,0,19,0" concept="3" trace="DefaultConstructorUtils#()V" />
-      <node id="3155342362529768678" at="20,111,23,5" concept="9" />
-      <node id="3155342362529769303" at="23,5,26,5" concept="9" />
-      <node id="3155342362529769393" at="26,5,29,5" concept="9" />
-      <node id="3155342362529769794" at="35,0,38,0" concept="10" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="3155342362529769805" at="38,9,41,7" concept="9" />
-      <node id="3155342362529769607" at="43,12,46,7" concept="9" />
-      <node id="3155342362529769788" at="33,127,38,9" concept="11" />
-      <node id="3155342362529769603" at="43,10,48,5" concept="1" />
-      <node id="3155342362529678206" at="19,0,32,0" concept="16" trace="hasDefaultConstructor#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="3155342362529769545" at="32,102,48,5" concept="9" />
-      <node id="3155342362529769223" at="32,0,50,0" concept="16" trace="containsVisibleNoArgumentsConstructor#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <scope id="3155342362529678205" at="17,37,17,37" />
-      <scope id="3155342362529768679" at="21,93,22,19" />
-      <scope id="3155342362529769304" at="24,120,25,19" />
-      <scope id="3155342362529769394" at="27,243,28,19" />
-      <scope id="3155342362529769795" at="35,41,36,206" />
-      <scope id="3155342362529769806" at="39,34,40,21" />
-      <scope id="3155342362529769608" at="44,252,45,21" />
-      <scope id="3155342362529678202" at="17,0,19,0" />
-      <scope id="3155342362529769794" at="35,0,38,0">
+      <node id="570774914957996684" at="21,60,22,111" concept="13" />
+      <node id="3155342362529769218" at="23,93,24,19" concept="12" />
+      <node id="3155342362529769362" at="26,120,27,19" concept="12" />
+      <node id="3155342362529769452" at="29,243,30,19" concept="12" />
+      <node id="3155342362529769231" at="31,5,32,443" concept="12" />
+      <node id="3155342362529769796" at="37,41,38,206" concept="12" />
+      <node id="3155342362529769837" at="41,34,42,21" concept="12" />
+      <node id="3155342362529769841" at="43,7,44,130" concept="12" />
+      <node id="3155342362529769609" at="46,252,47,21" concept="12" />
+      <node id="3155342362529769618" at="48,7,49,457" concept="12" />
+      <node id="2021838008777110467" at="52,81,53,54" concept="11" />
+      <node id="2021838008777138943" at="53,54,54,414" concept="11" />
+      <node id="2021838008776956369" at="55,146,56,26" concept="12" />
+      <node id="2021838008777452411" at="59,39,60,125" concept="12" />
+      <node id="2021838008777500900" at="62,7,63,97" concept="5" />
+      <node id="2021838008777487205" at="63,97,64,24" concept="12" />
+      <node id="3155342362529678202" at="19,0,21,0" concept="3" trace="DefaultConstructorUtils#()V" />
+      <node id="3155342362529768678" at="22,111,25,5" concept="9" />
+      <node id="3155342362529769303" at="25,5,28,5" concept="9" />
+      <node id="3155342362529769393" at="28,5,31,5" concept="9" />
+      <node id="3155342362529769794" at="37,0,40,0" concept="10" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="3155342362529769805" at="40,9,43,7" concept="9" />
+      <node id="3155342362529769607" at="45,12,48,7" concept="9" />
+      <node id="2021838008776956367" at="54,414,57,5" concept="9" />
+      <node id="2021838008777452409" at="59,0,62,0" concept="10" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="3155342362529769788" at="35,127,40,9" concept="11" />
+      <node id="3155342362529769603" at="45,10,50,5" concept="1" />
+      <node id="2021838008777452402" at="57,5,62,7" concept="11" />
+      <node id="3155342362529678206" at="21,0,34,0" concept="16" trace="hasDefaultConstructor#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="2021838008776956323" at="52,0,66,0" concept="16" trace="retrieveSuperConstructors#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/util/List;" />
+      <node id="3155342362529769545" at="34,102,50,5" concept="9" />
+      <node id="3155342362529769223" at="34,0,52,0" concept="16" trace="containsVisibleNoArgumentsConstructor#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <scope id="3155342362529678205" at="19,37,19,37" />
+      <scope id="3155342362529768679" at="23,93,24,19" />
+      <scope id="3155342362529769304" at="26,120,27,19" />
+      <scope id="3155342362529769394" at="29,243,30,19" />
+      <scope id="3155342362529769795" at="37,41,38,206" />
+      <scope id="3155342362529769806" at="41,34,42,21" />
+      <scope id="3155342362529769608" at="46,252,47,21" />
+      <scope id="2021838008776956368" at="55,146,56,26" />
+      <scope id="2021838008777452410" at="59,39,60,125" />
+      <scope id="3155342362529678202" at="19,0,21,0" />
+      <scope id="3155342362529769794" at="37,0,40,0">
         <var name="it" id="3155342362529769794" />
       </scope>
-      <scope id="3155342362529769604" at="43,12,47,457" />
-      <scope id="3155342362529769547" at="33,127,42,130">
+      <scope id="2021838008777452409" at="59,0,62,0">
+        <var name="it" id="2021838008777452409" />
+      </scope>
+      <scope id="3155342362529769604" at="45,12,49,457" />
+      <scope id="3155342362529769547" at="35,127,44,130">
         <var name="constructor" id="3155342362529769789" />
       </scope>
-      <scope id="3155342362529678209" at="19,60,30,443" />
-      <scope id="3155342362529678206" at="19,0,32,0">
+      <scope id="3155342362529678209" at="21,60,32,443" />
+      <scope id="2021838008776956326" at="52,81,64,24">
+        <var name="constructors" id="2021838008777110468" />
+        <var name="suitableConstructors" id="2021838008777452403" />
+        <var name="superClass" id="2021838008777138944" />
+      </scope>
+      <scope id="3155342362529678206" at="21,0,34,0">
         <var name="clazz" id="3155342362529678210" />
       </scope>
-      <scope id="3155342362529769226" at="32,102,48,5" />
-      <scope id="3155342362529769223" at="32,0,50,0">
+      <scope id="2021838008776956323" at="52,0,66,0">
+        <var name="currentClass" id="2021838008776956388" />
+      </scope>
+      <scope id="3155342362529769226" at="34,102,50,5" />
+      <scope id="3155342362529769223" at="34,0,52,0">
         <var name="currentClass" id="3155342362529769229" />
         <var name="startClass" id="3155342362529769626" />
       </scope>
-      <unit id="3155342362529769794" at="34,144,38,7" name="jetbrains.mps.baseLanguage.scopes.DefaultConstructorUtils$1" />
-      <unit id="3155342362529678200" at="16,0,51,0" name="jetbrains.mps.baseLanguage.scopes.DefaultConstructorUtils" />
+      <unit id="3155342362529769794" at="36,144,40,7" name="jetbrains.mps.baseLanguage.scopes.DefaultConstructorUtils$1" />
+      <unit id="2021838008777452409" at="58,155,62,5" name="jetbrains.mps.baseLanguage.scopes.DefaultConstructorUtils$2" />
+      <unit id="3155342362529678200" at="18,0,67,0" name="jetbrains.mps.baseLanguage.scopes.DefaultConstructorUtils" />
     </file>
   </root>
   <root nodeRef="r:89c0fb70-0977-4113-a076-5906f9d8630f(jetbrains.mps.baseLanguage.scopes)/3161373106581137350">

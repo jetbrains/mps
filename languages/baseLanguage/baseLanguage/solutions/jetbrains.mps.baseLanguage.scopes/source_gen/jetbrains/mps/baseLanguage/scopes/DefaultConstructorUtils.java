@@ -12,6 +12,8 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.behavior.ClassifierMember__BehaviorDescriptor;
+import java.util.List;
+import java.util.ArrayList;
 
 public final class DefaultConstructorUtils {
   private DefaultConstructorUtils() {
@@ -46,5 +48,19 @@ public final class DefaultConstructorUtils {
       }
       return containsVisibleNoArgumentsConstructor(SNodeOperations.cast(SLinkOperations.getTarget(ClassConcept__BehaviorDescriptor.getSuperclass_idi3H_lLu.invoke(currentClass), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept")), startClass);
     }
+  }
+  public static List<SNode> retrieveSuperConstructors(final SNode currentClass) {
+    List<SNode> constructors = new ArrayList<SNode>();
+    SNode superClass = SNodeOperations.as(SLinkOperations.getTarget(ClassConcept__BehaviorDescriptor.getSuperclass_idi3H_lLu.invoke(currentClass), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"));
+    if ((superClass == null) || Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(superClass)).isEmpty()) {
+      return constructors;
+    }
+    Iterable<SNode> suitableConstructors = Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(superClass)).where(new IWhereFilter<SNode>() {
+      public boolean accept(SNode it) {
+        return (boolean) ClassifierMember__BehaviorDescriptor.isVisible_id70J2WaK_oVl.invoke(it, currentClass, currentClass);
+      }
+    });
+    ListSequence.fromList(constructors).addSequence(Sequence.fromIterable(suitableConstructors));
+    return constructors;
   }
 }
