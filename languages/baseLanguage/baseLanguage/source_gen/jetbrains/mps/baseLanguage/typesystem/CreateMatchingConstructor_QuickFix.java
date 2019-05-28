@@ -9,6 +9,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 
 public class CreateMatchingConstructor_QuickFix extends QuickFix_Runtime {
@@ -19,21 +20,29 @@ public class CreateMatchingConstructor_QuickFix extends QuickFix_Runtime {
     return "Create constructor matching super";
   }
   public void execute(SNode node) {
-    if (ListSequence.fromList(((List<SNode>) CreateMatchingConstructor_QuickFix.this.getField("superConstructors")[0])).count() == 0) {
+    if (ListSequence.fromList(((List<SNode>) CreateMatchingConstructor_QuickFix.this.getField("visibleSuperConstructors")[0])).count() == 0) {
       return;
     }
     final SNode thisClass = SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"));
-    if (ListSequence.fromList(((List<SNode>) CreateMatchingConstructor_QuickFix.this.getField("superConstructors")[0])).count() == 1) {
-      final SNode superConstructor = ListSequence.fromList(((List<SNode>) CreateMatchingConstructor_QuickFix.this.getField("superConstructors")[0])).first();
-      SNode currentSuperConstructorCopy = SNodeOperations.copyNode(superConstructor);
-      ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(currentSuperConstructorCopy, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"))).clear();
-      SNode superCall = SLinkOperations.addNewChild(SLinkOperations.getTarget(currentSuperConstructorCopy, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d512e1eL, "jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation"));
-      SLinkOperations.setTarget(superCall, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"), superConstructor);
-      for (SNode param : SLinkOperations.getChildren(currentSuperConstructorCopy, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"))) {
-        SNode arg = SLinkOperations.addNewChild(superCall, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference"));
-        SLinkOperations.setTarget(arg, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration"), param);
-      }
-      ListSequence.fromList(SLinkOperations.getChildren(thisClass, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member"))).addElement(currentSuperConstructorCopy);
+    List<SNode> selectedSuperConstructors;
+    if (ListSequence.fromList(((List<SNode>) CreateMatchingConstructor_QuickFix.this.getField("visibleSuperConstructors")[0])).count() > 1) {
+      // todo 
+      selectedSuperConstructors = ((List<SNode>) CreateMatchingConstructor_QuickFix.this.getField("visibleSuperConstructors")[0]);
+    } else {
+      selectedSuperConstructors = ((List<SNode>) CreateMatchingConstructor_QuickFix.this.getField("visibleSuperConstructors")[0]);
     }
+    ListSequence.fromList(selectedSuperConstructors).visitAll(new IVisitor<SNode>() {
+      public void visit(SNode superConstructor) {
+        SNode currentSuperConstructorCopy = SNodeOperations.copyNode(superConstructor);
+        ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(currentSuperConstructorCopy, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"))).clear();
+        SNode superCall = SLinkOperations.addNewChild(SLinkOperations.getTarget(currentSuperConstructorCopy, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d512e1eL, "jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation"));
+        SLinkOperations.setTarget(superCall, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"), superConstructor);
+        for (SNode param : SLinkOperations.getChildren(currentSuperConstructorCopy, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"))) {
+          SNode arg = SLinkOperations.addNewChild(superCall, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference"));
+          SLinkOperations.setTarget(arg, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration"), param);
+        }
+        ListSequence.fromList(SLinkOperations.getChildren(thisClass, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member"))).addElement(currentSuperConstructorCopy);
+      }
+    });
   }
 }
