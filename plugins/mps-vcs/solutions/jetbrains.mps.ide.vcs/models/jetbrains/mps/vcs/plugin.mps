@@ -359,9 +359,17 @@
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
+        <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+      <concept id="709746936026466394" name="jetbrains.mps.lang.core.structure.ChildAttribute" flags="ng" index="3VBwX9">
+        <property id="709746936026609031" name="linkId" index="3V$3ak" />
+        <property id="709746936026609029" name="role_DebugInfo" index="3V$3am" />
+      </concept>
+      <concept id="4452961908202556907" name="jetbrains.mps.lang.core.structure.BaseCommentAttribute" flags="ng" index="1X3_iC">
+        <child id="3078666699043039389" name="commentedNode" index="8Wnug" />
       </concept>
     </language>
     <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
@@ -1741,6 +1749,22 @@
     <property role="2uzpH1" value="Ignore Module..." />
     <node concept="tnohg" id="6ySnuJfjnzE" role="tncku">
       <node concept="3clFbS" id="6ySnuJfjnzF" role="2VODD2">
+        <node concept="3SKdUt" id="srfjDK550e" role="3cqZAp">
+          <node concept="1PaTwC" id="srfjDK550f" role="3ndbpf">
+            <node concept="3oM_SD" id="srfjDK55PN" role="1PaTwD">
+              <property role="3oM_SC" value="TODO:" />
+            </node>
+            <node concept="3oM_SD" id="srfjDK56OP" role="1PaTwD">
+              <property role="3oM_SC" value="investigate" />
+            </node>
+            <node concept="3oM_SD" id="srfjDK58Br" role="1PaTwD">
+              <property role="3oM_SC" value="and" />
+            </node>
+            <node concept="3oM_SD" id="srfjDK5fLv" role="1PaTwD">
+              <property role="3oM_SC" value="remove" />
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs8" id="6ySnuJfjnzG" role="3cqZAp">
           <node concept="3cpWsn" id="6ySnuJfjnzH" role="3cpWs9">
             <property role="TrG5h" value="unversionedFiles" />
@@ -1767,18 +1791,22 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="6ySnuJfjn$4" role="3cqZAp">
-          <node concept="2YIFZM" id="2cAUiAfVfJY" role="3clFbG">
-            <ref role="37wK5l" to="cyi7:~IgnoreUnversionedDialog.ignoreSelectedFiles(com.intellij.openapi.project.Project,java.util.List)" resolve="ignoreSelectedFiles" />
-            <ref role="1Pybhc" to="cyi7:~IgnoreUnversionedDialog" resolve="IgnoreUnversionedDialog" />
-            <node concept="2OqwBi" id="2cAUiAfVfJZ" role="37wK5m">
-              <node concept="2WthIp" id="2cAUiAfVfK0" role="2Oq$k0" />
-              <node concept="1DTwFV" id="2cAUiAfVfK1" role="2OqNvi">
-                <ref role="2WH_rO" node="6ySnuJfjn$b" resolve="project" />
+        <node concept="1X3_iC" id="srfjDK4UWR" role="lGtFl">
+          <property role="3V$3am" value="statement" />
+          <property role="3V$3ak" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123136/1068581517665" />
+          <node concept="3clFbF" id="6ySnuJfjn$4" role="8Wnug">
+            <node concept="2YIFZM" id="2cAUiAfVfJY" role="3clFbG">
+              <ref role="37wK5l" to="cyi7:~IgnoreUnversionedDialog.ignoreSelectedFiles(com.intellij.openapi.project.Project,java.util.List)" resolve="ignoreSelectedFiles" />
+              <ref role="1Pybhc" to="cyi7:~IgnoreUnversionedDialog" resolve="IgnoreUnversionedDialog" />
+              <node concept="2OqwBi" id="2cAUiAfVfJZ" role="37wK5m">
+                <node concept="2WthIp" id="2cAUiAfVfK0" role="2Oq$k0" />
+                <node concept="1DTwFV" id="2cAUiAfVfK1" role="2OqNvi">
+                  <ref role="2WH_rO" node="6ySnuJfjn$b" resolve="project" />
+                </node>
               </node>
-            </node>
-            <node concept="37vLTw" id="2cAUiAfVfK2" role="37wK5m">
-              <ref role="3cqZAo" node="6ySnuJfjnzH" resolve="unversionedFiles" />
+              <node concept="37vLTw" id="2cAUiAfVfK2" role="37wK5m">
+                <ref role="3cqZAo" node="6ySnuJfjnzH" resolve="unversionedFiles" />
+              </node>
             </node>
           </node>
         </node>

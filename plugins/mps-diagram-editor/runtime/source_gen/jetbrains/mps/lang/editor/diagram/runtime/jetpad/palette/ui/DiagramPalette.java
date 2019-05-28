@@ -12,8 +12,6 @@ import jetbrains.mps.lang.editor.diagram.runtime.jetpad.palette.openapi.PaletteE
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.openapi.actionSystem.ActionToolbar;
 import com.intellij.openapi.actionSystem.ActionPlaces;
-import com.intellij.ide.DataManager;
-import com.intellij.openapi.actionSystem.ex.ActionManagerEx;
 import com.intellij.openapi.keymap.ex.KeymapManagerEx;
 import javax.swing.JComponent;
 

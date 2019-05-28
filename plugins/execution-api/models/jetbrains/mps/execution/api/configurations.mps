@@ -2201,8 +2201,10 @@
         <property role="TrG5h" value="existingConfigurations" />
         <node concept="3uibUv" id="224UGqZHrfO" role="1tU5fm">
           <ref role="3uigEE" to="33ny:~List" resolve="List" />
-          <node concept="3uibUv" id="224UGqZHruS" role="11_B2D">
-            <ref role="3uigEE" to="3v5a:~RunnerAndConfigurationSettings" resolve="RunnerAndConfigurationSettings" />
+          <node concept="3qUE_q" id="srfjDJYRUb" role="11_B2D">
+            <node concept="3uibUv" id="224UGqZHruS" role="3qUE_r">
+              <ref role="3uigEE" to="3v5a:~RunnerAndConfigurationSettings" resolve="RunnerAndConfigurationSettings" />
+            </node>
           </node>
         </node>
         <node concept="2AHcQZ" id="224UGqZHrCJ" role="2AJF6D">

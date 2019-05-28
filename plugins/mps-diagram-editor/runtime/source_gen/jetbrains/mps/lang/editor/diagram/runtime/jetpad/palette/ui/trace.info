@@ -246,143 +246,141 @@
   </root>
   <root nodeRef="r:5bf72784-5b6b-4f6b-be0c-06a9e6006826(jetbrains.mps.lang.editor.diagram.runtime.jetpad.palette.ui)/3607386276087791804">
     <file name="DiagramPalette.java">
-      <node id="3607386276087791805" at="21,0,22,0" concept="4" trace="myMainActionGroup" />
-      <node id="3607386276087791811" at="23,0,24,0" concept="4" trace="myDiagramCell" />
-      <node id="3607386276087791814" at="24,0,25,0" concept="4" trace="mySelectedToggleAction" />
-      <node id="3607386276087791821" at="25,50,26,39" concept="12" />
-      <node id="3607386276087791826" at="26,39,27,32" concept="3" />
-      <node id="3607386276087791837" at="29,39,30,25" concept="9" />
-      <node id="3607386276087791849" at="34,59,35,54" concept="3" />
-      <node id="3607386276087791855" at="35,54,36,71" concept="3" />
-      <node id="3607386276087791870" at="38,12,39,39" concept="3" />
-      <node id="3607386276087791878" at="42,51,43,46" concept="3" />
-      <node id="3607386276087791884" at="43,46,44,34" concept="3" />
-      <node id="3607386276087791903" at="46,60,47,92" concept="3" />
-      <node id="3607386276087791916" at="49,34,50,213" concept="8" />
-      <node id="3607386276087791932" at="50,213,51,203" concept="8" />
-      <node id="3607386276087791943" at="51,203,52,54" concept="8" />
-      <node id="3607386276087791949" at="52,54,53,38" concept="3" />
-      <node id="3607386276087791850" at="56,36,57,49" concept="3" />
-      <node id="3607386276087791850" at="58,5,59,0" concept="10" />
-      <node id="3607386276087791879" at="62,36,63,49" concept="3" />
-      <node id="3607386276087791879" at="64,5,65,0" concept="10" />
-      <node id="3607386276087791868" at="38,10,40,5" concept="1" />
-      <node id="3607386276087791835" at="29,0,32,0" concept="7" trace="getDiagramCell#()Ljetbrains/mps/nodeEditor/cells/jetpad/DiagramCell;" />
-      <node id="3607386276087791901" at="46,0,49,0" concept="7" trace="addPaletteElement#(Ljetbrains/mps/lang/editor/diagram/runtime/jetpad/palette/openapi/PaletteElement;)V" />
-      <node id="3607386276087791850" at="55,77,58,5" concept="6" />
-      <node id="3607386276087791879" at="61,73,64,5" concept="6" />
-      <node id="3607386276087791817" at="25,0,29,0" concept="2" trace="DiagramPalette#(Ljetbrains/mps/nodeEditor/cells/jetpad/DiagramCell;)V" />
-      <node id="3607386276087791847" at="33,55,37,7" concept="6" />
-      <node id="3607386276087791875" at="42,0,46,0" concept="7" trace="unselectActionWhichWasSelected#()V" />
-      <node id="3607386276087791914" at="49,0,55,0" concept="7" trace="createPalette#()V" />
-      <node id="3607386276087791850" at="55,0,61,0" concept="11" trace="check_1eehpg_a0a0a0a6#(Lcom/intellij/openapi/actionSystem/ToggleAction;)V" />
-      <node id="3607386276087791879" at="61,0,67,0" concept="11" trace="check_1eehpg_a0a7#(Lcom/intellij/openapi/actionSystem/ToggleAction;)V" />
-      <node id="3607386276087791845" at="32,80,40,5" concept="6" />
-      <node id="3607386276087791842" at="32,0,42,0" concept="7" trace="unselectActionWhichWasSelected#(Lcom/intellij/openapi/actionSystem/AnAction;)V" />
-      <scope id="3607386276087791836" at="29,39,30,25" />
-      <scope id="3607386276087791869" at="38,12,39,39" />
-      <scope id="3607386276087791902" at="46,60,47,92" />
-      <scope id="3607386276087791850" at="56,36,57,49" />
-      <scope id="3607386276087791879" at="62,36,63,49" />
-      <scope id="3607386276087791820" at="25,50,27,32" />
-      <scope id="3607386276087791848" at="34,59,36,71" />
-      <scope id="3607386276087791877" at="42,51,44,34" />
-      <scope id="3607386276087791835" at="29,0,32,0" />
-      <scope id="3607386276087791901" at="46,0,49,0">
+      <node id="3607386276087791805" at="19,0,20,0" concept="4" trace="myMainActionGroup" />
+      <node id="3607386276087791811" at="21,0,22,0" concept="4" trace="myDiagramCell" />
+      <node id="3607386276087791814" at="22,0,23,0" concept="4" trace="mySelectedToggleAction" />
+      <node id="3607386276087791821" at="23,50,24,39" concept="12" />
+      <node id="3607386276087791826" at="24,39,25,32" concept="3" />
+      <node id="3607386276087791837" at="27,39,28,25" concept="9" />
+      <node id="3607386276087791849" at="32,59,33,54" concept="3" />
+      <node id="3607386276087791855" at="33,54,34,71" concept="3" />
+      <node id="3607386276087791870" at="36,12,37,39" concept="3" />
+      <node id="3607386276087791878" at="40,51,41,46" concept="3" />
+      <node id="3607386276087791884" at="41,46,42,34" concept="3" />
+      <node id="3607386276087791903" at="44,60,45,92" concept="3" />
+      <node id="3607386276087791916" at="47,34,48,213" concept="8" />
+      <node id="3607386276087791932" at="48,213,49,143" concept="8" />
+      <node id="3607386276087791943" at="49,143,50,54" concept="8" />
+      <node id="3607386276087791949" at="50,54,51,38" concept="3" />
+      <node id="3607386276087791850" at="54,36,55,49" concept="3" />
+      <node id="3607386276087791850" at="56,5,57,0" concept="10" />
+      <node id="3607386276087791879" at="60,36,61,49" concept="3" />
+      <node id="3607386276087791879" at="62,5,63,0" concept="10" />
+      <node id="3607386276087791868" at="36,10,38,5" concept="1" />
+      <node id="3607386276087791835" at="27,0,30,0" concept="7" trace="getDiagramCell#()Ljetbrains/mps/nodeEditor/cells/jetpad/DiagramCell;" />
+      <node id="3607386276087791901" at="44,0,47,0" concept="7" trace="addPaletteElement#(Ljetbrains/mps/lang/editor/diagram/runtime/jetpad/palette/openapi/PaletteElement;)V" />
+      <node id="3607386276087791850" at="53,77,56,5" concept="6" />
+      <node id="3607386276087791879" at="59,73,62,5" concept="6" />
+      <node id="3607386276087791817" at="23,0,27,0" concept="2" trace="DiagramPalette#(Ljetbrains/mps/nodeEditor/cells/jetpad/DiagramCell;)V" />
+      <node id="3607386276087791847" at="31,55,35,7" concept="6" />
+      <node id="3607386276087791875" at="40,0,44,0" concept="7" trace="unselectActionWhichWasSelected#()V" />
+      <node id="3607386276087791914" at="47,0,53,0" concept="7" trace="createPalette#()V" />
+      <node id="3607386276087791850" at="53,0,59,0" concept="11" trace="check_1eehpg_a0a0a0a6#(Lcom/intellij/openapi/actionSystem/ToggleAction;)V" />
+      <node id="3607386276087791879" at="59,0,65,0" concept="11" trace="check_1eehpg_a0a7#(Lcom/intellij/openapi/actionSystem/ToggleAction;)V" />
+      <node id="3607386276087791845" at="30,80,38,5" concept="6" />
+      <node id="3607386276087791842" at="30,0,40,0" concept="7" trace="unselectActionWhichWasSelected#(Lcom/intellij/openapi/actionSystem/AnAction;)V" />
+      <scope id="3607386276087791836" at="27,39,28,25" />
+      <scope id="3607386276087791869" at="36,12,37,39" />
+      <scope id="3607386276087791902" at="44,60,45,92" />
+      <scope id="3607386276087791850" at="54,36,55,49" />
+      <scope id="3607386276087791879" at="60,36,61,49" />
+      <scope id="3607386276087791820" at="23,50,25,32" />
+      <scope id="3607386276087791848" at="32,59,34,71" />
+      <scope id="3607386276087791877" at="40,51,42,34" />
+      <scope id="3607386276087791835" at="27,0,30,0" />
+      <scope id="3607386276087791901" at="44,0,47,0">
         <var name="element" id="3607386276087791912" />
       </scope>
-      <scope id="3607386276087791817" at="25,0,29,0">
+      <scope id="3607386276087791817" at="23,0,27,0">
         <var name="diagramCell" id="3607386276087791830" />
       </scope>
-      <scope id="3607386276087791846" at="33,55,37,7" />
-      <scope id="3607386276087791875" at="42,0,46,0" />
-      <scope id="3607386276087791915" at="49,34,53,38">
+      <scope id="3607386276087791846" at="31,55,35,7" />
+      <scope id="3607386276087791875" at="40,0,44,0" />
+      <scope id="3607386276087791915" at="47,34,51,38">
         <var name="actionPanel" id="3607386276087791944" />
         <var name="gridConstraints" id="3607386276087791917" />
         <var name="myToolbar" id="3607386276087791933" />
       </scope>
-      <scope id="3607386276087791850" at="55,77,59,0" />
-      <scope id="3607386276087791879" at="61,73,65,0" />
-      <scope id="3607386276087791914" at="49,0,55,0" />
-      <scope id="3607386276087791850" at="55,0,61,0">
+      <scope id="3607386276087791850" at="53,77,57,0" />
+      <scope id="3607386276087791879" at="59,73,63,0" />
+      <scope id="3607386276087791914" at="47,0,53,0" />
+      <scope id="3607386276087791850" at="53,0,59,0">
         <var name="checkedDotOperand" id="3607386276087791850" />
       </scope>
-      <scope id="3607386276087791879" at="61,0,67,0">
+      <scope id="3607386276087791879" at="59,0,65,0">
         <var name="checkedDotOperand" id="3607386276087791879" />
       </scope>
-      <scope id="3607386276087791844" at="32,80,40,5" />
-      <scope id="3607386276087791842" at="32,0,42,0">
+      <scope id="3607386276087791844" at="30,80,38,5" />
+      <scope id="3607386276087791842" at="30,0,40,0">
         <var name="actionWhisIsSelected" id="3607386276087791872" />
       </scope>
-      <unit id="3607386276087791804" at="20,0,68,0" name="jetbrains.mps.lang.editor.diagram.runtime.jetpad.palette.ui.DiagramPalette" />
+      <unit id="3607386276087791804" at="18,0,66,0" name="jetbrains.mps.lang.editor.diagram.runtime.jetpad.palette.ui.DiagramPalette" />
     </file>
   </root>
   <root nodeRef="r:5bf72784-5b6b-4f6b-be0c-06a9e6006826(jetbrains.mps.lang.editor.diagram.runtime.jetpad.palette.ui)/3607386276087791960">
     <file name="DiagramPaletteActionToolbar.java">
-      <node id="3607386276087791978" at="20,193,21,85" concept="12" />
-      <node id="3607386276087792002" at="27,40,28,87" concept="9" />
-      <node id="3607386276087792027" at="32,46,33,39" concept="9" />
-      <node id="3607386276087792039" at="38,57,39,27" concept="3" />
-      <node id="3607386276087792046" at="40,9,41,39" concept="3" />
-      <node id="3607386276087792051" at="42,57,43,27" concept="3" />
-      <node id="3607386276087792064" at="48,27,49,25" concept="3" />
-      <node id="3607386276087792066" at="49,25,50,22" concept="3" />
-      <node id="3607386276087792068" at="50,22,51,25" concept="3" />
-      <node id="3607386276087792075" at="54,65,55,71" concept="3" />
-      <node id="3607386276087792093" at="59,65,60,71" concept="3" />
-      <node id="3607386276087792103" at="63,6,64,25" concept="3" />
-      <node id="3607386276087792108" at="64,25,65,18" concept="9" />
-      <node id="3607386276087791961" at="20,0,23,0" concept="2" trace="DiagramPaletteActionToolbar#(Ljava/lang/String;Lcom/intellij/openapi/actionSystem/ActionGroup;ZLcom/intellij/ide/DataManager;Lcom/intellij/openapi/actionSystem/ex/ActionManagerEx;Lcom/intellij/openapi/keymap/ex/KeymapManagerEx;)V" />
-      <node id="3607386276087792000" at="26,150,29,5" concept="6" />
-      <node id="3607386276087792037" at="37,58,40,9" concept="6" />
-      <node id="3607386276087792049" at="41,39,44,9" concept="6" />
-      <node id="3607386276087792073" at="53,37,56,9" concept="6" />
-      <node id="3607386276087792091" at="58,37,61,9" concept="6" />
-      <node id="3607386276087792023" at="31,0,35,0" concept="7" trace="getDataContext#()Lcom/intellij/openapi/actionSystem/DataContext;" />
-      <node id="3607386276087792071" at="53,0,58,0" concept="7" trace="updateChildren#()V" />
-      <node id="3607386276087792087" at="58,0,63,0" concept="7" trace="removeChildren#()V" />
-      <node id="3607386276087792060" at="47,0,53,0" concept="7" trace="click#()V" />
-      <node id="3607386276087792031" at="36,0,46,0" concept="7" trace="processMouseEvent#(Ljava/awt/event/MouseEvent;)V" />
-      <node id="3607386276087792012" at="29,5,63,6" concept="8" />
-      <node id="3607386276087791986" at="24,0,67,0" concept="7" trace="createToolbarButton#(Lcom/intellij/openapi/actionSystem/AnAction;Lcom/intellij/openapi/actionSystem/ex/ActionButtonLook;Ljava/lang/String;Lcom/intellij/openapi/actionSystem/Presentation;Ljava/awt/Dimension;)Lcom/intellij/openapi/actionSystem/impl/ActionButton;" />
-      <scope id="3607386276087791977" at="20,193,21,85" />
-      <scope id="3607386276087792001" at="27,40,28,87" />
-      <scope id="3607386276087792026" at="32,46,33,39" />
-      <scope id="3607386276087792038" at="38,57,39,27" />
-      <scope id="3607386276087792050" at="42,57,43,27" />
-      <scope id="3607386276087792074" at="54,65,55,71" />
-      <scope id="3607386276087792092" at="59,65,60,71" />
-      <scope id="3607386276087791961" at="20,0,23,0">
+      <node id="3607386276087791978" at="18,137,19,57" concept="12" />
+      <node id="3607386276087792002" at="25,40,26,87" concept="9" />
+      <node id="3607386276087792027" at="30,46,31,39" concept="9" />
+      <node id="3607386276087792039" at="36,57,37,27" concept="3" />
+      <node id="3607386276087792046" at="38,9,39,39" concept="3" />
+      <node id="3607386276087792051" at="40,57,41,27" concept="3" />
+      <node id="3607386276087792064" at="46,27,47,25" concept="3" />
+      <node id="3607386276087792066" at="47,25,48,22" concept="3" />
+      <node id="3607386276087792068" at="48,22,49,25" concept="3" />
+      <node id="3607386276087792075" at="52,65,53,71" concept="3" />
+      <node id="3607386276087792093" at="57,65,58,71" concept="3" />
+      <node id="3607386276087792103" at="61,6,62,25" concept="3" />
+      <node id="3607386276087792108" at="62,25,63,18" concept="9" />
+      <node id="3607386276087791961" at="18,0,21,0" concept="2" trace="DiagramPaletteActionToolbar#(Ljava/lang/String;Lcom/intellij/openapi/actionSystem/ActionGroup;ZLcom/intellij/openapi/keymap/ex/KeymapManagerEx;)V" />
+      <node id="3607386276087792000" at="24,150,27,5" concept="6" />
+      <node id="3607386276087792037" at="35,58,38,9" concept="6" />
+      <node id="3607386276087792049" at="39,39,42,9" concept="6" />
+      <node id="3607386276087792073" at="51,37,54,9" concept="6" />
+      <node id="3607386276087792091" at="56,37,59,9" concept="6" />
+      <node id="3607386276087792023" at="29,0,33,0" concept="7" trace="getDataContext#()Lcom/intellij/openapi/actionSystem/DataContext;" />
+      <node id="3607386276087792071" at="51,0,56,0" concept="7" trace="updateChildren#()V" />
+      <node id="3607386276087792087" at="56,0,61,0" concept="7" trace="removeChildren#()V" />
+      <node id="3607386276087792060" at="45,0,51,0" concept="7" trace="click#()V" />
+      <node id="3607386276087792031" at="34,0,44,0" concept="7" trace="processMouseEvent#(Ljava/awt/event/MouseEvent;)V" />
+      <node id="3607386276087792012" at="27,5,61,6" concept="8" />
+      <node id="3607386276087791986" at="22,0,65,0" concept="7" trace="createToolbarButton#(Lcom/intellij/openapi/actionSystem/AnAction;Lcom/intellij/openapi/actionSystem/ex/ActionButtonLook;Ljava/lang/String;Lcom/intellij/openapi/actionSystem/Presentation;Ljava/awt/Dimension;)Lcom/intellij/openapi/actionSystem/impl/ActionButton;" />
+      <scope id="3607386276087791977" at="18,137,19,57" />
+      <scope id="3607386276087792001" at="25,40,26,87" />
+      <scope id="3607386276087792026" at="30,46,31,39" />
+      <scope id="3607386276087792038" at="36,57,37,27" />
+      <scope id="3607386276087792050" at="40,57,41,27" />
+      <scope id="3607386276087792074" at="52,65,53,71" />
+      <scope id="3607386276087792092" at="57,65,58,71" />
+      <scope id="3607386276087791961" at="18,0,21,0">
         <var name="actionGroup" id="3607386276087791966" />
-        <var name="actionManager" id="3607386276087791973" />
-        <var name="dataManager" id="3607386276087791971" />
         <var name="horizontal" id="3607386276087791969" />
         <var name="keymapManager" id="3607386276087791975" />
         <var name="place" id="3607386276087791964" />
       </scope>
-      <scope id="3607386276087792063" at="48,27,51,25" />
-      <scope id="3607386276087792072" at="53,37,56,9" />
-      <scope id="3607386276087792090" at="58,37,61,9" />
-      <scope id="3607386276087792023" at="31,0,35,0" />
-      <scope id="3607386276087792071" at="53,0,58,0" />
-      <scope id="3607386276087792087" at="58,0,63,0" />
-      <scope id="3607386276087792060" at="47,0,53,0" />
-      <scope id="3607386276087792036" at="37,58,44,9" />
-      <scope id="3607386276087792031" at="36,0,46,0">
+      <scope id="3607386276087792063" at="46,27,49,25" />
+      <scope id="3607386276087792072" at="51,37,54,9" />
+      <scope id="3607386276087792090" at="56,37,59,9" />
+      <scope id="3607386276087792023" at="29,0,33,0" />
+      <scope id="3607386276087792071" at="51,0,56,0" />
+      <scope id="3607386276087792087" at="56,0,61,0" />
+      <scope id="3607386276087792060" at="45,0,51,0" />
+      <scope id="3607386276087792036" at="35,58,42,9" />
+      <scope id="3607386276087792031" at="34,0,44,0">
         <var name="event" id="3607386276087792034" />
       </scope>
-      <scope id="3607386276087791999" at="26,150,65,18">
+      <scope id="3607386276087791999" at="24,150,63,18">
         <var name="button" id="3607386276087792013" />
       </scope>
-      <scope id="3607386276087791986" at="24,0,67,0">
+      <scope id="3607386276087791986" at="22,0,65,0">
         <var name="action" id="3607386276087791989" />
         <var name="look" id="3607386276087791991" />
         <var name="minimumSize" id="3607386276087791997" />
         <var name="place" id="3607386276087791993" />
         <var name="presentation" id="3607386276087791995" />
       </scope>
-      <unit id="3607386276087792017" at="30,30,63,5" name="jetbrains.mps.lang.editor.diagram.runtime.jetpad.palette.ui.DiagramPaletteActionToolbar$1" />
-      <unit id="3607386276087791960" at="19,0,69,0" name="jetbrains.mps.lang.editor.diagram.runtime.jetpad.palette.ui.DiagramPaletteActionToolbar" />
+      <unit id="3607386276087792017" at="28,30,61,5" name="jetbrains.mps.lang.editor.diagram.runtime.jetpad.palette.ui.DiagramPaletteActionToolbar$1" />
+      <unit id="3607386276087791960" at="17,0,67,0" name="jetbrains.mps.lang.editor.diagram.runtime.jetpad.palette.ui.DiagramPaletteActionToolbar" />
     </file>
   </root>
 </debug-info>

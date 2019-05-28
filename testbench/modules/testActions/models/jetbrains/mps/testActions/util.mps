@@ -308,8 +308,8 @@
             <node concept="37vLTw" id="3GM_nagTBfD" role="2Oq$k0">
               <ref role="3cqZAo" node="1YKWOow4fO7" resolve="descriptor" />
             </node>
-            <node concept="liA8E" id="1YKWOow4fV_" role="2OqNvi">
-              <ref role="37wK5l" to="ctgy:~IdeaPluginDescriptor.getActionsDescriptionElements()" resolve="getActionsDescriptionElements" />
+            <node concept="liA8E" id="srfjDK2I2L" role="2OqNvi">
+              <ref role="37wK5l" to="ctgy:~IdeaPluginDescriptor.getAndClearActionDescriptionElements()" resolve="getAndClearActionDescriptionElements" />
             </node>
           </node>
         </node>

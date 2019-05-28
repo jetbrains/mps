@@ -34,17 +34,20 @@ public class WatchedRootsUpdater implements ApplicationComponent {
   private final WatchedRoots myWatchedRootsBase;
   private final ProjectManager myProjectManager;
   private ProjectManagerAdapter myProjectManagerListener;
+
   public WatchedRootsUpdater(WatchedRoots watchedRoots, MPSCoreComponents coreComponents, AdditionalLibrariesManager libraryManager, ProjectManager projectManager) {
     myLibraryManager = libraryManager;
     myProjectManager = projectManager;
     myClassLoaderManager = coreComponents.getClassLoaderManager();
     myWatchedRootsBase = watchedRoots;
   }
+
   @NotNull
   @Override
   public String getComponentName() {
     return "Watched Roots Updater";
   }
+
   @Override
   public void initComponent() {
     processLibrariesChange();

@@ -93,6 +93,7 @@
       </concept>
       <concept id="1068498886292" name="jetbrains.mps.baseLanguage.structure.ParameterDeclaration" flags="ir" index="37vLTG" />
       <concept id="1068498886294" name="jetbrains.mps.baseLanguage.structure.AssignmentExpression" flags="nn" index="37vLTI" />
+      <concept id="1225271177708" name="jetbrains.mps.baseLanguage.structure.StringType" flags="in" index="17QB3L" />
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
         <child id="5680397130376446158" name="type" index="1tU5fm" />
       </concept>
@@ -1740,14 +1741,6 @@
                   <ref role="3cqZAo" node="38g0FihPg2X" resolve="myMainActionGroup" />
                 </node>
                 <node concept="3clFbT" id="38g0FihPg53" role="37wK5m" />
-                <node concept="2YIFZM" id="38g0FihPg54" role="37wK5m">
-                  <ref role="37wK5l" to="ddhc:~DataManager.getInstance()" resolve="getInstance" />
-                  <ref role="1Pybhc" to="ddhc:~DataManager" resolve="DataManager" />
-                </node>
-                <node concept="2YIFZM" id="38g0FihPg55" role="37wK5m">
-                  <ref role="37wK5l" to="8rsk:~ActionManagerEx.getInstanceEx()" resolve="getInstanceEx" />
-                  <ref role="1Pybhc" to="8rsk:~ActionManagerEx" resolve="ActionManagerEx" />
-                </node>
                 <node concept="2YIFZM" id="38g0FihPg56" role="37wK5m">
                   <ref role="37wK5l" to="yecc:~KeymapManagerEx.getInstanceEx()" resolve="getInstanceEx" />
                   <ref role="1Pybhc" to="yecc:~KeymapManagerEx" resolve="KeymapManagerEx" />
@@ -1800,9 +1793,7 @@
       <node concept="3Tm1VV" id="38g0FihPg5r" role="1B3o_S" />
       <node concept="37vLTG" id="38g0FihPg5s" role="3clF46">
         <property role="TrG5h" value="place" />
-        <node concept="3uibUv" id="38g0FihPg5t" role="1tU5fm">
-          <ref role="3uigEE" to="wyt6:~String" resolve="String" />
-        </node>
+        <node concept="17QB3L" id="srfjDK2sa1" role="1tU5fm" />
       </node>
       <node concept="37vLTG" id="38g0FihPg5u" role="3clF46">
         <property role="TrG5h" value="actionGroup" />
@@ -1817,18 +1808,6 @@
         <property role="TrG5h" value="horizontal" />
         <node concept="10P_77" id="38g0FihPg5y" role="1tU5fm" />
       </node>
-      <node concept="37vLTG" id="38g0FihPg5z" role="3clF46">
-        <property role="TrG5h" value="dataManager" />
-        <node concept="3uibUv" id="38g0FihPg5$" role="1tU5fm">
-          <ref role="3uigEE" to="ddhc:~DataManager" resolve="DataManager" />
-        </node>
-      </node>
-      <node concept="37vLTG" id="38g0FihPg5_" role="3clF46">
-        <property role="TrG5h" value="actionManager" />
-        <node concept="3uibUv" id="38g0FihPg5A" role="1tU5fm">
-          <ref role="3uigEE" to="8rsk:~ActionManagerEx" resolve="ActionManagerEx" />
-        </node>
-      </node>
       <node concept="37vLTG" id="38g0FihPg5B" role="3clF46">
         <property role="TrG5h" value="keymapManager" />
         <node concept="3uibUv" id="38g0FihPg5C" role="1tU5fm">
@@ -1837,7 +1816,7 @@
       </node>
       <node concept="3clFbS" id="38g0FihPg5D" role="3clF47">
         <node concept="XkiVB" id="38g0FihPg5E" role="3cqZAp">
-          <ref role="37wK5l" to="xcyp:~ActionToolbarImpl.&lt;init&gt;(java.lang.String,com.intellij.openapi.actionSystem.ActionGroup,boolean,com.intellij.ide.DataManager,com.intellij.openapi.actionSystem.ex.ActionManagerEx,com.intellij.openapi.keymap.ex.KeymapManagerEx)" resolve="ActionToolbarImpl" />
+          <ref role="37wK5l" to="xcyp:~ActionToolbarImpl.&lt;init&gt;(java.lang.String,com.intellij.openapi.actionSystem.ActionGroup,boolean,com.intellij.openapi.keymap.ex.KeymapManagerEx)" resolve="ActionToolbarImpl" />
           <node concept="37vLTw" id="38g0FihPg5F" role="37wK5m">
             <ref role="3cqZAo" node="38g0FihPg5s" resolve="place" />
           </node>
@@ -1846,12 +1825,6 @@
           </node>
           <node concept="37vLTw" id="38g0FihPg5H" role="37wK5m">
             <ref role="3cqZAo" node="38g0FihPg5x" resolve="horizontal" />
-          </node>
-          <node concept="37vLTw" id="38g0FihPg5I" role="37wK5m">
-            <ref role="3cqZAo" node="38g0FihPg5z" resolve="dataManager" />
-          </node>
-          <node concept="37vLTw" id="38g0FihPg5J" role="37wK5m">
-            <ref role="3cqZAo" node="38g0FihPg5_" resolve="actionManager" />
           </node>
           <node concept="37vLTw" id="38g0FihPg5K" role="37wK5m">
             <ref role="3cqZAo" node="38g0FihPg5B" resolve="keymapManager" />
