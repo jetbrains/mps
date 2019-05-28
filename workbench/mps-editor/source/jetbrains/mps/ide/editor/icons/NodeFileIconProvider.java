@@ -42,11 +42,6 @@ import javax.swing.Icon;
  * evgeny, 12/25/11
  */
 public class NodeFileIconProvider implements FileIconProvider, NamedComponent {
-  private final GlobalIconManager myIconManager;
-
-  public NodeFileIconProvider(GlobalIconManager iconManager) {
-    myIconManager = iconManager;
-  }
 
   @Override
   @Nullable
@@ -61,13 +56,13 @@ public class NodeFileIconProvider implements FileIconProvider, NamedComponent {
         if (IconDeferrer.getInstance() instanceof DefaultIconDeferrer) {
           SNode node = MPSEditorUtil.getCurrentEditedNode(project, nodeFile);
           if (node != null) {
-            return myIconManager.getIconFor(node);
+            return GlobalIconManager.getInstance().getIconFor(node);
           }
           // TODO: get current empty tab component in MPSEditorUtil by using ((TabbedEditor) nodeEditor).myTabsComponent.getCurrentTabAspect()[.getIcon]
         }
         SNode node = nodeFile.getNode();
         if (node != null) {
-          return myIconManager.getIconFor(node);
+          return GlobalIconManager.getInstance().getIconFor(node);
         }
         return null;
       }).runRead(mpsProject.getModelAccess());
@@ -85,7 +80,7 @@ public class NodeFileIconProvider implements FileIconProvider, NamedComponent {
         String nameWithoutExtension = file.getNameWithoutExtension();
         for (SNode node : descr.getRootNodes()) {
           if (nameWithoutExtension.equals(node.getName())) {
-            return myIconManager.getIconFor(node);
+            return GlobalIconManager.getInstance().getIconFor(node);
           }
         }
         return null;
