@@ -16,7 +16,7 @@ public class CreateMatchingConstructor_QuickFix extends QuickFix_Runtime {
     super(new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2021838008776417512"));
   }
   public String getDescription(SNode node) {
-    return "Create Constructor Matching Super";
+    return "Create constructor matching super";
   }
   public void execute(SNode node) {
     if (ListSequence.fromList(((List<SNode>) CreateMatchingConstructor_QuickFix.this.getField("superConstructors")[0])).count() == 0) {

@@ -643,6 +643,7 @@
     </language>
     <language id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions">
       <concept id="5979988948250981289" name="jetbrains.mps.lang.actions.structure.SNodeCreatorAndInitializer" flags="nn" index="2fJWfE" />
+      <concept id="767145758118872833" name="jetbrains.mps.lang.actions.structure.NF_LinkList_AddNewChildOperation" flags="nn" index="2DeJg1" />
       <concept id="767145758118872828" name="jetbrains.mps.lang.actions.structure.NF_Node_ReplaceWithNewOperation" flags="nn" index="2DeJnW" />
     </language>
     <language id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging">
@@ -21331,9 +21332,64 @@
               </node>
             </node>
             <node concept="3clFbS" id="6d19RW5J3uA" role="3clFbx">
+              <node concept="3cpWs8" id="1Kf0JjN321P" role="3cqZAp">
+                <node concept="3cpWsn" id="1Kf0JjN321Q" role="3cpWs9">
+                  <property role="TrG5h" value="superClass" />
+                  <node concept="3Tqbb2" id="1Kf0JjN321E" role="1tU5fm">
+                    <ref role="ehGHo" to="tpee:fz12cDA" resolve="ClassConcept" />
+                  </node>
+                  <node concept="1PxgMI" id="1Kf0JjN3awQ" role="33vP2m">
+                    <property role="1BlNFB" value="true" />
+                    <node concept="chp4Y" id="1Kf0JjN3aYT" role="3oSUPX">
+                      <ref role="cht4Q" to="tpee:fz12cDA" resolve="ClassConcept" />
+                    </node>
+                    <node concept="2OqwBi" id="1Kf0JjN321R" role="1m5AlR">
+                      <node concept="2OqwBi" id="1Kf0JjN321S" role="2Oq$k0">
+                        <node concept="1PxgMI" id="1Kf0JjN321T" role="2Oq$k0">
+                          <property role="1BlNFB" value="true" />
+                          <node concept="chp4Y" id="1Kf0JjN321U" role="3oSUPX">
+                            <ref role="cht4Q" to="tpee:fz12cDA" resolve="ClassConcept" />
+                          </node>
+                          <node concept="2OqwBi" id="1Kf0JjN321V" role="1m5AlR">
+                            <node concept="1YBJjd" id="1Kf0JjN321W" role="2Oq$k0">
+                              <ref role="1YBMHb" node="2qtMmDo17Jc" resolve="constructorDeclaration" />
+                            </node>
+                            <node concept="1mfA1w" id="1Kf0JjN321X" role="2OqNvi" />
+                          </node>
+                        </node>
+                        <node concept="3TrEf2" id="1Kf0JjN321Y" role="2OqNvi">
+                          <ref role="3Tt5mk" to="tpee:gXzkM_H" resolve="superclass" />
+                        </node>
+                      </node>
+                      <node concept="3TrEf2" id="1Kf0JjN321Z" role="2OqNvi">
+                        <ref role="3Tt5mk" to="tpee:g7uigIF" resolve="classifier" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
               <node concept="2MkqsV" id="2qtMmDo19Dz" role="3cqZAp">
-                <node concept="Xl_RD" id="2qtMmDo19DA" role="2MkJ7o">
-                  <property role="Xl_RC" value="there is no default constructor available in superclass" />
+                <node concept="3Cnw8n" id="1Kf0JjN2QJw" role="2OEOjU">
+                  <ref role="QpYPw" node="1Kf0JjN2xuO" resolve="CreateDefaultConstructorInSuperClass" />
+                  <node concept="3CnSsL" id="1Kf0JjN2ZuJ" role="3Coj4f">
+                    <ref role="QkamJ" node="1Kf0JjN2TvA" resolve="superClass" />
+                    <node concept="37vLTw" id="1Kf0JjN34Th" role="3CoRuB">
+                      <ref role="3cqZAo" node="1Kf0JjN321Q" resolve="superClass" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="3cpWs3" id="1Kf0JjMYBe9" role="2MkJ7o">
+                  <node concept="Xl_RD" id="2qtMmDo19DA" role="3uHU7B">
+                    <property role="Xl_RC" value="there is no default constructor available in superclass " />
+                  </node>
+                  <node concept="2OqwBi" id="1Kf0JjMZp16" role="3uHU7w">
+                    <node concept="37vLTw" id="1Kf0JjN3220" role="2Oq$k0">
+                      <ref role="3cqZAo" node="1Kf0JjN321Q" resolve="superClass" />
+                    </node>
+                    <node concept="2qgKlT" id="1Kf0JjMZp1c" role="2OqNvi">
+                      <ref role="37wK5l" to="tpcu:hEwIO9y" resolve="getFqName" />
+                    </node>
+                  </node>
                 </node>
                 <node concept="1YBJjd" id="2qtMmDo19Em" role="2OEOjV">
                   <ref role="1YBMHb" node="2qtMmDo17Jc" resolve="constructorDeclaration" />
@@ -29421,8 +29477,28 @@
                 </node>
               </node>
             </node>
-            <node concept="Xl_RD" id="7Mdqj$O8vK5" role="2MkJ7o">
-              <property role="Xl_RC" value="There is no default constructor available in super class" />
+            <node concept="3cpWs3" id="1Kf0JjMZdo3" role="2MkJ7o">
+              <node concept="2OqwBi" id="1Kf0JjMZl7e" role="3uHU7w">
+                <node concept="2OqwBi" id="1Kf0JjMZhnP" role="2Oq$k0">
+                  <node concept="2OqwBi" id="1Kf0JjMZeBy" role="2Oq$k0">
+                    <node concept="1YBJjd" id="1Kf0JjMZdFA" role="2Oq$k0">
+                      <ref role="1YBMHb" node="7Mdqj$O8ard" resolve="classConcept" />
+                    </node>
+                    <node concept="3TrEf2" id="1Kf0JjMZgrN" role="2OqNvi">
+                      <ref role="3Tt5mk" to="tpee:gXzkM_H" resolve="superclass" />
+                    </node>
+                  </node>
+                  <node concept="3TrEf2" id="1Kf0JjMZinq" role="2OqNvi">
+                    <ref role="3Tt5mk" to="tpee:g7uigIF" resolve="classifier" />
+                  </node>
+                </node>
+                <node concept="2qgKlT" id="1Kf0JjMZnt1" role="2OqNvi">
+                  <ref role="37wK5l" to="tpcu:hEwIO9y" resolve="getFqName" />
+                </node>
+              </node>
+              <node concept="Xl_RD" id="7Mdqj$O8vK5" role="3uHU7B">
+                <property role="Xl_RC" value="There is no default constructor available in super class " />
+              </node>
             </node>
             <node concept="1YBJjd" id="7Mdqj$O8vK6" role="2OEOjV">
               <ref role="1YBMHb" node="7Mdqj$O8ard" resolve="classConcept" />
@@ -69189,7 +69265,55 @@
       <node concept="3clFbS" id="1Kf0JjMw69J" role="2VODD2">
         <node concept="3clFbF" id="1Kf0JjMw6iP" role="3cqZAp">
           <node concept="Xl_RD" id="1Kf0JjMw6iO" role="3clFbG">
-            <property role="Xl_RC" value="Create Constructor Matching Super" />
+            <property role="Xl_RC" value="Create constructor matching super" />
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="Q5z_Y" id="1Kf0JjN2xuO">
+    <property role="3GE5qa" value="classifiers.members" />
+    <property role="TrG5h" value="CreateDefaultConstructorInSuperClass" />
+    <node concept="Q6JDH" id="1Kf0JjN2TvA" role="Q6Id_">
+      <property role="TrG5h" value="superClass" />
+      <node concept="3Tqbb2" id="1Kf0JjN2TYJ" role="Q6QK4">
+        <ref role="ehGHo" to="tpee:fz12cDA" resolve="ClassConcept" />
+      </node>
+    </node>
+    <node concept="Q5ZZ6" id="1Kf0JjN2xuP" role="Q6x$H">
+      <node concept="3clFbS" id="1Kf0JjN2xuQ" role="2VODD2">
+        <node concept="3clFbF" id="1Kf0JjN80uR" role="3cqZAp">
+          <node concept="2OqwBi" id="1Kf0JjN7KXV" role="3clFbG">
+            <node concept="2OqwBi" id="1Kf0JjN7KXW" role="2Oq$k0">
+              <node concept="QwW4i" id="1Kf0JjN7KXX" role="2Oq$k0">
+                <ref role="QwW4h" node="1Kf0JjN2TvA" resolve="superClass" />
+              </node>
+              <node concept="3Tsc0h" id="1Kf0JjN7KXY" role="2OqNvi">
+                <ref role="3TtcxE" to="tpee:4EqhHTp4Mw3" resolve="member" />
+              </node>
+            </node>
+            <node concept="2DeJg1" id="1Kf0JjN7Wut" role="2OqNvi">
+              <ref role="1A0vxQ" to="tpee:fzclF84" resolve="ConstructorDeclaration" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="QznSV" id="1Kf0JjN3fQo" role="QzAvj">
+      <node concept="3clFbS" id="1Kf0JjN3fQp" role="2VODD2">
+        <node concept="3clFbF" id="1Kf0JjN3gos" role="3cqZAp">
+          <node concept="3cpWs3" id="1Kf0JjN3kHb" role="3clFbG">
+            <node concept="2OqwBi" id="1Kf0JjN3mib" role="3uHU7w">
+              <node concept="QwW4i" id="1Kf0JjN3lfN" role="2Oq$k0">
+                <ref role="QwW4h" node="1Kf0JjN2TvA" resolve="superClass" />
+              </node>
+              <node concept="2qgKlT" id="1Kf0JjN3pTV" role="2OqNvi">
+                <ref role="37wK5l" to="tpcu:hEwIO9y" resolve="getFqName" />
+              </node>
+            </node>
+            <node concept="Xl_RD" id="1Kf0JjN3gor" role="3uHU7B">
+              <property role="Xl_RC" value="Add public no-args constructor to " />
+            </node>
           </node>
         </node>
       </node>
