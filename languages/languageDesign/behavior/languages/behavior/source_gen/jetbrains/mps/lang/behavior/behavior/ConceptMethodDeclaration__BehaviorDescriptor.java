@@ -36,14 +36,14 @@ public final class ConceptMethodDeclaration__BehaviorDescriptor extends BaseBHDe
   public static final SMethod<SNode> getContainingConcept_idi3POAMX = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getContainingConcept").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("i3POAMX").registry(REGISTRY).build();
   public static final SMethod<SNode> getOverridenMethod_idhP3pnNO = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getOverridenMethod").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hP3pnNO").registry(REGISTRY).build();
   public static final SMethod<Boolean> isCorrectlyOverriden_idhQYykEj = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isCorrectlyOverriden").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hQYykEj").registry(REGISTRY).build();
-  public static final SMethod<String> getOverridenMethodConceptName_idhP3pnOc = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getOverridenMethodConceptName").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hP3pnOc").registry(REGISTRY).build();
+  public static final SMethod<SNode> getOverridenMethodConcept_idhP3pnOc = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getOverridenMethodConcept").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hP3pnOc").registry(REGISTRY).build();
   public static final SMethod<Boolean> isAbstract_idhWjv7RO = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isAbstract").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hWjv7RO").registry(REGISTRY).build();
   public static final SMethod<Boolean> hasBody_id10BRnhak8m8 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasBody").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("10BRnhak8m8").registry(REGISTRY).build();
   public static final SMethod<Boolean> isAnAbstractMethod_id28P2dHxCoRl = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isAnAbstractMethod").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("28P2dHxCoRl").registry(REGISTRY).build();
   public static final SMethod<SNode> getNearestOverriddenMethod_id4DuBHEkPTzU = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getNearestOverriddenMethod").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4DuBHEkPTzU").registry(REGISTRY).build();
   public static final SMethod<Boolean> supportsCheckedExceptions_id7orZYjMoFMH = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("supportsCheckedExceptions").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7orZYjMoFMH").registry(REGISTRY).build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isVirtual_id6WSEafdhbZX, getBehaviour_idhP3pnNF, canBeAnnotated_idhWp4PwP, getContainingConcept_idi3POAMX, getOverridenMethod_idhP3pnNO, isCorrectlyOverriden_idhQYykEj, getOverridenMethodConceptName_idhP3pnOc, isAbstract_idhWjv7RO, hasBody_id10BRnhak8m8, isAnAbstractMethod_id28P2dHxCoRl, getNearestOverriddenMethod_id4DuBHEkPTzU, supportsCheckedExceptions_id7orZYjMoFMH);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isVirtual_id6WSEafdhbZX, getBehaviour_idhP3pnNF, canBeAnnotated_idhWp4PwP, getContainingConcept_idi3POAMX, getOverridenMethod_idhP3pnNO, isCorrectlyOverriden_idhQYykEj, getOverridenMethodConcept_idhP3pnOc, isAbstract_idhWjv7RO, hasBody_id10BRnhak8m8, isAnAbstractMethod_id28P2dHxCoRl, getNearestOverriddenMethod_id4DuBHEkPTzU, supportsCheckedExceptions_id7orZYjMoFMH);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -95,9 +95,8 @@ public final class ConceptMethodDeclaration__BehaviorDescriptor extends BaseBHDe
     }
     return true;
   }
-  /*package*/ static String getOverridenMethodConceptName_idhP3pnOc(@NotNull SNode __thisNode__) {
-    SNode conceptDeclaration = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(ConceptMethodDeclaration__BehaviorDescriptor.getOverridenMethod_idhP3pnNO.invoke(__thisNode__), MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, "jetbrains.mps.lang.behavior.structure.ConceptBehavior"), false, false), MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b1fL, "concept"));
-    return SPropertyOperations.getString(conceptDeclaration, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+  /*package*/ static SNode getOverridenMethodConcept_idhP3pnOc(@NotNull SNode __thisNode__) {
+    return SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(ConceptMethodDeclaration__BehaviorDescriptor.getOverridenMethod_idhP3pnNO.invoke(__thisNode__), MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, "jetbrains.mps.lang.behavior.structure.ConceptBehavior"), false, false), MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b1fL, "concept"));
   }
   @Deprecated
   /*package*/ static boolean isAbstract_idhWjv7RO(@NotNull SNode __thisNode__) {
@@ -146,7 +145,7 @@ public final class ConceptMethodDeclaration__BehaviorDescriptor extends BaseBHDe
       case 5:
         return (T) ((Boolean) isCorrectlyOverriden_idhQYykEj(node));
       case 6:
-        return (T) ((String) getOverridenMethodConceptName_idhP3pnOc(node));
+        return (T) ((SNode) getOverridenMethodConcept_idhP3pnOc(node));
       case 7:
         return (T) ((Boolean) isAbstract_idhWjv7RO(node));
       case 8:
