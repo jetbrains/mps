@@ -105,8 +105,14 @@ public class IncrementalTypechecking extends ReportingTypechecking<State, TypeSy
     myTypeChecker = typeChecker;
     myClassManager = clManager;
     myNonTypeSystemComponent = new NonTypeSystemComponent(typeChecker, state, this);
+    init();
+  }
+
+  private void init() {
     myModelListenerManager.track(myRootNode);
-    clManager.addListener(myClassesListener);
+    if (myClassManager != null) {
+      myClassManager.addListener(myClassesListener);
+    }
   }
 
   @Override
@@ -163,7 +169,9 @@ public class IncrementalTypechecking extends ReportingTypechecking<State, TypeSy
 
   @Override
   public void dispose() {
-    myClassManager.removeListener(myClassesListener);
+    if (myClassManager != null) {
+      myClassManager.removeListener(myClassesListener);
+    }
     if (myModelListenerManager != null) {
       myModelListenerManager.dispose();
       myModelListenerManager = null;

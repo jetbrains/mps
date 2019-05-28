@@ -19,10 +19,10 @@ import jetbrains.mps.ide.findusages.findalgorithm.finders.BaseFinder;
 import jetbrains.mps.ide.findusages.model.SearchQuery;
 import jetbrains.mps.ide.findusages.model.SearchResult;
 import jetbrains.mps.ide.findusages.model.SearchResults;
+import jetbrains.mps.newTypesystem.context.IncrementalTypecheckingContext;
 import jetbrains.mps.newTypesystem.context.typechecking.IncrementalTypechecking;
 import jetbrains.mps.smodel.SNodeId;
-import jetbrains.mps.typesystem.inference.DefaultTypecheckingContextOwner;
-import jetbrains.mps.typesystem.inference.ITypeContextOwner;
+import jetbrains.mps.typesystem.inference.TypeChecker;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.typesystem.inference.TypeContextManager;
 import jetbrains.mps.util.CollectionUtil;
@@ -54,12 +54,9 @@ public class AffectingRulesFinder extends BaseFinder {
     }
     SNode root = term.getContainingRoot();
 
-    ITypeContextOwner owner = new MyTypeContextOwner();
-    TypeContextManager manager = TypeContextManager.getInstance();
-
-    TypeCheckingContext context = manager.acquireTypecheckingContext(root, owner);
-    context.checkRoot(true);
+    TypeCheckingContext context = new IncrementalTypecheckingContext(root, TypeChecker.getInstance(), null);
     try {
+      context.checkRoot(true);
       IncrementalTypechecking component = context.getBaseNodeTypesComponent();
       List<SearchResult<SNode>> rules = new ArrayList<>();
       if (component == null) {
@@ -87,8 +84,9 @@ public class AffectingRulesFinder extends BaseFinder {
         rules.add(new SearchResult<>(rule, "rules which affect node's type"));
       }
       return createResult(term, rules);
+      
     } finally {
-      manager.releaseTypecheckingContext(owner);
+      context.dispose();
     }
   }
 
@@ -96,7 +94,4 @@ public class AffectingRulesFinder extends BaseFinder {
     return new SearchResults<>(CollectionUtil.set(node), results);
   }
 
-
-  private static class MyTypeContextOwner extends DefaultTypecheckingContextOwner {
-  }
 }
