@@ -10494,7 +10494,9 @@
           <node concept="3cpWsn" id="7Goqq7Ss9tM" role="3cpWs9">
             <property role="TrG5h" value="attrProperty" />
             <property role="3TUv4t" value="true" />
-            <node concept="3bZ5Sz" id="7Goqq7Ss9tH" role="1tU5fm" />
+            <node concept="3bZ5Sz" id="7Goqq7Ss9tH" role="1tU5fm">
+              <ref role="3bZ5Sy" to="tpck:2ULFgo8_XDm" resolve="PropertyAttribute" />
+            </node>
             <node concept="35c_gC" id="7Goqq7SsGWj" role="33vP2m">
               <ref role="35c_gD" to="tpck:2ULFgo8_XDm" resolve="PropertyAttribute" />
             </node>
@@ -10504,7 +10506,9 @@
           <node concept="3cpWsn" id="7Goqq7St0Cr" role="3cpWs9">
             <property role="TrG5h" value="attrLink" />
             <property role="3TUv4t" value="true" />
-            <node concept="3bZ5Sz" id="7Goqq7St0Cs" role="1tU5fm" />
+            <node concept="3bZ5Sz" id="7Goqq7St0Cs" role="1tU5fm">
+              <ref role="3bZ5Sy" to="tpck:2ULFgo8_XDh" resolve="LinkAttribute" />
+            </node>
             <node concept="35c_gC" id="7Goqq7St0Ct" role="33vP2m">
               <ref role="35c_gD" to="tpck:2ULFgo8_XDh" resolve="LinkAttribute" />
             </node>
