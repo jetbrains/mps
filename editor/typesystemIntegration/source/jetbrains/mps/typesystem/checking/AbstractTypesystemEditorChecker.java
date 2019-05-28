@@ -23,6 +23,7 @@ import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.errors.item.EditorQuickFix;
 import jetbrains.mps.errors.item.FlavouredItem.ReportItemFlavour;
 import jetbrains.mps.errors.item.TypesystemReportItemAdapter;
+import jetbrains.mps.newTypesystem.context.IncrementalTypecheckingContext;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.nodeEditor.EditorMessage;
 import jetbrains.mps.nodeEditor.HighlighterMessage;
@@ -32,6 +33,9 @@ import jetbrains.mps.nodeEditor.checking.UpdateResult;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.message.EditorMessageOwner;
 import jetbrains.mps.smodel.event.SModelEvent;
+import jetbrains.mps.typechecking.backend.TypecheckingSession;
+import jetbrains.mps.typesystem.LegacyTypecheckingProvider;
+import jetbrains.mps.typesystem.LegacyTypecheckingQueries;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.typesystem.inference.TypeContextManager;
 import jetbrains.mps.util.Cancellable;
@@ -82,14 +86,19 @@ public abstract class AbstractTypesystemEditorChecker extends BaseEditorChecker 
   public UpdateResult update(final EditorComponent editorComponent, final boolean incremental, final boolean applyQuickFixes,
                              final Cancellable cancellable) {
     try {
-      return TypeContextManager.getInstance().runTypeCheckingComputation(editorComponent.getTypecheckingContextOwner(), editorComponent.getEditedNode(),
-                                                                         context -> doCreateMessages(context, incremental, editorComponent.getEditorContext(),
-                                                                                                     editorComponent.getEditedNode(), cancellable,
-                                                                                                     applyQuickFixes));
+      TypecheckingSession session = editorComponent.getTypecheckingSession();
+      LegacyTypecheckingQueries legacyTypesystemQueries = session.getQueries(LegacyTypecheckingProvider.class);
+      TypeCheckingContext typeCheckingContext = legacyTypesystemQueries.getTypeCheckingContext();
+      return ((IncrementalTypecheckingContext) typeCheckingContext).runTypeCheckingAction(() ->
+          doCreateMessages(typeCheckingContext, incremental, editorComponent.getEditorContext(),
+                           editorComponent.getEditedNode(), cancellable,
+                           applyQuickFixes));
+
     } catch (IndexNotReadyException e) {
       if (editorComponent.getNodeForTypechecking() != null) {
-        TypeContextManager.getInstance().acquireTypecheckingContext(editorComponent.getNodeForTypechecking(), editorComponent);
-        TypeContextManager.getInstance().releaseTypecheckingContext(editorComponent);
+        TypecheckingSession session = editorComponent.getTypecheckingSession();
+        LegacyTypecheckingQueries legacyTypesystemQueries = session.getQueries(LegacyTypecheckingProvider.class);
+        legacyTypesystemQueries.getTypeCheckingContext().clear();
       }
       throw e;
     }
