@@ -17,6 +17,7 @@ import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.project.MPSProject;
@@ -65,47 +66,61 @@ public final class CreateMatchingConstructor_Intention extends AbstractIntention
     public void execute(final SNode node, final EditorContext editorContext) {
       final SNode thisClass = node;
 
-      List<SNode> visibleSuperConstructors = DefaultConstructorUtils.retrieveSuperConstructors(thisClass);
+      final List<SNode> visibleSuperConstructors = DefaultConstructorUtils.retrieveSuperConstructors(thisClass);
 
       if (ListSequence.fromList(visibleSuperConstructors).count() == 0) {
         return;
       }
-      Iterable<SNode> selectedSuperConstructors;
-      if (ListSequence.fromList(visibleSuperConstructors).count() > 1) {
-        SelectSuperConstructorsDialog dialog = new SelectSuperConstructorsDialog(ListSequence.fromList(visibleSuperConstructors).select(new ISelector<SNode, SNodeReference>() {
-          public SNodeReference select(SNode it) {
-            return SNodeOperations.getPointer(it);
-          }
-        }).toGenericArray(SNodeReference.class), ((MPSProject) (editorContext.getOperationContext().getProject())).getProject());
-        dialog.setTitle("Create constructor matching super");
-        dialog.show();
+      ApplicationManager.getApplication().invokeLater(new Runnable() {
+        @Override
+        public void run() {
+          Iterable<SNode> selectedSuperConstructors;
+          if (ListSequence.fromList(visibleSuperConstructors).count() > 1) {
+            SelectSuperConstructorsDialog dialog = new SelectSuperConstructorsDialog(ListSequence.fromList(visibleSuperConstructors).select(new ISelector<SNode, SNodeReference>() {
+              public SNodeReference select(SNode it) {
+                return SNodeOperations.getPointer(it);
+              }
+            }).toGenericArray(SNodeReference.class), ((MPSProject) (editorContext.getOperationContext().getProject())).getProject());
+            dialog.setTitle("Create constructor matching super");
 
-        if (!(dialog.isOK())) {
-          return;
-        }
-        Iterable<SNodeReference> selection = (Iterable<SNodeReference>) dialog.getSelectedElements();
-        Iterable<SNode> resolved = Sequence.fromIterable(selection).select(new ISelector<SNodeReference, SNode>() {
-          public SNode select(SNodeReference it) {
-            return SNodeOperations.as(it.resolve(editorContext.getRepository()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration"));
+            dialog.show();
+
+            if (!(dialog.isOK())) {
+              return;
+            }
+            Iterable<SNodeReference> selection = (Iterable<SNodeReference>) dialog.getSelectedElements();
+            Iterable<SNode> resolved = Sequence.fromIterable(selection).select(new ISelector<SNodeReference, SNode>() {
+              public SNode select(SNodeReference it) {
+                return SNodeOperations.as(it.resolve(editorContext.getRepository()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration"));
+              }
+            });
+            selectedSuperConstructors = resolved;
+          } else {
+            selectedSuperConstructors = visibleSuperConstructors;
           }
-        });
-        selectedSuperConstructors = resolved;
-      } else {
-        selectedSuperConstructors = visibleSuperConstructors;
-      }
-      Sequence.fromIterable(selectedSuperConstructors).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode superConstructor) {
-          SNode currentSuperConstructorCopy = SNodeOperations.copyNode(superConstructor);
-          ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(currentSuperConstructorCopy, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"))).clear();
-          SNode superCall = SLinkOperations.addNewChild(SLinkOperations.getTarget(currentSuperConstructorCopy, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d512e1eL, "jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation"));
-          SLinkOperations.setTarget(superCall, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"), superConstructor);
-          for (SNode param : SLinkOperations.getChildren(currentSuperConstructorCopy, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"))) {
-            SNode arg = SLinkOperations.addNewChild(superCall, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference"));
-            SLinkOperations.setTarget(arg, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration"), param);
-          }
-          ListSequence.fromList(SLinkOperations.getChildren(thisClass, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member"))).addElement(currentSuperConstructorCopy);
+          final Iterable<SNode> selectedSuperConstructorsFinal = selectedSuperConstructors;
+
+          editorContext.getRepository().getModelAccess().executeCommand(new Runnable() {
+            @Override
+            public void run() {
+              Sequence.fromIterable(selectedSuperConstructorsFinal).visitAll(new IVisitor<SNode>() {
+                public void visit(SNode superConstructor) {
+                  SNode currentSuperConstructorCopy = SNodeOperations.copyNode(superConstructor);
+                  ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(currentSuperConstructorCopy, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"))).clear();
+                  SNode superCall = SLinkOperations.addNewChild(SLinkOperations.getTarget(currentSuperConstructorCopy, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d512e1eL, "jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation"));
+                  SLinkOperations.setTarget(superCall, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"), superConstructor);
+                  for (SNode param : SLinkOperations.getChildren(currentSuperConstructorCopy, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"))) {
+                    SNode arg = SLinkOperations.addNewChild(superCall, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference"));
+                    SLinkOperations.setTarget(arg, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration"), param);
+                  }
+                  ListSequence.fromList(SLinkOperations.getChildren(thisClass, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member"))).addElement(currentSuperConstructorCopy);
+                }
+              });
+            }
+          });
         }
       });
+
     }
     @Override
     public IntentionDescriptor getDescriptor() {
