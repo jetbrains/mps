@@ -440,12 +440,6 @@
           <ref role="3uigEE" to="lcr:2JwSLRbyYN6" resolve="CurrentDifferenceRegistry" />
         </node>
       </node>
-      <node concept="37vLTG" id="5IHtz9v0ApQ" role="3clF46">
-        <property role="TrG5h" value="nodeFileSystem" />
-        <node concept="3uibUv" id="5IHtz9v0ACH" role="1tU5fm">
-          <ref role="3uigEE" to="kip1:~NodeVirtualFileSystem" resolve="NodeVirtualFileSystem" />
-        </node>
-      </node>
       <node concept="3cqZAl" id="2n7wcdLayE2" role="3clF45" />
       <node concept="3Tm1VV" id="2n7wcdLayE3" role="1B3o_S" />
       <node concept="3clFbS" id="2n7wcdLayE4" role="3clF47">
@@ -456,9 +450,6 @@
           </node>
           <node concept="37vLTw" id="2BHiRxglnog" role="37wK5m">
             <ref role="3cqZAo" node="2n7wcdLayEv" resolve="registry" />
-          </node>
-          <node concept="37vLTw" id="5IHtz9v0AHM" role="37wK5m">
-            <ref role="3cqZAo" node="5IHtz9v0ApQ" resolve="nodeFileSystem" />
           </node>
         </node>
       </node>

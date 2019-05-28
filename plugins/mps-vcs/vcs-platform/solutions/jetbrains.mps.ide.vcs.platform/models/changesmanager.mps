@@ -11722,6 +11722,24 @@
       <node concept="3uibUv" id="5IHtz9v0llg" role="1tU5fm">
         <ref role="3uigEE" to="kip1:~NodeVirtualFileSystem" resolve="NodeVirtualFileSystem" />
       </node>
+      <node concept="10QFUN" id="2YvhCYo1aGy" role="33vP2m">
+        <node concept="3uibUv" id="2YvhCYo1aGw" role="10QFUM">
+          <ref role="3uigEE" to="kip1:~NodeVirtualFileSystem" resolve="NodeVirtualFileSystem" />
+        </node>
+        <node concept="2OqwBi" id="2YvhCYo1gkv" role="10QFUP">
+          <node concept="2YIFZM" id="2YvhCYo1eOU" role="2Oq$k0">
+            <ref role="37wK5l" to="jlff:~VirtualFileManager.getInstance()" resolve="getInstance" />
+            <ref role="1Pybhc" to="jlff:~VirtualFileManager" resolve="VirtualFileManager" />
+          </node>
+          <node concept="liA8E" id="2YvhCYo1i6$" role="2OqNvi">
+            <ref role="37wK5l" to="jlff:~VirtualFileManager.getFileSystem(java.lang.String)" resolve="getFileSystem" />
+            <node concept="10M0yZ" id="2YvhCYo1lPR" role="37wK5m">
+              <ref role="3cqZAo" to="kip1:~NodeVirtualFileSystem.PROTOCOL" resolve="PROTOCOL" />
+              <ref role="1PxDUh" to="kip1:~NodeVirtualFileSystem" resolve="NodeVirtualFileSystem" />
+            </node>
+          </node>
+        </node>
+      </node>
     </node>
     <node concept="2tJIrI" id="5IHtz9v0nSN" role="jymVt" />
     <node concept="2tJIrI" id="5IHtz9v0k5E" role="jymVt" />
@@ -11760,16 +11778,6 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="5IHtz9v0llh" role="3cqZAp">
-          <node concept="37vLTI" id="5IHtz9v0llj" role="3clFbG">
-            <node concept="37vLTw" id="5IHtz9v0q$I" role="37vLTJ">
-              <ref role="3cqZAo" node="5IHtz9v0lld" resolve="myNodeFileSystem" />
-            </node>
-            <node concept="37vLTw" id="5IHtz9v0llr" role="37vLTx">
-              <ref role="3cqZAo" node="5IHtz9v0lab" resolve="nodeFileSystem" />
-            </node>
-          </node>
-        </node>
       </node>
       <node concept="37vLTG" id="2n7wcdLaAWY" role="3clF46">
         <property role="TrG5h" value="project" />
@@ -11781,12 +11789,6 @@
         <property role="TrG5h" value="registry" />
         <node concept="3uibUv" id="2n7wcdLaAX1" role="1tU5fm">
           <ref role="3uigEE" node="2JwSLRbyYN6" resolve="CurrentDifferenceRegistry" />
-        </node>
-      </node>
-      <node concept="37vLTG" id="5IHtz9v0lab" role="3clF46">
-        <property role="TrG5h" value="nodeFileSystem" />
-        <node concept="3uibUv" id="5IHtz9v0liN" role="1tU5fm">
-          <ref role="3uigEE" to="kip1:~NodeVirtualFileSystem" resolve="NodeVirtualFileSystem" />
         </node>
       </node>
     </node>

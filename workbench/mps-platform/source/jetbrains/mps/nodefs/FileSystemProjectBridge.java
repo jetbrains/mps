@@ -16,6 +16,7 @@
 package jetbrains.mps.nodefs;
 
 import com.intellij.openapi.components.AbstractProjectComponent;
+import com.intellij.openapi.vfs.VirtualFileManager;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.Project;
 
@@ -28,13 +29,12 @@ import jetbrains.mps.project.Project;
 public class FileSystemProjectBridge extends AbstractProjectComponent {
 
   private final MPSProject myProject;
-  private final NodeVirtualFileSystem myFileSystem;
+  private final NodeVirtualFileSystem myFileSystem = (NodeVirtualFileSystem) VirtualFileManager.getInstance().getFileSystem(NodeVirtualFileSystem.PROTOCOL);
   private RepositoryVirtualFiles myProjectVirtualFiles;
 
-  public FileSystemProjectBridge(MPSProject mpsProject, NodeVirtualFileSystem mpsFileSystem) {
+  public FileSystemProjectBridge(MPSProject mpsProject) {
     super(mpsProject.getProject());
     myProject = mpsProject;
-    myFileSystem = mpsFileSystem;
   }
 
   @Override

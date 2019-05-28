@@ -15,10 +15,11 @@
  */
 package jetbrains.mps.nodefs;
 
+import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.vfs.DeprecatedVirtualFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.openapi.vfs.VirtualFileManager;
 import com.intellij.util.LocalTimeCounter;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.smodel.ModelAccessHelper;
@@ -52,18 +53,12 @@ import java.util.Set;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public final class NodeVirtualFileSystem extends DeprecatedVirtualFileSystem implements ApplicationComponent {
+public final class NodeVirtualFileSystem extends DeprecatedVirtualFileSystem implements Disposable {
 
   public static NodeVirtualFileSystem getInstance() {
-    return ApplicationManager.getApplication().getComponent(NodeVirtualFileSystem.class);
+    return (NodeVirtualFileSystem) VirtualFileManager.getInstance().getFileSystem(NodeVirtualFileSystem.PROTOCOL);
   }
-
-  public NodeVirtualFileSystem(MPSCoreComponents coreComponents) {
-    // FIXME this component shall be ProjectComponent, pass MPSProject.getRepository(); initialize in projectOpened()
-    SRepository myRepository = coreComponents.getModuleRepository();
-    myGlobalRepoFiles = new RepositoryVirtualFiles(this, myRepository);
-    myRepositoryListener = new MyRepositoryListener(myGlobalRepoFiles);
-  }
+  public static final String PROTOCOL = "mps";
 
   /*
    * For transition period, left container of virtual files coming from MPSModuleRepository.getInstance(), and use it
@@ -72,14 +67,20 @@ public final class NodeVirtualFileSystem extends DeprecatedVirtualFileSystem imp
    * (or at least managed and not exposed to user code).
    */
   @ToRemove(version = 3.4)
-  private final RepositoryVirtualFiles myGlobalRepoFiles;
+  private final RepositoryVirtualFiles myGlobalRepoFiles =
+      new RepositoryVirtualFiles(this,
+                                 ApplicationManager.getApplication().getComponent(MPSCoreComponents.class).getModuleRepository());;
 
   private final Object myRepoVFLock = new Object();
   // I don't expect this collection to grow significantly, hence just List
   private final List<RepositoryVirtualFiles> myPerRepositoryFiles = new CopyOnWriteArrayList<>();
   private final Map<RepositoryVirtualFiles, MyRepositoryListener> myFiles2ListenerMap = new HashMap<>();
-  private final SRepositoryContentAdapter myRepositoryListener;
+  private final SRepositoryContentAdapter myRepositoryListener = new MyRepositoryListener(myGlobalRepoFiles);;
   private boolean myDisposed = false;
+
+  public NodeVirtualFileSystem() {
+    new RepoListenerRegistrar(myGlobalRepoFiles.getRepository(), myRepositoryListener).attach();
+  }
 
   void register(@NotNull RepositoryVirtualFiles repoFiles) {
     MyRepositoryListener listener;
@@ -135,19 +136,7 @@ public final class NodeVirtualFileSystem extends DeprecatedVirtualFileSystem imp
   }
 
   @Override
-  @NonNls
-  @NotNull
-  public String getComponentName() {
-    return "MPS File System";
-  }
-
-  @Override
-  public void initComponent() {
-    new RepoListenerRegistrar(myGlobalRepoFiles.getRepository(), myRepositoryListener).attach();
-  }
-
-  @Override
-  public void disposeComponent() {
+  public void dispose() {
     new RepoListenerRegistrar(myGlobalRepoFiles.getRepository(), myRepositoryListener).detach();
     myDisposed = true;
   }
@@ -156,7 +145,7 @@ public final class NodeVirtualFileSystem extends DeprecatedVirtualFileSystem imp
   @NotNull
   @NonNls
   public String getProtocol() {
-    return "mps";
+    return PROTOCOL;
   }
 
   @Override

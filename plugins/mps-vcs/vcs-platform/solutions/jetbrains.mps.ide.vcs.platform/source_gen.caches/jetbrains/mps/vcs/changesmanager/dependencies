@@ -252,6 +252,7 @@
     <classNode dependClassName="com.intellij.openapi.vcs.FileStatus" />
     <classNode dependClassName="com.intellij.openapi.vcs.FileStatusManager" />
     <classNode dependClassName="com.intellij.openapi.vfs.VirtualFile" />
+    <classNode dependClassName="com.intellij.openapi.vfs.VirtualFileManager" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.Runnable" />
     <classNode dependClassName="java.util.ArrayList" />

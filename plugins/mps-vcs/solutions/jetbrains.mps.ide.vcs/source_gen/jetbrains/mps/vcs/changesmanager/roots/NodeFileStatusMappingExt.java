@@ -7,7 +7,6 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.vcs.changesmanager.CurrentDifferenceRegistry;
-import jetbrains.mps.nodefs.NodeVirtualFileSystem;
 import com.intellij.openapi.vcs.FileStatusManager;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.plugins.relations.RelationDescriptor;
@@ -17,8 +16,8 @@ import org.apache.log4j.Level;
 
 public class NodeFileStatusMappingExt extends NodeFileStatusMapping {
   private static final Logger LOG = LogManager.getLogger(NodeFileStatusMappingExt.class);
-  public NodeFileStatusMappingExt(MPSProject project, CurrentDifferenceRegistry registry, NodeVirtualFileSystem nodeFileSystem) {
-    super(project, registry, nodeFileSystem);
+  public NodeFileStatusMappingExt(MPSProject project, CurrentDifferenceRegistry registry) {
+    super(project, registry);
   }
   @Override
   protected void statusChanged(FileStatusManager fsm, SNode currentNode) {

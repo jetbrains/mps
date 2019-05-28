@@ -5,10 +5,6 @@
   </extensions>
   <application-components>
     <component>
-      <interface-class>com.intellij.openapi.vfs.jrt.JrtFileSystem</interface-class>
-      <implementation-class>com.intellij.openapi.vfs.impl.jrt.JrtFileSystemImpl</implementation-class>
-    </component>
-    <component>
       <implementation-class>jetbrains.mps.repository.FSNotificationsImprover</implementation-class>
     </component>
     <component>
@@ -28,6 +24,7 @@
   <extensions defaultExtensionNs="com.intellij">
     <projectService serviceInterface="jetbrains.mps.ide.make.MakeServiceConfiguration"
                   serviceImplementation="jetbrains.mps.ide.make.MakeServiceConfiguration"/>
+    <virtualFileSystem implementationClass="com.intellij.openapi.vfs.impl.jrt.JrtFileSystemImpl" key="jrt" physical="true"/>
   </extensions>
 
 </components>

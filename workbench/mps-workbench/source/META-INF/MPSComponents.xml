@@ -94,10 +94,6 @@
       <implementation-class>jetbrains.mps.ide.navigation.NavigationSupportImpl</implementation-class>
     </component>
     <component>
-      <implementation-class>jetbrains.mps.workbench.languagesFs.MPSLanguagesVirtualFileSystem
-      </implementation-class>
-    </component>
-    <component>
       <interface-class>jetbrains.mps.workbench.action.IRegistryManager</interface-class>
       <implementation-class>jetbrains.mps.plugins.applicationplugins.ApplicationPluginManager</implementation-class>
     </component>
@@ -206,6 +202,8 @@
     <applicationConfigurable groupId="build" groupWeight="140" instance="jetbrains.mps.ide.generator.GenerationSettingsPreferencesPage" id="preferences.generationSettings"/>
 
     <fileEditorProvider implementation="jetbrains.mps.workbench.editors.MPSLanguageEditorProvider"/>
+
+    <virtualFileSystem implementationClass="jetbrains.mps.workbench.languagesFs.MPSLanguagesVirtualFileSystem" key="mpslang" physical="true"/>
   </extensions>
 
   <extensions defaultExtensionNs="jetbrains.mps">

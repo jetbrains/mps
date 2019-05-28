@@ -10,6 +10,7 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.nodefs.NodeVirtualFileSystem;
+import com.intellij.openapi.vfs.VirtualFileManager;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.vcs.FileStatusManager;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -39,14 +40,13 @@ public class NodeFileStatusMapping extends AbstractProjectComponent {
   private final Map<SNodeReference, FileStatus> myFileStatusMap = MapSequence.fromMap(new HashMap<SNodeReference, FileStatus>());
   private final CurrentDifferenceListener myGlobalListener = new NodeFileStatusMapping.MyGlobalListener();
   protected final MPSProject myMPSProject;
-  protected final NodeVirtualFileSystem myNodeFileSystem;
+  protected final NodeVirtualFileSystem myNodeFileSystem = (NodeVirtualFileSystem) VirtualFileManager.getInstance().getFileSystem(NodeVirtualFileSystem.PROTOCOL);
 
 
-  public NodeFileStatusMapping(MPSProject project, CurrentDifferenceRegistry registry, NodeVirtualFileSystem nodeFileSystem) {
+  public NodeFileStatusMapping(MPSProject project, CurrentDifferenceRegistry registry) {
     super(project.getProject());
     myRegistry = registry;
     myMPSProject = project;
-    myNodeFileSystem = nodeFileSystem;
   }
   @Override
   public void projectOpened() {

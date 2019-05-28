@@ -22,6 +22,7 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.VirtualFileAdapter;
 import com.intellij.openapi.vfs.VirtualFileEvent;
 import com.intellij.openapi.vfs.VirtualFileListener;
+import com.intellij.openapi.vfs.VirtualFileManager;
 import com.intellij.openapi.vfs.VirtualFilePropertyEvent;
 import jetbrains.mps.nodefs.MPSNodeVirtualFile;
 import jetbrains.mps.nodefs.NodeVirtualFileSystem;
@@ -36,13 +37,12 @@ import java.util.Arrays;
  */
 public class NodeIconUpdater extends AbstractProjectComponent {
   private final FileEditorManagerEx myFileEditorManagerEx;
-  private final NodeVirtualFileSystem myNodeVFS;
+  private final NodeVirtualFileSystem myNodeVFS = (NodeVirtualFileSystem) VirtualFileManager.getInstance().getFileSystem(NodeVirtualFileSystem.PROTOCOL);
   private final VirtualFileListener myFileListener;
 
-  public NodeIconUpdater(Project project, FileEditorManagerEx fileEditorManager, NodeVirtualFileSystem nodeVFS) {
+  public NodeIconUpdater(Project project, FileEditorManagerEx fileEditorManager) {
     super(project);
     myFileEditorManagerEx = fileEditorManager;
-    myNodeVFS = nodeVFS;
     // TODO Would be more effective to be an ApplicationComponent and listen to bulk changes (BulkFileListener)
     // however, there's no way to find out MPSProject from MPSNodeVirtualFile at the moment, and without a project
     // can't access FileEditorManagerEx.
