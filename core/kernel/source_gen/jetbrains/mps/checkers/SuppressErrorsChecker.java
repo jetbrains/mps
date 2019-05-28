@@ -5,13 +5,14 @@ package jetbrains.mps.checkers;
 import jetbrains.mps.errors.item.IssueKindReportItem;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SRepository;
-import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.errors.item.NodeReportItem;
-import org.jetbrains.mps.openapi.util.ProgressMonitor;
-import java.util.Collection;
-import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.errors.item.NodeReportItemBase;
+import jetbrains.mps.errors.item.RuleIdFlavouredItem;
+import jetbrains.mps.errors.item.NodeReportItem;
 import jetbrains.mps.errors.MessageStatus;
+import java.util.Collection;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.util.ProgressMonitor;
+import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 
 public class SuppressErrorsChecker extends AbstractNodeCheckerInEditor {
   @Override
@@ -21,6 +22,24 @@ public class SuppressErrorsChecker extends AbstractNodeCheckerInEditor {
   @Override
   protected void checkNodeInEditor(SNode node, LanguageErrorsCollector errorsCollector, SRepository repository) {
     // do nothing 
+  }
+  public class SuppressedWrapperReportItem extends NodeReportItemBase implements RuleIdFlavouredItem {
+    private final NodeReportItem myOrigin;
+    public SuppressedWrapperReportItem(NodeReportItem origin) {
+      super(MessageStatus.OK, origin.getNode(), "Suppressed: " + origin.getMessage());
+      this.myOrigin = origin;
+    }
+    public NodeReportItem getOrigin() {
+      return this.myOrigin;
+    }
+    @Override
+    public Collection<RuleIdFlavouredItem.TypesystemRuleId> getRuleId() {
+      return RuleIdFlavouredItem.FLAVOUR_RULE_ID.getCollection(myOrigin);
+    }
+    @Override
+    public IssueKindReportItem.ItemKind getIssueKind() {
+      return SuppressErrorsChecker.this.getCategory().deriveItemKind();
+    }
   }
   @Nullable
   @Override
@@ -33,11 +52,7 @@ public class SuppressErrorsChecker extends AbstractNodeCheckerInEditor {
             IssueKindReportItem error = foundError.getError();
             if (error instanceof NodeReportItem && !(ErrorReportUtil.shouldReportError((NodeReportItem) error, repository))) {
               foundError.suppress();
-              NodeReportItem replacement = new NodeReportItemBase(MessageStatus.OK, ((NodeReportItem) error).getNode(), error.getMessage()) {
-                public IssueKindReportItem.ItemKind getIssueKind() {
-                  return SuppressErrorsChecker.this.getCategory().deriveItemKind();
-                }
-              };
+              NodeReportItem replacement = new SuppressErrorsChecker.SuppressedWrapperReportItem((NodeReportItem) error);
               checkingSession.postprocessingConsumer().consume(replacement);
             }
           }

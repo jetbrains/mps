@@ -326,6 +326,7 @@
     <classNode dependClassName="jetbrains.mps.errors.item.IssueKindReportItem" />
     <classNode dependClassName="jetbrains.mps.errors.item.NodeReportItem" />
     <classNode dependClassName="jetbrains.mps.errors.item.NodeReportItemBase" />
+    <classNode dependClassName="jetbrains.mps.errors.item.RuleIdFlavouredItem" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.CollectionSequence" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
