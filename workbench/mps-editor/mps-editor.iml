@@ -24,5 +24,6 @@
     <orderEntry type="module" module-name="actions-runtime" />
     <orderEntry type="module" module-name="intentions-runtime" />
     <orderEntry type="module" module-name="mps-icons" />
+    <orderEntry type="module" module-name="typechecking" />
   </component>
 </module>
