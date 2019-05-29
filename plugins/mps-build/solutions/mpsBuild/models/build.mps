@@ -683,22 +683,6 @@
           <property role="3LZaj6" value="source" />
         </node>
       </node>
-      <node concept="398b2D" id="1iPsR6PacP9" role="398b2p">
-        <node concept="nFU4i" id="1iPsR6Pagkj" role="nFU4p">
-          <property role="nFU4j" value="dataFlowRuntime/source" />
-          <property role="3LZaj6" value="source" />
-        </node>
-        <node concept="nFU4i" id="1iPsR6Pagkk" role="nFU4p">
-          <property role="nFU4j" value="dataFlowRuntime/source_gen" />
-          <property role="3LZaj6" value="source" />
-        </node>
-        <node concept="398BVA" id="1iPsR6PadPz" role="398b2C">
-          <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
-          <node concept="2Ry0Ak" id="1iPsR6PaeOZ" role="iGT6I">
-            <property role="2Ry0Am" value="core" />
-          </node>
-        </node>
-      </node>
       <node concept="398b2D" id="1FaKCGJSzFk" role="398b2p">
         <node concept="398BVA" id="1FaKCGJSzFm" role="398b2C">
           <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
@@ -893,6 +877,31 @@
         </node>
       </node>
       <node concept="nCB5N" id="PI$1s1REye" role="nCB5Z">
+        <ref role="nCB5Y" node="1FaKCGJSzEy" resolve="mps-kernel" />
+      </node>
+    </node>
+    <node concept="398b33" id="PI$1s21VRQ" role="3989C9">
+      <property role="TrG5h" value="dataflow-rt" />
+      <node concept="398b2D" id="1iPsR6PacP9" role="398b2p">
+        <node concept="nFU4i" id="1iPsR6Pagkj" role="nFU4p">
+          <property role="nFU4j" value="source" />
+          <property role="3LZaj6" value="source" />
+        </node>
+        <node concept="nFU4i" id="1iPsR6Pagkk" role="nFU4p">
+          <property role="nFU4j" value="source_gen" />
+          <property role="3LZaj6" value="source" />
+        </node>
+        <node concept="398BVA" id="1iPsR6PadPz" role="398b2C">
+          <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+          <node concept="2Ry0Ak" id="1iPsR6PaeOZ" role="iGT6I">
+            <property role="2Ry0Am" value="core" />
+            <node concept="2Ry0Ak" id="PI$1s21X9M" role="2Ry0An">
+              <property role="2Ry0Am" value="dataFlowRuntime" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="nCB5N" id="PI$1s21X5v" role="nCB5Z">
         <ref role="nCB5Y" node="1FaKCGJSzEy" resolve="mps-kernel" />
       </node>
     </node>
@@ -1633,7 +1642,7 @@
       <node concept="398b2D" id="5StVQ8qcR1J" role="398b2p">
         <node concept="nFU4i" id="5StVQ8qcS0M" role="nFU4p">
           <property role="3LZaj6" value="source" />
-          <property role="nFU4j" value="." />
+          <property role="nFU4j" value="source" />
         </node>
         <node concept="398BVA" id="5StVQ8qcRxd" role="398b2C">
           <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
@@ -1665,6 +1674,9 @@
       </node>
       <node concept="nCB5N" id="CxQQw_A0us" role="nCB5Z">
         <ref role="nCB5Y" node="6UWbfHq6Ys7" resolve="mps-project-check" />
+      </node>
+      <node concept="nCB5N" id="PI$1s21Xmh" role="nCB5Z">
+        <ref role="nCB5Y" node="PI$1s21VRQ" resolve="dataflow-rt" />
       </node>
     </node>
     <node concept="398b33" id="TfcoydlQ6W" role="3989C9">
@@ -1757,6 +1769,9 @@
       </node>
       <node concept="nCB5N" id="1BQUFFY6FOb" role="nCB5Z">
         <ref role="nCB5Y" node="1WZWsoqIz7X" resolve="mps-migration" />
+      </node>
+      <node concept="nCB5N" id="PI$1s21XeY" role="nCB5Z">
+        <ref role="nCB5Y" node="PI$1s21VRQ" resolve="dataflow-rt" />
       </node>
       <node concept="2GhqfE" id="4LdE6kxkq2N" role="nCB5Z">
         <node concept="3yrxFa" id="4LdE6kxkqzA" role="3yrxIG">
@@ -2168,6 +2183,9 @@
           </node>
           <node concept="Saw0i" id="PI$1s1REB6" role="39821P">
             <ref role="Saw0g" node="PI$1s1RDim" resolve="scripts-runtime" />
+          </node>
+          <node concept="Saw0i" id="PI$1s21XiT" role="39821P">
+            <ref role="Saw0g" node="PI$1s21VRQ" resolve="dataflow-rt" />
           </node>
           <node concept="398223" id="7wpYgMyUGWH" role="39821P">
             <node concept="3_J27D" id="7wpYgMyUGWI" role="Nbhlr">
@@ -15262,6 +15280,9 @@
       </node>
       <node concept="nCB5N" id="PI$1s1REDM" role="nCB5Z">
         <ref role="nCB5Y" node="PI$1s1RDim" resolve="scripts-runtime" />
+      </node>
+      <node concept="nCB5N" id="PI$1s21XgQ" role="nCB5Z">
+        <ref role="nCB5Y" node="PI$1s21VRQ" resolve="dataflow-rt" />
       </node>
     </node>
     <node concept="398b33" id="5xa9wY2vqaP" role="3989C9">
