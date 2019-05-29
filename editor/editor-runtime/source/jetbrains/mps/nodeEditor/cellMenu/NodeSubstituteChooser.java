@@ -29,6 +29,7 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
 import jetbrains.mps.openapi.editor.cells.SubstituteInfo;
 import jetbrains.mps.smodel.action.AbstractNodeSubstituteAction;
+import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.typesystem.inference.ITypeContextOwner;
 import jetbrains.mps.typesystem.inference.NonReusableTypecheckingContextOwner;
 import jetbrains.mps.typesystem.inference.TypeContextManager;
@@ -264,17 +265,17 @@ public class NodeSubstituteChooser implements KeyboardHandler {
   }
 
   private List<SubstituteAction> getMatchingActions(final String pattern) {
+    if (myIsSmart) {
+      return TypecheckingFacade
+                 .getFromContext()
+                 .runIsolated(() -> myNodeSubstituteInfo.getSmartMatchingActions(pattern, false, myContextCell));
 
-    final ITypeContextOwner contextOwner = myIsSmart ? new NonReusableTypecheckingContextOwner() : myEditorComponent.getTypecheckingContextOwner();
-    List<SubstituteAction> substituteActions =
-        TypeContextManager.getInstance().runTypeCheckingComputation(contextOwner, myEditorComponent.getEditedNode(), context -> {
-          if (myIsSmart) {
-            return myNodeSubstituteInfo.getSmartMatchingActions(pattern, false, myContextCell);
-          } else {
-            return myNodeSubstituteInfo.getMatchingActions(pattern, false);
-          }
-        });
-    return substituteActions;
+    } else {
+      return TypecheckingFacade
+                 .getFromContext()
+                 .runWithSession(myEditorComponent.getTypecheckingSession(),
+                                 () -> myNodeSubstituteInfo.getMatchingActions(pattern, false));
+    }
   }
 
   private void rebuildMenuEntries() {
