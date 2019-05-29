@@ -57,7 +57,6 @@ public class MPSFacetConfiguration implements FacetConfiguration, PersistentStat
   // the one reflected in SolutionDescriptor the moment it has been created, we shall consult this object for facet options not available from SD
   private MPSConfigurationBean myActualState;
   private MPSConfigurationBean myMostRecentStateLoaded;
-  private boolean myLoaded = false;
   private MPSFacet myMpsFacet;
 
   /**
@@ -100,7 +99,6 @@ public class MPSFacetConfiguration implements FacetConfiguration, PersistentStat
     } else {
       myMostRecentStateLoaded = new MPSConfigurationBean(moduleDescriptor, state);
     }
-    myLoaded = true;
   }
 
   @Override
@@ -122,16 +120,11 @@ public class MPSFacetConfiguration implements FacetConfiguration, PersistentStat
   public void loadState(@NotNull State state) {
     myMostRecentStateLoaded = new MPSConfigurationBean();
     myMostRecentStateLoaded.loadFrom(state);
-    myLoaded = true;
   }
 
   @Override
   public void noStateLoaded() {
     myActualState = new MPSConfigurationBean();
-  }
-
-  /*package*/ boolean isLoaded() {
-    return myLoaded;
   }
 
   @Override
