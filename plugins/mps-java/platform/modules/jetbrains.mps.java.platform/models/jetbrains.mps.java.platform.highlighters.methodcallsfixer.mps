@@ -2,8 +2,8 @@
 <model ref="r:4133014c-7275-4ce9-a7b8-ec59b3bf11b3(jetbrains.mps.java.platform.highlighters.methodcallsfixer)">
   <persistence version="9" />
   <languages>
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="-1" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="-1" />
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="-1" />
     <use id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples" version="-1" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="-1" />
@@ -31,6 +31,8 @@
     <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
     <import index="18ew" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util(MPS.Core/)" />
     <import index="fnmy" ref="r:89c0fb70-0977-4113-a076-5906f9d8630f(jetbrains.mps.baseLanguage.scopes)" />
+    <import index="1ka" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typechecking(MPS.Core/)" />
+    <import index="ev0w" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typechecking.backend(MPS.Core/)" implicit="true" />
     <import index="tpek" ref="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)" implicit="true" />
   </imports>
   <registry>
@@ -82,9 +84,6 @@
       <concept id="1070462154015" name="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" flags="ig" index="Wx3nA" />
       <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
         <property id="1070475926801" name="value" index="Xl_RC" />
-      </concept>
-      <concept id="1182160077978" name="jetbrains.mps.baseLanguage.structure.AnonymousClassCreator" flags="nn" index="YeOm9">
-        <child id="1182160096073" name="cls" index="YeSDq" />
       </concept>
       <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
         <reference id="1144433194310" name="classConcept" index="1Pybhc" />
@@ -208,9 +207,6 @@
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
-      <concept id="1170345865475" name="jetbrains.mps.baseLanguage.structure.AnonymousClass" flags="ig" index="1Y3b0j">
-        <reference id="1170346070688" name="classifier" index="1Y3XeK" />
-      </concept>
     </language>
     <language id="63650c59-16c8-498a-99c8-005c7ee9515d" name="jetbrains.mps.lang.access">
       <concept id="8974276187400348173" name="jetbrains.mps.lang.access.structure.CommandClosureLiteral" flags="nn" index="1QHqEC" />
@@ -804,68 +800,40 @@
               </node>
             </node>
             <node concept="3clFbH" id="36YhQHIoO9z" role="3cqZAp" />
-            <node concept="3clFbF" id="36YhQHIon6A" role="3cqZAp">
-              <node concept="2OqwBi" id="6ts3IR9wWes" role="3clFbG">
-                <node concept="liA8E" id="6ts3IR9x0Xp" role="2OqNvi">
-                  <ref role="37wK5l" to="u78q:~TypeContextManager.runTypeCheckingAction(jetbrains.mps.typesystem.inference.ITypeContextOwner,org.jetbrains.mps.openapi.model.SNode,jetbrains.mps.typesystem.inference.ITypechecking$Action)" resolve="runTypeCheckingAction" />
-                  <node concept="2OqwBi" id="5z5KGbWO6tY" role="37wK5m">
-                    <node concept="liA8E" id="5z5KGbWOs7m" role="2OqNvi">
-                      <ref role="37wK5l" to="exr9:~EditorComponent.getTypecheckingContextOwner()" resolve="getTypecheckingContextOwner" />
-                    </node>
-                    <node concept="37vLTw" id="36YhQHInimZ" role="2Oq$k0">
+            <node concept="3clFbF" id="4HQ6gVALxY8" role="3cqZAp">
+              <node concept="2OqwBi" id="4HQ6gVALzok" role="3clFbG">
+                <node concept="2YIFZM" id="4HQ6gVALzcq" role="2Oq$k0">
+                  <ref role="37wK5l" to="1ka:~TypecheckingFacade.getFromContext()" resolve="getFromContext" />
+                  <ref role="1Pybhc" to="1ka:~TypecheckingFacade" resolve="TypecheckingFacade" />
+                </node>
+                <node concept="liA8E" id="4HQ6gVALz$8" role="2OqNvi">
+                  <ref role="37wK5l" to="ev0w:~TypecheckingSessionHandler.runWithSession(jetbrains.mps.typechecking.backend.TypecheckingSession,java.lang.Runnable)" resolve="runWithSession" />
+                  <node concept="2OqwBi" id="4HQ6gVAL$Fy" role="37wK5m">
+                    <node concept="37vLTw" id="4HQ6gVALzUL" role="2Oq$k0">
                       <ref role="3cqZAo" node="36YhQHIn8Vo" resolve="editorComponent" />
                     </node>
+                    <node concept="liA8E" id="4HQ6gVAL_Ae" role="2OqNvi">
+                      <ref role="37wK5l" to="exr9:~EditorComponent.getTypecheckingSession()" resolve="getTypecheckingSession" />
+                    </node>
                   </node>
-                  <node concept="37vLTw" id="36YhQHIo3r9" role="37wK5m">
-                    <ref role="3cqZAo" node="36YhQHIo3r5" resolve="editedNode" />
-                  </node>
-                  <node concept="2ShNRf" id="6ts3IR9yB4v" role="37wK5m">
-                    <node concept="YeOm9" id="6ts3IR9zmAR" role="2ShVmc">
-                      <node concept="1Y3b0j" id="6ts3IR9zmAU" role="YeSDq">
-                        <property role="2bfB8j" value="true" />
-                        <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
-                        <ref role="1Y3XeK" to="u78q:~ITypechecking$Action" resolve="ITypechecking.Action" />
-                        <node concept="3clFb_" id="36YhQHIob9R" role="jymVt">
-                          <property role="1EzhhJ" value="false" />
-                          <property role="TrG5h" value="run" />
-                          <property role="DiZV1" value="false" />
-                          <property role="od$2w" value="false" />
-                          <node concept="3Tm1VV" id="36YhQHIob9S" role="1B3o_S" />
-                          <node concept="3cqZAl" id="36YhQHIob9U" role="3clF45" />
-                          <node concept="37vLTG" id="36YhQHIob9V" role="3clF46">
-                            <property role="TrG5h" value="context" />
-                            <node concept="3uibUv" id="36YhQHIob9W" role="1tU5fm">
-                              <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
-                            </node>
+                  <node concept="1bVj0M" id="4HQ6gVALA_E" role="37wK5m">
+                    <node concept="3clFbS" id="4HQ6gVALA_G" role="1bW5cS">
+                      <node concept="3clFbF" id="4HQ6gVALAGj" role="3cqZAp">
+                        <node concept="1rXfSq" id="4HQ6gVALAGk" role="3clFbG">
+                          <ref role="37wK5l" node="1W7gAtGJHfx" resolve="doCreateMessages" />
+                          <node concept="37vLTw" id="4HQ6gVALAGl" role="37wK5m">
+                            <ref role="3cqZAo" node="36YhQHIo3r5" resolve="editedNode" />
                           </node>
-                          <node concept="3clFbS" id="36YhQHIob9Y" role="3clF47">
-                            <node concept="3clFbF" id="36YhQHInKaI" role="3cqZAp">
-                              <node concept="1rXfSq" id="6ts3IR9C7qI" role="3clFbG">
-                                <ref role="37wK5l" node="1W7gAtGJHfx" resolve="doCreateMessages" />
-                                <node concept="37vLTw" id="36YhQHIo53b" role="37wK5m">
-                                  <ref role="3cqZAo" node="36YhQHIo3r5" resolve="editedNode" />
-                                </node>
-                                <node concept="37vLTw" id="36YhQHInLP_" role="37wK5m">
-                                  <ref role="3cqZAo" node="36YhQHIn8Vq" resolve="incremental" />
-                                </node>
-                                <node concept="37vLTw" id="36YhQHInUes" role="37wK5m">
-                                  <ref role="3cqZAo" node="36YhQHInP1L" resolve="repository" />
-                                </node>
-                              </node>
-                            </node>
+                          <node concept="37vLTw" id="4HQ6gVALAGm" role="37wK5m">
+                            <ref role="3cqZAo" node="36YhQHIn8Vq" resolve="incremental" />
                           </node>
-                          <node concept="2AHcQZ" id="36YhQHIob9Z" role="2AJF6D">
-                            <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+                          <node concept="37vLTw" id="4HQ6gVALAGn" role="37wK5m">
+                            <ref role="3cqZAo" node="36YhQHInP1L" resolve="repository" />
                           </node>
                         </node>
-                        <node concept="3Tm1VV" id="6ts3IR9zmAV" role="1B3o_S" />
                       </node>
                     </node>
                   </node>
-                </node>
-                <node concept="2YIFZM" id="6ts3IR9wW9Y" role="2Oq$k0">
-                  <ref role="37wK5l" to="u78q:~TypeContextManager.getInstance()" resolve="getInstance" />
-                  <ref role="1Pybhc" to="u78q:~TypeContextManager" resolve="TypeContextManager" />
                 </node>
               </node>
             </node>

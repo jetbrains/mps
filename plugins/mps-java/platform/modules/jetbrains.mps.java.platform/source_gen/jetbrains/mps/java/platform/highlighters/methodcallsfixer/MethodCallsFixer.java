@@ -13,9 +13,7 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.nodeEditor.checking.UpdateResult;
 import jetbrains.mps.util.Cancellable;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.typesystem.inference.TypeContextManager;
-import jetbrains.mps.typesystem.inference.ITypechecking;
-import jetbrains.mps.typesystem.inference.TypeCheckingContext;
+import jetbrains.mps.typechecking.TypecheckingFacade;
 import java.util.Collections;
 import jetbrains.mps.nodeEditor.EditorMessage;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -77,9 +75,8 @@ public class MethodCallsFixer extends BaseEditorChecker {
         return UpdateResult.CANCELLED;
       }
 
-      TypeContextManager.getInstance().runTypeCheckingAction(editorComponent.getTypecheckingContextOwner(), editedNode, new ITypechecking.Action() {
-        @Override
-        public void run(TypeCheckingContext context) {
+      TypecheckingFacade.getFromContext().runWithSession(editorComponent.getTypecheckingSession(), new Runnable() {
+        public void run() {
           doCreateMessages(editedNode, incremental, repository);
         }
       });

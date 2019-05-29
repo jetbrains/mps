@@ -35,5 +35,6 @@
     <orderEntry type="module" module-name="refactoring" />
     <orderEntry type="module" module-name="java-stub" />
     <orderEntry type="module" module-name="mps-java-core" />
+    <orderEntry type="module" module-name="typechecking" />
   </component>
 </module>
