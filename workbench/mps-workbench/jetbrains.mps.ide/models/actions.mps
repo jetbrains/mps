@@ -15588,6 +15588,14 @@
         </node>
       </node>
     </node>
+    <node concept="Zd509" id="2MtyMjGZCGK" role="Zd508">
+      <ref role="1bYAoF" node="1AwcMxRXXaC" resolve="FindTextInProject" />
+      <node concept="pLAjd" id="2MtyMjGZCGL" role="Zd501">
+        <property role="pLAjc" value="ctrl+shift" />
+        <property role="pLAjf" value="VK_F" />
+        <property role="3hacHL" value="replace all" />
+      </node>
+    </node>
   </node>
   <node concept="sE7Ow" id="4NhTXTAh4kv">
     <property role="TrG5h" value="ShowNodeInfo" />
@@ -24125,6 +24133,13 @@
       <node concept="pLAjd" id="30wnJRXorAZ" role="Zd501">
         <property role="pLAjf" value="VK_F7" />
         <property role="pLAjc" value="ctrl+alt+shift" />
+      </node>
+    </node>
+    <node concept="Zd509" id="2bueJxWahEo" role="Zd508">
+      <ref role="1bYAoF" node="1AwcMxRXXaC" resolve="FindTextInProject" />
+      <node concept="pLAjd" id="2bueJxWahEq" role="Zd501">
+        <property role="pLAjc" value="ctrl+shift" />
+        <property role="pLAjf" value="VK_F" />
       </node>
     </node>
     <node concept="Zd509" id="64AN2EWtFYV" role="Zd508">
@@ -32830,6 +32845,9 @@
     <node concept="2JRCWP" id="3m6vHQ0l7NF" role="2JRCWR">
       <ref role="2JRCWa" node="3oS0mv1G9Wv" resolve="GoToRootNode" />
     </node>
+    <node concept="2JRCWP" id="2bueJxWah9L" role="2JRCWR">
+      <ref role="2JRCWa" node="1AwcMxRXXaC" resolve="FindTextInProject" />
+    </node>
   </node>
   <node concept="sE7Ow" id="7BBQIYkR4kU">
     <property role="TrG5h" value="SafeDelete" />
@@ -37316,6 +37334,14 @@
       <node concept="pLAjd" id="1RsxAOl3vcs" role="Zd501">
         <property role="pLAjf" value="VK_O" />
         <property role="pLAjc" value="meta+alt" />
+        <property role="3hacHL" value="replace all" />
+      </node>
+    </node>
+    <node concept="Zd509" id="2MtyMjGZCGM" role="Zd508">
+      <ref role="1bYAoF" node="1AwcMxRXXaC" resolve="FindTextInProject" />
+      <node concept="pLAjd" id="2MtyMjGZCGN" role="Zd501">
+        <property role="pLAjc" value="ctrl+shift" />
+        <property role="pLAjf" value="VK_F" />
         <property role="3hacHL" value="replace all" />
       </node>
     </node>
