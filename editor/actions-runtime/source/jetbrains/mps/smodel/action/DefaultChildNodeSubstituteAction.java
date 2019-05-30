@@ -23,6 +23,7 @@ import jetbrains.mps.nodeEditor.EditorManager;
 import jetbrains.mps.nodeEditor.cellMenu.AbstractNodeSubstituteInfo;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
+import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.typesystem.inference.TypeChecker;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -124,7 +125,7 @@ public class DefaultChildNodeSubstituteAction extends AbstractNodeSubstituteActi
 
     AbstractNodeSubstituteInfo.getModelForTypechecking().addRootNode(node);
     try {
-      return TypeChecker.getInstance().getTypeOf(node);
+      return TypecheckingFacade.getFromContext().getTypeOf(node);
     } finally {
       AbstractNodeSubstituteInfo.getModelForTypechecking().removeRootNode(node);
     }

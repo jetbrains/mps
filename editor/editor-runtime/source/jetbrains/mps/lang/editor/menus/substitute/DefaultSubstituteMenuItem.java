@@ -35,6 +35,7 @@ import jetbrains.mps.smodel.action.NodeFactoryManager;
 import jetbrains.mps.smodel.presentation.NodePresentationUtil;
 import jetbrains.mps.smodel.runtime.IconResource;
 import jetbrains.mps.smodel.runtime.IconResourceUtil;
+import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.typesystem.inference.TypeChecker;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -108,7 +109,7 @@ public class DefaultSubstituteMenuItem implements SubstituteMenuItem {
 
     AbstractNodeSubstituteInfo.getModelForTypechecking().addRootNode(node);
     try {
-      return TypeChecker.getInstance().getTypeOf(node);
+      return TypecheckingFacade.getFromContext().getTypeOf(node);
     } finally {
       AbstractNodeSubstituteInfo.getModelForTypechecking().removeRootNode(node);
     }

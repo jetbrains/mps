@@ -19,6 +19,7 @@ import jetbrains.mps.actions.runtime.impl.ActionsUtil;
 import jetbrains.mps.nodeEditor.EditorManager;
 import jetbrains.mps.nodeEditor.cellMenu.AbstractNodeSubstituteInfo;
 import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.typesystem.inference.TypeChecker;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -98,7 +99,7 @@ public class DefaultSChildSubstituteAction extends AbstractSubstituteAction {
     //todo add own model for typecheck
     AbstractNodeSubstituteInfo.getModelForTypechecking().addRootNode(node);
     try {
-      return TypeChecker.getInstance().getTypeOf(node);
+      return TypecheckingFacade.getFromContext().getTypeOf(node);
     } finally {
       AbstractNodeSubstituteInfo.getModelForTypechecking().removeRootNode(node);
     }
