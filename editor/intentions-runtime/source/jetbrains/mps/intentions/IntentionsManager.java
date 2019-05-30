@@ -44,6 +44,7 @@ import jetbrains.mps.smodel.SModelOperations;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.typechecking.TypecheckingFacade;
+import jetbrains.mps.typechecking.backend.TypecheckingSession;
 import jetbrains.mps.typesystem.inference.ITypeContextOwner;
 import jetbrains.mps.typesystem.inference.TypeContextManager;
 import jetbrains.mps.util.Computable;
@@ -98,9 +99,12 @@ public class IntentionsManager implements ApplicationComponent, PersistentStateC
   public synchronized Kind getHighestAvailableBaseIntentionType(final SNode node, final EditorContext editorContext) {
     final GetHighestAvailableIntentionTypeVisitor visitor = new GetHighestAvailableIntentionTypeVisitor();
     // FIXME invoking runWithSession is unnecessary here b/c the only client takes care of that already
+    TypecheckingSession typecheckingSession = ((EditorComponent) editorContext.getEditorComponent()).getTypecheckingSession();
+    if (typecheckingSession == null) return null;
+    
     TypecheckingFacade
         .getFromContext()
-        .runWithSession(((EditorComponent) editorContext.getEditorComponent()).getTypecheckingSession(),
+        .runWithSession(typecheckingSession,
                         () -> {
                           Filter filter = new Filter(getDisabledIntentions()) {
 

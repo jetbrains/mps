@@ -30,6 +30,7 @@ import jetbrains.mps.openapi.editor.cells.SubstituteAction;
 import jetbrains.mps.openapi.editor.cells.SubstituteInfo;
 import jetbrains.mps.smodel.action.AbstractNodeSubstituteAction;
 import jetbrains.mps.typechecking.TypecheckingFacade;
+import jetbrains.mps.typechecking.backend.TypecheckingSession;
 import jetbrains.mps.typesystem.inference.ITypeContextOwner;
 import jetbrains.mps.typesystem.inference.NonReusableTypecheckingContextOwner;
 import jetbrains.mps.typesystem.inference.TypeContextManager;
@@ -51,6 +52,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -271,9 +273,12 @@ public class NodeSubstituteChooser implements KeyboardHandler {
                  .runIsolated(() -> myNodeSubstituteInfo.getSmartMatchingActions(pattern, false, myContextCell));
 
     } else {
+      TypecheckingSession typecheckingSession = myEditorComponent.getTypecheckingSession();
+      if (typecheckingSession == null) return Collections.emptyList();
+      
       return TypecheckingFacade
                  .getFromContext()
-                 .runWithSession(myEditorComponent.getTypecheckingSession(),
+                 .runWithSession(typecheckingSession,
                                  () -> myNodeSubstituteInfo.getMatchingActions(pattern, false));
     }
   }

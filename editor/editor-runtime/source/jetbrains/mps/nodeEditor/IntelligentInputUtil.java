@@ -38,6 +38,7 @@ import jetbrains.mps.openapi.editor.cells.SubstituteInfo;
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.typechecking.TypecheckingFacade;
+import jetbrains.mps.typechecking.backend.TypecheckingSession;
 import jetbrains.mps.typesystem.inference.TypeContextManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -105,9 +106,13 @@ public class IntelligentInputUtil {
       EditorComputable<Boolean> command = new EditorComputable<Boolean>(myEditorContext) {
         @Override
         protected Boolean doCompute() {
+          TypecheckingSession typecheckingSession = ((EditorComponent) myEditorContext.getEditorComponent()).getTypecheckingSession();
+          // TODO: no idea what the default value should be here, no docs whatsoever
+          if (typecheckingSession == null) return false;
+
           return TypecheckingFacade
                      .getFromContext()
-                     .runWithSession(((EditorComponent) myEditorContext.getEditorComponent()).getTypecheckingSession(),
+                     .runWithSession(typecheckingSession,
                                      () -> {
                                              if (myCell instanceof EditorCell_STHint) {
                                                return processSTHintCell(pattern);

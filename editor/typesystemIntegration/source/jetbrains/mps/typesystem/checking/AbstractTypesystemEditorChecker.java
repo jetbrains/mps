@@ -87,6 +87,8 @@ public abstract class AbstractTypesystemEditorChecker extends BaseEditorChecker 
                              final Cancellable cancellable) {
     try {
       TypecheckingSession session = editorComponent.getTypecheckingSession();
+      if (session == null) return UpdateResult.CANCELLED;
+      
       LegacyTypecheckingQueries legacyTypesystemQueries = session.getQueries(LegacyTypecheckingProvider.class);
       TypeCheckingContext typeCheckingContext = legacyTypesystemQueries.getTypeCheckingContext();
       return ((IncrementalTypecheckingContext) typeCheckingContext).runTypeCheckingAction(() ->

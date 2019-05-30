@@ -45,6 +45,7 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.SModelOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
+import jetbrains.mps.typechecking.backend.TypecheckingSession;
 import jetbrains.mps.typesystem.inference.TypeContextManager;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.util.annotation.ToRemove;
@@ -189,7 +190,10 @@ public class IntentionsSupport {
 
           final Kind intentionKind = new ModelAccessHelper(getModelAccess()).runReadAction(() -> {
             // TODO check for ActionsAsIntentions
-            return TypecheckingFacade.getFromContext().runWithSession(myEditor.getTypecheckingSession(), () ->
+            TypecheckingSession typecheckingSession = myEditor.getTypecheckingSession();
+            if (typecheckingSession == null) return null;
+            
+            return TypecheckingFacade.getFromContext().runWithSession(typecheckingSession, () ->
                IntentionsManager.getInstance()
                                 .getHighestAvailableBaseIntentionType(
                                     myEditor.getSelectedNode(),
@@ -392,11 +396,16 @@ public class IntentionsSupport {
     if (node != null) {
       final QueryDescriptor query = new QueryDescriptor();
       query.setEnabledOnly(true);
-      final Collection<Pair<IntentionExecutable, SNode>> availableIntentions =
-        TypecheckingFacade.getFromContext().runWithSession(myEditor.getTypecheckingSession(), () ->
-           IntentionsManager.getInstance()
-                            .getAvailableIntentions(query, node, editorContext));
-      result.addAll(availableIntentions);
+      TypecheckingSession typecheckingSession = myEditor.getTypecheckingSession();
+      if (typecheckingSession != null) {
+        final Collection<Pair<IntentionExecutable, SNode>> availableIntentions =
+            TypecheckingFacade
+                .getFromContext()
+                .runWithSession(typecheckingSession, () -> IntentionsManager
+                                                            .getInstance()
+                                                            .getAvailableIntentions(query, node, editorContext));
+        result.addAll(availableIntentions);
+      }
     }
     return result;
   }
