@@ -62,7 +62,6 @@ public class LanguageErrorsComponent extends LanguageErrorsCollector {
     public ApprovableError(NodeReportItem error, boolean approved) {
       super(error);
       this.myApproved = approved;
-
     }
     @Override
     public void suppress() {
@@ -243,14 +242,14 @@ public class LanguageErrorsComponent extends LanguageErrorsCollector {
       Collection<LanguageErrorsComponent.ApprovableError> value = nodeErrors.getValue();
       MapSequence.fromMap(nodesToErrors).put(new IssueKindReportItem.PathObject.NodePathObject(nodeErrors.getKey().getReference()), ListSequence.fromList(ListSequence.fromListWithValues(new ArrayList<LanguageErrorsComponent.ApprovableError>(), value)).asUnmodifiable());
     }
+    final Consumer<NodeReportItem> consumer = new Consumer<NodeReportItem>() {
+      public void consume(NodeReportItem report) {
+        LanguageErrorsComponent.this.addError(report);
+      }
+    };
     for (AbstractNodeCheckerInEditor checker : checkers) {
       ICheckingPostprocessor postProcessChecker = checker.getPostprocessor();
       if (postProcessChecker != null) {
-        final Consumer<NodeReportItem> consumer = new Consumer<NodeReportItem>() {
-          public void consume(NodeReportItem report) {
-            LanguageErrorsComponent.this.addError(report);
-          }
-        };
         postProcessChecker.postProcess(repository, new EmptyProgressMonitor(), new CheckingSession<NodeReportItem>() {
           @Override
           public Map<IssueKindReportItem.PathObject, ? extends Collection<? extends CheckingSession.SuppressableError<? extends IssueKindReportItem>>> getAllFoundErrors() {

@@ -1719,7 +1719,6 @@
               </node>
             </node>
           </node>
-          <node concept="3clFbH" id="x6gRTx$BmO" role="3cqZAp" />
         </node>
         <node concept="37vLTG" id="1FY502PcAbZ" role="3clF46">
           <property role="TrG5h" value="error" />
@@ -3062,6 +3061,41 @@
             </node>
           </node>
         </node>
+        <node concept="3cpWs8" id="x6gRTxBRUC" role="3cqZAp">
+          <node concept="3cpWsn" id="x6gRTxBRUD" role="3cpWs9">
+            <property role="TrG5h" value="consumer" />
+            <property role="3TUv4t" value="true" />
+            <node concept="1bVj0M" id="x6gRTxBRUE" role="33vP2m">
+              <node concept="37vLTG" id="x6gRTxBRUF" role="1bW2Oz">
+                <property role="TrG5h" value="report" />
+                <node concept="3uibUv" id="x6gRTxBRUG" role="1tU5fm">
+                  <ref role="3uigEE" to="d6hs:~NodeReportItem" resolve="NodeReportItem" />
+                </node>
+              </node>
+              <node concept="3clFbS" id="x6gRTxBRUH" role="1bW5cS">
+                <node concept="3clFbF" id="x6gRTxBRUI" role="3cqZAp">
+                  <node concept="2OqwBi" id="x6gRTxBRUJ" role="3clFbG">
+                    <node concept="Xjq3P" id="x6gRTxBRUK" role="2Oq$k0">
+                      <ref role="1HBi2w" node="6qi2OtU3u0m" resolve="LanguageErrorsComponent" />
+                    </node>
+                    <node concept="liA8E" id="x6gRTxBRUL" role="2OqNvi">
+                      <ref role="37wK5l" node="5S0STpDMb1Q" resolve="addError" />
+                      <node concept="37vLTw" id="x6gRTxBRUM" role="37wK5m">
+                        <ref role="3cqZAo" node="x6gRTxBRUF" resolve="report" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3uibUv" id="x6gRTxBSyH" role="1tU5fm">
+              <ref role="3uigEE" to="yyf4:~Consumer" resolve="Consumer" />
+              <node concept="3uibUv" id="x6gRTxBT1W" role="11_B2D">
+                <ref role="3uigEE" to="d6hs:~NodeReportItem" resolve="NodeReportItem" />
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="1DcWWT" id="1FY502P7I9M" role="3cqZAp">
           <node concept="3cpWsn" id="1FY502P7I9N" role="1Duv9x">
             <property role="TrG5h" value="checker" />
@@ -3091,41 +3125,6 @@
             </node>
             <node concept="3clFbJ" id="1FY502P7KeN" role="3cqZAp">
               <node concept="3clFbS" id="1FY502P7KeP" role="3clFbx">
-                <node concept="3cpWs8" id="x6gRTxBRUC" role="3cqZAp">
-                  <node concept="3cpWsn" id="x6gRTxBRUD" role="3cpWs9">
-                    <property role="TrG5h" value="consumer" />
-                    <property role="3TUv4t" value="true" />
-                    <node concept="1bVj0M" id="x6gRTxBRUE" role="33vP2m">
-                      <node concept="37vLTG" id="x6gRTxBRUF" role="1bW2Oz">
-                        <property role="TrG5h" value="report" />
-                        <node concept="3uibUv" id="x6gRTxBRUG" role="1tU5fm">
-                          <ref role="3uigEE" to="d6hs:~NodeReportItem" resolve="NodeReportItem" />
-                        </node>
-                      </node>
-                      <node concept="3clFbS" id="x6gRTxBRUH" role="1bW5cS">
-                        <node concept="3clFbF" id="x6gRTxBRUI" role="3cqZAp">
-                          <node concept="2OqwBi" id="x6gRTxBRUJ" role="3clFbG">
-                            <node concept="Xjq3P" id="x6gRTxBRUK" role="2Oq$k0">
-                              <ref role="1HBi2w" node="6qi2OtU3u0m" resolve="LanguageErrorsComponent" />
-                            </node>
-                            <node concept="liA8E" id="x6gRTxBRUL" role="2OqNvi">
-                              <ref role="37wK5l" node="5S0STpDMb1Q" resolve="addError" />
-                              <node concept="37vLTw" id="x6gRTxBRUM" role="37wK5m">
-                                <ref role="3cqZAo" node="x6gRTxBRUF" resolve="report" />
-                              </node>
-                            </node>
-                          </node>
-                        </node>
-                      </node>
-                    </node>
-                    <node concept="3uibUv" id="x6gRTxBSyH" role="1tU5fm">
-                      <ref role="3uigEE" to="yyf4:~Consumer" resolve="Consumer" />
-                      <node concept="3uibUv" id="x6gRTxBT1W" role="11_B2D">
-                        <ref role="3uigEE" to="d6hs:~NodeReportItem" resolve="NodeReportItem" />
-                      </node>
-                    </node>
-                  </node>
-                </node>
                 <node concept="3clFbF" id="x6gRTxznq0" role="3cqZAp">
                   <node concept="2OqwBi" id="1FY502P7Qqn" role="3clFbG">
                     <node concept="37vLTw" id="1FY502P8ixt" role="2Oq$k0">

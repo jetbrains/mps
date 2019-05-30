@@ -80,7 +80,7 @@ public class MPSValidationComponent implements ProjectComponent {
 
       addChecker(new TypesEditorChecker(myProject.getRepository(), postprocessors));
       addChecker(new NonTypesystemEditorChecker(myProject.getRepository(), postprocessors));
-      addChecker(new AutoResolver(myProject));
+      addChecker(new AutoResolver(myProject, postprocessors));
       addChecker(new LanguageEditorChecker(myProject.getRepository(), checkerRegistry.getEditorCheckers()));
       addChecker(new SuppressErrorsChecker());
       addChecker(new ModelProblemsChecker(myProject.getRepository()));
