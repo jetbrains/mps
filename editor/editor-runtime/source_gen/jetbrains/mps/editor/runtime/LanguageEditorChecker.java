@@ -17,6 +17,7 @@ import jetbrains.mps.nodeEditor.checking.UpdateResult;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.util.Cancellable;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.typechecking.backend.TypecheckingSession;
 import jetbrains.mps.nodeEditor.EditorMessage;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import java.util.function.Supplier;
@@ -81,7 +82,12 @@ public class LanguageEditorChecker extends BaseEditorChecker implements Disposab
   public UpdateResult update(final EditorComponent editorComponent, final boolean incremental, boolean applyQuickFixes, final Cancellable cancellable) {
     final SNode node = editorComponent.getEditedNode();
     try {
-      Set<EditorMessage> messages = TypecheckingFacade.getFromContext().runWithSession(editorComponent.getTypecheckingSession(), new Supplier<Set<EditorMessage>>() {
+      TypecheckingSession typecheckingSession = editorComponent.getTypecheckingSession();
+      if (typecheckingSession == null) {
+        return UpdateResult.CANCELLED;
+      }
+
+      Set<EditorMessage> messages = TypecheckingFacade.getFromContext().runWithSession(typecheckingSession, new Supplier<Set<EditorMessage>>() {
         @Override
         public Set<EditorMessage> get() {
           return doCreateMessages(node, incremental, editorComponent.getEditorContext(), cancellable);

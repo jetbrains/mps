@@ -77,8 +77,8 @@
     <import index="sn11" ref="r:836426ab-a6f4-4fa3-9a9c-34c02ed6ab5d(jetbrains.mps.ide.icons)" />
     <import index="82uw" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.function(JDK/)" />
     <import index="1ka" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typechecking(MPS.Core/)" />
+    <import index="ev0w" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typechecking.backend(MPS.Core/)" />
     <import index="tprs" ref="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)" implicit="true" />
-    <import index="ev0w" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typechecking.backend(MPS.Core/)" implicit="true" />
     <import index="oulx" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.commands(MPS.Editor/)" implicit="true" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" implicit="true" />
     <import index="hox0" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.style(MPS.Editor/)" implicit="true" />
@@ -8283,6 +8283,51 @@
             </node>
           </node>
         </node>
+        <node concept="3cpWs8" id="4r5mV$u7puX" role="3cqZAp">
+          <node concept="3cpWsn" id="4r5mV$u7puY" role="3cpWs9">
+            <property role="TrG5h" value="typecheckingSession" />
+            <node concept="3uibUv" id="4r5mV$u7ovP" role="1tU5fm">
+              <ref role="3uigEE" to="ev0w:~TypecheckingSession" resolve="TypecheckingSession" />
+            </node>
+            <node concept="2OqwBi" id="4r5mV$u7puZ" role="33vP2m">
+              <node concept="1eOMI4" id="4r5mV$u7pv0" role="2Oq$k0">
+                <node concept="10QFUN" id="4r5mV$u7pv1" role="1eOMHV">
+                  <node concept="2OqwBi" id="4r5mV$u7pv2" role="10QFUP">
+                    <node concept="liA8E" id="4r5mV$u7pv3" role="2OqNvi">
+                      <ref role="37wK5l" to="cj4x:~EditorContext.getEditorComponent()" resolve="getEditorComponent" />
+                    </node>
+                    <node concept="2OqwBi" id="4r5mV$u7pv4" role="2Oq$k0">
+                      <node concept="2WthIp" id="4r5mV$u7pv5" role="2Oq$k0" />
+                      <node concept="1DTwFV" id="4r5mV$u7pv6" role="2OqNvi">
+                        <ref role="2WH_rO" node="2M3H3BXpUJm" resolve="editorContext" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="3uibUv" id="4r5mV$u7pv7" role="10QFUM">
+                    <ref role="3uigEE" to="exr9:~EditorComponent" resolve="EditorComponent" />
+                  </node>
+                </node>
+              </node>
+              <node concept="liA8E" id="4r5mV$u7pv8" role="2OqNvi">
+                <ref role="37wK5l" to="exr9:~EditorComponent.getTypecheckingSession()" resolve="getTypecheckingSession" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="4r5mV$u7Fuv" role="3cqZAp">
+          <node concept="3clFbS" id="4r5mV$u7Fux" role="3clFbx">
+            <node concept="3cpWs6" id="4r5mV$u7Kox" role="3cqZAp">
+              <node concept="10Nm6u" id="4r5mV$u7KpE" role="3cqZAk" />
+            </node>
+          </node>
+          <node concept="3clFbC" id="4r5mV$u7Ijs" role="3clFbw">
+            <node concept="10Nm6u" id="4r5mV$u7JEs" role="3uHU7w" />
+            <node concept="37vLTw" id="4r5mV$u7Hvm" role="3uHU7B">
+              <ref role="3cqZAo" node="4r5mV$u7puY" resolve="typecheckingSession" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbH" id="4r5mV$u7Mlv" role="3cqZAp" />
         <node concept="3clFbF" id="2mJMZCoaNFN" role="3cqZAp">
           <node concept="2OqwBi" id="2mJMZCoaR5k" role="3clFbG">
             <node concept="2YIFZM" id="2mJMZCoaQpi" role="2Oq$k0">
@@ -8291,28 +8336,8 @@
             </node>
             <node concept="liA8E" id="2mJMZCoaRYP" role="2OqNvi">
               <ref role="37wK5l" to="ev0w:~TypecheckingSessionHandler.runWithSession(jetbrains.mps.typechecking.backend.TypecheckingSession,java.util.function.Supplier)" resolve="runWithSession" />
-              <node concept="2OqwBi" id="2mJMZCoaUgv" role="37wK5m">
-                <node concept="1eOMI4" id="2mJMZCoaRZS" role="2Oq$k0">
-                  <node concept="10QFUN" id="2mJMZCoaRZT" role="1eOMHV">
-                    <node concept="2OqwBi" id="2mJMZCoaRZU" role="10QFUP">
-                      <node concept="liA8E" id="2mJMZCoaRZV" role="2OqNvi">
-                        <ref role="37wK5l" to="cj4x:~EditorContext.getEditorComponent()" resolve="getEditorComponent" />
-                      </node>
-                      <node concept="2OqwBi" id="2mJMZCoaRZW" role="2Oq$k0">
-                        <node concept="2WthIp" id="2mJMZCoaRZX" role="2Oq$k0" />
-                        <node concept="1DTwFV" id="2mJMZCoaRZY" role="2OqNvi">
-                          <ref role="2WH_rO" node="2M3H3BXpUJm" resolve="editorContext" />
-                        </node>
-                      </node>
-                    </node>
-                    <node concept="3uibUv" id="2mJMZCoaRZZ" role="10QFUM">
-                      <ref role="3uigEE" to="exr9:~EditorComponent" resolve="EditorComponent" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="liA8E" id="2mJMZCoaVR2" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getTypecheckingSession()" resolve="getTypecheckingSession" />
-                </node>
+              <node concept="37vLTw" id="4r5mV$u7pv9" role="37wK5m">
+                <ref role="3cqZAo" node="4r5mV$u7puY" resolve="typecheckingSession" />
               </node>
               <node concept="2ShNRf" id="2mJMZCobTv3" role="37wK5m">
                 <node concept="YeOm9" id="2mJMZCocl5y" role="2ShVmc">

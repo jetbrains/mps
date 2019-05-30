@@ -32,7 +32,7 @@
     <import index="18ew" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util(MPS.Core/)" />
     <import index="fnmy" ref="r:89c0fb70-0977-4113-a076-5906f9d8630f(jetbrains.mps.baseLanguage.scopes)" />
     <import index="1ka" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typechecking(MPS.Core/)" />
-    <import index="ev0w" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typechecking.backend(MPS.Core/)" implicit="true" />
+    <import index="ev0w" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typechecking.backend(MPS.Core/)" />
     <import index="tpek" ref="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)" implicit="true" />
   </imports>
   <registry>
@@ -800,6 +800,39 @@
               </node>
             </node>
             <node concept="3clFbH" id="36YhQHIoO9z" role="3cqZAp" />
+            <node concept="3cpWs8" id="4r5mV$u92ph" role="3cqZAp">
+              <node concept="3cpWsn" id="4r5mV$u92pi" role="3cpWs9">
+                <property role="TrG5h" value="typecheckingSession" />
+                <node concept="3uibUv" id="4r5mV$u91FC" role="1tU5fm">
+                  <ref role="3uigEE" to="ev0w:~TypecheckingSession" resolve="TypecheckingSession" />
+                </node>
+                <node concept="2OqwBi" id="4r5mV$u92pj" role="33vP2m">
+                  <node concept="37vLTw" id="4r5mV$u92pk" role="2Oq$k0">
+                    <ref role="3cqZAo" node="36YhQHIn8Vo" resolve="editorComponent" />
+                  </node>
+                  <node concept="liA8E" id="4r5mV$u92pl" role="2OqNvi">
+                    <ref role="37wK5l" to="exr9:~EditorComponent.getTypecheckingSession()" resolve="getTypecheckingSession" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbJ" id="4r5mV$u94$F" role="3cqZAp">
+              <node concept="3clFbS" id="4r5mV$u94$H" role="3clFbx">
+                <node concept="3cpWs6" id="4r5mV$u95Ud" role="3cqZAp">
+                  <node concept="10M0yZ" id="4r5mV$u99Zg" role="3cqZAk">
+                    <ref role="3cqZAo" to="n70j:~UpdateResult.CANCELLED" resolve="CANCELLED" />
+                    <ref role="1PxDUh" to="n70j:~UpdateResult" resolve="UpdateResult" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbC" id="4r5mV$u95PG" role="3clFbw">
+                <node concept="37vLTw" id="4r5mV$u95y6" role="3uHU7B">
+                  <ref role="3cqZAo" node="4r5mV$u92pi" resolve="typecheckingSession" />
+                </node>
+                <node concept="10Nm6u" id="4r5mV$u95Oj" role="3uHU7w" />
+              </node>
+            </node>
+            <node concept="3clFbH" id="4r5mV$u9bmg" role="3cqZAp" />
             <node concept="3clFbF" id="4HQ6gVALxY8" role="3cqZAp">
               <node concept="2OqwBi" id="4HQ6gVALzok" role="3clFbG">
                 <node concept="2YIFZM" id="4HQ6gVALzcq" role="2Oq$k0">
@@ -808,13 +841,8 @@
                 </node>
                 <node concept="liA8E" id="4HQ6gVALz$8" role="2OqNvi">
                   <ref role="37wK5l" to="ev0w:~TypecheckingSessionHandler.runWithSession(jetbrains.mps.typechecking.backend.TypecheckingSession,java.lang.Runnable)" resolve="runWithSession" />
-                  <node concept="2OqwBi" id="4HQ6gVAL$Fy" role="37wK5m">
-                    <node concept="37vLTw" id="4HQ6gVALzUL" role="2Oq$k0">
-                      <ref role="3cqZAo" node="36YhQHIn8Vo" resolve="editorComponent" />
-                    </node>
-                    <node concept="liA8E" id="4HQ6gVAL_Ae" role="2OqNvi">
-                      <ref role="37wK5l" to="exr9:~EditorComponent.getTypecheckingSession()" resolve="getTypecheckingSession" />
-                    </node>
+                  <node concept="37vLTw" id="4r5mV$u92pm" role="37wK5m">
+                    <ref role="3cqZAo" node="4r5mV$u92pi" resolve="typecheckingSession" />
                   </node>
                   <node concept="1bVj0M" id="4HQ6gVALA_E" role="37wK5m">
                     <node concept="3clFbS" id="4HQ6gVALA_G" role="1bW5cS">

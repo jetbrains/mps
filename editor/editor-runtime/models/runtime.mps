@@ -6924,6 +6924,39 @@
         </node>
         <node concept="SfApY" id="2v0ve8x$poo" role="3cqZAp">
           <node concept="3clFbS" id="2v0ve8x$pop" role="SfCbr">
+            <node concept="3cpWs8" id="4r5mV$u7W5x" role="3cqZAp">
+              <node concept="3cpWsn" id="4r5mV$u7W5y" role="3cpWs9">
+                <property role="TrG5h" value="typecheckingSession" />
+                <node concept="3uibUv" id="4r5mV$u7V7g" role="1tU5fm">
+                  <ref role="3uigEE" to="ev0w:~TypecheckingSession" resolve="TypecheckingSession" />
+                </node>
+                <node concept="2OqwBi" id="4r5mV$u7W5z" role="33vP2m">
+                  <node concept="37vLTw" id="4r5mV$u7W5$" role="2Oq$k0">
+                    <ref role="3cqZAo" node="2v0ve8x$po9" resolve="editorComponent" />
+                  </node>
+                  <node concept="liA8E" id="4r5mV$u7W5_" role="2OqNvi">
+                    <ref role="37wK5l" to="exr9:~EditorComponent.getTypecheckingSession()" resolve="getTypecheckingSession" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbJ" id="4r5mV$u85vt" role="3cqZAp">
+              <node concept="3clFbS" id="4r5mV$u85vv" role="3clFbx">
+                <node concept="3cpWs6" id="4r5mV$u87RJ" role="3cqZAp">
+                  <node concept="10M0yZ" id="4r5mV$u8bpy" role="3cqZAk">
+                    <ref role="3cqZAo" to="n70j:~UpdateResult.CANCELLED" resolve="CANCELLED" />
+                    <ref role="1PxDUh" to="n70j:~UpdateResult" resolve="UpdateResult" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbC" id="4r5mV$u87xD" role="3clFbw">
+                <node concept="10Nm6u" id="4r5mV$u87Jc" role="3uHU7w" />
+                <node concept="37vLTw" id="4r5mV$u87cC" role="3uHU7B">
+                  <ref role="3cqZAo" node="4r5mV$u7W5y" resolve="typecheckingSession" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbH" id="4r5mV$u8cBC" role="3cqZAp" />
             <node concept="3cpWs8" id="2v0ve8x$poq" role="3cqZAp">
               <node concept="3cpWsn" id="2v0ve8x$por" role="3cpWs9">
                 <property role="TrG5h" value="messages" />
@@ -6940,13 +6973,8 @@
                   </node>
                   <node concept="liA8E" id="4HQ6gVAN1pW" role="2OqNvi">
                     <ref role="37wK5l" to="ev0w:~TypecheckingSessionHandler.runWithSession(jetbrains.mps.typechecking.backend.TypecheckingSession,java.util.function.Supplier)" resolve="runWithSession" />
-                    <node concept="2OqwBi" id="4HQ6gVAN1pX" role="37wK5m">
-                      <node concept="37vLTw" id="4HQ6gVAN1pY" role="2Oq$k0">
-                        <ref role="3cqZAo" node="2v0ve8x$po9" resolve="editorComponent" />
-                      </node>
-                      <node concept="liA8E" id="4HQ6gVAN1pZ" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:~EditorComponent.getTypecheckingSession()" resolve="getTypecheckingSession" />
-                      </node>
+                    <node concept="37vLTw" id="4r5mV$u7W5A" role="37wK5m">
+                      <ref role="3cqZAo" node="4r5mV$u7W5y" resolve="typecheckingSession" />
                     </node>
                     <node concept="2ShNRf" id="4HQ6gVAN1q0" role="37wK5m">
                       <node concept="YeOm9" id="4HQ6gVAN1q1" role="2ShVmc">
