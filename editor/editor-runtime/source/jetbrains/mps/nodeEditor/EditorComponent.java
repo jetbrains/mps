@@ -1047,7 +1047,9 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
       myCommandContext.updateContextNode();
 
       if (needNewTypecheckingContext && myNode != null) {
-        myTypecheckingSession = TypecheckingFacade.getFromContext().requestNewSession(TypecheckingSession.Flags.forRoot(myNode).incremental());
+        myTypecheckingSession = TypecheckingFacade
+                                    .getFromContext()
+                                    .requestNewSession(TypecheckingSession.Flags.forRoot(getNodeForTypechecking()).incremental());
       }
 
       rebuildEditorContent();
@@ -2695,7 +2697,9 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     }
     myCommandContext.updateContextNode();
     if (myNode != null) {
-      myTypecheckingSession = TypecheckingFacade.getFromContext().requestNewSession(TypecheckingSession.Flags.forRoot(myNode).incremental());
+      myTypecheckingSession = TypecheckingFacade
+                                  .getFromContext()
+                                  .requestNewSession(TypecheckingSession.Flags.forRoot(getNodeForTypechecking()).incremental());
     }
   }
 
