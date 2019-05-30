@@ -39,7 +39,7 @@ import jetbrains.mps.smodel.ModelReadRunnable;
 import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.coverage.gnu.trove.THashSet;
+import org.jetbrains.coverage.gnu.trove.THashMap;
 
 import javax.swing.Icon;
 import javax.swing.event.TreeSelectionEvent;
@@ -270,6 +270,8 @@ public class UsagesTree extends MPSTree {
       // XXX INodeRepresentation may override text for certain elements, let's give it a chance
       // though this is not something I'd like to do, just can not refactor every piece of this mess at once
       // we need to keep this as long as DataTree.build() can not evaluate proper text at construction time
+      // FIXME introduce default presentation provider to give category/result nodes to reflect actual counter state. Even though we buildCounters() properly
+      //       we don't show them unless there's non-null presentation provider
       setUIProperties(child);
     }
 
@@ -318,12 +320,23 @@ public class UsagesTree extends MPSTree {
         child.children().forEach(childrenQueue::add);
       }
     }
-    THashSet<Object> seenChild = new THashSet<>();
+    // next, we me merge 'same' children (so that when e.g. a module is reported under different categories, as a result and as a path element to a result node,
+    // we see not only the first module, but result node under it as well).
+    // FIXME it's newTreeNode() that picks proper icon. If a data.isResultNode()==true comes once there's already a UTN for a path node, with
+    //       isResultNode() == false, we won't get updated icon!
+    //       Though I can introduce appropriate code into UTN, I hate the need to do it again and again (see BaseNodeData.setIsPathTail_internal() uses)
+    //       This need seems to be due to categories as roots of the data tree, which I'd like to get fixed first
+    THashMap<Object, UsagesTreeNode> seenChild = new THashMap<>();
+    // buildSubtreeStructure, below, may be invoked for re-used parent with some children already present, don't want to duplicate these, too.
+    for (UsagesTreeNode existingChild : parent.getChildren()) {
+      seenChild.put(existingChild.getUsageData().getIdObject(), existingChild);
+    }
     for(BaseNodeData c : childrenQueue) {
-      if (!seenChild.add(c.getIdObject())) {
-        continue;
+      UsagesTreeNode treeChild = seenChild.get(c.getIdObject());
+      if (treeChild == null) {
+        treeChild = newTreeNode(c);
+        seenChild.put(c.getIdObject(), treeChild);
       }
-      final UsagesTreeNode treeChild = newTreeNode(c);
       buildSubtreeStructure(treeChild, c, nodeCategories);
       parent.add(treeChild);
     }
