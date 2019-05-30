@@ -124,7 +124,9 @@ public class SLibrary implements MPSModuleOwner, Comparable<SLibrary> {
       // Note, there could be a new file among added with a MD for existing toBeRemoved module (e.g. file rename/move).
       final Map<SModuleReference, IFile> toRemoveCandidates = myFileTracker.getAffectedBy(event.getRemoved());
       // We shall remove our listener for files we no longer care about. XXX what of myFile is among removed, is it fine to remove the listener?
-      toRemoveCandidates.values().forEach(f -> f.removeListener(myPostNotifyDispatch));
+      toRemoveCandidates.values().forEach(f -> {
+        if (!myFile.equals(f)) f.removeListener(myPostNotifyDispatch);
+      });
 
       // for changed files, take associated modules, these are going to be either changed or removed (in case respective
       // module file no longer describes the same module
@@ -170,14 +172,16 @@ public class SLibrary implements MPSModuleOwner, Comparable<SLibrary> {
         }
       }
       for (Entry<SModuleReference, IFile> entry : toRemoveCandidates.entrySet()) {
-        final SModule module = entry.getKey().resolve(myRepository);
+        SModuleReference mRef = entry.getKey();
+        final SModule module = mRef.resolve(myRepository);
         if (module == null) {
+          LOG.warn("The module " + mRef + " is not found in the repo");
           // FIXME it's odd there's no module,
           // though we are just about to remove it anyway, ignore
-          continue;
+        } else {
+          myRepository.unregisterModule(module, this);
         }
-        myRepository.unregisterModule(module, this);
-        myFileTracker.forget(entry.getValue(), entry.getKey());
+        myFileTracker.forget(entry.getValue(), mRef);
         // fs listener for deleted files has been already removed, above. for 'stale' modules, listener on their files is kept.
         // myHandles are updated above
       }
@@ -201,7 +205,6 @@ public class SLibrary implements MPSModuleOwner, Comparable<SLibrary> {
       for (SModuleReference mr : changedModules) {
         final SModule module = mr.resolve(myRepository);
         if (module == null) {
-          // FIXME it's odd. What could I do about that?
           continue;
         }
         if (false == module instanceof AbstractModule) {

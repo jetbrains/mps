@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.extapi.module;
 
+import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
@@ -72,7 +73,11 @@ public class SRepositoryEventsDispatcher {
   public final void fireModuleAdded(@NotNull SModule module) {
     myRepository.getModelAccess().checkWriteAccess();
     for (SRepositoryListener listener : myListeners) {
-      listener.moduleAdded(module);
+      try {
+        listener.moduleAdded(module);
+      } catch (Throwable t) {
+        LogManager.getLogger(SRepositoryEventsDispatcher.class).error("on moduleAdded", t);
+      }
     }
   }
 
@@ -82,14 +87,22 @@ public class SRepositoryEventsDispatcher {
   public final void fireBeforeModuleRemoved(@NotNull SModule module) {
     myRepository.getModelAccess().checkWriteAccess();
     for (SRepositoryListener listener : myListeners) {
-      listener.beforeModuleRemoved(module);
+      try {
+        listener.beforeModuleRemoved(module);
+      } catch (Throwable t) {
+        LogManager.getLogger(SRepositoryEventsDispatcher.class).error("on moduleRemoved", t);
+      }
     }
   }
 
   public final void fireModuleRemoved(@NotNull SModuleReference module) {
     myRepository.getModelAccess().checkWriteAccess();
     for (SRepositoryListener listener : myListeners) {
-      listener.moduleRemoved(module);
+      try {
+        listener.moduleRemoved(module);
+      } catch (Throwable t) {
+        LogManager.getLogger(SRepositoryEventsDispatcher.class).error("on beforeModuleRemoved", t);
+      }
     }
   }
 

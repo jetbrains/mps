@@ -966,6 +966,24 @@
         <property role="DiZV1" value="false" />
         <property role="2aFKle" value="false" />
         <node concept="3clFbS" id="7i2QPJ2OP1q" role="3clF47">
+          <node concept="3clFbJ" id="3zBc_FBHwkX" role="3cqZAp">
+            <node concept="3clFbS" id="3zBc_FBHwkZ" role="3clFbx">
+              <node concept="3cpWs6" id="3zBc_FBHy3M" role="3cqZAp" />
+            </node>
+            <node concept="2ZW3vV" id="3zBc_FBHx_Q" role="3clFbw">
+              <node concept="3uibUv" id="3zBc_FBHy1K" role="2ZW6by">
+                <ref role="3uigEE" to="uvcm:~ArchiveFileSystem" resolve="ArchiveFileSystem" />
+              </node>
+              <node concept="2OqwBi" id="3zBc_FBHwNk" role="2ZW6bz">
+                <node concept="37vLTw" id="3zBc_FBHwmW" role="2Oq$k0">
+                  <ref role="3cqZAo" node="7i2QPJ2OPuz" resolve="dir" />
+                </node>
+                <node concept="liA8E" id="3zBc_FBHxqJ" role="2OqNvi">
+                  <ref role="37wK5l" to="jlff:~VirtualFile.getFileSystem()" resolve="getFileSystem" />
+                </node>
+              </node>
+            </node>
+          </node>
           <node concept="3cpWs8" id="7i2QPJ2OPUS" role="3cqZAp">
             <node concept="3cpWsn" id="7i2QPJ2OPUT" role="3cpWs9">
               <property role="TrG5h" value="dirQueue" />
@@ -1164,6 +1182,24 @@
         <node concept="3cqZAl" id="7i2QPJ2OKao" role="3clF45" />
         <node concept="3Tm6S6" id="7i2QPJ2OKap" role="1B3o_S" />
         <node concept="3clFbS" id="7i2QPJ2OKaq" role="3clF47">
+          <node concept="3clFbJ" id="3zBc_FBHyRx" role="3cqZAp">
+            <node concept="3clFbS" id="3zBc_FBHyRy" role="3clFbx">
+              <node concept="3cpWs6" id="3zBc_FBHyRz" role="3cqZAp" />
+            </node>
+            <node concept="2ZW3vV" id="3zBc_FBHyR$" role="3clFbw">
+              <node concept="3uibUv" id="3zBc_FBHyR_" role="2ZW6by">
+                <ref role="3uigEE" to="uvcm:~ArchiveFileSystem" resolve="ArchiveFileSystem" />
+              </node>
+              <node concept="2OqwBi" id="3zBc_FBHyRA" role="2ZW6bz">
+                <node concept="37vLTw" id="3zBc_FBHz0H" role="2Oq$k0">
+                  <ref role="3cqZAo" node="7i2QPJ2OKaJ" resolve="vf" />
+                </node>
+                <node concept="liA8E" id="3zBc_FBHyRC" role="2OqNvi">
+                  <ref role="37wK5l" to="jlff:~VirtualFile.getFileSystem()" resolve="getFileSystem" />
+                </node>
+              </node>
+            </node>
+          </node>
           <node concept="3cpWs8" id="7i2QPJ2OKat" role="3cqZAp">
             <node concept="3cpWsn" id="7i2QPJ2OKau" role="3cpWs9">
               <property role="TrG5h" value="file" />
@@ -1200,7 +1236,6 @@
           </node>
         </node>
       </node>
-      <node concept="2tJIrI" id="7i2QPJ2OgIY" role="jymVt" />
     </node>
   </node>
   <node concept="312cEu" id="7mrRUyVUv4e">

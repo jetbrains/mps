@@ -90,9 +90,6 @@ public class StandaloneMPSProject extends MPSProject implements PersistentStateC
   public void loadState(@NotNull Element state) {
     LOG.info("Loading the project '" + getName() + "' from disk");
     if (!getProject().isDefault()) {
-      if (state == null) {
-        throw new IllegalArgumentException("State is null");
-      }
       loadDescriptor(new ElementProjectDataSource(state, getProjectFile()));
       if (ProjectManager.getInstance().getOpenedProjects().contains(this)) {
         update();

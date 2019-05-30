@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.library;
 
-import com.intellij.openapi.components.BaseComponent;
 import com.intellij.openapi.components.PersistentStateComponent;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.library.BaseLibraryManager.LibraryState;
@@ -23,18 +22,16 @@ import jetbrains.mps.library.contributor.LibDescriptor;
 import jetbrains.mps.library.contributor.LibraryContributor;
 import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.vfs.FileSystem;
-import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-public abstract class BaseLibraryManager implements BaseComponent, PersistentStateComponent<LibraryState>, LibraryContributor {
+public abstract class BaseLibraryManager implements PersistentStateComponent<LibraryState>, LibraryContributor {
   private final LibraryInitializer myLibraryInitializer;
 
   public BaseLibraryManager(MPSCoreComponents components) {
@@ -46,13 +43,10 @@ public abstract class BaseLibraryManager implements BaseComponent, PersistentSta
     return false;
   }
 
-  @Override
   public void initComponent() {
-    final List<LibraryContributor> contributorsToLoad = Collections.singletonList(this);
-    myLibraryInitializer.load(contributorsToLoad);
+    myLibraryInitializer.load(Collections.singletonList(this));
   }
 
-  @Override
   public void disposeComponent() {
     myLibraryInitializer.unload(Collections.singletonList(this));
   }
@@ -125,13 +119,6 @@ public abstract class BaseLibraryManager implements BaseComponent, PersistentSta
   private LibraryState myLibraries = new LibraryState();
 
   @Override
-  @NonNls
-  @NotNull
-  public String getComponentName() {
-    return "Library Manager";
-  }
-
-  @Override
   public LibraryState getState() {
     LibraryState result = new LibraryState();
     for (Entry<String, Library> entry : myLibraries.getLibraries().entrySet()) {
@@ -143,6 +130,7 @@ public abstract class BaseLibraryManager implements BaseComponent, PersistentSta
   @Override
   public void loadState(@NotNull LibraryState state) {
     myLibraries = removeMacros(state);
+    myLibraryInitializer.update();
   }
 
   @Override
