@@ -83,8 +83,8 @@
     <copy file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" todir="${build.layout}/lib" />
     <copy file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" todir="${build.layout}/lib" />
     <copy file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" todir="${build.layout}/lib" />
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/core-kernel-kernelSolution">
-      <fileset dir="${mps_home}/core/kernel/kernelSolution" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/core-kernel-kernelSolution-jetbrains">
+      <fileset dir="${mps_home}/core/kernel/kernelSolution/jetbrains" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
     </copyModels>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/core-project-models">
       <fileset dir="${mps_home}/core/project/models" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
@@ -145,8 +145,7 @@
       <fileset dir="${build.tmp}/java/out/dataflow-rt" />
       <fileset dir="${build.tmp}/java/out/mps-typesystem" />
       <zipfileset file="${mps_home}/core/kernel/kernelSolution/jetbrains.mps.kernel.msd" prefix="modules/jetbrains.mps.kernel" />
-      <zipfileset dir="${mps_home}/core/kernel/kernelSolution" includes="icons/**, resources/**" prefix="modules/jetbrains.mps.kernel" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/core-kernel-kernelSolution" prefix="modules/jetbrains.mps.kernel/" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/core-kernel-kernelSolution-jetbrains" prefix="modules/jetbrains.mps.kernel/jetbrains" />
       <zipfileset file="${mps_home}/core/project/jetbrains.mps.project.msd" prefix="modules/jetbrains.mps.project" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/core-project-models" prefix="modules/jetbrains.mps.project/models" />
       <zipfileset file="${mps_home}/core/persistence/jetbrains.mps.persistence.msd" prefix="modules/jetbrains.mps.persistence" />
