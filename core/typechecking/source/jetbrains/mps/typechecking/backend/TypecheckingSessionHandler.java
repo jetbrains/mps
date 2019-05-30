@@ -50,7 +50,7 @@ public abstract class TypecheckingSessionHandler {
    * Requests that the specified sharable session is reused within the code
    * passed as {@code code}.
    */
-  public final <T> T runWithSession(TypecheckingSession withSession, Supplier<T> code) {
+  public final <T> T runWithSession(@NotNull TypecheckingSession withSession, Supplier<T> code) {
     T t;
     try {
       overrideSharedController(withSession);
@@ -66,7 +66,7 @@ public abstract class TypecheckingSessionHandler {
    * Requests that the specified sharable session is reused within the code
    * passed as {@code code}.
    */
-  public final void runWithSession(TypecheckingSession withSession, Runnable code) {
+  public final void runWithSession(@NotNull TypecheckingSession withSession, Runnable code) {
     try {
       overrideSharedController(withSession);
       code.run();
@@ -116,7 +116,7 @@ public abstract class TypecheckingSessionHandler {
    * Later calls to {@link TypecheckingSessionHandler#controller()} will return this
    * newly constructed instance, until a call to {@link TypecheckingSessionHandler#resetOverride()}.
    */
-  protected abstract void overrideSharedController(TypecheckingSession session);
+  protected abstract void overrideSharedController(@NotNull TypecheckingSession session);
 
   /**
    * Eagerly initialize and install a session for running typechecking queries in isolation. 

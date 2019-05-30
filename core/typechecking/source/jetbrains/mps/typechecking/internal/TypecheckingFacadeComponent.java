@@ -73,7 +73,7 @@ public class TypecheckingFacadeComponent implements CoreComponent {
                 return new DefaultTypecheckingController(myTypecheckingBackend);
               }
 
-              public TypecheckingController shared(TypecheckingSession session) {
+              public TypecheckingController shared(@NotNull TypecheckingSession session) {
                 return new SharedSessionTypecheckingController(myTypecheckingBackend, session);
               }
             });
@@ -89,7 +89,7 @@ public class TypecheckingFacadeComponent implements CoreComponent {
                 return new DefaultTypecheckingController(myTypecheckingBackend);
               }
 
-              public TypecheckingController shared(TypecheckingSession session) {
+              public TypecheckingController shared(@NotNull TypecheckingSession session) {
                 return new SharedSessionTypecheckingController(myTypecheckingBackend, session);
               }
             });
@@ -117,7 +117,7 @@ public class TypecheckingFacadeComponent implements CoreComponent {
 
     TypecheckingController isolated();
 
-    TypecheckingController shared(TypecheckingSession session);
+    TypecheckingController shared(@NotNull TypecheckingSession session);
 
   }
 
@@ -153,7 +153,7 @@ public class TypecheckingFacadeComponent implements CoreComponent {
     }
 
     @Override
-    protected void overrideSharedController(TypecheckingSession session) {
+    protected void overrideSharedController(@NotNull TypecheckingSession session) {
       myControllerStack.push(myControllerFactory.shared(session));
     }
 
