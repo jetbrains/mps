@@ -773,11 +773,11 @@
         <path location="${project_home}/languages/Constants/source_gen" />
       </src>
       <classpath>
+        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-platform.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-annotations.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-behavior-runtime.jar" />
-        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-openapi.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-logging.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-closures.jar" />
@@ -820,11 +820,11 @@
         <path location="${project_home}/languages/Constants/generator/source_gen" />
       </src>
       <classpath>
+        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-platform.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-annotations.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-behavior-runtime.jar" />
-        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-openapi.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-logging.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-closures.jar" />
@@ -867,11 +867,11 @@
         <path location="${project_home}/languages/SampleExtensions/source_gen" />
       </src>
       <classpath>
+        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-platform.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-annotations.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-behavior-runtime.jar" />
-        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-openapi.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-logging.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-closures.jar" />
@@ -915,11 +915,11 @@
         <path location="${project_home}/languages/SampleExtensions/generator/source_gen" />
       </src>
       <classpath>
+        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-platform.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-annotations.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-behavior-runtime.jar" />
-        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-openapi.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-logging.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-closures.jar" />
@@ -962,8 +962,8 @@
         <path location="${project_home}/solutions/MoneyRuntime/source_gen" />
       </src>
       <classpath>
-        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-annotations.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-core.jar" />
+        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-annotations.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-generator.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-openapi.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-logging.jar" />
@@ -1016,8 +1016,8 @@
         <path location="${project_home}/languages/Money/source_gen" />
       </src>
       <classpath>
-        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-annotations.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-core.jar" />
+        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-annotations.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-generator.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-openapi.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-logging.jar" />
@@ -1064,11 +1064,11 @@
         <path location="${project_home}/languages/Money/generator/source_gen" />
       </src>
       <classpath>
+        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-platform.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-annotations.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-behavior-runtime.jar" />
-        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-openapi.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-logging.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-closures.jar" />
@@ -1113,11 +1113,11 @@
         <path location="${project_home}/languages/ParallelFor/source_gen" />
       </src>
       <classpath>
+        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-platform.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-annotations.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-behavior-runtime.jar" />
-        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-openapi.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-logging.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-closures.jar" />
@@ -1162,11 +1162,11 @@
         <path location="${project_home}/languages/ParallelFor/generator/source_gen" />
       </src>
       <classpath>
+        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-platform.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-annotations.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-behavior-runtime.jar" />
-        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-openapi.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-logging.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-closures.jar" />
