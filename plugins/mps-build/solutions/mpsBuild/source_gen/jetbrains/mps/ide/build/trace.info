@@ -32,7 +32,7 @@
   </root>
   <root nodeRef="r:874d959d-e3b4-4d04-b931-ca849af130dd(jetbrains.mps.ide.build)/2849781404939735115">
     <file name="mpsJavaCore.xml">
-      <unit id="2849781404939735115" at="1,0,226,10" name="jetbrains.mps.ide.build.mpsJavaCore" />
+      <unit id="2849781404939735115" at="1,0,227,10" name="jetbrains.mps.ide.build.mpsJavaCore" />
     </file>
   </root>
   <root nodeRef="r:874d959d-e3b4-4d04-b931-ca849af130dd(jetbrains.mps.ide.build)/2913927887934230544">
