@@ -38,6 +38,7 @@ import jetbrains.mps.ide.ui.tree.smodel.SNodeTreeNode.NodeChildrenProvider;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.ModelReadRunnable;
+import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.typesystem.PresentationManager;
 import jetbrains.mps.typesystem.inference.TypeChecker;
 import org.jetbrains.annotations.NotNull;
@@ -182,7 +183,7 @@ public class NodeExplorerComponent extends JPanel implements Disposable {
 
       // TODO: add to base SNodeTreeNode class and get rid of this inner class?
       String string = getText();
-      final SNode typeOf = TypeChecker.getInstance().getTypeOf(getSNode());
+      final SNode typeOf = TypecheckingFacade.getFromContext().getTypeOf(getSNode());
       if (typeOf != null) {
         String typeInfo = " {" + PresentationManager.toString(typeOf) + "}";
         setText(string + typeInfo);
