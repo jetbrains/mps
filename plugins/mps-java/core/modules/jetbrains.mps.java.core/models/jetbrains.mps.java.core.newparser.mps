@@ -12,6 +12,7 @@
     <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="-1" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
+    <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="1" />
   </languages>
   <imports>
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
@@ -461,6 +462,9 @@
         <property id="1863527487546097500" name="moduleId" index="1XweGW" />
         <property id="1863527487545993577" name="moduleName" index="1XxBO9" />
       </concept>
+    </language>
+    <language id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem">
+      <concept id="1176544042499" name="jetbrains.mps.lang.typesystem.structure.Node_TypeOperation" flags="nn" index="3JvlWi" />
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
       <concept id="1204851882688" name="jetbrains.mps.lang.smodel.structure.LinkRefQualifier" flags="ng" index="26LbJo">
@@ -27493,18 +27497,6 @@
             </node>
           </node>
         </node>
-        <node concept="3cpWs8" id="4cIuj4UuAR_" role="3cqZAp">
-          <node concept="3cpWsn" id="4cIuj4UuARA" role="3cpWs9">
-            <property role="TrG5h" value="typeChecker" />
-            <node concept="3uibUv" id="4cIuj4UuARB" role="1tU5fm">
-              <ref role="3uigEE" to="u78q:~TypeChecker" resolve="TypeChecker" />
-            </node>
-            <node concept="2YIFZM" id="4cIuj4UuCOn" role="33vP2m">
-              <ref role="37wK5l" to="u78q:~TypeChecker.getInstance()" resolve="getInstance" />
-              <ref role="1Pybhc" to="u78q:~TypeChecker" resolve="TypeChecker" />
-            </node>
-          </node>
-        </node>
         <node concept="3clFbH" id="4cIuj4Uufzu" role="3cqZAp" />
         <node concept="3SKdUt" id="2IXrFxM35hE" role="3cqZAp">
           <node concept="1PaTwC" id="ATZLwXohtb" role="3ndbpf">
@@ -27820,16 +27812,11 @@
                             <node concept="3cpWsn" id="4cIuj4UvdRR" role="3cpWs9">
                               <property role="TrG5h" value="operandType" />
                               <node concept="3Tqbb2" id="4cIuj4Uv_RC" role="1tU5fm" />
-                              <node concept="2OqwBi" id="4cIuj4UvgRq" role="33vP2m">
-                                <node concept="37vLTw" id="4cIuj4Uvghf" role="2Oq$k0">
-                                  <ref role="3cqZAo" node="4cIuj4UuARA" resolve="typeChecker" />
+                              <node concept="2OqwBi" id="7NOn4BSW3oO" role="33vP2m">
+                                <node concept="37vLTw" id="7NOn4BSW2An" role="2Oq$k0">
+                                  <ref role="3cqZAo" node="4cIuj4UuEJv" resolve="operand" />
                                 </node>
-                                <node concept="liA8E" id="4cIuj4UvhWV" role="2OqNvi">
-                                  <ref role="37wK5l" to="u78q:~TypeChecker.getTypeOf(org.jetbrains.mps.openapi.model.SNode)" resolve="getTypeOf" />
-                                  <node concept="37vLTw" id="4cIuj4Uviw8" role="37wK5m">
-                                    <ref role="3cqZAo" node="4cIuj4UuEJv" resolve="operand" />
-                                  </node>
-                                </node>
+                                <node concept="3JvlWi" id="7NOn4BSW4d9" role="2OqNvi" />
                               </node>
                             </node>
                           </node>
@@ -28035,16 +28022,11 @@
                             <node concept="3cpWsn" id="7DQgZKfpzRF" role="3cpWs9">
                               <property role="TrG5h" value="operandType" />
                               <node concept="3Tqbb2" id="7DQgZKfpzRG" role="1tU5fm" />
-                              <node concept="2OqwBi" id="7DQgZKfpzRH" role="33vP2m">
-                                <node concept="37vLTw" id="7DQgZKfpzRI" role="2Oq$k0">
-                                  <ref role="3cqZAo" node="4cIuj4UuARA" resolve="typeChecker" />
+                              <node concept="2OqwBi" id="7NOn4BSW7eK" role="33vP2m">
+                                <node concept="37vLTw" id="7NOn4BSW6Nz" role="2Oq$k0">
+                                  <ref role="3cqZAo" node="7DQgZKfpzRb" resolve="operand" />
                                 </node>
-                                <node concept="liA8E" id="7DQgZKfpzRJ" role="2OqNvi">
-                                  <ref role="37wK5l" to="u78q:~TypeChecker.getTypeOf(org.jetbrains.mps.openapi.model.SNode)" resolve="getTypeOf" />
-                                  <node concept="37vLTw" id="7DQgZKfpzRK" role="37wK5m">
-                                    <ref role="3cqZAo" node="7DQgZKfpzRb" resolve="operand" />
-                                  </node>
-                                </node>
+                                <node concept="3JvlWi" id="7NOn4BSW8YF" role="2OqNvi" />
                               </node>
                             </node>
                           </node>
@@ -28165,18 +28147,6 @@
                         </node>
                       </node>
                       <node concept="3clFbH" id="4ykJ8Y8kqFx" role="3cqZAp" />
-                      <node concept="3clFbF" id="4fsP5cjmhFu" role="3cqZAp">
-                        <node concept="37vLTI" id="4fsP5cjmhFw" role="3clFbG">
-                          <node concept="2YIFZM" id="4ykJ8Y8lr$2" role="37vLTx">
-                            <ref role="37wK5l" to="u78q:~TypeChecker.getInstance()" resolve="getInstance" />
-                            <ref role="1Pybhc" to="u78q:~TypeChecker" resolve="TypeChecker" />
-                          </node>
-                          <node concept="37vLTw" id="4fsP5cjmirP" role="37vLTJ">
-                            <ref role="3cqZAo" node="4cIuj4UuARA" resolve="typeChecker" />
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="3clFbH" id="4ykJ8Y8krbG" role="3cqZAp" />
                       <node concept="2Gpval" id="6FrFfBz1swC" role="3cqZAp">
                         <node concept="2GrKxI" id="6FrFfBz1swE" role="2Gsz3X">
                           <property role="TrG5h" value="swicthCase" />
@@ -28204,9 +28174,6 @@
                                 <ref role="37wK5l" node="4ykJ8Y8i9LI" resolve="transformUnqualifedEnumUnderSwitch" />
                                 <node concept="2GrUjf" id="2IXrFxMt1NF" role="37wK5m">
                                   <ref role="2Gs0qQ" node="6FrFfBz1swE" resolve="swicthCase" />
-                                </node>
-                                <node concept="37vLTw" id="4fsP5cjouJi" role="37wK5m">
-                                  <ref role="3cqZAo" node="4cIuj4UuARA" resolve="typeChecker" />
                                 </node>
                               </node>
                             </node>
@@ -29958,16 +29925,11 @@
           <node concept="3cpWsn" id="2IXrFxMnttQ" role="3cpWs9">
             <property role="TrG5h" value="scruteneeType" />
             <node concept="3Tqbb2" id="2IXrFxMnttR" role="1tU5fm" />
-            <node concept="2OqwBi" id="2IXrFxMnttS" role="33vP2m">
-              <node concept="37vLTw" id="2IXrFxMssdw" role="2Oq$k0">
-                <ref role="3cqZAo" node="2IXrFxMs7fg" resolve="typeChecker" />
+            <node concept="2OqwBi" id="7NOn4BSWsuV" role="33vP2m">
+              <node concept="37vLTw" id="7NOn4BSWrGS" role="2Oq$k0">
+                <ref role="3cqZAo" node="2IXrFxMntt_" resolve="scrutenee" />
               </node>
-              <node concept="liA8E" id="2IXrFxMnttU" role="2OqNvi">
-                <ref role="37wK5l" to="u78q:~TypeChecker.getTypeOf(org.jetbrains.mps.openapi.model.SNode)" resolve="getTypeOf" />
-                <node concept="37vLTw" id="2IXrFxMnttV" role="37wK5m">
-                  <ref role="3cqZAo" node="2IXrFxMntt_" resolve="scrutenee" />
-                </node>
-              </node>
+              <node concept="3JvlWi" id="7NOn4BSWsFI" role="2OqNvi" />
             </node>
           </node>
         </node>
@@ -30148,12 +30110,6 @@
         <property role="TrG5h" value="switchCase" />
         <node concept="3Tqbb2" id="4ykJ8Y8i9Mb" role="1tU5fm">
           <ref role="ehGHo" to="tpee:gVKbdOr" resolve="SwitchCase" />
-        </node>
-      </node>
-      <node concept="37vLTG" id="2IXrFxMs7fg" role="3clF46">
-        <property role="TrG5h" value="typeChecker" />
-        <node concept="3uibUv" id="2IXrFxMsrYq" role="1tU5fm">
-          <ref role="3uigEE" to="u78q:~TypeChecker" resolve="TypeChecker" />
         </node>
       </node>
     </node>

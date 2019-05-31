@@ -17,5 +17,6 @@
     <orderEntry type="module" module-name="typesystemEngine" />
     <orderEntry type="module" module-name="java-stub" />
     <orderEntry type="library" name="Idea-platform" level="project" />
+    <orderEntry type="module" module-name="typechecking" />
   </component>
 </module>

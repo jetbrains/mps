@@ -48,8 +48,7 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.util.IFileUtil;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.typesystem.inference.TypeChecker;
+import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
@@ -471,7 +470,6 @@ public class JavaToMpsConverter {
 
   private void codeTransformPass(final Iterable<SNode> nodes, final ProgressMonitor progress, IncrementalModelAccess modelAccess) {
     progress.start("Code transforms", Sequence.fromIterable(nodes).count() * 5 + 1);
-    final Wrappers._T<TypeChecker> typeChecker = new Wrappers._T<TypeChecker>(TypeChecker.getInstance());
 
     // all this can be replaced by one map old -> new 
     final List<SNode> toReplaceWithArrayLength = ListSequence.fromList(new ArrayList<SNode>());
@@ -501,7 +499,7 @@ public class JavaToMpsConverter {
               continue;
             }
 
-            SNode operandType = typeChecker.value.getTypeOf(operand);
+            SNode operandType = TypecheckingFacade.getFromContext().getTypeOf(operand);
             if (SNodeOperations.isInstanceOf(operandType, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType"))) {
               ListSequence.fromList(toReplaceWithArrayLength).addElement(fieldRefOp);
             }
@@ -527,7 +525,7 @@ public class JavaToMpsConverter {
               continue;
             }
 
-            SNode operandType = typeChecker.value.getTypeOf(operand);
+            SNode operandType = TypecheckingFacade.getFromContext().getTypeOf(operand);
             if (SNodeOperations.isInstanceOf(operandType, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType"))) {
               ListSequence.fromList(toReplaceWithArrayClone).addElement(imco);
             }
@@ -545,10 +543,8 @@ public class JavaToMpsConverter {
 
           progress.advance(1);
 
-          typeChecker.value = TypeChecker.getInstance();
-
           for (SNode swicthCase : ListSequence.fromList(SNodeOperations.getNodeDescendants(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, "jetbrains.mps.baseLanguage.structure.SwitchCase"), false, new SAbstractConcept[]{}))) {
-            SNode subst = transformUnqualifedEnumUnderSwitch(swicthCase, typeChecker.value);
+            SNode subst = transformUnqualifedEnumUnderSwitch(swicthCase);
             if ((subst == null)) {
               continue;
             }
@@ -739,7 +735,7 @@ public class JavaToMpsConverter {
     return result;
   }
 
-  private SNode transformUnqualifedEnumUnderSwitch(SNode switchCase, TypeChecker typeChecker) {
+  private SNode transformUnqualifedEnumUnderSwitch(SNode switchCase) {
     // FIXME share or re-use code with the corresponding NonTypesystemRule 
 
     SNode caseExp = SLinkOperations.getTarget(switchCase, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, 0x10ef02d67cfL, "expression"));
@@ -758,7 +754,7 @@ public class JavaToMpsConverter {
       return null;
     }
 
-    SNode scruteneeType = typeChecker.getTypeOf(scrutenee);
+    SNode scruteneeType = TypecheckingFacade.getFromContext().getTypeOf(scrutenee);
     if (!(SNodeOperations.isInstanceOf(scruteneeType, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType")))) {
       return null;
     }
