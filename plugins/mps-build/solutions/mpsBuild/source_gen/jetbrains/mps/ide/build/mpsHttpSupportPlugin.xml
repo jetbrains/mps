@@ -487,7 +487,6 @@
       <target name="assemble" />
     </ant>
     <ant antfile="build/mpsJavaCorePre.xml" inheritAll="false" useNativeBasedir="true">
-      <target name="generate" />
       <target name="assemble" />
     </ant>
     <ant antfile="build/mpsJavaCore.xml" inheritAll="false" useNativeBasedir="true">
@@ -495,7 +494,6 @@
       <target name="assemble" />
     </ant>
     <ant antfile="build/mpsJavaPlatformPre.xml" inheritAll="false" useNativeBasedir="true">
-      <target name="generate" />
       <target name="assemble" />
     </ant>
     <ant antfile="build/mpsJavaPlatform.xml" inheritAll="false" useNativeBasedir="true">

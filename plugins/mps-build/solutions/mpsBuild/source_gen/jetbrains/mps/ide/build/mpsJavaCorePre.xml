@@ -33,7 +33,7 @@
   
   <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="path.javac2.classpath" />
   
-  <target name="assemble" depends="classes, declare-mps-tasks">
+  <target name="assemble" depends="classes">
     <mkdir dir="${build.layout}/lib" />
     <jar destfile="${build.layout}/lib/java-core.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/mps-java-core" />
@@ -65,12 +65,6 @@
   <target name="test" depends="classes" />
   
   <target name="check" depends="test" />
-  
-  <target name="generate" depends="declare-mps-tasks" />
-  
-  <target name="declare-mps-tasks" />
-  
-  <target name="makeDependents" />
   
   <target name="java.compile.mps-java-core" depends="fetchDependencies">
     <mkdir dir="${mps_home}/plugins/mps-java/core/modules/jetbrains.mps.java.core/source_gen" />

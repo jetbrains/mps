@@ -34,7 +34,7 @@
   
   <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="path.javac2.classpath" />
   
-  <target name="assemble" depends="classes, declare-mps-tasks">
+  <target name="assemble" depends="classes">
     <mkdir dir="${build.layout}/META-INF" />
     <copy todir="${build.layout}/META-INF">
       <fileset file="${mps_home}/plugins/mps-java/META-INF/JavaPlatform.xml" />
@@ -75,12 +75,6 @@
   <target name="test" depends="classes" />
   
   <target name="check" depends="test" />
-  
-  <target name="generate" depends="declare-mps-tasks" />
-  
-  <target name="declare-mps-tasks" />
-  
-  <target name="makeDependents" />
   
   <target name="java.compile.mps-java-platform" depends="fetchDependencies">
     <mkdir dir="${mps_home}/plugins/mps-java/platform/modules/jetbrains.mps.java.platform/source_gen" />
