@@ -64,12 +64,12 @@ public class MethodInheritanceChecks_Test extends BaseTransformationTest {
     new MethodInheritanceChecks_Test.TestBody(this).test_ErrorMessagesCheck3950519302603978920();
   }
   @Test
-  public void test_NodeUnnamedErrorCheck7861981782411095593() throws Throwable {
-    new MethodInheritanceChecks_Test.TestBody(this).test_NodeUnnamedErrorCheck7861981782411095593();
+  public void test_NodeUnnamedErrorCheck824450455580543375() throws Throwable {
+    new MethodInheritanceChecks_Test.TestBody(this).test_NodeUnnamedErrorCheck824450455580543375();
   }
   @Test
-  public void test_NodeUnnamedErrorCheck7861981782411095971() throws Throwable {
-    new MethodInheritanceChecks_Test.TestBody(this).test_NodeUnnamedErrorCheck7861981782411095971();
+  public void test_NodeUnnamedErrorCheck824450455580547533() throws Throwable {
+    new MethodInheritanceChecks_Test.TestBody(this).test_NodeUnnamedErrorCheck824450455580547533();
   }
   @Test
   public void test_ErrorMessagesCheck3031388763767112969() throws Throwable {
@@ -227,12 +227,12 @@ public class MethodInheritanceChecks_Test extends BaseTransformationTest {
       SNode operation = SNodeOperations.cast(getRealNodeById("3950519302603978920"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
       INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("3950519302603978908"));
     }
-    public void test_NodeUnnamedErrorCheck7861981782411095593() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("7861981782411095593"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
+    public void test_NodeUnnamedErrorCheck824450455580543375() throws Exception {
+      SNode operation = SNodeOperations.cast(getRealNodeById("824450455580543375"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
       INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("3031388763767113470"));
     }
-    public void test_NodeUnnamedErrorCheck7861981782411095971() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("7861981782411095971"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
+    public void test_NodeUnnamedErrorCheck824450455580547533() throws Exception {
+      SNode operation = SNodeOperations.cast(getRealNodeById("824450455580547533"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
       INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("3031388763767161768"));
     }
     public void test_ErrorMessagesCheck3031388763767112969() throws Exception {
