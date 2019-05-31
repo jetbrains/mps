@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
+  <dependency className="jetbrains.mps.lang.smodelTests.editor.ChildSubConceptSuppressError_Editor">
+    <classNode dependClassName="jetbrains.mps.lang.smodelTests.editor.ChildSubConceptSuppressError_EditorBuilder_a" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode extendsClassName="jetbrains.mps.nodeEditor.DefaultNodeEditor" />
+  </dependency>
+  <dependency className="jetbrains.mps.lang.smodelTests.editor.ChildSubConceptSuppressError_EditorBuilder_a">
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="jetbrains.mps.nodeEditor.cells.EditorCell_Constant" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode extendsClassName="jetbrains.mps.editor.runtime.descriptor.AbstractEditorBuilder" />
+  </dependency>
   <dependency className="jetbrains.mps.lang.smodelTests.editor.ChildSubConcept_Editor">
     <classNode dependClassName="jetbrains.mps.lang.smodelTests.editor.ChildSubConcept_EditorBuilder_a" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />
@@ -120,6 +136,7 @@
     <classNode dependClassName="java.util.Collections" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndex" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder" />
+    <classNode dependClassName="jetbrains.mps.lang.smodelTests.editor.ChildSubConceptSuppressError_Editor" />
     <classNode dependClassName="jetbrains.mps.lang.smodelTests.editor.ChildSubConcept_Editor" />
     <classNode dependClassName="jetbrains.mps.lang.smodelTests.editor.Child_Editor" />
     <classNode dependClassName="jetbrains.mps.lang.smodelTests.editor.GrandChild_Editor" />

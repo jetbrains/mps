@@ -428,5 +428,11 @@
       </node>
     </node>
   </node>
+  <node concept="24kQdi" id="2TJG989NAig">
+    <ref role="1XX52x" to="yetq:2TJG989NAhN" resolve="ChildSubConceptSuppressError" />
+    <node concept="3F0ifn" id="2TJG989NAii" role="2wV5jI">
+      <property role="3F0ifm" value="childCanSuppressErrors" />
+    </node>
+  </node>
 </model>
 

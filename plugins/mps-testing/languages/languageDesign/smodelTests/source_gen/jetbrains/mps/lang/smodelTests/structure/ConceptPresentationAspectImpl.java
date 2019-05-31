@@ -11,6 +11,7 @@ import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
   private ConceptPresentation props_Child;
   private ConceptPresentation props_ChildSubConcept;
+  private ConceptPresentation props_ChildSubConceptSuppressError;
   private ConceptPresentation props_GrandChild;
   private ConceptPresentation props_NPTypesystem_ConceptA;
   private ConceptPresentation props_NPTypesystem_ConceptB;
@@ -40,6 +41,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_ChildSubConcept = cpb.create();
         }
         return props_ChildSubConcept;
+      case LanguageConceptSwitch.ChildSubConceptSuppressError:
+        if (props_ChildSubConceptSuppressError == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_ChildSubConceptSuppressError = cpb.create();
+        }
+        return props_ChildSubConceptSuppressError;
       case LanguageConceptSwitch.GrandChild:
         if (props_GrandChild == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

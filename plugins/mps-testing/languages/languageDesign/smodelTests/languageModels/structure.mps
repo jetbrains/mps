@@ -312,5 +312,13 @@
       <property role="1uS6qo" value="NotDefault_C" />
     </node>
   </node>
+  <node concept="1TIwiD" id="2TJG989NAhN">
+    <property role="TrG5h" value="ChildSubConceptSuppressError" />
+    <property role="EcuMT" value="3346087189435802739" />
+    <ref role="1TJDcQ" node="ftl0ImzDYZ" resolve="Child" />
+    <node concept="PrWs8" id="2TJG989NAhP" role="PzmwI">
+      <ref role="PrY4T" to="tpck:2WmWrdnSpX2" resolve="ICanSuppressErrors" />
+    </node>
+  </node>
 </model>
 

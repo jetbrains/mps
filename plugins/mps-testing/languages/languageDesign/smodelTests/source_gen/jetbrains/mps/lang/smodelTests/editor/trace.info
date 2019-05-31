@@ -12,7 +12,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryStatement" />
   <root>
     <file name="EditorAspectDescriptorImpl.java">
-      <unit at="16,0,54,0" name="jetbrains.mps.lang.smodelTests.editor.EditorAspectDescriptorImpl" />
+      <unit at="16,0,56,0" name="jetbrains.mps.lang.smodelTests.editor.EditorAspectDescriptorImpl" />
     </file>
     <file name="NPTypesystem_RefToIntA_SubstituteMenu.java">
       <unit at="47,0,66,0" name="jetbrains.mps.lang.smodelTests.editor.NPTypesystem_RefToIntA_SubstituteMenu$SMP_ReferenceScope_mqf312_a" />
@@ -1804,6 +1804,49 @@
       <unit id="3386205146662128317" at="289,0,338,0" name="jetbrains.mps.lang.smodelTests.editor.ReferenceContainerSubConcept_EditorBuilder_a$Inline_Builder1" />
       <unit id="2854075155748608755" at="391,0,440,0" name="jetbrains.mps.lang.smodelTests.editor.ReferenceContainerSubConcept_EditorBuilder_a$Inline_Builder2" />
       <unit id="2854075155748608739" at="45,0,452,0" name="jetbrains.mps.lang.smodelTests.editor.ReferenceContainerSubConcept_EditorBuilder_a" />
+    </file>
+  </root>
+  <root nodeRef="r:5d778b6b-ea1d-4251-a9ca-a7ce236ef323(jetbrains.mps.lang.smodelTests.editor)/3346087189435802768">
+    <file name="ChildSubConceptSuppressError_Editor.java">
+      <node id="3346087189435802768" at="11,79,12,94" concept="6" />
+      <node id="3346087189435802768" at="11,0,14,0" concept="4" trace="createEditorCell#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <scope id="3346087189435802768" at="11,79,12,94" />
+      <scope id="3346087189435802768" at="11,0,14,0">
+        <var name="editorContext" id="3346087189435802768" />
+        <var name="node" id="3346087189435802768" />
+      </scope>
+      <unit id="3346087189435802768" at="10,0,15,0" name="jetbrains.mps.lang.smodelTests.editor.ChildSubConceptSuppressError_Editor" />
+    </file>
+    <file name="ChildSubConceptSuppressError_EditorBuilder_a.java">
+      <node id="3346087189435802768" at="16,108,17,19" concept="8" />
+      <node id="3346087189435802768" at="17,19,18,18" concept="1" />
+      <node id="3346087189435802768" at="23,26,24,18" concept="6" />
+      <node id="3346087189435802768" at="27,39,28,30" concept="6" />
+      <node id="3346087189435802770" at="31,41,32,115" concept="5" />
+      <node id="3346087189435802770" at="32,115,33,46" concept="1" />
+      <node id="3346087189435802770" at="33,46,34,28" concept="1" />
+      <node id="3346087189435802770" at="34,28,35,31" concept="1" />
+      <node id="3346087189435802770" at="35,31,36,34" concept="1" />
+      <node id="3346087189435802770" at="36,34,37,22" concept="6" />
+      <node id="3346087189435802768" at="13,0,15,0" concept="2" trace="myNode" />
+      <node id="3346087189435802768" at="27,0,30,0" concept="4" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="3346087189435802768" at="16,0,20,0" concept="0" trace="ChildSubConceptSuppressError_EditorBuilder_a#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="3346087189435802768" at="21,0,26,0" concept="4" trace="getNode#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="3346087189435802770" at="31,0,39,0" concept="4" trace="createConstant_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <scope id="3346087189435802768" at="23,26,24,18" />
+      <scope id="3346087189435802768" at="27,39,28,30" />
+      <scope id="3346087189435802768" at="16,108,18,18" />
+      <scope id="3346087189435802768" at="27,0,30,0" />
+      <scope id="3346087189435802768" at="16,0,20,0">
+        <var name="context" id="3346087189435802768" />
+        <var name="node" id="3346087189435802768" />
+      </scope>
+      <scope id="3346087189435802768" at="21,0,26,0" />
+      <scope id="3346087189435802770" at="31,41,37,22">
+        <var name="editorCell" id="3346087189435802770" />
+      </scope>
+      <scope id="3346087189435802770" at="31,0,39,0" />
+      <unit id="3346087189435802768" at="12,0,40,0" name="jetbrains.mps.lang.smodelTests.editor.ChildSubConceptSuppressError_EditorBuilder_a" />
     </file>
   </root>
   <root nodeRef="r:5d778b6b-ea1d-4251-a9ca-a7ce236ef323(jetbrains.mps.lang.smodelTests.editor)/34342663958607543">

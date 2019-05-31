@@ -16,6 +16,7 @@ import jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder2;
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptChild = createDescriptorForChild();
   /*package*/ final ConceptDescriptor myConceptChildSubConcept = createDescriptorForChildSubConcept();
+  /*package*/ final ConceptDescriptor myConceptChildSubConceptSuppressError = createDescriptorForChildSubConceptSuppressError();
   /*package*/ final ConceptDescriptor myConceptGrandChild = createDescriptorForGrandChild();
   /*package*/ final ConceptDescriptor myConceptNPTypesystem_ConceptA = createDescriptorForNPTypesystem_ConceptA();
   /*package*/ final ConceptDescriptor myConceptNPTypesystem_ConceptB = createDescriptorForNPTypesystem_ConceptB();
@@ -45,7 +46,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptChild, myConceptChildSubConcept, myConceptGrandChild, myConceptNPTypesystem_ConceptA, myConceptNPTypesystem_ConceptB, myConceptNPTypesystem_IntA, myConceptNPTypesystem_IntB, myConceptNPTypesystem_RefToIntA, myConceptReferenceContainer, myConceptReferenceContainerSubConcept, myConceptRoot);
+    return Arrays.asList(myConceptChild, myConceptChildSubConcept, myConceptChildSubConceptSuppressError, myConceptGrandChild, myConceptNPTypesystem_ConceptA, myConceptNPTypesystem_ConceptB, myConceptNPTypesystem_IntA, myConceptNPTypesystem_IntB, myConceptNPTypesystem_RefToIntA, myConceptReferenceContainer, myConceptReferenceContainerSubConcept, myConceptRoot);
   }
 
   @Override
@@ -56,6 +57,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptChild;
       case LanguageConceptSwitch.ChildSubConcept:
         return myConceptChildSubConcept;
+      case LanguageConceptSwitch.ChildSubConceptSuppressError:
+        return myConceptChildSubConceptSuppressError;
       case LanguageConceptSwitch.GrandChild:
         return myConceptGrandChild;
       case LanguageConceptSwitch.NPTypesystem_ConceptA:
@@ -105,6 +108,15 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, false);
     b.super_("jetbrains.mps.lang.smodelTests.structure.Child", 0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x3dd540b968e9fbfL);
     b.origin("r:43b4d418-d4ca-4d97-ab07-31e4f3ddb3e5(jetbrains.mps.lang.smodelTests.structure)/34342663958604621");
+    b.version(2);
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForChildSubConceptSuppressError() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.smodelTests", "ChildSubConceptSuppressError", 0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x2e6fb09209ce6473L);
+    b.class_(false, false, false);
+    b.super_("jetbrains.mps.lang.smodelTests.structure.Child", 0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x3dd540b968e9fbfL);
+    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2f16f1b357e19f42L);
+    b.origin("r:43b4d418-d4ca-4d97-ab07-31e4f3ddb3e5(jetbrains.mps.lang.smodelTests.structure)/3346087189435802739");
     b.version(2);
     return b.create();
   }
