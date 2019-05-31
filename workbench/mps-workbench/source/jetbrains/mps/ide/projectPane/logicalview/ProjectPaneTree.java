@@ -43,8 +43,14 @@ import jetbrains.mps.ide.ui.tree.smodel.SModelTreeNode;
 import jetbrains.mps.ide.ui.tree.smodel.SModelTreeNode.LongModelNameText;
 import jetbrains.mps.ide.ui.tree.smodel.SNodeTreeNode;
 import jetbrains.mps.ide.ui.tree.smodel.SNodeTreeNode.NodeChildrenProvider;
+import jetbrains.mps.make.IMakeNotificationListener;
+import jetbrains.mps.make.IMakeNotificationListener.Stub;
+import jetbrains.mps.make.IMakeService;
+import jetbrains.mps.make.MakeNotification;
+import jetbrains.mps.make.MakeServiceComponent;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
 import jetbrains.mps.project.DevKit;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.Language;
@@ -101,12 +107,14 @@ public class ProjectPaneTree extends ProjectTree implements NodeChildrenProvider
   };
   private final ProjectPaneTreeHighlighter myHighlighter;
   private final TreeStructureUpdate myStructureUpdate;
+  private final IMakeNotificationListener myMakeListener;
 
   public ProjectPaneTree(ProjectPane projectPane, Project project) {
     super(ProjectHelper.fromIdeaProject(project));
     myProjectPane = projectPane;
 
-    myHighlighter = new ProjectPaneTreeHighlighter(this, ProjectHelper.fromIdeaProject(project));
+    final MPSProject mpsProject = ProjectHelper.fromIdeaProject(project);
+    myHighlighter = new ProjectPaneTreeHighlighter(this, mpsProject);
     myHighlighter.init();
     myStructureUpdate = new TreeStructureUpdate(this);
     myStructureUpdate.init();
@@ -131,6 +139,17 @@ public class ProjectPaneTree extends ProjectTree implements NodeChildrenProvider
         myHighlighter.dumbUpdate();
       }
     });
+    mpsProject.getComponent(MakeServiceComponent.class).get().addListener(myMakeListener = new Stub() {
+      @Override
+      public void sessionOpened(MakeNotification notification) {
+        myHighlighter.pause();
+      }
+
+      @Override
+      public void sessionClosed(MakeNotification notification) {
+        myHighlighter.resume();
+      }
+    });
   }
 
   @Override
@@ -148,6 +167,7 @@ public class ProjectPaneTree extends ProjectTree implements NodeChildrenProvider
 
   @Override
   public void dispose() {
+    getProject().getComponent(MakeServiceComponent.class).get().removeListener(myMakeListener);
     myStructureUpdate.dispose();
     myHighlighter.dispose();
     removeKeyListener(myKeyListener);

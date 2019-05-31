@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -55,6 +55,7 @@ public class ProjectPaneTreeHighlighter {
   // containers that control listeners of module and model respectively
   private ModuleNodeListeners myModuleListeners;
   private SModelNodeListeners myModelListeners;
+  private volatile boolean myIsPaused = false;
 
   public ProjectPaneTreeHighlighter(ProjectPaneTree tree, Project mpsProject) {
     myTree = tree;
@@ -131,16 +132,33 @@ public class ProjectPaneTreeHighlighter {
    * Highlighter knows which visitor(s) shall run in dumb mode, while outer code controls dumb mode awareness
    */
   public void dumbUpdate() {
+    if (myIsPaused) {
+      return;
+    }
     dispatchForHierarchy(myTree.getRootNode());
   }
 
+  public void pause() {
+    myIsPaused = true;
+  }
+
+  public void resume() {
+    myIsPaused = false;
+  }
+
   /*package*/ void refreshModuleTreeNodes(Collection<ProjectModuleTreeNode> treeNodes) {
+    if (myIsPaused) {
+      return;
+    }
     for (ProjectModuleTreeNode tn : treeNodes) {
       schedule(tn, myErrorVisitor);
     }
   }
 
   /*package*/ void refreshModelTreeNodes(Collection<SModelTreeNode> treeNodes) {
+    if (myIsPaused) {
+      return;
+    }
     // XXX don't need to keep instance of a visitor any more. Can instantiate here as needed, and then visitors could utilize their state.
     for (SModelTreeNode tn : treeNodes) {
       schedule(tn, myErrorVisitor);
@@ -150,6 +168,9 @@ public class ProjectPaneTreeHighlighter {
   }
 
   /*package*/ void refreshGenerationStatusForTreeNodes(Collection<SModelTreeNode> treeNodes) {
+    if (myIsPaused) {
+      return;
+    }
     for (SModelTreeNode tn : treeNodes) {
       schedule(tn, myGenStatusVisitor);
     }
