@@ -12,6 +12,8 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
+import jetbrains.mps.editor.runtime.selection.SelectionUtil;
+import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
@@ -43,6 +45,7 @@ public class AnonymousClass_CurlyBraces {
                 ListSequence.fromList(SLinkOperations.getChildren(classCreator, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"))).addElement(it);
               }
             });
+            SelectionUtil.selectCell(editorContext, classCreator, SelectionManager.LAST_CELL);
           } else {
             final SNode defaultClassCreator = SNodeFactoryOperations.replaceWithNewChild(parent, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, "jetbrains.mps.baseLanguage.structure.DefaultClassCreator"));
             SLinkOperations.setTarget(defaultClassCreator, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0ac833a6L, "classifier"), SLinkOperations.getTarget(node, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier")));
@@ -51,12 +54,18 @@ public class AnonymousClass_CurlyBraces {
                 ListSequence.fromList(SLinkOperations.getChildren(defaultClassCreator, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0accfdb3L, "typeParameter"))).addElement(it);
               }
             });
+            SelectionUtil.selectCell(editorContext, defaultClassCreator, SelectionManager.LAST_CELL);
+
           }
         } else {
           if (DeletionApproverUtil.approve(editorContext, node)) {
             return;
           }
+          SNode p = SNodeOperations.getParent(node);
           SNodeOperations.deleteNode(node);
+          if ((p != null)) {
+            SelectionUtil.selectCell(editorContext, p, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL);
+          }
         }
       }
 
