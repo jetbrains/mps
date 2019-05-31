@@ -10,7 +10,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.CopyUtil;
-import jetbrains.mps.typesystem.inference.TypeChecker;
+import jetbrains.mps.typechecking.TypecheckingFacade;
 
 /*package*/ class ExtractMethodFromExpressionRefactoring extends ExtractMethodRefactoring {
   @NotNull
@@ -39,7 +39,7 @@ import jetbrains.mps.typesystem.inference.TypeChecker;
   }
   @Override
   public SNode getMethodType() {
-    SNode typeOf = TypeChecker.getInstance().getTypeOf(this.myExpression);
+    SNode typeOf = TypecheckingFacade.getFromContext().getTypeOf(this.myExpression);
     return SNodeOperations.cast(typeOf, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type"));
   }
 }

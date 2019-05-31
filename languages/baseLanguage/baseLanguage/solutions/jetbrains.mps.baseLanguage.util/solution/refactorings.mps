@@ -15358,20 +15358,14 @@
           <node concept="3cpWsn" id="7nrhK3uHeRb" role="3cpWs9">
             <property role="TrG5h" value="typeOf" />
             <node concept="3Tqbb2" id="7nrhK3uHeRi" role="1tU5fm" />
-            <node concept="2OqwBi" id="7nrhK3uHeRc" role="33vP2m">
-              <node concept="liA8E" id="7nrhK3uHeRe" role="2OqNvi">
-                <ref role="37wK5l" to="u78q:~TypeChecker.getTypeOf(org.jetbrains.mps.openapi.model.SNode)" resolve="getTypeOf" />
-                <node concept="2OqwBi" id="7nrhK3uHeRf" role="37wK5m">
-                  <node concept="2OwXpG" id="7nrhK3uHeRh" role="2OqNvi">
-                    <ref role="2Oxat5" node="7nrhK3uHeOB" resolve="myExpression" />
-                  </node>
-                  <node concept="Xjq3P" id="7nrhK3uHeRg" role="2Oq$k0" />
+            <node concept="2OqwBi" id="3SLB3oqpLFs" role="33vP2m">
+              <node concept="2OqwBi" id="7nrhK3uHeRf" role="2Oq$k0">
+                <node concept="2OwXpG" id="7nrhK3uHeRh" role="2OqNvi">
+                  <ref role="2Oxat5" node="7nrhK3uHeOB" resolve="myExpression" />
                 </node>
+                <node concept="Xjq3P" id="7nrhK3uHeRg" role="2Oq$k0" />
               </node>
-              <node concept="2YIFZM" id="7nrhK3uHeRd" role="2Oq$k0">
-                <ref role="1Pybhc" to="u78q:~TypeChecker" resolve="TypeChecker" />
-                <ref role="37wK5l" to="u78q:~TypeChecker.getInstance()" resolve="getInstance" />
-              </node>
+              <node concept="3JvlWi" id="3SLB3oqpMd8" role="2OqNvi" />
             </node>
           </node>
         </node>
