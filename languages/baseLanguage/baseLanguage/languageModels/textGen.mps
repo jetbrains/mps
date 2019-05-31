@@ -24,6 +24,7 @@
     <import index="vmu8" ref="r:3bdd1bf2-b80f-4e87-b351-0ad08e9e4dc5(jetbrains.mps.make.java)" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
     <import index="zqge" ref="r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)" />
+    <import index="1ka" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typechecking(MPS.Core/)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
   </imports>
   <registry>
@@ -6927,25 +6928,25 @@
             </node>
             <node concept="3clFbF" id="hYkDgiw" role="3cqZAp">
               <node concept="37vLTI" id="hYkDgDv" role="3clFbG">
-                <node concept="2OqwBi" id="hYkDphs" role="37vLTx">
-                  <node concept="2YIFZM" id="hYkDp2y" role="2Oq$k0">
-                    <ref role="37wK5l" to="u78q:~TypeChecker.getInstance()" resolve="getInstance" />
-                    <ref role="1Pybhc" to="u78q:~TypeChecker" resolve="TypeChecker" />
+                <node concept="37vLTw" id="3GM_nagTuwB" role="37vLTJ">
+                  <ref role="3cqZAo" node="hYkDaKP" resolve="type" />
+                </node>
+                <node concept="2OqwBi" id="F_jn7NLEej" role="37vLTx">
+                  <node concept="2YIFZM" id="F_jn7NLE2Z" role="2Oq$k0">
+                    <ref role="37wK5l" to="1ka:~TypecheckingFacade.getFromContext()" resolve="getFromContext" />
+                    <ref role="1Pybhc" to="1ka:~TypecheckingFacade" resolve="TypecheckingFacade" />
                   </node>
-                  <node concept="liA8E" id="hYkDqbl" role="2OqNvi">
-                    <ref role="37wK5l" to="u78q:~TypeChecker.getTypeOf(org.jetbrains.mps.openapi.model.SNode)" resolve="getTypeOf" />
-                    <node concept="2OqwBi" id="hYkDrR2" role="37wK5m">
-                      <node concept="37vLTw" id="3GM_nagTsT7" role="2Oq$k0">
+                  <node concept="liA8E" id="F_jn7NLEqL" role="2OqNvi">
+                    <ref role="37wK5l" to="1ka:~TypecheckingFacade.getTypeOf(org.jetbrains.mps.openapi.model.SNode)" resolve="getTypeOf" />
+                    <node concept="2OqwBi" id="F_jn7NLGf_" role="37wK5m">
+                      <node concept="37vLTw" id="F_jn7NLG16" role="2Oq$k0">
                         <ref role="3cqZAo" node="hYkD1LR" resolve="parent" />
                       </node>
-                      <node concept="3TrEf2" id="hYkDsqJ" role="2OqNvi">
+                      <node concept="3TrEf2" id="F_jn7NLGRG" role="2OqNvi">
                         <ref role="3Tt5mk" to="tpee:fz3vP1I" resolve="initializer" />
                       </node>
                     </node>
                   </node>
-                </node>
-                <node concept="37vLTw" id="3GM_nagTuwB" role="37vLTJ">
-                  <ref role="3cqZAo" node="hYkDaKP" resolve="type" />
                 </node>
               </node>
             </node>
