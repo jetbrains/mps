@@ -12,14 +12,14 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
-import jetbrains.mps.typesystem.inference.TypeContextManager;
-import jetbrains.mps.util.Computable;
-import jetbrains.mps.typesystem.inference.TypeChecker;
+import jetbrains.mps.typechecking.TypecheckingFacade;
+import java.util.function.Supplier;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.typesystem.inference.util.StructuralNodeMap;
 import java.util.Set;
 import jetbrains.mps.typesystem.inference.SubtypingManager;
+import jetbrains.mps.typesystem.inference.TypeChecker;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.newTypesystem.SubtypingUtil;
@@ -98,10 +98,9 @@ public class MethodResolveUtil {
         if (nodesAndTypes.containsKey(term)) {
           typeOfArg = nodesAndTypes.get(term);
         } else {
-          typeOfArg = TypeContextManager.getInstance().runResolveAction(new Computable<SNode>() {
-            @Override
-            public SNode compute() {
-              return TypeChecker.getInstance().getTypeOf(term);
+          typeOfArg = TypecheckingFacade.getFromContext().runIsolated(new Supplier<SNode>() {
+            public SNode get() {
+              return TypecheckingFacade.getFromContext().getTypeOf(term);
             }
           });
           nodesAndTypes.put(term, typeOfArg);
