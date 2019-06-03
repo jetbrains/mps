@@ -71,7 +71,7 @@ public final class QualifiedPath {
     if (index <= 0) {
       throw new IllegalStateException("Wrong format:" + s);
     }
-    String path = s.substring(index + FS_DELIM.length() + 1);
+    String path = s.substring(index + FS_DELIM.length());
     return new QualifiedPath(s.substring(0, index), mp == null ? path : mp.expandPath(path));
   }
 }
