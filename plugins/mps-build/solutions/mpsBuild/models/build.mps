@@ -980,27 +980,6 @@
         <ref role="2sjeV2" node="6S1jmf0xDFH" resolve="trove4j" />
       </node>
     </node>
-    <node concept="398b33" id="5StVQ8qcIGg" role="3989C9">
-      <property role="TrG5h" value="mps-core-components" />
-      <node concept="nCB5N" id="7FonrDkmGH2" role="nCB5Z">
-        <ref role="nCB5Y" node="1s0vtrwURQP" resolve="mps-annotations" />
-      </node>
-      <node concept="398b2D" id="5StVQ8qcNrR" role="398b2p">
-        <node concept="398BVA" id="5StVQ8qcNVn" role="398b2C">
-          <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
-          <node concept="2Ry0Ak" id="5StVQ8qcOqP" role="iGT6I">
-            <property role="2Ry0Am" value="core" />
-            <node concept="2Ry0Ak" id="5mffBJ33KyQ" role="2Ry0An">
-              <property role="2Ry0Am" value="components" />
-            </node>
-          </node>
-        </node>
-        <node concept="nFU4i" id="5StVQ8qcOqU" role="nFU4p">
-          <property role="3LZaj6" value="source" />
-          <property role="nFU4j" value="source" />
-        </node>
-      </node>
-    </node>
     <node concept="398b33" id="6C2IEmQCfZN" role="3989C9">
       <property role="TrG5h" value="mps-make-rt" />
       <node concept="398b2D" id="6C2IEmQCl1X" role="398b2p">
@@ -1293,10 +1272,6 @@
     </node>
     <node concept="398b33" id="42Iv58Wf3Ei" role="3989C9">
       <property role="TrG5h" value="mps-smodel" />
-      <node concept="nCB5N" id="5mffBJ2UGvo" role="nCB5Z">
-        <property role="1Sh$E4" value="true" />
-        <ref role="nCB5Y" node="5StVQ8qcIGg" resolve="mps-core-components" />
-      </node>
       <node concept="nCB5N" id="42Iv58Wfat9" role="nCB5Z">
         <property role="1Sh$E4" value="true" />
         <ref role="nCB5Y" node="5Lo0z0qFWkX" resolve="mps-openapi" />
@@ -2226,8 +2201,8 @@
           <node concept="Saw0i" id="4LrmwrD9NEL" role="39821P">
             <ref role="Saw0g" node="5StVQ8qcPeV" resolve="platform" />
           </node>
-          <node concept="Saw0i" id="4LrmwrD9Obh" role="39821P">
-            <ref role="Saw0g" node="5StVQ8qcIGg" resolve="mps-core-components" />
+          <node concept="3ygNvl" id="3N2WdVhNcLE" role="39821P">
+            <ref role="3ygNvj" node="3N2WdVhNcFi" resolve="core-components.jar" />
           </node>
           <node concept="Saw0i" id="2fQZjorSjPI" role="39821P">
             <ref role="Saw0g" node="1FaKCGJSzEy" resolve="mps-kernel" />
@@ -36119,6 +36094,27 @@
         <ref role="nCB5Y" node="1s0vtrwUPV$" resolve="mps-logging" />
       </node>
     </node>
+    <node concept="398b33" id="5StVQ8qcIGg" role="3989C9">
+      <property role="TrG5h" value="mps-core-components" />
+      <node concept="nCB5N" id="7FonrDkmGH2" role="nCB5Z">
+        <ref role="nCB5Y" node="1s0vtrwURQP" resolve="mps-annotations" />
+      </node>
+      <node concept="398b2D" id="5StVQ8qcNrR" role="398b2p">
+        <node concept="398BVA" id="5StVQ8qcNVn" role="398b2C">
+          <ref role="398BVh" node="6IJvZDkyhr7" resolve="projectHome" />
+          <node concept="2Ry0Ak" id="5StVQ8qcOqP" role="iGT6I">
+            <property role="2Ry0Am" value="core" />
+            <node concept="2Ry0Ak" id="5mffBJ33KyQ" role="2Ry0An">
+              <property role="2Ry0Am" value="components" />
+            </node>
+          </node>
+        </node>
+        <node concept="nFU4i" id="5StVQ8qcOqU" role="nFU4p">
+          <property role="3LZaj6" value="source" />
+          <property role="nFU4j" value="source" />
+        </node>
+      </node>
+    </node>
     <node concept="55IIr" id="6IJvZDkyfZA" role="auvoZ">
       <node concept="2Ry0Ak" id="VyBwbcCkB8" role="iGT6I">
         <property role="2Ry0Am" value="build" />
@@ -36223,6 +36219,23 @@
         </node>
         <node concept="Saw0i" id="5d$B_bnZZwD" role="39821P">
           <ref role="Saw0g" node="5d$B_bnZPNh" resolve="mps-boot-util" />
+        </node>
+      </node>
+      <node concept="398223" id="3N2WdVhR$$r" role="39821P">
+        <node concept="3_J27D" id="3N2WdVhR$$t" role="Nbhlr">
+          <node concept="3Mxwew" id="3N2WdVhR$_d" role="3MwsjC">
+            <property role="3MwjfP" value="to-be-imported" />
+          </node>
+        </node>
+        <node concept="3981dx" id="3N2WdVhNcFi" role="39821P">
+          <node concept="Saw0i" id="3N2WdVhNcG2" role="39821P">
+            <ref role="Saw0g" node="5StVQ8qcIGg" resolve="mps-core-components" />
+          </node>
+          <node concept="3_J27D" id="3N2WdVhNcFk" role="Nbhlr">
+            <node concept="3Mxwew" id="3N2WdVhNcG0" role="3MwsjC">
+              <property role="3MwjfP" value="core-components.jar" />
+            </node>
+          </node>
         </node>
       </node>
     </node>

@@ -58,6 +58,10 @@
     <jar destfile="${build.layout}/mps-boot-util.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/mps-boot-util" />
     </jar>
+    <mkdir dir="${build.layout}/to-be-imported" />
+    <jar destfile="${build.layout}/to-be-imported/core-components.jar" duplicate="preserve">
+      <fileset dir="${build.tmp}/java/out/mps-core-components" />
+    </jar>
   </target>
   
   <target name="buildDependents" />
@@ -71,7 +75,7 @@
     <delete dir="${build.layout}" />
   </target>
   
-  <target name="compileJava" depends="java.compile.mps-annotations, java.compile.mps-tuples, java.compile.mps-closures, java.compile.mps-references, java.compile.mps-collections, java.compile.ant-mps, java.compile.mps-openapi, java.compile.mps-logging, java.compile.mps-messaging, java.compile.mps-boot-util" />
+  <target name="compileJava" depends="java.compile.mps-annotations, java.compile.mps-tuples, java.compile.mps-closures, java.compile.mps-references, java.compile.mps-collections, java.compile.ant-mps, java.compile.mps-openapi, java.compile.mps-logging, java.compile.mps-messaging, java.compile.mps-boot-util, java.compile.mps-core-components" />
   
   <target name="processResources" />
   
@@ -229,6 +233,18 @@
         <pathelement path="${build.tmp}/java/out/mps-logging" />
         <path refid="path.java.library.annotations-lib" />
         <path refid="path.java.library.log4j-lib" />
+      </classpath>
+    </javac>
+  </target>
+  
+  <target name="java.compile.mps-core-components" depends="java.compile.mps-annotations">
+    <mkdir dir="${build.tmp}/java/out/mps-core-components" />
+    <javac destdir="${build.tmp}/java/out/mps-core-components" fork="true" encoding="utf8" includeantruntime="false" debug="true">
+      <compilerarg value="-Xlint:none" />
+      <src path="${projectHome}/core/components/source" />
+      <classpath>
+        <pathelement path="${build.tmp}/java/out/mps-annotations" />
+        <path refid="path.java.library.annotations-lib" />
       </classpath>
     </javac>
   </target>

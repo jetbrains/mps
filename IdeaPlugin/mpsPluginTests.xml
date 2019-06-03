@@ -156,8 +156,8 @@
       <classpath>
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-annotations.jar" />
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-openapi.jar" />
-        <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-core.jar" />
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-logging.jar" />
+        <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-core.jar" />
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-closures.jar" />
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-collections.jar" />
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-tuples.jar" />
@@ -206,8 +206,8 @@
       <classpath>
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-annotations.jar" />
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-openapi.jar" />
-        <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-core.jar" />
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-logging.jar" />
+        <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-core.jar" />
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-closures.jar" />
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-collections.jar" />
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-tuples.jar" />
