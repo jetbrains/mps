@@ -30,6 +30,8 @@
   </extensionPoints>
 
   <extensions defaultExtensionNs="com.intellij">
+    <applicationInitializedListener implementation="com.intellij.internal.statistic.updater.StatisticsJobsScheduler"/>
+
     <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter"/>
 
     <directoryIndexExcludePolicy implementation="jetbrains.mps.ide.vfs.ClassesGenPolicy"/>
