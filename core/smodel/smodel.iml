@@ -12,7 +12,6 @@
     <orderEntry type="module" module-name="openapi" exported="" />
     <orderEntry type="library" name="JDOM" level="project" />
     <orderEntry type="library" name="Trove" level="project" />
-    <orderEntry type="module" module-name="components" />
     <orderEntry type="module" module-name="logging" exported="" />
     <orderEntry type="module" module-name="mps-annotations" exported="" />
     <orderEntry type="module" module-name="vfs" exported="" />

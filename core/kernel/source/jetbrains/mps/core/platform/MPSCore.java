@@ -52,7 +52,6 @@ import jetbrains.mps.smodel.adapter.structure.types.TypeRegistry;
 import jetbrains.mps.smodel.language.ConceptRegistry;
 import jetbrains.mps.smodel.language.ExtensionRegistry;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import jetbrains.mps.smodel.references.ImmatureReferences;
 import jetbrains.mps.validation.ValidationSettings;
 import jetbrains.mps.vfs.VFSManager;
 import org.jetbrains.annotations.NotNull;
@@ -141,7 +140,6 @@ public final class MPSCore extends ComponentPlugin implements ComponentHost {
     myPathMacros = init(new PathMacros());
     myLibraryInitializer = init(new LibraryInitializer(myModuleRepository));
     init(new GlobalScope(myModuleRepository));
-    init(new ImmatureReferences(myModuleRepository));
 
     // XXX. Sort of hack. There are LanguageRegistry listeners that expect extensions loaded (LDMP accesses LanguageAspectEP).
     //      Therefore, it's necessary for ExtensionRegistry to get notified by CLM about loaded classes prior to LanguageRegistry,

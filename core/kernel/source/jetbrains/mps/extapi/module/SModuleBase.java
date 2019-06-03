@@ -16,6 +16,7 @@
 package jetbrains.mps.extapi.module;
 
 import jetbrains.mps.extapi.model.SModelBase;
+import jetbrains.mps.smodel.references.ImmatureReferences;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -161,6 +162,7 @@ public abstract class SModuleBase implements SModule {
   private void fireBeforeModelRemoved(SModel model) {
     assertCanChange();
 
+    ImmatureReferences.getInstance().beforeModelRemoved(this, model);
     for (SModuleListener listener : myListeners) {
       try {
         listener.beforeModelRemoved(this, model);

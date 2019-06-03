@@ -20,6 +20,7 @@ import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 
+// XXX this is the only reason [smodel] depends on [vfs]
 @Immutable
 public class SModelFileChangedEvent extends SModelEvent {
   private final IFile myOldFile;

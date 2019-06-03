@@ -17,17 +17,12 @@ package jetbrains.mps.smodel.references;
 
 import gnu.trove.THashSet;
 import gnu.trove.TObjectIdentityHashingStrategy;
-import jetbrains.mps.components.CoreComponent;
-import jetbrains.mps.smodel.RepoListenerRegistrar;
 import jetbrains.mps.smodel.SReferenceBase;
 import jetbrains.mps.smodel.StaticReference;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.module.SModule;
-import org.jetbrains.mps.openapi.module.SRepository;
-import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
 
-import java.util.Iterator;
 import java.util.Set;
 
 
@@ -40,28 +35,23 @@ import java.util.Set;
 // thread producing nodes would get exactly b/w enable/disable calls. If, however, there's explicit synchronization b/w threads to accomplish that, I'd better
 // figure it out. This mechanism is internal implementation detail, and there should be no code to rely/utilize it
 //
-// FIXME FWIW, this is unlikely a CoreComponent, rather an implementation friend of MA class.
-public class ImmatureReferences implements CoreComponent {
+// This is not a CoreComponent, rather an implementation friend of MA class. Since we don not control StaticReference instantiation, we resort to this
+// singleton class to record model reference come and go.
+public final class ImmatureReferences {
 
-  private static ImmatureReferences INSTANCE;
+  private static ImmatureReferences INSTANCE = new ImmatureReferences();
 
   // FIXME shall retrieve instance per SRepository
   public static ImmatureReferences getInstance() {
     return INSTANCE;
   }
 
-  // seems sufficient to keep immature references per SRepository (unlike SModelRepository, which used to track models from all repositories)
-  // however, shall fix getInstance to respect actual repository
-  private final SRepository myRepository;
-  private final SRepositoryContentAdapter myReposListener = new MyRepositoryAdapter();
-
   private final ThreadLocal<Set<StaticReference>> myReferences = new ThreadLocal<>();
   private final TObjectIdentityHashingStrategy<StaticReference> myHashStrategy = new TObjectIdentityHashingStrategy<>();
 
   private boolean myDisabled = true;
 
-  public ImmatureReferences(SRepository repository) {
-    myRepository = repository;
+  private ImmatureReferences() {
   }
 
   public void enable() {
@@ -78,22 +68,6 @@ public class ImmatureReferences implements CoreComponent {
   public void disable() {
     myDisabled = true;
     cleanup();
-  }
-
-  @Override
-  public void init() {
-    if (INSTANCE != null) {
-      throw new IllegalStateException("double initialization");
-    }
-
-    INSTANCE = this;
-    new RepoListenerRegistrar(myRepository, myReposListener).attach();
-  }
-
-  @Override
-  public void dispose() {
-    new RepoListenerRegistrar(myRepository, myReposListener).detach();
-    INSTANCE = null;
   }
 
   public void cleanup() {
@@ -126,6 +100,27 @@ public class ImmatureReferences implements CoreComponent {
     existing.add(ref);
   }
 
+  // XXX Here used to be repository listener mechanism to find out about model removal, while for the rest of functionality
+  //     relies on explicit IR.getInstance() calls. Therefore, changed to yet another explicit call.
+  public void beforeModelRemoved(SModule module, SModel model) {
+    if (myDisabled) {
+      return;
+    }
+    final Set<StaticReference> existing = myReferences.get();
+    if (existing == null || existing.isEmpty()) {
+      return;
+    }
+    final SModelReference toRemove = model.getReference();
+    // Due to nice design, SR.getTargetSModelReference() may lead to change in 'existing' set (SR.makeIndirect->IR.remove),
+    // therefore, can't iterate over existing and at the same time ask for getTargetSModelReference.
+    // FIXME If I don't get rid of this code any time soon, perhaps, shall try to make getTargetSModelReference() side-effect free,
+    // i.e. to rely on external code (e.g. commandFinished()) to fix references as appropriate, and use whatever is available
+    // the moment getTargetSModelReference() is invoked (e.g. myImmatureTargetNode.getModel().getReference instead of makeIndirect)
+    THashSet<StaticReference> matching = new THashSet<>(existing, myHashStrategy);
+    matching.removeIf(sr -> !toRemove.equals(sr.getTargetSModelReference()));
+    myReferences.get().removeAll(matching);
+  }
+
   /**
    * @param ref non-null (not that we use that, but earlier code did assume that)
    */
@@ -140,31 +135,5 @@ public class ImmatureReferences implements CoreComponent {
       return;
     }
     existing.remove(ref);
-  }
-
-
-  // FIXME I'm puzzled why do we use listener mechanism to find out about model removal, while for the rest of functionality
-  //       we rely on explicit IR.getInstance() calls. Why not accomplish the same with yet another explicit call?
-  private class MyRepositoryAdapter extends SRepositoryContentAdapter {
-    @Override
-    public void beforeModelRemoved(SModule module, SModel model) {
-      super.beforeModelRemoved(module, model);
-      if (myDisabled) {
-        return;
-      }
-      final Set<StaticReference> existing = myReferences.get();
-      if (existing == null || existing.isEmpty()) {
-        return;
-      }
-      final SModelReference toRemove = model.getReference();
-      // Due to nice design, SR.getTargetSModelReference() may lead to change in 'existing' set (SR.makeIndirect->IR.remove),
-      // therefore, can't iterate over existing and at the same time ask for getTargetSModelReference.
-      // FIXME If I don't get rid of this code any time soon, perhaps, shall try to make getTargetSModelReference() side-effect free,
-      // i.e. to rely on external code (e.g. commandFinished()) to fix references as appropriate, and use whatever is available
-      // the moment getTargetSModelReference() is invoked (e.g. myImmatureTargetNode.getModel().getReference instead of makeIndirect)
-      THashSet<StaticReference> matching = new THashSet<>(existing, myHashStrategy);
-      matching.removeIf(sr -> !toRemove.equals(sr.getTargetSModelReference()));
-      myReferences.get().removeAll(matching);
-    }
   }
 }
