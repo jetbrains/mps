@@ -49,6 +49,7 @@
     <import index="ahgl" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.ide.editor.checkers(MPS.Editor/)" />
     <import index="lzb2" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ui(MPS.IDEA/)" />
     <import index="j9ng" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.util(MPS.Platform/)" />
+    <import index="zqge" ref="r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)" />
   </imports>
   <registry>
     <language id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources">
@@ -4410,6 +4411,17 @@
         <ref role="35c_gD" to="m373:7LZmMWLAga7" resolve="TextCommentLinePart" />
       </node>
     </node>
+    <node concept="312cEg" id="3r5Pv9BfQmb" role="jymVt">
+      <property role="TrG5h" value="word" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="3r5Pv9BfQmc" role="1B3o_S" />
+      <node concept="3bZ5Sz" id="3r5Pv9BfQmd" role="1tU5fm">
+        <ref role="3bZ5Sy" to="zqge:8D0iRqSPW4" resolve="Word" />
+      </node>
+      <node concept="35c_gC" id="3r5Pv9BfQme" role="33vP2m">
+        <ref role="35c_gD" to="zqge:8D0iRqSPW4" resolve="Word" />
+      </node>
+    </node>
     <node concept="312cEg" id="YrG5cUASgF" role="jymVt">
       <property role="TrG5h" value="myStringLiteral" />
       <property role="3TUv4t" value="true" />
@@ -4627,38 +4639,51 @@
                     </node>
                     <node concept="3zACq4" id="1OIlcCD7GGn" role="3cqZAp" />
                   </node>
-                  <node concept="22lmx$" id="YrG5cUBmtH" role="3clFbw">
-                    <node concept="2OqwBi" id="YrG5cUBqat" role="3uHU7w">
-                      <node concept="37vLTw" id="YrG5cUBpKA" role="2Oq$k0">
+                  <node concept="22lmx$" id="3r5Pv9BfKyG" role="3clFbw">
+                    <node concept="2OqwBi" id="3r5Pv9BfLOI" role="3uHU7w">
+                      <node concept="37vLTw" id="3r5Pv9BfLtv" role="2Oq$k0">
                         <ref role="3cqZAo" node="1OIlcCD77aw" resolve="c" />
                       </node>
-                      <node concept="liA8E" id="YrG5cUBtOH" role="2OqNvi">
-                        <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object)" resolve="equals" />
-                        <node concept="37vLTw" id="YrG5cUBxb4" role="37wK5m">
-                          <ref role="3cqZAo" node="YrG5cUASgF" resolve="myStringLiteral" />
+                      <node concept="liA8E" id="3r5Pv9BfMmA" role="2OqNvi">
+                        <ref role="37wK5l" to="c17a:~SAbstractConcept.isSubConceptOf(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="isSubConceptOf" />
+                        <node concept="37vLTw" id="3r5Pv9BfT40" role="37wK5m">
+                          <ref role="3cqZAo" node="3r5Pv9BfQmb" resolve="word" />
                         </node>
                       </node>
                     </node>
-                    <node concept="22lmx$" id="1OIlcCD7wJy" role="3uHU7B">
-                      <node concept="2OqwBi" id="1OIlcCD7sxl" role="3uHU7B">
-                        <node concept="37vLTw" id="1OIlcCD7sfp" role="2Oq$k0">
-                          <ref role="3cqZAo" node="1OIlcCD77aw" resolve="c" />
+                    <node concept="22lmx$" id="YrG5cUBmtH" role="3uHU7B">
+                      <node concept="22lmx$" id="1OIlcCD7wJy" role="3uHU7B">
+                        <node concept="2OqwBi" id="1OIlcCD7sxl" role="3uHU7B">
+                          <node concept="37vLTw" id="1OIlcCD7sfp" role="2Oq$k0">
+                            <ref role="3cqZAo" node="1OIlcCD77aw" resolve="c" />
+                          </node>
+                          <node concept="liA8E" id="1OIlcCD7t_A" role="2OqNvi">
+                            <ref role="37wK5l" to="c17a:~SAbstractConcept.isSubConceptOf(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="isSubConceptOf" />
+                            <node concept="37vLTw" id="1OIlcCD7uPR" role="37wK5m">
+                              <ref role="3cqZAo" node="1OIlcCD7aPW" resolve="mySingleLineCmment" />
+                            </node>
+                          </node>
                         </node>
-                        <node concept="liA8E" id="1OIlcCD7t_A" role="2OqNvi">
-                          <ref role="37wK5l" to="c17a:~SAbstractConcept.isSubConceptOf(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="isSubConceptOf" />
-                          <node concept="37vLTw" id="1OIlcCD7uPR" role="37wK5m">
-                            <ref role="3cqZAo" node="1OIlcCD7aPW" resolve="mySingleLineCmment" />
+                        <node concept="2OqwBi" id="1OIlcCD7xK5" role="3uHU7w">
+                          <node concept="37vLTw" id="1OIlcCD7xrr" role="2Oq$k0">
+                            <ref role="3cqZAo" node="1OIlcCD77aw" resolve="c" />
+                          </node>
+                          <node concept="liA8E" id="1OIlcCD7yIQ" role="2OqNvi">
+                            <ref role="37wK5l" to="c17a:~SAbstractConcept.isSubConceptOf(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="isSubConceptOf" />
+                            <node concept="37vLTw" id="1OIlcCD7zyg" role="37wK5m">
+                              <ref role="3cqZAo" node="1OIlcCD7d5t" resolve="myJavadocComment" />
+                            </node>
                           </node>
                         </node>
                       </node>
-                      <node concept="2OqwBi" id="1OIlcCD7xK5" role="3uHU7w">
-                        <node concept="37vLTw" id="1OIlcCD7xrr" role="2Oq$k0">
+                      <node concept="2OqwBi" id="YrG5cUBqat" role="3uHU7w">
+                        <node concept="37vLTw" id="YrG5cUBpKA" role="2Oq$k0">
                           <ref role="3cqZAo" node="1OIlcCD77aw" resolve="c" />
                         </node>
-                        <node concept="liA8E" id="1OIlcCD7yIQ" role="2OqNvi">
-                          <ref role="37wK5l" to="c17a:~SAbstractConcept.isSubConceptOf(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="isSubConceptOf" />
-                          <node concept="37vLTw" id="1OIlcCD7zyg" role="37wK5m">
-                            <ref role="3cqZAo" node="1OIlcCD7d5t" resolve="myJavadocComment" />
+                        <node concept="liA8E" id="YrG5cUBtOH" role="2OqNvi">
+                          <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object)" resolve="equals" />
+                          <node concept="37vLTw" id="YrG5cUBxb4" role="37wK5m">
+                            <ref role="3cqZAo" node="YrG5cUASgF" resolve="myStringLiteral" />
                           </node>
                         </node>
                       </node>
@@ -4926,6 +4951,60 @@
                     <node concept="25Kdxt" id="1OIlcCDbjHx" role="cj9EA">
                       <node concept="37vLTw" id="1OIlcCDblMV" role="25KhWn">
                         <ref role="3cqZAo" node="1OIlcCD7aPW" resolve="mySingleLineCmment" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3eNFk2" id="3r5Pv9BfTug" role="3eNLev">
+                <node concept="2OqwBi" id="3r5Pv9BfU0P" role="3eO9$A">
+                  <node concept="37vLTw" id="3r5Pv9BfTRJ" role="2Oq$k0">
+                    <ref role="3cqZAo" node="1OIlcCD8$NP" resolve="n" />
+                  </node>
+                  <node concept="1mIQ4w" id="3r5Pv9BfUpP" role="2OqNvi">
+                    <node concept="25Kdxt" id="3r5Pv9BfUrS" role="cj9EA">
+                      <node concept="37vLTw" id="3r5Pv9BfUCo" role="25KhWn">
+                        <ref role="3cqZAo" node="3r5Pv9BfQmb" resolve="word" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="3clFbS" id="3r5Pv9BfTui" role="3eOfB_">
+                  <node concept="3cpWs8" id="3r5Pv9BfYpB" role="3cqZAp">
+                    <node concept="3cpWsn" id="3r5Pv9BfYpC" role="3cpWs9">
+                      <property role="TrG5h" value="w" />
+                      <node concept="3Tqbb2" id="3r5Pv9BfYpD" role="1tU5fm">
+                        <ref role="ehGHo" to="zqge:8D0iRqSPW4" resolve="Word" />
+                      </node>
+                      <node concept="1PxgMI" id="3r5Pv9BfYpE" role="33vP2m">
+                        <property role="1BlNFB" value="true" />
+                        <node concept="25Kdxt" id="3r5Pv9BfYpF" role="3oSUPX">
+                          <node concept="37vLTw" id="3r5Pv9BfYUS" role="25KhWn">
+                            <ref role="3cqZAo" node="3r5Pv9BfQmb" resolve="word" />
+                          </node>
+                        </node>
+                        <node concept="37vLTw" id="3r5Pv9BfYpH" role="1m5AlR">
+                          <ref role="3cqZAo" node="1OIlcCD8$NP" resolve="n" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="3clFbF" id="3r5Pv9BfY8s" role="3cqZAp">
+                    <node concept="1rXfSq" id="3r5Pv9BfY8r" role="3clFbG">
+                      <ref role="37wK5l" node="1OIlcCDejaO" resolve="spellCheck" />
+                      <node concept="2OqwBi" id="3r5Pv9BfZwa" role="37wK5m">
+                        <node concept="37vLTw" id="3r5Pv9BfZnj" role="2Oq$k0">
+                          <ref role="3cqZAo" node="3r5Pv9BfYpC" resolve="w" />
+                        </node>
+                        <node concept="3TrcHB" id="3r5Pv9BfZHF" role="2OqNvi">
+                          <ref role="3TsBF5" to="zqge:8D0iRqSPW5" resolve="value" />
+                        </node>
+                      </node>
+                      <node concept="37vLTw" id="3r5Pv9BfZYA" role="37wK5m">
+                        <ref role="3cqZAo" node="1OIlcCD8$NP" resolve="n" />
+                      </node>
+                      <node concept="37vLTw" id="3r5Pv9Bg3Sr" role="37wK5m">
+                        <ref role="3cqZAo" node="1OIlcCDfP1H" resolve="messages" />
                       </node>
                     </node>
                   </node>

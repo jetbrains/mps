@@ -76,6 +76,7 @@
           <module ref="65557aaa-5381-435d-b705-3f8d546e0f40(jetbrains.mps.java.core)" kind="cl" />
           <module ref="2d3c70e9-aab2-4870-8d8d-6036800e4103(jetbrains.mps.kernel)" kind="cl" />
           <module ref="af65afd8-f0dd-4942-87d9-63a55f2a9db1(jetbrains.mps.lang.behavior)" kind="cl" />
+          <module ref="c7fb639f-be78-4307-89b0-b5959c3fa8c8(jetbrains.mps.lang.text)" kind="cl" />
           <module ref="5187f5c9-b8a8-4309-90b3-14f9919bd2d8(jetbrains.mps.refactoring)" kind="cl" />
         </dependencies>
         <uses>
