@@ -26,6 +26,10 @@
     <fileset file="${artifacts.IDEA}/lib/log4j.jar" />
   </path>
   
+  <path id="path.java.library.trove4j">
+    <fileset file="${artifacts.IDEA}/lib/trove4j.jar" />
+  </path>
+  
   <target name="assemble" depends="classes">
     <mkdir dir="${build.layout}" />
     <jar destfile="${build.layout}/mps-annotations.jar" duplicate="preserve">
@@ -62,6 +66,15 @@
     <jar destfile="${build.layout}/to-be-imported/core-components.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/mps-core-components" />
     </jar>
+    <jar destfile="${build.layout}/to-be-imported/vfs.jar" duplicate="preserve">
+      <fileset dir="${build.tmp}/java/out/vfs" />
+    </jar>
+    <jar destfile="${build.layout}/to-be-imported/util-core.jar" duplicate="preserve">
+      <fileset dir="${build.tmp}/java/out/util-core" />
+    </jar>
+    <jar destfile="${build.layout}/to-be-imported/mps-smodel.jar" duplicate="preserve">
+      <fileset dir="${build.tmp}/java/out/mps-smodel" />
+    </jar>
   </target>
   
   <target name="buildDependents" />
@@ -75,7 +88,7 @@
     <delete dir="${build.layout}" />
   </target>
   
-  <target name="compileJava" depends="java.compile.mps-annotations, java.compile.mps-tuples, java.compile.mps-closures, java.compile.mps-references, java.compile.mps-collections, java.compile.ant-mps, java.compile.mps-openapi, java.compile.mps-logging, java.compile.mps-messaging, java.compile.mps-boot-util, java.compile.mps-core-components" />
+  <target name="compileJava" depends="java.compile.mps-annotations, java.compile.mps-tuples, java.compile.mps-closures, java.compile.mps-references, java.compile.mps-collections, java.compile.ant-mps, java.compile.mps-openapi, java.compile.mps-logging, java.compile.mps-messaging, java.compile.mps-boot-util, java.compile.mps-core-components, java.compile.util-core, java.compile.vfs, java.compile.mps-smodel" />
   
   <target name="processResources" />
   
@@ -245,6 +258,59 @@
       <classpath>
         <pathelement path="${build.tmp}/java/out/mps-annotations" />
         <path refid="path.java.library.annotations-lib" />
+      </classpath>
+    </javac>
+  </target>
+  
+  <target name="java.compile.util-core" depends="java.compile.mps-annotations, java.compile.mps-openapi">
+    <mkdir dir="${build.tmp}/java/out/util-core" />
+    <javac destdir="${build.tmp}/java/out/util-core" fork="true" encoding="utf8" includeantruntime="false" debug="true">
+      <compilerarg value="-Xlint:none" />
+      <src path="${projectHome}/core/util/source" />
+      <classpath>
+        <pathelement path="${build.tmp}/java/out/mps-annotations" />
+        <pathelement path="${build.tmp}/java/out/mps-openapi" />
+        <path refid="path.java.library.annotations-lib" />
+        <path refid="path.java.library.trove4j" />
+      </classpath>
+    </javac>
+  </target>
+  
+  <target name="java.compile.vfs" depends="java.compile.mps-annotations, java.compile.mps-openapi, java.compile.mps-logging, java.compile.mps-core-components, java.compile.util-core">
+    <mkdir dir="${build.tmp}/java/out/vfs" />
+    <javac destdir="${build.tmp}/java/out/vfs" fork="true" encoding="utf8" includeantruntime="false" debug="true">
+      <compilerarg value="-Xlint:none" />
+      <src>
+        <pathelement path="${projectHome}/core/vfs/source" />
+        <pathelement path="${projectHome}/core/vfs/deprecated" />
+      </src>
+      <classpath>
+        <pathelement path="${build.tmp}/java/out/mps-annotations" />
+        <pathelement path="${build.tmp}/java/out/mps-openapi" />
+        <pathelement path="${build.tmp}/java/out/mps-logging" />
+        <pathelement path="${build.tmp}/java/out/mps-core-components" />
+        <pathelement path="${build.tmp}/java/out/util-core" />
+        <path refid="path.java.library.annotations-lib" />
+        <path refid="path.java.library.log4j-lib" />
+        <path refid="path.java.library.trove4j" />
+      </classpath>
+    </javac>
+  </target>
+  
+  <target name="java.compile.mps-smodel" depends="java.compile.mps-annotations, java.compile.mps-openapi, java.compile.mps-logging, java.compile.vfs, java.compile.util-core">
+    <mkdir dir="${build.tmp}/java/out/mps-smodel" />
+    <javac destdir="${build.tmp}/java/out/mps-smodel" fork="true" encoding="utf8" includeantruntime="false" debug="true">
+      <compilerarg value="-Xlint:none" />
+      <src path="${projectHome}/core/smodel/source" />
+      <classpath>
+        <pathelement path="${build.tmp}/java/out/mps-annotations" />
+        <pathelement path="${build.tmp}/java/out/mps-openapi" />
+        <pathelement path="${build.tmp}/java/out/mps-logging" />
+        <pathelement path="${build.tmp}/java/out/vfs" />
+        <pathelement path="${build.tmp}/java/out/util-core" />
+        <path refid="path.java.library.annotations-lib" />
+        <path refid="path.java.library.log4j-lib" />
+        <path refid="path.java.library.trove4j" />
       </classpath>
     </javac>
   </target>

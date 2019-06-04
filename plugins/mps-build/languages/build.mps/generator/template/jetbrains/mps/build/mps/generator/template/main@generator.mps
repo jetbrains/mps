@@ -14268,16 +14268,6 @@
             <node concept="2Vbh7Z" id="5mxyaMf$njU" role="2VaTZU">
               <node concept="2pNNFK" id="5mxyaMf$njV" role="2Vbh7K">
                 <property role="2pNNFO" value="jar" />
-                <node concept="2pNNFK" id="6iFFqpAwPG5" role="3o6s8t">
-                  <property role="qg3DV" value="true" />
-                  <property role="2pNNFO" value="fileset" />
-                  <node concept="2pNUuL" id="6iFFqpAwPG6" role="2pNNFR">
-                    <property role="2pNUuO" value="dir" />
-                    <node concept="2pMdtt" id="6iFFqpAwPG7" role="2pMdts">
-                      <property role="2pMdty" value="${build.tmp}/java/out/mps-smodel" />
-                    </node>
-                  </node>
-                </node>
                 <node concept="2pNNFK" id="7$zBrXAvXiD" role="3o6s8t">
                   <property role="qg3DV" value="true" />
                   <property role="2pNNFO" value="fileset" />
@@ -14295,16 +14285,6 @@
                     <property role="2pNUuO" value="dir" />
                     <node concept="2pMdtt" id="7$zBrXAvXki" role="2pMdts">
                       <property role="2pMdty" value="${build.tmp}/java/out/mps-behavior-runtime" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="2pNNFK" id="7kvrUpppixy" role="3o6s8t">
-                  <property role="qg3DV" value="true" />
-                  <property role="2pNNFO" value="fileset" />
-                  <node concept="2pNUuL" id="7kvrUpppixz" role="2pNNFR">
-                    <property role="2pNUuO" value="dir" />
-                    <node concept="2pMdtt" id="7kvrUpppix$" role="2pMdts">
-                      <property role="2pMdty" value="${build.tmp}/java/out/vfs" />
                     </node>
                   </node>
                 </node>
@@ -14335,16 +14315,6 @@
                     <property role="2pNUuO" value="dir" />
                     <node concept="2pMdtt" id="6OTUdBQYCc9" role="2pMdts">
                       <property role="2pMdty" value="${build.tmp}/java/out/mps-project" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="2pNNFK" id="7kvrUpppiyk" role="3o6s8t">
-                  <property role="qg3DV" value="true" />
-                  <property role="2pNNFO" value="fileset" />
-                  <node concept="2pNUuL" id="7kvrUpppiyl" role="2pNNFR">
-                    <property role="2pNUuO" value="dir" />
-                    <node concept="2pMdtt" id="7kvrUpppiym" role="2pMdts">
-                      <property role="2pMdty" value="${build.tmp}/java/out/util-core" />
                     </node>
                   </node>
                 </node>
