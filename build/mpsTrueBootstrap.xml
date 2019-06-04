@@ -62,6 +62,12 @@
     <jar destfile="${build.layout}/mps-boot-util.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/mps-boot-util" />
     </jar>
+    <jar destfile="${build.layout}/mps-behavior-api.jar" duplicate="preserve">
+      <fileset dir="${build.tmp}/java/out/mps-behavior-api" />
+    </jar>
+    <jar destfile="${build.layout}/mps-behavior-runtime.jar" duplicate="preserve">
+      <fileset dir="${build.tmp}/java/out/mps-behavior-runtime" />
+    </jar>
     <mkdir dir="${build.layout}/to-be-imported" />
     <jar destfile="${build.layout}/to-be-imported/core-components.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/mps-core-components" />
@@ -74,6 +80,12 @@
     </jar>
     <jar destfile="${build.layout}/to-be-imported/mps-smodel.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/mps-smodel" />
+    </jar>
+    <jar destfile="${build.layout}/to-be-imported/mps-kernel.jar" duplicate="preserve">
+      <fileset dir="${build.tmp}/java/out/mps-kernel" />
+    </jar>
+    <jar destfile="${build.layout}/to-be-imported/mps-project.jar" duplicate="preserve">
+      <fileset dir="${build.tmp}/java/out/mps-project" />
     </jar>
   </target>
   
@@ -88,7 +100,7 @@
     <delete dir="${build.layout}" />
   </target>
   
-  <target name="compileJava" depends="java.compile.mps-annotations, java.compile.mps-tuples, java.compile.mps-closures, java.compile.mps-references, java.compile.mps-collections, java.compile.ant-mps, java.compile.mps-openapi, java.compile.mps-logging, java.compile.mps-messaging, java.compile.mps-boot-util, java.compile.mps-core-components, java.compile.util-core, java.compile.vfs, java.compile.mps-smodel" />
+  <target name="compileJava" depends="java.compile.mps-annotations, java.compile.mps-tuples, java.compile.mps-closures, java.compile.mps-references, java.compile.mps-collections, java.compile.ant-mps, java.compile.mps-openapi, java.compile.mps-logging, java.compile.mps-messaging, java.compile.mps-boot-util, java.compile.mps-core-components, java.compile.util-core, java.compile.vfs, java.compile.mps-smodel, java.compile.mps-behavior-api, java.compile.java.modules.cycle.1, java.compile.mps-behavior-runtime, java.compile.mps-kernel, java.compile.mps-project" />
   
   <target name="processResources" />
   
@@ -311,6 +323,162 @@
         <path refid="path.java.library.annotations-lib" />
         <path refid="path.java.library.log4j-lib" />
         <path refid="path.java.library.trove4j" />
+      </classpath>
+    </javac>
+  </target>
+  
+  <target name="java.compile.mps-behavior-api" depends="java.compile.mps-annotations, java.compile.mps-openapi, java.compile.mps-core-components, java.compile.mps-logging, java.compile.vfs, java.compile.util-core, java.compile.mps-smodel">
+    <mkdir dir="${projectHome}/core/aspects/behavior/behavior-api/source" />
+    <mkdir dir="${build.tmp}/java/out/mps-behavior-api" />
+    <javac destdir="${build.tmp}/java/out/mps-behavior-api" fork="true" encoding="utf8" includeantruntime="false" debug="true">
+      <compilerarg value="-Xlint:none" />
+      <src>
+        <path location="${projectHome}/core/aspects/behavior/behavior-api/source" />
+      </src>
+      <classpath>
+        <pathelement path="${build.tmp}/java/out/mps-annotations" />
+        <pathelement path="${build.tmp}/java/out/mps-openapi" />
+        <pathelement path="${build.tmp}/java/out/mps-core-components" />
+        <pathelement path="${build.tmp}/java/out/mps-logging" />
+        <pathelement path="${build.tmp}/java/out/vfs" />
+        <pathelement path="${build.tmp}/java/out/util-core" />
+        <pathelement path="${build.tmp}/java/out/mps-smodel" />
+        <path refid="path.java.library.annotations-lib" />
+        <path refid="path.java.library.log4j-lib" />
+      </classpath>
+    </javac>
+  </target>
+  
+  <target name="java.compile.java.modules.cycle.1" depends="java.compile.mps-annotations, java.compile.mps-openapi, java.compile.mps-logging, java.compile.vfs, java.compile.util-core, java.compile.mps-smodel, java.compile.mps-closures, java.compile.mps-collections, java.compile.mps-tuples, java.compile.mps-references, java.compile.mps-core-components, java.compile.mps-behavior-api, java.compile.mps-messaging, java.compile.mps-boot-util">
+    <mkdir dir="${build.tmp}/java.modules.cycle.1" />
+    <javac destdir="${build.tmp}/java.modules.cycle.1" fork="true" encoding="utf8" nowarn="true" includeantruntime="false">
+      <compilerarg value="-Xlint:none" />
+      <src>
+        <path location="${projectHome}/core/aspects/behavior/behavior-runtime/source" />
+        <pathelement path="${projectHome}/core/kernel/source" />
+        <pathelement path="${projectHome}/core/kernel/kernelSolution/source_gen" />
+        <pathelement path="${projectHome}/core/kernel/smodelRuntime/source_gen" />
+        <pathelement path="${projectHome}/core/module/source" />
+        <pathelement path="${projectHome}/core/model/source" />
+        <pathelement path="${projectHome}/core/project/source" />
+        <pathelement path="${projectHome}/core/project/source_gen" />
+      </src>
+      <classpath>
+        <path refid="path.java.library.annotations-lib" />
+        <path refid="path.java.library.log4j-lib" />
+        <path refid="path.java.library.jdom-lib" />
+        <path refid="path.java.library.trove4j" />
+        <pathelement path="${build.tmp}/java/out/mps-annotations" />
+        <pathelement path="${build.tmp}/java/out/mps-openapi" />
+        <pathelement path="${build.tmp}/java/out/mps-logging" />
+        <pathelement path="${build.tmp}/java/out/vfs" />
+        <pathelement path="${build.tmp}/java/out/util-core" />
+        <pathelement path="${build.tmp}/java/out/mps-smodel" />
+        <pathelement path="${build.tmp}/java/out/mps-closures" />
+        <pathelement path="${build.tmp}/java/out/mps-collections" />
+        <pathelement path="${build.tmp}/java/out/mps-tuples" />
+        <pathelement path="${build.tmp}/java/out/mps-references" />
+        <pathelement path="${build.tmp}/java/out/mps-core-components" />
+        <pathelement path="${build.tmp}/java/out/mps-behavior-api" />
+        <pathelement path="${build.tmp}/java/out/mps-messaging" />
+        <pathelement path="${build.tmp}/java/out/mps-boot-util" />
+      </classpath>
+    </javac>
+  </target>
+  
+  <target name="java.compile.mps-behavior-runtime" depends="java.compile.mps-annotations, java.compile.mps-openapi, java.compile.mps-logging, java.compile.vfs, java.compile.util-core, java.compile.mps-smodel, java.compile.mps-closures, java.compile.mps-collections, java.compile.mps-tuples, java.compile.mps-references, java.compile.mps-core-components, java.compile.mps-behavior-api, java.compile.mps-messaging, java.compile.java.modules.cycle.1">
+    <mkdir dir="${projectHome}/core/aspects/behavior/behavior-runtime/source" />
+    <mkdir dir="${build.tmp}/java/out/mps-behavior-runtime" />
+    <javac destdir="${build.tmp}/java/out/mps-behavior-runtime" fork="true" encoding="utf8" includeantruntime="false" debug="true">
+      <compilerarg value="-Xlint:none" />
+      <src>
+        <path location="${projectHome}/core/aspects/behavior/behavior-runtime/source" />
+      </src>
+      <classpath>
+        <pathelement path="${build.tmp}/java/out/mps-annotations" />
+        <pathelement path="${build.tmp}/java/out/mps-openapi" />
+        <pathelement path="${build.tmp}/java/out/mps-logging" />
+        <pathelement path="${build.tmp}/java/out/vfs" />
+        <pathelement path="${build.tmp}/java/out/util-core" />
+        <pathelement path="${build.tmp}/java/out/mps-smodel" />
+        <pathelement path="${build.tmp}/java/out/mps-closures" />
+        <pathelement path="${build.tmp}/java/out/mps-collections" />
+        <pathelement path="${build.tmp}/java/out/mps-tuples" />
+        <pathelement path="${build.tmp}/java/out/mps-references" />
+        <pathelement path="${build.tmp}/java/out/mps-core-components" />
+        <pathelement path="${build.tmp}/java/out/mps-behavior-api" />
+        <pathelement path="${build.tmp}/java/out/mps-messaging" />
+        <path refid="path.java.library.annotations-lib" />
+        <path refid="path.java.library.log4j-lib" />
+        <path refid="path.java.library.jdom-lib" />
+        <path refid="path.java.library.trove4j" />
+        <pathelement path="${build.tmp}/java.modules.cycle.1" />
+      </classpath>
+    </javac>
+  </target>
+  
+  <target name="java.compile.mps-kernel" depends="java.compile.mps-annotations, java.compile.mps-openapi, java.compile.mps-logging, java.compile.vfs, java.compile.util-core, java.compile.mps-smodel, java.compile.mps-closures, java.compile.mps-collections, java.compile.mps-tuples, java.compile.mps-references, java.compile.mps-core-components, java.compile.mps-behavior-api, java.compile.mps-messaging, java.compile.mps-boot-util, java.compile.java.modules.cycle.1">
+    <mkdir dir="${build.tmp}/java/out/mps-kernel" />
+    <javac destdir="${build.tmp}/java/out/mps-kernel" fork="true" encoding="utf8" includeantruntime="false" debug="true">
+      <compilerarg value="-Xlint:none" />
+      <src>
+        <pathelement path="${projectHome}/core/kernel/source" />
+        <pathelement path="${projectHome}/core/kernel/kernelSolution/source_gen" />
+        <pathelement path="${projectHome}/core/kernel/smodelRuntime/source_gen" />
+        <pathelement path="${projectHome}/core/module/source" />
+        <pathelement path="${projectHome}/core/model/source" />
+      </src>
+      <classpath>
+        <pathelement path="${build.tmp}/java/out/mps-annotations" />
+        <pathelement path="${build.tmp}/java/out/mps-openapi" />
+        <pathelement path="${build.tmp}/java/out/mps-logging" />
+        <pathelement path="${build.tmp}/java/out/vfs" />
+        <pathelement path="${build.tmp}/java/out/util-core" />
+        <pathelement path="${build.tmp}/java/out/mps-smodel" />
+        <pathelement path="${build.tmp}/java/out/mps-closures" />
+        <pathelement path="${build.tmp}/java/out/mps-collections" />
+        <pathelement path="${build.tmp}/java/out/mps-tuples" />
+        <pathelement path="${build.tmp}/java/out/mps-references" />
+        <pathelement path="${build.tmp}/java/out/mps-core-components" />
+        <pathelement path="${build.tmp}/java/out/mps-behavior-api" />
+        <pathelement path="${build.tmp}/java/out/mps-messaging" />
+        <pathelement path="${build.tmp}/java/out/mps-boot-util" />
+        <path refid="path.java.library.annotations-lib" />
+        <path refid="path.java.library.log4j-lib" />
+        <path refid="path.java.library.jdom-lib" />
+        <path refid="path.java.library.trove4j" />
+        <pathelement path="${build.tmp}/java.modules.cycle.1" />
+      </classpath>
+    </javac>
+  </target>
+  
+  <target name="java.compile.mps-project" depends="java.compile.mps-annotations, java.compile.mps-openapi, java.compile.mps-logging, java.compile.vfs, java.compile.util-core, java.compile.mps-smodel, java.compile.mps-closures, java.compile.mps-collections, java.compile.mps-tuples, java.compile.mps-references, java.compile.mps-core-components, java.compile.mps-behavior-api, java.compile.mps-messaging, java.compile.java.modules.cycle.1">
+    <mkdir dir="${build.tmp}/java/out/mps-project" />
+    <javac destdir="${build.tmp}/java/out/mps-project" fork="true" encoding="utf8" includeantruntime="false" debug="true">
+      <compilerarg value="-Xlint:none" />
+      <src>
+        <pathelement path="${projectHome}/core/project/source" />
+        <pathelement path="${projectHome}/core/project/source_gen" />
+      </src>
+      <classpath>
+        <pathelement path="${build.tmp}/java/out/mps-annotations" />
+        <pathelement path="${build.tmp}/java/out/mps-openapi" />
+        <pathelement path="${build.tmp}/java/out/mps-logging" />
+        <pathelement path="${build.tmp}/java/out/vfs" />
+        <pathelement path="${build.tmp}/java/out/util-core" />
+        <pathelement path="${build.tmp}/java/out/mps-smodel" />
+        <pathelement path="${build.tmp}/java/out/mps-closures" />
+        <pathelement path="${build.tmp}/java/out/mps-collections" />
+        <pathelement path="${build.tmp}/java/out/mps-tuples" />
+        <pathelement path="${build.tmp}/java/out/mps-references" />
+        <pathelement path="${build.tmp}/java/out/mps-core-components" />
+        <pathelement path="${build.tmp}/java/out/mps-behavior-api" />
+        <pathelement path="${build.tmp}/java/out/mps-messaging" />
+        <path refid="path.java.library.annotations-lib" />
+        <path refid="path.java.library.log4j-lib" />
+        <path refid="path.java.library.jdom-lib" />
+        <path refid="path.java.library.trove4j" />
+        <pathelement path="${build.tmp}/java.modules.cycle.1" />
       </classpath>
     </javac>
   </target>

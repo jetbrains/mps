@@ -14268,36 +14268,6 @@
             <node concept="2Vbh7Z" id="5mxyaMf$njU" role="2VaTZU">
               <node concept="2pNNFK" id="5mxyaMf$njV" role="2Vbh7K">
                 <property role="2pNNFO" value="jar" />
-                <node concept="2pNNFK" id="7$zBrXAvXiD" role="3o6s8t">
-                  <property role="qg3DV" value="true" />
-                  <property role="2pNNFO" value="fileset" />
-                  <node concept="2pNUuL" id="7$zBrXAvXiE" role="2pNNFR">
-                    <property role="2pNUuO" value="dir" />
-                    <node concept="2pMdtt" id="7$zBrXAvXiF" role="2pMdts">
-                      <property role="2pMdty" value="${build.tmp}/java/out/mps-behavior-api" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="2pNNFK" id="7$zBrXAvXkg" role="3o6s8t">
-                  <property role="qg3DV" value="true" />
-                  <property role="2pNNFO" value="fileset" />
-                  <node concept="2pNUuL" id="7$zBrXAvXkh" role="2pNNFR">
-                    <property role="2pNUuO" value="dir" />
-                    <node concept="2pMdtt" id="7$zBrXAvXki" role="2pMdts">
-                      <property role="2pMdty" value="${build.tmp}/java/out/mps-behavior-runtime" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="2pNNFK" id="5mxyaMf$njW" role="3o6s8t">
-                  <property role="qg3DV" value="true" />
-                  <property role="2pNNFO" value="fileset" />
-                  <node concept="2pNUuL" id="5mxyaMf$njX" role="2pNNFR">
-                    <property role="2pNUuO" value="dir" />
-                    <node concept="2pMdtt" id="5mxyaMf$njY" role="2pMdts">
-                      <property role="2pMdty" value="${build.tmp}/java/out/mps-kernel" />
-                    </node>
-                  </node>
-                </node>
                 <node concept="2pNNFK" id="5mxyaMf$njZ" role="3o6s8t">
                   <property role="qg3DV" value="true" />
                   <property role="2pNNFO" value="fileset" />
@@ -14305,16 +14275,6 @@
                     <property role="2pNUuO" value="dir" />
                     <node concept="2pMdtt" id="5mxyaMf$nk1" role="2pMdts">
                       <property role="2pMdty" value="${build.tmp}/java/out/mps-persistence" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="2pNNFK" id="6OTUdBQYCc7" role="3o6s8t">
-                  <property role="qg3DV" value="true" />
-                  <property role="2pNNFO" value="fileset" />
-                  <node concept="2pNUuL" id="6OTUdBQYCc8" role="2pNNFR">
-                    <property role="2pNUuO" value="dir" />
-                    <node concept="2pMdtt" id="6OTUdBQYCc9" role="2pMdts">
-                      <property role="2pMdty" value="${build.tmp}/java/out/mps-project" />
                     </node>
                   </node>
                 </node>
@@ -14456,6 +14416,26 @@
                       <property role="2pNUuO" value="name" />
                       <node concept="2pMdtt" id="3N2WdVixW1M" role="2pMdts">
                         <property role="2pMdty" value="mps-openapi.jar" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="2pNNFK" id="wKi8Dpsh8a" role="3o6s8t">
+                    <property role="2pNNFO" value="include" />
+                    <property role="qg3DV" value="true" />
+                    <node concept="2pNUuL" id="wKi8Dpsh8b" role="2pNNFR">
+                      <property role="2pNUuO" value="name" />
+                      <node concept="2pMdtt" id="wKi8Dpsh8c" role="2pMdts">
+                        <property role="2pMdty" value="mps-behavior-api.jar" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="2pNNFK" id="wKi8Dpshan" role="3o6s8t">
+                    <property role="2pNNFO" value="include" />
+                    <property role="qg3DV" value="true" />
+                    <node concept="2pNUuL" id="wKi8Dpshao" role="2pNNFR">
+                      <property role="2pNUuO" value="name" />
+                      <node concept="2pMdtt" id="wKi8Dpshap" role="2pMdts">
+                        <property role="2pMdty" value="mps-behavior-runtime.jar" />
                       </node>
                     </node>
                   </node>
