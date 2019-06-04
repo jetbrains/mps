@@ -1815,8 +1815,8 @@
             <node concept="37vLTw" id="6mz0KzMDtXQ" role="2Oq$k0">
               <ref role="3cqZAo" node="3D5F99qcPI1" resolve="mySource" />
             </node>
-            <node concept="liA8E" id="eY0iPzBC5V" role="2OqNvi">
-              <ref role="37wK5l" to="w0gx:~ModuleDescriptor.getAdditionalJavaStubPaths()" resolve="getAdditionalJavaStubPaths" />
+            <node concept="liA8E" id="1XOecUCBjoQ" role="2OqNvi">
+              <ref role="37wK5l" to="w0gx:~ModuleDescriptor.getJavaLibs()" resolve="getJavaLibs" />
             </node>
           </node>
         </node>

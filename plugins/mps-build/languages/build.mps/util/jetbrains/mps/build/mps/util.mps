@@ -23066,8 +23066,8 @@
             </node>
           </node>
           <node concept="2OqwBi" id="6m8wrPAU44F" role="1DdaDG">
-            <node concept="liA8E" id="6m8wrPAU44G" role="2OqNvi">
-              <ref role="37wK5l" to="w0gx:~ModuleDescriptor.getAdditionalJavaStubPaths()" resolve="getAdditionalJavaStubPaths" />
+            <node concept="liA8E" id="1XOecUCARJ9" role="2OqNvi">
+              <ref role="37wK5l" to="w0gx:~ModuleDescriptor.getJavaLibs()" resolve="getJavaLibs" />
             </node>
             <node concept="37vLTw" id="2BHiRxeuW1N" role="2Oq$k0">
               <ref role="3cqZAo" node="6m8wrPAU3pl" resolve="myModuleDescriptor" />

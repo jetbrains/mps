@@ -165,7 +165,7 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
   }
 
   private JComponent getLibrariesTable() {
-    final Collection<String> additionalJavaStubPaths = myJavaModuleFacet.getModule().getModuleDescriptor().getAdditionalJavaStubPaths();
+    final Collection<String> additionalJavaStubPaths = myJavaModuleFacet.getModule().getModuleDescriptor().getJavaLibs();
     myLibrariesTableModel = new FilesTableModel(convertStringPaths2VirtualFile(additionalJavaStubPaths));
     myLibrariesTableModel.addTableModelListener(e -> myLibrariesChanged = true);
     final JBTable librariesTable = new JBTable(myLibrariesTableModel);
@@ -232,7 +232,7 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
     }
     mySourcePathsChanged = false;
 
-    final Collection<String> libraryPaths = myJavaModuleFacet.getModule().getModuleDescriptor().getAdditionalJavaStubPaths();
+    final Collection<String> libraryPaths = myJavaModuleFacet.getModule().getModuleDescriptor().getJavaLibs();
     libraryPaths.clear();
     final Collection<String> libraryPathsTable = convertVirtualFile2StringPaths(myLibrariesTableModel.getFiles());
     if (!libraryPathsTable.isEmpty()) {

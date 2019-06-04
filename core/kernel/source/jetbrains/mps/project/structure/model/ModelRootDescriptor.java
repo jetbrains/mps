@@ -33,9 +33,6 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.Collections;
 
-/**
- * evgeny, 10/24/12
- */
 @Immutable
 public final class ModelRootDescriptor implements Copyable<ModelRootDescriptor> {
   private static final int MODEL_ROOT_START_MARKER = 0x6a;

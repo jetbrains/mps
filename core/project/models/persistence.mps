@@ -4564,8 +4564,8 @@
                             <node concept="2OqwBi" id="B0RVt9Pqm3" role="3clFbG">
                               <node concept="2OqwBi" id="B0RVt9PqlY" role="2Oq$k0">
                                 <node concept="1bf8Ab" id="B0RVt9PqlX" role="2Oq$k0" />
-                                <node concept="liA8E" id="B0RVt9Pqm2" role="2OqNvi">
-                                  <ref role="37wK5l" to="w0gx:~ModuleDescriptor.getAdditionalJavaStubPaths()" resolve="getAdditionalJavaStubPaths" />
+                                <node concept="liA8E" id="1XOecUCB7mV" role="2OqNvi">
+                                  <ref role="37wK5l" to="w0gx:~ModuleDescriptor.getJavaLibs()" resolve="getJavaLibs" />
                                 </node>
                               </node>
                               <node concept="liA8E" id="B0RVt9Pqm7" role="2OqNvi">
@@ -5241,8 +5241,8 @@
                     <node concept="37vLTw" id="33oJVYhj4Xz" role="2Oq$k0">
                       <ref role="3cqZAo" node="33oJVYhj4UH" resolve="descriptor" />
                     </node>
-                    <node concept="liA8E" id="33oJVYhj4X$" role="2OqNvi">
-                      <ref role="37wK5l" to="w0gx:~ModuleDescriptor.getAdditionalJavaStubPaths()" resolve="getAdditionalJavaStubPaths" />
+                    <node concept="liA8E" id="1XOecUCB7OB" role="2OqNvi">
+                      <ref role="37wK5l" to="w0gx:~ModuleDescriptor.getJavaLibs()" resolve="getJavaLibs" />
                     </node>
                   </node>
                   <node concept="3vKaQO" id="33oJVYhj4X_" role="10QFUM">
@@ -5274,8 +5274,8 @@
                 <node concept="37vLTw" id="33oJVYhj4XK" role="2Oq$k0">
                   <ref role="3cqZAo" node="33oJVYhj4UH" resolve="descriptor" />
                 </node>
-                <node concept="liA8E" id="33oJVYhj4XL" role="2OqNvi">
-                  <ref role="37wK5l" to="w0gx:~ModuleDescriptor.getAdditionalJavaStubPaths()" resolve="getAdditionalJavaStubPaths" />
+                <node concept="liA8E" id="1XOecUCB8jt" role="2OqNvi">
+                  <ref role="37wK5l" to="w0gx:~ModuleDescriptor.getJavaLibs()" resolve="getJavaLibs" />
                 </node>
               </node>
               <node concept="liA8E" id="33oJVYhj4XM" role="2OqNvi">
@@ -10140,8 +10140,8 @@
                             <node concept="2OqwBi" id="B0RVt9Px2g" role="3clFbG">
                               <node concept="2OqwBi" id="B0RVt9Px2h" role="2Oq$k0">
                                 <node concept="1bf8Ab" id="B0RVt9Px2i" role="2Oq$k0" />
-                                <node concept="liA8E" id="B0RVt9Px2j" role="2OqNvi">
-                                  <ref role="37wK5l" to="w0gx:~ModuleDescriptor.getAdditionalJavaStubPaths()" resolve="getAdditionalJavaStubPaths" />
+                                <node concept="liA8E" id="1XOecUCBaxX" role="2OqNvi">
+                                  <ref role="37wK5l" to="w0gx:~ModuleDescriptor.getJavaLibs()" resolve="getJavaLibs" />
                                 </node>
                               </node>
                               <node concept="liA8E" id="B0RVt9Px2k" role="2OqNvi">
@@ -10716,8 +10716,8 @@
               <node concept="37vLTw" id="6QvBpqz$jKK" role="2Oq$k0">
                 <ref role="3cqZAo" node="33oJVYhgCCY" resolve="descriptor" />
               </node>
-              <node concept="liA8E" id="6QvBpqz$jKL" role="2OqNvi">
-                <ref role="37wK5l" to="w0gx:~ModuleDescriptor.getAdditionalJavaStubPaths()" resolve="getAdditionalJavaStubPaths" />
+              <node concept="liA8E" id="1XOecUCBaWq" role="2OqNvi">
+                <ref role="37wK5l" to="w0gx:~ModuleDescriptor.getJavaLibs()" resolve="getJavaLibs" />
               </node>
             </node>
           </node>

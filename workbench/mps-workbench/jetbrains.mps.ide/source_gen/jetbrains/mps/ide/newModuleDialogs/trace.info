@@ -248,8 +248,8 @@
       <node id="7300638849915862110" at="108,79,109,41" concept="2" />
       <node id="7300638849915862115" at="109,41,110,71" concept="2" />
       <node id="6487843940970466163" at="119,40,120,57" concept="8" />
-      <node id="7650435763716687181" at="122,44,123,56" concept="2" />
-      <node id="7650435763716687187" at="123,56,124,69" concept="2" />
+      <node id="7650435763716687181" at="122,44,123,41" concept="2" />
+      <node id="7650435763716687187" at="123,41,124,54" concept="2" />
       <node id="6487843940970463311" at="126,40,127,57" concept="8" />
       <node id="7650435763716687225" at="129,44,130,44" concept="2" />
       <node id="7650435763716687231" at="130,44,131,59" concept="2" />
@@ -278,7 +278,7 @@
       <node id="7650435763716687007" at="39,24,44,5" concept="5" />
       <node id="4764959351239260586" at="92,0,97,0" concept="6" trace="hackModuleDescriptor#(Ljetbrains/mps/project/structure/modules/ModuleDescriptor;)V" />
       <node id="7650435763716687150" at="117,82,122,44" concept="7" />
-      <node id="7650435763716687194" at="124,69,129,44" concept="7" />
+      <node id="7650435763716687194" at="124,54,129,44" concept="7" />
       <node id="5320369936453949107" at="65,0,71,0" concept="6" trace="accept#(Ljetbrains/mps/project/structure/modules/GeneratorDescriptor;)V" />
       <node id="7435578985094410767" at="80,68,86,11" concept="2" />
       <node id="7650435763716687290" at="149,0,155,0" concept="6" trace="hackSolutionDescriptor#(Ljetbrains/mps/project/structure/modules/SolutionDescriptor;)V" />
@@ -376,7 +376,7 @@
         <var name="moduleDescriptor" id="7650435763716687045" />
       </scope>
       <scope id="7650435763716687041" at="54,0,91,0" />
-      <unit id="6487843940970466161" at="118,93,122,5" name="jetbrains.mps.ide.newModuleDialogs.DescriptorCopyOrganizer$3" />
+      <unit id="6487843940970466161" at="118,78,122,5" name="jetbrains.mps.ide.newModuleDialogs.DescriptorCopyOrganizer$3" />
       <unit id="6487843940970459980" at="125,83,129,5" name="jetbrains.mps.ide.newModuleDialogs.DescriptorCopyOrganizer$4" />
       <unit id="6487843940970507049" at="81,74,86,9" name="jetbrains.mps.ide.newModuleDialogs.DescriptorCopyOrganizer$2" />
       <unit id="5320369936453949107" at="64,72,71,7" name="jetbrains.mps.ide.newModuleDialogs.DescriptorCopyOrganizer$1" />

@@ -513,8 +513,8 @@ public class ValidationUtil {
         }
       }
     }
-    if (descriptor.getAdditionalJavaStubPaths() != null) {
-      for (String path : descriptor.getAdditionalJavaStubPaths()) {
+    if (descriptor.getJavaLibs() != null) {
+      for (String path : descriptor.getJavaLibs()) {
         IFile file = module.getFileSystem().getFile(path);
         if (!file.exists()) {
           String msg = (new File(path).exists() ? "Idea VFS is not up-to-date. " : "") + "Can't find library: " + path;

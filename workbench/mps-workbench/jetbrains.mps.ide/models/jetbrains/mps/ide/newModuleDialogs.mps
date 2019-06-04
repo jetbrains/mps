@@ -1906,8 +1906,8 @@
                     <node concept="37vLTw" id="6CFNGGphKkQ" role="2Oq$k0">
                       <ref role="3cqZAo" node="6CFNGGphKkE" resolve="copyDescriptor" />
                     </node>
-                    <node concept="liA8E" id="6CFNGGphKkR" role="2OqNvi">
-                      <ref role="37wK5l" to="w0gx:~ModuleDescriptor.getAdditionalJavaStubPaths()" resolve="getAdditionalJavaStubPaths" />
+                    <node concept="liA8E" id="1XOecUCB4j4" role="2OqNvi">
+                      <ref role="37wK5l" to="w0gx:~ModuleDescriptor.getJavaLibs()" resolve="getJavaLibs" />
                     </node>
                   </node>
                   <node concept="liA8E" id="6CFNGGphKkS" role="2OqNvi">
@@ -1960,8 +1960,8 @@
               <node concept="37vLTw" id="6CFNGGphKlg" role="2Oq$k0">
                 <ref role="3cqZAo" node="6CFNGGphKkE" resolve="copyDescriptor" />
               </node>
-              <node concept="liA8E" id="6CFNGGphKlh" role="2OqNvi">
-                <ref role="37wK5l" to="w0gx:~ModuleDescriptor.getAdditionalJavaStubPaths()" resolve="getAdditionalJavaStubPaths" />
+              <node concept="liA8E" id="1XOecUCB3Rb" role="2OqNvi">
+                <ref role="37wK5l" to="w0gx:~ModuleDescriptor.getJavaLibs()" resolve="getJavaLibs" />
               </node>
             </node>
             <node concept="liA8E" id="6CFNGGphKli" role="2OqNvi">
@@ -1975,8 +1975,8 @@
               <node concept="37vLTw" id="6CFNGGphKlm" role="2Oq$k0">
                 <ref role="3cqZAo" node="6CFNGGphKkE" resolve="copyDescriptor" />
               </node>
-              <node concept="liA8E" id="6CFNGGphKln" role="2OqNvi">
-                <ref role="37wK5l" to="w0gx:~ModuleDescriptor.getAdditionalJavaStubPaths()" resolve="getAdditionalJavaStubPaths" />
+              <node concept="liA8E" id="1XOecUCB44c" role="2OqNvi">
+                <ref role="37wK5l" to="w0gx:~ModuleDescriptor.getJavaLibs()" resolve="getJavaLibs" />
               </node>
             </node>
             <node concept="liA8E" id="6CFNGGphKlo" role="2OqNvi">

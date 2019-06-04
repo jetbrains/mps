@@ -77,7 +77,7 @@ public class SolutionDescriptorPersistence {
           Element stubModelEntries = XmlUtil.first(rootElement, "stubModelEntries");
           if (stubModelEntries != null) {
             List<String> roots = ModuleDescriptorPersistence.loadStubModelEntries(stubModelEntries, myMacroHelper);
-            result_8ckma3_a0a0a0b0j.getAdditionalJavaStubPaths().addAll(roots);
+            result_8ckma3_a0a0a0b0j.getJavaLibs().addAll(roots);
           }
 
           ModuleDescriptorPersistence.loadDependencies(result_8ckma3_a0a0a0b0j, rootElement);
@@ -129,7 +129,7 @@ public class SolutionDescriptorPersistence {
     }
 
 
-    Collection<String> additionalJavaStubPaths = descriptor.getAdditionalJavaStubPaths();
+    Collection<String> additionalJavaStubPaths = descriptor.getJavaLibs();
     if (!(additionalJavaStubPaths.isEmpty())) {
       Element stubModelEntries = new Element("stubModelEntries");
       ModuleDescriptorPersistence.saveStubModelEntries(stubModelEntries, additionalJavaStubPaths, myMacroHelper);

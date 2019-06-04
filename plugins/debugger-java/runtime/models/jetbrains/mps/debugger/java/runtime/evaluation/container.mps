@@ -2389,8 +2389,8 @@
                   </node>
                 </node>
                 <node concept="2OqwBi" id="2xoEMW8QqnP" role="2Oq$k0">
-                  <node concept="liA8E" id="2xoEMW8Qr_9" role="2OqNvi">
-                    <ref role="37wK5l" to="w0gx:~ModuleDescriptor.getAdditionalJavaStubPaths()" resolve="getAdditionalJavaStubPaths" />
+                  <node concept="liA8E" id="1XOecUCAV5E" role="2OqNvi">
+                    <ref role="37wK5l" to="w0gx:~ModuleDescriptor.getJavaLibs()" resolve="getJavaLibs" />
                   </node>
                   <node concept="37vLTw" id="2xoEMW8QpNV" role="2Oq$k0">
                     <ref role="3cqZAo" node="29Pb3oJp8Wm" resolve="myDescriptor" />

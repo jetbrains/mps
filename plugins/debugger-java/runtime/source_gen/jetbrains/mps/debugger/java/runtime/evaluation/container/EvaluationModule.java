@@ -71,7 +71,7 @@ public final class EvaluationModule extends AbstractModule implements SModule {
       if (javaStubRoot != null) {
         myDescriptor.getModelRootDescriptors().add(javaStubRoot);
       }
-      myDescriptor.getAdditionalJavaStubPaths().add(path);
+      myDescriptor.getJavaLibs().add(path);
       fireChanged();
     }
   }

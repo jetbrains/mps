@@ -155,7 +155,7 @@ public class ProjectStructureBuilder {
     for (SLanguage ref : mySourceModule.getUsedLanguages()) {
       SLinkOperations.getChildren(module, MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x19bfb4173fb5241fL, "usedLanguages")).add(convert(ref.getSourceModuleReference()));
     }
-    for (String path : mySource.getAdditionalJavaStubPaths()) {
+    for (String path : mySource.getJavaLibs()) {
       SNode node = SModelOperations.createNewNode(myModel, null, MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x19bfb4173fb52422L, "jetbrains.mps.lang.project.structure.StubEntry"));
       SPropertyOperations.assign(node, MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x19bfb4173fb52422L, 0x19bfb4173fb52423L, "path"), path);
       SLinkOperations.getChildren(module, MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x19bfb4173fb52669L, "stubModels")).add(node);

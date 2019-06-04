@@ -82,7 +82,7 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
   private final Collection<SModuleReference> myUsedDevkits = new LinkedHashSet<>();
   private final Map<SLanguage, Integer> myLanguageVersions = new LinkedHashMap<>();
   private final Map<SModuleReference, Integer> myDependencyVersions = new LinkedHashMap<>();
-  private final Collection<String> myAdditionalJavaStubPaths = new LinkedHashSet<>();
+  private final Collection<String> myJavaLibs = new LinkedHashSet<>();
   private final Collection<String> mySourcePaths = new LinkedHashSet<>();
   private DeploymentDescriptor myDeploymentDescriptor; // FIXME must be removed
 
@@ -227,8 +227,18 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
    * according to {@code LanguageDescriptorPersistence}, legacy entries were {@code classPath} and {@code runtimeClassPath}
    * FIXME WHY DOES IT USE String for File location, which FS shall I use to resolve these locations?
    */
+  @Deprecated
+  @ToRemove(version = 2019.2)
   public final Collection<String> getAdditionalJavaStubPaths() {
-    return myAdditionalJavaStubPaths;
+    return getJavaLibs();
+  }
+
+  /**
+   * This method is just a better named #getAdditionalJavaStubPaths, so it has all its weaknesses
+   * todo: move to java facet
+   */
+  public final Collection<String> getJavaLibs() {
+    return myJavaLibs;
   }
 
   /**
@@ -316,7 +326,7 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
       stream.writeModuleReference(ref);
     }
 
-    stream.writeStrings(myAdditionalJavaStubPaths);
+    stream.writeStrings(myJavaLibs);
     stream.writeStrings(mySourcePaths);
 
     stream.writeByte(myDeploymentDescriptor != null ? 0x1 : 0x70);
@@ -363,8 +373,8 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
       myUsedDevkits.add(stream.readModuleReference());
     }
 
-    myAdditionalJavaStubPaths.clear();
-    myAdditionalJavaStubPaths.addAll(stream.readStrings());
+    myJavaLibs.clear();
+    myJavaLibs.addAll(stream.readStrings());
 
     mySourcePaths.clear();
     mySourcePaths.addAll(stream.readStrings());
@@ -439,7 +449,7 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
     descriptorCopy.getUsedDevkits().addAll(getUsedDevkits());
     descriptorCopy.getLanguageVersions().putAll(getLanguageVersions());
     descriptorCopy.getDependencyVersions().putAll(getDependencyVersions());
-    descriptorCopy.getAdditionalJavaStubPaths().addAll(getAdditionalJavaStubPaths());
+    descriptorCopy.getJavaLibs().addAll(getJavaLibs());
     descriptorCopy.getSourcePaths().addAll(getSourcePaths());
     copyDeploymentDescriptor(descriptorCopy);
     descriptorCopy.setLoadException(getLoadException());

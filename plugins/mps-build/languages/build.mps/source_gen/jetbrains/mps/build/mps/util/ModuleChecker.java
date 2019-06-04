@@ -745,7 +745,7 @@ public final class ModuleChecker {
     }
 
     // java stubs: jars 
-    for (String path : myModuleDescriptor.getAdditionalJavaStubPaths()) {
+    for (String path : myModuleDescriptor.getJavaLibs()) {
       final SNode p = convertPath(path);
       if (p == null) {
         continue;

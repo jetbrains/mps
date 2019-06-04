@@ -471,7 +471,7 @@ public final class ModulesMiner {
         // In fact, code shall resort to libraries of DD if present (e.g. JavaModuleFacetImpl shall do it), but it doesn't hurt to have source
         // module updated anyway.
         // Here we ignore stub libraries from source module descriptor, use libs from DeploymentDescriptor
-        result.getAdditionalJavaStubPaths().clear();
+        result.getJavaLibs().clear();
         // XXX I don't like this assumption that libraries are siblings to module home, but have no better idea now.
         IFile bundleParent = moduleHome.getParent();
         for (String jarFile : deploymentDescriptor.getLibraries()) {
@@ -481,7 +481,7 @@ public final class ModulesMiner {
           deploymentLibraries.add(jar);
           if (jar.exists()) {
             String path = jar.getPath();
-            result.getAdditionalJavaStubPaths().add(path);
+            result.getJavaLibs().add(path);
           }
         }
 
@@ -639,7 +639,7 @@ public final class ModulesMiner {
       myExcludes.add(fileSystem.getFile(p));
     }
 
-    for (String entry : descriptor.getAdditionalJavaStubPaths()) {
+    for (String entry : descriptor.getJavaLibs()) {
       myExcludes.add(fileSystem.getFile(entry));
     }
   }

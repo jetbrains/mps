@@ -115,13 +115,13 @@ import jetbrains.mps.project.structure.modules.DeploymentDescriptor;
    * moreover these paths will move to the java module facet implementation
    */
   private void hackJavaFacetProperties(@NotNull ModuleDescriptor copyDescriptor) {
-    List<String> newStubPaths = copyDescriptor.getAdditionalJavaStubPaths().stream().map(new Function<String, String>() {
+    List<String> newStubPaths = copyDescriptor.getJavaLibs().stream().map(new Function<String, String>() {
       public String apply(String path) {
         return myModulePathConverter.source2Target(path);
       }
     }).collect(Collectors.<String>toList());
-    copyDescriptor.getAdditionalJavaStubPaths().clear();
-    copyDescriptor.getAdditionalJavaStubPaths().addAll(newStubPaths);
+    copyDescriptor.getJavaLibs().clear();
+    copyDescriptor.getJavaLibs().addAll(newStubPaths);
     List<String> newSourcePaths = copyDescriptor.getSourcePaths().stream().map(new Function<String, String>() {
       public String apply(String path) {
         return myModulePathConverter.source2Target(path);
