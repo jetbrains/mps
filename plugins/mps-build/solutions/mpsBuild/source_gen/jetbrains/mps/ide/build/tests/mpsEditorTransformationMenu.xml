@@ -1333,8 +1333,9 @@
       <library file="${artifacts.mps}/languages/util/jetbrains.mps.refactoring.jar" />
       <library file="${artifacts.mps}/languages/util/jetbrains.mps.refactoring.runtime.jar" />
       <library file="${artifacts.mps}/languages/util/jetbrains.mps.runtime.jar" />
+      <library file="${artifacts.mps}/languages/workbench-stub.jar" />
+      <library file="${artifacts.mps}/languages/workbench/jetbrains.mps.ide.jar" />
       <library file="${artifacts.mps}/languages/xml/jetbrains.mps.core.xml.jar" />
-      <library file="${artifacts.mps}/lib/mps-workbench.jar" />
       <library file="${artifacts.mps}/plugins/mps-context-actions/languages/mps-context-actions-tool/jetbrains.mps.editor.contextActionsTool.lang.menus.jar" />
       <library file="${artifacts.mps}/plugins/mps-context-actions/languages/mps-context-actions-tool/jetbrains.mps.editor.contextActionsTool.lang.menus.runtime.jar" />
       <library file="${artifacts.mps}/plugins/mps-context-actions/languages/mps-context-actions-tool/jetbrains.mps.editor.contextActionsTool.pluginSolution.jar" />
@@ -2512,7 +2513,8 @@
       <pathelement location="${artifacts.mps}/languages/util/jetbrains.mps.refactoring.jar" />
       <pathelement location="${artifacts.mps}/languages/util/jetbrains.mps.refactoring.runtime.jar" />
       <pathelement location="${artifacts.mps}/languages/util/jetbrains.mps.runtime.jar" />
-      <pathelement location="${artifacts.mps}/lib/mps-workbench.jar" />
+      <pathelement location="${artifacts.mps}/languages/workbench-stub.jar" />
+      <pathelement location="${artifacts.mps}/languages/workbench/jetbrains.mps.ide.jar" />
       <pathelement location="${artifacts.mps}/plugins/mps-context-actions/languages/mps-context-actions-tool/jetbrains.mps.editor.contextActionsTool.lang.menus.jar" />
       <pathelement location="${artifacts.mps}/plugins/mps-context-actions/languages/mps-context-actions-tool/jetbrains.mps.editor.contextActionsTool.lang.menus.runtime.jar" />
       <pathelement location="${artifacts.mps}/plugins/mps-context-actions/languages/mps-context-actions-tool/jetbrains.mps.editor.contextActionsTool.pluginSolution.jar" />

@@ -470,8 +470,9 @@
       <library file="${artifacts.mpsBootstrapCore}/languages/util/jetbrains.mps.refactoring.jar" />
       <library file="${artifacts.mpsBootstrapCore}/languages/util/jetbrains.mps.refactoring.runtime.jar" />
       <library file="${artifacts.mpsBootstrapCore}/languages/util/jetbrains.mps.runtime.jar" />
+      <library file="${artifacts.mpsWorkbench}/languages/workbench-stub.jar" />
+      <library file="${artifacts.mpsWorkbench}/languages/workbench/jetbrains.mps.ide.jar" />
       <library file="${artifacts.mpsWorkbench}/languages/workbench/jetbrains.mps.lang.plugin.standalone.jar" />
-      <library file="${artifacts.mpsWorkbench}/lib/mps-workbench.jar" />
       <chunk>
         <module file="${plugin_home}/language/jetbrains.mps.ide.httpsupport.mpl" />
         <module file="${plugin_home}/jetbrains.mps.ide.httpsupport.manager.msd" />

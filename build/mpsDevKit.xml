@@ -911,9 +911,10 @@
       <library file="${artifacts.mpsTesting}/mps-testing/languages/languageDesign/jetbrains.mps.lang.test.jar" />
       <library file="${artifacts.mpsTesting}/mps-testing/languages/languageDesign/jetbrains.mps.lang.test.matcher.jar" />
       <library file="${artifacts.mpsTesting}/mps-testing/languages/languageDesign/jetbrains.mps.lang.test.runtime.jar" />
+      <library file="${artifacts.mpsWorkbench}/languages/workbench-stub.jar" />
+      <library file="${artifacts.mpsWorkbench}/languages/workbench/jetbrains.mps.ide.jar" />
       <library file="${artifacts.mpsWorkbench}/languages/workbench/jetbrains.mps.lang.core.pluginSolution.jar" />
       <library file="${artifacts.mpsWorkbench}/languages/workbench/jetbrains.mps.lang.plugin.standalone.jar" />
-      <library file="${artifacts.mpsWorkbench}/lib/mps-workbench.jar" />
       <chunk>
         <module file="${mps_home}/plugins/mps-devkit/languages/pluginSolutions/baseLanguage/jetbrains.mps.baseLanguage.pluginSolution.msd" />
         <module file="${mps_home}/plugins/mps-devkit/jetbrains.mps.ide.mpsdevkit.msd" />

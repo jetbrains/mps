@@ -493,8 +493,9 @@
       <library file="${artifacts.mpsVcsPlatform}/lib/jetbrains.mps.ide.vcs.core.jar" />
       <library file="${artifacts.mpsVcsPlatform}/lib/jetbrains.mps.ide.vcs.platform.jar" />
       <library file="${artifacts.mpsVcsPlatform}/lib/jetbrains.mps.vcs.mergehints.runtime.jar" />
+      <library file="${artifacts.mpsWorkbench}/languages/workbench-stub.jar" />
+      <library file="${artifacts.mpsWorkbench}/languages/workbench/jetbrains.mps.ide.jar" />
       <library file="${artifacts.mpsWorkbench}/languages/workbench/jetbrains.mps.lang.plugin.standalone.jar" />
-      <library file="${artifacts.mpsWorkbench}/lib/mps-workbench.jar" />
       <chunk>
         <module file="${mps_home}/plugins/mps-vcs/languages/jetbrains.mps.devkit.aspect.vcs/jetbrains.mps.devkit.aspect.vcs.devkit" />
         <module file="${mps_home}/plugins/mps-vcs/solutions/jetbrains.mps.ide.vcs/jetbrains.mps.ide.vcs.msd" />

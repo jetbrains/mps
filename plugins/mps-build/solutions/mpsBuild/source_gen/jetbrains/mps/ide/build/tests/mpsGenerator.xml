@@ -941,8 +941,9 @@
       <library file="${artifacts.mps}/languages/util/jetbrains.mps.refactoring.jar" />
       <library file="${artifacts.mps}/languages/util/jetbrains.mps.refactoring.runtime.jar" />
       <library file="${artifacts.mps}/languages/util/jetbrains.mps.runtime.jar" />
+      <library file="${artifacts.mps}/languages/workbench-stub.jar" />
+      <library file="${artifacts.mps}/languages/workbench/jetbrains.mps.ide.jar" />
       <library file="${artifacts.mps}/languages/xml/jetbrains.mps.core.xml.jar" />
-      <library file="${artifacts.mps}/lib/mps-workbench.jar" />
       <library file="${artifacts.mps}/plugins/mps-build/languages/build/jetbrains.mps.build.jar" />
       <library file="${artifacts.mps}/plugins/mps-build/languages/build/jetbrains.mps.build.mps.jar" />
       <library file="${artifacts.mps}/plugins/mps-build/languages/build/jetbrains.mps.build.workflow.jar" />
@@ -1765,8 +1766,9 @@
       <pathelement location="${artifacts.mps}/languages/util/jetbrains.mps.refactoring.jar" />
       <pathelement location="${artifacts.mps}/languages/util/jetbrains.mps.refactoring.runtime.jar" />
       <pathelement location="${artifacts.mps}/languages/util/jetbrains.mps.runtime.jar" />
+      <pathelement location="${artifacts.mps}/languages/workbench-stub.jar" />
+      <pathelement location="${artifacts.mps}/languages/workbench/jetbrains.mps.ide.jar" />
       <pathelement location="${artifacts.mps}/languages/xml/jetbrains.mps.core.xml.jar" />
-      <pathelement location="${artifacts.mps}/lib/mps-workbench.jar" />
       <pathelement location="${artifacts.mps}/plugins/mps-build/languages/build/jetbrains.mps.build.jar" />
       <pathelement location="${artifacts.mps}/plugins/mps-build/languages/build/jetbrains.mps.build.mps.jar" />
       <pathelement location="${artifacts.mps}/plugins/mps-build/languages/build/jetbrains.mps.build.workflow.jar" />

@@ -145,27 +145,16 @@
       <zipfileset file="${mps_home}/languages/core/stub/diffutils/diffutils.msd" prefix="modules/DiffUtils" />
       <zipfileset dir="${mps_home}/languages/core/stub/diffutils" includes="icons/**, resources/**" prefix="modules/DiffUtils" />
       <zipfileset file="${mps_home}/languages/core/stub/hamcrest/hamcrest.msd" prefix="modules/Hamcrest" />
-      <zipfileset dir="${mps_home}/languages/core/stub/hamcrest" includes="icons/**, resources/**" prefix="modules/Hamcrest" />
       <zipfileset file="${mps_home}/languages/core/stub/junit/junit.msd" prefix="modules/JUnit" />
-      <zipfileset dir="${mps_home}/languages/core/stub/junit" includes="icons/**, resources/**" prefix="modules/JUnit" />
       <zipfileset file="${mps_home}/languages/core/stub/Ant/Ant.msd" prefix="modules/Ant" />
-      <zipfileset dir="${mps_home}/languages/core/stub/Ant" includes="icons/**, resources/**" prefix="modules/Ant" />
       <zipfileset file="${mps_home}/languages/core/stub/JDK/JDK.msd" prefix="modules/JDK" />
-      <zipfileset dir="${mps_home}/languages/core/stub/JDK" includes="icons/**, resources/**" prefix="modules/JDK" />
       <zipfileset file="${mps_home}/languages/core/stub/Annotations/Annotations.msd" prefix="modules/Annotations" />
-      <zipfileset dir="${mps_home}/languages/core/stub/Annotations" includes="icons/**, resources/**" prefix="modules/Annotations" />
       <zipfileset file="${mps_home}/languages/core/stub/MPS.OpenAPI/MPS.OpenAPI.msd" prefix="modules/MPS.OpenAPI" />
-      <zipfileset dir="${mps_home}/languages/core/stub/MPS.OpenAPI" includes="icons/**, resources/**" prefix="modules/MPS.OpenAPI" />
       <zipfileset file="${mps_home}/languages/core/stub/MPS.Editor/MPS.Editor.msd" prefix="modules/MPS.Editor" />
-      <zipfileset dir="${mps_home}/languages/core/stub/MPS.Editor" includes="icons/**, resources/**" prefix="modules/MPS.Editor" />
       <zipfileset file="${mps_home}/languages/core/stub/MPS.Platform/MPS.Platform.msd" prefix="modules/MPS.Platform" />
-      <zipfileset dir="${mps_home}/languages/core/stub/MPS.Platform" includes="icons/**, resources/**" prefix="modules/MPS.Platform" />
       <zipfileset file="${mps_home}/languages/core/stub/MPS.IDEA/MPS.IDEA.msd" prefix="modules/MPS.IDEA" />
-      <zipfileset dir="${mps_home}/languages/core/stub/MPS.IDEA" includes="icons/**, resources/**" prefix="modules/MPS.IDEA" />
       <zipfileset file="${mps_home}/languages/core/stub/MPS.Core/MPS.Core.msd" prefix="modules/MPS.Core" />
-      <zipfileset dir="${mps_home}/languages/core/stub/MPS.Core" includes="icons/**, resources/**" prefix="modules/MPS.Core" />
       <zipfileset file="${mps_home}/languages/core/stub/Testbench/Testbench.msd" prefix="modules/Testbench" />
-      <zipfileset dir="${mps_home}/languages/core/stub/Testbench" includes="icons/**, resources/**" prefix="modules/Testbench" />
     </jar>
     <mkdir dir="${build.layout}/languages/devkits" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.devkit.bootstrap-languages.jar" />

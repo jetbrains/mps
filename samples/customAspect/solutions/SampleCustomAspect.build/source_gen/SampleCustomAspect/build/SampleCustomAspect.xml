@@ -507,9 +507,9 @@
       <library file="${artifacts.mps}/languages/util/jetbrains.mps.refactoring.jar" />
       <library file="${artifacts.mps}/languages/util/jetbrains.mps.refactoring.runtime.jar" />
       <library file="${artifacts.mps}/languages/util/jetbrains.mps.runtime.jar" />
+      <library file="${artifacts.mps}/languages/workbench-stub.jar" />
       <library file="${artifacts.mps}/languages/workbench/jetbrains.mps.lang.plugin.standalone.jar" />
       <library file="${artifacts.mps}/languages/xml/jetbrains.mps.core.xml.jar" />
-      <library file="${artifacts.mps}/lib/mps-workbench.jar" />
       <chunk>
         <module file="${basedir}/languages/jetbrains.mps.samples.customAspect.docLanguage/jetbrains.mps.samples.customAspect.documentation.mpl" />
         <module file="${basedir}/solutions/jetbrains.mps.samples.customAspect.documentation.pluginSolution/jetbrains.mps.samples.customAspect.documentation.pluginSolution.msd" />
