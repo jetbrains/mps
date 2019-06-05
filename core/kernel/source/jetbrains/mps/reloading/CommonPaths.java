@@ -95,7 +95,10 @@ public final class CommonPaths {
     addIfExists(result, "lib/mps-collections.jar");
     addIfExists(result, "lib/mps-tuples.jar");
     addIfExists(result, "lib/mps-project-check.jar");
-    // XXX likely, generator and textgen deserve their own stub modules, but for the time being, there classes are resolved through MPS.Core
+    // classes of [java-stub] and [persistence] have been exposed though MPS.Core; even though they got bundled into distinct jar now, and both
+    // mps.persistence and java.stub solutions expose mps-persistence.jar as their classpath library
+    addIfExists(result, "lib/mps-persistence.jar");
+        // XXX likely, generator and textgen deserve their own stub modules, but for the time being, there classes are resolved through MPS.Core
     // OTOH, if we are ok with missing reference targets in MPS.Core, perhaps, it doesn't make sense to use a lot of different stub modules?
     addIfExists(result, "lib/mps-generator.jar");
     addIfExists(result, "lib/mps-textgen.jar");
