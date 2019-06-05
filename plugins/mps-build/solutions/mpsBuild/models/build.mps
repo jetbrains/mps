@@ -1867,19 +1867,6 @@
           <node concept="Saw0i" id="1nB28rXfiB" role="39821P">
             <ref role="Saw0g" node="1nB28rXacP" resolve="mps-environment" />
           </node>
-          <node concept="398223" id="1nB28rXgfj" role="39821P">
-            <node concept="3_J27D" id="1nB28rXgfl" role="Nbhlr">
-              <node concept="3Mxwew" id="1nB28rXgfr" role="3MwsjC">
-                <property role="3MwjfP" value="modules" />
-              </node>
-            </node>
-            <node concept="1bldCd" id="21bannvWpJS" role="39821P">
-              <ref role="3$exzV" node="3zjMY$95UAa" resolve="jetbrains.mps.core.tool.environment" />
-            </node>
-            <node concept="1bldCd" id="21bannvWpOi" role="39821P">
-              <ref role="3$exzV" node="4Hc8TwAmypn" resolve="jetbrains.mps.tool.common" />
-            </node>
-          </node>
           <node concept="3_J27D" id="3zjMY$964$r" role="Nbhlr">
             <node concept="3Mxwew" id="3zjMY$96552" role="3MwsjC">
               <property role="3MwjfP" value="mps-environment.jar" />
@@ -2894,9 +2881,81 @@
           </node>
         </node>
         <node concept="398223" id="1t0Ry55DcQY" role="39821P">
+          <node concept="3981dx" id="3oXfwtXMLX3" role="39821P">
+            <node concept="3_J27D" id="3oXfwtXMLX5" role="Nbhlr">
+              <node concept="3Mxwew" id="3oXfwtXMLYw" role="3MwsjC">
+                <property role="3MwjfP" value="jetbrains.mps.tool.common.jar" />
+              </node>
+            </node>
+            <node concept="398223" id="3oXfwtXMLYy" role="39821P">
+              <node concept="1kK7hY" id="3oXfwtXMM00" role="39821P">
+                <ref role="1kK7hZ" node="4Hc8TwAmypn" resolve="jetbrains.mps.tool.common" />
+                <node concept="1cIVw3" id="3oXfwtXMM1t" role="1622H7">
+                  <property role="1cIVw0" value="/lib/mps-environment.jar" />
+                </node>
+                <node concept="1cIVw3" id="3oXfwtXMM1p" role="2JVP1x">
+                  <property role="1cIVw0" value="jetbrains.mps.tool.common.msd" />
+                </node>
+                <node concept="1cIVw3" id="3oXfwtXMM1r" role="3SGgvt">
+                  <property role="1cIVw0" value="." />
+                </node>
+              </node>
+              <node concept="3_J27D" id="3oXfwtXMLYz" role="Nbhlr">
+                <node concept="3Mxwew" id="3oXfwtXMLZh" role="3MwsjC">
+                  <property role="3MwjfP" value="META-INF" />
+                </node>
+              </node>
+            </node>
+            <node concept="398223" id="3oXfwtXMM2j" role="39821P">
+              <node concept="3_J27D" id="3oXfwtXMM2l" role="Nbhlr">
+                <node concept="3Mxwew" id="3oXfwtXMM2w" role="3MwsjC">
+                  <property role="3MwjfP" value="module" />
+                </node>
+              </node>
+              <node concept="3$exzU" id="3oXfwtXMM3d" role="39821P">
+                <ref role="3$exzV" node="4Hc8TwAmypn" resolve="jetbrains.mps.tool.common" />
+              </node>
+            </node>
+          </node>
           <node concept="3_J27D" id="1t0Ry55DcR0" role="Nbhlr">
             <node concept="3Mxwew" id="1t0Ry55DcTJ" role="3MwsjC">
               <property role="3MwjfP" value="tools" />
+            </node>
+          </node>
+          <node concept="3981dx" id="3oXfwtXMM97" role="39821P">
+            <node concept="3_J27D" id="3oXfwtXMM99" role="Nbhlr">
+              <node concept="3Mxwew" id="3oXfwtXMMcO" role="3MwsjC">
+                <property role="3MwjfP" value="jetbrains.mps.core.tool.environment.jar" />
+              </node>
+            </node>
+            <node concept="398223" id="3oXfwtXMMcQ" role="39821P">
+              <node concept="1kK7hY" id="3oXfwtXMMek" role="39821P">
+                <ref role="1kK7hZ" node="3zjMY$95UAa" resolve="jetbrains.mps.core.tool.environment" />
+                <node concept="1cIVw3" id="3oXfwtXMMiL" role="1622H7">
+                  <property role="1cIVw0" value="/lib/mps-environment.jar" />
+                </node>
+                <node concept="1cIVw3" id="3oXfwtXMMiH" role="2JVP1x">
+                  <property role="1cIVw0" value="jetbrains.mps.core.tool.environment.msd" />
+                </node>
+                <node concept="1cIVw3" id="3oXfwtXMMiJ" role="3SGgvt">
+                  <property role="1cIVw0" value="." />
+                </node>
+              </node>
+              <node concept="3_J27D" id="3oXfwtXMMcR" role="Nbhlr">
+                <node concept="3Mxwew" id="3oXfwtXMMd_" role="3MwsjC">
+                  <property role="3MwjfP" value="META-INF" />
+                </node>
+              </node>
+            </node>
+            <node concept="398223" id="3oXfwtXMMgu" role="39821P">
+              <node concept="3_J27D" id="3oXfwtXMMgw" role="Nbhlr">
+                <node concept="3Mxwew" id="3oXfwtXMMhj" role="3MwsjC">
+                  <property role="3MwjfP" value="module" />
+                </node>
+              </node>
+              <node concept="3$exzU" id="3oXfwtXMMhl" role="39821P">
+                <ref role="3$exzV" node="3zjMY$95UAa" resolve="jetbrains.mps.core.tool.environment" />
+              </node>
             </node>
           </node>
           <node concept="3981dx" id="1t0Ry55Dpob" role="39821P">
@@ -14355,25 +14414,6 @@
         <property role="TrG5h" value="jetbrains.mps.core.tool.environment" />
         <property role="3LESm3" value="fdaaf35f-8ee3-4c37-b09d-9efaeaaa7a41" />
         <property role="2GAjPV" value="true" />
-        <node concept="3rtmxn" id="EpEP7iihQi" role="3bR31x">
-          <node concept="3LXTmp" id="EpEP7iihQj" role="3rtmxm">
-            <node concept="3qWCbU" id="EpEP7iihQk" role="3LXTna">
-              <property role="3qWCbO" value="icons/**, resources/**" />
-            </node>
-            <node concept="398BVA" id="EpEP7iihQl" role="3LXTmr">
-              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
-              <node concept="2Ry0Ak" id="EpEP7iihQm" role="iGT6I">
-                <property role="2Ry0Am" value="core" />
-                <node concept="2Ry0Ak" id="EpEP7iihQn" role="2Ry0An">
-                  <property role="2Ry0Am" value="tool" />
-                  <node concept="2Ry0Ak" id="EpEP7iihQo" role="2Ry0An">
-                    <property role="2Ry0Am" value="environment" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="1E1SXE" id="1nB28scIRi" role="3bR37C">
           <property role="1E1SXH" value="true" />
           <ref role="1E1SXG" node="1nB28rXacP" resolve="mps-environment" />
