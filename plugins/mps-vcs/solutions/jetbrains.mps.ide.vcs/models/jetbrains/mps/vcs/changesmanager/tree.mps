@@ -6872,6 +6872,46 @@
               </node>
             </node>
           </node>
+          <node concept="3cpWs8" id="2$QcDOPnUsp" role="3cqZAp">
+            <node concept="3cpWsn" id="2$QcDOPnUsq" role="3cpWs9">
+              <property role="TrG5h" value="fs" />
+              <node concept="3uibUv" id="2$QcDOPnIn6" role="1tU5fm">
+                <ref role="3uigEE" to="4hrd:~IdeaFileSystem" resolve="IdeaFileSystem" />
+              </node>
+              <node concept="2OqwBi" id="2$QcDOPnUsr" role="33vP2m">
+                <node concept="2OqwBi" id="2$QcDOPnUss" role="2Oq$k0">
+                  <node concept="37vLTw" id="2$QcDOPnUst" role="2Oq$k0">
+                    <ref role="3cqZAo" node="42ljTcHm$er" resolve="myRegistry" />
+                  </node>
+                  <node concept="liA8E" id="2$QcDOPnUsu" role="2OqNvi">
+                    <ref role="37wK5l" to="lcr:1iU9OXv4MY9" resolve="getMPSProject" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="2$QcDOPnUsv" role="2OqNvi">
+                  <ref role="37wK5l" to="z1c3:~MPSProject.getFileSystem()" resolve="getFileSystem" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbJ" id="2$QcDOPnUW2" role="3cqZAp">
+            <node concept="3clFbS" id="2$QcDOPnUW4" role="3clFbx">
+              <node concept="3cpWs6" id="2$QcDOPnYvF" role="3cqZAp" />
+            </node>
+            <node concept="3fqX7Q" id="2$QcDOPnV6f" role="3clFbw">
+              <node concept="2OqwBi" id="2$QcDOPnVIt" role="3fr31v">
+                <node concept="37vLTw" id="2$QcDOPnV8A" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2$QcDOPnUsq" resolve="fs" />
+                </node>
+                <node concept="liA8E" id="2$QcDOPnWCg" role="2OqNvi">
+                  <ref role="37wK5l" to="4hrd:~IdeaFileSystem.canConvert(com.intellij.openapi.vfs.VirtualFile)" resolve="canConvert" />
+                  <node concept="37vLTw" id="2$QcDOPnWHi" role="37wK5m">
+                    <ref role="3cqZAo" node="X3XwAyvA2" resolve="file" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbH" id="2$QcDOPnYvS" role="3cqZAp" />
           <node concept="3cpWs8" id="X3XwAyvKp" role="3cqZAp">
             <node concept="3cpWsn" id="X3XwAyvKq" role="3cpWs9">
               <property role="TrG5h" value="ifile" />
@@ -6879,18 +6919,8 @@
                 <ref role="3uigEE" to="3ju5:~IFile" resolve="IFile" />
               </node>
               <node concept="2OqwBi" id="1iU9OXv6htn" role="33vP2m">
-                <node concept="2OqwBi" id="1iU9OXv68y4" role="2Oq$k0">
-                  <node concept="2OqwBi" id="1iU9OXv5Z86" role="2Oq$k0">
-                    <node concept="37vLTw" id="1iU9OXv5Umh" role="2Oq$k0">
-                      <ref role="3cqZAo" node="42ljTcHm$er" resolve="myRegistry" />
-                    </node>
-                    <node concept="liA8E" id="1iU9OXv657k" role="2OqNvi">
-                      <ref role="37wK5l" to="lcr:1iU9OXv4MY9" resolve="getMPSProject" />
-                    </node>
-                  </node>
-                  <node concept="liA8E" id="1iU9OXv6e4d" role="2OqNvi">
-                    <ref role="37wK5l" to="z1c3:~MPSProject.getFileSystem()" resolve="getFileSystem" />
-                  </node>
+                <node concept="37vLTw" id="2$QcDOPnUsw" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2$QcDOPnUsq" resolve="fs" />
                 </node>
                 <node concept="liA8E" id="1iU9OXv6mEA" role="2OqNvi">
                   <ref role="37wK5l" to="4hrd:~IdeaFileSystem.fromVirtualFile(com.intellij.openapi.vfs.VirtualFile)" resolve="fromVirtualFile" />
@@ -6926,25 +6956,27 @@
           </node>
           <node concept="3clFbJ" id="7XEv7WbjkzJ" role="3cqZAp">
             <node concept="3clFbS" id="7XEv7WbjkzK" role="3clFbx">
-              <node concept="3clFbF" id="X3XwAyvKQ" role="3cqZAp">
-                <node concept="1rXfSq" id="4hiugqyzexj" role="3clFbG">
-                  <ref role="37wK5l" node="7del55aioUB" resolve="rehighlightFeatureAndDescendants" />
-                  <node concept="2ShNRf" id="X3XwAyvL1" role="37wK5m">
-                    <node concept="1pGfFk" id="X3XwAyvL5" role="2ShVmc">
-                      <ref role="37wK5l" to="gwd2:2LHDMAS8jbK" resolve="ModelFeature" />
-                      <node concept="37vLTw" id="3GM_nagTwUn" role="37wK5m">
-                        <ref role="3cqZAo" node="X3XwAyvKB" resolve="emd" />
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
+              <node concept="3cpWs6" id="2$QcDOPnZao" role="3cqZAp" />
             </node>
-            <node concept="3y3z36" id="7XEv7WbjkzR" role="3clFbw">
+            <node concept="3clFbC" id="2$QcDOPnYCM" role="3clFbw">
               <node concept="37vLTw" id="3GM_nagTtqH" role="3uHU7B">
                 <ref role="3cqZAo" node="X3XwAyvKB" resolve="emd" />
               </node>
               <node concept="10Nm6u" id="7XEv7WbjkzU" role="3uHU7w" />
+            </node>
+          </node>
+          <node concept="3clFbH" id="2$QcDOPnZb2" role="3cqZAp" />
+          <node concept="3clFbF" id="X3XwAyvKQ" role="3cqZAp">
+            <node concept="1rXfSq" id="4hiugqyzexj" role="3clFbG">
+              <ref role="37wK5l" node="7del55aioUB" resolve="rehighlightFeatureAndDescendants" />
+              <node concept="2ShNRf" id="X3XwAyvL1" role="37wK5m">
+                <node concept="1pGfFk" id="X3XwAyvL5" role="2ShVmc">
+                  <ref role="37wK5l" to="gwd2:2LHDMAS8jbK" resolve="ModelFeature" />
+                  <node concept="37vLTw" id="3GM_nagTwUn" role="37wK5m">
+                    <ref role="3cqZAo" node="X3XwAyvKB" resolve="emd" />
+                  </node>
+                </node>
+              </node>
             </node>
           </node>
         </node>

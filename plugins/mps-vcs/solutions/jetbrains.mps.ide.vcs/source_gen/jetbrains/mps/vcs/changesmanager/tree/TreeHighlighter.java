@@ -49,6 +49,7 @@ import jetbrains.mps.ide.vfs.IdeaFile;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.ide.ui.tree.MPSTreeNodeListener;
 import com.intellij.openapi.vcs.FileStatusListener;
+import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.smodel.SModelFileTracker;
 import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -497,11 +498,18 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
     @Override
     public void fileStatusChanged(@NotNull VirtualFile file) {
       // this event comes in EDT (see IDEA's FileStatusManagerImpl.fileStatusChanged()) 
-      IFile ifile = myRegistry.getMPSProject().getFileSystem().fromVirtualFile(file);
-      SModelReference emd = SModelFileTracker.getInstance(getProjectRepository()).modelFor(ifile);
-      if (emd != null) {
-        rehighlightFeatureAndDescendants(new ModelFeature(emd));
+      IdeaFileSystem fs = myRegistry.getMPSProject().getFileSystem();
+      if (!(fs.canConvert(file))) {
+        return;
       }
+
+      IFile ifile = fs.fromVirtualFile(file);
+      SModelReference emd = SModelFileTracker.getInstance(getProjectRepository()).modelFor(ifile);
+      if (emd == null) {
+        return;
+      }
+
+      rehighlightFeatureAndDescendants(new ModelFeature(emd));
     }
     @Override
     public void fileStatusesChanged() {
