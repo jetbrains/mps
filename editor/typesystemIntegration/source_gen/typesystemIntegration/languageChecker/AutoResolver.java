@@ -4,6 +4,9 @@ package typesystemIntegration.languageChecker;
 
 import jetbrains.mps.nodeEditor.checking.BaseEventProcessingEditorChecker;
 import jetbrains.mps.project.MPSProject;
+import java.util.Collection;
+import jetbrains.mps.checkers.ICheckingPostprocessor;
+import jetbrains.mps.errors.item.NodeReportItem;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.nodeEditor.checking.UpdateResult;
 import jetbrains.mps.nodeEditor.EditorComponent;
@@ -14,17 +17,26 @@ import java.util.Set;
 import jetbrains.mps.nodeEditor.EditorMessage;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.LinkedHashSet;
+import java.util.Map;
+import jetbrains.mps.errors.item.IssueKindReportItem;
+import jetbrains.mps.checkers.LanguageErrorsComponent;
+import jetbrains.mps.internal.collections.runtime.MapSequence;
+import java.util.HashMap;
 import org.jetbrains.mps.openapi.model.SReference;
-import jetbrains.mps.errors.item.NodeReportItem;
 import jetbrains.mps.errors.item.UnresolvedReferenceReportItem;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.errors.item.TargetModuleNotImportedReportItem;
 import jetbrains.mps.checkers.ModuleImportQuickFix;
-import jetbrains.mps.nodeEditor.cells.EditorCell;
-import org.jetbrains.mps.openapi.module.SRepository;
-import jetbrains.mps.checkers.ErrorReportUtil;
+import org.jetbrains.mps.openapi.util.Consumer;
 import jetbrains.mps.typesystem.checking.HighlightUtil;
+import jetbrains.mps.progress.EmptyProgressMonitor;
+import jetbrains.mps.checkers.CheckingSession;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.internal.collections.runtime.ITranslator2;
+import jetbrains.mps.nodeEditor.cells.EditorCell;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.ArrayList;
 import jetbrains.mps.openapi.editor.EditorContext;
 import java.util.HashSet;
 import com.intellij.openapi.application.ApplicationManager;
@@ -36,6 +48,7 @@ import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.project.dependency.VisibilityUtil;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
 import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import jetbrains.mps.extapi.model.TransientSModel;
 import jetbrains.mps.nodeEditor.EditorSettings;
@@ -47,9 +60,11 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class AutoResolver extends BaseEventProcessingEditorChecker {
   private boolean myForceAutofix = false;
   private final MPSProject myProject;
+  private final Collection<ICheckingPostprocessor<NodeReportItem>> myPostprocessors;
 
-  public AutoResolver(@NotNull MPSProject project) {
+  public AutoResolver(@NotNull MPSProject project, Collection<ICheckingPostprocessor<NodeReportItem>> postprocessors) {
     myProject = project;
+    myPostprocessors = postprocessors;
   }
   @NotNull
   @Override
@@ -62,15 +77,43 @@ public class AutoResolver extends BaseEventProcessingEditorChecker {
     Set<EditorMessage> messages = SetSequence.fromSet(new LinkedHashSet<EditorMessage>());
     // TODO: use same settings as in LanguageEditorChecker 
     AutoResolver.BadReferences badReferences = collectBadReferences(rootNode);
+
+    final Map<IssueKindReportItem.PathObject, Collection<LanguageErrorsComponent.ApprovableError>> nodesToErrors = MapSequence.fromMap(new HashMap<IssueKindReportItem.PathObject, Collection<LanguageErrorsComponent.ApprovableError>>());
     for (SReference ref : SetSequence.fromSet(badReferences.brokenReferences())) {
       NodeReportItem reportItem = new UnresolvedReferenceReportItem(ref, null);
-      report(messages, reportItem, myProject.getRepository());
+      report(nodesToErrors, reportItem);
     }
     for (SReference ref : SetSequence.fromSet(badReferences.outOfModuleScope())) {
       final SModel targetModel = ref.getTargetSModelReference().resolve(myProject.getRepository());
       final SModuleReference targetModuleRef = targetModel.getModule().getModuleReference();
       NodeReportItem reportItem = new TargetModuleNotImportedReportItem(ref, targetModuleRef, new ModuleImportQuickFix(ref));
-      report(messages, reportItem, myProject.getRepository());
+      report(nodesToErrors, reportItem);
+    }
+    final Consumer<NodeReportItem> consumer = new Consumer<NodeReportItem>() {
+      public void consume(NodeReportItem report) {
+        HighlightUtil.createHighlighterMessage(report, AutoResolver.this, myProject.getRepository());
+      }
+    };
+    for (ICheckingPostprocessor<NodeReportItem> postprocessor : myPostprocessors) {
+      postprocessor.postProcess(myProject.getRepository(), new EmptyProgressMonitor(), new CheckingSession<NodeReportItem>() {
+        @Override
+        public Map<IssueKindReportItem.PathObject, ? extends Collection<? extends CheckingSession.SuppressableError<? extends IssueKindReportItem>>> getAllFoundErrors() {
+          return nodesToErrors;
+        }
+        @Override
+        public Consumer<? super NodeReportItem> postprocessingConsumer() {
+          return consumer;
+        }
+      });
+    }
+    for (LanguageErrorsComponent.ApprovableError error : Sequence.fromIterable(MapSequence.fromMap(nodesToErrors).values()).translate(new ITranslator2<Collection<LanguageErrorsComponent.ApprovableError>, LanguageErrorsComponent.ApprovableError>() {
+      public Iterable<LanguageErrorsComponent.ApprovableError> translate(Collection<LanguageErrorsComponent.ApprovableError> it) {
+        return it;
+      }
+    })) {
+      if (error.myApproved) {
+        consumer.consume(error.getError());
+      }
     }
 
     Set<EditorCell> editorErrorCells = editorComponent.getCellTracker().getErrorCells();
@@ -82,11 +125,12 @@ public class AutoResolver extends BaseEventProcessingEditorChecker {
     }
     return new UpdateResult.Completed(true, messages);
   }
-  private void report(Set<EditorMessage> messages, NodeReportItem reportItem, SRepository repository) {
-    if (ErrorReportUtil.shouldReportError(reportItem, repository)) {
-      EditorMessage message = HighlightUtil.createHighlighterMessage(reportItem, this, repository);
-      SetSequence.fromSet(messages).addElement(message);
+  private void report(Map<IssueKindReportItem.PathObject, Collection<LanguageErrorsComponent.ApprovableError>> nodesToErrors, NodeReportItem reportItem) {
+    IssueKindReportItem.PathObject.NodePathObject key = new IssueKindReportItem.PathObject.NodePathObject(reportItem.getNode());
+    if (MapSequence.fromMap(nodesToErrors).get(key) == null) {
+      MapSequence.fromMap(nodesToErrors).put(key, ListSequence.fromList(new ArrayList<LanguageErrorsComponent.ApprovableError>()));
     }
+    MapSequence.fromMap(nodesToErrors).get(key).add(new LanguageErrorsComponent.ApprovableError(reportItem, true));
   }
   private void runAutofix(final Set<SReference> badReferences, final EditorContext editorContext) {
     final EditorComponent editorComponent = (EditorComponent) editorContext.getEditorComponent();

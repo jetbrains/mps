@@ -191,6 +191,21 @@ public interface IssueKindReportItem extends ReportItem {
       public SNode resolve(SRepository repository) {
         return myNodeReference.resolve(repository);
       }
+      @Override
+      public boolean equals(Object o) {
+        if (this == o) {
+          return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+          return false;
+        }
+        NodePathObject that = (NodePathObject) o;
+        return myNodeReference.equals(that.myNodeReference);
+      }
+      @Override
+      public int hashCode() {
+        return myNodeReference.hashCode();
+      }
     }
     public static class ModelPathObject extends PathObject {
       private SModelReference myModelReference;
@@ -201,6 +216,21 @@ public interface IssueKindReportItem extends ReportItem {
       public SModel resolve(SRepository repository) {
         return myModelReference.resolve(repository);
       }
+      @Override
+      public boolean equals(Object o) {
+        if (this == o) {
+          return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+          return false;
+        }
+        ModelPathObject that = (ModelPathObject) o;
+        return myModelReference.equals(that.myModelReference);
+      }
+      @Override
+      public int hashCode() {
+        return myModelReference.hashCode();
+      }
     }
     public static class ModulePathObject extends PathObject {
       private SModuleReference myModuleReference;
@@ -210,6 +240,21 @@ public interface IssueKindReportItem extends ReportItem {
       @Override
       public SModule resolve(SRepository repository) {
         return myModuleReference.resolve(repository);
+      }
+      @Override
+      public boolean equals(Object o) {
+        if (this == o) {
+          return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+          return false;
+        }
+        ModulePathObject that = (ModulePathObject) o;
+        return myModuleReference.equals(that.myModuleReference);
+      }
+      @Override
+      public int hashCode() {
+        return myModuleReference.hashCode();
       }
     }
   }

@@ -9,6 +9,7 @@
     <import index="tpen" ref="r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)" />
     <import index="tpd3" ref="r:00000000-0000-4000-0000-011c895902bb(jetbrains.mps.lang.sharedConcepts.editor)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
+    <import index="tpco" ref="r:00000000-0000-4000-0000-011c89590284(jetbrains.mps.lang.core.editor)" implicit="true" />
   </imports>
   <registry>
     <language id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor">
@@ -17,8 +18,14 @@
       <concept id="1080736578640" name="jetbrains.mps.lang.editor.structure.BaseEditorComponent" flags="ig" index="2wURMF">
         <child id="1080736633877" name="cellModel" index="2wV5jI" />
       </concept>
+      <concept id="1078939183254" name="jetbrains.mps.lang.editor.structure.CellModel_Component" flags="sg" stub="3162947552742194261" index="PMmxH">
+        <reference id="1078939183255" name="editorComponent" index="PMmxG" />
+      </concept>
       <concept id="1186403694788" name="jetbrains.mps.lang.editor.structure.ColorStyleClassItem" flags="ln" index="VaVBg">
         <property id="1186403713874" name="color" index="Vb096" />
+      </concept>
+      <concept id="1186403751766" name="jetbrains.mps.lang.editor.structure.FontStyleStyleClassItem" flags="ln" index="Vb9p2">
+        <property id="1186403771423" name="style" index="Vbekb" />
       </concept>
       <concept id="1186404549998" name="jetbrains.mps.lang.editor.structure.ForegroundColorStyleClassItem" flags="ln" index="VechU" />
       <concept id="1088013125922" name="jetbrains.mps.lang.editor.structure.CellModel_RefCell" flags="sg" stub="730538219795941030" index="1iCGBv">
@@ -53,14 +60,8 @@
         <reference id="1166049300910" name="conceptDeclaration" index="1XX52x" />
       </concept>
     </language>
-    <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
-        <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
-      </concept>
-    </language>
   </registry>
   <node concept="24kQdi" id="4cWf37B8oX0">
-    <property role="3GE5qa" value="CheckedName" />
     <ref role="1XX52x" to="4j10:4cWf37B8oWT" resolve="PropertyRefExpression" />
     <node concept="3EZMnI" id="4cWf37B8oX1" role="2wV5jI">
       <node concept="3F0ifn" id="4cWf37B8oX2" role="3EZMnx">
@@ -111,10 +112,44 @@
     </node>
   </node>
   <node concept="24kQdi" id="4cWf37B8oXg">
-    <property role="3GE5qa" value="CheckedName" />
     <ref role="1XX52x" to="4j10:4cWf37B8oWY" resolve="PropertyRefType" />
     <node concept="3F0ifn" id="4cWf37B8oXh" role="2wV5jI">
       <property role="3F0ifm" value="propRef" />
+    </node>
+  </node>
+  <node concept="24kQdi" id="7yODqqShHn7">
+    <ref role="1XX52x" to="4j10:7yODqqShHmF" resolve="PropertyPointerValueOperation" />
+    <node concept="PMmxH" id="7yODqqShHAH" role="2wV5jI">
+      <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
+      <node concept="Vb9p2" id="7yODqqShHAJ" role="3F10Kt">
+        <property role="Vbekb" value="BOLD" />
+      </node>
+    </node>
+  </node>
+  <node concept="24kQdi" id="7yODqqShHTA">
+    <ref role="1XX52x" to="4j10:7yODqqShHSP" resolve="PropertyPointerType" />
+    <node concept="3EZMnI" id="7yODqqShHTC" role="2wV5jI">
+      <node concept="3F0ifn" id="7yODqqShHTM" role="3EZMnx">
+        <property role="3F0ifm" value="propRef" />
+      </node>
+      <node concept="3F0ifn" id="7yODqqShHTQ" role="3EZMnx">
+        <property role="3F0ifm" value="&lt;" />
+        <ref role="1k5W1q" to="tpen:hY9fg1G" resolve="LeftParenAfterName" />
+      </node>
+      <node concept="1iCGBv" id="2NquG7MM0T0" role="3EZMnx">
+        <ref role="1NtTu8" to="4j10:2NquG7MM0SJ" resolve="dataType" />
+        <node concept="1sVBvm" id="2NquG7MM0T4" role="1sWHZn">
+          <node concept="3F0A7n" id="2NquG7MM0Ti" role="2wV5jI">
+            <property role="1Intyy" value="true" />
+            <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
+          </node>
+        </node>
+      </node>
+      <node concept="3F0ifn" id="7yODqqShHUj" role="3EZMnx">
+        <property role="3F0ifm" value="&gt;" />
+        <ref role="1k5W1q" to="tpen:hFCSUmN" resolve="RightParen" />
+      </node>
+      <node concept="l2Vlx" id="7yODqqShHTF" role="2iSdaV" />
     </node>
   </node>
 </model>

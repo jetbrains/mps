@@ -453,7 +453,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.SemicolonS
   private EditorCell createReadOnlyModelAccessor_0() {
     EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new ModelAccessor() {
       public String getText() {
-        return (String) ConceptMethodDeclaration__BehaviorDescriptor.getOverridenMethodConceptName_idhP3pnOc.invoke(myNode);
+        return SPropertyOperations.getString(ConceptMethodDeclaration__BehaviorDescriptor.getOverridenMethodConcept_idhP3pnOc.invoke(myNode), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
       }
       public void setText(String s) {
       }
@@ -465,9 +465,13 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.SemicolonS
     editorCell.setAction(CellActionType.BACKSPACE, EmptyCellAction.getInstance());
     editorCell.setCellId("ReadOnlyModelAccessor_gmtuod_c9c0");
     Style style = new StyleImpl();
+    style.set(StyleAttributes.NAVIGATABLE_NODE, _StyleParameter_QueryFunction_gmtuod_a0c9c0());
     style.set(StyleAttributes.EDITABLE, false);
     editorCell.getStyle().putAll(style);
     return editorCell;
+  }
+  private SNode _StyleParameter_QueryFunction_gmtuod_a0c9c0() {
+    return (SNode) ConceptMethodDeclaration__BehaviorDescriptor.getOverridenMethodConcept_idhP3pnOc.invoke(getNode());
   }
   private EditorCell createConstant_7() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, ".");

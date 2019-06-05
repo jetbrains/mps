@@ -16,6 +16,8 @@ import jetbrains.mps.smodel.runtime.StaticScope;
 
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptICheckedNamePolicy = createDescriptorForICheckedNamePolicy();
+  /*package*/ final ConceptDescriptor myConceptPropertyPointerType = createDescriptorForPropertyPointerType();
+  /*package*/ final ConceptDescriptor myConceptPropertyPointerValueOperation = createDescriptorForPropertyPointerValueOperation();
   /*package*/ final ConceptDescriptor myConceptPropertyRefExpression = createDescriptorForPropertyRefExpression();
   /*package*/ final ConceptDescriptor myConceptPropertyRefType = createDescriptorForPropertyRefType();
   private final LanguageConceptSwitch myIndexSwitch;
@@ -33,7 +35,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptICheckedNamePolicy, myConceptPropertyRefExpression, myConceptPropertyRefType);
+    return Arrays.asList(myConceptICheckedNamePolicy, myConceptPropertyPointerType, myConceptPropertyPointerValueOperation, myConceptPropertyRefExpression, myConceptPropertyRefType);
   }
 
   @Override
@@ -42,6 +44,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     switch (myIndexSwitch.index(id)) {
       case LanguageConceptSwitch.ICheckedNamePolicy:
         return myConceptICheckedNamePolicy;
+      case LanguageConceptSwitch.PropertyPointerType:
+        return myConceptPropertyPointerType;
+      case LanguageConceptSwitch.PropertyPointerValueOperation:
+        return myConceptPropertyPointerValueOperation;
       case LanguageConceptSwitch.PropertyRefExpression:
         return myConceptPropertyRefExpression;
       case LanguageConceptSwitch.PropertyRefType:
@@ -65,6 +71,26 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.interface_();
     b.origin("r:31be9f37-1a76-49a2-a444-bd006ff675c1(jetbrains.mps.lang.checkedName.structure)/4844813484172611384");
     b.version(2);
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForPropertyPointerType() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.checkedName", "PropertyPointerType", 0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, 0x78b4a5a6b846de35L);
+    b.class_(false, false, false);
+    b.super_("jetbrains.mps.baseLanguage.structure.Type", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL);
+    b.origin("r:31be9f37-1a76-49a2-a444-bd006ff675c1(jetbrains.mps.lang.checkedName.structure)/8697758915834076725");
+    b.version(2);
+    b.associate("dataType", 0x2cda7ac1f2c80e2fL).target(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfaL).optional(false).origin("3232030656012226095").done();
+    b.kind(ConceptKind.INTERFACE, StaticScope.NONE);
+    b.alias("propRef<>");
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForPropertyPointerValueOperation() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.checkedName", "PropertyPointerValueOperation", 0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, 0x78b4a5a6b846d5abL);
+    b.class_(false, false, false);
+    b.parent(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46ac030L);
+    b.origin("r:31be9f37-1a76-49a2-a444-bd006ff675c1(jetbrains.mps.lang.checkedName.structure)/8697758915834074539");
+    b.version(2);
+    b.alias("value");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForPropertyRefExpression() {

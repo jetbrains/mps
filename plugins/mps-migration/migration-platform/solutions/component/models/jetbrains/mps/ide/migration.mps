@@ -6,8 +6,8 @@
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="-1" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="-1" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="-1" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="-1" />
     <use id="1a8554c4-eb84-43ba-8c34-6f0d90c6e75a" name="jetbrains.mps.lang.smodel.query" version="-1" />
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="-1" />
   </languages>
@@ -506,13 +506,13 @@
     <node concept="312cEg" id="4hH4xQoOOF5" role="jymVt">
       <property role="TrG5h" value="myOptions" />
       <node concept="3Tm6S6" id="4hH4xQoOOF1" role="1B3o_S" />
-      <node concept="3uibUv" id="6bvoCJgbkba" role="1tU5fm">
-        <ref role="3uigEE" to="bdll:~MigrationOptions" resolve="MigrationOptions" />
-      </node>
       <node concept="2ShNRf" id="4hH4xQoOOF3" role="33vP2m">
         <node concept="1pGfFk" id="6bvoCJgb7Bn" role="2ShVmc">
           <ref role="37wK5l" to="bdll:~MigrationOptions.&lt;init&gt;()" resolve="MigrationOptions" />
         </node>
+      </node>
+      <node concept="3uibUv" id="6bvoCJgbkba" role="1tU5fm">
+        <ref role="3uigEE" to="bdll:~MigrationOptions" resolve="MigrationOptions" />
       </node>
     </node>
     <node concept="2tJIrI" id="73_poD1hBDB" role="jymVt" />
@@ -11762,7 +11762,7 @@
                                 <ref role="3cqZAo" node="6EV6$79Em42" resolve="checker" />
                               </node>
                               <node concept="liA8E" id="6EV6$79Es4W" role="2OqNvi">
-                                <ref role="37wK5l" to="wsw7:4SGXHKgYYAZ" resolve="check" />
+                                <ref role="37wK5l" to="wsw7:1EzqTC0eAhk" resolve="check" />
                                 <node concept="2GrUjf" id="6EV6$79Euij" role="37wK5m">
                                   <ref role="2Gs0qQ" node="J4peHRNLXa" resolve="model" />
                                 </node>

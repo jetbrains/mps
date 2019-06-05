@@ -15,6 +15,9 @@
  */
 package jetbrains.mps.typesystem.checking;
 
+import jetbrains.mps.checkers.ICheckingPostprocessor;
+import jetbrains.mps.errors.item.IssueKindReportItem;
+import jetbrains.mps.errors.item.NodeReportItem;
 import jetbrains.mps.newTypesystem.context.IncrementalTypecheckingContext;
 import jetbrains.mps.newTypesystem.context.typechecking.IncrementalTypechecking;
 import jetbrains.mps.nodeEditor.EditorMessage;
@@ -27,11 +30,17 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.Collection;
+import java.util.Set;
 
 public class TypesEditorChecker extends AbstractTypesystemEditorChecker {
   private static final Logger LOG = LogManager.getLogger(TypesEditorChecker.class);
+
+  public TypesEditorChecker(SRepository repository, Collection<ICheckingPostprocessor<NodeReportItem>> postprocessors) {
+    super(repository, postprocessors);
+  }
 
   @Override
   public boolean isEssential() {

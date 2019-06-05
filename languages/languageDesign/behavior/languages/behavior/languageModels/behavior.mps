@@ -1786,46 +1786,32 @@
       </node>
     </node>
     <node concept="13i0hz" id="hP3pnOc" role="13h7CS">
-      <property role="TrG5h" value="getOverridenMethodConceptName" />
-      <node concept="17QB3L" id="4druX3VYaCs" role="3clF45" />
+      <property role="TrG5h" value="getOverridenMethodConcept" />
       <node concept="3clFbS" id="hP3pnOe" role="3clF47">
-        <node concept="3cpWs8" id="hP3pnOf" role="3cqZAp">
-          <node concept="3cpWsn" id="hP3pnOg" role="3cpWs9">
-            <property role="TrG5h" value="conceptDeclaration" />
-            <node concept="3Tqbb2" id="hP3pnOh" role="1tU5fm">
-              <ref role="ehGHo" to="tpce:h0PkWnZ" resolve="AbstractConceptDeclaration" />
+        <node concept="3clFbF" id="77$odk0nqwm" role="3cqZAp">
+          <node concept="2OqwBi" id="hP3pnOi" role="3clFbG">
+            <node concept="3TrEf2" id="hP3pnOj" role="2OqNvi">
+              <ref role="3Tt5mk" to="1i04:hP3h7Gv" resolve="concept" />
             </node>
-            <node concept="2OqwBi" id="hP3pnOi" role="33vP2m">
-              <node concept="3TrEf2" id="hP3pnOj" role="2OqNvi">
-                <ref role="3Tt5mk" to="1i04:hP3h7Gv" resolve="concept" />
-              </node>
-              <node concept="2OqwBi" id="hP3pnOk" role="2Oq$k0">
-                <node concept="2Xjw5R" id="hP3pnOl" role="2OqNvi">
-                  <node concept="1xMEDy" id="hP3pnOm" role="1xVPHs">
-                    <node concept="chp4Y" id="hP3pnOn" role="ri$Ld">
-                      <ref role="cht4Q" to="1i04:hP3h7Gq" resolve="ConceptBehavior" />
-                    </node>
+            <node concept="2OqwBi" id="hP3pnOk" role="2Oq$k0">
+              <node concept="2Xjw5R" id="hP3pnOl" role="2OqNvi">
+                <node concept="1xMEDy" id="hP3pnOm" role="1xVPHs">
+                  <node concept="chp4Y" id="hP3pnOn" role="ri$Ld">
+                    <ref role="cht4Q" to="1i04:hP3h7Gq" resolve="ConceptBehavior" />
                   </node>
                 </node>
-                <node concept="BsUDl" id="6cNV$KGvZaM" role="2Oq$k0">
-                  <ref role="37wK5l" node="hP3pnNO" resolve="getOverridenMethod" />
-                </node>
               </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3cpWs6" id="hP3pnOr" role="3cqZAp">
-          <node concept="2OqwBi" id="hP3pnOs" role="3cqZAk">
-            <node concept="37vLTw" id="3GM_nagTvWA" role="2Oq$k0">
-              <ref role="3cqZAo" node="hP3pnOg" resolve="conceptDeclaration" />
-            </node>
-            <node concept="3TrcHB" id="hP3pnOu" role="2OqNvi">
-              <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
+              <node concept="BsUDl" id="6cNV$KGvZaM" role="2Oq$k0">
+                <ref role="37wK5l" node="hP3pnNO" resolve="getOverridenMethod" />
+              </node>
             </node>
           </node>
         </node>
       </node>
       <node concept="3Tm1VV" id="hP3pnOv" role="1B3o_S" />
+      <node concept="3Tqbb2" id="77$odk0nrSq" role="3clF45">
+        <ref role="ehGHo" to="tpce:h0PkWnZ" resolve="AbstractConceptDeclaration" />
+      </node>
     </node>
     <node concept="13i0hz" id="hWjvGyi" role="13h7CS">
       <property role="TrG5h" value="isAbstract" />

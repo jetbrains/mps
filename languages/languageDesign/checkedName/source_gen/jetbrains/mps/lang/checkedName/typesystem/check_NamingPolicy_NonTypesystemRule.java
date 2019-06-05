@@ -45,18 +45,18 @@ public class check_NamingPolicy_NonTypesystemRule extends AbstractNonTypesystemR
       }
     }
     for (PropertyReference p : ICheckedNamePolicy__BehaviorDescriptor.getPropertiesToCheck_id4cWf37B8oXP.invoke(node)) {
-      if (p.getValue() == null) {
+      if (SPropertyOperations.getString(p.getNode(), p.getProperty()) == null) {
         continue;
       }
-      if (!(NameUtil.satisfiesNamingPolicy(p.getValue()))) {
+      if (!(NameUtil.satisfiesNamingPolicy(SPropertyOperations.getString(p.getNode(), p.getProperty())))) {
         String myWarning = warningMessage + "; no leading and trailing whitespaces are allowed.";
         {
           MessageTarget errorTarget = new NodeMessageTarget();
-          errorTarget = new PropertyMessageTarget(p.getProperty());
+          errorTarget = new PropertyMessageTarget(p.getProperty().getName());
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(p.getNode(), myWarning, "r:f922da3a-135f-4fe9-9051-9f018bc5c1bf(jetbrains.mps.lang.checkedName.typesystem)", "4844813484172611556", null, errorTarget);
           {
             BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.checkedName.typesystem.FixNamingPolicy_property_once_QuickFix", false);
-            intentionProvider.putArgument("caption", "Fix " + NameUtil.capitalize(p.getProperty()));
+            intentionProvider.putArgument("caption", "Fix " + NameUtil.capitalize(p.getProperty().getName()));
             intentionProvider.putArgument("property", p);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }

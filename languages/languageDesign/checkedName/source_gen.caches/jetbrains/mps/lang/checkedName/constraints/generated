@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="ctqdjmfifdtexbxsk573p7c6xq9rxr7">
-  <files names="ConstraintsAspectDescriptor.java:PropertyRefExpression_Constraints.java" />
+<product version="3" modelHash="-5nsd1o4471fbn68z280j7ty0e82iaa2">
+  <files names="ConstraintsAspectDescriptor.java:PropertyPointerValueOperation_Constraints.java:PropertyRefExpression_Constraints.java" />
 </product>
 

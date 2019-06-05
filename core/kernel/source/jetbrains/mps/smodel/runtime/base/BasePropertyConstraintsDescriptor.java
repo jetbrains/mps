@@ -20,6 +20,7 @@ import jetbrains.mps.smodel.adapter.ids.SPropertyId;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.adapter.structure.concept.SAbstractConceptAdapter;
 import jetbrains.mps.smodel.language.ConceptRegistry;
+import jetbrains.mps.smodel.runtime.CheckingNodeContext;
 import jetbrains.mps.smodel.runtime.ConceptDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.InheritanceIterable;
@@ -186,13 +187,18 @@ public class BasePropertyConstraintsDescriptor implements PropertyConstraintsDis
     }
   }
 
-  @Override
+  @ToRemove(version = 2019.2)
   public boolean validateValue(SNode node, String value) {
     if (!isValidatorDefault()) {
-      return validatorDescriptor.validateValue(node, value);
+      return validatorDescriptor.validateValue(node, value, null);
     } else {
       return true;
     }
+  }
+
+  @Override
+  public boolean validateValue(SNode node, String value, CheckingNodeContext checkingNodeContext) {
+    return validateValue(node, value);
   }
 
   @Override

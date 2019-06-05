@@ -15,6 +15,7 @@ import jetbrains.mps.checkers.ModuleChecker;
 import jetbrains.mps.checkers.ModelPropertiesChecker;
 import jetbrains.mps.checkers.AbstractNodeCheckerInEditor;
 import jetbrains.mps.project.validation.StructureChecker;
+import jetbrains.mps.checkers.SuppressErrorsChecker;
 import org.junit.Assume;
 import java.util.List;
 import jetbrains.mps.generator.impl.dependencies.GenerationDependenciesCache;
@@ -48,13 +49,13 @@ public class CheckProjectStructure extends BaseCheckerTest {
   @Test
   @Order(value = 3)
   public void checkStructure() {
-    super.runCheck(ListSequence.fromListAndArray(new ArrayList<IChecker<?, ? extends IssueKindReportItem>>(), (AbstractNodeCheckerInEditor) (AbstractNodeCheckerInEditor) new StructureChecker(true, true, true, false)), null, "Structure errors:");
+    super.runCheck(ListSequence.fromListAndArray(new ArrayList<IChecker<?, ? extends IssueKindReportItem>>(), (AbstractNodeCheckerInEditor) (AbstractNodeCheckerInEditor) new StructureChecker(true, true, true, false), new SuppressErrorsChecker()), null, "Structure errors:");
   }
 
   @Test
   @Order(value = 4)
   public void checkReferences() {
-    super.runCheck(ListSequence.fromListAndArray(new ArrayList<IChecker<?, ? extends IssueKindReportItem>>(), (AbstractNodeCheckerInEditor) (AbstractNodeCheckerInEditor) new StructureChecker(false, false, false, true)), null, "Broken reference errors");
+    super.runCheck(ListSequence.fromListAndArray(new ArrayList<IChecker<?, ? extends IssueKindReportItem>>(), (AbstractNodeCheckerInEditor) (AbstractNodeCheckerInEditor) new StructureChecker(false, false, false, true), new SuppressErrorsChecker()), null, "Broken reference errors");
   }
 
   @Test

@@ -2,13 +2,13 @@
 <model ref="r:00000000-0000-4000-0000-011c8959034e(jetbrains.mps.lang.intentions.behavior)">
   <persistence version="9" />
   <languages>
-    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
-    <use id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior" version="2" />
+    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="-1" />
+    <use id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior" version="-1" />
     <use id="fe9d76d7-5809-45c9-ae28-a40915b4d6ff" name="jetbrains.mps.lang.checkedName" version="-1" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="-1" />
     <use id="d7a92d38-f7db-40d0-8431-763b0c3c9f20" name="jetbrains.mps.lang.intentions" version="-1" />
-    <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="4" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
+    <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="-1" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="-1" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -25,7 +25,7 @@
     <import index="tpek" ref="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)" />
     <import index="tpcn" ref="r:00000000-0000-4000-0000-011c8959028b(jetbrains.mps.lang.structure.behavior)" implicit="true" />
     <import index="tpce" ref="r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)" implicit="true" />
-    <import index="4j10" ref="r:31be9f37-1a76-49a2-a444-bd006ff675c1(jetbrains.mps.lang.checkedName.structure)" implicit="true" />
+    <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" implicit="true" />
   </imports>
   <registry>
     <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
@@ -52,6 +52,7 @@
         <child id="1068498886297" name="rValue" index="37vLTx" />
         <child id="1068498886295" name="lValue" index="37vLTJ" />
       </concept>
+      <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
@@ -128,9 +129,6 @@
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
     </language>
-    <language id="fe9d76d7-5809-45c9-ae28-a40915b4d6ff" name="jetbrains.mps.lang.checkedName">
-      <concept id="4844813484172611390" name="jetbrains.mps.lang.checkedName.structure.PropertyRefType" flags="in" index="2$7rcf" />
-    </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
       <concept id="5858074156537516430" name="jetbrains.mps.baseLanguage.javadoc.structure.ReturnBlockDocTag" flags="ng" index="x79VA">
         <property id="5858074156537516431" name="text" index="x79VB" />
@@ -165,6 +163,9 @@
         <child id="3906496115198199033" name="conceptArgument" index="3oSUPX" />
       </concept>
       <concept id="1143234257716" name="jetbrains.mps.lang.smodel.structure.Node_GetModelOperation" flags="nn" index="I4A8Y" />
+      <concept id="1145404486709" name="jetbrains.mps.lang.smodel.structure.SemanticDowncastExpression" flags="nn" index="2JrnkZ">
+        <child id="1145404616321" name="leftExpression" index="2JrQYb" />
+      </concept>
       <concept id="1171407110247" name="jetbrains.mps.lang.smodel.structure.Node_GetAncestorOperation" flags="nn" index="2Xjw5R" />
       <concept id="2644386474300074836" name="jetbrains.mps.lang.smodel.structure.ConceptIdRefExpression" flags="nn" index="35c_gC">
         <reference id="2644386474300074837" name="conceptDeclaration" index="35c_gD" />
@@ -495,16 +496,24 @@
               <ref role="37wK5l" node="5rGvd38DcHL" resolve="getGeneratedName" />
             </node>
             <node concept="3cpWs3" id="2ytFvC$HEiF" role="3uHU7B">
-              <node concept="2YIFZM" id="2ytFvC$HE1x" role="3uHU7B">
-                <ref role="37wK5l" to="18ew:~NameUtil.getModelLongName(org.jetbrains.mps.openapi.model.SModel)" resolve="getModelLongName" />
-                <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
-                <node concept="2OqwBi" id="2ytFvC$HE5J" role="37wK5m">
-                  <node concept="13iPFW" id="2ytFvC$HE1N" role="2Oq$k0" />
-                  <node concept="I4A8Y" id="2ytFvC$HEfk" role="2OqNvi" />
-                </node>
-              </node>
               <node concept="Xl_RD" id="2ytFvC$HEl5" role="3uHU7w">
                 <property role="Xl_RC" value="." />
+              </node>
+              <node concept="2OqwBi" id="5KWsMXTHdJj" role="3uHU7B">
+                <node concept="2OqwBi" id="5KWsMXTHcCD" role="2Oq$k0">
+                  <node concept="2JrnkZ" id="5KWsMXTHcqz" role="2Oq$k0">
+                    <node concept="2OqwBi" id="2ytFvC$HE5J" role="2JrQYb">
+                      <node concept="13iPFW" id="2ytFvC$HE1N" role="2Oq$k0" />
+                      <node concept="I4A8Y" id="2ytFvC$HEfk" role="2OqNvi" />
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="5KWsMXTHdzE" role="2OqNvi">
+                    <ref role="37wK5l" to="mhbf:~SModel.getName()" resolve="getName" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="5KWsMXTHe3$" role="2OqNvi">
+                  <ref role="37wK5l" to="mhbf:~SModelName.getLongName()" resolve="getLongName" />
+                </node>
               </node>
             </node>
           </node>
@@ -515,28 +524,6 @@
         <node concept="x79VA" id="2ytFvC$HEDz" role="3nqlJM">
           <property role="x79VB" value="identifier that can be used to look up this intention via IntentionsManager#getIntentionById()" />
         </node>
-      </node>
-    </node>
-    <node concept="13i0hz" id="6$B5fxDemvS" role="13h7CS">
-      <property role="13i0iv" value="false" />
-      <property role="TrG5h" value="getPropertiesToCheck" />
-      <property role="13i0it" value="false" />
-      <ref role="13i0hy" to="mjwp:4cWf37B8oXP" resolve="getPropertiesToCheck" />
-      <node concept="3Tm1VV" id="6$B5fxDemvT" role="1B3o_S" />
-      <node concept="3clFbS" id="6$B5fxDemvU" role="3clF47">
-        <node concept="3clFbF" id="6$B5fxDemvX" role="3cqZAp">
-          <node concept="2OqwBi" id="6$B5fxDemvY" role="3clFbG">
-            <node concept="13iAh5" id="6$B5fxDemvZ" role="2Oq$k0">
-              <ref role="3eA5LN" to="4j10:4cWf37B8oWS" resolve="ICheckedNamePolicy" />
-            </node>
-            <node concept="2qgKlT" id="6$B5fxDemw0" role="2OqNvi">
-              <ref role="37wK5l" to="mjwp:4cWf37B8oXP" resolve="getPropertiesToCheck" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="_YKpA" id="6$B5fxDemvV" role="3clF45">
-        <node concept="2$7rcf" id="6$B5fxDemvW" role="_ZDj9" />
       </node>
     </node>
     <node concept="13i0hz" id="5rGvd38DcIc" role="13h7CS">

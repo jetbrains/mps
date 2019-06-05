@@ -37,7 +37,6 @@ import jetbrains.mps.errors.item.QuickFixBase;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.errors.item.NodeReportItem;
-import jetbrains.mps.checkers.ErrorReportUtil;
 import jetbrains.mps.nodeEditor.HighlighterMessage;
 import jetbrains.mps.errors.item.QuickFixReportItem;
 import com.intellij.openapi.application.ApplicationManager;
@@ -168,9 +167,6 @@ public class LanguageEditorChecker extends BaseEditorChecker implements Disposab
     for (NodeReportItem errorReporter : errorsComponent.getErrors()) {
       // todo here should be processor-based architecture, like in other checkers 
       SNode nodeWithError = errorReporter.getNode().resolve(editorContext.getRepository());
-      if (!(ErrorReportUtil.shouldReportError(errorReporter, editorContext.getRepository()))) {
-        continue;
-      }
 
       if (!(ListSequence.fromList(SNodeOperations.getNodeAncestors(nodeWithError, null, true)).contains(editedNode))) {
         // in inspector skipping all messages for invisible nodes 

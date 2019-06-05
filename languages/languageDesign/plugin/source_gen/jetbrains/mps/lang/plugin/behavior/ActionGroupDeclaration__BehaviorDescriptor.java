@@ -59,7 +59,7 @@ public final class ActionGroupDeclaration__BehaviorDescriptor extends BaseBHDesc
     return type;
   }
   /*package*/ static PropertyReference getPropertyToCheck_id4cWf37B8oYh(@NotNull SNode __thisNode__) {
-    return new PropertyReference(__thisNode__, "caption");
+    return new PropertyReference(__thisNode__, MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181da058d2L, 0x1188f1dd933L, "caption"));
   }
 
   /*package*/ ActionGroupDeclaration__BehaviorDescriptor() {

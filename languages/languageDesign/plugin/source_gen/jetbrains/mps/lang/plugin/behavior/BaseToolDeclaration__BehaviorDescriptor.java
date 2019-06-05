@@ -71,7 +71,7 @@ public final class BaseToolDeclaration__BehaviorDescriptor extends BaseBHDescrip
     return MacrosFactory.forModule(module).expandPath(SPropertyOperations.getString(__thisNode__, MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x5adc7622e710bddcL, 0x5adc7622e710cf6eL, "icon")));
   }
   /*package*/ static PropertyReference getPropertyToCheck_id4cWf37B8oYh(@NotNull SNode __thisNode__) {
-    return new PropertyReference(__thisNode__, "caption");
+    return new PropertyReference(__thisNode__, MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x5adc7622e710bddcL, 0x5adc7622e710cedcL, "caption"));
   }
 
   /*package*/ BaseToolDeclaration__BehaviorDescriptor() {

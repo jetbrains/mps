@@ -6,9 +6,9 @@
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="-1" />
     <use id="63650c59-16c8-498a-99c8-005c7ee9515d" name="jetbrains.mps.lang.access" version="-1" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="-1" />
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="-1" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="-1" />
   </languages>
   <imports>
     <import index="oh7r" ref="r:eea68efb-2953-43f4-848f-9829ac5c7101(jetbrains.mps.testbench.junit.runners)" />
@@ -1262,6 +1262,11 @@
                     <ref role="37wK5l" to="k8ev:4yqv8vrxVuu" resolve="TypesystemChecker" />
                   </node>
                 </node>
+                <node concept="2ShNRf" id="5DuNfrQNgr1" role="HW$Y0">
+                  <node concept="HV5vD" id="5DuNfrQNgr2" role="2ShVmc">
+                    <ref role="HV5vE" to="wsw7:4c7y4qc4V7B" resolve="SuppressErrorsChecker" />
+                  </node>
+                </node>
               </node>
             </node>
             <node concept="37vLTw" id="3612de$owD2" role="37wK5m">
@@ -1381,6 +1386,11 @@
                 <node concept="2ShNRf" id="1valgbdNIn9" role="HW$Y0">
                   <node concept="HV5vD" id="1valgbdNIna" role="2ShVmc">
                     <ref role="HV5vE" to="wsw7:3TJpIwQlqFz" resolve="UsedLanguagesChecker" />
+                  </node>
+                </node>
+                <node concept="2ShNRf" id="5DuNfrQNfuC" role="HW$Y0">
+                  <node concept="HV5vD" id="5DuNfrQNfuD" role="2ShVmc">
+                    <ref role="HV5vE" to="wsw7:4c7y4qc4V7B" resolve="SuppressErrorsChecker" />
                   </node>
                 </node>
               </node>
@@ -1616,6 +1626,11 @@
                     <ref role="3uigEE" to="wsw7:6qi2OtU3u$c" resolve="AbstractNodeCheckerInEditor" />
                   </node>
                 </node>
+                <node concept="2ShNRf" id="5DuNfrQN2Jp" role="HW$Y0">
+                  <node concept="HV5vD" id="5DuNfrQN86c" role="2ShVmc">
+                    <ref role="HV5vE" to="wsw7:4c7y4qc4V7B" resolve="SuppressErrorsChecker" />
+                  </node>
+                </node>
               </node>
             </node>
             <node concept="10Nm6u" id="3ukCc1okPMU" role="37wK5m" />
@@ -1679,6 +1694,11 @@
                   </node>
                   <node concept="3uibUv" id="3ukCc1olfY6" role="10QFUM">
                     <ref role="3uigEE" to="wsw7:6qi2OtU3u$c" resolve="AbstractNodeCheckerInEditor" />
+                  </node>
+                </node>
+                <node concept="2ShNRf" id="5DuNfrQN8Vj" role="HW$Y0">
+                  <node concept="HV5vD" id="5DuNfrQN8Vk" role="2ShVmc">
+                    <ref role="HV5vE" to="wsw7:4c7y4qc4V7B" resolve="SuppressErrorsChecker" />
                   </node>
                 </node>
               </node>

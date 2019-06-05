@@ -27,6 +27,7 @@ import jetbrains.mps.smodel.runtime.ConstraintContext_CanBeParent;
 import jetbrains.mps.smodel.runtime.ConstraintContext_CanBeRoot;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.PropertyConstraintsDescriptor;
+import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -198,11 +199,17 @@ public class ModelConstraints {
 
   // properties part
 
+  @Deprecated
+  @ToRemove(version = 2019.2)
+  public static boolean validatePropertyValue(SNode node, SProperty property, Object propertyValue) {
+    return validatePropertyValue(node, property, propertyValue, null);
+  }
+
   /**
    * Validates both structure constraints ({@link SType#isInstanceOf(Object)})
    * and language constraints (property validation functions in constraints aspect)
    */
-  public static boolean validatePropertyValue(SNode node, SProperty property, Object propertyValue) {
+  public static boolean validatePropertyValue(SNode node, SProperty property, Object propertyValue, @Nullable CheckingNodeContext checkingNodeContext) {
     final SDataType type = property.getType();
     if (!type.isInstanceOf(propertyValue)) {
       return false;
@@ -213,6 +220,6 @@ public class ModelConstraints {
       propertyValue = "";
     }
     PropertyConstraintsDescriptor pcd = ConceptRegistryUtil.getConstraintsDescriptor(node.getConcept()).getProperty(property);
-    return pcd != null && pcd.validateValue(node, propertyValue);
+    return pcd != null && pcd.validateValue(node, propertyValue, checkingNodeContext);
   }
 }

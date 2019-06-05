@@ -84,8 +84,8 @@ public class TestDefaultParameterConverter_Test extends BaseTransformationTest {
     new TestDefaultParameterConverter_Test.TestBody(this).test_ErrorMessagesCheck529363524336083426();
   }
   @Test
-  public void test_NodeErrorCheck6147098677961969320() throws Throwable {
-    new TestDefaultParameterConverter_Test.TestBody(this).test_NodeErrorCheck6147098677961969320();
+  public void test_NodeTypeSystemCheck8206790888929524961() throws Throwable {
+    new TestDefaultParameterConverter_Test.TestBody(this).test_NodeTypeSystemCheck8206790888929524961();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {
@@ -151,8 +151,8 @@ public class TestDefaultParameterConverter_Test extends BaseTransformationTest {
       SNode operation = SNodeOperations.cast(getRealNodeById("529363524336083426"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
       INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("529363524336083423"));
     }
-    public void test_NodeErrorCheck6147098677961969320() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("6147098677961969320"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
+    public void test_NodeTypeSystemCheck8206790888929524961() throws Exception {
+      SNode operation = SNodeOperations.cast(getRealNodeById("8206790888929524961"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
       INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("529363524336083412"));
     }
 

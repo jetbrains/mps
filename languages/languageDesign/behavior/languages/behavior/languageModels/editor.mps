@@ -2,9 +2,9 @@
 <model ref="r:dc79d042-ba38-4e91-9392-42f38106ae44(jetbrains.mps.lang.behavior.editor)">
   <persistence version="9" />
   <languages>
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="-1" />
     <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="-1" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="-1" />
     <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="-1" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
@@ -130,6 +130,10 @@
       </concept>
       <concept id="7291101478617127464" name="jetbrains.mps.lang.editor.structure.IExtensibleTransformationMenuPart" flags="ng" index="1joUw2">
         <child id="8954657570916349207" name="features" index="2jZA2a" />
+      </concept>
+      <concept id="7597241200646296619" name="jetbrains.mps.lang.editor.structure.QueryFunction_SNode" flags="in" index="3k4GqP" />
+      <concept id="7597241200646296617" name="jetbrains.mps.lang.editor.structure.NavigatableNodeStyleClassItem" flags="ln" index="3k4GqR">
+        <child id="7597241200646296618" name="functionNode" index="3k4GqO" />
       </concept>
       <concept id="1381004262292414836" name="jetbrains.mps.lang.editor.structure.ICellStyle" flags="ng" index="1k5N5V">
         <reference id="1381004262292426837" name="parentStyleClass" index="1k5W1q" />
@@ -619,10 +623,29 @@
               <node concept="3TQlhw" id="hrceH_FJVc" role="1Hhtcw">
                 <node concept="3clFbS" id="hrceH_FJVd" role="2VODD2">
                   <node concept="3clFbF" id="hrceH_FJVe" role="3cqZAp">
-                    <node concept="2OqwBi" id="hrceH_FJVf" role="3clFbG">
-                      <node concept="pncrf" id="hrceH_FJVg" role="2Oq$k0" />
-                      <node concept="2qgKlT" id="hrceH_FJVh" role="2OqNvi">
-                        <ref role="37wK5l" to="csvn:hP3pnOc" resolve="getOverridenMethodConceptName" />
+                    <node concept="2OqwBi" id="77$odk0nvJj" role="3clFbG">
+                      <node concept="2OqwBi" id="hrceH_FJVf" role="2Oq$k0">
+                        <node concept="pncrf" id="hrceH_FJVg" role="2Oq$k0" />
+                        <node concept="2qgKlT" id="hrceH_FJVh" role="2OqNvi">
+                          <ref role="37wK5l" to="csvn:hP3pnOc" resolve="getOverridenMethodConcept" />
+                        </node>
+                      </node>
+                      <node concept="3TrcHB" id="77$odk0nx61" role="2OqNvi">
+                        <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3k4GqR" id="77$odk0nzO1" role="3F10Kt">
+              <node concept="3k4GqP" id="77$odk0nzO3" role="3k4GqO">
+                <node concept="3clFbS" id="77$odk0nzO5" role="2VODD2">
+                  <node concept="3clFbF" id="77$odk0nA1S" role="3cqZAp">
+                    <node concept="2OqwBi" id="77$odk0nAsx" role="3clFbG">
+                      <node concept="pncrf" id="77$odk0nA1R" role="2Oq$k0" />
+                      <node concept="2qgKlT" id="77$odk0nF6f" role="2OqNvi">
+                        <ref role="37wK5l" to="csvn:hP3pnOc" resolve="getOverridenMethodConcept" />
                       </node>
                     </node>
                   </node>

@@ -15,14 +15,24 @@
  */
 package jetbrains.mps.checkedName;
 
+import jetbrains.mps.smodel.legacy.ConceptMetaInfoConverter;
+import jetbrains.mps.util.annotation.ToRemove;
+import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 
 public class PropertyReference {
   private SNode myNode;
-  private String myProperty;
+  private SProperty myProperty;
 
-  public PropertyReference(SNode node, String property) {
+  @Deprecated
+  @ToRemove(version = 2019.2)
+  public PropertyReference(SNode node, String propertyName) {
+    myNode = node;
+    ConceptMetaInfoConverter concept = (ConceptMetaInfoConverter) node.getConcept();
+    myProperty = concept.convertProperty(propertyName);
+  }
+
+  public PropertyReference(SNode node, SProperty property) {
     myNode = node;
     myProperty = property;
   }
@@ -31,15 +41,8 @@ public class PropertyReference {
     return myNode;
   }
 
-  public String getProperty() {
+  public SProperty getProperty() {
     return myProperty;
   }
 
-  public String getValue(){
-    return SNodeAccessUtil.getProperty(myNode, myProperty);
-  }
-
-  public void setValue(String value){
-    SNodeAccessUtil.setProperty(myNode, myProperty, value);
-  }
 }

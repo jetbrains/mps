@@ -10,12 +10,16 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 public final class LanguageConceptSwitch {
   private final LanguageConceptIndex myIndex;
   public static final int ICheckedNamePolicy = 0;
-  public static final int PropertyRefExpression = 1;
-  public static final int PropertyRefType = 2;
+  public static final int PropertyPointerType = 1;
+  public static final int PropertyPointerValueOperation = 2;
+  public static final int PropertyRefExpression = 3;
+  public static final int PropertyRefType = 4;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL);
     builder.put(0x433c3c31e7218f38L, ICheckedNamePolicy);
+    builder.put(0x78b4a5a6b846de35L, PropertyPointerType);
+    builder.put(0x78b4a5a6b846d5abL, PropertyPointerValueOperation);
     builder.put(0x433c3c31e7218f39L, PropertyRefExpression);
     builder.put(0x433c3c31e7218f3eL, PropertyRefType);
     myIndex = builder.seal();

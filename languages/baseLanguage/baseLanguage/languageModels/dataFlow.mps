@@ -2,7 +2,7 @@
 <model ref="r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)">
   <persistence version="9" />
   <languages>
-    <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="1" />
+    <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="-1" />
     <devkit ref="00000000-0000-4000-0000-443879f56b80(jetbrains.mps.devkit.aspect.dataflow)" />
   </languages>
   <imports>
@@ -362,6 +362,7 @@
       <concept id="1139621453865" name="jetbrains.mps.lang.smodel.structure.Node_IsInstanceOfOperation" flags="nn" index="1mIQ4w">
         <child id="1177027386292" name="conceptArgument" index="cj9EA" />
       </concept>
+      <concept id="1171999116870" name="jetbrains.mps.lang.smodel.structure.Node_IsNullOperation" flags="nn" index="3w_OXm" />
       <concept id="1172008320231" name="jetbrains.mps.lang.smodel.structure.Node_IsNotNullOperation" flags="nn" index="3x8VRR" />
       <concept id="1144101972840" name="jetbrains.mps.lang.smodel.structure.OperationParm_Concept" flags="ng" index="1xMEDy">
         <child id="1207343664468" name="conceptArgument" index="ri$Ld" />
@@ -2768,6 +2769,20 @@
     <ref role="3_znuS" to="tpee:hcYeOiq" resolve="AnonymousClassCreator" />
     <node concept="3__wT9" id="hF5MHQj" role="3_A6iZ">
       <node concept="3clFbS" id="hF5MJjm" role="2VODD2">
+        <node concept="3clFbJ" id="4DOzqvBDJwS" role="3cqZAp">
+          <node concept="3clFbS" id="4DOzqvBDJwU" role="3clFbx">
+            <node concept="3cpWs6" id="4DOzqvBEu8o" role="3cqZAp" />
+          </node>
+          <node concept="2OqwBi" id="4DOzqvBF9RK" role="3clFbw">
+            <node concept="2OqwBi" id="4DOzqvBDXh6" role="2Oq$k0">
+              <node concept="3__QtB" id="4DOzqvBDQuz" role="2Oq$k0" />
+              <node concept="3TrEf2" id="4DOzqvBE6Il" role="2OqNvi">
+                <ref role="3Tt5mk" to="tpee:hcYeSH9" resolve="cls" />
+              </node>
+            </node>
+            <node concept="3w_OXm" id="4DOzqvBFk7w" role="2OqNvi" />
+          </node>
+        </node>
         <node concept="3cpWs8" id="hF5XDpk" role="3cqZAp">
           <node concept="3cpWsn" id="hF5XDpl" role="3cpWs9">
             <property role="TrG5h" value="methods" />

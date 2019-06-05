@@ -10,7 +10,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.checkedName.PropertyReference;
-import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 
 public class FixNamingPolicy_QuickFix extends QuickFix_Runtime {
   public FixNamingPolicy_QuickFix() {
@@ -24,9 +23,7 @@ public class FixNamingPolicy_QuickFix extends QuickFix_Runtime {
       SPropertyOperations.set(s, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), NameUtil.captionPartWithNamingPolicy(SPropertyOperations.getString(s, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"))));
     }
     for (PropertyReference p : ICheckedNamePolicy__BehaviorDescriptor.getPropertiesToCheck_id4cWf37B8oXP.invoke(((SNode) FixNamingPolicy_QuickFix.this.getField("nodeToFix")[0]))) {
-      String value = SNodeAccessUtil.getProperty(p.getNode(), p.getProperty());
-      String newValue = NameUtil.captionWithNamingPolicy(value);
-      SNodeAccessUtil.setProperty(p.getNode(), p.getProperty(), newValue);
+      SPropertyOperations.assign(p.getNode(), p.getProperty(), NameUtil.captionWithNamingPolicy(SPropertyOperations.getString(p.getNode(), p.getProperty())));
     }
   }
 }

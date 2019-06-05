@@ -10,6 +10,8 @@ import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
   private ConceptPresentation props_ICheckedNamePolicy;
+  private ConceptPresentation props_PropertyPointerType;
+  private ConceptPresentation props_PropertyPointerValueOperation;
   private ConceptPresentation props_PropertyRefExpression;
   private ConceptPresentation props_PropertyRefType;
 
@@ -24,6 +26,20 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_ICheckedNamePolicy = cpb.create();
         }
         return props_ICheckedNamePolicy;
+      case LanguageConceptSwitch.PropertyPointerType:
+        if (props_PropertyPointerType == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("propRef<>");
+          props_PropertyPointerType = cpb.create();
+        }
+        return props_PropertyPointerType;
+      case LanguageConceptSwitch.PropertyPointerValueOperation:
+        if (props_PropertyPointerValueOperation == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("value");
+          props_PropertyPointerValueOperation = cpb.create();
+        }
+        return props_PropertyPointerValueOperation;
       case LanguageConceptSwitch.PropertyRefExpression:
         if (props_PropertyRefExpression == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -35,6 +51,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.PropertyRefType:
         if (props_PropertyRefType == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.deprecated(true);
           cpb.rawPresentation("propRef");
           props_PropertyRefType = cpb.create();
         }

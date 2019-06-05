@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-23atyp8qaqhw3fvei2hlyrxe7par49x">
-  <files names="AntTaskExecutionUtil.java:HeadlessMigrationExecutor.java:IStartupMigrationExecutor.java:MigrationChecker.java:MigrationCheckerImpl.java:MigrationExecutor.java:MigrationExecutorImpl.java:MigrationMakeBlocker.java:MigrationRegistry.java:MigrationRegistryImpl.java:MigrationTrigger.java:ScriptApplied.java" />
-</product>
-

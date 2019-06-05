@@ -39,7 +39,7 @@ public final class PreferencePage__BehaviorDescriptor extends BaseBHDescriptor {
     return componentName + "_" + pageName + "_PreferencesPage";
   }
   /*package*/ static PropertyReference getPropertyToCheck_id4cWf37B8oYh(@NotNull SNode __thisNode__) {
-    return new PropertyReference(__thisNode__, "name");
+    return new PropertyReference(__thisNode__, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
   }
 
   /*package*/ PreferencePage__BehaviorDescriptor() {

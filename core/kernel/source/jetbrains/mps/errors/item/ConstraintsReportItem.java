@@ -30,9 +30,6 @@ import java.util.Set;
 
 public abstract class ConstraintsReportItem extends NodeReportItemBase implements RuleIdFlavouredItem, IssueKindReportItem, NodeReportItem {
   private final TypesystemRuleId myRuleNode;
-  public ConstraintsReportItem(@NotNull SNode node, String message) {
-    this(node, message, null);
-  }
   public ConstraintsReportItem(@NotNull SNode node, String message, @Nullable TypesystemRuleId ruleNode) {
     super(MessageStatus.ERROR, node.getReference(), message);
     myRuleNode = ruleNode;
@@ -53,8 +50,8 @@ public abstract class ConstraintsReportItem extends NodeReportItemBase implement
 
   public static class PropertyConstraintReportItem extends ConstraintsReportItem implements NodeFeatureReportItem {
     private SProperty myProperty;
-    public PropertyConstraintReportItem(@NotNull SNode node, SProperty property) {
-      super(node, getMessage(property));
+    public PropertyConstraintReportItem(@NotNull SNode node, SProperty property, TypesystemRuleId ruleId) {
+      super(node, getMessage(property), ruleId);
       myProperty = property;
     }
     public static String getMessage(SProperty property) {
