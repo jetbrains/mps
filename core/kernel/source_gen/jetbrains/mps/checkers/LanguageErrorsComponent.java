@@ -12,8 +12,8 @@ import java.util.Set;
 import java.util.HashSet;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
-import java.util.Collection;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import java.util.Collection;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -71,6 +71,7 @@ public class LanguageErrorsComponent extends LanguageErrorsCollector {
   }
 
   private MultiMap<SNode, LanguageErrorsComponent.ApprovableError> myNodesToErrors = new SetBasedMultiMap<SNode, LanguageErrorsComponent.ApprovableError>();
+  private MultiMap<SNode, NodeReportItem> myPostprocessedNodesToErrors = new SetBasedMultiMap<SNode, NodeReportItem>();
   private ManyToManyMap<SNode, SNode> myDependenciesToNodesAndViceVersa = new ManyToManyMap<SNode, SNode>();
   private Set<SNode> myInvalidNodes = new HashSet<SNode>();
   private Set<SNode> myDependenciesToInvalidate = new HashSet<SNode>();
@@ -103,8 +104,10 @@ public class LanguageErrorsComponent extends LanguageErrorsCollector {
   }
 
   public Set<NodeReportItem> getErrors() {
+    Set<NodeReportItem> result = SetSequence.fromSet(new HashSet<NodeReportItem>());
+    SetSequence.fromSet(result).addSequence(CollectionSequence.fromCollection(myPostprocessedNodesToErrors.values()));
     Collection<? extends LanguageErrorsComponent.ApprovableError> values = myNodesToErrors.values();
-    return SetSequence.fromSetWithValues(new HashSet<NodeReportItem>(), CollectionSequence.fromCollection(values).where(new IWhereFilter<LanguageErrorsComponent.ApprovableError>() {
+    SetSequence.fromSet(result).addSequence(CollectionSequence.fromCollection(values).where(new IWhereFilter<LanguageErrorsComponent.ApprovableError>() {
       public boolean accept(LanguageErrorsComponent.ApprovableError it) {
         return it.myApproved;
       }
@@ -113,6 +116,7 @@ public class LanguageErrorsComponent extends LanguageErrorsCollector {
         return it.getError();
       }
     }));
+    return result;
   }
 
   @Override
@@ -243,8 +247,8 @@ public class LanguageErrorsComponent extends LanguageErrorsCollector {
       MapSequence.fromMap(nodesToErrors).put(new IssueKindReportItem.PathObject.NodePathObject(nodeErrors.getKey().getReference()), ListSequence.fromList(ListSequence.fromListWithValues(new ArrayList<LanguageErrorsComponent.ApprovableError>(), value)).asUnmodifiable());
     }
     final Consumer<NodeReportItem> consumer = new Consumer<NodeReportItem>() {
-      public void consume(NodeReportItem report) {
-        LanguageErrorsComponent.this.addError(report);
+      public void consume(NodeReportItem reportItem) {
+        myPostprocessedNodesToErrors.putValue(reportItem.getNode().resolve(myModel.getRepository()), reportItem);
       }
     };
     for (AbstractNodeCheckerInEditor checker : checkers) {
@@ -310,6 +314,7 @@ public class LanguageErrorsComponent extends LanguageErrorsCollector {
     myCurrentNode = null;
     myDependenciesToNodesAndViceVersa.clear();
     myNodesToErrors.clear();
+    myPostprocessedNodesToErrors.clear();
     removeModelListeners();
   }
 
