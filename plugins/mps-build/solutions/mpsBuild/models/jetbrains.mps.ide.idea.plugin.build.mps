@@ -290,6 +290,9 @@
       <node concept="nCB5N" id="3ZROizBYYuW" role="nCB5Z">
         <ref role="nCB5Y" to="ffeo:2xKmvAPr964" resolve="mps-java-platform" />
       </node>
+      <node concept="nCB5N" id="3oXfwtXqIy1" role="nCB5Z">
+        <ref role="nCB5Y" to="ffeo:3dkXFAFkSFA" resolve="mps-persistence" />
+      </node>
     </node>
     <node concept="2sgV4H" id="2pZ8abj52_O" role="1l3spa">
       <ref role="1l3spb" to="ffeo:6S1jmf0xDFC" resolve="mpsBootstrapCore" />
