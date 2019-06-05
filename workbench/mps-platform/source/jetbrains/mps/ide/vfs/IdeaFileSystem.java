@@ -15,11 +15,14 @@
  */
 package jetbrains.mps.ide.vfs;
 
+import com.intellij.openapi.vfs.JarFileSystem;
+import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.SafeWriteRequestor;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.VirtualFileSystem;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.platform.watching.FileSystemListenersContainer;
+import jetbrains.mps.nodefs.MPSNodeVirtualFile;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.FileSystem;
@@ -61,7 +64,12 @@ public final class IdeaFileSystem extends BaseIdeaFileSystem implements SafeWrit
    */
   @NotNull
   public IFile fromVirtualFile(@NotNull VirtualFile virtualFile) {
+    assert canConvert(virtualFile) : "Only local/jar platform file systems are supported by IdeaFileSystem";
     return getFile(FileUtil.normalize(virtualFile.getPath()));
+  }
+
+  public boolean canConvert(@NotNull VirtualFile virtualFile) {
+    return virtualFile.getFileSystem() instanceof LocalFileSystem || virtualFile.getFileSystem() instanceof JarFileSystem;
   }
 
   @NotNull
