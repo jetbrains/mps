@@ -20,6 +20,7 @@
   </imports>
   <registry>
     <language id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test">
+      <concept id="2325284917965760583" name="jetbrains.mps.lang.test.structure.BeforeTestsMethod" flags="ig" index="0EjCn" />
       <concept id="1215507671101" name="jetbrains.mps.lang.test.structure.NodeErrorCheckOperation" flags="ng" index="1TM$A" />
       <concept id="1215511704609" name="jetbrains.mps.lang.test.structure.NodeWarningCheckOperation" flags="ng" index="29bkU">
         <child id="8489045168660938635" name="warningRef" index="3lydCh" />
@@ -36,6 +37,7 @@
         <property id="5097124989038916363" name="projectPath" index="2XOHcw" />
       </concept>
       <concept id="1216913645126" name="jetbrains.mps.lang.test.structure.NodesTestCase" flags="lg" index="1lH9Xt">
+        <child id="2325284917965993569" name="beforeTests" index="0EEgL" />
         <child id="1216993439383" name="methods" index="1qtyYc" />
         <child id="1217501822150" name="nodesToCheck" index="1SKRRt" />
         <child id="1217501895093" name="testMethods" index="1SL9yI" />
@@ -76,6 +78,9 @@
       <concept id="1164903280175" name="jetbrains.mps.baseLanguage.structure.CatchClause" flags="nn" index="TDmWw">
         <child id="1164903359218" name="catchBody" index="TDEfX" />
         <child id="1164903359217" name="throwable" index="TDEfY" />
+      </concept>
+      <concept id="1137021947720" name="jetbrains.mps.baseLanguage.structure.ConceptFunction" flags="in" index="2VMwT0">
+        <child id="1137022507850" name="body" index="2VODD2" />
       </concept>
       <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
         <property id="1070475926801" name="value" index="Xl_RC" />
@@ -1155,6 +1160,21 @@
           </node>
           <node concept="3cmrfG" id="6WBmrsjE2b9" role="3tpDZA">
             <property role="3cmrfH" value="1" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="0EjCn" id="1zPxZDfuE7y" role="0EEgL">
+      <node concept="3clFbS" id="1zPxZDfuE7z" role="2VODD2">
+        <node concept="3clFbF" id="1zPxZDfuF7U" role="3cqZAp">
+          <node concept="2OqwBi" id="1zPxZDfuFd0" role="3clFbG">
+            <node concept="2YIFZM" id="1zPxZDfuF8x" role="2Oq$k0">
+              <ref role="37wK5l" to="e5vs:~BuiltInServerManager.getInstance()" resolve="getInstance" />
+              <ref role="1Pybhc" to="e5vs:~BuiltInServerManager" resolve="BuiltInServerManager" />
+            </node>
+            <node concept="liA8E" id="1zPxZDfuG5G" role="2OqNvi">
+              <ref role="37wK5l" to="e5vs:~BuiltInServerManager.waitForStart()" resolve="waitForStart" />
+            </node>
           </node>
         </node>
       </node>

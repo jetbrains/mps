@@ -9,6 +9,8 @@ import jetbrains.mps.lang.test.runtime.TestParametersCache;
 import org.junit.Rule;
 import jetbrains.mps.lang.test.runtime.RunWithCommand;
 import org.junit.Test;
+import org.junit.BeforeClass;
+import org.jetbrains.ide.BuiltInServerManager;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.ide.httpsupport.tests.plugin.PingStorage;
@@ -19,7 +21,6 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
 import com.intellij.util.ExceptionUtil;
-import org.jetbrains.ide.BuiltInServerManager;
 import io.netty.handler.codec.http.QueryStringEncoder;
 import jetbrains.mps.ide.httpsupport.tests.plugin.testConverter_Converter;
 
@@ -71,6 +72,11 @@ public class TestRHBehavior_Test extends BaseTransformationTest {
     new TestRHBehavior_Test.TestBody(this).test_testRHConflicts();
   }
 
+  @BeforeClass
+  public static void beforeTests() {
+    BuiltInServerManager.getInstance().waitForStart();
+  }
+
   /*package*/ static class TestBody extends BaseTestBody {
 
     /*package*/ TestBody(TransformationTest owner) {
@@ -105,12 +111,12 @@ public class TestRHBehavior_Test extends BaseTransformationTest {
     }
     public void test_testURlBuilder1() throws Exception {
       String test = "testString";
-      String url = buildRequest_17tcaj_a0a1a9p(test);
+      String url = buildRequest_17tcaj_a0a1a9r(test);
       this.testRequestResponse(url, 200, test);
     }
     public void test_testURlBuilder2() throws Exception {
       String test = "testString";
-      String url = buildRequest_17tcaj_a0a1a01p(test);
+      String url = buildRequest_17tcaj_a0a1a01r(test);
       this.testRequestResponse(url, 200, test + " serialized deserialized");
     }
     public void test_testRHConflicts() throws Exception {
@@ -126,7 +132,7 @@ public class TestRHBehavior_Test extends BaseTransformationTest {
     public void testRequestResponse(String requestUrl, int exectedRetCode, String expectedResponse) {
       try {
         URL obj = new URL(requestUrl);
-        HttpURLConnection con = as_17tcaj_a0a1a0a41p(obj.openConnection(), HttpURLConnection.class);
+        HttpURLConnection con = as_17tcaj_a0a1a0a41r(obj.openConnection(), HttpURLConnection.class);
         con.connect();
 
         Assert.assertEquals(exectedRetCode, con.getResponseCode());
@@ -149,21 +155,21 @@ public class TestRHBehavior_Test extends BaseTransformationTest {
     public String buildRequest(String path) {
       return "http://localhost:" + BuiltInServerManager.getInstance().getPort() + path;
     }
-    private static String buildRequest_17tcaj_a0a1a9p(String param) {
+    private static String buildRequest_17tcaj_a0a1a9r(String param) {
       QueryStringEncoder encoder = new QueryStringEncoder("http://127.0.0.1:" + BuiltInServerManager.getInstance().getPort() + "/handlerTest/turnBack1");
 
       encoder.addParam("param", param);
 
       return encoder.toString();
     }
-    private static String buildRequest_17tcaj_a0a1a01p(String param) {
+    private static String buildRequest_17tcaj_a0a1a01r(String param) {
       QueryStringEncoder encoder = new QueryStringEncoder("http://127.0.0.1:" + BuiltInServerManager.getInstance().getPort() + "/handlerTest/turnBack2");
 
       encoder.addParam("param", testConverter_Converter.serialize(param));
 
       return encoder.toString();
     }
-    private static <T> T as_17tcaj_a0a1a0a41p(Object o, Class<T> type) {
+    private static <T> T as_17tcaj_a0a1a0a41r(Object o, Class<T> type) {
       return (type.isInstance(o) ? (T) o : null);
     }
   }
