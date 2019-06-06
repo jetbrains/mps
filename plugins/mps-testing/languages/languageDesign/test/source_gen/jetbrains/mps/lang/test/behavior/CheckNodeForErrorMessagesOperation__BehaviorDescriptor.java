@@ -16,8 +16,8 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.lang.test.runtime.CheckErrorMessagesAction;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.test.runtime.CheckErrorMessagesAction;
 import jetbrains.mps.baseLanguage.unitTest.behavior.ITestMethod__BehaviorDescriptor;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -34,6 +34,7 @@ public final class CheckNodeForErrorMessagesOperation__BehaviorDescriptor extend
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(perform_id1kgh5YabdhC, getDefaultName_id7scb9XJdmH2, getPresentation_idhEwIMiw, expectsErrorsInside_id77$odk0vlBj);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
+    SPropertyOperations.assign(__thisNode__, MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b07d3d54aL, 0x33f30f661f8cdca2L, "includeSelf"), true);
   }
 
   /*package*/ static void perform_id1kgh5YabdhC(@NotNull SNode __thisNode__, SNode node) {
