@@ -15938,8 +15938,41 @@
           <node concept="L2wRC" id="5xa9wY2uu7B" role="39821P">
             <ref role="L2wRA" node="2eDSGe9d1pJ" resolve="jetbrains.mps.lang.plugin.standalone" />
           </node>
-          <node concept="L2wRC" id="3oXfwtY6FLH" role="39821P">
-            <ref role="L2wRA" node="2eDSGe9d1qi" resolve="jetbrains.mps.ide" />
+          <node concept="3981dx" id="7h0HcKXgweT" role="39821P">
+            <node concept="3_J27D" id="7h0HcKXgweV" role="Nbhlr">
+              <node concept="3Mxwew" id="7h0HcKXgwf6" role="3MwsjC">
+                <property role="3MwjfP" value="jetbrains.mps.ide.jar" />
+              </node>
+            </node>
+            <node concept="398223" id="7h0HcKXgwf8" role="39821P">
+              <node concept="3_J27D" id="7h0HcKXgwf9" role="Nbhlr">
+                <node concept="3Mxwew" id="7h0HcKXgwfc" role="3MwsjC">
+                  <property role="3MwjfP" value="META-INF" />
+                </node>
+              </node>
+              <node concept="1kK7hY" id="7h0HcKXgwfe" role="39821P">
+                <ref role="1kK7hZ" node="2eDSGe9d1qi" resolve="jetbrains.mps.ide" />
+                <node concept="1cIVw3" id="7h0HcKXgwfT" role="1622H7">
+                  <property role="1cIVw0" value="/lib/mps-workbench.jar" />
+                </node>
+                <node concept="1cIVw3" id="7h0HcKXgwfP" role="2JVP1x">
+                  <property role="1cIVw0" value="jetbrains.mps.ide.msd" />
+                </node>
+                <node concept="1cIVw3" id="7h0HcKXgwfR" role="3SGgvt">
+                  <property role="1cIVw0" value="." />
+                </node>
+              </node>
+            </node>
+            <node concept="398223" id="7h0HcKXgwfn" role="39821P">
+              <node concept="3_J27D" id="7h0HcKXgwfp" role="Nbhlr">
+                <node concept="3Mxwew" id="7h0HcKXgwfL" role="3MwsjC">
+                  <property role="3MwjfP" value="module" />
+                </node>
+              </node>
+              <node concept="3$exzU" id="7h0HcKXgwfN" role="39821P">
+                <ref role="3$exzV" node="2eDSGe9d1qi" resolve="jetbrains.mps.ide" />
+              </node>
+            </node>
           </node>
         </node>
         <node concept="3_J27D" id="5xa9wY2ujzr" role="Nbhlr">
