@@ -1240,6 +1240,14 @@
           <property role="3LZaj6" value="source" />
           <property role="nFU4j" value="source" />
         </node>
+        <node concept="nFU4i" id="4Iy92RV1rd5" role="nFU4p">
+          <property role="3LZaj6" value="source" />
+          <property role="nFU4j" value="src-reduced" />
+        </node>
+        <node concept="nFU4i" id="4Iy92RV1rhP" role="nFU4p">
+          <property role="3LZaj6" value="source" />
+          <property role="nFU4j" value="src-full" />
+        </node>
         <node concept="398BVA" id="5StVQ8qcRxd" role="398b2C">
           <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
           <node concept="2Ry0Ak" id="5StVQ8qcS0F" role="iGT6I">
@@ -36039,6 +36047,34 @@
         </node>
       </node>
     </node>
+    <node concept="398b33" id="4Iy92RV1r6j" role="3989C9">
+      <property role="TrG5h" value="platform-persistence-only" />
+      <node concept="398b2D" id="4Iy92RV1ray" role="398b2p">
+        <node concept="nFU4i" id="4Iy92RV1raN" role="nFU4p">
+          <property role="3LZaj6" value="source" />
+          <property role="nFU4j" value="source" />
+        </node>
+        <node concept="nFU4i" id="4Iy92RV1raP" role="nFU4p">
+          <property role="3LZaj6" value="source" />
+          <property role="nFU4j" value="src-reduced" />
+        </node>
+        <node concept="398BVA" id="4Iy92RV1raA" role="398b2C">
+          <ref role="398BVh" node="6IJvZDkyhr7" resolve="projectHome" />
+          <node concept="2Ry0Ak" id="4Iy92RV1raG" role="iGT6I">
+            <property role="2Ry0Am" value="core" />
+            <node concept="2Ry0Ak" id="4Iy92RV1raL" role="2Ry0An">
+              <property role="2Ry0Am" value="platform" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="nCB5N" id="4Iy92RV1raS" role="nCB5Z">
+        <ref role="nCB5Y" node="1FaKCGJSzEy" resolve="mps-kernel" />
+      </node>
+      <node concept="nCB5N" id="4Iy92RV1raX" role="nCB5Z">
+        <ref role="nCB5Y" node="3dkXFAFkSFA" resolve="mps-persistence" />
+      </node>
+    </node>
     <node concept="55IIr" id="6IJvZDkyfZA" role="auvoZ">
       <node concept="2Ry0Ak" id="VyBwbcCkB8" role="iGT6I">
         <property role="2Ry0Am" value="build" />
@@ -36173,6 +36209,16 @@
         </node>
         <node concept="Saw0i" id="3fmo8W2LOmr" role="39821P">
           <ref role="Saw0g" node="3dkXFAFkSFA" resolve="mps-persistence" />
+        </node>
+      </node>
+      <node concept="3981dx" id="4Iy92RV1rb1" role="39821P">
+        <node concept="3_J27D" id="4Iy92RV1rb3" role="Nbhlr">
+          <node concept="3Mxwew" id="4Iy92RV1rcm" role="3MwsjC">
+            <property role="3MwjfP" value="mps-core.jar" />
+          </node>
+        </node>
+        <node concept="Saw0i" id="4Iy92RV1rco" role="39821P">
+          <ref role="Saw0g" node="4Iy92RV1r6j" resolve="platform-persistence-only" />
         </node>
       </node>
       <node concept="398223" id="3N2WdVhR$$r" role="39821P">

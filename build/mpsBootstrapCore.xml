@@ -11353,9 +11353,6 @@
   </target>
   
   <target name="declare-mps-tasks" depends="classes">
-    <jar destfile="${build.tmp}/antTasks/mps-core.jar">
-      <fileset dir="${build.tmp}/java/out/platform" />
-    </jar>
     <jar destfile="${build.tmp}/antTasks/mps-tool.jar">
       <fileset dir="${build.tmp}/java/out/mps-tool" />
     </jar>
@@ -11375,6 +11372,7 @@
         <include name="mps-behavior-runtime.jar" />
         <include name="mps-persistence.jar" />
         <include name="ant-mps.jar" />
+        <include name="mps-core.jar" />
         <include name="to-be-imported/*.jar" />
       </fileset>
     </copy>
@@ -12122,7 +12120,11 @@
     <mkdir dir="${build.tmp}/java/out/platform" />
     <javac2 destdir="${build.tmp}/java/out/platform" fork="false" encoding="utf8" includeantruntime="false" debug="true">
       <compilerarg value="-Xlint:none" />
-      <src path="${mps_home}/core/platform/source" />
+      <src>
+        <pathelement path="${mps_home}/core/platform/source" />
+        <pathelement path="${mps_home}/core/platform/src-reduced" />
+        <pathelement path="${mps_home}/core/platform/src-full" />
+      </src>
       <classpath>
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-persistence.jar" />
         <pathelement path="${build.tmp}/java/out/mps-generator" />
@@ -12160,6 +12162,8 @@
     </javac2>
     <copy todir="${build.tmp}/java/out/platform">
       <fileset dir="${mps_home}/core/platform/source" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, META-INF/services/**/*" />
+      <fileset dir="${mps_home}/core/platform/src-reduced" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, META-INF/services/**/*" />
+      <fileset dir="${mps_home}/core/platform/src-full" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, META-INF/services/**/*" />
     </copy>
   </target>
   

@@ -268,12 +268,9 @@
             <node concept="3uibUv" id="Y1BBlvzKRj" role="1tU5fm">
               <ref role="3uigEE" to="4o98:~Platform" resolve="Platform" />
             </node>
-            <node concept="2YIFZM" id="Y1BBlvzKSI" role="33vP2m">
-              <ref role="37wK5l" to="4o98:~PlatformFactory.initPlatform(jetbrains.mps.core.platform.PlatformOptionsBuilder)" resolve="initPlatform" />
-              <ref role="1Pybhc" to="4o98:~PlatformFactory" resolve="PlatformFactory" />
-              <node concept="Rm8GO" id="Y1BBlvzKW8" role="37wK5m">
-                <ref role="Rm8GQ" to="4o98:~PlatformOptionsBuilder.PERSISTENCE" resolve="PERSISTENCE" />
-                <ref role="1Px2BO" to="4o98:~PlatformOptionsBuilder" resolve="PlatformOptionsBuilder" />
+            <node concept="2ShNRf" id="4Iy92RV1m41" role="33vP2m">
+              <node concept="1pGfFk" id="4Iy92RV1qEK" role="2ShVmc">
+                <ref role="37wK5l" to="4o98:~PersistenceOnlyPlatform.&lt;init&gt;()" resolve="PersistenceOnlyPlatform" />
               </node>
             </node>
           </node>

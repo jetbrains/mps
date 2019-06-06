@@ -14265,27 +14265,6 @@
             <node concept="2VaTKw" id="g0fHFWtBzC" role="3bNrri">
               <ref role="2VaTKx" node="2coTtJvKlfj" resolve="default" />
             </node>
-            <node concept="2Vbh7Z" id="5mxyaMf$njU" role="2VaTZU">
-              <node concept="2pNNFK" id="5mxyaMf$njV" role="2Vbh7K">
-                <property role="2pNNFO" value="jar" />
-                <node concept="2pNNFK" id="4LrmwrD9Psy" role="3o6s8t">
-                  <property role="qg3DV" value="true" />
-                  <property role="2pNNFO" value="fileset" />
-                  <node concept="2pNUuL" id="4LrmwrD9Psz" role="2pNNFR">
-                    <property role="2pNUuO" value="dir" />
-                    <node concept="2pMdtt" id="4LrmwrD9Ps$" role="2pMdts">
-                      <property role="2pMdty" value="${build.tmp}/java/out/platform" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="2pNUuL" id="5mxyaMf$nk2" role="2pNNFR">
-                  <property role="2pNUuO" value="destfile" />
-                  <node concept="2pMdtt" id="5mxyaMf$nk3" role="2pMdts">
-                    <property role="2pMdty" value="${build.tmp}/antTasks/mps-core.jar" />
-                  </node>
-                </node>
-              </node>
-            </node>
             <node concept="2Vbh7Z" id="g0fHFWroM0" role="2VaTZU">
               <node concept="2pNNFK" id="g0fHFWroM1" role="2Vbh7K">
                 <property role="2pNNFO" value="jar" />
@@ -14446,6 +14425,16 @@
                       <property role="2pNUuO" value="name" />
                       <node concept="2pMdtt" id="3N2WdVixW2d" role="2pMdts">
                         <property role="2pMdty" value="ant-mps.jar" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="2pNNFK" id="4Iy92RV1ryp" role="3o6s8t">
+                    <property role="2pNNFO" value="include" />
+                    <property role="qg3DV" value="true" />
+                    <node concept="2pNUuL" id="4Iy92RV1ryq" role="2pNNFR">
+                      <property role="2pNUuO" value="name" />
+                      <node concept="2pMdtt" id="4Iy92RV1ryr" role="2pMdts">
+                        <property role="2pMdty" value="mps-core.jar" />
                       </node>
                     </node>
                   </node>
