@@ -171,6 +171,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.CheckNodeDataflow:
         if (props_CheckNodeDataflow == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.deprecated(true);
           cpb.rawPresentation("check node dataflow");
           props_CheckNodeDataflow = cpb.create();
         }
