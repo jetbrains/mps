@@ -821,6 +821,22 @@
         </node>
         <node concept="3clFbJ" id="1PHXAu1q4sS" role="3cqZAp">
           <node concept="3clFbS" id="1PHXAu1q4sT" role="3clFbx">
+            <node concept="3cpWs8" id="2xO1A76t1EM" role="3cqZAp">
+              <node concept="3cpWsn" id="2xO1A76t1EN" role="3cpWs9">
+                <property role="TrG5h" value="breakingNode" />
+                <node concept="3uibUv" id="2xO1A76sPPt" role="1tU5fm">
+                  <ref role="3uigEE" to="mhbf:~SNodeReference" resolve="SNodeReference" />
+                </node>
+                <node concept="2OqwBi" id="2xO1A76t1EO" role="33vP2m">
+                  <node concept="37vLTw" id="2xO1A76t1EP" role="2Oq$k0">
+                    <ref role="3cqZAo" node="1PHXAu1q3ut" resolve="context" />
+                  </node>
+                  <node concept="liA8E" id="2xO1A76t1EQ" role="2OqNvi">
+                    <ref role="37wK5l" to="bzg8:~CheckingNodeContextImpl.getBreakingNode()" resolve="getBreakingNode" />
+                  </node>
+                </node>
+              </node>
+            </node>
             <node concept="3clFbF" id="1PHXAu1q4sZ" role="3cqZAp">
               <node concept="2OqwBi" id="1PHXAu1q4t0" role="3clFbG">
                 <node concept="37vLTw" id="1PHXAu1q4t1" role="2Oq$k0">
@@ -832,15 +848,19 @@
                     <node concept="37vLTw" id="1PHXAu1q61R" role="2SgG2M">
                       <ref role="3cqZAo" node="1PHXAu1q5xB" resolve="reportItem" />
                     </node>
-                    <node concept="2ShNRf" id="1PHXAu1qcyK" role="2SgHGx">
-                      <node concept="1pGfFk" id="1PHXAu1qcZO" role="2ShVmc">
-                        <ref role="37wK5l" to="d6hs:~RuleIdFlavouredItem$TypesystemRuleId.&lt;init&gt;(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="RuleIdFlavouredItem.TypesystemRuleId" />
-                        <node concept="2OqwBi" id="1PHXAu1q57f" role="37wK5m">
-                          <node concept="37vLTw" id="1PHXAu1q4VF" role="2Oq$k0">
-                            <ref role="3cqZAo" node="1PHXAu1q3ut" resolve="context" />
-                          </node>
-                          <node concept="liA8E" id="1PHXAu1q5n4" role="2OqNvi">
-                            <ref role="37wK5l" to="bzg8:~CheckingNodeContextImpl.getBreakingNode()" resolve="getBreakingNode" />
+                    <node concept="3K4zz7" id="2xO1A76t246" role="2SgHGx">
+                      <node concept="10Nm6u" id="2xO1A76tpaf" role="3K4E3e" />
+                      <node concept="3clFbC" id="2xO1A76t1UB" role="3K4Cdx">
+                        <node concept="10Nm6u" id="2xO1A76t22a" role="3uHU7w" />
+                        <node concept="37vLTw" id="2xO1A76t1Mg" role="3uHU7B">
+                          <ref role="3cqZAo" node="2xO1A76t1EN" resolve="breakingNode" />
+                        </node>
+                      </node>
+                      <node concept="2ShNRf" id="1PHXAu1qcyK" role="3K4GZi">
+                        <node concept="1pGfFk" id="1PHXAu1qcZO" role="2ShVmc">
+                          <ref role="37wK5l" to="d6hs:~RuleIdFlavouredItem$TypesystemRuleId.&lt;init&gt;(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="RuleIdFlavouredItem.TypesystemRuleId" />
+                          <node concept="37vLTw" id="2xO1A76t1ER" role="37wK5m">
+                            <ref role="3cqZAo" node="2xO1A76t1EN" resolve="breakingNode" />
                           </node>
                         </node>
                       </node>

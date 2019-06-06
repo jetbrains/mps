@@ -9,6 +9,7 @@ import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.smodel.runtime.CheckingNodeContext;
 import jetbrains.mps.errors.item.RuleIdFlavouredItem;
 import jetbrains.mps.smodel.runtime.impl.CheckingNodeContextImpl;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -43,7 +44,8 @@ public class ConstraintsChecker extends AbstractNodeCheckerInEditor implements I
       }
     });
     if (!(success)) {
-      errorsCollector.addError(reportItem.invoke(new RuleIdFlavouredItem.TypesystemRuleId(context.getBreakingNode())));
+      SNodeReference breakingNode = context.getBreakingNode();
+      errorsCollector.addError(reportItem.invoke((breakingNode == null ? null : new RuleIdFlavouredItem.TypesystemRuleId(breakingNode))));
     }
   }
   @Override
