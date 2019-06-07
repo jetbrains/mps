@@ -28,8 +28,12 @@ public class UnreachableStatements_Test extends BaseTransformationTest {
   }
 
   @Test
-  public void test_NodeUnusedVariableWarningCheck6923385624929494062() throws Throwable {
-    new UnreachableStatements_Test.TestBody(this).test_NodeUnusedVariableWarningCheck6923385624929494062();
+  public void test_NodeUnusedLocalVariableCheck5924873649943434426() throws Throwable {
+    new UnreachableStatements_Test.TestBody(this).test_NodeUnusedLocalVariableCheck5924873649943434426();
+  }
+  @Test
+  public void test_NodeUnusedVariableWarningCheck5924873649943434428() throws Throwable {
+    new UnreachableStatements_Test.TestBody(this).test_NodeUnusedVariableWarningCheck5924873649943434428();
   }
   @Test
   public void test_NodeUnreachableNodeErrorCheck6923385624927474426() throws Throwable {
@@ -111,8 +115,12 @@ public class UnreachableStatements_Test extends BaseTransformationTest {
     }
 
 
-    public void test_NodeUnusedVariableWarningCheck6923385624929494062() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("6923385624929494062"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
+    public void test_NodeUnusedLocalVariableCheck5924873649943434426() throws Exception {
+      SNode operation = SNodeOperations.cast(getRealNodeById("5924873649943434426"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
+      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("3951985765451236689"));
+    }
+    public void test_NodeUnusedVariableWarningCheck5924873649943434428() throws Exception {
+      SNode operation = SNodeOperations.cast(getRealNodeById("5924873649943434428"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
       INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("3951985765451236689"));
     }
     public void test_NodeUnreachableNodeErrorCheck6923385624927474426() throws Exception {

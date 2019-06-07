@@ -449,6 +449,10 @@
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
+      <concept id="4222318806802425298" name="jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation" flags="ng" index="15s5l7">
+        <property id="8575328350543493365" name="message" index="huDt6" />
+        <property id="2423417345669755629" name="filter" index="1eyWvh" />
+      </concept>
     </language>
     <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
       <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
@@ -12939,6 +12943,10 @@
                                       </node>
                                     </node>
                                   </node>
+                                  <node concept="15s5l7" id="1wGlIQ7ycqg" role="lGtFl">
+                                    <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;typesystem (typesystem)&quot;;FLAVOUR_MESSAGE=&quot;Error: type jetbrains.mps.errors.item.NodeReportItem is not a subtype of ? super ? super NodeReportItem&quot;;FLAVOUR_RULE_ID=&quot;[r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)/4660288602099522921]&quot;;" />
+                                    <property role="huDt6" value="Error: type jetbrains.mps.errors.item.NodeReportItem is not a subtype of ? super ? super NodeReportItem" />
+                                  </node>
                                 </node>
                               </node>
                               <node concept="1Wc70l" id="x6gRTxwpI1" role="3clFbw">
@@ -12998,6 +13006,10 @@
               </node>
             </node>
           </node>
+          <node concept="15s5l7" id="1wGlIQ7ybqE" role="lGtFl">
+            <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;typesystem (typesystem)&quot;;FLAVOUR_MESSAGE=&quot;Error: The type ? super NodeReportItem is not a valid substitute for the bounded parameter I&quot;;FLAVOUR_RULE_ID=&quot;[r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)/6871159928248660343]&quot;;" />
+            <property role="huDt6" value="Error: The type ? super NodeReportItem is not a valid substitute for the bounded parameter I" />
+          </node>
         </node>
       </node>
     </node>
@@ -13038,6 +13050,10 @@
         </node>
       </node>
       <node concept="3cqZAl" id="x6gRTxw8Xp" role="3clF45" />
+      <node concept="15s5l7" id="1wGlIQ7zPBY" role="lGtFl">
+        <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;typesystem (typesystem)&quot;;FLAVOUR_MESSAGE=&quot;Error: The type ? super @ICheckingPostprocessor.I extends IssueKindReportItem is not a valid substitute for the bounded parameter I&quot;;FLAVOUR_RULE_ID=&quot;[r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)/6871159928248660343]&quot;;" />
+        <property role="huDt6" value="Error: The type ? super @ICheckingPostprocessor.I extends IssueKindReportItem is not a valid substitute for the bounded parameter I" />
+      </node>
     </node>
     <node concept="2tJIrI" id="4c7y4qc4UQR" role="jymVt" />
     <node concept="3Tm1VV" id="4c7y4qc4piT" role="1B3o_S" />

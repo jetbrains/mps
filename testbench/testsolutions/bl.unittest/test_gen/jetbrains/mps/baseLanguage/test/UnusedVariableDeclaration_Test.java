@@ -36,8 +36,12 @@ public class UnusedVariableDeclaration_Test extends BaseTransformationTest {
     new UnusedVariableDeclaration_Test.TestBody(this).test_ErrorMessagesCheck5684597377559856228();
   }
   @Test
-  public void test_NodeUnusedVariableWarningCheck6923385624927220340() throws Throwable {
-    new UnusedVariableDeclaration_Test.TestBody(this).test_NodeUnusedVariableWarningCheck6923385624927220340();
+  public void test_NodeUnusedLocalVariableCheck5924873649943649973() throws Throwable {
+    new UnusedVariableDeclaration_Test.TestBody(this).test_NodeUnusedLocalVariableCheck5924873649943649973();
+  }
+  @Test
+  public void test_NodeUnusedVariableWarningCheck5924873649943649975() throws Throwable {
+    new UnusedVariableDeclaration_Test.TestBody(this).test_NodeUnusedVariableWarningCheck5924873649943649975();
   }
   @Test
   public void test_NodeUnusedVariableWarningCheck6923385624927360820() throws Throwable {
@@ -62,8 +66,12 @@ public class UnusedVariableDeclaration_Test extends BaseTransformationTest {
       SNode operation = SNodeOperations.cast(getRealNodeById("5684597377559856228"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
       INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("1216889573145"));
     }
-    public void test_NodeUnusedVariableWarningCheck6923385624927220340() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("6923385624927220340"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
+    public void test_NodeUnusedLocalVariableCheck5924873649943649973() throws Exception {
+      SNode operation = SNodeOperations.cast(getRealNodeById("5924873649943649973"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
+      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("3951985765451228026"));
+    }
+    public void test_NodeUnusedVariableWarningCheck5924873649943649975() throws Exception {
+      SNode operation = SNodeOperations.cast(getRealNodeById("5924873649943649975"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
       INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("3951985765451228026"));
     }
     public void test_NodeUnusedVariableWarningCheck6923385624927360820() throws Exception {
