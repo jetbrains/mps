@@ -53,7 +53,7 @@
   </path>
   
   <path id="path.mps.ant.path">
-    <pathelement location="${build.tmp}/antTasks/ant-mps.jar" />
+    <pathelement location="${artifacts.mpsTrueBootstrap}/ant-mps.jar" />
     <pathelement location="${artifacts.IDEA}/lib/jdom.jar" />
     <pathelement location="${artifacts.IDEA}/lib/log4j.jar" />
   </path>
@@ -11358,30 +11358,7 @@
     </generate>
   </target>
   
-  <target name="declare-mps-tasks" depends="classes">
-    <jar destfile="${build.tmp}/antTasks/mps-tool.jar">
-      <fileset dir="${build.tmp}/java/out/mps-tool" />
-    </jar>
-    <copy todir="${build.tmp}/antTasks/">
-      <!--These are hardcoded locations of jars built in the project mpsBootstrapCore depends from-->
-      <!--FIXME need better mechanism to deal with that-->
-      <fileset dir="${artifacts.mpsTrueBootstrap}">
-        <include name="mps-tuples.jar" />
-        <include name="mps-references.jar" />
-        <include name="mps-closures.jar" />
-        <include name="mps-collections.jar" />
-        <include name="mps-logging.jar" />
-        <include name="mps-messaging.jar" />
-        <include name="mps-annotations.jar" />
-        <include name="mps-openapi.jar" />
-        <include name="mps-behavior-api.jar" />
-        <include name="mps-behavior-runtime.jar" />
-        <include name="mps-persistence.jar" />
-        <include name="ant-mps.jar" />
-        <include name="mps-core.jar" />
-        <include name="to-be-imported/*.jar" />
-      </fileset>
-    </copy>
+  <target name="declare-mps-tasks">
     <taskdef resource="jetbrains/mps/build/ant/antlib.xml" classpathref="path.mps.ant.path" />
   </target>
   

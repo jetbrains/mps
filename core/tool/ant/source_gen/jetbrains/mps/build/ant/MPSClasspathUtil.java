@@ -21,22 +21,17 @@ public class MPSClasspathUtil {
   private static final String PROTOCOL_DELIMITER = ":";
 
 
+  /**
+   * This method is solely for use in bootstrap scenario (building mps modules in mpsBootstrapCore project), where we assume all relevant jars to 
+   * reside next to ant-mps.jar that hosts this class. It's mpsTrueBootstrap project that builds java modules and its layout we are going to treat as classpath here.
+   */
   private static File getAntJARRelativeHome() {
     String containingJar = getAntMPSJar();
     if (!(containingJar.toLowerCase().endsWith(".jar"))) {
       throw new BuildException("cannot detect jar location: got `" + containingJar + "'");
     }
-    File current = new File(containingJar);
-    for (int i = 0; i < 3; i++) {
-      current = current.getParentFile();
-      if (current == null) {
-        throw new BuildException("cannot detect jar location, no parent: got `" + containingJar + "'");
-      }
-      if (new File(current, "mps-core.jar").isFile()) {
-        return current;
-      }
-    }
-    throw new BuildException("cannot detect jar location, no mps-core.jar `" + containingJar + "'");
+    // for bootstrap purposes, assume all relevant libraries are next to ant-mps.jar  
+    return new File(containingJar).getParentFile();
   }
 
   @NotNull
@@ -151,11 +146,9 @@ public class MPSClasspathUtil {
       // bootstrap hack. mpsBootstrapCore uses ant tasks defined in the jars it is about to compile/assemble. 
       // In particular, it's copyModels in <assemble> task that needs to start MPS in-process at PERSISTENCE level. 
       roots.add(new File(project.resolveFile(ideaHome).getPath(), "lib"));
-      // FIXME here, we assume weave_Tasks jars respective core classes under antTasks/ as it used to do. However, 
-      // FIXME I intend to change this so that there's no need to have custom handling both in mpsBootstrapCore.xml and here. 
-      // FWIW, the only assumption this code has about jars weave_Tasks generate for this case is that there's mps-core.jar somewhere up 3 
-      //       directories from ant-mps.jar (the one holding MPSClasspathUtil.class), see #getAntJARRelativeHome 
-      roots.add(getAntJARRelativeHome());
+      File antJarsHome = getAntJARRelativeHome();
+      project.log("Bootstrap jar location: " + antJarsHome);
+      roots.add(antJarsHome);
     } else if ((mpsStandaloneHome != null && mpsStandaloneHome.length() > 0)) {
       // pretty much identical to artifacts.mps, reduced set of modules for standalone applications 
       roots.add(new File(project.resolveFile(mpsStandaloneHome).getPath(), "lib"));

@@ -6795,11 +6795,47 @@
             </node>
           </node>
         </node>
-        <node concept="3cpWs8" id="6NgXkpBM7RA" role="3cqZAp">
-          <node concept="3cpWsn" id="6NgXkpBM7R_" role="3cpWs9">
-            <property role="TrG5h" value="current" />
-            <property role="3TUv4t" value="false" />
-            <node concept="2ShNRf" id="6NgXkpBM7Sq" role="33vP2m">
+        <node concept="3SKdUt" id="21I$vcvSSa5" role="3cqZAp">
+          <node concept="1PaTwC" id="21I$vcvSSa6" role="3ndbpf">
+            <node concept="3oM_SD" id="21I$vcvSSnw" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="21I$vcvSSpI" role="1PaTwD">
+              <property role="3oM_SC" value="bootstrap" />
+            </node>
+            <node concept="3oM_SD" id="21I$vcvSSpT" role="1PaTwD">
+              <property role="3oM_SC" value="purposes," />
+            </node>
+            <node concept="3oM_SD" id="21I$vcvSSqd" role="1PaTwD">
+              <property role="3oM_SC" value="assume" />
+            </node>
+            <node concept="3oM_SD" id="21I$vcvSSny" role="1PaTwD">
+              <property role="3oM_SC" value="all" />
+            </node>
+            <node concept="3oM_SD" id="21I$vcvSSn_" role="1PaTwD">
+              <property role="3oM_SC" value="relevant" />
+            </node>
+            <node concept="3oM_SD" id="21I$vcvSSnT" role="1PaTwD">
+              <property role="3oM_SC" value="libraries" />
+            </node>
+            <node concept="3oM_SD" id="21I$vcvSSo6" role="1PaTwD">
+              <property role="3oM_SC" value="are" />
+            </node>
+            <node concept="3oM_SD" id="21I$vcvSSoc" role="1PaTwD">
+              <property role="3oM_SC" value="next" />
+            </node>
+            <node concept="3oM_SD" id="21I$vcvSSor" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="21I$vcvSSoz" role="1PaTwD">
+              <property role="3oM_SC" value="ant-mps.jar" />
+            </node>
+            <node concept="3oM_SD" id="21I$vcvSSpk" role="1PaTwD" />
+          </node>
+        </node>
+        <node concept="3cpWs6" id="21I$vcvSPUr" role="3cqZAp">
+          <node concept="2OqwBi" id="21I$vcvSQV8" role="3cqZAk">
+            <node concept="2ShNRf" id="6NgXkpBM7Sq" role="2Oq$k0">
               <node concept="1pGfFk" id="6NgXkpBM7Sr" role="2ShVmc">
                 <ref role="37wK5l" to="guwi:~File.&lt;init&gt;(java.lang.String)" resolve="File" />
                 <node concept="37vLTw" id="6NgXkpBM7RD" role="37wK5m">
@@ -6807,124 +6843,21 @@
                 </node>
               </node>
             </node>
-            <node concept="3uibUv" id="6NgXkpBM7RB" role="1tU5fm">
-              <ref role="3uigEE" to="guwi:~File" resolve="File" />
+            <node concept="liA8E" id="21I$vcvSRFu" role="2OqNvi">
+              <ref role="37wK5l" to="guwi:~File.getParentFile()" resolve="getParentFile" />
             </node>
           </node>
         </node>
-        <node concept="1Dw8fO" id="6NgXkpBM7RE" role="3cqZAp">
-          <node concept="3cpWsn" id="6NgXkpBM7RF" role="1Duv9x">
-            <property role="TrG5h" value="i" />
-            <property role="3TUv4t" value="false" />
-            <node concept="10Oyi0" id="6NgXkpBM7RH" role="1tU5fm" />
-            <node concept="3cmrfG" id="6NgXkpBM7RI" role="33vP2m">
-              <property role="3cmrfH" value="0" />
-            </node>
-          </node>
-          <node concept="3eOVzh" id="6NgXkpBM7RJ" role="1Dwp0S">
-            <node concept="37vLTw" id="6NgXkpBM7RK" role="3uHU7B">
-              <ref role="3cqZAo" node="6NgXkpBM7RF" resolve="i" />
-            </node>
-            <node concept="3cmrfG" id="6NgXkpBM7RL" role="3uHU7w">
-              <property role="3cmrfH" value="3" />
-            </node>
-          </node>
-          <node concept="3uNrnE" id="6NgXkpBM7RN" role="1Dwrff">
-            <node concept="37vLTw" id="6NgXkpBM7RO" role="2$L3a6">
-              <ref role="3cqZAo" node="6NgXkpBM7RF" resolve="i" />
-            </node>
-          </node>
-          <node concept="3clFbS" id="6NgXkpBM7RQ" role="2LFqv$">
-            <node concept="3clFbF" id="6NgXkpBM7RR" role="3cqZAp">
-              <node concept="37vLTI" id="6NgXkpBM7RS" role="3clFbG">
-                <node concept="2OqwBi" id="6NgXkpBM7Su" role="37vLTx">
-                  <node concept="37vLTw" id="6NgXkpBM7St" role="2Oq$k0">
-                    <ref role="3cqZAo" node="6NgXkpBM7R_" resolve="current" />
-                  </node>
-                  <node concept="liA8E" id="6NgXkpBM7Sv" role="2OqNvi">
-                    <ref role="37wK5l" to="guwi:~File.getParentFile()" resolve="getParentFile" />
-                  </node>
-                </node>
-                <node concept="37vLTw" id="6NgXkpBM7RT" role="37vLTJ">
-                  <ref role="3cqZAo" node="6NgXkpBM7R_" resolve="current" />
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbJ" id="6NgXkpBM7RW" role="3cqZAp">
-              <node concept="3clFbC" id="6NgXkpBM7RX" role="3clFbw">
-                <node concept="37vLTw" id="6NgXkpBM7RY" role="3uHU7B">
-                  <ref role="3cqZAo" node="6NgXkpBM7R_" resolve="current" />
-                </node>
-                <node concept="10Nm6u" id="6NgXkpBM7RZ" role="3uHU7w" />
-              </node>
-              <node concept="3clFbS" id="6NgXkpBM7S1" role="3clFbx">
-                <node concept="YS8fn" id="6NgXkpBM7S8" role="3cqZAp">
-                  <node concept="2ShNRf" id="6NgXkpBM7Sw" role="YScLw">
-                    <node concept="1pGfFk" id="6NgXkpBM7Sx" role="2ShVmc">
-                      <ref role="37wK5l" to="gola:~BuildException.&lt;init&gt;(java.lang.String)" resolve="BuildException" />
-                      <node concept="3cpWs3" id="6NgXkpBM7S3" role="37wK5m">
-                        <node concept="3cpWs3" id="6NgXkpBM7S4" role="3uHU7B">
-                          <node concept="Xl_RD" id="6NgXkpBM7S5" role="3uHU7B">
-                            <property role="Xl_RC" value="cannot detect jar location, no parent: got `" />
-                          </node>
-                          <node concept="37vLTw" id="6NgXkpBM7S6" role="3uHU7w">
-                            <ref role="3cqZAo" node="6NgXkpAOS2u" resolve="containingJar" />
-                          </node>
-                        </node>
-                        <node concept="Xl_RD" id="6NgXkpBM7S7" role="3uHU7w">
-                          <property role="Xl_RC" value="'" />
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbJ" id="6NgXkpBM7S9" role="3cqZAp">
-              <node concept="2OqwBi" id="6NgXkpBM7Sa" role="3clFbw">
-                <node concept="2ShNRf" id="6NgXkpBM7Sy" role="2Oq$k0">
-                  <node concept="1pGfFk" id="6NgXkpBM7Sz" role="2ShVmc">
-                    <ref role="37wK5l" to="guwi:~File.&lt;init&gt;(java.io.File,java.lang.String)" resolve="File" />
-                    <node concept="37vLTw" id="6NgXkpBM7Sc" role="37wK5m">
-                      <ref role="3cqZAo" node="6NgXkpBM7R_" resolve="current" />
-                    </node>
-                    <node concept="Xl_RD" id="6NgXkpBM7Sd" role="37wK5m">
-                      <property role="Xl_RC" value="mps-core.jar" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="liA8E" id="6NgXkpBM7Se" role="2OqNvi">
-                  <ref role="37wK5l" to="guwi:~File.isFile()" resolve="isFile" />
-                </node>
-              </node>
-              <node concept="3clFbS" id="6NgXkpBM7Sg" role="3clFbx">
-                <node concept="3cpWs6" id="6NgXkpBM7Sh" role="3cqZAp">
-                  <node concept="37vLTw" id="6NgXkpBM7Si" role="3cqZAk">
-                    <ref role="3cqZAo" node="6NgXkpBM7R_" resolve="current" />
-                  </node>
-                </node>
-              </node>
-            </node>
+      </node>
+      <node concept="P$JXv" id="21I$vcvSSLj" role="lGtFl">
+        <node concept="TZ5HA" id="21I$vcvSSLk" role="TZ5H$">
+          <node concept="1dT_AC" id="21I$vcvSSLl" role="1dT_Ay">
+            <property role="1dT_AB" value="This method is solely for use in bootstrap scenario (building mps modules in mpsBootstrapCore project), where we assume all relevant jars to " />
           </node>
         </node>
-        <node concept="YS8fn" id="6NgXkpBM7Sp" role="3cqZAp">
-          <node concept="2ShNRf" id="6NgXkpBM7S$" role="YScLw">
-            <node concept="1pGfFk" id="6NgXkpBM7S_" role="2ShVmc">
-              <ref role="37wK5l" to="gola:~BuildException.&lt;init&gt;(java.lang.String)" resolve="BuildException" />
-              <node concept="3cpWs3" id="6NgXkpBM7Sk" role="37wK5m">
-                <node concept="3cpWs3" id="6NgXkpBM7Sl" role="3uHU7B">
-                  <node concept="Xl_RD" id="6NgXkpBM7Sm" role="3uHU7B">
-                    <property role="Xl_RC" value="cannot detect jar location, no mps-core.jar `" />
-                  </node>
-                  <node concept="37vLTw" id="6NgXkpBM7Sn" role="3uHU7w">
-                    <ref role="3cqZAo" node="6NgXkpAOS2u" resolve="containingJar" />
-                  </node>
-                </node>
-                <node concept="Xl_RD" id="6NgXkpBM7So" role="3uHU7w">
-                  <property role="Xl_RC" value="'" />
-                </node>
-              </node>
-            </node>
+        <node concept="TZ5HA" id="21I$vcvSSUk" role="TZ5H$">
+          <node concept="1dT_AC" id="21I$vcvSSUl" role="1dT_Ay">
+            <property role="1dT_AB" value="reside next to ant-mps.jar that hosts this class. It's mpsTrueBootstrap project that builds java modules and its layout we are going to treat as classpath here." />
           </node>
         </node>
       </node>
@@ -8651,238 +8584,32 @@
                   </node>
                 </node>
               </node>
-              <node concept="3SKdUt" id="gQDJKN9p0J" role="3cqZAp">
-                <node concept="1PaTwC" id="ATZLwXo8eZ" role="3ndbpf">
-                  <node concept="3oM_SD" id="ATZLwXo8f0" role="1PaTwD">
-                    <property role="3oM_SC" value="FIXME" />
+              <node concept="3cpWs8" id="21I$vcvSSUO" role="3cqZAp">
+                <node concept="3cpWsn" id="21I$vcvSSUP" role="3cpWs9">
+                  <property role="TrG5h" value="antJarsHome" />
+                  <node concept="3uibUv" id="21I$vcvSSND" role="1tU5fm">
+                    <ref role="3uigEE" to="guwi:~File" resolve="File" />
                   </node>
-                  <node concept="3oM_SD" id="ATZLwXo8f1" role="1PaTwD">
-                    <property role="3oM_SC" value="here," />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8f2" role="1PaTwD">
-                    <property role="3oM_SC" value="we" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8f3" role="1PaTwD">
-                    <property role="3oM_SC" value="assume" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8f4" role="1PaTwD">
-                    <property role="3oM_SC" value="weave_Tasks" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8f5" role="1PaTwD">
-                    <property role="3oM_SC" value="jars" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8f6" role="1PaTwD">
-                    <property role="3oM_SC" value="respective" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8f7" role="1PaTwD">
-                    <property role="3oM_SC" value="core" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8f8" role="1PaTwD">
-                    <property role="3oM_SC" value="classes" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8f9" role="1PaTwD">
-                    <property role="3oM_SC" value="under" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8fa" role="1PaTwD">
-                    <property role="3oM_SC" value="antTasks/" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8fb" role="1PaTwD">
-                    <property role="3oM_SC" value="as" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8fc" role="1PaTwD">
-                    <property role="3oM_SC" value="it" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8fd" role="1PaTwD">
-                    <property role="3oM_SC" value="used" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8fe" role="1PaTwD">
-                    <property role="3oM_SC" value="to" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8ff" role="1PaTwD">
-                    <property role="3oM_SC" value="do." />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8fg" role="1PaTwD">
-                    <property role="3oM_SC" value="However," />
+                  <node concept="1rXfSq" id="21I$vcvSSUQ" role="33vP2m">
+                    <ref role="37wK5l" node="3t7WP23QUGx" resolve="getAntJARRelativeHome" />
                   </node>
                 </node>
               </node>
-              <node concept="3SKdUt" id="gQDJKN9pc2" role="3cqZAp">
-                <node concept="1PaTwC" id="ATZLwXo8fh" role="3ndbpf">
-                  <node concept="3oM_SD" id="ATZLwXo8fi" role="1PaTwD">
-                    <property role="3oM_SC" value="FIXME" />
+              <node concept="3clFbF" id="21I$vcvSTFw" role="3cqZAp">
+                <node concept="2OqwBi" id="21I$vcvSTXo" role="3clFbG">
+                  <node concept="37vLTw" id="21I$vcvSTFu" role="2Oq$k0">
+                    <ref role="3cqZAo" node="vAjk0TI0RQ" resolve="project" />
                   </node>
-                  <node concept="3oM_SD" id="ATZLwXo8fj" role="1PaTwD">
-                    <property role="3oM_SC" value="I" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8fk" role="1PaTwD">
-                    <property role="3oM_SC" value="intend" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8fl" role="1PaTwD">
-                    <property role="3oM_SC" value="to" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8fm" role="1PaTwD">
-                    <property role="3oM_SC" value="change" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8fn" role="1PaTwD">
-                    <property role="3oM_SC" value="this" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8fo" role="1PaTwD">
-                    <property role="3oM_SC" value="so" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8fp" role="1PaTwD">
-                    <property role="3oM_SC" value="that" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8fq" role="1PaTwD">
-                    <property role="3oM_SC" value="there's" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8fr" role="1PaTwD">
-                    <property role="3oM_SC" value="no" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8fs" role="1PaTwD">
-                    <property role="3oM_SC" value="need" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8ft" role="1PaTwD">
-                    <property role="3oM_SC" value="to" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8fu" role="1PaTwD">
-                    <property role="3oM_SC" value="have" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8fv" role="1PaTwD">
-                    <property role="3oM_SC" value="custom" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8fw" role="1PaTwD">
-                    <property role="3oM_SC" value="handling" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8fx" role="1PaTwD">
-                    <property role="3oM_SC" value="both" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8fy" role="1PaTwD">
-                    <property role="3oM_SC" value="in" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8fz" role="1PaTwD">
-                    <property role="3oM_SC" value="mpsBootstrapCore.xml" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8f$" role="1PaTwD">
-                    <property role="3oM_SC" value="and" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8f_" role="1PaTwD">
-                    <property role="3oM_SC" value="here." />
-                  </node>
-                </node>
-              </node>
-              <node concept="3SKdUt" id="1XAHtgEKzQd" role="3cqZAp">
-                <node concept="1PaTwC" id="ATZLwXo8fA" role="3ndbpf">
-                  <node concept="3oM_SD" id="ATZLwXo8fB" role="1PaTwD">
-                    <property role="3oM_SC" value="FWIW," />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8fC" role="1PaTwD">
-                    <property role="3oM_SC" value="the" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8fD" role="1PaTwD">
-                    <property role="3oM_SC" value="only" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8fE" role="1PaTwD">
-                    <property role="3oM_SC" value="assumption" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8fF" role="1PaTwD">
-                    <property role="3oM_SC" value="this" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8fG" role="1PaTwD">
-                    <property role="3oM_SC" value="code" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8fH" role="1PaTwD">
-                    <property role="3oM_SC" value="has" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8fI" role="1PaTwD">
-                    <property role="3oM_SC" value="about" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8fJ" role="1PaTwD">
-                    <property role="3oM_SC" value="jars" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8fK" role="1PaTwD">
-                    <property role="3oM_SC" value="weave_Tasks" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8fL" role="1PaTwD">
-                    <property role="3oM_SC" value="generate" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8fM" role="1PaTwD">
-                    <property role="3oM_SC" value="for" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8fN" role="1PaTwD">
-                    <property role="3oM_SC" value="this" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8fO" role="1PaTwD">
-                    <property role="3oM_SC" value="case" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8fP" role="1PaTwD">
-                    <property role="3oM_SC" value="is" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8fQ" role="1PaTwD">
-                    <property role="3oM_SC" value="that" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8fR" role="1PaTwD">
-                    <property role="3oM_SC" value="there's" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8fS" role="1PaTwD">
-                    <property role="3oM_SC" value="mps-core.jar" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8fT" role="1PaTwD">
-                    <property role="3oM_SC" value="somewhere" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8fU" role="1PaTwD">
-                    <property role="3oM_SC" value="up" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8fV" role="1PaTwD">
-                    <property role="3oM_SC" value="3" />
-                  </node>
-                </node>
-              </node>
-              <node concept="3SKdUt" id="1XAHtgEK$1z" role="3cqZAp">
-                <node concept="1PaTwC" id="ATZLwXo8fW" role="3ndbpf">
-                  <node concept="3oM_SD" id="ATZLwXo8fX" role="1PaTwD">
-                    <property role="3oM_SC" value="" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8fY" role="1PaTwD">
-                    <property role="3oM_SC" value="" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8fZ" role="1PaTwD">
-                    <property role="3oM_SC" value="" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8g0" role="1PaTwD">
-                    <property role="3oM_SC" value="" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8g1" role="1PaTwD">
-                    <property role="3oM_SC" value="" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8g2" role="1PaTwD">
-                    <property role="3oM_SC" value="" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8g3" role="1PaTwD">
-                    <property role="3oM_SC" value="directories" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8g4" role="1PaTwD">
-                    <property role="3oM_SC" value="from" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8g5" role="1PaTwD">
-                    <property role="3oM_SC" value="ant-mps.jar" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8g6" role="1PaTwD">
-                    <property role="3oM_SC" value="(the" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8g7" role="1PaTwD">
-                    <property role="3oM_SC" value="one" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8g8" role="1PaTwD">
-                    <property role="3oM_SC" value="holding" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8g9" role="1PaTwD">
-                    <property role="3oM_SC" value="MPSClasspathUtil.class)," />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8ga" role="1PaTwD">
-                    <property role="3oM_SC" value="see" />
-                  </node>
-                  <node concept="3oM_SD" id="ATZLwXo8gb" role="1PaTwD">
-                    <property role="3oM_SC" value="#getAntJARRelativeHome" />
+                  <node concept="liA8E" id="21I$vcvSU8B" role="2OqNvi">
+                    <ref role="37wK5l" to="gola:~Project.log(java.lang.String)" resolve="log" />
+                    <node concept="3cpWs3" id="21I$vcvSUEs" role="37wK5m">
+                      <node concept="37vLTw" id="21I$vcvSUHN" role="3uHU7w">
+                        <ref role="3cqZAo" node="21I$vcvSSUP" resolve="antJarsHome" />
+                      </node>
+                      <node concept="Xl_RD" id="21I$vcvSUwk" role="3uHU7B">
+                        <property role="Xl_RC" value="Bootstrap jar location: " />
+                      </node>
+                    </node>
                   </node>
                 </node>
               </node>
@@ -8893,8 +8620,8 @@
                   </node>
                   <node concept="liA8E" id="gQDJKN9n_4" role="2OqNvi">
                     <ref role="37wK5l" to="33ny:~List.add(java.lang.Object)" resolve="add" />
-                    <node concept="1rXfSq" id="gQDJKN9nSb" role="37wK5m">
-                      <ref role="37wK5l" node="3t7WP23QUGx" resolve="getAntJARRelativeHome" />
+                    <node concept="37vLTw" id="21I$vcvSSUR" role="37wK5m">
+                      <ref role="3cqZAo" node="21I$vcvSSUP" resolve="antJarsHome" />
                     </node>
                   </node>
                 </node>
