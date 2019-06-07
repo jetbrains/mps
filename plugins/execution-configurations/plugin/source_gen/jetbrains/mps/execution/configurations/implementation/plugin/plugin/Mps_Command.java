@@ -74,6 +74,13 @@ public class Mps_Command {
   }
 
   private static CommandPart getVmParameters(String virtualMachineParameters, @Nullable String settingsPath) {
+
+    // FIXME StartupUtil does not accessible during build, reuse it once possible 
+    if (!(System.getProperty("os.name").toLowerCase().startsWith("mac"))) {
+      // macOS reuses ports so there is no need to bind to another port 
+      virtualMachineParameters = "-Dide.httpsupport.internalPort=63321 " + virtualMachineParameters;
+    }
+
     if ((settingsPath != null && settingsPath.length() > 0)) {
       String configPath = new File(settingsPath, "config").getAbsolutePath();
       String systemPath = new File(settingsPath, "system").getAbsolutePath();

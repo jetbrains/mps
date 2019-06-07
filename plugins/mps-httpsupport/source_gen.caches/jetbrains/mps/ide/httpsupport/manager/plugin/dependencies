@@ -40,9 +40,16 @@
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
   </dependency>
   <dependency className="jetbrains.mps.ide.httpsupport.manager.plugin.MPSIntegrationPortManager">
+    <classNode dependClassName="java.io.IOException" />
     <classNode dependClassName="java.lang.Exception" />
     <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.net.BindException" />
+    <classNode dependClassName="java.net.InetSocketAddress" />
+    <classNode dependClassName="java.net.ServerSocket" />
     <classNode dependClassName="jetbrains.mps.ide.httpsupport.manager.plugin.HttpSupportPluginNotifications" />
+    <classNode dependClassName="org.apache.log4j.Level" />
+    <classNode dependClassName="org.apache.log4j.LogManager" />
+    <classNode dependClassName="org.apache.log4j.Logger" />
     <classNode extendsClassName="org.jetbrains.io.CustomPortServerManagerBase" />
   </dependency>
   <dependency className="jetbrains.mps.ide.httpsupport.manager.plugin.MPSInternalPortManager">
