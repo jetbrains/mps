@@ -7,7 +7,7 @@ import com.intellij.openapi.util.registry.Registry;
 
 public class MPSInternalPortManager extends CustomPortServerManagerBase {
 
-  public static final int PORT = Registry.intValue("ide.httpsupport.internalPort");
+  public static final int PORT = Registry.intValue("ide.httpsupport.internalPort", 63320);
 
   @Override
   public int getPort() {
