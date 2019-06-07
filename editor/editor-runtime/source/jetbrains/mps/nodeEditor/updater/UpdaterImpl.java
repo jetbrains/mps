@@ -29,6 +29,7 @@ import jetbrains.mps.openapi.editor.update.Updater;
 import jetbrains.mps.openapi.editor.update.UpdaterListener;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.smodel.event.SModelEvent;
+import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.typesystem.inference.TypeContextManager;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.util.WeakSet;
@@ -129,7 +130,11 @@ public class UpdaterImpl implements Updater {
     myUpdateSession = createUpdateSession(node, events);
     try {
       Pair<EditorCell, UpdateInfoIndex> result =
-          TypeContextManager.getInstance().runTypecheckingAction(myEditorComponent, () -> myUpdateSession.performUpdate());
+          TypecheckingFacade
+              .getFromContext()
+              .runWithSession(myEditorComponent.getTypecheckingSession(),
+                              () -> myUpdateSession.performUpdate());
+
       EditorCell rootCell = result.o1;
       myUpdateInfoIndex = result.o2;
       myModelListenersController.attachListeners(node, getRelatedNodes(rootCell), getRelatedRefTargets(rootCell));

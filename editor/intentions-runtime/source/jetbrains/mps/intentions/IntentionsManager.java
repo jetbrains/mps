@@ -221,7 +221,9 @@ public class IntentionsManager implements ApplicationComponent, PersistentStateC
     @NotNull
     public Collection<IntentionExecutableWithSNode> collect() {
       jetbrains.mps.openapi.editor.EditorComponent editorComponent = myEditorContext.getEditorComponent();
-      return TypeContextManager.getInstance().runTypecheckingAction((ITypeContextOwner) editorComponent, this::collect0);
+      return TypecheckingFacade
+                 .getFromContext()
+                 .runWithSession(((EditorComponent) editorComponent).getTypecheckingSession(), this::collect0);
     }
   }
 
