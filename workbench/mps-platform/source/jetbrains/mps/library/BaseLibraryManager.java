@@ -72,16 +72,16 @@ public abstract class BaseLibraryManager implements PersistentStateComponent<Lib
 
   public Library addLibrary(@NotNull String name) {
     Library library = new Library(name);
-    myLibraries.getLibraries().put(library.getName(), library);
+    myLibraryState.getLibraries().put(library.getName(), library);
     return library;
   }
 
   public void remove(Library l) {
-    myLibraries.getLibraries().remove(l.getName());
+    myLibraryState.getLibraries().remove(l.getName());
   }
 
   public Set<Library> getUILibraries() {
-    return new HashSet<>(myLibraries.getLibraries().values());
+    return new HashSet<>(myLibraryState.getLibraries().values());
   }
 
   //-------macro stuff
@@ -116,12 +116,12 @@ public abstract class BaseLibraryManager implements PersistentStateComponent<Lib
 
   //-------component stuff
 
-  private LibraryState myLibraries = new LibraryState();
+  private LibraryState myLibraryState = new LibraryState();
 
   @Override
   public LibraryState getState() {
     LibraryState result = new LibraryState();
-    for (Entry<String, Library> entry : myLibraries.getLibraries().entrySet()) {
+    for (Entry<String, Library> entry : myLibraryState.getLibraries().entrySet()) {
       result.getLibraries().put(entry.getKey(), addMacros(entry.getValue()));
     }
     return result;
@@ -129,7 +129,7 @@ public abstract class BaseLibraryManager implements PersistentStateComponent<Lib
 
   @Override
   public void loadState(@NotNull LibraryState state) {
-    myLibraries = removeMacros(state);
+    myLibraryState = removeMacros(state);
     myLibraryInitializer.update();
   }
 
