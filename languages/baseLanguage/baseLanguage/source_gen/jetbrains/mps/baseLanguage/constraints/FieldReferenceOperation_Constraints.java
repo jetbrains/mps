@@ -18,9 +18,8 @@ import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.typesystem.inference.TypeContextManager;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.typechecking.TypecheckingFacade;
+import java.util.function.Supplier;
 import jetbrains.mps.scope.EmptyScope;
 import jetbrains.mps.lang.scopes.runtime.NamedElementsScope;
 import jetbrains.mps.baseLanguage.scopes.Members;
@@ -51,8 +50,8 @@ public class FieldReferenceOperation_Constraints extends BaseConstraintsDescript
           public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
             // fields declared in hierarhy of class specified by left expression. only applicable to expressions of classifier-type 
             final SNode instance = SLinkOperations.getTarget(SNodeOperations.cast((((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode()))), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand"));
-            SNode instanceType = TypeContextManager.getInstance().runResolveAction(new Computable<SNode>() {
-              public SNode compute() {
+            SNode instanceType = TypecheckingFacade.getFromContext().runIsolated(new Supplier<SNode>() {
+              public SNode get() {
                 return TypecheckingFacade.getFromContext().getTypeOf(instance);
               }
             });

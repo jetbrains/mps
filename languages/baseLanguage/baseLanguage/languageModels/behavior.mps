@@ -47,7 +47,9 @@
     <import index="dush" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence(MPS.OpenAPI/)" />
     <import index="tp4f" ref="r:00000000-0000-4000-0000-011c89590373(jetbrains.mps.baseLanguage.classifiers.structure)" />
     <import index="zqge" ref="r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)" />
+    <import index="1ka" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typechecking(MPS.Core/)" />
     <import index="356a" ref="r:3b7ed80f-6cfd-45bc-b051-2f66c620dd27(jetbrains.mps.lang.traceable.structure)" implicit="true" />
+    <import index="ev0w" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typechecking.backend(MPS.Core/)" implicit="true" />
     <import index="bzl4" ref="r:9d0684e9-039f-4e88-b824-947b454f70f2(jetbrains.mps.baseLanguage.javadoc.behavior)" implicit="true" />
   </imports>
   <registry>
@@ -39861,14 +39863,14 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="3kV$hYp4sfb" role="3cqZAp">
-          <node concept="2OqwBi" id="3kV$hYp4sfL" role="3clFbG">
-            <node concept="2YIFZM" id="3kV$hYp4sfq" role="2Oq$k0">
-              <ref role="37wK5l" to="u78q:~TypeContextManager.getInstance()" resolve="getInstance" />
-              <ref role="1Pybhc" to="u78q:~TypeContextManager" resolve="TypeContextManager" />
+        <node concept="3clFbF" id="1mBwWO3C0qd" role="3cqZAp">
+          <node concept="2OqwBi" id="1mBwWO3C1o2" role="3clFbG">
+            <node concept="2YIFZM" id="1mBwWO3C19i" role="2Oq$k0">
+              <ref role="37wK5l" to="1ka:~TypecheckingFacade.getFromContext()" resolve="getFromContext" />
+              <ref role="1Pybhc" to="1ka:~TypecheckingFacade" resolve="TypecheckingFacade" />
             </node>
-            <node concept="liA8E" id="3kV$hYp4sfR" role="2OqNvi">
-              <ref role="37wK5l" to="u78q:~TypeContextManager.runResolveAction(jetbrains.mps.util.Computable)" resolve="runResolveAction" />
+            <node concept="liA8E" id="1mBwWO3C2yI" role="2OqNvi">
+              <ref role="37wK5l" to="ev0w:~TypecheckingSessionHandler.runIsolated(java.util.function.Supplier)" resolve="runIsolated" />
               <node concept="1bVj0M" id="3kV$hYp4sfS" role="37wK5m">
                 <node concept="3clFbS" id="3kV$hYp4sfT" role="1bW5cS">
                   <node concept="3clFbF" id="3kV$hYp4sfW" role="3cqZAp">

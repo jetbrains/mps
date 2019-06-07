@@ -37,8 +37,8 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.constraints.ModelConstraints;
 import jetbrains.mps.scope.ErrorScope;
-import jetbrains.mps.typesystem.inference.TypeContextManager;
-import jetbrains.mps.util.Computable;
+import jetbrains.mps.typechecking.TypecheckingFacade;
+import java.util.function.Supplier;
 import jetbrains.mps.internal.collections.runtime.IListSequence;
 import org.apache.log4j.Level;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
@@ -154,8 +154,8 @@ public class StubResolver {
         if (refScope instanceof ErrorScope) {
           continue;
         }
-        List<SNode> resolved = TypeContextManager.getInstance().runResolveAction(new Computable<IListSequence<SNode>>() {
-          public IListSequence<SNode> compute() {
+        List<SNode> resolved = TypecheckingFacade.getFromContext().runIsolated(new Supplier<IListSequence<SNode>>() {
+          public IListSequence<SNode> get() {
             return Sequence.fromIterable(refScope.getAvailableElements(null)).where(new IWhereFilter<SNode>() {
               public boolean accept(SNode n) {
                 return modelRef.equals(SModelOperations.getPointer(SNodeOperations.getModel(n))) && resolveInfo.equals(jetbrains.mps.util.SNodeOperations.getResolveInfo(n));

@@ -22,6 +22,8 @@
     <import index="l46t" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.compiler(MPS.Core/)" />
     <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
     <import index="u78q" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typesystem.inference(MPS.Core/)" />
+    <import index="1ka" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typechecking(MPS.Core/)" />
+    <import index="ev0w" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typechecking.backend(MPS.Core/)" implicit="true" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" implicit="true" />
   </imports>
   <registry>
@@ -2119,21 +2121,21 @@
             <node concept="3cpWsn" id="44Fw_CVecp6" role="3cpWs9">
               <property role="TrG5h" value="instanceType" />
               <node concept="3Tqbb2" id="44Fw_CVecoV" role="1tU5fm" />
-              <node concept="2OqwBi" id="44Fw_CVeDux" role="33vP2m">
-                <node concept="2YIFZM" id="44Fw_CVeDuy" role="2Oq$k0">
-                  <ref role="37wK5l" to="u78q:~TypeContextManager.getInstance()" resolve="getInstance" />
-                  <ref role="1Pybhc" to="u78q:~TypeContextManager" resolve="TypeContextManager" />
+              <node concept="2OqwBi" id="3oDoAYRBipE" role="33vP2m">
+                <node concept="2YIFZM" id="3oDoAYRBi5B" role="2Oq$k0">
+                  <ref role="37wK5l" to="1ka:~TypecheckingFacade.getFromContext()" resolve="getFromContext" />
+                  <ref role="1Pybhc" to="1ka:~TypecheckingFacade" resolve="TypecheckingFacade" />
                 </node>
-                <node concept="liA8E" id="44Fw_CVeDuz" role="2OqNvi">
-                  <ref role="37wK5l" to="u78q:~TypeContextManager.runResolveAction(jetbrains.mps.util.Computable)" resolve="runResolveAction" />
-                  <node concept="1bVj0M" id="44Fw_CVeDu$" role="37wK5m">
-                    <node concept="3clFbS" id="44Fw_CVeDu_" role="1bW5cS">
-                      <node concept="3clFbF" id="44Fw_CVeDuA" role="3cqZAp">
-                        <node concept="2OqwBi" id="44Fw_CVeDuB" role="3clFbG">
-                          <node concept="37vLTw" id="44Fw_CVeDuC" role="2Oq$k0">
+                <node concept="liA8E" id="3oDoAYRBiEt" role="2OqNvi">
+                  <ref role="37wK5l" to="ev0w:~TypecheckingSessionHandler.runIsolated(java.util.function.Supplier)" resolve="runIsolated" />
+                  <node concept="1bVj0M" id="3oDoAYRBiLj" role="37wK5m">
+                    <node concept="3clFbS" id="3oDoAYRBiLk" role="1bW5cS">
+                      <node concept="3clFbF" id="3oDoAYRBiLl" role="3cqZAp">
+                        <node concept="2OqwBi" id="3oDoAYRBiLm" role="3clFbG">
+                          <node concept="37vLTw" id="3oDoAYRBiLn" role="2Oq$k0">
                             <ref role="3cqZAo" node="5Vvmn_QkhF8" resolve="instance" />
                           </node>
-                          <node concept="3JvlWi" id="44Fw_CVeDuD" role="2OqNvi" />
+                          <node concept="3JvlWi" id="3oDoAYRBiLo" role="2OqNvi" />
                         </node>
                       </node>
                     </node>
@@ -2607,21 +2609,21 @@
             <node concept="3cpWsn" id="4QTAjAf5A3J" role="3cpWs9">
               <property role="TrG5h" value="instanceType" />
               <node concept="3Tqbb2" id="4QTAjAf5A3K" role="1tU5fm" />
-              <node concept="2OqwBi" id="4QTAjAf5A3L" role="33vP2m">
-                <node concept="2YIFZM" id="4QTAjAf5A3M" role="2Oq$k0">
-                  <ref role="1Pybhc" to="u78q:~TypeContextManager" resolve="TypeContextManager" />
-                  <ref role="37wK5l" to="u78q:~TypeContextManager.getInstance()" resolve="getInstance" />
+              <node concept="2OqwBi" id="3oDoAYRAUkd" role="33vP2m">
+                <node concept="2YIFZM" id="3oDoAYRAU0Z" role="2Oq$k0">
+                  <ref role="37wK5l" to="1ka:~TypecheckingFacade.getFromContext()" resolve="getFromContext" />
+                  <ref role="1Pybhc" to="1ka:~TypecheckingFacade" resolve="TypecheckingFacade" />
                 </node>
-                <node concept="liA8E" id="4QTAjAf5A3N" role="2OqNvi">
-                  <ref role="37wK5l" to="u78q:~TypeContextManager.runResolveAction(jetbrains.mps.util.Computable)" resolve="runResolveAction" />
-                  <node concept="1bVj0M" id="4QTAjAf5A3O" role="37wK5m">
-                    <node concept="3clFbS" id="4QTAjAf5A3P" role="1bW5cS">
-                      <node concept="3clFbF" id="4QTAjAf5A3Q" role="3cqZAp">
-                        <node concept="2OqwBi" id="4QTAjAf5A3R" role="3clFbG">
-                          <node concept="37vLTw" id="4QTAjAf5A3S" role="2Oq$k0">
+                <node concept="liA8E" id="3oDoAYRAUF_" role="2OqNvi">
+                  <ref role="37wK5l" to="ev0w:~TypecheckingSessionHandler.runIsolated(java.util.function.Supplier)" resolve="runIsolated" />
+                  <node concept="1bVj0M" id="3oDoAYRAULz" role="37wK5m">
+                    <node concept="3clFbS" id="3oDoAYRAUL$" role="1bW5cS">
+                      <node concept="3clFbF" id="3oDoAYRAUL_" role="3cqZAp">
+                        <node concept="2OqwBi" id="3oDoAYRAULA" role="3clFbG">
+                          <node concept="37vLTw" id="3oDoAYRAULB" role="2Oq$k0">
                             <ref role="3cqZAo" node="5Vvmn_QkhDU" resolve="instance" />
                           </node>
-                          <node concept="3JvlWi" id="4QTAjAf5A3T" role="2OqNvi" />
+                          <node concept="3JvlWi" id="3oDoAYRAULC" role="2OqNvi" />
                         </node>
                       </node>
                     </node>

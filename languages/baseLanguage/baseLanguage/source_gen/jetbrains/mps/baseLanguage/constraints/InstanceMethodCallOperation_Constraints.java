@@ -19,9 +19,8 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.scope.EmptyScope;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.typesystem.inference.TypeContextManager;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.typechecking.TypecheckingFacade;
+import java.util.function.Supplier;
 import jetbrains.mps.baseLanguage.scopes.MethodsScope;
 import jetbrains.mps.baseLanguage.scopes.Members;
 import java.util.HashMap;
@@ -54,8 +53,8 @@ public class InstanceMethodCallOperation_Constraints extends BaseConstraintsDesc
               return new EmptyScope();
             }
             final SNode instance = SLinkOperations.getTarget(SNodeOperations.cast(enclosingNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand"));
-            SNode instanceType = TypeContextManager.getInstance().runResolveAction(new Computable<SNode>() {
-              public SNode compute() {
+            SNode instanceType = TypecheckingFacade.getFromContext().runIsolated(new Supplier<SNode>() {
+              public SNode get() {
                 return TypecheckingFacade.getFromContext().getTypeOf(instance);
               }
             });

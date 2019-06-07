@@ -298,7 +298,7 @@
       <node id="2742102018362199401" at="150,54,151,19" concept="3" />
       <node id="6770603745029714855" at="152,9,153,62" concept="10" />
       <node id="2742102018362199415" at="154,45,155,19" concept="3" />
-      <node id="2742102018362199429" at="160,46,161,173" concept="11" />
+      <node id="3902758784054803154" at="160,46,161,173" concept="11" />
       <node id="3818729150937340651" at="167,46,168,136" concept="5" />
       <node id="2742102018362199469" at="171,59,172,107" concept="5" />
       <node id="2742102018362199480" at="172,107,173,62" concept="5" />
@@ -317,7 +317,7 @@
       <node id="8883975518329349205" at="134,70,137,9" concept="8" />
       <node id="2742102018362199392" at="149,71,152,9" concept="8" />
       <node id="2742102018362199410" at="153,62,156,9" concept="8" />
-      <node id="6770603745029716120" at="160,0,163,0" concept="9" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="3902758784054803152" at="160,0,163,0" concept="9" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="3818729150937340651" at="166,58,169,11" concept="8" />
       <node id="9073603541474867758" at="79,66,83,11" concept="8" />
       <node id="5778265495851109958" at="52,0,57,0" concept="2" trace="StubResolver#(Lorg/jetbrains/mps/openapi/module/SRepository;)V" />
@@ -326,10 +326,10 @@
       <node id="2354139374978876852" at="105,7,110,7" concept="5" />
       <node id="9073603541474871832" at="123,0,128,0" concept="9" trace="resolveInModels#(Ljava/util/List;)V" />
       <node id="9164503229271486526" at="133,7,138,7" concept="7" />
-      <node id="2742102018362199423" at="158,49,163,32" concept="11" />
+      <node id="3902758784054803144" at="158,45,163,32" concept="11" />
       <node id="2742102018362199448" at="165,11,170,9" concept="8" />
       <node id="2742102018362199467" at="170,9,176,9" concept="8" />
-      <node id="2742102018362199421" at="158,0,165,0" concept="9" trace="compute#()Ljetbrains/mps/internal/collections/runtime/IListSequence;" />
+      <node id="3902758784054803142" at="158,0,165,0" concept="9" trace="get#()Ljetbrains/mps/internal/collections/runtime/IListSequence;" />
       <node id="9073603541474867550" at="57,0,66,0" concept="2" trace="StubResolver#(Lorg/jetbrains/mps/openapi/module/SRepository;Ljava/lang/Iterable;)V" />
       <node id="2742102018362199416" at="156,9,165,11" concept="10" />
       <node id="3463858992625054800" at="77,54,87,9" concept="7" />
@@ -354,7 +354,7 @@
       <scope id="8883975518329349206" at="135,88,136,32" />
       <scope id="2742102018362199400" at="150,54,151,19" />
       <scope id="2742102018362199414" at="154,45,155,19" />
-      <scope id="6770603745029716121" at="160,46,161,173" />
+      <scope id="3902758784054803153" at="160,46,161,173" />
       <scope id="3818729150937340651" at="167,46,168,136" />
       <scope id="9073603541474867759" at="80,93,82,58" />
       <scope id="5778265495851109961" at="52,48,55,38" />
@@ -372,8 +372,8 @@
         <var name="model" id="2082194532791126334" />
       </scope>
       <scope id="9164503229271486529" at="134,70,137,9" />
-      <scope id="6770603745029716120" at="160,0,163,0">
-        <var name="n" id="6770603745029716120" />
+      <scope id="3902758784054803152" at="160,0,163,0">
+        <var name="n" id="3902758784054803152" />
       </scope>
       <scope id="2742102018362199454" at="166,58,169,11" />
       <scope id="2742102018362199468" at="171,59,175,23" />
@@ -386,9 +386,9 @@
       <scope id="9164503229271486526" at="133,7,138,7">
         <var name="model" id="9164503229271486527" />
       </scope>
-      <scope id="2742102018362199422" at="158,49,163,32" />
+      <scope id="3902758784054803143" at="158,45,163,32" />
       <scope id="9073603541474867553" at="57,73,64,38" />
-      <scope id="2742102018362199421" at="158,0,165,0" />
+      <scope id="3902758784054803142" at="158,0,165,0" />
       <scope id="3463858992625054803" at="78,111,86,16">
         <var name="modelRef" id="9073603541474867744" />
       </scope>
@@ -457,8 +457,8 @@
       <unit id="9073603541474867580" at="59,122,63,5" name="jetbrains.mps.java.platform.util.StubResolver$1" />
       <unit id="2354139374978876832" at="101,114,105,5" name="jetbrains.mps.java.platform.util.StubResolver$2" />
       <unit id="2354139374978876859" at="106,52,110,5" name="jetbrains.mps.java.platform.util.StubResolver$3" />
-      <unit id="6770603745029716120" at="159,88,163,13" name="jetbrains.mps.java.platform.util.StubResolver$4$1" />
-      <unit id="2742102018362199421" at="157,85,165,9" name="jetbrains.mps.java.platform.util.StubResolver$4" />
+      <unit id="3902758784054803152" at="159,88,163,13" name="jetbrains.mps.java.platform.util.StubResolver$4$1" />
+      <unit id="3902758784054803142" at="157,83,165,9" name="jetbrains.mps.java.platform.util.StubResolver$4" />
       <unit id="5778265495851109956" at="46,0,182,0" name="jetbrains.mps.java.platform.util.StubResolver" />
     </file>
   </root>

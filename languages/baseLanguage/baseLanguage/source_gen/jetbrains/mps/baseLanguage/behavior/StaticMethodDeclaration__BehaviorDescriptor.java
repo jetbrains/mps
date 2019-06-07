@@ -18,12 +18,11 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
-import jetbrains.mps.typesystem.inference.TypeContextManager;
-import jetbrains.mps.util.Computable;
+import jetbrains.mps.typechecking.TypecheckingFacade;
+import java.util.function.Supplier;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.baseLanguage.scopes.Signature;
 import jetbrains.mps.baseLanguage.scopes.MethodSignature;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -66,8 +65,8 @@ public final class StaticMethodDeclaration__BehaviorDescriptor extends BaseBHDes
     // if we do not use resolve action, type system would compute all types in the root 
     // while in resolve mode only types required for calculating typeof are computed 
     // the difference between two methods is very visible in main node selection in java run configuation () 
-    return TypeContextManager.getInstance().runResolveAction(new Computable<Boolean>() {
-      public Boolean compute() {
+    return TypecheckingFacade.getFromContext().runIsolated(new Supplier<Boolean>() {
+      public Boolean get() {
         return "main".equals(SPropertyOperations.getString(__thisNode__, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"))) && ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"))).count() == 1 && TypecheckingFacade.getFromContext().isStrongSubtype(TypecheckingFacade.getFromContext().getTypeOf(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"))).first()), _quotation_createNode_qyxuoz_b0a0a0a0a3a2());
       }
     });
