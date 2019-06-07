@@ -2211,6 +2211,11 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     return myMouseEventHandler != null;
   }
 
+  /**
+   * @deprecated use {@link EditorComponent#getTypecheckingSession()} to launch typechecking reusing the cached state.
+   * @return
+   */
+  @Deprecated
   @NotNull
   public ITypeContextOwner getTypecheckingContextOwner() {
     return this;
