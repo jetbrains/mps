@@ -26,8 +26,7 @@ import jetbrains.mps.openapi.editor.cells.EditorCell_Label;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
 import jetbrains.mps.openapi.editor.cells.SubstituteInfo;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.typesystem.inference.ITypeContextOwner;
-import jetbrains.mps.typesystem.inference.TypeContextManager;
+import jetbrains.mps.typechecking.TypecheckingFacade;
 import org.jetbrains.mps.openapi.language.SConceptFeature;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -78,11 +77,13 @@ public class APICellAdapter {
       return false;
     }
 
-    List<SubstituteAction> matchingActions = new ModelAccessHelper(cell.getContext().getRepository()).runReadAction(
-        () -> TypeContextManager.getInstance().runTypeCheckingComputation((ITypeContextOwner) cell.getEditorComponent(),
-                                                                          cell.getEditorComponent().getEditedNode(),
-                                                                          context -> substituteInfoWithPatternMatchingFilter.getMatchingActions(pattern,
-                                                                                                                                                strict)));
+    List<SubstituteAction> matchingActions =
+        new ModelAccessHelper(cell.getContext().getRepository())
+            .runReadAction(
+                () -> TypecheckingFacade
+                          .getFromContext()
+                          .runWithSession(((EditorComponent) cell.getEditorComponent()).getTypecheckingSession(),
+                                          () -> substituteInfoWithPatternMatchingFilter.getMatchingActions(pattern, strict)));
     return substituteIfPossible(cell, canActivatePopup, pattern, matchingActions);
   }
 
