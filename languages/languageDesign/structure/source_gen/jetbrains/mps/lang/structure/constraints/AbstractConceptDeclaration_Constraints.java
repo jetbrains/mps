@@ -15,16 +15,16 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
+import jetbrains.mps.smodel.runtime.base.BasePropertyConstraintsDescriptor;
+import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
+import jetbrains.mps.smodel.SNodePointer;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import java.util.UUID;
 import java.util.Map;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.runtime.PropertyConstraintsDescriptor;
 import java.util.HashMap;
-import jetbrains.mps.smodel.runtime.base.BasePropertyConstraintsDescriptor;
-import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import java.util.UUID;
-import jetbrains.mps.smodel.SNodePointer;
 
 public class AbstractConceptDeclaration_Constraints extends BaseConstraintsDescriptor {
   public AbstractConceptDeclaration_Constraints() {
@@ -49,62 +49,98 @@ public class AbstractConceptDeclaration_Constraints extends BaseConstraintsDescr
       }
     };
   }
+  public static class Name_Property extends BasePropertyConstraintsDescriptor {
+    public Name_Property(ConstraintsDescriptor container) {
+      super(MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), container);
+    }
+    @Override
+    public boolean hasOwnValidator() {
+      return true;
+    }
+    private static final SNodePointer validatePropertyBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c8959028c(jetbrains.mps.lang.structure.constraints)", "5115399642005557360");
+    @Override
+    public boolean validateValue(SNode node, String propertyValue, CheckingNodeContext checkingNodeContext) {
+      boolean result = staticValidateProperty(node, propertyValue);
+      if (!(result) && checkingNodeContext != null) {
+        checkingNodeContext.setBreakingNode(validatePropertyBreakingPoint);
+      }
+      return result;
+    }
+    private static boolean staticValidateProperty(SNode node, String propertyValue) {
+      return (SPropertyOperations.getString(propertyValue)).matches("[a-zA-Z[_]][a-zA-Z0-9$[_]]*");
+    }
+  }
+  public static class ConceptId_Property extends BasePropertyConstraintsDescriptor {
+    public ConceptId_Property(ConstraintsDescriptor container) {
+      super(MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x5d2e6079771f8cc0L, "conceptId"), container);
+    }
+    @Override
+    public boolean hasOwnValidator() {
+      return true;
+    }
+    private static final SNodePointer validatePropertyBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c8959028c(jetbrains.mps.lang.structure.constraints)", "6342519961666428205");
+    @Override
+    public boolean validateValue(SNode node, String propertyValue, CheckingNodeContext checkingNodeContext) {
+      boolean result = staticValidateProperty(node, propertyValue);
+      if (!(result) && checkingNodeContext != null) {
+        checkingNodeContext.setBreakingNode(validatePropertyBreakingPoint);
+      }
+      return result;
+    }
+    private static boolean staticValidateProperty(SNode node, String propertyValue) {
+      if (isEmptyString((SPropertyOperations.getString(propertyValue)))) {
+        return true;
+      }
+      try {
+        Long.parseLong((SPropertyOperations.getString(propertyValue)));
+        return true;
+      } catch (NumberFormatException e) {
+        return false;
+      }
+    }
+    private static boolean isEmptyString(String str) {
+      return str == null || str.length() == 0;
+    }
+  }
+  public static class LanguageId_Property extends BasePropertyConstraintsDescriptor {
+    public LanguageId_Property(ConstraintsDescriptor container) {
+      super(MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x7cf94884f2237423L, "languageId"), container);
+    }
+    @Override
+    public boolean hasOwnValidator() {
+      return true;
+    }
+    private static final SNodePointer validatePropertyBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c8959028c(jetbrains.mps.lang.structure.constraints)", "9005308665739310235");
+    @Override
+    public boolean validateValue(SNode node, String propertyValue, CheckingNodeContext checkingNodeContext) {
+      boolean result = staticValidateProperty(node, propertyValue);
+      if (!(result) && checkingNodeContext != null) {
+        checkingNodeContext.setBreakingNode(validatePropertyBreakingPoint);
+      }
+      return result;
+    }
+    private static boolean staticValidateProperty(SNode node, String propertyValue) {
+      if (isEmptyString((SPropertyOperations.getString(propertyValue)))) {
+        return true;
+      }
+      try {
+        UUID.fromString((SPropertyOperations.getString(propertyValue)));
+        return true;
+      } catch (NumberFormatException e) {
+        return false;
+      }
+    }
+    private static boolean isEmptyString(String str) {
+      return str == null || str.length() == 0;
+    }
+  }
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), new BasePropertyConstraintsDescriptor(MetaIdFactory.propId(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L), this) {
-      @Override
-      public boolean hasOwnValidator() {
-        return true;
-      }
-      @Override
-      public boolean validateValue(SNode node, String propertyValue) {
-        String propertyName = "name";
-        return (SPropertyOperations.getString(propertyValue)).matches("[a-zA-Z[_]][a-zA-Z0-9$[_]]*");
-      }
-    });
-    properties.put(MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x5d2e6079771f8cc0L, "conceptId"), new BasePropertyConstraintsDescriptor(MetaIdFactory.propId(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x5d2e6079771f8cc0L), this) {
-      @Override
-      public boolean hasOwnValidator() {
-        return true;
-      }
-      @Override
-      public boolean validateValue(SNode node, String propertyValue) {
-        String propertyName = "conceptId";
-        if (isEmptyString((SPropertyOperations.getString(propertyValue)))) {
-          return true;
-        }
-        try {
-          Long.parseLong((SPropertyOperations.getString(propertyValue)));
-          return true;
-        } catch (NumberFormatException e) {
-          return false;
-        }
-      }
-    });
-    properties.put(MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x7cf94884f2237423L, "languageId"), new BasePropertyConstraintsDescriptor(MetaIdFactory.propId(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x7cf94884f2237423L), this) {
-      @Override
-      public boolean hasOwnValidator() {
-        return true;
-      }
-      @Override
-      public boolean validateValue(SNode node, String propertyValue) {
-        String propertyName = "languageId";
-        if (isEmptyString((SPropertyOperations.getString(propertyValue)))) {
-          return true;
-        }
-        try {
-          UUID.fromString((SPropertyOperations.getString(propertyValue)));
-          return true;
-        } catch (NumberFormatException e) {
-          return false;
-        }
-      }
-    });
+    properties.put(MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), new AbstractConceptDeclaration_Constraints.Name_Property(this));
+    properties.put(MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x5d2e6079771f8cc0L, "conceptId"), new AbstractConceptDeclaration_Constraints.ConceptId_Property(this));
+    properties.put(MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x7cf94884f2237423L, "languageId"), new AbstractConceptDeclaration_Constraints.LanguageId_Property(this));
     return properties;
   }
   private static SNodePointer breakingNode_c1kwet_a0a0a0a0a0a0a0a2 = new SNodePointer("r:00000000-0000-4000-0000-011c8959028c(jetbrains.mps.lang.structure.constraints)", "6836281137582805233");
-  private static boolean isEmptyString(String str) {
-    return str == null || str.length() == 0;
-  }
 }

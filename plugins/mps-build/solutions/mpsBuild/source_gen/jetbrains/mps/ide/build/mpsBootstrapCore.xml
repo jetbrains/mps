@@ -35,7 +35,7 @@
   <path id="path.java.library.javac2">
     <fileset file="${mps_home}/lib/javac2.jar" />
   </path>
-
+  
   <path id="path.java.library.ecj">
     <fileset file="${artifacts.IDEA}/lib/ecj-4.10.jar" />
   </path>

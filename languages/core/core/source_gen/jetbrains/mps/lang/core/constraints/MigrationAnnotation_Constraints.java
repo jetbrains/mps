@@ -4,44 +4,57 @@ package jetbrains.mps.lang.core.constraints;
 
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.smodel.runtime.base.BasePropertyConstraintsDescriptor;
+import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
+import jetbrains.mps.smodel.SNodePointer;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.smodel.runtime.CheckingNodeContext;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import org.jetbrains.mps.openapi.language.SLanguage;
+import jetbrains.mps.smodel.adapter.ids.SLanguageId;
 import java.util.Map;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.runtime.PropertyConstraintsDescriptor;
 import java.util.HashMap;
-import jetbrains.mps.smodel.runtime.base.BasePropertyConstraintsDescriptor;
-import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import org.jetbrains.mps.openapi.language.SLanguage;
-import jetbrains.mps.smodel.adapter.ids.SLanguageId;
 
 public class MigrationAnnotation_Constraints extends BaseConstraintsDescriptor {
   public MigrationAnnotation_Constraints() {
     super(MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e13L, "jetbrains.mps.lang.core.structure.MigrationAnnotation"));
   }
 
+  public static class CreatedByScript_Property extends BasePropertyConstraintsDescriptor {
+    public CreatedByScript_Property(ConstraintsDescriptor container) {
+      super(MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e13L, 0x78c7e79625a38e14L, "createdByScript"), container);
+    }
+    @Override
+    public boolean hasOwnValidator() {
+      return true;
+    }
+    private static final SNodePointer validatePropertyBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c89590283(jetbrains.mps.lang.core.constraints)", "8703179436979151872");
+    @Override
+    public boolean validateValue(SNode node, String propertyValue, CheckingNodeContext checkingNodeContext) {
+      boolean result = staticValidateProperty(node, propertyValue);
+      if (!(result) && checkingNodeContext != null) {
+        checkingNodeContext.setBreakingNode(validatePropertyBreakingPoint);
+      }
+      return result;
+    }
+    private static boolean staticValidateProperty(SNode node, String propertyValue) {
+      try {
+        String migrationScriptReference = (SPropertyOperations.getString(propertyValue));
+        int version = Integer.parseInt(migrationScriptReference.substring(migrationScriptReference.indexOf('/') + 1));
+        int ix = migrationScriptReference.indexOf('(');
+        SLanguage language = MetaAdapterFactory.getLanguage(SLanguageId.deserialize(migrationScriptReference.substring(0, ix)), migrationScriptReference.substring(ix + 1, migrationScriptReference.indexOf(')', ix)));
+        return true;
+      } catch (IllegalArgumentException _) {
+        return false;
+      }
+    }
+  }
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e13L, 0x78c7e79625a38e14L, "createdByScript"), new BasePropertyConstraintsDescriptor(MetaIdFactory.propId(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e13L, 0x78c7e79625a38e14L), this) {
-      @Override
-      public boolean hasOwnValidator() {
-        return true;
-      }
-      @Override
-      public boolean validateValue(SNode node, String propertyValue) {
-        String propertyName = "createdByScript";
-        try {
-          String migrationScriptReference = (SPropertyOperations.getString(propertyValue));
-          int version = Integer.parseInt(migrationScriptReference.substring(migrationScriptReference.indexOf('/') + 1));
-          int ix = migrationScriptReference.indexOf('(');
-          SLanguage language = MetaAdapterFactory.getLanguage(SLanguageId.deserialize(migrationScriptReference.substring(0, ix)), migrationScriptReference.substring(ix + 1, migrationScriptReference.indexOf(')', ix)));
-          return true;
-        } catch (IllegalArgumentException _) {
-          return false;
-        }
-      }
-    });
+    properties.put(MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e13L, 0x78c7e79625a38e14L, "createdByScript"), new MigrationAnnotation_Constraints.CreatedByScript_Property(this));
     return properties;
   }
 }
