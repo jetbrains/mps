@@ -104,7 +104,7 @@ public class TestsErrorsChecker {
     Set<NodeReportItem> res = SetSequence.fromSetWithValues(new HashSet<NodeReportItem>(), SetSequence.fromSet(result).where(new IWhereFilter<NodeReportItem>() {
       public boolean accept(NodeReportItem it) {
         SNodeReference node = NodeReportItem.FLAVOUR_NODE.tryToGet(it);
-        return node == null || !(ErrorReportUtil.manuallySuppressed(node.resolve(repository)));
+        return node == null || !(ErrorReportUtil.manuallySuppressed(it, repository));
       }
     }));
     ourModelErrorsHolder.set(myRoot, res);

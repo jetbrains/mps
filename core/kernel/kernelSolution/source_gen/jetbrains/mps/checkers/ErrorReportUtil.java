@@ -19,6 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.internal.collections.runtime.ITranslator2;
 
 public class ErrorReportUtil {
   private static final Logger LOG = LogManager.getLogger(ErrorReportUtil.class);
@@ -71,10 +72,19 @@ public class ErrorReportUtil {
   /**
    * used in tests only
    */
-  public static boolean manuallySuppressed(SNode node) {
-    return ListSequence.fromList(SNodeOperations.getNodeAncestors(node, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2f16f1b357e19f42L, "jetbrains.mps.lang.core.structure.ICanSuppressErrors"), true)).any(new IWhereFilter<SNode>() {
+  @Deprecated
+  public static boolean manuallySuppressed(final NodeReportItem reportItem, SRepository repository) {
+    SNode node = reportItem.getNode().resolve(repository);
+    if (node == null) {
+      return false;
+    }
+    return ListSequence.fromList(SNodeOperations.getNodeAncestors(node, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2f16f1b357e19f42L, "jetbrains.mps.lang.core.structure.ICanSuppressErrors"), true)).translate(new ITranslator2<SNode, SNode>() {
+      public Iterable<SNode> translate(SNode it) {
+        return AttributeOperations.getAttributeList(it, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, "jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation")));
+      }
+    }).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return ListSequence.fromList(AttributeOperations.getAttributeList(it, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, "jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation")))).isNotEmpty();
+        return ((boolean) (Boolean) BHReflection.invoke0(it, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2f16f1b357e19f43L, "jetbrains.mps.lang.core.structure.ISuppressErrors"), SMethodTrimmedId.create("suppress", null, "3612de_vrfV"), reportItem));
       }
     });
   }

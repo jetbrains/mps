@@ -8016,16 +8016,11 @@
                               <node concept="2YIFZM" id="ygzS0$B_3a" role="3fr31v">
                                 <ref role="1Pybhc" to="wsw7:5TGjZPCODxZ" resolve="ErrorReportUtil" />
                                 <ref role="37wK5l" to="wsw7:3efgZvcMhmD" resolve="manuallySuppressed" />
-                                <node concept="2OqwBi" id="ygzS0$BXaN" role="37wK5m">
-                                  <node concept="37vLTw" id="ygzS0$B_3b" role="2Oq$k0">
-                                    <ref role="3cqZAo" node="ygzS0$BuFk" resolve="node" />
-                                  </node>
-                                  <node concept="liA8E" id="ygzS0$C4Cd" role="2OqNvi">
-                                    <ref role="37wK5l" to="mhbf:~SNodeReference.resolve(org.jetbrains.mps.openapi.module.SRepository)" resolve="resolve" />
-                                    <node concept="37vLTw" id="5P_sMle8E0D" role="37wK5m">
-                                      <ref role="3cqZAo" node="5P_sMle8E0v" resolve="repository" />
-                                    </node>
-                                  </node>
+                                <node concept="37vLTw" id="58Toj5W2kiP" role="37wK5m">
+                                  <ref role="3cqZAo" node="3efgZvcMHb9" resolve="it" />
+                                </node>
+                                <node concept="37vLTw" id="58Toj5W2ti1" role="37wK5m">
+                                  <ref role="3cqZAo" node="5P_sMle8E0v" resolve="repository" />
                                 </node>
                               </node>
                             </node>
