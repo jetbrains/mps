@@ -22,7 +22,9 @@ import jetbrains.mps.errors.item.ModelReportItem;
 import jetbrains.mps.extapi.model.TransientSModel;
 import jetbrains.mps.extapi.module.TransientSModule;
 import jetbrains.mps.extapi.persistence.ModelFactoryService;
+import jetbrains.mps.generator.impl.GenPlanTranslator;
 import jetbrains.mps.generator.impl.RuleUtil;
+import jetbrains.mps.generator.impl.plan.DependencyCollectorPlanBuilder;
 import jetbrains.mps.generator.impl.plan.ModelScanner;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.project.AbstractModule;
@@ -53,6 +55,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SDependency;
 import org.jetbrains.mps.openapi.module.SDependencyScope;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -69,6 +72,7 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 public class ValidationUtil {
@@ -288,6 +292,59 @@ public class ValidationUtil {
       }
       if (!processor.process(new ModuleValidationProblem(dk, MessageStatus.ERROR, "Can't find exported language: " + expSol.getModuleName()))) {
         return;
+      }
+    }
+    final SModelReference associatedGenPlan = dk.getModuleDescriptor().getAssociatedGenPlan();
+    if (associatedGenPlan != null) {
+      final SModel planModel = associatedGenPlan.resolve(repo);
+      if (planModel == null) {
+        final String msg = "Could not find generation plan associated with the devkit";
+        processor.process(new ModuleValidationProblem(dk, MessageStatus.ERROR, msg));
+        return;
+      }
+      final Iterator<SNode> roots = planModel.getRootNodes().iterator();
+      if (!roots.hasNext()) {
+        final String msg = String.format("No generation plan in the model %s", planModel.getName());
+        processor.process(new ModuleValidationProblem(dk, MessageStatus.ERROR, msg));
+        return;
+      }
+      SNode planDecl = roots.next();
+      GenPlanTranslator gpt = new GenPlanTranslator(planDecl);
+      DependencyCollectorPlanBuilder dcpb = new DependencyCollectorPlanBuilder();
+      gpt.feed(dcpb);
+      for (SLanguage l : dcpb.getRequiredLanguages()) {
+        if (dk.getModuleDescriptor().getExportedLanguages().contains(l.getSourceModuleReference())) {
+          continue;
+        }
+        final String msg = String.format("Associated generation plan needs language %s which is not exposed by the devkit", l.getQualifiedName());
+        if (!processor.process(new ModuleValidationProblem(dk, MessageStatus.WARNING, msg))) {
+          return;
+        }
+      }
+      for (SModuleReference g : dcpb.getRequiredGenerators()) {
+        final SModule templateModule = g.resolve(repo);
+        if (templateModule == null) {
+          final String msg = String.format("Associated generation plan needs unknown generator %s", g.getModuleName());
+          if (!processor.process(new ModuleValidationProblem(dk, MessageStatus.WARNING, msg))) {
+            return;
+          }
+          continue;
+        }
+        if (false == templateModule instanceof Generator) {
+          final String msg = String.format("Module %s referenced from associated generation plan is not a generator (%s)", g.getModuleName(), templateModule.getClass());
+          if (!processor.process(new ModuleValidationProblem(dk, MessageStatus.WARNING, msg))) {
+            return;
+          }
+          continue;
+        }
+        final SLanguage sourceLanguage = ((Generator) templateModule).sourceLanguage();
+        if (dk.getModuleDescriptor().getExportedLanguages().contains(sourceLanguage.getSourceModuleReference())) {
+          continue;
+        }
+        final String msg = String.format("Associated generation plan needs generator %s of language %s, which is not exposed by the devkit", g.getModuleName(), sourceLanguage.getQualifiedName());
+        if (!processor.process(new ModuleValidationProblem(dk, MessageStatus.WARNING, msg))) {
+          return;
+        }
       }
     }
   }

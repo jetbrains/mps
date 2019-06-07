@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,9 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.stream.Collectors;
 
 /**
  * PROVISIONAL API
@@ -68,7 +70,9 @@ public interface GenerationPlanBuilder {
    */
   @Deprecated
   @ToRemove(version = 2018.3)
-  void applyGenerator(@NotNull SModule ... generators);
+  default void applyGenerator(@NotNull SModule ... generators) {
+    applyGenerators(Arrays.stream(generators).map(SModule::getModuleReference).collect(Collectors.toList()), BuilderOption.None);
+  }
 
   /**
    * Specified generators and those extending them AND visible from scope applied as a single transformation step.
@@ -78,7 +82,9 @@ public interface GenerationPlanBuilder {
    * {@link #applyGenerators(Collection, BuilderOption...)} with {@link BuilderOption#WithPriorityRules} and {@link BuilderOption#WithExtendedGenerators}.
    * @param generators generator modules
    */
-  void applyGeneratorWithExtended(@NotNull SModule ... generators);
+  default void applyGeneratorWithExtended(@NotNull SModule ... generators) {
+    applyGenerators(Arrays.stream(generators).map(SModule::getModuleReference).collect(Collectors.toList()), BuilderOption.WithExtendedGenerators);
+  }
 
   /**
    * New approach to plan builder. As there's SLanguage for deployed language, there's SModuleReference to identify deployed generator, why
