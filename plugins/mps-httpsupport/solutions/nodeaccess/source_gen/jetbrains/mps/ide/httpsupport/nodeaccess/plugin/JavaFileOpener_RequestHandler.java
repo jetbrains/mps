@@ -10,13 +10,13 @@ import jetbrains.mps.project.Project;
 import jetbrains.mps.ide.httpsupport.manager.plugin.HttpRequest;
 import jetbrains.mps.ide.httpsupport.runtime.base.HttpSupportUtil;
 import jetbrains.mps.project.MPSProject;
+import io.netty.handler.codec.http.HttpResponseStatus;
+import io.netty.buffer.Unpooled;
 import java.util.Iterator;
 import jetbrains.mps.textgen.trace.DebugInfo;
 import jetbrains.mps.textgen.trace.DefaultTraceInfoProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.textgen.trace.BaseLanguageNodeLookup;
-import io.netty.handler.codec.http.HttpResponseStatus;
-import io.netty.buffer.Unpooled;
 import jetbrains.mps.textgen.trace.DebugInfoRoot;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
@@ -91,11 +91,17 @@ public class JavaFileOpener_RequestHandler extends HttpRequestHandlerBase {
       int unitNamePosition = (sourceGen == -1 ? 0 : sourceGen + HandlerUtil.SOURCE_GEN.length());
       int unitNameEndPostion = this.file.length() - ".java".length();
       String unitName = this.file.substring(unitNamePosition, unitNameEndPostion).replace('/', '.');
-      String namespace = unitName.substring(0, unitName.lastIndexOf("."));
+      int modelNameEndPosition = unitName.lastIndexOf(".");
 
+      if (modelNameEndPosition == -1) {
+        this.request.sendResponse(HttpResponseStatus.OK, "image/gif", Unpooled.copiedBuffer(HandlerUtil.FAILURE_STREAM));
+        return;
+      }
+
+      String modelName = unitName.substring(0, modelNameEndPosition);
       final String fileName = this.file.substring(this.file.lastIndexOf("/") + 1);
 
-      Iterator<DebugInfo> it = new DefaultTraceInfoProvider(this.project.getRepository()).debugInfo(namespace).iterator();
+      Iterator<DebugInfo> it = new DefaultTraceInfoProvider(this.project.getRepository()).debugInfo(modelName).iterator();
       if (this.line != null) {
         while (it.hasNext()) {
           final SNodeReference nodeReference = new BaseLanguageNodeLookup(it.next()).getNodeAt(fileName, this.line);

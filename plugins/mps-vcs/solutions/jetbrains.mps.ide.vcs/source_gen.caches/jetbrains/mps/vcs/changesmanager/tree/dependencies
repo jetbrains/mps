@@ -133,6 +133,7 @@
     <classNode dependClassName="jetbrains.mps.ide.ui.tree.MPSTreeNodeListener" />
     <classNode dependClassName="jetbrains.mps.ide.ui.tree.TreeMessage" />
     <classNode dependClassName="jetbrains.mps.ide.vfs.IdeaFile" />
+    <classNode dependClassName="jetbrains.mps.ide.vfs.IdeaFileSystem" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.CollectionSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IVisitor" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />

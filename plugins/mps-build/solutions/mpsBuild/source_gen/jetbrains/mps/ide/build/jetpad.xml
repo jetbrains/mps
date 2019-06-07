@@ -97,10 +97,7 @@
   <target name="generate" depends="declare-mps-tasks, fetchDependencies">
     <echo message="generating" />
     <generate strictMode="true" parallelMode="true" parallelThreads="8" useInplaceTransform="false" hideWarnings="false" createStaticRefs="true" fork="true" skipUnmodifiedModels="${mps.generator.skipUnmodifiedModels}">
-      <library file="${artifacts.mpsBootstrapCore}/lib/mps-core.jar" />
-      <library file="${artifacts.mpsBootstrapCore}/lib/mps-editor.jar" />
-      <library file="${artifacts.mpsBootstrapCore}/lib/mps-platform.jar" />
-      <library file="${artifacts.mpsBootstrapCore}/lib/mps-stubs.jar" />
+      <library file="${artifacts.mpsBootstrapCore}/languages/mps-stubs.jar" />
       <chunk>
         <module file="${mps_home}/plugins/jetpad/solutions/jetbrains.jetpad/jetbrains.jetpad.msd" />
       </chunk>

@@ -18,6 +18,7 @@ package jetbrains.mps.reloading;
 import jetbrains.mps.util.ClassPathReader;
 import jetbrains.mps.util.ClassType;
 import jetbrains.mps.util.PathManager;
+import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.QualifiedPath;
 import jetbrains.mps.vfs.VFSManager;
 
@@ -33,12 +34,12 @@ import java.util.stream.Collectors;
 public final class CommonPaths {
   //--------paths-----------
 
-  public static List<String> getMPSPaths(ClassType type) {
+  public static List<QualifiedPath> getPaths(ClassType type) {
     Predicate<QualifiedPath> toolsPredicate = s -> s.getPath().contains("jdk.jdi") || s.getPath().contains("tools.jar");
     if (type == ClassType.JDK) {
-      return getJDKPathInternal().stream().filter(toolsPredicate.negate()).map(qualifiedPath -> qualifiedPath.getPath()).collect(Collectors.toList());
+      return getJDKPathInternal().stream().filter(toolsPredicate.negate()).collect(Collectors.toList());
     } else if (type == ClassType.JDK_TOOLS) {
-      return getJDKPathInternal().stream().filter(toolsPredicate).map(qualifiedPath -> qualifiedPath.getPath()).collect(Collectors.toList());
+      return getJDKPathInternal().stream().filter(toolsPredicate).collect(Collectors.toList());
     }
 
     final List<QualifiedPath> result = new ArrayList<>();
@@ -64,7 +65,14 @@ public final class CommonPaths {
     } else if (type == ClassType.TEST) {
       addTestJars(result);
     }
-    return result.stream().map(qualifiedPath -> qualifiedPath.getPath()).collect(Collectors.toList());
+    return result;
+  }
+
+  @Deprecated
+  @ToRemove(version = 2019.1)
+  //use getPaths
+  public static List<String> getMPSPaths(ClassType type) {
+    return getPaths(type).stream().map(qualifiedPath -> qualifiedPath.getPath()).collect(Collectors.toList());
   }
 
   public static List<String> getJDKPath() {
@@ -95,7 +103,10 @@ public final class CommonPaths {
     addIfExists(result, "lib/mps-collections.jar");
     addIfExists(result, "lib/mps-tuples.jar");
     addIfExists(result, "lib/mps-project-check.jar");
-    // XXX likely, generator and textgen deserve their own stub modules, but for the time being, there classes are resolved through MPS.Core
+    // classes of [java-stub] and [persistence] have been exposed though MPS.Core; even though they got bundled into distinct jar now, and both
+    // mps.persistence and java.stub solutions expose mps-persistence.jar as their classpath library
+    addIfExists(result, "lib/mps-persistence.jar");
+        // XXX likely, generator and textgen deserve their own stub modules, but for the time being, there classes are resolved through MPS.Core
     // OTOH, if we are ok with missing reference targets in MPS.Core, perhaps, it doesn't make sense to use a lot of different stub modules?
     addIfExists(result, "lib/mps-generator.jar");
     addIfExists(result, "lib/mps-textgen.jar");

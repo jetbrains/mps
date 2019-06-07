@@ -142,6 +142,8 @@
       <library file="${artifacts.mpsBootstrapCore}/languages/devkits/jetbrains.mps.devkit.general-purpose.jar" />
       <library file="${artifacts.mpsBootstrapCore}/languages/devkits/jetbrains.mps.devkit.language-descriptor.jar" />
       <library file="${artifacts.mpsBootstrapCore}/languages/devkits/jetbrains.mps.devkit.language-design.jar" />
+      <library file="${artifacts.mpsBootstrapCore}/languages/editor/jetbrains.mps.editor.runtime.jar" />
+      <library file="${artifacts.mpsBootstrapCore}/languages/editor/jetbrains.mps.editorlang.runtime.jar" />
       <library file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.analyzers.runtime.jar" />
       <library file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.baseLanguage.lightweightdsl.jar" />
       <library file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.dataFlow.runtime.jar" />
@@ -184,7 +186,14 @@
       <library file="${artifacts.mpsBootstrapCore}/languages/make/jetbrains.mps.make.facets.jar" />
       <library file="${artifacts.mpsBootstrapCore}/languages/make/jetbrains.mps.make.runtime.jar" />
       <library file="${artifacts.mpsBootstrapCore}/languages/make/jetbrains.mps.smodel.resources.jar" />
+      <library file="${artifacts.mpsBootstrapCore}/languages/mps-stubs.jar" />
+      <library file="${artifacts.mpsBootstrapCore}/languages/plaf/jetbrains.mps.baseLanguage.search.jar" />
+      <library file="${artifacts.mpsBootstrapCore}/languages/plaf/jetbrains.mps.baseLanguage.util.jar" />
+      <library file="${artifacts.mpsBootstrapCore}/languages/plaf/jetbrains.mps.ide.platform.jar" />
+      <library file="${artifacts.mpsBootstrapCore}/languages/plaf/jetbrains.mps.ide.ui.jar" />
       <library file="${artifacts.mpsBootstrapCore}/languages/text/jetbrains.mps.lang.text.jar" />
+      <library file="${artifacts.mpsBootstrapCore}/languages/tools/jetbrains.mps.core.tool.environment.jar" />
+      <library file="${artifacts.mpsBootstrapCore}/languages/tools/jetbrains.mps.tool.common.jar" />
       <library file="${artifacts.mpsBootstrapCore}/languages/util/jetbrains.mps.java.stub.jar" />
       <library file="${artifacts.mpsBootstrapCore}/languages/util/jetbrains.mps.kernel.jar" />
       <library file="${artifacts.mpsBootstrapCore}/languages/util/jetbrains.mps.lang.behavior.api.jar" />
@@ -193,11 +202,6 @@
       <library file="${artifacts.mpsBootstrapCore}/languages/util/jetbrains.mps.refactoring.jar" />
       <library file="${artifacts.mpsBootstrapCore}/languages/util/jetbrains.mps.refactoring.runtime.jar" />
       <library file="${artifacts.mpsBootstrapCore}/languages/util/jetbrains.mps.runtime.jar" />
-      <library file="${artifacts.mpsBootstrapCore}/lib/mps-core.jar" />
-      <library file="${artifacts.mpsBootstrapCore}/lib/mps-editor.jar" />
-      <library file="${artifacts.mpsBootstrapCore}/lib/mps-environment.jar" />
-      <library file="${artifacts.mpsBootstrapCore}/lib/mps-platform.jar" />
-      <library file="${artifacts.mpsBootstrapCore}/lib/mps-stubs.jar" />
       <chunk>
         <module file="${basedir}/plugins/mps-modelchecker/platform/jetbrains.mps.ide.modelchecker.platform.msd" />
       </chunk>

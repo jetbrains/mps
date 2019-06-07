@@ -20,6 +20,7 @@ import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.util.IterableUtil;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.apache.log4j.Level;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.List;
@@ -33,17 +34,19 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.typesystem.inference.TypeCheckingContext;
-import jetbrains.mps.typesystem.inference.TypeContextManager;
+import jetbrains.mps.typechecking.TypecheckingFacade;
+import java.util.function.Supplier;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.logging.MessageObject;
+import org.apache.log4j.LogManager;
 
 public class CalcClassifiersInRootsStatistic_Action extends BaseAction {
   private static final Icon ICON = null;
 
   public CalcClassifiersInRootsStatistic_Action() {
-    super("Calc classifiers in roots statistic", "", ICON);
+    super("Calc Classifiers in Roots Statistic", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
   }
@@ -98,7 +101,7 @@ public class CalcClassifiersInRootsStatistic_Action extends BaseAction {
       }
     });
 
-    System.out.println("Members average time: " + membersOverallTime.value * 0.001 / rootsCount.value);
+    CalcClassifiersInRootsStatistic_Action.this.message(Level.INFO, "Members average time: " + membersOverallTime.value * 0.001 / rootsCount.value, null, _params);
   }
   /*package*/ long analyzeClassifiersInRoot(final SNode node, final Map<String, Object> _params) {
     String nodeName = node + "@" + SModelOperations.getModelName(SNodeOperations.getModel(node));
@@ -145,22 +148,26 @@ public class CalcClassifiersInRootsStatistic_Action extends BaseAction {
       sb.append(String.format("%s: members calc time = %.3f%n", nodeName, membersCalcTime * 0.001));
     }
     if (sb.length() > 0) {
-      System.out.println(sb);
+      CalcClassifiersInRootsStatistic_Action.this.message(Level.INFO, sb.toString(), null, _params);
     }
     return membersCalcTime;
   }
-  /*package*/ List<SNode> calcAllClassifierTypesInRoot(SNode rootNode, final Map<String, Object> _params) {
-    TypeCheckingContext context = TypeContextManager.getInstance().createTypeCheckingContext(rootNode);
-    context.checkRoot();
-    List<SNode> result = ListSequence.fromList(new ArrayList<SNode>());
+  /*package*/ List<SNode> calcAllClassifierTypesInRoot(final SNode rootNode, final Map<String, Object> _params) {
 
-    for (SNode node : SNodeOperations.getNodeDescendants(rootNode, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept"), true, new SAbstractConcept[]{})) {
-      SNode type = context.typeOf(node);
-      if (SNodeOperations.isInstanceOf(type, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"))) {
-        ListSequence.fromList(result).addElement(SNodeOperations.cast(type, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType")));
+    List<SNode> result = TypecheckingFacade.getFromContext().runIsolated(new Supplier<List<SNode>>() {
+      public List<SNode> get() {
+        List<SNode> list = ListSequence.fromList(new ArrayList<SNode>());
+
+        for (SNode node : SNodeOperations.getNodeDescendants(rootNode, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept"), true, new SAbstractConcept[]{})) {
+          SNode type = TypecheckingFacade.getFromContext().getTypeOf(node);
+          if (SNodeOperations.isInstanceOf(type, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"))) {
+            ListSequence.fromList(list).addElement(SNodeOperations.cast(type, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType")));
+          }
+        }
+
+        return list;
       }
-    }
-    context.dispose();
+    });
 
     return result;
   }
@@ -171,7 +178,7 @@ public class CalcClassifiersInRootsStatistic_Action extends BaseAction {
       try {
         ListSequence.fromList(result).addSequence(Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(((SNode) BHReflection.invoke0(classifier, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x66c71d82c2eb113dL, "jetbrains.mps.baseLanguage.structure.IClassifier"), SMethodTrimmedId.create("getThisType", null, "6r77ob2UWbY"))), MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x66c71d82c2eb7f7eL, "jetbrains.mps.baseLanguage.structure.IClassifierType"), SMethodTrimmedId.create("getMembers", MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x66c71d82c2eb7f7eL, "jetbrains.mps.baseLanguage.structure.IClassifierType"), "6r77ob2V1Fr")))));
       } catch (Exception e) {
-        System.out.println(e);
+        CalcClassifiersInRootsStatistic_Action.this.message(Level.ERROR, "Error calculating type", e, _params);
       }
     }
 
@@ -182,9 +189,13 @@ public class CalcClassifiersInRootsStatistic_Action extends BaseAction {
     try {
       toRun.invoke();
     } catch (Exception e) {
-      System.out.println(e);
+      CalcClassifiersInRootsStatistic_Action.this.message(Level.ERROR, "Error calculating time", e, _params);
     } finally {
       return System.currentTimeMillis() - startTime;
     }
+  }
+  private void message(Level level, String message, Throwable e, final Map<String, Object> _params) {
+    MessageObject msgObject = new MessageObject(message, null, "CalcClassifiersInRootsStatistic", ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")));
+    LogManager.getLogger("###MESSAGES_VIEW_TOKEN###").log(level, msgObject, e);
   }
 }

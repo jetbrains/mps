@@ -290,6 +290,9 @@
       <node concept="nCB5N" id="3ZROizBYYuW" role="nCB5Z">
         <ref role="nCB5Y" to="ffeo:2xKmvAPr964" resolve="mps-java-platform" />
       </node>
+      <node concept="nCB5N" id="3oXfwtXqIy1" role="nCB5Z">
+        <ref role="nCB5Y" to="ffeo:3dkXFAFkSFA" resolve="mps-persistence" />
+      </node>
     </node>
     <node concept="2sgV4H" id="2pZ8abj52_O" role="1l3spa">
       <ref role="1l3spb" to="ffeo:6S1jmf0xDFC" resolve="mpsBootstrapCore" />
@@ -561,6 +564,9 @@
         <property role="1Sh$E4" value="true" />
         <ref role="nCB5Y" to="ffeo:1FaKCGJSzEy" resolve="mps-kernel" />
       </node>
+      <node concept="nCB5N" id="3oXfwtXhV_R" role="nCB5Z">
+        <ref role="nCB5Y" to="ffeo:3dkXFAFkSFA" resolve="mps-persistence" />
+      </node>
       <node concept="2GAZfH" id="3ZROizBXGcx" role="398b2p">
         <node concept="TIC1d" id="3ZROizBXGcy" role="2GAZfG">
           <node concept="398BVA" id="3ZROizBXGcz" role="TIC6M">
@@ -715,6 +721,9 @@
       <node concept="nCB5N" id="16Vg0jOdbWR" role="nCB5Z">
         <property role="1Sh$E4" value="true" />
         <ref role="nCB5Y" to="ffeo:16Vg0jOdbW2" resolve="mps-editor" />
+      </node>
+      <node concept="nCB5N" id="3oXfwtXq$Rp" role="nCB5Z">
+        <ref role="nCB5Y" to="ffeo:3dkXFAFkSFA" resolve="mps-persistence" />
       </node>
       <node concept="nCB5N" id="1M_KWzLa0Y5" role="nCB5Z">
         <ref role="nCB5Y" to="ffeo:5d$B_bnZPNh" resolve="mps-boot-util" />
@@ -2043,6 +2052,9 @@
       </node>
       <node concept="nCB5N" id="2EFUhCuudZM" role="nCB5Z">
         <ref role="nCB5Y" to="ffeo:16Vg0jOco3P" resolve="mps-platform" />
+      </node>
+      <node concept="nCB5N" id="3oXfwtXqhAt" role="nCB5Z">
+        <ref role="nCB5Y" to="ffeo:3dkXFAFkSFA" resolve="mps-persistence" />
       </node>
     </node>
     <node concept="398b33" id="3ZROizBXHBA" role="3989C9">

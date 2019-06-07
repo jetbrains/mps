@@ -16,6 +16,7 @@ import jetbrains.mps.lang.dataFlow.framework.AnalysisResult;
 import java.util.Set;
 import jetbrains.mps.lang.dataFlow.framework.analyzers.ReachingReadsAnalyzer;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 public abstract class InlineVariableRefactoring {
   public InlineVariableRefactoring() {
@@ -59,8 +60,13 @@ public abstract class InlineVariableRefactoring {
   }
   public SNode getBaseStatementList(SNode node) {
     SNode current = SNodeOperations.getNodeAncestor(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList"), false, false);
-    while ((SNodeOperations.getNodeAncestor(current, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList"), false, false) != null)) {
-      current = SNodeOperations.getNodeAncestor(current, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList"), false, false);
+    while ((SNodeOperations.getNodeAncestorWhereConceptInList(current, new SAbstractConcept[]{MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList"), MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x7c8556154508e980L, "jetbrains.mps.baseLanguage.structure.IControlFlowInterrupter")}, false, false) != null)) {
+      SNode ancestor = SNodeOperations.getNodeAncestorWhereConceptInList(current, new SAbstractConcept[]{MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList"), MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x7c8556154508e980L, "jetbrains.mps.baseLanguage.structure.IControlFlowInterrupter")}, false, false);
+      if (SNodeOperations.isInstanceOf(ancestor, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList"))) {
+        current = SNodeOperations.cast(ancestor, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList"));
+      } else {
+        break;
+      }
     }
     return current;
   }

@@ -9,6 +9,8 @@
     <httpRequestHandler implementation="jetbrains.mps.ide.httpsupport.manager.plugin.MPSRequestManager" />
     <registryKey key="ide.httpsupport.specifyProjectInNodeURL" defaultValue="false"
                  description="Specify project name in node URL" />
+  <registryKey key="ide.httpsupport.internalPort" defaultValue="63320" restartRequired="true"
+                 description="Port for MPS internal requests (i.e. opening node)" />
   </extensions>
   <extensions defaultExtensionNs="org.jetbrains">
     <customPortServerManager implementation="jetbrains.mps.ide.httpsupport.manager.plugin.MPSInternalPortManager"/>

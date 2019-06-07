@@ -157,10 +157,14 @@
       <concept id="1151689724996" name="jetbrains.mps.baseLanguage.collections.structure.SequenceType" flags="in" index="A3Dl8">
         <child id="1151689745422" name="elementType" index="A3Ik2" />
       </concept>
+      <concept id="1237721394592" name="jetbrains.mps.baseLanguage.collections.structure.AbstractContainerCreator" flags="nn" index="HWqM0">
+        <child id="1237721435807" name="elementType" index="HW$YZ" />
+      </concept>
       <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
       <concept id="1205679737078" name="jetbrains.mps.baseLanguage.collections.structure.SortOperation" flags="nn" index="2S7cBI">
         <child id="1205679832066" name="ascending" index="2S7zOq" />
       </concept>
+      <concept id="1160600644654" name="jetbrains.mps.baseLanguage.collections.structure.ListCreatorWithInit" flags="nn" index="Tc6Ow" />
       <concept id="4020503625588385966" name="jetbrains.mps.baseLanguage.collections.structure.GetLastIndexOfOperation" flags="nn" index="32_xCg" />
       <concept id="1178286324487" name="jetbrains.mps.baseLanguage.collections.structure.SortDirection" flags="nn" index="1nlBCl" />
       <concept id="1165525191778" name="jetbrains.mps.baseLanguage.collections.structure.GetFirstOperation" flags="nn" index="1uHKPH" />
@@ -610,7 +614,11 @@
                 <node concept="A3Dl8" id="5xvSMnuGPDG" role="1tU5fm">
                   <node concept="17QB3L" id="5xvSMnuGPDH" role="A3Ik2" />
                 </node>
-                <node concept="10Nm6u" id="5xvSMnuGPDI" role="33vP2m" />
+                <node concept="2ShNRf" id="6yNmzKcoMN1" role="33vP2m">
+                  <node concept="Tc6Ow" id="6yNmzKcoP3G" role="2ShVmc">
+                    <node concept="17QB3L" id="6yNmzKcoSIV" role="HW$YZ" />
+                  </node>
+                </node>
               </node>
             </node>
             <node concept="3clFbF" id="5xvSMnuGPDJ" role="3cqZAp">

@@ -24,6 +24,7 @@
     <import index="9w4s" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util(MPS.IDEA/)" />
     <import index="g1go" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util.io(MPS.IDEA/)" />
     <import index="fnpx" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.notification(MPS.IDEA/)" />
+    <import index="rfhd" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.util.registry(MPS.IDEA/)" />
     <import index="9ti4" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.extensions(MPS.IDEA/)" implicit="true" />
   </imports>
   <registry>
@@ -1840,8 +1841,12 @@
       <property role="3TUv4t" value="true" />
       <node concept="3Tm1VV" id="3PMO5H7WJ52" role="1B3o_S" />
       <node concept="10Oyi0" id="3PMO5H7WJ53" role="1tU5fm" />
-      <node concept="3cmrfG" id="3PMO5H7WJ54" role="33vP2m">
-        <property role="3cmrfH" value="63320" />
+      <node concept="2YIFZM" id="7LBrPbWdnLt" role="33vP2m">
+        <ref role="37wK5l" to="rfhd:~Registry.intValue(java.lang.String)" resolve="intValue" />
+        <ref role="1Pybhc" to="rfhd:~Registry" resolve="Registry" />
+        <node concept="Xl_RD" id="7LBrPbWdnW7" role="37wK5m">
+          <property role="Xl_RC" value="ide.httpsupport.internalPort" />
+        </node>
       </node>
     </node>
     <node concept="2tJIrI" id="3PMO5H7WJ59" role="jymVt" />

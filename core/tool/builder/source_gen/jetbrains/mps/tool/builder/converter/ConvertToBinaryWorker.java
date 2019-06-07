@@ -5,8 +5,7 @@ package jetbrains.mps.tool.builder.converter;
 import java.util.Map;
 import java.io.File;
 import jetbrains.mps.core.platform.Platform;
-import jetbrains.mps.core.platform.PlatformFactory;
-import jetbrains.mps.core.platform.PlatformOptionsBuilder;
+import jetbrains.mps.core.platform.PersistenceOnlyPlatform;
 import jetbrains.mps.RuntimeFlags;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.persistence.ModelFactory;
@@ -40,7 +39,7 @@ public final class ConvertToBinaryWorker {
   }
 
   public void work() {
-    final Platform platform = PlatformFactory.initPlatform(PlatformOptionsBuilder.PERSISTENCE);
+    final Platform platform = new PersistenceOnlyPlatform();
     RuntimeFlags.setMergeDriverMode(true);
     try {
       for (Map.Entry<File, File> entry : myMap.entrySet()) {

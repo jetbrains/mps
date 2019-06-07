@@ -24,9 +24,7 @@ import jetbrains.mps.nodeEditor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
 import jetbrains.mps.openapi.editor.cells.SubstituteInfo;
-import jetbrains.mps.typesystem.inference.ITypeContextOwner;
-import jetbrains.mps.typesystem.inference.NonReusableTypecheckingContextOwner;
-import jetbrains.mps.typesystem.inference.TypeContextManager;
+import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.ComputeRunnable;
 import org.apache.log4j.LogManager;
@@ -155,12 +153,23 @@ public class NodeSubstituteChooserHandler {
 
   private List<SubstituteAction> getMatchingActions(final jetbrains.mps.openapi.editor.cells.EditorCell editorCell, final SubstituteInfo substituteInfo,
                                                     final boolean isSmart, final String pattern) {
-    final ITypeContextOwner contextOwner = isSmart ? new NonReusableTypecheckingContextOwner() : myEditorComponent;
-    return TypeContextManager.getInstance().runTypeCheckingComputation(contextOwner, myEditorComponent.getEditedNode(),
-                                                                       context -> isSmart ?
-                                                                                  substituteInfo.getSmartMatchingActions(pattern, false, editorCell) :
-                                                                                  substituteInfo.getMatchingActions(pattern, false)
-    );
+    if (isSmart) {
+      return TypecheckingFacade
+                 .getFromContext()
+                 .runIsolated(() -> getSubstituteActions(editorCell, substituteInfo, isSmart, pattern));
+
+    } else {
+      return TypecheckingFacade
+                 .getFromContext()
+                 .runWithSession(myEditorComponent.getTypecheckingSession(),
+                                 () -> getSubstituteActions(editorCell, substituteInfo, isSmart, pattern));
+    }
+  }
+
+  private List<SubstituteAction> getSubstituteActions(EditorCell editorCell, SubstituteInfo substituteInfo, boolean isSmart, String pattern) {
+    return isSmart ?
+                      substituteInfo.getSmartMatchingActions(pattern, false, editorCell) :
+                      substituteInfo.getMatchingActions(pattern, false);
   }
 
   private <T> T runRead(final Computable<T> c) {
