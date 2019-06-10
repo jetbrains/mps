@@ -11,6 +11,7 @@
       <modulePath path="$PROJECT_DIR$/core/devkits/jetbrains.mps.devkit.aspect.structure.devkit" folder="core.aspects.descriptor" />
       <modulePath path="$PROJECT_DIR$/core/devkits/jetbrains.mps.devkit.aspect.textgen.devkit" folder="core.aspects.descriptor" />
       <modulePath path="$PROJECT_DIR$/core/devkits/jetbrains.mps.devkit.aspect.typesystem.devkit" folder="core.aspects.descriptor" />
+      <modulePath path="$PROJECT_DIR$/core/devkits/jetbrains.mps.devkit.baseLanguage/jetbrains.mps.devkit.baseLanguage.devkit" folder="core.devkits" />
       <modulePath path="$PROJECT_DIR$/core/devkits/jetbrains.mps.devkit.bootstrap-languages.devkit" folder="core.devkits" />
       <modulePath path="$PROJECT_DIR$/core/devkits/jetbrains.mps.devkit.general-purpose.devkit" folder="core.devkits" />
       <modulePath path="$PROJECT_DIR$/core/devkits/jetbrains.mps.devkit.language-descriptor.devkit" folder="core.aspects.descriptor" />
