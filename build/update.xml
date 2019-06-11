@@ -262,7 +262,7 @@
              feedback="http://youtrack.jetbrains.net"
              majorVersion="2019" minorVersoin="1">
       <build number="191.1525" version="2019.1.3">
-        <message>JetBrains MPS 2019.1.3 is now available.</message>
+        <message>JetBrains MPS 2019.1.3 is available.</message>
         <button name="Download" url="https://www.jetbrains.com/mps/download" download="true"/>      </build>
     </channel>
 
