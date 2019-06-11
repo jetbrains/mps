@@ -71,7 +71,7 @@ public class OverrideImplementMethodInEnumConstantAction {
             }
           }).toListSequence();
           OverrideImplementMethodsHelper helper = new OverrideImplementMethodsInEnumHelper(myProject, SNodeOperations.cast(SNodeOperations.getParent(contextEnumConstant), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass")), contextEnumConstant, contextMember, dialog.isRemoveAttributes(), dialog.isInsertOverrideAnnotation(), dialog.isAddReturn());
-          List<SNode> insertedMethods = helper.insertMethods(selection);
+          List<SNode> insertedMethods = helper.insertMethods(selection, false);
           if (insertedMethods.isEmpty()) {
             return;
           }

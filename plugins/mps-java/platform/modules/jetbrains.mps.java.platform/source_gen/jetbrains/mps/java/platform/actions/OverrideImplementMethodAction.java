@@ -73,7 +73,7 @@ public class OverrideImplementMethodAction {
           }).toListSequence();
 
           OverrideImplementMethodsHelper helper = new OverrideImplementMethodsHelper(myProject, contextClassifier, contextMember, dialog.isRemoveAttributes(), dialog.isInsertOverrideAnnotation(), dialog.isAddReturn());
-          List<SNode> insertedMethods = helper.insertMethods(selection);
+          List<SNode> insertedMethods = helper.insertMethods(selection, SNodeOperations.isInstanceOf(contextClassifier, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface")) && myIsOverride);
           if (insertedMethods.isEmpty()) {
             return;
           }
