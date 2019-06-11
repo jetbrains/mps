@@ -1931,9 +1931,6 @@
       <node concept="nCB5N" id="2s$MjT8u22G" role="nCB5Z">
         <ref role="nCB5Y" node="75RBgxKm6HY" resolve="mps-generator" />
       </node>
-      <node concept="nCB5N" id="2xEvDgHpCHm" role="nCB5Z">
-        <ref role="nCB5Y" node="16Vg0jOco3P" resolve="mps-platform" />
-      </node>
       <node concept="2GAZfH" id="2g9KPLQMl4J" role="398b2p">
         <node concept="TIC1d" id="2g9KPLQMl4F" role="2GAZfG">
           <node concept="398BVA" id="2g9KPLQMl56" role="TIC6M">
@@ -1971,6 +1968,9 @@
             </node>
           </node>
         </node>
+      </node>
+      <node concept="nCB5N" id="2xEvDgHpCHm" role="nCB5Z">
+        <ref role="nCB5Y" node="16Vg0jOco3P" resolve="mps-platform" />
       </node>
       <node concept="2sjeV3" id="16Vg0jOcon_" role="nCB5Z">
         <ref role="2sjeV2" node="16Vg0jOconl" resolve="junit-4.12" />
@@ -17164,7 +17164,7 @@
       <node concept="13uQ2_" id="6eCuTcwOX20" role="39821P">
         <node concept="3_J27D" id="6eCuTcwOX21" role="13uQ07">
           <node concept="3Mxwew" id="6eCuTcwOX22" role="3MwsjC">
-            <property role="3MwjfP" value="xstream-1.4.8.jar" />
+            <property role="3MwjfP" value="xstream-1.4.10.jar" />
           </node>
         </node>
       </node>
@@ -17292,6 +17292,27 @@
               </node>
             </node>
           </node>
+          <node concept="13uQ2_" id="7ad8nWle5X5" role="39821P">
+            <node concept="3_J27D" id="7ad8nWle5X7" role="13uQ07">
+              <node concept="3Mxwew" id="7ad8nWle60o" role="3MwsjC">
+                <property role="3MwjfP" value="git4idea-rt.jar" />
+              </node>
+            </node>
+          </node>
+          <node concept="13uQ2_" id="7ad8nWle5Yb" role="39821P">
+            <node concept="3_J27D" id="7ad8nWle5Yd" role="13uQ07">
+              <node concept="3Mxwew" id="7ad8nWle64d" role="3MwsjC">
+                <property role="3MwjfP" value="remote-servers-git.jar" />
+              </node>
+            </node>
+          </node>
+          <node concept="13uQ2_" id="7ad8nWle5Zl" role="39821P">
+            <node concept="3_J27D" id="7ad8nWle5Zn" role="13uQ07">
+              <node concept="3Mxwew" id="7ad8nWle655" role="3MwsjC">
+                <property role="3MwjfP" value="resources_en.jar" />
+              </node>
+            </node>
+          </node>
         </node>
       </node>
       <node concept="398223" id="4tNwrSpam8n" role="39821P">
@@ -17306,24 +17327,24 @@
               <property role="3MwjfP" value="lib" />
             </node>
           </node>
-          <node concept="13uQ2_" id="4tNwrSpam8t" role="39821P">
-            <node concept="3_J27D" id="4tNwrSpam8u" role="13uQ07">
-              <node concept="3Mxwew" id="4tNwrSpam8v" role="3MwsjC">
-                <property role="3MwjfP" value="sequence-library.jar" />
-              </node>
-            </node>
-          </node>
-          <node concept="13uQ2_" id="4tNwrSpam8x" role="39821P">
-            <node concept="3_J27D" id="4tNwrSpam8y" role="13uQ07">
-              <node concept="3Mxwew" id="4tNwrSpam8z" role="3MwsjC">
-                <property role="3MwjfP" value="svnkit.jar" />
-              </node>
-            </node>
-          </node>
           <node concept="13uQ2_" id="7Kvxa_ngN5n" role="39821P">
             <node concept="3_J27D" id="7Kvxa_ngN5p" role="13uQ07">
               <node concept="3Mxwew" id="7Kvxa_ngN5A" role="3MwsjC">
                 <property role="3MwjfP" value="svn4idea.jar" />
+              </node>
+            </node>
+          </node>
+          <node concept="13uQ2_" id="7ad8nWle67R" role="39821P">
+            <node concept="3_J27D" id="7ad8nWle67T" role="13uQ07">
+              <node concept="3Mxwew" id="7ad8nWle68r" role="3MwsjC">
+                <property role="3MwjfP" value="sqlite-jdbc-3.20.1.jar" />
+              </node>
+            </node>
+          </node>
+          <node concept="13uQ2_" id="7ad8nWle69r" role="39821P">
+            <node concept="3_J27D" id="7ad8nWle69t" role="13uQ07">
+              <node concept="3Mxwew" id="7ad8nWle6at" role="3MwsjC">
+                <property role="3MwjfP" value="resources_en.jar" />
               </node>
             </node>
           </node>
