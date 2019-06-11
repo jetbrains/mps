@@ -35,6 +35,7 @@ import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.plugins.PluginLoaderRegistry.EventAccumulation.Snapshot;
 import jetbrains.mps.plugins.applicationplugins.BaseApplicationPlugin;
 import jetbrains.mps.plugins.projectplugins.BaseProjectPlugin;
+import jetbrains.mps.plugins.projectplugins.ProjectPluginManager;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.structure.modules.SolutionKind;
@@ -149,6 +150,10 @@ public class PluginLoaderRegistry implements ApplicationComponent {
     synchronized (myLoadersDeltaLock) {
       LOG.debug("Registering the " + loader);
       myLoaderDelta.load(Collections.singleton(loader));
+      if (loader instanceof ProjectPluginManager) {
+        // hack to remove in 192, see GeneratedActionGroup:57
+        scheduleUpdate();
+      }
     }
   }
 
@@ -160,7 +165,7 @@ public class PluginLoaderRegistry implements ApplicationComponent {
     synchronized (myLoadersDeltaLock) {
       LOG.debug("Unregistering the " + loader);
       myLoaderDelta.unload(Collections.singleton(loader));
-      scheduleUpdate(); // fixme hack to schedule on project closing. appropriate classloading events will do in the next release
+      scheduleUpdate();
     }
   }
 
