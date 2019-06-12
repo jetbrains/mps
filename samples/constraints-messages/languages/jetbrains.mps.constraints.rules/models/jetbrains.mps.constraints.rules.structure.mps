@@ -105,7 +105,7 @@
   <node concept="1TIwiD" id="6kKc3mjlk98">
     <property role="EcuMT" value="7291380803376071240" />
     <property role="TrG5h" value="ConstraintsRuleKind" />
-    <property role="34LRSv" value="kind" />
+    <property role="34LRSv" value="rule kind" />
     <property role="19KtqR" value="true" />
     <node concept="PrWs8" id="6kKc3mjmAXJ" role="PzmwI">
       <ref role="PrY4T" to="tpee:hCUYCKd" resolve="IValidIdentifier" />
@@ -223,6 +223,9 @@
       <property role="20lbJX" value="0..n" />
       <property role="20kJfa" value="messages" />
       <ref role="20lvS9" node="6kKc3mjFxph" resolve="MessageProvider" />
+    </node>
+    <node concept="PrWs8" id="47X3GcVYaDI" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
   </node>
   <node concept="1TIwiD" id="6kKc3mjFxph">

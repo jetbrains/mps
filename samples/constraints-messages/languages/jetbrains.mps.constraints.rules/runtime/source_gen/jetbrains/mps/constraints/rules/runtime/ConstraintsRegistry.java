@@ -23,13 +23,13 @@ public class ConstraintsRegistry {
     myRepository = repository;
   }
 
-  private ConstraintsDescriptor getConstraintsDescriptor(SAbstractConcept concept) throws IllegalArgumentException {
+  private ConstraintsDescriptor2 getConstraintsDescriptor(SAbstractConcept concept) throws IllegalArgumentException {
     LanguageRegistry languageRegistry = LanguageRegistry.getInstance(myRepository);
     LanguageRuntime conceptLang = languageRegistry.getLanguage(concept.getLanguage());
     if (conceptLang == null) {
       throw new IllegalArgumentException("Impossible to load the language for the concept '" + concept + "'");
     }
-    return (conceptLang.<ConstraintsAspectDescriptor>getAspect(ConstraintsAspectDescriptor.class)).getConstraints(concept);
+    return (conceptLang.<ConstraintsAspectDescriptor2>getAspect(ConstraintsAspectDescriptor2.class)).getConstraints(concept);
   }
 
   private MessagesDescriptor getMessagesDescriptor(SAbstractConcept concept) {
@@ -38,9 +38,9 @@ public class ConstraintsRegistry {
     return descriptor;
   }
 
-  public Collection<ConstraintsRule<CanBeChildContext>> getApplicableRules(SAbstractConcept concept) {
-    @NotNull ConstraintsDescriptor descriptor = getConstraintsDescriptor(concept);
-    return descriptor.getRules(CanBeChildRuleKind.INSTANCE);
+  public Collection<ConstraintsRule<CanBeChild_Context>> getApplicableRules(SAbstractConcept concept) {
+    @NotNull ConstraintsDescriptor2 descriptor = getConstraintsDescriptor(concept);
+    return descriptor.getRules(CanBeChild_RuleKind.INSTANCE);
   }
 
   public String findMessage(SAbstractConcept concept, final ConstraintsRuleId ruleId) {
@@ -59,8 +59,18 @@ public class ConstraintsRegistry {
   }
 
   public String msgForCanBeChild(final SNode node) {
-    CanBeChildContext context = CanBeChildRuleKind.INSTANCE.getContextBuilder().node(node).build();
-    for (ConstraintsRule<CanBeChildContext> rule : CollectionSequence.fromCollection(getApplicableRules(SNodeOperations.getConcept(node)))) {
+    CanBeChild_Context context = CanBeChild_RuleKind.INSTANCE.getContextBuilder().node(node).build();
+    for (ConstraintsRule<CanBeChild_Context> rule : CollectionSequence.fromCollection(getApplicableRules(SNodeOperations.getConcept(node)))) {
+      if (!(rule.check(context))) {
+        return findMessage(SNodeOperations.getConcept(node), rule.getId());
+      }
+    }
+    return null;
+  }
+
+  public String msgForRuleKind(final SNode node) {
+    CanBeChild_Context context = CanBeChild_RuleKind.INSTANCE.getContextBuilder().node(node).build();
+    for (ConstraintsRule<CanBeChild_Context> rule : CollectionSequence.fromCollection(getApplicableRules(SNodeOperations.getConcept(node)))) {
       if (!(rule.check(context))) {
         return findMessage(SNodeOperations.getConcept(node), rule.getId());
       }

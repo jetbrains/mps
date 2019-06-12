@@ -8,7 +8,7 @@
     <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.ConstraintsAspectDescriptor" />
     <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.MessagesAspectDescriptor" />
     <classNode dependClassName="jetbrains.mps.constraints.rules.sanboxLanguage.constraintrules.GeneratedConstraintsAspectDescriptor" />
-    <classNode dependClassName="jetbrains.mps.constraints.rules.sanboxLanguage.constraintrules.GeneratedMessagesDescriptor" />
+    <classNode dependClassName="jetbrains.mps.constraints.rules.sanboxLanguage.constraintrules.GeneratedMessagesAspectDescriptor" />
     <classNode dependClassName="jetbrains.mps.constraints.rules.sanboxLanguage.structure.ConceptPresentationAspectImpl" />
     <classNode dependClassName="jetbrains.mps.constraints.rules.sanboxLanguage.structure.StructureAspectDescriptor" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.ids.SLanguageId" />

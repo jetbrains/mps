@@ -14,9 +14,9 @@ import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.runtime.PropertyConstraintsDescriptor;
 import java.util.HashMap;
 
-public class ConstraintsRoot_Constraints extends BaseConstraintsDescriptor {
-  public ConstraintsRoot_Constraints() {
-    super(MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554221L, "jetbrains.mps.constraints.rules.structure.ConstraintsRoot"));
+public class MessagesRoot_Constraints extends BaseConstraintsDescriptor {
+  public MessagesRoot_Constraints() {
+    super(MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593ae1607L, "jetbrains.mps.constraints.rules.structure.MessagesRoot"));
   }
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {
@@ -30,18 +30,18 @@ public class ConstraintsRoot_Constraints extends BaseConstraintsDescriptor {
     @Override
     public Object getValue(SNode node) {
       String conceptName;
-      if ((SLinkOperations.getTarget(node, MetaAdapterFactory.getReferenceLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554221L, 0x6530303593940081L, "concept")) != null)) {
-        conceptName = SPropertyOperations.getString(SLinkOperations.getTarget(node, MetaAdapterFactory.getReferenceLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554221L, 0x6530303593940081L, "concept")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+      if ((SLinkOperations.getTarget(node, MetaAdapterFactory.getReferenceLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593ae1607L, 0x63c2f3669ce56d5dL, "concept")) != null)) {
+        conceptName = SPropertyOperations.getString(SLinkOperations.getTarget(node, MetaAdapterFactory.getReferenceLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593ae1607L, 0x63c2f3669ce56d5dL, "concept")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
       } else {
         conceptName = "???";
       }
-      return conceptName + "_Constraints2";
+      return conceptName + "_Messages";
     }
   }
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), new ConstraintsRoot_Constraints.Name_Property(this));
+    properties.put(MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), new MessagesRoot_Constraints.Name_Property(this));
     return properties;
   }
 }

@@ -10,7 +10,7 @@ import jetbrains.mps.smodel.runtime.ILanguageAspect;
 import jetbrains.mps.constraints.rules.runtime.ConstraintsAspectDescriptor;
 import jetbrains.mps.constraints.rules.sanboxLanguage.constraintrules.GeneratedConstraintsAspectDescriptor;
 import jetbrains.mps.constraints.rules.runtime.MessagesAspectDescriptor;
-import jetbrains.mps.constraints.rules.sanboxLanguage.constraintrules.GeneratedMessagesDescriptor;
+import jetbrains.mps.constraints.rules.sanboxLanguage.constraintrules.GeneratedMessagesAspectDescriptor;
 import jetbrains.mps.smodel.runtime.StructureAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConceptPresentationAspect;
 import jetbrains.mps.constraints.rules.sanboxLanguage.structure.ConceptPresentationAspectImpl;
@@ -46,7 +46,7 @@ public class Language extends LanguageRuntime {
       return aspectClass.cast(new GeneratedConstraintsAspectDescriptor());
     }
     if (aspectClass == MessagesAspectDescriptor.class) {
-      return aspectClass.cast(new GeneratedMessagesDescriptor());
+      return aspectClass.cast(new GeneratedMessagesAspectDescriptor());
     }
     if (aspectClass == StructureAspectDescriptor.class) {
       return aspectClass.cast(new jetbrains.mps.constraints.rules.sanboxLanguage.structure.StructureAspectDescriptor());

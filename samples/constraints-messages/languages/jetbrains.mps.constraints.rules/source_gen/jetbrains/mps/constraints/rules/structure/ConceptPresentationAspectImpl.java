@@ -121,7 +121,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.MessagesRoot:
         if (props_MessagesRoot == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.presentationByReference(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593ae1607L, 0x63c2f3669ce56d5dL, "concept", "", "");
+          cpb.presentationByName();
           props_MessagesRoot = cpb.create();
         }
         return props_MessagesRoot;

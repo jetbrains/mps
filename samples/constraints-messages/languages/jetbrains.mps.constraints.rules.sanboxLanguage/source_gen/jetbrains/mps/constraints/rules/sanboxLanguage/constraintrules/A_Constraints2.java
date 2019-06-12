@@ -4,8 +4,8 @@ package jetbrains.mps.constraints.rules.sanboxLanguage.constraintrules;
 
 import jetbrains.mps.constraints.rules.runtime.ConstraintsDescriptor;
 import jetbrains.mps.constraints.rules.runtime.ConstraintsRule;
-import jetbrains.mps.constraints.rules.runtime.CanBeChildContext;
-import jetbrains.mps.constraints.rules.runtime.CanBeChildRuleKind;
+import jetbrains.mps.constraints.rules.runtime.CanBeChild_Context;
+import jetbrains.mps.constraints.rules.runtime.CanBeChild_RuleKind;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.constraints.rules.runtime.ConstraintsRuleId;
 import jetbrains.mps.constraints.rules.runtime.ConstraintsRuleKind;
@@ -16,11 +16,11 @@ import java.util.HashMap;
 import java.util.Arrays;
 import java.util.Collections;
 
-public class A_Constraints implements ConstraintsDescriptor {
-  public class Rule_first implements ConstraintsRule<CanBeChildContext> {
-    private final CanBeChildRuleKind myRuleKind;
+public class A_Constraints2 implements ConstraintsDescriptor {
+  public class Rule_first implements ConstraintsRule<CanBeChild_Context> {
+    private final CanBeChild_RuleKind myRuleKind;
 
-    public Rule_first(@NotNull CanBeChildRuleKind ruleKind) {
+    public Rule_first(@NotNull CanBeChild_RuleKind ruleKind) {
       myRuleKind = ruleKind;
     }
 
@@ -31,20 +31,20 @@ public class A_Constraints implements ConstraintsDescriptor {
 
 
     @Override
-    public boolean check(@NotNull CanBeChildContext context) {
+    public boolean check(@NotNull CanBeChild_Context context) {
       return true;
     }
 
     @NotNull
     @Override
-    public ConstraintsRuleKind<CanBeChildContext> getKind() {
+    public ConstraintsRuleKind<CanBeChild_Context> getKind() {
       return myRuleKind;
     }
   }
-  public class Rule_second implements ConstraintsRule<CanBeChildContext> {
-    private final CanBeChildRuleKind myRuleKind;
+  public class Rule_second implements ConstraintsRule<CanBeChild_Context> {
+    private final CanBeChild_RuleKind myRuleKind;
 
-    public Rule_second(@NotNull CanBeChildRuleKind ruleKind) {
+    public Rule_second(@NotNull CanBeChild_RuleKind ruleKind) {
       myRuleKind = ruleKind;
     }
 
@@ -55,13 +55,13 @@ public class A_Constraints implements ConstraintsDescriptor {
 
 
     @Override
-    public boolean check(@NotNull CanBeChildContext context) {
+    public boolean check(@NotNull CanBeChild_Context context) {
       return (context.getNode() != null);
     }
 
     @NotNull
     @Override
-    public ConstraintsRuleKind<CanBeChildContext> getKind() {
+    public ConstraintsRuleKind<CanBeChild_Context> getKind() {
       return myRuleKind;
     }
   }
@@ -72,7 +72,7 @@ public class A_Constraints implements ConstraintsDescriptor {
   public <Context extends ConstraintsContext> List<ConstraintsRule<Context>> getRules(@NotNull ConstraintsRuleKind<Context> kind) {
     if (myRules == null) {
       myRules = new HashMap<ConstraintsRuleKind<?>, List<ConstraintsRule<?>>>();
-      myRules.put(CanBeChildRuleKind.INSTANCE, Arrays.<ConstraintsRule<?>>asList(new A_Constraints.Rule_first(CanBeChildRuleKind.INSTANCE), new A_Constraints.Rule_second(CanBeChildRuleKind.INSTANCE)));
+      myRules.put(CanBeChild_RuleKind.INSTANCE, Arrays.<ConstraintsRule<?>>asList(new A_Constraints2.Rule_first(CanBeChild_RuleKind.INSTANCE), new A_Constraints2.Rule_second(CanBeChild_RuleKind.INSTANCE)));
     }
     return (List<ConstraintsRule<Context>>) (List) Collections.unmodifiableList(myRules.get(kind));
   }

@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
-  <dependency className="jetbrains.mps.constraints.rules.runtime.CanBeChildContext">
-    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
-    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
-    <classNode extendsClassName="jetbrains.mps.constraints.rules.runtime.ConstraintsContext" />
-  </dependency>
-  <dependency className="jetbrains.mps.constraints.rules.runtime.CanBeChildRuleKind">
+  <dependency className="jetbrains.mps.constraints.rules.runtime.CanBeChild_Context">
     <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.CanBeChildContext" />
     <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.ContextBuilder" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
+    <classNode dependClassName="org.jetbrains.mps.annotations.Immutable" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode extendsClassName="jetbrains.mps.constraints.rules.runtime.ConstraintsContext" />
+  </dependency>
+  <dependency className="jetbrains.mps.constraints.rules.runtime.CanBeChild_RuleKind">
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.CanBeChild_Context" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode extendsClassName="jetbrains.mps.constraints.rules.runtime.ConstraintsRuleKind" />
   </dependency>
-  <dependency className="jetbrains.mps.constraints.rules.runtime.ConstraintsAspectDescriptor">
+  <dependency className="jetbrains.mps.constraints.rules.runtime.ConstraintsAspectDescriptor2">
     <classNode dependClassName="java.util.List" />
-    <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.ConstraintsDescriptor" />
+    <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.ConstraintsDescriptor2" />
     <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.ConstraintsRuleKind" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
@@ -25,7 +25,7 @@
     <classNode extendsClassName="jetbrains.mps.smodel.runtime.ILanguageAspect" />
   </dependency>
   <dependency className="jetbrains.mps.constraints.rules.runtime.ConstraintsContext" />
-  <dependency className="jetbrains.mps.constraints.rules.runtime.ConstraintsDescriptor">
+  <dependency className="jetbrains.mps.constraints.rules.runtime.ConstraintsDescriptor2">
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.ConstraintsContext" />
     <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.ConstraintsRule" />
@@ -38,10 +38,10 @@
     <classNode dependClassName="java.util.Collection" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="java.util.Objects" />
-    <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.CanBeChildContext" />
-    <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.CanBeChildRuleKind" />
-    <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.ConstraintsAspectDescriptor" />
-    <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.ConstraintsDescriptor" />
+    <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.CanBeChild_Context" />
+    <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.CanBeChild_RuleKind" />
+    <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.ConstraintsAspectDescriptor2" />
+    <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.ConstraintsDescriptor2" />
     <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.ConstraintsRule" />
     <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.ConstraintsRuleId" />
     <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.MessageProvider" />
@@ -83,11 +83,13 @@
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.ConstraintsRuleId" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode dependClassName="org.jetbrains.mps.annotations.Internal" />
   </dependency>
   <dependency className="jetbrains.mps.constraints.rules.runtime.MessagesAspectDescriptor">
     <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.MessagesDescriptor" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
+    <classNode dependClassName="org.jetbrains.mps.annotations.Internal" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
     <classNode extendsClassName="jetbrains.mps.smodel.runtime.ILanguageAspect" />
   </dependency>
@@ -95,7 +97,7 @@
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.MessageProvider" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
-    <classNode extendsClassName="jetbrains.mps.smodel.runtime.ILanguageAspect" />
+    <classNode dependClassName="org.jetbrains.mps.annotations.Internal" />
   </dependency>
 </dependenciesRoot>
 

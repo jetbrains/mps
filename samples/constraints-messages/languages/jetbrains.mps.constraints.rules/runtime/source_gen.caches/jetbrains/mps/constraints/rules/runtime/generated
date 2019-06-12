@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-2fmonwnftlec8esbrmqh5ch12jblwos">
-  <files names="CanBeChildContext.java:CanBeChildRuleKind.java:ConstraintsAspectDescriptor.java:ConstraintsContext.java:ConstraintsDescriptor.java:ConstraintsRegistry.java:ConstraintsRule.java:ConstraintsRuleId.java:ConstraintsRuleKind.java:ContextBuilder.java:MessageProvider.java:MessagesAspectDescriptor.java:MessagesDescriptor.java" />
+<product version="3" modelHash="-cm3q3nott8erjv87k14njwwaqt2dxb1">
+  <files names="CanBeChild_Context.java:CanBeChild_RuleKind.java:ConstraintsAspectDescriptor2.java:ConstraintsContext.java:ConstraintsDescriptor2.java:ConstraintsRegistry.java:ConstraintsRule.java:ConstraintsRuleId.java:ConstraintsRuleKind.java:ContextBuilder.java:MessageProvider.java:MessagesAspectDescriptor.java:MessagesDescriptor.java" />
 </product>
 

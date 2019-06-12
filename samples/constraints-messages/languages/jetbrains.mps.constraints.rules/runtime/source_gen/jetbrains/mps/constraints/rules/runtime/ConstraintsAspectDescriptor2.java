@@ -8,9 +8,9 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import java.util.List;
 
-public interface ConstraintsAspectDescriptor extends ILanguageAspect {
+public interface ConstraintsAspectDescriptor2 extends ILanguageAspect {
   @Nullable
-  ConstraintsDescriptor getConstraints(@NotNull SAbstractConcept concept);
+  ConstraintsDescriptor2 getConstraints(@NotNull SAbstractConcept concept);
 
   @NotNull
   List<ConstraintsRuleKind> getRegisteredRuleKinds();

@@ -5,7 +5,7 @@ package jetbrains.mps.constraints.rules.runtime;
 import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
-public interface ConstraintsDescriptor {
+public interface ConstraintsDescriptor2 {
   @NotNull
   <Context extends ConstraintsContext> List<ConstraintsRule<Context>> getRules(@NotNull ConstraintsRuleKind<Context> kind);
 }

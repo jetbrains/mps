@@ -8,12 +8,12 @@ public class ConstraintsRuleId {
   @NotNull
   private final String myId;
 
-  public ConstraintsRuleId(String myId) {
-    this.myId = myId;
+  public ConstraintsRuleId(@NotNull String id) {
+    myId = id;
   }
 
-  public String getMyId() {
-    return this.myId;
+  public String getId() {
+    return myId;
   }
 
   @Override

@@ -180,7 +180,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:83f25986-cdbc-469a-a327-db97a2ec5a39(jetbrains.mps.constraints.rules.structure)/7291380803376071240");
     b.version(2);
     b.aggregate("contextMember", 0x653030359355429eL).target(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359355429dL).optional(true).ordered(true).multiple(true).origin("7291380803376071326").done();
-    b.alias("kind");
+    b.alias("rule kind");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForContextExpression() {
@@ -224,6 +224,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForMessagesRoot() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.constraints.rules", "MessagesRoot", 0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593ae1607L);
     b.class_(false, false, true);
+    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:83f25986-cdbc-469a-a327-db97a2ec5a39(jetbrains.mps.constraints.rules.structure)/7291380803381892615");
     b.version(2);
     b.associate("concept", 0x63c2f3669ce56d5dL).target(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL).optional(false).origin("7188575577281228125").done();
