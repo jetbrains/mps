@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-6lvf3p802q1gnv52cmohoi8hiyaju96">
-  <files names="BaseEditorTestBody.java:BaseMigrationTestBody.java:BaseTestBody.java:BaseTransformationTest.java:CellReference.java:CheckErrorMessagesAction.java:CouldNotFindModelException.java:EditorTestUtil.java:EnvironmentIsNullException.java:ExpandedProjectPathIsNullException.java:IntentionTester.java:KeyEventsDispatcher.java:MPSTestModelInitializationException.java:MatchIntentionById.java:MatchIntentionByIdAndParameter.java:MouseEventsDispatcher.java:NodeCheckerUtil.java:NodeDataFlowCheckerUtil.java:ProjectPathIsNullException.java:RunWithCommand.java:TestParametersCache.java:TestsErrorsChecker.java:TransformationTest.java:TypeSystemCheckUtil.java" />
+<product version="3" modelHash="6nx29a6jo1qgn0nsb25hvpzsfd1696m">
+  <files names="BaseEditorTestBody.java:BaseMigrationTestBody.java:BaseTestBody.java:BaseTransformationTest.java:CellReference.java:CheckErrorMessagesAction.java:CheckExpectedMessageAction.java:CouldNotFindModelException.java:EditorTestUtil.java:EnvironmentIsNullException.java:ExpandedProjectPathIsNullException.java:IntentionTester.java:KeyEventsDispatcher.java:MPSTestModelInitializationException.java:MatchIntentionById.java:MatchIntentionByIdAndParameter.java:MouseEventsDispatcher.java:NodeCheckerUtil.java:NodeDataFlowCheckerUtil.java:ProjectPathIsNullException.java:RunWithCommand.java:TestParametersCache.java:TestsErrorsChecker.java:TransformationTest.java:TypeSystemCheckUtil.java" />
 </product>
 

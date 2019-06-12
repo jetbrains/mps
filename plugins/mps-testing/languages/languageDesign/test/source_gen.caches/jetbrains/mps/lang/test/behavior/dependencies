@@ -821,7 +821,6 @@
     <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.api.SConstructor" />
     <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.api.SMethod" />
     <classNode dependClassName="jetbrains.mps.errors.item.NodeReportItem" />
-    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
     <classNode dependClassName="jetbrains.mps.lang.test.behavior.IReferenceAttachable__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.test.runtime.NodeCheckerUtil" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
@@ -958,8 +957,6 @@
     <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.api.SConstructor" />
     <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.api.SMethod" />
     <classNode dependClassName="jetbrains.mps.errors.item.NodeReportItem" />
-    <classNode dependClassName="jetbrains.mps.lang.test.behavior.NodeRuleReference" />
-    <classNode dependClassName="jetbrains.mps.lang.test.behavior.RuleType" />
     <classNode dependClassName="jetbrains.mps.lang.test.runtime.NodeCheckerUtil" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
@@ -1157,6 +1154,7 @@
     <classNode extendsClassName="jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor" />
   </dependency>
   <dependency className="jetbrains.mps.lang.test.behavior.PerformUtil">
+    <classNode dependClassName="java.lang.Deprecated" />
     <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="jetbrains.mps.errors.MessageStatus" />
@@ -1170,6 +1168,7 @@
     <classNode dependClassName="jetbrains.mps.typesystem.inference.ITypeContextOwner" />
     <classNode dependClassName="jetbrains.mps.typesystem.inference.ITypechecking" />
     <classNode dependClassName="jetbrains.mps.typesystem.inference.TypeContextManager" />
+    <classNode dependClassName="jetbrains.mps.util.annotation.ToRemove" />
     <classNode dependClassName="junit.framework.Assert" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
   </dependency>
