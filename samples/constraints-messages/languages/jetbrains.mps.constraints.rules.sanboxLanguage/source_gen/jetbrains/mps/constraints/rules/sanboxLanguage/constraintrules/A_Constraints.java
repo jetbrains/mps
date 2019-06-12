@@ -41,6 +41,30 @@ public class A_Constraints implements ConstraintsDescriptor {
       return myRuleKind;
     }
   }
+  public class Rule_second implements ConstraintsRule<CanBeChildContext> {
+    private final CanBeChildRuleKind myRuleKind;
+
+    public Rule_second(@NotNull CanBeChildRuleKind ruleKind) {
+      myRuleKind = ruleKind;
+    }
+
+    @Override
+    public ConstraintsRuleId getId() {
+      return new ConstraintsRuleId("7188575577282270544");
+    }
+
+
+    @Override
+    public boolean check(@NotNull CanBeChildContext context) {
+      return (context.getNode() != null);
+    }
+
+    @NotNull
+    @Override
+    public ConstraintsRuleKind<CanBeChildContext> getKind() {
+      return myRuleKind;
+    }
+  }
 
   private Map<ConstraintsRuleKind<?>, List<ConstraintsRule<?>>> myRules;
 
@@ -48,7 +72,7 @@ public class A_Constraints implements ConstraintsDescriptor {
   public <Context extends ConstraintsContext> List<ConstraintsRule<Context>> getRules(@NotNull ConstraintsRuleKind<Context> kind) {
     if (myRules == null) {
       myRules = new HashMap<ConstraintsRuleKind<?>, List<ConstraintsRule<?>>>();
-      myRules.put(CanBeChildRuleKind.INSTANCE, Arrays.<ConstraintsRule<?>>asList(new A_Constraints.Rule_first(CanBeChildRuleKind.INSTANCE)));
+      myRules.put(CanBeChildRuleKind.INSTANCE, Arrays.<ConstraintsRule<?>>asList(new A_Constraints.Rule_first(CanBeChildRuleKind.INSTANCE), new A_Constraints.Rule_second(CanBeChildRuleKind.INSTANCE)));
     }
     return (List<ConstraintsRule<Context>>) (List) Collections.unmodifiableList(myRules.get(kind));
   }

@@ -26,20 +26,23 @@ import java.util.Iterator;
 import java.util.List;
 
 public interface RuleIdFlavouredItem extends FlavouredItem {
-
   class TypesystemRuleId {
     private final @NotNull SNodeReference myNodeReference;
+
     public TypesystemRuleId(@NotNull SNodeReference nodeReference) {
       myNodeReference = nodeReference;
     }
+
     @NotNull
     public SNodeReference getSourceNode() {
       return myNodeReference;
     }
+
     @Override
     public String toString() {
       return myNodeReference.toString();
     }
+
     @Override
     public boolean equals(Object o) {
       if (this == o) {
@@ -51,6 +54,7 @@ public interface RuleIdFlavouredItem extends FlavouredItem {
       TypesystemRuleId that = (TypesystemRuleId) o;
       return myNodeReference.equals(that.myNodeReference);
     }
+
     @Override
     public int hashCode() {
       return myNodeReference.hashCode();

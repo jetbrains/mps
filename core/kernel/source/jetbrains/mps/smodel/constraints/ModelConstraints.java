@@ -55,8 +55,6 @@ import org.jetbrains.mps.openapi.model.SReference;
  * getReferenceDescriptor(node, role, index, smartConcept) gets ref descriptor for smartReference being created in "aggregation" role
  */
 public class ModelConstraints {
-  // todo: make ModelConstraints project component? Concept and Language registry too?
-
   // public canBe* section
 
   public static boolean canBeAncestor(@NotNull SNode parentNode, @NotNull SAbstractConcept childConcept,/*TODO @NotNull*/ SContainmentLink containmentLink,

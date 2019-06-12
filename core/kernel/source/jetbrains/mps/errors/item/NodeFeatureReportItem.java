@@ -15,18 +15,5 @@
  */
 package jetbrains.mps.errors.item;
 
-import jetbrains.mps.errors.IErrorReporter;
-import jetbrains.mps.errors.item.ReportItemBase.SimpleReportItemFlavour;
-import jetbrains.mps.errors.messageTargets.MessageTarget;
-import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
-import jetbrains.mps.errors.messageTargets.PropertyMessageTarget;
-import jetbrains.mps.errors.messageTargets.ReferenceMessageTarget;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.language.SConceptFeature;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
-import org.jetbrains.mps.openapi.language.SProperty;
-import org.jetbrains.mps.openapi.language.SReferenceLink;
-
 public interface NodeFeatureReportItem extends NodeReportItem, NodeFeatureFlavouredItem {
 }
