@@ -109,10 +109,10 @@
     <node concept="3EZMnI" id="6kKc3mjlk9C" role="2wV5jI">
       <node concept="l2Vlx" id="6kKc3mjlk9D" role="2iSdaV" />
       <node concept="3F0ifn" id="6kKc3mjlk9E" role="3EZMnx">
-        <property role="3F0ifm" value="rules" />
+        <property role="3F0ifm" value="supply rules" />
       </node>
       <node concept="3F0ifn" id="6kKc3mjlk9F" role="3EZMnx">
-        <property role="3F0ifm" value="for" />
+        <property role="3F0ifm" value="for kind" />
       </node>
       <node concept="1iCGBv" id="6kKc3mjlk9G" role="3EZMnx">
         <ref role="1NtTu8" to="bm42:6kKc3mjlk9b" resolve="kind" />
@@ -124,7 +124,7 @@
         </node>
       </node>
       <node concept="3F0ifn" id="6kKc3mjlkbs" role="3EZMnx">
-        <property role="3F0ifm" value="{" />
+        <property role="3F0ifm" value=":" />
         <node concept="ljvvj" id="6kKc3mjlkeo" role="3F10Kt">
           <property role="VOm3f" value="true" />
         </node>
@@ -142,9 +142,7 @@
           <property role="VOm3f" value="true" />
         </node>
       </node>
-      <node concept="3F0ifn" id="6kKc3mjlkbG" role="3EZMnx">
-        <property role="3F0ifm" value="}" />
-      </node>
+      <node concept="3F0ifn" id="6kKc3mjlkbG" role="3EZMnx" />
     </node>
   </node>
   <node concept="24kQdi" id="6kKc3mjlkcK">

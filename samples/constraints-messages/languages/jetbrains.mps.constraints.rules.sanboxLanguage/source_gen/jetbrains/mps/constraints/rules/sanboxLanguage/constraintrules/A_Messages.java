@@ -20,10 +20,22 @@ public final class A_Messages implements MessagesDescriptor {
       return "overriding msg";
     }
   }
+  public final class second_MessageProvider_b implements MessageProvider {
+    @Override
+    public ConstraintsRuleId getRule() {
+      return new ConstraintsRuleId("7188575577282270544");
+    }
+
+    @Override
+    public String getMessage() {
+      return "gagagag";
+    }
+  }
   @Override
   public List<MessageProvider> getMessageProviders() {
     List<MessageProvider> result = new ArrayList<MessageProvider>();
     result.add(new A_Messages.first_MessageProvider_a());
+    result.add(new A_Messages.second_MessageProvider_b());
     return result;
   }
 }

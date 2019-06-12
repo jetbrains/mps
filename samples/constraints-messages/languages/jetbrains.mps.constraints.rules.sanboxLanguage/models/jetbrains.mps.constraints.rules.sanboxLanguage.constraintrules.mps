@@ -102,6 +102,10 @@
       <property role="3QBypB" value="overriding msg" />
       <ref role="3QBypx" node="6f2WQqsUY3M" resolve="first" />
     </node>
+    <node concept="3QByp$" id="47X3GcVZK8v" role="3QBEN7">
+      <property role="3QBypB" value="gagagag" />
+      <ref role="3QBypx" node="6f2WQqsXllg" resolve="second" />
+    </node>
   </node>
 </model>
 

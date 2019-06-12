@@ -14,7 +14,7 @@
     <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.ConstraintsRuleId" />
     <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.ConstraintsRuleKind" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
-    <classNode extendsClassName="jetbrains.mps.constraints.rules.runtime.ConstraintsDescriptor" />
+    <classNode extendsClassName="jetbrains.mps.constraints.rules.runtime.ConstraintsDescriptor2" />
   </dependency>
   <dependency className="jetbrains.mps.constraints.rules.sanboxLanguage.constraintrules.A_Messages">
     <classNode dependClassName="java.lang.Override" />
@@ -30,7 +30,7 @@
     <classNode dependClassName="java.util.Arrays" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.CanBeChild_RuleKind" />
-    <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.ConstraintsDescriptor" />
+    <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.ConstraintsDescriptor2" />
     <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.ConstraintsRuleKind" />
     <classNode dependClassName="jetbrains.mps.constraints.rules.sanboxLanguage.constraintrules.A_Constraints2" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndex" />
@@ -39,7 +39,7 @@
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
-    <classNode extendsClassName="jetbrains.mps.constraints.rules.runtime.ConstraintsAspectDescriptor" />
+    <classNode extendsClassName="jetbrains.mps.constraints.rules.runtime.ConstraintsAspectDescriptor2" />
   </dependency>
   <dependency className="jetbrains.mps.constraints.rules.sanboxLanguage.constraintrules.GeneratedMessagesAspectDescriptor">
     <classNode dependClassName="java.lang.Override" />

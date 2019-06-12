@@ -11,6 +11,7 @@ import jetbrains.mps.smodel.adapter.ids.SConceptId;
 import jetbrains.mps.smodel.runtime.DataTypeDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder2;
+import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptA = createDescriptorForA();
@@ -56,6 +57,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, false);
     b.origin("r:f98258c1-26b7-4e43-a45f-78083d3028b9(jetbrains.mps.constraints.rules.sanboxLanguage.structure)/7291380803379310291");
     b.version(2);
+    b.property("prop", 0x41fd0ec33bfefb40L).type(PrimitiveTypeId.BOOLEAN).origin("4754973013261089600").done();
     return b.create();
   }
 }

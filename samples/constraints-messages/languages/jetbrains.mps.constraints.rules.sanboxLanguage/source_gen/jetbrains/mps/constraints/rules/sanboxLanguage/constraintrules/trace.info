@@ -83,22 +83,32 @@
     <file name="A_Messages.java">
       <node id="7188575577281692444" at="14,40,15,58" concept="6" />
       <node id="7188575577281692444" at="19,32,20,30" concept="6" />
-      <node id="7188575577281660797" at="24,54,25,68" concept="5" />
-      <node id="7188575577281692444" at="25,68,26,57" concept="1" />
-      <node id="7188575577281660797" at="26,57,27,18" concept="6" />
+      <node id="4754973013261091359" at="25,40,26,58" concept="6" />
+      <node id="4754973013261091359" at="30,32,31,23" concept="6" />
+      <node id="7188575577281660797" at="35,54,36,68" concept="5" />
+      <node id="7188575577281692444" at="36,68,37,57" concept="1" />
+      <node id="4754973013261091359" at="37,57,38,58" concept="1" />
+      <node id="7188575577281660797" at="38,58,39,18" concept="6" />
       <node id="7188575577281692444" at="13,0,17,0" concept="4" trace="getRule#()Ljetbrains/mps/constraints/rules/runtime/ConstraintsRuleId;" />
       <node id="7188575577281692444" at="18,0,22,0" concept="4" trace="getMessage#()Ljava/lang/String;" />
-      <node id="7188575577281660797" at="23,0,29,0" concept="4" trace="getMessageProviders#()Ljava/util/List;" />
+      <node id="4754973013261091359" at="24,0,28,0" concept="4" trace="getRule#()Ljetbrains/mps/constraints/rules/runtime/ConstraintsRuleId;" />
+      <node id="4754973013261091359" at="29,0,33,0" concept="4" trace="getMessage#()Ljava/lang/String;" />
+      <node id="7188575577281660797" at="34,0,41,0" concept="4" trace="getMessageProviders#()Ljava/util/List;" />
       <scope id="7188575577281692444" at="14,40,15,58" />
       <scope id="7188575577281692444" at="19,32,20,30" />
-      <scope id="7188575577281660797" at="24,54,27,18">
-        <var name="result" id="7188575577281660797" />
-      </scope>
+      <scope id="4754973013261091359" at="25,40,26,58" />
+      <scope id="4754973013261091359" at="30,32,31,23" />
       <scope id="7188575577281692444" at="13,0,17,0" />
       <scope id="7188575577281692444" at="18,0,22,0" />
-      <scope id="7188575577281660797" at="23,0,29,0" />
+      <scope id="4754973013261091359" at="24,0,28,0" />
+      <scope id="4754973013261091359" at="29,0,33,0" />
+      <scope id="7188575577281660797" at="35,54,39,18">
+        <var name="result" id="7188575577281660797" />
+      </scope>
+      <scope id="7188575577281660797" at="34,0,41,0" />
       <unit id="7188575577281692444" at="12,0,23,0" name="jetbrains.mps.constraints.rules.sanboxLanguage.constraintrules.A_Messages$first_MessageProvider_a" />
-      <unit id="7188575577281660797" at="11,0,30,0" name="jetbrains.mps.constraints.rules.sanboxLanguage.constraintrules.A_Messages" />
+      <unit id="4754973013261091359" at="23,0,34,0" name="jetbrains.mps.constraints.rules.sanboxLanguage.constraintrules.A_Messages$second_MessageProvider_b" />
+      <unit id="7188575577281660797" at="11,0,42,0" name="jetbrains.mps.constraints.rules.sanboxLanguage.constraintrules.A_Messages" />
     </file>
   </root>
 </debug-info>
