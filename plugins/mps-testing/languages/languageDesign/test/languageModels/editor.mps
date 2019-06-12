@@ -883,37 +883,6 @@
       <node concept="l2Vlx" id="7uNrZ$pvgoA" role="2iSdaV" />
     </node>
   </node>
-  <node concept="24kQdi" id="hG1ULyg">
-    <property role="3GE5qa" value="nodeOperation" />
-    <ref role="1XX52x" to="tp5g:hG1TgHj" resolve="NodePropertiesContainer" />
-    <node concept="3EZMnI" id="hG1UMMd" role="2wV5jI">
-      <ref role="1ERwB7" node="hG2S5d1" resolve="Annotation_Actions" />
-      <node concept="3F0ifn" id="hG1UNQW" role="3EZMnx">
-        <property role="3F0ifm" value="&lt;node" />
-        <ref role="1k5W1q" to="tpen:hshU_KJ" resolve="Annotation" />
-        <ref role="1ERwB7" node="hG2S5d1" resolve="Annotation_Actions" />
-      </node>
-      <node concept="2SsqMj" id="hG1UQuA" role="3EZMnx" />
-      <node concept="3F2HdR" id="hG2y0$y" role="3EZMnx">
-        <property role="2czwfO" value="," />
-        <ref role="1NtTu8" to="tp5g:hG1UGAv" resolve="nodeCheckOperations" />
-        <node concept="3F0ifn" id="hG2y3bO" role="2czzBI">
-          <property role="3F0ifm" value="..." />
-          <ref role="1k5W1q" to="tpen:hshU_KJ" resolve="Annotation" />
-        </node>
-        <node concept="2iRfu4" id="i2ICqHU" role="2czzBx" />
-      </node>
-      <node concept="3F0ifn" id="hG1UWaq" role="3EZMnx">
-        <property role="3F0ifm" value="&gt;" />
-        <ref role="1k5W1q" to="tpen:hshU_KJ" resolve="Annotation" />
-        <ref role="1ERwB7" node="hG2S5d1" resolve="Annotation_Actions" />
-        <node concept="11L4FC" id="hXFCItk" role="3F10Kt">
-          <property role="VOm3f" value="true" />
-        </node>
-      </node>
-      <node concept="2iRfu4" id="i2ICqHF" role="2iSdaV" />
-    </node>
-  </node>
   <node concept="24kQdi" id="hG2n6N2">
     <property role="3GE5qa" value="nodeOperation" />
     <ref role="1XX52x" to="tp5g:hG29bgx" resolve="NodeWarningCheckOperation" />

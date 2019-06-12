@@ -2722,13 +2722,6 @@
       <node concept="3cqZAl" id="1kgh5Yae9j4" role="3clF45" />
     </node>
   </node>
-  <node concept="13h7C7" id="1653mnvAOUH">
-    <property role="3GE5qa" value="nodeOperation" />
-    <ref role="13h7C2" to="tp5g:hG1TgHj" resolve="NodePropertiesContainer" />
-    <node concept="13hLZK" id="1653mnvAOUI" role="13h7CW">
-      <node concept="3clFbS" id="1653mnvAOUJ" role="2VODD2" />
-    </node>
-  </node>
   <node concept="13h7C7" id="1653mnvB2Em">
     <ref role="13h7C2" to="tp5g:hG7CXiP" resolve="NodeOperationsContainer" />
     <node concept="13i0hz" id="4QaU5oI0Q4j" role="13h7CS">
