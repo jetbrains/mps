@@ -68,7 +68,7 @@ public class NodeReferenceURL_Action extends BaseAction {
     return Registry.is("ide.httpsupport.specifyProjectInNodeURL");
   }
   private static String buildRequest_njdhnr_a0a0b0h(SNodeReference ref, Project project) {
-    QueryStringEncoder encoder = new QueryStringEncoder("http://127.0.0.1:" + MPSInternalPortManager.PORT + "/node");
+    QueryStringEncoder encoder = new QueryStringEncoder("http://127.0.0.1:" + MPSInternalPortManager.getCurrentPort() + "/node");
 
     encoder.addParam("ref", PersistenceFacade.getInstance().asString(ref));
     encoder.addParam("project", project.getName());
@@ -76,7 +76,7 @@ public class NodeReferenceURL_Action extends BaseAction {
     return encoder.toString();
   }
   private static String buildRequest_njdhnr_a0a0b0h_0(SNodeReference ref) {
-    QueryStringEncoder encoder = new QueryStringEncoder("http://127.0.0.1:" + MPSInternalPortManager.PORT + "/node");
+    QueryStringEncoder encoder = new QueryStringEncoder("http://127.0.0.1:" + MPSInternalPortManager.getCurrentPort() + "/node");
 
     encoder.addParam("ref", PersistenceFacade.getInstance().asString(ref));
 

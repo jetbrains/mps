@@ -86,7 +86,7 @@ public class HttpSupportUtil {
     return getURL(node.getReference());
   }
   public static String getURL(SNodeReference nodeRef) {
-    QueryStringEncoder encoder = new QueryStringEncoder("http://127.0.0.1:" + MPSInternalPortManager.PORT + "/node");
+    QueryStringEncoder encoder = new QueryStringEncoder("http://127.0.0.1:" + MPSInternalPortManager.getCurrentPort() + "/node");
     encoder.addParam("ref", PersistenceFacade.getInstance().asString(nodeRef));
     return encoder.toString();
   }

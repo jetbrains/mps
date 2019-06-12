@@ -30,7 +30,7 @@ public final class MPSInternalPortProvider__BehaviorDescriptor extends BaseBHDes
   }
 
   /*package*/ static int getPort_id6WBmrsjA4L4(@NotNull SNode __thisNode__) {
-    return MPSInternalPortManager.PORT;
+    return MPSInternalPortManager.getCurrentPort();
   }
 
   /*package*/ MPSInternalPortProvider__BehaviorDescriptor() {

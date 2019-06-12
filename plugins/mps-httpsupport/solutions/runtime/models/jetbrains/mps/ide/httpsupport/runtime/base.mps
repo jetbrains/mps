@@ -63,9 +63,6 @@
       <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
         <reference id="1144433194310" name="classConcept" index="1Pybhc" />
       </concept>
-      <concept id="1070533707846" name="jetbrains.mps.baseLanguage.structure.StaticFieldReference" flags="nn" index="10M0yZ">
-        <reference id="1144433057691" name="classifier" index="1PxDUh" />
-      </concept>
       <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
       <concept id="1070534370425" name="jetbrains.mps.baseLanguage.structure.IntegerType" flags="in" index="10Oyi0" />
       <concept id="1070534644030" name="jetbrains.mps.baseLanguage.structure.BooleanType" flags="in" index="10P_77" />
@@ -815,9 +812,9 @@
                 <ref role="37wK5l" to="9xw8:~QueryStringEncoder.&lt;init&gt;(java.lang.String)" resolve="QueryStringEncoder" />
                 <node concept="3cpWs3" id="6frl3mWbpGn" role="37wK5m">
                   <node concept="3cpWs3" id="1_yOWEXevB1" role="3uHU7B">
-                    <node concept="10M0yZ" id="1_yOWEXevEb" role="3uHU7w">
-                      <ref role="1PxDUh" to="4h87:3PMO5H7WIrG" resolve="MPSInternalPortManager" />
-                      <ref role="3cqZAo" to="4h87:3PMO5H7WJ51" resolve="PORT" />
+                    <node concept="2YIFZM" id="7prAfZaZD$4" role="3uHU7w">
+                      <ref role="37wK5l" to="4h87:3BwRxVwW$fn" resolve="getCurrentPort" />
+                      <ref role="1Pybhc" to="4h87:3PMO5H7WIrG" resolve="MPSInternalPortManager" />
                     </node>
                     <node concept="Xl_RD" id="32YxhLfg7Xx" role="3uHU7B">
                       <property role="Xl_RC" value="http://127.0.0.1:" />

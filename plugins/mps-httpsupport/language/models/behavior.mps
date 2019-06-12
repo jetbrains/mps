@@ -60,9 +60,6 @@
       <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
         <reference id="1144433194310" name="classConcept" index="1Pybhc" />
       </concept>
-      <concept id="1070533707846" name="jetbrains.mps.baseLanguage.structure.StaticFieldReference" flags="nn" index="10M0yZ">
-        <reference id="1144433057691" name="classifier" index="1PxDUh" />
-      </concept>
       <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
       <concept id="1070534370425" name="jetbrains.mps.baseLanguage.structure.IntegerType" flags="in" index="10Oyi0" />
       <concept id="1070534644030" name="jetbrains.mps.baseLanguage.structure.BooleanType" flags="in" index="10P_77" />
@@ -1074,9 +1071,9 @@
       <node concept="3Tm1VV" id="3PMO5H7Xp2u" role="1B3o_S" />
       <node concept="3clFbS" id="3PMO5H7Xp2x" role="3clF47">
         <node concept="3clFbF" id="3PMO5H7Xp2K" role="3cqZAp">
-          <node concept="10M0yZ" id="3PMO5H7Xx_J" role="3clFbG">
-            <ref role="1PxDUh" to="4h87:3PMO5H7WIrG" resolve="MPSInternalPortManager" />
-            <ref role="3cqZAo" to="4h87:3PMO5H7WJ51" resolve="PORT" />
+          <node concept="2YIFZM" id="7prAfZaZ_$y" role="3clFbG">
+            <ref role="37wK5l" to="4h87:3BwRxVwW$fn" resolve="getCurrentPort" />
+            <ref role="1Pybhc" to="4h87:3PMO5H7WIrG" resolve="MPSInternalPortManager" />
           </node>
         </node>
       </node>

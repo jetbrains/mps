@@ -4792,9 +4792,9 @@
       <property role="36QftV" value="true" />
       <ref role="30HIoZ" to="ndib:3PMO5H7Xp0_" resolve="MPSInternalPortProvider" />
       <node concept="gft3U" id="3PMO5H7XVQX" role="1lVwrX">
-        <node concept="10M0yZ" id="3PMO5H7XVSQ" role="gfFT$">
-          <ref role="1PxDUh" to="4h87:3PMO5H7WIrG" resolve="MPSInternalPortManager" />
-          <ref role="3cqZAo" to="4h87:3PMO5H7WJ51" resolve="PORT" />
+        <node concept="2YIFZM" id="7prAfZaZAoL" role="gfFT$">
+          <ref role="37wK5l" to="4h87:3BwRxVwW$fn" resolve="getCurrentPort" />
+          <ref role="1Pybhc" to="4h87:3PMO5H7WIrG" resolve="MPSInternalPortManager" />
         </node>
       </node>
     </node>
