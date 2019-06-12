@@ -18,6 +18,7 @@ package jetbrains.mps.project;
 import jetbrains.mps.classloading.CustomClassLoadingFacet;
 import jetbrains.mps.java.stub.PackageScopeControl;
 import jetbrains.mps.module.ReloadableModuleBase;
+import jetbrains.mps.persistence.java.library.JDKStubsModelRoot;
 import jetbrains.mps.project.facets.TestsFacet;
 import jetbrains.mps.project.io.DescriptorIO;
 import jetbrains.mps.project.io.DescriptorIOFacade;
@@ -28,6 +29,7 @@ import jetbrains.mps.project.structure.modules.SolutionKind;
 import jetbrains.mps.reloading.CommonPaths;
 import jetbrains.mps.smodel.BootstrapLanguages;
 import jetbrains.mps.util.ClassType;
+import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.util.annotation.Hack;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.QualifiedPath;
@@ -37,9 +39,12 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.persistence.Memento;
+import org.jetbrains.mps.openapi.persistence.ModelRoot;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -82,6 +87,16 @@ public class Solution extends ReloadableModuleBase {
   }
 
   private static void populateModelRoot(ClassType classType, ModelRootDescriptor javaStubsModelRoot) {
+    PackageScopeControl psc = getPackageScopeControl(classType);
+    if (psc == null) {
+      return;
+    }
+
+    psc.save(javaStubsModelRoot.getMemento().createChild("PackageScope"));
+  }
+
+  @Nullable
+  private static PackageScopeControl getPackageScopeControl(ClassType classType) {
     PackageScopeControl psc = null;
     switch (classType) {
       case JDK:
@@ -121,11 +136,7 @@ public class Solution extends ReloadableModuleBase {
         psc = platformPackages;
         break;
     }
-
-    if (psc != null) {
-      final Memento m = javaStubsModelRoot.getMemento().createChild("PackageScope");
-      psc.save(m);
-    }
+    return psc;
   }
 
   @NotNull
@@ -186,6 +197,7 @@ public class Solution extends ReloadableModuleBase {
     super.updateModelsSet();
   }
 
+  private List<ModelRoot> myAddRoots = new ArrayList<>();
   @Hack
   private void updateBootstrapSolutionLibraries() {
     ModuleDescriptor descriptor = getModuleDescriptor();
@@ -194,6 +206,7 @@ public class Solution extends ReloadableModuleBase {
     if (classType == null) return;
 
     // do it only for first time
+    List<QualifiedPath> jrtPaths = new ArrayList<>();
     if (descriptor.getModelRootDescriptors().isEmpty()) {
       for (QualifiedPath path : CommonPaths.getPaths(classType)) {
         final Collection<ModelRootDescriptor> modelRootDescriptors = descriptor.getModelRootDescriptors();
@@ -207,11 +220,20 @@ public class Solution extends ReloadableModuleBase {
           }
           descriptor.getJavaLibs().add(path.getPath());
         } else {
-          JDKStubModelRoot root;
-
+          jrtPaths.add(path);
         }
       }
+      if (!jrtPaths.isEmpty()){
+        myAddRoots.add(new JDKStubsModelRoot(jrtPaths, VFSManager.getDefaultInstance(), getPackageScopeControl(classType)));
+      }
     }
+  }
+
+  @Override
+  protected Iterable<ModelRoot> loadRoots() {
+    List<ModelRoot> res = IterableUtil.asList(super.loadRoots());
+    res.addAll(myAddRoots);
+    return res;
   }
 
   public String toString() {

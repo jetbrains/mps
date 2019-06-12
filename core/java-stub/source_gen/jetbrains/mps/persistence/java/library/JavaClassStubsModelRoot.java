@@ -22,6 +22,7 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.vfs.path.Path;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.model.SModelReference;
@@ -140,6 +141,10 @@ public class JavaClassStubsModelRoot extends FileBasedModelRoot implements Copya
   }
 
   public void getModelDescriptors(final List<SModel> result, IFile file, String prefix, SModule module) {
+    JavaClassStubsModelRoot.getModelDescriptors_(result, file, prefix, module, myPackageScope, this);
+  }
+
+  /*package*/ static void getModelDescriptors_(final List<SModel> result, IFile file, String prefix, SModule module, PackageScopeControl psc, ModelRoot mr) {
     List<IFile> children = file.getChildren();
     for (IFile subdir : ListSequence.fromList(children).where(new IWhereFilter<IFile>() {
       public boolean accept(IFile it) {
@@ -147,9 +152,9 @@ public class JavaClassStubsModelRoot extends FileBasedModelRoot implements Copya
       }
     })) {
       String pack = ((prefix.length() == 0 ? subdir.getName() : prefix + '.' + subdir.getName()));
-      if (myPackageScope != null && !(myPackageScope.isIncluded(pack))) {
-        if (myPackageScope.isAnyChildIncluded(pack)) {
-          getModelDescriptors(result, subdir, pack, module);
+      if (psc != null && !(psc.isIncluded(pack))) {
+        if (psc.isAnyChildIncluded(pack)) {
+          getModelDescriptors_(result, subdir, pack, module, psc, mr);
         }
         continue;
       }
@@ -184,17 +189,18 @@ public class JavaClassStubsModelRoot extends FileBasedModelRoot implements Copya
           smd = (JavaClassStubModelDescriptor) modelDescriptor;
         } else {
           smd = new JavaClassStubModelDescriptor(modelReference, new FolderSetDataSource());
-          smd.setModelRoot(this);
-          if (myPackageScope != null) {
-            smd.setSkipPrivate(myPackageScope.isSkipPrivate());
+          smd.setModelRoot(mr);
+          if (psc != null) {
+            smd.setSkipPrivate(psc.isSkipPrivate());
           }
           ListSequence.fromList(result).addElement(smd);
         }
-        smd.getSource().addPath(subdir, this);
+        smd.getSource().addPath(subdir, mr);
       }
-      getModelDescriptors(result, subdir, pack, module);
+      getModelDescriptors_(result, subdir, pack, module, psc, mr);
     }
   }
+
 
   /**
    * DIRTY_HACK
@@ -206,7 +212,7 @@ public class JavaClassStubsModelRoot extends FileBasedModelRoot implements Copya
    * Allow user to have only one stub root of this kind
    */
   @Nullable
-  private SModel getModelAlreadyRegistered(SModule module, SModelReference modelReference) {
+  private static SModel getModelAlreadyRegistered(SModule module, SModelReference modelReference) {
     return module.getModel(modelReference.getModelId());
   }
 
