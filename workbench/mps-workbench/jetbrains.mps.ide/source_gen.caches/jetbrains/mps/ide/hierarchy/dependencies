@@ -3,6 +3,7 @@
   <dependency className="jetbrains.mps.ide.hierarchy.AbstractHierarchyTree">
     <classNode dependClassName="com.intellij.openapi.actionSystem.ActionGroup" />
     <classNode dependClassName="com.intellij.openapi.actionSystem.AnActionEvent" />
+    <classNode dependClassName="java.awt.font.TextAttribute" />
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.Runnable" />
@@ -18,6 +19,7 @@
     <classNode dependClassName="jetbrains.mps.ide.hierarchy.HierarchyTreeNode" />
     <classNode dependClassName="jetbrains.mps.ide.ui.tree.MPSTreeNode" />
     <classNode dependClassName="jetbrains.mps.ide.ui.tree.TextTreeNode" />
+    <classNode dependClassName="jetbrains.mps.ide.ui.util.NodeAttributesUtil" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     <classNode dependClassName="jetbrains.mps.smodel.ModelReadRunnable" />
     <classNode dependClassName="jetbrains.mps.smodel.SModelStereotype" />

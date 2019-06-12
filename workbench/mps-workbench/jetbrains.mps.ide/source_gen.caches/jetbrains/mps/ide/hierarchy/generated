@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="83khexfhd104x8ek49b2yxt4u9qkuaf">
+<product version="3" modelHash="6pe4u5nh2hemkb2oizc2swjukj04gri">
   <files names="AbstractHierarchyTree.java:AbstractHierarchyView.java:BaseLanguageHierarchyViewTool.java:ChildHierarchyTreeNode.java:CircularHierarchyException.java:ConceptHierarchyListener.java:ConceptHierarchyTree.java:HierarchyTreeNode.java:HierarchyViewTool.java:LanguageHierarchiesComponent.java" />
 </product>
 

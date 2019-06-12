@@ -10,6 +10,8 @@ import jetbrains.mps.ide.ui.tree.TextTreeNode;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import jetbrains.mps.smodel.ModelReadRunnable;
+import jetbrains.mps.ide.ui.util.NodeAttributesUtil;
+import java.awt.font.TextAttribute;
 import java.util.Set;
 import jetbrains.mps.util.CollectionUtil;
 import org.jetbrains.mps.util.Condition;
@@ -120,6 +122,13 @@ public abstract class AbstractHierarchyTree extends MPSTree {
     return (name == null ? "no name" : name);
   }
 
+  public void setNodePresentation(HierarchyTreeNode treeNode, SNode n) {
+    treeNode.setText(nodePresentation(n));
+    if (NodeAttributesUtil.isDeprecatedNode(n)) {
+      treeNode.addFontAttribute(TextAttribute.STRIKETHROUGH, TextAttribute.STRIKETHROUGH_ON);
+    }
+  }
+
   protected abstract String noNodeString();
   protected abstract SNode getParent(SNode node);
   protected abstract Set<SNode> getParents(SNode node, Set<SNode> visited) throws CircularHierarchyException;
@@ -190,7 +199,7 @@ public abstract class AbstractHierarchyTree extends MPSTree {
     for (int i = parentHierarchy.size() - 1; i >= 0; i--) {
       SNode hierarchyNode = parentHierarchy.get(i);
       hierarchyTreeNode = (i > 0 ? (new HierarchyTreeNode(hierarchyNode)) : new ChildHierarchyTreeNode(hierarchyNode, this, visited));
-      hierarchyTreeNode.setText(nodePresentation(hierarchyNode));
+      setNodePresentation(hierarchyTreeNode, hierarchyNode);
       if (i == parentHierarchy.size() - 1) {
         rootNode = hierarchyTreeNode;
       }

@@ -48,14 +48,14 @@ public class ChildHierarchyTreeNode extends HierarchyTreeNode {
       visited.add(node);
       for (SNode descendant : descendants) {
         ChildHierarchyTreeNode childHierarchyTreeNode = new ChildHierarchyTreeNode(descendant, myHierarchyTree, visited);
-        childHierarchyTreeNode.setText(myHierarchyTree.nodePresentation(descendant));
+        myHierarchyTree.setNodePresentation(childHierarchyTreeNode, descendant);
         add(childHierarchyTreeNode);
       }
     } catch (CircularHierarchyException ex) {
       SNode errorNode = (SNode) ex.getRepeatedObject();
       final String message = ex.getMessage();
       HierarchyTreeNode errorTreeNode = new HierarchyTreeNode(errorNode);
-      errorTreeNode.setText(myHierarchyTree.nodePresentation(errorNode));
+      myHierarchyTree.setNodePresentation(errorTreeNode, errorNode);
       errorTreeNode.setIcon(Icons.ERROR_ICON);
       errorTreeNode.setColor(JBColor.RED);
       errorTreeNode.setAdditionalText(message);
