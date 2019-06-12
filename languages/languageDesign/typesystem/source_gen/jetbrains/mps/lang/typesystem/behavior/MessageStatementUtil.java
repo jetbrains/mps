@@ -4,11 +4,16 @@ package jetbrains.mps.lang.typesystem.behavior;
 
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.util.StringUtil;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import java.util.ArrayList;
+import jetbrains.mps.baseLanguage.behavior.IBinaryLike__BehaviorDescriptor;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 public class MessageStatementUtil {
   public static final int MIN_LENGTH = 3;
@@ -16,11 +21,26 @@ public class MessageStatementUtil {
   private static final int MAX_LENGTH = 20;
 
   public static String generateNameFromExpression(SNode expr) {
-    List<SNode> descendants = SNodeOperations.getNodeDescendants(expr, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, "jetbrains.mps.baseLanguage.structure.StringLiteral"), true, new SAbstractConcept[]{});
+    List<SNode> descendants = Sequence.fromIterable(stringDescendants(expr)).toListSequence();
     if (ListSequence.fromList(descendants).isEmpty()) {
       return null;
     }
-    return convertToCamelCaseNameString(SPropertyOperations.getString(ListSequence.fromList(descendants).last(), MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value")));
+    return convertToCamelCaseNameString(ListSequence.fromList(descendants).foldLeft("", new ILeftCombinator<SNode, String>() {
+      public String combine(String s, SNode it) {
+        String value = SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"));
+        return s + " " + ((value == null ? "" : StringUtil.unescapeJavaString(value)));
+      }
+    }));
+  }
+
+  private static Iterable<SNode> stringDescendants(SNode expr) {
+    if (SNodeOperations.isInstanceOf(expr, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, "jetbrains.mps.baseLanguage.structure.StringLiteral"))) {
+      return ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(expr, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, "jetbrains.mps.baseLanguage.structure.StringLiteral")));
+    }
+    if (SNodeOperations.isInstanceOf(expr, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x182da1771714863eL, "jetbrains.mps.baseLanguage.structure.IBinaryLike"))) {
+      return Sequence.fromIterable(stringDescendants(IBinaryLike__BehaviorDescriptor.getSyntacticallyLeftSideExpression_id1wHCnsn590c.invoke(SNodeOperations.cast(expr, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x182da1771714863eL, "jetbrains.mps.baseLanguage.structure.IBinaryLike"))))).concat(Sequence.fromIterable(stringDescendants(IBinaryLike__BehaviorDescriptor.getSyntacticallyRightSideExpression_id1wHCnsn590i.invoke(SNodeOperations.cast(expr, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x182da1771714863eL, "jetbrains.mps.baseLanguage.structure.IBinaryLike"))))));
+    }
+    return SNodeOperations.getNodeDescendants(expr, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, "jetbrains.mps.baseLanguage.structure.StringLiteral"), true, new SAbstractConcept[]{});
   }
 
   private static String convertToCamelCaseNameString(String nameString) {
