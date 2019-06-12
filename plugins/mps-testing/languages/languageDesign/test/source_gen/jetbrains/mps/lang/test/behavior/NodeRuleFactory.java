@@ -18,11 +18,11 @@ public class NodeRuleFactory {
 
   public SNode createNodeFromRuleMsg(@Nullable SNode reference) {
     NodeRuleReference ruleReference = new NodeRuleReference(reference);
-    if (ruleReference.getType() == RuleType.TYPESYSTEM) {
+    if (ruleReference.getType() == RuleType.TYPESYSTEM && !(ruleReference.isReportStatement())) {
       return this.createTypeSystemCheckOperation();
     } else if (ruleReference.getType() == RuleType.CONSTRAINTS) {
       return this.createConstraintsCheckOperation();
-    } else if (ruleReference.getType() == RuleType.MESSAGESTATEMENT) {
+    } else if (ruleReference.getType() == RuleType.MESSAGESTATEMENT || ruleReference.getType() == RuleType.TYPESYSTEM && ruleReference.isReportStatement()) {
       return this.createMessageStatementCheckOperation();
     } else {
       return this.createDefaultCheckOperation();

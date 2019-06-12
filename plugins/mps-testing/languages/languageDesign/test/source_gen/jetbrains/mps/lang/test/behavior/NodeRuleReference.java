@@ -34,6 +34,10 @@ public class NodeRuleReference {
     return SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(ruleNode), MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, "jetbrains.mps.lang.constraints.structure.ConceptConstraints"));
   }
 
+  public boolean isReportStatement() {
+    return SNodeOperations.isInstanceOf(ruleNode, MetaAdapterFactory.getInterfaceConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4aad802L, "jetbrains.mps.lang.typesystem.structure.MessageStatement"));
+  }
+
   private boolean isMessageStatement() {
     return RulesUtil.withinCheckingItem(ruleNode) && !(RulesUtil.withinInferenceItem(ruleNode));
   }

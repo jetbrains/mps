@@ -4132,9 +4132,9 @@
       <node id="2893471348147514949" at="13,0,14,0" concept="5" trace="reporter" />
       <node id="2893471348147515428" at="15,51,16,29" concept="4" />
       <node id="2893471348148558758" at="19,65,20,71" concept="9" />
-      <node id="2893471348147529002" at="21,57,22,51" concept="10" />
+      <node id="2893471348147529002" at="21,97,22,51" concept="10" />
       <node id="8333855927549233626" at="23,65,24,52" concept="10" />
-      <node id="2893471348147533868" at="25,70,26,57" concept="10" />
+      <node id="2893471348147533868" at="25,157,26,57" concept="10" />
       <node id="8333855927549236630" at="27,12,28,48" concept="10" />
       <node id="7506293816980899105" at="33,56,34,210" concept="10" />
       <node id="7506293816980900536" at="35,12,36,213" concept="10" />
@@ -4167,9 +4167,9 @@
       <node id="8333855927548325327" at="60,0,69,0" concept="8" trace="createDefaultCheckOperation#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="2893471348147514201" at="19,0,31,0" concept="8" trace="createNodeFromRuleMsg#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <scope id="2893471348147514476" at="15,51,16,29" />
-      <scope id="428590876657268147" at="21,57,22,51" />
+      <scope id="428590876657268147" at="21,97,22,51" />
       <scope id="8333855927540206774" at="23,65,24,52" />
-      <scope id="8333855927540213242" at="25,70,26,57" />
+      <scope id="8333855927540213242" at="25,157,26,57" />
       <scope id="428590876657569684" at="27,12,28,48" />
       <scope id="8578280453509782402" at="33,56,34,210" />
       <scope id="8578280453509815782" at="35,12,36,213" />
@@ -4215,12 +4215,14 @@
       <node id="2893471348148394883" at="24,12,25,30" concept="10" />
       <node id="8206790888929405170" at="29,34,30,51" concept="10" />
       <node id="2893471348148327488" at="33,35,34,237" concept="10" />
-      <node id="8206790888929403450" at="37,40,38,96" concept="10" />
+      <node id="1235817567552932449" at="37,38,38,208" concept="10" />
+      <node id="8206790888929403450" at="41,40,42,96" concept="10" />
       <node id="2893471348148394367" at="24,10,26,5" concept="1" />
       <node id="2893471348148297706" at="13,0,16,0" concept="3" trace="NodeRuleReference#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="2893471348148323195" at="29,0,32,0" concept="8" trace="isTypeSystem#()Z" />
       <node id="2893471348148327019" at="33,0,36,0" concept="8" trace="isConstraints#()Z" />
-      <node id="8333855927540196462" at="37,0,40,0" concept="8" trace="isMessageStatement#()Z" />
+      <node id="1235817567552929576" at="37,0,40,0" concept="8" trace="isReportStatement#()Z" />
+      <node id="8333855927540196462" at="41,0,44,0" concept="8" trace="isMessageStatement#()Z" />
       <node id="2893471348148316601" at="17,29,26,5" concept="7" />
       <node id="2893471348148301793" at="17,0,28,0" concept="8" trace="getType#()Ljetbrains/mps/lang/test/behavior/RuleType;" />
       <scope id="2893471348148297709" at="13,44,14,29" />
@@ -4230,16 +4232,18 @@
       <scope id="2893471348148394368" at="24,12,25,30" />
       <scope id="2893471348148323198" at="29,34,30,51" />
       <scope id="2893471348148327022" at="33,35,34,237" />
-      <scope id="8333855927540196465" at="37,40,38,96" />
+      <scope id="1235817567552929579" at="37,38,38,208" />
+      <scope id="8333855927540196465" at="41,40,42,96" />
       <scope id="2893471348148297706" at="13,0,16,0">
         <var name="ruleNode" id="2893471348148297721" />
       </scope>
       <scope id="2893471348148323195" at="29,0,32,0" />
       <scope id="2893471348148327019" at="33,0,36,0" />
-      <scope id="8333855927540196462" at="37,0,40,0" />
+      <scope id="1235817567552929576" at="37,0,40,0" />
+      <scope id="8333855927540196462" at="41,0,44,0" />
       <scope id="2893471348148301796" at="17,29,26,5" />
       <scope id="2893471348148301793" at="17,0,28,0" />
-      <unit id="8000313307343105680" at="10,0,42,0" name="jetbrains.mps.lang.test.behavior.NodeRuleReference" />
+      <unit id="8000313307343105680" at="10,0,46,0" name="jetbrains.mps.lang.test.behavior.NodeRuleReference" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590380(jetbrains.mps.lang.test.behavior)/8202121391118617645">
