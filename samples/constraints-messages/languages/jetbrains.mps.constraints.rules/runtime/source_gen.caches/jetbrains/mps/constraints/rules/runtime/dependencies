@@ -1,73 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
+  <dependency className="jetbrains.mps.constraints.rules.runtime.CanBeChildContext">
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode extendsClassName="jetbrains.mps.constraints.rules.runtime.ConstraintsContext" />
+  </dependency>
+  <dependency className="jetbrains.mps.constraints.rules.runtime.CanBeChildRuleKind">
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.CanBeChildContext" />
+    <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.ContextBuilder" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode extendsClassName="jetbrains.mps.constraints.rules.runtime.ConstraintsRuleKind" />
+  </dependency>
   <dependency className="jetbrains.mps.constraints.rules.runtime.ConstraintsAspectDescriptor">
+    <classNode dependClassName="java.util.List" />
     <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.ConstraintsDescriptor" />
+    <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.ConstraintsRuleKind" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
     <classNode extendsClassName="jetbrains.mps.smodel.runtime.ILanguageAspect" />
   </dependency>
-  <dependency className="jetbrains.mps.constraints.rules.runtime.ConstraintsContext">
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
-  </dependency>
+  <dependency className="jetbrains.mps.constraints.rules.runtime.ConstraintsContext" />
   <dependency className="jetbrains.mps.constraints.rules.runtime.ConstraintsDescriptor">
-    <classNode dependClassName="java.util.Collection" />
+    <classNode dependClassName="java.util.List" />
     <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.ConstraintsContext" />
     <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.ConstraintsRule" />
     <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.ConstraintsRuleKind" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
   </dependency>
   <dependency className="jetbrains.mps.constraints.rules.runtime.ConstraintsRegistry">
-    <classNode dependClassName="java.lang.Iterable" />
-    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.lang.IllegalArgumentException" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.Collection" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="java.util.Objects" />
+    <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.CanBeChildContext" />
+    <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.CanBeChildRuleKind" />
     <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.ConstraintsAspectDescriptor" />
-    <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.ConstraintsContext" />
     <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.ConstraintsDescriptor" />
     <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.ConstraintsRule" />
-    <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.ConstraintsRuleKind" />
+    <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.ConstraintsRuleId" />
     <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.MessageProvider" />
     <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.MessagesAspectDescriptor" />
-    <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.RuleId" />
+    <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.MessagesDescriptor" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.CollectionSequence" />
-    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ISelector" />
-    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ITranslator2" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
-    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.NotNullWhereFilter" />
-    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     <classNode dependClassName="jetbrains.mps.smodel.language.LanguageRegistry" />
+    <classNode dependClassName="jetbrains.mps.smodel.language.LanguageRuntime" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.language.SLanguage" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode dependClassName="org.jetbrains.mps.openapi.module.SRepository" />
   </dependency>
   <dependency className="jetbrains.mps.constraints.rules.runtime.ConstraintsRule">
     <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.ConstraintsContext" />
-    <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.RuleId" />
+    <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.ConstraintsRuleId" />
+    <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.ConstraintsRuleKind" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
   </dependency>
-  <dependency className="jetbrains.mps.constraints.rules.runtime.ConstraintsRuleKind">
-    <classNode dependClassName="java.lang.Class" />
-    <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.ConstraintsContext" />
-    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
-  </dependency>
-  <dependency className="jetbrains.mps.constraints.rules.runtime.MessageProvider">
-    <classNode dependClassName="java.lang.String" />
-    <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.RuleId" />
-  </dependency>
-  <dependency className="jetbrains.mps.constraints.rules.runtime.MessagesAspectDescriptor">
-    <classNode dependClassName="java.util.Collection" />
-    <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.MessageProvider" />
-    <classNode extendsClassName="jetbrains.mps.smodel.runtime.ILanguageAspect" />
-  </dependency>
-  <dependency className="jetbrains.mps.constraints.rules.runtime.RuleId">
+  <dependency className="jetbrains.mps.constraints.rules.runtime.ConstraintsRuleId">
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+  </dependency>
+  <dependency className="jetbrains.mps.constraints.rules.runtime.ConstraintsRuleKind">
+    <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.ConstraintsContext" />
+    <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.ContextBuilder" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+  </dependency>
+  <dependency className="jetbrains.mps.constraints.rules.runtime.ContextBuilder">
+    <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.ConstraintsContext" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+  </dependency>
+  <dependency className="jetbrains.mps.constraints.rules.runtime.MessageProvider">
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.ConstraintsRuleId" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+  </dependency>
+  <dependency className="jetbrains.mps.constraints.rules.runtime.MessagesAspectDescriptor">
+    <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.MessagesDescriptor" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
+    <classNode extendsClassName="jetbrains.mps.smodel.runtime.ILanguageAspect" />
+  </dependency>
+  <dependency className="jetbrains.mps.constraints.rules.runtime.MessagesDescriptor">
+    <classNode dependClassName="java.util.List" />
+    <classNode dependClassName="jetbrains.mps.constraints.rules.runtime.MessageProvider" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode extendsClassName="jetbrains.mps.smodel.runtime.ILanguageAspect" />
   </dependency>
 </dependenciesRoot>
 

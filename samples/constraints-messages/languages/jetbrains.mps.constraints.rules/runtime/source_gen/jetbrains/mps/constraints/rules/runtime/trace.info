@@ -10,194 +10,252 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
+  <root nodeRef="r:203059ac-2907-4c81-8e59-fa602a77a3a5(jetbrains.mps.constraints.rules.runtime)/7188575577279290333">
+    <file name="MessagesDescriptor.java">
+      <node id="7188575577279290334" at="10,0,12,0" concept="6" trace="getMessageProviders#()Ljava/util/List;" />
+      <scope id="7188575577279290334" at="10,0,12,0" />
+      <unit id="7188575577279290333" at="9,0,13,0" name="jetbrains.mps.constraints.rules.runtime.MessagesDescriptor" />
+    </file>
+  </root>
+  <root nodeRef="r:203059ac-2907-4c81-8e59-fa602a77a3a5(jetbrains.mps.constraints.rules.runtime)/7188575577279386840">
+    <file name="CanBeChildRuleKind.java">
+      <node id="7188575577281262181" at="14,74,15,61" concept="8" />
+      <node id="7188575577279395896" at="19,0,20,0" concept="3" trace="node" />
+      <node id="7188575577279396715" at="20,0,21,0" concept="3" trace="parentNode" />
+      <node id="7188575577279400936" at="22,73,23,23" concept="2" />
+      <node id="7188575577279409523" at="23,23,24,18" concept="8" />
+      <node id="7188575577279403745" at="27,84,28,35" concept="2" />
+      <node id="7188575577279406439" at="28,35,29,18" concept="8" />
+      <node id="7188575577280253799" at="38,32,39,22" concept="8" />
+      <node id="7188575577280254054" at="44,38,45,28" concept="8" />
+      <node id="7188575577279399502" at="22,0,26,0" concept="6" trace="node#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/constraints/rules/runtime/ContextBuilder;" />
+      <node id="7188575577279403743" at="27,0,31,0" concept="6" trace="parentNode#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/constraints/rules/runtime/ContextBuilder;" />
+      <node id="7188575577279387284" at="12,0,17,0" concept="6" trace="getContextBuilder#()Ljetbrains/mps/constraints/rules/runtime/CanBeChildRuleKind/CanBeChildContextBuilder;" />
+      <node id="7188575577280252520" at="36,0,41,0" concept="6" trace="getNode#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="7188575577280252529" at="42,0,47,0" concept="6" trace="getParentNode#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="7188575577280243043" at="34,38,47,8" concept="8" />
+      <node id="7188575577279394392" at="32,0,49,0" concept="6" trace="build#()Ljetbrains/mps/constraints/rules/runtime/CanBeChildContext;" />
+      <scope id="7188575577279387291" at="14,74,15,61" />
+      <scope id="7188575577280252525" at="38,32,39,22" />
+      <scope id="7188575577280252534" at="44,38,45,28" />
+      <scope id="7188575577279399505" at="22,73,24,18" />
+      <scope id="7188575577279403744" at="27,84,29,18" />
+      <scope id="7188575577279399502" at="22,0,26,0">
+        <var name="node" id="7188575577279400044" />
+      </scope>
+      <scope id="7188575577279403743" at="27,0,31,0">
+        <var name="parentNode" id="7188575577279403754" />
+      </scope>
+      <scope id="7188575577279387284" at="12,0,17,0" />
+      <scope id="7188575577280252520" at="36,0,41,0" />
+      <scope id="7188575577280252529" at="42,0,47,0" />
+      <scope id="7188575577279394397" at="34,38,47,8" />
+      <scope id="7188575577279394392" at="32,0,49,0" />
+      <unit id="7188575577280252514" at="35,17,47,7" name="jetbrains.mps.constraints.rules.runtime.CanBeChildRuleKind$CanBeChildContextBuilder$1" />
+      <unit id="7188575577281255958" at="18,0,50,0" name="jetbrains.mps.constraints.rules.runtime.CanBeChildRuleKind$CanBeChildContextBuilder" />
+      <unit id="7188575577279386840" at="9,0,51,0" name="jetbrains.mps.constraints.rules.runtime.CanBeChildRuleKind" />
+    </file>
+  </root>
+  <root nodeRef="r:203059ac-2907-4c81-8e59-fa602a77a3a5(jetbrains.mps.constraints.rules.runtime)/7188575577279388739">
+    <file name="ContextBuilder.java">
+      <node id="7188575577279388881" at="8,0,10,0" concept="6" trace="build#()null" />
+      <scope id="7188575577279388881" at="8,0,10,0" />
+      <unit id="7188575577279388739" at="7,0,11,0" name="jetbrains.mps.constraints.rules.runtime.ContextBuilder" />
+    </file>
+  </root>
   <root nodeRef="r:203059ac-2907-4c81-8e59-fa602a77a3a5(jetbrains.mps.constraints.rules.runtime)/7291380803376381852">
     <file name="ConstraintsRule.java">
-      <node id="7291380803376813238" at="7,0,8,0" concept="6" trace="getId#()Ljetbrains/mps/constraints/rules/runtime/RuleId;" />
-      <node id="7291380803376381941" at="8,0,9,0" concept="6" trace="check#(null)Z" />
-      <scope id="7291380803376813238" at="7,0,8,0" />
-      <scope id="7291380803376381941" at="8,0,9,0">
+      <node id="7291380803376381941" at="14,0,15,0" concept="6" trace="check#(null)Z" />
+      <node id="7291380803376813238" at="8,0,10,0" concept="6" trace="getId#()Ljetbrains/mps/constraints/rules/runtime/ConstraintsRuleId;" />
+      <node id="7188575577279276443" at="11,0,13,0" concept="6" trace="getKind#()Ljetbrains/mps/constraints/rules/runtime/ConstraintsRuleKind;" />
+      <scope id="7291380803376381941" at="14,0,15,0">
         <var name="context" id="7291380803376666352" />
       </scope>
-      <unit id="7291380803376381852" at="6,0,10,0" name="jetbrains.mps.constraints.rules.runtime.ConstraintsRule" />
+      <scope id="7291380803376813238" at="8,0,10,0" />
+      <scope id="7188575577279276443" at="11,0,13,0" />
+      <unit id="7291380803376381852" at="7,0,16,0" name="jetbrains.mps.constraints.rules.runtime.ConstraintsRule" />
     </file>
   </root>
   <root nodeRef="r:203059ac-2907-4c81-8e59-fa602a77a3a5(jetbrains.mps.constraints.rules.runtime)/7291380803376662933">
     <file name="ConstraintsContext.java">
-      <node id="7291380803378406951" at="10,0,11,0" concept="6" trace="node#()Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <scope id="7291380803378406951" at="10,0,11,0" />
-      <unit id="7291380803378367586" at="9,0,12,0" name="jetbrains.mps.constraints.rules.runtime.ConstraintsContext$CanBeChildContext" />
-      <unit id="7291380803376662933" at="7,0,14,0" name="jetbrains.mps.constraints.rules.runtime.ConstraintsContext" />
+      <unit id="7291380803376662933" at="6,0,8,0" name="jetbrains.mps.constraints.rules.runtime.ConstraintsContext" />
     </file>
   </root>
   <root nodeRef="r:203059ac-2907-4c81-8e59-fa602a77a3a5(jetbrains.mps.constraints.rules.runtime)/7291380803376701820">
     <file name="ConstraintsRuleKind.java">
-      <node id="7291380803377963383" at="8,0,10,0" concept="6" trace="asApplicableToContext#(Ljava/lang/Class;)Ljetbrains/mps/constraints/rules/runtime/ConstraintsRuleKind;" />
-      <scope id="7291380803377963383" at="8,0,10,0">
-        <var name="contextClass" id="7291380803377963470" />
-      </scope>
+      <node id="7188575577279338043" at="8,0,10,0" concept="6" trace="getContextBuilder#()Ljetbrains/mps/constraints/rules/runtime/ContextBuilder;" />
+      <scope id="7188575577279338043" at="8,0,10,0" />
       <unit id="7291380803376701820" at="7,0,11,0" name="jetbrains.mps.constraints.rules.runtime.ConstraintsRuleKind" />
     </file>
   </root>
   <root nodeRef="r:203059ac-2907-4c81-8e59-fa602a77a3a5(jetbrains.mps.constraints.rules.runtime)/7291380803378366781">
     <file name="ConstraintsRegistry.java">
-      <node id="7291380803378519213" at="23,0,24,0" concept="3" trace="myRepository" />
-      <node id="7291380803378519612" at="24,54,25,35" concept="2" />
-      <node id="7291380803378552501" at="28,121,29,83" concept="7" />
-      <node id="7291380803379033910" at="29,83,30,167" concept="7" />
-      <node id="7291380803380647392" at="30,167,31,84" concept="7" />
-      <node id="7291380803380832853" at="31,84,32,85" concept="7" />
-      <node id="7291380803380863136" at="34,106,35,122" concept="8" />
-      <node id="7291380803380992754" at="39,152,40,49" concept="8" />
-      <node id="7291380803382396562" at="45,70,46,83" concept="7" />
-      <node id="7291380803382396572" at="46,83,47,145" concept="7" />
-      <node id="7291380803382445742" at="47,145,48,80" concept="7" />
+      <node id="7291380803378519213" at="20,0,21,0" concept="3" trace="myRepository" />
+      <node id="7291380803378519612" at="22,54,23,30" concept="2" />
+      <node id="7188575577281303083" at="26,116,27,83" concept="7" />
+      <node id="7188575577281303088" at="27,83,28,86" concept="7" />
+      <node id="7188575577281303099" at="29,30,30,110" concept="10" />
+      <node id="7188575577281303122" at="31,5,32,123" concept="8" />
+      <node id="7188575577281357175" at="35,78,36,83" concept="7" />
+      <node id="7188575577281357180" at="36,83,37,179" concept="7" />
+      <node id="7188575577281366921" at="37,179,38,22" concept="8" />
+      <node id="7291380803380647392" at="41,102,42,82" concept="7" />
+      <node id="7291380803380983669" at="42,82,43,60" concept="8" />
+      <node id="7188575577281372793" at="46,87,47,67" concept="7" />
+      <node id="7291380803382445742" at="47,67,48,84" concept="7" />
       <node id="7291380803382551824" at="50,49,51,52" concept="8" />
       <node id="7291380803382396620" at="54,73,55,84" concept="8" />
       <node id="7291380803382610819" at="56,12,57,31" concept="8" />
-      <node id="7291380803378520476" at="64,27,65,20" concept="8" />
-      <node id="7291380803382682139" at="69,35,70,89" concept="8" />
-      <node id="7291380803382719549" at="72,5,73,16" concept="8" />
+      <node id="7291380803378520465" at="61,52,62,99" concept="7" />
+      <node id="7291380803382682139" at="64,35,65,75" concept="8" />
+      <node id="7291380803382719549" at="67,5,68,16" concept="8" />
       <node id="7291380803382608448" at="56,10,58,5" concept="0" />
-      <node id="7291380803378519604" at="24,0,27,0" concept="1" trace="ConstraintsRegistry#(Lorg/jetbrains/mps/openapi/module/SRepository;)V" />
-      <node id="7291380803380863134" at="34,0,37,0" concept="6" trace="select#(Ljetbrains/mps/constraints/rules/runtime/ConstraintsRuleKind;)Ljetbrains/mps/constraints/rules/runtime/ConstraintsRuleKind;" />
-      <node id="7291380803380989533" at="39,0,42,0" concept="6" trace="translate#(Ljetbrains/mps/constraints/rules/runtime/ConstraintsRuleKind;)Ljava/lang/Iterable;" />
+      <node id="7291380803378519604" at="22,0,25,0" concept="1" trace="ConstraintsRegistry#(Lorg/jetbrains/mps/openapi/module/SRepository;)V" />
+      <node id="7188575577281303097" at="28,86,31,5" concept="5" />
       <node id="7291380803382551822" at="50,0,53,0" concept="6" trace="accept#(Ljetbrains/mps/constraints/rules/runtime/MessageProvider;)Z" />
-      <node id="7291380803382679469" at="68,160,71,7" concept="5" />
-      <node id="7291380803378520472" at="63,0,67,0" concept="6" trace="node#()Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="7291380803380863128" at="32,85,37,98" concept="7" />
-      <node id="7291380803380983669" at="37,98,42,24" concept="8" />
-      <node id="7291380803382551816" at="48,80,53,24" concept="7" />
+      <node id="7291380803382679469" at="63,141,66,7" concept="5" />
+      <node id="7291380803380925007" at="41,0,45,0" concept="6" trace="getApplicableRules#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;)Ljava/util/Collection;" />
+      <node id="7188575577281357202" at="35,0,40,0" concept="6" trace="getMessagesDescriptor#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;)Ljetbrains/mps/constraints/rules/runtime/MessagesDescriptor;" />
+      <node id="7291380803382551816" at="48,84,53,24" concept="7" />
       <node id="7291380803382569998" at="53,24,58,5" concept="5" />
-      <node id="7291380803381017779" at="67,6,72,5" concept="4" />
-      <node id="7291380803378520465" at="61,46,67,6" concept="7" />
-      <node id="7291380803378520460" at="61,0,75,0" concept="6" trace="canBeChild#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
-      <node id="7291380803382396554" at="45,0,60,0" concept="6" trace="findMessage#(Lorg/jetbrains/mps/openapi/language/SLanguage;Ljetbrains/mps/constraints/rules/runtime/RuleId;)Ljava/lang/String;" />
-      <node id="7291380803380925007" at="28,0,44,0" concept="6" trace="getApplicableRules#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;)Ljava/util/Collection;" />
-      <scope id="7291380803378519608" at="24,54,25,35" />
-      <scope id="7291380803380863135" at="34,106,35,122" />
-      <scope id="7291380803380989534" at="39,152,40,49" />
+      <node id="7291380803381017779" at="62,99,67,5" concept="4" />
+      <node id="7188575577281303131" at="26,0,34,0" concept="6" trace="getConstraintsDescriptor#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;)Ljetbrains/mps/constraints/rules/runtime/ConstraintsDescriptor;" />
+      <node id="7291380803378520460" at="61,0,70,0" concept="6" trace="msgForCanBeChild#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="7291380803382396554" at="46,0,60,0" concept="6" trace="findMessage#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Ljetbrains/mps/constraints/rules/runtime/ConstraintsRuleId;)Ljava/lang/String;" />
+      <scope id="7291380803378519608" at="22,54,23,30" />
+      <scope id="7188575577281303098" at="29,30,30,110" />
       <scope id="7291380803382551823" at="50,49,51,52" />
       <scope id="7291380803382570000" at="54,73,55,84" />
       <scope id="7291380803382608449" at="56,12,57,31" />
-      <scope id="7291380803378520475" at="64,27,65,20" />
-      <scope id="7291380803382679471" at="69,35,70,89" />
-      <scope id="7291380803378519604" at="24,0,27,0">
+      <scope id="7291380803382679471" at="64,35,65,75" />
+      <scope id="7291380803380925011" at="41,102,43,60">
+        <var name="descriptor" id="7291380803380647393" />
+      </scope>
+      <scope id="7291380803378519604" at="22,0,25,0">
         <var name="repository" id="7291380803378519611" />
       </scope>
-      <scope id="7291380803380863134" at="34,0,37,0">
-        <var name="it" id="7291380803380863134" />
-      </scope>
-      <scope id="7291380803380989533" at="39,0,42,0">
-        <var name="kind" id="7291380803380989533" />
+      <scope id="7188575577281357174" at="35,78,38,22">
+        <var name="descriptor" id="7188575577281357181" />
+        <var name="languageRegistry" id="7188575577281357176" />
       </scope>
       <scope id="7291380803382551822" at="50,0,53,0">
         <var name="it" id="7291380803382551822" />
       </scope>
-      <scope id="7291380803381017785" at="68,160,71,7" />
-      <scope id="7291380803378520472" at="63,0,67,0" />
-      <scope id="7291380803381017779" at="67,6,72,5">
-        <var name="rule" id="7291380803381017781" />
-      </scope>
-      <scope id="7291380803378520464" at="61,46,73,16">
-        <var name="context" id="7291380803378520466" />
-      </scope>
-      <scope id="7291380803382396561" at="45,70,58,5">
-        <var name="applicableMessageProviders" id="7291380803382551817" />
-        <var name="aspect" id="7291380803382396573" />
-        <var name="languageRegistry" id="7291380803382396563" />
-        <var name="messageProviders" id="7291380803382445743" />
-      </scope>
-      <scope id="7291380803380925011" at="28,121,42,24">
-        <var name="applicableKinds" id="7291380803380863129" />
-        <var name="aspect" id="7291380803379033911" />
-        <var name="conceptConstraints" id="7291380803380647393" />
-        <var name="languageRegistry" id="7291380803378552502" />
-        <var name="ruleKinds" id="7291380803380832854" />
-      </scope>
-      <scope id="7291380803378520460" at="61,0,75,0">
-        <var name="node" id="7291380803378520482" />
-      </scope>
-      <scope id="7291380803382396554" at="45,0,60,0">
-        <var name="language" id="7291380803382396555" />
-        <var name="ruleId" id="7291380803382456395" />
-      </scope>
-      <scope id="7291380803380925007" at="28,0,44,0">
+      <scope id="7291380803381017785" at="63,141,66,7" />
+      <scope id="7291380803380925007" at="41,0,45,0">
         <var name="concept" id="7291380803380941176" />
       </scope>
-      <unit id="7291380803380863134" at="33,146,37,5" name="jetbrains.mps.constraints.rules.runtime.ConstraintsRegistry$1" />
-      <unit id="7291380803380989533" at="38,64,42,5" name="jetbrains.mps.constraints.rules.runtime.ConstraintsRegistry$2" />
-      <unit id="7291380803382551822" at="49,117,53,5" name="jetbrains.mps.constraints.rules.runtime.ConstraintsRegistry$3" />
-      <unit id="7291380803378520470" at="62,55,67,5" name="jetbrains.mps.constraints.rules.runtime.ConstraintsRegistry$4" />
-      <unit id="7291380803378366781" at="22,0,76,0" name="jetbrains.mps.constraints.rules.runtime.ConstraintsRegistry" />
+      <scope id="7188575577281357202" at="35,0,40,0">
+        <var name="concept" id="7188575577281357196" />
+      </scope>
+      <scope id="7291380803381017779" at="62,99,67,5">
+        <var name="rule" id="7291380803381017781" />
+      </scope>
+      <scope id="7188575577281303080" at="26,116,32,123">
+        <var name="conceptLang" id="7188575577281303089" />
+        <var name="languageRegistry" id="7188575577281303084" />
+      </scope>
+      <scope id="7291380803378520464" at="61,52,68,16">
+        <var name="context" id="7291380803378520466" />
+      </scope>
+      <scope id="7188575577281303131" at="26,0,34,0">
+        <var name="concept" id="7188575577281303124" />
+      </scope>
+      <scope id="7291380803378520460" at="61,0,70,0">
+        <var name="node" id="7291380803378520482" />
+      </scope>
+      <scope id="7291380803382396561" at="46,87,58,5">
+        <var name="applicableMessageProviders" id="7291380803382551817" />
+        <var name="descriptor" id="7188575577281372794" />
+        <var name="messageProviders" id="7291380803382445743" />
+      </scope>
+      <scope id="7291380803382396554" at="46,0,60,0">
+        <var name="concept" id="7291380803382396555" />
+        <var name="ruleId" id="7291380803382456395" />
+      </scope>
+      <unit id="7291380803382551822" at="49,117,53,5" name="jetbrains.mps.constraints.rules.runtime.ConstraintsRegistry$1" />
+      <unit id="7291380803378366781" at="19,0,71,0" name="jetbrains.mps.constraints.rules.runtime.ConstraintsRegistry" />
+    </file>
+  </root>
+  <root nodeRef="r:203059ac-2907-4c81-8e59-fa602a77a3a5(jetbrains.mps.constraints.rules.runtime)/7291380803378367586">
+    <file name="CanBeChildContext.java">
+      <node id="7188575577279277053" at="10,0,12,0" concept="6" trace="getNode#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="7188575577279388147" at="13,0,15,0" concept="6" trace="getParentNode#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <scope id="7188575577279277053" at="10,0,12,0" />
+      <scope id="7188575577279388147" at="13,0,15,0" />
+      <unit id="7291380803378367586" at="9,0,16,0" name="jetbrains.mps.constraints.rules.runtime.CanBeChildContext" />
     </file>
   </root>
   <root nodeRef="r:203059ac-2907-4c81-8e59-fa602a77a3a5(jetbrains.mps.constraints.rules.runtime)/7291380803378564134">
     <file name="ConstraintsAspectDescriptor.java">
-      <node id="~ConstraintsAspectDescriptor.getConstraints(org.jetbrains.mps.openapi.language.SAbstractConcept)" at="11,0,13,0" concept="6" trace="getConstraints#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;)Ljetbrains/mps/constraints/rules/runtime/ConstraintsDescriptor;" />
-      <scope id="~ConstraintsAspectDescriptor.getConstraints(org.jetbrains.mps.openapi.language.SAbstractConcept)" at="11,0,13,0">
+      <node id="~ConstraintsAspectDescriptor.getConstraints(org.jetbrains.mps.openapi.language.SAbstractConcept)" at="12,0,14,0" concept="6" trace="getConstraints#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;)Ljetbrains/mps/constraints/rules/runtime/ConstraintsDescriptor;" />
+      <node id="7291380803380655473" at="15,0,17,0" concept="6" trace="getRegisteredRuleKinds#()Ljava/util/List;" />
+      <scope id="~ConstraintsAspectDescriptor.getConstraints(org.jetbrains.mps.openapi.language.SAbstractConcept)" at="12,0,14,0">
         <var name="concept" id="7291380803376075055" />
       </scope>
-      <unit id="7291380803378564134" at="10,0,14,0" name="jetbrains.mps.constraints.rules.runtime.ConstraintsAspectDescriptor" />
+      <scope id="7291380803380655473" at="15,0,17,0" />
+      <unit id="7291380803378564134" at="11,0,18,0" name="jetbrains.mps.constraints.rules.runtime.ConstraintsAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:203059ac-2907-4c81-8e59-fa602a77a3a5(jetbrains.mps.constraints.rules.runtime)/7291380803380012342">
     <file name="ConstraintsDescriptor.java">
-      <node id="7291380803380655461" at="8,0,9,0" concept="6" trace="getRules#(Ljetbrains/mps/constraints/rules/runtime/ConstraintsRuleKind;)Ljava/util/Collection;" />
-      <node id="7291380803380655473" at="9,0,10,0" concept="6" trace="getRuleKinds#()Ljava/util/Collection;" />
-      <scope id="7291380803380655461" at="8,0,9,0">
+      <node id="7291380803380655461" at="9,0,11,0" concept="6" trace="getRules#(Ljetbrains/mps/constraints/rules/runtime/ConstraintsRuleKind;)Ljava/util/List;" />
+      <scope id="7291380803380655461" at="9,0,11,0">
         <var name="kind" id="7291380803380880066" />
       </scope>
-      <scope id="7291380803380655473" at="9,0,10,0" />
-      <unit id="7291380803380012342" at="7,0,11,0" name="jetbrains.mps.constraints.rules.runtime.ConstraintsDescriptor" />
+      <unit id="7291380803380012342" at="8,0,12,0" name="jetbrains.mps.constraints.rules.runtime.ConstraintsDescriptor" />
     </file>
   </root>
   <root nodeRef="r:203059ac-2907-4c81-8e59-fa602a77a3a5(jetbrains.mps.constraints.rules.runtime)/7291380803382005591">
     <file name="MessagesAspectDescriptor.java">
-      <node id="7291380803382019140" at="9,0,10,0" concept="6" trace="getMessageProviders#()Ljava/util/Collection;" />
-      <scope id="7291380803382019140" at="9,0,10,0" />
-      <unit id="7291380803382005591" at="8,0,11,0" name="jetbrains.mps.constraints.rules.runtime.MessagesAspectDescriptor" />
+      <node id="7188575577279290091" at="11,0,13,0" concept="6" trace="getDescriptor#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;)Ljetbrains/mps/constraints/rules/runtime/MessagesDescriptor;" />
+      <scope id="7188575577279290091" at="11,0,13,0">
+        <var name="concept" id="7188575577279290095" />
+      </scope>
+      <unit id="7291380803382005591" at="10,0,14,0" name="jetbrains.mps.constraints.rules.runtime.MessagesAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:203059ac-2907-4c81-8e59-fa602a77a3a5(jetbrains.mps.constraints.rules.runtime)/7291380803382005879">
-    <file name="RuleId.java">
-      <node id="7291380803382006127" at="10,30,11,21" concept="2" />
-      <node id="7291380803382006013" at="13,27,14,21" concept="8" />
-      <node id="7291380803382498577" at="18,55,19,19" concept="8" />
-      <node id="7291380803382498590" at="20,5,21,0" concept="9" />
-      <node id="7291380803382498591" at="21,0,22,29" concept="7" />
-      <node id="7291380803382502102" at="22,29,23,34" concept="8" />
-      <node id="7291380803382504218" at="26,25,27,27" concept="8" />
+    <file name="ConstraintsRuleId.java">
+      <node id="7291380803382006127" at="11,41,12,21" concept="2" />
+      <node id="7291380803382006013" at="15,27,16,21" concept="8" />
+      <node id="7291380803382498577" at="21,55,22,19" concept="8" />
+      <node id="7291380803382498590" at="23,5,24,0" concept="9" />
+      <node id="7291380803382498591" at="24,0,25,51" concept="7" />
+      <node id="7291380803382502102" at="25,51,26,34" concept="8" />
+      <node id="7291380803382504218" at="30,25,31,27" concept="8" />
       <node id="7291380803382005939" at="8,0,10,0" concept="3" trace="myId" />
-      <node id="7291380803382006119" at="10,0,13,0" concept="1" trace="RuleId#(Ljava/lang/String;)V" />
-      <node id="7291380803382006009" at="13,0,16,0" concept="6" trace="getMyId#()Ljava/lang/String;" />
-      <node id="7291380803382498575" at="17,35,20,5" concept="5" />
-      <node id="7291380803382498625" at="25,0,29,0" concept="6" trace="hashCode#()I" />
-      <node id="7291380803382498565" at="16,0,25,0" concept="6" trace="equals#(Ljava/lang/Object;)Z" />
-      <scope id="7291380803382006123" at="10,30,11,21" />
-      <scope id="7291380803382006012" at="13,27,14,21" />
-      <scope id="7291380803382498576" at="18,55,19,19" />
-      <scope id="7291380803382498628" at="26,25,27,27" />
-      <scope id="7291380803382006119" at="10,0,13,0">
+      <node id="7291380803382006119" at="11,0,14,0" concept="1" trace="ConstraintsRuleId#(Ljava/lang/String;)V" />
+      <node id="7291380803382006009" at="15,0,18,0" concept="6" trace="getMyId#()Ljava/lang/String;" />
+      <node id="7291380803382498575" at="20,35,23,5" concept="5" />
+      <node id="7291380803382498625" at="29,0,33,0" concept="6" trace="hashCode#()I" />
+      <node id="7291380803382498565" at="19,0,28,0" concept="6" trace="equals#(Ljava/lang/Object;)Z" />
+      <scope id="7291380803382006123" at="11,41,12,21" />
+      <scope id="7291380803382006012" at="15,27,16,21" />
+      <scope id="7291380803382498576" at="21,55,22,19" />
+      <scope id="7291380803382498628" at="30,25,31,27" />
+      <scope id="7291380803382006119" at="11,0,14,0">
         <var name="myId" id="7291380803382006126" />
       </scope>
-      <scope id="7291380803382006009" at="13,0,16,0" />
-      <scope id="7291380803382498625" at="25,0,29,0" />
-      <scope id="7291380803382498568" at="17,35,23,34">
+      <scope id="7291380803382006009" at="15,0,18,0" />
+      <scope id="7291380803382498625" at="29,0,33,0" />
+      <scope id="7291380803382498568" at="20,35,26,34">
         <var name="that" id="7291380803382498592" />
       </scope>
-      <scope id="7291380803382498565" at="16,0,25,0">
+      <scope id="7291380803382498565" at="19,0,28,0">
         <var name="o" id="7291380803382498597" />
       </scope>
-      <unit id="7291380803382005879" at="7,0,30,0" name="jetbrains.mps.constraints.rules.runtime.RuleId" />
+      <unit id="7291380803382005879" at="7,0,34,0" name="jetbrains.mps.constraints.rules.runtime.ConstraintsRuleId" />
     </file>
   </root>
   <root nodeRef="r:203059ac-2907-4c81-8e59-fa602a77a3a5(jetbrains.mps.constraints.rules.runtime)/7291380803382006384">
     <file name="MessageProvider.java">
-      <node id="7291380803382006428" at="7,0,8,0" concept="6" trace="getRule#()Ljetbrains/mps/constraints/rules/runtime/RuleId;" />
-      <node id="7291380803382006594" at="8,0,9,0" concept="6" trace="getMessage#()Ljava/lang/String;" />
-      <scope id="7291380803382006428" at="7,0,8,0" />
-      <scope id="7291380803382006594" at="8,0,9,0" />
-      <unit id="7291380803382006384" at="6,0,10,0" name="jetbrains.mps.constraints.rules.runtime.MessageProvider" />
+      <node id="7291380803382006428" at="8,0,10,0" concept="6" trace="getRule#()Ljetbrains/mps/constraints/rules/runtime/ConstraintsRuleId;" />
+      <node id="7291380803382006594" at="11,0,13,0" concept="6" trace="getMessage#()Ljava/lang/String;" />
+      <scope id="7291380803382006428" at="8,0,10,0" />
+      <scope id="7291380803382006594" at="11,0,13,0" />
+      <unit id="7291380803382006384" at="7,0,14,0" name="jetbrains.mps.constraints.rules.runtime.MessageProvider" />
     </file>
   </root>
 </debug-info>

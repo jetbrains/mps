@@ -21,9 +21,9 @@ public final class LanguageConceptSwitch {
   public static final int ContextExpression = 9;
   public static final int ContextRefOperation = 10;
   public static final int ContextType = 11;
-  public static final int IConstraintsDef = 12;
-  public static final int MessageProvider = 13;
-  public static final int MessagesRoot = 14;
+  public static final int MessageProvider = 12;
+  public static final int MessagesRoot = 13;
+  public static final int TypedIdentifier = 14;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0x47257bf378d3470bL, 0x89d98c3261a61d15L);
@@ -39,9 +39,9 @@ public final class LanguageConceptSwitch {
     builder.put(0x6530303593574310L, ContextExpression);
     builder.put(0x6530303593574311L, ContextRefOperation);
     builder.put(0x653030359358fc43L, ContextType);
-    builder.put(0x653030359368062cL, IConstraintsDef);
     builder.put(0x6530303593ae1651L, MessageProvider);
     builder.put(0x6530303593ae1607L, MessagesRoot);
+    builder.put(0x653030359368062cL, TypedIdentifier);
     myIndex = builder.seal();
   }
 

@@ -8,7 +8,9 @@ import java.util.Collection;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.smodel.runtime.ILanguageAspect;
 import jetbrains.mps.constraints.rules.runtime.ConstraintsAspectDescriptor;
+import jetbrains.mps.constraints.rules.sanboxLanguage.constraintrules.GeneratedConstraintsAspectDescriptor;
 import jetbrains.mps.constraints.rules.runtime.MessagesAspectDescriptor;
+import jetbrains.mps.constraints.rules.sanboxLanguage.constraintrules.GeneratedMessagesDescriptor;
 import jetbrains.mps.smodel.runtime.StructureAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConceptPresentationAspect;
 import jetbrains.mps.constraints.rules.sanboxLanguage.structure.ConceptPresentationAspectImpl;
@@ -41,10 +43,10 @@ public class Language extends LanguageRuntime {
   @Override
   protected <T extends ILanguageAspect> T createAspect(Class<T> aspectClass) {
     if (aspectClass == ConstraintsAspectDescriptor.class) {
-      return aspectClass.cast(new jetbrains.mps.constraints.rules.sanboxLanguage.constraintrules.ConstraintsAspectDescriptor());
+      return aspectClass.cast(new GeneratedConstraintsAspectDescriptor());
     }
     if (aspectClass == MessagesAspectDescriptor.class) {
-      return aspectClass.cast(new jetbrains.mps.constraints.rules.sanboxLanguage.constraintrules.MessagesAspectDescriptor());
+      return aspectClass.cast(new GeneratedMessagesDescriptor());
     }
     if (aspectClass == StructureAspectDescriptor.class) {
       return aspectClass.cast(new jetbrains.mps.constraints.rules.sanboxLanguage.structure.StructureAspectDescriptor());

@@ -6,8 +6,12 @@ import jetbrains.mps.smodel.runtime.ILanguageAspect;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import java.util.List;
 
 public interface ConstraintsAspectDescriptor extends ILanguageAspect {
   @Nullable
   ConstraintsDescriptor getConstraints(@NotNull SAbstractConcept concept);
+
+  @NotNull
+  List<ConstraintsRuleKind> getRegisteredRuleKinds();
 }

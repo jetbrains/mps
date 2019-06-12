@@ -4,7 +4,7 @@ package jetbrains.mps.constraints.rules.runtime;
 
 import org.jetbrains.annotations.NotNull;
 
-public interface ConstraintsRuleKind<Context extends ConstraintsContext> {
+public interface ContextBuilder<Context extends ConstraintsContext> {
   @NotNull
-  ContextBuilder<Context> getContextBuilder();
+  Context build();
 }

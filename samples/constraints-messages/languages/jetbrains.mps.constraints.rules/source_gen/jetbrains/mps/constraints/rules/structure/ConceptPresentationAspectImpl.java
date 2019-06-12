@@ -21,9 +21,9 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_ContextExpression;
   private ConceptPresentation props_ContextRefOperation;
   private ConceptPresentation props_ContextType;
-  private ConceptPresentation props_IConstraintsDef;
   private ConceptPresentation props_MessageProvider;
   private ConceptPresentation props_MessagesRoot;
+  private ConceptPresentation props_TypedIdentifier;
 
   @Override
   @Nullable
@@ -111,12 +111,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_ContextType = cpb.create();
         }
         return props_ContextType;
-      case LanguageConceptSwitch.IConstraintsDef:
-        if (props_IConstraintsDef == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          props_IConstraintsDef = cpb.create();
-        }
-        return props_IConstraintsDef;
       case LanguageConceptSwitch.MessageProvider:
         if (props_MessageProvider == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -127,10 +121,16 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.MessagesRoot:
         if (props_MessagesRoot == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.presentationByName();
+          cpb.presentationByReference(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593ae1607L, 0x63c2f3669ce56d5dL, "concept", "", "");
           props_MessagesRoot = cpb.create();
         }
         return props_MessagesRoot;
+      case LanguageConceptSwitch.TypedIdentifier:
+        if (props_TypedIdentifier == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_TypedIdentifier = cpb.create();
+        }
+        return props_TypedIdentifier;
     }
     return null;
   }

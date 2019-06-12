@@ -1,144 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <debug-info version="2">
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1082485599095:jetbrains.mps.baseLanguage.structure.BlockStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068390468200:jetbrains.mps.baseLanguage.structure.FieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
   <root>
-    <file name="ConstraintsAspectDescriptor.java">
-      <unit at="11,0,25,0" name="jetbrains.mps.constraints.rules.sanboxLanguage.constraintrules.ConstraintsAspectDescriptor" />
+    <file name="GeneratedConstraintsAspectDescriptor.java">
+      <unit at="18,0,38,0" name="jetbrains.mps.constraints.rules.sanboxLanguage.constraintrules.GeneratedConstraintsAspectDescriptor" />
     </file>
-    <file name="MessagesAspectDescriptor.java">
-      <unit at="9,0,27,0" name="jetbrains.mps.constraints.rules.sanboxLanguage.constraintrules.MessagesAspectDescriptor" />
+    <file name="GeneratedMessagesDescriptor.java">
+      <unit at="10,0,28,0" name="jetbrains.mps.constraints.rules.sanboxLanguage.constraintrules.GeneratedMessagesDescriptor" />
     </file>
   </root>
-  <root nodeRef="r:734ec624-d615-4e40-839a-b6d71c7278dd(jetbrains.mps.constraints.rules.sanboxLanguage.constraintrules)/7291380803380497496">
+  <root nodeRef="r:734ec624-d615-4e40-839a-b6d71c7278dd(jetbrains.mps.constraints.rules.sanboxLanguage.constraintrules)/7188575577281650553">
     <file name="A_Constraints.java">
-      <node id="7291380803376169236" at="22,86,23,45" concept="7" />
-      <node id="7291380803376169236" at="24,14,25,20" concept="7" />
-      <node id="7291380803377361316" at="28,69,29,28" concept="7" />
-      <node id="7291380803378325571" at="35,86,36,45" concept="7" />
-      <node id="7291380803378325571" at="37,14,38,20" concept="7" />
-      <node id="7291380803378325572" at="41,69,42,28" concept="7" />
-      <node id="7291380803376169236" at="46,0,47,0" concept="3" trace="ruleKindContext_canBeChild" />
-      <node id="7291380803378325571" at="47,0,48,0" concept="3" trace="ruleKindContext_canBeChild2" />
-      <node id="7291380803377404795" at="50,0,51,0" concept="3" trace="myRuleKind" />
-      <node id="7291380803377404795" at="52,73,53,28" concept="2" />
-      <node id="7291380803377404795" at="57,27,58,47" concept="7" />
-      <node id="7291380803377725485" at="60,71,61,38" concept="7" />
-      <node id="7291380803377404795" at="65,72,66,57" concept="7" />
-      <node id="7291380803382804548" at="70,0,71,0" concept="3" trace="myRuleKind" />
-      <node id="7291380803382804548" at="72,73,73,28" concept="2" />
-      <node id="7291380803382804548" at="77,27,78,47" concept="7" />
-      <node id="7291380803377725485" at="80,71,81,38" concept="7" />
-      <node id="7291380803382804548" at="85,72,86,18" concept="7" />
-      <node id="7291380803380497496" at="90,0,91,0" concept="3" trace="myRules" />
-      <node id="7291380803380497496" at="93,60,94,87" concept="6" />
-      <node id="7291380803376169236" at="94,87,95,43" concept="2" />
-      <node id="7291380803378325571" at="95,43,96,44" concept="2" />
-      <node id="7291380803380497496" at="96,44,97,18" concept="7" />
-      <node id="7291380803380497496" at="101,26,102,86" concept="2" />
-      <node id="7291380803376169236" at="102,86,103,209" concept="2" />
-      <node id="7291380803380497496" at="104,5,105,75" concept="7" />
-      <node id="7291380803376169236" at="24,12,26,7" concept="0" />
-      <node id="7291380803378325571" at="37,12,39,7" concept="0" />
-      <node id="7291380803377361316" at="28,0,31,0" concept="5" trace="node#(Ljetbrains/mps/constraints/rules/runtime/ConstraintsContext/CanBeChildContext;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="7291380803378325572" at="41,0,44,0" concept="5" trace="node#(Ljetbrains/mps/constraints/rules/runtime/ConstraintsContext/CanBeChildContext;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="7291380803377404795" at="52,0,55,0" concept="1" trace="Rule_defaultRule#(Ljetbrains/mps/constraints/rules/sanboxLanguage/constraintrules/A_Constraints/RuleKind_canBeChild;)V" />
-      <node id="7291380803377725485" at="60,0,63,0" concept="5" trace="parent#(Ljetbrains/mps/constraints/rules/runtime/ConstraintsContext/CanBeChildContext;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="7291380803382804548" at="72,0,75,0" concept="1" trace="Rule_anotherRule#(Ljetbrains/mps/constraints/rules/sanboxLanguage/constraintrules/A_Constraints/RuleKind_canBeChild;)V" />
-      <node id="7291380803377725485" at="80,0,83,0" concept="5" trace="parent#(Ljetbrains/mps/constraints/rules/runtime/ConstraintsContext/CanBeChildContext;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="7291380803377404795" at="56,0,60,0" concept="5" trace="getId#()Ljetbrains/mps/constraints/rules/runtime/RuleId;" />
-      <node id="7291380803377404795" at="64,0,68,0" concept="5" trace="check#(Ljetbrains/mps/constraints/rules/runtime/ConstraintsContext/CanBeChildContext;)Z" />
-      <node id="7291380803382804548" at="76,0,80,0" concept="5" trace="getId#()Ljetbrains/mps/constraints/rules/runtime/RuleId;" />
-      <node id="7291380803382804548" at="84,0,88,0" concept="5" trace="check#(Ljetbrains/mps/constraints/rules/runtime/ConstraintsContext/CanBeChildContext;)Z" />
-      <node id="7291380803380497496" at="100,110,104,5" concept="4" />
-      <node id="7291380803376169236" at="21,111,26,7" concept="4" />
-      <node id="7291380803378325571" at="34,111,39,7" concept="4" />
-      <node id="7291380803380497496" at="92,0,99,0" concept="5" trace="getRuleKinds#()Ljava/util/Collection;" />
-      <node id="7291380803376169236" at="20,0,28,0" concept="5" trace="asApplicableToContext#(Ljava/lang/Class;)Ljetbrains/mps/constraints/rules/runtime/ConstraintsRuleKind;" />
-      <node id="7291380803378325571" at="33,0,41,0" concept="5" trace="asApplicableToContext#(Ljava/lang/Class;)Ljetbrains/mps/constraints/rules/runtime/ConstraintsRuleKind;" />
-      <node id="7291380803380497496" at="99,0,107,0" concept="5" trace="getRules#(Ljetbrains/mps/constraints/rules/runtime/ConstraintsRuleKind;)Ljava/util/Collection;" />
-      <scope id="7291380803376169236" at="22,86,23,45" />
-      <scope id="7291380803376169236" at="24,14,25,20" />
-      <scope id="7291380803377361316" at="28,69,29,28" />
-      <scope id="7291380803378325571" at="35,86,36,45" />
-      <scope id="7291380803378325571" at="37,14,38,20" />
-      <scope id="7291380803378325572" at="41,69,42,28" />
-      <scope id="7291380803377404795" at="52,73,53,28" />
-      <scope id="7291380803377404795" at="57,27,58,47" />
-      <scope id="7291380803377725485" at="60,71,61,38" />
-      <scope id="7291380803377404795" at="65,72,66,57" />
-      <scope id="7291380803382804548" at="72,73,73,28" />
-      <scope id="7291380803382804548" at="77,27,78,47" />
-      <scope id="7291380803377725485" at="80,71,81,38" />
-      <scope id="7291380803382804548" at="85,72,86,18" />
-      <scope id="7291380803380497496" at="101,26,103,209" />
-      <scope id="7291380803377361316" at="28,0,31,0">
-        <var name="context" id="7291380803377361316" />
-      </scope>
-      <scope id="7291380803378325572" at="41,0,44,0">
-        <var name="context" id="7291380803378325572" />
-      </scope>
-      <scope id="7291380803377404795" at="52,0,55,0">
-        <var name="ruleKind" id="7291380803377404795" />
-      </scope>
-      <scope id="7291380803377725485" at="60,0,63,0">
-        <var name="context" id="7291380803377725485" />
-      </scope>
-      <scope id="7291380803382804548" at="72,0,75,0">
-        <var name="ruleKind" id="7291380803382804548" />
-      </scope>
-      <scope id="7291380803377725485" at="80,0,83,0">
-        <var name="context" id="7291380803377725485" />
-      </scope>
-      <scope id="7291380803377404795" at="56,0,60,0" />
-      <scope id="7291380803377404795" at="64,0,68,0">
-        <var name="context" id="7291380803377404795" />
-      </scope>
-      <scope id="7291380803382804548" at="76,0,80,0" />
-      <scope id="7291380803382804548" at="84,0,88,0">
-        <var name="context" id="7291380803382804548" />
-      </scope>
-      <scope id="7291380803380497496" at="93,60,97,18">
-        <var name="result" id="7291380803380497496" />
-      </scope>
-      <scope id="7291380803376169236" at="21,111,26,7" />
-      <scope id="7291380803378325571" at="34,111,39,7" />
-      <scope id="7291380803380497496" at="100,110,105,75" />
-      <scope id="7291380803380497496" at="92,0,99,0" />
-      <scope id="7291380803376169236" at="20,0,28,0">
-        <var name="contextClass" id="7291380803376169236" />
-      </scope>
-      <scope id="7291380803378325571" at="33,0,41,0">
-        <var name="contextClass" id="7291380803378325571" />
-      </scope>
-      <scope id="7291380803380497496" at="99,0,107,0">
-        <var name="kind" id="7291380803380497496" />
-      </scope>
-      <unit id="7291380803376169236" at="19,0,32,0" name="jetbrains.mps.constraints.rules.sanboxLanguage.constraintrules.A_Constraints$RuleKind_canBeChild" />
-      <unit id="7291380803378325571" at="32,0,45,0" name="jetbrains.mps.constraints.rules.sanboxLanguage.constraintrules.A_Constraints$RuleKind_canBeChild2" />
-      <unit id="7291380803377404795" at="49,0,69,0" name="jetbrains.mps.constraints.rules.sanboxLanguage.constraintrules.A_Constraints$Rule_defaultRule" />
-      <unit id="7291380803382804548" at="69,0,89,0" name="jetbrains.mps.constraints.rules.sanboxLanguage.constraintrules.A_Constraints$Rule_anotherRule" />
-      <unit id="7291380803380497496" at="17,0,108,0" name="jetbrains.mps.constraints.rules.sanboxLanguage.constraintrules.A_Constraints" />
+      <node id="7188575577281650553" at="50,80,51,141" concept="1" />
     </file>
   </root>
-  <root nodeRef="r:734ec624-d615-4e40-839a-b6d71c7278dd(jetbrains.mps.constraints.rules.sanboxLanguage.constraintrules)/7291380803382003712">
-    <file name="MessagesAspectDescriptor.java">
-      <node id="7291380803382003713" at="12,29,13,47" concept="7" />
-      <node id="7291380803382003713" at="16,32,17,34" concept="7" />
-      <node id="7291380803382003713" at="22,153,23,63" concept="2" />
-      <node id="7291380803382003713" at="11,0,15,0" concept="5" trace="getRule#()Ljetbrains/mps/constraints/rules/runtime/RuleId;" />
-      <node id="7291380803382003713" at="15,0,19,0" concept="5" trace="getMessage#()Ljava/lang/String;" />
-      <scope id="7291380803382003713" at="12,29,13,47" />
-      <scope id="7291380803382003713" at="16,32,17,34" />
-      <scope id="7291380803382003713" at="11,0,15,0" />
-      <scope id="7291380803382003713" at="15,0,19,0" />
-      <unit id="7291380803382003713" at="10,0,20,0" name="jetbrains.mps.constraints.rules.sanboxLanguage.constraintrules.MessagesAspectDescriptor$MessageProvider" />
+  <root nodeRef="r:734ec624-d615-4e40-839a-b6d71c7278dd(jetbrains.mps.constraints.rules.sanboxLanguage.constraintrules)/7188575577281650889">
+    <file name="A_Constraints.java">
+      <node id="7188575577281650930" at="21,0,22,0" concept="2" trace="myRuleKind" />
+      <node id="7188575577281650930" at="23,61,24,28" concept="1" />
+      <node id="7188575577281650930" at="28,38,29,58" concept="5" />
+      <node id="7188575577281650930" at="34,62,35,18" concept="5" />
+      <node id="7188575577281650930" at="40,61,41,24" concept="5" />
+      <node id="7188575577281650889" at="45,0,46,0" concept="2" trace="myRules" />
+      <node id="7188575577281650889" at="49,26,50,80" concept="1" />
+      <node id="7188575577281650889" at="52,5,53,99" concept="5" />
+      <node id="7188575577281650930" at="23,0,26,0" concept="0" trace="Rule_first#(Ljetbrains/mps/constraints/rules/runtime/CanBeChildRuleKind;)V" />
+      <node id="7188575577281650930" at="27,0,31,0" concept="4" trace="getId#()Ljetbrains/mps/constraints/rules/runtime/ConstraintsRuleId;" />
+      <node id="7188575577281650930" at="33,0,37,0" concept="4" trace="check#(Ljetbrains/mps/constraints/rules/runtime/CanBeChildContext;)Z" />
+      <node id="7188575577281650889" at="48,131,52,5" concept="3" />
+      <node id="7188575577281650930" at="38,0,43,0" concept="4" trace="getKind#()Ljetbrains/mps/constraints/rules/runtime/ConstraintsRuleKind;" />
+      <node id="7188575577281650889" at="47,0,55,0" concept="4" trace="getRules#(Ljetbrains/mps/constraints/rules/runtime/ConstraintsRuleKind;)Ljava/util/List;" />
+      <scope id="7188575577281650930" at="23,61,24,28" />
+      <scope id="7188575577281650930" at="28,38,29,58" />
+      <scope id="7188575577281650930" at="34,62,35,18" />
+      <scope id="7188575577281650930" at="40,61,41,24" />
+      <scope id="7188575577281650889" at="49,26,51,141" />
+      <scope id="7188575577281650930" at="23,0,26,0">
+        <var name="ruleKind" id="7188575577281650930" />
+      </scope>
+      <scope id="7188575577281650930" at="27,0,31,0" />
+      <scope id="7188575577281650930" at="33,0,37,0">
+        <var name="context" id="7188575577281650930" />
+      </scope>
+      <scope id="7188575577281650930" at="38,0,43,0" />
+      <scope id="7188575577281650889" at="48,131,53,99" />
+      <scope id="7188575577281650889" at="47,0,55,0">
+        <var name="kind" id="7188575577281650889" />
+      </scope>
+      <unit id="7188575577281650930" at="20,0,44,0" name="jetbrains.mps.constraints.rules.sanboxLanguage.constraintrules.A_Constraints$Rule_first" />
+      <unit id="7188575577281650889" at="19,0,56,0" name="jetbrains.mps.constraints.rules.sanboxLanguage.constraintrules.A_Constraints" />
+    </file>
+  </root>
+  <root nodeRef="r:734ec624-d615-4e40-839a-b6d71c7278dd(jetbrains.mps.constraints.rules.sanboxLanguage.constraintrules)/7188575577281660797">
+    <file name="GeneratedMessagesDescriptor.java">
+      <node id="7188575577281692444" at="13,40,14,58" concept="5" />
+      <node id="7188575577281692444" at="17,32,18,30" concept="5" />
+      <node id="7188575577281692444" at="23,148,24,66" concept="1" />
+      <node id="7188575577281692444" at="12,0,16,0" concept="4" trace="getRule#()Ljetbrains/mps/constraints/rules/runtime/ConstraintsRuleId;" />
+      <node id="7188575577281692444" at="16,0,20,0" concept="4" trace="getMessage#()Ljava/lang/String;" />
+      <scope id="7188575577281692444" at="13,40,14,58" />
+      <scope id="7188575577281692444" at="17,32,18,30" />
+      <scope id="7188575577281692444" at="12,0,16,0" />
+      <scope id="7188575577281692444" at="16,0,20,0" />
+      <unit id="7188575577281692444" at="11,0,21,0" name="jetbrains.mps.constraints.rules.sanboxLanguage.constraintrules.GeneratedMessagesDescriptor$MessageProvider" />
     </file>
   </root>
 </debug-info>

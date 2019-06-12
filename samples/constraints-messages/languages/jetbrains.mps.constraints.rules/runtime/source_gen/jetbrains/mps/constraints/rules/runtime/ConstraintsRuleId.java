@@ -4,24 +4,28 @@ package jetbrains.mps.constraints.rules.runtime;
 
 import org.jetbrains.annotations.NotNull;
 
-public class RuleId {
+public class ConstraintsRuleId {
   @NotNull
   private final String myId;
-  public RuleId(String myId) {
+
+  public ConstraintsRuleId(String myId) {
     this.myId = myId;
   }
+
   public String getMyId() {
     return this.myId;
   }
+
   @Override
   public boolean equals(Object o) {
     if (o == null || this.getClass() != o.getClass()) {
       return false;
     }
 
-    RuleId that = (RuleId) o;
+    ConstraintsRuleId that = (ConstraintsRuleId) o;
     return myId.equals(that.myId);
   }
+
   @Override
   public int hashCode() {
     return myId.hashCode();

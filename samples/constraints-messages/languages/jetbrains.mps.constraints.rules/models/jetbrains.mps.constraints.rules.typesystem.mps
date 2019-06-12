@@ -58,9 +58,6 @@
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
-        <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
-      </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
@@ -68,7 +65,6 @@
   </registry>
   <node concept="1YbPZF" id="6kKc3mjmfLt">
     <property role="TrG5h" value="typeof_ContextExpression" />
-    <property role="3GE5qa" value="constraints" />
     <node concept="3clFbS" id="6kKc3mjmfLu" role="18ibNy">
       <node concept="1Z5TYs" id="6kKc3mjmfUS" role="3cqZAp">
         <node concept="mw_s8" id="6kKc3mjmfVc" role="1ZfhKB">
@@ -94,7 +90,6 @@
   </node>
   <node concept="1YbPZF" id="6kKc3mjmtvW">
     <property role="TrG5h" value="typeof_ContextRefOperation" />
-    <property role="3GE5qa" value="constraints" />
     <node concept="3clFbS" id="6kKc3mjmtvX" role="18ibNy">
       <node concept="1Z5TYs" id="6kKc3mjmv1C" role="3cqZAp">
         <node concept="mw_s8" id="6kKc3mjrUgY" role="1ZfhKB">
@@ -125,13 +120,12 @@
   </node>
   <node concept="1YbPZF" id="6kKc3mjrUjk">
     <property role="TrG5h" value="typeof_IConstraintsDef" />
-    <property role="3GE5qa" value="constraints" />
     <node concept="3clFbS" id="6kKc3mjrUjl" role="18ibNy">
       <node concept="1Z5TYs" id="6kKc3mjrUrI" role="3cqZAp">
         <node concept="mw_s8" id="6kKc3mjrUs0" role="1ZfhKB">
           <node concept="2OqwBi" id="6kKc3mjrU$Z" role="mwGJk">
             <node concept="1YBJjd" id="6kKc3mjrUrY" role="2Oq$k0">
-              <ref role="1YBMHb" node="6kKc3mjrUjn" resolve="iConstraintsDef" />
+              <ref role="1YBMHb" node="6kKc3mjrUjn" resolve="def" />
             </node>
             <node concept="3TrEf2" id="6kKc3mjrUIc" role="2OqNvi">
               <ref role="3Tt5mk" to="bm42:6kKc3mjmDjA" resolve="type" />
@@ -141,15 +135,15 @@
         <node concept="mw_s8" id="6kKc3mjrUrL" role="1ZfhK$">
           <node concept="1Z2H0r" id="6kKc3mjrUjr" role="mwGJk">
             <node concept="1YBJjd" id="6kKc3mjrUld" role="1Z2MuG">
-              <ref role="1YBMHb" node="6kKc3mjrUjn" resolve="iConstraintsDef" />
+              <ref role="1YBMHb" node="6kKc3mjrUjn" resolve="def" />
             </node>
           </node>
         </node>
       </node>
     </node>
     <node concept="1YaCAy" id="6kKc3mjrUjn" role="1YuTPh">
-      <property role="TrG5h" value="iConstraintsDef" />
-      <ref role="1YaFvo" to="bm42:6kKc3mjq0oG" resolve="IConstraintsDef" />
+      <property role="TrG5h" value="def" />
+      <ref role="1YaFvo" to="bm42:6kKc3mjq0oG" resolve="TypedIdentifier" />
     </node>
   </node>
 </model>

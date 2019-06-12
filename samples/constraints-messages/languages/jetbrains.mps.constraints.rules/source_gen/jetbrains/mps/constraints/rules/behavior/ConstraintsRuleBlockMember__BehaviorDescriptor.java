@@ -32,7 +32,7 @@ public final class ConstraintsRuleBlockMember__BehaviorDescriptor extends BaseBH
   }
 
   /*package*/ static SNode getRuleKind_id6kKc3mjmXYb(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554246L, "jetbrains.mps.constraints.rules.structure.ConstraintsRuleBlock")), MetaAdapterFactory.getReferenceLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554246L, 0x653030359355424bL, "kind"));
+    return SLinkOperations.getTarget(ConstraintsRuleBlockMember__BehaviorDescriptor.getBlock_id6kKc3mjn3VM.invoke(__thisNode__), MetaAdapterFactory.getReferenceLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554246L, 0x653030359355424bL, "kind"));
   }
   /*package*/ static SNode getBlock_id6kKc3mjn3VM(@NotNull SNode __thisNode__) {
     return SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554246L, "jetbrains.mps.constraints.rules.structure.ConstraintsRuleBlock"));

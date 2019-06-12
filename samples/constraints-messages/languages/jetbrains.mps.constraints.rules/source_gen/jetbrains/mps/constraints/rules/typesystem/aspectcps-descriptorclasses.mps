@@ -174,7 +174,6 @@
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
-        <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
@@ -495,7 +494,6 @@
     </node>
   </node>
   <node concept="312cEu" id="1I">
-    <property role="3GE5qa" value="constraints" />
     <property role="TrG5h" value="typeof_ContextExpression_InferenceRule" />
     <node concept="3clFbW" id="1J" role="jymVt">
       <node concept="3clFbS" id="1S" role="3clF47">
@@ -1007,7 +1005,6 @@
     </node>
   </node>
   <node concept="312cEu" id="4S">
-    <property role="3GE5qa" value="constraints" />
     <property role="TrG5h" value="typeof_ContextRefOperation_InferenceRule" />
     <node concept="3clFbW" id="4T" role="jymVt">
       <node concept="3clFbS" id="52" role="3clF47">
@@ -1556,7 +1553,6 @@
     </node>
   </node>
   <node concept="312cEu" id="8f">
-    <property role="3GE5qa" value="constraints" />
     <property role="TrG5h" value="typeof_IConstraintsDef_InferenceRule" />
     <node concept="3clFbW" id="8g" role="jymVt">
       <node concept="3clFbS" id="8p" role="3clF47">
@@ -1597,7 +1593,7 @@
       </node>
       <node concept="37vLTG" id="8_" role="3clF46">
         <property role="3TUv4t" value="true" />
-        <property role="TrG5h" value="iConstraintsDef" />
+        <property role="TrG5h" value="def" />
         <node concept="3Tqbb2" id="8H" role="1tU5fm">
           <node concept="cd27G" id="8J" role="lGtFl">
             <node concept="3u3nmq" id="8K" role="cd27D">
@@ -1651,7 +1647,7 @@
               <node concept="3cpWsn" id="94" role="3cpWs9">
                 <property role="TrG5h" value="_nodeToCheck_1029348928467" />
                 <node concept="37vLTw" id="95" role="33vP2m">
-                  <ref role="3cqZAo" node="8_" resolve="iConstraintsDef" />
+                  <ref role="3cqZAo" node="8_" resolve="def" />
                   <node concept="6wLe0" id="97" role="lGtFl">
                     <property role="6wLej" value="7291380803377800942" />
                     <property role="6wLeW" value="r:61c80a02-cc27-4085-b38d-beaf0fede70a(jetbrains.mps.constraints.rules.typesystem)" />
@@ -1755,7 +1751,7 @@
                     </node>
                     <node concept="2OqwBi" id="9F" role="10QFUP">
                       <node concept="37vLTw" id="9H" role="2Oq$k0">
-                        <ref role="3cqZAo" node="8_" resolve="iConstraintsDef" />
+                        <ref role="3cqZAo" node="8_" resolve="def" />
                         <node concept="cd27G" id="9K" role="lGtFl">
                           <node concept="3u3nmq" id="9L" role="cd27D">
                             <property role="3u3nmv" value="7291380803377800958" />
@@ -1830,7 +1826,7 @@
       <node concept="3clFbS" id="9W" role="3clF47">
         <node concept="3cpWs6" id="a1" role="3cqZAp">
           <node concept="35c_gC" id="a3" role="3cqZAk">
-            <ref role="35c_gD" to="bm42:6kKc3mjq0oG" resolve="IConstraintsDef" />
+            <ref role="35c_gD" to="bm42:6kKc3mjq0oG" resolve="TypedIdentifier" />
             <node concept="cd27G" id="a5" role="lGtFl">
               <node concept="3u3nmq" id="a6" role="cd27D">
                 <property role="3u3nmv" value="7291380803377800404" />

@@ -59,7 +59,7 @@
     <property role="TrG5h" value="ConstraintsRoot" />
     <node concept="3Qpn9X" id="6kKc3mjlG4k" role="3Qpn9W">
       <property role="TrG5h" value="canBeChild" />
-      <ref role="3QmvB7" to="x8mg:6kKc3mju4Ly" resolve="ConstraintsContext.CanBeChildContext" />
+      <ref role="3QmvB7" to="x8mg:6kKc3mju4Ly" resolve="CanBeChildContext" />
       <node concept="3QpnaC" id="6kKc3mjqf6$" role="3QpnaF">
         <property role="TrG5h" value="node" />
         <node concept="3Tqbb2" id="6kKc3mjwTCS" role="3QqEjj" />
@@ -67,7 +67,7 @@
     </node>
     <node concept="3Qpn9X" id="6kKc3mjtUx3" role="3Qpn9W">
       <property role="TrG5h" value="canBeChild2" />
-      <ref role="3QmvB7" to="x8mg:6kKc3mju4Ly" resolve="ConstraintsContext.CanBeChildContext" />
+      <ref role="3QmvB7" to="x8mg:6kKc3mju4Ly" resolve="CanBeChildContext" />
       <node concept="3QpnaC" id="6kKc3mjtUx4" role="3QpnaF">
         <property role="TrG5h" value="node" />
         <node concept="3Tqbb2" id="6kKc3mjwTTp" role="3QqEjj" />

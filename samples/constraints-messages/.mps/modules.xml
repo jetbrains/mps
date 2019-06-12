@@ -6,7 +6,6 @@
       <modulePath path="$PROJECT_DIR$/languages/jetbrains.mps.constraints.rules.sanboxLanguage/jetbrains.mps.constraints.rules.sanboxLanguage.mpl" folder="" />
       <modulePath path="$PROJECT_DIR$/languages/jetbrains.mps.constraints.rules/jetbrains.mps.constraints.rules.mpl" folder="" />
       <modulePath path="$PROJECT_DIR$/languages/jetbrains.mps.constraints.rules/runtime/jetbrains.mps.constraints.rules.runtime.msd" folder="" />
-      <modulePath path="$PROJECT_DIR$/languages/jetbrains.mps.constraints.rules/sandbox/jetbrains.mps.constraints.rules.sandbox.msd" folder="" />
     </projectModules>
   </component>
 </project>

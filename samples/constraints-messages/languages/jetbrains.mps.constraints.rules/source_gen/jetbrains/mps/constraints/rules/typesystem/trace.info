@@ -121,9 +121,9 @@
       </scope>
     </file>
     <file name="typeof_IConstraintsDef_InferenceRule.java">
-      <node id="7291380803377800942" at="19,5,20,57" concept="4" />
-      <node id="7291380803377800942" at="20,57,21,208" concept="4" />
-      <node id="7291380803377800942" at="21,208,22,422" concept="2" />
+      <node id="7291380803377800942" at="19,5,20,45" concept="4" />
+      <node id="7291380803377800942" at="20,45,21,208" concept="4" />
+      <node id="7291380803377800942" at="21,208,22,410" concept="2" />
       <node id="7291380803377800404" at="25,50,26,174" concept="5" />
       <node id="7291380803377800404" at="28,68,29,102" concept="5" />
       <node id="7291380803377800404" at="31,30,32,17" concept="5" />
@@ -131,14 +131,14 @@
       <node id="7291380803377800404" at="25,0,28,0" concept="3" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="7291380803377800404" at="28,0,31,0" concept="3" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
       <node id="7291380803377800404" at="31,0,34,0" concept="3" trace="overrides#()Z" />
-      <node id="7291380803377800942" at="18,128,23,5" concept="0" />
+      <node id="7291380803377800942" at="18,116,23,5" concept="0" />
       <node id="7291380803377800404" at="18,0,25,0" concept="3" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
       <scope id="7291380803377800404" at="16,49,16,49" />
       <scope id="7291380803377800404" at="25,50,26,174" />
       <scope id="7291380803377800404" at="28,68,29,102" />
       <scope id="7291380803377800404" at="31,30,32,17" />
       <scope id="7291380803377800404" at="16,0,18,0" />
-      <scope id="7291380803377800942" at="19,5,22,422">
+      <scope id="7291380803377800942" at="19,5,22,410">
         <var name="_info_12389875345" id="7291380803377800942" />
         <var name="_nodeToCheck_1029348928467" id="7291380803377800942" />
       </scope>
@@ -147,9 +147,9 @@
         <var name="argument" id="7291380803377800404" />
       </scope>
       <scope id="7291380803377800404" at="31,0,34,0" />
-      <scope id="7291380803377800405" at="18,128,23,5" />
+      <scope id="7291380803377800405" at="18,116,23,5" />
       <scope id="7291380803377800404" at="18,0,25,0">
-        <var name="iConstraintsDef" id="7291380803377800404" />
+        <var name="def" id="7291380803377800404" />
         <var name="status" id="7291380803377800404" />
         <var name="typeCheckingContext" id="7291380803377800404" />
       </scope>
