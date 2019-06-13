@@ -783,8 +783,8 @@
           <node concept="liA8E" id="3E" role="2OqNvi">
             <ref role="37wK5l" to="ksn4:~ConceptSwitchIndexBuilder.put(jetbrains.mps.smodel.adapter.ids.SConceptId...)" resolve="put" />
             <node concept="2YIFZM" id="3G" role="37wK5m">
-              <ref role="1Pybhc" to="e8bb:~MetaIdFactory" resolve="MetaIdFactory" />
               <ref role="37wK5l" to="e8bb:~MetaIdFactory.conceptId(long,long,long)" resolve="conceptId" />
+              <ref role="1Pybhc" to="e8bb:~MetaIdFactory" resolve="MetaIdFactory" />
               <node concept="1adDum" id="3J" role="37wK5m">
                 <property role="1adDun" value="0x9074634404fd4286L" />
               </node>
@@ -796,8 +796,8 @@
               </node>
             </node>
             <node concept="2YIFZM" id="3H" role="37wK5m">
-              <ref role="1Pybhc" to="e8bb:~MetaIdFactory" resolve="MetaIdFactory" />
               <ref role="37wK5l" to="e8bb:~MetaIdFactory.conceptId(long,long,long)" resolve="conceptId" />
+              <ref role="1Pybhc" to="e8bb:~MetaIdFactory" resolve="MetaIdFactory" />
               <node concept="1adDum" id="3M" role="37wK5m">
                 <property role="1adDun" value="0x9074634404fd4286L" />
               </node>
@@ -809,8 +809,8 @@
               </node>
             </node>
             <node concept="2YIFZM" id="3I" role="37wK5m">
-              <ref role="1Pybhc" to="e8bb:~MetaIdFactory" resolve="MetaIdFactory" />
               <ref role="37wK5l" to="e8bb:~MetaIdFactory.conceptId(long,long,long)" resolve="conceptId" />
+              <ref role="1Pybhc" to="e8bb:~MetaIdFactory" resolve="MetaIdFactory" />
               <node concept="1adDum" id="3P" role="37wK5m">
                 <property role="1adDun" value="0x9074634404fd4286L" />
               </node>

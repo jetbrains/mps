@@ -7243,8 +7243,8 @@
       <node concept="3clFbS" id="E3" role="3clF47">
         <node concept="3cpWs6" id="E6" role="3cqZAp">
           <node concept="2YIFZM" id="E7" role="3cqZAk">
-            <ref role="1Pybhc" to="33ny:~Arrays" resolve="Arrays" />
             <ref role="37wK5l" to="33ny:~Arrays.asList(java.lang.Object...)" resolve="asList" />
+            <ref role="1Pybhc" to="33ny:~Arrays" resolve="Arrays" />
             <node concept="37vLTw" id="E8" role="37wK5m">
               <ref role="3cqZAo" node="za" resolve="myEnumerationOrangeTaste" />
             </node>
@@ -11841,8 +11841,8 @@
                 <node concept="liA8E" id="154" role="2OqNvi">
                   <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2$PropertyBuilder.type(jetbrains.mps.smodel.adapter.ids.STypeId)" resolve="type" />
                   <node concept="2YIFZM" id="159" role="37wK5m">
-                    <ref role="1Pybhc" to="e8bb:~MetaIdFactory" resolve="MetaIdFactory" />
                     <ref role="37wK5l" to="e8bb:~MetaIdFactory.dataTypeId(long,long,long)" resolve="dataTypeId" />
+                    <ref role="1Pybhc" to="e8bb:~MetaIdFactory" resolve="MetaIdFactory" />
                     <node concept="1adDum" id="15a" role="37wK5m">
                       <property role="1adDun" value="0x7a6f7ef73988464bL" />
                       <node concept="cd27G" id="15e" role="lGtFl">

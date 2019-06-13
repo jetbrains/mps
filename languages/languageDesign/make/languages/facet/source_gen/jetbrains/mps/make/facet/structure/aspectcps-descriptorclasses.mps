@@ -6425,8 +6425,8 @@
       <node concept="3clFbS" id="_c" role="3clF47">
         <node concept="3cpWs6" id="_f" role="3cqZAp">
           <node concept="2YIFZM" id="_g" role="3cqZAk">
-            <ref role="1Pybhc" to="33ny:~Arrays" resolve="Arrays" />
             <ref role="37wK5l" to="33ny:~Arrays.asList(java.lang.Object...)" resolve="asList" />
+            <ref role="1Pybhc" to="33ny:~Arrays" resolve="Arrays" />
             <node concept="37vLTw" id="_h" role="37wK5m">
               <ref role="3cqZAo" node="wP" resolve="myEnumerationResourcesPolicy" />
             </node>
@@ -9336,8 +9336,8 @@
                 <node concept="liA8E" id="Qu" role="2OqNvi">
                   <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2$PropertyBuilder.type(jetbrains.mps.smodel.adapter.ids.STypeId)" resolve="type" />
                   <node concept="2YIFZM" id="Qz" role="37wK5m">
-                    <ref role="1Pybhc" to="e8bb:~MetaIdFactory" resolve="MetaIdFactory" />
                     <ref role="37wK5l" to="e8bb:~MetaIdFactory.dataTypeId(long,long,long)" resolve="dataTypeId" />
+                    <ref role="1Pybhc" to="e8bb:~MetaIdFactory" resolve="MetaIdFactory" />
                     <node concept="1adDum" id="Q$" role="37wK5m">
                       <property role="1adDun" value="0x696c11654a59463bL" />
                       <node concept="cd27G" id="QC" role="lGtFl">
@@ -9944,8 +9944,8 @@
                 <node concept="liA8E" id="TY" role="2OqNvi">
                   <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2$PropertyBuilder.type(jetbrains.mps.smodel.adapter.ids.STypeId)" resolve="type" />
                   <node concept="2YIFZM" id="U3" role="37wK5m">
-                    <ref role="1Pybhc" to="e8bb:~MetaIdFactory" resolve="MetaIdFactory" />
                     <ref role="37wK5l" to="e8bb:~MetaIdFactory.dataTypeId(long,long,long)" resolve="dataTypeId" />
+                    <ref role="1Pybhc" to="e8bb:~MetaIdFactory" resolve="MetaIdFactory" />
                     <node concept="1adDum" id="U4" role="37wK5m">
                       <property role="1adDun" value="0x696c11654a59463bL" />
                       <node concept="cd27G" id="U8" role="lGtFl">

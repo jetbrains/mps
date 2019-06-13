@@ -475,8 +475,8 @@
       <node concept="3clFbS" id="2b" role="3clF47">
         <node concept="3cpWs6" id="2e" role="3cqZAp">
           <node concept="2YIFZM" id="2f" role="3cqZAk">
-            <ref role="1Pybhc" to="33ny:~Arrays" resolve="Arrays" />
             <ref role="37wK5l" to="33ny:~Arrays.asList(java.lang.Object...)" resolve="asList" />
+            <ref role="1Pybhc" to="33ny:~Arrays" resolve="Arrays" />
           </node>
         </node>
       </node>

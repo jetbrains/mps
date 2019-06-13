@@ -12110,8 +12110,8 @@
       <node concept="3clFbS" id="171" role="3clF47">
         <node concept="3cpWs6" id="174" role="3cqZAp">
           <node concept="2YIFZM" id="175" role="3cqZAk">
-            <ref role="1Pybhc" to="33ny:~Arrays" resolve="Arrays" />
             <ref role="37wK5l" to="33ny:~Arrays.asList(java.lang.Object...)" resolve="asList" />
+            <ref role="1Pybhc" to="33ny:~Arrays" resolve="Arrays" />
             <node concept="37vLTw" id="176" role="37wK5m">
               <ref role="3cqZAo" node="Vi" resolve="myEnumerationTestSubstituteEnumDataType" />
             </node>
@@ -20685,8 +20685,8 @@
                 <node concept="liA8E" id="1TZ" role="2OqNvi">
                   <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2$PropertyBuilder.type(jetbrains.mps.smodel.adapter.ids.STypeId)" resolve="type" />
                   <node concept="2YIFZM" id="1U4" role="37wK5m">
-                    <ref role="1Pybhc" to="e8bb:~MetaIdFactory" resolve="MetaIdFactory" />
                     <ref role="37wK5l" to="e8bb:~MetaIdFactory.dataTypeId(long,long,long)" resolve="dataTypeId" />
+                    <ref role="1Pybhc" to="e8bb:~MetaIdFactory" resolve="MetaIdFactory" />
                     <node concept="1adDum" id="1U5" role="37wK5m">
                       <property role="1adDun" value="0xcb6d57037c8e46a9L" />
                       <node concept="cd27G" id="1U9" role="lGtFl">
@@ -20752,8 +20752,8 @@
                 <node concept="liA8E" id="1Un" role="2OqNvi">
                   <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2$PropertyBuilder.type(jetbrains.mps.smodel.adapter.ids.STypeId)" resolve="type" />
                   <node concept="2YIFZM" id="1Us" role="37wK5m">
-                    <ref role="1Pybhc" to="e8bb:~MetaIdFactory" resolve="MetaIdFactory" />
                     <ref role="37wK5l" to="e8bb:~MetaIdFactory.dataTypeId(long,long,long)" resolve="dataTypeId" />
+                    <ref role="1Pybhc" to="e8bb:~MetaIdFactory" resolve="MetaIdFactory" />
                     <node concept="1adDum" id="1Ut" role="37wK5m">
                       <property role="1adDun" value="0xcb6d57037c8e46a9L" />
                       <node concept="cd27G" id="1Ux" role="lGtFl">
@@ -20819,8 +20819,8 @@
                 <node concept="liA8E" id="1UJ" role="2OqNvi">
                   <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2$PropertyBuilder.type(jetbrains.mps.smodel.adapter.ids.STypeId)" resolve="type" />
                   <node concept="2YIFZM" id="1UO" role="37wK5m">
-                    <ref role="1Pybhc" to="e8bb:~MetaIdFactory" resolve="MetaIdFactory" />
                     <ref role="37wK5l" to="e8bb:~MetaIdFactory.dataTypeId(long,long,long)" resolve="dataTypeId" />
+                    <ref role="1Pybhc" to="e8bb:~MetaIdFactory" resolve="MetaIdFactory" />
                     <node concept="1adDum" id="1UP" role="37wK5m">
                       <property role="1adDun" value="0xcb6d57037c8e46a9L" />
                       <node concept="cd27G" id="1UT" role="lGtFl">
@@ -20886,8 +20886,8 @@
                 <node concept="liA8E" id="1V7" role="2OqNvi">
                   <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2$PropertyBuilder.type(jetbrains.mps.smodel.adapter.ids.STypeId)" resolve="type" />
                   <node concept="2YIFZM" id="1Vc" role="37wK5m">
-                    <ref role="1Pybhc" to="e8bb:~MetaIdFactory" resolve="MetaIdFactory" />
                     <ref role="37wK5l" to="e8bb:~MetaIdFactory.dataTypeId(long,long,long)" resolve="dataTypeId" />
+                    <ref role="1Pybhc" to="e8bb:~MetaIdFactory" resolve="MetaIdFactory" />
                     <node concept="1adDum" id="1Vd" role="37wK5m">
                       <property role="1adDun" value="0xcb6d57037c8e46a9L" />
                       <node concept="cd27G" id="1Vh" role="lGtFl">
@@ -20953,8 +20953,8 @@
                 <node concept="liA8E" id="1Vv" role="2OqNvi">
                   <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2$PropertyBuilder.type(jetbrains.mps.smodel.adapter.ids.STypeId)" resolve="type" />
                   <node concept="2YIFZM" id="1V$" role="37wK5m">
-                    <ref role="1Pybhc" to="e8bb:~MetaIdFactory" resolve="MetaIdFactory" />
                     <ref role="37wK5l" to="e8bb:~MetaIdFactory.dataTypeId(long,long,long)" resolve="dataTypeId" />
+                    <ref role="1Pybhc" to="e8bb:~MetaIdFactory" resolve="MetaIdFactory" />
                     <node concept="1adDum" id="1V_" role="37wK5m">
                       <property role="1adDun" value="0xcb6d57037c8e46a9L" />
                       <node concept="cd27G" id="1VD" role="lGtFl">

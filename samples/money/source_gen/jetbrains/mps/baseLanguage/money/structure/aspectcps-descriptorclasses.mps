@@ -1558,8 +1558,8 @@
       <node concept="3clFbS" id="8i" role="3clF47">
         <node concept="3cpWs6" id="8l" role="3cqZAp">
           <node concept="2YIFZM" id="8m" role="3cqZAk">
-            <ref role="1Pybhc" to="33ny:~Arrays" resolve="Arrays" />
             <ref role="37wK5l" to="33ny:~Arrays.asList(java.lang.Object...)" resolve="asList" />
+            <ref role="1Pybhc" to="33ny:~Arrays" resolve="Arrays" />
             <node concept="37vLTw" id="8n" role="37wK5m">
               <ref role="3cqZAo" node="63" resolve="myCSDatatypeBigDecimal" />
             </node>
@@ -2445,8 +2445,8 @@
                 <node concept="liA8E" id="d$" role="2OqNvi">
                   <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2$PropertyBuilder.type(jetbrains.mps.smodel.adapter.ids.STypeId)" resolve="type" />
                   <node concept="2YIFZM" id="dD" role="37wK5m">
-                    <ref role="1Pybhc" to="e8bb:~MetaIdFactory" resolve="MetaIdFactory" />
                     <ref role="37wK5l" to="e8bb:~MetaIdFactory.dataTypeId(long,long,long)" resolve="dataTypeId" />
+                    <ref role="1Pybhc" to="e8bb:~MetaIdFactory" resolve="MetaIdFactory" />
                     <node concept="1adDum" id="dE" role="37wK5m">
                       <property role="1adDun" value="0xf43135f9b8334685L" />
                       <node concept="cd27G" id="dI" role="lGtFl">

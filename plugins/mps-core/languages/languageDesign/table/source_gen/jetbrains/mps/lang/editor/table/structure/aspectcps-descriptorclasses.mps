@@ -980,8 +980,8 @@
       <node concept="3clFbS" id="4S" role="3clF47">
         <node concept="3cpWs6" id="4V" role="3cqZAp">
           <node concept="2YIFZM" id="4W" role="3cqZAk">
-            <ref role="1Pybhc" to="33ny:~Arrays" resolve="Arrays" />
             <ref role="37wK5l" to="33ny:~Arrays.asList(java.lang.Object...)" resolve="asList" />
+            <ref role="1Pybhc" to="33ny:~Arrays" resolve="Arrays" />
           </node>
         </node>
       </node>
