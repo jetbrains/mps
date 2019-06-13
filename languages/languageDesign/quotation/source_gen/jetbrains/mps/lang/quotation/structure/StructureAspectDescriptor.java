@@ -33,6 +33,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptPropertyAntiquotation = createDescriptorForPropertyAntiquotation();
   /*package*/ final ConceptDescriptor myConceptQuotation = createDescriptorForQuotation();
   /*package*/ final ConceptDescriptor myConceptReferenceAntiquotation = createDescriptorForReferenceAntiquotation();
+  /*package*/ final ConceptDescriptor myConceptStringToTypedValueMigrationInfo = createDescriptorForStringToTypedValueMigrationInfo();
   private final LanguageConceptSwitch myIndexSwitch;
 
   public StructureAspectDescriptor() {
@@ -51,7 +52,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptAbstractAntiquotation, myConceptAntiquotation, myConceptGeneratorInternal_InternalReferenceHolder, myConceptGeneratorInternal_PropertyDescriptor, myConceptGeneratorInternal_ReferenceDescriptor, myConceptListAntiquotation, myConceptNodeBuilder, myConceptNodeBuilderExpression, myConceptNodeBuilderInitLink, myConceptNodeBuilderInitPart, myConceptNodeBuilderInitProperty, myConceptNodeBuilderList, myConceptNodeBuilderNode, myConceptNodeBuilderRef, myConceptPropertyAntiquotation, myConceptQuotation, myConceptReferenceAntiquotation);
+    return Arrays.asList(myConceptAbstractAntiquotation, myConceptAntiquotation, myConceptGeneratorInternal_InternalReferenceHolder, myConceptGeneratorInternal_PropertyDescriptor, myConceptGeneratorInternal_ReferenceDescriptor, myConceptListAntiquotation, myConceptNodeBuilder, myConceptNodeBuilderExpression, myConceptNodeBuilderInitLink, myConceptNodeBuilderInitPart, myConceptNodeBuilderInitProperty, myConceptNodeBuilderList, myConceptNodeBuilderNode, myConceptNodeBuilderRef, myConceptPropertyAntiquotation, myConceptQuotation, myConceptReferenceAntiquotation, myConceptStringToTypedValueMigrationInfo);
   }
 
   @Override
@@ -92,6 +93,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptQuotation;
       case LanguageConceptSwitch.ReferenceAntiquotation:
         return myConceptReferenceAntiquotation;
+      case LanguageConceptSwitch.StringToTypedValueMigrationInfo:
+        return myConceptStringToTypedValueMigrationInfo;
       default:
         return null;
     }
@@ -253,9 +256,9 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, false);
     b.super_("jetbrains.mps.lang.core.structure.PropertyAttribute", 0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L);
     b.parent(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104656L);
+    b.parent(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x384b195d1ed21709L);
     b.origin("r:00000000-0000-4000-0000-011c8959034b(jetbrains.mps.lang.quotation.structure)/1196866233735");
     b.version(2);
-    b.property("stringValueMigrated", 0x1e2950a3c41b89ecL).type(PrimitiveTypeId.BOOLEAN).origin("2173356959483005420").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForQuotation() {
@@ -280,6 +283,14 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104656L);
     b.origin("r:00000000-0000-4000-0000-011c8959034b(jetbrains.mps.lang.quotation.structure)/1196350785117");
     b.version(2);
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForStringToTypedValueMigrationInfo() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.quotation", "StringToTypedValueMigrationInfo", 0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x384b195d1ed21709L);
+    b.interface_();
+    b.origin("r:00000000-0000-4000-0000-011c8959034b(jetbrains.mps.lang.quotation.structure)/4056363777117001481");
+    b.version(2);
+    b.property("stringValueMigrated", 0x1e2950a3c41b89ecL).type(PrimitiveTypeId.BOOLEAN).origin("2173356959483005420").done();
     return b.create();
   }
 }

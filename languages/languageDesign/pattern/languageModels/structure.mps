@@ -137,6 +137,9 @@
     <node concept="PrWs8" id="h6iODaZ" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
+    <node concept="PrWs8" id="6fyCUqkDvzW" role="PzmwI">
+      <ref role="PrY4T" to="tp3r:3xb6lOuOxs9" resolve="StringToTypedValueMigrationInfo" />
+    </node>
     <node concept="M6xJ_" id="6_gUeuqOePs" role="lGtFl">
       <property role="Hh88m" value="propertyPatternVariableDeclaration" />
       <node concept="trNpa" id="166$sc$ZIAP" role="EQaZv">

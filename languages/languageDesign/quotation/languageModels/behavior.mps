@@ -545,7 +545,7 @@
   </node>
   <node concept="13h7C7" id="1653mnvB2rz">
     <property role="3GE5qa" value="quotation" />
-    <ref role="13h7C2" to="tp3r:hqEMmm7" resolve="PropertyAntiquotation" />
+    <ref role="13h7C2" to="tp3r:3xb6lOuOxs9" resolve="StringToTypedValueMigrationInfo" />
     <node concept="13hLZK" id="1653mnvB2r$" role="13h7CW">
       <node concept="3clFbS" id="1653mnvB2r_" role="2VODD2">
         <node concept="3clFbF" id="1SDkaf46SC2" role="3cqZAp">

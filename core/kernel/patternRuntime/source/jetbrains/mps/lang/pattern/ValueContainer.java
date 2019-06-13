@@ -49,7 +49,12 @@ public final class ValueContainer {
     myValues.put(variableName, target);
   }
 
+  @Deprecated
   public void put(String variableName, String value) {
+    myValues.put(variableName, value);
+  }
+
+  public void putProperty(String variableName, Object value) {
     myValues.put(variableName, value);
   }
 
@@ -86,9 +91,15 @@ public final class ValueContainer {
   }
 
   @Nullable
+  @Deprecated
   public String getProperty(String variableName) {
     Object v = myValues.get(variableName);
     return v instanceof String ? (String) v : null;
+  }
+
+  @Nullable
+  public Object getPropertyValue(String variableName) {
+    return myValues.get(variableName);
   }
 
   /**

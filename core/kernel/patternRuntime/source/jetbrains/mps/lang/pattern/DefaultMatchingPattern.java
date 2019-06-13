@@ -44,7 +44,12 @@ public class DefaultMatchingPattern implements IMatchingPattern {
   }
 
   @Nullable
+  @Deprecated
   public String getMatchedProperty(String varName) {
+    return null;
+  }
+
+  public Object getMatchedPropertyValue(String varName) {
     return null;
   }
 

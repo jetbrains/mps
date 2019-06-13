@@ -15,6 +15,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.generator.template.ReferenceMacroContext;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.generator.template.IfMacroContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -125,6 +126,13 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object referenceMacro_GetReferent_7_0(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(SNodeOperations.as(SNodeOperations.getParent(SNodeOperations.getParent(_context.getNode())), MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x4363a36537b0b250L, "jetbrains.mps.lang.pattern.structure.OrPatternClause")), "disjunctToMatcher");
+  }
+  public static Object referenceMacro_GetReferent_8_0(final ReferenceMacroContext _context) {
+    if (SPropertyOperations.getBoolean(_context.getNode(), MetaAdapterFactory.getProperty(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x384b195d1ed21709L, 0x1e2950a3c41b89ecL, "stringValueMigrated"))) {
+      return new SNodePointer("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.pattern(MPS.Core/)", "~NodeMatcher.propertyValue(org.jetbrains.mps.openapi.language.SProperty,java.lang.String)");
+    } else {
+      return new SNodePointer("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.pattern(MPS.Core/)", "~NodeMatcher.property(org.jetbrains.mps.openapi.language.SProperty,java.lang.String)");
+    }
   }
   public static Object referenceMacro_GetReferent_9_0(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "disjunctToPatternNode");
@@ -588,8 +596,9 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, ReferenceTargetQuery> rtqMethods = new HashMap<String, ReferenceTargetQuery>();
   {
     rtqMethods.put("1949222934982668941", new QueriesGenerated.RTQ(0, "myTopMatcher"));
-    rtqMethods.put("1949222934982502678", new QueriesGenerated.RTQ(1, "patternNode"));
-    rtqMethods.put("1949222934982466766", new QueriesGenerated.RTQ(2, "disjunct"));
+    rtqMethods.put("7197495090345735902", new QueriesGenerated.RTQ(1, "propertyValue"));
+    rtqMethods.put("1949222934982502678", new QueriesGenerated.RTQ(2, "patternNode"));
+    rtqMethods.put("1949222934982466766", new QueriesGenerated.RTQ(3, "disjunct"));
   }
   @NotNull
   @Override
@@ -612,8 +621,10 @@ public class QueriesGenerated extends QueryProviderBase {
         case 0:
           return QueriesGenerated.referenceMacro_GetReferent_7_0(ctx);
         case 1:
-          return QueriesGenerated.referenceMacro_GetReferent_9_0(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_8_0(ctx);
         case 2:
+          return QueriesGenerated.referenceMacro_GetReferent_9_0(ctx);
+        case 3:
           return QueriesGenerated.referenceMacro_GetReferent_9_1(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));

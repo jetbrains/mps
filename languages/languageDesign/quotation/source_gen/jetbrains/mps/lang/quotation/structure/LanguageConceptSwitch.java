@@ -26,6 +26,7 @@ public final class LanguageConceptSwitch {
   public static final int PropertyAntiquotation = 14;
   public static final int Quotation = 15;
   public static final int ReferenceAntiquotation = 16;
+  public static final int StringToTypedValueMigrationInfo = 17;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L);
@@ -46,6 +47,7 @@ public final class LanguageConceptSwitch {
     builder.put(0x116aac96587L, PropertyAntiquotation);
     builder.put(0x1168c104659L, Quotation);
     builder.put(0x1168c10465dL, ReferenceAntiquotation);
+    builder.put(0x384b195d1ed21709L, StringToTypedValueMigrationInfo);
     myIndex = builder.seal();
   }
 

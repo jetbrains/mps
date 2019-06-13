@@ -22,6 +22,7 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.language.SType;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.model.SReference;
@@ -38,12 +39,15 @@ import java.util.Map;
  * <p/>
  * IMPLEMENTATION NODE: Pattern node passed to {@link #match(SNode, SNode)} doesn't need to have
  * set properties/association/aggregation we are going to capture/iterate with distinct matcher.
+ *
  * @author Artem Tikhomirov
  * @since 3.4
  */
 public final class NodeMatcher {
   private final ChildMatcher myParent;
   private final ValueContainer myValues;
+  @Deprecated
+  private Map<SProperty, String> myPropertyToVariableName_old;
   private Map<SProperty, String> myPropertyToVariableName;
   private Map<SReferenceLink, String> myReferenceToVariableName;
   private Map<SContainmentLink, ChildMatcher> myChildExtractors;
@@ -62,13 +66,23 @@ public final class NodeMatcher {
   }
 
   // XXX I could have introduced PropertyExtractor with single useful #capture(String) method (plus #done()), but it's just too much
+  @Deprecated
   public NodeMatcher property(@NotNull SProperty p, @NotNull String patternVarName) {
+    if (myPropertyToVariableName_old == null) {
+      myPropertyToVariableName_old = new HashMap<>(8);
+    }
+    myPropertyToVariableName_old.put(p, patternVarName);
+    return this;
+  }
+
+  public NodeMatcher propertyValue(@NotNull SProperty p, @NotNull String patternVarName) {
     if (myPropertyToVariableName == null) {
       myPropertyToVariableName = new HashMap<>(8);
     }
     myPropertyToVariableName.put(p, patternVarName);
     return this;
   }
+
 
   public NodeMatcher capture(String nodeVarName) {
     myPatternVarName = nodeVarName;
@@ -77,6 +91,7 @@ public final class NodeMatcher {
 
   /**
    * 'wildcard' node match (aka '_')
+   *
    * @return <code>this</code>
    */
   public NodeMatcher any() {
@@ -108,12 +123,12 @@ public final class NodeMatcher {
    * Tells to match disjunction of nodes using supplied alternatives.
    * <code>NodeMatcher</code> with alternatives doesn't check children, associations or properties. It's still possible, though, to
    * capture value of the node with {@link #capture(String)}.
-   *
+   * <p>
    * <p/>When matching, each disjunct is processed in order they were added to the matcher, the first one to match cancels processing of other
    * (i.e. similar to Java's || operator).
    *
    * @param patternNode pattern to match disjunct against.
-   * @param disjunct ordered matcher sequence, consulted one my one until match is found.
+   * @param disjunct    ordered matcher sequence, consulted one my one until match is found.
    * @return <code>this</code>
    */
   public NodeMatcher disjunct(@NotNull SNode patternNode, @NotNull NodeMatcher disjunct) {
@@ -161,7 +176,7 @@ public final class NodeMatcher {
   }
 
   private boolean matchStructure(SNode pattern, SNode against) {
-    if (myPatternVarName != null && myChildExtractors == null && myPropertyToVariableName == null && myReferenceToVariableName == null) {
+    if (myPatternVarName != null && myChildExtractors == null && myPropertyToVariableName_old == null && myReferenceToVariableName == null) {
       // FIXME if it's a mere accessor to a node to capture it, do not check concept match. Though IMO it's a defect in original implementation,
       // it's left here for the time being to get existing tests pass before I fix them with a distinct change
       // The case is "if (#v1) { #v2 }", where v2 attributes ExpressionStatement, and input comes as an empty Statement.
@@ -175,13 +190,20 @@ public final class NodeMatcher {
     if (!against.getConcept().isSubConceptOf(pattern.getConcept())) {
       return false;
     }
+    // properties (deprecated)
+    if (!matchPropertties_old(pattern, against)) {
+      return false;
+    }
     // properties
     Map<SProperty, String> prop2var = myPropertyToVariableName == null ? Collections.emptyMap() : myPropertyToVariableName;
     ArrayList<SProperty> propsToCheck = new ArrayList<>(prop2var.keySet());
     propsToCheck.addAll(IterableUtil.asCollection(pattern.getProperties()));
     for (SProperty p : propsToCheck) {
       if (prop2var.containsKey(p)) {
-        getValues().put(prop2var.get(p), against.getProperty(p));
+        Object propertyValue = p.getType().fromString(against.getProperty(p));
+        if (propertyValue != SType.NOT_A_VALUE) {
+          getValues().putProperty(prop2var.get(p), propertyValue);
+        }
       } else {
         if (!pattern.getProperty(p).equals(against.getProperty(p))) {
           return false;
@@ -229,6 +251,26 @@ public final class NodeMatcher {
       }
       if (!childExtractor.match(IterableUtil.asList(pattern.getChildren(l)), IterableUtil.asList(against.getChildren(l)))) {
         return false;
+      }
+    }
+    return true;
+  }
+
+  @Deprecated
+  private boolean matchPropertties_old(SNode pattern, SNode against) {
+    Map<SProperty, String> prop2var = myPropertyToVariableName_old == null ? Collections.emptyMap() : myPropertyToVariableName_old;
+    ArrayList<SProperty> propsToCheck = new ArrayList<>(prop2var.keySet());
+    propsToCheck.addAll(IterableUtil.asCollection(pattern.getProperties()));
+    for (SProperty p : propsToCheck) {
+      if (prop2var.containsKey(p)) {
+        Object property = p.getType().fromString(against.getProperty(p));
+        if (property != SType.NOT_A_VALUE) {
+          getValues().putProperty(prop2var.get(p), property);
+        }
+      } else {
+        if (!pattern.getProperty(p).equals(against.getProperty(p))) {
+          return false;
+        }
       }
     }
     return true;

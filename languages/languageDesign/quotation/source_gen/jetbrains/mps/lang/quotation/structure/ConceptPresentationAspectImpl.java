@@ -26,6 +26,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_PropertyAntiquotation;
   private ConceptPresentation props_Quotation;
   private ConceptPresentation props_ReferenceAntiquotation;
+  private ConceptPresentation props_StringToTypedValueMigrationInfo;
 
   @Override
   @Nullable
@@ -149,6 +150,12 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_ReferenceAntiquotation = cpb.create();
         }
         return props_ReferenceAntiquotation;
+      case LanguageConceptSwitch.StringToTypedValueMigrationInfo:
+        if (props_StringToTypedValueMigrationInfo == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_StringToTypedValueMigrationInfo = cpb.create();
+        }
+        return props_StringToTypedValueMigrationInfo;
     }
     return null;
   }
