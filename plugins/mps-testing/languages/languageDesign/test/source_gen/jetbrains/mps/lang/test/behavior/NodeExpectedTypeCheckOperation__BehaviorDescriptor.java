@@ -14,11 +14,8 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.typesystem.inference.TypeCheckingContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.typesystem.inference.TypeChecker;
+import jetbrains.mps.lang.test.runtime.CheckTypesAction;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.test.runtime.NodeCheckerUtil;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -35,16 +32,7 @@ public final class NodeExpectedTypeCheckOperation__BehaviorDescriptor extends Ba
   }
 
   /*package*/ static void perform_id1kgh5YabdhC(@NotNull SNode __thisNode__, SNode node) {
-    final SNode operation = __thisNode__;
-    PerformUtil.checkNodeWithTypeCheckingAction(node, new NodeTypeCheckingAction(operation) {
-      public void checkOperation(TypeCheckingContext context) {
-        if (SNodeOperations.isInstanceOf(operation, MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x3cff387beb174046L, "jetbrains.mps.lang.test.structure.NodeExpectedTypeCheckOperation"))) {
-          SNode type1 = TypeChecker.getInstance().getInequalitiesForHole(getNodeToCheck(), false).getExpectedType();
-          SNode type2 = SLinkOperations.getTarget(SNodeOperations.cast(operation, MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x3cff387beb174046L, "jetbrains.mps.lang.test.structure.NodeExpectedTypeCheckOperation")), MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b03034484L, 0x11b0304d838L, "type"));
-          NodeCheckerUtil.assertTypesAreTheSame(getNodeToCheck(), type1, type2);
-        }
-      }
-    });
+    new CheckTypesAction.CheckExpectedType(INodesTestMethod__BehaviorDescriptor.getAnnotatedNode_id38gbJV0XvZR.invoke(__thisNode__)).checkTypeIs(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b03034484L, 0x11b0304d838L, "type")));
   }
   /*package*/ static String getDefaultName_id7scb9XJdmH2(@NotNull SNode __thisNode__) {
     return "NodeExpectedTypeCheck";

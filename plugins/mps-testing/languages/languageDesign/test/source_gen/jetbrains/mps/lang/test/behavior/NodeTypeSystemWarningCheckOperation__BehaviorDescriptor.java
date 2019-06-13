@@ -14,6 +14,9 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.lang.test.runtime.CheckExpectedMessageAction;
+import jetbrains.mps.errors.MessageStatus;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -30,7 +33,7 @@ public final class NodeTypeSystemWarningCheckOperation__BehaviorDescriptor exten
   }
 
   /*package*/ static void perform_id1kgh5YabdhC(@NotNull SNode __thisNode__, SNode node) {
-    PerformUtil.checkNodeHasWarning(__thisNode__);
+    new CheckExpectedMessageAction.CheckExpectedTypesystemMessageAction(INodesTestMethod__BehaviorDescriptor.getAnnotatedNode_id38gbJV0XvZR.invoke(__thisNode__), MessageStatus.WARNING, SNodeOperations.getModel(node).getRepository()).run();
   }
   /*package*/ static String getDefaultName_id7scb9XJdmH2(@NotNull SNode __thisNode__) {
     return "NodeTypeSystemWarningCheck";

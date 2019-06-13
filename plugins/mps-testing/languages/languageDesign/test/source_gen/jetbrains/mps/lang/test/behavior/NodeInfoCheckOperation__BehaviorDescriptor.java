@@ -17,6 +17,7 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.lang.test.runtime.CheckExpectedMessageAction;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -61,7 +62,7 @@ public final class NodeInfoCheckOperation__BehaviorDescriptor extends BaseBHDesc
     return "Node" + name + "Check";
   }
   /*package*/ static void perform_id1kgh5YabdhC(@NotNull SNode __thisNode__, SNode node) {
-    PerformUtil.checkNodeHasMessageWithStatus(__thisNode__, MessageStatus.OK);
+    new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(INodesTestMethod__BehaviorDescriptor.getAnnotatedNode_id38gbJV0XvZR.invoke(__thisNode__), MessageStatus.OK, SNodeOperations.getPointer(IReferenceAttachable__BehaviorDescriptor.getReferencedRuleNode_id2wBFdLy8qmt.invoke(__thisNode__)), SNodeOperations.getModel(node).getRepository()).run();
   }
 
   /*package*/ NodeInfoCheckOperation__BehaviorDescriptor() {

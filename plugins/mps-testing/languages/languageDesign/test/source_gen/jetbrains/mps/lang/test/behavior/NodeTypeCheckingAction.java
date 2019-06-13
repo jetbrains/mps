@@ -7,21 +7,16 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 
 public abstract class NodeTypeCheckingAction implements ITypechecking.Action {
-  private SNode operation;
+  private final SNode myNodeToCheck;
 
-  public NodeTypeCheckingAction(final SNode operation) {
-    this.operation = operation;
-  }
-
-  public SNode getNodeToCheck() {
-    return INodesTestMethod__BehaviorDescriptor.getAnnotatedNode_id38gbJV0XvZR.invoke(operation);
+  public NodeTypeCheckingAction(final SNode nodeToCheck) {
+    this.myNodeToCheck = nodeToCheck;
   }
 
   public abstract void checkOperation(TypeCheckingContext context);
 
   public void run(TypeCheckingContext context) {
-    SNode nodeToCheck = getNodeToCheck();
-    context.checkIfNotChecked(nodeToCheck, true);
+    context.checkIfNotChecked(myNodeToCheck, true);
     checkOperation(context);
   }
 }
