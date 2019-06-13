@@ -1251,6 +1251,41 @@
                 </node>
               </node>
             </node>
+            <node concept="3cpWs8" id="6PUZm6l9q9k" role="3cqZAp">
+              <node concept="3cpWsn" id="6PUZm6l9q9l" role="3cpWs9">
+                <property role="TrG5h" value="fs" />
+                <node concept="3uibUv" id="6PUZm6l9oLS" role="1tU5fm">
+                  <ref role="3uigEE" to="4hrd:~IdeaFileSystem" resolve="IdeaFileSystem" />
+                </node>
+                <node concept="2OqwBi" id="6PUZm6l9q9m" role="33vP2m">
+                  <node concept="37vLTw" id="6PUZm6l9q9n" role="2Oq$k0">
+                    <ref role="3cqZAo" node="6y_kxB1UVmN" resolve="myMpsProject" />
+                  </node>
+                  <node concept="liA8E" id="6PUZm6l9q9o" role="2OqNvi">
+                    <ref role="37wK5l" to="z1c4:~MPSProject.getFileSystem()" resolve="getFileSystem" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbJ" id="6PUZm6l8yw3" role="3cqZAp">
+              <node concept="3fqX7Q" id="6PUZm6l8yw4" role="3clFbw">
+                <node concept="2OqwBi" id="6PUZm6l8yIX" role="3fr31v">
+                  <node concept="37vLTw" id="6PUZm6l8yIW" role="2Oq$k0">
+                    <ref role="3cqZAo" node="6PUZm6l9q9l" resolve="fs" />
+                  </node>
+                  <node concept="liA8E" id="6PUZm6l8yIY" role="2OqNvi">
+                    <ref role="37wK5l" to="4hrd:~IdeaFileSystem.canConvert(com.intellij.openapi.vfs.VirtualFile)" resolve="canConvert" />
+                    <node concept="37vLTw" id="6PUZm6l8yIZ" role="37wK5m">
+                      <ref role="3cqZAo" node="4jj2N358GwW" resolve="file" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbS" id="6PUZm6l8yw9" role="3clFbx">
+                <node concept="3cpWs6" id="6PUZm6l8ywa" role="3cqZAp" />
+              </node>
+            </node>
+            <node concept="3clFbH" id="6PUZm6l9qup" role="3cqZAp" />
             <node concept="3clFbJ" id="4jj2N358Gqz" role="3cqZAp">
               <node concept="3clFbS" id="4jj2N358Gq$" role="3clFbx">
                 <node concept="3cpWs6" id="4jj2N358Gxa" role="3cqZAp" />
@@ -1273,13 +1308,8 @@
                   <node concept="liA8E" id="2tkR5cH5dnE" role="2OqNvi">
                     <ref role="37wK5l" to="w1kc:~SModelFileTracker.modelFor(jetbrains.mps.vfs.IFile)" resolve="modelFor" />
                     <node concept="2OqwBi" id="V2e5CGXk8y" role="37wK5m">
-                      <node concept="2OqwBi" id="V2e5CGXj9U" role="2Oq$k0">
-                        <node concept="37vLTw" id="V2e5CGXha5" role="2Oq$k0">
-                          <ref role="3cqZAo" node="6y_kxB1UVmN" resolve="myMpsProject" />
-                        </node>
-                        <node concept="liA8E" id="V2e5CGXjW_" role="2OqNvi">
-                          <ref role="37wK5l" to="z1c4:~MPSProject.getFileSystem()" resolve="getFileSystem" />
-                        </node>
+                      <node concept="37vLTw" id="6PUZm6l9q9p" role="2Oq$k0">
+                        <ref role="3cqZAo" node="6PUZm6l9q9l" resolve="fs" />
                       </node>
                       <node concept="liA8E" id="V2e5CGXkQe" role="2OqNvi">
                         <ref role="37wK5l" to="4hrd:~IdeaFileSystem.fromVirtualFile(com.intellij.openapi.vfs.VirtualFile)" resolve="fromVirtualFile" />

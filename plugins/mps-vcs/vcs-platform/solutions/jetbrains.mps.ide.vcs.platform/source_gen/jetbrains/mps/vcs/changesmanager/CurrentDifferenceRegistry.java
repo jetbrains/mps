@@ -106,7 +106,7 @@ public class CurrentDifferenceRegistry implements ProjectComponent {
     }
 
     IdeaFileSystem fs = myMpsProject.getFileSystem();
-    if (!((fs.canConvert(file)))) {
+    if (!(fs.canConvert(file))) {
       return;
     }
 

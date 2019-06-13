@@ -19,6 +19,7 @@ import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.smodel.SModelFileTracker;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import com.intellij.openapi.vcs.checkin.CheckinHandlerFactory;
@@ -68,7 +69,11 @@ public class ModelCheckerCheckinHandler extends CheckinHandler {
     final MPSProject mpsProject = ProjectHelper.fromIdeaProject(myProject);
     final IdeaFileSystem fs = mpsProject.getFileSystem();
     final SModelFileTracker ft = SModelFileTracker.getInstance(mpsProject.getRepository());
-    return Sequence.fromIterable(files).select(new ISelector<VirtualFile, SModel>() {
+    return Sequence.fromIterable(files).where(new IWhereFilter<VirtualFile>() {
+      public boolean accept(VirtualFile it) {
+        return fs.canConvert(it);
+      }
+    }).select(new ISelector<VirtualFile, SModel>() {
       public SModel select(VirtualFile file) {
         return ft.findModel(fs.fromVirtualFile(file));
       }

@@ -32,6 +32,7 @@ import jetbrains.mps.util.ReadUtil;
 import jetbrains.mps.vcspersistence.VCSPersistenceUtil;
 import java.io.IOException;
 import jetbrains.mps.util.FileUtil;
+import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.smodel.SModelFileTracker;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.smodel.ModelAccessHelper;
@@ -170,7 +171,11 @@ public class ModelDiffViewer implements FrameDiffTool.DiffViewer {
     // try to find model in repository 
     if (content instanceof FileContent) {
       VirtualFile file = ((FileContent) content).getFile();
-      SModel model = SModelFileTracker.getInstance(mpsProject.getRepository()).findModel(mpsProject.getFileSystem().fromVirtualFile(file));
+      IdeaFileSystem fs = mpsProject.getFileSystem();
+      SModel model = null;
+      if (fs.canConvert(file)) {
+        model = SModelFileTracker.getInstance(mpsProject.getRepository()).findModel(fs.fromVirtualFile(file));
+      }
       if (model != null) {
         return model;
       }
@@ -185,7 +190,10 @@ public class ModelDiffViewer implements FrameDiffTool.DiffViewer {
     // first try to find model in repository 
     if (content instanceof FileContent) {
       VirtualFile file = ((FileContent) content).getFile().getParent();
-      model.value = SModelFileTracker.getInstance(mpsProject.getRepository()).findModel(mpsProject.getFileSystem().fromVirtualFile(file));
+      IdeaFileSystem fs = mpsProject.getFileSystem();
+      if (fs.canConvert(file)) {
+        model.value = SModelFileTracker.getInstance(mpsProject.getRepository()).findModel(fs.fromVirtualFile(file));
+      }
     }
     if (model.value == null) {
       model.value = readModel(content, type);

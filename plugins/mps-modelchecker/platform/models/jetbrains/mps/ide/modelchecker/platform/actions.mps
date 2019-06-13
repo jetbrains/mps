@@ -2692,8 +2692,33 @@
           <node concept="2OqwBi" id="6uf$qpAzl2F" role="3cqZAk">
             <node concept="2OqwBi" id="6uf$qpAytNd" role="2Oq$k0">
               <node concept="2OqwBi" id="6uf$qpAytNe" role="2Oq$k0">
-                <node concept="37vLTw" id="6uf$qpAytNf" role="2Oq$k0">
-                  <ref role="3cqZAo" node="6y_kxB1TET$" resolve="files" />
+                <node concept="2OqwBi" id="6PUZm6la3k5" role="2Oq$k0">
+                  <node concept="37vLTw" id="6uf$qpAytNf" role="2Oq$k0">
+                    <ref role="3cqZAo" node="6y_kxB1TET$" resolve="files" />
+                  </node>
+                  <node concept="3zZkjj" id="6PUZm6la45O" role="2OqNvi">
+                    <node concept="1bVj0M" id="6PUZm6la45Q" role="23t8la">
+                      <node concept="3clFbS" id="6PUZm6la45R" role="1bW5cS">
+                        <node concept="3clFbF" id="6PUZm6la4I7" role="3cqZAp">
+                          <node concept="2OqwBi" id="6PUZm6la5mI" role="3clFbG">
+                            <node concept="37vLTw" id="6PUZm6la4I6" role="2Oq$k0">
+                              <ref role="3cqZAo" node="6uf$qpAylf_" resolve="fs" />
+                            </node>
+                            <node concept="liA8E" id="6PUZm6la6fY" role="2OqNvi">
+                              <ref role="37wK5l" to="4hrd:~IdeaFileSystem.canConvert(com.intellij.openapi.vfs.VirtualFile)" resolve="canConvert" />
+                              <node concept="37vLTw" id="6PUZm6la6RJ" role="37wK5m">
+                                <ref role="3cqZAo" node="6PUZm6la45S" resolve="it" />
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="Rh6nW" id="6PUZm6la45S" role="1bW2Oz">
+                        <property role="TrG5h" value="it" />
+                        <node concept="2jxLKc" id="6PUZm6la45T" role="1tU5fm" />
+                      </node>
+                    </node>
+                  </node>
                 </node>
                 <node concept="3$u5V9" id="6uf$qpAytNg" role="2OqNvi">
                   <node concept="1bVj0M" id="6uf$qpAytNh" role="23t8la">

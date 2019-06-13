@@ -61,12 +61,13 @@
       <node id="7540523421682928671" at="126,31,127,141" concept="9" />
       <node id="1063474421965470924" at="127,141,128,93" concept="9" />
       <node id="8230098746512809352" at="130,47,131,80" concept="10" />
-      <node id="1063474421965430809" at="134,45,135,40" concept="10" />
-      <node id="2834132315319621013" at="138,39,139,47" concept="10" />
-      <node id="8230098746512809384" at="142,41,143,62" concept="10" />
-      <node id="8230098746512809393" at="146,12,147,60" concept="10" />
+      <node id="7888896292848902796" at="134,47,135,35" concept="10" />
+      <node id="1063474421965430809" at="138,45,139,40" concept="10" />
+      <node id="2834132315319621013" at="142,39,143,47" concept="10" />
+      <node id="8230098746512809384" at="146,41,147,62" concept="10" />
+      <node id="8230098746512809393" at="150,12,151,60" concept="10" />
       <node id="8089483972828539549" at="99,16,101,11" concept="1" />
-      <node id="8230098746512809391" at="146,10,148,5" concept="1" />
+      <node id="8230098746512809391" at="150,10,152,5" concept="1" />
       <node id="9010458443787639165" at="54,145,57,5" concept="7" />
       <node id="1156564534683188476" at="68,95,71,5" concept="7" />
       <node id="8406158885480254336" at="73,66,76,7" concept="7" />
@@ -74,9 +75,10 @@
       <node id="7526186345427208904" at="106,7,109,5" concept="7" />
       <node id="1841925426083462648" at="111,86,114,5" concept="7" />
       <node id="8230098746512809350" at="130,0,133,0" concept="8" trace="accept#(Lcom/intellij/openapi/vfs/VirtualFile;)Z" />
-      <node id="1063474421965400821" at="134,0,137,0" concept="8" trace="select#(Lcom/intellij/openapi/vfs/VirtualFile;)Ljetbrains/mps/vfs/IFile;" />
-      <node id="8230098746512809368" at="138,0,141,0" concept="8" trace="select#(Ljetbrains/mps/vfs/IFile;)Lorg/jetbrains/mps/openapi/model/SModel;" />
-      <node id="8230098746512809382" at="142,0,145,0" concept="8" trace="accept#(Lorg/jetbrains/mps/openapi/model/SModel;)Z" />
+      <node id="7888896292848902794" at="134,0,137,0" concept="8" trace="accept#(Lcom/intellij/openapi/vfs/VirtualFile;)Z" />
+      <node id="1063474421965400821" at="138,0,141,0" concept="8" trace="select#(Lcom/intellij/openapi/vfs/VirtualFile;)Ljetbrains/mps/vfs/IFile;" />
+      <node id="8230098746512809368" at="142,0,145,0" concept="8" trace="select#(Ljetbrains/mps/vfs/IFile;)Lorg/jetbrains/mps/openapi/model/SModel;" />
+      <node id="8230098746512809382" at="146,0,149,0" concept="8" trace="accept#(Lorg/jetbrains/mps/openapi/model/SModel;)Z" />
       <node id="1156564534683188476" at="48,0,52,0" concept="8" trace="isDumbAware#()Z" />
       <node id="1156564534683188476" at="63,0,67,0" concept="8" trace="doUpdate#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
       <node id="1156564534683188476" at="42,0,48,0" concept="2" trace="MakeOrRebuildModelsFromChangeList_Action#(Z)V" />
@@ -88,10 +90,10 @@
       <node id="7526186345427134003" at="92,149,103,9" concept="7" />
       <node id="1278784516769382579" at="91,0,106,0" concept="8" trace="compute#()Ljetbrains/mps/internal/collections/runtime/IListSequence;" />
       <node id="1278784516769382568" at="89,76,106,7" concept="9" />
-      <node id="8230098746512809341" at="128,93,145,26" concept="10" />
       <node id="1156564534683188476" at="67,0,86,0" concept="8" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
-      <node id="8230098746512809336" at="125,95,148,5" concept="7" />
-      <node id="1278784516769246767" at="125,0,150,0" concept="8" trace="getModels2Build#([Lcom/intellij/openapi/vfs/VirtualFile;Lcom/intellij/openapi/actionSystem/AnActionEvent;)Ljava/util/List;" />
+      <node id="8230098746512809341" at="128,93,149,26" concept="10" />
+      <node id="8230098746512809336" at="125,95,152,5" concept="7" />
+      <node id="1278784516769246767" at="125,0,154,0" concept="8" trace="getModels2Build#([Lcom/intellij/openapi/vfs/VirtualFile;Lcom/intellij/openapi/actionSystem/AnActionEvent;)Ljava/util/List;" />
       <node id="1156564534683188476" at="86,0,116,0" concept="8" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
       <scope id="1156564534683188476" at="49,32,50,16" />
       <scope id="9010458443787639166" at="55,157,56,19" />
@@ -103,23 +105,27 @@
       <scope id="7526186345427208906" at="107,53,108,13" />
       <scope id="1841925426083462653" at="112,46,113,43" />
       <scope id="8230098746512809351" at="130,47,131,80" />
-      <scope id="1063474421965400822" at="134,45,135,40" />
-      <scope id="8230098746512809369" at="138,39,139,47" />
-      <scope id="8230098746512809383" at="142,41,143,62" />
-      <scope id="8230098746512809392" at="146,12,147,60" />
+      <scope id="7888896292848902795" at="134,47,135,35" />
+      <scope id="1063474421965400822" at="138,45,139,40" />
+      <scope id="8230098746512809369" at="142,39,143,47" />
+      <scope id="8230098746512809383" at="146,41,147,62" />
+      <scope id="8230098746512809392" at="150,12,151,60" />
       <scope id="8089483972828491957" at="96,73,98,81">
         <var name="statusManager" id="3849002751383580290" />
       </scope>
       <scope id="8230098746512809350" at="130,0,133,0">
         <var name="vf" id="8230098746512809350" />
       </scope>
-      <scope id="1063474421965400821" at="134,0,137,0">
+      <scope id="7888896292848902794" at="134,0,137,0">
+        <var name="it" id="7888896292848902794" />
+      </scope>
+      <scope id="1063474421965400821" at="138,0,141,0">
         <var name="vf" id="1063474421965400821" />
       </scope>
-      <scope id="8230098746512809368" at="138,0,141,0">
+      <scope id="8230098746512809368" at="142,0,145,0">
         <var name="f" id="8230098746512809368" />
       </scope>
-      <scope id="8230098746512809382" at="142,0,145,0">
+      <scope id="8230098746512809382" at="146,0,149,0">
         <var name="m" id="8230098746512809382" />
       </scope>
       <scope id="1156564534683188476" at="42,72,46,40" />
@@ -162,14 +168,9 @@
         <var name="_params" id="1156564534683188476" />
         <var name="event" id="1156564534683188476" />
       </scope>
-      <scope id="8230098746512809340" at="126,31,145,26">
+      <scope id="8230098746512809340" at="126,31,149,26">
         <var name="fs" id="1063474421965470925" />
         <var name="modelFileTracker" id="7540523421682928672" />
-      </scope>
-      <scope id="1278784516769246769" at="125,95,148,5" />
-      <scope id="1278784516769246767" at="125,0,150,0">
-        <var name="event" id="1278784516769246767" />
-        <var name="virtualFiles" id="1278784516769252121" />
       </scope>
       <scope id="1156564534683188476" at="87,96,114,5">
         <var name="makeService" id="841871950380034974" />
@@ -177,16 +178,22 @@
         <var name="resources" id="1278784516769382569" />
         <var name="session" id="1278784516769389237" />
       </scope>
+      <scope id="1278784516769246769" at="125,95,152,5" />
+      <scope id="1278784516769246767" at="125,0,154,0">
+        <var name="event" id="1278784516769246767" />
+        <var name="virtualFiles" id="1278784516769252121" />
+      </scope>
       <scope id="1156564534683188476" at="86,0,116,0">
         <var name="_params" id="1156564534683188476" />
         <var name="event" id="1156564534683188476" />
       </scope>
       <unit id="8230098746512809350" at="129,79,133,7" name="jetbrains.mps.vcs.plugin.MakeOrRebuildModelsFromChangeList_Action$2" />
-      <unit id="1063474421965400821" at="133,20,137,7" name="jetbrains.mps.vcs.plugin.MakeOrRebuildModelsFromChangeList_Action$3" />
-      <unit id="8230098746512809368" at="137,20,141,7" name="jetbrains.mps.vcs.plugin.MakeOrRebuildModelsFromChangeList_Action$4" />
-      <unit id="8230098746512809382" at="141,19,145,7" name="jetbrains.mps.vcs.plugin.MakeOrRebuildModelsFromChangeList_Action$5" />
+      <unit id="7888896292848902794" at="133,19,137,7" name="jetbrains.mps.vcs.plugin.MakeOrRebuildModelsFromChangeList_Action$3" />
+      <unit id="1063474421965400821" at="137,20,141,7" name="jetbrains.mps.vcs.plugin.MakeOrRebuildModelsFromChangeList_Action$4" />
+      <unit id="8230098746512809368" at="141,20,145,7" name="jetbrains.mps.vcs.plugin.MakeOrRebuildModelsFromChangeList_Action$5" />
+      <unit id="8230098746512809382" at="145,19,149,7" name="jetbrains.mps.vcs.plugin.MakeOrRebuildModelsFromChangeList_Action$6" />
       <unit id="1278784516769382579" at="90,108,106,5" name="jetbrains.mps.vcs.plugin.MakeOrRebuildModelsFromChangeList_Action$1" />
-      <unit id="1156564534683188476" at="38,0,151,0" name="jetbrains.mps.vcs.plugin.MakeOrRebuildModelsFromChangeList_Action" />
+      <unit id="1156564534683188476" at="38,0,155,0" name="jetbrains.mps.vcs.plugin.MakeOrRebuildModelsFromChangeList_Action" />
     </file>
   </root>
   <root nodeRef="r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)/1156564534683228178">

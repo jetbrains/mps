@@ -3771,16 +3771,14 @@
         </node>
         <node concept="3clFbJ" id="6PUZm6l8yw3" role="3cqZAp">
           <node concept="3fqX7Q" id="6PUZm6l8yw4" role="3clFbw">
-            <node concept="1eOMI4" id="6PUZm6l8yw7" role="3fr31v">
-              <node concept="2OqwBi" id="6PUZm6l8yIX" role="1eOMHV">
-                <node concept="37vLTw" id="6PUZm6l8yIW" role="2Oq$k0">
-                  <ref role="3cqZAo" node="6PUZm6l8xAw" resolve="fs" />
-                </node>
-                <node concept="liA8E" id="6PUZm6l8yIY" role="2OqNvi">
-                  <ref role="37wK5l" to="4hrd:~IdeaFileSystem.canConvert(com.intellij.openapi.vfs.VirtualFile)" resolve="canConvert" />
-                  <node concept="37vLTw" id="6PUZm6l8yIZ" role="37wK5m">
-                    <ref role="3cqZAo" node="2JwSLRbyYSs" resolve="file" />
-                  </node>
+            <node concept="2OqwBi" id="6PUZm6l8yIX" role="3fr31v">
+              <node concept="37vLTw" id="6PUZm6l8yIW" role="2Oq$k0">
+                <ref role="3cqZAo" node="6PUZm6l8xAw" resolve="fs" />
+              </node>
+              <node concept="liA8E" id="6PUZm6l8yIY" role="2OqNvi">
+                <ref role="37wK5l" to="4hrd:~IdeaFileSystem.canConvert(com.intellij.openapi.vfs.VirtualFile)" resolve="canConvert" />
+                <node concept="37vLTw" id="6PUZm6l8yIZ" role="37wK5m">
+                  <ref role="3cqZAo" node="2JwSLRbyYSs" resolve="file" />
                 </node>
               </node>
             </node>

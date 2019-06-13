@@ -130,6 +130,10 @@ public class MakeOrRebuildModelsFromChangeList_Action extends BaseAction {
         public boolean accept(VirtualFile vf) {
           return vf.isInLocalFileSystem() && vf.exists() && !(vf.isDirectory());
         }
+      }).where(new IWhereFilter<VirtualFile>() {
+        public boolean accept(VirtualFile it) {
+          return fs.canConvert(it);
+        }
       }).select(new ISelector<VirtualFile, IFile>() {
         public IFile select(VirtualFile vf) {
           return fs.fromVirtualFile(vf);

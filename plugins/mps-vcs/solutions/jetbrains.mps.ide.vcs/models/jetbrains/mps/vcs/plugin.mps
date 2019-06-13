@@ -2573,53 +2573,78 @@
                   </node>
                   <node concept="2OqwBi" id="78RbNhWi9Q0" role="2Oq$k0">
                     <node concept="2OqwBi" id="V2e5CGXvSL" role="2Oq$k0">
-                      <node concept="2OqwBi" id="78RbNhWi9Q1" role="2Oq$k0">
-                        <node concept="3zZkjj" id="78RbNhWi9Q5" role="2OqNvi">
-                          <node concept="1bVj0M" id="78RbNhWi9Q6" role="23t8la">
-                            <node concept="3clFbS" id="78RbNhWi9Q7" role="1bW5cS">
-                              <node concept="3clFbF" id="78RbNhWi9Q8" role="3cqZAp">
-                                <node concept="1Wc70l" id="78RbNhWi9Q9" role="3clFbG">
-                                  <node concept="1Wc70l" id="78RbNhWi9Qe" role="3uHU7B">
-                                    <node concept="2OqwBi" id="78RbNhWi9Qf" role="3uHU7B">
-                                      <node concept="liA8E" id="78RbNhWi9Qh" role="2OqNvi">
-                                        <ref role="37wK5l" to="jlff:~VirtualFile.isInLocalFileSystem()" resolve="isInLocalFileSystem" />
+                      <node concept="2OqwBi" id="6PUZm6l9IBp" role="2Oq$k0">
+                        <node concept="2OqwBi" id="78RbNhWi9Q1" role="2Oq$k0">
+                          <node concept="3zZkjj" id="78RbNhWi9Q5" role="2OqNvi">
+                            <node concept="1bVj0M" id="78RbNhWi9Q6" role="23t8la">
+                              <node concept="3clFbS" id="78RbNhWi9Q7" role="1bW5cS">
+                                <node concept="3clFbF" id="78RbNhWi9Q8" role="3cqZAp">
+                                  <node concept="1Wc70l" id="78RbNhWi9Q9" role="3clFbG">
+                                    <node concept="1Wc70l" id="78RbNhWi9Qe" role="3uHU7B">
+                                      <node concept="2OqwBi" id="78RbNhWi9Qf" role="3uHU7B">
+                                        <node concept="liA8E" id="78RbNhWi9Qh" role="2OqNvi">
+                                          <ref role="37wK5l" to="jlff:~VirtualFile.isInLocalFileSystem()" resolve="isInLocalFileSystem" />
+                                        </node>
+                                        <node concept="37vLTw" id="2BHiRxgm1Po" role="2Oq$k0">
+                                          <ref role="3cqZAo" node="78RbNhWi9Ql" resolve="vf" />
+                                        </node>
                                       </node>
-                                      <node concept="37vLTw" id="2BHiRxgm1Po" role="2Oq$k0">
-                                        <ref role="3cqZAo" node="78RbNhWi9Ql" resolve="vf" />
+                                      <node concept="2OqwBi" id="78RbNhWi9Qi" role="3uHU7w">
+                                        <node concept="liA8E" id="78RbNhWi9Qk" role="2OqNvi">
+                                          <ref role="37wK5l" to="jlff:~VirtualFile.exists()" resolve="exists" />
+                                        </node>
+                                        <node concept="37vLTw" id="2BHiRxgheY8" role="2Oq$k0">
+                                          <ref role="3cqZAo" node="78RbNhWi9Ql" resolve="vf" />
+                                        </node>
                                       </node>
                                     </node>
-                                    <node concept="2OqwBi" id="78RbNhWi9Qi" role="3uHU7w">
-                                      <node concept="liA8E" id="78RbNhWi9Qk" role="2OqNvi">
-                                        <ref role="37wK5l" to="jlff:~VirtualFile.exists()" resolve="exists" />
-                                      </node>
-                                      <node concept="37vLTw" id="2BHiRxgheY8" role="2Oq$k0">
-                                        <ref role="3cqZAo" node="78RbNhWi9Ql" resolve="vf" />
-                                      </node>
-                                    </node>
-                                  </node>
-                                  <node concept="3fqX7Q" id="78RbNhWi9Qa" role="3uHU7w">
-                                    <node concept="2OqwBi" id="78RbNhWi9Qb" role="3fr31v">
-                                      <node concept="37vLTw" id="2BHiRxgmjkQ" role="2Oq$k0">
-                                        <ref role="3cqZAo" node="78RbNhWi9Ql" resolve="vf" />
-                                      </node>
-                                      <node concept="liA8E" id="78RbNhWi9Qd" role="2OqNvi">
-                                        <ref role="37wK5l" to="jlff:~VirtualFile.isDirectory()" resolve="isDirectory" />
+                                    <node concept="3fqX7Q" id="78RbNhWi9Qa" role="3uHU7w">
+                                      <node concept="2OqwBi" id="78RbNhWi9Qb" role="3fr31v">
+                                        <node concept="37vLTw" id="2BHiRxgmjkQ" role="2Oq$k0">
+                                          <ref role="3cqZAo" node="78RbNhWi9Ql" resolve="vf" />
+                                        </node>
+                                        <node concept="liA8E" id="78RbNhWi9Qd" role="2OqNvi">
+                                          <ref role="37wK5l" to="jlff:~VirtualFile.isDirectory()" resolve="isDirectory" />
+                                        </node>
                                       </node>
                                     </node>
                                   </node>
                                 </node>
                               </node>
+                              <node concept="Rh6nW" id="78RbNhWi9Ql" role="1bW2Oz">
+                                <property role="TrG5h" value="vf" />
+                                <node concept="2jxLKc" id="78RbNhWi9Qm" role="1tU5fm" />
+                              </node>
                             </node>
-                            <node concept="Rh6nW" id="78RbNhWi9Ql" role="1bW2Oz">
-                              <property role="TrG5h" value="vf" />
-                              <node concept="2jxLKc" id="78RbNhWi9Qm" role="1tU5fm" />
+                          </node>
+                          <node concept="2OqwBi" id="78RbNhWi9Q2" role="2Oq$k0">
+                            <node concept="39bAoz" id="78RbNhWi9Q4" role="2OqNvi" />
+                            <node concept="37vLTw" id="16Z9VSyjkFH" role="2Oq$k0">
+                              <ref role="3cqZAo" node="16Z9VSyjgcp" resolve="virtualFiles" />
                             </node>
                           </node>
                         </node>
-                        <node concept="2OqwBi" id="78RbNhWi9Q2" role="2Oq$k0">
-                          <node concept="39bAoz" id="78RbNhWi9Q4" role="2OqNvi" />
-                          <node concept="37vLTw" id="16Z9VSyjkFH" role="2Oq$k0">
-                            <ref role="3cqZAo" node="16Z9VSyjgcp" resolve="virtualFiles" />
+                        <node concept="3zZkjj" id="6PUZm6l9Ua8" role="2OqNvi">
+                          <node concept="1bVj0M" id="6PUZm6l9Uaa" role="23t8la">
+                            <node concept="3clFbS" id="6PUZm6l9Uab" role="1bW5cS">
+                              <node concept="3clFbF" id="6PUZm6l9Uac" role="3cqZAp">
+                                <node concept="2OqwBi" id="6PUZm6l9Uad" role="3clFbG">
+                                  <node concept="37vLTw" id="6PUZm6l9Uae" role="2Oq$k0">
+                                    <ref role="3cqZAo" node="V2e5CGXNNd" resolve="fs" />
+                                  </node>
+                                  <node concept="liA8E" id="6PUZm6l9VlO" role="2OqNvi">
+                                    <ref role="37wK5l" to="4hrd:~IdeaFileSystem.canConvert(com.intellij.openapi.vfs.VirtualFile)" resolve="canConvert" />
+                                    <node concept="37vLTw" id="6PUZm6l9VYv" role="37wK5m">
+                                      <ref role="3cqZAo" node="6PUZm6l9Uag" resolve="it" />
+                                    </node>
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                            <node concept="Rh6nW" id="6PUZm6l9Uag" role="1bW2Oz">
+                              <property role="TrG5h" value="it" />
+                              <node concept="2jxLKc" id="6PUZm6l9Uah" role="1tU5fm" />
+                            </node>
                           </node>
                         </node>
                       </node>

@@ -43,11 +43,16 @@ public class GeneratedFileConflictResolving extends AbstractProjectComponent {
   private void resolveIfNeeded(VirtualFileEvent e) {
     if (e.getRequestor() instanceof IdeaFileSystem) {
       VirtualFile file = e.getFile();
-      if (SModelFileTracker.getInstance(myMpsProject.getRepository()).modelFor(myMpsProject.getFileSystem().fromVirtualFile(file)) != null) {
+      IdeaFileSystem fs = myMpsProject.getFileSystem();
+      if (!(fs.canConvert(file))) {
         return;
       }
 
-      MergeProvider mergeProvider = check_tqtyvq_a0d0a0j(myVcsManager.getVcsFor(file));
+      if (SModelFileTracker.getInstance(myMpsProject.getRepository()).modelFor(fs.fromVirtualFile(file)) != null) {
+        return;
+      }
+
+      MergeProvider mergeProvider = check_tqtyvq_a0g0a0j(myVcsManager.getVcsFor(file));
       if (mergeProvider != null) {
         FileStatus status = myFileStatusManager.getStatus(file);
         if (status == FileStatus.MERGED_WITH_CONFLICTS || status == FileStatus.MERGED_WITH_BOTH_CONFLICTS || status == FileStatus.MERGED_WITH_PROPERTY_CONFLICTS) {
@@ -69,7 +74,7 @@ public class GeneratedFileConflictResolving extends AbstractProjectComponent {
       resolveIfNeeded(event);
     }
   }
-  private static MergeProvider check_tqtyvq_a0d0a0j(AbstractVcs checkedDotOperand) {
+  private static MergeProvider check_tqtyvq_a0g0a0j(AbstractVcs checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getMergeProvider();
     }

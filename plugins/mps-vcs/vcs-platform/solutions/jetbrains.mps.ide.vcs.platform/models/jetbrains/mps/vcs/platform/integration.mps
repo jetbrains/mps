@@ -9646,44 +9646,78 @@
                 </node>
               </node>
             </node>
+            <node concept="3cpWs8" id="6PUZm6lajPh" role="3cqZAp">
+              <node concept="3cpWsn" id="6PUZm6lajPi" role="3cpWs9">
+                <property role="TrG5h" value="fs" />
+                <node concept="3uibUv" id="6PUZm6la9ag" role="1tU5fm">
+                  <ref role="3uigEE" to="4hrd:~IdeaFileSystem" resolve="IdeaFileSystem" />
+                </node>
+                <node concept="2OqwBi" id="6PUZm6lajPj" role="33vP2m">
+                  <node concept="37vLTw" id="6PUZm6lajPk" role="2Oq$k0">
+                    <ref role="3cqZAo" node="6y_kxB1Z0M8" resolve="mpsProject" />
+                  </node>
+                  <node concept="liA8E" id="6PUZm6lajPl" role="2OqNvi">
+                    <ref role="37wK5l" to="z1c4:~MPSProject.getFileSystem()" resolve="getFileSystem" />
+                  </node>
+                </node>
+              </node>
+            </node>
             <node concept="3cpWs8" id="5zPLqcHMCgt" role="3cqZAp">
               <node concept="3cpWsn" id="5zPLqcHMCgu" role="3cpWs9">
                 <property role="TrG5h" value="model" />
                 <property role="3TUv4t" value="false" />
-                <node concept="2OqwBi" id="5zPLqcHMCgv" role="33vP2m">
-                  <node concept="2YIFZM" id="5zPLqcHMCgw" role="2Oq$k0">
-                    <ref role="1Pybhc" to="w1kc:~SModelFileTracker" resolve="SModelFileTracker" />
-                    <ref role="37wK5l" to="w1kc:~SModelFileTracker.getInstance(org.jetbrains.mps.openapi.module.SRepository)" resolve="getInstance" />
-                    <node concept="2OqwBi" id="6y_kxB1Z1Fc" role="37wK5m">
-                      <node concept="37vLTw" id="6y_kxB1Z1pp" role="2Oq$k0">
-                        <ref role="3cqZAo" node="6y_kxB1Z0M8" resolve="mpsProject" />
+                <node concept="H_c77" id="5zPLqcHMCgz" role="1tU5fm" />
+                <node concept="10Nm6u" id="6PUZm6lalCO" role="33vP2m" />
+              </node>
+            </node>
+            <node concept="3clFbJ" id="6PUZm6laklY" role="3cqZAp">
+              <node concept="2OqwBi" id="6PUZm6laklZ" role="3clFbw">
+                <node concept="37vLTw" id="6PUZm6lakm0" role="2Oq$k0">
+                  <ref role="3cqZAo" node="6PUZm6lajPi" resolve="fs" />
+                </node>
+                <node concept="liA8E" id="6PUZm6lakm1" role="2OqNvi">
+                  <ref role="37wK5l" to="4hrd:~IdeaFileSystem.canConvert(com.intellij.openapi.vfs.VirtualFile)" resolve="canConvert" />
+                  <node concept="37vLTw" id="6PUZm6lakm2" role="37wK5m">
+                    <ref role="3cqZAo" node="HUlZWKdkDf" resolve="file" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbS" id="6PUZm6lakm3" role="3clFbx">
+                <node concept="3clFbF" id="6PUZm6lakNA" role="3cqZAp">
+                  <node concept="37vLTI" id="6PUZm6lakNC" role="3clFbG">
+                    <node concept="2OqwBi" id="5zPLqcHMCgv" role="37vLTx">
+                      <node concept="2YIFZM" id="5zPLqcHMCgw" role="2Oq$k0">
+                        <ref role="1Pybhc" to="w1kc:~SModelFileTracker" resolve="SModelFileTracker" />
+                        <ref role="37wK5l" to="w1kc:~SModelFileTracker.getInstance(org.jetbrains.mps.openapi.module.SRepository)" resolve="getInstance" />
+                        <node concept="2OqwBi" id="6y_kxB1Z1Fc" role="37wK5m">
+                          <node concept="37vLTw" id="6y_kxB1Z1pp" role="2Oq$k0">
+                            <ref role="3cqZAo" node="6y_kxB1Z0M8" resolve="mpsProject" />
+                          </node>
+                          <node concept="liA8E" id="6y_kxB1Z1Of" role="2OqNvi">
+                            <ref role="37wK5l" to="z1c3:~Project.getRepository()" resolve="getRepository" />
+                          </node>
+                        </node>
                       </node>
-                      <node concept="liA8E" id="6y_kxB1Z1Of" role="2OqNvi">
-                        <ref role="37wK5l" to="z1c3:~Project.getRepository()" resolve="getRepository" />
+                      <node concept="liA8E" id="5zPLqcHMCgx" role="2OqNvi">
+                        <ref role="37wK5l" to="w1kc:~SModelFileTracker.findModel(jetbrains.mps.vfs.IFile)" resolve="findModel" />
+                        <node concept="2OqwBi" id="HUlZWKcKnP" role="37wK5m">
+                          <node concept="37vLTw" id="6PUZm6lajPm" role="2Oq$k0">
+                            <ref role="3cqZAo" node="6PUZm6lajPi" resolve="fs" />
+                          </node>
+                          <node concept="liA8E" id="HUlZWKcNeq" role="2OqNvi">
+                            <ref role="37wK5l" to="4hrd:~IdeaFileSystem.fromVirtualFile(com.intellij.openapi.vfs.VirtualFile)" resolve="fromVirtualFile" />
+                            <node concept="37vLTw" id="HUlZWKdu42" role="37wK5m">
+                              <ref role="3cqZAo" node="HUlZWKdkDf" resolve="file" />
+                            </node>
+                          </node>
+                        </node>
                       </node>
                     </node>
-                  </node>
-                  <node concept="liA8E" id="5zPLqcHMCgx" role="2OqNvi">
-                    <ref role="37wK5l" to="w1kc:~SModelFileTracker.findModel(jetbrains.mps.vfs.IFile)" resolve="findModel" />
-                    <node concept="2OqwBi" id="HUlZWKcKnP" role="37wK5m">
-                      <node concept="2OqwBi" id="HUlZWKcG_G" role="2Oq$k0">
-                        <node concept="37vLTw" id="HUlZWKcEB6" role="2Oq$k0">
-                          <ref role="3cqZAo" node="6y_kxB1Z0M8" resolve="mpsProject" />
-                        </node>
-                        <node concept="liA8E" id="HUlZWKcIPt" role="2OqNvi">
-                          <ref role="37wK5l" to="z1c4:~MPSProject.getFileSystem()" resolve="getFileSystem" />
-                        </node>
-                      </node>
-                      <node concept="liA8E" id="HUlZWKcNeq" role="2OqNvi">
-                        <ref role="37wK5l" to="4hrd:~IdeaFileSystem.fromVirtualFile(com.intellij.openapi.vfs.VirtualFile)" resolve="fromVirtualFile" />
-                        <node concept="37vLTw" id="HUlZWKdu42" role="37wK5m">
-                          <ref role="3cqZAo" node="HUlZWKdkDf" resolve="file" />
-                        </node>
-                      </node>
+                    <node concept="37vLTw" id="6PUZm6lakNG" role="37vLTJ">
+                      <ref role="3cqZAo" node="5zPLqcHMCgu" resolve="model" />
                     </node>
                   </node>
                 </node>
-                <node concept="H_c77" id="5zPLqcHMCgz" role="1tU5fm" />
               </node>
             </node>
             <node concept="3clFbJ" id="5zPLqcHMCg$" role="3cqZAp">
@@ -9829,39 +9863,65 @@
                 </node>
               </node>
             </node>
-            <node concept="3clFbF" id="5zPLqcHNCkn" role="3cqZAp">
-              <node concept="37vLTI" id="5zPLqcHNCv4" role="3clFbG">
-                <node concept="37vLTw" id="5zPLqcHNCkl" role="37vLTJ">
-                  <ref role="3cqZAo" node="5zPLqcHNBS8" resolve="model" />
+            <node concept="3cpWs8" id="6PUZm6laaRf" role="3cqZAp">
+              <node concept="3cpWsn" id="6PUZm6laaRg" role="3cpWs9">
+                <property role="TrG5h" value="fs" />
+                <node concept="3uibUv" id="6PUZm6la9fx" role="1tU5fm">
+                  <ref role="3uigEE" to="4hrd:~IdeaFileSystem" resolve="IdeaFileSystem" />
                 </node>
-                <node concept="2OqwBi" id="5zPLqcHNBeV" role="37vLTx">
-                  <node concept="2YIFZM" id="5zPLqcHNBeW" role="2Oq$k0">
-                    <ref role="1Pybhc" to="w1kc:~SModelFileTracker" resolve="SModelFileTracker" />
-                    <ref role="37wK5l" to="w1kc:~SModelFileTracker.getInstance(org.jetbrains.mps.openapi.module.SRepository)" resolve="getInstance" />
-                    <node concept="2OqwBi" id="6y_kxB1YY5T" role="37wK5m">
-                      <node concept="37vLTw" id="6y_kxB1Z0Du" role="2Oq$k0">
-                        <ref role="3cqZAo" node="6y_kxB1YYhM" resolve="mpsProject" />
-                      </node>
-                      <node concept="liA8E" id="6y_kxB1YYeQ" role="2OqNvi">
-                        <ref role="37wK5l" to="z1c3:~Project.getRepository()" resolve="getRepository" />
-                      </node>
-                    </node>
+                <node concept="2OqwBi" id="6PUZm6laaRh" role="33vP2m">
+                  <node concept="37vLTw" id="6PUZm6laaRi" role="2Oq$k0">
+                    <ref role="3cqZAo" node="6y_kxB1YYhM" resolve="mpsProject" />
                   </node>
-                  <node concept="liA8E" id="5zPLqcHNBeX" role="2OqNvi">
-                    <ref role="37wK5l" to="w1kc:~SModelFileTracker.findModel(jetbrains.mps.vfs.IFile)" resolve="findModel" />
-                    <node concept="2OqwBi" id="HUlZWKe5ge" role="37wK5m">
-                      <node concept="2OqwBi" id="HUlZWKe1p3" role="2Oq$k0">
-                        <node concept="37vLTw" id="HUlZWKdZr3" role="2Oq$k0">
-                          <ref role="3cqZAo" node="6y_kxB1YYhM" resolve="mpsProject" />
-                        </node>
-                        <node concept="liA8E" id="HUlZWKe4Lj" role="2OqNvi">
-                          <ref role="37wK5l" to="z1c4:~MPSProject.getFileSystem()" resolve="getFileSystem" />
+                  <node concept="liA8E" id="6PUZm6laaRj" role="2OqNvi">
+                    <ref role="37wK5l" to="z1c4:~MPSProject.getFileSystem()" resolve="getFileSystem" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbJ" id="6PUZm6l8yw3" role="3cqZAp">
+              <node concept="2OqwBi" id="6PUZm6l8yIX" role="3clFbw">
+                <node concept="37vLTw" id="6PUZm6l8yIW" role="2Oq$k0">
+                  <ref role="3cqZAo" node="6PUZm6laaRg" resolve="fs" />
+                </node>
+                <node concept="liA8E" id="6PUZm6l8yIY" role="2OqNvi">
+                  <ref role="37wK5l" to="4hrd:~IdeaFileSystem.canConvert(com.intellij.openapi.vfs.VirtualFile)" resolve="canConvert" />
+                  <node concept="37vLTw" id="6PUZm6l8yIZ" role="37wK5m">
+                    <ref role="3cqZAo" node="HUlZWKdIfW" resolve="file" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbS" id="6PUZm6l8yw9" role="3clFbx">
+                <node concept="3clFbF" id="5zPLqcHNCkn" role="3cqZAp">
+                  <node concept="37vLTI" id="5zPLqcHNCv4" role="3clFbG">
+                    <node concept="37vLTw" id="5zPLqcHNCkl" role="37vLTJ">
+                      <ref role="3cqZAo" node="5zPLqcHNBS8" resolve="model" />
+                    </node>
+                    <node concept="2OqwBi" id="5zPLqcHNBeV" role="37vLTx">
+                      <node concept="2YIFZM" id="5zPLqcHNBeW" role="2Oq$k0">
+                        <ref role="1Pybhc" to="w1kc:~SModelFileTracker" resolve="SModelFileTracker" />
+                        <ref role="37wK5l" to="w1kc:~SModelFileTracker.getInstance(org.jetbrains.mps.openapi.module.SRepository)" resolve="getInstance" />
+                        <node concept="2OqwBi" id="6y_kxB1YY5T" role="37wK5m">
+                          <node concept="37vLTw" id="6y_kxB1Z0Du" role="2Oq$k0">
+                            <ref role="3cqZAo" node="6y_kxB1YYhM" resolve="mpsProject" />
+                          </node>
+                          <node concept="liA8E" id="6y_kxB1YYeQ" role="2OqNvi">
+                            <ref role="37wK5l" to="z1c3:~Project.getRepository()" resolve="getRepository" />
+                          </node>
                         </node>
                       </node>
-                      <node concept="liA8E" id="HUlZWKe86L" role="2OqNvi">
-                        <ref role="37wK5l" to="4hrd:~IdeaFileSystem.fromVirtualFile(com.intellij.openapi.vfs.VirtualFile)" resolve="fromVirtualFile" />
-                        <node concept="37vLTw" id="HUlZWKeaCv" role="37wK5m">
-                          <ref role="3cqZAo" node="HUlZWKdIfW" resolve="file" />
+                      <node concept="liA8E" id="5zPLqcHNBeX" role="2OqNvi">
+                        <ref role="37wK5l" to="w1kc:~SModelFileTracker.findModel(jetbrains.mps.vfs.IFile)" resolve="findModel" />
+                        <node concept="2OqwBi" id="HUlZWKe5ge" role="37wK5m">
+                          <node concept="37vLTw" id="6PUZm6laaRk" role="2Oq$k0">
+                            <ref role="3cqZAo" node="6PUZm6laaRg" resolve="fs" />
+                          </node>
+                          <node concept="liA8E" id="HUlZWKe86L" role="2OqNvi">
+                            <ref role="37wK5l" to="4hrd:~IdeaFileSystem.fromVirtualFile(com.intellij.openapi.vfs.VirtualFile)" resolve="fromVirtualFile" />
+                            <node concept="37vLTw" id="HUlZWKeaCv" role="37wK5m">
+                              <ref role="3cqZAo" node="HUlZWKdIfW" resolve="file" />
+                            </node>
+                          </node>
                         </node>
                       </node>
                     </node>
