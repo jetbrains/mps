@@ -21,6 +21,7 @@ public final class LanguageConceptSwitch {
   public static final int ReferenceContainer = 9;
   public static final int ReferenceContainerSubConcept = 10;
   public static final int Root = 11;
+  public static final int TestEnum_Container = 12;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL);
@@ -36,6 +37,7 @@ public final class LanguageConceptSwitch {
     builder.put(0x798c0d67da965ac6L, ReferenceContainer);
     builder.put(0x279bb63b8ca8b7feL, ReferenceContainerSubConcept);
     builder.put(0x3dd540b968e9fc5L, Root);
+    builder.put(0x61fc446ba477f2e1L, TestEnum_Container);
     myIndex = builder.seal();
   }
 

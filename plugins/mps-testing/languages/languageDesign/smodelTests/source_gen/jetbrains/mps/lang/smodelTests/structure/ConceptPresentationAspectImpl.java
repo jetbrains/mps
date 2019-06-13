@@ -21,6 +21,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_ReferenceContainer;
   private ConceptPresentation props_ReferenceContainerSubConcept;
   private ConceptPresentation props_Root;
+  private ConceptPresentation props_TestEnum_Container;
 
   @Override
   @Nullable
@@ -109,6 +110,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_Root = cpb.create();
         }
         return props_Root;
+      case LanguageConceptSwitch.TestEnum_Container:
+        if (props_TestEnum_Container == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("TestEnum_Container");
+          props_TestEnum_Container = cpb.create();
+        }
+        return props_TestEnum_Container;
     }
     return null;
   }

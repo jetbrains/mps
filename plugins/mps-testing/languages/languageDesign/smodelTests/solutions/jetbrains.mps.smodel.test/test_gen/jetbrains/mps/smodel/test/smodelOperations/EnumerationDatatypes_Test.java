@@ -14,7 +14,10 @@ import jetbrains.mps.lang.test.runtime.TransformationTest;
 import junit.framework.Assert;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.lang.smodelTests.enumMigration.TestEnum_CustomIdentifier_MigrationUtils;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 
 @MPSLaunch
 public class EnumerationDatatypes_Test extends BaseTransformationTest {
@@ -32,32 +35,40 @@ public class EnumerationDatatypes_Test extends BaseTransformationTest {
     new EnumerationDatatypes_Test.TestBody(this).test_enumMemberPresentation();
   }
   @Test
-  public void test_enumMemberValue() throws Throwable {
-    new EnumerationDatatypes_Test.TestBody(this).test_enumMemberValue();
-  }
-  @Test
-  public void test_enumMemberForValue() throws Throwable {
-    new EnumerationDatatypes_Test.TestBody(this).test_enumMemberForValue();
-  }
-  @Test
   public void test_enumMemberName() throws Throwable {
     new EnumerationDatatypes_Test.TestBody(this).test_enumMemberName();
   }
   @Test
-  public void test_enumMemberForName() throws Throwable {
-    new EnumerationDatatypes_Test.TestBody(this).test_enumMemberForName();
+  public void test_enumMemberIdentity() throws Throwable {
+    new EnumerationDatatypes_Test.TestBody(this).test_enumMemberIdentity();
   }
   @Test
-  public void test_enumMethodsNullArgument_NoDefault() throws Throwable {
-    new EnumerationDatatypes_Test.TestBody(this).test_enumMethodsNullArgument_NoDefault();
+  public void test_enumMemberFromName() throws Throwable {
+    new EnumerationDatatypes_Test.TestBody(this).test_enumMemberFromName();
   }
   @Test
-  public void test_enumMethodsNullArgument_FirstMemberDefault() throws Throwable {
-    new EnumerationDatatypes_Test.TestBody(this).test_enumMethodsNullArgument_FirstMemberDefault();
+  public void test_enumMemberFromPresentation() throws Throwable {
+    new EnumerationDatatypes_Test.TestBody(this).test_enumMemberFromPresentation();
   }
   @Test
-  public void test_enumMethodsNullArgument_CustomDefault() throws Throwable {
-    new EnumerationDatatypes_Test.TestBody(this).test_enumMethodsNullArgument_CustomDefault();
+  public void test_enumMethodsNullArgument_WODefault() throws Throwable {
+    new EnumerationDatatypes_Test.TestBody(this).test_enumMethodsNullArgument_WODefault();
+  }
+  @Test
+  public void test_enumMethodsNullArgument_WithDefault() throws Throwable {
+    new EnumerationDatatypes_Test.TestBody(this).test_enumMethodsNullArgument_WithDefault();
+  }
+  @Test
+  public void test_enumProperties_initial() throws Throwable {
+    new EnumerationDatatypes_Test.TestBody(this).test_enumProperties_initial();
+  }
+  @Test
+  public void test_enumProperties_setfirst() throws Throwable {
+    new EnumerationDatatypes_Test.TestBody(this).test_enumProperties_setfirst();
+  }
+  @Test
+  public void test_enumProperties_remove() throws Throwable {
+    new EnumerationDatatypes_Test.TestBody(this).test_enumProperties_remove();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {
@@ -67,89 +78,121 @@ public class EnumerationDatatypes_Test extends BaseTransformationTest {
     }
 
     public void test_enumMemberPresentation() throws Exception {
-      Assert.assertEquals(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x125bc18df9d40ef9L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_CustomIdentifier"), 0x125bc18df9d40efaL, "value_1").getPresentation(), "presentation_1");
-      Assert.assertEquals(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x125bc18df9d40ef9L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_CustomIdentifier"), 0x125bc18df9d40efbL, "value_2").getPresentation(), "presentation_2");
-
-      Assert.assertEquals(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x125bc18df9d40ef6L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_DeriveFromInternalValue"), 0x125bc18df9d40ef7L, "value_1").getPresentation(), "presentation_1");
-      Assert.assertEquals(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x125bc18df9d40ef6L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_DeriveFromInternalValue"), 0x125bc18df9d40ef8L, "value_2").getPresentation(), "presentation_2");
-
-      Assert.assertEquals(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x125bc18df9d40ef1L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_DeriveFromPresentation"), 0x125bc18df9d40ef2L, "value_1").getPresentation(), "presentation_1");
-      Assert.assertEquals(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x125bc18df9d40ef1L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_DeriveFromPresentation"), 0x125bc18df9d40ef3L, "value_2").getPresentation(), "presentation_2");
-    }
-    public void test_enumMemberValue() throws Exception {
-      Assert.assertEquals(SEnumOperations.getMemberName0(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x125bc18df9d40ef9L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_CustomIdentifier"), 0x125bc18df9d40efaL, "value_1")), "value_1");
-      Assert.assertEquals(SEnumOperations.getMemberName0(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x125bc18df9d40ef9L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_CustomIdentifier"), 0x125bc18df9d40efbL, "value_2")), "value_2");
-
-      Assert.assertEquals(SEnumOperations.getMemberName0(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x125bc18df9d40ef6L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_DeriveFromInternalValue"), 0x125bc18df9d40ef7L, "value_1")), "value_1");
-      Assert.assertEquals(SEnumOperations.getMemberName0(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x125bc18df9d40ef6L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_DeriveFromInternalValue"), 0x125bc18df9d40ef8L, "value_2")), "value_2");
-
-      Assert.assertEquals(SEnumOperations.getMemberName0(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x125bc18df9d40ef1L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_DeriveFromPresentation"), 0x125bc18df9d40ef2L, "value_1")), "value_1");
-      Assert.assertEquals(SEnumOperations.getMemberName0(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x125bc18df9d40ef1L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_DeriveFromPresentation"), 0x125bc18df9d40ef3L, "value_2")), "value_2");
-    }
-    public void test_enumMemberForValue() throws Exception {
-      Assert.assertEquals(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x125bc18df9d40ef9L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_CustomIdentifier"), 0x125bc18df9d40efaL, "value_1"), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x125bc18df9d40ef9L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_CustomIdentifier"), 0x125bc18df9d40efaL, "value_1"));
-      Assert.assertEquals(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x125bc18df9d40ef9L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_CustomIdentifier"), 0x125bc18df9d40efbL, "value_2"), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x125bc18df9d40ef9L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_CustomIdentifier"), 0x125bc18df9d40efbL, "value_2"));
-
-      Assert.assertEquals(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x125bc18df9d40ef6L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_DeriveFromInternalValue"), 0x125bc18df9d40ef7L, "value_1"), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x125bc18df9d40ef6L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_DeriveFromInternalValue"), 0x125bc18df9d40ef7L, "value_1"));
-      Assert.assertEquals(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x125bc18df9d40ef6L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_DeriveFromInternalValue"), 0x125bc18df9d40ef8L, "value_2"), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x125bc18df9d40ef6L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_DeriveFromInternalValue"), 0x125bc18df9d40ef8L, "value_2"));
-
-      Assert.assertEquals(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x125bc18df9d40ef1L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_DeriveFromPresentation"), 0x125bc18df9d40ef2L, "value_1"), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x125bc18df9d40ef1L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_DeriveFromPresentation"), 0x125bc18df9d40ef2L, "value_1"));
-      Assert.assertEquals(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x125bc18df9d40ef1L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_DeriveFromPresentation"), 0x125bc18df9d40ef3L, "value_2"), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x125bc18df9d40ef1L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_DeriveFromPresentation"), 0x125bc18df9d40ef3L, "value_2"));
+      addNodeById("7060593544921882462");
+      addNodeById("7060593544921942801");
+      Assert.assertEquals(SEnumOperations.getMemberPresentation(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x55fd055f8f014df2L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_WODefault"), 0x61fc446ba477f2ddL, "name_1")), "presentation_1");
+      Assert.assertEquals(SEnumOperations.getMemberPresentation(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x55fd055f8f014df2L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_WODefault"), 0x61fc446ba477f2deL, "name_2")), "presentation_2");
     }
     public void test_enumMemberName() throws Exception {
-      Assert.assertEquals(TestEnum_CustomIdentifier_MigrationUtils.name(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x125bc18df9d40ef9L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_CustomIdentifier"), 0x125bc18df9d40efaL, "value_1")), "identifier_1");
-      Assert.assertEquals(TestEnum_CustomIdentifier_MigrationUtils.name(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x125bc18df9d40ef9L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_CustomIdentifier"), 0x125bc18df9d40efbL, "value_2")), "identifier_2");
-
-      Assert.assertEquals(SEnumOperations.getMemberName0(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x125bc18df9d40ef6L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_DeriveFromInternalValue"), 0x125bc18df9d40ef7L, "value_1")), "value_1");
-      Assert.assertEquals(SEnumOperations.getMemberName0(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x125bc18df9d40ef6L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_DeriveFromInternalValue"), 0x125bc18df9d40ef8L, "value_2")), "value_2");
-
-      Assert.assertEquals(SEnumOperations.getMemberPresentation(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x125bc18df9d40ef1L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_DeriveFromPresentation"), 0x125bc18df9d40ef2L, "value_1")), "presentation_1");
-      Assert.assertEquals(SEnumOperations.getMemberPresentation(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x125bc18df9d40ef1L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_DeriveFromPresentation"), 0x125bc18df9d40ef3L, "value_2")), "presentation_2");
+      addNodeById("7060593544921882462");
+      addNodeById("7060593544921942801");
+      Assert.assertEquals(SEnumOperations.getMemberName0(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x55fd055f8f014df2L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_WODefault"), 0x61fc446ba477f2ddL, "name_1")), "name_1");
+      Assert.assertEquals(SEnumOperations.getMemberName0(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x55fd055f8f014df2L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_WODefault"), 0x61fc446ba477f2deL, "name_2")), "name_2");
     }
-    public void test_enumMemberForName() throws Exception {
-      Assert.assertEquals(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x125bc18df9d40ef9L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_CustomIdentifier"), 0x125bc18df9d40efaL, "value_1"), TestEnum_CustomIdentifier_MigrationUtils.fromName("identifier_1"));
-      Assert.assertEquals(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x125bc18df9d40ef9L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_CustomIdentifier"), 0x125bc18df9d40efbL, "value_2"), TestEnum_CustomIdentifier_MigrationUtils.fromName("identifier_2"));
-
-      Assert.assertEquals(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x125bc18df9d40ef6L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_DeriveFromInternalValue"), 0x125bc18df9d40ef7L, "value_1"), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x125bc18df9d40ef6L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_DeriveFromInternalValue"), 0x125bc18df9d40ef7L, "value_1"));
-      Assert.assertEquals(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x125bc18df9d40ef6L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_DeriveFromInternalValue"), 0x125bc18df9d40ef8L, "value_2"), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x125bc18df9d40ef6L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_DeriveFromInternalValue"), 0x125bc18df9d40ef8L, "value_2"));
-
-      Assert.assertEquals(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x125bc18df9d40ef1L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_DeriveFromPresentation"), 0x125bc18df9d40ef2L, "value_1"), SEnumOperations.getMemberForPresentation(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x125bc18df9d40ef1L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_DeriveFromPresentation"), "presentation_1"));
-      Assert.assertEquals(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x125bc18df9d40ef1L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_DeriveFromPresentation"), 0x125bc18df9d40ef3L, "value_2"), SEnumOperations.getMemberForPresentation(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x125bc18df9d40ef1L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_DeriveFromPresentation"), "presentation_2"));
+    public void test_enumMemberIdentity() throws Exception {
+      addNodeById("7060593544921882462");
+      addNodeById("7060593544921942801");
+      Assert.assertSame(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x55fd055f8f014df2L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_WODefault"), 0x61fc446ba477f2ddL, "name_1"), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x55fd055f8f014df2L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_WODefault"), 0x61fc446ba477f2ddL, "name_1"));
+      Assert.assertSame(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x55fd055f8f014df2L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_WODefault"), 0x61fc446ba477f2deL, "name_2"), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x55fd055f8f014df2L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_WODefault"), 0x61fc446ba477f2deL, "name_2"));
     }
-    public void test_enumMethodsNullArgument_NoDefault() throws Exception {
-      Assert.assertEquals("memberForName(null)", null, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x138cca1e14019342L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_NoDefaultValue"), null));
-      Assert.assertEquals("memberForName(\"\")", null, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x138cca1e14019342L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_NoDefaultValue"), ""));
-      Assert.assertEquals("memberForName(\"not-a-name\")", null, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x138cca1e14019342L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_NoDefaultValue"), "not-a-name"));
-
-      Assert.assertEquals("memberForValue(null)", null, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x138cca1e14019342L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_NoDefaultValue"), null));
-      Assert.assertEquals("memberForValue(\"\")", null, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x138cca1e14019342L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_NoDefaultValue"), ""));
-      Assert.assertEquals("memberForValue(\"not-a-value\")", null, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x138cca1e14019342L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_NoDefaultValue"), "not-a-value"));
+    public void test_enumMemberFromName() throws Exception {
+      addNodeById("7060593544921882462");
+      addNodeById("7060593544921942801");
+      Assert.assertSame(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x55fd055f8f014df2L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_WODefault"), 0x61fc446ba477f2ddL, "name_1"), SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x55fd055f8f014df2L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_WODefault"), "name_1"));
+      Assert.assertSame(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x55fd055f8f014df2L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_WODefault"), 0x61fc446ba477f2deL, "name_2"), SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x55fd055f8f014df2L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_WODefault"), "name_2"));
     }
-    public void test_enumMethodsNullArgument_FirstMemberDefault() throws Exception {
-      Assert.assertEquals("memberForName(null)", null, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x54dc3a78e18a047L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_FirstMemberDefaultValue"), null));
-      Assert.assertEquals("memberForName(\"\")", null, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x54dc3a78e18a047L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_FirstMemberDefaultValue"), ""));
-      Assert.assertEquals("memberForName(\"not-a-name\")", null, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x54dc3a78e18a047L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_FirstMemberDefaultValue"), "not-a-name"));
-
-      // FIXME Are we sure that this is right behavior? Or we should return null like others do. 
-      // FIXME This behavior is dictated with SEnumOperations#getMemberForValue 
-      Assert.assertEquals("memberForValue(null)", SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x54dc3a78e18a047L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_FirstMemberDefaultValue"), 0x54dc3a78e18a048L, "a"), SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x54dc3a78e18a047L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_FirstMemberDefaultValue"), null));
-
-      Assert.assertEquals("memberForValue(\"\")", null, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x54dc3a78e18a047L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_FirstMemberDefaultValue"), ""));
-      Assert.assertEquals("memberForValue(\"not-a-value\")", null, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x54dc3a78e18a047L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_FirstMemberDefaultValue"), "not-a-value"));
+    public void test_enumMemberFromPresentation() throws Exception {
+      addNodeById("7060593544921882462");
+      addNodeById("7060593544921942801");
+      Assert.assertSame(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x55fd055f8f014df2L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_WODefault"), 0x61fc446ba477f2ddL, "name_1"), SEnumOperations.getMemberForPresentation(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x55fd055f8f014df2L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_WODefault"), "presentation_1"));
+      Assert.assertSame(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x55fd055f8f014df2L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_WODefault"), 0x61fc446ba477f2deL, "name_2"), SEnumOperations.getMemberForPresentation(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x55fd055f8f014df2L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_WODefault"), "presentation_2"));
     }
-    public void test_enumMethodsNullArgument_CustomDefault() throws Exception {
-      Assert.assertEquals("memberForName(null)", null, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x138cca1e1401934bL, "jetbrains.mps.lang.smodelTests.structure.TestEnum_CustomDefaultValue"), null));
-      Assert.assertEquals("memberForName(\"\")", null, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x138cca1e1401934bL, "jetbrains.mps.lang.smodelTests.structure.TestEnum_CustomDefaultValue"), ""));
-      Assert.assertEquals("memberForName(\"not-a-name\")", null, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x138cca1e1401934bL, "jetbrains.mps.lang.smodelTests.structure.TestEnum_CustomDefaultValue"), "not-a-name"));
+    public void test_enumMethodsNullArgument_WODefault() throws Exception {
+      addNodeById("7060593544921882462");
+      addNodeById("7060593544921942801");
+      Assert.assertEquals("from name(null)", null, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x55fd055f8f014df2L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_WODefault"), null));
+      Assert.assertEquals("from name(\"\")", null, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x55fd055f8f014df2L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_WODefault"), ""));
+      Assert.assertEquals("from name(\"not-a-name\")", null, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x55fd055f8f014df2L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_WODefault"), "not-a-name"));
 
-      // FIXME Are we sure that this is right behavior? Or we should return null like others do. 
-      // FIXME This behavior is dictated with SEnumOperations#getMemberForValue 
-      Assert.assertEquals("memberForValue(null)", SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x138cca1e1401934bL, "jetbrains.mps.lang.smodelTests.structure.TestEnum_CustomDefaultValue"), 0x138cca1e1401934dL, "b"), SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x138cca1e1401934bL, "jetbrains.mps.lang.smodelTests.structure.TestEnum_CustomDefaultValue"), null));
+      Assert.assertEquals("from presentation(null)", null, SEnumOperations.getMemberForPresentation(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x55fd055f8f014df2L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_WODefault"), null));
+      Assert.assertEquals("from presentation(\"\")", null, SEnumOperations.getMemberForPresentation(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x55fd055f8f014df2L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_WODefault"), ""));
+      Assert.assertEquals("from presentation(\"not-a-presentation\")", null, SEnumOperations.getMemberForPresentation(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x55fd055f8f014df2L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_WODefault"), "not-a-presentation"));
+    }
+    public void test_enumMethodsNullArgument_WithDefault() throws Exception {
+      addNodeById("7060593544921882462");
+      addNodeById("7060593544921942801");
+      Assert.assertEquals("from name(null)", null, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x55fd055f8f014dbfL, "jetbrains.mps.lang.smodelTests.structure.TestEnum_WithDefault"), null));
+      Assert.assertEquals("from name(\"\")", null, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x55fd055f8f014dbfL, "jetbrains.mps.lang.smodelTests.structure.TestEnum_WithDefault"), ""));
+      Assert.assertEquals("from name(\"not-a-name\")", null, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x55fd055f8f014dbfL, "jetbrains.mps.lang.smodelTests.structure.TestEnum_WithDefault"), "not-a-name"));
 
-      Assert.assertEquals("memberForValue(\"\")", null, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x138cca1e1401934bL, "jetbrains.mps.lang.smodelTests.structure.TestEnum_CustomDefaultValue"), ""));
-      Assert.assertEquals("memberForValue(\"not-a-value\")", null, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x138cca1e1401934bL, "jetbrains.mps.lang.smodelTests.structure.TestEnum_CustomDefaultValue"), "not-a-value"));
+      Assert.assertEquals("from presentation(null)", null, SEnumOperations.getMemberForPresentation(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x55fd055f8f014dbfL, "jetbrains.mps.lang.smodelTests.structure.TestEnum_WithDefault"), null));
+      Assert.assertEquals("from presentation(\"\")", null, SEnumOperations.getMemberForPresentation(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x55fd055f8f014dbfL, "jetbrains.mps.lang.smodelTests.structure.TestEnum_WithDefault"), ""));
+      Assert.assertEquals("from presentation(\"not-a-presentation\")", null, SEnumOperations.getMemberForPresentation(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x55fd055f8f014dbfL, "jetbrains.mps.lang.smodelTests.structure.TestEnum_WithDefault"), "not-a-presentation"));
+    }
+    public void test_enumProperties_initial() throws Exception {
+      addNodeById("7060593544921882462");
+      addNodeById("7060593544921942801");
+      SNode container1 = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x61fc446ba477f2e1L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_Container"));
+      SNode container2 = SNodeOperations.cast(getNodeById("7060593544921931916"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests"), 0x61fc446ba477f2e1L, "TestEnum_Container")));
+
+      this.test_init(container1);
+      this.test_init(container2);
+    }
+    public void test_enumProperties_setfirst() throws Exception {
+      addNodeById("7060593544921882462");
+      addNodeById("7060593544921942801");
+      SNode container1 = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x61fc446ba477f2e1L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_Container"));
+      SPropertyOperations.setEnum(container1, MetaAdapterFactory.getProperty(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x61fc446ba477f2e1L, 0x61fc446ba477f2e4L, "enumWODefault"), 0x61fc446ba477f2ddL, "name_1");
+      SPropertyOperations.setEnum(container1, MetaAdapterFactory.getProperty(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x61fc446ba477f2e1L, 0x61fc446ba477f2e2L, "enumWithDefault"), 0x125bc18df9d40efaL, "name_1");
+
+      SNode container2 = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x61fc446ba477f2e1L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_Container"));
+      SPropertyOperations.assignEnum(container2, MetaAdapterFactory.getProperty(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x61fc446ba477f2e1L, 0x61fc446ba477f2e4L, "enumWODefault"), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x55fd055f8f014df2L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_WODefault"), 0x61fc446ba477f2ddL, "name_1"));
+      SPropertyOperations.assignEnum(container2, MetaAdapterFactory.getProperty(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x61fc446ba477f2e1L, 0x61fc446ba477f2e2L, "enumWithDefault"), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x55fd055f8f014dbfL, "jetbrains.mps.lang.smodelTests.structure.TestEnum_WithDefault"), 0x125bc18df9d40efaL, "name_1"));
+
+      SNode container3 = SNodeOperations.cast(getNodeById("7060593544921942802"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests"), 0x61fc446ba477f2e1L, "TestEnum_Container")));
+
+      this.test_setfirst(container1);
+      this.test_setfirst(container2);
+      this.test_setfirst(container3);
+    }
+    public void test_enumProperties_remove() throws Exception {
+      addNodeById("7060593544921882462");
+      addNodeById("7060593544921942801");
+      SNode container_proto = SNodeOperations.cast(getNodeById("7060593544921942802"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests"), 0x61fc446ba477f2e1L, "TestEnum_Container")));
+
+      SNode container1 = SNodeOperations.copyNode(container_proto);
+      SPropertyOperations.remove(container1, MetaAdapterFactory.getProperty(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x61fc446ba477f2e1L, 0x61fc446ba477f2e4L, "enumWODefault"));
+      SPropertyOperations.remove(container1, MetaAdapterFactory.getProperty(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x61fc446ba477f2e1L, 0x61fc446ba477f2e2L, "enumWithDefault"));
+
+      SNode container2 = SNodeOperations.copyNode(container_proto);
+      SPropertyOperations.assignEnum(container2, MetaAdapterFactory.getProperty(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x61fc446ba477f2e1L, 0x61fc446ba477f2e4L, "enumWODefault"), null);
+      SPropertyOperations.assignEnum(container2, MetaAdapterFactory.getProperty(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x61fc446ba477f2e1L, 0x61fc446ba477f2e2L, "enumWithDefault"), null);
+
+      this.test_init(container1);
+      this.test_init(container2);
+
     }
 
 
+    public void test_init(SNode container) {
+      Assert.assertSame(SPropertyOperations.getEnum(container, MetaAdapterFactory.getProperty(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x61fc446ba477f2e1L, 0x61fc446ba477f2e4L, "enumWODefault")), null);
+      Assert.assertSame(SPropertyOperations.getEnum(container, MetaAdapterFactory.getProperty(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x61fc446ba477f2e1L, 0x61fc446ba477f2e2L, "enumWithDefault")), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x55fd055f8f014dbfL, "jetbrains.mps.lang.smodelTests.structure.TestEnum_WithDefault"), 0x125bc18df9d40efbL, "name_2_def"));
+
+      Assert.assertFalse(SEnumOperations.isMember(SPropertyOperations.getEnum(container, MetaAdapterFactory.getProperty(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x61fc446ba477f2e1L, 0x61fc446ba477f2e4L, "enumWODefault")), 0x61fc446ba477f2ddL));
+      Assert.assertFalse(SEnumOperations.isMember(SPropertyOperations.getEnum(container, MetaAdapterFactory.getProperty(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x61fc446ba477f2e1L, 0x61fc446ba477f2e4L, "enumWODefault")), 0x61fc446ba477f2deL));
+
+      Assert.assertFalse(SEnumOperations.isMember(SPropertyOperations.getEnum(container, MetaAdapterFactory.getProperty(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x61fc446ba477f2e1L, 0x61fc446ba477f2e2L, "enumWithDefault")), 0x125bc18df9d40efaL));
+      Assert.assertTrue(SEnumOperations.isMember(SPropertyOperations.getEnum(container, MetaAdapterFactory.getProperty(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x61fc446ba477f2e1L, 0x61fc446ba477f2e2L, "enumWithDefault")), 0x125bc18df9d40efbL));
+    }
+    public void test_setfirst(SNode container) {
+      Assert.assertSame(SPropertyOperations.getEnum(container, MetaAdapterFactory.getProperty(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x61fc446ba477f2e1L, 0x61fc446ba477f2e4L, "enumWODefault")), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x55fd055f8f014df2L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_WODefault"), 0x61fc446ba477f2ddL, "name_1"));
+      Assert.assertSame(SPropertyOperations.getEnum(container, MetaAdapterFactory.getProperty(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x61fc446ba477f2e1L, 0x61fc446ba477f2e2L, "enumWithDefault")), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x55fd055f8f014dbfL, "jetbrains.mps.lang.smodelTests.structure.TestEnum_WithDefault"), 0x125bc18df9d40efaL, "name_1"));
+
+      Assert.assertTrue(SEnumOperations.isMember(SPropertyOperations.getEnum(container, MetaAdapterFactory.getProperty(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x61fc446ba477f2e1L, 0x61fc446ba477f2e4L, "enumWODefault")), 0x61fc446ba477f2ddL));
+      Assert.assertFalse(SEnumOperations.isMember(SPropertyOperations.getEnum(container, MetaAdapterFactory.getProperty(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x61fc446ba477f2e1L, 0x61fc446ba477f2e4L, "enumWODefault")), 0x61fc446ba477f2deL));
+
+      Assert.assertTrue(SEnumOperations.isMember(SPropertyOperations.getEnum(container, MetaAdapterFactory.getProperty(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x61fc446ba477f2e1L, 0x61fc446ba477f2e2L, "enumWithDefault")), 0x125bc18df9d40efaL));
+      Assert.assertFalse(SEnumOperations.isMember(SPropertyOperations.getEnum(container, MetaAdapterFactory.getProperty(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x61fc446ba477f2e1L, 0x61fc446ba477f2e2L, "enumWithDefault")), 0x125bc18df9d40efbL));
+    }
   }
 }

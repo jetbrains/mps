@@ -12,6 +12,7 @@ import jetbrains.mps.smodel.adapter.ids.SConceptId;
 import jetbrains.mps.smodel.runtime.DataTypeDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder2;
+import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptChild = createDescriptorForChild();
@@ -26,12 +27,15 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptReferenceContainer = createDescriptorForReferenceContainer();
   /*package*/ final ConceptDescriptor myConceptReferenceContainerSubConcept = createDescriptorForReferenceContainerSubConcept();
   /*package*/ final ConceptDescriptor myConceptRoot = createDescriptorForRoot();
+  /*package*/ final ConceptDescriptor myConceptTestEnum_Container = createDescriptorForTestEnum_Container();
   /*package*/ final EnumerationDescriptor myEnumerationTestEnum_CustomDefaultValue = new EnumerationDescriptor_TestEnum_CustomDefaultValue();
   /*package*/ final EnumerationDescriptor myEnumerationTestEnum_CustomIdentifier = new EnumerationDescriptor_TestEnum_CustomIdentifier();
   /*package*/ final EnumerationDescriptor myEnumerationTestEnum_DeriveFromInternalValue = new EnumerationDescriptor_TestEnum_DeriveFromInternalValue();
   /*package*/ final EnumerationDescriptor myEnumerationTestEnum_DeriveFromPresentation = new EnumerationDescriptor_TestEnum_DeriveFromPresentation();
   /*package*/ final EnumerationDescriptor myEnumerationTestEnum_FirstMemberDefaultValue = new EnumerationDescriptor_TestEnum_FirstMemberDefaultValue();
   /*package*/ final EnumerationDescriptor myEnumerationTestEnum_NoDefaultValue = new EnumerationDescriptor_TestEnum_NoDefaultValue();
+  /*package*/ final EnumerationDescriptor myEnumerationTestEnum_WODefault = new EnumerationDescriptor_TestEnum_WODefault();
+  /*package*/ final EnumerationDescriptor myEnumerationTestEnum_WithDefault = new EnumerationDescriptor_TestEnum_WithDefault();
   private final LanguageConceptSwitch myIndexSwitch;
 
   public StructureAspectDescriptor() {
@@ -46,7 +50,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptChild, myConceptChildSubConcept, myConceptChildSubConceptSuppressError, myConceptGrandChild, myConceptNPTypesystem_ConceptA, myConceptNPTypesystem_ConceptB, myConceptNPTypesystem_IntA, myConceptNPTypesystem_IntB, myConceptNPTypesystem_RefToIntA, myConceptReferenceContainer, myConceptReferenceContainerSubConcept, myConceptRoot);
+    return Arrays.asList(myConceptChild, myConceptChildSubConcept, myConceptChildSubConceptSuppressError, myConceptGrandChild, myConceptNPTypesystem_ConceptA, myConceptNPTypesystem_ConceptB, myConceptNPTypesystem_IntA, myConceptNPTypesystem_IntB, myConceptNPTypesystem_RefToIntA, myConceptReferenceContainer, myConceptReferenceContainerSubConcept, myConceptRoot, myConceptTestEnum_Container);
   }
 
   @Override
@@ -77,6 +81,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptReferenceContainerSubConcept;
       case LanguageConceptSwitch.Root:
         return myConceptRoot;
+      case LanguageConceptSwitch.TestEnum_Container:
+        return myConceptTestEnum_Container;
       default:
         return null;
     }
@@ -84,7 +90,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<DataTypeDescriptor> getDataTypeDescriptors() {
-    return Arrays.asList(myEnumerationTestEnum_CustomDefaultValue, myEnumerationTestEnum_CustomIdentifier, myEnumerationTestEnum_DeriveFromInternalValue, myEnumerationTestEnum_DeriveFromPresentation, myEnumerationTestEnum_FirstMemberDefaultValue, myEnumerationTestEnum_NoDefaultValue);
+    return Arrays.asList(myEnumerationTestEnum_CustomDefaultValue, myEnumerationTestEnum_CustomIdentifier, myEnumerationTestEnum_DeriveFromInternalValue, myEnumerationTestEnum_DeriveFromPresentation, myEnumerationTestEnum_FirstMemberDefaultValue, myEnumerationTestEnum_NoDefaultValue, myEnumerationTestEnum_WODefault, myEnumerationTestEnum_WithDefault);
   }
 
   /*package*/ int internalIndex(SAbstractConcept c) {
@@ -194,6 +200,15 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.aggregate("child_0_n", 0x3dd540b968e9fc6L).target(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x3dd540b968e9fbfL).optional(true).ordered(true).multiple(true).origin("278471160714141638").done();
     b.aggregate("child_1_n", 0x3dd540b968e9fc7L).target(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x3dd540b968e9fbfL).optional(false).ordered(true).multiple(true).origin("278471160714141639").done();
     b.aggregate("childSubConcept_0_n", 0x7a02788de4ab50L).target(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x7a02788de4ab4dL).optional(true).ordered(true).multiple(true).origin("34342663958604624").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForTestEnum_Container() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.smodelTests", "TestEnum_Container", 0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x61fc446ba477f2e1L);
+    b.class_(false, false, false);
+    b.origin("r:43b4d418-d4ca-4d97-ab07-31e4f3ddb3e5(jetbrains.mps.lang.smodelTests.structure)/7060593544921608929");
+    b.version(2);
+    b.property("enumWithDefault", 0x61fc446ba477f2e2L).type(MetaIdFactory.dataTypeId(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x55fd055f8f014dbfL)).origin("7060593544921608930").done();
+    b.property("enumWODefault", 0x61fc446ba477f2e4L).type(MetaIdFactory.dataTypeId(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x55fd055f8f014df2L)).origin("7060593544921608932").done();
     return b.create();
   }
 }
