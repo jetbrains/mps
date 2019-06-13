@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.test.runtime.NodeCheckerUtil;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -32,7 +33,20 @@ public final class NodeRuleCheckOperation__BehaviorDescriptor extends BaseBHDesc
   }
 
   /*package*/ static boolean hasExpectedRuleMessage_id4CT6QR8SJl8(@NotNull SNode __thisNode__, Iterable<NodeReportItem> errorReporters, SRepository contextRepo) {
-    return NodeCheckerUtil.hasExpectedRuleMessage(errorReporters, IReferenceAttachable__BehaviorDescriptor.getReferencedRuleNode_id2wBFdLy8qmt.invoke(__thisNode__), contextRepo);
+    if (Sequence.fromIterable(errorReporters).isEmpty()) {
+      return false;
+    }
+    SNode expecteRuleNode = IReferenceAttachable__BehaviorDescriptor.getReferencedRuleNode_id2wBFdLy8qmt.invoke(__thisNode__);
+    if ((expecteRuleNode == null)) {
+      return true;
+    }
+    for (NodeReportItem errorReport : errorReporters) {
+      SNode ruleNode = NodeCheckerUtil.getRuleNodeFromReporter(errorReport, contextRepo);
+      if (ruleNode == expecteRuleNode) {
+        return true;
+      }
+    }
+    return false;
   }
 
   /*package*/ NodeRuleCheckOperation__BehaviorDescriptor() {

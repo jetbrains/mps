@@ -235,6 +235,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.ICheckForExpectedRule:
         if (props_ICheckForExpectedRule == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.deprecated(true);
           props_ICheckForExpectedRule = cpb.create();
         }
         return props_ICheckForExpectedRule;

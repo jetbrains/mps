@@ -6,10 +6,13 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.errors.item.NodeReportItem;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import junit.framework.Assert;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
+import java.util.Objects;
+import jetbrains.mps.lang.test.behavior.NodeRuleReference;
+import jetbrains.mps.lang.test.behavior.RuleType;
 
 public abstract class CheckExpectedMessageAction implements Runnable {
   protected final SRepository myRuleRepository;
@@ -22,7 +25,18 @@ public abstract class CheckExpectedMessageAction implements Runnable {
     this.myExpectedMessageStatus = expectedMessageStatus;
   }
 
-  public abstract boolean hasExpectedRuleMessage(Iterable<NodeReportItem> errorReporters);
+  public boolean hasExpectedRuleMessage(Iterable<NodeReportItem> errorReporters) {
+    if (Sequence.fromIterable(errorReporters).isEmpty()) {
+      return false;
+    }
+    for (NodeReportItem errorReport : errorReporters) {
+      if (isMessageExpected(errorReport)) {
+        return true;
+      }
+    }
+    return false;
+  }
+  public abstract boolean isMessageExpected(NodeReportItem errorReport);
 
   @Override
   public void run() {
@@ -43,8 +57,9 @@ public abstract class CheckExpectedMessageAction implements Runnable {
     }
 
     @Override
-    public boolean hasExpectedRuleMessage(Iterable<NodeReportItem> errorReporters) {
-      return NodeCheckerUtil.hasExpectedRuleMessage(errorReporters, SPointerOperations.resolveNode(myExpectedRule, myRuleRepository), myRuleRepository);
+    public boolean isMessageExpected(NodeReportItem errorReport) {
+      SNode ruleNode = NodeCheckerUtil.getRuleNodeFromReporter(errorReport, myRuleRepository);
+      return Objects.equals(errorReport.getNode(), SNodeOperations.getPointer(myNodeToCheck)) && Objects.equals(SNodeOperations.getPointer(ruleNode), myExpectedRule);
     }
   }
   public static class CheckExpectedTypesystemMessageAction extends CheckExpectedMessageAction {
@@ -52,8 +67,9 @@ public abstract class CheckExpectedMessageAction implements Runnable {
       super(nodeToCheck, expectedMessageStatus, ruleRepository);
     }
     @Override
-    public boolean hasExpectedRuleMessage(Iterable<NodeReportItem> errorReporters) {
-      return NodeCheckerUtil.hasExpectedTypesystemMessage(errorReporters, myRuleRepository);
+    public boolean isMessageExpected(NodeReportItem errorReport) {
+      SNode ruleNode = NodeCheckerUtil.getRuleNodeFromReporter(errorReport, myRuleRepository);
+      return Objects.equals(errorReport.getNode(), SNodeOperations.getPointer(myNodeToCheck)) && new NodeRuleReference(ruleNode).getType() == RuleType.TYPESYSTEM;
     }
   }
 

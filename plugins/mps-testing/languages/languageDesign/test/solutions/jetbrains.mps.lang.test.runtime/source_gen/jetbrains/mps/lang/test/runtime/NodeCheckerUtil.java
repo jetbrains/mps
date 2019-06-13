@@ -9,8 +9,6 @@ import jetbrains.mps.errors.item.NodeReportItem;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.errors.item.RuleIdFlavouredItem;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.lang.test.behavior.NodeRuleReference;
-import jetbrains.mps.lang.test.behavior.RuleType;
 
 public class NodeCheckerUtil {
 
@@ -29,35 +27,9 @@ public class NodeCheckerUtil {
     return RuleIdFlavouredItem.FLAVOUR_RULE_ID.getCollection(reporter).iterator().next().getSourceNode().resolve(contextRepository);
   }
 
-  public static void checkNodeForErrorMessages(final SNode node, final boolean allowErrors, final boolean allowWarnings, boolean includeSelf) {
-    Runnable checkErrorsAction = new CheckErrorMessagesAction(node, allowWarnings, allowErrors).includeSelf(includeSelf);
+  public static void checkNodeForErrorMessages(final SNode node, final boolean allowErrors, final boolean allowWarnings, boolean includeSelf, CheckExpectedMessageAction... excluded) {
+    Runnable checkErrorsAction = new CheckErrorMessagesAction(node, allowWarnings, allowErrors).includeSelf(includeSelf).exclude(Sequence.fromIterable(Sequence.fromArray(excluded)).toListSequence());
     checkErrorsAction.run();
-  }
-
-  public static boolean hasExpectedRuleMessage(Iterable<NodeReportItem> errorReporters, SNode expectedRuleNode, SRepository contextRepo) {
-    if (Sequence.fromIterable(errorReporters).isEmpty()) {
-      return false;
-    }
-    if ((expectedRuleNode == null)) {
-      return true;
-    }
-    for (NodeReportItem errorReport : errorReporters) {
-      SNode ruleNode = NodeCheckerUtil.getRuleNodeFromReporter(errorReport, contextRepo);
-      if (ruleNode == expectedRuleNode) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  public static boolean hasExpectedTypesystemMessage(Iterable<NodeReportItem> errorReporters, SRepository contextRepo) {
-    for (NodeReportItem errorReport : errorReporters) {
-      SNode ruleNode = NodeCheckerUtil.getRuleNodeFromReporter(errorReport, contextRepo);
-      if (new NodeRuleReference(ruleNode).getType() == RuleType.TYPESYSTEM) {
-        return true;
-      }
-    }
-    return false;
   }
 
 }

@@ -32,7 +32,13 @@ public final class NodeTypeSystemRuleCheckOperation__BehaviorDescriptor extends 
   }
 
   /*package*/ static boolean hasExpectedRuleMessage_id4CT6QR8SJl8(@NotNull SNode __thisNode__, Iterable<NodeReportItem> errorReporters, SRepository contextRepo) {
-    return NodeCheckerUtil.hasExpectedTypesystemMessage(errorReporters, contextRepo);
+    for (NodeReportItem errorReport : errorReporters) {
+      SNode ruleNode = NodeCheckerUtil.getRuleNodeFromReporter(errorReport, contextRepo);
+      if (new NodeRuleReference(ruleNode).getType() == RuleType.TYPESYSTEM) {
+        return true;
+      }
+    }
+    return false;
   }
 
   /*package*/ NodeTypeSystemRuleCheckOperation__BehaviorDescriptor() {
