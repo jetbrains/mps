@@ -12,9 +12,12 @@ import org.junit.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.lang.test.behavior.INodesTestMethod__BehaviorDescriptor;
+import jetbrains.mps.lang.test.runtime.CheckErrorMessagesAction;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.ArrayList;
+import jetbrains.mps.lang.test.runtime.CheckExpectedMessageAction;
+import jetbrains.mps.errors.MessageStatus;
+import jetbrains.mps.smodel.SNodePointer;
 
 @MPSLaunch
 public class PrivateMethod_Test extends BaseTransformationTest {
@@ -32,12 +35,12 @@ public class PrivateMethod_Test extends BaseTransformationTest {
     new PrivateMethod_Test.TestBody(this).test_ErrorMessagesCheck7938578788783487552();
   }
   @Test
-  public void test_NodePrivateMethodCheck7938578788783488602() throws Throwable {
-    new PrivateMethod_Test.TestBody(this).test_NodePrivateMethodCheck7938578788783488602();
+  public void test_NodePrivateMethodIsNeverUsedCheck7938578788783488602() throws Throwable {
+    new PrivateMethod_Test.TestBody(this).test_NodePrivateMethodIsNeverUsedCheck7938578788783488602();
   }
   @Test
-  public void test_NodePrivateMethodCheck7938578788783495769() throws Throwable {
-    new PrivateMethod_Test.TestBody(this).test_NodePrivateMethodCheck7938578788783495769();
+  public void test_NodePrivateMethodIsNeverUsedCheck7938578788783495769() throws Throwable {
+    new PrivateMethod_Test.TestBody(this).test_NodePrivateMethodIsNeverUsedCheck7938578788783495769();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {
@@ -48,16 +51,19 @@ public class PrivateMethod_Test extends BaseTransformationTest {
 
 
     public void test_ErrorMessagesCheck7938578788783487552() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("7938578788783487552"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("7938578788783487531"));
+      SNode nodeToCheck = getRealNodeById("7938578788783487531");
+      SNode operation = getRealNodeById("7938578788783487552");
+      new CheckErrorMessagesAction(nodeToCheck, false, false).includeSelf(false).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageAction>(), new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("7938578788783487570"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8101436443850399677"), myProject.getRepository()), new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("7938578788783494684"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8101436443850399677"), myProject.getRepository()))).run();
     }
-    public void test_NodePrivateMethodCheck7938578788783488602() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("7938578788783488602"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("7938578788783487570"));
+    public void test_NodePrivateMethodIsNeverUsedCheck7938578788783488602() throws Exception {
+      SNode nodeToCheck = getRealNodeById("7938578788783487570");
+      SNode operation = getRealNodeById("7938578788783488602");
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("7938578788783487570"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8101436443850399677"), myProject.getRepository()).run();
     }
-    public void test_NodePrivateMethodCheck7938578788783495769() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("7938578788783495769"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("7938578788783494684"));
+    public void test_NodePrivateMethodIsNeverUsedCheck7938578788783495769() throws Exception {
+      SNode nodeToCheck = getRealNodeById("7938578788783494684");
+      SNode operation = getRealNodeById("7938578788783495769");
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("7938578788783494684"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8101436443850399677"), myProject.getRepository()).run();
     }
 
   }

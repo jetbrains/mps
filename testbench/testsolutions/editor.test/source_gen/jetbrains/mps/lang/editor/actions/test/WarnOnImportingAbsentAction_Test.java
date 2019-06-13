@@ -12,9 +12,9 @@ import org.junit.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.lang.test.behavior.INodesTestMethod__BehaviorDescriptor;
+import jetbrains.mps.lang.test.runtime.CheckExpectedMessageAction;
+import jetbrains.mps.errors.MessageStatus;
+import jetbrains.mps.smodel.SNodePointer;
 
 @MPSLaunch
 public class WarnOnImportingAbsentAction_Test extends BaseTransformationTest {
@@ -40,8 +40,9 @@ public class WarnOnImportingAbsentAction_Test extends BaseTransformationTest {
 
 
     public void test_NodeImportHasNoEffectCheck858085313517684344() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("858085313517684344"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("1465006755395151322"));
+      SNode nodeToCheck = getRealNodeById("1465006755395151322");
+      SNode operation = getRealNodeById("858085313517684344");
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("1465006755395151322"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "2760718446999230123"), myProject.getRepository()).run();
     }
 
   }

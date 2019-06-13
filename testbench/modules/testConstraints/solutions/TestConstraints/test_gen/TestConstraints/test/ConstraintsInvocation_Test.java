@@ -12,9 +12,9 @@ import org.junit.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.lang.test.behavior.INodesTestMethod__BehaviorDescriptor;
+import jetbrains.mps.lang.test.runtime.CheckExpectedMessageAction;
+import jetbrains.mps.errors.MessageStatus;
+import jetbrains.mps.smodel.SNodePointer;
 
 @MPSLaunch
 public class ConstraintsInvocation_Test extends BaseTransformationTest {
@@ -44,12 +44,14 @@ public class ConstraintsInvocation_Test extends BaseTransformationTest {
 
 
     public void test_NodeUnknownRuleCheck730305212589682236() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("730305212589682236"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("730305212589577115"));
+      SNode nodeToCheck = getRealNodeById("730305212589577115");
+      SNode operation = getRealNodeById("730305212589682236");
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("730305212589577115"), MessageStatus.ERROR, new SNodePointer("r:6789573d-c842-4805-bb3b-05fd4fbf786e(constraints.test.constraints)", "730305212589401486"), myProject.getRepository()).run();
     }
     public void test_NodeUnknownRuleCheck730305212589682205() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("730305212589682205"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("730305212589682202"));
+      SNode nodeToCheck = getRealNodeById("730305212589682202");
+      SNode operation = getRealNodeById("730305212589682205");
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("730305212589682202"), MessageStatus.ERROR, new SNodePointer("r:6789573d-c842-4805-bb3b-05fd4fbf786e(constraints.test.constraints)", "730305212589427430"), myProject.getRepository()).run();
     }
 
   }

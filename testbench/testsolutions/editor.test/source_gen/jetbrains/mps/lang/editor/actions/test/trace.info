@@ -729,90 +729,100 @@
       <node id="1465006755395151274" at="26,45,27,25" concept="8" />
       <node id="858085313517684344" at="31,84,32,108" concept="1" />
       <node id="1465006755395151274" at="37,52,38,19" concept="8" />
-      <node id="858085313517684344" at="42,86,43,241" concept="4" />
-      <node id="858085313517684344" at="43,241,44,123" concept="1" />
+      <node id="858085313517684344" at="42,86,43,65" concept="4" />
+      <node id="858085313517684344" at="43,65,44,62" concept="4" />
+      <node id="858085313517684344" at="44,62,45,285" concept="1" />
       <node id="1465006755395151274" at="21,0,23,0" concept="7" trace="ourParamCache" />
       <node id="1465006755395151274" at="23,0,25,0" concept="2" trace="myWithCommandRule" />
       <node id="1465006755395151274" at="26,0,29,0" concept="0" trace="WarnOnImportingAbsentAction_Test#()V" />
       <node id="1465006755395151274" at="37,0,40,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
       <node id="858085313517684344" at="30,0,34,0" concept="3" trace="test_NodeImportHasNoEffectCheck858085313517684344#()V" />
-      <node id="858085313517684344" at="42,0,46,0" concept="3" trace="test_NodeImportHasNoEffectCheck858085313517684344#()V" />
+      <node id="858085313517684344" at="42,0,47,0" concept="3" trace="test_NodeImportHasNoEffectCheck858085313517684344#()V" />
       <scope id="1465006755395151274" at="26,45,27,25" />
       <scope id="858085313517684344" at="31,84,32,108" />
       <scope id="1465006755395151274" at="37,52,38,19" />
-      <scope id="858085313517684344" at="42,86,44,123">
-        <var name="operation" id="858085313517684344" />
-      </scope>
       <scope id="1465006755395151274" at="26,0,29,0" />
       <scope id="1465006755395151274" at="37,0,40,0">
         <var name="owner" id="1465006755395151274" />
       </scope>
+      <scope id="858085313517684344" at="42,86,45,285">
+        <var name="nodeToCheck" id="858085313517684344" />
+        <var name="operation" id="858085313517684344" />
+      </scope>
       <scope id="858085313517684344" at="30,0,34,0" />
-      <scope id="858085313517684344" at="42,0,46,0" />
-      <unit id="1465006755395151274" at="35,0,48,0" name="jetbrains.mps.lang.editor.actions.test.WarnOnImportingAbsentAction_Test$TestBody" />
-      <unit id="1465006755395151274" at="19,0,49,0" name="jetbrains.mps.lang.editor.actions.test.WarnOnImportingAbsentAction_Test" />
+      <scope id="858085313517684344" at="42,0,47,0" />
+      <unit id="1465006755395151274" at="35,0,49,0" name="jetbrains.mps.lang.editor.actions.test.WarnOnImportingAbsentAction_Test$TestBody" />
+      <unit id="1465006755395151274" at="19,0,50,0" name="jetbrains.mps.lang.editor.actions.test.WarnOnImportingAbsentAction_Test" />
     </file>
   </root>
   <root nodeRef="r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)/1465006755400366453">
     <file name="ActionMapImportNullConceptCompatibility_Test.java">
-      <node id="1465006755400366453" at="26,57,27,25" concept="8" />
-      <node id="1465006755400919484" at="31,77,32,113" concept="1" />
-      <node id="1465006755400969509" at="35,92,36,128" concept="1" />
-      <node id="1465006755400968886" at="39,77,40,113" concept="1" />
-      <node id="1465006755400969544" at="43,77,44,113" concept="1" />
-      <node id="1465006755400366453" at="49,52,50,19" concept="8" />
-      <node id="1465006755400919484" at="54,79,55,242" concept="4" />
-      <node id="1465006755400919484" at="55,242,56,123" concept="1" />
-      <node id="1465006755400969509" at="58,94,59,242" concept="4" />
-      <node id="1465006755400969509" at="59,242,60,123" concept="1" />
-      <node id="1465006755400968886" at="62,79,63,242" concept="4" />
-      <node id="1465006755400968886" at="63,242,64,123" concept="1" />
-      <node id="1465006755400969544" at="66,79,67,242" concept="4" />
-      <node id="1465006755400969544" at="67,242,68,123" concept="1" />
-      <node id="1465006755400366453" at="21,0,23,0" concept="7" trace="ourParamCache" />
-      <node id="1465006755400366453" at="23,0,25,0" concept="2" trace="myWithCommandRule" />
-      <node id="1465006755400366453" at="26,0,29,0" concept="0" trace="ActionMapImportNullConceptCompatibility_Test#()V" />
-      <node id="1465006755400366453" at="49,0,52,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="1465006755400919484" at="30,0,34,0" concept="3" trace="test_ErrorMessagesCheck1465006755400919484#()V" />
-      <node id="1465006755400969509" at="34,0,38,0" concept="3" trace="test_NodeIsNotApplicableToConceptCheck1465006755400969509#()V" />
-      <node id="1465006755400968886" at="38,0,42,0" concept="3" trace="test_ErrorMessagesCheck1465006755400968886#()V" />
-      <node id="1465006755400969544" at="42,0,46,0" concept="3" trace="test_ErrorMessagesCheck1465006755400969544#()V" />
-      <node id="1465006755400919484" at="54,0,58,0" concept="3" trace="test_ErrorMessagesCheck1465006755400919484#()V" />
-      <node id="1465006755400969509" at="58,0,62,0" concept="3" trace="test_NodeIsNotApplicableToConceptCheck1465006755400969509#()V" />
-      <node id="1465006755400968886" at="62,0,66,0" concept="3" trace="test_ErrorMessagesCheck1465006755400968886#()V" />
-      <node id="1465006755400969544" at="66,0,70,0" concept="3" trace="test_ErrorMessagesCheck1465006755400969544#()V" />
-      <scope id="1465006755400366453" at="26,57,27,25" />
-      <scope id="1465006755400919484" at="31,77,32,113" />
-      <scope id="1465006755400969509" at="35,92,36,128" />
-      <scope id="1465006755400968886" at="39,77,40,113" />
-      <scope id="1465006755400969544" at="43,77,44,113" />
-      <scope id="1465006755400366453" at="49,52,50,19" />
-      <scope id="1465006755400919484" at="54,79,56,123">
-        <var name="operation" id="1465006755400919484" />
-      </scope>
-      <scope id="1465006755400969509" at="58,94,60,123">
-        <var name="operation" id="1465006755400969509" />
-      </scope>
-      <scope id="1465006755400968886" at="62,79,64,123">
-        <var name="operation" id="1465006755400968886" />
-      </scope>
-      <scope id="1465006755400969544" at="66,79,68,123">
-        <var name="operation" id="1465006755400969544" />
-      </scope>
-      <scope id="1465006755400366453" at="26,0,29,0" />
-      <scope id="1465006755400366453" at="49,0,52,0">
+      <node id="1465006755400366453" at="29,57,30,25" concept="8" />
+      <node id="1465006755400919484" at="34,77,35,113" concept="1" />
+      <node id="1465006755400969509" at="38,90,39,126" concept="1" />
+      <node id="1465006755400968886" at="42,77,43,113" concept="1" />
+      <node id="1465006755400969544" at="46,77,47,113" concept="1" />
+      <node id="1465006755400366453" at="52,52,53,19" concept="8" />
+      <node id="1465006755400919484" at="57,79,58,65" concept="4" />
+      <node id="1465006755400919484" at="58,65,59,63" concept="4" />
+      <node id="1465006755400919484" at="59,63,60,163" concept="1" />
+      <node id="1465006755400969509" at="62,92,63,65" concept="4" />
+      <node id="1465006755400969509" at="63,65,64,63" concept="4" />
+      <node id="1465006755400969509" at="64,63,65,283" concept="1" />
+      <node id="1465006755400968886" at="67,79,68,65" concept="4" />
+      <node id="1465006755400968886" at="68,65,69,63" concept="4" />
+      <node id="1465006755400968886" at="69,63,70,163" concept="1" />
+      <node id="1465006755400969544" at="72,79,73,65" concept="4" />
+      <node id="1465006755400969544" at="73,65,74,63" concept="4" />
+      <node id="1465006755400969544" at="74,63,75,163" concept="1" />
+      <node id="1465006755400366453" at="24,0,26,0" concept="7" trace="ourParamCache" />
+      <node id="1465006755400366453" at="26,0,28,0" concept="2" trace="myWithCommandRule" />
+      <node id="1465006755400366453" at="29,0,32,0" concept="0" trace="ActionMapImportNullConceptCompatibility_Test#()V" />
+      <node id="1465006755400366453" at="52,0,55,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="1465006755400919484" at="33,0,37,0" concept="3" trace="test_ErrorMessagesCheck1465006755400919484#()V" />
+      <node id="1465006755400969509" at="37,0,41,0" concept="3" trace="test_NodeImportedActionMapIsNotCheck1465006755400969509#()V" />
+      <node id="1465006755400968886" at="41,0,45,0" concept="3" trace="test_ErrorMessagesCheck1465006755400968886#()V" />
+      <node id="1465006755400969544" at="45,0,49,0" concept="3" trace="test_ErrorMessagesCheck1465006755400969544#()V" />
+      <node id="1465006755400919484" at="57,0,62,0" concept="3" trace="test_ErrorMessagesCheck1465006755400919484#()V" />
+      <node id="1465006755400969509" at="62,0,67,0" concept="3" trace="test_NodeImportedActionMapIsNotCheck1465006755400969509#()V" />
+      <node id="1465006755400968886" at="67,0,72,0" concept="3" trace="test_ErrorMessagesCheck1465006755400968886#()V" />
+      <node id="1465006755400969544" at="72,0,77,0" concept="3" trace="test_ErrorMessagesCheck1465006755400969544#()V" />
+      <scope id="1465006755400366453" at="29,57,30,25" />
+      <scope id="1465006755400919484" at="34,77,35,113" />
+      <scope id="1465006755400969509" at="38,90,39,126" />
+      <scope id="1465006755400968886" at="42,77,43,113" />
+      <scope id="1465006755400969544" at="46,77,47,113" />
+      <scope id="1465006755400366453" at="52,52,53,19" />
+      <scope id="1465006755400366453" at="29,0,32,0" />
+      <scope id="1465006755400366453" at="52,0,55,0">
         <var name="owner" id="1465006755400366453" />
       </scope>
-      <scope id="1465006755400919484" at="30,0,34,0" />
-      <scope id="1465006755400969509" at="34,0,38,0" />
-      <scope id="1465006755400968886" at="38,0,42,0" />
-      <scope id="1465006755400969544" at="42,0,46,0" />
-      <scope id="1465006755400919484" at="54,0,58,0" />
-      <scope id="1465006755400969509" at="58,0,62,0" />
-      <scope id="1465006755400968886" at="62,0,66,0" />
-      <scope id="1465006755400969544" at="66,0,70,0" />
-      <unit id="1465006755400366453" at="47,0,72,0" name="jetbrains.mps.lang.editor.actions.test.ActionMapImportNullConceptCompatibility_Test$TestBody" />
-      <unit id="1465006755400366453" at="19,0,73,0" name="jetbrains.mps.lang.editor.actions.test.ActionMapImportNullConceptCompatibility_Test" />
+      <scope id="1465006755400919484" at="57,79,60,163">
+        <var name="nodeToCheck" id="1465006755400919484" />
+        <var name="operation" id="1465006755400919484" />
+      </scope>
+      <scope id="1465006755400969509" at="62,92,65,283">
+        <var name="nodeToCheck" id="1465006755400969509" />
+        <var name="operation" id="1465006755400969509" />
+      </scope>
+      <scope id="1465006755400968886" at="67,79,70,163">
+        <var name="nodeToCheck" id="1465006755400968886" />
+        <var name="operation" id="1465006755400968886" />
+      </scope>
+      <scope id="1465006755400969544" at="72,79,75,163">
+        <var name="nodeToCheck" id="1465006755400969544" />
+        <var name="operation" id="1465006755400969544" />
+      </scope>
+      <scope id="1465006755400919484" at="33,0,37,0" />
+      <scope id="1465006755400969509" at="37,0,41,0" />
+      <scope id="1465006755400968886" at="41,0,45,0" />
+      <scope id="1465006755400969544" at="45,0,49,0" />
+      <scope id="1465006755400919484" at="57,0,62,0" />
+      <scope id="1465006755400969509" at="62,0,67,0" />
+      <scope id="1465006755400968886" at="67,0,72,0" />
+      <scope id="1465006755400969544" at="72,0,77,0" />
+      <unit id="1465006755400366453" at="50,0,79,0" name="jetbrains.mps.lang.editor.actions.test.ActionMapImportNullConceptCompatibility_Test$TestBody" />
+      <unit id="1465006755400366453" at="22,0,80,0" name="jetbrains.mps.lang.editor.actions.test.ActionMapImportNullConceptCompatibility_Test" />
     </file>
   </root>
   <root nodeRef="r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)/1683214195544025561">
@@ -1326,30 +1336,32 @@
   <root nodeRef="r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)/2687536747038601375">
     <file name="ActionMapImportConceptCompatibility_Test.java">
       <node id="2687536747038601375" at="26,53,27,25" concept="8" />
-      <node id="2687536747038604396" at="31,92,32,124" concept="1" />
+      <node id="2687536747038604396" at="31,90,32,122" concept="1" />
       <node id="2687536747038601375" at="37,52,38,19" concept="8" />
-      <node id="2687536747038604396" at="42,94,43,242" concept="4" />
-      <node id="2687536747038604396" at="43,242,44,123" concept="1" />
+      <node id="2687536747038604396" at="42,92,43,65" concept="4" />
+      <node id="2687536747038604396" at="43,65,44,63" concept="4" />
+      <node id="2687536747038604396" at="44,63,45,283" concept="1" />
       <node id="2687536747038601375" at="21,0,23,0" concept="7" trace="ourParamCache" />
       <node id="2687536747038601375" at="23,0,25,0" concept="2" trace="myWithCommandRule" />
       <node id="2687536747038601375" at="26,0,29,0" concept="0" trace="ActionMapImportConceptCompatibility_Test#()V" />
       <node id="2687536747038601375" at="37,0,40,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="2687536747038604396" at="30,0,34,0" concept="3" trace="test_NodeIsNotApplicableToConceptCheck2687536747038604396#()V" />
-      <node id="2687536747038604396" at="42,0,46,0" concept="3" trace="test_NodeIsNotApplicableToConceptCheck2687536747038604396#()V" />
+      <node id="2687536747038604396" at="30,0,34,0" concept="3" trace="test_NodeImportedActionMapIsNotCheck2687536747038604396#()V" />
+      <node id="2687536747038604396" at="42,0,47,0" concept="3" trace="test_NodeImportedActionMapIsNotCheck2687536747038604396#()V" />
       <scope id="2687536747038601375" at="26,53,27,25" />
-      <scope id="2687536747038604396" at="31,92,32,124" />
+      <scope id="2687536747038604396" at="31,90,32,122" />
       <scope id="2687536747038601375" at="37,52,38,19" />
-      <scope id="2687536747038604396" at="42,94,44,123">
-        <var name="operation" id="2687536747038604396" />
-      </scope>
       <scope id="2687536747038601375" at="26,0,29,0" />
       <scope id="2687536747038601375" at="37,0,40,0">
         <var name="owner" id="2687536747038601375" />
       </scope>
+      <scope id="2687536747038604396" at="42,92,45,283">
+        <var name="nodeToCheck" id="2687536747038604396" />
+        <var name="operation" id="2687536747038604396" />
+      </scope>
       <scope id="2687536747038604396" at="30,0,34,0" />
-      <scope id="2687536747038604396" at="42,0,46,0" />
-      <unit id="2687536747038601375" at="35,0,48,0" name="jetbrains.mps.lang.editor.actions.test.ActionMapImportConceptCompatibility_Test$TestBody" />
-      <unit id="2687536747038601375" at="19,0,49,0" name="jetbrains.mps.lang.editor.actions.test.ActionMapImportConceptCompatibility_Test" />
+      <scope id="2687536747038604396" at="42,0,47,0" />
+      <unit id="2687536747038601375" at="35,0,49,0" name="jetbrains.mps.lang.editor.actions.test.ActionMapImportConceptCompatibility_Test$TestBody" />
+      <unit id="2687536747038601375" at="19,0,50,0" name="jetbrains.mps.lang.editor.actions.test.ActionMapImportConceptCompatibility_Test" />
     </file>
   </root>
   <root nodeRef="r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)/2742336743800897520">
@@ -2083,64 +2095,72 @@
   </root>
   <root nodeRef="r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)/4205244270189289160">
     <file name="ActionMapImportCycleDetection_Test.java">
-      <node id="4205244270189289160" at="26,47,27,25" concept="8" />
-      <node id="4205244270189351140" at="31,82,32,108" concept="1" />
-      <node id="4205244270189500694" at="35,82,36,108" concept="1" />
-      <node id="4205244270189549224" at="39,82,40,108" concept="1" />
-      <node id="6782712264220244949" at="43,77,44,103" concept="1" />
-      <node id="4205244270189289160" at="49,52,50,19" concept="8" />
-      <node id="4205244270189351140" at="54,84,55,242" concept="4" />
-      <node id="4205244270189351140" at="55,242,56,123" concept="1" />
-      <node id="4205244270189500694" at="58,84,59,242" concept="4" />
-      <node id="4205244270189500694" at="59,242,60,123" concept="1" />
-      <node id="4205244270189549224" at="62,84,63,242" concept="4" />
-      <node id="4205244270189549224" at="63,242,64,123" concept="1" />
-      <node id="6782712264220244949" at="66,79,67,242" concept="4" />
-      <node id="6782712264220244949" at="67,242,68,123" concept="1" />
-      <node id="4205244270189289160" at="21,0,23,0" concept="7" trace="ourParamCache" />
-      <node id="4205244270189289160" at="23,0,25,0" concept="2" trace="myWithCommandRule" />
-      <node id="4205244270189289160" at="26,0,29,0" concept="0" trace="ActionMapImportCycleDetection_Test#()V" />
-      <node id="4205244270189289160" at="49,0,52,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="4205244270189351140" at="30,0,34,0" concept="3" trace="test_NodeCycleInImportsCheck4205244270189351140#()V" />
-      <node id="4205244270189500694" at="34,0,38,0" concept="3" trace="test_NodeCycleInImportsCheck4205244270189500694#()V" />
-      <node id="4205244270189549224" at="38,0,42,0" concept="3" trace="test_NodeCycleInImportsCheck4205244270189549224#()V" />
-      <node id="6782712264220244949" at="42,0,46,0" concept="3" trace="test_ErrorMessagesCheck6782712264220244949#()V" />
-      <node id="4205244270189351140" at="54,0,58,0" concept="3" trace="test_NodeCycleInImportsCheck4205244270189351140#()V" />
-      <node id="4205244270189500694" at="58,0,62,0" concept="3" trace="test_NodeCycleInImportsCheck4205244270189500694#()V" />
-      <node id="4205244270189549224" at="62,0,66,0" concept="3" trace="test_NodeCycleInImportsCheck4205244270189549224#()V" />
-      <node id="6782712264220244949" at="66,0,70,0" concept="3" trace="test_ErrorMessagesCheck6782712264220244949#()V" />
-      <scope id="4205244270189289160" at="26,47,27,25" />
-      <scope id="4205244270189351140" at="31,82,32,108" />
-      <scope id="4205244270189500694" at="35,82,36,108" />
-      <scope id="4205244270189549224" at="39,82,40,108" />
-      <scope id="6782712264220244949" at="43,77,44,103" />
-      <scope id="4205244270189289160" at="49,52,50,19" />
-      <scope id="4205244270189351140" at="54,84,56,123">
-        <var name="operation" id="4205244270189351140" />
-      </scope>
-      <scope id="4205244270189500694" at="58,84,60,123">
-        <var name="operation" id="4205244270189500694" />
-      </scope>
-      <scope id="4205244270189549224" at="62,84,64,123">
-        <var name="operation" id="4205244270189549224" />
-      </scope>
-      <scope id="6782712264220244949" at="66,79,68,123">
-        <var name="operation" id="6782712264220244949" />
-      </scope>
-      <scope id="4205244270189289160" at="26,0,29,0" />
-      <scope id="4205244270189289160" at="49,0,52,0">
+      <node id="4205244270189289160" at="29,47,30,25" concept="8" />
+      <node id="4205244270189351140" at="34,82,35,108" concept="1" />
+      <node id="4205244270189500694" at="38,82,39,108" concept="1" />
+      <node id="4205244270189549224" at="42,82,43,108" concept="1" />
+      <node id="6782712264220244949" at="46,77,47,103" concept="1" />
+      <node id="4205244270189289160" at="52,52,53,19" concept="8" />
+      <node id="4205244270189351140" at="57,84,58,65" concept="4" />
+      <node id="4205244270189351140" at="58,65,59,63" concept="4" />
+      <node id="4205244270189351140" at="59,63,60,283" concept="1" />
+      <node id="4205244270189500694" at="62,84,63,65" concept="4" />
+      <node id="4205244270189500694" at="63,65,64,63" concept="4" />
+      <node id="4205244270189500694" at="64,63,65,283" concept="1" />
+      <node id="4205244270189549224" at="67,84,68,65" concept="4" />
+      <node id="4205244270189549224" at="68,65,69,63" concept="4" />
+      <node id="4205244270189549224" at="69,63,70,283" concept="1" />
+      <node id="6782712264220244949" at="72,79,73,65" concept="4" />
+      <node id="6782712264220244949" at="73,65,74,63" concept="4" />
+      <node id="6782712264220244949" at="74,63,75,163" concept="1" />
+      <node id="4205244270189289160" at="24,0,26,0" concept="7" trace="ourParamCache" />
+      <node id="4205244270189289160" at="26,0,28,0" concept="2" trace="myWithCommandRule" />
+      <node id="4205244270189289160" at="29,0,32,0" concept="0" trace="ActionMapImportCycleDetection_Test#()V" />
+      <node id="4205244270189289160" at="52,0,55,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="4205244270189351140" at="33,0,37,0" concept="3" trace="test_NodeCycleInImportsCheck4205244270189351140#()V" />
+      <node id="4205244270189500694" at="37,0,41,0" concept="3" trace="test_NodeCycleInImportsCheck4205244270189500694#()V" />
+      <node id="4205244270189549224" at="41,0,45,0" concept="3" trace="test_NodeCycleInImportsCheck4205244270189549224#()V" />
+      <node id="6782712264220244949" at="45,0,49,0" concept="3" trace="test_ErrorMessagesCheck6782712264220244949#()V" />
+      <node id="4205244270189351140" at="57,0,62,0" concept="3" trace="test_NodeCycleInImportsCheck4205244270189351140#()V" />
+      <node id="4205244270189500694" at="62,0,67,0" concept="3" trace="test_NodeCycleInImportsCheck4205244270189500694#()V" />
+      <node id="4205244270189549224" at="67,0,72,0" concept="3" trace="test_NodeCycleInImportsCheck4205244270189549224#()V" />
+      <node id="6782712264220244949" at="72,0,77,0" concept="3" trace="test_ErrorMessagesCheck6782712264220244949#()V" />
+      <scope id="4205244270189289160" at="29,47,30,25" />
+      <scope id="4205244270189351140" at="34,82,35,108" />
+      <scope id="4205244270189500694" at="38,82,39,108" />
+      <scope id="4205244270189549224" at="42,82,43,108" />
+      <scope id="6782712264220244949" at="46,77,47,103" />
+      <scope id="4205244270189289160" at="52,52,53,19" />
+      <scope id="4205244270189289160" at="29,0,32,0" />
+      <scope id="4205244270189289160" at="52,0,55,0">
         <var name="owner" id="4205244270189289160" />
       </scope>
-      <scope id="4205244270189351140" at="30,0,34,0" />
-      <scope id="4205244270189500694" at="34,0,38,0" />
-      <scope id="4205244270189549224" at="38,0,42,0" />
-      <scope id="6782712264220244949" at="42,0,46,0" />
-      <scope id="4205244270189351140" at="54,0,58,0" />
-      <scope id="4205244270189500694" at="58,0,62,0" />
-      <scope id="4205244270189549224" at="62,0,66,0" />
-      <scope id="6782712264220244949" at="66,0,70,0" />
-      <unit id="4205244270189289160" at="47,0,72,0" name="jetbrains.mps.lang.editor.actions.test.ActionMapImportCycleDetection_Test$TestBody" />
-      <unit id="4205244270189289160" at="19,0,73,0" name="jetbrains.mps.lang.editor.actions.test.ActionMapImportCycleDetection_Test" />
+      <scope id="4205244270189351140" at="57,84,60,283">
+        <var name="nodeToCheck" id="4205244270189351140" />
+        <var name="operation" id="4205244270189351140" />
+      </scope>
+      <scope id="4205244270189500694" at="62,84,65,283">
+        <var name="nodeToCheck" id="4205244270189500694" />
+        <var name="operation" id="4205244270189500694" />
+      </scope>
+      <scope id="4205244270189549224" at="67,84,70,283">
+        <var name="nodeToCheck" id="4205244270189549224" />
+        <var name="operation" id="4205244270189549224" />
+      </scope>
+      <scope id="6782712264220244949" at="72,79,75,163">
+        <var name="nodeToCheck" id="6782712264220244949" />
+        <var name="operation" id="6782712264220244949" />
+      </scope>
+      <scope id="4205244270189351140" at="33,0,37,0" />
+      <scope id="4205244270189500694" at="37,0,41,0" />
+      <scope id="4205244270189549224" at="41,0,45,0" />
+      <scope id="6782712264220244949" at="45,0,49,0" />
+      <scope id="4205244270189351140" at="57,0,62,0" />
+      <scope id="4205244270189500694" at="62,0,67,0" />
+      <scope id="4205244270189549224" at="67,0,72,0" />
+      <scope id="6782712264220244949" at="72,0,77,0" />
+      <unit id="4205244270189289160" at="50,0,79,0" name="jetbrains.mps.lang.editor.actions.test.ActionMapImportCycleDetection_Test$TestBody" />
+      <unit id="4205244270189289160" at="22,0,80,0" name="jetbrains.mps.lang.editor.actions.test.ActionMapImportCycleDetection_Test" />
     </file>
   </root>
   <root nodeRef="r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)/4205244270189791352">

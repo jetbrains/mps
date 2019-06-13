@@ -12,9 +12,12 @@ import org.junit.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.lang.test.behavior.INodesTestMethod__BehaviorDescriptor;
+import jetbrains.mps.lang.test.runtime.CheckErrorMessagesAction;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.ArrayList;
+import jetbrains.mps.lang.test.runtime.CheckExpectedMessageAction;
+import jetbrains.mps.errors.MessageStatus;
+import jetbrains.mps.smodel.SNodePointer;
 
 @MPSLaunch
 public class PackageProtectedMethod_Test extends BaseTransformationTest {
@@ -48,16 +51,19 @@ public class PackageProtectedMethod_Test extends BaseTransformationTest {
 
 
     public void test_ErrorMessagesCheck7938578788783497191() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("7938578788783497191"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("7938578788783497188"));
+      SNode nodeToCheck = getRealNodeById("7938578788783497188");
+      SNode operation = getRealNodeById("7938578788783497191");
+      new CheckErrorMessagesAction(nodeToCheck, false, false).includeSelf(false).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageAction>(), new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("7938578788783497193"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7938578788781949884"), myProject.getRepository()), new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("7938578788783497200"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7938578788781949884"), myProject.getRepository()))).run();
     }
     public void test_NodePackageProtectedMethodCheck7938578788783497198() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("7938578788783497198"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("7938578788783497193"));
+      SNode nodeToCheck = getRealNodeById("7938578788783497193");
+      SNode operation = getRealNodeById("7938578788783497198");
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("7938578788783497193"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7938578788781949884"), myProject.getRepository()).run();
     }
     public void test_NodePackageProtectedMethodCheck7938578788783497209() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("7938578788783497209"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("7938578788783497200"));
+      SNode nodeToCheck = getRealNodeById("7938578788783497200");
+      SNode operation = getRealNodeById("7938578788783497209");
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("7938578788783497200"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7938578788781949884"), myProject.getRepository()).run();
     }
 
   }

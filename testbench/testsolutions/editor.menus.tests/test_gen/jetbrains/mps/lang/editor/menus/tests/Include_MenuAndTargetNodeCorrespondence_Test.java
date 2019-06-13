@@ -20,7 +20,10 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import junit.framework.Assert;
 import jetbrains.mps.lang.test.matcher.NodesMatcher;
-import jetbrains.mps.lang.test.behavior.INodesTestMethod__BehaviorDescriptor;
+import jetbrains.mps.lang.test.runtime.CheckErrorMessagesAction;
+import jetbrains.mps.lang.test.runtime.CheckExpectedMessageAction;
+import jetbrains.mps.errors.MessageStatus;
+import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import jetbrains.mps.smodel.SReference;
@@ -66,12 +69,14 @@ public class Include_MenuAndTargetNodeCorrespondence_Test extends BaseTransforma
     }
 
     public void test_MatchingMenuForCurrentNode6903010549536714073() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("6903010549536714073"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("6903010549536713473"));
+      SNode nodeToCheck = getRealNodeById("6903010549536713473");
+      SNode operation = getRealNodeById("6903010549536714073");
+      new CheckErrorMessagesAction(nodeToCheck, false, false).includeSelf(true).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageAction>())).run();
     }
     public void test_NonMatchingMenuForCurrentNode6903010549536714075() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("6903010549536714075"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("6903010549536712731"));
+      SNode nodeToCheck = getRealNodeById("6903010549536712731");
+      SNode operation = getRealNodeById("6903010549536714075");
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("6903010549536712731"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "6903010549536798466"), myProject.getRepository()).run();
     }
 
     private static SNode createSNodeType_sxmjox_a0a0a0c0d9() {

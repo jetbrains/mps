@@ -12,9 +12,12 @@ import org.junit.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.test.runtime.CheckScopesAction;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.lang.test.behavior.INodesTestMethod__BehaviorDescriptor;
+import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import java.util.ArrayList;
+import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.smodel.SNodePointer;
 
 @MPSLaunch
 public class ConstraintsReferenceInheritence_Scopes_Test extends BaseTransformationTest {
@@ -52,20 +55,24 @@ public class ConstraintsReferenceInheritence_Scopes_Test extends BaseTransformat
 
 
     public void test_ScopeOf_TestRefConstraints_SubReference_HandlerSuperScoping_target_2614955748379945979() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("2614955748379945983"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("2614955748379945979"));
+      SNode nodeToCheck = getRealNodeById("2614955748379945979");
+      SNode operation = getRealNodeById("2614955748379945983");
+      new CheckScopesAction(nodeToCheck, MetaAdapterFactory.getReferenceLink(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a306605641c73L, 0x244a306605641d21L, "target"), CollectionSequence.fromCollectionAndArray(new ArrayList<SNodeReference>(), new SNodePointer("e577002a-34d0-4735-a1f7-9c04a8baf1cc/i:10001000(TestConstraints@transient54/TestConstraints.test@0)", "2614955748379861988"), new SNodePointer("e577002a-34d0-4735-a1f7-9c04a8baf1cc/i:10001000(TestConstraints@transient54/TestConstraints.test@0)", "2614955748379962563"))).check();
     }
     public void test_ScopeOf_TestRefConstraints_SubReference_ScopingSuperScoping_target_2614955748379963961() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("2614955748379963968"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("2614955748379963961"));
+      SNode nodeToCheck = getRealNodeById("2614955748379963961");
+      SNode operation = getRealNodeById("2614955748379963968");
+      new CheckScopesAction(nodeToCheck, MetaAdapterFactory.getReferenceLink(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a306605641c73L, 0x244a306605641d21L, "target"), CollectionSequence.fromCollectionAndArray(new ArrayList<SNodeReference>(), new SNodePointer("e577002a-34d0-4735-a1f7-9c04a8baf1cc/i:10001000(TestConstraints@transient54/TestConstraints.test@0)", "2614955748379962563"))).check();
     }
     public void test_ScopeOf_TestRefConstraints_SubReference_HandlerSuperHandler_target_2614955748380109408() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("2614955748380109681"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("2614955748380109408"));
+      SNode nodeToCheck = getRealNodeById("2614955748380109408");
+      SNode operation = getRealNodeById("2614955748380109681");
+      new CheckScopesAction(nodeToCheck, MetaAdapterFactory.getReferenceLink(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a30660588e212L, 0x244a30660588e2f1L, "target"), CollectionSequence.fromCollectionAndArray(new ArrayList<SNodeReference>(), new SNodePointer("e577002a-34d0-4735-a1f7-9c04a8baf1cc/i:10001000(TestConstraints@transient54/TestConstraints.test@0)", "2614955748379861990"), new SNodePointer("e577002a-34d0-4735-a1f7-9c04a8baf1cc/i:10001000(TestConstraints@transient54/TestConstraints.test@0)", "2614955748379861988"), new SNodePointer("e577002a-34d0-4735-a1f7-9c04a8baf1cc/i:10001000(TestConstraints@transient54/TestConstraints.test@0)", "2614955748379962563"))).check();
     }
     public void test_ScopeOf_TestRefConstraints_SubReference_ScopingSuperHandler_target_2614955748380109677() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("2614955748380109692"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("2614955748380109677"));
+      SNode nodeToCheck = getRealNodeById("2614955748380109677");
+      SNode operation = getRealNodeById("2614955748380109692");
+      new CheckScopesAction(nodeToCheck, MetaAdapterFactory.getReferenceLink(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a30660588e212L, 0x244a30660588e2f1L, "target"), CollectionSequence.fromCollectionAndArray(new ArrayList<SNodeReference>(), new SNodePointer("e577002a-34d0-4735-a1f7-9c04a8baf1cc/i:10001000(TestConstraints@transient54/TestConstraints.test@0)", "2614955748379861988"), new SNodePointer("e577002a-34d0-4735-a1f7-9c04a8baf1cc/i:10001000(TestConstraints@transient54/TestConstraints.test@0)", "2614955748379962563"))).check();
     }
 
   }

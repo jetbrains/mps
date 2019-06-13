@@ -12,9 +12,9 @@ import org.junit.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.lang.test.behavior.INodesTestMethod__BehaviorDescriptor;
+import jetbrains.mps.lang.test.runtime.CheckExpectedMessageAction;
+import jetbrains.mps.errors.MessageStatus;
+import jetbrains.mps.smodel.SNodePointer;
 
 @MPSLaunch
 public class ActionMapImportConceptCompatibility_Test extends BaseTransformationTest {
@@ -28,8 +28,8 @@ public class ActionMapImportConceptCompatibility_Test extends BaseTransformation
   }
 
   @Test
-  public void test_NodeIsNotApplicableToConceptCheck2687536747038604396() throws Throwable {
-    new ActionMapImportConceptCompatibility_Test.TestBody(this).test_NodeIsNotApplicableToConceptCheck2687536747038604396();
+  public void test_NodeImportedActionMapIsNotCheck2687536747038604396() throws Throwable {
+    new ActionMapImportConceptCompatibility_Test.TestBody(this).test_NodeImportedActionMapIsNotCheck2687536747038604396();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {
@@ -39,9 +39,10 @@ public class ActionMapImportConceptCompatibility_Test extends BaseTransformation
     }
 
 
-    public void test_NodeIsNotApplicableToConceptCheck2687536747038604396() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("2687536747038604396"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("2687536747038601417"));
+    public void test_NodeImportedActionMapIsNotCheck2687536747038604396() throws Exception {
+      SNode nodeToCheck = getRealNodeById("2687536747038601417");
+      SNode operation = getRealNodeById("2687536747038604396");
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("2687536747038601417"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "2687536747039599561"), myProject.getRepository()).run();
     }
 
   }

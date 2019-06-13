@@ -12,9 +12,12 @@ import org.junit.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.lang.test.behavior.INodesTestMethod__BehaviorDescriptor;
+import jetbrains.mps.lang.test.runtime.CheckExpectedMessageAction;
+import jetbrains.mps.errors.MessageStatus;
+import jetbrains.mps.smodel.SNodePointer;
+import jetbrains.mps.lang.test.runtime.CheckErrorMessagesAction;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.ArrayList;
 
 @MPSLaunch
 public class ActionMapImportCycleDetection_Test extends BaseTransformationTest {
@@ -52,20 +55,24 @@ public class ActionMapImportCycleDetection_Test extends BaseTransformationTest {
 
 
     public void test_NodeCycleInImportsCheck4205244270189351140() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("4205244270189351140"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("4205244270189351135"));
+      SNode nodeToCheck = getRealNodeById("4205244270189351135");
+      SNode operation = getRealNodeById("4205244270189351140");
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("4205244270189351135"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "6782712264211226823"), myProject.getRepository()).run();
     }
     public void test_NodeCycleInImportsCheck4205244270189500694() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("4205244270189500694"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("4205244270189351612"));
+      SNode nodeToCheck = getRealNodeById("4205244270189351612");
+      SNode operation = getRealNodeById("4205244270189500694");
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("4205244270189351612"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "6782712264211226823"), myProject.getRepository()).run();
     }
     public void test_NodeCycleInImportsCheck4205244270189549224() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("4205244270189549224"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("4205244270189549221"));
+      SNode nodeToCheck = getRealNodeById("4205244270189549221");
+      SNode operation = getRealNodeById("4205244270189549224");
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("4205244270189549221"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "6782712264211226823"), myProject.getRepository()).run();
     }
     public void test_ErrorMessagesCheck6782712264220244949() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("6782712264220244949"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("6782712264208964689"));
+      SNode nodeToCheck = getRealNodeById("6782712264208964689");
+      SNode operation = getRealNodeById("6782712264220244949");
+      new CheckErrorMessagesAction(nodeToCheck, false, false).includeSelf(false).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageAction>())).run();
     }
 
   }

@@ -17,7 +17,8 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.baseLanguage.closures.helper.ClosureLiteralTarget;
 import jetbrains.mps.baseLanguage.closures.behavior.FunctionType__BehaviorDescriptor;
-import jetbrains.mps.lang.test.behavior.INodesTestMethod__BehaviorDescriptor;
+import jetbrains.mps.lang.test.runtime.CheckExpectedMessageAction;
+import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.baseLanguage.closures.helper.Values;
 import junit.framework.Assert;
 import jetbrains.mps.lang.pattern.util.MatchingUtil;
@@ -62,8 +63,9 @@ public class ClosureLiteraltargetFunType_Test extends BaseTransformationTest {
     }
 
     public void test_NodeErrorCheck3981396688773519576() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("3981396688773519576"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("6374750171056867612"));
+      SNode nodeToCheck = getRealNodeById("6374750171056867612");
+      SNode operation = getRealNodeById("3981396688773519576");
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("6374750171056867612"), MessageStatus.ERROR, null, myProject.getRepository()).run();
     }
 
     public TemplateQueryContext getContext() {

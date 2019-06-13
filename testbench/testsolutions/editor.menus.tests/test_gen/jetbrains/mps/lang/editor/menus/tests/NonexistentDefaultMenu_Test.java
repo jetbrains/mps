@@ -12,9 +12,9 @@ import org.junit.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.lang.test.behavior.INodesTestMethod__BehaviorDescriptor;
+import jetbrains.mps.lang.test.runtime.CheckExpectedMessageAction;
+import jetbrains.mps.errors.MessageStatus;
+import jetbrains.mps.smodel.SNodePointer;
 
 @MPSLaunch
 public class NonexistentDefaultMenu_Test extends BaseTransformationTest {
@@ -28,8 +28,8 @@ public class NonexistentDefaultMenu_Test extends BaseTransformationTest {
   }
 
   @Test
-  public void test_NodeIsNotDefinedImplicitDefaultCheck2153278993334499810() throws Throwable {
-    new NonexistentDefaultMenu_Test.TestBody(this).test_NodeIsNotDefinedImplicitDefaultCheck2153278993334499810();
+  public void test_NodeDefaultTransformationCheck2153278993334499810() throws Throwable {
+    new NonexistentDefaultMenu_Test.TestBody(this).test_NodeDefaultTransformationCheck2153278993334499810();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {
@@ -39,9 +39,10 @@ public class NonexistentDefaultMenu_Test extends BaseTransformationTest {
     }
 
 
-    public void test_NodeIsNotDefinedImplicitDefaultCheck2153278993334499810() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("2153278993334499810"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("2153278993334090534"));
+    public void test_NodeDefaultTransformationCheck2153278993334499810() throws Exception {
+      SNode nodeToCheck = getRealNodeById("2153278993334090534");
+      SNode operation = getRealNodeById("2153278993334499810");
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("2153278993334090534"), MessageStatus.OK, new SNodePointer("r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "2823239769520680200"), myProject.getRepository()).run();
     }
 
   }

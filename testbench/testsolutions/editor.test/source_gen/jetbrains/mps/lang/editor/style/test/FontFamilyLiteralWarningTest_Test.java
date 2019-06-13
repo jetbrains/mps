@@ -12,9 +12,8 @@ import org.junit.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.lang.test.behavior.INodesTestMethod__BehaviorDescriptor;
+import jetbrains.mps.lang.test.runtime.CheckExpectedMessageAction;
+import jetbrains.mps.errors.MessageStatus;
 
 @MPSLaunch
 public class FontFamilyLiteralWarningTest_Test extends BaseTransformationTest {
@@ -40,8 +39,9 @@ public class FontFamilyLiteralWarningTest_Test extends BaseTransformationTest {
 
 
     public void test_NodeWarningCheck1715298588355941914() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("1715298588355941914"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("1715298588355941887"));
+      SNode nodeToCheck = getRealNodeById("1715298588355941887");
+      SNode operation = getRealNodeById("1715298588355941914");
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("1715298588355941887"), MessageStatus.WARNING, null, myProject.getRepository()).run();
     }
 
   }
