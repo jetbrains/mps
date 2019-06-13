@@ -106,12 +106,12 @@ public class TestsErrorsChecker {
     Set<NodeReportItem> res = SetSequence.fromSetWithValues(new HashSet<NodeReportItem>(), SetSequence.fromSet(result).where(new IWhereFilter<NodeReportItem>() {
       public boolean accept(NodeReportItem it) {
         SNodeReference node = NodeReportItem.FLAVOUR_NODE.tryToGet(it);
-        return node == null || !(ErrorReportUtil.shouldReportError(it, repository, new Condition<SNode>() {
+        return node == null || ErrorReportUtil.shouldReportError(it, repository, new Condition<SNode>() {
           @Override
           public boolean met(SNode suppressor) {
             return SNodeOperations.isInstanceOf(suppressor, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, "jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation"));
           }
-        }));
+        });
       }
     }));
     ourModelErrorsHolder.set(res);
