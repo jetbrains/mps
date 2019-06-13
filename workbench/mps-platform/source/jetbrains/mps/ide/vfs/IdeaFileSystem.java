@@ -39,7 +39,8 @@ import org.jetbrains.annotations.Nullable;
 public final class IdeaFileSystem extends BaseIdeaFileSystem implements SafeWriteRequestor, FileSystem, IFileSystem, CachingFileSystem {
   private FileSystem myOldFileSystem;
 
-  public IdeaFileSystem(MPSCoreComponents mpsCore, FileSystemListenersContainer listenerContainer, JarIdeaFileSystem fs1, LocalIdeaFileSystem fs2) {
+  //all FSes should be registered before this one starts working
+  public IdeaFileSystem(MPSCoreComponents mpsCore, FileSystemListenersContainer listenerContainer, JarIdeaFileSystem fs1, LocalIdeaFileSystem fs2, JrtIdeaFileSystem fs3) {
     super(mpsCore, listenerContainer);
   }
 
