@@ -17,10 +17,12 @@ package jetbrains.mps.smodel.constraints;
 
 import jetbrains.mps.kernel.model.SModelUtil;
 import jetbrains.mps.logging.Logger;
+import jetbrains.mps.project.GlobalOperationContext;
 import jetbrains.mps.scope.ErrorScope;
 import jetbrains.mps.scope.FilteringByConceptScope;
 import jetbrains.mps.scope.ModelPlusImportedScope;
 import jetbrains.mps.scope.Scope;
+import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
 import jetbrains.mps.smodel.language.ConceptRegistryUtil;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsDescriptor;
@@ -37,8 +39,6 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SReference;
 import org.jetbrains.mps.openapi.module.SModule;
-
-import static jetbrains.mps.smodel.constraints.ModelConstraintsUtils.getOperationContext;
 
 /**
  * Abstraction to capture constraints-related stuff about references.
@@ -220,8 +220,17 @@ public abstract class ReferenceDescriptor {
     }
 
     private SModule getModule() {
-      return ModelConstraintsUtils.getModule(getModel());
+      SModel model = getModel();
+      if (model == null) {
+        return null;
+      }
+      return model.getModule();
     }
   }
 
+  @NotNull
+  private static IOperationContext getOperationContext(@Nullable SModule module) {
+    // TODO: remove usages of this method as much as can!
+    return module != null ? new ConstraintsOperationContext(module) : new GlobalOperationContext();
+  }
 }
