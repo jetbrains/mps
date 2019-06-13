@@ -13,6 +13,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_AbstractNodeErrorCheckOperation;
   private ConceptPresentation props_AbstractNodeRuleCheckOperation;
   private ConceptPresentation props_AbstractNodeWarningCheckOperation;
+  private ConceptPresentation props_AbstractTestNodeAnnotation;
   private ConceptPresentation props_ActionReference;
   private ConceptPresentation props_AfterTestsMethod;
   private ConceptPresentation props_AnonymousCellAnnotation;
@@ -29,7 +30,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_EditorTestCase;
   private ConceptPresentation props_ExpressionContainer;
   private ConceptPresentation props_ICheckForExpectedRule;
-  private ConceptPresentation props_INodeAnnotation;
   private ConceptPresentation props_INodesTestMethod;
   private ConceptPresentation props_IReferenceAttachable;
   private ConceptPresentation props_IRuleReference;
@@ -118,6 +118,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_AbstractNodeWarningCheckOperation = cpb.create();
         }
         return props_AbstractNodeWarningCheckOperation;
+      case LanguageConceptSwitch.AbstractTestNodeAnnotation:
+        if (props_AbstractTestNodeAnnotation == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("AbstractTestNodeAnnotation");
+          props_AbstractTestNodeAnnotation = cpb.create();
+        }
+        return props_AbstractTestNodeAnnotation;
       case LanguageConceptSwitch.ActionReference:
         if (props_ActionReference == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -213,7 +220,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_EditorTestCase == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a2a0a71b0cd);
+          cpb.icon(IconContainer.RESOURCE_a0a2a0a81b0cd);
           props_EditorTestCase = cpb.create();
         }
         return props_EditorTestCase;
@@ -231,13 +238,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_ICheckForExpectedRule = cpb.create();
         }
         return props_ICheckForExpectedRule;
-      case LanguageConceptSwitch.INodeAnnotation:
-        if (props_INodeAnnotation == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.rawPresentation("INodeAnnotation");
-          props_INodeAnnotation = cpb.create();
-        }
-        return props_INodeAnnotation;
       case LanguageConceptSwitch.INodesTestMethod:
         if (props_INodesTestMethod == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

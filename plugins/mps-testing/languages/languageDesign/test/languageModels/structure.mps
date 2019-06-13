@@ -87,7 +87,7 @@
   <node concept="1TIwiD" id="hBxLA2s">
     <property role="TrG5h" value="TestNodeAnnotation" />
     <property role="EcuMT" value="1210673684636" />
-    <ref role="1TJDcQ" node="hSdkHD7" resolve="INodeAnnotation" />
+    <ref role="1TJDcQ" node="hSdkHD7" resolve="AbstractTestNodeAnnotation" />
     <node concept="PrWs8" id="hBxLCIf" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
@@ -240,7 +240,7 @@
     <property role="TrG5h" value="NodeOperationsContainer" />
     <property role="3GE5qa" value="nodeOperation" />
     <property role="EcuMT" value="1215603922101" />
-    <ref role="1TJDcQ" to="tpck:2ULFgo8_XDk" resolve="NodeAttribute" />
+    <ref role="1TJDcQ" node="hSdkHD7" resolve="AbstractTestNodeAnnotation" />
     <node concept="1TJgyj" id="hG7EUTW" role="1TKVEi">
       <property role="20lmBu" value="aggregation" />
       <property role="20kJfa" value="nodeOperations" />
@@ -499,7 +499,7 @@
     </node>
   </node>
   <node concept="1TIwiD" id="hSdkHD7">
-    <property role="TrG5h" value="INodeAnnotation" />
+    <property role="TrG5h" value="AbstractTestNodeAnnotation" />
     <property role="EcuMT" value="1228584180295" />
     <ref role="1TJDcQ" to="tpck:2ULFgo8_XDk" resolve="NodeAttribute" />
     <node concept="M6xJ_" id="6_gUeuqOeSC" role="lGtFl">
@@ -610,7 +610,7 @@
     <property role="TrG5h" value="AnonymousCellAnnotation" />
     <property role="3GE5qa" value="editor" />
     <property role="EcuMT" value="1229194968594" />
-    <ref role="1TJDcQ" node="hSdkHD7" resolve="INodeAnnotation" />
+    <ref role="1TJDcQ" node="hSdkHD7" resolve="AbstractTestNodeAnnotation" />
     <node concept="1TJgyj" id="1FgNkkI7TFc" role="1TKVEi">
       <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="nodeRangeSelectionStart" />
@@ -670,7 +670,7 @@
     <property role="TrG5h" value="MockAnnotation" />
     <property role="3GE5qa" value="mock" />
     <property role="EcuMT" value="1230224281548" />
-    <ref role="1TJDcQ" to="tpck:2ULFgo8_XDk" resolve="NodeAttribute" />
+    <ref role="1TJDcQ" node="hSdkHD7" resolve="AbstractTestNodeAnnotation" />
     <node concept="M6xJ_" id="6_gUeuqOeTH" role="lGtFl">
       <property role="Hh88m" value="mockAnnotation" />
       <node concept="trNpa" id="166$sc$ZIB5" role="EQaZv">
@@ -815,7 +815,7 @@
     <property role="TrG5h" value="ScopesTest" />
     <property role="3GE5qa" value="scopes" />
     <property role="EcuMT" value="511191073233700873" />
-    <ref role="1TJDcQ" to="tpck:2ULFgo8_XDk" resolve="NodeAttribute" />
+    <ref role="1TJDcQ" node="hSdkHD7" resolve="AbstractTestNodeAnnotation" />
     <node concept="1TJgyj" id="4IvydoGulmm" role="1TKVEi">
       <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="checkingReference" />

@@ -1021,7 +1021,7 @@
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590380(jetbrains.mps.lang.test.behavior)/1262430001741717278">
-    <file name="INodeAnnotation__BehaviorDescriptor.java">
+    <file name="AbstractTestNodeAnnotation__BehaviorDescriptor.java">
       <node id="1262430001741717278" at="18,0,19,0" concept="11" trace="CONCEPT" />
       <node id="1262430001741717278" at="21,0,22,0" concept="11" trace="BH_METHODS" />
       <node id="1262430001741717278" at="31,114,32,21" concept="3" />
@@ -1034,7 +1034,7 @@
       <node id="1262430001741717278" at="61,48,62,22" concept="9" />
       <node id="1262430001741717278" at="67,40,68,19" concept="9" />
       <node id="1262430001741717278" at="23,0,25,0" concept="12" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="1262430001741717278" at="27,0,29,0" concept="2" trace="INodeAnnotation__BehaviorDescriptor#()V" />
+      <node id="1262430001741717278" at="27,0,29,0" concept="2" trace="AbstractTestNodeAnnotation__BehaviorDescriptor#()V" />
       <node id="1262430001741717278" at="37,49,40,5" concept="6" />
       <node id="1262430001741717278" at="49,49,52,5" concept="6" />
       <node id="1262430001741717278" at="30,0,34,0" concept="7" trace="initNode#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/core/aspects/behaviour/api/SConstructor;[Ljava/lang/Object;)V" />
@@ -1045,7 +1045,7 @@
       <node id="1262430001741717278" at="35,0,46,0" concept="7" trace="invokeSpecial0#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/core/aspects/behaviour/api/SMethod;[Ljava/lang/Object;)null" />
       <node id="1262430001741717278" at="47,0,58,0" concept="7" trace="invokeSpecial0#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Ljetbrains/mps/core/aspects/behaviour/api/SMethod;[Ljava/lang/Object;)null" />
       <scope id="1262430001741717278" at="23,63,23,63" />
-      <scope id="1262430001741717278" at="27,53,27,53" />
+      <scope id="1262430001741717278" at="27,64,27,64" />
       <scope id="1262430001741717278" at="31,114,32,21" />
       <scope id="1262430001741717278" at="38,26,39,56" />
       <scope id="1262430001741717278" at="42,14,43,58" />
@@ -1080,7 +1080,7 @@
         <var name="method" id="1262430001741717278" />
         <var name="parameters" id="1262430001741717278" />
       </scope>
-      <unit id="1262430001741717278" at="17,0,71,0" name="jetbrains.mps.lang.test.behavior.INodeAnnotation__BehaviorDescriptor" />
+      <unit id="1262430001741717278" at="17,0,71,0" name="jetbrains.mps.lang.test.behavior.AbstractTestNodeAnnotation__BehaviorDescriptor" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590380(jetbrains.mps.lang.test.behavior)/1262430001741718862">

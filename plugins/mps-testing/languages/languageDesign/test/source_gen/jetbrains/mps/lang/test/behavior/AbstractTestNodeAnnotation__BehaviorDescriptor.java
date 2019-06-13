@@ -14,8 +14,8 @@ import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
-public final class INodeAnnotation__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e0d52da47L, "jetbrains.mps.lang.test.structure.INodeAnnotation");
+public final class AbstractTestNodeAnnotation__BehaviorDescriptor extends BaseBHDescriptor {
+  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e0d52da47L, "jetbrains.mps.lang.test.structure.AbstractTestNodeAnnotation");
 
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList();
@@ -24,7 +24,7 @@ public final class INodeAnnotation__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
 
-  /*package*/ INodeAnnotation__BehaviorDescriptor() {
+  /*package*/ AbstractTestNodeAnnotation__BehaviorDescriptor() {
   }
 
   @Override

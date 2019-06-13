@@ -2913,7 +2913,7 @@
     </node>
   </node>
   <node concept="13h7C7" id="1653mnvB5Wu">
-    <ref role="13h7C2" to="tp5g:hSdkHD7" resolve="INodeAnnotation" />
+    <ref role="13h7C2" to="tp5g:hSdkHD7" resolve="AbstractTestNodeAnnotation" />
     <node concept="13hLZK" id="1653mnvB5Wv" role="13h7CW">
       <node concept="3clFbS" id="1653mnvB5Ww" role="2VODD2" />
     </node>
