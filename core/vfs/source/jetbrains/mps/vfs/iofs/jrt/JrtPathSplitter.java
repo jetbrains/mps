@@ -31,7 +31,7 @@ public class JrtPathSplitter {
     int jdkEndIndex = path.indexOf(separator);
     assert jdkEndIndex > 0 : "JRT path should be like JDK_HOME!/[path], was: " + path;
     myJdkPath = path.substring(0, jdkEndIndex);
-    String moduleAndPath = path.substring(jdkEndIndex + separator.length() + 1);
+    String moduleAndPath = path.substring(jdkEndIndex + separator.length());
     if (moduleAndPath.isEmpty()) {
       //root JRT FS path
       return;
@@ -45,7 +45,7 @@ public class JrtPathSplitter {
     }
 
     myModule = moduleAndPath.substring(0, moduleEndIndex);
-    String pathInModule = moduleAndPath.substring(moduleEndIndex + IFileSystem.SEPARATOR.length() + 1);
+    String pathInModule = moduleAndPath.substring(moduleEndIndex + IFileSystem.SEPARATOR.length());
     assert !pathInModule.endsWith(IFileSystem.SEPARATOR) : "The only JRT path allowed to end with \"/\" is the root path: " + path;
     if (pathInModule.isEmpty()) {
       return;
