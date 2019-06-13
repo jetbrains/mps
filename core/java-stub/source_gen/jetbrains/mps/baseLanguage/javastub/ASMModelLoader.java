@@ -7,16 +7,15 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import jetbrains.mps.project.AbstractModule;
 import java.util.Collection;
+import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.extapi.model.SModelData;
-import jetbrains.mps.vfs.IFile;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.java.stub.StubReferenceFactory;
 import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 
@@ -25,11 +24,11 @@ public final class ASMModelLoader {
   private static final Logger LOG = LogManager.getLogger(ASMModelLoader.class);
 
   private final AbstractModule myModule;
-  private final Collection<String> myPaths;
+  private final Collection<IFile> myPaths;
   private boolean mySkipPrivate;
   private boolean myOnlyPublic;
 
-  public ASMModelLoader(@NotNull AbstractModule module, Collection<String> paths) {
+  public ASMModelLoader(@NotNull AbstractModule module, Collection<IFile> paths) {
     myModule = module;
     myPaths = paths;
   }
@@ -74,11 +73,7 @@ public final class ASMModelLoader {
   }
 
   public Iterable<IFile> getTopClassFiles() {
-    return CollectionSequence.fromCollection(myPaths).select(new ISelector<String, IFile>() {
-      public IFile select(String it) {
-        return myModule.getFileSystem().getFile(it);
-      }
-    }).where(new IWhereFilter<IFile>() {
+    return CollectionSequence.fromCollection(myPaths).where(new IWhereFilter<IFile>() {
       public boolean accept(IFile it) {
         return it != null;
       }
