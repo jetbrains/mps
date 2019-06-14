@@ -1783,7 +1783,7 @@
       <unit id="2565896126719599486" at="45,0,220,0" name="jetbrains.mps.ide.devkit.actions.Generator_TabDescriptor" />
     </file>
     <file name="Mpsdevkit_ProjectPlugin.java">
-      <node id="2565896126719599486" at="23,48,24,46" concept="5" />
+      <node id="2565896126719599486" at="24,48,25,46" concept="5" />
     </file>
   </root>
   <root nodeRef="r:90fa2771-55a5-4174-b12a-f5413c5a876c(jetbrains.mps.ide.devkit.actions)/2565896126719631163">
@@ -1874,7 +1874,7 @@
       <unit id="2565896126719631163" at="28,0,79,0" name="jetbrains.mps.ide.devkit.actions.Editor_TabDescriptor" />
     </file>
     <file name="Mpsdevkit_ProjectPlugin.java">
-      <node id="2565896126719631163" at="21,46,22,43" concept="5" />
+      <node id="2565896126719631163" at="22,46,23,43" concept="5" />
     </file>
   </root>
   <root nodeRef="r:90fa2771-55a5-4174-b12a-f5413c5a876c(jetbrains.mps.ide.devkit.actions)/2565896126719631517">
@@ -2067,7 +2067,7 @@
       <unit id="2565896126719634090" at="27,0,77,0" name="jetbrains.mps.ide.devkit.actions.Data_Flow_TabDescriptor" />
     </file>
     <file name="Mpsdevkit_ProjectPlugin.java">
-      <node id="2565896126719634090" at="20,48,21,46" concept="5" />
+      <node id="2565896126719634090" at="21,49,22,46" concept="5" />
     </file>
   </root>
   <root nodeRef="r:90fa2771-55a5-4174-b12a-f5413c5a876c(jetbrains.mps.ide.devkit.actions)/2565896126719635409">
@@ -2155,7 +2155,7 @@
       <unit id="2565896126719635409" at="27,0,76,0" name="jetbrains.mps.ide.devkit.actions.Find_Usages_TabDescriptor" />
     </file>
     <file name="Mpsdevkit_ProjectPlugin.java">
-      <node id="2565896126719635409" at="22,43,23,48" concept="5" />
+      <node id="2565896126719635409" at="23,43,24,48" concept="5" />
     </file>
   </root>
   <root nodeRef="r:90fa2771-55a5-4174-b12a-f5413c5a876c(jetbrains.mps.ide.devkit.actions)/2565896126719641327">
@@ -2243,7 +2243,7 @@
       <unit id="2565896126719641327" at="27,0,76,0" name="jetbrains.mps.ide.devkit.actions.Intentions_TabDescriptor" />
     </file>
     <file name="Mpsdevkit_ProjectPlugin.java">
-      <node id="2565896126719641327" at="24,46,25,47" concept="5" />
+      <node id="2565896126719641327" at="25,46,26,47" concept="5" />
     </file>
   </root>
   <root nodeRef="r:90fa2771-55a5-4174-b12a-f5413c5a876c(jetbrains.mps.ide.devkit.actions)/2662234144540708008">
@@ -3424,6 +3424,106 @@
       <unit id="5292943341474723864" at="18,0,70,0" name="jetbrains.mps.ide.devkit.actions.ShowEditorMenuItemTrace_Action" />
     </file>
   </root>
+  <root nodeRef="r:90fa2771-55a5-4174-b12a-f5413c5a876c(jetbrains.mps.ide.devkit.actions)/5473446470512741671">
+    <file name="Constraints2_Order.java">
+      <node id="5473446470512741727" at="9,31,10,93" concept="16" />
+      <node id="5473446470512741727" at="9,0,12,0" concept="3" trace="Constraints2_Order#()V" />
+      <scope id="5473446470512741727" at="9,31,10,93" />
+      <scope id="5473446470512741727" at="9,0,12,0" />
+      <unit id="5473446470512741727" at="8,0,13,0" name="jetbrains.mps.ide.devkit.actions.Constraints2_Order" />
+    </file>
+    <file name="Constraints2_TabDescriptor.java">
+      <node id="5473446470512741671" at="24,0,25,0" concept="14" trace="ICON" />
+      <node id="5473446470512741671" at="28,28,29,26" concept="11" />
+      <node id="5473446470512741671" at="31,55,32,62" concept="11" />
+      <node id="5473446470512741674" at="36,40,37,53" concept="11" />
+      <node id="5473446470512741679" at="39,43,40,204" concept="11" />
+      <node id="5473446470512741671" at="43,25,44,16" concept="11" />
+      <node id="5473446470512741671" at="46,43,47,69" concept="10" />
+      <node id="5473446470512741671" at="47,69,48,28" concept="10" />
+      <node id="5473446470512741671" at="49,20,50,18" concept="11" />
+      <node id="5473446470512741671" at="51,5,52,46" concept="5" />
+      <node id="5473446470512741671" at="52,46,53,16" concept="11" />
+      <node id="5473446470512741671" at="55,29,56,16" concept="11" />
+      <node id="5473446470512741688" at="58,36,59,64" concept="10" />
+      <node id="5473446470512741699" at="60,42,61,18" concept="11" />
+      <node id="5473446470512741706" at="62,5,63,0" concept="13" />
+      <node id="5473446470512741707" at="63,0,64,77" concept="10" />
+      <node id="5473446470512741714" at="65,30,66,18" concept="11" />
+      <node id="5473446470512741719" at="67,5,68,0" concept="13" />
+      <node id="5473446470512741720" at="68,0,69,480" concept="11" />
+      <node id="5473446470512741734" at="71,65,72,228" concept="11" />
+      <node id="5473446470512863517" at="74,71,75,12" concept="12" />
+      <node id="5473446470512864112" at="75,12,76,16" concept="11" />
+      <node id="5473446470512741671" at="26,0,28,0" concept="3" trace="Constraints2_TabDescriptor#()V" />
+      <node id="5473446470512741671" at="34,0,36,0" concept="9" trace="startListening#()V" />
+      <node id="5473446470512741671" at="28,0,31,0" concept="9" trace="getTitle#()Ljava/lang/String;" />
+      <node id="5473446470512741671" at="31,0,34,0" concept="9" trace="compareTo#(Ljetbrains/mps/plugins/relations/RelationDescriptor;)I" />
+      <node id="5473446470512741671" at="36,0,39,0" concept="9" trace="getBaseNode#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="5473446470512741671" at="39,0,42,0" concept="9" trace="isApplicable#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="5473446470512741671" at="48,28,51,5" concept="8" />
+      <node id="5473446470512741671" at="55,0,58,0" concept="9" trace="isSingle#()Z" />
+      <node id="5473446470512741697" at="59,64,62,5" concept="8" />
+      <node id="5473446470512741712" at="64,77,67,5" concept="8" />
+      <node id="5473446470512741671" at="71,0,74,0" concept="9" trace="getAspectConcepts#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Iterable;" />
+      <node id="5473446470512741671" at="42,0,46,0" concept="9" trace="getIcon#()Ljavax/swing/Icon;" />
+      <node id="5473446470512741671" at="74,0,78,0" concept="9" trace="createAspect#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SConcept;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="5473446470512741671" at="46,0,55,0" concept="9" trace="getNodes#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/util/List;" />
+      <node id="5473446470512741671" at="58,0,71,0" concept="9" trace="getNode#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <scope id="5473446470512741671" at="26,39,26,39" />
+      <scope id="5473446470512741685" at="34,32,34,32" />
+      <scope id="5473446470512741671" at="28,28,29,26" />
+      <scope id="5473446470512741671" at="31,55,32,62" />
+      <scope id="5473446470512741671" at="36,40,37,53" />
+      <scope id="5473446470512741671" at="39,43,40,204" />
+      <scope id="5473446470512741671" at="43,25,44,16" />
+      <scope id="5473446470512741671" at="49,20,50,18" />
+      <scope id="5473446470512741671" at="55,29,56,16" />
+      <scope id="5473446470512741698" at="60,42,61,18" />
+      <scope id="5473446470512741713" at="65,30,66,18" />
+      <scope id="5473446470512741733" at="71,65,72,228" />
+      <scope id="5473446470512741671" at="26,0,28,0" />
+      <scope id="5473446470512741671" at="34,0,36,0" />
+      <scope id="5473446470512741740" at="74,71,76,16" />
+      <scope id="5473446470512741671" at="28,0,31,0" />
+      <scope id="5473446470512741671" at="31,0,34,0">
+        <var name="descriptor" id="5473446470512741671" />
+      </scope>
+      <scope id="5473446470512741671" at="36,0,39,0">
+        <var name="node" id="5473446470512741671" />
+      </scope>
+      <scope id="5473446470512741671" at="39,0,42,0">
+        <var name="node" id="5473446470512741671" />
+      </scope>
+      <scope id="5473446470512741671" at="55,0,58,0" />
+      <scope id="5473446470512741671" at="71,0,74,0">
+        <var name="node" id="5473446470512741671" />
+      </scope>
+      <scope id="5473446470512741671" at="42,0,46,0" />
+      <scope id="5473446470512741671" at="74,0,78,0">
+        <var name="concept" id="5473446470512741671" />
+        <var name="node" id="5473446470512741671" />
+      </scope>
+      <scope id="5473446470512741671" at="46,43,53,16">
+        <var name="list" id="5473446470512741671" />
+        <var name="n" id="5473446470512741671" />
+      </scope>
+      <scope id="5473446470512741671" at="46,0,55,0">
+        <var name="node" id="5473446470512741671" />
+      </scope>
+      <scope id="5473446470512741671" at="58,36,69,480">
+        <var name="aspectModel" id="5473446470512741708" />
+        <var name="module" id="5473446470512741689" />
+      </scope>
+      <scope id="5473446470512741671" at="58,0,71,0">
+        <var name="node" id="5473446470512741671" />
+      </scope>
+      <unit id="5473446470512741671" at="23,0,79,0" name="jetbrains.mps.ide.devkit.actions.Constraints2_TabDescriptor" />
+    </file>
+    <file name="Mpsdevkit_ProjectPlugin.java">
+      <node id="5473446470512741671" at="20,48,21,49" concept="5" />
+    </file>
+  </root>
   <root nodeRef="r:90fa2771-55a5-4174-b12a-f5413c5a876c(jetbrains.mps.ide.devkit.actions)/5883033498657755836">
     <file name="Mpsdevkit_ApplicationPlugin.java">
       <node id="5883033498657755836" at="86,58,87,56" concept="5" />
@@ -3936,27 +4036,27 @@
     </file>
     <file name="Mpsdevkit_ProjectPlugin.java">
       <node id="7162597690968047817" at="16,70,17,54" concept="10" />
-      <node id="7162597690968047817" at="29,47,30,18" concept="11" />
-      <node id="7162597690968047817" at="32,56,33,76" concept="10" />
-      <node id="7162597690968047817" at="35,73,36,17" concept="11" />
+      <node id="7162597690968047817" at="30,47,31,18" concept="11" />
+      <node id="7162597690968047817" at="33,56,34,76" concept="10" />
+      <node id="7162597690968047817" at="36,73,37,17" concept="11" />
       <node id="7162597690968047817" at="14,0,16,0" concept="3" trace="Mpsdevkit_ProjectPlugin#()V" />
-      <node id="7162597690968047817" at="32,0,38,0" concept="9" trace="initAllTools1#(Lcom/intellij/openapi/project/Project;)Ljava/util/List;" />
-      <node id="7162597690968047817" at="16,0,32,0" concept="9" trace="initTabbedEditors#(Lcom/intellij/openapi/project/Project;)Ljava/util/List;" />
+      <node id="7162597690968047817" at="33,0,39,0" concept="9" trace="initAllTools1#(Lcom/intellij/openapi/project/Project;)Ljava/util/List;" />
+      <node id="7162597690968047817" at="16,0,33,0" concept="9" trace="initTabbedEditors#(Lcom/intellij/openapi/project/Project;)Ljava/util/List;" />
       <scope id="7162597690968047817" at="14,36,14,36" />
       <scope id="7162597690968047817" at="14,0,16,0" />
-      <scope id="7162597690968047817" at="32,56,36,17">
+      <scope id="7162597690968047817" at="33,56,37,17">
         <var name="tools" id="7162597690968047817" />
       </scope>
-      <scope id="7162597690968047817" at="32,0,38,0">
+      <scope id="7162597690968047817" at="33,0,39,0">
         <var name="project" id="7162597690968047817" />
       </scope>
-      <scope id="7162597690968047817" at="16,70,30,18">
+      <scope id="7162597690968047817" at="16,70,31,18">
         <var name="result" id="7162597690968047817" />
       </scope>
-      <scope id="7162597690968047817" at="16,0,32,0">
+      <scope id="7162597690968047817" at="16,0,33,0">
         <var name="project" id="7162597690968047817" />
       </scope>
-      <unit id="7162597690968047817" at="13,0,39,0" name="jetbrains.mps.ide.devkit.actions.Mpsdevkit_ProjectPlugin" />
+      <unit id="7162597690968047817" at="13,0,40,0" name="jetbrains.mps.ide.devkit.actions.Mpsdevkit_ProjectPlugin" />
     </file>
   </root>
   <root nodeRef="r:90fa2771-55a5-4174-b12a-f5413c5a876c(jetbrains.mps.ide.devkit.actions)/7219111183925476988">
@@ -4178,7 +4278,7 @@
   </root>
   <root nodeRef="r:90fa2771-55a5-4174-b12a-f5413c5a876c(jetbrains.mps.ide.devkit.actions)/8513716958726547050">
     <file name="Mpsdevkit_ProjectPlugin.java">
-      <node id="8513716958726547050" at="34,76,35,73" concept="5" />
+      <node id="8513716958726547050" at="35,76,36,73" concept="5" />
     </file>
     <file name="TraceTool_Tool.java">
       <node id="8513716958726547050" at="27,0,28,0" concept="14" trace="ICON" />
@@ -4397,7 +4497,7 @@
   </root>
   <root nodeRef="r:90fa2771-55a5-4174-b12a-f5413c5a876c(jetbrains.mps.ide.devkit.actions)/8878628697752593564">
     <file name="Mpsdevkit_ProjectPlugin.java">
-      <node id="8878628697752593564" at="33,76,34,76" concept="5" />
+      <node id="8878628697752593564" at="34,76,35,76" concept="5" />
     </file>
     <file name="NodeExplorer_Tool.java">
       <node id="8878628697752593564" at="15,0,16,0" concept="14" trace="ICON" />
@@ -4648,7 +4748,7 @@
   </root>
   <root nodeRef="r:90fa2771-55a5-4174-b12a-f5413c5a876c(jetbrains.mps.ide.devkit.actions)/9040118078822013541">
     <file name="Mpsdevkit_ProjectPlugin.java">
-      <node id="9040118078822013541" at="25,47,26,49" concept="5" />
+      <node id="9040118078822013541" at="26,47,27,49" concept="5" />
     </file>
     <file name="Refactorings_Order.java">
       <node id="9040118078822013563" at="9,31,10,130" concept="16" />
@@ -4736,7 +4836,7 @@
   </root>
   <root nodeRef="r:90fa2771-55a5-4174-b12a-f5413c5a876c(jetbrains.mps.ide.devkit.actions)/9040118078822014208">
     <file name="Mpsdevkit_ProjectPlugin.java">
-      <node id="9040118078822014208" at="27,46,28,44" concept="5" />
+      <node id="9040118078822014208" at="28,46,29,44" concept="5" />
     </file>
     <file name="Textgen_Order.java">
       <node id="9040118078822014241" at="9,26,10,196" concept="16" />
@@ -4835,7 +4935,7 @@
   </root>
   <root nodeRef="r:90fa2771-55a5-4174-b12a-f5413c5a876c(jetbrains.mps.ide.devkit.actions)/9040118078822014309">
     <file name="Mpsdevkit_ProjectPlugin.java">
-      <node id="9040118078822014309" at="28,44,29,47" concept="5" />
+      <node id="9040118078822014309" at="29,44,30,47" concept="5" />
     </file>
     <file name="Typesystem_Order.java">
       <node id="9040118078822014431" at="9,29,10,103" concept="16" />
@@ -5060,7 +5160,7 @@
   </root>
   <root nodeRef="r:90fa2771-55a5-4174-b12a-f5413c5a876c(jetbrains.mps.ide.devkit.actions)/9040118078822290721">
     <file name="Mpsdevkit_ProjectPlugin.java">
-      <node id="9040118078822290721" at="26,49,27,46" concept="5" />
+      <node id="9040118078822290721" at="27,49,28,46" concept="5" />
     </file>
     <file name="Structure_TabDescriptor.java">
       <node id="9040118078822290721" at="17,0,18,0" concept="14" trace="ICON" />

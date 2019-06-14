@@ -18,6 +18,7 @@ public class Mpsdevkit_ProjectPlugin extends BaseProjectPlugin {
     result.add(new Actions_TabDescriptor());
     result.add(new Behavior_TabDescriptor());
     result.add(new Constraints_TabDescriptor());
+    result.add(new Constraints2_TabDescriptor());
     result.add(new Data_Flow_TabDescriptor());
     result.add(new Editor_TabDescriptor());
     result.add(new Find_Usages_TabDescriptor());
