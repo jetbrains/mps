@@ -52,17 +52,17 @@ public class FreshStaticFieldWithAbstractInitializerHasNoErrorOnType_Test extend
     public void test_NodeErrorCheck4928571864874057148() throws Exception {
       SNode nodeToCheck = getRealNodeById("4928571864874038116");
       SNode operation = getRealNodeById("4928571864874057148");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("4928571864874038116"), MessageStatus.ERROR, null, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("4928571864874038116"), MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_NodeErrorCheck4928571864874096707() throws Exception {
       SNode nodeToCheck = getRealNodeById("4928571864874095985");
       SNode operation = getRealNodeById("4928571864874096707");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("4928571864874095985"), MessageStatus.ERROR, null, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("4928571864874095985"), MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_ErrorMessagesCheck4928571864874057128() throws Exception {
       SNode nodeToCheck = getRealNodeById("4928571864873988132");
       SNode operation = getRealNodeById("4928571864874057128");
-      new CheckErrorMessagesAction(nodeToCheck, false, false).includeSelf(false).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageAction>(), new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("4928571864874038116"), MessageStatus.ERROR, null, myProject.getRepository()), new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("4928571864874095985"), MessageStatus.ERROR, null, myProject.getRepository()))).run();
+      new CheckErrorMessagesAction(nodeToCheck, false, false).includeSelf(false).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageAction>(), new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("4928571864874038116"), MessageStatus.ERROR, myProject.getRepository()), new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("4928571864874095985"), MessageStatus.ERROR, myProject.getRepository()))).run();
     }
 
   }

@@ -56,22 +56,22 @@ public class CaseInsensitiveDuplicatedClassifierName_Test extends BaseTransforma
     public void test_NodeErrorCheck1005490780657563849() throws Exception {
       SNode nodeToCheck = getRealNodeById("1005490780655188848");
       SNode operation = getRealNodeById("1005490780657563849");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("1005490780655188848"), MessageStatus.ERROR, null, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("1005490780655188848"), MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_NodeErrorCheck1005490780657563829() throws Exception {
       SNode nodeToCheck = getRealNodeById("1005490780655189011");
       SNode operation = getRealNodeById("1005490780657563829");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("1005490780655189011"), MessageStatus.ERROR, null, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("1005490780655189011"), MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_NodeWarningCheck1005490780657563809() throws Exception {
       SNode nodeToCheck = getRealNodeById("1005490780655189178");
       SNode operation = getRealNodeById("1005490780657563809");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("1005490780655189178"), MessageStatus.WARNING, null, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("1005490780655189178"), MessageStatus.WARNING, myProject.getRepository()).run();
     }
     public void test_ErrorMessagesCheck1005490780655151764() throws Exception {
       SNode nodeToCheck = getRealNodeById("1005490780655151743");
       SNode operation = getRealNodeById("1005490780655151764");
-      new CheckErrorMessagesAction(nodeToCheck, false, false).includeSelf(false).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageAction>(), new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("1005490780655188848"), MessageStatus.ERROR, null, myProject.getRepository()), new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("1005490780655189011"), MessageStatus.ERROR, null, myProject.getRepository()), new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("1005490780655189178"), MessageStatus.WARNING, null, myProject.getRepository()))).run();
+      new CheckErrorMessagesAction(nodeToCheck, false, false).includeSelf(false).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageAction>(), new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("1005490780655188848"), MessageStatus.ERROR, myProject.getRepository()), new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("1005490780655189011"), MessageStatus.ERROR, myProject.getRepository()), new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("1005490780655189178"), MessageStatus.WARNING, myProject.getRepository()))).run();
     }
 
   }

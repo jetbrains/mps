@@ -53,7 +53,7 @@ public class ExtendingNullableAnalyzer_Test extends BaseTransformationTest {
     public void test_NodeWarningCheck7078910619968857445() throws Exception {
       SNode nodeToCheck = getRealNodeById("1417601170173158514");
       SNode operation = getRealNodeById("7078910619968857445");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("1417601170173158514"), MessageStatus.WARNING, null, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("1417601170173158514"), MessageStatus.WARNING, myProject.getRepository()).run();
     }
 
   }

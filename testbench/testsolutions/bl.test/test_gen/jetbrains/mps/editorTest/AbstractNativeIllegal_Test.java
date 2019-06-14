@@ -48,12 +48,12 @@ public class AbstractNativeIllegal_Test extends BaseTransformationTest {
     public void test_NodeErrorCheck8347245235047186104() throws Exception {
       SNode nodeToCheck = getRealNodeById("8347245235044889176");
       SNode operation = getRealNodeById("8347245235047186104");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("8347245235044889176"), MessageStatus.ERROR, null, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("8347245235044889176"), MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_ErrorMessagesCheck8347245235044889233() throws Exception {
       SNode nodeToCheck = getRealNodeById("8347245235044888387");
       SNode operation = getRealNodeById("8347245235044889233");
-      new CheckErrorMessagesAction(nodeToCheck, false, false).includeSelf(false).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageAction>(), new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("8347245235044889176"), MessageStatus.ERROR, null, myProject.getRepository()))).run();
+      new CheckErrorMessagesAction(nodeToCheck, false, false).includeSelf(false).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageAction>(), new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("8347245235044889176"), MessageStatus.ERROR, myProject.getRepository()))).run();
     }
 
   }

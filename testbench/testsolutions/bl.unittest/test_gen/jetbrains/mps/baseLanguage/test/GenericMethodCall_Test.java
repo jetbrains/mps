@@ -57,12 +57,12 @@ public class GenericMethodCall_Test extends BaseTransformationTest {
     public void test_NodeErrorCheck7254243749547462195() throws Exception {
       SNode nodeToCheck = getRealNodeById("7254243749547456075");
       SNode operation = getRealNodeById("7254243749547462195");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("7254243749547456075"), MessageStatus.ERROR, null, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("7254243749547456075"), MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_ErrorMessagesCheck7254243749546905207() throws Exception {
       SNode nodeToCheck = getRealNodeById("7254243749546905176");
       SNode operation = getRealNodeById("7254243749546905207");
-      new CheckErrorMessagesAction(nodeToCheck, false, false).includeSelf(false).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageAction>(), new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("7254243749547456075"), MessageStatus.ERROR, null, myProject.getRepository()))).run();
+      new CheckErrorMessagesAction(nodeToCheck, false, false).includeSelf(false).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageAction>(), new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("7254243749547456075"), MessageStatus.ERROR, myProject.getRepository()))).run();
     }
 
   }

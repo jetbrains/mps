@@ -134,7 +134,7 @@ public class TypeInference_Test extends BaseTransformationTest {
     public void test_NodeErrorCheck8345119003641462720() throws Exception {
       SNode nodeToCheck = getRealNodeById("3951985765451224523");
       SNode operation = getRealNodeById("8345119003641462720");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("3951985765451224523"), MessageStatus.ERROR, null, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("3951985765451224523"), MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_NodeTypeSystemCheck6923385624928271119() throws Exception {
       SNode nodeToCheck = getRealNodeById("3951985765451231416");
@@ -149,7 +149,7 @@ public class TypeInference_Test extends BaseTransformationTest {
     public void test_NodeErrorCheck8345119003641471587() throws Exception {
       SNode nodeToCheck = getRealNodeById("3951985765451221432");
       SNode operation = getRealNodeById("8345119003641471587");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("3951985765451221432"), MessageStatus.ERROR, null, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("3951985765451221432"), MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_NodeTypeSystemCheck6923385624927940163() throws Exception {
       SNode nodeToCheck = getRealNodeById("3951985765451231556");
@@ -159,7 +159,7 @@ public class TypeInference_Test extends BaseTransformationTest {
     public void test_NodeErrorCheck8345119003641471608() throws Exception {
       SNode nodeToCheck = getRealNodeById("3951985765451231294");
       SNode operation = getRealNodeById("8345119003641471608");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("3951985765451231294"), MessageStatus.ERROR, null, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("3951985765451231294"), MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_NodeTypeSystemCheck6923385624928215092() throws Exception {
       SNode nodeToCheck = getRealNodeById("3951985765451231138");
@@ -169,7 +169,7 @@ public class TypeInference_Test extends BaseTransformationTest {
     public void test_NodeErrorCheck8345119003641471627() throws Exception {
       SNode nodeToCheck = getRealNodeById("3951985765451231401");
       SNode operation = getRealNodeById("8345119003641471627");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("3951985765451231401"), MessageStatus.ERROR, null, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("3951985765451231401"), MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_NodeTypeSystemCheck6923385624927005600() throws Exception {
       SNode nodeToCheck = getRealNodeById("3951985765451228495");
@@ -179,7 +179,7 @@ public class TypeInference_Test extends BaseTransformationTest {
     public void test_NodeErrorCheck8345119003641471646() throws Exception {
       SNode nodeToCheck = getRealNodeById("3951985765451228539");
       SNode operation = getRealNodeById("8345119003641471646");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("3951985765451228539"), MessageStatus.ERROR, null, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("3951985765451228539"), MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_NodeTypeSystemCheck6923385624928978334() throws Exception {
       SNode nodeToCheck = getRealNodeById("3951985765451230055");
@@ -189,7 +189,7 @@ public class TypeInference_Test extends BaseTransformationTest {
     public void test_NodeErrorCheck8345119003641471667() throws Exception {
       SNode nodeToCheck = getRealNodeById("3951985765451228980");
       SNode operation = getRealNodeById("8345119003641471667");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("3951985765451228980"), MessageStatus.ERROR, null, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("3951985765451228980"), MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_NodeTypeSystemCheck6923385624929302543() throws Exception {
       SNode nodeToCheck = getRealNodeById("3951985765451228506");
@@ -214,12 +214,12 @@ public class TypeInference_Test extends BaseTransformationTest {
     public void test_NodeErrorCheck8345119003641471688() throws Exception {
       SNode nodeToCheck = getRealNodeById("3951985765451230917");
       SNode operation = getRealNodeById("8345119003641471688");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("3951985765451230917"), MessageStatus.ERROR, null, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("3951985765451230917"), MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_ErrorMessagesCheck488298296050687637() throws Exception {
       SNode nodeToCheck = getRealNodeById("488298296050356721");
       SNode operation = getRealNodeById("488298296050687637");
-      new CheckErrorMessagesAction(nodeToCheck, false, false).includeSelf(false).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageAction>(), new CheckExpectedMessageAction.CheckExpectedTypesystemMessageAction(getRealNodeById("3951985765451228506"), MessageStatus.ERROR, myProject.getRepository()), new CheckExpectedMessageAction.CheckExpectedTypesystemMessageAction(getRealNodeById("3951985765451228240"), MessageStatus.ERROR, myProject.getRepository()), new CheckExpectedMessageAction.CheckExpectedTypesystemMessageAction(getRealNodeById("3951985765451228066"), MessageStatus.ERROR, myProject.getRepository()), new CheckExpectedMessageAction.CheckExpectedTypesystemMessageAction(getRealNodeById("3951985765451222927"), MessageStatus.ERROR, myProject.getRepository()), new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("3951985765451230917"), MessageStatus.ERROR, null, myProject.getRepository()))).run();
+      new CheckErrorMessagesAction(nodeToCheck, false, false).includeSelf(false).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageAction>(), new CheckExpectedMessageAction.CheckExpectedTypesystemMessageAction(getRealNodeById("3951985765451228506"), MessageStatus.ERROR, myProject.getRepository()), new CheckExpectedMessageAction.CheckExpectedTypesystemMessageAction(getRealNodeById("3951985765451228240"), MessageStatus.ERROR, myProject.getRepository()), new CheckExpectedMessageAction.CheckExpectedTypesystemMessageAction(getRealNodeById("3951985765451228066"), MessageStatus.ERROR, myProject.getRepository()), new CheckExpectedMessageAction.CheckExpectedTypesystemMessageAction(getRealNodeById("3951985765451222927"), MessageStatus.ERROR, myProject.getRepository()), new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("3951985765451230917"), MessageStatus.ERROR, myProject.getRepository()))).run();
     }
     public void test_ErrorMessagesCheck7261441936922433825() throws Exception {
       SNode nodeToCheck = getRealNodeById("5089784887111887929");

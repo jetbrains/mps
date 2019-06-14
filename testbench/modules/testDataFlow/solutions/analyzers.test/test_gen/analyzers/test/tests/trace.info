@@ -18,7 +18,7 @@
       <node id="7974543756120908670" at="50,63,51,163" concept="1" />
       <node id="7078910619968857445" at="53,77,54,65" concept="4" />
       <node id="7078910619968857445" at="54,65,55,63" concept="4" />
-      <node id="7078910619968857445" at="55,63,56,170" concept="1" />
+      <node id="7078910619968857445" at="55,63,56,155" concept="1" />
       <node id="1417601170173072184" at="23,0,25,0" concept="5" trace="ourParamCache" />
       <node id="1417601170173072184" at="25,0,27,0" concept="2" trace="myWithCommandRule" />
       <node id="1417601170173072184" at="28,0,31,0" concept="0" trace="ExtendingNullableAnalyzer_Test#()V" />
@@ -39,7 +39,7 @@
         <var name="nodeToCheck" id="7974543756120908670" />
         <var name="operation" id="7974543756120908670" />
       </scope>
-      <scope id="7078910619968857445" at="53,77,56,170">
+      <scope id="7078910619968857445" at="53,77,56,155">
         <var name="nodeToCheck" id="7078910619968857445" />
         <var name="operation" id="7078910619968857445" />
       </scope>
@@ -122,7 +122,7 @@
       <node id="2955426575106132885" at="50,63,51,163" concept="1" />
       <node id="2955426575106132965" at="53,75,54,65" concept="4" />
       <node id="2955426575106132965" at="54,65,55,63" concept="4" />
-      <node id="2955426575106132965" at="55,63,56,168" concept="1" />
+      <node id="2955426575106132965" at="55,63,56,153" concept="1" />
       <node id="2955426575106132803" at="23,0,25,0" concept="5" trace="ourParamCache" />
       <node id="2955426575106132803" at="25,0,27,0" concept="2" trace="myWithCommandRule" />
       <node id="2955426575106132803" at="28,0,31,0" concept="0" trace="TestAnalyzerWithModeSpecified_Test#()V" />
@@ -143,7 +143,7 @@
         <var name="nodeToCheck" id="2955426575106132885" />
         <var name="operation" id="2955426575106132885" />
       </scope>
-      <scope id="2955426575106132965" at="53,75,56,168">
+      <scope id="2955426575106132965" at="53,75,56,153">
         <var name="nodeToCheck" id="2955426575106132965" />
         <var name="operation" id="2955426575106132965" />
       </scope>
@@ -210,10 +210,10 @@
       <node id="8332528989793466699" at="47,52,48,19" concept="6" />
       <node id="8332528989793491523" at="52,75,53,65" concept="4" />
       <node id="8332528989793491523" at="53,65,54,63" concept="4" />
-      <node id="8332528989793491523" at="54,63,55,168" concept="1" />
+      <node id="8332528989793491523" at="54,63,55,153" concept="1" />
       <node id="8332528989793494654" at="57,75,58,65" concept="4" />
       <node id="8332528989793494654" at="58,65,59,63" concept="4" />
-      <node id="8332528989793494654" at="59,63,60,168" concept="1" />
+      <node id="8332528989793494654" at="59,63,60,153" concept="1" />
       <node id="8332528989793494697" at="62,79,63,65" concept="4" />
       <node id="8332528989793494697" at="63,65,64,63" concept="4" />
       <node id="8332528989793494697" at="64,63,65,163" concept="1" />
@@ -236,11 +236,11 @@
       <scope id="8332528989793466699" at="47,0,50,0">
         <var name="owner" id="8332528989793466699" />
       </scope>
-      <scope id="8332528989793491523" at="52,75,55,168">
+      <scope id="8332528989793491523" at="52,75,55,153">
         <var name="nodeToCheck" id="8332528989793491523" />
         <var name="operation" id="8332528989793491523" />
       </scope>
-      <scope id="8332528989793494654" at="57,75,60,168">
+      <scope id="8332528989793494654" at="57,75,60,153">
         <var name="nodeToCheck" id="8332528989793494654" />
         <var name="operation" id="8332528989793494654" />
       </scope>

@@ -53,7 +53,7 @@ public class TestAnalyzerWithModeSpecified_Test extends BaseTransformationTest {
     public void test_NodeErrorCheck2955426575106132965() throws Exception {
       SNode nodeToCheck = getRealNodeById("2955426575106132815");
       SNode operation = getRealNodeById("2955426575106132965");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("2955426575106132815"), MessageStatus.ERROR, null, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("2955426575106132815"), MessageStatus.ERROR, myProject.getRepository()).run();
     }
 
   }

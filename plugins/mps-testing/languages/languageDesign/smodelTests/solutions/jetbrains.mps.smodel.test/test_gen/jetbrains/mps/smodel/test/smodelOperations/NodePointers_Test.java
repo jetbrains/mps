@@ -253,21 +253,25 @@ public class NodePointers_Test extends BaseTransformationTest {
     public void test_NodeTypeCheck535833678907605667() throws Exception {
       SNode nodeToCheck = getRealNodeById("535833678907605665");
       SNode operation = getRealNodeById("535833678907605667");
+      addNodeById("535833678907605668");
       new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("535833678907605668"));
     }
     public void test_NodeTypeCheck535833678907609256() throws Exception {
       SNode nodeToCheck = getRealNodeById("535833678907609254");
       SNode operation = getRealNodeById("535833678907609256");
+      addNodeById("535833678907609257");
       new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("535833678907609257"));
     }
     public void test_NodeTypeCheck535833678905705670() throws Exception {
       SNode nodeToCheck = getRealNodeById("535833678905632710");
       SNode operation = getRealNodeById("535833678905705670");
+      addNodeById("535833678905631712");
       new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("535833678905631712"));
     }
     public void test_NodeTypeCheck535833678905709959() throws Exception {
       SNode nodeToCheck = getRealNodeById("535833678905706769");
       SNode operation = getRealNodeById("535833678905709959");
+      addNodeById("535833678905709966");
       new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("535833678905709966"));
     }
     public void test_NodeTargetNodeNotFoundInRepositoryCheck535833678906728045() throws Exception {
@@ -303,16 +307,19 @@ public class NodePointers_Test extends BaseTransformationTest {
     public void test_NodeTypeCheck535833678905910987() throws Exception {
       SNode nodeToCheck = getRealNodeById("535833678905903293");
       SNode operation = getRealNodeById("535833678905910987");
+      addNodeById("535833678905911008");
       new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("535833678905911008"));
     }
     public void test_NodeTypeCheck535833678905916302() throws Exception {
       SNode nodeToCheck = getRealNodeById("535833678905912149");
       SNode operation = getRealNodeById("535833678905916302");
+      addNodeById("535833678905916324");
       new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("535833678905916324"));
     }
     public void test_NodeTypeCheck535833678905993796() throws Exception {
       SNode nodeToCheck = getRealNodeById("535833678905981337");
       SNode operation = getRealNodeById("535833678905993796");
+      addNodeById("535833678905993844");
       new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("535833678905993844"));
     }
     public void test_NodeTypeSystemCheck535833678905987697() throws Exception {
@@ -323,6 +330,7 @@ public class NodePointers_Test extends BaseTransformationTest {
     public void test_NodeTypeCheck535833678906005800() throws Exception {
       SNode nodeToCheck = getRealNodeById("535833678906001974");
       SNode operation = getRealNodeById("535833678906005800");
+      addNodeById("535833678906005948");
       new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("535833678906005948"));
     }
     public void test_NodeTypeSystemCheck535833678906363602() throws Exception {
@@ -333,11 +341,13 @@ public class NodePointers_Test extends BaseTransformationTest {
     public void test_NodeTypeCheck6012981979751350087() throws Exception {
       SNode nodeToCheck = getRealNodeById("6012981979751334876");
       SNode operation = getRealNodeById("6012981979751350087");
+      addNodeById("6012981979751350468");
       new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("6012981979751350468"));
     }
     public void test_NodeTypeCheck6012981979751302141() throws Exception {
       SNode nodeToCheck = getRealNodeById("6012981979751298239");
       SNode operation = getRealNodeById("6012981979751302141");
+      addNodeById("6012981979751302150");
       new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("6012981979751302150"));
     }
     public void test_ErrorMessagesCheck535833678905969550() throws Exception {

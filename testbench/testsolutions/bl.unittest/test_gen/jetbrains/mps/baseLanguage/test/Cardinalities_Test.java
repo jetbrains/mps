@@ -49,17 +49,17 @@ public class Cardinalities_Test extends BaseTransformationTest {
     public void test_NodeErrorCheck1875480895988114782() throws Exception {
       SNode nodeToCheck = getRealNodeById("1875480895988095647");
       SNode operation = getRealNodeById("1875480895988114782");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("1875480895988095647"), MessageStatus.ERROR, null, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("1875480895988095647"), MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_NodeErrorCheck1875480895987852095() throws Exception {
       SNode nodeToCheck = getRealNodeById("1875480895987852074");
       SNode operation = getRealNodeById("1875480895987852095");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("1875480895987852074"), MessageStatus.ERROR, null, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("1875480895987852074"), MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_NodeErrorCheck1875480895987615991() throws Exception {
       SNode nodeToCheck = getRealNodeById("1875480895987615784");
       SNode operation = getRealNodeById("1875480895987615991");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("1875480895987615784"), MessageStatus.ERROR, null, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("1875480895987615784"), MessageStatus.ERROR, myProject.getRepository()).run();
     }
 
   }

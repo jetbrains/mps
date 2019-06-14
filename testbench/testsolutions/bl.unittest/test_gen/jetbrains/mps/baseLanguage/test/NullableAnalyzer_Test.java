@@ -708,17 +708,17 @@ public class NullableAnalyzer_Test extends BaseTransformationTest {
     public void test_NodeWarningCheck3759707308809084829() throws Exception {
       SNode nodeToCheck = getRealNodeById("881045087146382172");
       SNode operation = getRealNodeById("3759707308809084829");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("881045087146382172"), MessageStatus.WARNING, null, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("881045087146382172"), MessageStatus.WARNING, myProject.getRepository()).run();
     }
     public void test_NodeWarningCheck3759707308809084275() throws Exception {
       SNode nodeToCheck = getRealNodeById("2263844335513501437");
       SNode operation = getRealNodeById("3759707308809084275");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("2263844335513501437"), MessageStatus.WARNING, null, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("2263844335513501437"), MessageStatus.WARNING, myProject.getRepository()).run();
     }
     public void test_testAnnotationParam6011730950863071781() throws Exception {
       SNode nodeToCheck = getRealNodeById("6011730950863071727");
       SNode operation = getRealNodeById("6011730950863071781");
-      new CheckErrorMessagesAction(nodeToCheck, false, false).includeSelf(false).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageAction>(), new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("3951985765451221100"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3451033204592343684"), myProject.getRepository()), new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("881045087146382172"), MessageStatus.WARNING, null, myProject.getRepository()), new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("2263844335513501437"), MessageStatus.WARNING, null, myProject.getRepository()))).run();
+      new CheckErrorMessagesAction(nodeToCheck, false, false).includeSelf(false).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageAction>(), new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("3951985765451221100"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3451033204592343684"), myProject.getRepository()), new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("881045087146382172"), MessageStatus.WARNING, myProject.getRepository()), new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("2263844335513501437"), MessageStatus.WARNING, myProject.getRepository()))).run();
     }
     public void test_NodeOperationCanProduceNPECheck6923385624929410127() throws Exception {
       SNode nodeToCheck = getRealNodeById("3951985765451221192");
@@ -1138,12 +1138,12 @@ public class NullableAnalyzer_Test extends BaseTransformationTest {
     public void test_NodeWarningCheck1415485672491981590() throws Exception {
       SNode nodeToCheck = getRealNodeById("1415485672491962988");
       SNode operation = getRealNodeById("1415485672491981590");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("1415485672491962988"), MessageStatus.WARNING, null, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("1415485672491962988"), MessageStatus.WARNING, myProject.getRepository()).run();
     }
     public void test_NodeWarningCheck1415485672491963180() throws Exception {
       SNode nodeToCheck = getRealNodeById("1415485672491963103");
       SNode operation = getRealNodeById("1415485672491963180");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("1415485672491963103"), MessageStatus.WARNING, null, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("1415485672491963103"), MessageStatus.WARNING, myProject.getRepository()).run();
     }
 
   }

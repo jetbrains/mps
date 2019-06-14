@@ -73,31 +73,37 @@ public class TestExpectedType_Test extends BaseTransformationTest {
     public void test_NodeExpectedTypeCheck8101092317677991775() throws Exception {
       SNode nodeToCheck = getRealNodeById("8101092317677985822");
       SNode operation = getRealNodeById("8101092317677991775");
+      addNodeById("8101092317677991990");
       new CheckTypesAction.CheckExpectedType(nodeToCheck).checkTypeIs(getNodeById("8101092317677991990"));
     }
     public void test_NodeExpectedTypeCheck8101092317677995689() throws Exception {
       SNode nodeToCheck = getRealNodeById("8101092317677995687");
       SNode operation = getRealNodeById("8101092317677995689");
+      addNodeById("8101092317677995690");
       new CheckTypesAction.CheckExpectedType(nodeToCheck).checkTypeIs(getNodeById("8101092317677995690"));
     }
     public void test_NodeExpectedTypeCheck8101092317677999915() throws Exception {
       SNode nodeToCheck = getRealNodeById("8101092317677999913");
       SNode operation = getRealNodeById("8101092317677999915");
+      addNodeById("8101092317677999916");
       new CheckTypesAction.CheckExpectedType(nodeToCheck).checkTypeIs(getNodeById("8101092317677999916"));
     }
     public void test_NodeExpectedTypeCheck8101092317678002448() throws Exception {
       SNode nodeToCheck = getRealNodeById("8101092317678002446");
       SNode operation = getRealNodeById("8101092317678002448");
+      addNodeById("8101092317678002449");
       new CheckTypesAction.CheckExpectedType(nodeToCheck).checkTypeIs(getNodeById("8101092317678002449"));
     }
     public void test_NodeExpectedTypeCheck8101092317678005784() throws Exception {
       SNode nodeToCheck = getRealNodeById("8101092317678005782");
       SNode operation = getRealNodeById("8101092317678005784");
+      addNodeById("8101092317678005785");
       new CheckTypesAction.CheckExpectedType(nodeToCheck).checkTypeIs(getNodeById("8101092317678005785"));
     }
     public void test_NodeExpectedTypeCheck8101092317678009113() throws Exception {
       SNode nodeToCheck = getRealNodeById("8101092317678009111");
       SNode operation = getRealNodeById("8101092317678009113");
+      addNodeById("8101092317678009114");
       new CheckTypesAction.CheckExpectedType(nodeToCheck).checkTypeIs(getNodeById("8101092317678009114"));
     }
 

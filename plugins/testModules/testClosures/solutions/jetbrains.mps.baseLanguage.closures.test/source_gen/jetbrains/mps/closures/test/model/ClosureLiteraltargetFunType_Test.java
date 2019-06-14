@@ -65,7 +65,7 @@ public class ClosureLiteraltargetFunType_Test extends BaseTransformationTest {
     public void test_NodeErrorCheck3981396688773519576() throws Exception {
       SNode nodeToCheck = getRealNodeById("6374750171056867612");
       SNode operation = getRealNodeById("3981396688773519576");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("6374750171056867612"), MessageStatus.ERROR, null, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("6374750171056867612"), MessageStatus.ERROR, myProject.getRepository()).run();
     }
 
     public TemplateQueryContext getContext() {
