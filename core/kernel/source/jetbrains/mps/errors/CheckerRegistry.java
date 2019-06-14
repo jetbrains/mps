@@ -22,6 +22,7 @@ import jetbrains.mps.checkers.SuppressErrorsChecker;
 import jetbrains.mps.checkers.RefScopeChecker;
 import jetbrains.mps.checkers.TargetConceptChecker;
 import jetbrains.mps.checkers.UsedLanguagesChecker;
+import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.errors.item.IssueKindReportItem.CheckerCategory;
 import jetbrains.mps.util.containers.MultiMap;
@@ -30,11 +31,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class CheckerRegistry implements CoreComponent {
-
+  private final ComponentHost myHost;
   private MultiMap<CheckerCategory, IChecker<?, ?>> myCheckers;
   private MultiMap<CheckerCategory, AbstractNodeCheckerInEditor> myEditorCheckers;
 
-  public CheckerRegistry() {
+  public CheckerRegistry(ComponentHost host) {
+    myHost = host;
   }
 
   @Override

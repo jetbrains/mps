@@ -16,7 +16,6 @@
 package jetbrains.mps.nodeEditor;
 
 import jetbrains.mps.errors.MessageStatus;
-import jetbrains.mps.errors.item.NodeFeatureReportItem;
 import jetbrains.mps.errors.item.NodeReportItem;
 import jetbrains.mps.ide.util.ColorAndGraphicsUtil;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;

@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.core.aspects.constraints.rules;
 
+import jetbrains.mps.smodel.language.ConceptRegistry;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -23,9 +24,14 @@ import java.util.List;
  * API for accessing constraints
  */
 public final class ConstraintsFacade {
-  private final ConstraintsRegistry myRegistry;
-  private static List<ConstraintsRuleId> checkRuleKind(@NotNull ConstraintsContext context) {
-    List<ConstraintsRuleId> failingRules = constraintsRegistry.getFailingRulesFor(context.adapt(), CanBeChild_RuleKind.INSTANCE);
+  @NotNull
+  public static List<ConstraintsRuleId> getFailingRulesForKind(@NotNull ConstraintsContext context, ConstraintsRuleKind ruleKind) {
+    List<ConstraintsRuleId> failingRules = getRegistry2().getFailingRulesFor(context, ruleKind);
     return failingRules;
+  }
+
+  @NotNull
+  private static ConstraintsRegistry2 getRegistry2() {
+    return ConceptRegistry.getInstance().getConstraintsRegistry().getNewRegistry();
   }
 }

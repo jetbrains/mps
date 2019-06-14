@@ -30,7 +30,6 @@ import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.typesystem.checking.NonTypesystemEditorChecker;
 import jetbrains.mps.typesystem.checking.TypesEditorChecker;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.module.SRepository;
 import typesystemIntegration.languageChecker.AutoResolver;
 
 import java.util.List;

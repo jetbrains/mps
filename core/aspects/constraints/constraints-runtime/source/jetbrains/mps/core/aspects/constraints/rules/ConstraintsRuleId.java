@@ -16,23 +16,28 @@
 package jetbrains.mps.core.aspects.constraints.rules;
 
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SNodeId;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
-public class ConstraintsRuleId {
+public class ConstraintsRuleId implements ConstraintsRulePointer {
   @NotNull
   private final String myId;
 
-  // debug info
-  @NotNull
-  private final SNodeId myNodeId;
-
-  public ConstraintsRuleId(@NotNull String id, @NotNull SNodeId nodeId) {
+  public ConstraintsRuleId(@NotNull String id) {
     myId = id;
-    myNodeId = nodeId;
   }
 
+  @NotNull
   public String getId() {
     return myId;
+  }
+
+  /**
+   * Here we have a contract for the debug purposes: the saved rule id always equals to its original source node id
+   */
+  @NotNull
+  @Override
+  public SNodeReference getRuleSourceNode() {
+    return null; // todo
   }
 
   @Override

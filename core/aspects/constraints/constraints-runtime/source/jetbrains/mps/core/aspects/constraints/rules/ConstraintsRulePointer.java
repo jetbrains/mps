@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,17 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jetbrains.mps.smodel.runtime;
+package jetbrains.mps.core.aspects.constraints.rules;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
-/**
- * debug context for the navigation to the source node
- * [AP] to be incorporated into context of constraints rules
- *
- * @author abishev
- */
-public interface CheckingNodeContext {
-  void setBreakingNode(@NotNull SNodeReference ruleSourceNode);
+public interface ConstraintsRulePointer {
+  @NotNull SNodeReference getRuleSourceNode();
 }

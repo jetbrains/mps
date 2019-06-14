@@ -20,5 +20,4 @@ public abstract class LanguageErrorsCollector {
   public <Result> Result runCheckingAction(_FunctionTypes._return_P0_E0<? extends Result> action) {
     return action.invoke();
   }
-
 }

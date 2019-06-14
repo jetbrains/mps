@@ -211,7 +211,7 @@ public abstract class PersistenceFacade {
    * @throws IllegalArgumentException if the text does not contain a parsable <code>SNodeId</code>.
    * @throws IncorrectNodeIdFormatException if the text does not contain a parsable SNodeId.
    *
-   * fixme when it returns null and when throws IAE. Restrict!
+   * fixme when it returns null and when throws IAE?
    */
   @Nullable
   public abstract SNodeId createNodeId(@NotNull String text);

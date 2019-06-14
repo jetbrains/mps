@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.core.platform;
 
+import jetbrains.mps.checkers.ConstraintsChecker;
 import jetbrains.mps.checkers.IChecker;
 import jetbrains.mps.checkers.ModelPropertiesChecker;
 import jetbrains.mps.checkers.ModuleChecker;

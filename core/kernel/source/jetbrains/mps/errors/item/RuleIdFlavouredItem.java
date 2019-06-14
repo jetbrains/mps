@@ -63,8 +63,7 @@ public interface RuleIdFlavouredItem extends FlavouredItem {
 
   Collection<TypesystemRuleId> getRuleId();
 
-  RuleIdFlavour FLAVOUR_RULE_ID =
-      new RuleIdFlavour("FLAVOUR_RULE_ID");
+  RuleIdFlavour FLAVOUR_RULE_ID = new RuleIdFlavour("FLAVOUR_RULE_ID");
 
   class RuleIdFlavour extends MultipleReportItemFlavour<RuleIdFlavouredItem, TypesystemRuleId> {
     public RuleIdFlavour(String id) {
@@ -128,5 +127,4 @@ public interface RuleIdFlavouredItem extends FlavouredItem {
       }
     }
   }
-
 }

@@ -13,5 +13,6 @@
     <orderEntry type="module" module-name="openapi" />
     <orderEntry type="module" module-name="mps-annotations" />
     <orderEntry type="module" module-name="smodel" />
+    <orderEntry type="module" module-name="kernel" />
   </component>
 </module>
