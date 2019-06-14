@@ -17,6 +17,7 @@ package jetbrains.mps.persistence.java.library;
 
 import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.java.stub.JavaPackageModelId;
+import jetbrains.mps.persistence.PersistenceRegistry;
 import jetbrains.mps.smodel.LanguageID;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
@@ -33,6 +34,7 @@ public class JavaClassesPersistence implements CoreComponent {
   @Override
   public void init() {
     myFacade.setModelRootFactory(JavaClassStubConstants.STUB_TYPE, new JavaClassStubModelRootFactory());
+    myFacade.setModelRootFactory(PersistenceRegistry.JDK_CLASSES_ROOT, new JDKClassStubModelRootFactory());
     myFacade.setModelIdFactory(LanguageID.JAVA, new JavaPackageModelId.Factory());
   }
 

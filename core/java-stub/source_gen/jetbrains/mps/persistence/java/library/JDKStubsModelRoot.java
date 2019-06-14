@@ -4,11 +4,9 @@ package jetbrains.mps.persistence.java.library;
 
 import jetbrains.mps.extapi.persistence.ModelRootBase;
 import java.util.List;
-
-import jetbrains.mps.persistence.PersistenceRegistry;
 import jetbrains.mps.vfs.QualifiedPath;
-import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.java.stub.PackageScopeControl;
+import jetbrains.mps.persistence.PersistenceRegistry;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.annotations.NotNull;
@@ -17,8 +15,11 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.persistence.Memento;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.util.MacroHelper;
 
 /**
  * This is for faster implementing model roots that can handle J9 modules.
@@ -26,13 +27,9 @@ import org.jetbrains.mps.openapi.persistence.Memento;
  */
 public class JDKStubsModelRoot extends ModelRootBase {
   private List<QualifiedPath> myJrtPaths;
-  private VFSManager myVfs;
   private PackageScopeControl myScopeControl;
 
-  public JDKStubsModelRoot(List<QualifiedPath> jrtPaths, VFSManager vfs, PackageScopeControl scopeControl) {
-    myJrtPaths = jrtPaths;
-    myVfs = vfs;
-    myScopeControl = scopeControl;
+  public JDKStubsModelRoot() {
   }
   @Override
   public String getType() {
@@ -50,7 +47,7 @@ public class JDKStubsModelRoot extends ModelRootBase {
     // todo decide whether to use IdeaFS here 
     for (IFile file : ListSequence.fromList(myJrtPaths).select(new ISelector<QualifiedPath, IFile>() {
       public IFile select(QualifiedPath it) {
-        return myVfs.getFile(it);
+        return VFSManager.getDefaultInstance().getFile(it);
       }
     })) {
       JavaClassStubsModelRoot.getModelDescriptors_(result, file, "", getModule(), myScopeControl, this);
@@ -84,6 +81,17 @@ public class JDKStubsModelRoot extends ModelRootBase {
   }
   @Override
   public void load(@NotNull Memento memento) {
-    // no-op 
+    // Perhaps, shall support multiple scope configurations per root 
+    Memento packScope = memento.getChild("PackageScope");
+    if (packScope != null) {
+      myScopeControl = new PackageScopeControl();
+      myScopeControl.load(packScope);
+    }
+    Iterable<Memento> children = memento.getChildren("path");
+    myJrtPaths = Sequence.fromIterable(children).select(new ISelector<Memento, QualifiedPath>() {
+      public QualifiedPath select(Memento it) {
+        return QualifiedPath.deserialize(it.get("value"), new MacroHelper.MacroNoHelper());
+      }
+    }).toListSequence();
   }
 }

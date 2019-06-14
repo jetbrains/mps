@@ -18,7 +18,8 @@ package jetbrains.mps.project;
 import jetbrains.mps.classloading.CustomClassLoadingFacet;
 import jetbrains.mps.java.stub.PackageScopeControl;
 import jetbrains.mps.module.ReloadableModuleBase;
-import jetbrains.mps.persistence.java.library.JDKStubsModelRoot;
+import jetbrains.mps.persistence.MementoImpl;
+import jetbrains.mps.persistence.PersistenceRegistry;
 import jetbrains.mps.project.facets.TestsFacet;
 import jetbrains.mps.project.io.DescriptorIO;
 import jetbrains.mps.project.io.DescriptorIOFacade;
@@ -29,7 +30,7 @@ import jetbrains.mps.project.structure.modules.SolutionKind;
 import jetbrains.mps.reloading.CommonPaths;
 import jetbrains.mps.smodel.BootstrapLanguages;
 import jetbrains.mps.util.ClassType;
-import jetbrains.mps.util.IterableUtil;
+import jetbrains.mps.util.MacroHelper.MacroNoHelper;
 import jetbrains.mps.util.annotation.Hack;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.QualifiedPath;
@@ -39,7 +40,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.persistence.Memento;
-import org.jetbrains.mps.openapi.persistence.ModelRoot;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -86,17 +86,17 @@ public class Solution extends ReloadableModuleBase {
     setModuleReference(descriptor.getModuleReference());
   }
 
-  private static void populateModelRoot(ClassType classType, ModelRootDescriptor javaStubsModelRoot) {
+  private static void populateModelRoot(ClassType classType, Memento m) {
     PackageScopeControl psc = getPackageScopeControl(classType);
     if (psc == null) {
       return;
     }
 
-    psc.save(javaStubsModelRoot.getMemento().createChild("PackageScope"));
+    psc.save(m.createChild("PackageScope"));
   }
 
   @Nullable
-  private static PackageScopeControl getPackageScopeControl(ClassType classType) {
+  public static PackageScopeControl getPackageScopeControl(ClassType classType) {
     PackageScopeControl psc = null;
     switch (classType) {
       case JDK:
@@ -197,7 +197,6 @@ public class Solution extends ReloadableModuleBase {
     super.updateModelsSet();
   }
 
-  private List<ModelRoot> myAddRoots = new ArrayList<>();
   @Hack
   private void updateBootstrapSolutionLibraries() {
     ModuleDescriptor descriptor = getModuleDescriptor();
@@ -216,7 +215,7 @@ public class Solution extends ReloadableModuleBase {
           final ModelRootDescriptor javaStubsModelRoot = ModelRootDescriptor.addSourceRoot(pathFile, modelRootDescriptors);
           if (javaStubsModelRoot != null) {
             modelRootDescriptors.add(javaStubsModelRoot);
-            populateModelRoot(classType, javaStubsModelRoot);
+            populateModelRoot(classType, javaStubsModelRoot.getMemento());
           }
           descriptor.getJavaLibs().add(path.getPath());
         } else {
@@ -224,16 +223,14 @@ public class Solution extends ReloadableModuleBase {
         }
       }
       if (!jrtPaths.isEmpty()){
-        myAddRoots.add(new JDKStubsModelRoot(jrtPaths, VFSManager.getDefaultInstance(), getPackageScopeControl(classType)));
+        MementoImpl memento = new MementoImpl();
+        for(QualifiedPath jp:jrtPaths){
+          memento.createChild("path").put("value", jp.serialize(new MacroNoHelper()));
+        }
+        populateModelRoot(classType, memento);
+        descriptor.getModelRootDescriptors().add(new ModelRootDescriptor(PersistenceRegistry.JDK_CLASSES_ROOT, memento));
       }
     }
-  }
-
-  @Override
-  protected Iterable<ModelRoot> loadRoots() {
-    List<ModelRoot> res = IterableUtil.asList(super.loadRoots());
-    res.addAll(myAddRoots);
-    return res;
   }
 
   public String toString() {
