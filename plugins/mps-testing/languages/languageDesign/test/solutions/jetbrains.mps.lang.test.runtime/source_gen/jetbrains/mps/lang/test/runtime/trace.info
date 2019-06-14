@@ -1820,91 +1820,106 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895903a2(jetbrains.mps.lang.test.runtime)/6970935187425373915">
     <file name="CheckExpectedMessageAction.java">
-      <node id="6970935187425439142" at="18,0,19,0" concept="7" trace="myRuleRepository" />
-      <node id="6970935187425393928" at="19,0,20,0" concept="7" trace="myNodeToCheck" />
-      <node id="6970935187425394527" at="20,0,21,0" concept="7" trace="myExpectedMessageStatus" />
-      <node id="6970935187425458755" at="22,121,23,43" concept="6" />
-      <node id="6970935187425458767" at="23,43,24,37" concept="6" />
-      <node id="6970935187425458779" at="24,37,25,57" concept="6" />
-      <node id="5348336190815014074" at="29,58,30,19" concept="12" />
-      <node id="7691029917084129577" at="33,43,34,20" concept="12" />
-      <node id="5348336190815014128" at="36,5,37,17" concept="12" />
-      <node id="9018216227569411401" at="39,0,40,0" concept="10" trace="isMessageExpected#(Ljetbrains/mps/errors/item/NodeReportItem;)Z" />
-      <node id="6970935187425399575" at="42,21,43,187" concept="11" />
-      <node id="6970935187425399605" at="43,187,44,80" concept="6" />
-      <node id="6970935187425374154" at="47,35,48,159" concept="12" />
-      <node id="6970935187425443882" at="52,0,53,0" concept="7" trace="myExpectedRule" />
-      <node id="6970935187425468915" at="54,156,55,64" concept="17" />
-      <node id="6970935187425468930" at="55,64,56,41" concept="6" />
-      <node id="9018216227569401004" at="60,66,61,94" concept="11" />
-      <node id="9018216227569406020" at="61,94,62,166" concept="12" />
-      <node id="6970935187425471456" at="66,133,67,64" concept="17" />
-      <node id="9018216227569377359" at="70,66,71,94" concept="11" />
-      <node id="9018216227569422298" at="71,94,72,162" concept="12" />
-      <node id="5348336190815014072" at="28,82,31,5" concept="9" />
-      <node id="7691029917084126228" at="32,55,35,7" concept="9" />
-      <node id="6970935187425374146" at="47,0,50,0" concept="10" trace="getErrorString#()Ljava/lang/String;" />
-      <node id="6970935187425471450" at="66,0,69,0" concept="3" trace="CheckExpectedTypesystemMessageAction#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/errors/MessageStatus;Lorg/jetbrains/mps/openapi/module/SRepository;)V" />
-      <node id="6970935187425468909" at="54,0,58,0" concept="3" trace="CheckExpectedRuleMessageAction#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/errors/MessageStatus;Lorg/jetbrains/mps/openapi/model/SNodeReference;Lorg/jetbrains/mps/openapi/module/SRepository;)V" />
-      <node id="6970935187425458747" at="22,0,27,0" concept="3" trace="CheckExpectedMessageAction#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/errors/MessageStatus;Lorg/jetbrains/mps/openapi/module/SRepository;)V" />
-      <node id="5348336190815014106" at="31,5,36,5" concept="8" />
-      <node id="6970935187425399139" at="41,0,46,0" concept="10" trace="run#()V" />
-      <node id="9018216227569395584" at="59,0,64,0" concept="10" trace="isMessageExpected#(Ljetbrains/mps/errors/item/NodeReportItem;)Z" />
-      <node id="9018216227569418123" at="69,0,74,0" concept="10" trace="isMessageExpected#(Ljetbrains/mps/errors/item/NodeReportItem;)Z" />
-      <node id="6970935187425426649" at="28,0,39,0" concept="10" trace="hasExpectedRuleMessage#(Ljava/lang/Iterable;)Z" />
-      <scope id="5348336190815014073" at="29,58,30,19" />
-      <scope id="7691029917084126231" at="33,43,34,20" />
-      <scope id="9018216227569411401" at="39,0,40,0">
+      <node id="6970935187425439142" at="19,0,20,0" concept="7" trace="myRuleRepository" />
+      <node id="6970935187425393928" at="20,0,21,0" concept="7" trace="myNodeToCheck" />
+      <node id="6970935187425394527" at="21,0,22,0" concept="7" trace="myExpectedMessageStatus" />
+      <node id="6970935187425458755" at="23,130,24,43" concept="6" />
+      <node id="6970935187425458767" at="24,43,25,37" concept="6" />
+      <node id="6970935187425458779" at="25,37,26,57" concept="6" />
+      <node id="5348336190815014074" at="30,58,31,19" concept="12" />
+      <node id="7691029917084129577" at="34,43,35,20" concept="12" />
+      <node id="5348336190815014128" at="37,5,38,17" concept="12" />
+      <node id="9018216227569411401" at="40,0,41,0" concept="10" trace="isMessageExpected#(Ljetbrains/mps/errors/item/NodeReportItem;)Z" />
+      <node id="6970935187425399575" at="43,21,44,187" concept="11" />
+      <node id="6970935187425399605" at="44,187,45,80" concept="6" />
+      <node id="6970935187425374154" at="48,35,49,159" concept="12" />
+      <node id="6970935187425443882" at="53,0,54,0" concept="7" trace="myExpectedRule" />
+      <node id="6970935187425468915" at="55,165,56,64" concept="17" />
+      <node id="6970935187425468930" at="56,64,57,41" concept="6" />
+      <node id="9018216227569401004" at="61,66,62,94" concept="11" />
+      <node id="9018216227569406020" at="62,94,63,166" concept="12" />
+      <node id="9018216227575162179" at="68,118,69,64" concept="17" />
+      <node id="9018216227575162210" at="72,66,73,18" concept="12" />
+      <node id="6970935187425471456" at="78,133,79,64" concept="17" />
+      <node id="9018216227569377359" at="82,66,83,94" concept="11" />
+      <node id="9018216227569422298" at="83,94,84,162" concept="12" />
+      <node id="5348336190815014072" at="29,82,32,5" concept="9" />
+      <node id="7691029917084126228" at="33,55,36,7" concept="9" />
+      <node id="6970935187425374146" at="48,0,51,0" concept="10" trace="getErrorString#()Ljava/lang/String;" />
+      <node id="9018216227575162175" at="68,0,71,0" concept="3" trace="CheckAnyMessageAction#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/errors/MessageStatus;Lorg/jetbrains/mps/openapi/module/SRepository;)V" />
+      <node id="6970935187425471450" at="78,0,81,0" concept="3" trace="CheckExpectedTypesystemMessageAction#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/errors/MessageStatus;Lorg/jetbrains/mps/openapi/module/SRepository;)V" />
+      <node id="6970935187425468909" at="55,0,59,0" concept="3" trace="CheckExpectedRuleMessageAction#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/errors/MessageStatus;Lorg/jetbrains/mps/openapi/model/SNodeReference;Lorg/jetbrains/mps/openapi/module/SRepository;)V" />
+      <node id="9018216227575162198" at="71,0,75,0" concept="10" trace="isMessageExpected#(Ljetbrains/mps/errors/item/NodeReportItem;)Z" />
+      <node id="6970935187425458747" at="23,0,28,0" concept="3" trace="CheckExpectedMessageAction#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/errors/MessageStatus;Lorg/jetbrains/mps/openapi/module/SRepository;)V" />
+      <node id="5348336190815014106" at="32,5,37,5" concept="8" />
+      <node id="6970935187425399139" at="42,0,47,0" concept="10" trace="run#()V" />
+      <node id="9018216227569395584" at="60,0,65,0" concept="10" trace="isMessageExpected#(Ljetbrains/mps/errors/item/NodeReportItem;)Z" />
+      <node id="9018216227569418123" at="81,0,86,0" concept="10" trace="isMessageExpected#(Ljetbrains/mps/errors/item/NodeReportItem;)Z" />
+      <node id="6970935187425426649" at="29,0,40,0" concept="10" trace="hasExpectedRuleMessage#(Ljava/lang/Iterable;)Z" />
+      <scope id="5348336190815014073" at="30,58,31,19" />
+      <scope id="7691029917084126231" at="34,43,35,20" />
+      <scope id="9018216227569411401" at="40,0,41,0">
         <var name="errorReport" id="9018216227569411402" />
       </scope>
-      <scope id="6970935187425374153" at="47,35,48,159" />
-      <scope id="6970935187425471454" at="66,133,67,64" />
-      <scope id="6970935187425399143" at="42,21,44,80">
+      <scope id="6970935187425374153" at="48,35,49,159" />
+      <scope id="9018216227575162178" at="68,118,69,64" />
+      <scope id="9018216227575162203" at="72,66,73,18" />
+      <scope id="6970935187425471454" at="78,133,79,64" />
+      <scope id="6970935187425399143" at="43,21,45,80">
         <var name="errorReporters" id="6970935187425399576" />
       </scope>
-      <scope id="6970935187425468913" at="54,156,56,41" />
-      <scope id="9018216227569395588" at="60,66,62,166">
+      <scope id="6970935187425468913" at="55,165,57,41" />
+      <scope id="9018216227569395588" at="61,66,63,166">
         <var name="ruleNode" id="9018216227569401005" />
       </scope>
-      <scope id="9018216227569418129" at="70,66,72,162">
+      <scope id="9018216227569418129" at="82,66,84,162">
         <var name="ruleNode" id="9018216227569377360" />
       </scope>
-      <scope id="6970935187425458751" at="22,121,25,57" />
-      <scope id="5348336190815014107" at="32,55,35,7" />
-      <scope id="6970935187425374146" at="47,0,50,0" />
-      <scope id="6970935187425471450" at="66,0,69,0">
+      <scope id="6970935187425458751" at="23,130,26,57" />
+      <scope id="5348336190815014107" at="33,55,36,7" />
+      <scope id="6970935187425374146" at="48,0,51,0" />
+      <scope id="9018216227575162175" at="68,0,71,0">
+        <var name="expectedMessageStatus" id="9018216227575162191" />
+        <var name="nodeToCheck" id="9018216227575162189" />
+        <var name="ruleRepository" id="9018216227575162195" />
+      </scope>
+      <scope id="6970935187425471450" at="78,0,81,0">
         <var name="expectedMessageStatus" id="6970935187425471465" />
         <var name="nodeToCheck" id="6970935187425471461" />
         <var name="ruleRepository" id="6970935187425471457" />
       </scope>
-      <scope id="6970935187425468909" at="54,0,58,0">
+      <scope id="6970935187425468909" at="55,0,59,0">
         <var name="expectedMessageStatus" id="6970935187425468924" />
         <var name="expectedRule" id="6970935187425468929" />
         <var name="nodeToCheck" id="6970935187425468920" />
         <var name="ruleRepository" id="6970935187425468916" />
       </scope>
-      <scope id="6970935187425458747" at="22,0,27,0">
+      <scope id="9018216227575162198" at="71,0,75,0">
+        <var name="errorReport" id="9018216227575162199" />
+      </scope>
+      <scope id="6970935187425458747" at="23,0,28,0">
         <var name="expectedMessageStatus" id="6970935187425458778" />
         <var name="nodeToCheck" id="6970935187425458766" />
         <var name="ruleRepository" id="6970935187425458754" />
       </scope>
-      <scope id="5348336190815014106" at="31,5,36,5">
+      <scope id="5348336190815014106" at="32,5,37,5">
         <var name="errorReport" id="5348336190815014125" />
       </scope>
-      <scope id="6970935187425399139" at="41,0,46,0" />
-      <scope id="9018216227569395584" at="59,0,64,0">
+      <scope id="6970935187425399139" at="42,0,47,0" />
+      <scope id="9018216227569395584" at="60,0,65,0">
         <var name="errorReport" id="9018216227569399423" />
       </scope>
-      <scope id="9018216227569418123" at="69,0,74,0">
+      <scope id="9018216227569418123" at="81,0,86,0">
         <var name="errorReport" id="9018216227569418124" />
       </scope>
-      <scope id="6970935187425426656" at="28,82,37,17" />
-      <scope id="6970935187425426649" at="28,0,39,0">
+      <scope id="6970935187425426656" at="29,82,38,17" />
+      <scope id="6970935187425426649" at="29,0,40,0">
         <var name="errorReporters" id="6970935187425426652" />
       </scope>
-      <unit id="6970935187425453353" at="65,0,75,0" name="jetbrains.mps.lang.test.runtime.CheckExpectedMessageAction$CheckExpectedTypesystemMessageAction" />
-      <unit id="6970935187425425253" at="51,0,65,0" name="jetbrains.mps.lang.test.runtime.CheckExpectedMessageAction$CheckExpectedRuleMessageAction" />
-      <unit id="6970935187425373915" at="17,0,77,0" name="jetbrains.mps.lang.test.runtime.CheckExpectedMessageAction" />
+      <unit id="9018216227575162168" at="67,0,76,0" name="jetbrains.mps.lang.test.runtime.CheckExpectedMessageAction$CheckAnyMessageAction" />
+      <unit id="6970935187425453353" at="77,0,87,0" name="jetbrains.mps.lang.test.runtime.CheckExpectedMessageAction$CheckExpectedTypesystemMessageAction" />
+      <unit id="6970935187425425253" at="52,0,66,0" name="jetbrains.mps.lang.test.runtime.CheckExpectedMessageAction$CheckExpectedRuleMessageAction" />
+      <unit id="6970935187425373915" at="18,0,89,0" name="jetbrains.mps.lang.test.runtime.CheckExpectedMessageAction" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895903a2(jetbrains.mps.lang.test.runtime)/7187651930234842193">

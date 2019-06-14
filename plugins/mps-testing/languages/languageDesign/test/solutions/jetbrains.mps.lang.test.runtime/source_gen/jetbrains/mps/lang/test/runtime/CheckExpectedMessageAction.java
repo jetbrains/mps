@@ -5,6 +5,7 @@ package jetbrains.mps.lang.test.runtime;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.errors.MessageStatus;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.errors.item.NodeReportItem;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -19,7 +20,7 @@ public abstract class CheckExpectedMessageAction implements Runnable {
   protected final SNode myNodeToCheck;
   protected final MessageStatus myExpectedMessageStatus;
 
-  public CheckExpectedMessageAction(SNode nodeToCheck, MessageStatus expectedMessageStatus, SRepository ruleRepository) {
+  public CheckExpectedMessageAction(@NotNull SNode nodeToCheck, MessageStatus expectedMessageStatus, SRepository ruleRepository) {
     this.myRuleRepository = ruleRepository;
     this.myNodeToCheck = nodeToCheck;
     this.myExpectedMessageStatus = expectedMessageStatus;
@@ -51,7 +52,7 @@ public abstract class CheckExpectedMessageAction implements Runnable {
   public static class CheckExpectedRuleMessageAction extends CheckExpectedMessageAction {
     private final SNodeReference myExpectedRule;
 
-    public CheckExpectedRuleMessageAction(SNode nodeToCheck, MessageStatus expectedMessageStatus, SNodeReference expectedRule, SRepository ruleRepository) {
+    public CheckExpectedRuleMessageAction(SNode nodeToCheck, MessageStatus expectedMessageStatus, @NotNull SNodeReference expectedRule, SRepository ruleRepository) {
       super(nodeToCheck, expectedMessageStatus, ruleRepository);
       this.myExpectedRule = expectedRule;
     }
@@ -62,6 +63,17 @@ public abstract class CheckExpectedMessageAction implements Runnable {
       return Objects.equals(errorReport.getNode(), SNodeOperations.getPointer(myNodeToCheck)) && Objects.equals(SNodeOperations.getPointer(ruleNode), myExpectedRule);
     }
   }
+
+  public static class CheckAnyMessageAction extends CheckExpectedMessageAction {
+    public CheckAnyMessageAction(SNode nodeToCheck, MessageStatus expectedMessageStatus, SRepository ruleRepository) {
+      super(nodeToCheck, expectedMessageStatus, ruleRepository);
+    }
+    @Override
+    public boolean isMessageExpected(NodeReportItem errorReport) {
+      return true;
+    }
+  }
+
   public static class CheckExpectedTypesystemMessageAction extends CheckExpectedMessageAction {
     public CheckExpectedTypesystemMessageAction(SNode nodeToCheck, MessageStatus expectedMessageStatus, SRepository ruleRepository) {
       super(nodeToCheck, expectedMessageStatus, ruleRepository);
