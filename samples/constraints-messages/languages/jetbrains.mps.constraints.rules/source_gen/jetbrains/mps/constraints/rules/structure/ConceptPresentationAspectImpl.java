@@ -9,8 +9,10 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
+  private ConceptPresentation props_AbstractConstraintsDefNative;
   private ConceptPresentation props_ConstraintsDef;
   private ConceptPresentation props_ConstraintsDefNative;
+  private ConceptPresentation props_ConstraintsDefNativeNode;
   private ConceptPresentation props_ConstraintsExpressionHolder;
   private ConceptPresentation props_ConstraintsMember;
   private ConceptPresentation props_ConstraintsRoot;
@@ -30,6 +32,12 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   public ConceptPresentation getDescriptor(SAbstractConcept c) {
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
+      case LanguageConceptSwitch.AbstractConstraintsDefNative:
+        if (props_AbstractConstraintsDefNative == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_AbstractConstraintsDefNative = cpb.create();
+        }
+        return props_AbstractConstraintsDefNative;
       case LanguageConceptSwitch.ConstraintsDef:
         if (props_ConstraintsDef == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -44,6 +52,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_ConstraintsDefNative = cpb.create();
         }
         return props_ConstraintsDefNative;
+      case LanguageConceptSwitch.ConstraintsDefNativeNode:
+        if (props_ConstraintsDefNativeNode == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_ConstraintsDefNativeNode = cpb.create();
+        }
+        return props_ConstraintsDefNativeNode;
       case LanguageConceptSwitch.ConstraintsExpressionHolder:
         if (props_ConstraintsExpressionHolder == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

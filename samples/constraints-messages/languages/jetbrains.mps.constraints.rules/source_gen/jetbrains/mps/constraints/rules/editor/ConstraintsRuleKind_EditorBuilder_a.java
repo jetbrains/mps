@@ -141,7 +141,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
       return MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554248L, 0x653030359355429eL, "contextMember");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359355429dL, "jetbrains.mps.constraints.rules.structure.ConstraintsDefNative");
+      return MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359355429dL, "jetbrains.mps.constraints.rules.structure.AbstractConstraintsDefNative");
     }
 
     public EditorCell createNodeCell(SNode elementNode) {

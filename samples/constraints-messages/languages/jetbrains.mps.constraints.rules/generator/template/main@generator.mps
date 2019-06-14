@@ -14,7 +14,6 @@
     <import index="xjbk" ref="r:81fbdfb8-d4d2-41cc-b797-345d9f028d39(jetbrains.mps.constraints.rules.plugin)" />
     <import index="ze1i" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.runtime(MPS.Core/)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
-    <import index="tomq" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.psi.codeStyle(MPS.IDEA/)" />
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" implicit="true" />
     <import index="zezp" ref="r:7991a70a-e27d-498f-be5b-c967b5f29e47(jetbrains.mps.constraints.rules.behavior)" implicit="true" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
@@ -363,6 +362,10 @@
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
+      <concept id="4222318806802425298" name="jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation" flags="ng" index="15s5l7">
+        <property id="8575328350543493365" name="message" index="huDt6" />
+        <property id="2423417345669755629" name="filter" index="1eyWvh" />
+      </concept>
       <concept id="709746936026466394" name="jetbrains.mps.lang.core.structure.ChildAttribute" flags="ng" index="3VBwX9">
         <property id="709746936026609031" name="linkId" index="3V$3ak" />
         <property id="709746936026609029" name="role_DebugInfo" index="3V$3am" />
@@ -647,8 +650,8 @@
               <node concept="3clFbS" id="6kKc3mjnkae" role="2VODD2">
                 <node concept="3clFbF" id="6kKc3mjnkak" role="3cqZAp">
                   <node concept="2OqwBi" id="6kKc3mjnkaf" role="3clFbG">
-                    <node concept="3TrEf2" id="6kKc3mjnkai" role="2OqNvi">
-                      <ref role="3Tt5mk" to="bm42:6kKc3mjmDjA" resolve="type" />
+                    <node concept="3TrEf2" id="1yskeTf2JKJ" role="2OqNvi">
+                      <ref role="3Tt5mk" to="bm42:1yskeTf23Lz" resolve="type" />
                     </node>
                     <node concept="30H73N" id="6kKc3mjnkaj" role="2Oq$k0" />
                   </node>
@@ -873,7 +876,7 @@
       <ref role="n9lRv" to="bm42:6kKc3mjlk8x" resolve="ConstraintsRoot" />
     </node>
     <node concept="3uibUv" id="6kKc3mj$xJ6" role="EKbjA">
-      <ref role="3uigEE" to="x8mg:6kKc3mj$mkQ" resolve="ConstraintsDescriptor" />
+      <ref role="3uigEE" to="x8mg:6kKc3mj$mkQ" resolve="ConstraintsDescriptor2" />
     </node>
     <node concept="17Uvod" id="6kKc3mj$_0C" role="lGtFl">
       <property role="2qtEX9" value="name" />
@@ -1364,7 +1367,7 @@
             <node concept="3clFbJ" id="3XrE5vcna5S" role="3cqZAp">
               <node concept="3clFbC" id="3XrE5vcni6x" role="3clFbw">
                 <node concept="3VsKOn" id="3AguOYZ68ns" role="3uHU7w">
-                  <ref role="3VsUkX" to="x8mg:6kKc3mjuOKA" resolve="ConstraintsAspectDescriptor" />
+                  <ref role="3VsUkX" to="x8mg:6kKc3mjuOKA" resolve="ConstraintsAspectDescriptor2" />
                 </node>
                 <node concept="37vLTw" id="3XrE5vcnhrD" role="3uHU7B">
                   <ref role="3cqZAo" node="3XrE5vcna5N" resolve="aspectClass" />
@@ -1480,7 +1483,7 @@
     <node concept="3Tm1VV" id="5Cioe7RLEwU" role="1B3o_S" />
     <node concept="n94m4" id="5Cioe7RLEwZ" role="lGtFl" />
     <node concept="3uibUv" id="6kKc3mjvMR9" role="EKbjA">
-      <ref role="3uigEE" to="x8mg:6kKc3mjuOKA" resolve="ConstraintsAspectDescriptor" />
+      <ref role="3uigEE" to="x8mg:6kKc3mjuOKA" resolve="ConstraintsAspectDescriptor2" />
     </node>
     <node concept="3clFb_" id="6kKc3mj$H8F" role="jymVt">
       <property role="TrG5h" value="getConstraints" />
@@ -1493,7 +1496,7 @@
         </node>
       </node>
       <node concept="3uibUv" id="6kKc3mjAmPx" role="3clF45">
-        <ref role="3uigEE" to="x8mg:6kKc3mj$mkQ" resolve="ConstraintsDescriptor" />
+        <ref role="3uigEE" to="x8mg:6kKc3mj$mkQ" resolve="ConstraintsDescriptor2" />
       </node>
       <node concept="3clFbS" id="6kKc3mj$H8N" role="3clF47">
         <node concept="1_3QMa" id="1CTTqHRaKYf" role="3cqZAp">
@@ -1899,8 +1902,8 @@
               <node concept="3clFbS" id="6f2WQqsR$3u" role="2VODD2">
                 <node concept="3clFbF" id="6f2WQqsR$3v" role="3cqZAp">
                   <node concept="2OqwBi" id="6f2WQqsR$3w" role="3clFbG">
-                    <node concept="3TrEf2" id="6f2WQqsR$3x" role="2OqNvi">
-                      <ref role="3Tt5mk" to="bm42:6kKc3mjmDjA" resolve="type" />
+                    <node concept="2qgKlT" id="1yskeTf49vj" role="2OqNvi">
+                      <ref role="37wK5l" to="zezp:1yskeTf49oH" resolve="buildErasedType" />
                     </node>
                     <node concept="30H73N" id="6f2WQqsR$3y" role="2Oq$k0" />
                   </node>
@@ -2044,6 +2047,14 @@
         </node>
         <node concept="2ZBi8u" id="6f2WQqsR$4t" role="lGtFl">
           <ref role="2rW$FS" node="6kKc3mjnlQG" resolve="def" />
+        </node>
+        <node concept="15s5l7" id="1yskeTf7tw8" role="lGtFl">
+          <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;reference scopes (reference scopes)&quot;;FLAVOUR_MESSAGE=&quot;reference buildErasedType (baseMethodDeclaration) is out of search scope&quot;;FLAVOUR_NODE_FEATURE=&quot;baseMethodDeclaration&quot;;FLAVOUR_RULE_ID=&quot;[r:00000000-0000-4000-0000-011c895902fb(jetbrains.mps.lang.smodel.constraints)/6302905782373066148]&quot;;" />
+          <property role="huDt6" value="reference buildErasedType (baseMethodDeclaration) is out of search scope" />
+        </node>
+        <node concept="15s5l7" id="1yskeTf7tX1" role="lGtFl">
+          <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;reference scopes (reference scopes)&quot;;FLAVOUR_MESSAGE=&quot;reference name (property) is out of search scope&quot;;FLAVOUR_NODE_FEATURE=&quot;property&quot;;FLAVOUR_RULE_ID=&quot;[r:00000000-0000-4000-0000-011c895902fb(jetbrains.mps.lang.smodel.constraints)/6836281137582797974]&quot;;" />
+          <property role="huDt6" value="reference name (property) is out of search scope" />
         </node>
       </node>
       <node concept="3Tm1VV" id="6f2WQqsR$4v" role="1B3o_S" />

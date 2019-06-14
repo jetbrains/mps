@@ -8,8 +8,12 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.typesystem.inference.EquationInfo;
+import jetbrains.mps.constraints.rules.behavior.TypedIdentifier__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.constraints.rules.behavior.ContextExpression__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.baseLanguage.behavior.IOperation__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 public class typeof_ContextRefOperation_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
@@ -19,7 +23,7 @@ public class typeof_ContextRefOperation_InferenceRule extends AbstractInferenceR
     {
       SNode _nodeToCheck_1029348928467 = contextRefOperation;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:61c80a02-cc27-4085-b38d-beaf0fede70a(jetbrains.mps.constraints.rules.typesystem)", "7291380803376377960", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:61c80a02-cc27-4085-b38d-beaf0fede70a(jetbrains.mps.constraints.rules.typesystem)", "7291380803376377535", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(contextRefOperation, MetaAdapterFactory.getReferenceLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593574311L, 0x6530303593578e5eL, "declaration")), "r:61c80a02-cc27-4085-b38d-beaf0fede70a(jetbrains.mps.constraints.rules.typesystem)", "7291380803377800246", true), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:61c80a02-cc27-4085-b38d-beaf0fede70a(jetbrains.mps.constraints.rules.typesystem)", "7291380803376377535", true), (SNode) TypedIdentifier__BehaviorDescriptor.buildTypeForRule_id1yskeTf21OS.invoke(SLinkOperations.getTarget(contextRefOperation, MetaAdapterFactory.getReferenceLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593574311L, 0x6530303593578e5eL, "declaration")), ContextExpression__BehaviorDescriptor.enclusingRule_id1yskeTf2Zgf.invoke(SNodeOperations.cast(IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(contextRefOperation), MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593574310L, "jetbrains.mps.constraints.rules.structure.ContextExpression")))), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {

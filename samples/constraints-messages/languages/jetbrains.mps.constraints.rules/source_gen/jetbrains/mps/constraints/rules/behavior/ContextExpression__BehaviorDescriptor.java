@@ -14,31 +14,26 @@ import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
-public final class ConstraintsRuleBlockMember__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593698b98L, "jetbrains.mps.constraints.rules.structure.ConstraintsRuleBlockMember");
+public final class ContextExpression__BehaviorDescriptor extends BaseBHDescriptor {
+  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593574310L, "jetbrains.mps.constraints.rules.structure.ContextExpression");
 
-  public static final SMethod<SNode> getRuleKind_id6kKc3mjmXYb = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getRuleKind").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6kKc3mjmXYb").build();
-  public static final SMethod<SNode> getBlock_id6kKc3mjn3VM = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getBlock").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6kKc3mjn3VM").build();
+  public static final SMethod<SNode> enclusingRule_id1yskeTf2Zgf = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("enclusingRule").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1yskeTf2Zgf").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getRuleKind_id6kKc3mjmXYb, getBlock_id6kKc3mjn3VM);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(enclusingRule_id1yskeTf2Zgf);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
-  /*package*/ static SNode getRuleKind_id6kKc3mjmXYb(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(ConstraintsRuleBlockMember__BehaviorDescriptor.getBlock_id6kKc3mjn3VM.invoke(__thisNode__), MetaAdapterFactory.getReferenceLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554246L, 0x653030359355424bL, "kind"));
-  }
-  /*package*/ static SNode getBlock_id6kKc3mjn3VM(@NotNull SNode __thisNode__) {
-    return SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554246L, "jetbrains.mps.constraints.rules.structure.ConstraintsRuleBlock"));
+  /*package*/ static SNode enclusingRule_id1yskeTf2Zgf(@NotNull SNode __thisNode__) {
+    return SNodeOperations.getNodeAncestor(__thisNode__, MetaAdapterFactory.getInterfaceConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359356e968L, "jetbrains.mps.constraints.rules.structure.ConstraintsExpressionHolder"), false, false);
   }
 
-  /*package*/ ConstraintsRuleBlockMember__BehaviorDescriptor() {
+  /*package*/ ContextExpression__BehaviorDescriptor() {
   }
 
   @Override
@@ -54,9 +49,7 @@ public final class ConstraintsRuleBlockMember__BehaviorDescriptor extends BaseBH
     }
     switch (methodIndex) {
       case 0:
-        return (T) ((SNode) getRuleKind_id6kKc3mjmXYb(node));
-      case 1:
-        return (T) ((SNode) getBlock_id6kKc3mjn3VM(node));
+        return (T) ((SNode) enclusingRule_id1yskeTf2Zgf(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

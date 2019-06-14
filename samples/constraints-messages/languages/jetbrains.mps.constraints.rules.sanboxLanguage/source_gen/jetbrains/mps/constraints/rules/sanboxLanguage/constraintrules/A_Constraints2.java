@@ -56,7 +56,7 @@ public class A_Constraints2 implements ConstraintsDescriptor2 {
 
     @Override
     public boolean check(@NotNull CanBeChild_Context context) {
-      return (context.getNode() != null);
+      return (context.getNode() != null) && (context.getParentNode() != null);
     }
 
     @NotNull

@@ -9,26 +9,30 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 public final class LanguageConceptSwitch {
   private final LanguageConceptIndex myIndex;
-  public static final int ConstraintsDef = 0;
-  public static final int ConstraintsDefNative = 1;
-  public static final int ConstraintsExpressionHolder = 2;
-  public static final int ConstraintsMember = 3;
-  public static final int ConstraintsRoot = 4;
-  public static final int ConstraintsRule = 5;
-  public static final int ConstraintsRuleBlock = 6;
-  public static final int ConstraintsRuleBlockMember = 7;
-  public static final int ConstraintsRuleKind = 8;
-  public static final int ContextExpression = 9;
-  public static final int ContextRefOperation = 10;
-  public static final int ContextType = 11;
-  public static final int MessageProvider = 12;
-  public static final int MessagesRoot = 13;
-  public static final int TypedIdentifier = 14;
+  public static final int AbstractConstraintsDefNative = 0;
+  public static final int ConstraintsDef = 1;
+  public static final int ConstraintsDefNative = 2;
+  public static final int ConstraintsDefNativeNode = 3;
+  public static final int ConstraintsExpressionHolder = 4;
+  public static final int ConstraintsMember = 5;
+  public static final int ConstraintsRoot = 6;
+  public static final int ConstraintsRule = 7;
+  public static final int ConstraintsRuleBlock = 8;
+  public static final int ConstraintsRuleBlockMember = 9;
+  public static final int ConstraintsRuleKind = 10;
+  public static final int ContextExpression = 11;
+  public static final int ContextRefOperation = 12;
+  public static final int ContextType = 13;
+  public static final int MessageProvider = 14;
+  public static final int MessagesRoot = 15;
+  public static final int TypedIdentifier = 16;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0x47257bf378d3470bL, 0x89d98c3261a61d15L);
+    builder.put(0x653030359355429dL, AbstractConstraintsDefNative);
     builder.put(0x653030359366e9d5L, ConstraintsDef);
-    builder.put(0x653030359355429dL, ConstraintsDefNative);
+    builder.put(0x189c50ee4f0fb1f9L, ConstraintsDefNative);
+    builder.put(0x189c50ee4f0dd5fcL, ConstraintsDefNativeNode);
     builder.put(0x653030359356e968L, ConstraintsExpressionHolder);
     builder.put(0x6530303593554247L, ConstraintsMember);
     builder.put(0x6530303593554221L, ConstraintsRoot);

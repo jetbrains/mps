@@ -15,9 +15,5 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       InferenceRule_Runtime inferenceRule = new typeof_ContextRefOperation_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
-    {
-      InferenceRule_Runtime inferenceRule = new typeof_IConstraintsDef_InferenceRule();
-      this.myInferenceRules.add(inferenceRule);
-    }
   }
 }
