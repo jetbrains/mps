@@ -17,6 +17,7 @@ package jetbrains.mps.core.aspects.constraints.rules;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
 public class ConstraintsRuleId implements ConstraintsRulePointer {
   @NotNull
@@ -37,7 +38,7 @@ public class ConstraintsRuleId implements ConstraintsRulePointer {
   @NotNull
   @Override
   public SNodeReference getRuleSourceNode() {
-    return null; // todo
+    return PersistenceFacade.getInstance().createNodeReference(myId);
   }
 
   @Override

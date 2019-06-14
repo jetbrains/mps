@@ -8,6 +8,7 @@
   <imports>
     <import index="tpce" ref="r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)" />
     <import index="bm42" ref="r:83f25986-cdbc-469a-a327-db97a2ec5a39(jetbrains.mps.lang.constraints.rules.structure)" />
+    <import index="hypd" ref="r:aa31e43e-9240-4f4d-b6db-5c1c9a86c59e(jetbrains.mps.lang.project.structure)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
   </imports>
   <registry>
@@ -83,6 +84,17 @@
       <property role="IQ2nx" value="7291380803381892690" />
       <property role="TrG5h" value="message" />
       <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="6bTaywoGP2f">
+    <property role="EcuMT" value="7131777836619354255" />
+    <property role="TrG5h" value="ModelRefForMe" />
+    <node concept="1TJgyj" id="6bTaywoGP2g" role="1TKVEi">
+      <property role="IQ2ns" value="7131777836619354256" />
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="modelRef" />
+      <property role="20lbJX" value="1" />
+      <ref role="20lvS9" to="hypd:5xDtKQA7vSB" resolve="ModelReference" />
     </node>
   </node>
 </model>

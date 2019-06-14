@@ -70,6 +70,9 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Object referenceMacro_GetReferent_3_0(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByMappingLabel("messagesDescriptorClass", ((SModel) _context.getVariable("model")));
   }
+  public static Object referenceMacro_GetReferent_3_1(final ReferenceMacroContext _context) {
+    return _context.getOutputNodeByMappingLabel("constraintsDescriptorClass", ((SModel) _context.getVariable("model")));
+  }
   public static Iterable<SNode> sourceNodesQuery_1_0(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.collectMany(SModelOperations.roots(_context.getInputModel(), MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x6530303593ae1607L, "jetbrains.mps.lang.messages.structure.MessagesRoot")), MetaAdapterFactory.getContainmentLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x6530303593ae1607L, 0x6530303593ae9cf2L, "messages"));
   }
@@ -217,6 +220,7 @@ public class QueriesGenerated extends QueryProviderBase {
     rtqMethods.put("7188575577281176230", new QueriesGenerated.RTQ(1, "Generated_MessagesDescriptor"));
     rtqMethods.put("7188575577281176239", new QueriesGenerated.RTQ(2, "BaseConcept"));
     rtqMethods.put("7291380803382021648", new QueriesGenerated.RTQ(3, "GeneratedMessagesAspectDescriptor"));
+    rtqMethods.put("6479337755439617190", new QueriesGenerated.RTQ(4, "GeneratedConstraintsAspectDescriptor"));
   }
   @NotNull
   @Override
@@ -244,6 +248,8 @@ public class QueriesGenerated extends QueryProviderBase {
           return QueriesGenerated.referenceMacro_GetReferent_2_1(ctx);
         case 3:
           return QueriesGenerated.referenceMacro_GetReferent_3_0(ctx);
+        case 4:
+          return QueriesGenerated.referenceMacro_GetReferent_3_1(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }

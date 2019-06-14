@@ -22,6 +22,7 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static java.util.Objects.requireNonNull;
@@ -39,7 +40,11 @@ public final class ConstraintsRegistry2 {
     if (conceptLang == null) {
       throw new IllegalArgumentException("Impossible to load the language for the concept '" + concept + "'");
     }
-    return requireNonNull(conceptLang.getAspect(ConstraintsAspectDescriptor2.class)).getConstraints(concept);
+    ConstraintsAspectDescriptor2 aspect = conceptLang.getAspect(ConstraintsAspectDescriptor2.class);
+    if (aspect == null) {
+      return new EmptyConstraintsDescriptor2();
+    }
+    return aspect.getConstraints(concept);
   }
 
   @NotNull
@@ -58,5 +63,13 @@ public final class ConstraintsRegistry2 {
       }
     }
     return rules;
+  }
+
+  private static class EmptyConstraintsDescriptor2 implements ConstraintsDescriptor2 {
+    @NotNull
+    @Override
+    public <Context extends ConstraintsContext> List<ConstraintsRule<Context>> getRules(@NotNull ConstraintsRuleKind<Context> kind) {
+      return Collections.emptyList();
+    }
   }
 }

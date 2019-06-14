@@ -15,12 +15,16 @@
  */
 package jetbrains.mps.core.aspects.reporting.api;
 
+import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.components.ComponentPlugin;
+import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public final class MPSReporting extends ComponentPlugin {
+public final class MPSReporting extends ComponentPlugin implements ComponentHost {
   private final LanguageRegistry myLanguageRegistry;
+  private ReportingAspectRegistry myReportingAspectRegistry;
 
   public MPSReporting(@NotNull LanguageRegistry languageRegistry) {
     myLanguageRegistry = languageRegistry;
@@ -29,6 +33,15 @@ public final class MPSReporting extends ComponentPlugin {
   @Override
   public void init() {
     super.init();
-    init(new ReportingFacade(myLanguageRegistry));
+    myReportingAspectRegistry = init(new ReportingAspectRegistry(myLanguageRegistry));
+  }
+
+  @Nullable
+  @Override
+  public <T extends CoreComponent> T findComponent(@NotNull Class<T> componentClass) {
+    if (componentClass.isAssignableFrom(ReportingAspectRegistry.class)) {
+      return componentClass.cast(myReportingAspectRegistry);
+    }
+    return null;
   }
 }

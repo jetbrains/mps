@@ -85,7 +85,7 @@ public class CanBeChild_Context implements ConstraintsContext {
       return this;
     }
 
-    public CanBeChild_ContextBuilder link(@NotNull SContainmentLink link) {
+    public CanBeChild_ContextBuilder link(/*@NotNull*/ SContainmentLink link) {
       this.link = link;
       return this;
     }

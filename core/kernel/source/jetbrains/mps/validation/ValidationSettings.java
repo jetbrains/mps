@@ -27,7 +27,6 @@ import org.jetbrains.annotations.Nullable;
  * evgeny, 12/27/11
  */
 public class ValidationSettings implements CoreComponent {
-
   private static ValidationSettings INSTANCE;
 
   public static ValidationSettings getInstance() {

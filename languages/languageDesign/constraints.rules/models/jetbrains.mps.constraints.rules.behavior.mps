@@ -322,8 +322,8 @@
               <node concept="2JrnkZ" id="6kKc3mjGaFE" role="2Oq$k0">
                 <node concept="13iPFW" id="6kKc3mjG9Id" role="2JrQYb" />
               </node>
-              <node concept="liA8E" id="6kKc3mjGad8" role="2OqNvi">
-                <ref role="37wK5l" to="mhbf:~SNode.getNodeId()" resolve="getNodeId" />
+              <node concept="liA8E" id="6bTaywoH_WZ" role="2OqNvi">
+                <ref role="37wK5l" to="mhbf:~SNode.getReference()" resolve="getReference" />
               </node>
             </node>
             <node concept="liA8E" id="6kKc3mjGarm" role="2OqNvi">

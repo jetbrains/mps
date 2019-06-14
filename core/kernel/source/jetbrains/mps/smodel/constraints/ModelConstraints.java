@@ -111,7 +111,7 @@ public class ModelConstraints {
   @NotNull
   public static List<ConstraintsRulePointer> checkCanBeChild(@NotNull CanBeChild_Context context) {
     CheckingNodeContextImpl debugInfo = new CheckingNodeContextImpl();
-    List<ConstraintsRulePointer> constraintsRuleIds = new ArrayList<>(newCanBeChild(context));
+    List<ConstraintsRulePointer> constraintsRuleIds = new ArrayList<>(checkNewCanBeChild(context));
     boolean legacyAreOk = legacyCanBeChild(ConstraintContext_CanBeChild.convert(context), debugInfo);
     if (!legacyAreOk) {
       constraintsRuleIds.add(new LegacyConstraintsRuleId(debugInfo.getBreakingNode()));
@@ -196,11 +196,14 @@ public class ModelConstraints {
 
   private static boolean canBeChild(@NotNull ConstraintContext_CanBeChild context, @Nullable CheckingNodeContext checkingNodeContext) {
     boolean legacyResult = legacyCanBeChild(context, checkingNodeContext);
-    return legacyResult && !newCanBeChild(context.adapt()).isEmpty();
+    return legacyResult && checkNewCanBeChild(context.adapt()).isEmpty();
   }
 
+  /**
+   * @return the list of failed rules
+   */
   @NotNull
-  private static List<ConstraintsRuleId> newCanBeChild(@NotNull CanBeChild_Context context) {
+  private static List<ConstraintsRuleId> checkNewCanBeChild(@NotNull CanBeChild_Context context) {
     ConstraintsRegistry2 constraintsRegistry = ConceptRegistry.getInstance().getConstraintsRegistry().getNewRegistry();
     return constraintsRegistry.getFailingRulesFor(context, CanBeChild_RuleKind.INSTANCE);
   }

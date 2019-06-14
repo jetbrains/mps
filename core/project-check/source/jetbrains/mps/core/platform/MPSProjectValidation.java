@@ -23,6 +23,7 @@ import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.components.ComponentPlugin;
 import jetbrains.mps.errors.CheckerRegistry;
 import jetbrains.mps.project.validation.StructureChecker;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,28 +40,29 @@ import java.util.List;
  * @since 2019.1
  */
 public class MPSProjectValidation extends ComponentPlugin {
-  private final ComponentHost myCoreComponents;
-  private final List<IChecker<?, ?>> myCheckers = new ArrayList<>(4);
+  private final ComponentHost myHost;
+  private final List<IChecker<?, ?>> myCheckers = new ArrayList<>();
 
-  MPSProjectValidation(ComponentHost mpsCore) {
-    myCoreComponents = mpsCore;
+  MPSProjectValidation(@NotNull ComponentHost host) {
+    myHost = host;
   }
 
   @Override
   public void init() {
-    CheckerRegistry registry = myCoreComponents.findComponent(CheckerRegistry.class);
+    CheckerRegistry registry = myHost.findComponent(CheckerRegistry.class);
     if (registry == null) {
       return;
     }
     myCheckers.add(new StructureChecker().withoutBrokenReferences());
     myCheckers.add(new ModelPropertiesChecker());
     myCheckers.add(new ModuleChecker());
+    myCheckers.add(new ConstraintsChecker(myHost));
     myCheckers.forEach(registry::registerChecker);
   }
 
   @Override
   public void dispose() {
-    CheckerRegistry registry = myCoreComponents.findComponent(CheckerRegistry.class);
+    CheckerRegistry registry = myHost.findComponent(CheckerRegistry.class);
     if (registry != null) {
       myCheckers.forEach(registry::unregisterChecker);
       myCheckers.clear();

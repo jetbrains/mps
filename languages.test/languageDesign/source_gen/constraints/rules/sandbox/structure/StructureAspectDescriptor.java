@@ -15,6 +15,7 @@ import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptA = createDescriptorForA();
+  /*package*/ final ConceptDescriptor myConceptB = createDescriptorForB();
   private final LanguageConceptSwitch myIndexSwitch;
 
   public StructureAspectDescriptor() {
@@ -29,7 +30,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptA);
+    return Arrays.asList(myConceptA, myConceptB);
   }
 
   @Override
@@ -38,6 +39,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     switch (myIndexSwitch.index(id)) {
       case LanguageConceptSwitch.A:
         return myConceptA;
+      case LanguageConceptSwitch.B:
+        return myConceptB;
       default:
         return null;
     }
@@ -58,6 +61,14 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:2207aff5-dd54-403c-bdeb-0b38c43db7b7(constraints.rules.sandbox.structure)/8657450212265481344");
     b.version(2);
     b.property("a", 0x7825711952b815edL).type(PrimitiveTypeId.INTEGER).origin("8657450212265563629").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForB() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("constraints.rules.sandbox", "B", 0xa6518565787648e9L, 0x8d439ef97836a52eL, 0x7af41afae28e1a15L);
+    b.class_(false, false, true);
+    b.origin("r:2207aff5-dd54-403c-bdeb-0b38c43db7b7(constraints.rules.sandbox.structure)/8859736031789718037");
+    b.version(2);
+    b.aggregate("as", 0x7af41afae28e1a16L).target(0xa6518565787648e9L, 0x8d439ef97836a52eL, 0x7825711952b6d480L).optional(true).ordered(true).multiple(false).origin("8859736031789718038").done();
     return b.create();
   }
 }

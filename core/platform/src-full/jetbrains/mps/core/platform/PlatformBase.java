@@ -61,7 +61,7 @@ class PlatformBase implements Platform {
       new Runnable() {
         @Override
         public void run() {
-          initAndRegister(new MPSProjectValidation(myCore));
+          initAndRegister(new MPSProjectValidation(PlatformBase.this));
           initAndRegister(new MPSMake(myCore.getLanguageRegistry()));
           MPSTypechecking mpsTypechecking = new MPSTypechecking(myCore.getLanguageRegistry(), myCore.getClassLoaderManager());
           initAndRegister(mpsTypechecking);

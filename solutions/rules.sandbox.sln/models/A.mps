@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model ref="r:6dda976c-1b90-4b12-9c1c-d7b95337bf45(A)">
+  <persistence version="9" />
+  <languages>
+    <use id="a6518565-7876-48e9-8d43-9ef97836a52e" name="constraints.rules.sandbox" version="0" />
+  </languages>
+  <imports />
+  <registry>
+    <language id="a6518565-7876-48e9-8d43-9ef97836a52e" name="constraints.rules.sandbox">
+      <concept id="8859736031789718037" name="constraints.rules.sandbox.structure.B" flags="ng" index="2ouw3J">
+        <child id="8859736031789718038" name="as" index="2ouw3G" />
+      </concept>
+      <concept id="8657450212265481344" name="constraints.rules.sandbox.structure.A" flags="ng" index="E$Ump">
+        <property id="8657450212265563629" name="a" index="EBmjO" />
+      </concept>
+    </language>
+  </registry>
+  <node concept="2ouw3J" id="7FO6JFyzxJl">
+    <node concept="E$Ump" id="7FO6JFyzxJm" role="2ouw3G">
+      <property role="EBmjO" value="55" />
+    </node>
+  </node>
+</model>
+

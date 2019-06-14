@@ -3,6 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="47257bf3-78d3-470b-89d9-8c3261a61d15" name="jetbrains.mps.lang.constraints.rules" version="0" />
+    <use id="ad93155d-79b2-4759-b10c-55123e763903" name="jetbrains.mps.lang.messages" version="0" />
     <devkit ref="2843b9cf-86fe-47f2-87c9-f256294fd769(jetbrains.mps.devkit.aspect.constraints.rules)" />
   </languages>
   <imports>
@@ -18,6 +19,7 @@
         <property id="1068580320021" name="value" index="3cmrfH" />
       </concept>
       <concept id="1081506762703" name="jetbrains.mps.baseLanguage.structure.GreaterThanExpression" flags="nn" index="3eOSWO" />
+      <concept id="1081506773034" name="jetbrains.mps.baseLanguage.structure.LessThanExpression" flags="nn" index="3eOVzh" />
       <concept id="1081773326031" name="jetbrains.mps.baseLanguage.structure.BinaryOperation" flags="nn" index="3uHJSO">
         <child id="1081773367579" name="rightExpression" index="3uHU7w" />
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
@@ -47,6 +49,16 @@
       </concept>
       <concept id="7291380803376202512" name="jetbrains.mps.lang.constraints.rules.structure.ContextExpression" flags="ng" index="3QpRc_" />
       <concept id="7291380803376279010" name="jetbrains.mps.lang.constraints.rules.structure.ConstraintsRule" flags="ng" index="3Qq5Rn" />
+    </language>
+    <language id="ad93155d-79b2-4759-b10c-55123e763903" name="jetbrains.mps.lang.messages">
+      <concept id="7291380803381892615" name="jetbrains.mps.lang.messages.structure.MessagesRoot" flags="ng" index="3QByoM">
+        <reference id="7188575577281228125" name="concept" index="3Z9TSV" />
+        <child id="7291380803381927154" name="messages" index="3QBEN7" />
+      </concept>
+      <concept id="7291380803381892689" name="jetbrains.mps.lang.messages.structure.MessageProvider" flags="ng" index="3QByp$">
+        <property id="7291380803381892690" name="message" index="3QBypB" />
+        <reference id="7291380803381892692" name="rule" index="3QBypx" />
+      </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
       <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
@@ -96,6 +108,30 @@
           </node>
         </node>
       </node>
+      <node concept="3Qq5Rn" id="1uv0FAtCkVG" role="3Qpnal">
+        <property role="TrG5h" value="second" />
+        <node concept="3eOVzh" id="1uv0FAtCmFl" role="3QpH_s">
+          <node concept="3cmrfG" id="1uv0FAtCmFo" role="3uHU7w">
+            <property role="3cmrfH" value="100" />
+          </node>
+          <node concept="2OqwBi" id="1uv0FAtCliW" role="3uHU7B">
+            <node concept="1PxgMI" id="1uv0FAtClbf" role="2Oq$k0">
+              <node concept="chp4Y" id="1uv0FAtClbo" role="3oSUPX">
+                <ref role="cht4Q" to="ktae:7w_sh_iHHi0" resolve="A" />
+              </node>
+              <node concept="2OqwBi" id="1uv0FAtCkW9" role="1m5AlR">
+                <node concept="3QpRc_" id="1uv0FAtCkVW" role="2Oq$k0" />
+                <node concept="3QpRc$" id="1uv0FAtCkX2" role="2OqNvi">
+                  <ref role="3QpVTF" node="7w_sh_iI0Z8" resolve="Node" />
+                </node>
+              </node>
+            </node>
+            <node concept="3TrcHB" id="1uv0FAtClr4" role="2OqNvi">
+              <ref role="3TsBF5" to="ktae:7w_sh_iI1nH" resolve="a" />
+            </node>
+          </node>
+        </node>
+      </node>
     </node>
   </node>
   <node concept="3Qpn9X" id="7w_sh_iI0Z7">
@@ -107,6 +143,17 @@
     <node concept="3QpnaC" id="7w_sh_iI0Zl" role="3QpnaF">
       <property role="TrG5h" value="ParentNode" />
       <node concept="3Tqbb2" id="7w_sh_iI0Z_" role="3QqEjj" />
+    </node>
+  </node>
+  <node concept="3QByoM" id="7FO6JFyzuId">
+    <ref role="3Z9TSV" to="ktae:7w_sh_iHHi0" resolve="A" />
+    <node concept="3QByp$" id="7FO6JFyzuIe" role="3QBEN7">
+      <property role="3QBypB" value="I OVERRIDE YOU" />
+      <ref role="3QBypx" node="7w_sh_iI0ZQ" resolve="first" />
+    </node>
+    <node concept="3QByp$" id="1uv0FAtCodb" role="3QBEN7">
+      <property role="3QBypB" value="I OVERRIDE YOU TWICE" />
+      <ref role="3QBypx" node="1uv0FAtCkVG" resolve="second" />
     </node>
   </node>
 </model>

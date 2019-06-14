@@ -12,6 +12,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.constraints.rules.ConstraintsRuleKind;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import java.util.Map;
 import java.util.List;
 import jetbrains.mps.core.aspects.constraints.rules.ConstraintsContext;
@@ -29,7 +30,7 @@ public class A_Constraints2 implements ConstraintsDescriptor2 {
 
     @Override
     public ConstraintsRuleId getId() {
-      return new ConstraintsRuleId("8657450212265562102");
+      return new ConstraintsRuleId("6e676fa3-85e6-4bae-a48b-d1d365530ccd/i:10001000(constraints.rules.sandbox@transient1/constraints.rules.sandbox.constraints2@0)/8657450212265562102");
     }
 
 
@@ -43,6 +44,42 @@ public class A_Constraints2 implements ConstraintsDescriptor2 {
     public ConstraintsRuleKind<CanBeChild_Context> getKind() {
       return myRuleKind;
     }
+
+    @NotNull
+    @Override
+    public SAbstractConcept getConcept() {
+      return MetaAdapterFactory.getConcept(0xa6518565787648e9L, 0x8d439ef97836a52eL, 0x7825711952b6d480L, "constraints.rules.sandbox.structure.A");
+    }
+  }
+  public class Rule_second implements ConstraintsRule<CanBeChild_Context> {
+    private final CanBeChild_RuleKind myRuleKind;
+
+    public Rule_second(@NotNull CanBeChild_RuleKind ruleKind) {
+      myRuleKind = ruleKind;
+    }
+
+    @Override
+    public ConstraintsRuleId getId() {
+      return new ConstraintsRuleId("6e676fa3-85e6-4bae-a48b-d1d365530ccd/i:10001000(constraints.rules.sandbox@transient1/constraints.rules.sandbox.constraints2@0)/1702082180406136556");
+    }
+
+
+    @Override
+    public boolean check(@NotNull CanBeChild_Context context) {
+      return SPropertyOperations.getInteger(SNodeOperations.cast(context.getNode(), MetaAdapterFactory.getConcept(0xa6518565787648e9L, 0x8d439ef97836a52eL, 0x7825711952b6d480L, "constraints.rules.sandbox.structure.A")), MetaAdapterFactory.getProperty(0xa6518565787648e9L, 0x8d439ef97836a52eL, 0x7825711952b6d480L, 0x7825711952b815edL, "a")) < 100;
+    }
+
+    @NotNull
+    @Override
+    public ConstraintsRuleKind<CanBeChild_Context> getKind() {
+      return myRuleKind;
+    }
+
+    @NotNull
+    @Override
+    public SAbstractConcept getConcept() {
+      return MetaAdapterFactory.getConcept(0xa6518565787648e9L, 0x8d439ef97836a52eL, 0x7825711952b6d480L, "constraints.rules.sandbox.structure.A");
+    }
   }
 
   private Map<ConstraintsRuleKind<?>, List<ConstraintsRule<?>>> myRules;
@@ -51,7 +88,7 @@ public class A_Constraints2 implements ConstraintsDescriptor2 {
   public <Context extends ConstraintsContext> List<ConstraintsRule<Context>> getRules(@NotNull ConstraintsRuleKind<Context> kind) {
     if (myRules == null) {
       myRules = new HashMap<ConstraintsRuleKind<?>, List<ConstraintsRule<?>>>();
-      myRules.put(CanBeChild_RuleKind.INSTANCE, Arrays.<ConstraintsRule<?>>asList(new A_Constraints2.Rule_first(CanBeChild_RuleKind.INSTANCE)));
+      myRules.put(CanBeChild_RuleKind.INSTANCE, Arrays.<ConstraintsRule<?>>asList(new A_Constraints2.Rule_first(CanBeChild_RuleKind.INSTANCE), new A_Constraints2.Rule_second(CanBeChild_RuleKind.INSTANCE)));
     }
     return (List<ConstraintsRule<Context>>) (List) Collections.unmodifiableList(myRules.get(kind));
   }

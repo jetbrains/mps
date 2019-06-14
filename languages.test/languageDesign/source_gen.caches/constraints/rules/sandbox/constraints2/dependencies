@@ -17,7 +17,17 @@
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
     <classNode extendsClassName="jetbrains.mps.core.aspects.constraints.rules.ConstraintsDescriptor2" />
+  </dependency>
+  <dependency className="constraints.rules.sandbox.constraints2.A_Messages">
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.util.ArrayList" />
+    <classNode dependClassName="java.util.List" />
+    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.ConstraintsRuleId" />
+    <classNode dependClassName="jetbrains.mps.core.aspects.reporting.api.MessageProvider" />
+    <classNode extendsClassName="jetbrains.mps.core.aspects.reporting.api.MessagesDescriptor" />
   </dependency>
   <dependency className="constraints.rules.sandbox.constraints2.GeneratedConstraintsAspectDescriptor">
     <classNode dependClassName="constraints.rules.sandbox.constraints2.A_Constraints2" />
@@ -36,8 +46,12 @@
     <classNode extendsClassName="jetbrains.mps.core.aspects.constraints.rules.ConstraintsAspectDescriptor2" />
   </dependency>
   <dependency className="constraints.rules.sandbox.constraints2.GeneratedMessagesAspectDescriptor">
+    <classNode dependClassName="constraints.rules.sandbox.constraints2.A_Messages" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="jetbrains.mps.core.aspects.reporting.api.MessagesDescriptor" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndex" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder" />
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.ids.MetaIdFactory" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />

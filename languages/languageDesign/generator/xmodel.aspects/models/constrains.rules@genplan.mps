@@ -70,6 +70,11 @@
         <property role="2V$B1Q" value="jetbrains.mps.lang.slanguage" />
       </node>
     </node>
+    <node concept="2VgMA1" id="6bTaywoG8LG" role="2VgMA7">
+      <node concept="3ps6a7" id="6bTaywoG8LW" role="3ps6aC">
+        <ref role="3ps6dU" to="7j7i:4LuITgyAILq" resolve="BeforeBaseLang" />
+      </node>
+    </node>
     <node concept="NozSJ" id="2fM90PxfrMg" role="2VgMA7">
       <ref role="NozSM" to="7j7i:2fM90Pxfljd" resolve="BaseLanguageWithExtensions" />
     </node>

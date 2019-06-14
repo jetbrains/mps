@@ -47,11 +47,11 @@
   </registry>
   <node concept="3vrhyV" id="6kKc3mjuEw_">
     <property role="TrG5h" value="constraints2" />
-    <node concept="2V$Bhx" id="7w_sh_iHKAd" role="QG$2i">
+    <node concept="2V$Bhx" id="6bTaywoEoxK" role="QG$2i">
       <property role="2V$B1T" value="47257bf3-78d3-470b-89d9-8c3261a61d15" />
       <property role="2V$B1Q" value="jetbrains.mps.lang.constraints.rules" />
     </node>
-    <node concept="T9mpH" id="6kKc3mj$4Ka" role="TkT64">
+    <node concept="T9mpH" id="6bTaywoF4dB" role="TkT64">
       <property role="T9mpF" value="2843b9cf-86fe-47f2-87c9-f256294fd769" />
       <property role="T9mpE" value="jetbrains.mps.devkit.aspect.constraints.rules" />
     </node>

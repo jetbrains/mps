@@ -29,7 +29,7 @@ public final class ConstraintsRule__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   /*package*/ static String getRuleId_id6kKc3mjG9Hb(@NotNull SNode __thisNode__) {
-    return __thisNode__.getNodeId().toString();
+    return __thisNode__.getReference().toString();
   }
 
   /*package*/ ConstraintsRule__BehaviorDescriptor() {

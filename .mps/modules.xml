@@ -5,7 +5,7 @@
       <modulePath path="$PROJECT_DIR$/core/aspects/behavior/behavior-api/jetbrains.mps.lang.behavior.api.msd" folder="core.aspects.behavior" />
       <modulePath path="$PROJECT_DIR$/core/aspects/behavior/behavior-runtime/jetbrains.mps.lang.behavior.runtime.msd" folder="core.aspects.behavior" />
       <modulePath path="$PROJECT_DIR$/core/aspects/constraints/constraints-runtime/jetbrains.mps.lang.constraints.rules.runtime.msd" folder="core.aspects.constraints" />
-      <modulePath path="$PROJECT_DIR$/core/aspects/constraints/reporting-api/jetbrains.mps.lang.messages.api.msd" folder="core.aspects.messages" />
+      <modulePath path="$PROJECT_DIR$/core/aspects/constraints/reporting-api/jetbrains.mps.lang.messages.api.msd" folder="core.aspects.reporting" />
       <modulePath path="$PROJECT_DIR$/core/dataFlowRuntime/jetbrains.mps.dataFlow.runtime.msd" folder="core.aspects.dataflow" />
       <modulePath path="$PROJECT_DIR$/core/devkits/jetbrains.mps.devkit.aspect.constraints.devkit" folder="core.aspects.descriptor" />
       <modulePath path="$PROJECT_DIR$/core/devkits/jetbrains.mps.devkit.aspect.constraints.rules.devkit" folder="core.aspects.descriptor" />
@@ -143,7 +143,7 @@
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/make/languages/reduced/jetbrains.mps.make.reduced.mpl" folder="platform.make" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/make/languages/script/jetbrains.mps.make.script.mpl" folder="core.make" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/make/solutions/jetbrains.mps.make.sandbox/jetbrains.mps.make.sandbox.msd" folder="core.make" />
-      <modulePath path="$PROJECT_DIR$/languages/languageDesign/messages/jetbrains.mps.lang.messages.mpl" folder="core.aspects.constraints" />
+      <modulePath path="$PROJECT_DIR$/languages/languageDesign/messages/jetbrains.mps.lang.messages.mpl" folder="core.aspects.reporting" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/migration/jetbrains.mps.lang.migration.mpl" folder="core.aspects.migration" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/migration/solutions/actions/jetbrains.mps.lang.migration.actions.msd" folder="core.aspects.migration" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/migration/util/jetbrains.mps.lang.migration.util.mpl" folder="core.aspects.migration" />
@@ -449,6 +449,7 @@
       <modulePath path="$PROJECT_DIR$/samples/xmlPersistence/languages/jetbrains.mps.samples.xmlPersistence.build/jetbrains.mps.samples.xmlPersistence.build.msd" folder="samples.persistence" />
       <modulePath path="$PROJECT_DIR$/samples/xmlPersistence/languages/jetbrains.mps.samples.xmlPersistence.ideaPlugin/jetbrains.mps.samples.xmlPersistence.ideaPlugin.msd" folder="samples.persistence" />
       <modulePath path="$PROJECT_DIR$/samples/xmlPersistence/languages/jetbrains.mps.samples.xmlPersistence/jetbrains.mps.samples.xmlPersistence.msd" folder="samples.persistence" />
+      <modulePath path="$PROJECT_DIR$/solutions/rules.sandbox.sln/rules.sandbox.sln.msd" folder="" />
       <modulePath path="$PROJECT_DIR$/testbench/build/jetbrains.mps.build.mps.testModules/jetbrains.mps.build.mps.testModules.msd" folder="platform.build" />
       <modulePath path="$PROJECT_DIR$/testbench/ideatestsolutions/ide.vcs.test/jetbrains.mps.ide.vcs.test.msd" folder="platform.vcs" />
       <modulePath path="$PROJECT_DIR$/testbench/languages/jetbrains.mps.testbench.suite.mpl" folder="tests" />

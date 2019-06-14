@@ -19,10 +19,13 @@ import jetbrains.mps.core.aspects.constraints.rules.ConstraintsRuleId;
 import org.jetbrains.mps.annotations.Internal;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * provides custom messages for failed rules
+ */
 @Internal
 public interface MessageProvider {
   @NotNull
-  ConstraintsRuleId getRule();
+  ConstraintsRuleId forRule();
 
   @NotNull
   String getMessage();

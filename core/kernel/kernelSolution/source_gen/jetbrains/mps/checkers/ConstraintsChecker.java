@@ -7,7 +7,9 @@ import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.core.aspects.constraints.rules.CanBeChild_Context;
 import jetbrains.mps.core.aspects.constraints.rules.CanBeChild_Context.CanBeChild_ContextBuilder;
+import jetbrains.mps.core.aspects.constraints.rules.ConstraintsRuleId;
 import jetbrains.mps.core.aspects.constraints.rules.ConstraintsRulePointer;
+import jetbrains.mps.core.aspects.reporting.api.ReportingAspectRegistry;
 import jetbrains.mps.errors.item.ConstraintsReportItem;
 import jetbrains.mps.errors.item.ConstraintsReportItem.CanBeChildFailedReportItem;
 import jetbrains.mps.errors.item.IssueKindReportItem;
@@ -23,6 +25,7 @@ import jetbrains.mps.smodel.runtime.CheckingNodeContext;
 import jetbrains.mps.smodel.runtime.impl.CheckingNodeContextImpl;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -34,7 +37,10 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import java.util.List;
 
 public class ConstraintsChecker extends AbstractNodeCheckerInEditor implements IChecker<SNode, NodeReportItem> {
-  public ConstraintsChecker() {
+  private final ComponentHost myHost;
+
+  public ConstraintsChecker(@NotNull ComponentHost host) {
+    myHost = host;
   }
 
   @Override
@@ -64,17 +70,22 @@ public class ConstraintsChecker extends AbstractNodeCheckerInEditor implements I
 
     if (parent != null) {
       errorsCollector.addDependency(parent);
-      if (SNodeOperations.getConcept(parent).isValid()) {
-        SContainmentLink link = node.getContainmentLink();
-        if (!(SNodeOperations.getConcept(parent).getContainmentLinks().contains(link))) {
-          errorsCollector.addError(new ConceptFeatureMissingError(node, SNodeOperations.getContainingLink(node)));
+      SConcept parentConcept = SNodeOperations.getConcept(parent);
+      if (parentConcept.isValid()) {
+        if (checkContainmentLinkIsPresentInConcept(node, errorsCollector, parentConcept)) {
           return;
         }
         final CanBeChild_Context context = new CanBeChild_ContextBuilder().buildFromNode(node);
         List<ConstraintsRulePointer> failingRules = errorsCollector.runCheckingAction(() -> ModelConstraints.checkCanBeChild(context));
         if (!failingRules.isEmpty()) {
-          TypesystemRuleId ruleId = new TypesystemRuleId(failingRules.get(0).getRuleSourceNode());
-          String message = "";
+          // for now we take first one because it is hard to make sense from this surroundings
+          ConstraintsRulePointer ruleWeReport = failingRules.get(0);
+          TypesystemRuleId ruleId = new TypesystemRuleId(ruleWeReport.getRuleSourceNode());
+          ReportingAspectRegistry reportingRegistry = myHost.findComponent(ReportingAspectRegistry.class);
+          String message = null;
+          if (ruleWeReport instanceof ConstraintsRuleId) {
+            message = reportingRegistry.findMessageForRule(nodeConcept, (ConstraintsRuleId) ruleWeReport);
+          }
           errorsCollector.addError(new CanBeChildFailedReportItem(node, parent, message, ruleId));
         }
       }
@@ -133,5 +144,14 @@ public class ConstraintsChecker extends AbstractNodeCheckerInEditor implements I
         }
       });
     }
+  }
+
+  private boolean checkContainmentLinkIsPresentInConcept(SNode node, LanguageErrorsCollector errorsCollector, SConcept parentConcept) {
+    SContainmentLink link = node.getContainmentLink();
+    if (!(parentConcept.getContainmentLinks().contains(link))) {
+      errorsCollector.addError(new ConceptFeatureMissingError(node, SNodeOperations.getContainingLink(node)));
+      return true;
+    }
+    return false;
   }
 }

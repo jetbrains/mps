@@ -5,9 +5,6 @@
   <extendedDevKits>
     <extendedDevKit>fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)</extendedDevKit>
   </extendedDevKits>
-  <exported-solutions>
-    <exported-solution>8e98f4e2-decf-4e97-bf80-9109e8b759ee(jetbrains.mps.lang.constraints.rules.runtime)</exported-solution>
-  </exported-solutions>
   <generation-plan model="r:65159e81-a36c-493f-8048-da466b844a4f(jetbrains.mps.constraints.rules.genplan@genplan)" />
 </dev-kit>
 
