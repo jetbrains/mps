@@ -13,11 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jetbrains.mps.core.aspects.constraints.rules;
+package jetbrains.mps.core.aspects.constraints.rules.kinds;
 
+import jetbrains.mps.core.aspects.constraints.rules.ConstraintsRuleKind;
+import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeChild_Context.Builder;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SNodeReference;
 
-public interface IConstraintsRulePointer {
-  @NotNull SNodeReference getRuleSourceNode();
+public enum CanBeChild_RuleKind implements ConstraintsRuleKind<CanBeChild_Context> {
+  INSTANCE();
+
+  @NotNull
+  @Override
+  public Builder getContextBuilder() {
+    return new Builder();
+  }
 }

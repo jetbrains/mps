@@ -18,6 +18,16 @@ package jetbrains.mps.core.aspects.constraints.rules;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
+/**
+ * Each particular <it>constraint</it> in the aspect 'constraints' requires
+ * its own unique context.
+ *
+ * This interface represents the abstraction of this notion.
+ * Anything really can be a context, the only thing we require, is that each
+ * context makes sense for a particular MPS concept.
+ *
+ * @author apyshkin, mburyakov
+ */
 public interface ConstraintsContext {
   /**
    * @return the concept constraints of which we will regard

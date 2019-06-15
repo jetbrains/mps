@@ -15,12 +15,15 @@
  */
 package jetbrains.mps.smodel.constraints;
 
-import jetbrains.mps.core.aspects.constraints.rules.CanBeChild_Context;
-import jetbrains.mps.core.aspects.constraints.rules.CanBeChild_RuleKind;
-import jetbrains.mps.core.aspects.constraints.rules.ConstraintsRegistry2;
+import jetbrains.mps.core.aspects.constraints.rules.ConstraintsContext;
 import jetbrains.mps.core.aspects.constraints.rules.ConstraintsRule;
-import jetbrains.mps.core.aspects.constraints.rules.ConstraintsRuleId;
-import jetbrains.mps.core.aspects.constraints.rules.IConstraintsRulePointer;
+import jetbrains.mps.core.aspects.constraints.rules.ConstraintsRuleKind;
+import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeChild_Context;
+import jetbrains.mps.core.aspects.constraints.rules.ConstraintsRegistry2;
+import jetbrains.mps.core.aspects.constraints.rules.ConstraintsRulePointer;
+import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeChild_RuleKind;
+import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeParent_Context;
+import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeParent_RuleKind;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
 import jetbrains.mps.smodel.constraints.ReferenceDescriptor.OkReferenceDescriptor;
@@ -50,7 +53,9 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.model.SReference;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * API for model constraints
@@ -93,40 +98,63 @@ public class ModelConstraints {
     return canBeAncestorDirect(new ConstraintContext_CanBeAncestor(ancestor, descendant), checkingNodeContext);
   }
 
-  public static boolean canBeParent(@NotNull SNode node, @NotNull SAbstractConcept childConcept, /*TODO @NotNull*/ SContainmentLink link,
-      @Nullable CheckingNodeContext checkingNodeContext) {
-    return canBeParent(new ConstraintContext_CanBeParent(childConcept, node, link), checkingNodeContext);
+  @Deprecated
+  public static boolean canBeParent(@NotNull SNode node,
+                                    @NotNull SAbstractConcept childConcept,
+                                    @Nullable /*NotNull*/ SContainmentLink link,
+                                    @Nullable CheckingNodeContext checkingNodeContext) {
+    return canBeParent0(new ConstraintContext_CanBeParent(childConcept, node, link), checkingNodeContext);
   }
 
+  @Deprecated
   public static boolean canBeParent(@NotNull SNode childNode, @Nullable CheckingNodeContext checkingNodeContext) {
     if (childNode.getParent() == null) {
       // for root nodes it should return true
       return true;
     }
-    return canBeParent(new ConstraintContext_CanBeParent(childNode), checkingNodeContext);
+    return canBeParent0(new ConstraintContext_CanBeParent(childNode), checkingNodeContext);
+  }
+
+  /**
+   * @return canBeParent failing rules
+   */
+  @NotNull
+  public static List<ConstraintsRulePointer> checkCanBeParent(@NotNull CanBeParent_Context context) {
+    if (context.getChildNode() != null && context.getChildNode().getParent() == null) {
+      // for root nodes it should return true
+      return Collections.emptyList();
+    }
+    CheckingNodeContextImpl debugInfo = new CheckingNodeContextImpl();
+    List<ConstraintsRulePointer> constraintsRuleIds = checkRulesOfKind(context, CanBeParent_RuleKind.INSTANCE).stream()
+                                                                                                              .map(ConstraintsRule::getId)
+                                                                                                              .collect(Collectors.toList());
+    boolean legacyAreOk = legacyCanBeParent(ConstraintContext_CanBeParent.convert(context), debugInfo);
+    if (!legacyAreOk) {
+      constraintsRuleIds.add(new AdaptedLegacyConstraintsRuleId(debugInfo.getBreakingNode()));
+    }
+    return constraintsRuleIds;
   }
 
   /**
    * @return canBeChild failing rules
    */
   @NotNull
-  public static List<IConstraintsRulePointer> checkCanBeChild(@NotNull CanBeChild_Context context) {
+  public static List<ConstraintsRulePointer> checkCanBeChild(@NotNull CanBeChild_Context context) {
     CheckingNodeContextImpl debugInfo = new CheckingNodeContextImpl();
-    List<IConstraintsRulePointer> constraintsRuleIds = new ArrayList<>();
-    for (ConstraintsRule<CanBeChild_Context> constraintsRule : checkNewCanBeChild(context)) {
-      constraintsRuleIds.add(new RulesConstraintsRulePointer(constraintsRule.getRuleSourceNode(), constraintsRule.getId()));
-    }
+    List<ConstraintsRulePointer> constraintsRuleIds = checkRulesOfKind(context, CanBeChild_RuleKind.INSTANCE).stream()
+                                                                                                             .map(ConstraintsRule::getId)
+                                                                                                             .collect(Collectors.toList());
     boolean legacyAreOk = legacyCanBeChild(ConstraintContext_CanBeChild.convert(context), debugInfo);
     if (!legacyAreOk) {
-      constraintsRuleIds.add(new LegacyConstraintsRulePointer(debugInfo.getBreakingNode()));
+      constraintsRuleIds.add(new AdaptedLegacyConstraintsRuleId(debugInfo.getBreakingNode()));
     }
     return constraintsRuleIds;
   }
 
-  public static class LegacyConstraintsRulePointer implements IConstraintsRulePointer {
+  static class AdaptedLegacyConstraintsRuleId implements ConstraintsRulePointer {
     private final SNodeReference myRef;
 
-    LegacyConstraintsRulePointer(@NotNull SNodeReference ref) {
+    AdaptedLegacyConstraintsRuleId(@NotNull SNodeReference ref) {
       myRef = ref;
     }
 
@@ -134,38 +162,18 @@ public class ModelConstraints {
     @NotNull
     public SNodeReference getRuleSourceNode() {
       return myRef;
-    }
-  }
-
-  public static class RulesConstraintsRulePointer implements IConstraintsRulePointer {
-    private final SNodeReference myRef;
-    private final ConstraintsRuleId myId;
-
-    RulesConstraintsRulePointer(@NotNull SNodeReference ref, @NotNull ConstraintsRuleId id) {
-      myRef = ref;
-      myId = id;
-    }
-
-    @Override
-    @NotNull
-    public SNodeReference getRuleSourceNode() {
-      return myRef;
-    }
-
-    public ConstraintsRuleId getId() {
-      return myId;
     }
   }
 
   @Deprecated
   public static boolean canBeChild(@NotNull SNode parentNode, @NotNull SAbstractConcept childConcept, /*TODO @NotNull*/ SContainmentLink link,
       @Nullable CheckingNodeContext checkingNodeContext) {
-    return canBeChild(new ConstraintContext_CanBeChild(childConcept, parentNode, link), checkingNodeContext);
+    return canBeChild0(new ConstraintContext_CanBeChild(childConcept, parentNode, link), checkingNodeContext);
   }
 
   @Deprecated
   public static boolean canBeChild(@NotNull SNode node, @Nullable CheckingNodeContext checkingNodeContext) {
-    return canBeChild(new ConstraintContext_CanBeChild(node), checkingNodeContext);
+    return canBeChild0(new ConstraintContext_CanBeChild(node), checkingNodeContext);
   }
 
   public static boolean canBeRoot(@NotNull SAbstractConcept concept, @NotNull SModel model) {
@@ -213,29 +221,37 @@ public class ModelConstraints {
     return descriptor.canBeAncestor(context, checkingNodeContext);
   }
 
-  private static boolean canBeParent(@NotNull ConstraintContext_CanBeParent context, @Nullable CheckingNodeContext checkingNodeContext) {
-    ConstraintsDescriptor descriptor = ConceptRegistryUtil.getConstraintsDescriptor(context.getNode().getConcept());
-    return descriptor.canBeParent(context, checkingNodeContext);
+  private static boolean canBeParent0(@NotNull ConstraintContext_CanBeParent context, @Nullable CheckingNodeContext checkingNodeContext) {
+    boolean legacyResult = legacyCanBeParent(context, checkingNodeContext);
+    return legacyResult && checkRulesOfKind(context.adapt(), CanBeParent_RuleKind.INSTANCE).isEmpty();
   }
 
-  private static boolean canBeChild(@NotNull ConstraintContext_CanBeChild context, @Nullable CheckingNodeContext checkingNodeContext) {
+  private static boolean canBeChild0(@NotNull ConstraintContext_CanBeChild context, @Nullable CheckingNodeContext checkingNodeContext) {
     boolean legacyResult = legacyCanBeChild(context, checkingNodeContext);
-    return legacyResult && checkNewCanBeChild(context.adapt()).isEmpty();
+    return legacyResult && checkRulesOfKind(context.adapt(), CanBeChild_RuleKind.INSTANCE).isEmpty();
   }
 
   /**
-   * @return the list of failed rules
+   * @return the list of failed rules for the kind
    */
   @NotNull
-  private static List<ConstraintsRule<CanBeChild_Context>> checkNewCanBeChild(@NotNull CanBeChild_Context context) {
+  private static <C extends ConstraintsContext> List<ConstraintsRule<C>> checkRulesOfKind(@NotNull C context, @NotNull ConstraintsRuleKind<C> kind) {
     ConstraintsRegistry2 constraintsRegistry = ConceptRegistry.getInstance().getConstraintsRegistry().getNewRegistry();
-    return constraintsRegistry.getFailingRulesFor(context, CanBeChild_RuleKind.INSTANCE);
+    return constraintsRegistry.getFailingRulesFor(context, kind);
   }
 
+  @ToRemove(version = 300)
   private static boolean legacyCanBeChild(@NotNull ConstraintContext_CanBeChild context,
                                           @Nullable CheckingNodeContext checkingNodeContext) {
     ConstraintsDescriptor descriptor = ConceptRegistry.getInstance().getConstraintsDescriptor(context.getConcept());
     return descriptor.canBeChild(context, checkingNodeContext);
+  }
+
+  @ToRemove(version = 300)
+  private static boolean legacyCanBeParent(@NotNull ConstraintContext_CanBeParent context,
+                                           @Nullable CheckingNodeContext checkingNodeContext) {
+    ConstraintsDescriptor descriptor = ConceptRegistry.getInstance().getConstraintsDescriptor(context.getConcept());
+    return descriptor.canBeParent(context, checkingNodeContext);
   }
 
   // scopes part

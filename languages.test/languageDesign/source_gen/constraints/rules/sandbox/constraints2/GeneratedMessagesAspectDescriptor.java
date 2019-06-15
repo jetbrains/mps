@@ -26,8 +26,8 @@ public final class GeneratedMessagesAspectDescriptor implements MessagesAspectDe
           @Override
           public List<MessageProvider> getMessageProviders() {
             List<MessageProvider> result = new ArrayList<MessageProvider>();
-            result.addAll(new A_Messages().getMessageProviders());
             result.addAll(new A_DefaultMessages().getMessageProviders());
+            result.addAll(new A_Messages().getMessageProviders());
             return result;
           }
         };

@@ -44,7 +44,11 @@ public final class ConstraintsRegistry2 {
     if (aspect == null) {
       return new EmptyConstraintsDescriptor2();
     }
-    return aspect.getConstraints(concept);
+    ConstraintsDescriptor2 descriptor2 = aspect.getConstraints(concept);
+    if (descriptor2 == null) {
+      return new EmptyConstraintsDescriptor2();
+    }
+    return descriptor2;
   }
 
   @NotNull
@@ -55,10 +59,10 @@ public final class ConstraintsRegistry2 {
 
   @NotNull
   public <C extends ConstraintsContext> List<ConstraintsRule<C>> getFailingRulesFor(@NotNull C context,
-                                                                                   @NotNull ConstraintsRuleKind<C> ruleKind) {
+                                                                                    @NotNull ConstraintsRuleKind<C> ruleKind) {
     List<ConstraintsRule<C>> rules = new ArrayList<>();
     for (ConstraintsRule<C> rule : getApplicableRules(context.getConcept(), ruleKind)) {
-      if (!(rule.check(context))) {
+      if (!rule.check(context)) {
         rules.add(rule);
       }
     }

@@ -13,29 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jetbrains.mps.core.aspects.constraints.rules;
+package jetbrains.mps.core.aspects.constraints.rules.kinds;
 
+import jetbrains.mps.core.aspects.constraints.rules.ConstraintsRuleKind;
+import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeParent_Context.Builder;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import org.jetbrains.mps.openapi.model.SNodeReference;
 
-public interface ConstraintsRule<Context extends ConstraintsContext> {
-  @NotNull
-  SAbstractConcept getConcept();
+public enum CanBeParent_RuleKind implements ConstraintsRuleKind<CanBeParent_Context> {
+  INSTANCE();
 
   @NotNull
-  ConstraintsRuleId getId();
-
-  /**
-   * AP: what is the problem here to store rule source node in ID?
-   */
-  @NotNull
-  default SNodeReference getRuleSourceNode() {
-    return getId().getRuleSourceNode();
+  @Override
+  public Builder getContextBuilder() {
+    return new Builder();
   }
-
-  @NotNull
-  ConstraintsRuleKind getKind();
-
-  boolean check(@NotNull Context context);
 }

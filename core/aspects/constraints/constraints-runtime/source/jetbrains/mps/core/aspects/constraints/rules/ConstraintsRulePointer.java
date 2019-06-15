@@ -15,27 +15,9 @@
  */
 package jetbrains.mps.core.aspects.constraints.rules;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
-public interface ConstraintsRule<Context extends ConstraintsContext> {
-  @NotNull
-  SAbstractConcept getConcept();
-
-  @NotNull
-  ConstraintsRuleId getId();
-
-  /**
-   * AP: what is the problem here to store rule source node in ID?
-   */
-  @NotNull
-  default SNodeReference getRuleSourceNode() {
-    return getId().getRuleSourceNode();
-  }
-
-  @NotNull
-  ConstraintsRuleKind getKind();
-
-  boolean check(@NotNull Context context);
+public interface ConstraintsRulePointer {
+  @Nullable SNodeReference getRuleSourceNode();
 }

@@ -10,7 +10,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import java.util.List;
 import jetbrains.mps.core.aspects.constraints.rules.ConstraintsRuleKind;
 import java.util.Arrays;
-import jetbrains.mps.core.aspects.constraints.rules.CanBeChild_RuleKind;
+import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeChild_RuleKind;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;

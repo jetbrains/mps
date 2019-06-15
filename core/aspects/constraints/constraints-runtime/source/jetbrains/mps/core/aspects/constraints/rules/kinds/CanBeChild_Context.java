@@ -13,8 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jetbrains.mps.core.aspects.constraints.rules;
+package jetbrains.mps.core.aspects.constraints.rules.kinds;
 
+import jetbrains.mps.core.aspects.constraints.rules.ConstraintsContext;
+import jetbrains.mps.core.aspects.constraints.rules.ContextBuilder;
 import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -64,28 +66,28 @@ public class CanBeChild_Context implements ConstraintsContext {
     return myLink;
   }
 
-  public static final class CanBeChild_ContextBuilder implements ContextBuilder<CanBeChild_Context> {
+  public static final class Builder implements ContextBuilder<CanBeChild_Context> {
     private SNode node;
     private SNode parentNode;
     private SAbstractConcept concept;
     private SContainmentLink link;
 
-    public CanBeChild_ContextBuilder node(@Nullable SNode node) {
+    public Builder node(@Nullable SNode node) {
       this.node = node;
       return this;
     }
 
-    public CanBeChild_ContextBuilder parentNode(@NotNull SNode parentNode) {
+    public Builder parentNode(@NotNull SNode parentNode) {
       this.parentNode = parentNode;
       return this;
     }
 
-    public CanBeChild_ContextBuilder concept(@NotNull SAbstractConcept concept) {
+    public Builder concept(@NotNull SAbstractConcept concept) {
       this.concept = concept;
       return this;
     }
 
-    public CanBeChild_ContextBuilder link(/*@NotNull*/ SContainmentLink link) {
+    public Builder link(/*@NotNull*/ SContainmentLink link) {
       this.link = link;
       return this;
     }
@@ -93,6 +95,12 @@ public class CanBeChild_Context implements ConstraintsContext {
     @NotNull
     public CanBeChild_Context buildFromNode(@NotNull SNode node) {
       return new CanBeChild_Context(node);
+    }
+
+    // you can start here if you want
+    @NotNull
+    public static Builder create() {
+      return new Builder();
     }
 
     @NotNull

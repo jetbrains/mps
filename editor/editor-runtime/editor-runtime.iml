@@ -38,5 +38,6 @@
     <orderEntry type="library" scope="TEST" name="JMock" level="project" />
     <orderEntry type="module" module-name="editing-runtime" exported="" />
     <orderEntry type="module" module-name="typechecking" />
+    <orderEntry type="module" module-name="constraints-runtime" />
   </component>
 </module>

@@ -13,16 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jetbrains.mps.core.aspects.constraints.rules;
-
-import org.jetbrains.annotations.NotNull;
-
-public enum CanBeChild_RuleKind implements ConstraintsRuleKind<CanBeChild_Context> {
-  INSTANCE();
-
-  @NotNull
-  @Override
-  public CanBeChild_Context.CanBeChild_ContextBuilder getContextBuilder() {
-    return new CanBeChild_Context.CanBeChild_ContextBuilder();
-  }
-}
+/**
+ * Here we store predefined kinds for constraint rules.
+ * As of 192 version, we have some fixed kinds (canBeChild, canBeParent, canBeRoot, canBeAncestor)
+ * which cannot be given into the generated code.
+ *
+ * Later this package must be dropped
+ *
+ * @author apyshkin, mburyakov
+ */
+package jetbrains.mps.core.aspects.constraints.rules.kinds;

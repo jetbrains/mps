@@ -15,21 +15,37 @@
  */
 package jetbrains.mps.core.aspects.constraints.rules;
 
+import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
-public class ConstraintsRuleId {
-  @NotNull
-  private final String myId;
+import java.util.Objects;
 
-  public ConstraintsRuleId(@NotNull String id) {
+/**
+ * obviously debug info could not be the only way to identify different rules.
+ * later we add another choice for rule id
+ */
+public final class ConstraintsRuleId implements ConstraintsRulePointer {
+  @NotNull private final String myId;
+  @Nullable private final SNodeReference mySourceRuleDecl;
+
+  public ConstraintsRuleId(@NotNull String id, @Nullable SNodeReference sourceRuleDecl) {
     myId = id;
+    mySourceRuleDecl = sourceRuleDecl;
   }
 
   @NotNull
   public String getId() {
     return myId;
+  }
+
+  @NotNull
+  @Override
+  public SNodeReference getRuleSourceNode() {
+    return mySourceRuleDecl;
   }
 
   @Override
@@ -44,6 +60,6 @@ public class ConstraintsRuleId {
 
   @Override
   public int hashCode() {
-    return myId.hashCode();
+    return Objects.hash(myId);
   }
 }

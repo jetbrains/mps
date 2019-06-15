@@ -5,10 +5,10 @@ package jetbrains.mps.checkers;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.components.ComponentHost;
-import jetbrains.mps.core.aspects.constraints.rules.CanBeChild_Context;
-import jetbrains.mps.core.aspects.constraints.rules.CanBeChild_Context.CanBeChild_ContextBuilder;
+import jetbrains.mps.core.aspects.constraints.rules.ConstraintsRulePointer;
+import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeChild_Context;
+import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeChild_Context.Builder;
 import jetbrains.mps.core.aspects.constraints.rules.ConstraintsRuleId;
-import jetbrains.mps.core.aspects.constraints.rules.IConstraintsRulePointer;
 import jetbrains.mps.core.aspects.reporting.api.ReportingAspectRegistry;
 import jetbrains.mps.errors.item.ConstraintsReportItem;
 import jetbrains.mps.errors.item.ConstraintsReportItem.CanBeChildFailedReportItem;
@@ -21,7 +21,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.project.validation.ConceptFeatureMissingError;
 import jetbrains.mps.project.validation.ConceptMissingError;
 import jetbrains.mps.smodel.constraints.ModelConstraints;
-import jetbrains.mps.smodel.constraints.ModelConstraints.RulesConstraintsRulePointer;
 import jetbrains.mps.smodel.runtime.CheckingNodeContext;
 import jetbrains.mps.smodel.runtime.impl.CheckingNodeContextImpl;
 import org.jetbrains.annotations.NotNull;
@@ -76,16 +75,16 @@ public class ConstraintsChecker extends AbstractNodeCheckerInEditor implements I
         if (checkContainmentLinkIsPresentInConcept(node, errorsCollector, parentConcept)) {
           return;
         }
-        final CanBeChild_Context context = new CanBeChild_ContextBuilder().buildFromNode(node);
-        List<IConstraintsRulePointer> failingRules = errorsCollector.runCheckingAction(() -> ModelConstraints.checkCanBeChild(context));
+        final CanBeChild_Context context = new Builder().buildFromNode(node);
+        List<ConstraintsRulePointer> failingRules = errorsCollector.runCheckingAction(() -> ModelConstraints.checkCanBeChild(context));
         if (!failingRules.isEmpty()) {
-          // for now we take first one because it is hard to make sense from this surroundings
-          IConstraintsRulePointer ruleWeReport = failingRules.get(0);
+          // for now we take the first one because it is hard to make sense from this surroundings
+          @NotNull ConstraintsRulePointer ruleWeReport = failingRules.get(0);
           TypesystemRuleId ruleId = new TypesystemRuleId(ruleWeReport.getRuleSourceNode());
           ReportingAspectRegistry reportingRegistry = myHost.findComponent(ReportingAspectRegistry.class);
           String message = null;
-          if (ruleWeReport instanceof RulesConstraintsRulePointer) {
-            message = reportingRegistry.findMessageForRule(nodeConcept, ((RulesConstraintsRulePointer) ruleWeReport).getId());
+          if (ruleWeReport instanceof ConstraintsRuleId) {
+            message = reportingRegistry == null ? null : reportingRegistry.findMessageForRule(nodeConcept, (ConstraintsRuleId) ruleWeReport);
           }
           errorsCollector.addError(new CanBeChildFailedReportItem(node, parent, message, ruleId));
         }

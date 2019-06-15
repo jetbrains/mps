@@ -133,7 +133,7 @@
           </node>
         </node>
         <node concept="1DCEQD" id="4zSofKebypH" role="1DCEQI">
-          <property role="1DCEQF" value="default message" />
+          <property role="1DCEQF" value="THE PROPERTY VALUE IS VERY LOW, HELP" />
         </node>
       </node>
       <node concept="3Qq5Rn" id="hyoMxHLT5C" role="3Qpnal">
