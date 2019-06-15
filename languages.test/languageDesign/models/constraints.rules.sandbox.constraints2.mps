@@ -4,6 +4,7 @@
   <languages>
     <use id="47257bf3-78d3-470b-89d9-8c3261a61d15" name="jetbrains.mps.lang.constraints.rules" version="0" />
     <use id="ad93155d-79b2-4759-b10c-55123e763903" name="jetbrains.mps.lang.messages" version="0" />
+    <use id="b3551702-269c-4f05-ba61-58060cef4292" name="jetbrains.mps.lang.constraints.messages" version="0" />
     <devkit ref="2843b9cf-86fe-47f2-87c9-f256294fd769(jetbrains.mps.devkit.aspect.constraints.rules)" />
   </languages>
   <imports>
@@ -24,10 +25,22 @@
         <child id="1081773367579" name="rightExpression" index="3uHU7w" />
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
+      <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
+    </language>
+    <language id="b3551702-269c-4f05-ba61-58060cef4292" name="jetbrains.mps.lang.constraints.messages">
+      <concept id="315923949160549991" name="jetbrains.mps.lang.constraints.messages.structure.ConstraintsRuleWithMessage" flags="ng" index="1DCEPf">
+        <child id="315923949160550022" name="messageProvider" index="1DCEQI" />
+      </concept>
+      <concept id="315923949160550017" name="jetbrains.mps.lang.constraints.messages.structure.InlineMessageProvider" flags="ng" index="1DCEQD">
+        <property id="315923949160550019" name="message" index="1DCEQF" />
+      </concept>
     </language>
     <language id="47257bf3-78d3-470b-89d9-8c3261a61d15" name="jetbrains.mps.lang.constraints.rules">
       <concept id="315923949159026769" name="jetbrains.mps.lang.constraints.rules.structure.ConstraintsDefNativeNode" flags="ng" index="1DMZdT">
         <reference id="315923949159027763" name="conceptParameter" index="1DMZsr" />
+      </concept>
+      <concept id="315923949160453290" name="jetbrains.mps.lang.constraints.rules.structure.ConstraintsRuleIdHolder" flags="ng" index="1DRju2">
+        <property id="6714410169261853888" name="ruleId" index="EcuMT" />
       </concept>
       <concept id="7291380803376071201" name="jetbrains.mps.lang.constraints.rules.structure.ConstraintsRoot" flags="ng" index="3Qpn8k">
         <reference id="7291380803380183169" name="concept" index="3QD32O" />
@@ -48,9 +61,7 @@
         <reference id="7291380803376221790" name="declaration" index="3QpVTF" />
       </concept>
       <concept id="7291380803376202512" name="jetbrains.mps.lang.constraints.rules.structure.ContextExpression" flags="ng" index="3QpRc_" />
-      <concept id="7291380803376279010" name="jetbrains.mps.lang.constraints.rules.structure.ConstraintsRule" flags="ng" index="3Qq5Rn">
-        <property id="6714410169261853888" name="ruleId" index="EcuMT" />
-      </concept>
+      <concept id="7291380803376279010" name="jetbrains.mps.lang.constraints.rules.structure.ConstraintsRule" flags="ng" index="3Qq5Rn" />
       <concept id="5473446470512654133" name="jetbrains.mps.lang.constraints.rules.structure.ConstraintsRuleKindParameterConcept" flags="ng" index="3RW26_" />
       <concept id="5473446470512342705" name="jetbrains.mps.lang.constraints.rules.structure.ConstraintsDefNative" flags="ng" index="3RXm0x">
         <child id="5473446470512342706" name="type" index="3RXm0y" />
@@ -102,23 +113,46 @@
           </node>
         </node>
       </node>
-      <node concept="3Qq5Rn" id="1uv0FAtCkVG" role="3Qpnal">
+      <node concept="1DCEPf" id="hyoMxHLRzH" role="3Qpnal">
+        <property role="EcuMT" value="315923949160986861" />
         <property role="TrG5h" value="second" />
-        <property role="EcuMT" value="1702082180406136556" />
-        <node concept="3eOVzh" id="1uv0FAtCmFl" role="3QpH_s">
-          <node concept="3cmrfG" id="1uv0FAtCmFo" role="3uHU7w">
+        <node concept="1DCEQD" id="hyoMxHLRzJ" role="1DCEQI">
+          <property role="1DCEQF" value="default message" />
+        </node>
+        <node concept="3eOVzh" id="hyoMxHLSVC" role="3QpH_s">
+          <node concept="3cmrfG" id="hyoMxHLSW8" role="3uHU7w">
             <property role="3cmrfH" value="100" />
           </node>
-          <node concept="2OqwBi" id="1uv0FAtCliW" role="3uHU7B">
-            <node concept="2OqwBi" id="1uv0FAtCkW9" role="2Oq$k0">
-              <node concept="3QpRc_" id="1uv0FAtCkVW" role="2Oq$k0" />
-              <node concept="3QpRc$" id="hyoMxHG3$f" role="2OqNvi">
+          <node concept="2OqwBi" id="hyoMxHLRNH" role="3uHU7B">
+            <node concept="2OqwBi" id="hyoMxHLRFH" role="2Oq$k0">
+              <node concept="3QpRc_" id="hyoMxHLRFw" role="2Oq$k0" />
+              <node concept="3QpRc$" id="hyoMxHLRGj" role="2OqNvi">
                 <ref role="3QpVTF" node="hyoMxHFKoi" resolve="Node" />
               </node>
             </node>
-            <node concept="3TrcHB" id="1uv0FAtClr4" role="2OqNvi">
+            <node concept="3TrcHB" id="hyoMxHLRUq" role="2OqNvi">
               <ref role="3TsBF5" to="ktae:7w_sh_iI1nH" resolve="a" />
             </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Qq5Rn" id="hyoMxHLT5C" role="3Qpnal">
+        <property role="EcuMT" value="315923949160993128" />
+        <property role="TrG5h" value="third" />
+        <node concept="3y3z36" id="hyoMxHLTcF" role="3QpH_s">
+          <node concept="2OqwBi" id="hyoMxHLT6L" role="3uHU7B">
+            <node concept="2OqwBi" id="hyoMxHLT6M" role="2Oq$k0">
+              <node concept="3QpRc_" id="hyoMxHLT6N" role="2Oq$k0" />
+              <node concept="3QpRc$" id="hyoMxHLT6O" role="2OqNvi">
+                <ref role="3QpVTF" node="hyoMxHFKoi" resolve="Node" />
+              </node>
+            </node>
+            <node concept="3TrcHB" id="hyoMxHLT6P" role="2OqNvi">
+              <ref role="3TsBF5" to="ktae:7w_sh_iI1nH" resolve="a" />
+            </node>
+          </node>
+          <node concept="3cmrfG" id="hyoMxHLT6K" role="3uHU7w">
+            <property role="3cmrfH" value="65" />
           </node>
         </node>
       </node>
@@ -139,6 +173,7 @@
     </node>
   </node>
   <node concept="3QByoM" id="7FO6JFyzuId">
+    <property role="TrG5h" value="A_Messages" />
     <ref role="3Z9TSV" to="ktae:7w_sh_iHHi0" resolve="A" />
     <node concept="3QByp$" id="7FO6JFyzuIe" role="3QBEN7">
       <property role="3QBypB" value="I OVERRIDE YOU" />
@@ -146,7 +181,7 @@
     </node>
     <node concept="3QByp$" id="1uv0FAtCodb" role="3QBEN7">
       <property role="3QBypB" value="I OVERRIDE YOU TWICE" />
-      <ref role="3QBypx" node="1uv0FAtCkVG" resolve="second" />
+      <ref role="3QBypx" node="hyoMxHLRzH" resolve="second" />
     </node>
   </node>
 </model>

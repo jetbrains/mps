@@ -23,7 +23,7 @@ public final class A_Messages implements MessagesDescriptor {
   public final class second_MessageProvider_b implements MessageProvider {
     @Override
     public ConstraintsRuleId forRule() {
-      return new ConstraintsRuleId("constraints.rules.sandbox:1702082180406136556");
+      return new ConstraintsRuleId("constraints.rules.sandbox:315923949160986861");
     }
 
     @Override

@@ -8,6 +8,8 @@ import jetbrains.mps.core.aspects.constraints.rules.CanBeChild_Context;
 import jetbrains.mps.core.aspects.constraints.rules.CanBeChild_RuleKind;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.core.aspects.constraints.rules.ConstraintsRuleId;
+import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.constraints.rules.ConstraintsRuleKind;
@@ -30,6 +32,10 @@ public class A_Constraints2 implements ConstraintsDescriptor2 {
     @Override
     public ConstraintsRuleId getId() {
       return new ConstraintsRuleId("constraints.rules.sandbox:8657450212265562102");
+    }
+
+    public SNodeReference getRuleSourceNode() {
+      return PersistenceFacade.getInstance().createNodeReference("r:d8115b4c-62c9-4566-9bc7-9fa3c8929293(constraints.rules.sandbox.constraints2)/8657450212265562102");
     }
 
 
@@ -59,13 +65,51 @@ public class A_Constraints2 implements ConstraintsDescriptor2 {
 
     @Override
     public ConstraintsRuleId getId() {
-      return new ConstraintsRuleId("constraints.rules.sandbox:1702082180406136556");
+      return new ConstraintsRuleId("constraints.rules.sandbox:315923949160986861");
+    }
+
+    public SNodeReference getRuleSourceNode() {
+      return PersistenceFacade.getInstance().createNodeReference("r:d8115b4c-62c9-4566-9bc7-9fa3c8929293(constraints.rules.sandbox.constraints2)/315923949160986861");
     }
 
 
     @Override
     public boolean check(@NotNull CanBeChild_Context context) {
       return SPropertyOperations.getInteger(context.getNode(), MetaAdapterFactory.getProperty(0xa6518565787648e9L, 0x8d439ef97836a52eL, 0x7825711952b6d480L, 0x7825711952b815edL, "a")) < 100;
+    }
+
+    @NotNull
+    @Override
+    public ConstraintsRuleKind<CanBeChild_Context> getKind() {
+      return myRuleKind;
+    }
+
+    @NotNull
+    @Override
+    public SAbstractConcept getConcept() {
+      return MetaAdapterFactory.getConcept(0xa6518565787648e9L, 0x8d439ef97836a52eL, 0x7825711952b6d480L, "constraints.rules.sandbox.structure.A");
+    }
+  }
+  public class Rule_third implements ConstraintsRule<CanBeChild_Context> {
+    private final CanBeChild_RuleKind myRuleKind;
+
+    public Rule_third(@NotNull CanBeChild_RuleKind ruleKind) {
+      myRuleKind = ruleKind;
+    }
+
+    @Override
+    public ConstraintsRuleId getId() {
+      return new ConstraintsRuleId("constraints.rules.sandbox:315923949160993128");
+    }
+
+    public SNodeReference getRuleSourceNode() {
+      return PersistenceFacade.getInstance().createNodeReference("r:d8115b4c-62c9-4566-9bc7-9fa3c8929293(constraints.rules.sandbox.constraints2)/315923949160993128");
+    }
+
+
+    @Override
+    public boolean check(@NotNull CanBeChild_Context context) {
+      return SPropertyOperations.getInteger(context.getNode(), MetaAdapterFactory.getProperty(0xa6518565787648e9L, 0x8d439ef97836a52eL, 0x7825711952b6d480L, 0x7825711952b815edL, "a")) != 65;
     }
 
     @NotNull
@@ -87,7 +131,7 @@ public class A_Constraints2 implements ConstraintsDescriptor2 {
   public <Context extends ConstraintsContext> List<ConstraintsRule<Context>> getRules(@NotNull ConstraintsRuleKind<Context> kind) {
     if (myRules == null) {
       myRules = new HashMap<ConstraintsRuleKind<?>, List<ConstraintsRule<?>>>();
-      myRules.put(CanBeChild_RuleKind.INSTANCE, Arrays.<ConstraintsRule<?>>asList(new A_Constraints2.Rule_first(CanBeChild_RuleKind.INSTANCE), new A_Constraints2.Rule_second(CanBeChild_RuleKind.INSTANCE)));
+      myRules.put(CanBeChild_RuleKind.INSTANCE, Arrays.<ConstraintsRule<?>>asList(new A_Constraints2.Rule_first(CanBeChild_RuleKind.INSTANCE), new A_Constraints2.Rule_second(CanBeChild_RuleKind.INSTANCE), new A_Constraints2.Rule_third(CanBeChild_RuleKind.INSTANCE)));
     }
     return (List<ConstraintsRule<Context>>) (List) Collections.unmodifiableList(myRules.get(kind));
   }

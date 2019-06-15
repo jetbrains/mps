@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model ref="r:65159e81-a36c-493f-8048-da466b844a4f(jetbrains.mps.constraints.rules.genplan@genplan)">
+<model ref="r:65159e81-a36c-493f-8048-da466b844a4f(jetbrains.mps.lang.descriptor.constraints2@genplan)">
   <persistence version="9" />
   <languages>
     <use id="7ab1a6fa-0a11-4b95-9e48-75f363d6cb00" name="jetbrains.mps.lang.generator.plan" version="1" />
@@ -43,6 +43,12 @@
       <node concept="2V$Bhx" id="p4S6WR3TZ3" role="1t_9vn">
         <property role="2V$B1T" value="ceab5195-25ea-4f22-9b92-103b95ca8c0c" />
         <property role="2V$B1Q" value="jetbrains.mps.lang.core" />
+      </node>
+    </node>
+    <node concept="2VgMA2" id="ENHtKxERMF" role="2VgMA7">
+      <node concept="2V$Bhx" id="ENHtKxERMX" role="1t_9vn">
+        <property role="2V$B1T" value="b3551702-269c-4f05-ba61-58060cef4292" />
+        <property role="2V$B1Q" value="jetbrains.mps.lang.constraints.messages" />
       </node>
     </node>
     <node concept="2VgMA2" id="p4S6WR9xjG" role="2VgMA7">

@@ -144,6 +144,7 @@
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/make/languages/script/jetbrains.mps.make.script.mpl" folder="core.make" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/make/solutions/jetbrains.mps.make.sandbox/jetbrains.mps.make.sandbox.msd" folder="core.make" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/messages/jetbrains.mps.lang.messages.mpl" folder="core.aspects.reporting" />
+      <modulePath path="$PROJECT_DIR$/languages/languageDesign/messages/rules/jetbrains.mps.lang.constraints.messages.mpl" folder="core.aspects.reporting" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/migration/jetbrains.mps.lang.migration.mpl" folder="core.aspects.migration" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/migration/solutions/actions/jetbrains.mps.lang.migration.actions.msd" folder="core.aspects.migration" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/migration/util/jetbrains.mps.lang.migration.util.mpl" folder="core.aspects.migration" />
