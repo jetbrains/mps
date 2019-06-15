@@ -23,10 +23,11 @@
     <classNode dependClassName="jetbrains.mps.generator.template.ReductionRuleQueryContext" />
     <classNode dependClassName="jetbrains.mps.generator.template.ReferenceMacroContext" />
     <classNode dependClassName="jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext" />
-    <classNode dependClassName="jetbrains.mps.lang.constraints.rules.behavior.ConstraintsRule__BehaviorDescriptor" />
+    <classNode dependClassName="jetbrains.mps.lang.constraints.rules.behavior.ConstraintsRuleIdHolder__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="jetbrains.mps.util.IterableUtil" />

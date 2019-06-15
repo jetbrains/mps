@@ -14,9 +14,11 @@
     <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
       <concept id="1169125787135" name="jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration" flags="ig" index="PkWjJ">
         <property id="6714410169261853888" name="conceptId" index="EcuMT" />
+        <property id="4628067390765907488" name="conceptShortDescription" index="R4oN_" />
         <property id="4628067390765956802" name="abstract" index="R5$K7" />
         <property id="5092175715804935370" name="conceptAlias" index="34LRSv" />
         <child id="1071489727083" name="linkDeclaration" index="1TKVEi" />
+        <child id="1071489727084" name="propertyDeclaration" index="1TKVEl" />
       </concept>
       <concept id="1169125989551" name="jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration" flags="ig" index="PlHQZ">
         <child id="1169127546356" name="extends" index="PrDN$" />
@@ -28,6 +30,10 @@
         <property id="1096454100552" name="rootable" index="19KtqR" />
         <reference id="1071489389519" name="extends" index="1TJDcQ" />
         <child id="1169129564478" name="implements" index="PzmwI" />
+      </concept>
+      <concept id="1071489288299" name="jetbrains.mps.lang.structure.structure.PropertyDeclaration" flags="ig" index="1TJgyi">
+        <property id="241647608299431129" name="propertyId" index="IQ2nx" />
+        <reference id="1082985295845" name="dataType" index="AX2Wp" />
       </concept>
       <concept id="1071489288298" name="jetbrains.mps.lang.structure.structure.LinkDeclaration" flags="ig" index="1TJgyj">
         <property id="1071599776563" name="role" index="20kJfa" />
@@ -158,9 +164,13 @@
     <property role="EcuMT" value="7291380803376279010" />
     <property role="TrG5h" value="ConstraintsRule" />
     <property role="34LRSv" value="rule" />
+    <property role="R4oN_" value="constraints rule" />
     <ref role="1TJDcQ" node="6kKc3mjqoIo" resolve="ConstraintsRuleBlockMember" />
     <node concept="PrWs8" id="6kKc3mjmAXM" role="PzmwI">
       <ref role="PrY4T" to="tpee:hCUYCKd" resolve="IValidIdentifier" />
+    </node>
+    <node concept="PrWs8" id="hyoMxHJPiQ" role="PzmwI">
+      <ref role="PrY4T" node="hyoMxHJPiE" resolve="ConstraintsRuleIdHolder" />
     </node>
     <node concept="PrWs8" id="6kKc3mjm6R$" role="PzmwI">
       <ref role="PrY4T" node="6kKc3mjlI_C" resolve="ConstraintsExpressionHolder" />
@@ -242,6 +252,25 @@
     </node>
     <node concept="PrWs8" id="hyoMxHEp1j" role="PzmwI">
       <ref role="PrY4T" node="6kKc3mjq0oG" resolve="TypedIdentifier" />
+    </node>
+  </node>
+  <node concept="PlHQZ" id="hyoMxHJPiE">
+    <property role="EcuMT" value="315923949160453290" />
+    <property role="TrG5h" value="ConstraintsRuleIdHolder" />
+    <node concept="1TJgyj" id="hyoMxHM5hU" role="1TKVEi">
+      <property role="IQ2ns" value="315923949161043066" />
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="sourceNode" />
+      <property role="20lbJX" value="0..1" />
+      <ref role="20lvS9" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    </node>
+    <node concept="1TJgyi" id="5OIo7_R7SN0" role="1TKVEl">
+      <property role="TrG5h" value="ruleId" />
+      <property role="IQ2nx" value="6714410169261853888" />
+      <ref role="AX2Wp" to="tpce:3H1xM9LtLda" resolve="IDNumber" />
+    </node>
+    <node concept="PrWs8" id="hyoMxHMdy3" role="PrDN$">
+      <ref role="PrY4T" to="tpee:hCUYCKd" resolve="IValidIdentifier" />
     </node>
   </node>
 </model>

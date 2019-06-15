@@ -19,6 +19,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_ConstraintsRule;
   private ConceptPresentation props_ConstraintsRuleBlock;
   private ConceptPresentation props_ConstraintsRuleBlockMember;
+  private ConceptPresentation props_ConstraintsRuleIdHolder;
   private ConceptPresentation props_ConstraintsRuleKind;
   private ConceptPresentation props_ConstraintsRuleKindParameterConcept;
   private ConceptPresentation props_ContextExpression;
@@ -80,6 +81,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.ConstraintsRule:
         if (props_ConstraintsRule == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("constraints rule");
           cpb.presentationByName();
           props_ConstraintsRule = cpb.create();
         }
@@ -97,6 +99,12 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_ConstraintsRuleBlockMember = cpb.create();
         }
         return props_ConstraintsRuleBlockMember;
+      case LanguageConceptSwitch.ConstraintsRuleIdHolder:
+        if (props_ConstraintsRuleIdHolder == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_ConstraintsRuleIdHolder = cpb.create();
+        }
+        return props_ConstraintsRuleIdHolder;
       case LanguageConceptSwitch.ConstraintsRuleKind:
         if (props_ConstraintsRuleKind == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

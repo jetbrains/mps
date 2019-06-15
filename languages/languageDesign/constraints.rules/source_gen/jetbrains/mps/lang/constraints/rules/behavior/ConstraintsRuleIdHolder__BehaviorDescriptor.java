@@ -14,12 +14,13 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
-public final class ConstraintsRule__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, "jetbrains.mps.lang.constraints.rules.structure.ConstraintsRule");
+public final class ConstraintsRuleIdHolder__BehaviorDescriptor extends BaseBHDescriptor {
+  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x46263286dbf54aaL, "jetbrains.mps.lang.constraints.rules.structure.ConstraintsRuleIdHolder");
 
   public static final SMethod<String> getRuleId_id6kKc3mjG9Hb = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getRuleId").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6kKc3mjG9Hb").build();
 
@@ -29,10 +30,10 @@ public final class ConstraintsRule__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   /*package*/ static String getRuleId_id6kKc3mjG9Hb(@NotNull SNode __thisNode__) {
-    return __thisNode__.getReference().toString();
+    return SPropertyOperations.getString(__thisNode__, MetaAdapterFactory.getProperty(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x46263286dbf54aaL, 0x5d2e6079771f8cc0L, "ruleId"));
   }
 
-  /*package*/ ConstraintsRule__BehaviorDescriptor() {
+  /*package*/ ConstraintsRuleIdHolder__BehaviorDescriptor() {
   }
 
   @Override

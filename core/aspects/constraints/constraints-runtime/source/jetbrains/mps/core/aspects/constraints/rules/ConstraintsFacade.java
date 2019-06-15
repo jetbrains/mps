@@ -25,9 +25,8 @@ import java.util.List;
  */
 public final class ConstraintsFacade {
   @NotNull
-  public static List<ConstraintsRuleId> getFailingRulesForKind(@NotNull ConstraintsContext context, ConstraintsRuleKind ruleKind) {
-    List<ConstraintsRuleId> failingRules = getRegistry2().getFailingRulesFor(context, ruleKind);
-    return failingRules;
+  public static <C extends ConstraintsContext> List<ConstraintsRule<C>> getFailingRulesForKind(@NotNull C context, ConstraintsRuleKind<C> ruleKind) {
+    return getRegistry2().getFailingRulesFor(context, ruleKind);
   }
 
   @NotNull

@@ -48,7 +48,9 @@
         <reference id="7291380803376221790" name="declaration" index="3QpVTF" />
       </concept>
       <concept id="7291380803376202512" name="jetbrains.mps.lang.constraints.rules.structure.ContextExpression" flags="ng" index="3QpRc_" />
-      <concept id="7291380803376279010" name="jetbrains.mps.lang.constraints.rules.structure.ConstraintsRule" flags="ng" index="3Qq5Rn" />
+      <concept id="7291380803376279010" name="jetbrains.mps.lang.constraints.rules.structure.ConstraintsRule" flags="ng" index="3Qq5Rn">
+        <property id="6714410169261853888" name="ruleId" index="EcuMT" />
+      </concept>
       <concept id="5473446470512654133" name="jetbrains.mps.lang.constraints.rules.structure.ConstraintsRuleKindParameterConcept" flags="ng" index="3RW26_" />
       <concept id="5473446470512342705" name="jetbrains.mps.lang.constraints.rules.structure.ConstraintsDefNative" flags="ng" index="3RXm0x">
         <child id="5473446470512342706" name="type" index="3RXm0y" />
@@ -82,6 +84,7 @@
       <ref role="3Qpn9Y" node="7w_sh_iI0Z7" resolve="CanBeChild" />
       <node concept="3Qq5Rn" id="7w_sh_iI0ZQ" role="3Qpnal">
         <property role="TrG5h" value="first" />
+        <property role="EcuMT" value="8657450212265562102" />
         <node concept="3eOSWO" id="7w_sh_iI2zI" role="3QpH_s">
           <node concept="3cmrfG" id="7w_sh_iI2zL" role="3uHU7w">
             <property role="3cmrfH" value="1" />
@@ -101,6 +104,7 @@
       </node>
       <node concept="3Qq5Rn" id="1uv0FAtCkVG" role="3Qpnal">
         <property role="TrG5h" value="second" />
+        <property role="EcuMT" value="1702082180406136556" />
         <node concept="3eOVzh" id="1uv0FAtCmFl" role="3QpH_s">
           <node concept="3cmrfG" id="1uv0FAtCmFo" role="3uHU7w">
             <property role="3cmrfH" value="100" />

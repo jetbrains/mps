@@ -78,7 +78,7 @@
       <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="rule" />
       <property role="20lbJX" value="1" />
-      <ref role="20lvS9" to="bm42:6kKc3mjm6Ry" resolve="ConstraintsRule" />
+      <ref role="20lvS9" to="bm42:hyoMxHJPiE" resolve="ConstraintsRuleIdHolder" />
     </node>
     <node concept="1TJgyi" id="6kKc3mjFxpi" role="1TKVEl">
       <property role="IQ2nx" value="7291380803381892690" />

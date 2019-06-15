@@ -13,6 +13,7 @@ import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 
 public final class BehaviorAspectDescriptor extends BaseBehaviorAspectDescriptor {
   private final BHDescriptor myConstraintsDefNativeNode__BehaviorDescriptor = new ConstraintsDefNativeNode__BehaviorDescriptor();
+  private final BHDescriptor myConstraintsRuleIdHolder__BehaviorDescriptor = new ConstraintsRuleIdHolder__BehaviorDescriptor();
   private final BHDescriptor myConstraintsDefNative__BehaviorDescriptor = new ConstraintsDefNative__BehaviorDescriptor();
   private final BHDescriptor myConstraintsRuleKindParameterConcept__BehaviorDescriptor = new ConstraintsRuleKindParameterConcept__BehaviorDescriptor();
   private final BHDescriptor myConstraintsRoot__BehaviorDescriptor = new ConstraintsRoot__BehaviorDescriptor();
@@ -20,7 +21,6 @@ public final class BehaviorAspectDescriptor extends BaseBehaviorAspectDescriptor
   private final BHDescriptor myConstraintsRuleKind__BehaviorDescriptor = new ConstraintsRuleKind__BehaviorDescriptor();
   private final BHDescriptor myConstraintsExpressionHolder__BehaviorDescriptor = new ConstraintsExpressionHolder__BehaviorDescriptor();
   private final BHDescriptor myContextExpression__BehaviorDescriptor = new ContextExpression__BehaviorDescriptor();
-  private final BHDescriptor myConstraintsRule__BehaviorDescriptor = new ConstraintsRule__BehaviorDescriptor();
   private final BHDescriptor myConstraintsDef__BehaviorDescriptor = new ConstraintsDef__BehaviorDescriptor();
   private final BHDescriptor myTypedIdentifier__BehaviorDescriptor = new TypedIdentifier__BehaviorDescriptor();
 
@@ -42,9 +42,9 @@ public final class BehaviorAspectDescriptor extends BaseBehaviorAspectDescriptor
       case 4:
         return myConstraintsRoot__BehaviorDescriptor;
       case 5:
-        return myConstraintsRule__BehaviorDescriptor;
-      case 6:
         return myConstraintsRuleBlock__BehaviorDescriptor;
+      case 6:
+        return myConstraintsRuleIdHolder__BehaviorDescriptor;
       case 7:
         return myConstraintsRuleKind__BehaviorDescriptor;
       case 8:
@@ -57,5 +57,5 @@ public final class BehaviorAspectDescriptor extends BaseBehaviorAspectDescriptor
     }
     return null;
   }
-  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359366e9d5L), MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x4bf59690bc00f6b1L), MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x46263286da99051L), MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359356e968L), MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554221L), MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L), MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554246L), MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554248L), MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x4bf59690bc05b735L), MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593574310L), MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359368062cL)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359366e9d5L), MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x4bf59690bc00f6b1L), MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x46263286da99051L), MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359356e968L), MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554221L), MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554246L), MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x46263286dbf54aaL), MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554248L), MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x4bf59690bc05b735L), MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593574310L), MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359368062cL)).seal();
 }

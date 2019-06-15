@@ -9,12 +9,13 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.generator.template.BaseMappingRuleContext;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.generator.template.PropertyMacroContext;
-import jetbrains.mps.lang.constraints.rules.behavior.ConstraintsRule__BehaviorDescriptor;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.constraints.rules.behavior.ConstraintsRuleIdHolder__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.generator.template.ReferenceMacroContext;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import java.util.Map;
@@ -46,7 +47,9 @@ public class QueriesGenerated extends QueryProviderBase {
     return SModuleOperations.isAspect(((SModel) _context.getVariable("model")), "constraints2");
   }
   public static Object propertyMacro_GetValue_1_0(final PropertyMacroContext _context) {
-    return (String) ConstraintsRule__BehaviorDescriptor.getRuleId_id6kKc3mjG9Hb.invoke(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x6530303593ae1651L, 0x6530303593ae1654L, "rule")));
+    SNode rule = SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x6530303593ae1651L, 0x6530303593ae1654L, "rule"));
+    SModel model = ((SNodeOperations.getModel(rule) == _context.getInputModel()) ? _context.getOriginalInputModel() : SNodeOperations.getModel(rule));
+    return model.getName().getNamespace() + ":" + ConstraintsRuleIdHolder__BehaviorDescriptor.getRuleId_id6kKc3mjG9Hb.invoke(rule);
   }
   public static Object propertyMacro_GetValue_1_1(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(_context.getNode(), MetaAdapterFactory.getProperty(0xad93155d79b24759L, 0xb10c55123e763903L, 0x6530303593ae1651L, 0x6530303593ae1652L, "message"));

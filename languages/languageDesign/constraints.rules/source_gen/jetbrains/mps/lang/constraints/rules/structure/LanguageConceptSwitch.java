@@ -19,12 +19,13 @@ public final class LanguageConceptSwitch {
   public static final int ConstraintsRule = 7;
   public static final int ConstraintsRuleBlock = 8;
   public static final int ConstraintsRuleBlockMember = 9;
-  public static final int ConstraintsRuleKind = 10;
-  public static final int ConstraintsRuleKindParameterConcept = 11;
-  public static final int ContextExpression = 12;
-  public static final int ContextRefOperation = 13;
-  public static final int ContextType = 14;
-  public static final int TypedIdentifier = 15;
+  public static final int ConstraintsRuleIdHolder = 10;
+  public static final int ConstraintsRuleKind = 11;
+  public static final int ConstraintsRuleKindParameterConcept = 12;
+  public static final int ContextExpression = 13;
+  public static final int ContextRefOperation = 14;
+  public static final int ContextType = 15;
+  public static final int TypedIdentifier = 16;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0x47257bf378d3470bL, 0x89d98c3261a61d15L);
@@ -38,6 +39,7 @@ public final class LanguageConceptSwitch {
     builder.put(0x6530303593586de2L, ConstraintsRule);
     builder.put(0x6530303593554246L, ConstraintsRuleBlock);
     builder.put(0x6530303593698b98L, ConstraintsRuleBlockMember);
+    builder.put(0x46263286dbf54aaL, ConstraintsRuleIdHolder);
     builder.put(0x6530303593554248L, ConstraintsRuleKind);
     builder.put(0x4bf59690bc05b735L, ConstraintsRuleKindParameterConcept);
     builder.put(0x6530303593574310L, ContextExpression);

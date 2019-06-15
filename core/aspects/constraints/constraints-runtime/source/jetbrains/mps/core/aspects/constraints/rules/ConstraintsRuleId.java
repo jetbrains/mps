@@ -19,7 +19,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
-public class ConstraintsRuleId implements ConstraintsRulePointer {
+public class ConstraintsRuleId {
   @NotNull
   private final String myId;
 
@@ -30,15 +30,6 @@ public class ConstraintsRuleId implements ConstraintsRulePointer {
   @NotNull
   public String getId() {
     return myId;
-  }
-
-  /**
-   * Here we have a contract for the debug purposes: the saved rule id always equals to its original source node id
-   */
-  @NotNull
-  @Override
-  public SNodeReference getRuleSourceNode() {
-    return PersistenceFacade.getInstance().createNodeReference(myId);
   }
 
   @Override

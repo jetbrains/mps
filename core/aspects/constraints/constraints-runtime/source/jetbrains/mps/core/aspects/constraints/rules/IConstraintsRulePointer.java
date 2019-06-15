@@ -18,6 +18,6 @@ package jetbrains.mps.core.aspects.constraints.rules;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
-public interface ConstraintsRulePointer {
+public interface IConstraintsRulePointer {
   @NotNull SNodeReference getRuleSourceNode();
 }

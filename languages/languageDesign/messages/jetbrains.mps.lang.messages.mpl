@@ -72,8 +72,10 @@
   <sourcePath />
   <dependencies>
     <dependency reexport="false">f3061a53-9226-4cc5-a443-f952ceaf5816(jetbrains.mps.baseLanguage)</dependency>
-    <dependency reexport="false">47257bf3-78d3-470b-89d9-8c3261a61d15(jetbrains.mps.lang.constraints.rules)</dependency>
     <dependency reexport="false">86ef8290-12bb-4ca7-947f-093788f263a9(jetbrains.mps.lang.project)</dependency>
+    <dependency reexport="false">47257bf3-78d3-470b-89d9-8c3261a61d15(jetbrains.mps.lang.constraints.rules)</dependency>
+    <dependency reexport="false">c72da2b9-7cce-4447-8389-f407dc1158b7(jetbrains.mps.lang.structure)</dependency>
+    <dependency reexport="false" scope="generate-into">f3061a53-9226-4cc5-a443-f952ceaf5816(jetbrains.mps.baseLanguage)</dependency>
   </dependencies>
   <languageVersions>
     <language slang="l:f3061a53-9226-4cc5-a443-f952ceaf5816:jetbrains.mps.baseLanguage" version="9" />
@@ -119,9 +121,6 @@
   <runtime>
     <dependency reexport="false">6e98f4e2-decf-4e97-bf80-9109e8b759ef(jetbrains.mps.lang.messages.api)</dependency>
   </runtime>
-  <extendedLanguages>
-    <extendedLanguage>c72da2b9-7cce-4447-8389-f407dc1158b7(jetbrains.mps.lang.structure)</extendedLanguage>
-    <extendedLanguage>f3061a53-9226-4cc5-a443-f952ceaf5816(jetbrains.mps.baseLanguage)</extendedLanguage>
-  </extendedLanguages>
+  <extendedLanguages />
 </language>
 

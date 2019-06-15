@@ -12,7 +12,7 @@ public final class A_Messages implements MessagesDescriptor {
   public final class first_MessageProvider_a implements MessageProvider {
     @Override
     public ConstraintsRuleId forRule() {
-      return new ConstraintsRuleId("35419192-20f7-48f9-9226-a3eeecf3a6da/i:10001000(constraints.rules.sandbox@transient18/constraints.rules.sandbox.constraints2@0)/8657450212265562102");
+      return new ConstraintsRuleId("constraints.rules.sandbox:8657450212265562102");
     }
 
     @Override
@@ -23,7 +23,7 @@ public final class A_Messages implements MessagesDescriptor {
   public final class second_MessageProvider_b implements MessageProvider {
     @Override
     public ConstraintsRuleId forRule() {
-      return new ConstraintsRuleId("35419192-20f7-48f9-9226-a3eeecf3a6da/i:10001000(constraints.rules.sandbox@transient18/constraints.rules.sandbox.constraints2@0)/1702082180406136556");
+      return new ConstraintsRuleId("constraints.rules.sandbox:1702082180406136556");
     }
 
     @Override

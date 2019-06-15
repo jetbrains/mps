@@ -48,18 +48,18 @@ public final class ConstraintsRegistry2 {
   }
 
   @NotNull
-  private List<ConstraintsRule> getApplicableRules(@NotNull SAbstractConcept concept, @NotNull ConstraintsRuleKind ruleKind) {
+  private <C extends ConstraintsContext> List<ConstraintsRule<C>> getApplicableRules(@NotNull SAbstractConcept concept, @NotNull ConstraintsRuleKind<C> ruleKind) {
     @NotNull ConstraintsDescriptor2 descriptor = requireNonNull(getConstraintsDescriptor2(concept));
     return descriptor.getRules(ruleKind);
   }
 
   @NotNull
-  public <C extends ConstraintsContext> List<ConstraintsRuleId> getFailingRulesFor(@NotNull C context,
+  public <C extends ConstraintsContext> List<ConstraintsRule<C>> getFailingRulesFor(@NotNull C context,
                                                                                    @NotNull ConstraintsRuleKind<C> ruleKind) {
-    List<ConstraintsRuleId> rules = new ArrayList<>();
+    List<ConstraintsRule<C>> rules = new ArrayList<>();
     for (ConstraintsRule<C> rule : getApplicableRules(context.getConcept(), ruleKind)) {
       if (!(rule.check(context))) {
-        rules.add(rule.getId());
+        rules.add(rule);
       }
     }
     return rules;

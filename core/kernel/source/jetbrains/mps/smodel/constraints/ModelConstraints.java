@@ -18,8 +18,9 @@ package jetbrains.mps.smodel.constraints;
 import jetbrains.mps.core.aspects.constraints.rules.CanBeChild_Context;
 import jetbrains.mps.core.aspects.constraints.rules.CanBeChild_RuleKind;
 import jetbrains.mps.core.aspects.constraints.rules.ConstraintsRegistry2;
+import jetbrains.mps.core.aspects.constraints.rules.ConstraintsRule;
 import jetbrains.mps.core.aspects.constraints.rules.ConstraintsRuleId;
-import jetbrains.mps.core.aspects.constraints.rules.ConstraintsRulePointer;
+import jetbrains.mps.core.aspects.constraints.rules.IConstraintsRulePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
 import jetbrains.mps.smodel.constraints.ReferenceDescriptor.OkReferenceDescriptor;
@@ -109,20 +110,23 @@ public class ModelConstraints {
    * @return canBeChild failing rules
    */
   @NotNull
-  public static List<ConstraintsRulePointer> checkCanBeChild(@NotNull CanBeChild_Context context) {
+  public static List<IConstraintsRulePointer> checkCanBeChild(@NotNull CanBeChild_Context context) {
     CheckingNodeContextImpl debugInfo = new CheckingNodeContextImpl();
-    List<ConstraintsRulePointer> constraintsRuleIds = new ArrayList<>(checkNewCanBeChild(context));
+    List<IConstraintsRulePointer> constraintsRuleIds = new ArrayList<>();
+    for (ConstraintsRule<CanBeChild_Context> constraintsRule : checkNewCanBeChild(context)) {
+      constraintsRuleIds.add(new RulesConstraintsRulePointer(constraintsRule.getRuleSourceNode(), constraintsRule.getId()));
+    }
     boolean legacyAreOk = legacyCanBeChild(ConstraintContext_CanBeChild.convert(context), debugInfo);
     if (!legacyAreOk) {
-      constraintsRuleIds.add(new LegacyConstraintsRuleId(debugInfo.getBreakingNode()));
+      constraintsRuleIds.add(new LegacyConstraintsRulePointer(debugInfo.getBreakingNode()));
     }
     return constraintsRuleIds;
   }
 
-  static class LegacyConstraintsRuleId implements ConstraintsRulePointer {
+  public static class LegacyConstraintsRulePointer implements IConstraintsRulePointer {
     private final SNodeReference myRef;
 
-    LegacyConstraintsRuleId(@NotNull SNodeReference ref) {
+    LegacyConstraintsRulePointer(@NotNull SNodeReference ref) {
       myRef = ref;
     }
 
@@ -130,6 +134,26 @@ public class ModelConstraints {
     @NotNull
     public SNodeReference getRuleSourceNode() {
       return myRef;
+    }
+  }
+
+  public static class RulesConstraintsRulePointer implements IConstraintsRulePointer {
+    private final SNodeReference myRef;
+    private final ConstraintsRuleId myId;
+
+    RulesConstraintsRulePointer(@NotNull SNodeReference ref, @NotNull ConstraintsRuleId id) {
+      myRef = ref;
+      myId = id;
+    }
+
+    @Override
+    @NotNull
+    public SNodeReference getRuleSourceNode() {
+      return myRef;
+    }
+
+    public ConstraintsRuleId getId() {
+      return myId;
     }
   }
 
@@ -203,7 +227,7 @@ public class ModelConstraints {
    * @return the list of failed rules
    */
   @NotNull
-  private static List<ConstraintsRuleId> checkNewCanBeChild(@NotNull CanBeChild_Context context) {
+  private static List<ConstraintsRule<CanBeChild_Context>> checkNewCanBeChild(@NotNull CanBeChild_Context context) {
     ConstraintsRegistry2 constraintsRegistry = ConceptRegistry.getInstance().getConstraintsRegistry().getNewRegistry();
     return constraintsRegistry.getFailingRulesFor(context, CanBeChild_RuleKind.INSTANCE);
   }
