@@ -56030,6 +56030,17 @@
               </node>
             </node>
           </node>
+          <node concept="3clFbJ" id="1uv0FAtD0P$" role="3cqZAp">
+            <node concept="3clFbS" id="1uv0FAtD0PA" role="3clFbx">
+              <node concept="3N13vt" id="1uv0FAtD1mT" role="3cqZAp" />
+            </node>
+            <node concept="3clFbC" id="1uv0FAtD1m6" role="3clFbw">
+              <node concept="10Nm6u" id="1uv0FAtD1mr" role="3uHU7w" />
+              <node concept="37vLTw" id="1uv0FAtD11R" role="3uHU7B">
+                <ref role="3cqZAo" node="220qeVzXaDC" resolve="extendedClassifier" />
+              </node>
+            </node>
+          </node>
           <node concept="3clFbJ" id="220qeVzXaDH" role="3cqZAp">
             <node concept="3clFbS" id="220qeVzXaDI" role="3clFbx">
               <node concept="3N13vt" id="220qeVzXaDJ" role="3cqZAp" />
@@ -56045,6 +56056,35 @@
               </node>
             </node>
           </node>
+          <node concept="3cpWs8" id="1uv0FAtCXa1" role="3cqZAp">
+            <node concept="3cpWsn" id="1uv0FAtCXa2" role="3cpWs9">
+              <property role="TrG5h" value="model" />
+              <node concept="3uibUv" id="1uv0FAtCX9k" role="1tU5fm">
+                <ref role="3uigEE" to="mhbf:~SModel" resolve="SModel" />
+              </node>
+              <node concept="2OqwBi" id="1uv0FAtCXa3" role="33vP2m">
+                <node concept="2JrnkZ" id="1uv0FAtCXa4" role="2Oq$k0">
+                  <node concept="37vLTw" id="1uv0FAtCXa5" role="2JrQYb">
+                    <ref role="3cqZAo" node="220qeVzXaDC" resolve="extendedClassifier" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="1uv0FAtCXa6" role="2OqNvi">
+                  <ref role="37wK5l" to="mhbf:~SNode.getModel()" resolve="getModel" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbJ" id="1uv0FAtD0Cx" role="3cqZAp">
+            <node concept="3clFbS" id="1uv0FAtD0Cz" role="3clFbx">
+              <node concept="3N13vt" id="1uv0FAtD0Or" role="3cqZAp" />
+            </node>
+            <node concept="3clFbC" id="1uv0FAtD0NB" role="3clFbw">
+              <node concept="10Nm6u" id="1uv0FAtD0NW" role="3uHU7w" />
+              <node concept="37vLTw" id="1uv0FAtD0Gt" role="3uHU7B">
+                <ref role="3cqZAo" node="1uv0FAtCXa2" resolve="model" />
+              </node>
+            </node>
+          </node>
           <node concept="3cpWs8" id="220qeVzXaDN" role="3cqZAp">
             <node concept="3cpWsn" id="220qeVzXaDO" role="3cpWs9">
               <property role="TrG5h" value="classifierModule" />
@@ -56052,15 +56092,8 @@
                 <ref role="3uigEE" to="lui2:~SModule" resolve="SModule" />
               </node>
               <node concept="2OqwBi" id="220qeVzXaDQ" role="33vP2m">
-                <node concept="2OqwBi" id="220qeVzXaDR" role="2Oq$k0">
-                  <node concept="2JrnkZ" id="220qeVzXaDS" role="2Oq$k0">
-                    <node concept="37vLTw" id="220qeVzXaDT" role="2JrQYb">
-                      <ref role="3cqZAo" node="220qeVzXaDC" resolve="extendedClassifier" />
-                    </node>
-                  </node>
-                  <node concept="liA8E" id="220qeVzXaDU" role="2OqNvi">
-                    <ref role="37wK5l" to="mhbf:~SNode.getModel()" resolve="getModel" />
-                  </node>
+                <node concept="37vLTw" id="1uv0FAtCXa7" role="2Oq$k0">
+                  <ref role="3cqZAo" node="1uv0FAtCXa2" resolve="model" />
                 </node>
                 <node concept="liA8E" id="220qeVzXaDV" role="2OqNvi">
                   <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
