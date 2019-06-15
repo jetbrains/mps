@@ -11,7 +11,6 @@ import jetbrains.mps.smodel.adapter.ids.SConceptId;
 import jetbrains.mps.smodel.runtime.DataTypeDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder2;
-import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptConstraintsRuleWithMessage = createDescriptorForConstraintsRuleWithMessage();
@@ -69,9 +68,9 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForInlineMessageProvider() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.constraints.messages", "InlineMessageProvider", 0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce81L);
     b.class_(false, false, false);
+    b.parent(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e30f402L);
     b.origin("r:ee5c0e5f-69e3-4669-a4e4-2d16da1e8263(jetbrains.mps.lang.constraints.messages.structure)/315923949160550017");
     b.version(2);
-    b.property("message", 0x46263286dc0ce83L).type(PrimitiveTypeId.STRING).origin("315923949160550019").done();
     b.alias("message");
     return b.create();
   }

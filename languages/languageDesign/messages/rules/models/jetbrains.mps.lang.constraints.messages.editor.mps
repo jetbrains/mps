@@ -2,8 +2,8 @@
 <model ref="r:b27aeb14-fefb-4745-88f9-0731c33985d8(jetbrains.mps.lang.constraints.messages.editor)">
   <persistence version="9" />
   <languages>
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="12" />
-    <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="4" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="-1" />
+    <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="-1" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -185,6 +185,7 @@
   <node concept="24kQdi" id="6kKc3mjm6R_">
     <ref role="1XX52x" to="t16r:hyoMxHKcTB" resolve="ConstraintsRuleWithMessage" />
     <node concept="3EZMnI" id="6kKc3mjm6RB" role="2wV5jI">
+      <node concept="l2Vlx" id="6kKc3mjm6RC" role="2iSdaV" />
       <node concept="3EZMnI" id="6Q2nboo7wnS" role="3EZMnx">
         <node concept="2iRfu4" id="6Q2nboo7wnT" role="2iSdaV" />
         <node concept="3EZMnI" id="4zSofKeaPil" role="3EZMnx">
@@ -222,7 +223,6 @@
           </node>
         </node>
       </node>
-      <node concept="l2Vlx" id="6kKc3mjm6RC" role="2iSdaV" />
     </node>
     <node concept="3EZMnI" id="hyoMxHIIM1" role="6VMZX">
       <node concept="2EHx9g" id="hyoMxHIJFv" role="2iSdaV" />
@@ -246,8 +246,8 @@
         <ref role="1ERwB7" node="4zSofKean5_" resolve="InlineMessage_remove" />
       </node>
       <node concept="3F0A7n" id="hyoMxHKDHP" role="3EZMnx">
-        <ref role="1NtTu8" to="t16r:hyoMxHKcU3" resolve="message" />
         <ref role="1ERwB7" node="4zSofKean5_" resolve="InlineMessage_remove" />
+        <ref role="1NtTu8" to="t9po:6kKc3mjFxpi" resolve="message" />
         <node concept="VechU" id="4zSofKeajWj" role="3F10Kt">
           <property role="Vb096" value="DARK_MAGENTA" />
         </node>
@@ -390,7 +390,7 @@
                 <node concept="1OKiuA" id="4zSofKebrmt" role="2OqNvi">
                   <node concept="1Q80Hx" id="4zSofKebrop" role="lBI5i" />
                   <node concept="eBIwv" id="4zSofKebrqz" role="lGT1i">
-                    <ref role="fyFUz" to="t16r:hyoMxHKcU3" resolve="message" />
+                    <ref role="fyFUz" to="t9po:6kKc3mjFxpi" resolve="message" />
                   </node>
                 </node>
               </node>

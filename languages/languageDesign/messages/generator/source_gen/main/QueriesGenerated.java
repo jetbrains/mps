@@ -51,7 +51,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SModuleOperations.isAspect(((SModel) _context.getVariable("model")), "constraints2");
   }
   public static Object propertyMacro_GetValue_1_0(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), MetaAdapterFactory.getProperty(0xad93155d79b24759L, 0xb10c55123e763903L, 0x6530303593ae1651L, 0x6530303593ae1652L, "message"));
+    return SPropertyOperations.getString(_context.getNode(), MetaAdapterFactory.getProperty(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e30f402L, 0x6530303593ae1652L, "message"));
   }
   public static Object propertyMacro_GetValue_1_1(final PropertyMacroContext _context) {
     String baseName = "FOR_" + SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x6530303593ae1651L, 0x6530303593ae1654L, "rule")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")).toUpperCase() + "_MessageProvider";

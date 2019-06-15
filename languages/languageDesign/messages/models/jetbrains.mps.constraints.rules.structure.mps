@@ -2,7 +2,7 @@
 <model ref="r:21b4a58c-8629-4511-bd63-7fc9a4e5fc38(jetbrains.mps.lang.messages.structure)">
   <persistence version="9" />
   <languages>
-    <use id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure" version="7" />
+    <use id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure" version="-1" />
     <devkit ref="78434eb8-b0e5-444b-850d-e7c4ad2da9ab(jetbrains.mps.devkit.aspect.structure)" />
   </languages>
   <imports>
@@ -19,6 +19,7 @@
         <child id="1071489727083" name="linkDeclaration" index="1TKVEi" />
         <child id="1071489727084" name="propertyDeclaration" index="1TKVEl" />
       </concept>
+      <concept id="1169125989551" name="jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration" flags="ig" index="PlHQZ" />
       <concept id="1169127622168" name="jetbrains.mps.lang.structure.structure.InterfaceConceptReference" flags="ig" index="PrWs8">
         <reference id="1169127628841" name="intfc" index="PrY4T" />
       </concept>
@@ -80,10 +81,8 @@
       <property role="20lbJX" value="1" />
       <ref role="20lvS9" to="bm42:hyoMxHJPiE" resolve="ConstraintsRuleIdHolder" />
     </node>
-    <node concept="1TJgyi" id="6kKc3mjFxpi" role="1TKVEl">
-      <property role="IQ2nx" value="7291380803381892690" />
-      <property role="TrG5h" value="message" />
-      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    <node concept="PrWs8" id="4zSofKecqAK" role="PzmwI">
+      <ref role="PrY4T" node="4zSofKecfg2" resolve="IMessageProvider" />
     </node>
   </node>
   <node concept="1TIwiD" id="6bTaywoGP2f">
@@ -95,6 +94,15 @@
       <property role="20kJfa" value="modelRef" />
       <property role="20lbJX" value="1" />
       <ref role="20lvS9" to="hypd:5xDtKQA7vSB" resolve="ModelReference" />
+    </node>
+  </node>
+  <node concept="PlHQZ" id="4zSofKecfg2">
+    <property role="EcuMT" value="5258059200641168386" />
+    <property role="TrG5h" value="IMessageProvider" />
+    <node concept="1TJgyi" id="6kKc3mjFxpi" role="1TKVEl">
+      <property role="IQ2nx" value="7291380803381892690" />
+      <property role="TrG5h" value="message" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
   </node>
 </model>

@@ -14,6 +14,7 @@ import jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder2;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
+  /*package*/ final ConceptDescriptor myConceptIMessageProvider = createDescriptorForIMessageProvider();
   /*package*/ final ConceptDescriptor myConceptMessageProvider = createDescriptorForMessageProvider();
   /*package*/ final ConceptDescriptor myConceptMessagesRoot = createDescriptorForMessagesRoot();
   /*package*/ final ConceptDescriptor myConceptModelRefForMe = createDescriptorForModelRefForMe();
@@ -32,13 +33,15 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptMessageProvider, myConceptMessagesRoot, myConceptModelRefForMe);
+    return Arrays.asList(myConceptIMessageProvider, myConceptMessageProvider, myConceptMessagesRoot, myConceptModelRefForMe);
   }
 
   @Override
   @Nullable
   public ConceptDescriptor getDescriptor(SConceptId id) {
     switch (myIndexSwitch.index(id)) {
+      case LanguageConceptSwitch.IMessageProvider:
+        return myConceptIMessageProvider;
       case LanguageConceptSwitch.MessageProvider:
         return myConceptMessageProvider;
       case LanguageConceptSwitch.MessagesRoot:
@@ -59,12 +62,20 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     return myIndexSwitch.index(c);
   }
 
+  private static ConceptDescriptor createDescriptorForIMessageProvider() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.messages", "IMessageProvider", 0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e30f402L);
+    b.interface_();
+    b.origin("r:21b4a58c-8629-4511-bd63-7fc9a4e5fc38(jetbrains.mps.lang.messages.structure)/5258059200641168386");
+    b.version(2);
+    b.property("message", 0x6530303593ae1652L).type(PrimitiveTypeId.STRING).origin("7291380803381892690").done();
+    return b.create();
+  }
   private static ConceptDescriptor createDescriptorForMessageProvider() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.messages", "MessageProvider", 0xad93155d79b24759L, 0xb10c55123e763903L, 0x6530303593ae1651L);
     b.class_(false, false, false);
+    b.parent(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e30f402L);
     b.origin("r:21b4a58c-8629-4511-bd63-7fc9a4e5fc38(jetbrains.mps.lang.messages.structure)/7291380803381892689");
     b.version(2);
-    b.property("message", 0x6530303593ae1652L).type(PrimitiveTypeId.STRING).origin("7291380803381892690").done();
     b.associate("rule", 0x6530303593ae1654L).target(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x46263286dbf54aaL).optional(false).origin("7291380803381892692").done();
     b.alias("message");
     return b.create();

@@ -72,7 +72,7 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = MetaAdapterFactory.getProperty(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce81L, 0x46263286dc0ce83L, "message");
+      final SProperty property = MetaAdapterFactory.getProperty(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e30f402L, 0x6530303593ae1652L, "message");
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no message>");

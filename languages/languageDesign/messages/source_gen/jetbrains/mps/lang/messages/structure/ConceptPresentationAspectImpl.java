@@ -9,6 +9,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
+  private ConceptPresentation props_IMessageProvider;
   private ConceptPresentation props_MessageProvider;
   private ConceptPresentation props_MessagesRoot;
   private ConceptPresentation props_ModelRefForMe;
@@ -18,6 +19,12 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   public ConceptPresentation getDescriptor(SAbstractConcept c) {
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
+      case LanguageConceptSwitch.IMessageProvider:
+        if (props_IMessageProvider == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_IMessageProvider = cpb.create();
+        }
+        return props_IMessageProvider;
       case LanguageConceptSwitch.MessageProvider:
         if (props_MessageProvider == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

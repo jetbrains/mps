@@ -9,12 +9,14 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 public final class LanguageConceptSwitch {
   private final LanguageConceptIndex myIndex;
-  public static final int MessageProvider = 0;
-  public static final int MessagesRoot = 1;
-  public static final int ModelRefForMe = 2;
+  public static final int IMessageProvider = 0;
+  public static final int MessageProvider = 1;
+  public static final int MessagesRoot = 2;
+  public static final int ModelRefForMe = 3;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0xad93155d79b24759L, 0xb10c55123e763903L);
+    builder.put(0x48f860fc0e30f402L, IMessageProvider);
     builder.put(0x6530303593ae1651L, MessageProvider);
     builder.put(0x6530303593ae1607L, MessagesRoot);
     builder.put(0x62f92a2818b3508fL, ModelRefForMe);
