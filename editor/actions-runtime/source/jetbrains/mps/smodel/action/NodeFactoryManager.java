@@ -23,6 +23,7 @@ import jetbrains.mps.smodel.CopyUtil;
 import jetbrains.mps.smodel.SModelUtil_new;
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
 import jetbrains.mps.smodel.behaviour.BHReflection;
+import jetbrains.mps.smodel.language.ConceptRegistry;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.smodel.legacy.ConceptMetaInfoConverter;
@@ -94,7 +95,8 @@ public class NodeFactoryManager {
       if (!newNode.getChildren(linkDeclaration).iterator().hasNext()) {
         if (visitedNonOptionalChildConcepts.add(targetConcept)) {
           try {
-            SNode childNode = createNode(targetConcept, sampleNode, enclosingNode, model, visitedNonOptionalChildConcepts);
+            SAbstractConcept defaultConcreteConcept = ConceptRegistry.getInstance().getConstraintsDescriptor(targetConcept).getDefaultConcreteConcept();
+            SNode childNode = createNode(defaultConcreteConcept == null ? targetConcept : defaultConcreteConcept, sampleNode, enclosingNode, model, visitedNonOptionalChildConcepts);
             newNode.addChild(linkDeclaration, childNode);
           } finally {
             visitedNonOptionalChildConcepts.remove(targetConcept);
