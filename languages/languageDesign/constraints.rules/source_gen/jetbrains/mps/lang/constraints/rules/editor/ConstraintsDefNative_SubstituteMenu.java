@@ -113,7 +113,7 @@ public class ConstraintsDefNative_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public String getMatchingText(@NotNull String pattern) {
-        return pattern;
+        return ((pattern == null || pattern.length() == 0) ? null : pattern);
       }
       @Override
       public void select(@NotNull SNode createdNode, @NotNull String pattern) {

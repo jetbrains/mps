@@ -66,8 +66,14 @@
       </concept>
     </language>
     <language id="ad93155d-79b2-4759-b10c-55123e763903" name="jetbrains.mps.lang.messages">
+      <concept id="5258059200642172255" name="jetbrains.mps.lang.messages.structure.CombinedMessageExpression" flags="ng" index="16I2mz">
+        <child id="5258059200642172257" name="part" index="16I2mt" />
+      </concept>
       <concept id="5258059200641168386" name="jetbrains.mps.lang.messages.structure.IMessageProvider" flags="ng" index="16M9jY">
-        <property id="7291380803381892690" name="message" index="3QBypB" />
+        <child id="5258059200641510856" name="message" index="16N$OO" />
+      </concept>
+      <concept id="5258059200641510853" name="jetbrains.mps.lang.messages.structure.LiteralMessageExpression" flags="ng" index="16N$OT">
+        <property id="5258059200641510854" name="message" index="16N$OU" />
       </concept>
       <concept id="7291380803381892615" name="jetbrains.mps.lang.messages.structure.MessagesRoot" flags="ng" index="3QByoM">
         <reference id="7188575577281228125" name="concept" index="3Z9TSV" />
@@ -103,7 +109,7 @@
           <node concept="2OqwBi" id="4zSofKebyg6" role="3uHU7B">
             <node concept="2OqwBi" id="4zSofKebyg7" role="2Oq$k0">
               <node concept="3QpRc_" id="4zSofKebyg8" role="2Oq$k0" />
-              <node concept="3QpRc$" id="4zSofKebyg9" role="2OqNvi">
+              <node concept="3QpRc$" id="4zSofKenKl9" role="2OqNvi">
                 <ref role="3QpVTF" node="hyoMxHFKoi" resolve="Node" />
               </node>
             </node>
@@ -113,27 +119,31 @@
           </node>
         </node>
       </node>
-      <node concept="1DCEPf" id="4zSofKedxDd" role="3Qpnal">
+      <node concept="1DCEPf" id="4zSofKenLpk" role="3Qpnal">
         <property role="TrG5h" value="second" />
-        <property role="EcuMT" value="5258059200641505869" />
-        <node concept="3eOVzh" id="4zSofKedxDf" role="3QpH_s">
-          <node concept="3cmrfG" id="4zSofKedxDg" role="3uHU7w">
+        <property role="EcuMT" value="5258059200644191828" />
+        <node concept="3eOVzh" id="4zSofKenLpm" role="3QpH_s">
+          <node concept="3cmrfG" id="4zSofKenLpn" role="3uHU7w">
             <property role="3cmrfH" value="100" />
           </node>
-          <node concept="2OqwBi" id="4zSofKedxDh" role="3uHU7B">
-            <node concept="2OqwBi" id="4zSofKedxDi" role="2Oq$k0">
-              <node concept="3QpRc_" id="4zSofKedxDj" role="2Oq$k0" />
-              <node concept="3QpRc$" id="4zSofKedxDk" role="2OqNvi">
+          <node concept="2OqwBi" id="4zSofKenLpo" role="3uHU7B">
+            <node concept="2OqwBi" id="4zSofKenLpp" role="2Oq$k0">
+              <node concept="3QpRc_" id="4zSofKenLpq" role="2Oq$k0" />
+              <node concept="3QpRc$" id="4zSofKenLpr" role="2OqNvi">
                 <ref role="3QpVTF" node="hyoMxHFKoi" resolve="Node" />
               </node>
             </node>
-            <node concept="3TrcHB" id="4zSofKedxDl" role="2OqNvi">
+            <node concept="3TrcHB" id="4zSofKenLps" role="2OqNvi">
               <ref role="3TsBF5" to="ktae:7w_sh_iI1nH" resolve="a" />
             </node>
           </node>
         </node>
-        <node concept="1DCEQD" id="4zSofKedxDm" role="1DCEQI">
-          <property role="3QBypB" value="default message" />
+        <node concept="1DCEQD" id="4zSofKenLpt" role="1DCEQI">
+          <node concept="16I2mz" id="4zSofKenLpv" role="16N$OO">
+            <node concept="16N$OT" id="4zSofKenLrq" role="16I2mt">
+              <property role="16N$OU" value="default message" />
+            </node>
+          </node>
         </node>
       </node>
       <node concept="3Qq5Rn" id="hyoMxHLT5C" role="3Qpnal">
@@ -175,13 +185,21 @@
   <node concept="3QByoM" id="7FO6JFyzuId">
     <property role="TrG5h" value="A_Messages" />
     <ref role="3Z9TSV" to="ktae:7w_sh_iHHi0" resolve="A" />
-    <node concept="3QByp$" id="4zSofKedxFd" role="3QBEN7">
-      <property role="3QBypB" value="I OVERRIDE YOU" />
+    <node concept="3QByp$" id="4zSofKenZrA" role="3QBEN7">
       <ref role="3QBypx" node="4zSofKebyg2" resolve="first" />
+      <node concept="16I2mz" id="4zSofKenZrB" role="16N$OO">
+        <node concept="16N$OT" id="4zSofKenZrO" role="16I2mt">
+          <property role="16N$OU" value="I OVERRIDE YOU" />
+        </node>
+      </node>
     </node>
-    <node concept="3QByp$" id="4zSofKedxFj" role="3QBEN7">
-      <property role="3QBypB" value="I OVERRIDE YOU TWICE" />
+    <node concept="3QByp$" id="4zSofKenZrQ" role="3QBEN7">
       <ref role="3QBypx" node="hyoMxHLT5C" resolve="third" />
+      <node concept="16I2mz" id="4zSofKenZrR" role="16N$OO">
+        <node concept="16N$OT" id="4zSofKeodi3" role="16I2mt">
+          <property role="16N$OU" value="I OVERRIDE YOU TWICE" />
+        </node>
+      </node>
     </node>
   </node>
 </model>

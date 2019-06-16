@@ -15,11 +15,14 @@
     <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
       <concept id="1169125787135" name="jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration" flags="ig" index="PkWjJ">
         <property id="6714410169261853888" name="conceptId" index="EcuMT" />
+        <property id="4628067390765956802" name="abstract" index="R5$K7" />
         <property id="5092175715804935370" name="conceptAlias" index="34LRSv" />
         <child id="1071489727083" name="linkDeclaration" index="1TKVEi" />
         <child id="1071489727084" name="propertyDeclaration" index="1TKVEl" />
       </concept>
-      <concept id="1169125989551" name="jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration" flags="ig" index="PlHQZ" />
+      <concept id="1169125989551" name="jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration" flags="ig" index="PlHQZ">
+        <child id="1169127546356" name="extends" index="PrDN$" />
+      </concept>
       <concept id="1169127622168" name="jetbrains.mps.lang.structure.structure.InterfaceConceptReference" flags="ig" index="PrWs8">
         <reference id="1169127628841" name="intfc" index="PrY4T" />
       </concept>
@@ -79,7 +82,7 @@
       <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="rule" />
       <property role="20lbJX" value="1" />
-      <ref role="20lvS9" to="bm42:hyoMxHJPiE" resolve="ConstraintsRuleIdHolder" />
+      <ref role="20lvS9" to="bm42:6kKc3mjm6Ry" resolve="ConstraintsRule" />
     </node>
     <node concept="PrWs8" id="4zSofKecqAK" role="PzmwI">
       <ref role="PrY4T" node="4zSofKecfg2" resolve="IMessageProvider" />
@@ -99,10 +102,55 @@
   <node concept="PlHQZ" id="4zSofKecfg2">
     <property role="EcuMT" value="5258059200641168386" />
     <property role="TrG5h" value="IMessageProvider" />
-    <node concept="1TJgyi" id="6kKc3mjFxpi" role="1TKVEl">
-      <property role="IQ2nx" value="7291380803381892690" />
+    <node concept="1TJgyj" id="4zSofKedyR8" role="1TKVEi">
+      <property role="IQ2ns" value="5258059200641510856" />
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="message" />
+      <property role="20lbJX" value="1" />
+      <ref role="20lvS9" node="4zSofKeg4lv" resolve="CombinedMessageExpression" />
+    </node>
+    <node concept="PrWs8" id="4zSofKenTNa" role="PrDN$">
+      <ref role="PrY4T" to="tpck:3fifI_xCcJN" resolve="ScopeProvider" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="4zSofKedyR4">
+    <property role="EcuMT" value="5258059200641510852" />
+    <property role="TrG5h" value="MessageExpression" />
+    <property role="R5$K7" value="true" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+  </node>
+  <node concept="1TIwiD" id="4zSofKedyR5">
+    <property role="EcuMT" value="5258059200641510853" />
+    <property role="TrG5h" value="LiteralMessageExpression" />
+    <ref role="1TJDcQ" node="4zSofKedyR4" resolve="MessageExpression" />
+    <node concept="1TJgyi" id="4zSofKedyR6" role="1TKVEl">
+      <property role="IQ2nx" value="5258059200641510854" />
       <property role="TrG5h" value="message" />
       <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="4zSofKeguiy">
+    <property role="EcuMT" value="5258059200642278562" />
+    <property role="TrG5h" value="MacroMessageExpression" />
+    <property role="34LRSv" value="%" />
+    <ref role="1TJDcQ" node="4zSofKedyR4" resolve="MessageExpression" />
+    <node concept="1TJgyj" id="4zSofKek6iv" role="1TKVEi">
+      <property role="IQ2ns" value="5258059200643228831" />
+      <property role="20lmBu" value="reference" />
+      <property role="20lbJX" value="1" />
+      <property role="20kJfa" value="declaration" />
+      <ref role="20lvS9" to="bm42:6kKc3mjq0oG" resolve="TypedIdentifier" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="4zSofKeg4lv">
+    <property role="EcuMT" value="5258059200642172255" />
+    <property role="TrG5h" value="CombinedMessageExpression" />
+    <node concept="1TJgyj" id="4zSofKeg4lx" role="1TKVEi">
+      <property role="IQ2ns" value="5258059200642172257" />
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="part" />
+      <property role="20lbJX" value="1..n" />
+      <ref role="20lvS9" node="4zSofKedyR4" resolve="MessageExpression" />
     </node>
   </node>
 </model>

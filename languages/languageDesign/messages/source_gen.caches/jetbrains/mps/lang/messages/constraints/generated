@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="5kirqukzcugw8mrl3xo67tq4h2t96nr">
-  <files names="ConstraintsAspectDescriptor.java:MessagesRoot_Constraints.java" />
+<product version="3" modelHash="-3raqurlakv41gv1fycij4m03yhkpu58">
+  <files names="CombinedMessageExpression_Constraints.java:ConstraintsAspectDescriptor.java:LiteralMessageExpression_Constraints.java:MacroMessageExpression_Constraints.java:MessageExpression_Constraints.java:MessagesRoot_Constraints.java" />
 </product>
 

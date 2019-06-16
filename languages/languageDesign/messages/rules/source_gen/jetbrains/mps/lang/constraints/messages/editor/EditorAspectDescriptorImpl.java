@@ -34,7 +34,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     SAbstractConcept cncpt = concept;
     switch (conceptIndex1.index(cncpt)) {
       case 0:
-        return Collections.<TransformationMenu>singletonList(new message());
+        return Collections.<TransformationMenu>singletonList(new ConstraintsRule_addMessage());
       default:
     }
     return Collections.<TransformationMenu>emptyList();

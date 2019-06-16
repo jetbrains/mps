@@ -28,7 +28,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.editor.runtime.cells.CellIdManager;
+import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemModifyingCustomizationContext;
@@ -39,8 +39,8 @@ import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 
-public class message extends TransformationMenuBase {
-  public message() {
+public class ConstraintsRule_addMessage extends TransformationMenuBase {
+  public ConstraintsRule_addMessage() {
     super(true);
   }
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.SUBSTITUTE);
@@ -66,15 +66,15 @@ public class message extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.SUBSTITUTE).contains(_context.getMenuLocation())) {
-      result.add(new message.TMP_Action_7w9og3_a0());
+      result.add(new ConstraintsRule_addMessage.TMP_Action_15ym95_a0());
     }
     return result;
   }
 
-  private class TMP_Action_7w9og3_a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
+  private class TMP_Action_15ym95_a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      message.TMP_Action_7w9og3_a0.Item item = new message.TMP_Action_7w9og3_a0.Item(context);
+      ConstraintsRule_addMessage.TMP_Action_15ym95_a0.Item item = new ConstraintsRule_addMessage.TMP_Action_15ym95_a0.Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");
@@ -112,7 +112,7 @@ public class message extends TransformationMenuBase {
         SNode transformingRule = SNodeOperations.cast(SNodeOperations.getPrevSibling(_context.getNode()), MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, "jetbrains.mps.lang.constraints.rules.structure.ConstraintsRule"));
         SNode replacement = SNodeFactoryOperations.replaceWithNewChild(transformingRule, MetaAdapterFactory.getConcept(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, "jetbrains.mps.lang.constraints.messages.structure.ConstraintsRuleWithMessage"));
         SNodeOperations.deleteNode(_context.getNode());
-        SelectionUtil.selectCell(_context.getEditorContext(), SLinkOperations.getTarget(replacement, MetaAdapterFactory.getContainmentLink(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, 0x46263286dc0ce86L, "messageProvider")), "*" + CellIdManager.createPropertyId("message"));
+        SelectionUtil.selectCell(_context.getEditorContext(), SLinkOperations.getTarget(replacement, MetaAdapterFactory.getContainmentLink(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, 0x46263286dc0ce86L, "messageProvider")), SelectionManager.LAST_EDITABLE_CELL);
       }
 
       @Override

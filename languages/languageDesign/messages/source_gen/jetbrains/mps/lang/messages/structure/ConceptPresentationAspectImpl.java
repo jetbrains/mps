@@ -9,7 +9,11 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
+  private ConceptPresentation props_CombinedMessageExpression;
   private ConceptPresentation props_IMessageProvider;
+  private ConceptPresentation props_LiteralMessageExpression;
+  private ConceptPresentation props_MacroMessageExpression;
+  private ConceptPresentation props_MessageExpression;
   private ConceptPresentation props_MessageProvider;
   private ConceptPresentation props_MessagesRoot;
   private ConceptPresentation props_ModelRefForMe;
@@ -19,12 +23,39 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   public ConceptPresentation getDescriptor(SAbstractConcept c) {
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
+      case LanguageConceptSwitch.CombinedMessageExpression:
+        if (props_CombinedMessageExpression == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("CombinedMessageExpression");
+          props_CombinedMessageExpression = cpb.create();
+        }
+        return props_CombinedMessageExpression;
       case LanguageConceptSwitch.IMessageProvider:
         if (props_IMessageProvider == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           props_IMessageProvider = cpb.create();
         }
         return props_IMessageProvider;
+      case LanguageConceptSwitch.LiteralMessageExpression:
+        if (props_LiteralMessageExpression == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("LiteralMessageExpression");
+          props_LiteralMessageExpression = cpb.create();
+        }
+        return props_LiteralMessageExpression;
+      case LanguageConceptSwitch.MacroMessageExpression:
+        if (props_MacroMessageExpression == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("%");
+          props_MacroMessageExpression = cpb.create();
+        }
+        return props_MacroMessageExpression;
+      case LanguageConceptSwitch.MessageExpression:
+        if (props_MessageExpression == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_MessageExpression = cpb.create();
+        }
+        return props_MessageExpression;
       case LanguageConceptSwitch.MessageProvider:
         if (props_MessageProvider == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

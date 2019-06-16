@@ -65,11 +65,11 @@ public class A_Constraints2 implements ConstraintsDescriptor2 {
 
     @Override
     public ConstraintsRuleId getId() {
-      return new ConstraintsRuleId("constraints.rules.sandbox:5258059200641505869");
+      return new ConstraintsRuleId("constraints.rules.sandbox:5258059200644191828");
     }
 
     public SNodeReference getRuleSourceNode() {
-      return PersistenceFacade.getInstance().createNodeReference("r:d8115b4c-62c9-4566-9bc7-9fa3c8929293(constraints.rules.sandbox.constraints2)/5258059200641505869");
+      return PersistenceFacade.getInstance().createNodeReference("r:d8115b4c-62c9-4566-9bc7-9fa3c8929293(constraints.rules.sandbox.constraints2)/5258059200644191828");
     }
 
 

@@ -2,8 +2,8 @@
 <model ref="r:b27aeb14-fefb-4745-88f9-0731c33985d8(jetbrains.mps.lang.constraints.messages.editor)">
   <persistence version="9" />
   <languages>
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="-1" />
-    <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="-1" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="12" />
+    <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="4" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -20,9 +20,6 @@
       </concept>
       <concept id="1597643335227097138" name="jetbrains.mps.lang.editor.structure.QueryFunctionParameter_TransformationMenu_node" flags="ng" index="7Obwk" />
       <concept id="6516520003787916624" name="jetbrains.mps.lang.editor.structure.QueryFunction_TransformationMenu_Condition" flags="ig" index="27VH4U" />
-      <concept id="4510086454722552739" name="jetbrains.mps.lang.editor.structure.PropertyDeclarationCellSelector" flags="ng" index="eBIwv">
-        <reference id="4510086454740628767" name="propertyDeclaration" index="fyFUz" />
-      </concept>
       <concept id="1106270549637" name="jetbrains.mps.lang.editor.structure.CellLayout_Horizontal" flags="nn" index="2iRfu4" />
       <concept id="1237303669825" name="jetbrains.mps.lang.editor.structure.CellLayout_Indent" flags="nn" index="l2Vlx" />
       <concept id="1237307900041" name="jetbrains.mps.lang.editor.structure.IndentLayoutIndentStyleClassItem" flags="ln" index="lj46D" />
@@ -44,10 +41,6 @@
         <child id="1638911550608610281" name="executeFunction" index="IWgqQ" />
         <child id="5692353713941573325" name="textFunction" index="1hCUd6" />
       </concept>
-      <concept id="1186403694788" name="jetbrains.mps.lang.editor.structure.ColorStyleClassItem" flags="ln" index="VaVBg">
-        <property id="1186403713874" name="color" index="Vb096" />
-      </concept>
-      <concept id="1186404549998" name="jetbrains.mps.lang.editor.structure.ForegroundColorStyleClassItem" flags="ln" index="VechU" />
       <concept id="1186414536763" name="jetbrains.mps.lang.editor.structure.BooleanStyleSheetItem" flags="ln" index="VOi$J">
         <property id="1186414551515" name="flag" index="VOm3f" />
       </concept>
@@ -245,24 +238,21 @@
         <property role="3F0ifm" value="message" />
         <ref role="1ERwB7" node="4zSofKean5_" resolve="InlineMessage_remove" />
       </node>
-      <node concept="3F0A7n" id="hyoMxHKDHP" role="3EZMnx">
+      <node concept="l2Vlx" id="hyoMxHKDHF" role="2iSdaV" />
+      <node concept="3F1sOY" id="4zSofKedyRf" role="3EZMnx">
+        <ref role="1NtTu8" to="t9po:4zSofKedyR8" resolve="message" />
         <ref role="1ERwB7" node="4zSofKean5_" resolve="InlineMessage_remove" />
-        <ref role="1NtTu8" to="t9po:6kKc3mjFxpi" resolve="message" />
-        <node concept="VechU" id="4zSofKeajWj" role="3F10Kt">
-          <property role="Vb096" value="DARK_MAGENTA" />
-        </node>
-        <node concept="VPXOz" id="6Q2nboo7KwR" role="3F10Kt">
+        <node concept="VPXOz" id="4zSofKervOl" role="3F10Kt">
           <property role="VOm3f" value="true" />
         </node>
       </node>
-      <node concept="l2Vlx" id="hyoMxHKDHF" role="2iSdaV" />
     </node>
   </node>
   <node concept="1h_SRR" id="4zSofKean5_">
     <property role="TrG5h" value="InlineMessage_remove" />
     <ref role="1h_SK9" to="t16r:hyoMxHKcU1" resolve="InlineMessageProvider" />
     <node concept="1hA7zw" id="4zSofKean5A" role="1h_SK8">
-      <property role="1hAc7j" value="backspace_action_id" />
+      <property role="1hAc7j" value="delete_action_id" />
       <node concept="1hAIg9" id="4zSofKean5B" role="1hA7z_">
         <node concept="3clFbS" id="4zSofKean5C" role="2VODD2">
           <node concept="3clFbJ" id="4zSofKeaSOx" role="3cqZAp">
@@ -323,7 +313,7 @@
     </node>
   </node>
   <node concept="3INDKC" id="4zSofKebbap">
-    <property role="TrG5h" value="message" />
+    <property role="TrG5h" value="ConstraintsRule_addMessage" />
     <node concept="1Qtc8_" id="4zSofKebbf7" role="IW6Ez">
       <node concept="3eGOoe" id="4zSofKebbgI" role="1Qtc8$" />
       <node concept="IWgqT" id="4zSofKebbgL" role="1Qtc8A">
@@ -389,8 +379,8 @@
                 </node>
                 <node concept="1OKiuA" id="4zSofKebrmt" role="2OqNvi">
                   <node concept="1Q80Hx" id="4zSofKebrop" role="lBI5i" />
-                  <node concept="eBIwv" id="4zSofKebrqz" role="lGT1i">
-                    <ref role="fyFUz" to="t9po:6kKc3mjFxpi" resolve="message" />
+                  <node concept="2B6iha" id="4zSofKed$an" role="lGT1i">
+                    <property role="1lyBwo" value="lastEditable" />
                   </node>
                 </node>
               </node>

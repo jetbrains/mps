@@ -2,8 +2,8 @@
 <model ref="r:c333438f-9631-41c0-a716-72d23eed1ba4(jetbrains.mps.lang.constraints.rules.editor)">
   <persistence version="9" />
   <languages>
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="12" />
-    <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="4" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="-1" />
+    <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="-1" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -160,6 +160,7 @@
         <property id="1070475926801" name="value" index="Xl_RC" />
       </concept>
       <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
+      <concept id="1225271369338" name="jetbrains.mps.baseLanguage.structure.IsEmptyOperation" flags="nn" index="17RlXB" />
       <concept id="1068580123155" name="jetbrains.mps.baseLanguage.structure.ExpressionStatement" flags="nn" index="3clFbF">
         <child id="1068580123156" name="expression" index="3clFbG" />
       </concept>
@@ -174,6 +175,11 @@
       <concept id="1081773326031" name="jetbrains.mps.baseLanguage.structure.BinaryOperation" flags="nn" index="3uHJSO">
         <child id="1081773367579" name="rightExpression" index="3uHU7w" />
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
+      </concept>
+      <concept id="1163668896201" name="jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression" flags="nn" index="3K4zz7">
+        <child id="1163668914799" name="condition" index="3K4Cdx" />
+        <child id="1163668922816" name="ifTrue" index="3K4E3e" />
+        <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
     </language>
     <language id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation">
@@ -377,8 +383,8 @@
       <ref role="1NtTu8" to="bm42:6kKc3mjlSTu" resolve="declaration" />
       <node concept="1sVBvm" id="6kKc3mjlSTB" role="1sWHZn">
         <node concept="3F0A7n" id="6kKc3mjlSTD" role="2wV5jI">
+          <property role="1Intyy" value="true" />
           <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
-          <node concept="VPxyj" id="6kKc3mjmlXy" role="3F10Kt" />
           <node concept="Vb9p2" id="4zSofKea84E" role="3F10Kt">
             <property role="Vbekb" value="BOLD" />
           </node>
@@ -581,7 +587,14 @@
         <node concept="uGdhv" id="hyoMxHGEg6" role="16NeZM">
           <node concept="3clFbS" id="hyoMxHGEg8" role="2VODD2">
             <node concept="3clFbF" id="hyoMxHGFB8" role="3cqZAp">
-              <node concept="ub8z3" id="hyoMxHGFB0" role="3clFbG" />
+              <node concept="3K4zz7" id="4zSofKef9B5" role="3clFbG">
+                <node concept="10Nm6u" id="4zSofKef9BW" role="3K4E3e" />
+                <node concept="ub8z3" id="4zSofKef9DF" role="3K4GZi" />
+                <node concept="2OqwBi" id="4zSofKefaed" role="3K4Cdx">
+                  <node concept="ub8z3" id="hyoMxHGFB0" role="2Oq$k0" />
+                  <node concept="17RlXB" id="4zSofKefawX" role="2OqNvi" />
+                </node>
+              </node>
             </node>
           </node>
         </node>
