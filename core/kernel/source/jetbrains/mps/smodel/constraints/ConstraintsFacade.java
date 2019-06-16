@@ -39,8 +39,14 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ModelConstraints2 {
-  private ModelConstraints2() {}
+/**
+ * Here we expose API for external constraints invocation
+ * See also the legacy counterpart {@link ModelConstraints}
+ *
+ * @author apyshkin
+ */
+public class ConstraintsFacade {
+  private ConstraintsFacade() {}
 
   static class AdaptedLegacyConstraintsRuleId implements ConstraintsRulePointer {
     private final SNodeReference myRef;

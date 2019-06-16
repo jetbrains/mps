@@ -464,7 +464,7 @@ public abstract class BaseBHDescriptor implements BHDescriptor {
   }
 
   public static final class BHNotInitializedException extends RuntimeException {
-    public BHNotInitializedException(SAbstractConcept concept) {
+    public BHNotInitializedException(@NotNull SAbstractConcept concept) {
       super("Behavior descriptor has not been initialized; concept :  " + concept);
     }
   }

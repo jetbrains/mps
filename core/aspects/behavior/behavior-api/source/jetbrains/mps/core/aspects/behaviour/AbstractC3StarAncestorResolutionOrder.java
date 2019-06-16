@@ -16,7 +16,7 @@
 package jetbrains.mps.core.aspects.behaviour;
 
 import jetbrains.mps.core.aspects.behaviour.api.AbstractConceptLike;
-import jetbrains.mps.core.aspects.behaviour.api.CachingMethodResolutionOrder;
+import jetbrains.mps.core.aspects.behaviour.api.CachingAncestorResolutionOrder;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -33,7 +33,7 @@ import java.util.List;
  *
  * @author apyshkin
  */
-public abstract class AbstractC3StarMethodResolutionOrder<C extends AbstractConceptLike> extends CachingMethodResolutionOrder<C> {
+public abstract class AbstractC3StarAncestorResolutionOrder<C extends AbstractConceptLike> extends CachingAncestorResolutionOrder<C> {
   @NotNull
   @Override
   protected List<C> calcLinearization0(@NotNull C concept) {

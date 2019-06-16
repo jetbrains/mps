@@ -698,7 +698,7 @@
                   <node concept="2OqwBi" id="31" role="37vLTx">
                     <node concept="2OqwBi" id="34" role="2Oq$k0">
                       <node concept="37vLTw" id="37" role="2Oq$k0">
-                        <ref role="3cqZAo" to=":^" resolve="node" />
+                        <ref role="3cqZAo" node="2u" resolve="node" />
                         <node concept="cd27G" id="3a" role="lGtFl">
                           <node concept="3u3nmq" id="3b" role="cd27D">
                             <property role="3u3nmv" value="1213100949163" />
@@ -762,7 +762,7 @@
             <node concept="2OqwBi" id="2U" role="3clFbw">
               <node concept="2OqwBi" id="3n" role="2Oq$k0">
                 <node concept="37vLTw" id="3q" role="2Oq$k0">
-                  <ref role="3cqZAo" to=":^" resolve="node" />
+                  <ref role="3cqZAo" node="2u" resolve="node" />
                   <node concept="cd27G" id="3t" role="lGtFl">
                     <node concept="3u3nmq" id="3u" role="cd27D">
                       <property role="3u3nmv" value="6465435720988325133" />
@@ -1768,7 +1768,7 @@
                       </node>
                     </node>
                     <node concept="37vLTw" id="9B" role="1m5AlR">
-                      <ref role="3cqZAo" to=":^" resolve="parentNode" />
+                      <ref role="3cqZAo" node="9e" resolve="parentNode" />
                       <node concept="cd27G" id="9F" role="lGtFl">
                         <node concept="3u3nmq" id="9G" role="cd27D">
                           <property role="3u3nmv" value="315923949159471940" />
@@ -1801,7 +1801,7 @@
                       <node concept="3clFbF" id="9Q" role="3cqZAp">
                         <node concept="3y3z36" id="9S" role="3clFbG">
                           <node concept="37vLTw" id="9U" role="3uHU7w">
-                            <ref role="3cqZAo" to=":^" resolve="node" />
+                            <ref role="3cqZAo" node="9d" resolve="node" />
                             <node concept="cd27G" id="9X" role="lGtFl">
                               <node concept="3u3nmq" id="9Y" role="cd27D">
                                 <property role="3u3nmv" value="315923949159494074" />
@@ -1882,7 +1882,7 @@
             </node>
             <node concept="17R0WA" id="9r" role="3uHU7B">
               <node concept="37vLTw" id="af" role="3uHU7B">
-                <ref role="3cqZAo" to=":^" resolve="link" />
+                <ref role="3cqZAo" node="9g" resolve="link" />
                 <node concept="cd27G" id="ai" role="lGtFl">
                   <node concept="3u3nmq" id="aj" role="cd27D">
                     <property role="3u3nmv" value="315923949159467778" />
@@ -2598,7 +2598,7 @@
           <node concept="2OqwBi" id="ey" role="3clFbG">
             <node concept="2OqwBi" id="e$" role="2Oq$k0">
               <node concept="37vLTw" id="eB" role="2Oq$k0">
-                <ref role="3cqZAo" to=":^" resolve="parentNode" />
+                <ref role="3cqZAo" node="eo" resolve="parentNode" />
                 <node concept="cd27G" id="eE" role="lGtFl">
                   <node concept="3u3nmq" id="eF" role="cd27D">
                     <property role="3u3nmv" value="7291380803376246482" />
@@ -3687,7 +3687,7 @@
                                         <ref role="37wK5l" to="35tq:~Scope.getScope(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.language.SContainmentLink,int,org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="getScope" />
                                         <node concept="2OqwBi" id="lv" role="37wK5m">
                                           <node concept="37vLTw" id="l$" role="2Oq$k0">
-                                            <ref role="3cqZAo" to=":^" resolve="_context" />
+                                            <ref role="3cqZAo" node="l1" resolve="_context" />
                                             <node concept="cd27G" id="lB" role="lGtFl">
                                               <node concept="3u3nmq" id="lC" role="cd27D">
                                                 <property role="3u3nmv" value="7291380803378359920" />
@@ -3718,7 +3718,7 @@
                                             </node>
                                           </node>
                                           <node concept="37vLTw" id="lH" role="2Oq$k0">
-                                            <ref role="3cqZAo" to=":^" resolve="_context" />
+                                            <ref role="3cqZAo" node="l1" resolve="_context" />
                                             <node concept="cd27G" id="lL" role="lGtFl">
                                               <node concept="3u3nmq" id="lM" role="cd27D">
                                                 <property role="3u3nmv" value="7291380803378359920" />
@@ -3733,7 +3733,7 @@
                                         </node>
                                         <node concept="2OqwBi" id="lx" role="37wK5m">
                                           <node concept="37vLTw" id="lO" role="2Oq$k0">
-                                            <ref role="3cqZAo" to=":^" resolve="_context" />
+                                            <ref role="3cqZAo" node="l1" resolve="_context" />
                                             <node concept="cd27G" id="lR" role="lGtFl">
                                               <node concept="3u3nmq" id="lS" role="cd27D">
                                                 <property role="3u3nmv" value="7291380803378359920" />
@@ -4130,7 +4130,7 @@
                     </node>
                   </node>
                   <node concept="37vLTw" id="nX" role="1m5AlR">
-                    <ref role="3cqZAo" to=":^" resolve="parentNode" />
+                    <ref role="3cqZAo" node="nB" resolve="parentNode" />
                     <node concept="cd27G" id="o1" role="lGtFl">
                       <node concept="3u3nmq" id="o2" role="cd27D">
                         <property role="3u3nmv" value="7291380803376238605" />
@@ -4180,7 +4180,7 @@
             </node>
             <node concept="2OqwBi" id="nO" role="3uHU7B">
               <node concept="37vLTw" id="od" role="2Oq$k0">
-                <ref role="3cqZAo" to=":^" resolve="parentNode" />
+                <ref role="3cqZAo" node="nB" resolve="parentNode" />
                 <node concept="cd27G" id="og" role="lGtFl">
                   <node concept="3u3nmq" id="oh" role="cd27D">
                     <property role="3u3nmv" value="7291380803376235686" />

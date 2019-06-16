@@ -20,11 +20,11 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 /**
- * API for a concept method resolution order
+ * API for a concept ancestors' resolution order
  *
  * Created by apyshkin on 09/09/15.
  */
-public interface MethodResolutionOrder<C extends AbstractConceptLike> {
+public interface AncestorResolutionOrder<C extends AbstractConceptLike> {
   /**
    * @return a sorted sequence of all the ancestors of the given <code>concept</code> (from bottom to top)
    *         the result must include the given concept as its first element

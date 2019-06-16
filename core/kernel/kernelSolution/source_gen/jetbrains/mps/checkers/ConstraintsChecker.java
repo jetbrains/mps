@@ -21,7 +21,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.project.validation.ConceptFeatureMissingError;
 import jetbrains.mps.project.validation.ConceptMissingError;
 import jetbrains.mps.smodel.constraints.ModelConstraints;
-import jetbrains.mps.smodel.constraints.ModelConstraints2;
+import jetbrains.mps.smodel.constraints.ConstraintsFacade;
 import jetbrains.mps.smodel.runtime.CheckingNodeContext;
 import jetbrains.mps.smodel.runtime.impl.CheckingNodeContextImpl;
 import org.jetbrains.annotations.NotNull;
@@ -77,7 +77,7 @@ public class ConstraintsChecker extends AbstractNodeCheckerInEditor implements I
           return;
         }
         final CanBeChild_Context context = new Builder().buildFromNode(node);
-        List<ConstraintsRulePointer> failingRules = errorsCollector.runCheckingAction(() -> ModelConstraints2.checkCanBeChild(context));
+        List<ConstraintsRulePointer> failingRules = errorsCollector.runCheckingAction(() -> ConstraintsFacade.checkCanBeChild(context));
         if (!failingRules.isEmpty()) {
           // for now we take the first one because it is hard to make sense from this surroundings
           @NotNull ConstraintsRulePointer ruleWeReport = failingRules.get(0);

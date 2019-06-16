@@ -16,7 +16,7 @@
 package jetbrains.mps.core.aspects.behaviour;
 
 import jetbrains.mps.core.aspects.behaviour.api.BehaviorRegistry;
-import jetbrains.mps.core.aspects.behaviour.api.MethodResolutionOrder;
+import jetbrains.mps.core.aspects.behaviour.api.AncestorResolutionOrder;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -42,7 +42,7 @@ final class AncestorCache {
   @NotNull
   private List<SAbstractConcept> calcLinearization(@NotNull SAbstractConcept concept, BehaviorRegistry behaviorRegistry) {
     @SuppressWarnings("unchecked") // due to the packaging api vs impl and visibility issues AP
-    MethodResolutionOrder<_SAbstractConcept> mro = (MethodResolutionOrder<_SAbstractConcept>) behaviorRegistry.getMRO();
+    AncestorResolutionOrder<_SAbstractConcept> mro = (AncestorResolutionOrder<_SAbstractConcept>) behaviorRegistry.getMRO();
     List<_SAbstractConcept> linearization = mro.calcLinearization(_SAbstractConcept.wrap(concept));
     return linearization.stream().map(_SAbstractConcept::unwrap).collect(Collectors.toList());
   }

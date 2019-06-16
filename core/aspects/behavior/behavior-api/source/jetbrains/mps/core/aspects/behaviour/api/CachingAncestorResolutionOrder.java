@@ -26,7 +26,7 @@ import java.util.concurrent.ConcurrentMap;
 /**
  * Supposed to be used when one needs to invoke {@link #calcLinearization} for the same concepts several times
  */
-public abstract class CachingMethodResolutionOrder<C extends AbstractConceptLike> implements MethodResolutionOrder<C> {
+public abstract class CachingAncestorResolutionOrder<C extends AbstractConceptLike> implements AncestorResolutionOrder<C> {
   private final ConcurrentMap<C, List<C>> myConcept2Linearization = new ConcurrentHashMap<>();
 
   @NotNull
@@ -43,7 +43,7 @@ public abstract class CachingMethodResolutionOrder<C extends AbstractConceptLike
 
   /**
    * we cache the result of this
-   * @see MethodResolutionOrder#calcLinearization(AbstractConceptLike)
+   * @see AncestorResolutionOrder#calcLinearization(AbstractConceptLike)
    */
   @ImmutableReturn
   @NotNull

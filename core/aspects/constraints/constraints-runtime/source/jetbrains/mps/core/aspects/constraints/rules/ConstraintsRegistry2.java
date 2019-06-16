@@ -17,8 +17,9 @@ package jetbrains.mps.core.aspects.constraints.rules;
 
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.language.LanguageRuntime;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 import java.util.ArrayList;
@@ -27,28 +28,30 @@ import java.util.List;
 
 import static java.util.Objects.requireNonNull;
 
+/**
+ *
+ */
 public final class ConstraintsRegistry2 {
+  private static final Logger LOG = LogManager.getLogger(ConstraintsRegistry2.class);
+
   private final LanguageRegistry myLanguageRegistry;
 
   public ConstraintsRegistry2(@NotNull LanguageRegistry languageRegistry) {
     myLanguageRegistry = languageRegistry;
   }
 
-  @Nullable
+  @NotNull
   public ConstraintsDescriptor2 getConstraintsDescriptor2(@NotNull SAbstractConcept concept) throws IllegalArgumentException {
     LanguageRuntime conceptLang = myLanguageRegistry.getLanguage(concept.getLanguage());
     if (conceptLang == null) {
-      throw new IllegalArgumentException("Impossible to load the language for the concept '" + concept + "'");
+      LOG.warn("No language for: " + concept + ", while looking for constraints descriptor.");
     }
     ConstraintsAspectDescriptor2 aspect = conceptLang.getAspect(ConstraintsAspectDescriptor2.class);
-    if (aspect == null) {
-      return new EmptyConstraintsDescriptor2();
+    ConstraintsDescriptor2 descriptor2 = null;
+    if (aspect != null) {
+      descriptor2 = aspect.getDescriptor(concept);
     }
-    ConstraintsDescriptor2 descriptor2 = aspect.getConstraints(concept);
-    if (descriptor2 == null) {
-      return new EmptyConstraintsDescriptor2();
-    }
-    return descriptor2;
+    return descriptor2 != null ? descriptor2 : new EmptyConstraintsDescriptor2();
   }
 
   @NotNull

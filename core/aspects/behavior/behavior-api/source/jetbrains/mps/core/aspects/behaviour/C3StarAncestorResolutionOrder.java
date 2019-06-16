@@ -31,7 +31,7 @@ import java.util.List;
  *
  * @author apyshkin
  */
-public class C3StarMethodResolutionOrder<C extends AbstractConceptLike> extends AbstractC3StarMethodResolutionOrder<C> {
+public class C3StarAncestorResolutionOrder<C extends AbstractConceptLike> extends AbstractC3StarAncestorResolutionOrder<C> {
   @NotNull
   protected final List<C> getImmediateParents(@NotNull C concept) {
     List<C> immediateParents = new ArrayList<>();

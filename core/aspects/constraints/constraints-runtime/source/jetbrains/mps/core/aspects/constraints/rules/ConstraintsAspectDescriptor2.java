@@ -23,7 +23,7 @@ import java.util.List;
 
 public interface ConstraintsAspectDescriptor2 extends ILanguageAspect {
   @Nullable
-  ConstraintsDescriptor2 getConstraints(@NotNull SAbstractConcept concept);
+  ConstraintsDescriptor2 getDescriptor(@NotNull SAbstractConcept concept);
 
   @NotNull
   List<ConstraintsRuleKind> getRegisteredRuleKinds();

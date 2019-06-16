@@ -765,10 +765,10 @@
               <node concept="2OqwBi" id="3l" role="3uHU7B">
                 <node concept="2OqwBi" id="3p" role="2Oq$k0">
                   <node concept="37vLTw" id="3s" role="2Oq$k0">
-                    <ref role="3cqZAo" to=":^" resolve="context" />
+                    <ref role="3cqZAo" node="2Y" resolve="context" />
                   </node>
                   <node concept="liA8E" id="3t" role="2OqNvi">
-                    <ref role="37wK5l" to=":^" resolve="getNode" />
+                    <ref role="37wK5l" to="pdwk:~CanBeChild_Context.getNode()" resolve="getNode" />
                   </node>
                   <node concept="cd27G" id="3u" role="lGtFl">
                     <node concept="3u3nmq" id="3v" role="cd27D">
@@ -1369,10 +1369,10 @@
               <node concept="2OqwBi" id="73" role="3uHU7B">
                 <node concept="2OqwBi" id="77" role="2Oq$k0">
                   <node concept="37vLTw" id="7a" role="2Oq$k0">
-                    <ref role="3cqZAo" to=":^" resolve="context" />
+                    <ref role="3cqZAo" node="6G" resolve="context" />
                   </node>
                   <node concept="liA8E" id="7b" role="2OqNvi">
-                    <ref role="37wK5l" to=":^" resolve="getNode" />
+                    <ref role="37wK5l" to="pdwk:~CanBeChild_Context.getNode()" resolve="getNode" />
                   </node>
                   <node concept="cd27G" id="7c" role="lGtFl">
                     <node concept="3u3nmq" id="7d" role="cd27D">
@@ -1965,10 +1965,10 @@
               <node concept="2OqwBi" id="aK" role="3uHU7B">
                 <node concept="2OqwBi" id="aN" role="2Oq$k0">
                   <node concept="37vLTw" id="aQ" role="2Oq$k0">
-                    <ref role="3cqZAo" to=":^" resolve="context" />
+                    <ref role="3cqZAo" node="aq" resolve="context" />
                   </node>
                   <node concept="liA8E" id="aR" role="2OqNvi">
-                    <ref role="37wK5l" to=":^" resolve="getNode" />
+                    <ref role="37wK5l" to="pdwk:~CanBeChild_Context.getNode()" resolve="getNode" />
                   </node>
                   <node concept="cd27G" id="aS" role="lGtFl">
                     <node concept="3u3nmq" id="aT" role="cd27D">

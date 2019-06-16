@@ -26,7 +26,7 @@ import java.util.List;
  * @author apyshkin
  * @since 18.1
  */
-public final class SConceptC3StarMRO extends C3StarMethodResolutionOrder<_SAbstractConcept> {
+public final class SConceptC3StarMRO extends C3StarAncestorResolutionOrder<_SAbstractConcept> {
   private static final _SAbstractConcept BASECONCEPT_WRAP = _SAbstractConcept.wrap(SNodeUtil.concept_BaseConcept);
 
   @NotNull
