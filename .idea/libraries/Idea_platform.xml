@@ -67,6 +67,10 @@
       <root url="jar://$PROJECT_DIR$/lib/platform-objectSerializer.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/platform-objectSerializer-annotations.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/platform-util-ui.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/platform-ide-util-io.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/platform-util-ex.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/spellchecker.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/images.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/configuration-store-impl.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/jps-model.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/lz4-java-1.6.0.jar!/" />
@@ -90,9 +94,9 @@
       <root url="jar://$PROJECT_DIR$/lib/xmlgraphics-commons-2.3.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/intellij-coverage-agent-1.0.495.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/intellij-test-discovery-agent-1.0.495.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/intellij-dvcs.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/intellij-xml.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/java-compatibility-1.0.1.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/java-api.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/java-impl.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

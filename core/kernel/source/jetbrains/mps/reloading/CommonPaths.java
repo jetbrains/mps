@@ -136,6 +136,14 @@ public final class CommonPaths {
     addIfExists(result, "lib/platform-objectSerializer-annotations.jar");
     addIfExists(result, "lib/platform-util-ui.jar");
     addIfExists(result, "lib/configuration-store-impl.jar");
+    addIfExists(result, "lib/platform-ide-util-io.jar");
+    addIfExists(result, "lib/platform-util-ex.jar");
+    addIfExists(result, "lib/intellij-dvcs.jar");
+    addIfExists(result, "lib/intellij-xml.jar");
+    addIfExists(result, "lib/spellchecker.jar");
+    addIfExists(result, "lib/images.jar");
+    addIfExists(result, "plugins/java/lib/java-api.jar");
+    addIfExists(result, "plugins/java/lib/java-impl.jar");
   }
 
   private static void addIdeaJars(Collection<QualifiedPath> result) {
