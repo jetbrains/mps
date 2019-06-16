@@ -17,7 +17,19 @@ package jetbrains.mps.core.aspects.constraints.rules;
 
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Rules are supposed to be of different kinds.
+ * Since some rules need to be checked in certain scenarios and others do not,
+ * such notion naturally arises.
+ * (Consider the canBeRoot kind of rules. It needs to be checked only when we have a potential root)
+ * @param <Context> -- rule kinds contain a type of context they expect. different kinds => possibly different contexts
+ *
+ * @author apyshkin, mburyakov
+ */
 public interface ConstraintsRuleKind<Context extends ConstraintsContext> {
-  @NotNull
-  ContextBuilder<Context> getContextBuilder();
+  /**
+   * todo currently with only this API it is impossible to construct a context from non-concrete rule kind
+   * @return
+   */
+  @NotNull ContextBuilder<Context> getContextBuilder();
 }

@@ -20,6 +20,7 @@ import jetbrains.mps.smodel.language.LanguageRuntime;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 import java.util.ArrayList;
@@ -42,16 +43,17 @@ public final class ConstraintsRegistry2 {
 
   @NotNull
   public ConstraintsDescriptor2 getConstraintsDescriptor2(@NotNull SAbstractConcept concept) throws IllegalArgumentException {
+    ConstraintsDescriptor2 descriptor2 = null;
     LanguageRuntime conceptLang = myLanguageRegistry.getLanguage(concept.getLanguage());
     if (conceptLang == null) {
       LOG.warn("No language for: " + concept + ", while looking for constraints descriptor.");
+    } else {
+      ConstraintsAspectDescriptor2 aspect = conceptLang.getAspect(ConstraintsAspectDescriptor2.class);
+      if (aspect != null) {
+        descriptor2 = aspect.getDescriptor(concept);
+      }
     }
-    ConstraintsAspectDescriptor2 aspect = conceptLang.getAspect(ConstraintsAspectDescriptor2.class);
-    ConstraintsDescriptor2 descriptor2 = null;
-    if (aspect != null) {
-      descriptor2 = aspect.getDescriptor(concept);
-    }
-    return descriptor2 != null ? descriptor2 : new EmptyConstraintsDescriptor2();
+    return descriptor2 != null ? descriptor2 : new EmptyConstraintsDescriptor2(concept);
   }
 
   @NotNull
@@ -73,6 +75,18 @@ public final class ConstraintsRegistry2 {
   }
 
   private static class EmptyConstraintsDescriptor2 implements ConstraintsDescriptor2 {
+    private final SAbstractConcept myConcept;
+
+    private EmptyConstraintsDescriptor2(@NotNull SAbstractConcept concept) {
+      myConcept = concept;
+    }
+
+    @NotNull
+    @Override
+    public List<ConstraintsRule<?>> getDeclaredRules() {
+      return Collections.emptyList();
+    }
+
     @NotNull
     @Override
     public List<ConstraintsRule<?>> getRules() {
@@ -83,6 +97,12 @@ public final class ConstraintsRegistry2 {
     @Override
     public <Context extends ConstraintsContext> List<ConstraintsRule<Context>> getRules(@NotNull ConstraintsRuleKind<Context> kind) {
       return Collections.emptyList();
+    }
+
+    @NotNull
+    @Override
+    public SAbstractConcept getConcept() {
+      return myConcept;
     }
   }
 }

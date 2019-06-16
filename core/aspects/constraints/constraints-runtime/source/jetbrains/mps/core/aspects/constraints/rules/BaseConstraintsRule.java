@@ -16,10 +16,12 @@
 package jetbrains.mps.core.aspects.constraints.rules;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
 /**
- * all generated rules grow from here
+ * all generated rules inherit this one
  */
 public abstract class BaseConstraintsRule<Context extends ConstraintsContext> implements ConstraintsRule<Context> {
   private final SAbstractConcept myConcept;
@@ -42,11 +44,21 @@ public abstract class BaseConstraintsRule<Context extends ConstraintsContext> im
     return myRuleId;
   }
 
+  @Nullable
+  @Override
+  public SNodeReference getRuleSourceNode() {
+    //fixme remove
+    return getId().getRuleSourceNode();
+  }
+
   @NotNull
   @Override
   public ConstraintsRuleKind<Context> getKind() {
     return myRuleKind;
   }
+
+  @Override
+  public abstract boolean check(@NotNull Context context);
 
   @NotNull
   @Override

@@ -96,9 +96,15 @@ public abstract class ConstraintsReportItem extends NodeReportItemBase implement
   }
 
   public static class CanBeParentFailedReportItem extends ConstraintsReportItem {
-    public CanBeParentFailedReportItem(@NotNull SNode node, @NotNull SNode child, @NotNull TypesystemRuleId ruleNode) {
-      super(node, "Node " + node + " cannot be parent of node " + child, ruleNode);
+    public CanBeParentFailedReportItem(@NotNull SNode node, @NotNull SNode child, @Nullable String message, @NotNull TypesystemRuleId ruleNode) {
+      super(node, message != null ? message : getDefaultMessage(node, child), ruleNode);
     }
+
+    @NotNull
+    private static String getDefaultMessage(@NotNull SNode node, @NotNull SNode child) {
+      return "Node " + node + " cannot be parent of node " + child;
+    }
+
     @Override
     public ItemKind getIssueKind() {
       return IssueKindReportItem.CONSTRAINTS.deriveItemKind("cannot be parent");
