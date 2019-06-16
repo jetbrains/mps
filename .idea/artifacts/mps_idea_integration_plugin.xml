@@ -5,7 +5,7 @@
       <element id="module-output" name="IDEAPlugin" />
       <element id="module-output" name="ideaIntegrationCommon" />
       <element id="directory" name="META-INF">
-        <element id="dir-copy" path="$PROJECT_DIR$/plugins/ideaIntegration/IDEAPlugin/META-INF" />
+        <element id="dir-copy" path="$PROJECT_DIR$/plugins/mps-idea-integration/IDEAPlugin/META-INF" />
       </element>
     </root>
   </artifact>
