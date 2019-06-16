@@ -8,6 +8,7 @@ import jetbrains.mps.core.aspects.reporting.api.MessageProvider;
 import java.util.ArrayList;
 
 public final class A_DefaultMessages implements MessagesDescriptor {
+
   @Override
   public List<MessageProvider> getMessageProviders() {
     List<MessageProvider> result = new ArrayList<MessageProvider>();

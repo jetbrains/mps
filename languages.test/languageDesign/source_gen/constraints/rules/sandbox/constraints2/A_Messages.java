@@ -12,7 +12,8 @@ public final class A_Messages implements MessagesDescriptor {
   public final class first_MessageProvider_a implements MessageProvider {
     @Override
     public ConstraintsRuleId forRule() {
-      return new ConstraintsRuleId(5258059200640984066L, null);
+      new ConstraintsRuleId(5258059200640984066L, null);
+      return A_Constraints2.Rule_first.ID_first;
     }
 
     @Override
@@ -23,7 +24,8 @@ public final class A_Messages implements MessagesDescriptor {
   public final class third_MessageProvider_b implements MessageProvider {
     @Override
     public ConstraintsRuleId forRule() {
-      return new ConstraintsRuleId(315923949160993128L, null);
+      new ConstraintsRuleId(315923949160993128L, null);
+      return A_Constraints2.Rule_third.ID_third;
     }
 
     @Override
@@ -31,6 +33,7 @@ public final class A_Messages implements MessagesDescriptor {
       return "I OVERRIDE YOU TWICE";
     }
   }
+
   @Override
   public List<MessageProvider> getMessageProviders() {
     List<MessageProvider> result = new ArrayList<MessageProvider>();

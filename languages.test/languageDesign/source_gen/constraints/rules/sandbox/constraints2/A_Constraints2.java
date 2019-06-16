@@ -12,8 +12,9 @@ import java.util.Collections;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.core.aspects.constraints.rules.BaseConstraintsRule;
-import jetbrains.mps.core.aspects.constraints.rules.ConstraintsRuleId;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+import jetbrains.mps.core.aspects.constraints.rules.ConstraintsRuleId;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeChild_RuleKind;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 
@@ -24,7 +25,7 @@ public final class A_Constraints2 extends BaseConstraintsDescriptor2 {
   public static final ConstraintsRule<CanBeChild_Context> second_id5258059200640984676 = new A_Constraints2.Rule_second();
   public static final ConstraintsRule<CanBeChild_Context> third_id315923949160993128 = new A_Constraints2.Rule_third();
 
-  private static final List<ConstraintsRule<?>> RULES = Collections.unmodifiableList(Arrays.<ConstraintsRule<?>>asList(first_id5258059200640984066));
+  private static final List<ConstraintsRule<?>> RULES = Collections.unmodifiableList(Arrays.<ConstraintsRule<?>>asList(first_id5258059200640984066, second_id5258059200640984676, third_id315923949160993128));
 
   /*package*/ A_Constraints2() {
     super(CONCEPT);
@@ -36,36 +37,39 @@ public final class A_Constraints2 extends BaseConstraintsDescriptor2 {
     return RULES;
   }
 
-  private static final class Rule_first extends BaseConstraintsRule<CanBeChild_Context> {
-    private static final ConstraintsRuleId ID = new ConstraintsRuleId(5258059200640984066L, PersistenceFacade.getInstance().createNodeReference("r:d8115b4c-62c9-4566-9bc7-9fa3c8929293(constraints.rules.sandbox.constraints2)/5258059200640984066"));
-    public Rule_first() {
-      super(CONCEPT, CanBeChild_RuleKind.INSTANCE, ID);
-    }
+  public static final class Rule_first extends BaseConstraintsRule<CanBeChild_Context> {
+    private static final SNodeReference SOURCE_NODE_REF = PersistenceFacade.getInstance().createNodeReference("r:d8115b4c-62c9-4566-9bc7-9fa3c8929293(constraints.rules.sandbox.constraints2)/5258059200640984066");
+    public static final ConstraintsRuleId ID_first = new ConstraintsRuleId(5258059200640984066L, SOURCE_NODE_REF);
 
+    public Rule_first() {
+      super(CONCEPT, CanBeChild_RuleKind.INSTANCE, ID_first);
+    }
 
     @Override
     public boolean check(@NotNull CanBeChild_Context context) {
       return SPropertyOperations.getInteger(context.getNode(), MetaAdapterFactory.getProperty(0xa6518565787648e9L, 0x8d439ef97836a52eL, 0x7825711952b6d480L, 0x7825711952b815edL, "a")) > 1;
     }
   }
-  private static final class Rule_second extends BaseConstraintsRule<CanBeChild_Context> {
-    private static final ConstraintsRuleId ID = new ConstraintsRuleId(5258059200640984676L, PersistenceFacade.getInstance().createNodeReference("r:d8115b4c-62c9-4566-9bc7-9fa3c8929293(constraints.rules.sandbox.constraints2)/5258059200640984676"));
-    public Rule_second() {
-      super(CONCEPT, CanBeChild_RuleKind.INSTANCE, ID);
-    }
+  public static final class Rule_second extends BaseConstraintsRule<CanBeChild_Context> {
+    private static final SNodeReference SOURCE_NODE_REF = PersistenceFacade.getInstance().createNodeReference("r:d8115b4c-62c9-4566-9bc7-9fa3c8929293(constraints.rules.sandbox.constraints2)/5258059200640984676");
+    public static final ConstraintsRuleId ID_second = new ConstraintsRuleId(5258059200640984676L, SOURCE_NODE_REF);
 
+    public Rule_second() {
+      super(CONCEPT, CanBeChild_RuleKind.INSTANCE, ID_second);
+    }
 
     @Override
     public boolean check(@NotNull CanBeChild_Context context) {
       return SPropertyOperations.getInteger(context.getNode(), MetaAdapterFactory.getProperty(0xa6518565787648e9L, 0x8d439ef97836a52eL, 0x7825711952b6d480L, 0x7825711952b815edL, "a")) < 100;
     }
   }
-  private static final class Rule_third extends BaseConstraintsRule<CanBeChild_Context> {
-    private static final ConstraintsRuleId ID = new ConstraintsRuleId(315923949160993128L, PersistenceFacade.getInstance().createNodeReference("r:d8115b4c-62c9-4566-9bc7-9fa3c8929293(constraints.rules.sandbox.constraints2)/315923949160993128"));
-    public Rule_third() {
-      super(CONCEPT, CanBeChild_RuleKind.INSTANCE, ID);
-    }
+  public static final class Rule_third extends BaseConstraintsRule<CanBeChild_Context> {
+    private static final SNodeReference SOURCE_NODE_REF = PersistenceFacade.getInstance().createNodeReference("r:d8115b4c-62c9-4566-9bc7-9fa3c8929293(constraints.rules.sandbox.constraints2)/315923949160993128");
+    public static final ConstraintsRuleId ID_third = new ConstraintsRuleId(315923949160993128L, SOURCE_NODE_REF);
 
+    public Rule_third() {
+      super(CONCEPT, CanBeChild_RuleKind.INSTANCE, ID_third);
+    }
 
     @Override
     public boolean check(@NotNull CanBeChild_Context context) {
