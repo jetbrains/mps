@@ -21,8 +21,8 @@ import com.intellij.openapi.components.RoamingType;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.wm.IdeFrame;
 import com.intellij.util.PathUtil;
-import com.intellij.util.messages.MessageBus;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.SystemIndependent;
@@ -31,9 +31,9 @@ import java.io.File;
 
 
 /*
-* TODO: Find way to add to platform com.intellij.ide.RecentProjectsManagerImpl and use it.
-* Currently it is not possible because @State.name cannot be changed and we don't want to loose recent user projects
-*/
+ * TODO: Find way to add to platform com.intellij.ide.RecentProjectsManagerImpl and use it.
+ * Currently it is not possible because @State.name cannot be changed and we don't want to loose recent user projects
+ */
 @State(
     name = "RecentMPSProjectsManager",
     storages = {
@@ -42,19 +42,15 @@ import java.io.File;
     }
 )
 public class RecentMPSProjectsManager extends RecentProjectsManagerBase {
-  public RecentMPSProjectsManager(MessageBus messageBus) {
-    super(messageBus);
-  }
-
   @Nullable
   @Override
   @SystemIndependent
-  protected  String getProjectPath(@NotNull Project project) {
+  protected String getProjectPath(@NotNull Project project) {
     return PathUtil.toSystemIndependentName(project.getPresentableUrl());
   }
 
   @Override
-  public Project doOpenProject(@NotNull String projectPath, @Nullable com.intellij.openapi.project.Project projectToClose, boolean forceOpenInNewFrame) {
+  public Project doOpenProject(@NotNull String projectPath, @Nullable com.intellij.openapi.project.Project projectToClose, boolean forceOpenInNewFrame, @Nullable IdeFrame frame) {
     File projectFile = new File(projectPath); // Use simplest way to check file existence, no need to go with IDEA VFS here.
     return projectFile.exists() ? ProjectUtil.openProject(projectPath, projectToClose, forceOpenInNewFrame) : null;
   }
