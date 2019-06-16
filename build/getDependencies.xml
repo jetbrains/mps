@@ -244,6 +244,8 @@
       </fileset>
     </delete>
 
+    <delete dir="${basedir}/../plugins/java" failonerror="false"/>
+    <delete dir="${basedir}/../plugins/coverage" failonerror="false"/>
     <delete dir="${basedir}/../plugins/git4idea/lib" failonerror="false"/>
     <delete dir="${basedir}/../plugins/github" failonerror="false"/>
     <delete dir="${basedir}/../plugins/svn4idea/lib" failonerror="false"/>

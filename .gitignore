@@ -53,6 +53,7 @@ teamcity-info.xml
 /plugins/terminal
 /plugins/mps-migration/migration-platform/lib
 /plugins/coverage/lib
+/plugins/java
 
 # Main libraries folder: dependencies are downloaded before complilation with task 'install' from build/getDependencies.xml
 /lib/
