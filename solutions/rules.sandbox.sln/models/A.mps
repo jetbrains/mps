@@ -17,7 +17,7 @@
   </registry>
   <node concept="2ouw3J" id="7FO6JFyzxJl">
     <node concept="E$Ump" id="7FO6JFyzxJm" role="2ouw3G">
-      <property role="EBmjO" value="55" />
+      <property role="EBmjO" value="100" />
     </node>
   </node>
 </model>
