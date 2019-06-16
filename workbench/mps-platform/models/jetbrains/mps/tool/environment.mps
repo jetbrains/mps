@@ -107,10 +107,6 @@
       </concept>
       <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
       <concept id="1070534644030" name="jetbrains.mps.baseLanguage.structure.BooleanType" flags="in" index="10P_77" />
-      <concept id="1070534934090" name="jetbrains.mps.baseLanguage.structure.CastExpression" flags="nn" index="10QFUN">
-        <child id="1070534934091" name="type" index="10QFUM" />
-        <child id="1070534934092" name="expression" index="10QFUP" />
-      </concept>
       <concept id="1068390468200" name="jetbrains.mps.baseLanguage.structure.FieldDeclaration" flags="ig" index="312cEg">
         <property id="8606350594693632173" name="isTransient" index="eg7rD" />
         <property id="1240249534625" name="isVolatile" index="34CwA1" />
@@ -174,9 +170,6 @@
       </concept>
       <concept id="1068581242863" name="jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration" flags="nr" index="3cpWsn" />
       <concept id="1068581517677" name="jetbrains.mps.baseLanguage.structure.VoidType" flags="in" index="3cqZAl" />
-      <concept id="1079359253375" name="jetbrains.mps.baseLanguage.structure.ParenthesizedExpression" flags="nn" index="1eOMI4">
-        <child id="1079359253376" name="expression" index="1eOMHV" />
-      </concept>
       <concept id="1081516740877" name="jetbrains.mps.baseLanguage.structure.NotExpression" flags="nn" index="3fqX7Q">
         <child id="1081516765348" name="expression" index="3fr31v" />
       </concept>
@@ -343,10 +336,17 @@
         </node>
       </node>
     </node>
+    <node concept="312cEg" id="65UowUML3$Q" role="jymVt">
+      <property role="TrG5h" value="myIdeaTestApplication" />
+      <node concept="3uibUv" id="65UowUML3$S" role="1tU5fm">
+        <ref role="3uigEE" to="1wbl:~IdeaTestApplication" resolve="IdeaTestApplication" />
+      </node>
+      <node concept="3Tm6S6" id="65UowUML3$T" role="1B3o_S" />
+    </node>
     <node concept="312cEg" id="2jln2VraCpX" role="jymVt">
       <property role="34CwA1" value="false" />
       <property role="eg7rD" value="false" />
-      <property role="TrG5h" value="myIdeaApplication" />
+      <property role="TrG5h" value="myCommandLineApplication" />
       <property role="3TUv4t" value="false" />
       <node concept="3Tm6S6" id="2jln2VraAlF" role="1B3o_S" />
       <node concept="3uibUv" id="4OPNMy2cAkl" role="1tU5fm">
@@ -456,13 +456,8 @@
         </node>
         <node concept="3clFbH" id="ZnkhVJWJhT" role="3cqZAp" />
         <node concept="3clFbF" id="6z7xhWkusht" role="3cqZAp">
-          <node concept="37vLTI" id="2jln2VraJMK" role="3clFbG">
-            <node concept="37vLTw" id="2jln2VraJXQ" role="37vLTJ">
-              <ref role="3cqZAo" node="2jln2VraCpX" resolve="myIdeaApplication" />
-            </node>
-            <node concept="1rXfSq" id="6z7xhWkushs" role="37vLTx">
-              <ref role="37wK5l" node="6z7xhWku8L1" resolve="createIdeaApplication" />
-            </node>
+          <node concept="1rXfSq" id="6z7xhWkushs" role="3clFbG">
+            <ref role="37wK5l" node="6z7xhWku8L1" resolve="createIdeaApplication" />
           </node>
         </node>
         <node concept="3clFbH" id="2KZwJXNrjan" role="3cqZAp" />
@@ -1570,10 +1565,15 @@
                 <node concept="10Nm6u" id="2Tuefk2gwJU" role="3uHU7w" />
               </node>
             </node>
-            <node concept="3cpWs6" id="6z7xhWkukv5" role="3cqZAp">
-              <node concept="2YIFZM" id="4eRWbJ_JiEG" role="3cqZAk">
-                <ref role="37wK5l" to="1wbl:~IdeaTestApplication.getInstance()" resolve="getInstance" />
-                <ref role="1Pybhc" to="1wbl:~IdeaTestApplication" resolve="IdeaTestApplication" />
+            <node concept="3clFbF" id="65UowUML9kL" role="3cqZAp">
+              <node concept="37vLTI" id="65UowUMLbJH" role="3clFbG">
+                <node concept="37vLTw" id="65UowUMLeGt" role="37vLTJ">
+                  <ref role="3cqZAo" node="65UowUML3$Q" resolve="myIdeaTestApplication" />
+                </node>
+                <node concept="2YIFZM" id="4eRWbJ_JiEG" role="37vLTx">
+                  <ref role="37wK5l" to="1wbl:~IdeaTestApplication.getInstance()" resolve="getInstance" />
+                  <ref role="1Pybhc" to="1wbl:~IdeaTestApplication" resolve="IdeaTestApplication" />
+                </node>
               </node>
             </node>
           </node>
@@ -1582,9 +1582,14 @@
           </node>
           <node concept="9aQIb" id="3qbI1lNoimf" role="9aQIa">
             <node concept="3clFbS" id="3qbI1lNoimg" role="9aQI4">
-              <node concept="3cpWs6" id="3qbI1lNosfm" role="3cqZAp">
-                <node concept="1rXfSq" id="3qbI1lNocM8" role="3cqZAk">
-                  <ref role="37wK5l" node="3qbI1lNocM5" resolve="createCommandLineApplication0" />
+              <node concept="3clFbF" id="65UowUMLh7y" role="3cqZAp">
+                <node concept="37vLTI" id="65UowUMLi_n" role="3clFbG">
+                  <node concept="37vLTw" id="65UowUMLl2k" role="37vLTJ">
+                    <ref role="3cqZAo" node="2jln2VraCpX" resolve="myCommandLineApplication" />
+                  </node>
+                  <node concept="1rXfSq" id="3qbI1lNocM8" role="37vLTx">
+                    <ref role="37wK5l" node="3qbI1lNocM5" resolve="createCommandLineApplication0" />
+                  </node>
                 </node>
               </node>
             </node>
@@ -1592,9 +1597,7 @@
         </node>
       </node>
       <node concept="3Tm6S6" id="6z7xhWku6$B" role="1B3o_S" />
-      <node concept="3uibUv" id="4OPNMy2cFrB" role="3clF45">
-        <ref role="3uigEE" to="1wbl:~CommandLineApplication" resolve="CommandLineApplication" />
-      </node>
+      <node concept="3cqZAl" id="65UowUML6Oy" role="3clF45" />
     </node>
     <node concept="2tJIrI" id="3qbI1lNof_s" role="jymVt" />
     <node concept="3clFb_" id="3qbI1lNocM5" role="jymVt">
@@ -2228,15 +2231,8 @@
                                           <node concept="3clFbS" id="4OPNMy2dVt2" role="3clFbx">
                                             <node concept="3clFbF" id="4OPNMy2dWY8" role="3cqZAp">
                                               <node concept="2OqwBi" id="4OPNMy2dXN4" role="3clFbG">
-                                                <node concept="1eOMI4" id="4OPNMy2dXjQ" role="2Oq$k0">
-                                                  <node concept="10QFUN" id="4OPNMy2dXwK" role="1eOMHV">
-                                                    <node concept="3uibUv" id="4OPNMy2dXIu" role="10QFUM">
-                                                      <ref role="3uigEE" to="1wbl:~IdeaTestApplication" resolve="IdeaTestApplication" />
-                                                    </node>
-                                                    <node concept="37vLTw" id="4OPNMy2dWY6" role="10QFUP">
-                                                      <ref role="3cqZAo" node="2jln2VraCpX" resolve="myIdeaApplication" />
-                                                    </node>
-                                                  </node>
+                                                <node concept="37vLTw" id="65UowUMLo6b" role="2Oq$k0">
+                                                  <ref role="3cqZAo" node="65UowUML3$Q" resolve="myIdeaTestApplication" />
                                                 </node>
                                                 <node concept="liA8E" id="4OPNMy2dYKh" role="2OqNvi">
                                                   <ref role="37wK5l" to="1wbl:~IdeaTestApplication.dispose()" resolve="dispose" />
@@ -2277,11 +2273,19 @@
                                             </node>
                                           </node>
                                         </node>
+                                        <node concept="3clFbF" id="65UowUMLox3" role="3cqZAp">
+                                          <node concept="37vLTI" id="65UowUMLppy" role="3clFbG">
+                                            <node concept="10Nm6u" id="65UowUMLpuC" role="37vLTx" />
+                                            <node concept="37vLTw" id="65UowUMLox1" role="37vLTJ">
+                                              <ref role="3cqZAo" node="65UowUML3$Q" resolve="myIdeaTestApplication" />
+                                            </node>
+                                          </node>
+                                        </node>
                                         <node concept="3clFbF" id="4OPNMy2dZXZ" role="3cqZAp">
                                           <node concept="37vLTI" id="4OPNMy2e0ex" role="3clFbG">
                                             <node concept="10Nm6u" id="4OPNMy2e0gV" role="37vLTx" />
                                             <node concept="37vLTw" id="4OPNMy2dZXX" role="37vLTJ">
-                                              <ref role="3cqZAo" node="2jln2VraCpX" resolve="myIdeaApplication" />
+                                              <ref role="3cqZAo" node="2jln2VraCpX" resolve="myCommandLineApplication" />
                                             </node>
                                           </node>
                                         </node>

@@ -5,6 +5,7 @@ package jetbrains.mps.tool.environment;
 import com.intellij.openapi.Disposable;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
+import com.intellij.idea.IdeaTestApplication;
 import com.intellij.idea.CommandLineApplication;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.MPSCoreComponents;
@@ -17,7 +18,6 @@ import jetbrains.mps.util.FileUtil;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.idea.IdeaTestApplication;
 import com.intellij.util.PlatformUtils;
 import com.intellij.ide.plugins.PluginManagerCore;
 import com.intellij.openapi.application.ex.ApplicationManagerEx;
@@ -54,7 +54,8 @@ public final class IdeaEnvironment extends EnvironmentBase implements Disposable
   private static final String IDEA_LOAD_PLUGINS_ID = "idea.load.plugins.id";
   public static final String CREATE_PLUGIN_CLASSLOADERS = "idea.run.tests.with.bundled.plugins";
 
-  private CommandLineApplication myIdeaApplication;
+  private IdeaTestApplication myIdeaTestApplication;
+  private CommandLineApplication myCommandLineApplication;
   private final boolean myUnitTestMode;
 
   static {
@@ -77,7 +78,7 @@ public final class IdeaEnvironment extends EnvironmentBase implements Disposable
 
     addRequiredPlugins(myConfig);
 
-    myIdeaApplication = createIdeaApplication();
+    createIdeaApplication();
 
     MPSCoreComponents coreComponents = getMPSCoreComponents();
     super.init(coreComponents.getPlatform());
@@ -167,7 +168,7 @@ public final class IdeaEnvironment extends EnvironmentBase implements Disposable
     return ApplicationManager.getApplication().getComponent(MPSCoreComponents.class);
   }
 
-  private CommandLineApplication createIdeaApplication() {
+  private void createIdeaApplication() {
     if (LOG.isInfoEnabled()) {
       LOG.info("Creating IdeaCmdApplication");
     }
@@ -176,9 +177,9 @@ public final class IdeaEnvironment extends EnvironmentBase implements Disposable
       if (oldValue == null) {
         System.setProperty(CREATE_PLUGIN_CLASSLOADERS, myConfig.doesCreatePluginClassLoaders() + "");
       }
-      return IdeaTestApplication.getInstance();
+      myIdeaTestApplication = IdeaTestApplication.getInstance();
     } else {
-      return createCommandLineApplication0();
+      myCommandLineApplication = createCommandLineApplication0();
     }
   }
 
@@ -249,12 +250,13 @@ public final class IdeaEnvironment extends EnvironmentBase implements Disposable
         application.runWriteAction(new Runnable() {
           public void run() {
             if (myUnitTestMode) {
-              ((IdeaTestApplication) myIdeaApplication).dispose();
+              myIdeaTestApplication.dispose();
             } else {
               // that's what IdeaTestApplication.dispose() does 
               Disposer.dispose(application);
             }
-            myIdeaApplication = null;
+            myIdeaTestApplication = null;
+            myCommandLineApplication = null;
           }
         });
       }
