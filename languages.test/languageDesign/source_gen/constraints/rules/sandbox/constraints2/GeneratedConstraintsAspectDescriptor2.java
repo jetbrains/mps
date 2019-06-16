@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 public final class GeneratedConstraintsAspectDescriptor2 implements ConstraintsAspectDescriptor2 {
   @Nullable
   @Override
-  public ConstraintsDescriptor2 getConstraints(@NotNull SAbstractConcept concept) {
+  public ConstraintsDescriptor2 getDescriptor(@NotNull SAbstractConcept concept) {
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:

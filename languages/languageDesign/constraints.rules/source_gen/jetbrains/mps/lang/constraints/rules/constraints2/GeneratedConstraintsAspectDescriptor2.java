@@ -16,7 +16,7 @@ import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeParent_RuleKind;
 public final class GeneratedConstraintsAspectDescriptor2 implements ConstraintsAspectDescriptor2 {
   @Nullable
   @Override
-  public ConstraintsDescriptor2 getConstraints(@NotNull SAbstractConcept concept) {
+  public ConstraintsDescriptor2 getDescriptor(@NotNull SAbstractConcept concept) {
     SAbstractConcept cncpt = concept;
     return null;
   }

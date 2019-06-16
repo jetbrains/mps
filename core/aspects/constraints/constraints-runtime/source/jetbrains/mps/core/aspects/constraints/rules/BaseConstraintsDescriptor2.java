@@ -66,7 +66,7 @@ public abstract class BaseConstraintsDescriptor2 implements ConstraintsDescripto
   }
 
   public final boolean isInitialized() {
-    return myRegistry.get() == null;
+    return myRegistry.get() != null;
   }
 
   private void checkDescriptorIsInitialized() {

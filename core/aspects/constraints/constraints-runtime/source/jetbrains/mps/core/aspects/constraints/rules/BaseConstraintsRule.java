@@ -29,7 +29,7 @@ public abstract class BaseConstraintsRule<Context extends ConstraintsContext> im
   private final ConstraintsRuleId myRuleId;
 //  private final Predicate<Context> myCheckPredicate; // aaaaaaaaaaaaaaaa cannot use the method refs from java 8......
 
-  private BaseConstraintsRule(@NotNull SAbstractConcept concept,
+  protected BaseConstraintsRule(@NotNull SAbstractConcept concept,
                               @NotNull ConstraintsRuleKind<Context> ruleKind,
                               @NotNull ConstraintsRuleId ruleId) {
     myConcept = concept;

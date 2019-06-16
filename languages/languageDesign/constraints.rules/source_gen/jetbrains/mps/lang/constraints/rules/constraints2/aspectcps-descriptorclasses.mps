@@ -244,7 +244,7 @@
       <ref role="3uigEE" to="o99v:~ConstraintsAspectDescriptor2" resolve="ConstraintsAspectDescriptor2" />
     </node>
     <node concept="3clFb_" id="H" role="jymVt">
-      <property role="TrG5h" value="getConstraints" />
+      <property role="TrG5h" value="getDescriptor" />
       <node concept="3Tm1VV" id="K" role="1B3o_S" />
       <node concept="37vLTG" id="L" role="3clF46">
         <property role="TrG5h" value="concept" />

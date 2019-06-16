@@ -52,6 +52,16 @@ public final class ConstraintsRegistry2 {
       if (aspect != null) {
         descriptor2 = aspect.getDescriptor(concept);
       }
+      if (descriptor2 != null) {
+        synchronized (LOG) {
+          // to be moved into api
+          if (descriptor2 instanceof BaseConstraintsDescriptor2) {
+            if (!((BaseConstraintsDescriptor2) descriptor2).isInitialized()) {
+              ((BaseConstraintsDescriptor2) descriptor2).init(this);
+            }
+          }
+        }
+      }
     }
     return descriptor2 != null ? descriptor2 : new EmptyConstraintsDescriptor2(concept);
   }

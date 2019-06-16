@@ -64,8 +64,8 @@
       <property role="IQ2ns" value="7291380803376071241" />
       <property role="20lmBu" value="aggregation" />
       <property role="20lbJX" value="0..n" />
-      <property role="20kJfa" value="member" />
-      <ref role="20lvS9" node="6kKc3mjlk97" resolve="ConstraintsMember" />
+      <property role="20kJfa" value="block" />
+      <ref role="20lvS9" node="$V5NfaEDtA" resolve="ConstraintsBlock" />
     </node>
     <node concept="PrWs8" id="6kKc3mjlk8y" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
@@ -84,7 +84,6 @@
   <node concept="1TIwiD" id="6kKc3mjlk96">
     <property role="EcuMT" value="7291380803376071238" />
     <property role="TrG5h" value="ConstraintsRuleBlock" />
-    <ref role="1TJDcQ" node="6kKc3mjlk97" resolve="ConstraintsMember" />
     <node concept="1TJgyj" id="6kKc3mjlkaw" role="1TKVEi">
       <property role="IQ2ns" value="7291380803376071328" />
       <property role="20lmBu" value="aggregation" />
@@ -102,12 +101,9 @@
     <node concept="PrWs8" id="6kKc3mjtE8N" role="PzmwI">
       <ref role="PrY4T" to="tpck:3fifI_xCcJN" resolve="ScopeProvider" />
     </node>
-  </node>
-  <node concept="1TIwiD" id="6kKc3mjlk97">
-    <property role="EcuMT" value="7291380803376071239" />
-    <property role="TrG5h" value="ConstraintsMember" />
-    <property role="R5$K7" value="true" />
-    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="PrWs8" id="$V5NfaEDtE" role="PzmwI">
+      <ref role="PrY4T" node="$V5NfaEDtA" resolve="ConstraintsBlock" />
+    </node>
   </node>
   <node concept="1TIwiD" id="6kKc3mjlk98">
     <property role="EcuMT" value="7291380803376071240" />
@@ -281,6 +277,10 @@
     <node concept="PrWs8" id="hyoMxHMdy3" role="PrDN$">
       <ref role="PrY4T" to="tpee:hCUYCKd" resolve="IValidIdentifier" />
     </node>
+  </node>
+  <node concept="PlHQZ" id="$V5NfaEDtA">
+    <property role="EcuMT" value="665150881178228582" />
+    <property role="TrG5h" value="ConstraintsBlock" />
   </node>
 </model>
 

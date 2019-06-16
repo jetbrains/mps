@@ -10,11 +10,11 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 public final class LanguageConceptSwitch {
   private final LanguageConceptIndex myIndex;
   public static final int AbstractConstraintsDefNative = 0;
-  public static final int ConstraintsDef = 1;
-  public static final int ConstraintsDefNative = 2;
-  public static final int ConstraintsDefNativeNode = 3;
-  public static final int ConstraintsExpressionHolder = 4;
-  public static final int ConstraintsMember = 5;
+  public static final int ConstraintsBlock = 1;
+  public static final int ConstraintsDef = 2;
+  public static final int ConstraintsDefNative = 3;
+  public static final int ConstraintsDefNativeNode = 4;
+  public static final int ConstraintsExpressionHolder = 5;
   public static final int ConstraintsRoot = 6;
   public static final int ConstraintsRule = 7;
   public static final int ConstraintsRuleBlock = 8;
@@ -30,11 +30,11 @@ public final class LanguageConceptSwitch {
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0x47257bf378d3470bL, 0x89d98c3261a61d15L);
     builder.put(0x653030359355429dL, AbstractConstraintsDefNative);
+    builder.put(0x93b1733caaa9766L, ConstraintsBlock);
     builder.put(0x653030359366e9d5L, ConstraintsDef);
     builder.put(0x4bf59690bc00f6b1L, ConstraintsDefNative);
     builder.put(0x46263286da99051L, ConstraintsDefNativeNode);
     builder.put(0x653030359356e968L, ConstraintsExpressionHolder);
-    builder.put(0x6530303593554247L, ConstraintsMember);
     builder.put(0x6530303593554221L, ConstraintsRoot);
     builder.put(0x6530303593586de2L, ConstraintsRule);
     builder.put(0x6530303593554246L, ConstraintsRuleBlock);

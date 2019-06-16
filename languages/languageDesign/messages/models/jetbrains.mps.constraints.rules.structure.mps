@@ -61,7 +61,7 @@
       <property role="IQ2ns" value="7291380803381927154" />
       <property role="20lmBu" value="aggregation" />
       <property role="20lbJX" value="0..n" />
-      <property role="20kJfa" value="messages" />
+      <property role="20kJfa" value="messageProviders" />
       <ref role="20lvS9" node="6kKc3mjFxph" resolve="MessageProvider" />
     </node>
     <node concept="PrWs8" id="47X3GcVYaDI" role="PzmwI">

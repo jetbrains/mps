@@ -18,8 +18,6 @@ package jetbrains.mps.smodel.adapter.ids;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.annotations.Immutable;
 
-import java.util.Objects;
-
 /**
  * Represents identity for language elements
  *

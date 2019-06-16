@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068390468200:jetbrains.mps.baseLanguage.structure.FieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <root nodeRef="r:7fc220b5-3806-43f7-a6e6-6f3ea2d76c9c(util)/7082824793308696454">
+    <file name="NameHelper.java">
+      <node id="66188535716407265" at="12,0,13,0" concept="2" trace="myRuleDecl" />
+      <node id="66188535716408472" at="14,46,15,26" concept="1" />
+      <node id="1540166288377306430" at="19,38,20,57" concept="4" />
+      <node id="1540166288377365872" at="24,36,25,167" concept="4" />
+      <node id="8452785328911042429" at="29,34,30,98" concept="4" />
+      <node id="7082824793308708548" at="14,0,17,0" concept="0" trace="NameHelper#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="7082824793308696498" at="18,0,22,0" concept="3" trace="getGeneratedString#()Ljava/lang/String;" />
+      <node id="1540166288377365897" at="23,0,27,0" concept="3" trace="getGeneratedName#()Ljava/lang/String;" />
+      <node id="1540166288377303469" at="28,0,32,0" concept="3" trace="getGeneratedId#()Ljava/lang/String;" />
+      <scope id="7082824793308708552" at="14,46,15,26" />
+      <scope id="7082824793308696506" at="19,38,20,57" />
+      <scope id="1540166288377365854" at="24,36,25,167" />
+      <scope id="1540166288377303472" at="29,34,30,98" />
+      <scope id="7082824793308708548" at="14,0,17,0">
+        <var name="ruleDecl" id="1540166288377303867" />
+      </scope>
+      <scope id="7082824793308696498" at="18,0,22,0" />
+      <scope id="1540166288377365897" at="23,0,27,0" />
+      <scope id="1540166288377303469" at="28,0,32,0" />
+      <unit id="7082824793308696454" at="11,0,33,0" name="util.NameHelper" />
+    </file>
+  </root>
+</debug-info>
+

@@ -1354,7 +1354,7 @@
                         <node concept="liA8E" id="7j" role="2OqNvi">
                           <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.aggregate(java.lang.String,long)" resolve="aggregate" />
                           <node concept="Xl_RD" id="7k" role="37wK5m">
-                            <property role="Xl_RC" value="messages" />
+                            <property role="Xl_RC" value="messageProviders" />
                           </node>
                           <node concept="1adDum" id="7l" role="37wK5m">
                             <property role="1adDun" value="0x6530303593ae9cf2L" />

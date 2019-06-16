@@ -230,7 +230,7 @@
         </node>
       </node>
       <node concept="3F2HdR" id="6kKc3mjlkfE" role="3EZMnx">
-        <ref role="1NtTu8" to="bm42:6kKc3mjlk99" resolve="member" />
+        <ref role="1NtTu8" to="bm42:6kKc3mjlk99" resolve="block" />
         <node concept="l2Vlx" id="6kKc3mjlkfG" role="2czzBx" />
         <node concept="pj6Ft" id="6kKc3mjlkfO" role="3F10Kt">
           <property role="VOm3f" value="true" />

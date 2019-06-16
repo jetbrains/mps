@@ -24,6 +24,12 @@ public enum CanBeChild_RuleKind implements ConstraintsRuleKind<CanBeChild_Contex
 
   @NotNull
   @Override
+  public String getName() {
+    return INSTANCE.name();
+  }
+
+  @NotNull
+  @Override
   public Builder getContextBuilder() {
     return new Builder();
   }

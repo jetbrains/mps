@@ -15,27 +15,25 @@
  */
 package jetbrains.mps.core.aspects.constraints.rules;
 
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
-import java.util.Objects;
-
 /**
- * obviously debug info could not be the only way to identify different rules.
- * later we add another choice for rule id
  */
 public final class ConstraintsRuleId implements ConstraintsRulePointer {
-  @NotNull private final String myId;
+  private final long myId;
   @Nullable private final SNodeReference mySourceRuleDecl;
 
-  public ConstraintsRuleId(@NotNull String id, @Nullable SNodeReference sourceRuleDecl) {
-    myId = id;
+  /**
+   *
+   * @param sourceRuleDecl -- debug info, might be used for navigation to the failed rule
+   */
+  public ConstraintsRuleId(long ruleId, @Nullable SNodeReference sourceRuleDecl) {
+    myId = ruleId;
     mySourceRuleDecl = sourceRuleDecl;
   }
 
-  @NotNull
-  public String getId() {
+  public long getId() {
     return myId;
   }
 
@@ -52,11 +50,11 @@ public final class ConstraintsRuleId implements ConstraintsRulePointer {
     }
 
     ConstraintsRuleId that = (ConstraintsRuleId) o;
-    return myId.equals(that.myId);
+    return myId == that.myId;
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(myId);
+    return Long.hashCode(myId);
   }
 }

@@ -223,9 +223,9 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new MessagesRoot_EditorBuilder_a.messagesListHandler_jb5j5r_f0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new MessagesRoot_EditorBuilder_a.messageProvidersListHandler_jb5j5r_f0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
-    editorCell.setCellId("refNodeList_messages");
+    editorCell.setCellId("refNodeList_messageProviders");
     Style style = new StyleImpl();
     style.set(StyleAttributes.INDENT_LAYOUT_CHILDREN_NEWLINE, true);
     style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, true);
@@ -234,11 +234,11 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
     editorCell.setSRole(handler.getElementSRole());
     return editorCell;
   }
-  private static class messagesListHandler_jb5j5r_f0 extends RefNodeListHandler {
+  private static class messageProvidersListHandler_jb5j5r_f0 extends RefNodeListHandler {
     @NotNull
     private SNode myNode;
 
-    public messagesListHandler_jb5j5r_f0(SNode ownerNode, EditorContext context) {
+    public messageProvidersListHandler_jb5j5r_f0(SNode ownerNode, EditorContext context) {
       super(context, false);
       myNode = ownerNode;
     }
@@ -248,7 +248,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return MetaAdapterFactory.getContainmentLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x6530303593ae1607L, 0x6530303593ae9cf2L, "messages");
+      return MetaAdapterFactory.getContainmentLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x6530303593ae1607L, 0x6530303593ae9cf2L, "messageProviders");
     }
     public SAbstractConcept getChildSConcept() {
       return MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x6530303593ae1651L, "jetbrains.mps.lang.messages.structure.MessageProvider");
@@ -261,7 +261,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(messagesListHandler_jb5j5r_f0.this.getNode(), MetaAdapterFactory.getContainmentLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x6530303593ae1607L, 0x6530303593ae9cf2L, "messages")));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(messageProvidersListHandler_jb5j5r_f0.this.getNode(), MetaAdapterFactory.getContainmentLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x6530303593ae1607L, 0x6530303593ae9cf2L, "messageProviders")));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
