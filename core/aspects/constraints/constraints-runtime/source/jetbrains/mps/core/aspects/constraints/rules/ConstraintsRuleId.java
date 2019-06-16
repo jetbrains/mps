@@ -57,4 +57,9 @@ public final class ConstraintsRuleId implements ConstraintsRulePointer {
   public int hashCode() {
     return Long.hashCode(myId);
   }
+
+  @Override
+  public String toString() {
+    return "RuleId [" + myId + "] debug info: " + mySourceRuleDecl;
+  }
 }

@@ -39,10 +39,10 @@ public final class A_Constraints2 extends BaseConstraintsDescriptor2 {
 
   public static final class Rule_first extends BaseConstraintsRule<CanBeChild_Context> {
     private static final SNodeReference SOURCE_NODE_REF = PersistenceFacade.getInstance().createNodeReference("r:d8115b4c-62c9-4566-9bc7-9fa3c8929293(constraints.rules.sandbox.constraints2)/5258059200640984066");
-    public static final ConstraintsRuleId ID_first = new ConstraintsRuleId(5258059200640984066L, SOURCE_NODE_REF);
+    public static final ConstraintsRuleId ID_FIRST = new ConstraintsRuleId(5258059200640984066L, SOURCE_NODE_REF);
 
     public Rule_first() {
-      super(CONCEPT, CanBeChild_RuleKind.INSTANCE, ID_first);
+      super(CONCEPT, CanBeChild_RuleKind.INSTANCE, ID_FIRST);
     }
 
     @Override
@@ -52,10 +52,10 @@ public final class A_Constraints2 extends BaseConstraintsDescriptor2 {
   }
   public static final class Rule_second extends BaseConstraintsRule<CanBeChild_Context> {
     private static final SNodeReference SOURCE_NODE_REF = PersistenceFacade.getInstance().createNodeReference("r:d8115b4c-62c9-4566-9bc7-9fa3c8929293(constraints.rules.sandbox.constraints2)/5258059200640984676");
-    public static final ConstraintsRuleId ID_second = new ConstraintsRuleId(5258059200640984676L, SOURCE_NODE_REF);
+    public static final ConstraintsRuleId ID_SECOND = new ConstraintsRuleId(5258059200640984676L, SOURCE_NODE_REF);
 
     public Rule_second() {
-      super(CONCEPT, CanBeChild_RuleKind.INSTANCE, ID_second);
+      super(CONCEPT, CanBeChild_RuleKind.INSTANCE, ID_SECOND);
     }
 
     @Override
@@ -65,10 +65,10 @@ public final class A_Constraints2 extends BaseConstraintsDescriptor2 {
   }
   public static final class Rule_third extends BaseConstraintsRule<CanBeChild_Context> {
     private static final SNodeReference SOURCE_NODE_REF = PersistenceFacade.getInstance().createNodeReference("r:d8115b4c-62c9-4566-9bc7-9fa3c8929293(constraints.rules.sandbox.constraints2)/315923949160993128");
-    public static final ConstraintsRuleId ID_third = new ConstraintsRuleId(315923949160993128L, SOURCE_NODE_REF);
+    public static final ConstraintsRuleId ID_THIRD = new ConstraintsRuleId(315923949160993128L, SOURCE_NODE_REF);
 
     public Rule_third() {
-      super(CONCEPT, CanBeChild_RuleKind.INSTANCE, ID_third);
+      super(CONCEPT, CanBeChild_RuleKind.INSTANCE, ID_THIRD);
     }
 
     @Override

@@ -920,10 +920,15 @@
             <node concept="3clFbS" id="68U29HUcAB5" role="2VODD2">
               <node concept="3clFbF" id="68U29HUcBe$" role="3cqZAp">
                 <node concept="3cpWs3" id="68U29HUcCtl" role="3clFbG">
-                  <node concept="2OqwBi" id="68U29HUcCzc" role="3uHU7w">
-                    <node concept="30H73N" id="68U29HUcCtX" role="2Oq$k0" />
-                    <node concept="3TrcHB" id="68U29HUcCF1" role="2OqNvi">
-                      <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
+                  <node concept="2OqwBi" id="1ToVZma6wH7" role="3uHU7w">
+                    <node concept="2OqwBi" id="68U29HUcCzc" role="2Oq$k0">
+                      <node concept="30H73N" id="68U29HUcCtX" role="2Oq$k0" />
+                      <node concept="3TrcHB" id="68U29HUcCF1" role="2OqNvi">
+                        <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
+                      </node>
+                    </node>
+                    <node concept="liA8E" id="1ToVZma6wR3" role="2OqNvi">
+                      <ref role="37wK5l" to="wyt6:~String.toUpperCase()" resolve="toUpperCase" />
                     </node>
                   </node>
                   <node concept="Xl_RD" id="68U29HUcCfF" role="3uHU7B">

@@ -24,9 +24,7 @@ import org.jetbrains.annotations.NotNull;
  */
 @Internal
 public interface MessageProvider {
-  @NotNull
-  ConstraintsRuleId forRule();
+  @NotNull ConstraintsRuleId forRule();
 
-  @NotNull
-  String getMessage();
+  @NotNull String getMessage();
 }

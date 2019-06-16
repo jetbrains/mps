@@ -5,13 +5,17 @@ package constraints.rules.sandbox.constraints2;
 import jetbrains.mps.core.aspects.reporting.api.MessagesDescriptor;
 import java.util.List;
 import jetbrains.mps.core.aspects.reporting.api.MessageProvider;
-import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Arrays;
+import org.jetbrains.annotations.NotNull;
 
 public final class A_DefaultMessages implements MessagesDescriptor {
 
+  private static final List<MessageProvider> PROVIDERS = Collections.unmodifiableList(Arrays.<MessageProvider>asList());
+
+  @NotNull
   @Override
   public List<MessageProvider> getMessageProviders() {
-    List<MessageProvider> result = new ArrayList<MessageProvider>();
-    return result;
+    return PROVIDERS;
   }
 }

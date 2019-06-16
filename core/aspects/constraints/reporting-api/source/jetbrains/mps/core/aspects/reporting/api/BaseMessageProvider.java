@@ -15,16 +15,34 @@
  */
 package jetbrains.mps.core.aspects.reporting.api;
 
-import org.jetbrains.mps.annotations.Internal;
+import jetbrains.mps.core.aspects.constraints.rules.ConstraintsRuleId;
 import org.jetbrains.annotations.NotNull;
-import java.util.List;
+import org.jetbrains.mps.annotations.Immutable;
 
-/**
- * Not so sure about the naming and the main purpose of this aspect
- *
- * @author apyshkin, mburyakov
- */
-@Internal
-public interface MessagesDescriptor {
-  @NotNull List<MessageProvider> getMessageProviders();
+@Immutable
+public final class BaseMessageProvider implements MessageProvider {
+  private final ConstraintsRuleId myRule;
+  private final String myMessage;
+
+  public BaseMessageProvider(@NotNull ConstraintsRuleId rule, @NotNull String message) {
+    myRule = rule;
+    myMessage = message;
+  }
+
+  @NotNull
+  @Override
+  public ConstraintsRuleId forRule() {
+    return myRule;
+  }
+
+  @NotNull
+  @Override
+  public String getMessage() {
+    return myMessage;
+  }
+
+  @Override
+  public String toString() {
+    return "MessageProvider for the rule '" + forRule() + "'";
+  }
 }

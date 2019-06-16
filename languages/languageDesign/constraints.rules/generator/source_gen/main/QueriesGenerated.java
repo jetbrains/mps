@@ -77,7 +77,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return ConstraintsRuleIdHolder__BehaviorDescriptor.getRuleId_id6kKc3mjG9Hb.invoke(_context.getNode()) + "L";
   }
   public static Object propertyMacro_GetValue_1_4(final PropertyMacroContext _context) {
-    return "ID_" + SPropertyOperations.getString(_context.getNode(), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+    return "ID_" + SPropertyOperations.getString(_context.getNode(), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")).toUpperCase();
   }
   public static Object propertyMacro_GetValue_1_5(final PropertyMacroContext _context) {
     return "get" + _context.getNode();

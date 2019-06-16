@@ -4,41 +4,21 @@ package constraints.rules.sandbox.constraints2;
 
 import jetbrains.mps.core.aspects.reporting.api.MessagesDescriptor;
 import jetbrains.mps.core.aspects.reporting.api.MessageProvider;
-import jetbrains.mps.core.aspects.constraints.rules.ConstraintsRuleId;
+import jetbrains.mps.core.aspects.reporting.api.BaseMessageProvider;
 import java.util.List;
-import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Arrays;
+import org.jetbrains.annotations.NotNull;
 
 public final class A_Messages implements MessagesDescriptor {
-  public final class first_MessageProvider_a implements MessageProvider {
-    @Override
-    public ConstraintsRuleId forRule() {
-      new ConstraintsRuleId(5258059200640984066L, null);
-      return A_Constraints2.Rule_first.ID_first;
-    }
+  private static final MessageProvider FOR_FIRST_MessageProvider_id8859736031789706126 = new BaseMessageProvider(A_Constraints2.Rule_first.ID_FIRST, "I OVERRIDE YOU");
+  private static final MessageProvider FOR_THIRD_MessageProvider_id1702082180406149963 = new BaseMessageProvider(A_Constraints2.Rule_third.ID_THIRD, "I OVERRIDE YOU TWICE");
 
-    @Override
-    public String getMessage() {
-      return "I OVERRIDE YOU";
-    }
-  }
-  public final class third_MessageProvider_b implements MessageProvider {
-    @Override
-    public ConstraintsRuleId forRule() {
-      new ConstraintsRuleId(315923949160993128L, null);
-      return A_Constraints2.Rule_third.ID_third;
-    }
+  private static final List<MessageProvider> PROVIDERS = Collections.unmodifiableList(Arrays.<MessageProvider>asList(FOR_FIRST_MessageProvider_id8859736031789706126, FOR_THIRD_MessageProvider_id1702082180406149963));
 
-    @Override
-    public String getMessage() {
-      return "I OVERRIDE YOU TWICE";
-    }
-  }
-
+  @NotNull
   @Override
   public List<MessageProvider> getMessageProviders() {
-    List<MessageProvider> result = new ArrayList<MessageProvider>();
-    result.add(new A_Messages.first_MessageProvider_a());
-    result.add(new A_Messages.third_MessageProvider_b());
-    return result;
+    return PROVIDERS;
   }
 }
