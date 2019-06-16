@@ -22,10 +22,14 @@ import jetbrains.mps.util.ClassPathReader;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 public class Launcher {
   public static void main(String[] args) throws Exception {
+    LinkedHashMap<String, Long> startupTimings = new LinkedHashMap<>();
+    startupTimings.put("startup begin", System.nanoTime());
+
     String mpsInternal = System.getProperty("mps.internal");
     System.setProperty("idea.is.internal", mpsInternal != null ? mpsInternal : "false");
 
@@ -38,7 +42,7 @@ public class Launcher {
       }
     }
     System.setProperty("idea.additional.classpath", getAdditionalMPSClasspathString());
-    Bootstrap.main(args, "jetbrains.mps.MPSMainImpl", "start");
+    Bootstrap.main(args, "jetbrains.mps.MPSMainImpl", "start", startupTimings);
   }
 
   private static String getFsNotifierDir() {
