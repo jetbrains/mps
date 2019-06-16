@@ -17,6 +17,7 @@ package jetbrains.mps.diagnostic;
 
 import com.intellij.idea.IdeaApplication;
 import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.application.ex.ApplicationManagerEx;
 import com.intellij.openapi.components.ApplicationComponent;
 import org.apache.log4j.Level;
 import org.apache.log4j.spi.LoggingEvent;
@@ -37,7 +38,7 @@ public class MPSDialogAppender extends com.intellij.diagnostic.DialogAppender im
   @Override
   protected synchronized void append(@NotNull final LoggingEvent event) {
     assert event.getLevel().isGreaterOrEqual(Level.ERROR);
-    if (!IdeaApplication.isLoaded()) {
+    if (!ApplicationManagerEx.isAppLoaded()) {
       ourEvents.add(event);
     } else {
       super.append(event);
