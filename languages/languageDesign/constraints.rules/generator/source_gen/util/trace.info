@@ -9,24 +9,24 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <root nodeRef="r:7fc220b5-3806-43f7-a6e6-6f3ea2d76c9c(util)/5537458604776791622">
     <file name="ContextUtil.java">
-      <node id="8525842417252896863" at="15,197,16,196" concept="5" />
-      <node id="8525842417252896874" at="17,204,18,197" concept="5" />
-      <node id="8525842417252896883" at="19,5,20,16" concept="5" />
-      <node id="469612135036132490" at="22,66,23,178" concept="5" />
-      <node id="469612135036128231" at="22,0,25,0" concept="6" trace="getContextMethodName#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
-      <node id="8525842417252896861" at="14,72,19,5" concept="3" />
-      <node id="5537458604776842939" at="14,0,22,0" concept="6" trace="matchContextForRuleKind#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-      <scope id="8525842417252896862" at="15,197,16,196" />
-      <scope id="8525842417252896873" at="17,204,18,197" />
-      <scope id="469612135036128235" at="22,66,23,178" />
-      <scope id="469612135036128231" at="22,0,25,0">
+      <node id="8525842417252896863" at="16,197,17,196" concept="5" />
+      <node id="8525842417252896874" at="18,204,19,197" concept="5" />
+      <node id="8525842417252896883" at="20,5,21,16" concept="5" />
+      <node id="469612135036132490" at="23,66,24,199" concept="5" />
+      <node id="469612135036128231" at="23,0,26,0" concept="6" trace="getContextMethodName#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="8525842417252896861" at="15,72,20,5" concept="3" />
+      <node id="5537458604776842939" at="15,0,23,0" concept="6" trace="matchContextForRuleKind#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <scope id="8525842417252896862" at="16,197,17,196" />
+      <scope id="8525842417252896873" at="18,204,19,197" />
+      <scope id="469612135036128235" at="23,66,24,199" />
+      <scope id="469612135036128231" at="23,0,26,0">
         <var name="contextMember" id="469612135036128577" />
       </scope>
-      <scope id="5537458604776791650" at="14,72,20,16" />
-      <scope id="5537458604776842939" at="14,0,22,0">
+      <scope id="5537458604776791650" at="15,72,21,16" />
+      <scope id="5537458604776842939" at="15,0,23,0">
         <var name="ruleKind" id="5537458604776816855" />
       </scope>
-      <unit id="5537458604776791622" at="13,0,26,0" name="util.ContextUtil" />
+      <unit id="5537458604776791622" at="14,0,27,0" name="util.ContextUtil" />
     </file>
   </root>
   <root nodeRef="r:7fc220b5-3806-43f7-a6e6-6f3ea2d76c9c(util)/7082824793308696454">

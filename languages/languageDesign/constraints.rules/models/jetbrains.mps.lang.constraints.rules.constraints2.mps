@@ -39,11 +39,11 @@
   <node concept="3Qpn9X" id="7w_sh_iI0Z7">
     <property role="TrG5h" value="CanBeChild" />
     <node concept="1DMZdT" id="hyoMxHFKoi" role="3QpnaF">
-      <property role="TrG5h" value="Node" />
+      <property role="TrG5h" value="node" />
       <ref role="1DMZsr" node="hyoMxHEp1f" resolve="C" />
     </node>
     <node concept="3RXm0x" id="4JP_D2W1938" role="3QpnaF">
-      <property role="TrG5h" value="ParentNode" />
+      <property role="TrG5h" value="parentNode" />
       <node concept="3Tqbb2" id="4JP_D2W193k" role="3RXm0y" />
     </node>
     <node concept="3RXm0x" id="7qY6fvuNl5$" role="3QpnaF">

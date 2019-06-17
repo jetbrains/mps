@@ -127,7 +127,7 @@
   <node concept="3Qpn9X" id="0">
     <property role="TrG5h" value="CanBeChild" />
     <node concept="1DMZdT" id="1" role="3QpnaF">
-      <property role="TrG5h" value="Node" />
+      <property role="TrG5h" value="node" />
       <ref role="1DMZsr" node="4" resolve="C" />
       <node concept="cd27G" id="6" role="lGtFl">
         <node concept="3u3nmq" id="7" role="cd27D">
@@ -136,7 +136,7 @@
       </node>
     </node>
     <node concept="3RXm0x" id="2" role="3QpnaF">
-      <property role="TrG5h" value="ParentNode" />
+      <property role="TrG5h" value="parentNode" />
       <node concept="3Tqbb2" id="8" role="3RXm0y">
         <node concept="cd27G" id="a" role="lGtFl">
           <node concept="3u3nmq" id="b" role="cd27D">
