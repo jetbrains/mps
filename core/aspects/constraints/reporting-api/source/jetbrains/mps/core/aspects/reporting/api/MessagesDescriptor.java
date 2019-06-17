@@ -26,5 +26,5 @@ import java.util.List;
  */
 @Internal
 public interface MessagesDescriptor {
-  @NotNull List<MessageProvider> getMessageProviders();
+  @NotNull List<MessageProvider<?>> getMessageProviders();
 }

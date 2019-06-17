@@ -70,19 +70,40 @@
       <unit id="8657450212265501576" at="21,0,80,0" name="constraints.rules.sandbox.constraints2.A_Constraints2" />
     </file>
     <file name="A_Messages.java">
-      <node id="5258059200644191828" at="16,0,17,0" concept="3" trace="FOR_SECOND_MSGPROVIDER_id8895397836847745146" />
+      <node id="5258059200644191828" at="32,58,33,56" concept="2" />
+      <node id="5258059200644191828" at="30,0,35,0" concept="1" trace="getMessage#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/CanBeChild_Context;)Ljava/lang/String;" />
+      <node id="5258059200644191828" at="29,0,36,0" concept="3" trace="FOR_SECOND_MSGPROVIDER_id686743897209643653" />
+      <scope id="5258059200644191828" at="32,58,33,56" />
+      <scope id="5258059200644191828" at="30,0,35,0">
+        <var name="context" id="5258059200644191828" />
+      </scope>
+      <unit id="5258059200644191828" at="29,109,35,3" name="constraints.rules.sandbox.constraints2.A_Messages$3" />
     </file>
   </root>
   <root nodeRef="r:d8115b4c-62c9-4566-9bc7-9fa3c8929293(constraints.rules.sandbox.constraints2)/8859736031789706125">
     <file name="A_Messages.java">
-      <node id="5258059200644249318" at="14,0,15,0" concept="3" trace="FOR_FIRST_MSGPROVIDER_id5258059200644249318" />
-      <node id="5258059200644249334" at="15,0,16,0" concept="3" trace="FOR_THIRD_MSGPROVIDER_id5258059200644249334" />
-      <node id="8859736031789706125" at="18,0,19,0" concept="3" trace="PROVIDERS" />
-      <node id="8859736031789706125" at="22,54,23,21" concept="2" />
-      <node id="8859736031789706125" at="20,0,25,0" concept="1" trace="getMessageProviders#()Ljava/util/List;" />
-      <scope id="8859736031789706125" at="22,54,23,21" />
-      <scope id="8859736031789706125" at="20,0,25,0" />
-      <unit id="8859736031789706125" at="13,0,26,0" name="constraints.rules.sandbox.constraints2.A_Messages" />
+      <node id="5258059200644249318" at="18,58,19,30" concept="2" />
+      <node id="5258059200644249334" at="25,58,26,36" concept="2" />
+      <node id="8859736031789706125" at="37,0,38,0" concept="3" trace="PROVIDERS" />
+      <node id="8859736031789706125" at="41,57,42,21" concept="2" />
+      <node id="5258059200644249318" at="16,0,21,0" concept="1" trace="getMessage#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/CanBeChild_Context;)Ljava/lang/String;" />
+      <node id="5258059200644249334" at="23,0,28,0" concept="1" trace="getMessage#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/CanBeChild_Context;)Ljava/lang/String;" />
+      <node id="8859736031789706125" at="39,0,44,0" concept="1" trace="getMessageProviders#()Ljava/util/List;" />
+      <node id="5258059200644249318" at="15,0,22,0" concept="3" trace="FOR_FIRST_MSGPROVIDER_id5258059200644249318" />
+      <node id="5258059200644249334" at="22,0,29,0" concept="3" trace="FOR_THIRD_MSGPROVIDER_id5258059200644249334" />
+      <scope id="5258059200644249318" at="18,58,19,30" />
+      <scope id="5258059200644249334" at="25,58,26,36" />
+      <scope id="8859736031789706125" at="41,57,42,21" />
+      <scope id="5258059200644249318" at="16,0,21,0">
+        <var name="context" id="5258059200644249318" />
+      </scope>
+      <scope id="5258059200644249334" at="23,0,28,0">
+        <var name="context" id="5258059200644249334" />
+      </scope>
+      <scope id="8859736031789706125" at="39,0,44,0" />
+      <unit id="5258059200644249318" at="15,109,21,3" name="constraints.rules.sandbox.constraints2.A_Messages$1" />
+      <unit id="5258059200644249334" at="22,109,28,3" name="constraints.rules.sandbox.constraints2.A_Messages$2" />
+      <unit id="8859736031789706125" at="14,0,45,0" name="constraints.rules.sandbox.constraints2.A_Messages" />
     </file>
     <file name="GeneratedMessagesAspectDescriptor.java">
       <node id="8859736031789706125" at="20,13,21,32" concept="2" />

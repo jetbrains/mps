@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.core.aspects.reporting.api;
 
+import jetbrains.mps.core.aspects.constraints.rules.ConstraintsContext;
 import jetbrains.mps.core.aspects.constraints.rules.ConstraintsRuleId;
 import org.jetbrains.mps.annotations.Internal;
 import org.jetbrains.annotations.NotNull;
@@ -23,8 +24,13 @@ import org.jetbrains.annotations.NotNull;
  * provides custom messages for failed rules
  */
 @Internal
-public interface MessageProvider {
+public interface MessageProvider<Context extends ConstraintsContext> {
   @NotNull ConstraintsRuleId forRule();
 
-  @NotNull String getMessage();
+  @NotNull default String getMessage(Context context) {
+    return getMessage();
+  }
+  @NotNull default String getMessage() {
+    return getMessage(null);
+  }
 }

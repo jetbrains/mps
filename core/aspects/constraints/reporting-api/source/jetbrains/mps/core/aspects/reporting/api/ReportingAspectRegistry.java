@@ -60,7 +60,7 @@ public final class ReportingAspectRegistry implements CoreComponent {
   @NotNull
   public String findMessageForRule(@NotNull SAbstractConcept concept, @NotNull ConstraintsRuleId ruleId) {
     MessagesDescriptor descriptor = getMessagesDescriptor(concept);
-    Collection<MessageProvider> messageProviders = requireNonNull(descriptor).getMessageProviders();
+    Collection<MessageProvider<?>> messageProviders = requireNonNull(descriptor).getMessageProviders();
     List<MessageProvider> applicableMessageProviders = messageProviders.stream()
                                                                        .filter(it -> Objects.equals(it.forRule(), ruleId))
                                                                        .collect(Collectors.toList());
@@ -85,7 +85,7 @@ public final class ReportingAspectRegistry implements CoreComponent {
 
     @NotNull
     @Override
-    public List<MessageProvider> getMessageProviders() {
+    public List<MessageProvider<?>> getMessageProviders() {
       return Collections.emptyList();
     }
   }

@@ -4,22 +4,41 @@ package constraints.rules.sandbox.constraints2;
 
 import jetbrains.mps.core.aspects.reporting.api.MessagesDescriptor;
 import jetbrains.mps.core.aspects.reporting.api.MessageProvider;
+import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeChild_Context;
 import jetbrains.mps.core.aspects.reporting.api.BaseMessageProvider;
+import org.jetbrains.annotations.NotNull;
 import java.util.List;
 import java.util.Collections;
 import java.util.Arrays;
-import org.jetbrains.annotations.NotNull;
 
 public final class A_Messages implements MessagesDescriptor {
-  private static final MessageProvider FOR_FIRST_MSGPROVIDER_id5258059200644249318 = new BaseMessageProvider(A_Constraints2.Rule_first.ID_FIRST, "I OVERRIDE YOU");
-  private static final MessageProvider FOR_THIRD_MSGPROVIDER_id5258059200644249334 = new BaseMessageProvider(A_Constraints2.Rule_third.ID_THIRD, "I OVERRIDE YOU TWICE");
-  private static final MessageProvider FOR_SECOND_MSGPROVIDER_id8895397836847745146 = new BaseMessageProvider(A_Constraints2.Rule_second.ID_SECOND, "THE PROPERTY IS TOO SMALL, PLEASE CHANGE");
+  private static final MessageProvider<CanBeChild_Context> FOR_FIRST_MSGPROVIDER_id5258059200644249318 = new BaseMessageProvider<CanBeChild_Context>(A_Constraints2.Rule_first.ID_FIRST) {
+    @NotNull
+    @Override
+    public String getMessage(CanBeChild_Context context) {
+      return "I OVERRIDE YOU";
+    }
+  };
+  private static final MessageProvider<CanBeChild_Context> FOR_THIRD_MSGPROVIDER_id5258059200644249334 = new BaseMessageProvider<CanBeChild_Context>(A_Constraints2.Rule_third.ID_THIRD) {
+    @NotNull
+    @Override
+    public String getMessage(CanBeChild_Context context) {
+      return "I OVERRIDE YOU TWICE";
+    }
+  };
+  private static final MessageProvider<CanBeChild_Context> FOR_SECOND_MSGPROVIDER_id686743897209643653 = new BaseMessageProvider<CanBeChild_Context>(A_Constraints2.Rule_second.ID_SECOND) {
+    @NotNull
+    @Override
+    public String getMessage(CanBeChild_Context context) {
+      return "THE PROPERTY IS TOO SMALL, PLEASE CHANGE";
+    }
+  };
 
-  private static final List<MessageProvider> PROVIDERS = Collections.unmodifiableList(Arrays.<MessageProvider>asList(FOR_FIRST_MSGPROVIDER_id5258059200644249318, FOR_THIRD_MSGPROVIDER_id5258059200644249334, FOR_SECOND_MSGPROVIDER_id8895397836847745146));
+  private static final List<MessageProvider<?>> PROVIDERS = Collections.unmodifiableList(Arrays.<MessageProvider<?>>asList(FOR_FIRST_MSGPROVIDER_id5258059200644249318, FOR_THIRD_MSGPROVIDER_id5258059200644249334, FOR_SECOND_MSGPROVIDER_id686743897209643653));
 
   @NotNull
   @Override
-  public List<MessageProvider> getMessageProviders() {
+  public List<MessageProvider<?>> getMessageProviders() {
     return PROVIDERS;
   }
 }

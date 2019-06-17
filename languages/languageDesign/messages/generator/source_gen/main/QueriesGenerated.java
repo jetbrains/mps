@@ -15,6 +15,9 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.template.ReferenceMacroContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import util.ContextUtil;
+import jetbrains.mps.lang.constraints.rules.behavior.ConstraintsExpressionHolder__BehaviorDescriptor;
+import jetbrains.mps.lang.messages.behavior.MessageProvider__BehaviorDescriptor;
 import jetbrains.mps.generator.template.IfMacroContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
@@ -69,6 +72,15 @@ public class QueriesGenerated extends QueryProviderBase {
     return _context.getOutputNodeByInputNodeAndMappingLabel(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x6530303593ae1651L, 0x6530303593ae1654L, "rule")), MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, "jetbrains.mps.lang.constraints.rules.structure.ConstraintsRule")), "ruleClass");
   }
   public static Object referenceMacro_GetReferent_1_2(final ReferenceMacroContext _context) {
+    return ContextUtil.matchContextForRuleKind(ConstraintsExpressionHolder__BehaviorDescriptor.getRuleKind_id6kKc3mjmXYb.invoke(MessageProvider__BehaviorDescriptor.getCustomizingRule_id4zSofKenMaQ.invoke(_context.getNode())));
+  }
+  public static Object referenceMacro_GetReferent_1_3(final ReferenceMacroContext _context) {
+    return ContextUtil.matchContextForRuleKind(ConstraintsExpressionHolder__BehaviorDescriptor.getRuleKind_id6kKc3mjmXYb.invoke(MessageProvider__BehaviorDescriptor.getCustomizingRule_id4zSofKenMaQ.invoke(_context.getNode())));
+  }
+  public static Object referenceMacro_GetReferent_1_4(final ReferenceMacroContext _context) {
+    return ContextUtil.matchContextForRuleKind(ConstraintsExpressionHolder__BehaviorDescriptor.getRuleKind_id6kKc3mjmXYb.invoke(MessageProvider__BehaviorDescriptor.getCustomizingRule_id4zSofKenMaQ.invoke(_context.getNode())));
+  }
+  public static Object referenceMacro_GetReferent_1_5(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "messageProvider");
   }
   public static Object referenceMacro_GetReferent_2_0(final ReferenceMacroContext _context) {
@@ -352,12 +364,15 @@ public class QueriesGenerated extends QueryProviderBase {
   {
     rtqMethods.put("2186761456951199377", new QueriesGenerated.RTQ(0, "ID"));
     rtqMethods.put("2186761456951199389", new QueriesGenerated.RTQ(1, "RuleClass"));
-    rtqMethods.put("2186761456951241128", new QueriesGenerated.RTQ(2, "PROVIDER"));
-    rtqMethods.put("7188575577281176230", new QueriesGenerated.RTQ(3, "Generated_MessagesDescriptor"));
-    rtqMethods.put("5258059200640315111", new QueriesGenerated.RTQ(4, "Generated_MessagesDescriptor"));
-    rtqMethods.put("7188575577281176239", new QueriesGenerated.RTQ(5, "BaseConcept"));
-    rtqMethods.put("7291380803382021648", new QueriesGenerated.RTQ(6, "GeneratedMessagesAspectDescriptor"));
-    rtqMethods.put("6479337755439617190", new QueriesGenerated.RTQ(7, "GeneratedConstraintsAspectDescriptor2"));
+    rtqMethods.put("8633713165384408677", new QueriesGenerated.RTQ(2, "ConstraintsContext"));
+    rtqMethods.put("8633713165384330229", new QueriesGenerated.RTQ(3, "ConstraintsContext"));
+    rtqMethods.put("8633713165384427011", new QueriesGenerated.RTQ(4, "ConstraintsContext"));
+    rtqMethods.put("2186761456951241128", new QueriesGenerated.RTQ(5, "PROVIDER"));
+    rtqMethods.put("7188575577281176230", new QueriesGenerated.RTQ(6, "Generated_MessagesDescriptor"));
+    rtqMethods.put("5258059200640315111", new QueriesGenerated.RTQ(7, "Generated_MessagesDescriptor"));
+    rtqMethods.put("7188575577281176239", new QueriesGenerated.RTQ(8, "BaseConcept"));
+    rtqMethods.put("7291380803382021648", new QueriesGenerated.RTQ(9, "GeneratedMessagesAspectDescriptor"));
+    rtqMethods.put("6479337755439617190", new QueriesGenerated.RTQ(10, "GeneratedConstraintsAspectDescriptor2"));
   }
   @NotNull
   @Override
@@ -384,14 +399,20 @@ public class QueriesGenerated extends QueryProviderBase {
         case 2:
           return QueriesGenerated.referenceMacro_GetReferent_1_2(ctx);
         case 3:
-          return QueriesGenerated.referenceMacro_GetReferent_2_0(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_1_3(ctx);
         case 4:
-          return QueriesGenerated.referenceMacro_GetReferent_2_1(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_1_4(ctx);
         case 5:
-          return QueriesGenerated.referenceMacro_GetReferent_2_2(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_1_5(ctx);
         case 6:
-          return QueriesGenerated.referenceMacro_GetReferent_3_0(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_2_0(ctx);
         case 7:
+          return QueriesGenerated.referenceMacro_GetReferent_2_1(ctx);
+        case 8:
+          return QueriesGenerated.referenceMacro_GetReferent_2_2(ctx);
+        case 9:
+          return QueriesGenerated.referenceMacro_GetReferent_3_0(ctx);
+        case 10:
           return QueriesGenerated.referenceMacro_GetReferent_3_1(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
