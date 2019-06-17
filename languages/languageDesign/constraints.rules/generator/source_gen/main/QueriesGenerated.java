@@ -399,7 +399,7 @@ public class QueriesGenerated extends QueryProviderBase {
     rtqMethods.put("8556303794924669906", new QueriesGenerated.RTQ(6, "CanBeChild_Context"));
     rtqMethods.put("8525842417252886997", new QueriesGenerated.RTQ(7, "CanBeChild_Context"));
     rtqMethods.put("7291380803376597011", new QueriesGenerated.RTQ(8, "getDef"));
-    rtqMethods.put("7291380803376618261", new QueriesGenerated.RTQ(9, "getDef"));
+    rtqMethods.put("7291380803376618261", new QueriesGenerated.RTQ(9, "getConcept"));
     rtqMethods.put("6479337755439617190", new QueriesGenerated.RTQ(10, "GeneratedConstraintsAspectDescriptor2"));
     rtqMethods.put("7291380803380540141", new QueriesGenerated.RTQ(11, "Generated_ConstraintsDescriptor2"));
     rtqMethods.put("6551427688186219814", new QueriesGenerated.RTQ(12, "BaseConcept"));

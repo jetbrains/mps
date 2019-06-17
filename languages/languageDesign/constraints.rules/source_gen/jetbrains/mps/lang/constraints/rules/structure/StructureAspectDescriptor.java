@@ -116,6 +116,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.super_("jetbrains.mps.lang.constraints.rules.structure.ConstraintsRuleBlockMember", 0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593698b98L);
     b.parent(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359368062cL);
     b.parent(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359356e968L);
+    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x33d23ee961a0cbf3L);
     b.origin("r:83f25986-cdbc-469a-a327-db97a2ec5a39(jetbrains.mps.lang.constraints.rules.structure)/7291380803377228245");
     b.version(2);
     b.aggregate("type", 0x4bf59690bc00f6afL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL).optional(false).ordered(true).multiple(false).origin("5473446470512342703").done();

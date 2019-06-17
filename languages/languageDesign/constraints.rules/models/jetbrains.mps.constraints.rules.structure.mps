@@ -190,6 +190,9 @@
     <node concept="PrWs8" id="6kKc3mjpIBo" role="PzmwI">
       <ref role="PrY4T" node="6kKc3mjlI_C" resolve="ConstraintsExpressionHolder" />
     </node>
+    <node concept="PrWs8" id="6fJcw0tqQ_q" role="PzmwI">
+      <ref role="PrY4T" to="tpck:3fifI_xCcJN" resolve="ScopeProvider" />
+    </node>
   </node>
   <node concept="PlHQZ" id="6kKc3mjq0oG">
     <property role="EcuMT" value="7291380803377301036" />

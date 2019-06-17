@@ -1455,6 +1455,12 @@
       <property role="TrG5h" value="Rule" />
       <node concept="3clFb_" id="6kKc3mjncrP" role="jymVt">
         <property role="TrG5h" value="getDef" />
+        <node concept="37vLTG" id="6fJcw0tqDZH" role="3clF46">
+          <property role="TrG5h" value="context" />
+          <node concept="3uibUv" id="6fJcw0tqDZI" role="1tU5fm">
+            <ref role="3uigEE" to="o99v:~ConstraintsContext" resolve="ConstraintsContext" />
+          </node>
+        </node>
         <node concept="10P_77" id="6kKc3mjnkt2" role="3clF45" />
         <node concept="3Tm1VV" id="6kKc3mjncrY" role="1B3o_S" />
         <node concept="3clFbS" id="6kKc3mjncrZ" role="3clF47">
@@ -1539,7 +1545,7 @@
                       <ref role="3cqZAo" node="6kKc3mjnADw" resolve="context" />
                     </node>
                     <node concept="liA8E" id="6kKc3mjnpBk" role="2OqNvi">
-                      <ref role="37wK5l" node="6kKc3mjncrP" resolve="getDef" />
+                      <ref role="37wK5l" to="o99v:~ConstraintsContext.getConcept()" resolve="getConcept" />
                       <node concept="1ZhdrF" id="6kKc3mjnpGl" role="lGtFl">
                         <property role="2qtEX8" value="baseMethodDeclaration" />
                         <property role="P3scX" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1204053956946/1068499141037" />
@@ -1581,6 +1587,9 @@
                     </node>
                   </node>
                 </node>
+              </node>
+              <node concept="37vLTw" id="6fJcw0tqDVl" role="37wK5m">
+                <ref role="3cqZAo" node="6kKc3mjnADw" resolve="context" />
               </node>
             </node>
           </node>

@@ -11,6 +11,7 @@
     <import index="twe9" ref="r:28e6d713-c3c3-493e-8d97-e9a2c49f28ce(jetbrains.mps.lang.structure.util)" />
     <import index="bm42" ref="r:83f25986-cdbc-469a-a327-db97a2ec5a39(jetbrains.mps.lang.constraints.rules.structure)" implicit="true" />
     <import index="zezp" ref="r:7991a70a-e27d-498f-be5b-c967b5f29e47(jetbrains.mps.lang.constraints.rules.behavior)" implicit="true" />
+    <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" implicit="true" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -88,6 +89,14 @@
         <reference id="2030416617761226680" name="aspect" index="3zA4av" />
       </concept>
     </language>
+    <language id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation">
+      <concept id="5455284157993863837" name="jetbrains.mps.lang.quotation.structure.NodeBuilder" flags="nn" index="2pJPEk">
+        <child id="5455284157993863838" name="quotedNode" index="2pJPEn" />
+      </concept>
+      <concept id="5455284157993863840" name="jetbrains.mps.lang.quotation.structure.NodeBuilderNode" flags="nn" index="2pJPED">
+        <reference id="5455284157993910961" name="concept" index="2pJxaS" />
+      </concept>
+    </language>
     <language id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem">
       <concept id="1207055528241" name="jetbrains.mps.lang.typesystem.structure.WarningStatement" flags="nn" index="a7r0C">
         <child id="1207055552304" name="warningText" index="a7wSD" />
@@ -144,9 +153,11 @@
       </concept>
       <concept id="1174658326157" name="jetbrains.mps.lang.typesystem.structure.CreateEquationStatement" flags="nn" index="1Z5TYs" />
       <concept id="1174660718586" name="jetbrains.mps.lang.typesystem.structure.AbstractEquationStatement" flags="nn" index="1Zf1VF">
+        <property id="1206359757216" name="checkOnly" index="3wDh2S" />
         <child id="1174660783413" name="leftExpression" index="1ZfhK$" />
         <child id="1174660783414" name="rightExpression" index="1ZfhKB" />
       </concept>
+      <concept id="1174663118805" name="jetbrains.mps.lang.typesystem.structure.CreateLessThanInequationStatement" flags="nn" index="1ZobV4" />
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
       <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
@@ -439,6 +450,71 @@
           </node>
         </node>
       </node>
+    </node>
+  </node>
+  <node concept="1YbPZF" id="6fJcw0tqvRX">
+    <property role="TrG5h" value="typeof_ConstraintsRule" />
+    <node concept="3clFbS" id="6fJcw0tqvRY" role="18ibNy">
+      <node concept="1ZobV4" id="6fJcw0tqwzf" role="3cqZAp">
+        <property role="3wDh2S" value="true" />
+        <node concept="mw_s8" id="6fJcw0tqwzB" role="1ZfhKB">
+          <node concept="2pJPEk" id="6fJcw0tqw$J" role="mwGJk">
+            <node concept="2pJPED" id="6fJcw0tqwHb" role="2pJPEn">
+              <ref role="2pJxaS" to="tpee:f_0P_4Y" resolve="BooleanType" />
+            </node>
+          </node>
+        </node>
+        <node concept="mw_s8" id="6fJcw0tqwzi" role="1ZfhK$">
+          <node concept="1Z2H0r" id="6fJcw0tqvS4" role="mwGJk">
+            <node concept="2OqwBi" id="6fJcw0tqw8A" role="1Z2MuG">
+              <node concept="1YBJjd" id="6fJcw0tqvWP" role="2Oq$k0">
+                <ref role="1YBMHb" node="6fJcw0tqvS0" resolve="constraintsRule" />
+              </node>
+              <node concept="3TrEf2" id="6fJcw0tqwnv" role="2OqNvi">
+                <ref role="3Tt5mk" to="bm42:6kKc3mjlI_D" resolve="expression" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="6fJcw0tqvS0" role="1YuTPh">
+      <property role="TrG5h" value="constraintsRule" />
+      <ref role="1YaFvo" to="bm42:6kKc3mjm6Ry" resolve="ConstraintsRule" />
+    </node>
+  </node>
+  <node concept="1YbPZF" id="6fJcw0tqwM4">
+    <property role="TrG5h" value="typeof_ConstraintsDef" />
+    <node concept="3clFbS" id="6fJcw0tqwM5" role="18ibNy">
+      <node concept="1ZobV4" id="6fJcw0tqwXj" role="3cqZAp">
+        <property role="3wDh2S" value="true" />
+        <node concept="mw_s8" id="6fJcw0tqwX_" role="1ZfhKB">
+          <node concept="2OqwBi" id="6fJcw0tqx8N" role="mwGJk">
+            <node concept="1YBJjd" id="6fJcw0tqwXz" role="2Oq$k0">
+              <ref role="1YBMHb" node="6fJcw0tqwM7" resolve="constraintsDef" />
+            </node>
+            <node concept="3TrEf2" id="6fJcw0tqxmi" role="2OqNvi">
+              <ref role="3Tt5mk" to="bm42:4JP_D2W0fqJ" resolve="type" />
+            </node>
+          </node>
+        </node>
+        <node concept="mw_s8" id="6fJcw0tqwXm" role="1ZfhK$">
+          <node concept="1Z2H0r" id="6fJcw0tqwMb" role="mwGJk">
+            <node concept="2OqwBi" id="6fJcw0tq$nQ" role="1Z2MuG">
+              <node concept="1YBJjd" id="6fJcw0tqwNX" role="2Oq$k0">
+                <ref role="1YBMHb" node="6fJcw0tqwM7" resolve="constraintsDef" />
+              </node>
+              <node concept="3TrEf2" id="6fJcw0tq$Ay" role="2OqNvi">
+                <ref role="3Tt5mk" to="bm42:6kKc3mjlI_D" resolve="expression" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="6fJcw0tqwM7" role="1YuTPh">
+      <property role="TrG5h" value="constraintsDef" />
+      <ref role="1YaFvo" to="bm42:6kKc3mjpIBl" resolve="ConstraintsDef" />
     </node>
   </node>
 </model>
