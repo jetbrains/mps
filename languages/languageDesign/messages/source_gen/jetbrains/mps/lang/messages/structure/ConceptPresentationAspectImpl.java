@@ -10,11 +10,11 @@ import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
   private ConceptPresentation props_CombinedMessageExpression;
-  private ConceptPresentation props_IMessageProvider;
   private ConceptPresentation props_LiteralMessageExpression;
   private ConceptPresentation props_MacroMessageExpression;
   private ConceptPresentation props_MessageExpression;
   private ConceptPresentation props_MessageProvider;
+  private ConceptPresentation props_MessageProviderForRule;
   private ConceptPresentation props_MessagesRoot;
   private ConceptPresentation props_ModelRefForMe;
 
@@ -30,12 +30,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_CombinedMessageExpression = cpb.create();
         }
         return props_CombinedMessageExpression;
-      case LanguageConceptSwitch.IMessageProvider:
-        if (props_IMessageProvider == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          props_IMessageProvider = cpb.create();
-        }
-        return props_IMessageProvider;
       case LanguageConceptSwitch.LiteralMessageExpression:
         if (props_LiteralMessageExpression == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -59,10 +53,16 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.MessageProvider:
         if (props_MessageProvider == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.rawPresentation("message");
           props_MessageProvider = cpb.create();
         }
         return props_MessageProvider;
+      case LanguageConceptSwitch.MessageProviderForRule:
+        if (props_MessageProviderForRule == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("message");
+          props_MessageProviderForRule = cpb.create();
+        }
+        return props_MessageProviderForRule;
       case LanguageConceptSwitch.MessagesRoot:
         if (props_MessagesRoot == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

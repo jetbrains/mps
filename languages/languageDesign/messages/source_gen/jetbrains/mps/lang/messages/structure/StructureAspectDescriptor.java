@@ -15,11 +15,11 @@ import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptCombinedMessageExpression = createDescriptorForCombinedMessageExpression();
-  /*package*/ final ConceptDescriptor myConceptIMessageProvider = createDescriptorForIMessageProvider();
   /*package*/ final ConceptDescriptor myConceptLiteralMessageExpression = createDescriptorForLiteralMessageExpression();
   /*package*/ final ConceptDescriptor myConceptMacroMessageExpression = createDescriptorForMacroMessageExpression();
   /*package*/ final ConceptDescriptor myConceptMessageExpression = createDescriptorForMessageExpression();
   /*package*/ final ConceptDescriptor myConceptMessageProvider = createDescriptorForMessageProvider();
+  /*package*/ final ConceptDescriptor myConceptMessageProviderForRule = createDescriptorForMessageProviderForRule();
   /*package*/ final ConceptDescriptor myConceptMessagesRoot = createDescriptorForMessagesRoot();
   /*package*/ final ConceptDescriptor myConceptModelRefForMe = createDescriptorForModelRefForMe();
   private final LanguageConceptSwitch myIndexSwitch;
@@ -37,7 +37,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptCombinedMessageExpression, myConceptIMessageProvider, myConceptLiteralMessageExpression, myConceptMacroMessageExpression, myConceptMessageExpression, myConceptMessageProvider, myConceptMessagesRoot, myConceptModelRefForMe);
+    return Arrays.asList(myConceptCombinedMessageExpression, myConceptLiteralMessageExpression, myConceptMacroMessageExpression, myConceptMessageExpression, myConceptMessageProvider, myConceptMessageProviderForRule, myConceptMessagesRoot, myConceptModelRefForMe);
   }
 
   @Override
@@ -46,8 +46,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     switch (myIndexSwitch.index(id)) {
       case LanguageConceptSwitch.CombinedMessageExpression:
         return myConceptCombinedMessageExpression;
-      case LanguageConceptSwitch.IMessageProvider:
-        return myConceptIMessageProvider;
       case LanguageConceptSwitch.LiteralMessageExpression:
         return myConceptLiteralMessageExpression;
       case LanguageConceptSwitch.MacroMessageExpression:
@@ -56,6 +54,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptMessageExpression;
       case LanguageConceptSwitch.MessageProvider:
         return myConceptMessageProvider;
+      case LanguageConceptSwitch.MessageProviderForRule:
+        return myConceptMessageProviderForRule;
       case LanguageConceptSwitch.MessagesRoot:
         return myConceptMessagesRoot;
       case LanguageConceptSwitch.ModelRefForMe:
@@ -80,15 +80,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:21b4a58c-8629-4511-bd63-7fc9a4e5fc38(jetbrains.mps.lang.messages.structure)/5258059200642172255");
     b.version(2);
     b.aggregate("part", 0x48f860fc0e404561L).target(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc4L).optional(false).ordered(true).multiple(true).origin("5258059200642172257").done();
-    return b.create();
-  }
-  private static ConceptDescriptor createDescriptorForIMessageProvider() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.messages", "IMessageProvider", 0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e30f402L);
-    b.interface_();
-    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x33d23ee961a0cbf3L);
-    b.origin("r:21b4a58c-8629-4511-bd63-7fc9a4e5fc38(jetbrains.mps.lang.messages.structure)/5258059200641168386");
-    b.version(2);
-    b.aggregate("message", 0x48f860fc0e362dc8L).target(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e40455fL).optional(false).ordered(true).multiple(false).origin("5258059200641510856").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForLiteralMessageExpression() {
@@ -118,7 +109,16 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForMessageProvider() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.messages", "MessageProvider", 0xad93155d79b24759L, 0xb10c55123e763903L, 0x6530303593ae1651L);
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.messages", "MessageProvider", 0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e30f402L);
+    b.interface_();
+    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x33d23ee961a0cbf3L);
+    b.origin("r:21b4a58c-8629-4511-bd63-7fc9a4e5fc38(jetbrains.mps.lang.messages.structure)/5258059200641168386");
+    b.version(2);
+    b.aggregate("message", 0x48f860fc0e362dc8L).target(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e40455fL).optional(false).ordered(true).multiple(false).origin("5258059200641510856").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForMessageProviderForRule() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.messages", "MessageProviderForRule", 0xad93155d79b24759L, 0xb10c55123e763903L, 0x6530303593ae1651L);
     b.class_(false, false, false);
     b.parent(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e30f402L);
     b.origin("r:21b4a58c-8629-4511-bd63-7fc9a4e5fc38(jetbrains.mps.lang.messages.structure)/7291380803381892689");

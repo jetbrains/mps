@@ -19,11 +19,14 @@ import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.core.aspects.constraints.rules.ConstraintsRuleId;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.language.LanguageRuntime;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -31,6 +34,8 @@ import java.util.stream.Collectors;
 import static java.util.Objects.requireNonNull;
 
 public final class ReportingAspectRegistry implements CoreComponent {
+  private static final Logger LOG = LogManager.getLogger(ReportingAspectRegistry.class);
+
   private final LanguageRegistry myLanguageRegistry;
 
   public ReportingAspectRegistry(@NotNull LanguageRegistry languageRegistry) {
@@ -39,11 +44,17 @@ public final class ReportingAspectRegistry implements CoreComponent {
 
   @Nullable
   private MessagesDescriptor getMessagesDescriptor(@NotNull SAbstractConcept concept) {
+    MessagesDescriptor descriptor = null;
     LanguageRuntime conceptLang = myLanguageRegistry.getLanguage(concept.getLanguage());
     if (conceptLang == null) {
-      throw new IllegalArgumentException("Impossible to load the language for the concept '" + concept + "'");
+      LOG.warn("No language for: " + concept + ", while looking for constraints descriptor.");
+    } else {
+      MessagesAspectDescriptor aspect = conceptLang.getAspect(MessagesAspectDescriptor.class);
+      if (aspect != null) {
+        descriptor = aspect.getDescriptor(concept);
+      }
     }
-    return requireNonNull(conceptLang.getAspect(MessagesAspectDescriptor.class)).getDescriptor(concept);
+    return descriptor != null ? descriptor : new EmptyMessagesDescriptor(concept);
   }
 
   @NotNull
@@ -66,5 +77,16 @@ public final class ReportingAspectRegistry implements CoreComponent {
 
   @Override
   public void dispose() {
+  }
+
+  private class EmptyMessagesDescriptor implements MessagesDescriptor {
+    public EmptyMessagesDescriptor(@NotNull SAbstractConcept concept) {
+    }
+
+    @NotNull
+    @Override
+    public List<MessageProvider> getMessageProviders() {
+      return Collections.emptyList();
+    }
   }
 }

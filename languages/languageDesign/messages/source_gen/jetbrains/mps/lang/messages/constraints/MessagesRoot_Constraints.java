@@ -59,7 +59,7 @@ public class MessagesRoot_Constraints extends BaseConstraintsDescriptor {
       } else {
         conceptName = "???";
       }
-      return conceptName + "_Messages2";
+      return conceptName + "_Messages";
     }
   }
   @Override

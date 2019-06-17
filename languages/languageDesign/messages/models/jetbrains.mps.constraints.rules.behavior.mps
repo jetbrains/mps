@@ -119,7 +119,7 @@
     </language>
   </registry>
   <node concept="13h7C7" id="4zSofKenMaF">
-    <ref role="13h7C2" to="t9po:4zSofKecfg2" resolve="IMessageProvider" />
+    <ref role="13h7C2" to="t9po:4zSofKecfg2" resolve="MessageProvider" />
     <node concept="13i0hz" id="4zSofKenMaQ" role="13h7CS">
       <property role="13i0iv" value="true" />
       <property role="13i0it" value="true" />
@@ -238,7 +238,7 @@
     </node>
   </node>
   <node concept="13h7C7" id="4zSofKenNit">
-    <ref role="13h7C2" to="t9po:6kKc3mjFxph" resolve="MessageProvider" />
+    <ref role="13h7C2" to="t9po:6kKc3mjFxph" resolve="MessageProviderForRule" />
     <node concept="13hLZK" id="4zSofKenNiu" role="13h7CW">
       <node concept="3clFbS" id="4zSofKenNiv" role="2VODD2" />
     </node>

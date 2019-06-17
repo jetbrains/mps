@@ -1305,7 +1305,7 @@
       <node id="7291380803381892641" at="242,28,243,25" concept="2" />
       <node id="7291380803381892641" at="247,28,248,20" concept="8" />
       <node id="7291380803381892641" at="250,40,251,155" concept="8" />
-      <node id="7291380803381892641" at="253,48,254,163" concept="8" />
+      <node id="7291380803381892641" at="253,48,254,170" concept="8" />
       <node id="7291380803381892641" at="257,57,258,83" concept="7" />
       <node id="7291380803381892641" at="258,83,259,65" concept="2" />
       <node id="7291380803381892641" at="259,65,260,25" concept="8" />
@@ -1383,7 +1383,7 @@
       <scope id="7188575577281660812" at="211,17,212,42" />
       <scope id="7291380803381892641" at="247,28,248,20" />
       <scope id="7291380803381892641" at="250,40,251,155" />
-      <scope id="7291380803381892641" at="253,48,254,163" />
+      <scope id="7291380803381892641" at="253,48,254,170" />
       <scope id="7291380803381892641" at="271,17,272,42" />
       <scope id="7291380803381892641" at="282,122,283,146" />
       <scope id="7291380803381892641" at="56,92,58,18" />
@@ -1522,18 +1522,18 @@
     </file>
   </root>
   <root nodeRef="r:46037634-9be0-4da8-8dd8-3cb367171177(jetbrains.mps.lang.messages.editor)/7291380803381892719">
-    <file name="MessageProvider_Editor.java">
-      <node id="7291380803381892719" at="11,79,12,81" concept="8" />
+    <file name="MessageProviderForRule_Editor.java">
+      <node id="7291380803381892719" at="11,79,12,88" concept="8" />
       <node id="7291380803381892719" at="11,0,14,0" concept="6" trace="createEditorCell#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <scope id="7291380803381892719" at="11,79,12,81" />
+      <scope id="7291380803381892719" at="11,79,12,88" />
       <scope id="7291380803381892719" at="11,0,14,0">
         <var name="editorContext" id="7291380803381892719" />
         <var name="node" id="7291380803381892719" />
       </scope>
-      <unit id="7291380803381892719" at="10,0,15,0" name="jetbrains.mps.lang.messages.editor.MessageProvider_Editor" />
+      <unit id="7291380803381892719" at="10,0,15,0" name="jetbrains.mps.lang.messages.editor.MessageProviderForRule_Editor" />
     </file>
-    <file name="MessageProvider_EditorBuilder_a.java">
-      <node id="7291380803381892719" at="49,95,50,19" concept="12" />
+    <file name="MessageProviderForRule_EditorBuilder_a.java">
+      <node id="7291380803381892719" at="49,102,50,19" concept="12" />
       <node id="7291380803381892719" at="50,19,51,18" concept="2" />
       <node id="7291380803381892719" at="56,26,57,18" concept="8" />
       <node id="7291380803381892719" at="60,39,61,32" concept="8" />
@@ -1550,8 +1550,8 @@
       <node id="7291380803381892728" at="76,100,77,47" concept="2" />
       <node id="7291380803381892728" at="77,47,78,34" concept="2" />
       <node id="7291380803381892728" at="78,34,79,22" concept="8" />
-      <node id="7291380803381892719" at="81,40,82,271" concept="7" />
-      <node id="7291380803381892719" at="82,271,83,33" concept="8" />
+      <node id="7291380803381892719" at="81,40,82,278" concept="7" />
+      <node id="7291380803381892719" at="82,278,83,33" concept="8" />
       <node id="7291380803381892719" at="89,121,90,38" concept="12" />
       <node id="7291380803381892719" at="90,38,91,25" concept="2" />
       <node id="7291380803381892719" at="96,28,97,20" concept="8" />
@@ -1576,7 +1576,7 @@
       <node id="7291380803381892742" at="138,47,139,34" concept="2" />
       <node id="7291380803381892742" at="139,34,140,22" concept="8" />
       <node id="7291380803381892719" at="142,40,143,169" concept="7" />
-      <node id="7291380803381892719" at="147,39,148,127" concept="8" />
+      <node id="7291380803381892719" at="147,39,148,134" concept="8" />
       <node id="7291380803381892719" at="150,152,151,60" concept="2" />
       <node id="7291380803381892719" at="151,60,152,48" concept="2" />
       <node id="7291380803381892719" at="152,48,153,43" concept="2" />
@@ -1627,9 +1627,9 @@
       <node id="7291380803381892719" at="169,0,172,0" concept="6" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="5258059200641869328" at="190,0,193,0" concept="6" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="5258059200641869338" at="214,0,217,0" concept="6" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="7291380803381892719" at="49,0,53,0" concept="1" trace="MessageProvider_EditorBuilder_a#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="7291380803381892719" at="49,0,53,0" concept="1" trace="MessageProviderForRule_EditorBuilder_a#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="7291380803381892719" at="81,0,85,0" concept="6" trace="createRefNode_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <node id="7291380803381892719" at="89,0,93,0" concept="1" trace="messageSingleRoleHandler_s43n8a_b0#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SContainmentLink;Ljetbrains/mps/openapi/editor/EditorContext;)V" />
+      <node id="7291380803381892719" at="89,0,93,0" concept="1" trace="messageSingleRoleHandler_dgsr4v_b0#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SContainmentLink;Ljetbrains/mps/openapi/editor/EditorContext;)V" />
       <node id="7291380803381892719" at="160,0,164,5" concept="5" />
       <node id="7291380803381892719" at="54,0,59,0" concept="6" trace="getNode#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="7291380803381892719" at="94,0,99,0" concept="6" trace="getNode#()Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -1659,13 +1659,13 @@
       <scope id="7291380803381892719" at="114,42,115,162" />
       <scope id="7291380803381892719" at="128,17,129,42" />
       <scope id="7291380803381892719" at="132,40,133,28" />
-      <scope id="7291380803381892719" at="147,39,148,127" />
+      <scope id="7291380803381892719" at="147,39,148,134" />
       <scope id="7291380803381892719" at="169,39,170,113" />
       <scope id="5258059200641869328" at="190,41,191,32" />
       <scope id="5258059200641869328" at="196,28,197,20" />
       <scope id="5258059200641869338" at="214,43,215,120" />
       <scope id="5258059200641869338" at="223,17,224,42" />
-      <scope id="7291380803381892719" at="49,95,51,18" />
+      <scope id="7291380803381892719" at="49,102,51,18" />
       <scope id="7291380803381892719" at="81,40,83,33">
         <var name="provider" id="7291380803381892719" />
       </scope>
@@ -1757,13 +1757,13 @@
         <var name="referenceLink" id="7291380803381892719" />
       </scope>
       <scope id="7291380803381892719" at="142,0,179,0" />
-      <unit id="7291380803381892719" at="146,74,150,9" name="jetbrains.mps.lang.messages.editor.MessageProvider_EditorBuilder_a$1$1" />
-      <unit id="7291380803381892719" at="168,102,172,5" name="jetbrains.mps.lang.messages.editor.MessageProvider_EditorBuilder_a$2" />
-      <unit id="5258059200641869338" at="213,104,217,9" name="jetbrains.mps.lang.messages.editor.MessageProvider_EditorBuilder_a$Inline_Builder0$1" />
-      <unit id="7291380803381892719" at="144,42,156,5" name="jetbrains.mps.lang.messages.editor.MessageProvider_EditorBuilder_a$1" />
-      <unit id="5258059200641869328" at="179,0,228,0" name="jetbrains.mps.lang.messages.editor.MessageProvider_EditorBuilder_a$Inline_Builder0" />
-      <unit id="7291380803381892719" at="85,0,136,0" name="jetbrains.mps.lang.messages.editor.MessageProvider_EditorBuilder_a$messageSingleRoleHandler_s43n8a_b0" />
-      <unit id="7291380803381892719" at="45,0,229,0" name="jetbrains.mps.lang.messages.editor.MessageProvider_EditorBuilder_a" />
+      <unit id="7291380803381892719" at="146,74,150,9" name="jetbrains.mps.lang.messages.editor.MessageProviderForRule_EditorBuilder_a$1$1" />
+      <unit id="7291380803381892719" at="168,102,172,5" name="jetbrains.mps.lang.messages.editor.MessageProviderForRule_EditorBuilder_a$2" />
+      <unit id="5258059200641869338" at="213,104,217,9" name="jetbrains.mps.lang.messages.editor.MessageProviderForRule_EditorBuilder_a$Inline_Builder0$1" />
+      <unit id="7291380803381892719" at="144,42,156,5" name="jetbrains.mps.lang.messages.editor.MessageProviderForRule_EditorBuilder_a$1" />
+      <unit id="5258059200641869328" at="179,0,228,0" name="jetbrains.mps.lang.messages.editor.MessageProviderForRule_EditorBuilder_a$Inline_Builder0" />
+      <unit id="7291380803381892719" at="85,0,136,0" name="jetbrains.mps.lang.messages.editor.MessageProviderForRule_EditorBuilder_a$messageSingleRoleHandler_dgsr4v_b0" />
+      <unit id="7291380803381892719" at="45,0,229,0" name="jetbrains.mps.lang.messages.editor.MessageProviderForRule_EditorBuilder_a" />
     </file>
   </root>
 </debug-info>

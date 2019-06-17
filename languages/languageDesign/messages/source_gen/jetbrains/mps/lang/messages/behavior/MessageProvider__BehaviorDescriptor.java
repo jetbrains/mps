@@ -11,26 +11,41 @@ import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
+import jetbrains.mps.scope.Scope;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.constraints.rules.behavior.ConstraintsExpressionHolder__BehaviorDescriptor;
+import jetbrains.mps.lang.core.behavior.ScopeProvider__BehaviorDescriptor;
+import jetbrains.mps.scope.ModelPlusImportedScope;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
 public final class MessageProvider__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x6530303593ae1651L, "jetbrains.mps.lang.messages.structure.MessageProvider");
+  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e30f402L, "jetbrains.mps.lang.messages.structure.MessageProvider");
 
-  public static final SMethod<SNode> getCustomizingRule_id4zSofKenMaQ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getCustomizingRule").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4zSofKenMaQ").build();
+  public static final SMethod<SNode> getCustomizingRule_id4zSofKenMaQ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getCustomizingRule").modifiers(SModifiersImpl.create(12, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4zSofKenMaQ").build();
+  public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("52_Geb4QDV$").build(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getCustomizingRule_id4zSofKenMaQ);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getCustomizingRule_id4zSofKenMaQ, getScope_id52_Geb4QDV$);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
-  /*package*/ static SNode getCustomizingRule_id4zSofKenMaQ(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getReferenceLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x6530303593ae1651L, 0x6530303593ae1654L, "rule"));
+  /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
+    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), MetaAdapterFactory.getInterfaceConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359368062cL, "jetbrains.mps.lang.constraints.rules.structure.TypedIdentifier"))) {
+      SNode block = ConstraintsExpressionHolder__BehaviorDescriptor.getBlock_id6kKc3mjn3VM.invoke(MessageProvider__BehaviorDescriptor.getCustomizingRule_id4zSofKenMaQ.invoke(__thisNode__));
+      if ((block != null)) {
+        return ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke(block, kind, child);
+      } else {
+        return new ModelPlusImportedScope(SNodeOperations.getModel(__thisNode__), false, MetaAdapterFactory.getInterfaceConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359368062cL, "jetbrains.mps.lang.constraints.rules.structure.TypedIdentifier"));
+      }
+    } else {
+      return null;
+    }
   }
 
   /*package*/ MessageProvider__BehaviorDescriptor() {
@@ -48,8 +63,8 @@ public final class MessageProvider__BehaviorDescriptor extends BaseBHDescriptor 
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
-      case 0:
-        return (T) ((SNode) getCustomizingRule_id4zSofKenMaQ(node));
+      case 1:
+        return (T) ((Scope) getScope_id52_Geb4QDV$(node, (SAbstractConcept) parameters[0], (SNode) parameters[1]));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

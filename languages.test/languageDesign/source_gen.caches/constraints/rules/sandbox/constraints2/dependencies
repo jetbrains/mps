@@ -18,7 +18,7 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.persistence.PersistenceFacade" />
     <classNode extendsClassName="jetbrains.mps.core.aspects.constraints.rules.BaseConstraintsDescriptor2" />
   </dependency>
-  <dependency className="constraints.rules.sandbox.constraints2.A_Messages2">
+  <dependency className="constraints.rules.sandbox.constraints2.A_Messages">
     <classNode dependClassName="constraints.rules.sandbox.constraints2.A_Constraints2" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.Arrays" />
@@ -47,7 +47,7 @@
     <classNode extendsClassName="jetbrains.mps.core.aspects.constraints.rules.ConstraintsAspectDescriptor2" />
   </dependency>
   <dependency className="constraints.rules.sandbox.constraints2.GeneratedMessagesAspectDescriptor">
-    <classNode dependClassName="constraints.rules.sandbox.constraints2.A_Messages2" />
+    <classNode dependClassName="constraints.rules.sandbox.constraints2.A_Messages" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="jetbrains.mps.core.aspects.reporting.api.MessagesDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndex" />

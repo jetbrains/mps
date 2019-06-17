@@ -2,9 +2,6 @@
 <model ref="r:d8115b4c-62c9-4566-9bc7-9fa3c8929293(constraints.rules.sandbox.constraints2)">
   <persistence version="9" />
   <languages>
-    <use id="47257bf3-78d3-470b-89d9-8c3261a61d15" name="jetbrains.mps.lang.constraints.rules" version="-1" />
-    <use id="ad93155d-79b2-4759-b10c-55123e763903" name="jetbrains.mps.lang.messages" version="-1" />
-    <use id="b3551702-269c-4f05-ba61-58060cef4292" name="jetbrains.mps.lang.constraints.messages" version="-1" />
     <devkit ref="4843b9cf-86fe-47f2-87c9-f256294fd740(jetbrains.mps.devkit.aspect.constraints.rulesWithMessages)" />
   </languages>
   <imports>
@@ -59,7 +56,7 @@
       <concept id="5258059200642172255" name="jetbrains.mps.lang.messages.structure.CombinedMessageExpression" flags="ng" index="16I2mz">
         <child id="5258059200642172257" name="part" index="16I2mt" />
       </concept>
-      <concept id="5258059200641168386" name="jetbrains.mps.lang.messages.structure.IMessageProvider" flags="ng" index="16M9jY">
+      <concept id="5258059200641168386" name="jetbrains.mps.lang.messages.structure.MessageProvider" flags="ng" index="16M9jY">
         <child id="5258059200641510856" name="message" index="16N$OO" />
       </concept>
       <concept id="5258059200641510853" name="jetbrains.mps.lang.messages.structure.LiteralMessageExpression" flags="ng" index="16N$OT">
@@ -69,7 +66,7 @@
         <reference id="7188575577281228125" name="concept" index="3Z9TSV" />
         <child id="7291380803381927154" name="messageProviders" index="3QBEN7" />
       </concept>
-      <concept id="7291380803381892689" name="jetbrains.mps.lang.messages.structure.MessageProvider" flags="ng" index="3QByp$">
+      <concept id="7291380803381892689" name="jetbrains.mps.lang.messages.structure.MessageProviderForRule" flags="ng" index="3QByp$">
         <reference id="7291380803381892692" name="rule" index="3QBypx" />
       </concept>
     </language>
@@ -129,8 +126,8 @@
         </node>
         <node concept="1DCEQD" id="4zSofKenLpt" role="1DCEQI">
           <node concept="16I2mz" id="4zSofKenLpv" role="16N$OO">
-            <node concept="16N$OT" id="4zSofKenLrq" role="16I2mt">
-              <property role="16N$OU" value="default message" />
+            <node concept="16N$OT" id="7HMNjfD5oHL" role="16I2mt">
+              <property role="16N$OU" value="THE PROPERTY IS TOO SMALL, PLEASE CHANGE" />
             </node>
           </node>
         </node>
@@ -158,7 +155,7 @@
     </node>
   </node>
   <node concept="3QByoM" id="7FO6JFyzuId">
-    <property role="TrG5h" value="A_Messages" />
+    <property role="TrG5h" value="A_Messags2" />
     <ref role="3Z9TSV" to="ktae:7w_sh_iHHi0" resolve="A" />
     <node concept="3QByp$" id="4zSofKenZrA" role="3QBEN7">
       <ref role="3QBypx" node="4zSofKebyg2" resolve="first" />

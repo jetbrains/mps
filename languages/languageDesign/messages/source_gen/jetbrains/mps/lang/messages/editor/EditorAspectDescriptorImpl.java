@@ -28,7 +28,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
       case 3:
         return Collections.<ConceptEditor>singletonList(new MessageExpression_Editor());
       case 4:
-        return Collections.<ConceptEditor>singletonList(new MessageProvider_Editor());
+        return Collections.<ConceptEditor>singletonList(new MessageProviderForRule_Editor());
       case 5:
         return Collections.<ConceptEditor>singletonList(new MessagesRoot_Editor());
       default:

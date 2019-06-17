@@ -402,7 +402,7 @@
     </node>
   </node>
   <node concept="24kQdi" id="6kKc3mjFxpJ">
-    <ref role="1XX52x" to="t9po:6kKc3mjFxph" resolve="MessageProvider" />
+    <ref role="1XX52x" to="t9po:6kKc3mjFxph" resolve="MessageProviderForRule" />
     <node concept="3EZMnI" id="6kKc3mjFxpL" role="2wV5jI">
       <node concept="3F0ifn" id="6kKc3mjFxpS" role="3EZMnx">
         <property role="3F0ifm" value="message" />
@@ -677,7 +677,7 @@
   </node>
   <node concept="1h_SRR" id="4zSofKeeX0D">
     <property role="TrG5h" value="MessageProvider_Delete" />
-    <ref role="1h_SK9" to="t9po:6kKc3mjFxph" resolve="MessageProvider" />
+    <ref role="1h_SK9" to="t9po:6kKc3mjFxph" resolve="MessageProviderForRule" />
     <node concept="1hA7zw" id="4zSofKeeX0E" role="1h_SK8">
       <property role="1hAc7j" value="delete_action_id" />
       <node concept="1hAIg9" id="4zSofKeeX0F" role="1hA7z_">

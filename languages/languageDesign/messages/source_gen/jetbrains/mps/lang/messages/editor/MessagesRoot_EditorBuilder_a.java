@@ -251,7 +251,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
       return MetaAdapterFactory.getContainmentLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x6530303593ae1607L, 0x6530303593ae9cf2L, "messageProviders");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x6530303593ae1651L, "jetbrains.mps.lang.messages.structure.MessageProvider");
+      return MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x6530303593ae1651L, "jetbrains.mps.lang.messages.structure.MessageProviderForRule");
     }
 
     public EditorCell createNodeCell(SNode elementNode) {

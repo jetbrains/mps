@@ -11,10 +11,11 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 
 public final class A_Messages implements MessagesDescriptor {
-  private static final MessageProvider FOR_FIRST_MessageProvider_id5258059200644249318 = new BaseMessageProvider(A_Constraints2.Rule_first.ID_FIRST, "I OVERRIDE YOU");
-  private static final MessageProvider FOR_THIRD_MessageProvider_id5258059200644249334 = new BaseMessageProvider(A_Constraints2.Rule_third.ID_THIRD, "I OVERRIDE YOU TWICE");
+  private static final MessageProvider FOR_FIRST_MSGPROVIDER_id5258059200644249318 = new BaseMessageProvider(A_Constraints2.Rule_first.ID_FIRST, "I OVERRIDE YOU");
+  private static final MessageProvider FOR_THIRD_MSGPROVIDER_id5258059200644249334 = new BaseMessageProvider(A_Constraints2.Rule_third.ID_THIRD, "I OVERRIDE YOU TWICE");
+  private static final MessageProvider FOR_SECOND_MSGPROVIDER_id8895397836847745146 = new BaseMessageProvider(A_Constraints2.Rule_second.ID_SECOND, "THE PROPERTY IS TOO SMALL, PLEASE CHANGE");
 
-  private static final List<MessageProvider> PROVIDERS = Collections.unmodifiableList(Arrays.<MessageProvider>asList(FOR_FIRST_MessageProvider_id5258059200644249318, FOR_THIRD_MessageProvider_id5258059200644249334));
+  private static final List<MessageProvider> PROVIDERS = Collections.unmodifiableList(Arrays.<MessageProvider>asList(FOR_FIRST_MSGPROVIDER_id5258059200644249318, FOR_THIRD_MSGPROVIDER_id5258059200644249334, FOR_SECOND_MSGPROVIDER_id8895397836847745146));
 
   @NotNull
   @Override
