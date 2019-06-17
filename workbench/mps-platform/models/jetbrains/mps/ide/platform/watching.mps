@@ -3942,11 +3942,6 @@
       <property role="od$2w" value="false" />
       <property role="DiZV1" value="false" />
       <node concept="3clFbS" id="5biTR9bEBgE" role="3clF47">
-        <node concept="3SKdUt" id="5biTR9bFt5Q" role="3cqZAp">
-          <node concept="3SKdUq" id="5biTR9bFt6b" role="3SKWNk">
-            <property role="3SKdUp" value="todo: ideal for AOP in MPS!" />
-          </node>
-        </node>
         <node concept="3clFbJ" id="5biTR9bEC_L" role="3cqZAp">
           <node concept="2YIFZM" id="5biTR9bHzQN" role="3clFbw">
             <ref role="37wK5l" to="fyhk:~InternalFlag.isInternalMode()" resolve="isInternalMode" />

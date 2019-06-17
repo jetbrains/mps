@@ -36,7 +36,6 @@ import org.jetbrains.mps.openapi.language.SLanguage;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.IntStream;
 
 // TODO avoid singleton by creating a new ComponentPlugin instance with smodel-related components (it is not CoreComponent in fact)
 public class ConceptRegistry implements CoreComponent, LanguageRegistryListener {
