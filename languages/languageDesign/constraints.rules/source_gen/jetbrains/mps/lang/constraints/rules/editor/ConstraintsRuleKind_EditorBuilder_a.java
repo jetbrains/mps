@@ -9,6 +9,11 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Collection;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent;
+import jetbrains.mps.openapi.editor.style.Style;
+import jetbrains.mps.editor.runtime.style.StyleImpl;
+import jetbrains.mps.editor.runtime.style.StyleAttributes;
+import jetbrains.mps.editor.runtime.style.Padding;
+import jetbrains.mps.editor.runtime.style.Measure;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.editor.menus.transformation.SPropertyInfo;
@@ -36,9 +41,6 @@ import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
-import jetbrains.mps.openapi.editor.style.Style;
-import jetbrains.mps.editor.runtime.style.StyleImpl;
-import jetbrains.mps.editor.runtime.style.StyleAttributes;
 
 /*package*/ class ConstraintsRuleKind_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -69,11 +71,13 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
     editorCell.addEditorCell(createRefNodeList_0());
     editorCell.addEditorCell(createConstant_0());
     editorCell.addEditorCell(createRefNodeList_1());
-    editorCell.addEditorCell(createConstant_1());
     return editorCell;
   }
   private EditorCell createComponent_0() {
     EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.lang.core.editor.alias");
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.PADDING_BOTTOM, new Padding(0.2, Measure.SPACES));
+    editorCell.getStyle().putAll(style);
     return editorCell;
   }
   private EditorCell createProperty_0() {
@@ -162,10 +166,9 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
     }
   }
   private EditorCell createConstant_0() {
-    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "{");
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "");
     editorCell.setCellId("Constant_boqn43_d0");
     Style style = new StyleImpl();
-    style.set(StyleAttributes.MATCHING_LABEL, "body-brace");
     style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, true);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
@@ -233,14 +236,5 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
         }
       }
     }
-  }
-  private EditorCell createConstant_1() {
-    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "}");
-    editorCell.setCellId("Constant_boqn43_f0");
-    Style style = new StyleImpl();
-    style.set(StyleAttributes.MATCHING_LABEL, "body-brace");
-    editorCell.getStyle().putAll(style);
-    editorCell.setDefaultText("");
-    return editorCell;
   }
 }

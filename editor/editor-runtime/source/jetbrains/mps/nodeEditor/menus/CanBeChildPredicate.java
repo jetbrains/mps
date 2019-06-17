@@ -44,10 +44,9 @@ public class CanBeChildPredicate implements Predicate<SAbstractConcept> {
   @Override
   public boolean test(@Nullable SAbstractConcept concept) {
     if (concept == null) return true;
-    CanBeChild_Context context = Builder.create()
-                                        .concept(concept)
-                                        .parentNode(myParentNode)
-                                        .link(myContainmentLink).build();
+    CanBeChild_Context context = new Builder().concept(concept)
+                                              .parentNode(myParentNode)
+                                              .link(myContainmentLink).build();
 
     return ConstraintsFacade.checkCanBeChild(context).isEmpty();
   }

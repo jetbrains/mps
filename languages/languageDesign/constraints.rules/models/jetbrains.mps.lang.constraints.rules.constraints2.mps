@@ -2,7 +2,7 @@
 <model ref="r:bf693f8c-6f67-4402-a1e2-e61c34b6993e(jetbrains.mps.lang.constraints.rules.constraints2)">
   <persistence version="9" />
   <languages>
-    <use id="47257bf3-78d3-470b-89d9-8c3261a61d15" name="jetbrains.mps.lang.constraints.rules" version="0" />
+    <use id="47257bf3-78d3-470b-89d9-8c3261a61d15" name="jetbrains.mps.lang.constraints.rules" version="-1" />
     <devkit ref="2843b9cf-86fe-47f2-87c9-f256294fd769(jetbrains.mps.devkit.aspect.constraints.rules)" />
   </languages>
   <imports>
@@ -28,6 +28,7 @@
       </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
+      <concept id="1143226024141" name="jetbrains.mps.lang.smodel.structure.SModelType" flags="in" index="H_c77" />
       <concept id="1138055754698" name="jetbrains.mps.lang.smodel.structure.SNodeType" flags="in" index="3Tqbb2" />
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
@@ -59,11 +60,11 @@
   <node concept="3Qpn9X" id="7qY6fvuNhmN">
     <property role="TrG5h" value="CanBeParent" />
     <node concept="1DMZdT" id="7qY6fvuNhmO" role="3QpnaF">
-      <property role="TrG5h" value="Node" />
+      <property role="TrG5h" value="node" />
       <ref role="1DMZsr" node="7qY6fvuNhmR" resolve="C" />
     </node>
     <node concept="3RXm0x" id="7qY6fvuNhmP" role="3QpnaF">
-      <property role="TrG5h" value="ChildNode" />
+      <property role="TrG5h" value="childNode" />
       <node concept="3Tqbb2" id="7qY6fvuNhmQ" role="3RXm0y" />
     </node>
     <node concept="3RXm0x" id="7qY6fvuNl3U" role="3QpnaF">
@@ -73,6 +74,20 @@
       </node>
     </node>
     <node concept="3RW26_" id="7qY6fvuNhmR" role="3RW26y">
+      <property role="TrG5h" value="C" />
+    </node>
+  </node>
+  <node concept="3Qpn9X" id="3Y1amMrdjr9">
+    <property role="TrG5h" value="CanBeRoot" />
+    <node concept="1DMZdT" id="3Y1amMrdjra" role="3QpnaF">
+      <property role="TrG5h" value="node" />
+      <ref role="1DMZsr" node="3Y1amMrdjrf" resolve="C" />
+    </node>
+    <node concept="3RXm0x" id="3Y1amMrdKTM" role="3QpnaF">
+      <property role="TrG5h" value="model" />
+      <node concept="H_c77" id="3Y1amMrdKTK" role="3RXm0y" />
+    </node>
+    <node concept="3RW26_" id="3Y1amMrdjrf" role="3RW26y">
       <property role="TrG5h" value="C" />
     </node>
   </node>

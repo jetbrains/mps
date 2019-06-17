@@ -83,7 +83,6 @@ public class ConstraintsChecker extends AbstractNodeCheckerInEditor implements I
           final CanBeChild_Context context = new Builder().buildFromNode(node);
           List<ConstraintsRulePointer> failingRules = errorsCollector.runCheckingAction(() -> ConstraintsFacade.checkCanBeChild(context));
           if (!failingRules.isEmpty()) {
-            // for now we take the first one because it is hard to make sense from this surroundings
             @NotNull ConstraintsRulePointer ruleWeReport = failingRules.get(0);
             TypesystemRuleId ruleId = new TypesystemRuleId(ruleWeReport.getRuleSourceNode());
             ReportingAspectRegistry reportingRegistry = myHost.findComponent(ReportingAspectRegistry.class);
@@ -105,7 +104,6 @@ public class ConstraintsChecker extends AbstractNodeCheckerInEditor implements I
           final CanBeParent_Context context = new CanBeParent_Context.Builder().buildFromChildNode(node);
           List<ConstraintsRulePointer> failingRules = errorsCollector.runCheckingAction(() -> ConstraintsFacade.checkCanBeParent(context));
           if (!failingRules.isEmpty()) {
-            // for now we take the first one because it is hard to make sense from this surroundings
             @NotNull ConstraintsRulePointer ruleWeReport = failingRules.get(0);
             TypesystemRuleId ruleId = new TypesystemRuleId(ruleWeReport.getRuleSourceNode());
             ReportingAspectRegistry reportingRegistry = myHost.findComponent(ReportingAspectRegistry.class);

@@ -16,7 +16,15 @@
 package jetbrains.mps.core.aspects.constraints.rules;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.annotations.Internal;
 
+/**
+ * Not so sure about builder for context construction
+ * @param <Context>
+ *
+ * @author apyshkin
+ */
+@Internal
 public interface ContextBuilder<Context extends ConstraintsContext> {
   @NotNull
   Context build();

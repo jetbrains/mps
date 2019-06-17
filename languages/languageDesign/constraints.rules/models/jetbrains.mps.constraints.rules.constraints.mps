@@ -2,9 +2,9 @@
 <model ref="r:52c0a9e8-a4f1-4d97-9c33-d3c28d77688f(jetbrains.mps.lang.constraints.rules.constraints)">
   <persistence version="9" />
   <languages>
-    <use id="3f4bc5f5-c6c1-4a28-8b10-c83066ffa4a1" name="jetbrains.mps.lang.constraints" version="4" />
-    <use id="13744753-c81f-424a-9c1b-cf8943bf4e86" name="jetbrains.mps.lang.sharedConcepts" version="0" />
-    <use id="69b8a993-9b87-4d96-bf0c-3559f4bb0c63" name="jetbrains.mps.lang.slanguage" version="0" />
+    <use id="3f4bc5f5-c6c1-4a28-8b10-c83066ffa4a1" name="jetbrains.mps.lang.constraints" version="-1" />
+    <use id="13744753-c81f-424a-9c1b-cf8943bf4e86" name="jetbrains.mps.lang.sharedConcepts" version="-1" />
+    <use id="69b8a993-9b87-4d96-bf0c-3559f4bb0c63" name="jetbrains.mps.lang.slanguage" version="-1" />
     <devkit ref="00000000-0000-4000-0000-5604ebd4f22c(jetbrains.mps.devkit.aspect.constraints)" />
   </languages>
   <imports>
@@ -116,7 +116,17 @@
         <reference id="2030416617761226680" name="aspect" index="3zA4av" />
       </concept>
     </language>
+    <language id="446c26eb-2b7b-4bf0-9b35-f83fa582753e" name="jetbrains.mps.lang.modelapi">
+      <concept id="361130699826193248" name="jetbrains.mps.lang.modelapi.structure.ModelPointer" flags="ng" index="1dCxOl">
+        <property id="1863527487546097494" name="modelId" index="1XweGQ" />
+        <child id="679099339649067980" name="name" index="1j$8Uc" />
+      </concept>
+      <concept id="679099339649053840" name="jetbrains.mps.lang.modelapi.structure.ModelName" flags="ng" index="1j_P7g">
+        <property id="679099339649053841" name="value" index="1j_P7h" />
+      </concept>
+    </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
+      <concept id="3506770386464365589" name="jetbrains.mps.lang.smodel.structure.Model_PointerOperation" flags="ng" index="aIX43" />
       <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
         <reference id="1177026940964" name="conceptDeclaration" index="cht4Q" />
       </concept>
@@ -138,6 +148,9 @@
       </concept>
       <concept id="1138056282393" name="jetbrains.mps.lang.smodel.structure.SLinkListAccess" flags="nn" index="3Tsc0h">
         <reference id="1138056546658" name="link" index="3TtcxE" />
+      </concept>
+      <concept id="1863527487546129879" name="jetbrains.mps.lang.smodel.structure.ModelPointerExpression" flags="ng" index="1Xw6AR">
+        <child id="1863527487546132519" name="modelRef" index="1XwpL7" />
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
@@ -299,6 +312,29 @@
                 <ref role="359W_E" to="bm42:6kKc3mjlk98" resolve="ConstraintsRuleKind" />
                 <ref role="359W_F" to="bm42:4JP_D2W1rsM" resolve="parameter" />
               </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="1M2fIO" id="3Y1amMreI0h">
+    <ref role="1M2myG" to="bm42:6kKc3mjlk98" resolve="ConstraintsRuleKind" />
+    <node concept="2NXJUA" id="3Y1amMreI0i" role="2NY200">
+      <node concept="3clFbS" id="3Y1amMreI0j" role="2VODD2">
+        <node concept="3clFbF" id="3Y1amMreI4a" role="3cqZAp">
+          <node concept="17R0WA" id="3Y1amMreIgi" role="3clFbG">
+            <node concept="1Xw6AR" id="3Y1amMreIkx" role="3uHU7w">
+              <node concept="1dCxOl" id="3Y1amMreI_h" role="1XwpL7">
+                <property role="1XweGQ" value="r:bf693f8c-6f67-4402-a1e2-e61c34b6993e" />
+                <node concept="1j_P7g" id="3Y1amMreI_i" role="1j$8Uc">
+                  <property role="1j_P7h" value="jetbrains.mps.lang.constraints.rules.constraints2" />
+                </node>
+              </node>
+            </node>
+            <node concept="2OqwBi" id="3Y1amMreIo2" role="3uHU7B">
+              <node concept="1Q6Npb" id="3Y1amMreI49" role="2Oq$k0" />
+              <node concept="aIX43" id="3Y1amMreIwX" role="2OqNvi" />
             </node>
           </node>
         </node>
