@@ -109,7 +109,7 @@ public class TestsErrorsChecker {
         return node == null || ErrorReportUtil.shouldReportError(it, repository, new Condition<SNode>() {
           @Override
           public boolean met(SNode suppressor) {
-            return SNodeOperations.isInstanceOf(suppressor, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, "jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation"));
+            return !(SNodeOperations.isInstanceOf(suppressor, MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e0d52da47L, "jetbrains.mps.lang.test.structure.AbstractTestNodeAnnotation")));
           }
         });
       }
