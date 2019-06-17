@@ -15,27 +15,21 @@
  */
 package jetbrains.mps.core.aspects.reporting.api;
 
-import jetbrains.mps.core.aspects.constraints.rules.ConstraintsContext;
-import jetbrains.mps.core.aspects.constraints.rules.ConstraintsRuleId;
+import jetbrains.mps.core.aspects.constraints.rules.RuleContext;
+import jetbrains.mps.core.aspects.constraints.rules.RuleId;
+import jetbrains.mps.core.aspects.constraints.rules.RuleKind;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.annotations.Immutable;
 
-@Immutable
-public abstract class BaseMessageProvider<Context extends ConstraintsContext > implements MessageProvider<Context> {
-  private final ConstraintsRuleId myRule;
+public abstract class BaseMessageProvider<C extends RuleContext> implements MessageProvider<C> {
+  private final RuleId myRuleId;
 
-  public BaseMessageProvider(@NotNull ConstraintsRuleId rule) {
-    myRule = rule;
+  public BaseMessageProvider(@NotNull RuleId ruleId) {
+    myRuleId = ruleId;
   }
 
   @NotNull
   @Override
-  public ConstraintsRuleId forRule() {
-    return myRule;
-  }
-
-  @Override
-  public String toString() {
-    return "MessageProvider for the rule '" + forRule() + "'";
+  public RuleId forRuleId() {
+    return myRuleId;
   }
 }

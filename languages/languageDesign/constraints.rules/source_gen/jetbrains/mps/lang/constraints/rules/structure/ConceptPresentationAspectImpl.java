@@ -25,6 +25,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_ConstraintsRuleKind;
   private ConceptPresentation props_ConstraintsRuleKindParameterConcept;
   private ConceptPresentation props_ContextReference;
+  private ConceptPresentation props_PseudoBaseConcept;
   private ConceptPresentation props_TypedIdentifier;
 
   @Override
@@ -139,6 +140,12 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_ContextReference = cpb.create();
         }
         return props_ContextReference;
+      case LanguageConceptSwitch.PseudoBaseConcept:
+        if (props_PseudoBaseConcept == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_PseudoBaseConcept = cpb.create();
+        }
+        return props_PseudoBaseConcept;
       case LanguageConceptSwitch.TypedIdentifier:
         if (props_TypedIdentifier == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

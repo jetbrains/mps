@@ -60,7 +60,7 @@ public final class ConstraintContext_CanBeParent {
 
   @NotNull
   public SNode getNode() {
-    return myNewContext.getNode();
+    return myNewContext.getParentNode();
   }
 
   @NotNull

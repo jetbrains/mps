@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.errors.item;
 
+import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeParent_RuleKind;
 import jetbrains.mps.errors.MessageStatus;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -70,13 +71,8 @@ public abstract class ConstraintsReportItem extends NodeReportItemBase implement
 
   @Internal
   public static class CanBeChildFailedReportItem extends ConstraintsReportItem {
-    public CanBeChildFailedReportItem(@NotNull SNode node, SNode parent, @Nullable String message, @NotNull TypesystemRuleId ruleNode) {
-      super(node, message != null ? message : getDefaultMessage(node, parent), ruleNode);
-    }
-
-    @NotNull
-    private static String getDefaultMessage(@NotNull SNode node, SNode parent) {
-      return "Node " + node + " cannot be child of node " + parent;
+    public CanBeChildFailedReportItem(@NotNull SNode node, @NotNull String message, @NotNull TypesystemRuleId ruleNode) {
+      super(node, message, ruleNode);
     }
 
     @Override
@@ -96,13 +92,8 @@ public abstract class ConstraintsReportItem extends NodeReportItemBase implement
   }
 
   public static class CanBeParentFailedReportItem extends ConstraintsReportItem {
-    public CanBeParentFailedReportItem(@NotNull SNode node, @NotNull SNode child, @Nullable String message, @NotNull TypesystemRuleId ruleNode) {
-      super(node, message != null ? message : getDefaultMessage(node, child), ruleNode);
-    }
-
-    @NotNull
-    private static String getDefaultMessage(@NotNull SNode node, @NotNull SNode child) {
-      return "Node " + node + " cannot be parent of node " + child;
+    public CanBeParentFailedReportItem(@NotNull SNode node, @NotNull String message, @NotNull TypesystemRuleId ruleNode) {
+      super(node, message, ruleNode);
     }
 
     @Override

@@ -5,9 +5,9 @@
     <classNode dependClassName="java.util.Arrays" />
     <classNode dependClassName="java.util.Collections" />
     <classNode dependClassName="java.util.List" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.BaseConstraintsRule" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.ConstraintsRule" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.ConstraintsRuleId" />
+    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.BaseRule" />
+    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.Rule" />
+    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.RuleId" />
     <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeChild_Context" />
     <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeChild_RuleKind" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations" />
@@ -28,8 +28,10 @@
     <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeChild_Context" />
     <classNode dependClassName="jetbrains.mps.core.aspects.reporting.api.BaseMessageProvider" />
     <classNode dependClassName="jetbrains.mps.core.aspects.reporting.api.MessageProvider" />
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
-    <classNode extendsClassName="jetbrains.mps.core.aspects.reporting.api.MessagesDescriptor" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
+    <classNode extendsClassName="jetbrains.mps.core.aspects.reporting.api.BaseMessageDescriptor" />
   </dependency>
   <dependency className="constraints.rules.sandbox.constraints2.GeneratedConstraintsAspectDescriptor2">
     <classNode dependClassName="constraints.rules.sandbox.constraints2.A_Constraints2" />
@@ -37,7 +39,7 @@
     <classNode dependClassName="java.util.Arrays" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.ConstraintsDescriptor2" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.ConstraintsRuleKind" />
+    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.RuleKind" />
     <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeChild_RuleKind" />
     <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeParent_RuleKind" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndex" />

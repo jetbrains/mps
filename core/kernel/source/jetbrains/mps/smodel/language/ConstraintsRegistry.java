@@ -99,5 +99,6 @@ public final class ConstraintsRegistry implements CoreAspectRegistry {
   @Override
   public void clear() {
     myConstraintsDescriptors.clear();
+    myNewCounterpart.clear();
   }
 }

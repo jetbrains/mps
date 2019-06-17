@@ -32,7 +32,7 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
  * @since 192
  * @author apyshkin, mburyakov
  */
-public interface ConstraintsRule<Context extends ConstraintsContext> {
+public interface Rule<Context extends RuleContext> {
   /**
    * as always: the rule is per-concept entity
    */
@@ -42,12 +42,12 @@ public interface ConstraintsRule<Context extends ConstraintsContext> {
    * each rule has an id.
    * we need id in order to mention the rule somewhere out of the aspect 'constraints'
    */
-  @NotNull ConstraintsRuleId getId();
+  @NotNull
+  RuleId getId();
 
   /**
-   * @return pure debug info, might be null
-   * we need it to navigate to the source node and perhaps for debug reasons
-   * fixme remove
+   * @return pure debug info
+   * we need it to navigate to the source node and perhaps for other debug reasons
    */
   @Nullable SNodeReference getRuleSourceNode();
 
@@ -55,7 +55,7 @@ public interface ConstraintsRule<Context extends ConstraintsContext> {
    * each rule belongs to the specific rule kind, which is declared elsewhere.
    * a rule makes sense only in the view of this kind
    */
-  @NotNull ConstraintsRuleKind getKind();
+  @NotNull RuleKind<Context> getKind();
 
   /**
    * the essence of the rule.
@@ -64,4 +64,11 @@ public interface ConstraintsRule<Context extends ConstraintsContext> {
    * @return false iff the check is failed
    */
   boolean check(@NotNull Context context);
+
+  /**
+   * @return the applicability condition
+   */
+  default boolean appliesTo(@NotNull Context context) {
+    return true;
+  }
 }

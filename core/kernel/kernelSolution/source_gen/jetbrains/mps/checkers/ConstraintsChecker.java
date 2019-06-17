@@ -5,10 +5,10 @@ package jetbrains.mps.checkers;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.components.ComponentHost;
-import jetbrains.mps.core.aspects.constraints.rules.ConstraintsRulePointer;
+import jetbrains.mps.core.aspects.constraints.rules.Rule;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeChild_Context;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeChild_Context.Builder;
-import jetbrains.mps.core.aspects.constraints.rules.ConstraintsRuleId;
+import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeChild_RuleKind;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeParent_Context;
 import jetbrains.mps.core.aspects.reporting.api.MessageProvider;
 import jetbrains.mps.core.aspects.reporting.api.ReportingAspectRegistry;
@@ -21,7 +21,6 @@ import jetbrains.mps.errors.item.RuleIdFlavouredItem;
 import jetbrains.mps.errors.item.RuleIdFlavouredItem.TypesystemRuleId;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.project.validation.ConceptFeatureMissingError;
 import jetbrains.mps.project.validation.ConceptMissingError;
 import jetbrains.mps.smodel.constraints.ModelConstraints;
 import jetbrains.mps.smodel.constraints.ConstraintsFacade;
@@ -30,7 +29,6 @@ import jetbrains.mps.smodel.runtime.impl.CheckingNodeContextImpl;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -76,48 +74,35 @@ public class ConstraintsChecker extends AbstractNodeCheckerInEditor implements I
       errorsCollector.addDependency(parent);
       SConcept parentConcept = SNodeOperations.getConcept(parent);
       if (parentConcept.isValid()) {
-        if (checkContainmentLinkIsPresentInConcept(node, errorsCollector, parentConcept)) {
-          return;
-        }
         {
           final CanBeChild_Context context = new Builder().buildFromNode(node);
-          List<ConstraintsRulePointer> failingRules = errorsCollector.runCheckingAction(() -> ConstraintsFacade.checkCanBeChild(context));
+          List<Rule<CanBeChild_Context>> failingRules = errorsCollector.runCheckingAction(() -> ConstraintsFacade.checkCanBeChild(context));
           if (!failingRules.isEmpty()) {
-            @NotNull ConstraintsRulePointer ruleWeReport = failingRules.get(0);
-            TypesystemRuleId ruleId = new TypesystemRuleId(ruleWeReport.getRuleSourceNode());
+            @NotNull Rule<CanBeChild_Context> ruleWeReport = failingRules.get(0);
             ReportingAspectRegistry reportingRegistry = myHost.findComponent(ReportingAspectRegistry.class);
-            String message = null;
-            if (ruleWeReport instanceof ConstraintsRuleId) {
-              if (reportingRegistry == null) {
-                message = null;
-              } else {
-                MessageProvider<CanBeChild_Context> messageProvider =
-                    (MessageProvider<CanBeChild_Context>) reportingRegistry.findMessageForRule(nodeConcept, (ConstraintsRuleId) ruleWeReport);
-                message = messageProvider.getMessage(context);
-              }
+            String message = CanBeChild_RuleKind.INSTANCE.getDefaultMessage(context).toText();
+            if (reportingRegistry != null) {
+              MessageProvider<CanBeChild_Context> messageProvider = reportingRegistry.findMessageForRule(nodeConcept, ruleWeReport, context);
+              message = messageProvider.yieldMessage(context).toText();
             }
-            errorsCollector.addError(new CanBeChildFailedReportItem(node, parent, message, ruleId));
+            TypesystemRuleId ruleId = new TypesystemRuleId(ruleWeReport.getRuleSourceNode());
+            errorsCollector.addError(new CanBeChildFailedReportItem(node, message, ruleId));
           }
         }
 
         {
           final CanBeParent_Context context = new CanBeParent_Context.Builder().buildFromChildNode(node);
-          List<ConstraintsRulePointer> failingRules = errorsCollector.runCheckingAction(() -> ConstraintsFacade.checkCanBeParent(context));
+          List<Rule<CanBeParent_Context>> failingRules = errorsCollector.runCheckingAction(() -> ConstraintsFacade.checkCanBeParent(context));
           if (!failingRules.isEmpty()) {
-            @NotNull ConstraintsRulePointer ruleWeReport = failingRules.get(0);
-            TypesystemRuleId ruleId = new TypesystemRuleId(ruleWeReport.getRuleSourceNode());
+            @NotNull Rule<CanBeParent_Context> ruleWeReport = failingRules.get(0);
             ReportingAspectRegistry reportingRegistry = myHost.findComponent(ReportingAspectRegistry.class);
             String message = null;
-            if (ruleWeReport instanceof ConstraintsRuleId) {
-              if (reportingRegistry == null) {
-                message = null;
-              } else {
-                MessageProvider<CanBeParent_Context> messageProvider =
-                    (MessageProvider<CanBeParent_Context>) reportingRegistry.findMessageForRule(nodeConcept, (ConstraintsRuleId) ruleWeReport);
-                message = messageProvider.getMessage(context);
-              }
+            if (reportingRegistry != null) {
+              MessageProvider<CanBeParent_Context> messageProvider = reportingRegistry.findMessageForRule(nodeConcept, ruleWeReport, context);
+              message = messageProvider.yieldMessage(context).toText();
             }
-            errorsCollector.addError(new CanBeParentFailedReportItem(node, parent, message, ruleId));
+            TypesystemRuleId ruleId = new TypesystemRuleId(ruleWeReport.getRuleSourceNode());
+            errorsCollector.addError(new CanBeParentFailedReportItem(node, message, ruleId));
           }
         }
       }
@@ -167,11 +152,12 @@ public class ConstraintsChecker extends AbstractNodeCheckerInEditor implements I
   }
 
   private boolean checkContainmentLinkIsPresentInConcept(SNode node, LanguageErrorsCollector errorsCollector, SConcept parentConcept) {
-    SContainmentLink link = node.getContainmentLink();
-    if (!(parentConcept.getContainmentLinks().contains(link))) {
-      errorsCollector.addError(new ConceptFeatureMissingError(node, SNodeOperations.getContainingLink(node)));
-      return true;
-    }
-    return false;
+//    SContainmentLink link = node.getContainmentLink();
+//    if (!(parentConcept.getContainmentLinks().contains(link))) {
+//      errorsCollector.addError(new ConceptFeatureMissingError(node, SNodeOperations.getContainingLink(node)));
+//      return true;
+//    }
+//    return false;
+    return true;
   }
 }

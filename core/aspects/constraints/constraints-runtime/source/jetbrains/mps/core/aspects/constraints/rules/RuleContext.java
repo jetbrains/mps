@@ -16,26 +16,24 @@
 package jetbrains.mps.core.aspects.constraints.rules;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 /**
- * Rules are supposed to be of different kinds.
- * Since some rules need to be checked in certain scenarios and others do not,
- * such notion naturally arises.
- * (Consider the canBeRoot kind of rules. It needs to be checked only when we have a potential root)
- * @param <Context> -- rule kinds contain a type of context they expect. different kinds => possibly different contexts
+ * Each particular <it>constraint</it> in the aspect 'constraints' requires
+ * its own unique context.
+ *
+ * This interface represents the abstraction of this notion.
+ * Anything really can be a context.
+ * // fixme: [not so sure] the only thing we require is that each
+ * // fixme context makes sense for a particular MPS concept.
  *
  * @author apyshkin, mburyakov
  */
-public interface ConstraintsRuleKind<Context extends ConstraintsContext> {
-
+public interface RuleContext {
   /**
-   * do we need it?
+   * @return the concept constraints of which we will regard
    */
-  @NotNull String getName();
+  @NotNull SAbstractConcept getConcept();
 
-  /**
-   * todo currently with only this API it is impossible to construct a context from non-concrete rule kind
-   * @return
-   */
-  @NotNull ContextBuilder<Context> getContextBuilder();
+  @NotNull RuleKind<? extends RuleContext> getKind();
 }

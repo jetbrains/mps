@@ -2,7 +2,7 @@
 <model ref="r:83f25986-cdbc-469a-a327-db97a2ec5a39(jetbrains.mps.lang.constraints.rules.structure)">
   <persistence version="9" />
   <languages>
-    <use id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure" version="7" />
+    <use id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure" version="-1" />
     <devkit ref="78434eb8-b0e5-444b-850d-e7c4ad2da9ab(jetbrains.mps.devkit.aspect.structure)" />
   </languages>
   <imports>
@@ -59,6 +59,7 @@
     <property role="EcuMT" value="7291380803376071201" />
     <property role="TrG5h" value="ConstraintsRoot" />
     <property role="19KtqR" value="true" />
+    <property role="34LRSv" value="constraints root" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="6kKc3mjlk99" role="1TKVEi">
       <property role="IQ2ns" value="7291380803376071241" />
@@ -296,6 +297,10 @@
       <property role="20kJfa" value="condition" />
       <ref role="20lvS9" node="35M2kEOxcOG" resolve="ApplicableCondition" />
     </node>
+  </node>
+  <node concept="PlHQZ" id="3VxH6EnEK6S">
+    <property role="EcuMT" value="4531101070015529400" />
+    <property role="TrG5h" value="PseudoBaseConcept" />
   </node>
 </model>
 

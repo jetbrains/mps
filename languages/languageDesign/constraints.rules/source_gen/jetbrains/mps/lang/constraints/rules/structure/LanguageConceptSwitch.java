@@ -25,7 +25,8 @@ public final class LanguageConceptSwitch {
   public static final int ConstraintsRuleKind = 13;
   public static final int ConstraintsRuleKindParameterConcept = 14;
   public static final int ContextReference = 15;
-  public static final int TypedIdentifier = 16;
+  public static final int PseudoBaseConcept = 16;
+  public static final int TypedIdentifier = 17;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0x47257bf378d3470bL, 0x89d98c3261a61d15L);
@@ -45,6 +46,7 @@ public final class LanguageConceptSwitch {
     builder.put(0x6530303593554248L, ConstraintsRuleKind);
     builder.put(0x4bf59690bc05b735L, ConstraintsRuleKindParameterConcept);
     builder.put(0x6530303593574311L, ContextReference);
+    builder.put(0x3ee1b46a97ab01b8L, PseudoBaseConcept);
     builder.put(0x653030359368062cL, TypedIdentifier);
     myIndex = builder.seal();
   }

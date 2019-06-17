@@ -11,11 +11,15 @@ public final class LanguageConceptSwitch {
   private final LanguageConceptIndex myIndex;
   public static final int A = 0;
   public static final int B = 1;
+  public static final int C = 2;
+  public static final int D = 3;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0xa6518565787648e9L, 0x8d439ef97836a52eL);
     builder.put(0x7825711952b6d480L, A);
     builder.put(0x7af41afae28e1a15L, B);
+    builder.put(0x3f81296c9b419bfaL, C);
+    builder.put(0x3f81296c9b419bfbL, D);
     myIndex = builder.seal();
   }
 

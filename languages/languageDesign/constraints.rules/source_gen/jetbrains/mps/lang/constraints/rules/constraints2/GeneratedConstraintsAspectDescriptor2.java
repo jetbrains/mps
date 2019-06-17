@@ -8,22 +8,31 @@ import jetbrains.mps.core.aspects.constraints.rules.ConstraintsDescriptor2;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import java.util.List;
-import jetbrains.mps.core.aspects.constraints.rules.ConstraintsRuleKind;
+import jetbrains.mps.core.aspects.constraints.rules.RuleKind;
 import java.util.Arrays;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeChild_RuleKind;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeParent_RuleKind;
+import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
+import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
+import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 
 public final class GeneratedConstraintsAspectDescriptor2 implements ConstraintsAspectDescriptor2 {
   @Nullable
   @Override
   public ConstraintsDescriptor2 getDescriptor(@NotNull SAbstractConcept concept) {
     SAbstractConcept cncpt = concept;
+    switch (conceptIndex.index(cncpt)) {
+      case 0:
+        return new PseudoBaseConcept_Constraints2();
+      default:
+    }
     return null;
   }
 
   @NotNull
   @Override
-  public List<ConstraintsRuleKind> getRegisteredRuleKinds() {
-    return Arrays.<ConstraintsRuleKind>asList(CanBeChild_RuleKind.INSTANCE, CanBeParent_RuleKind.INSTANCE);
+  public List<RuleKind> getRegisteredRuleKinds() {
+    return Arrays.<RuleKind>asList(CanBeChild_RuleKind.INSTANCE, CanBeParent_RuleKind.INSTANCE);
   }
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x3ee1b46a97ab01b8L)).seal();
 }

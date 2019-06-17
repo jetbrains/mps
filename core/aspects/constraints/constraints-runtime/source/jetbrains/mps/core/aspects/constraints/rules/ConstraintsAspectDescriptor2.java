@@ -26,5 +26,5 @@ public interface ConstraintsAspectDescriptor2 extends ILanguageAspect {
   ConstraintsDescriptor2 getDescriptor(@NotNull SAbstractConcept concept);
 
   @NotNull
-  List<ConstraintsRuleKind> getRegisteredRuleKinds();
+  List<RuleKind> getRegisteredRuleKinds();
 }

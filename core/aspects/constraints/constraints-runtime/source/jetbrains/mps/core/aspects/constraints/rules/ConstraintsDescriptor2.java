@@ -36,22 +36,22 @@ public interface ConstraintsDescriptor2 {
   /**
    * @return the rules which are <it>written</it> for this concept specifically (in the language of the concept)
    */
-  @NotNull List<ConstraintsRule<?>> getDeclaredRules();
+  @NotNull List<Rule<?>> getDeclaredRules();
 
   /**
    * @return the rules which are <it>applicable</it> to this concept, meaning
    * that we include all the declared rules from ancestors of the concept
    */
-  @NotNull List<ConstraintsRule<?>> getRules();
+  @NotNull List<Rule<?>> getRules();
 
-  @Nullable default ConstraintsRule<?> getDeclaredRule(@NotNull ConstraintsRuleId ruleId) {
+  @Nullable default Rule<?> getDeclaredRule(@NotNull RuleId ruleId) {
     return getDeclaredRules().stream()
                              .filter(rule -> rule.getId().equals(ruleId))
                              .findFirst()
                              .orElse(null);
   }
 
-  @Nullable default ConstraintsRule<?> getRule(@NotNull ConstraintsRuleId ruleId) {
+  @Nullable default Rule<?> getRule(@NotNull RuleId ruleId) {
     return getRules().stream()
                      .filter(rule -> rule.getId().equals(ruleId))
                      .findFirst()
@@ -59,12 +59,19 @@ public interface ConstraintsDescriptor2 {
   }
 
   @NotNull
-  default <Context extends ConstraintsContext> List<ConstraintsRule<Context>> getRules(@NotNull ConstraintsRuleKind<Context> kind) {
-    List<ConstraintsRule<?>> rules = getRules();
+  default <C extends RuleContext> List<Rule<C>> getRules(@NotNull RuleKind<C> kind) {
+    List<Rule<?>> rules = getRules();
     return rules.stream()
-                .filter(it1 -> it1.getKind() == kind)
-                .map(it -> (ConstraintsRule<Context>) it)
+                .filter(it1 -> it1.getKind().equals(kind))
+                .map(it -> (Rule<C>) it)
                 .collect(Collectors.toList());
+  }
+
+  @NotNull
+  default <C extends RuleContext> List<Rule<C>> getApplicableRules(@NotNull C context) {
+    return getRules((RuleKind<C>) context.getKind()).stream()
+                                                    .filter(rule -> rule.appliesTo(context))
+                                                    .collect(Collectors.toList());
   }
 
   /**

@@ -20,12 +20,13 @@ import jetbrains.mps.smodel.language.LanguageRuntime;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static java.util.Objects.requireNonNull;
 
@@ -36,6 +37,7 @@ public final class ConstraintsRegistry2 {
   private static final Logger LOG = LogManager.getLogger(ConstraintsRegistry2.class);
 
   private final LanguageRegistry myLanguageRegistry;
+  private final Map<SAbstractConcept, ConstraintsDescriptor2> myDescriptors = new HashMap<>();
 
   public ConstraintsRegistry2(@NotNull LanguageRegistry languageRegistry) {
     myLanguageRegistry = languageRegistry;
@@ -43,6 +45,9 @@ public final class ConstraintsRegistry2 {
 
   @NotNull
   public ConstraintsDescriptor2 getConstraintsDescriptor2(@NotNull SAbstractConcept concept) throws IllegalArgumentException {
+    if (myDescriptors.containsKey(concept)) {
+      return myDescriptors.get(concept);
+    }
     ConstraintsDescriptor2 descriptor2 = null;
     LanguageRuntime conceptLang = myLanguageRegistry.getLanguage(concept.getLanguage());
     if (conceptLang == null) {
@@ -63,20 +68,26 @@ public final class ConstraintsRegistry2 {
         }
       }
     }
-    return descriptor2 != null ? descriptor2 : new EmptyConstraintsDescriptor2(concept);
+    if (descriptor2 == null) {
+      descriptor2 = new EmptyConstraintsDescriptor2(concept);
+      ((EmptyConstraintsDescriptor2) descriptor2).init(this);
+    }
+    myDescriptors.putIfAbsent(concept, descriptor2);
+    return myDescriptors.get(concept);
   }
 
   @NotNull
-  private <C extends ConstraintsContext> List<ConstraintsRule<C>> getApplicableRules(@NotNull SAbstractConcept concept, @NotNull ConstraintsRuleKind<C> ruleKind) {
+  private <C extends RuleContext> List<Rule<C>> getApplicableRules(@NotNull SAbstractConcept concept,
+                                                                   @NotNull C context) {
     @NotNull ConstraintsDescriptor2 descriptor = requireNonNull(getConstraintsDescriptor2(concept));
-    return descriptor.getRules(ruleKind);
+    //noinspection unchecked
+    return descriptor.getApplicableRules(context);
   }
 
   @NotNull
-  public <C extends ConstraintsContext> List<ConstraintsRule<C>> getFailingRulesFor(@NotNull C context,
-                                                                                    @NotNull ConstraintsRuleKind<C> ruleKind) {
-    List<ConstraintsRule<C>> rules = new ArrayList<>();
-    for (ConstraintsRule<C> rule : getApplicableRules(context.getConcept(), ruleKind)) {
+  public <C extends RuleContext> List<Rule<C>> getFailingRulesFor(@NotNull C context) {
+    List<Rule<C>> rules = new ArrayList<>();
+    for (Rule<C> rule : getApplicableRules(context.getConcept(), context)) {
       if (!rule.check(context)) {
         rules.add(rule);
       }
@@ -84,35 +95,19 @@ public final class ConstraintsRegistry2 {
     return rules;
   }
 
-  private static class EmptyConstraintsDescriptor2 implements ConstraintsDescriptor2 {
-    private final SAbstractConcept myConcept;
+  public void clear() {
+    myDescriptors.clear();
+  }
 
+  private static class EmptyConstraintsDescriptor2 extends BaseConstraintsDescriptor2 {
     private EmptyConstraintsDescriptor2(@NotNull SAbstractConcept concept) {
-      myConcept = concept;
+      super(concept);
     }
 
     @NotNull
     @Override
-    public List<ConstraintsRule<?>> getDeclaredRules() {
+    public List<Rule<?>> getDeclaredRules() {
       return Collections.emptyList();
-    }
-
-    @NotNull
-    @Override
-    public List<ConstraintsRule<?>> getRules() {
-      return Collections.emptyList();
-    }
-
-    @NotNull
-    @Override
-    public <Context extends ConstraintsContext> List<ConstraintsRule<Context>> getRules(@NotNull ConstraintsRuleKind<Context> kind) {
-      return Collections.emptyList();
-    }
-
-    @NotNull
-    @Override
-    public SAbstractConcept getConcept() {
-      return myConcept;
     }
   }
 }

@@ -91,6 +91,18 @@
     <ref role="3QD32O" to="ktae:7w_sh_iHHi0" resolve="A" />
     <node concept="3Qpn9N" id="7w_sh_iI0ZE" role="3Qpn9W">
       <ref role="3Qpn9Y" to="qffw:7w_sh_iI0Z7" resolve="CanBeChild" />
+      <node concept="3QlHBw" id="6fJcw0tqvnD" role="3Qpnal">
+        <property role="TrG5h" value="nodeA" />
+        <node concept="10Oyi0" id="6fJcw0tqCuW" role="3RXm0Z" />
+        <node concept="2OqwBi" id="6fJcw0tqvwe" role="3QpH_s">
+          <node concept="3QpRc$" id="6fJcw0tqTRV" role="2Oq$k0">
+            <ref role="3QpVTF" to="qffw:hyoMxHFKoi" resolve="node" />
+          </node>
+          <node concept="3TrcHB" id="6fJcw0tqTYQ" role="2OqNvi">
+            <ref role="3TsBF5" to="ktae:7w_sh_iI1nH" resolve="a" />
+          </node>
+        </node>
+      </node>
       <node concept="1DCEPf" id="A7NuYsQkJT" role="3Qpnal">
         <property role="TrG5h" value="first" />
         <property role="EcuMT" value="686743897209654265" />
@@ -139,21 +151,15 @@
         </node>
         <node concept="1DCEQD" id="4zSofKenLpt" role="1DCEQI">
           <node concept="16I2mz" id="4zSofKenLpv" role="16N$OO">
-            <node concept="16N$OT" id="7HMNjfD5oHL" role="16I2mt">
-              <property role="16N$OU" value="THE PROPERTY IS TOO SMALL, PLEASE CHANGE" />
+            <node concept="16N$OT" id="5hCLR$mfgvL" role="16I2mt">
+              <property role="16N$OU" value="The property a of " />
             </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3QlHBw" id="6fJcw0tqvnD" role="3Qpnal">
-        <property role="TrG5h" value="nodeA" />
-        <node concept="10Oyi0" id="6fJcw0tqCuW" role="3RXm0Z" />
-        <node concept="2OqwBi" id="6fJcw0tqvwe" role="3QpH_s">
-          <node concept="3QpRc$" id="6fJcw0tqTRV" role="2Oq$k0">
-            <ref role="3QpVTF" to="qffw:hyoMxHFKoi" resolve="node" />
-          </node>
-          <node concept="3TrcHB" id="6fJcw0tqTYQ" role="2OqNvi">
-            <ref role="3TsBF5" to="ktae:7w_sh_iI1nH" resolve="a" />
+            <node concept="16Iohu" id="5hCLR$mfgvM" role="16I2mt">
+              <ref role="16E0hz" to="qffw:hyoMxHFKoi" resolve="node" />
+            </node>
+            <node concept="16N$OT" id="5hCLR$mfgCs" role="16I2mt">
+              <property role="16N$OU" value=" is too large, please change" />
+            </node>
           </node>
         </node>
       </node>

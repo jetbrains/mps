@@ -126,9 +126,7 @@ public class BaseConstraintsDescriptor implements ConstraintsDescriptor {
     return myDefaultScopeConstraint;
   }
 
-  private <C, R> List<ConstraintFunction<C, R>> collectParents(
-      Function<BaseConstraintsDescriptor, ConstraintFunction<C, R>> mapper
-  ) {
+  private <C, R> List<ConstraintFunction<C, R>> collectParents(Function<BaseConstraintsDescriptor, ConstraintFunction<C, R>> mapper) {
     return new InheritanceIterable(myConcept).stream()
         .map(BaseConstraintsDescriptor::getDescriptor)
         .filter(Objects::nonNull)

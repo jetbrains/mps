@@ -16,6 +16,7 @@
 package jetbrains.mps.smodel.runtime;
 
 import jetbrains.mps.util.IterableUtil;
+import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -36,6 +37,8 @@ import java.util.stream.StreamSupport;
  * that ends up with another BaseConstraintsDescriptor.
  * FIXME There's SModelUtil.getDirectSuperConcepts() with identical logic.
  */
+@ToRemove(version = 192)
+@Deprecated
 public class InheritanceIterable implements Iterable<SAbstractConcept> {
   private ArrayList<SAbstractConcept> myParents = new ArrayList<>(4);
 

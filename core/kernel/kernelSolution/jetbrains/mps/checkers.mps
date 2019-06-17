@@ -1060,7 +1060,7 @@
                         <node concept="3clFbF" id="1PHXAu1rscC" role="3cqZAp">
                           <node concept="2ShNRf" id="1PHXAu1rsom" role="3clFbG">
                             <node concept="1pGfFk" id="1PHXAu1rsR6" role="2ShVmc">
-                              <ref role="37wK5l" to="d6hs:~ConstraintsReportItem$CanBeChildFailedReportItem.&lt;init&gt;(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode,jetbrains.mps.errors.item.RuleIdFlavouredItem$TypesystemRuleId)" resolve="ConstraintsReportItem.CanBeChildFailedReportItem" />
+                              <ref role="37wK5l" to="d6hs:~ConstraintsReportItem$CanBeChildFailedReportItem.&lt;init&gt;(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode,java.lang.String,jetbrains.mps.errors.item.RuleIdFlavouredItem$TypesystemRuleId)" resolve="ConstraintsReportItem.CanBeChildFailedReportItem" />
                               <node concept="37vLTw" id="1PHXAu1rsXG" role="37wK5m">
                                 <ref role="3cqZAo" node="6qi2OtU3uwL" resolve="node" />
                               </node>
@@ -1117,7 +1117,7 @@
                         <node concept="3clFbF" id="7w_sh_iLILH" role="3cqZAp">
                           <node concept="2ShNRf" id="7w_sh_iLILI" role="3clFbG">
                             <node concept="1pGfFk" id="7w_sh_iLILJ" role="2ShVmc">
-                              <ref role="37wK5l" to="d6hs:~ConstraintsReportItem$CanBeChildFailedReportItem.&lt;init&gt;(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode,jetbrains.mps.errors.item.RuleIdFlavouredItem$TypesystemRuleId)" resolve="ConstraintsReportItem.CanBeChildFailedReportItem" />
+                              <ref role="37wK5l" to="d6hs:~ConstraintsReportItem$CanBeChildFailedReportItem.&lt;init&gt;(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode,java.lang.String,jetbrains.mps.errors.item.RuleIdFlavouredItem$TypesystemRuleId)" resolve="ConstraintsReportItem.CanBeChildFailedReportItem" />
                               <node concept="37vLTw" id="7w_sh_iLILK" role="37wK5m">
                                 <ref role="3cqZAo" node="6qi2OtU3uwL" resolve="node" />
                               </node>
@@ -1324,7 +1324,7 @@
                     <node concept="3clFbF" id="1PHXAu1s18A" role="3cqZAp">
                       <node concept="2ShNRf" id="1PHXAu1s1kI" role="3clFbG">
                         <node concept="1pGfFk" id="1PHXAu1s1Aj" role="2ShVmc">
-                          <ref role="37wK5l" to="d6hs:~ConstraintsReportItem$CanBeParentFailedReportItem.&lt;init&gt;(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode,jetbrains.mps.errors.item.RuleIdFlavouredItem$TypesystemRuleId)" resolve="ConstraintsReportItem.CanBeParentFailedReportItem" />
+                          <ref role="37wK5l" to="d6hs:~ConstraintsReportItem$CanBeParentFailedReportItem.&lt;init&gt;(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode,java.lang.String,jetbrains.mps.errors.item.RuleIdFlavouredItem$TypesystemRuleId)" resolve="ConstraintsReportItem.CanBeParentFailedReportItem" />
                           <node concept="37vLTw" id="1PHXAu1s1GT" role="37wK5m">
                             <ref role="3cqZAo" node="6qi2OtU3uwL" resolve="node" />
                           </node>

@@ -16,31 +16,26 @@
 package jetbrains.mps.core.aspects.constraints.rules;
 
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.model.SNodeReference;
 
 /**
+ * An identifier for rule
+ *
+ * @author apyshkin, mburyakov
  */
-public final class ConstraintsRuleId implements ConstraintsRulePointer {
+public final class RuleId {
   private final long myId;
-  @Nullable private final SNodeReference mySourceRuleDecl;
+  @Nullable private final Object myDebugInfo;
 
   /**
-   *
-   * @param sourceRuleDecl -- debug info, might be used for navigation to the failed rule
+   * @param debugInfo -- debug info, might be used for navigation to the failed rule
    */
-  public ConstraintsRuleId(long ruleId, @Nullable SNodeReference sourceRuleDecl) {
+  public RuleId(long ruleId, @Nullable Object debugInfo) {
     myId = ruleId;
-    mySourceRuleDecl = sourceRuleDecl;
+    myDebugInfo = debugInfo;
   }
 
   public long getId() {
     return myId;
-  }
-
-  @Nullable
-  @Override
-  public SNodeReference getRuleSourceNode() {
-    return mySourceRuleDecl;
   }
 
   @Override
@@ -49,7 +44,7 @@ public final class ConstraintsRuleId implements ConstraintsRulePointer {
       return false;
     }
 
-    ConstraintsRuleId that = (ConstraintsRuleId) o;
+    RuleId that = (RuleId) o;
     return myId == that.myId;
   }
 
@@ -60,6 +55,6 @@ public final class ConstraintsRuleId implements ConstraintsRulePointer {
 
   @Override
   public String toString() {
-    return "RuleId [" + myId + "] debug info: " + mySourceRuleDecl;
+    return "RuleId [" + myId + "] debug info: " + myDebugInfo;
   }
 }

@@ -15,8 +15,9 @@
  */
 package jetbrains.mps.core.aspects.constraints.rules.kinds;
 
-import jetbrains.mps.core.aspects.constraints.rules.ConstraintsContext;
+import jetbrains.mps.core.aspects.constraints.rules.RuleContext;
 import jetbrains.mps.core.aspects.constraints.rules.ContextBuilder;
+import jetbrains.mps.core.aspects.constraints.rules.RuleKind;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
@@ -24,46 +25,49 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SNode;
 
-@Immutable
-public class CanBeParent_Context implements ConstraintsContext {
-  @NotNull private final SAbstractConcept myConcept;
+import static java.util.Objects.*;
 
-  @NotNull private final SNode myNode;
-  /*TODO @NotNull*/ private final SContainmentLink myLink;
-  @Nullable private final SNode myChildNode;
+@Immutable
+public class CanBeParent_Context implements RuleContext {
+  @NotNull private final SAbstractConcept myConcept;
+  @NotNull private final SNode myParentNode;
   @NotNull private final SAbstractConcept myChildConcept;
+  @Nullable private final SNode myChildNode;
+  @Nullable/*TODO @NotNull*/ private final SContainmentLink myLink;
 
 
   private CanBeParent_Context(@NotNull SNode childNode) {
     myChildNode = childNode;
     myChildConcept = childNode.getConcept();
-    if (childNode.getParent() == null) {
-      throw new IllegalArgumentException("really impossible to have 'canBeParent' context for a childNode which has no parent");
-    }
-    myNode = childNode.getParent();
-    myConcept = myNode.getConcept();
+    myParentNode = requireNonNull(childNode.getParent());
+    myConcept = myParentNode.getConcept();
     myLink = childNode.getContainmentLink();
   }
 
   private CanBeParent_Context(@NotNull SAbstractConcept childConcept,
-                              @NotNull SNode node,
+                              @NotNull SNode parentNode,
                               @Nullable /*NotNull*/ SContainmentLink link) {
     myChildConcept = childConcept;
-    myNode = node;
-    myConcept = node.getConcept();
+    myParentNode = parentNode;
+    myConcept = parentNode.getConcept();
     myChildNode = null;
     myLink = link;
   }
 
   @NotNull
-  @Override
   public SAbstractConcept getConcept() {
     return myConcept;
   }
 
   @NotNull
-  public SNode getNode() {
-    return myNode;
+  @Override
+  public RuleKind<? extends RuleContext> getKind() {
+    return CanBeParent_RuleKind.INSTANCE;
+  }
+
+  @NotNull
+  public SNode getParentNode() {
+    return myParentNode;
   }
 
   @Nullable

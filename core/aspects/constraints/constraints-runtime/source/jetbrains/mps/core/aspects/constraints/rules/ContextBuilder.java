@@ -25,7 +25,6 @@ import org.jetbrains.mps.annotations.Internal;
  * @author apyshkin
  */
 @Internal
-public interface ContextBuilder<Context extends ConstraintsContext> {
-  @NotNull
-  Context build();
+public interface ContextBuilder<Context extends RuleContext> {
+  @NotNull Context build();
 }

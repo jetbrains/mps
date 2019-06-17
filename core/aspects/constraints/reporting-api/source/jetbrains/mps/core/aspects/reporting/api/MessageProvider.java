@@ -15,8 +15,10 @@
  */
 package jetbrains.mps.core.aspects.reporting.api;
 
-import jetbrains.mps.core.aspects.constraints.rules.ConstraintsContext;
-import jetbrains.mps.core.aspects.constraints.rules.ConstraintsRuleId;
+import jetbrains.mps.core.aspects.constraints.rules.RuleContext;
+import jetbrains.mps.core.aspects.constraints.rules.RuleId;
+import jetbrains.mps.core.aspects.constraints.rules.RuleKind;
+import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.annotations.Internal;
 import org.jetbrains.annotations.NotNull;
 
@@ -24,13 +26,31 @@ import org.jetbrains.annotations.NotNull;
  * provides custom messages for failed rules
  */
 @Internal
-public interface MessageProvider<Context extends ConstraintsContext> {
-  @NotNull ConstraintsRuleId forRule();
+public interface MessageProvider<Context extends RuleContext> {
+  @NotNull RuleId forRuleId();
 
-  @NotNull default String getMessage(Context context) {
-    return getMessage();
+  @NotNull Msg yieldMessage(@NotNull Context context);
+
+  default boolean appliesTo(@NotNull Context context) {
+    return true;
   }
-  @NotNull default String getMessage() {
-    return getMessage(null);
+
+  interface Msg {
+    @NotNull String toText();
+  }
+
+  @Immutable
+  final class StringMsg implements Msg {
+    private final String myMsg;
+
+    public StringMsg(@NotNull String msg) {
+      myMsg = msg;
+    }
+
+    @Override
+    @NotNull
+    public String toText() {
+      return myMsg;
+    }
   }
 }

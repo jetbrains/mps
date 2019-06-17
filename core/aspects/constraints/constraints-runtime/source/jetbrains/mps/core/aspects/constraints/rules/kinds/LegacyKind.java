@@ -13,25 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jetbrains.mps.core.aspects.reporting.api;
+package jetbrains.mps.core.aspects.constraints.rules.kinds;
 
 import jetbrains.mps.core.aspects.constraints.rules.RuleContext;
-import jetbrains.mps.core.aspects.constraints.rules.RuleId;
+import jetbrains.mps.core.aspects.reporting.api.MessageProvider.Msg;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.annotations.Internal;
-
-import java.util.List;
 
 /**
- * Not so sure about the naming and the main purpose of this aspect
+ * we have a number of legacy rule types (e.g canBeChild, canBeParent, etc)
+ * for them we want to define the default message in order for legacy constraints invocation to take the message up from here
+ * this we need only for transition period, while all the constraints of the specific kind are not migrated to the new constraint rules.
+ * For rules we will have the default messages define in MPS part (for instance, in lang.core.constraints), not in java api.
  *
- * @author apyshkin, mburyakov
+ * @author apyshkin
  */
-@Internal
-public interface MessagesDescriptor {
-  @NotNull List<MessageProvider<?>> getDeclaredMessageProviders();
-  @NotNull List<MessageProvider<?>> getMessageProviders();
-
-  @NotNull <C extends RuleContext> MessageProvider<C> getMessageProvider(@NotNull RuleId ruleId, @NotNull C context);
+public interface LegacyKind<C extends RuleContext> {
+  @NotNull Msg getDefaultMessage(@NotNull C context);
 }

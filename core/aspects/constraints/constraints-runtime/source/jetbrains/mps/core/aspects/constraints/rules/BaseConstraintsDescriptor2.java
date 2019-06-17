@@ -17,7 +17,6 @@ package jetbrains.mps.core.aspects.constraints.rules;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import org.jetbrains.mps.util.BreadthConceptHierarchyIterator;
 import org.jetbrains.mps.util.DepthFirstConceptIterator;
 import org.jetbrains.mps.util.UniqueIterator;
 
@@ -51,7 +50,7 @@ import java.util.concurrent.atomic.AtomicReference;
  */
 public abstract class BaseConstraintsDescriptor2 implements ConstraintsDescriptor2 {
   private final AtomicReference<ConstraintsRegistry2> myRegistry = new AtomicReference<>();
-  private final AtomicReference<List<ConstraintsRule<?>>> myCachedRules = new AtomicReference<>();
+  private final AtomicReference<List<Rule<?>>> myCachedRules = new AtomicReference<>();
   private final SAbstractConcept myConcept;
 
   protected BaseConstraintsDescriptor2(@NotNull SAbstractConcept concept) {
@@ -80,15 +79,15 @@ public abstract class BaseConstraintsDescriptor2 implements ConstraintsDescripto
    */
   @NotNull
   @Override
-  public abstract List<ConstraintsRule<?>> getDeclaredRules();
+  public abstract List<Rule<?>> getDeclaredRules();
 
   @NotNull
   @Override
-  public List<ConstraintsRule<?>> getRules() {
+  public List<Rule<?>> getRules() {
     checkDescriptorIsInitialized();
-    List<ConstraintsRule<?>> currentRules = myCachedRules.get();
+    List<Rule<?>> currentRules = myCachedRules.get();
     if (currentRules == null) {
-      List<ConstraintsRule<?>> result = new ArrayList<>();
+      List<Rule<?>> result = new ArrayList<>();
       for (SAbstractConcept concept : new UniqueIterator<>(new DepthFirstConceptIterator(myConcept))) {
         ConstraintsDescriptor2 descriptor = getDescriptor(concept);
         result.addAll(descriptor.getDeclaredRules());

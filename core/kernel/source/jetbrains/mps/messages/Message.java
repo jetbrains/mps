@@ -34,8 +34,10 @@ public class Message implements IMessage {
   private String myText;
   private Throwable myException;
   private String myHelpUrl;
-  private long myCreationTime = System.currentTimeMillis();
-  private Object myHintObject; public Message(MessageKind kind, @Nullable String sender, String text) {
+  private final long myCreationTime = System.currentTimeMillis();
+  private Object myHintObject;
+
+  public Message(MessageKind kind, @Nullable String sender, String text) {
     myKind = kind;
     mySender = sender;
     myText = text;

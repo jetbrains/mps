@@ -15,8 +15,9 @@
  */
 package jetbrains.mps.core.aspects.constraints.rules.kinds;
 
-import jetbrains.mps.core.aspects.constraints.rules.ConstraintsContext;
+import jetbrains.mps.core.aspects.constraints.rules.RuleContext;
 import jetbrains.mps.core.aspects.constraints.rules.ContextBuilder;
+import jetbrains.mps.core.aspects.constraints.rules.RuleKind;
 import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -24,16 +25,18 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
 
+import static java.util.Objects.requireNonNull;
+
 @Immutable
-public class CanBeChild_Context implements ConstraintsContext {
-  private final SAbstractConcept myConcept;
-  private final SNode myNode;
-  private final SNode myParentNode;
-  /*TODO @NotNull*/ private final SContainmentLink myLink;
+public class CanBeChild_Context implements RuleContext {
+  @NotNull private final SAbstractConcept myConcept;
+  @Nullable private final SNode myNode;
+  @NotNull private final SNode myParentNode;
+  @Nullable/*TODO @NotNull*/ private final SContainmentLink myLink;
 
   private CanBeChild_Context(@NotNull SNode node) {
     myNode = node;
-    myParentNode = node.getParent();
+    myParentNode = requireNonNull(node.getParent());
     myConcept = node.getConcept();
     myLink = node.getContainmentLink();
   }
@@ -46,9 +49,14 @@ public class CanBeChild_Context implements ConstraintsContext {
   }
 
   @NotNull
-  @Override
   public SAbstractConcept getConcept() {
     return myConcept;
+  }
+
+  @NotNull
+  @Override
+  public RuleKind<? extends RuleContext> getKind() {
+    return CanBeChild_RuleKind.INSTANCE;
   }
 
   @Nullable

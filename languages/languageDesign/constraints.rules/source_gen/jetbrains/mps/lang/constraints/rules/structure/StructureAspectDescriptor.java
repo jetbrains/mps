@@ -30,6 +30,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptConstraintsRuleKind = createDescriptorForConstraintsRuleKind();
   /*package*/ final ConceptDescriptor myConceptConstraintsRuleKindParameterConcept = createDescriptorForConstraintsRuleKindParameterConcept();
   /*package*/ final ConceptDescriptor myConceptContextReference = createDescriptorForContextReference();
+  /*package*/ final ConceptDescriptor myConceptPseudoBaseConcept = createDescriptorForPseudoBaseConcept();
   /*package*/ final ConceptDescriptor myConceptTypedIdentifier = createDescriptorForTypedIdentifier();
   private final LanguageConceptSwitch myIndexSwitch;
 
@@ -47,7 +48,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptAbstractConstraintsDefNative, myConceptApplicableCondition, myConceptApplicableConditionHolder, myConceptConstraintsBlock, myConceptConstraintsDef, myConceptConstraintsDefNative, myConceptConstraintsDefNativeNode, myConceptConstraintsExpressionHolder, myConceptConstraintsRoot, myConceptConstraintsRule, myConceptConstraintsRuleBlock, myConceptConstraintsRuleBlockMember, myConceptConstraintsRuleIdHolder, myConceptConstraintsRuleKind, myConceptConstraintsRuleKindParameterConcept, myConceptContextReference, myConceptTypedIdentifier);
+    return Arrays.asList(myConceptAbstractConstraintsDefNative, myConceptApplicableCondition, myConceptApplicableConditionHolder, myConceptConstraintsBlock, myConceptConstraintsDef, myConceptConstraintsDefNative, myConceptConstraintsDefNativeNode, myConceptConstraintsExpressionHolder, myConceptConstraintsRoot, myConceptConstraintsRule, myConceptConstraintsRuleBlock, myConceptConstraintsRuleBlockMember, myConceptConstraintsRuleIdHolder, myConceptConstraintsRuleKind, myConceptConstraintsRuleKindParameterConcept, myConceptContextReference, myConceptPseudoBaseConcept, myConceptTypedIdentifier);
   }
 
   @Override
@@ -86,6 +87,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptConstraintsRuleKindParameterConcept;
       case LanguageConceptSwitch.ContextReference:
         return myConceptContextReference;
+      case LanguageConceptSwitch.PseudoBaseConcept:
+        return myConceptPseudoBaseConcept;
       case LanguageConceptSwitch.TypedIdentifier:
         return myConceptTypedIdentifier;
       default:
@@ -186,6 +189,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(2);
     b.associate("concept", 0x6530303593940081L).target(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL).optional(false).origin("7291380803380183169").done();
     b.aggregate("block", 0x6530303593554249L).target(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x93b1733caaa9766L).optional(true).ordered(true).multiple(true).origin("7291380803376071241").done();
+    b.alias("constraints root");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForConstraintsRule() {
@@ -256,6 +260,13 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:83f25986-cdbc-469a-a327-db97a2ec5a39(jetbrains.mps.lang.constraints.rules.structure)/7291380803376202513");
     b.version(2);
     b.associate("declaration", 0x6530303593578e5eL).target(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359368062cL).optional(false).origin("7291380803376221790").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForPseudoBaseConcept() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.constraints.rules", "PseudoBaseConcept", 0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x3ee1b46a97ab01b8L);
+    b.interface_();
+    b.origin("r:83f25986-cdbc-469a-a327-db97a2ec5a39(jetbrains.mps.lang.constraints.rules.structure)/4531101070015529400");
+    b.version(2);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForTypedIdentifier() {

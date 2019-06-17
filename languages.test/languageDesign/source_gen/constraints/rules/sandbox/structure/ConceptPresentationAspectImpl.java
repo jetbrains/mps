@@ -11,6 +11,8 @@ import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
   private ConceptPresentation props_A;
   private ConceptPresentation props_B;
+  private ConceptPresentation props_C;
+  private ConceptPresentation props_D;
 
   @Override
   @Nullable
@@ -31,6 +33,20 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_B = cpb.create();
         }
         return props_B;
+      case LanguageConceptSwitch.C:
+        if (props_C == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("C");
+          props_C = cpb.create();
+        }
+        return props_C;
+      case LanguageConceptSwitch.D:
+        if (props_D == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("D");
+          props_D = cpb.create();
+        }
+        return props_D;
     }
     return null;
   }

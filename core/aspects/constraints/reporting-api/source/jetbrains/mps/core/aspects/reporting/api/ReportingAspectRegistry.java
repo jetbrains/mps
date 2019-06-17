@@ -16,36 +16,37 @@
 package jetbrains.mps.core.aspects.reporting.api;
 
 import jetbrains.mps.components.CoreComponent;
-import jetbrains.mps.core.aspects.constraints.rules.ConstraintsContext;
-import jetbrains.mps.core.aspects.constraints.rules.ConstraintsRuleId;
-import jetbrains.mps.core.aspects.constraints.rules.ConstraintsRuleKind;
+import jetbrains.mps.core.aspects.constraints.rules.Rule;
+import jetbrains.mps.core.aspects.constraints.rules.RuleContext;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import jetbrains.mps.smodel.language.LanguageRegistryListener;
 import jetbrains.mps.smodel.language.LanguageRuntime;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
-import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
-
-import static java.util.Objects.requireNonNull;
+import java.util.Map;
 
 public final class ReportingAspectRegistry implements CoreComponent {
   private static final Logger LOG = LogManager.getLogger(ReportingAspectRegistry.class);
 
   private final LanguageRegistry myLanguageRegistry;
+  private final MyLanguageRegistryListener myListener = new MyLanguageRegistryListener();
+  private final Map<SAbstractConcept, MessagesDescriptor> myConcept2Descriptor = new HashMap<>();
 
   public ReportingAspectRegistry(@NotNull LanguageRegistry languageRegistry) {
     myLanguageRegistry = languageRegistry;
   }
 
-  @Nullable
-  private MessagesDescriptor getMessagesDescriptor(@NotNull SAbstractConcept concept) {
+  @NotNull
+  MessagesDescriptor getMessagesDescriptor(@NotNull SAbstractConcept concept) {
+    if (myConcept2Descriptor.containsKey(concept)) {
+      return myConcept2Descriptor.get(concept);
+    }
     MessagesDescriptor descriptor = null;
     LanguageRuntime conceptLang = myLanguageRegistry.getLanguage(concept.getLanguage());
     if (conceptLang == null) {
@@ -56,45 +57,64 @@ public final class ReportingAspectRegistry implements CoreComponent {
         descriptor = aspect.getDescriptor(concept);
       }
     }
-    return descriptor != null ? descriptor : new EmptyMessagesDescriptor(concept);
+    MessagesDescriptor messagesDescriptor = descriptor != null ? descriptor : new EmptyMessagesDescriptor(concept);
+    synchronized (LOG) {
+      if (messagesDescriptor instanceof BaseMessageDescriptor) {
+        if (!((BaseMessageDescriptor) messagesDescriptor).isInitialized()) {
+          ((BaseMessageDescriptor) messagesDescriptor).init(this);
+        }
+      }
+    }
+    if (myConcept2Descriptor.putIfAbsent(concept, messagesDescriptor) == null) {
+      return messagesDescriptor;
+    }
+    return myConcept2Descriptor.get(concept);
   }
 
   @NotNull
-  public MessageProvider<?> findMessageForRule(@NotNull SAbstractConcept concept, @NotNull ConstraintsRuleId ruleId) {
-    MessagesDescriptor descriptor = getMessagesDescriptor(concept);
-    Collection<MessageProvider<?>> messageProviders = requireNonNull(descriptor).getMessageProviders();
-    List<MessageProvider> applicableMessageProviders = messageProviders.stream()
-                                                                       .filter(it -> Objects.equals(it.forRule(), ruleId))
-                                                                       .collect(Collectors.toList());
-    if (!applicableMessageProviders.isEmpty()) {
-      return applicableMessageProviders.get(0);
-    } else {
-      // todo: default message for kind
-      return new BaseMessageProvider<ConstraintsContext>(ruleId) {
-        @NotNull
-        @Override
-        public String getMessage(ConstraintsContext context) {
-          return "default message";
-        }
-      };
-    }
+  public <C extends RuleContext> MessageProvider<C> findMessageForRule(@NotNull SAbstractConcept concept, @NotNull Rule<C> rule, @NotNull C context) {
+    MessagesDescriptor messagesDescriptor = getMessagesDescriptor(concept);
+    return messagesDescriptor.getMessageProvider(rule.getId(), context);
   }
+
 
   @Override
   public void init() {
+    myLanguageRegistry.addRegistryListener(myListener);
   }
 
   @Override
   public void dispose() {
+    myLanguageRegistry.removeRegistryListener(myListener);
   }
 
-  private class EmptyMessagesDescriptor implements MessagesDescriptor {
+  private final class MyLanguageRegistryListener implements LanguageRegistryListener {
+    @Override
+    public void afterLanguagesLoaded(Iterable<LanguageRuntime> languages) {
+    }
+
+    @Override
+    public void beforeLanguagesUnloaded(Iterable<LanguageRuntime> languages) {
+      invalidate(languages);
+    }
+  }
+
+  private void invalidate(@NotNull Iterable<LanguageRuntime> languages) {
+    for (LanguageRuntime lang : languages) {
+      for (SAbstractConcept concept : lang.getIdentity().getConcepts()) {
+        myConcept2Descriptor.remove(concept);
+      }
+    }
+  }
+
+  private static final class EmptyMessagesDescriptor extends BaseMessageDescriptor {
     public EmptyMessagesDescriptor(@NotNull SAbstractConcept concept) {
+      super(concept);
     }
 
     @NotNull
     @Override
-    public List<MessageProvider<?>> getMessageProviders() {
+    public List<MessageProvider<?>> getDeclaredMessageProviders() {
       return Collections.emptyList();
     }
   }

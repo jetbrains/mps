@@ -2,7 +2,7 @@
 <model ref="r:c333438f-9631-41c0-a716-72d23eed1ba4(jetbrains.mps.lang.constraints.rules.editor)">
   <persistence version="9" />
   <languages>
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="-1" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="12" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -531,19 +531,16 @@
           <ref role="1NtTu8" to="bm42:6kKc3mjlI_D" resolve="expression" />
         </node>
         <node concept="l2Vlx" id="35M2kEOxcQ8" role="2iSdaV" />
-        <node concept="3F1sOY" id="35M2kEOxcPO" role="3EZMnx">
-          <ref role="1NtTu8" to="bm42:35M2kEOxcPB" resolve="condition" />
-          <node concept="pVoyu" id="35M2kEOxcQ$" role="3F10Kt">
-            <property role="VOm3f" value="true" />
-          </node>
-          <node concept="lj46D" id="35M2kEOxcQO" role="3F10Kt">
-            <property role="VOm3f" value="true" />
-          </node>
-        </node>
-        <node concept="pVoyu" id="35M2kEOxcQA" role="3F10Kt">
+        <node concept="lj46D" id="35M2kEOxcQJ" role="3F10Kt">
           <property role="VOm3f" value="true" />
         </node>
-        <node concept="lj46D" id="35M2kEOxcQJ" role="3F10Kt">
+      </node>
+      <node concept="3F1sOY" id="2gX3Fcvz$q2" role="3EZMnx">
+        <ref role="1NtTu8" to="bm42:35M2kEOxcPB" resolve="condition" />
+        <node concept="pVoyu" id="2gX3Fcvz$qh" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+        <node concept="lj46D" id="2gX3Fcvz$qi" role="3F10Kt">
           <property role="VOm3f" value="true" />
         </node>
       </node>
@@ -765,38 +762,6 @@
       </node>
     </node>
   </node>
-  <node concept="PKFIW" id="1dKBELvgTxl">
-    <property role="TrG5h" value="ConstraintsDef_isDefined" />
-    <ref role="1XX52x" to="bm42:6kKc3mjlOch" resolve="ContextReference" />
-    <node concept="3EZMnI" id="1dKBELvj1BI" role="2wV5jI">
-      <node concept="1iCGBv" id="1dKBELvj1BZ" role="3EZMnx">
-        <ref role="1NtTu8" to="bm42:6kKc3mjlSTu" resolve="declaration" />
-        <node concept="1sVBvm" id="1dKBELvj1C1" role="1sWHZn">
-          <node concept="3F0A7n" id="1dKBELvj1C9" role="2wV5jI">
-            <property role="1Intyy" value="true" />
-            <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
-            <ref role="1k5W1q" node="1dKBELvjiZ2" resolve="ContextReference" />
-          </node>
-        </node>
-      </node>
-      <node concept="3F0ifn" id="1dKBELvj1Cc" role="3EZMnx">
-        <property role="3F0ifm" value="is defined" />
-      </node>
-      <node concept="l2Vlx" id="1dKBELvj1BL" role="2iSdaV" />
-    </node>
-  </node>
-  <node concept="V5hpn" id="1dKBELvjiYZ">
-    <property role="TrG5h" value="Constraints_Styles" />
-    <node concept="14StLt" id="1dKBELvjiZ2" role="V601i">
-      <property role="TrG5h" value="ContextReference" />
-      <node concept="Vb9p2" id="4zSofKea84E" role="3F10Kt">
-        <property role="Vbekb" value="BOLD" />
-      </node>
-      <node concept="VechU" id="4zSofKea84M" role="3F10Kt">
-        <property role="Vb096" value="DARK_GREEN" />
-      </node>
-    </node>
-  </node>
   <node concept="24kQdi" id="35M2kEOxcPc">
     <ref role="1XX52x" to="bm42:35M2kEOxcOG" resolve="ApplicableCondition" />
     <node concept="3EZMnI" id="35M2kEOxcPe" role="2wV5jI">
@@ -988,6 +953,38 @@
         <node concept="2EHx9g" id="1dKBELvjFVl" role="2iSdaV" />
       </node>
       <node concept="l2Vlx" id="35M2kEOxcPh" role="2iSdaV" />
+    </node>
+  </node>
+  <node concept="PKFIW" id="1dKBELvgTxl">
+    <property role="TrG5h" value="ConstraintsDef_isDefined" />
+    <ref role="1XX52x" to="bm42:6kKc3mjlOch" resolve="ContextReference" />
+    <node concept="3EZMnI" id="1dKBELvj1BI" role="2wV5jI">
+      <node concept="1iCGBv" id="1dKBELvj1BZ" role="3EZMnx">
+        <ref role="1NtTu8" to="bm42:6kKc3mjlSTu" resolve="declaration" />
+        <node concept="1sVBvm" id="1dKBELvj1C1" role="1sWHZn">
+          <node concept="3F0A7n" id="1dKBELvj1C9" role="2wV5jI">
+            <property role="1Intyy" value="true" />
+            <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
+            <ref role="1k5W1q" node="1dKBELvjiZ2" resolve="ContextReference" />
+          </node>
+        </node>
+      </node>
+      <node concept="3F0ifn" id="1dKBELvj1Cc" role="3EZMnx">
+        <property role="3F0ifm" value="is defined" />
+      </node>
+      <node concept="l2Vlx" id="1dKBELvj1BL" role="2iSdaV" />
+    </node>
+  </node>
+  <node concept="V5hpn" id="1dKBELvjiYZ">
+    <property role="TrG5h" value="Constraints_Styles" />
+    <node concept="14StLt" id="1dKBELvjiZ2" role="V601i">
+      <property role="TrG5h" value="ContextReference" />
+      <node concept="Vb9p2" id="4zSofKea84E" role="3F10Kt">
+        <property role="Vbekb" value="BOLD" />
+      </node>
+      <node concept="VechU" id="4zSofKea84M" role="3F10Kt">
+        <property role="Vb096" value="DARK_GREEN" />
+      </node>
     </node>
   </node>
 </model>

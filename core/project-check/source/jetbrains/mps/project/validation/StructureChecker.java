@@ -136,7 +136,7 @@ public class StructureChecker extends AbstractNodeCheckerInEditor implements ICh
         continue;
       }
       assert l != null : "non-root node is supposed to have proper aggregation";
-      errorsCollector.addError(new ConceptFeatureMissingError(node, l));
+//      errorsCollector.addError(new ConceptFeatureMissingError(node, l));
     }
 
     List<SReferenceLink> refs = IterableUtil.asList(concept.getReferenceLinks());

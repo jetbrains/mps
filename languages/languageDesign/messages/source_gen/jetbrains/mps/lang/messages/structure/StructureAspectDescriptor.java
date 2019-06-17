@@ -135,6 +135,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(2);
     b.associate("concept", 0x63c2f3669ce56d5dL).target(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL).optional(false).origin("7188575577281228125").done();
     b.aggregate("messageProviders", 0x6530303593ae9cf2L).target(0xad93155d79b24759L, 0xb10c55123e763903L, 0x6530303593ae1651L).optional(true).ordered(true).multiple(true).origin("7291380803381927154").done();
+    b.alias("messages root");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForModelRefForMe() {

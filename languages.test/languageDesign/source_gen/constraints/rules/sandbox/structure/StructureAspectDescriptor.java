@@ -16,6 +16,8 @@ import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptA = createDescriptorForA();
   /*package*/ final ConceptDescriptor myConceptB = createDescriptorForB();
+  /*package*/ final ConceptDescriptor myConceptC = createDescriptorForC();
+  /*package*/ final ConceptDescriptor myConceptD = createDescriptorForD();
   private final LanguageConceptSwitch myIndexSwitch;
 
   public StructureAspectDescriptor() {
@@ -30,7 +32,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptA, myConceptB);
+    return Arrays.asList(myConceptA, myConceptB, myConceptC, myConceptD);
   }
 
   @Override
@@ -41,6 +43,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptA;
       case LanguageConceptSwitch.B:
         return myConceptB;
+      case LanguageConceptSwitch.C:
+        return myConceptC;
+      case LanguageConceptSwitch.D:
+        return myConceptD;
       default:
         return null;
     }
@@ -58,6 +64,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForA() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("constraints.rules.sandbox", "A", 0xa6518565787648e9L, 0x8d439ef97836a52eL, 0x7825711952b6d480L);
     b.class_(false, false, false);
+    b.parent(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x3ee1b46a97ab01b8L);
     b.origin("r:2207aff5-dd54-403c-bdeb-0b38c43db7b7(constraints.rules.sandbox.structure)/8657450212265481344");
     b.version(2);
     b.property("a", 0x7825711952b815edL).type(PrimitiveTypeId.INTEGER).origin("8657450212265563629").done();
@@ -66,9 +73,28 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForB() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("constraints.rules.sandbox", "B", 0xa6518565787648e9L, 0x8d439ef97836a52eL, 0x7af41afae28e1a15L);
     b.class_(false, false, true);
+    b.parent(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x3ee1b46a97ab01b8L);
     b.origin("r:2207aff5-dd54-403c-bdeb-0b38c43db7b7(constraints.rules.sandbox.structure)/8859736031789718037");
     b.version(2);
-    b.aggregate("as", 0x7af41afae28e1a16L).target(0xa6518565787648e9L, 0x8d439ef97836a52eL, 0x7825711952b6d480L).optional(true).ordered(true).multiple(false).origin("8859736031789718038").done();
+    b.aggregate("as", 0x7af41afae28e1a16L).target(0xa6518565787648e9L, 0x8d439ef97836a52eL, 0x7825711952b6d480L).optional(true).ordered(true).multiple(true).origin("8859736031789718038").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForC() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("constraints.rules.sandbox", "C", 0xa6518565787648e9L, 0x8d439ef97836a52eL, 0x3f81296c9b419bfaL);
+    b.class_(false, false, false);
+    b.parent(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x3ee1b46a97ab01b8L);
+    b.origin("r:2207aff5-dd54-403c-bdeb-0b38c43db7b7(constraints.rules.sandbox.structure)/4575984242823109626");
+    b.version(2);
+    b.property("c", 0x3f81296c9b41b6bcL).type(PrimitiveTypeId.BOOLEAN).origin("4575984242823116476").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForD() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("constraints.rules.sandbox", "D", 0xa6518565787648e9L, 0x8d439ef97836a52eL, 0x3f81296c9b419bfbL);
+    b.class_(false, false, true);
+    b.parent(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x3ee1b46a97ab01b8L);
+    b.origin("r:2207aff5-dd54-403c-bdeb-0b38c43db7b7(constraints.rules.sandbox.structure)/4575984242823109627");
+    b.version(2);
+    b.aggregate("cc", 0x3ee1b46a97b06893L).target(0xa6518565787648e9L, 0x8d439ef97836a52eL, 0x3f81296c9b419bfaL).optional(true).ordered(true).multiple(true).origin("4531101070015883411").done();
     return b.create();
   }
 }
