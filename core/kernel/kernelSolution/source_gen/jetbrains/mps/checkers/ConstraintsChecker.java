@@ -10,6 +10,7 @@ import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeChild_Context;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeChild_Context.Builder;
 import jetbrains.mps.core.aspects.constraints.rules.ConstraintsRuleId;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeParent_Context;
+import jetbrains.mps.core.aspects.reporting.api.MessageProvider;
 import jetbrains.mps.core.aspects.reporting.api.ReportingAspectRegistry;
 import jetbrains.mps.errors.item.ConstraintsReportItem;
 import jetbrains.mps.errors.item.ConstraintsReportItem.CanBeChildFailedReportItem;
@@ -88,7 +89,13 @@ public class ConstraintsChecker extends AbstractNodeCheckerInEditor implements I
             ReportingAspectRegistry reportingRegistry = myHost.findComponent(ReportingAspectRegistry.class);
             String message = null;
             if (ruleWeReport instanceof ConstraintsRuleId) {
-              message = reportingRegistry == null ? null : reportingRegistry.findMessageForRule(nodeConcept, (ConstraintsRuleId) ruleWeReport);
+              if (reportingRegistry == null) {
+                message = null;
+              } else {
+                MessageProvider<CanBeChild_Context> messageProvider =
+                    (MessageProvider<CanBeChild_Context>) reportingRegistry.findMessageForRule(nodeConcept, (ConstraintsRuleId) ruleWeReport);
+                message = messageProvider.getMessage(context);
+              }
             }
             errorsCollector.addError(new CanBeChildFailedReportItem(node, parent, message, ruleId));
           }
@@ -104,7 +111,13 @@ public class ConstraintsChecker extends AbstractNodeCheckerInEditor implements I
             ReportingAspectRegistry reportingRegistry = myHost.findComponent(ReportingAspectRegistry.class);
             String message = null;
             if (ruleWeReport instanceof ConstraintsRuleId) {
-              message = reportingRegistry == null ? null : reportingRegistry.findMessageForRule(nodeConcept, (ConstraintsRuleId) ruleWeReport);
+              if (reportingRegistry == null) {
+                message = null;
+              } else {
+                MessageProvider<CanBeParent_Context> messageProvider =
+                    (MessageProvider<CanBeParent_Context>) reportingRegistry.findMessageForRule(nodeConcept, (ConstraintsRuleId) ruleWeReport);
+                message = messageProvider.getMessage(context);
+              }
             }
             errorsCollector.addError(new CanBeParentFailedReportItem(node, parent, message, ruleId));
           }
