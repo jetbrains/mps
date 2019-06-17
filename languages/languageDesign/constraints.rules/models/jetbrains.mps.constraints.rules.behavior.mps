@@ -480,7 +480,7 @@
     </node>
   </node>
   <node concept="13h7C7" id="4JP_D2W1bU0">
-    <ref role="13h7C2" to="bm42:6kKc3mjlOcg" resolve="ContextExpression" />
+    <ref role="13h7C2" to="bm42:6kKc3mjlOch" resolve="ContextReference" />
     <node concept="13i0hz" id="4JP_D2W1bUb" role="13h7CS">
       <property role="TrG5h" value="getEnclosingRule" />
       <node concept="3Tm1VV" id="4JP_D2W1bUc" role="1B3o_S" />

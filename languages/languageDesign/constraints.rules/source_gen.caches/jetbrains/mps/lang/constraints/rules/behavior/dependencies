@@ -11,7 +11,7 @@
     <classNode dependClassName="jetbrains.mps.lang.constraints.rules.behavior.ConstraintsRuleIdHolder__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.constraints.rules.behavior.ConstraintsRuleKindParameterConcept__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.constraints.rules.behavior.ConstraintsRuleKind__BehaviorDescriptor" />
-    <classNode dependClassName="jetbrains.mps.lang.constraints.rules.behavior.ContextExpression__BehaviorDescriptor" />
+    <classNode dependClassName="jetbrains.mps.lang.constraints.rules.behavior.ContextReference__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.constraints.rules.behavior.TypedIdentifier__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndex" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder" />
@@ -215,7 +215,7 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor" />
   </dependency>
-  <dependency className="jetbrains.mps.lang.constraints.rules.behavior.ContextExpression__BehaviorDescriptor">
+  <dependency className="jetbrains.mps.lang.constraints.rules.behavior.ContextReference__BehaviorDescriptor">
     <classNode dependClassName="java.lang.Class" />
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />

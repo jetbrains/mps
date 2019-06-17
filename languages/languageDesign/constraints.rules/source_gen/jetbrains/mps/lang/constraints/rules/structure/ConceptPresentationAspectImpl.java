@@ -22,9 +22,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_ConstraintsRuleIdHolder;
   private ConceptPresentation props_ConstraintsRuleKind;
   private ConceptPresentation props_ConstraintsRuleKindParameterConcept;
-  private ConceptPresentation props_ContextExpression;
-  private ConceptPresentation props_ContextRefOperation;
-  private ConceptPresentation props_ContextType;
+  private ConceptPresentation props_ContextReference;
   private ConceptPresentation props_TypedIdentifier;
 
   @Override
@@ -119,27 +117,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_ConstraintsRuleKindParameterConcept = cpb.create();
         }
         return props_ConstraintsRuleKindParameterConcept;
-      case LanguageConceptSwitch.ContextExpression:
-        if (props_ContextExpression == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.rawPresentation("context");
-          props_ContextExpression = cpb.create();
-        }
-        return props_ContextExpression;
-      case LanguageConceptSwitch.ContextRefOperation:
-        if (props_ContextRefOperation == null) {
+      case LanguageConceptSwitch.ContextReference:
+        if (props_ContextReference == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByReference(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593574311L, 0x6530303593578e5eL, "declaration", "", "");
-          props_ContextRefOperation = cpb.create();
+          props_ContextReference = cpb.create();
         }
-        return props_ContextRefOperation;
-      case LanguageConceptSwitch.ContextType:
-        if (props_ContextType == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.rawPresentation("contexttype");
-          props_ContextType = cpb.create();
-        }
-        return props_ContextType;
+        return props_ContextReference;
       case LanguageConceptSwitch.TypedIdentifier:
         if (props_TypedIdentifier == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

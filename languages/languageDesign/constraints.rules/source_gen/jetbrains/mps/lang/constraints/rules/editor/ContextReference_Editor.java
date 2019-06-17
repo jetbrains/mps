@@ -7,8 +7,8 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
 
-public class ContextExpression_Editor extends DefaultNodeEditor {
+public class ContextReference_Editor extends DefaultNodeEditor {
   public EditorCell createEditorCell(EditorContext editorContext, SNode node) {
-    return new ContextExpression_EditorBuilder_a(editorContext, node).createCell();
+    return new ContextReference_EditorBuilder_a(editorContext, node).createCell();
   }
 }

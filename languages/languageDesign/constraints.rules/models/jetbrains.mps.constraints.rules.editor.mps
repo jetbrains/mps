@@ -377,7 +377,7 @@
     </node>
   </node>
   <node concept="24kQdi" id="6kKc3mjlSTs">
-    <ref role="1XX52x" to="bm42:6kKc3mjlOch" resolve="ContextRefOperation" />
+    <ref role="1XX52x" to="bm42:6kKc3mjlOch" resolve="ContextReference" />
     <node concept="1iCGBv" id="6kKc3mjlST$" role="2wV5jI">
       <ref role="1NtTu8" to="bm42:6kKc3mjlSTu" resolve="declaration" />
       <node concept="1sVBvm" id="6kKc3mjlSTB" role="1sWHZn">
@@ -391,18 +391,6 @@
             <property role="Vb096" value="DARK_GREEN" />
           </node>
         </node>
-      </node>
-    </node>
-  </node>
-  <node concept="24kQdi" id="6kKc3mjm0q0">
-    <ref role="1XX52x" to="bm42:6kKc3mjlOcg" resolve="ContextExpression" />
-    <node concept="3F0ifn" id="6kKc3mjm3Kx" role="2wV5jI">
-      <property role="3F0ifm" value="context" />
-      <node concept="Vb9p2" id="4zSofKe9TFd" role="3F10Kt">
-        <property role="Vbekb" value="ITALIC" />
-      </node>
-      <node concept="VechU" id="4zSofKe9TFi" role="3F10Kt">
-        <property role="Vb096" value="DARK_BLUE" />
       </node>
     </node>
   </node>

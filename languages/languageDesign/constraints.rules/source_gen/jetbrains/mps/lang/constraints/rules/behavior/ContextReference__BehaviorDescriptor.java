@@ -19,8 +19,8 @@ import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
-public final class ContextExpression__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593574310L, "jetbrains.mps.lang.constraints.rules.structure.ContextExpression");
+public final class ContextReference__BehaviorDescriptor extends BaseBHDescriptor {
+  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593574311L, "jetbrains.mps.lang.constraints.rules.structure.ContextReference");
 
   public static final SMethod<SNode> getEnclosingRule_id4JP_D2W1bUb = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getEnclosingRule").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4JP_D2W1bUb").build();
 
@@ -33,7 +33,7 @@ public final class ContextExpression__BehaviorDescriptor extends BaseBHDescripto
     return SNodeOperations.getNodeAncestor(__thisNode__, MetaAdapterFactory.getInterfaceConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359356e968L, "jetbrains.mps.lang.constraints.rules.structure.ConstraintsExpressionHolder"), false, false);
   }
 
-  /*package*/ ContextExpression__BehaviorDescriptor() {
+  /*package*/ ContextReference__BehaviorDescriptor() {
   }
 
   @Override

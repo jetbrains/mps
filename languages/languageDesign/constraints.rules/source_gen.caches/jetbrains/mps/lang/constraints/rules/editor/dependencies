@@ -547,36 +547,14 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.editor.runtime.descriptor.AbstractEditorBuilder" />
   </dependency>
-  <dependency className="jetbrains.mps.lang.constraints.rules.editor.ContextExpression_Editor">
-    <classNode dependClassName="jetbrains.mps.lang.constraints.rules.editor.ContextExpression_EditorBuilder_a" />
+  <dependency className="jetbrains.mps.lang.constraints.rules.editor.ContextReference_Editor">
+    <classNode dependClassName="jetbrains.mps.lang.constraints.rules.editor.ContextReference_EditorBuilder_a" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.nodeEditor.DefaultNodeEditor" />
   </dependency>
-  <dependency className="jetbrains.mps.lang.constraints.rules.editor.ContextExpression_EditorBuilder_a">
-    <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleAttributes" />
-    <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleImpl" />
-    <classNode dependClassName="jetbrains.mps.nodeEditor.MPSColors" />
-    <classNode dependClassName="jetbrains.mps.nodeEditor.MPSFonts" />
-    <classNode dependClassName="jetbrains.mps.nodeEditor.cells.EditorCell_Constant" />
-    <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />
-    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
-    <classNode dependClassName="jetbrains.mps.openapi.editor.style.Style" />
-    <classNode dependClassName="jetbrains.mps.openapi.editor.style.StyleRegistry" />
-    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
-    <classNode extendsClassName="jetbrains.mps.editor.runtime.descriptor.AbstractEditorBuilder" />
-  </dependency>
-  <dependency className="jetbrains.mps.lang.constraints.rules.editor.ContextRefOperation_Editor">
-    <classNode dependClassName="jetbrains.mps.lang.constraints.rules.editor.ContextRefOperation_EditorBuilder_a" />
-    <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />
-    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
-    <classNode extendsClassName="jetbrains.mps.nodeEditor.DefaultNodeEditor" />
-  </dependency>
-  <dependency className="jetbrains.mps.lang.constraints.rules.editor.ContextRefOperation_EditorBuilder_a">
+  <dependency className="jetbrains.mps.lang.constraints.rules.editor.ContextReference_EditorBuilder_a">
     <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
@@ -620,7 +598,7 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.editor.runtime.descriptor.AbstractEditorBuilder" />
   </dependency>
-  <dependency className="jetbrains.mps.lang.constraints.rules.editor.ContextRefOperation_SubstituteMenu">
+  <dependency className="jetbrains.mps.lang.constraints.rules.editor.ContextReference_SubstituteMenu">
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.ArrayList" />
     <classNode dependClassName="java.util.Collection" />
@@ -657,9 +635,8 @@
     <classNode dependClassName="jetbrains.mps.lang.constraints.rules.editor.ConstraintsRuleKindParameterConcept_Editor" />
     <classNode dependClassName="jetbrains.mps.lang.constraints.rules.editor.ConstraintsRuleKind_Editor" />
     <classNode dependClassName="jetbrains.mps.lang.constraints.rules.editor.ConstraintsRule_Editor" />
-    <classNode dependClassName="jetbrains.mps.lang.constraints.rules.editor.ContextExpression_Editor" />
-    <classNode dependClassName="jetbrains.mps.lang.constraints.rules.editor.ContextRefOperation_Editor" />
-    <classNode dependClassName="jetbrains.mps.lang.constraints.rules.editor.ContextRefOperation_SubstituteMenu" />
+    <classNode dependClassName="jetbrains.mps.lang.constraints.rules.editor.ContextReference_Editor" />
+    <classNode dependClassName="jetbrains.mps.lang.constraints.rules.editor.ContextReference_SubstituteMenu" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndex" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.ConceptEditor" />

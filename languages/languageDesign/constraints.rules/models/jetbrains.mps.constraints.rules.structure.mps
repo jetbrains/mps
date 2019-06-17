@@ -144,16 +144,10 @@
       <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
     </node>
   </node>
-  <node concept="1TIwiD" id="6kKc3mjlOcg">
-    <property role="EcuMT" value="7291380803376202512" />
-    <property role="TrG5h" value="ContextExpression" />
-    <property role="34LRSv" value="context" />
-    <ref role="1TJDcQ" to="tpee:fz3vP1J" resolve="Expression" />
-  </node>
   <node concept="1TIwiD" id="6kKc3mjlOch">
     <property role="EcuMT" value="7291380803376202513" />
-    <property role="TrG5h" value="ContextRefOperation" />
-    <ref role="1TJDcQ" to="tpee:h_B$H5g" resolve="AbstractOperation" />
+    <property role="TrG5h" value="ContextReference" />
+    <ref role="1TJDcQ" to="tpee:fz3vP1J" resolve="Expression" />
     <node concept="1TJgyj" id="6kKc3mjlSTu" role="1TKVEi">
       <property role="IQ2ns" value="7291380803376221790" />
       <property role="20lmBu" value="reference" />
@@ -177,12 +171,6 @@
     <node concept="PrWs8" id="6kKc3mjm6R$" role="PzmwI">
       <ref role="PrY4T" node="6kKc3mjlI_C" resolve="ConstraintsExpressionHolder" />
     </node>
-  </node>
-  <node concept="1TIwiD" id="6kKc3mjmfL3">
-    <property role="EcuMT" value="7291380803376315459" />
-    <property role="TrG5h" value="ContextType" />
-    <property role="34LRSv" value="contexttype" />
-    <ref role="1TJDcQ" to="tpee:fz3vP1H" resolve="Type" />
   </node>
   <node concept="1TIwiD" id="6kKc3mjpIBl">
     <property role="EcuMT" value="7291380803377228245" />
