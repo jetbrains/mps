@@ -24,6 +24,9 @@ import java.util.List;
 /**
  * Non-reusable session object to pass to {@link jetbrains.mps.generator.GenerationFacade} to get notified
  * about transformation events.
+ * XXX I don't like it exposes public methods intended for use from generator internals, but no idea how to do it better.
+ *     perhaps, TraceRegistry.createSession() shall exposed some limited 'session' interface, and install actual object with
+ *     rule factory into some internal location (or even into generation settings?) for GF to consume later?
  * @author Artem Tikhomirov
  */
 public final class TraceFacility {
@@ -51,4 +54,8 @@ public final class TraceFacility {
     // may want to cache RT2 instances per RR if single thread or RT2 made thread-aware
     return new RuleTrace2(myActiveClients, reductionRule);
   }
+
+  // pair of methods to manage/tell the state of this session, for client read thread to figure out there would be no more datagrams
+  // like sessionClosing():boolean and closeSession() invoked from GFacade when transformation is over. OTOH, it might be responsibility
+  // of a code external to GF to manage the session (e.g. what if I'd like to run sequence of transformations?), is it the case?
 }

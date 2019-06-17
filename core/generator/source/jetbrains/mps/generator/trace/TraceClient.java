@@ -21,4 +21,7 @@ package jetbrains.mps.generator.trace;
  * @since 2017.3
  */
 public interface TraceClient {
+  // instances of this interface are supposed to be reloadable (e.g. coming from a plugin), thus shall expose stuff one can
+  // keep without holding the instance
+  // long getCapabilities() {0xVERSION << x | 0xFLAGS}
 }

@@ -55,6 +55,12 @@ public class TraceRegistry implements CoreComponent {
   }
 
   public TraceFacility createSession() {
+    // on one hand, I can pass TraceClient/ClientToken right here in this method, OTOH, the idea here is to keep client registration
+    // separate from the session/trace activation, so that TraceClients may behave as "global" listeners for any transformation session
+    // activated by anyone (provided this m2m session opts to invoke this method).
+    //
+    // perhaps, it's the right moment to consult tokens if they are still alive or interested to take part (we can pass some identification
+    // here to tell one m2m scenario from another)
     return new TraceFacility(new ArrayList<>(myActiveClients));
   }
 

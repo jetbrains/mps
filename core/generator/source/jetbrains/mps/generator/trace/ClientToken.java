@@ -43,6 +43,11 @@ public final class ClientToken {
 
   /**
    * Clients use the stream to receive trace information
+   * XXX perhaps, can add #getCommandStream():WritableByteChannel() to give clients a mechanism to send instructions to backend
+   *     e.g. may ask for "vocabulary" that keep rule node references and other info that I'd better pass as indexes in datagram
+   *     Could add e.g. registerVocabularyEntry(long kindAndKey, SNodeReference) so that e.g. RuleTrace2 can record its rule identity
+   *     prior to first sendToClient() call (datagram there would include kindAndKey instead of SNodeReference then). Perhaps,
+   *     it's registerVocabularyEntry() to generate and return the key value.
    */
   public ReadableByteChannel getMessageStream() {
     // I don't want to deal with synch issues accessing data, therefore no shared objects except primitives
@@ -52,6 +57,9 @@ public final class ClientToken {
   }
 
   /*package*/ void sendToClient(byte[] message) {
+    // XXX if we make RuleTrace2 (or any other caller of the method) thread-aware, can we pass ByteBuffer (re-usable by RT2) here directly?
+    //     perhaps, not, as we need to keep datagram instance here for some time, and can not guarantee same RT2 instance won't get notified
+    //     sooner than we process the BB instance here.
     if (!myChannel.isOpen()) {
       return;
     }
@@ -69,6 +77,8 @@ public final class ClientToken {
     }
   }
 
+  // XXX is there's a nice way to tell clients requires size of BB suitable to fit all datagrams?
+  //     perhaps, it has to be part of protocol version specification? ClientToken seems the right place to expose
   private class DtgChannel implements ReadableByteChannel {
     private boolean myIsOpen = true;
 
