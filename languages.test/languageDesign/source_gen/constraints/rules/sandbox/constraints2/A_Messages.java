@@ -12,28 +12,28 @@ import java.util.Collections;
 import java.util.Arrays;
 
 public final class A_Messages implements MessagesDescriptor {
-  private static final MessageProvider<CanBeChild_Context> FOR_THIRD_MSGPROVIDER_id5258059200644249318 = new BaseMessageProvider<CanBeChild_Context>(A_Constraints2.Rule_third.ID_THIRD) {
+  private static final MessageProvider<CanBeChild_Context> MSGPROVIDER_THIRD_xwdw45_a = new BaseMessageProvider<CanBeChild_Context>(A_Constraints2.Rule_third.ID_THIRD) {
     @NotNull
     @Override
     public String getMessage(CanBeChild_Context context) {
       return "I OVERRIDE YOU";
     }
   };
-  private static final MessageProvider<CanBeChild_Context> FOR_THIRD_MSGPROVIDER_id5258059200644249334 = new BaseMessageProvider<CanBeChild_Context>(A_Constraints2.Rule_third.ID_THIRD) {
+  private static final MessageProvider<CanBeChild_Context> MSGPROVIDER_THIRD_xwdw45_b = new BaseMessageProvider<CanBeChild_Context>(A_Constraints2.Rule_third.ID_THIRD) {
     @NotNull
     @Override
     public String getMessage(CanBeChild_Context context) {
       return "I OVERRIDE YOU TWICE";
     }
   };
-  private static final MessageProvider<CanBeChild_Context> FOR_FIRST_MSGPROVIDER_id686743897210168236 = new BaseMessageProvider<CanBeChild_Context>(A_Constraints2.Rule_first.ID_FIRST) {
+  private static final MessageProvider<CanBeChild_Context> MSGPROVIDER_FIRST_xwdw45_c = new BaseMessageProvider<CanBeChild_Context>(A_Constraints2.Rule_first.ID_FIRST) {
     @NotNull
     @Override
     public String getMessage(CanBeChild_Context context) {
       return "Node is " + String.valueOf(context.getNode()) + ", life is %Life%";
     }
   };
-  private static final MessageProvider<CanBeChild_Context> FOR_SECOND_MSGPROVIDER_id686743897210168237 = new BaseMessageProvider<CanBeChild_Context>(A_Constraints2.Rule_second.ID_SECOND) {
+  private static final MessageProvider<CanBeChild_Context> MSGPROVIDER_SECOND_xwdw45_d = new BaseMessageProvider<CanBeChild_Context>(A_Constraints2.Rule_second.ID_SECOND) {
     @NotNull
     @Override
     public String getMessage(CanBeChild_Context context) {
@@ -41,7 +41,7 @@ public final class A_Messages implements MessagesDescriptor {
     }
   };
 
-  private static final List<MessageProvider<?>> PROVIDERS = Collections.unmodifiableList(Arrays.<MessageProvider<?>>asList(FOR_THIRD_MSGPROVIDER_id5258059200644249318, FOR_THIRD_MSGPROVIDER_id5258059200644249334, FOR_FIRST_MSGPROVIDER_id686743897210168236, FOR_SECOND_MSGPROVIDER_id686743897210168237));
+  private static final List<MessageProvider<?>> PROVIDERS = Collections.unmodifiableList(Arrays.<MessageProvider<?>>asList(MSGPROVIDER_THIRD_xwdw45_a, MSGPROVIDER_THIRD_xwdw45_b, MSGPROVIDER_FIRST_xwdw45_c, MSGPROVIDER_SECOND_xwdw45_d));
 
   @NotNull
   @Override

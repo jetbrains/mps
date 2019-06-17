@@ -1630,20 +1630,14 @@
                               </node>
                             </node>
                             <node concept="3cpWs6" id="6f2WQqsXVMm" role="3cqZAp">
-                              <node concept="3cpWs3" id="6f2WQqsXW7P" role="3cqZAk">
-                                <node concept="2OqwBi" id="6f2WQqsXWKs" role="3uHU7w">
-                                  <node concept="2OqwBi" id="6f2WQqsXWn2" role="2Oq$k0">
-                                    <node concept="30H73N" id="6f2WQqsXW9m" role="2Oq$k0" />
-                                    <node concept="3TrEf2" id="6f2WQqsXWAz" role="2OqNvi">
-                                      <ref role="3Tt5mk" to="bm42:6kKc3mjlSTu" resolve="declaration" />
-                                    </node>
+                              <node concept="2YIFZM" id="q4prYF2G_u" role="3cqZAk">
+                                <ref role="37wK5l" to="tgww:q4prYF2CJB" resolve="getContextMethodName" />
+                                <ref role="1Pybhc" to="tgww:4Np0kcC9DT6" resolve="ContextUtil" />
+                                <node concept="2OqwBi" id="q4prYF2GMy" role="37wK5m">
+                                  <node concept="30H73N" id="q4prYF2GAZ" role="2Oq$k0" />
+                                  <node concept="3TrEf2" id="q4prYF2GX9" role="2OqNvi">
+                                    <ref role="3Tt5mk" to="bm42:6kKc3mjlSTu" resolve="declaration" />
                                   </node>
-                                  <node concept="3TrcHB" id="6f2WQqsXWYf" role="2OqNvi">
-                                    <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
-                                  </node>
-                                </node>
-                                <node concept="Xl_RD" id="6f2WQqsXVNM" role="3uHU7B">
-                                  <property role="Xl_RC" value="get" />
                                 </node>
                               </node>
                             </node>
