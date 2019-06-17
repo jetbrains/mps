@@ -3,19 +3,37 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068390468200:jetbrains.mps.baseLanguage.structure.FieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
+  <root nodeRef="r:7fc220b5-3806-43f7-a6e6-6f3ea2d76c9c(util)/5537458604776791622">
+    <file name="ContextUtil.java">
+      <node id="8525842417252896863" at="13,197,14,196" concept="5" />
+      <node id="8525842417252896874" at="15,204,16,197" concept="5" />
+      <node id="8525842417252896883" at="17,5,18,16" concept="5" />
+      <node id="8525842417252896861" at="12,72,17,5" concept="3" />
+      <node id="5537458604776842939" at="12,0,20,0" concept="6" trace="matchContextForRuleKind#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <scope id="8525842417252896862" at="13,197,14,196" />
+      <scope id="8525842417252896873" at="15,204,16,197" />
+      <scope id="5537458604776791650" at="12,72,18,16" />
+      <scope id="5537458604776842939" at="12,0,20,0">
+        <var name="ruleKind" id="5537458604776816855" />
+      </scope>
+      <unit id="5537458604776791622" at="11,0,21,0" name="util.ContextUtil" />
+    </file>
+  </root>
   <root nodeRef="r:7fc220b5-3806-43f7-a6e6-6f3ea2d76c9c(util)/7082824793308696454">
     <file name="NameHelper.java">
       <node id="66188535716407265" at="12,0,13,0" concept="2" trace="myRuleDecl" />
       <node id="66188535716408472" at="14,46,15,26" concept="1" />
-      <node id="1540166288377306430" at="19,38,20,57" concept="4" />
-      <node id="1540166288377365872" at="24,36,25,167" concept="4" />
-      <node id="8452785328911042429" at="29,34,30,98" concept="4" />
+      <node id="1540166288377306430" at="19,38,20,57" concept="5" />
+      <node id="1540166288377365872" at="24,36,25,167" concept="5" />
+      <node id="8452785328911042429" at="29,34,30,98" concept="5" />
       <node id="7082824793308708548" at="14,0,17,0" concept="0" trace="NameHelper#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="7082824793308696498" at="18,0,22,0" concept="3" trace="getGeneratedString#()Ljava/lang/String;" />
-      <node id="1540166288377365897" at="23,0,27,0" concept="3" trace="getGeneratedName#()Ljava/lang/String;" />
-      <node id="1540166288377303469" at="28,0,32,0" concept="3" trace="getGeneratedId#()Ljava/lang/String;" />
+      <node id="7082824793308696498" at="18,0,22,0" concept="4" trace="getGeneratedString#()Ljava/lang/String;" />
+      <node id="1540166288377365897" at="23,0,27,0" concept="4" trace="getGeneratedName#()Ljava/lang/String;" />
+      <node id="1540166288377303469" at="28,0,32,0" concept="4" trace="getGeneratedId#()Ljava/lang/String;" />
       <scope id="7082824793308708552" at="14,46,15,26" />
       <scope id="7082824793308696506" at="19,38,20,57" />
       <scope id="1540166288377365854" at="24,36,25,167" />
