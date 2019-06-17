@@ -14,6 +14,7 @@
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
       </concept>
+      <concept id="1070534370425" name="jetbrains.mps.baseLanguage.structure.IntegerType" flags="in" index="10Oyi0" />
       <concept id="1068580320020" name="jetbrains.mps.baseLanguage.structure.IntegerConstant" flags="nn" index="3cmrfG">
         <property id="1068580320021" name="value" index="3cmrfH" />
       </concept>
@@ -34,6 +35,9 @@
     <language id="47257bf3-78d3-470b-89d9-8c3261a61d15" name="jetbrains.mps.lang.constraints.rules">
       <concept id="315923949160453290" name="jetbrains.mps.lang.constraints.rules.structure.ConstraintsRuleIdHolder" flags="ng" index="1DRju2">
         <property id="6714410169261853888" name="ruleId" index="EcuMT" />
+      </concept>
+      <concept id="7291380803377228245" name="jetbrains.mps.lang.constraints.rules.structure.ConstraintsDef" flags="ng" index="3QlHBw">
+        <child id="5473446470512342703" name="type" index="3RXm0Z" />
       </concept>
       <concept id="7291380803376071201" name="jetbrains.mps.lang.constraints.rules.structure.ConstraintsRoot" flags="ng" index="3Qpn8k">
         <reference id="7291380803380183169" name="concept" index="3QD32O" />
@@ -141,17 +145,24 @@
           </node>
         </node>
       </node>
+      <node concept="3QlHBw" id="6fJcw0tqvnD" role="3Qpnal">
+        <property role="TrG5h" value="nodeA" />
+        <node concept="10Oyi0" id="6fJcw0tqCuW" role="3RXm0Z" />
+        <node concept="2OqwBi" id="6fJcw0tqvwe" role="3QpH_s">
+          <node concept="3QpRc$" id="6fJcw0tqTRV" role="2Oq$k0">
+            <ref role="3QpVTF" to="qffw:hyoMxHFKoi" resolve="node" />
+          </node>
+          <node concept="3TrcHB" id="6fJcw0tqTYQ" role="2OqNvi">
+            <ref role="3TsBF5" to="ktae:7w_sh_iI1nH" resolve="a" />
+          </node>
+        </node>
+      </node>
       <node concept="3Qq5Rn" id="hyoMxHLT5C" role="3Qpnal">
         <property role="EcuMT" value="315923949160993128" />
         <property role="TrG5h" value="third" />
         <node concept="3y3z36" id="hyoMxHLTcF" role="3QpH_s">
-          <node concept="2OqwBi" id="hyoMxHLT6L" role="3uHU7B">
-            <node concept="3QpRc$" id="q4prYF3Kq6" role="2Oq$k0">
-              <ref role="3QpVTF" to="qffw:hyoMxHFKoi" resolve="node" />
-            </node>
-            <node concept="3TrcHB" id="hyoMxHLT6P" role="2OqNvi">
-              <ref role="3TsBF5" to="ktae:7w_sh_iI1nH" resolve="a" />
-            </node>
+          <node concept="3QpRc$" id="6fJcw0tqvCQ" role="3uHU7B">
+            <ref role="3QpVTF" node="6fJcw0tqvnD" resolve="nodeA" />
           </node>
           <node concept="3cmrfG" id="hyoMxHLT6K" role="3uHU7w">
             <property role="3cmrfH" value="65" />
