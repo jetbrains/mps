@@ -33,6 +33,7 @@ import java.util.Collections;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.extapi.model.SModelBase;
 import org.jetbrains.mps.openapi.module.SModuleId;
+import org.jetbrains.mps.openapi.model.SModelName;
 import jetbrains.mps.smodel.SModelStereotype;
 import java.util.ArrayList;
 import jetbrains.mps.smodel.RegularModelDescriptor;
@@ -238,9 +239,20 @@ public class ProjectStructureModule extends AbstractModule implements CoreCompon
 
   private SModelReference getSModelReference(SModule module) {
     SModuleId moduleId = module.getModuleReference().getModuleId();
-    SModelId id = (moduleId != null ? jetbrains.mps.smodel.SModelId.foreign("project", moduleId.toString()) : null);
-    return new jetbrains.mps.smodel.SModelReference(this.getModuleReference(), id, "module." + module.getModuleName() + "@" + SModelStereotype.getStubStereotypeForId("project"));
+    SModelId id = jetbrains.mps.smodel.SModelId.foreign("project", moduleId.toString());
+    final PersistenceFacade pf = PersistenceFacade.getInstance();
+    String mn = module.getModuleName();
+    if (mn == null || mn.isEmpty()) {
+      mn = "<none>";
+    } else {
+      mn = mn.replace('@', '_');
+      if (mn.charAt(mn.length() - 1) == '.') {
+        mn = mn.substring(0, mn.length() - 1) + '_';
+      }
+    }
+    return pf.createModelReference(this.getModuleReference(), id, new SModelName("module." + mn + '@' + SModelStereotype.getStubStereotypeForId("project")));
   }
+
   public String toString() {
     return getModuleName();
   }

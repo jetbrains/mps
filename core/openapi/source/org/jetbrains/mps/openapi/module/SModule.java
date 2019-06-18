@@ -39,11 +39,13 @@ public interface SModule {
   /**
    * The repository-wide unique identifier
    */
+  @NotNull
   SModuleId getModuleId();
 
   /**
    * Identical to getModuleReference.getModuleName()
    */
+  @Nullable
   String getModuleName();
 
   /**
