@@ -2,10 +2,10 @@
 <model ref="r:383be79d-d39d-4dc4-9df3-57e57bcac2b5(jetbrains.mps.ide.platform.watching)">
   <persistence version="9" />
   <languages>
-    <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="-1" />
-    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="-1" />
-    <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="-1" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
+    <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
+    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
+    <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="0" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
   </languages>
   <imports>
@@ -1047,6 +1047,24 @@
         <property role="DiZV1" value="false" />
         <property role="2aFKle" value="false" />
         <node concept="3clFbS" id="7i2QPJ2OP1q" role="3clF47">
+          <node concept="3clFbJ" id="3zBc_FBHwkX" role="3cqZAp">
+            <node concept="3clFbS" id="3zBc_FBHwkZ" role="3clFbx">
+              <node concept="3cpWs6" id="3zBc_FBHy3M" role="3cqZAp" />
+            </node>
+            <node concept="2ZW3vV" id="3zBc_FBHx_Q" role="3clFbw">
+              <node concept="3uibUv" id="3zBc_FBHy1K" role="2ZW6by">
+                <ref role="3uigEE" to="uvcm:~ArchiveFileSystem" resolve="ArchiveFileSystem" />
+              </node>
+              <node concept="2OqwBi" id="3zBc_FBHwNk" role="2ZW6bz">
+                <node concept="37vLTw" id="3zBc_FBHwmW" role="2Oq$k0">
+                  <ref role="3cqZAo" node="7i2QPJ2OPuz" resolve="dir" />
+                </node>
+                <node concept="liA8E" id="3zBc_FBHxqJ" role="2OqNvi">
+                  <ref role="37wK5l" to="jlff:~VirtualFile.getFileSystem()" resolve="getFileSystem" />
+                </node>
+              </node>
+            </node>
+          </node>
           <node concept="3cpWs8" id="7i2QPJ2OPUS" role="3cqZAp">
             <node concept="3cpWsn" id="7i2QPJ2OPUT" role="3cpWs9">
               <property role="TrG5h" value="dirQueue" />
@@ -1245,6 +1263,24 @@
         <node concept="3cqZAl" id="7i2QPJ2OKao" role="3clF45" />
         <node concept="3Tm6S6" id="7i2QPJ2OKap" role="1B3o_S" />
         <node concept="3clFbS" id="7i2QPJ2OKaq" role="3clF47">
+          <node concept="3clFbJ" id="3zBc_FBHyRx" role="3cqZAp">
+            <node concept="3clFbS" id="3zBc_FBHyRy" role="3clFbx">
+              <node concept="3cpWs6" id="3zBc_FBHyRz" role="3cqZAp" />
+            </node>
+            <node concept="2ZW3vV" id="3zBc_FBHyR$" role="3clFbw">
+              <node concept="3uibUv" id="3zBc_FBHyR_" role="2ZW6by">
+                <ref role="3uigEE" to="uvcm:~ArchiveFileSystem" resolve="ArchiveFileSystem" />
+              </node>
+              <node concept="2OqwBi" id="3zBc_FBHyRA" role="2ZW6bz">
+                <node concept="37vLTw" id="3zBc_FBHz0H" role="2Oq$k0">
+                  <ref role="3cqZAo" node="7i2QPJ2OKaJ" resolve="vf" />
+                </node>
+                <node concept="liA8E" id="3zBc_FBHyRC" role="2OqNvi">
+                  <ref role="37wK5l" to="jlff:~VirtualFile.getFileSystem()" resolve="getFileSystem" />
+                </node>
+              </node>
+            </node>
+          </node>
           <node concept="3cpWs8" id="7i2QPJ2OKat" role="3cqZAp">
             <node concept="3cpWsn" id="7i2QPJ2OKau" role="3cpWs9">
               <property role="TrG5h" value="file" />
@@ -1281,7 +1317,6 @@
           </node>
         </node>
       </node>
-      <node concept="2tJIrI" id="7i2QPJ2OgIY" role="jymVt" />
     </node>
   </node>
   <node concept="312cEu" id="7mrRUyVUv4e">
@@ -4027,28 +4062,6 @@
       <property role="od$2w" value="false" />
       <property role="DiZV1" value="false" />
       <node concept="3clFbS" id="5biTR9bEBgE" role="3clF47">
-        <node concept="3SKdUt" id="5biTR9bFt5Q" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXoqVW" role="3ndbpf">
-            <node concept="3oM_SD" id="ATZLwXoqVX" role="1PaTwD">
-              <property role="3oM_SC" value="todo:" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXoqVY" role="1PaTwD">
-              <property role="3oM_SC" value="ideal" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXoqVZ" role="1PaTwD">
-              <property role="3oM_SC" value="for" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXoqW0" role="1PaTwD">
-              <property role="3oM_SC" value="AOP" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXoqW1" role="1PaTwD">
-              <property role="3oM_SC" value="in" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXoqW2" role="1PaTwD">
-              <property role="3oM_SC" value="MPS!" />
-            </node>
-          </node>
-        </node>
         <node concept="3clFbJ" id="5biTR9bEC_L" role="3cqZAp">
           <node concept="2YIFZM" id="5biTR9bHzQN" role="3clFbw">
             <ref role="37wK5l" to="fyhk:~InternalFlag.isInternalMode()" resolve="isInternalMode" />
@@ -8719,7 +8732,6 @@
       <property role="TrG5h" value="getComponentName" />
       <property role="DiZV1" value="false" />
       <node concept="3Tm1VV" id="501K0YLMPTh" role="1B3o_S" />
-      <node concept="17QB3L" id="srfjDK4cTe" role="3clF45" />
       <node concept="2AHcQZ" id="501K0YLMPTj" role="2AJF6D">
         <ref role="2AI5Lk" to="mhfm:~NonNls" resolve="NonNls" />
       </node>
@@ -8736,6 +8748,7 @@
       <node concept="2AHcQZ" id="69OmYVxlaOf" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
+      <node concept="17QB3L" id="srfjDK4cTe" role="3clF45" />
     </node>
     <node concept="2tJIrI" id="501K0YLMPTo" role="jymVt" />
     <node concept="3clFb_" id="501K0YLMPV5" role="jymVt">
@@ -8944,10 +8957,6 @@
                   <ref role="3uigEE" to="jlff:~LocalFileSystem$WatchRequest" resolve="LocalFileSystem.WatchRequest" />
                 </node>
                 <node concept="2OqwBi" id="501K0YLMPWe" role="33vP2m">
-                  <node concept="2YIFZM" id="srfjDK4hsS" role="2Oq$k0">
-                    <ref role="37wK5l" to="jlff:~LocalFileSystem.getInstance()" resolve="getInstance" />
-                    <ref role="1Pybhc" to="jlff:~LocalFileSystem" resolve="LocalFileSystem" />
-                  </node>
                   <node concept="liA8E" id="501K0YLMPWg" role="2OqNvi">
                     <ref role="37wK5l" to="jlff:~LocalFileSystem.addRootToWatch(java.lang.String,boolean)" resolve="addRootToWatch" />
                     <node concept="37vLTw" id="501K0YLMPWh" role="37wK5m">
@@ -8956,6 +8965,10 @@
                     <node concept="3clFbT" id="501K0YLMPWi" role="37wK5m">
                       <property role="3clFbU" value="true" />
                     </node>
+                  </node>
+                  <node concept="2YIFZM" id="srfjDK4hsS" role="2Oq$k0">
+                    <ref role="37wK5l" to="jlff:~LocalFileSystem.getInstance()" resolve="getInstance" />
+                    <ref role="1Pybhc" to="jlff:~LocalFileSystem" resolve="LocalFileSystem" />
                   </node>
                 </node>
               </node>
@@ -9156,15 +9169,15 @@
                 <node concept="3clFbS" id="6EtKqJ$bm0K" role="3clFbx">
                   <node concept="3clFbF" id="501K0YLMPXm" role="3cqZAp">
                     <node concept="2OqwBi" id="501K0YLMPXn" role="3clFbG">
-                      <node concept="2YIFZM" id="srfjDK4ms4" role="2Oq$k0">
-                        <ref role="37wK5l" to="jlff:~LocalFileSystem.getInstance()" resolve="getInstance" />
-                        <ref role="1Pybhc" to="jlff:~LocalFileSystem" resolve="LocalFileSystem" />
-                      </node>
                       <node concept="liA8E" id="501K0YLMPXp" role="2OqNvi">
                         <ref role="37wK5l" to="jlff:~LocalFileSystem.removeWatchedRoot(com.intellij.openapi.vfs.LocalFileSystem$WatchRequest)" resolve="removeWatchedRoot" />
                         <node concept="37vLTw" id="501K0YLMPXq" role="37wK5m">
                           <ref role="3cqZAo" node="501K0YLMPXe" resolve="req" />
                         </node>
+                      </node>
+                      <node concept="2YIFZM" id="srfjDK4ms4" role="2Oq$k0">
+                        <ref role="37wK5l" to="jlff:~LocalFileSystem.getInstance()" resolve="getInstance" />
+                        <ref role="1Pybhc" to="jlff:~LocalFileSystem" resolve="LocalFileSystem" />
                       </node>
                     </node>
                   </node>

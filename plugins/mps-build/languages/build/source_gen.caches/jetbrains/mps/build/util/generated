@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="a2fnif92a1229xtox8cqcm0anj0yy1l">
+<product version="3" modelHash="-869tgn192dhjdiyiak5fzg3ugot8n2">
   <files names="ArtifactLookup.java:Context.java:DependenciesHelper.java:DescendantsScope.java:FetchDependenciesProcessor.java:FileSetUtil.java:GenerationUtil.java:JavaExportUtil.java:JavaModulesClosure.java:LocalSourcePathArtifact.java:MacroHelper.java:NameUtil.java:PathProvider.java:ProjectDependency.java:RelativePathHelper.java:RequiredDependenciesBuilder.java:ScopeUtil.java:UnpackHelper.java:VisibleArtifacts.java" />
 </product>
 

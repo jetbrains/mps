@@ -230,7 +230,6 @@ import java.util.Arrays;
   }
 
   private void printStat(String name, long beginTime) {
-    // todo: ideal for AOP in MPS! 
     if (InternalFlag.isInternalMode()) {
       if (LOG.isDebugEnabled()) {
         LOG.debug("FileProcessor: " + name + " -> " + (System.currentTimeMillis() - beginTime) / 1000.0 + "s");

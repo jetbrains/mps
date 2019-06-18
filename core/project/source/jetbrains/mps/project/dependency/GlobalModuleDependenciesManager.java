@@ -184,7 +184,7 @@ public class GlobalModuleDependenciesManager {
   }
 
   public interface ErrorHandler {
-    void depCannotBeResolved(@NotNull SDependency unresolvableDep);
+    void depCannotBeResolved(@NotNull SModule module, @NotNull SDependency unresolvableDep);
 
     void langSourceModuleCannotBeResolved(@NotNull SLanguage languageWithoutSource);
 
