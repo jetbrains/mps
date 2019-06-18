@@ -67,7 +67,7 @@ public final class UsedModulesCollector {
         }
       } else {
         if (scope != GENERATES_INTO && scope != DESIGN) {
-          handler.depCannotBeResolved(dependency);
+          handler.depCannotBeResolved(module, dependency);
         }
       }
     }

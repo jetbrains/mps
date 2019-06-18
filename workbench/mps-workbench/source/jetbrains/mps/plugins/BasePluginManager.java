@@ -76,6 +76,8 @@ public abstract class BasePluginManager<T> implements PluginLoader {
         if (myContributorToPlugin.containsKey(contributor)) { // not in one step because nulls are allowed
           LOG.error("", new IllegalArgumentException(this + ": contributor " + contributor + " is already registered"));
         }
+
+        LOG.debug("loading plugin from the contributor " + contributor);
         myContributorToPlugin.put(contributor, plugin);
       });
       List<T> notNullPlugins = plugins.values().stream().filter(Objects::nonNull).collect(Collectors.toList());

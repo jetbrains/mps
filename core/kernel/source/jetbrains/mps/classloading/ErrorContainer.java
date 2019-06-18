@@ -20,6 +20,7 @@ import jetbrains.mps.project.dependency.PostingWarningsErrorHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.module.SDependency;
+import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 
 import java.util.ArrayList;
@@ -46,8 +47,8 @@ class ErrorContainer extends PostingWarningsErrorHandler {
   }
 
   @Override
-  public void depCannotBeResolved(@NotNull SDependency unresolvableDep) {
-    String msg = String.format(PostingWarningsErrorHandler.DEP_NOT_RESOLVED, unresolvableDep);
+  public void depCannotBeResolved(@NotNull SModule module, @NotNull SDependency unresolvableDep) {
+    String msg = String.format(PostingWarningsErrorHandler.DEP_NOT_RESOLVED, module, unresolvableDep);
     addError(SearchError.of(msg));
   }
 
