@@ -2,7 +2,7 @@
 <model ref="r:26eadcf0-f275-4e90-be37-e4432772a74d(jetbrains.mps.build.util)">
   <persistence version="9" />
   <languages>
-    <use id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext" version="1" />
+    <use id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext" version="-1" />
     <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="-1" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
@@ -4987,9 +4987,6 @@
     <node concept="312cEu" id="1AfwOXhIPFt" role="jymVt">
       <property role="TrG5h" value="PathException" />
       <property role="2bfB8j" value="false" />
-      <node concept="3uibUv" id="1AfwOXhIPFB" role="1zkMxy">
-        <ref role="3uigEE" to="wyt6:~Exception" resolve="Exception" />
-      </node>
       <node concept="3clFbW" id="3pfvS1vVRQi" role="jymVt">
         <node concept="3cqZAl" id="3pfvS1vVRQk" role="3clF45" />
         <node concept="3clFbS" id="3pfvS1vVRQm" role="3clF47">
@@ -5006,6 +5003,9 @@
             <ref role="3uigEE" to="wyt6:~String" resolve="String" />
           </node>
         </node>
+      </node>
+      <node concept="3uibUv" id="1AfwOXhIPFB" role="1zkMxy">
+        <ref role="3uigEE" to="wyt6:~Exception" resolve="Exception" />
       </node>
       <node concept="3clFbW" id="1AfwOXhIPFv" role="jymVt">
         <node concept="3cqZAl" id="1AfwOXhIPFw" role="3clF45" />
@@ -6996,6 +6996,9 @@
       <property role="2aFKle" value="false" />
       <node concept="37vLTG" id="4g7NqzBty3d" role="3clF46">
         <property role="TrG5h" value="layoutNode" />
+        <node concept="2AHcQZ" id="1F8bdmiKp3f" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
         <node concept="3Tqbb2" id="4g7NqzBtyG5" role="1tU5fm">
           <ref role="ehGHo" to="3ior:6qcrfIJF4M5" resolve="BuildLayout_Node" />
         </node>

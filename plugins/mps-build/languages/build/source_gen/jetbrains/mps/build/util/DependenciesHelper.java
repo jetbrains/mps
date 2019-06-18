@@ -49,7 +49,7 @@ public class DependenciesHelper {
     }
   }
 
-  public String getLocation(SNode layoutNode) {
+  public String getLocation(@NotNull SNode layoutNode) {
     String rv = locationMap.get(layoutNode);
     if (rv == null) {
       // See aliases MC, where BuildLayout_File, recorded in locations, is wrapped with BuildLayout_Copy 

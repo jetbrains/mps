@@ -15,6 +15,7 @@ import com.intellij.openapi.vfs.VirtualFileAdapter;
 import com.intellij.openapi.vfs.VirtualFileMoveEvent;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.VirtualFileEvent;
+import com.intellij.openapi.vfs.newvfs.ArchiveFileSystem;
 import java.util.ArrayDeque;
 import jetbrains.mps.generator.impl.dependencies.GenerationDependenciesCache;
 import jetbrains.mps.vfs.IFile;
@@ -92,6 +93,9 @@ public class ModelCacheReloader implements ApplicationComponent {
     }
 
     private void invalidateForDir(VirtualFile dir) {
+      if (dir.getFileSystem() instanceof ArchiveFileSystem) {
+        return;
+      }
       ArrayDeque<VirtualFile> dirQueue = new ArrayDeque<VirtualFile>();
       dirQueue.add(dir);
       do {
@@ -113,9 +117,11 @@ public class ModelCacheReloader implements ApplicationComponent {
     }
 
     private void invalidateForFile(VirtualFile vf) {
+      if (vf.getFileSystem() instanceof ArchiveFileSystem) {
+        return;
+      }
       IFile file = VirtualFileUtils.toIFile(vf);
       myGenStatusManager.invalidateData(file);
     }
-
   }
 }

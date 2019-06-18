@@ -25,6 +25,7 @@ import jetbrains.mps.project.structure.modules.LanguageDescriptor;
 import jetbrains.mps.smodel.MPSModuleOwner;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import jetbrains.mps.util.CollectionUtil;
+import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.RedispatchListener;
 import jetbrains.mps.vfs.refresh.FileListener;
@@ -40,12 +41,14 @@ import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.stream.Stream;
 
 /**
  * SLibrary tracks a path {@link #myFile} with modules inside.
@@ -57,6 +60,12 @@ import java.util.concurrent.atomic.AtomicReference;
  */
 public class SLibrary implements MPSModuleOwner, Comparable<SLibrary> {
   private static final Logger LOG = Logger.getLogger(SLibrary.class);
+  private static final FileListeningPreferences LISTENING_PREFS =
+      FileListeningPreferences.construct()
+                              .notifyOnAncestorCreation() // remove dir {lib_dir}/.. and then `git reset --hard` yields one fs creation event for the directory {lib_dir}/..
+                              .notifyOnDescendantCreation()
+                              .notifyOnParentRemoval()
+                              .build();
 
   @NotNull private final IFile myFile;
   private final SRepositoryExt myRepository;
@@ -75,8 +84,7 @@ public class SLibrary implements MPSModuleOwner, Comparable<SLibrary> {
     // ModuleFileTracker helps to keep record which module originates from what file
     myFileTracker = new ModuleFileTracker();
     // XXX provisional, copied from ModuleFileTracker, have to review
-    final FileListeningPreferences prefs = FileListeningPreferences.construct().notifyOnDescendantCreation().notifyOnParentRemoval().build();
-    myPostNotifyDispatch = new RedispatchListener(SLibrary.this::update, prefs);
+    myPostNotifyDispatch = new RedispatchListener(SLibrary.this::update, LISTENING_PREFS);
   }
 
   @NotNull
@@ -92,7 +100,6 @@ public class SLibrary implements MPSModuleOwner, Comparable<SLibrary> {
     return myPluginClassLoader;
   }
 
-  // TODO transfer these methods up to the {@link RepositoryReader}
   List<ModuleHandle> getHandles() {
     List<ModuleHandle> moduleHandles = myHandles.get();
     if (moduleHandles == null) {
@@ -124,15 +131,17 @@ public class SLibrary implements MPSModuleOwner, Comparable<SLibrary> {
       // Note, there could be a new file among added with a MD for existing toBeRemoved module (e.g. file rename/move).
       final Map<SModuleReference, IFile> toRemoveCandidates = myFileTracker.getAffectedBy(event.getRemoved());
       // We shall remove our listener for files we no longer care about. XXX what of myFile is among removed, is it fine to remove the listener?
-      toRemoveCandidates.values().forEach(f -> f.removeListener(myPostNotifyDispatch));
+      toRemoveCandidates.values().forEach(f -> {
+        if (!myFile.equals(f)) {
+          f.removeListener(myPostNotifyDispatch);
+        }
+      });
 
       // for changed files, take associated modules, these are going to be either changed or removed (in case respective
       // module file no longer describes the same module
       final Map<SModuleReference, IFile> trackedToChangeCandidates = myFileTracker.getTrackedFor(event.getChanged());
       // for changed and added, collect module descriptors using MM
-      final ModulesMiner modulesMiner = createModuleMiner();
-      event.getChanged().forEach(modulesMiner::collectModules);
-      event.getCreated().forEach(modulesMiner::collectModules);
+      final ModulesMiner modulesMiner = collectFromCreatedAndChanged(event);
       THashMap<SModuleReference, ModuleHandle> newlyDiscovered = new THashMap<>();
       for (ModuleHandle mh : modulesMiner.getCollectedModules()) {
         // XXX though it's not nice to assume no identical module id in different files
@@ -170,14 +179,16 @@ public class SLibrary implements MPSModuleOwner, Comparable<SLibrary> {
         }
       }
       for (Entry<SModuleReference, IFile> entry : toRemoveCandidates.entrySet()) {
-        final SModule module = entry.getKey().resolve(myRepository);
+        SModuleReference mRef = entry.getKey();
+        final SModule module = mRef.resolve(myRepository);
         if (module == null) {
+          LOG.warn("The module " + mRef + " is not found in the repo");
           // FIXME it's odd there's no module,
           // though we are just about to remove it anyway, ignore
-          continue;
+        } else {
+          myRepository.unregisterModule(module, this);
         }
-        myRepository.unregisterModule(module, this);
-        myFileTracker.forget(entry.getValue(), entry.getKey());
+        myFileTracker.forget(entry.getValue(), mRef);
         // fs listener for deleted files has been already removed, above. for 'stale' modules, listener on their files is kept.
         // myHandles are updated above
       }
@@ -201,7 +212,6 @@ public class SLibrary implements MPSModuleOwner, Comparable<SLibrary> {
       for (SModuleReference mr : changedModules) {
         final SModule module = mr.resolve(myRepository);
         if (module == null) {
-          // FIXME it's odd. What could I do about that?
           continue;
         }
         if (false == module instanceof AbstractModule) {
@@ -210,6 +220,19 @@ public class SLibrary implements MPSModuleOwner, Comparable<SLibrary> {
         ((AbstractModule) module).setModuleDescriptor(newlyDiscovered.get(mr).getDescriptor(), false);
       }
     });
+  }
+
+  @NotNull
+  private ModulesMiner collectFromCreatedAndChanged(@NotNull FileSystemEvent event) {
+    final ModulesMiner modulesMiner = createModuleMiner();
+    Set<IFile> toCollectModulesFrom = new HashSet<>(event.getCreated());
+    toCollectModulesFrom.addAll(event.getChanged());
+    if (toCollectModulesFrom.stream().anyMatch(myFile::isDescendant)) {
+      modulesMiner.collectModules(myFile);
+    } else {
+      toCollectModulesFrom.forEach(modulesMiner::collectModules);
+    }
+    return modulesMiner;
   }
 
   private ModulesMiner createModuleMiner() {

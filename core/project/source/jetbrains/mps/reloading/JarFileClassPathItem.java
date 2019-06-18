@@ -103,6 +103,10 @@ public class JarFileClassPathItem extends RealClassPathItem {
     ensureInitialized();
     InputStream inp = null;
     ZipFile zf = null;
+    if (!myFile.exists()) {
+      LOG.warn("Classbytes file '" + myFile + "' does not exist");
+      return null;
+    }
     try {
       zf = new ZipFile(myFile);
       String entryName = toClassEntry(qualifiedClassName);

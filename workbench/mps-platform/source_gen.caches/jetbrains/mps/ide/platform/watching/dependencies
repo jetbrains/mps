@@ -99,6 +99,7 @@
     <classNode dependClassName="com.intellij.openapi.vfs.VirtualFileEvent" />
     <classNode dependClassName="com.intellij.openapi.vfs.VirtualFileManager" />
     <classNode dependClassName="com.intellij.openapi.vfs.VirtualFileMoveEvent" />
+    <classNode dependClassName="com.intellij.openapi.vfs.newvfs.ArchiveFileSystem" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.ArrayDeque" />

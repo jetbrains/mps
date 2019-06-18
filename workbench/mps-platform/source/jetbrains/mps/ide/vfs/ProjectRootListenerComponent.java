@@ -31,6 +31,7 @@ import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -52,7 +53,7 @@ import java.util.Map;
  */
 public final class ProjectRootListenerComponent implements ProjectComponent {
   private static final Logger LOG = LogManager.getLogger(ProjectRootListenerComponent.class);
-  private static final List<String> EXCLUDED_FOLDERS = Arrays.asList(".mps", ".git");
+  private static final List<String> EXCLUDED_FOLDERS = Collections.singletonList(".git");
 
   private final IdeaFileSystem myFileSystem;
   private final Project myProject;
@@ -71,11 +72,14 @@ public final class ProjectRootListenerComponent implements ProjectComponent {
       myFile = myFileSystem.getFile(basePath);
       List<EmptyFSListener> newListeners = new ArrayList<>();
       ApplicationManager.getApplication().runReadAction(() -> {
-        for (IFile child : myFile.getChildren()) {
-          if (listenTo(child)) {
-            EmptyFSListener listener = new EmptyFSListener(child);
-            child.addListener(listener);
-            newListeners.add(listener);
+        List<IFile> children = myFile.getChildren();
+        if (children == null) {
+          addEmptyListener(newListeners, myFile);
+        } else {
+          for (IFile child : children) {
+            if (listenTo(child)) {
+              addEmptyListener(newListeners, child);
+            }
           }
         }
       });
@@ -83,6 +87,12 @@ public final class ProjectRootListenerComponent implements ProjectComponent {
     } else {
       LOG.warn("Could not find base path of the project " + myProject);
     }
+  }
+
+  private void addEmptyListener(List<EmptyFSListener> newListeners, IFile file) {
+    EmptyFSListener listener = new EmptyFSListener(file);
+    file.addListener(listener);
+    newListeners.add(listener);
   }
 
   private boolean listenTo(@NotNull IFile childOfProjectDir) {
