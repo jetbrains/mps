@@ -53,6 +53,7 @@ class Macros {
     for (String macro : macroNames) {
       String path = PathMacros.getInstance().getValue(macro);
       if (path != null) {
+        path = FileUtil.normalize(path);//hack for 19.1, replace with assertion in 19.2
         if (pathStartsWith(absolutePath, path)) {
           String relationalPath = shrink(absolutePath, path);
           fileName = "${" + macro + "}" + relationalPath;
