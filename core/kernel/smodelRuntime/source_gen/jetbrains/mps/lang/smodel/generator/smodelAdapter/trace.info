@@ -2869,7 +2869,7 @@
       <node id="1189519421088944320" at="140,23,141,120" concept="12" />
       <node id="1189519421088944326" at="142,5,143,17" concept="12" />
       <node id="1189519421089002483" at="146,23,147,72" concept="11" />
-      <node id="1189519421088960684" at="148,51,149,86" concept="12" />
+      <node id="1189519421088960684" at="148,51,149,121" concept="12" />
       <node id="1189519421088960692" at="151,5,152,17" concept="12" />
       <node id="6599163591527298882" at="156,23,157,65" concept="11" />
       <node id="6599163591527298894" at="158,26,159,61" concept="12" />
@@ -2961,7 +2961,7 @@
       <node id="6599163591527298679" at="127,0,133,0" concept="16" trace="hasValue#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SProperty;Ljava/lang/String;)Z" />
       <node id="1189519421088938496" at="133,0,139,0" concept="16" trace="hasValue#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SProperty;I)Z" />
       <node id="1189519421088944305" at="139,0,145,0" concept="16" trace="hasValue#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SProperty;Z)Z" />
-      <node id="1189519421088960679" at="145,90,151,5" concept="9" />
+      <node id="1189519421088960679" at="145,94,151,5" concept="9" />
       <node id="6599163591527298583" at="81,0,88,0" concept="16" trace="getString#(Ljava/lang/String;)Ljava/lang/String;" />
       <node id="6599163591527298626" at="97,0,104,0" concept="16" trace="getInteger#(Ljava/lang/String;)I" />
       <node id="6599163591527298877" at="155,109,162,5" concept="9" />
@@ -3004,7 +3004,7 @@
       <scope id="6599163591527298693" at="128,23,129,120" />
       <scope id="1189519421088938510" at="134,23,135,120" />
       <scope id="1189519421088944319" at="140,23,141,120" />
-      <scope id="1189519421089003245" at="148,51,149,86" />
+      <scope id="1189519421089003245" at="148,51,149,121" />
       <scope id="6599163591527298893" at="158,26,159,61" />
       <scope id="7019756663678760714" at="168,46,169,79" />
       <scope id="1189519421088479946" at="175,94,176,102" />
@@ -3182,7 +3182,7 @@
       </scope>
       <scope id="6599163591527298650" at="104,68,111,17" />
       <scope id="5162844862476468454" at="117,77,124,16" />
-      <scope id="1189519421088956399" at="145,90,152,17" />
+      <scope id="1189519421088956399" at="145,94,152,17" />
       <scope id="7019756663678753938" at="166,0,173,0">
         <var name="property" id="7019756663678754963" />
         <var name="propertyValue" id="7019756663678755495" />
@@ -3218,7 +3218,7 @@
         <var name="property" id="5162844862476476125" />
       </scope>
       <scope id="1189519421088956396" at="145,0,154,0">
-        <var name="literalName" id="1189519421089000811" />
+        <var name="literalRawValue" id="1189519421089000811" />
         <var name="node" id="1189519421088957461" />
         <var name="property" id="1189519421088958210" />
       </scope>

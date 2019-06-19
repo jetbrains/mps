@@ -10,9 +10,9 @@ import org.jetbrains.mps.openapi.language.SEnumeration;
 import org.jetbrains.mps.openapi.language.SType;
 import jetbrains.mps.util.InternUtil;
 import java.util.Objects;
+import jetbrains.mps.smodel.adapter.structure.types.SEnumerationAdapter;
 import jetbrains.mps.util.EqualUtil;
 import org.jetbrains.mps.openapi.language.SDataType;
-import jetbrains.mps.smodel.adapter.structure.types.SEnumerationAdapter;
 import jetbrains.mps.smodel.adapter.structure.types.SPrimitiveTypes;
 import jetbrains.mps.references.Reference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -142,11 +142,11 @@ public class SPropertyOperations {
     }
     return false;
   }
-  public static boolean hasEnumValue(SNode node, SProperty property, String literalName) {
+  public static boolean hasEnumValue(SNode node, SProperty property, String literalRawValue) {
     if (node != null) {
       Object literal = SNodeAccessUtil.getPropertyValue(node, property);
       if (literal instanceof SEnumerationLiteral) {
-        return Objects.equals(literalName, ((SEnumerationLiteral) literal).getName());
+        return Objects.equals(literalRawValue, SEnumerationAdapter.getEnumMemberRawValue((SEnumerationLiteral) literal));
       }
     }
     return false;

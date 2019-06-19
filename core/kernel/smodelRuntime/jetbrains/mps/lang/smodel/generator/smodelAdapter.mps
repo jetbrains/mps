@@ -14001,29 +14001,26 @@
               <node concept="3clFbS" id="1221pLNs3rH" role="3clFbx">
                 <node concept="3cpWs6" id="1221pLNrT2G" role="3cqZAp">
                   <node concept="17R0WA" id="1221pLNrT2H" role="3cqZAk">
-                    <node concept="2OqwBi" id="1221pLNs4_t" role="3uHU7w">
-                      <node concept="1eOMI4" id="1221pLNs4Lq" role="2Oq$k0">
-                        <node concept="10QFUN" id="1221pLNs4PW" role="1eOMHV">
-                          <node concept="3uibUv" id="1221pLNs4V0" role="10QFUM">
-                            <ref role="3uigEE" to="c17a:~SEnumerationLiteral" resolve="SEnumerationLiteral" />
-                          </node>
-                          <node concept="37vLTw" id="1221pLNs4lH" role="10QFUP">
-                            <ref role="3cqZAo" node="1221pLNs3fO" resolve="literal" />
-                          </node>
+                    <node concept="37vLTw" id="1221pLNs4uk" role="3uHU7B">
+                      <ref role="3cqZAo" node="1221pLNs2PF" resolve="literalRawValue" />
+                    </node>
+                    <node concept="2YIFZM" id="5X0Py7mraqx" role="3uHU7w">
+                      <ref role="37wK5l" to="xx25:~SEnumerationAdapter.getEnumMemberRawValue(org.jetbrains.mps.openapi.language.SEnumerationLiteral)" resolve="getEnumMemberRawValue" />
+                      <ref role="1Pybhc" to="xx25:~SEnumerationAdapter" resolve="SEnumerationAdapter" />
+                      <node concept="10QFUN" id="5X0Py7mrd00" role="37wK5m">
+                        <node concept="3uibUv" id="5X0Py7mrd01" role="10QFUM">
+                          <ref role="3uigEE" to="c17a:~SEnumerationLiteral" resolve="SEnumerationLiteral" />
+                        </node>
+                        <node concept="37vLTw" id="5X0Py7mrd02" role="10QFUP">
+                          <ref role="3cqZAo" node="1221pLNs3fO" resolve="literal" />
                         </node>
                       </node>
-                      <node concept="liA8E" id="1221pLNs54N" role="2OqNvi">
-                        <ref role="37wK5l" to="c17a:~SEnumerationLiteral.getName()" resolve="getName" />
-                      </node>
-                    </node>
-                    <node concept="37vLTw" id="1221pLNs4uk" role="3uHU7B">
-                      <ref role="3cqZAo" node="1221pLNs2PF" resolve="literalName" />
                     </node>
                   </node>
                 </node>
               </node>
               <node concept="2ZW3vV" id="1221pLNs3NF" role="3clFbw">
-                <node concept="3uibUv" id="1221pLNs3Py" role="2ZW6by">
+                <node concept="3uibUv" id="5X0Py7mqQCQ" role="2ZW6by">
                   <ref role="3uigEE" to="c17a:~SEnumerationLiteral" resolve="SEnumerationLiteral" />
                 </node>
                 <node concept="37vLTw" id="1221pLNs3wf" role="2ZW6bz">
@@ -14052,7 +14049,7 @@
         </node>
       </node>
       <node concept="37vLTG" id="1221pLNs2PF" role="3clF46">
-        <property role="TrG5h" value="literalName" />
+        <property role="TrG5h" value="literalRawValue" />
         <node concept="3uibUv" id="1221pLNs2TH" role="1tU5fm">
           <ref role="3uigEE" to="wyt6:~String" resolve="String" />
         </node>
