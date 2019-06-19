@@ -41,7 +41,8 @@ class Macros {
       PathMacros.getInstance().report("Please define path variable in path variables section of settings", macro);
       return path;
     }
-    return macroValue + path.substring(macroEnd + 1);
+    String expanded = macroValue + path.substring(macroEnd + 1);
+    return FileUtil.resolveParentDirs(expanded);
   }
 
   protected String shrink(String absolutePath, IFile anchorFile) {

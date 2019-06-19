@@ -118,7 +118,8 @@ public final class MacrosFactory implements MacroHelper.Source {
       new PathAssert(path).osIndependentPath();
 
       if (path.startsWith(MODULE)) {
-        return path.replace(MODULE, getAnchorFolder(anchorFile).getPath());
+        String expanded = path.replace(MODULE, getAnchorFolder(anchorFile).getPath());
+        return FileUtil.resolveParentDirs(expanded);
       }
       return super.expand(path, anchorFile);
     }
@@ -152,8 +153,8 @@ public final class MacrosFactory implements MacroHelper.Source {
 
       path = path.replace(PROJECT, PROJECT_LEGACY);
       if (path.contains(PROJECT_LEGACY)) {
-        IFile projectDir = getProjectDir(anchorFile);
-        return path.replace(PROJECT_LEGACY, projectDir.getPath());
+        String expanded = path.replace(PROJECT_LEGACY, getProjectDir(anchorFile).getPath());
+        return FileUtil.resolveParentDirs(expanded);
       }
       return super.expand(path, anchorFile);
     }
@@ -202,7 +203,8 @@ public final class MacrosFactory implements MacroHelper.Source {
     private String expand(String pathWithMacro, String macroPath) {
       int macroEnd = pathWithMacro.indexOf('}');
       assert macroEnd > 0 : "Path does not contain a macro: " + pathWithMacro;
-      return macroPath + pathWithMacro.substring(macroEnd + 1);
+      String expanded = macroPath + pathWithMacro.substring(macroEnd + 1);
+      return FileUtil.resolveParentDirs(expanded);
     }
 
     @Override
@@ -227,5 +229,4 @@ public final class MacrosFactory implements MacroHelper.Source {
       return super.shrink(absolutePath, anchorFile);
     }
   }
-
 }
