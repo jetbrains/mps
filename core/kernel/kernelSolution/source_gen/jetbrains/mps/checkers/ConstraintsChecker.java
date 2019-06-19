@@ -27,6 +27,7 @@ import jetbrains.mps.smodel.constraints.ConstraintsFacade;
 import jetbrains.mps.smodel.runtime.CheckingNodeContext;
 import jetbrains.mps.smodel.runtime.impl.CheckingNodeContextImpl;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -41,7 +42,7 @@ import java.util.List;
 public class ConstraintsChecker extends AbstractNodeCheckerInEditor implements IChecker<SNode, NodeReportItem> {
   private final ComponentHost myHost;
 
-  public ConstraintsChecker(@NotNull ComponentHost host) {
+  public ConstraintsChecker(ComponentHost host) {
     myHost = host;
   }
 
@@ -79,7 +80,7 @@ public class ConstraintsChecker extends AbstractNodeCheckerInEditor implements I
           List<Rule<CanBeChild_Context>> failingRules = errorsCollector.runCheckingAction(() -> ConstraintsFacade.checkCanBeChild(context));
           if (!failingRules.isEmpty()) {
             @NotNull Rule<CanBeChild_Context> ruleWeReport = failingRules.get(0);
-            ReportingAspectRegistry reportingRegistry = myHost.findComponent(ReportingAspectRegistry.class);
+            ReportingAspectRegistry reportingRegistry = getReportingAspectRegistry();
             String message = CanBeChild_RuleKind.INSTANCE.getDefaultMessage(context).toText();
             if (reportingRegistry != null) {
               MessageProvider<CanBeChild_Context> messageProvider = reportingRegistry.findMessageForRule(nodeConcept, ruleWeReport, context);
@@ -95,7 +96,7 @@ public class ConstraintsChecker extends AbstractNodeCheckerInEditor implements I
           List<Rule<CanBeParent_Context>> failingRules = errorsCollector.runCheckingAction(() -> ConstraintsFacade.checkCanBeParent(context));
           if (!failingRules.isEmpty()) {
             @NotNull Rule<CanBeParent_Context> ruleWeReport = failingRules.get(0);
-            ReportingAspectRegistry reportingRegistry = myHost.findComponent(ReportingAspectRegistry.class);
+            ReportingAspectRegistry reportingRegistry = getReportingAspectRegistry();
             String message = null;
             if (reportingRegistry != null) {
               MessageProvider<CanBeParent_Context> messageProvider = reportingRegistry.findMessageForRule(nodeConcept, ruleWeReport, context);
@@ -149,6 +150,14 @@ public class ConstraintsChecker extends AbstractNodeCheckerInEditor implements I
         }
       });
     }
+  }
+
+  @Nullable
+  private ReportingAspectRegistry getReportingAspectRegistry() {
+    if (myHost == null) {
+      return null;
+    }
+    return myHost.findComponent(ReportingAspectRegistry.class);
   }
 
   private boolean checkContainmentLinkIsPresentInConcept(SNode node, LanguageErrorsCollector errorsCollector, SConcept parentConcept) {
