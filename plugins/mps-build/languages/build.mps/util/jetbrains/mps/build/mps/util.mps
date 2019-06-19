@@ -43,6 +43,7 @@
     <import index="e8bb" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.ids(MPS.Core/)" />
     <import index="dush" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence(MPS.OpenAPI/)" />
     <import index="q7tw" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.apache.log4j(MPS.Core/)" />
+    <import index="ifj7" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs.util(MPS.Core/)" />
   </imports>
   <registry>
     <language id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples">
@@ -12205,6 +12206,21 @@
               <node concept="10Nm6u" id="7AaordoBmxe" role="3uHU7w" />
             </node>
           </node>
+          <node concept="3clFbF" id="2Io6JCDdtzD" role="3cqZAp">
+            <node concept="2OqwBi" id="2Io6JCDdC2Q" role="3clFbG">
+              <node concept="2ShNRf" id="2Io6JCDdtz_" role="2Oq$k0">
+                <node concept="1pGfFk" id="2Io6JCDdBPH" role="2ShVmc">
+                  <ref role="37wK5l" to="ifj7:~PathAssert.&lt;init&gt;(java.lang.String)" resolve="PathAssert" />
+                  <node concept="37vLTw" id="2Io6JCDdBRE" role="37wK5m">
+                    <ref role="3cqZAo" node="7AaordoBkQD" resolve="path" />
+                  </node>
+                </node>
+              </node>
+              <node concept="liA8E" id="2Io6JCDdEdt" role="2OqNvi">
+                <ref role="37wK5l" to="ifj7:~PathAssert.osIndependentPath()" resolve="osIndependentPath" />
+              </node>
+            </node>
+          </node>
           <node concept="3clFbH" id="7AaordoBmxu" role="3cqZAp" />
           <node concept="3clFbJ" id="7AaordoBm6n" role="3cqZAp">
             <node concept="3clFbS" id="7AaordoBm6o" role="3clFbx">
@@ -12272,12 +12288,8 @@
                 <node concept="2YIFZM" id="33n7u4mNlfz" role="3cqZAk">
                   <ref role="37wK5l" to="18ew:~FileUtil.resolveParentDirs(java.lang.String)" resolve="resolveParentDirs" />
                   <ref role="1Pybhc" to="18ew:~FileUtil" resolve="FileUtil" />
-                  <node concept="2YIFZM" id="7AaordoBmaL" role="37wK5m">
-                    <ref role="37wK5l" to="18ew:~IFileUtil.getCanonicalPath(java.lang.String)" resolve="getCanonicalPath" />
-                    <ref role="1Pybhc" to="18ew:~IFileUtil" resolve="IFileUtil" />
-                    <node concept="37vLTw" id="33n7u4mNQvv" role="37wK5m">
-                      <ref role="3cqZAo" node="33n7u4mNQvn" resolve="fullPath" />
-                    </node>
+                  <node concept="37vLTw" id="2Io6JCDdEgu" role="37wK5m">
+                    <ref role="3cqZAo" node="33n7u4mNQvn" resolve="fullPath" />
                   </node>
                 </node>
               </node>
@@ -12659,15 +12671,11 @@
                 </node>
               </node>
               <node concept="3cpWs6" id="3isdVh$yMP1" role="3cqZAp">
-                <node concept="2YIFZM" id="5xiCh4ihqRz" role="3cqZAk">
-                  <ref role="37wK5l" to="18ew:~FileUtil.normalizeAndResolveParentDirs(java.lang.String)" resolve="normalizeAndResolveParentDirs" />
+                <node concept="2YIFZM" id="2Io6JCDdYWn" role="3cqZAk">
+                  <ref role="37wK5l" to="18ew:~FileUtil.resolveParentDirs(java.lang.String)" resolve="resolveParentDirs" />
                   <ref role="1Pybhc" to="18ew:~FileUtil" resolve="FileUtil" />
-                  <node concept="2YIFZM" id="5xiCh4ihqR$" role="37wK5m">
-                    <ref role="37wK5l" to="18ew:~IFileUtil.getCanonicalPath(java.lang.String)" resolve="getCanonicalPath" />
-                    <ref role="1Pybhc" to="18ew:~IFileUtil" resolve="IFileUtil" />
-                    <node concept="37vLTw" id="5xiCh4ihqR_" role="37wK5m">
-                      <ref role="3cqZAo" node="3isdVh$yH4d" resolve="fullPath" />
-                    </node>
+                  <node concept="37vLTw" id="2Io6JCDe1g8" role="37wK5m">
+                    <ref role="3cqZAo" node="3isdVh$yH4d" resolve="fullPath" />
                   </node>
                 </node>
               </node>
