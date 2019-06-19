@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,6 +31,7 @@ import jetbrains.mps.smodel.SModelFileTracker;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.persistence.datasource.FileExtensionDataSourceType;
 
@@ -68,7 +69,7 @@ public final class ProjectPaneSelectInTarget extends AbstractProjectViewSelectIn
   @Override
   protected void doSelectIn(SelectInContext context, boolean requestFocus) {
     VirtualFile virtualFile = context.getVirtualFile();
-    SNode node = isNodeFile(virtualFile) ? getNode(virtualFile) : null;
+    SNodeReference node = isNodeFile(virtualFile) ? getNode(virtualFile) : null;
     if (node != null) {
       myProjectPane.selectNode(node, requestFocus);
       return;
@@ -119,7 +120,7 @@ public final class ProjectPaneSelectInTarget extends AbstractProjectViewSelectIn
     return virtualFile instanceof MPSNodeVirtualFile;
   }
 
-  private SNode getNode(VirtualFile virtualFile) {
+  private SNodeReference getNode(VirtualFile virtualFile) {
     assert isNodeFile(virtualFile);
 
     FileEditor[] editors = FileEditorManager.getInstance(myProject.getProject()).getEditors(virtualFile);
@@ -129,11 +130,18 @@ public final class ProjectPaneSelectInTarget extends AbstractProjectViewSelectIn
         return null;
       }
       jetbrains.mps.openapi.editor.EditorComponent editorComponent = ((MPSFileNodeEditor) editor).getNodeEditor().getCurrentEditorComponent();
-      if (editorComponent == null) return null;
-      return mySelectRoot ? editorComponent.getEditedNode() : editorComponent.getSelectedNode();
+      if (editorComponent == null) {
+        return null;
+      }
+      if (mySelectRoot) {
+        return editorComponent.getEditedNodePointer();
+      } else {
+        final SNode selectedNode = editorComponent.getSelectedNode();
+        return selectedNode == null ? null : selectedNode.getReference();
+      }
     } else {
       MPSNodeVirtualFile file = (MPSNodeVirtualFile) virtualFile;
-      return file.getNode();
+      return file.getSNodePointer();
     }
   }
 }

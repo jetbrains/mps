@@ -465,8 +465,12 @@ public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectVi
   }
 
   public void selectNode(@NotNull final SNode node, boolean autofocus) {
+    selectNode(node.getReference(), autofocus);
+  }
+
+  public void selectNode(@NotNull SNodeReference node, boolean autofocus) {
     ThreadUtils.assertEDT();
-    final Runnable lookupAndSelect = new LookupAndSelect(node.getReference());
+    final Runnable lookupAndSelect = new LookupAndSelect(node);
     activatePane(new ScheduleUpdateRunnable(myUpdateQueue, createModelReadUpdate(UpdateID.SELECT, lookupAndSelect)), autofocus);
   }
 
