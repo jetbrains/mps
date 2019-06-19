@@ -16,6 +16,8 @@
 package jetbrains.mps.util;
 
 import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.vfs.IFileSystem;
+import jetbrains.mps.vfs.util.PathAssert;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.Nullable;
@@ -23,9 +25,8 @@ import org.jetbrains.annotations.Nullable;
 import java.io.File;
 
 class MacroHelperImpl implements MacroHelper {
-  private static final Logger LOG = LogManager.getLogger(MacroHelperImpl.class);
-
-  @Nullable private final IFile anchorFile; // what is null anchorFile??
+  @Nullable
+  private final IFile anchorFile; // what is null anchorFile??
   private final Macros macros;
 
   MacroHelperImpl(@Nullable IFile anchorFile, Macros macros) {
@@ -38,18 +39,6 @@ class MacroHelperImpl implements MacroHelper {
     if (path == null) {
       return null;
     }
-
-    // This is a support for paths with macros which were saved in Windows before MPS beta.
-    // Path with macros should always be stored with slashes.
-    if (path.indexOf('\\') != -1) {
-      LOG.warn("Using backslashes in macros: " + path);
-      path = path.replace('\\', MacrosFactory.SEPARATOR_CHAR);
-    }
-
-    if (anchorFile == null || !anchorFile.isInArchive()) {
-      path = path.replace(MacrosFactory.SEPARATOR_CHAR, File.separatorChar);
-    }
-
     return macros.expand(path, anchorFile);
   }
 
@@ -60,10 +49,10 @@ class MacroHelperImpl implements MacroHelper {
     }
 
     //this is to support undefined path vars
-    if (!absolutePath.startsWith("${")) {
-      absolutePath = macros.shrink(absolutePath, anchorFile);
+    if (absolutePath.startsWith("${")) {
+      return absolutePath;
     }
 
-    return absolutePath.replace(File.separatorChar, MacrosFactory.SEPARATOR_CHAR);
+    return macros.shrink(absolutePath, anchorFile);
   }
 }

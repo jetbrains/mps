@@ -123,7 +123,7 @@ public class Utils {
           anchorFolder = anchorFolder.getParent();
         }
         String modelRelativePath = removePrefix(path);
-        return IFileUtil.getCanonicalPath(anchorFolder.getDescendant(modelRelativePath));
+        return anchorFolder.getDescendant(modelRelativePath).getPath();
       }
       if (path.startsWith(MacrosFactory.MPS_HOME)) {
         String relativePath = removePrefix(path);

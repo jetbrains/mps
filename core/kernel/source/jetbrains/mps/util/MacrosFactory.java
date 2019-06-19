@@ -21,6 +21,7 @@ import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.path.Path;
+import jetbrains.mps.vfs.util.PathAssert;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -32,8 +33,6 @@ public final class MacrosFactory implements MacroHelper.Source {
   public static final String MPS_HOME = "${" + MPS_HOME_MACRO_NAME + "}";
   public static final String PLATFORM_LIB = "${platform_lib}";
   public static final String LIB_EXT = "${lib_ext}";
-
-  static final char SEPARATOR_CHAR = Path.UNIX_SEPARATOR_CHAR;
 
   public MacrosFactory() {
   }
@@ -117,7 +116,7 @@ public final class MacrosFactory implements MacroHelper.Source {
     @Override
     protected String expand(String path, IFile anchorFile) {
       if (path.startsWith(MODULE)) {
-        return path.replace(MODULE, IFileUtil.getCanonicalPath(getAnchorFolder(anchorFile)));
+        return path.replace(MODULE, getAnchorFolder(anchorFile).getPath());
       }
       return super.expand(path, anchorFile);
     }
@@ -148,7 +147,7 @@ public final class MacrosFactory implements MacroHelper.Source {
       path = path.replace(PROJECT, PROJECT_LEGACY);
       if (path.contains(PROJECT_LEGACY)) {
         IFile projectDir = getProjectDir(anchorFile);
-        return path.replace(PROJECT_LEGACY, IFileUtil.getCanonicalPath(projectDir));
+        return path.replace(PROJECT_LEGACY, projectDir.getPath());
       }
       return super.expand(path, anchorFile);
     }

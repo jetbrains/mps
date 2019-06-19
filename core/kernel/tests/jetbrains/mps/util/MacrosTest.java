@@ -17,6 +17,7 @@ package jetbrains.mps.util;
 
 import jetbrains.mps.tool.environment.Environment;
 import jetbrains.mps.tool.environment.EnvironmentAware;
+import jetbrains.mps.vfs.IFileSystem;
 import org.jetbrains.annotations.NotNull;
 import org.junit.Test;
 
@@ -97,7 +98,7 @@ public class MacrosTest implements EnvironmentAware {
   }
 
   private boolean checkShrinkSeperatorsCorrectness(String s) {
-    return s.indexOf(negateSeparator(MacrosFactory.SEPARATOR_CHAR)) == -1;
+    return s.indexOf(negateSeparator(IFileSystem.SEPARATOR.charAt(0))) == -1;
   }
 
   private boolean checkExpandSeperatorsCorrectness(String s) {
@@ -105,7 +106,7 @@ public class MacrosTest implements EnvironmentAware {
   }
 
   private boolean checkMacroPresence(String s) {
-    return s.indexOf("${") != -1;
+    return s.contains("${");
   }
 
   private char negateSeparator(char c) {

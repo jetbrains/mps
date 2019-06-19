@@ -17,6 +17,8 @@ package jetbrains.mps.util;
 
 import jetbrains.mps.project.PathMacros;
 import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.vfs.IFileSystem;
+import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.vfs.path.Path;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -45,7 +47,6 @@ class Macros {
     for (String macro : macroNames) {
       String path = PathMacros.getInstance().getValue(macro);
       if (path != null) {
-        path = getCanonicalPath(path).replace(MacrosFactory.SEPARATOR_CHAR, File.separatorChar);
         if (pathStartsWith(absolutePath, path)) {
           String relationalPath = shrink(absolutePath, path);
           fileName = "${" + macro + "}" + relationalPath;
@@ -57,44 +58,25 @@ class Macros {
     return fileName;
   }
 
-  private static String getCanonicalPath(String path) {
-    // Mimic j.m.util.IFileUtil.getCanonicalPath(IFile) so that we can match jar-relative paths recieved from different getCanonicalPath implementations
-    // In fact, FileUtil.getCanonicalPath(String) might be better place for the logic, just too big of a change at the moment.
-    // XXX besides, I feel the whole 'canonical' story is pointless for macro factory, which shall NOT deal with FS anyway.
-    final int archiveSeparatorIdx = path == null ? -1 : path.indexOf(Path.ARCHIVE_SEPARATOR);
-    if (archiveSeparatorIdx != -1) {
-      // keep past-"!/" suffix intact
-      return FileUtil.getCanonicalPath(path.substring(0, archiveSeparatorIdx)) + path.substring(archiveSeparatorIdx);
-    } else {
-      return FileUtil.getCanonicalPath(path);
-    }
-  }
-
   protected static String shrink(String path, String prefix) {
-    // since pathStartsWith uses getCanonicalPath
-    // we use it here also
-    path = getCanonicalPath(path);
     if (path.equals(prefix)) {
       return "";
     }
     assert path.length() >= prefix.length() : "path: " + path + "; prefix: " + prefix;
-    return File.separator + FileUtil.getRelativePath(path, prefix, File.separator);
+    return IFileSystem.SEPARATOR + FileUtil.getRelativePath(path, prefix, IFileSystem.SEPARATOR);
   }
 
   static boolean pathStartsWith(String path, @NotNull String with) {
-    // shrink uses getCanonicalPath
-    path = getCanonicalPath(path);
-
     if (path.equals(with)) {
       return true;
     }
 
-    String fullPart = with + (with.endsWith(File.separator) ? "" : File.separator);
+    String fullPart = with + (with.endsWith(IFileSystem.SEPARATOR) ? "" : IFileSystem.SEPARATOR);
     if (!path.toLowerCase().startsWith(fullPart.toLowerCase())) {
       return false;
     }
 
-    String pathReplaced = getCanonicalPath(with + path.substring(with.length()));
+    String pathReplaced = with + path.substring(with.length());
     return path.equals(pathReplaced);
   }
 }
