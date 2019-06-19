@@ -115,6 +115,8 @@ public final class MacrosFactory implements MacroHelper.Source {
   private static class ModuleMacros extends HomeMacros {
     @Override
     protected String expand(String path, IFile anchorFile) {
+      new PathAssert(path).osIndependentPath();
+
       if (path.startsWith(MODULE)) {
         return path.replace(MODULE, getAnchorFolder(anchorFile).getPath());
       }
@@ -123,7 +125,9 @@ public final class MacrosFactory implements MacroHelper.Source {
 
     @Override
     protected String shrink(String absolutePath, IFile anchorFile) {
-      String prefix = IFileUtil.getCanonicalPath(getAnchorFolder(anchorFile));
+      new PathAssert(absolutePath).osIndependentPath().noDots().absolute();
+
+      String prefix = getAnchorFolder(anchorFile).getPath();
       if (pathStartsWith(absolutePath, prefix)) {
         return MODULE + shrink(absolutePath, prefix);
       }
@@ -144,6 +148,8 @@ public final class MacrosFactory implements MacroHelper.Source {
 
     @Override
     protected String expand(String path, IFile anchorFile) {
+      new PathAssert(path).osIndependentPath();
+
       path = path.replace(PROJECT, PROJECT_LEGACY);
       if (path.contains(PROJECT_LEGACY)) {
         IFile projectDir = getProjectDir(anchorFile);
@@ -154,7 +160,9 @@ public final class MacrosFactory implements MacroHelper.Source {
 
     @Override
     protected String shrink(String absolutePath, IFile anchorFile) {
-      String prefix = IFileUtil.getCanonicalPath(getProjectDir(anchorFile));
+      new PathAssert(absolutePath).osIndependentPath().noDots().absolute();
+
+      String prefix = getProjectDir(anchorFile).getPath();
       if (pathStartsWith(absolutePath, prefix)) {
         return PROJECT + shrink(absolutePath, prefix);
       }
@@ -174,6 +182,8 @@ public final class MacrosFactory implements MacroHelper.Source {
   private static class HomeMacros extends Macros {
     @Override
     protected String expand(String path, @Nullable IFile anchorFile) {
+      new PathAssert(path).osIndependentPath();
+
       if (path.startsWith(LIB_EXT)) {
         return expand(path, PathManager.getLibExtPath());
       }
@@ -197,6 +207,8 @@ public final class MacrosFactory implements MacroHelper.Source {
 
     @Override
     protected String shrink(String absolutePath, IFile anchorFile) {
+      new PathAssert(absolutePath).osIndependentPath().noDots().absolute();
+
       if (pathStartsWith(absolutePath, PathManager.getLibExtPath())) {
         String relationalPath = shrink(absolutePath, PathManager.getLibExtPath());
         return LIB_EXT + relationalPath;

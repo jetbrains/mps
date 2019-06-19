@@ -20,6 +20,7 @@ import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.vfs.path.Path;
+import jetbrains.mps.vfs.util.PathAssert;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -28,6 +29,8 @@ import java.util.Set;
 
 class Macros {
   protected String expand(String path, @Nullable IFile anchorFile) {
+    new PathAssert(path).osIndependentPath();
+
     if (!MacrosFactory.containsMacro(path)) {
       return path;
     }
@@ -42,6 +45,8 @@ class Macros {
   }
 
   protected String shrink(String absolutePath, IFile anchorFile) {
+    new PathAssert(absolutePath).osIndependentPath().noDots().absolute();
+
     String fileName;
     Set<String> macroNames = PathMacros.getInstance().getNames();
     for (String macro : macroNames) {
