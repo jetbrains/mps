@@ -19,6 +19,7 @@ import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.path.Path;
+import jetbrains.mps.vfs.util.PathAssert;
 import jetbrains.mps.vfs.util.PathUtil;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -189,9 +190,15 @@ public class FileUtil {
   }
 
   @Deprecated
+  public static String normalizeAndResolveParentDirs(@NotNull String path) {
+    path = normalize(path);
+    return resolveParentDirs(path);
+  }
+
+  @NotNull
   //replaces /xx/.. with /. Use with already-normalized paths
   public static String resolveParentDirs(@NotNull String path) {
-    path = normalize(path);
+    new PathAssert(path).absolute().osIndependentPath();
 
     String currentPath = path;
     if (currentPath.endsWith("/..")) {

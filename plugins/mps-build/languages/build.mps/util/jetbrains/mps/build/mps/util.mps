@@ -2,10 +2,10 @@
 <model ref="r:38bad86e-d92c-4ea7-ad52-a111dc6c2457(jetbrains.mps.build.mps.util)">
   <persistence version="9" />
   <languages>
-    <use id="774bf8a0-62e5-41e1-af63-f4812e60e48b" name="jetbrains.mps.baseLanguage.checkedDots" version="-1" />
-    <use id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext" version="-1" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
-    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="-1" />
+    <use id="774bf8a0-62e5-41e1-af63-f4812e60e48b" name="jetbrains.mps.baseLanguage.checkedDots" version="0" />
+    <use id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext" version="1" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -43,6 +43,7 @@
     <import index="e8bb" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.ids(MPS.Core/)" />
     <import index="dush" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence(MPS.OpenAPI/)" />
     <import index="q7tw" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.apache.log4j(MPS.Core/)" />
+    <import index="ifj7" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs.util(MPS.Core/)" />
     <import index="lktc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:gnu.trove(MPS.Core/)" />
   </imports>
   <registry>
@@ -6929,9 +6930,6 @@
                     <node concept="3clFbF" id="1jjYQYSjkgz" role="3cqZAp">
                       <node concept="2OqwBi" id="1jjYQYSjkjE" role="3clFbG">
                         <node concept="2OqwBi" id="1jjYQYSjkim" role="2Oq$k0">
-                          <node concept="13MTOL" id="JyLrNhXLw4" role="2OqNvi">
-                            <ref role="13MTZf" to="kdzh:3HwLahs6gcK" resolve="language" />
-                          </node>
                           <node concept="2OqwBi" id="1jjYQYSjkhn" role="2Oq$k0">
                             <node concept="1rXfSq" id="4hiugqyzkb3" role="2Oq$k0">
                               <ref role="37wK5l" node="6xJrZo0GT$4" resolve="dependencies" />
@@ -6944,6 +6942,9 @@
                                 <ref role="cht4Q" to="kdzh:3HwLahs6gcI" resolve="BuildMps_ModuleDependencyExtendLanguage" />
                               </node>
                             </node>
+                          </node>
+                          <node concept="13MTOL" id="JyLrNhXLw4" role="2OqNvi">
+                            <ref role="13MTZf" to="kdzh:3HwLahs6gcK" resolve="language" />
                           </node>
                         </node>
                         <node concept="uNJiE" id="1jjYQYSjkjJ" role="2OqNvi" />
@@ -14148,6 +14149,21 @@
               <node concept="10Nm6u" id="7AaordoBmxe" role="3uHU7w" />
             </node>
           </node>
+          <node concept="3clFbF" id="2Io6JCDdtzD" role="3cqZAp">
+            <node concept="2OqwBi" id="2Io6JCDdC2Q" role="3clFbG">
+              <node concept="2ShNRf" id="2Io6JCDdtz_" role="2Oq$k0">
+                <node concept="1pGfFk" id="2Io6JCDdBPH" role="2ShVmc">
+                  <ref role="37wK5l" to="ifj7:~PathAssert.&lt;init&gt;(java.lang.String)" resolve="PathAssert" />
+                  <node concept="37vLTw" id="2Io6JCDdBRE" role="37wK5m">
+                    <ref role="3cqZAo" node="7AaordoBkQD" resolve="path" />
+                  </node>
+                </node>
+              </node>
+              <node concept="liA8E" id="2Io6JCDdEdt" role="2OqNvi">
+                <ref role="37wK5l" to="ifj7:~PathAssert.osIndependentPath()" resolve="osIndependentPath" />
+              </node>
+            </node>
+          </node>
           <node concept="3clFbH" id="7AaordoBmxu" role="3cqZAp" />
           <node concept="3clFbJ" id="7AaordoBm6n" role="3cqZAp">
             <node concept="3clFbS" id="7AaordoBm6o" role="3clFbx">
@@ -14268,12 +14284,8 @@
                 <node concept="2YIFZM" id="33n7u4mNlfz" role="3cqZAk">
                   <ref role="37wK5l" to="18ew:~FileUtil.resolveParentDirs(java.lang.String)" resolve="resolveParentDirs" />
                   <ref role="1Pybhc" to="18ew:~FileUtil" resolve="FileUtil" />
-                  <node concept="2YIFZM" id="7AaordoBmaL" role="37wK5m">
-                    <ref role="37wK5l" to="18ew:~IFileUtil.getCanonicalPath(java.lang.String)" resolve="getCanonicalPath" />
-                    <ref role="1Pybhc" to="18ew:~IFileUtil" resolve="IFileUtil" />
-                    <node concept="37vLTw" id="33n7u4mNQvv" role="37wK5m">
-                      <ref role="3cqZAo" node="33n7u4mNQvn" resolve="fullPath" />
-                    </node>
+                  <node concept="37vLTw" id="2Io6JCDdEgu" role="37wK5m">
+                    <ref role="3cqZAo" node="33n7u4mNQvn" resolve="fullPath" />
                   </node>
                 </node>
               </node>
@@ -14708,15 +14720,11 @@
                 </node>
               </node>
               <node concept="3cpWs6" id="3isdVh$yMP1" role="3cqZAp">
-                <node concept="2YIFZM" id="3isdVh$yMP2" role="3cqZAk">
-                  <ref role="1Pybhc" to="18ew:~FileUtil" resolve="FileUtil" />
+                <node concept="2YIFZM" id="2Io6JCDdYWn" role="3cqZAk">
                   <ref role="37wK5l" to="18ew:~FileUtil.resolveParentDirs(java.lang.String)" resolve="resolveParentDirs" />
-                  <node concept="2YIFZM" id="3isdVh$yMP3" role="37wK5m">
-                    <ref role="37wK5l" to="18ew:~IFileUtil.getCanonicalPath(java.lang.String)" resolve="getCanonicalPath" />
-                    <ref role="1Pybhc" to="18ew:~IFileUtil" resolve="IFileUtil" />
-                    <node concept="37vLTw" id="3isdVh$yMP4" role="37wK5m">
-                      <ref role="3cqZAo" node="3isdVh$yH4d" resolve="fullPath" />
-                    </node>
+                  <ref role="1Pybhc" to="18ew:~FileUtil" resolve="FileUtil" />
+                  <node concept="37vLTw" id="2Io6JCDe1g8" role="37wK5m">
+                    <ref role="3cqZAo" node="3isdVh$yH4d" resolve="fullPath" />
                   </node>
                 </node>
               </node>
@@ -23066,11 +23074,11 @@
             </node>
           </node>
           <node concept="2OqwBi" id="6m8wrPAU44F" role="1DdaDG">
-            <node concept="liA8E" id="1XOecUCARJ9" role="2OqNvi">
-              <ref role="37wK5l" to="w0gx:~ModuleDescriptor.getJavaLibs()" resolve="getJavaLibs" />
-            </node>
             <node concept="37vLTw" id="2BHiRxeuW1N" role="2Oq$k0">
               <ref role="3cqZAo" node="6m8wrPAU3pl" resolve="myModuleDescriptor" />
+            </node>
+            <node concept="liA8E" id="1XOecUCARJ9" role="2OqNvi">
+              <ref role="37wK5l" to="w0gx:~ModuleDescriptor.getJavaLibs()" resolve="getJavaLibs" />
             </node>
           </node>
         </node>

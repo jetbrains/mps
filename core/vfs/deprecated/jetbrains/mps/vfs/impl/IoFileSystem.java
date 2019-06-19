@@ -42,7 +42,7 @@ public class IoFileSystem implements FileSystem {
   //use either JarIoFS or LocalIoFS
   public IFile getFile(@NotNull String path) {
     path = FileUtil.getCanonicalPath(path);
-    path = FileUtil.resolveParentDirs(path);
+    path = FileUtil.normalizeAndResolveParentDirs(path);
     if (path.endsWith("!")) {
       path += "/";
     }

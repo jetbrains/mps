@@ -17,7 +17,10 @@ package jetbrains.mps.util;
 
 import jetbrains.mps.project.PathMacros;
 import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.vfs.IFileSystem;
+import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.vfs.path.Path;
+import jetbrains.mps.vfs.util.PathAssert;
 import jetbrains.mps.vfs.util.PathAssert;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -27,6 +30,8 @@ import java.util.Set;
 
 class Macros {
   protected String expand(String path, @Nullable IFile anchorFile) {
+    new PathAssert(path).osIndependentPath();
+
     if (!MacrosFactory.containsMacro(path)) {
       return path;
     }
@@ -37,16 +42,19 @@ class Macros {
       PathMacros.getInstance().report("Please define path variable in path variables section of settings", macro);
       return path;
     }
-    return macroValue + path.substring(macroEnd + 1);
+    String expanded = macroValue + path.substring(macroEnd + 1);
+    return FileUtil.resolveParentDirs(expanded);
   }
 
   protected String shrink(String absolutePath, IFile anchorFile) {
+    new PathAssert(absolutePath).osIndependentPath().noDots().absolute();
+
     String fileName;
     Set<String> macroNames = PathMacros.getInstance().getNames();
     for (String macro : macroNames) {
       String path = PathMacros.getInstance().getValue(macro);
       if (path != null) {
-        path = getCanonicalPath(path).replace(MacrosFactory.SEPARATOR_CHAR, File.separatorChar);
+        path = FileUtil.normalize(path);//hack for 19.1, replace with assertion in 19.2
         if (pathStartsWith(absolutePath, path)) {
           String relationalPath = shrink(absolutePath, path);
           fileName = "${" + macro + "}" + relationalPath;
@@ -58,46 +66,27 @@ class Macros {
     return fileName;
   }
 
-  private static String getCanonicalPath(String path) {
-    // Mimic j.m.util.IFileUtil.getCanonicalPath(IFile) so that we can match jar-relative paths recieved from different getCanonicalPath implementations
-    // In fact, FileUtil.getCanonicalPath(String) might be better place for the logic, just too big of a change at the moment.
-    // XXX besides, I feel the whole 'canonical' story is pointless for macro factory, which shall NOT deal with FS anyway.
-    final int archiveSeparatorIdx = path == null ? -1 : path.indexOf(Path.ARCHIVE_SEPARATOR);
-    if (archiveSeparatorIdx != -1) {
-      // keep past-"!/" suffix intact
-      return FileUtil.getCanonicalPath(path.substring(0, archiveSeparatorIdx)) + path.substring(archiveSeparatorIdx);
-    } else {
-      return FileUtil.getCanonicalPath(path);
-    }
-  }
-
   protected static String shrink(String path, String prefix) {
-    // since pathStartsWith uses getCanonicalPath
-    // we use it here also
-    path = getCanonicalPath(path);
     if (path.equals(prefix)) {
       return "";
     }
     assert path.length() >= prefix.length() : "path: " + path + "; prefix: " + prefix;
-    return File.separator + FileUtil.getRelativePath(path, prefix, File.separator);
+    return IFileSystem.SEPARATOR + FileUtil.getRelativePath(path, prefix, IFileSystem.SEPARATOR);
   }
 
   static boolean pathStartsWith(String absolutePath, @NotNull String with) {
     new PathAssert(absolutePath).absolute();
 
-    // shrink uses getCanonicalPath
-    absolutePath = getCanonicalPath(absolutePath);
-
     if (absolutePath.equals(with)) {
       return true;
     }
 
-    String fullPart = with + (with.endsWith(File.separator) ? "" : File.separator);
+    String fullPart = with + (with.endsWith(IFileSystem.SEPARATOR) ? "" : IFileSystem.SEPARATOR);
     if (!absolutePath.toLowerCase().startsWith(fullPart.toLowerCase())) {
       return false;
     }
 
-    String pathReplaced = getCanonicalPath(with + absolutePath.substring(with.length()));
+    String pathReplaced = with + absolutePath.substring(with.length());
     return absolutePath.equals(pathReplaced);
   }
 }

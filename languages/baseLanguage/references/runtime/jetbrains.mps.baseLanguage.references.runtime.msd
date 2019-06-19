@@ -6,7 +6,6 @@
       <sourceRoot location="classes" />
     </modelRoot>
     <modelRoot contentPath="${platform_lib}" type="java_classes">
-      <!-- THIS ENTRY IS TO MAKE SURE STUB CLASSES ARE AVAILABLE AT DEPLOYMENT -->
       <sourceRoot location="mps-references.jar" />
     </modelRoot>
   </models>
