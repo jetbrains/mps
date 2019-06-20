@@ -4,13 +4,16 @@
   <languages>
     <use id="c7d5b9dd-a05f-4be2-bc73-f2e16994cc67" name="jetbrains.mps.baseLanguage.lightweightdsl" version="1" />
     <use id="1a8554c4-eb84-43ba-8c34-6f0d90c6e75a" name="jetbrains.mps.lang.smodel.query" version="3" />
+    <use id="47257bf3-78d3-470b-89d9-8c3261a61d15" name="jetbrains.mps.lang.constraints.rules" version="0" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
     <import index="tp1t" ref="r:00000000-0000-4000-0000-011c8959030d(jetbrains.mps.lang.constraints.structure)" />
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
+    <import index="qffw" ref="r:bf693f8c-6f67-4402-a1e2-e61c34b6993e(jetbrains.mps.lang.constraints.rules.constraints2)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
+    <import index="bm42" ref="r:83f25986-cdbc-469a-a327-db97a2ec5a39(jetbrains.mps.lang.constraints.rules.structure)" implicit="true" />
   </imports>
   <registry>
     <language id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples">
@@ -32,6 +35,12 @@
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
       <concept id="1076505808687" name="jetbrains.mps.baseLanguage.structure.WhileStatement" flags="nn" index="2$JKZl">
         <child id="1076505808688" name="condition" index="2$JKZa" />
+      </concept>
+      <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
+        <reference id="1188208074048" name="annotation" index="2AI5Lk" />
+      </concept>
+      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
+        <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
       <concept id="2820489544401957797" name="jetbrains.mps.baseLanguage.structure.DefaultClassCreator" flags="nn" index="HV5vD">
         <reference id="2820489544401957798" name="classifier" index="HV5vE" />
@@ -59,6 +68,9 @@
       </concept>
       <concept id="1070475354124" name="jetbrains.mps.baseLanguage.structure.ThisExpression" flags="nn" index="Xjq3P" />
       <concept id="1070475587102" name="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" flags="nn" index="XkiVB" />
+      <concept id="1164991038168" name="jetbrains.mps.baseLanguage.structure.ThrowStatement" flags="nn" index="YS8fn">
+        <child id="1164991057263" name="throwable" index="YScLw" />
+      </concept>
       <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
       <concept id="1070534370425" name="jetbrains.mps.baseLanguage.structure.IntegerType" flags="in" index="10Oyi0" />
       <concept id="1070534644030" name="jetbrains.mps.baseLanguage.structure.BooleanType" flags="in" index="10P_77" />
@@ -195,6 +207,12 @@
         <child id="8182547171709752112" name="expression" index="36biLW" />
       </concept>
     </language>
+    <language id="47257bf3-78d3-470b-89d9-8c3261a61d15" name="jetbrains.mps.lang.constraints.rules">
+      <concept id="7291380803376179560" name="jetbrains.mps.lang.constraints.rules.structure.ConstraintsExpressionHolder" flags="ng" index="3QpH_t">
+        <child id="7291380803376179561" name="expression" index="3QpH_s" />
+      </concept>
+      <concept id="7291380803376279010" name="jetbrains.mps.lang.constraints.rules.structure.ConstraintsRule" flags="ng" index="3Qq5Rn" />
+    </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
       <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
         <reference id="1177026940964" name="conceptDeclaration" index="cht4Q" />
@@ -323,10 +341,35 @@
         <node concept="3clFbS" id="4b5tZ1osrYq" role="3clF47" />
         <node concept="3Tm1VV" id="4b5tZ1ot5B3" role="1B3o_S" />
       </node>
+      <node concept="3clFb_" id="7c1w$ps$vou" role="jymVt">
+        <property role="TrG5h" value="toBlock" />
+        <node concept="3Tm1VV" id="7c1w$ps$vox" role="1B3o_S" />
+        <node concept="3clFbS" id="7c1w$ps$voy" role="3clF47">
+          <node concept="YS8fn" id="7c1w$ps_khT" role="3cqZAp">
+            <node concept="2ShNRf" id="7c1w$ps_kjz" role="YScLw">
+              <node concept="1pGfFk" id="7c1w$ps_koF" role="2ShVmc">
+                <ref role="37wK5l" to="wyt6:~UnsupportedOperationException.&lt;init&gt;()" resolve="UnsupportedOperationException" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="_YKpA" id="7c1w$ps_EEi" role="3clF45">
+          <node concept="3Tqbb2" id="7c1w$ps_EEj" role="_ZDj9">
+            <ref role="ehGHo" to="bm42:6kKc3mjqoIo" resolve="ConstraintsRuleBlockMember" />
+          </node>
+        </node>
+      </node>
       <node concept="3Tm1VV" id="4b5tZ1osSKI" role="1B3o_S" />
     </node>
     <node concept="312cEu" id="4b5tZ1ot8xy" role="jymVt">
       <property role="TrG5h" value="ResultSingleExpression" />
+      <node concept="312cEg" id="7c1w$ps$UlJ" role="jymVt">
+        <property role="TrG5h" value="myExpression" />
+        <node concept="3Tm6S6" id="7c1w$ps$UlK" role="1B3o_S" />
+        <node concept="3Tqbb2" id="7c1w$ps$WXw" role="1tU5fm">
+          <ref role="ehGHo" to="tpee:fz3vP1J" resolve="Expression" />
+        </node>
+      </node>
       <node concept="3Tm1VV" id="4b5tZ1ot8xz" role="1B3o_S" />
       <node concept="3uibUv" id="4b5tZ1otxYS" role="1zkMxy">
         <ref role="3uigEE" node="4b5tZ1osUe5" resolve="ConstraintAnalyzer.Result" />
@@ -338,12 +381,57 @@
           <node concept="XkiVB" id="4b5tZ1ot$MN" role="3cqZAp">
             <ref role="37wK5l" node="4b5tZ1osrYn" resolve="ConstraintAnalyzer.Result" />
           </node>
+          <node concept="3clFbF" id="7c1w$ps$X8H" role="3cqZAp">
+            <node concept="37vLTI" id="7c1w$ps$Xiw" role="3clFbG">
+              <node concept="37vLTw" id="7c1w$ps$Xlj" role="37vLTx">
+                <ref role="3cqZAo" node="4b5tZ1ot$MO" resolve="part" />
+              </node>
+              <node concept="37vLTw" id="7c1w$ps$X8F" role="37vLTJ">
+                <ref role="3cqZAo" node="7c1w$ps$UlJ" resolve="myExpression" />
+              </node>
+            </node>
+          </node>
         </node>
         <node concept="37vLTG" id="4b5tZ1ot$MO" role="3clF46">
           <property role="TrG5h" value="part" />
           <node concept="3Tqbb2" id="4b5tZ1ot$MR" role="1tU5fm">
             <ref role="ehGHo" to="tpee:fz3vP1J" resolve="Expression" />
           </node>
+        </node>
+      </node>
+      <node concept="3clFb_" id="7c1w$ps$Ovy" role="jymVt">
+        <property role="TrG5h" value="toBlock" />
+        <node concept="_YKpA" id="7c1w$ps_AvS" role="3clF45">
+          <node concept="3Tqbb2" id="7c1w$ps_AvT" role="_ZDj9">
+            <ref role="ehGHo" to="bm42:6kKc3mjqoIo" resolve="ConstraintsRuleBlockMember" />
+          </node>
+        </node>
+        <node concept="3Tm1VV" id="7c1w$ps$Ov$" role="1B3o_S" />
+        <node concept="3clFbS" id="7c1w$ps$OvA" role="3clF47">
+          <node concept="3clFbF" id="7c1w$ps_DKv" role="3cqZAp">
+            <node concept="2ShNRf" id="7c1w$ps_DKt" role="3clFbG">
+              <node concept="Tc6Ow" id="7c1w$ps_DOv" role="2ShVmc">
+                <node concept="3Tqbb2" id="7c1w$ps_E6$" role="HW$YZ">
+                  <ref role="ehGHo" to="bm42:6kKc3mjqoIo" resolve="ConstraintsRuleBlockMember" />
+                </node>
+                <node concept="2c44tf" id="7c1w$ps$SlR" role="HW$Y0">
+                  <node concept="3Qq5Rn" id="7c1w$ps$Spq" role="2c44tc">
+                    <property role="TrG5h" value="rule" />
+                    <node concept="33vP2n" id="7c1w$ps$Sps" role="3QpH_s">
+                      <node concept="2c44te" id="7c1w$ps$Ssr" role="lGtFl">
+                        <node concept="37vLTw" id="7c1w$ps$X5L" role="2c44t1">
+                          <ref role="3cqZAo" node="7c1w$ps$UlJ" resolve="myExpression" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="2AHcQZ" id="7c1w$ps$OvB" role="2AJF6D">
+          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
       </node>
     </node>
