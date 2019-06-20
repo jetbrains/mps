@@ -102,10 +102,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return ContextUtil.getContextMethodName(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e41e4a2L, 0x48f860fc0e50649fL, "declaration")));
   }
   public static Object referenceMacro_GetReferent_5_1(final ReferenceMacroContext _context) {
-    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e41e4a2L, 0x48f860fc0e50649fL, "declaration")), "def");
+    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e41e4a2L, 0x48f860fc0e50649fL, "declaration")), "defGet");
   }
   public static Object referenceMacro_GetReferent_5_2(final ReferenceMacroContext _context) {
-    return _context.getOutputNodeByInputNodeAndMappingLabel(SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e41e4a2L, 0x48f860fc0e50649fL, "declaration")), MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554221L, "jetbrains.mps.lang.constraints.rules.structure.ConstraintsRoot"), false, false), "constraintsRootClass");
+    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e41e4a2L, 0x48f860fc0e50649fL, "declaration")), "defClass");
   }
   public static boolean ifMacro_Condition_4_0(final IfMacroContext _context) {
     return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e40455fL, 0x48f860fc0e404561L, "part"))).count() > 1;

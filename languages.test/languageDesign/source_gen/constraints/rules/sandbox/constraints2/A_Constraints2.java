@@ -37,8 +37,10 @@ public final class A_Constraints2 extends BaseConstraintsDescriptor2 {
     return RULES;
   }
 
-  public static int getNodeA(@NotNull CanBeChild_Context context) {
-    return SPropertyOperations.getInteger(context.getNode(), MetaAdapterFactory.getProperty(0xa6518565787648e9L, 0x8d439ef97836a52eL, 0x7825711952b6d480L, 0x7825711952b815edL, "a"));
+  public static class DefNodeA {
+    public static int getNodeA(@NotNull CanBeChild_Context context) {
+      return SPropertyOperations.getInteger(context.getNode(), MetaAdapterFactory.getProperty(0xa6518565787648e9L, 0x8d439ef97836a52eL, 0x7825711952b6d480L, 0x7825711952b815edL, "a"));
+    }
   }
   public static final class Rule_first extends BaseRule<CanBeChild_Context> {
     private static final SNodeReference SOURCE_NODE_REF = PersistenceFacade.getInstance().createNodeReference("r:d8115b4c-62c9-4566-9bc7-9fa3c8929293(constraints.rules.sandbox.constraints2)/686743897209654265");
@@ -73,7 +75,7 @@ public final class A_Constraints2 extends BaseConstraintsDescriptor2 {
     }
     @Override
     public boolean check(@NotNull CanBeChild_Context context) {
-      return getNodeA(context) != 65;
+      return A_Constraints2.DefNodeA.getNodeA(context) != 65;
     }
   }
 }

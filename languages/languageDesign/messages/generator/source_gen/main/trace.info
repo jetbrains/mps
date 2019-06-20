@@ -51,8 +51,8 @@
   <root nodeRef="r:d6af9f13-1294-423f-9614-96aa7e60c9c9(main@generator)/686743897209955024">
     <file name="QueriesGenerated.java">
       <node id="4636242761502387631" at="101,93,102,227" concept="3" />
-      <node id="4636242761502415380" at="104,93,105,250" concept="3" />
-      <node id="4636242761502416177" at="107,93,108,474" concept="3" />
+      <node id="4636242761502415380" at="104,93,105,253" concept="3" />
+      <node id="4636242761502416177" at="107,93,108,255" concept="3" />
       <node id="7291380803376607547" at="113,78,114,414" concept="3" />
       <node id="4636242761502389218" at="319,74,320,74" concept="0" />
       <node id="4636242761502389218" at="341,15,342,61" concept="3" />
@@ -67,8 +67,8 @@
       <node id="4636242761502415892" at="107,0,110,0" concept="4" trace="referenceMacro_GetReferent_5_2#(Ljetbrains/mps/generator/template/ReferenceMacroContext;)Ljava/lang/Object;" />
       <node id="4636242761502389219" at="113,0,116,0" concept="4" trace="ifMacro_Condition_5_0#(Ljetbrains/mps/generator/template/IfMacroContext;)Z" />
       <scope id="4636242761502387302" at="101,93,102,227" />
-      <scope id="4636242761502413344" at="104,93,105,250" />
-      <scope id="4636242761502415893" at="107,93,108,474" />
+      <scope id="4636242761502413344" at="104,93,105,253" />
+      <scope id="4636242761502415893" at="107,93,108,255" />
       <scope id="4636242761502389220" at="113,78,114,414" />
       <scope id="4636242761502389218" at="341,15,342,61" />
       <scope id="4636242761502387300" at="405,16,406,70" />

@@ -519,8 +519,8 @@
         <node concept="YeOm9" id="7vh765Fm11z" role="2ShVmc">
           <node concept="1Y3b0j" id="7vh765Fm11A" role="YeSDq">
             <property role="2bfB8j" value="true" />
-            <ref role="37wK5l" to="16ha:~BaseMessageProvider.&lt;init&gt;(jetbrains.mps.core.aspects.constraints.rules.ConstraintsRuleId)" resolve="BaseMessageProvider" />
             <ref role="1Y3XeK" to="16ha:~BaseMessageProvider" resolve="BaseMessageProvider" />
+            <ref role="37wK5l" to="16ha:~BaseMessageProvider.&lt;init&gt;(jetbrains.mps.core.aspects.constraints.rules.RuleId)" resolve="BaseMessageProvider" />
             <node concept="3Tm1VV" id="7vh765Fm11B" role="1B3o_S" />
             <node concept="10M0yZ" id="1ToVZma5Sqg" role="37wK5m">
               <ref role="1PxDUh" to="80mx:6kKc3mjmPnA" resolve="DescriptorClass.RuleClass" />
@@ -1416,7 +1416,7 @@
                           <node concept="2OqwBi" id="41nfzDbOQUE" role="3clFbG">
                             <node concept="1iwH7S" id="41nfzDbOQUF" role="2Oq$k0" />
                             <node concept="1iwH70" id="41nfzDbOQUG" role="2OqNvi">
-                              <ref role="1iwH77" to="80mx:6kKc3mjnlQG" resolve="def" />
+                              <ref role="1iwH77" to="80mx:6kKc3mjnlQG" resolve="defGet" />
                               <node concept="2OqwBi" id="41nfzDbOQUH" role="1iwH7V">
                                 <node concept="3TrEf2" id="41nfzDbOQUI" role="2OqNvi">
                                   <ref role="3Tt5mk" to="t9po:4zSofKek6iv" resolve="declaration" />
@@ -1484,7 +1484,7 @@
                             <node concept="2OqwBi" id="41nfzDbOXCm" role="3clFbG">
                               <node concept="1iwH7S" id="41nfzDbOXCn" role="2Oq$k0" />
                               <node concept="1iwH70" id="41nfzDbOXCo" role="2OqNvi">
-                                <ref role="1iwH77" to="80mx:6kKc3mjnlQG" resolve="def" />
+                                <ref role="1iwH77" to="80mx:6kKc3mjnlQG" resolve="defGet" />
                                 <node concept="2OqwBi" id="41nfzDbOXCp" role="1iwH7V">
                                   <node concept="3TrEf2" id="41nfzDbOXCq" role="2OqNvi">
                                     <ref role="3Tt5mk" to="t9po:4zSofKek6iv" resolve="declaration" />
@@ -1506,20 +1506,11 @@
                             <node concept="2OqwBi" id="41nfzDbOYg0" role="3clFbG">
                               <node concept="1iwH7S" id="41nfzDbOXOK" role="2Oq$k0" />
                               <node concept="1iwH70" id="41nfzDbOYls" role="2OqNvi">
-                                <ref role="1iwH77" to="80mx:6kKc3mjAnYi" resolve="constraintsRootClass" />
-                                <node concept="2OqwBi" id="41nfzDbOYV_" role="1iwH7V">
-                                  <node concept="2OqwBi" id="41nfzDbOY_V" role="2Oq$k0">
-                                    <node concept="30H73N" id="41nfzDbOYw6" role="2Oq$k0" />
-                                    <node concept="3TrEf2" id="41nfzDbOYCl" role="2OqNvi">
-                                      <ref role="3Tt5mk" to="t9po:4zSofKek6iv" resolve="declaration" />
-                                    </node>
-                                  </node>
-                                  <node concept="2Xjw5R" id="41nfzDbOZAi" role="2OqNvi">
-                                    <node concept="1xMEDy" id="41nfzDbOZAk" role="1xVPHs">
-                                      <node concept="chp4Y" id="41nfzDbOZDG" role="ri$Ld">
-                                        <ref role="cht4Q" to="bm42:6kKc3mjlk8x" resolve="ConstraintsRoot" />
-                                      </node>
-                                    </node>
+                                <ref role="1iwH77" to="80mx:41nfzDbPu_y" resolve="defClass" />
+                                <node concept="2OqwBi" id="41nfzDbOY_V" role="1iwH7V">
+                                  <node concept="30H73N" id="41nfzDbOYw6" role="2Oq$k0" />
+                                  <node concept="3TrEf2" id="41nfzDbOYCl" role="2OqNvi">
+                                    <ref role="3Tt5mk" to="t9po:4zSofKek6iv" resolve="declaration" />
                                   </node>
                                 </node>
                               </node>

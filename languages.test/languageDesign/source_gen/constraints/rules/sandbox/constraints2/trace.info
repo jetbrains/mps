@@ -23,68 +23,69 @@
       <node id="8657450212265501576" at="28,0,29,0" concept="3" trace="RULES" />
       <node id="8657450212265501576" at="30,32,31,19" concept="5" />
       <node id="8657450212265501576" at="36,43,37,17" concept="2" />
-      <node id="7201029305263584745" at="40,67,41,182" concept="2" />
-      <node id="686743897209654265" at="44,0,45,0" concept="3" trace="SOURCE_NODE_REF" />
-      <node id="686743897209654265" at="45,0,46,0" concept="3" trace="ID_FIRST" />
-      <node id="686743897209654265" at="47,25,48,78" concept="5" />
-      <node id="686743897209654265" at="51,63,52,188" concept="2" />
-      <node id="5258059200644191828" at="56,0,57,0" concept="3" trace="SOURCE_NODE_REF" />
-      <node id="5258059200644191828" at="57,0,58,0" concept="3" trace="ID_SECOND" />
-      <node id="5258059200644191828" at="59,26,60,79" concept="5" />
-      <node id="5258059200644191828" at="63,63,64,190" concept="2" />
-      <node id="315923949160993128" at="68,0,69,0" concept="3" trace="SOURCE_NODE_REF" />
-      <node id="315923949160993128" at="69,0,70,0" concept="3" trace="ID_THIRD" />
-      <node id="315923949160993128" at="71,25,72,78" concept="5" />
-      <node id="315923949160993128" at="75,63,76,37" concept="2" />
+      <node id="7201029305263584745" at="41,69,42,184" concept="2" />
+      <node id="686743897209654265" at="46,0,47,0" concept="3" trace="SOURCE_NODE_REF" />
+      <node id="686743897209654265" at="47,0,48,0" concept="3" trace="ID_FIRST" />
+      <node id="686743897209654265" at="49,25,50,78" concept="5" />
+      <node id="686743897209654265" at="53,63,54,188" concept="2" />
+      <node id="5258059200644191828" at="58,0,59,0" concept="3" trace="SOURCE_NODE_REF" />
+      <node id="5258059200644191828" at="59,0,60,0" concept="3" trace="ID_SECOND" />
+      <node id="5258059200644191828" at="61,26,62,79" concept="5" />
+      <node id="5258059200644191828" at="65,63,66,190" concept="2" />
+      <node id="315923949160993128" at="70,0,71,0" concept="3" trace="SOURCE_NODE_REF" />
+      <node id="315923949160993128" at="71,0,72,0" concept="3" trace="ID_THIRD" />
+      <node id="315923949160993128" at="73,25,74,78" concept="5" />
+      <node id="315923949160993128" at="77,63,78,61" concept="2" />
       <node id="8657450212265501576" at="30,0,33,0" concept="0" trace="A_Constraints2#()V" />
-      <node id="7201029305263584745" at="40,0,43,0" concept="4" trace="getNodeA#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/CanBeChild_Context;)I" />
-      <node id="686743897209654265" at="47,0,50,0" concept="0" trace="Rule_first#()V" />
-      <node id="5258059200644191828" at="59,0,62,0" concept="0" trace="Rule_second#()V" />
-      <node id="315923949160993128" at="71,0,74,0" concept="0" trace="Rule_third#()V" />
-      <node id="686743897209654265" at="50,0,54,0" concept="1" trace="check#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/CanBeChild_Context;)Z" />
-      <node id="5258059200644191828" at="62,0,66,0" concept="1" trace="check#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/CanBeChild_Context;)Z" />
-      <node id="315923949160993128" at="74,0,78,0" concept="1" trace="check#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/CanBeChild_Context;)Z" />
+      <node id="7201029305263584745" at="41,0,44,0" concept="4" trace="getNodeA#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/CanBeChild_Context;)I" />
+      <node id="686743897209654265" at="49,0,52,0" concept="0" trace="Rule_first#()V" />
+      <node id="5258059200644191828" at="61,0,64,0" concept="0" trace="Rule_second#()V" />
+      <node id="315923949160993128" at="73,0,76,0" concept="0" trace="Rule_third#()V" />
+      <node id="686743897209654265" at="52,0,56,0" concept="1" trace="check#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/CanBeChild_Context;)Z" />
+      <node id="5258059200644191828" at="64,0,68,0" concept="1" trace="check#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/CanBeChild_Context;)Z" />
+      <node id="315923949160993128" at="76,0,80,0" concept="1" trace="check#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/CanBeChild_Context;)Z" />
       <node id="8657450212265501576" at="34,0,39,0" concept="1" trace="getDeclaredRules#()Ljava/util/List;" />
       <scope id="8657450212265501576" at="30,32,31,19" />
       <scope id="8657450212265501576" at="36,43,37,17" />
-      <scope id="7201029305263584745" at="40,67,41,182" />
-      <scope id="686743897209654265" at="47,25,48,78" />
-      <scope id="686743897209654265" at="51,63,52,188" />
-      <scope id="5258059200644191828" at="59,26,60,79" />
-      <scope id="5258059200644191828" at="63,63,64,190" />
-      <scope id="315923949160993128" at="71,25,72,78" />
-      <scope id="315923949160993128" at="75,63,76,37" />
+      <scope id="7201029305263584745" at="41,69,42,184" />
+      <scope id="686743897209654265" at="49,25,50,78" />
+      <scope id="686743897209654265" at="53,63,54,188" />
+      <scope id="5258059200644191828" at="61,26,62,79" />
+      <scope id="5258059200644191828" at="65,63,66,190" />
+      <scope id="315923949160993128" at="73,25,74,78" />
+      <scope id="315923949160993128" at="77,63,78,61" />
       <scope id="8657450212265501576" at="30,0,33,0" />
-      <scope id="7201029305263584745" at="40,0,43,0">
+      <scope id="7201029305263584745" at="41,0,44,0">
         <var name="context" id="7201029305263584745" />
       </scope>
-      <scope id="686743897209654265" at="47,0,50,0" />
-      <scope id="5258059200644191828" at="59,0,62,0" />
-      <scope id="315923949160993128" at="71,0,74,0" />
-      <scope id="686743897209654265" at="50,0,54,0">
+      <scope id="686743897209654265" at="49,0,52,0" />
+      <scope id="5258059200644191828" at="61,0,64,0" />
+      <scope id="315923949160993128" at="73,0,76,0" />
+      <scope id="686743897209654265" at="52,0,56,0">
         <var name="context" id="686743897209654265" />
       </scope>
-      <scope id="5258059200644191828" at="62,0,66,0">
+      <scope id="5258059200644191828" at="64,0,68,0">
         <var name="context" id="5258059200644191828" />
       </scope>
-      <scope id="315923949160993128" at="74,0,78,0">
+      <scope id="315923949160993128" at="76,0,80,0">
         <var name="context" id="315923949160993128" />
       </scope>
       <scope id="8657450212265501576" at="34,0,39,0" />
-      <unit id="686743897209654265" at="43,0,55,0" name="constraints.rules.sandbox.constraints2.A_Constraints2$Rule_first" />
-      <unit id="5258059200644191828" at="55,0,67,0" name="constraints.rules.sandbox.constraints2.A_Constraints2$Rule_second" />
-      <unit id="315923949160993128" at="67,0,79,0" name="constraints.rules.sandbox.constraints2.A_Constraints2$Rule_third" />
-      <unit id="8657450212265501576" at="21,0,80,0" name="constraints.rules.sandbox.constraints2.A_Constraints2" />
+      <unit id="7201029305263584745" at="40,0,45,0" name="constraints.rules.sandbox.constraints2.A_Constraints2$DefNodeA" />
+      <unit id="686743897209654265" at="45,0,57,0" name="constraints.rules.sandbox.constraints2.A_Constraints2$Rule_first" />
+      <unit id="5258059200644191828" at="57,0,69,0" name="constraints.rules.sandbox.constraints2.A_Constraints2$Rule_second" />
+      <unit id="315923949160993128" at="69,0,81,0" name="constraints.rules.sandbox.constraints2.A_Constraints2$Rule_third" />
+      <unit id="8657450212265501576" at="21,0,82,0" name="constraints.rules.sandbox.constraints2.A_Constraints2" />
     </file>
     <file name="A_Messages.java">
       <node id="686743897209654265" at="36,79,37,112" concept="2" />
-      <node id="5258059200644191828" at="43,79,44,149" concept="2" />
+      <node id="5258059200644191828" at="43,79,44,158" concept="2" />
       <node id="686743897209654265" at="34,0,39,0" concept="1" trace="yieldMessage#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/CanBeChild_Context;)Ljetbrains/mps/core/aspects/reporting/api/MessageProvider/StringMsg;" />
       <node id="5258059200644191828" at="41,0,46,0" concept="1" trace="yieldMessage#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/CanBeChild_Context;)Ljetbrains/mps/core/aspects/reporting/api/MessageProvider/StringMsg;" />
       <node id="686743897209654265" at="33,0,40,0" concept="3" trace="MSGPROVIDER_FIRST_xwdw45_c" />
       <node id="5258059200644191828" at="40,0,47,0" concept="3" trace="MSGPROVIDER_SECOND_xwdw45_d" />
       <scope id="686743897209654265" at="36,79,37,112" />
-      <scope id="5258059200644191828" at="43,79,44,149" />
+      <scope id="5258059200644191828" at="43,79,44,158" />
       <scope id="686743897209654265" at="34,0,39,0">
         <var name="context" id="686743897209654265" />
       </scope>
