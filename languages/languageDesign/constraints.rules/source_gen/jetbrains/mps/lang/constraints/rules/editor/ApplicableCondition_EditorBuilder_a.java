@@ -13,10 +13,16 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Vertical;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.constraints.rules.behavior.ConstraintsExpressionHolder__BehaviorDescriptor;
+import jetbrains.mps.lang.constraints.rules.behavior.ApplicableCondition__BehaviorDescriptor;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.lang.constraints.rules.behavior.TypedIdentifier__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Horizontal;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.lang.editor.cellProviders.SingleRoleCellProvider;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
@@ -27,12 +33,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
 import jetbrains.mps.nodeEditor.AbstractCellProvider;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.List;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.lang.constraints.rules.behavior.ConstraintsExpressionHolder__BehaviorDescriptor;
-import jetbrains.mps.lang.constraints.rules.behavior.ApplicableCondition__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.lang.constraints.rules.behavior.TypedIdentifier__BehaviorDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -72,8 +73,17 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
     editorCell.getStyle().putAll(style);
     editorCell.setGridLayout(true);
     editorCell.addEditorCell(createCollection_2());
-    editorCell.addEditorCell(createCollection_3());
+    if (nodeCondition_80dwug_a1a0()) {
+      editorCell.addEditorCell(createCollection_3());
+    }
     return editorCell;
+  }
+  private boolean nodeCondition_80dwug_a1a0() {
+    return Sequence.fromIterable(SLinkOperations.collect(ConstraintsExpressionHolder__BehaviorDescriptor.getUsedDefs_id35M2kEOy5Ld.invoke(ApplicableCondition__BehaviorDescriptor.getContainingRule_id1dKBELviPCA.invoke(myNode)), MetaAdapterFactory.getReferenceLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593574311L, 0x6530303593578e5eL, "declaration"))).any(new IWhereFilter<SNode>() {
+      public boolean accept(SNode it) {
+        return (boolean) TypedIdentifier__BehaviorDescriptor.hasApplicableCondition_id35M2kEOydzo.invoke(it);
+      }
+    });
   }
   private EditorCell createCollection_2() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Horizontal());
@@ -165,9 +175,17 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
   private EditorCell createCustom_0() {
     AbstractCellProvider provider = new _FunctionTypes._return_P0_E0<AbstractCellProvider>() {
       public AbstractCellProvider invoke() {
-        final List<SNode> requiredDefs = Sequence.fromIterable(ConstraintsExpressionHolder__BehaviorDescriptor.getUsedDefs_id35M2kEOy5Ld.invoke(ApplicableCondition__BehaviorDescriptor.getContainingRule_id1dKBELviPCA.invoke(myNode))).where(new IWhereFilter<SNode>() {
+        final List<SNode> requiredDefs = Sequence.fromIterable(SLinkOperations.collect(ConstraintsExpressionHolder__BehaviorDescriptor.getUsedDefs_id35M2kEOy5Ld.invoke(ApplicableCondition__BehaviorDescriptor.getContainingRule_id1dKBELviPCA.invoke(myNode)), MetaAdapterFactory.getReferenceLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593574311L, 0x6530303593578e5eL, "declaration"))).distinct().where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return (boolean) TypedIdentifier__BehaviorDescriptor.hasApplicableCondition_id35M2kEOydzo.invoke(SLinkOperations.getTarget(it, MetaAdapterFactory.getReferenceLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593574311L, 0x6530303593578e5eL, "declaration")));
+            return (boolean) TypedIdentifier__BehaviorDescriptor.hasApplicableCondition_id35M2kEOydzo.invoke(it);
+          }
+        }).select(new ISelector<SNode, SNode>() {
+          public SNode select(final SNode def) {
+            return Sequence.fromIterable(ConstraintsExpressionHolder__BehaviorDescriptor.getUsedDefs_id35M2kEOy5Ld.invoke(ApplicableCondition__BehaviorDescriptor.getContainingRule_id1dKBELviPCA.invoke(myNode))).where(new IWhereFilter<SNode>() {
+              public boolean accept(SNode ref) {
+                return SLinkOperations.getTarget(ref, MetaAdapterFactory.getReferenceLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593574311L, 0x6530303593578e5eL, "declaration")) == def;
+              }
+            }).first();
           }
         }).toListSequence();
         return new AbstractCellProvider(myNode) {
