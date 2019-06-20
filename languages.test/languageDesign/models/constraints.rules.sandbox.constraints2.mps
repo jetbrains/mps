@@ -155,7 +155,7 @@
               <property role="16N$OU" value="The property a of " />
             </node>
             <node concept="16Iohu" id="5hCLR$mfgvM" role="16I2mt">
-              <ref role="16E0hz" to="qffw:hyoMxHFKoi" resolve="node" />
+              <ref role="16E0hz" node="6fJcw0tqvnD" resolve="nodeA" />
             </node>
             <node concept="16N$OT" id="5hCLR$mfgCs" role="16I2mt">
               <property role="16N$OU" value=" is too large, please change" />

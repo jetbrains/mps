@@ -41,7 +41,7 @@ public final class A_Messages extends BaseMessageDescriptor {
     @NotNull
     @Override
     public MessageProvider.StringMsg yieldMessage(CanBeChild_Context context) {
-      return new MessageProvider.StringMsg("The property a of " + String.valueOf(context.getNode()) + " is too large, please change");
+      return new MessageProvider.StringMsg("The property a of " + String.valueOf(A_Constraints2.getNodeA(context)) + " is too large, please change");
     }
   };
 
