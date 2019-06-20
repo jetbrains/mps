@@ -12,20 +12,20 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_AbstractConstraintsDefNative;
   private ConceptPresentation props_ApplicableCondition;
   private ConceptPresentation props_ApplicableConditionHolder;
-  private ConceptPresentation props_ConstraintsBlock;
+  private ConceptPresentation props_Block;
   private ConceptPresentation props_ConstraintsDef;
   private ConceptPresentation props_ConstraintsDefNative;
   private ConceptPresentation props_ConstraintsDefNativeNode;
   private ConceptPresentation props_ConstraintsExpressionHolder;
-  private ConceptPresentation props_ConstraintsRoot;
+  private ConceptPresentation props_ConstraintsRoot2;
   private ConceptPresentation props_ConstraintsRule;
-  private ConceptPresentation props_ConstraintsRuleBlock;
-  private ConceptPresentation props_ConstraintsRuleBlockMember;
   private ConceptPresentation props_ConstraintsRuleIdHolder;
-  private ConceptPresentation props_ConstraintsRuleKind;
-  private ConceptPresentation props_ConstraintsRuleKindParameterConcept;
   private ConceptPresentation props_ContextReference;
   private ConceptPresentation props_PseudoBaseConcept;
+  private ConceptPresentation props_RuleBlock;
+  private ConceptPresentation props_RuleBlockMember;
+  private ConceptPresentation props_RuleKind;
+  private ConceptPresentation props_RuleKindParameterConcept;
   private ConceptPresentation props_TypedIdentifier;
 
   @Override
@@ -52,12 +52,12 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_ApplicableConditionHolder = cpb.create();
         }
         return props_ApplicableConditionHolder;
-      case LanguageConceptSwitch.ConstraintsBlock:
-        if (props_ConstraintsBlock == null) {
+      case LanguageConceptSwitch.Block:
+        if (props_Block == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          props_ConstraintsBlock = cpb.create();
+          props_Block = cpb.create();
         }
-        return props_ConstraintsBlock;
+        return props_Block;
       case LanguageConceptSwitch.ConstraintsDef:
         if (props_ConstraintsDef == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -85,13 +85,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_ConstraintsExpressionHolder = cpb.create();
         }
         return props_ConstraintsExpressionHolder;
-      case LanguageConceptSwitch.ConstraintsRoot:
-        if (props_ConstraintsRoot == null) {
+      case LanguageConceptSwitch.ConstraintsRoot2:
+        if (props_ConstraintsRoot2 == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          props_ConstraintsRoot = cpb.create();
+          props_ConstraintsRoot2 = cpb.create();
         }
-        return props_ConstraintsRoot;
+        return props_ConstraintsRoot2;
       case LanguageConceptSwitch.ConstraintsRule:
         if (props_ConstraintsRule == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -100,39 +100,12 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_ConstraintsRule = cpb.create();
         }
         return props_ConstraintsRule;
-      case LanguageConceptSwitch.ConstraintsRuleBlock:
-        if (props_ConstraintsRuleBlock == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.presentationByReference(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554246L, 0x653030359355424bL, "kind", "", "");
-          props_ConstraintsRuleBlock = cpb.create();
-        }
-        return props_ConstraintsRuleBlock;
-      case LanguageConceptSwitch.ConstraintsRuleBlockMember:
-        if (props_ConstraintsRuleBlockMember == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          props_ConstraintsRuleBlockMember = cpb.create();
-        }
-        return props_ConstraintsRuleBlockMember;
       case LanguageConceptSwitch.ConstraintsRuleIdHolder:
         if (props_ConstraintsRuleIdHolder == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           props_ConstraintsRuleIdHolder = cpb.create();
         }
         return props_ConstraintsRuleIdHolder;
-      case LanguageConceptSwitch.ConstraintsRuleKind:
-        if (props_ConstraintsRuleKind == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.presentationByName();
-          props_ConstraintsRuleKind = cpb.create();
-        }
-        return props_ConstraintsRuleKind;
-      case LanguageConceptSwitch.ConstraintsRuleKindParameterConcept:
-        if (props_ConstraintsRuleKindParameterConcept == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.presentationByName();
-          props_ConstraintsRuleKindParameterConcept = cpb.create();
-        }
-        return props_ConstraintsRuleKindParameterConcept;
       case LanguageConceptSwitch.ContextReference:
         if (props_ContextReference == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -146,6 +119,33 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_PseudoBaseConcept = cpb.create();
         }
         return props_PseudoBaseConcept;
+      case LanguageConceptSwitch.RuleBlock:
+        if (props_RuleBlock == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("Add rules for the kind");
+          props_RuleBlock = cpb.create();
+        }
+        return props_RuleBlock;
+      case LanguageConceptSwitch.RuleBlockMember:
+        if (props_RuleBlockMember == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_RuleBlockMember = cpb.create();
+        }
+        return props_RuleBlockMember;
+      case LanguageConceptSwitch.RuleKind:
+        if (props_RuleKind == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_RuleKind = cpb.create();
+        }
+        return props_RuleKind;
+      case LanguageConceptSwitch.RuleKindParameterConcept:
+        if (props_RuleKindParameterConcept == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_RuleKindParameterConcept = cpb.create();
+        }
+        return props_RuleKindParameterConcept;
       case LanguageConceptSwitch.TypedIdentifier:
         if (props_TypedIdentifier == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

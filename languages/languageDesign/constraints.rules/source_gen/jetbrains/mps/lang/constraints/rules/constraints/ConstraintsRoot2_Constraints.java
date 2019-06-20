@@ -23,9 +23,9 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.smodel.SNodePointer;
 
-public class ConstraintsRoot_Constraints extends BaseConstraintsDescriptor {
-  public ConstraintsRoot_Constraints() {
-    super(MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554221L, "jetbrains.mps.lang.constraints.rules.structure.ConstraintsRoot"));
+public class ConstraintsRoot2_Constraints extends BaseConstraintsDescriptor {
+  public ConstraintsRoot2_Constraints() {
+    super(MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554221L, "jetbrains.mps.lang.constraints.rules.structure.ConstraintsRoot2"));
   }
 
   @Override
@@ -65,7 +65,7 @@ public class ConstraintsRoot_Constraints extends BaseConstraintsDescriptor {
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), new ConstraintsRoot_Constraints.Name_Property(this));
+    properties.put(MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), new ConstraintsRoot2_Constraints.Name_Property(this));
     return properties;
   }
   private static boolean staticCanBeARoot(SModel model) {

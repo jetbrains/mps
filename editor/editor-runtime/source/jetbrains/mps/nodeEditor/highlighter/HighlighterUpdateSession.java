@@ -32,20 +32,26 @@ import jetbrains.mps.typechecking.backend.TypecheckingSession;
 import jetbrains.mps.typesystem.inference.TypeContextManager;
 import jetbrains.mps.util.Cancellable;
 import jetbrains.mps.util.Pair;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import org.jetbrains.mps.openapi.module.SRepository;
+import sun.awt.image.ImageWatched.Link;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
 public class HighlighterUpdateSession {
+  private static final Logger LOG = LogManager.getLogger(HighlighterUpdateSession.class);
+
   private final IHighlighter myHighlighter;
   private final Collection<EditorCheckerWrapper> myCheckers;
   private final List<EditorComponent> myAllEditorComponents;
@@ -145,13 +151,21 @@ public class HighlighterUpdateSession {
             return;
           }
 
-          for (EditorCheckerWrapper checker : myCheckers) {
-            if (checker.needsUpdate(component)) {
-              checkersToRecheck.add(checker);
-              if (isCancelRequested()) {
-                confirmCancel();
-                return;
+          Iterator<EditorCheckerWrapper> iterator = myCheckers.iterator();
+          while (iterator.hasNext()) {
+            EditorCheckerWrapper checker = iterator.next();
+            try {
+              boolean needsUpdate = checker.needsUpdate(component);
+              if (needsUpdate) {
+                checkersToRecheck.add(checker);
+                if (isCancelRequested()) {
+                  confirmCancel();
+                  return;
+                }
               }
+            } catch (LinkageError error) {
+              LOG.warn("Caught a linkage error presumably from an extension; the checker will be dropped " + error);
+              iterator.remove();
             }
           }
         }

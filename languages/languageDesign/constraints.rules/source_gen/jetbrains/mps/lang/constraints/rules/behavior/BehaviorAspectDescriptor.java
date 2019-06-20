@@ -16,10 +16,10 @@ public final class BehaviorAspectDescriptor extends BaseBehaviorAspectDescriptor
   private final BHDescriptor myConstraintsRuleIdHolder__BehaviorDescriptor = new ConstraintsRuleIdHolder__BehaviorDescriptor();
   private final BHDescriptor myApplicableCondition__BehaviorDescriptor = new ApplicableCondition__BehaviorDescriptor();
   private final BHDescriptor myConstraintsDefNative__BehaviorDescriptor = new ConstraintsDefNative__BehaviorDescriptor();
-  private final BHDescriptor myConstraintsRuleKindParameterConcept__BehaviorDescriptor = new ConstraintsRuleKindParameterConcept__BehaviorDescriptor();
-  private final BHDescriptor myConstraintsRoot__BehaviorDescriptor = new ConstraintsRoot__BehaviorDescriptor();
-  private final BHDescriptor myConstraintsRuleBlock__BehaviorDescriptor = new ConstraintsRuleBlock__BehaviorDescriptor();
-  private final BHDescriptor myConstraintsRuleKind__BehaviorDescriptor = new ConstraintsRuleKind__BehaviorDescriptor();
+  private final BHDescriptor myRuleKindParameterConcept__BehaviorDescriptor = new RuleKindParameterConcept__BehaviorDescriptor();
+  private final BHDescriptor myConstraintsRoot2__BehaviorDescriptor = new ConstraintsRoot2__BehaviorDescriptor();
+  private final BHDescriptor myRuleBlock__BehaviorDescriptor = new RuleBlock__BehaviorDescriptor();
+  private final BHDescriptor myRuleKind__BehaviorDescriptor = new RuleKind__BehaviorDescriptor();
   private final BHDescriptor myConstraintsExpressionHolder__BehaviorDescriptor = new ConstraintsExpressionHolder__BehaviorDescriptor();
   private final BHDescriptor myContextReference__BehaviorDescriptor = new ContextReference__BehaviorDescriptor();
   private final BHDescriptor myConstraintsDef__BehaviorDescriptor = new ConstraintsDef__BehaviorDescriptor();
@@ -43,22 +43,22 @@ public final class BehaviorAspectDescriptor extends BaseBehaviorAspectDescriptor
       case 4:
         return myConstraintsExpressionHolder__BehaviorDescriptor;
       case 5:
-        return myConstraintsRoot__BehaviorDescriptor;
+        return myConstraintsRoot2__BehaviorDescriptor;
       case 6:
-        return myConstraintsRuleBlock__BehaviorDescriptor;
-      case 7:
         return myConstraintsRuleIdHolder__BehaviorDescriptor;
-      case 8:
-        return myConstraintsRuleKind__BehaviorDescriptor;
-      case 9:
-        return myConstraintsRuleKindParameterConcept__BehaviorDescriptor;
-      case 10:
+      case 7:
         return myContextReference__BehaviorDescriptor;
+      case 8:
+        return myRuleBlock__BehaviorDescriptor;
+      case 9:
+        return myRuleKind__BehaviorDescriptor;
+      case 10:
+        return myRuleKindParameterConcept__BehaviorDescriptor;
       case 11:
         return myTypedIdentifier__BehaviorDescriptor;
       default:
     }
     return null;
   }
-  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x3172094ab484cd2cL), MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359366e9d5L), MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x4bf59690bc00f6b1L), MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x46263286da99051L), MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359356e968L), MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554221L), MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554246L), MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x46263286dbf54aaL), MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554248L), MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x4bf59690bc05b735L), MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593574311L), MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359368062cL)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x3172094ab484cd2cL), MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359366e9d5L), MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x4bf59690bc00f6b1L), MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x46263286da99051L), MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359356e968L), MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554221L), MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x46263286dbf54aaL), MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593574311L), MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554246L), MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554248L), MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x4bf59690bc05b735L), MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359368062cL)).seal();
 }

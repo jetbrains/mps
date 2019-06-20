@@ -15,9 +15,9 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SNodePointer;
 
-public class ConstraintsRuleKind_Constraints extends BaseConstraintsDescriptor {
-  public ConstraintsRuleKind_Constraints() {
-    super(MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554248L, "jetbrains.mps.lang.constraints.rules.structure.ConstraintsRuleKind"));
+public class RuleKind_Constraints extends BaseConstraintsDescriptor {
+  public RuleKind_Constraints() {
+    super(MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554248L, "jetbrains.mps.lang.constraints.rules.structure.RuleKind"));
   }
 
   @Override

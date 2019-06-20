@@ -12,20 +12,20 @@ public final class LanguageConceptSwitch {
   public static final int AbstractConstraintsDefNative = 0;
   public static final int ApplicableCondition = 1;
   public static final int ApplicableConditionHolder = 2;
-  public static final int ConstraintsBlock = 3;
+  public static final int Block = 3;
   public static final int ConstraintsDef = 4;
   public static final int ConstraintsDefNative = 5;
   public static final int ConstraintsDefNativeNode = 6;
   public static final int ConstraintsExpressionHolder = 7;
-  public static final int ConstraintsRoot = 8;
+  public static final int ConstraintsRoot2 = 8;
   public static final int ConstraintsRule = 9;
-  public static final int ConstraintsRuleBlock = 10;
-  public static final int ConstraintsRuleBlockMember = 11;
-  public static final int ConstraintsRuleIdHolder = 12;
-  public static final int ConstraintsRuleKind = 13;
-  public static final int ConstraintsRuleKindParameterConcept = 14;
-  public static final int ContextReference = 15;
-  public static final int PseudoBaseConcept = 16;
+  public static final int ConstraintsRuleIdHolder = 10;
+  public static final int ContextReference = 11;
+  public static final int PseudoBaseConcept = 12;
+  public static final int RuleBlock = 13;
+  public static final int RuleBlockMember = 14;
+  public static final int RuleKind = 15;
+  public static final int RuleKindParameterConcept = 16;
   public static final int TypedIdentifier = 17;
 
   public LanguageConceptSwitch() {
@@ -33,20 +33,20 @@ public final class LanguageConceptSwitch {
     builder.put(0x653030359355429dL, AbstractConstraintsDefNative);
     builder.put(0x3172094ab484cd2cL, ApplicableCondition);
     builder.put(0x13709eac5f4898edL, ApplicableConditionHolder);
-    builder.put(0x93b1733caaa9766L, ConstraintsBlock);
+    builder.put(0x93b1733caaa9766L, Block);
     builder.put(0x653030359366e9d5L, ConstraintsDef);
     builder.put(0x4bf59690bc00f6b1L, ConstraintsDefNative);
     builder.put(0x46263286da99051L, ConstraintsDefNativeNode);
     builder.put(0x653030359356e968L, ConstraintsExpressionHolder);
-    builder.put(0x6530303593554221L, ConstraintsRoot);
+    builder.put(0x6530303593554221L, ConstraintsRoot2);
     builder.put(0x6530303593586de2L, ConstraintsRule);
-    builder.put(0x6530303593554246L, ConstraintsRuleBlock);
-    builder.put(0x6530303593698b98L, ConstraintsRuleBlockMember);
     builder.put(0x46263286dbf54aaL, ConstraintsRuleIdHolder);
-    builder.put(0x6530303593554248L, ConstraintsRuleKind);
-    builder.put(0x4bf59690bc05b735L, ConstraintsRuleKindParameterConcept);
     builder.put(0x6530303593574311L, ContextReference);
     builder.put(0x3ee1b46a97ab01b8L, PseudoBaseConcept);
+    builder.put(0x6530303593554246L, RuleBlock);
+    builder.put(0x6530303593698b98L, RuleBlockMember);
+    builder.put(0x6530303593554248L, RuleKind);
+    builder.put(0x4bf59690bc05b735L, RuleKindParameterConcept);
     builder.put(0x653030359368062cL, TypedIdentifier);
     myIndex = builder.seal();
   }

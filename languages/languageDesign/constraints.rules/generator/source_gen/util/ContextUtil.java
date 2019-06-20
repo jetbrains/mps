@@ -17,7 +17,7 @@ public final class ContextUtil {
   }
 
   public static SNodeReference matchContextForRuleKind(SNode ruleKind, TemplateQueryContext genContext) {
-    ruleKind = SNodeOperations.cast(genContext.getOriginalCopiedInputNode(ruleKind), MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554248L, "jetbrains.mps.lang.constraints.rules.structure.ConstraintsRuleKind"));
+    ruleKind = SNodeOperations.cast(genContext.getOriginalCopiedInputNode(ruleKind), MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554248L, "jetbrains.mps.lang.constraints.rules.structure.RuleKind"));
     SNodeReference pointer = SNodeOperations.getPointer(ruleKind);
     if (Objects.equals(pointer, new SNodePointer("r:bf693f8c-6f67-4402-a1e2-e61c34b6993e(jetbrains.mps.lang.constraints.rules.constraints2)", "8657450212265562055"))) {
       return new SNodePointer("8e98f4e2-decf-4e97-bf80-9109e8b759ee/java:jetbrains.mps.core.aspects.constraints.rules.kinds(jetbrains.mps.lang.constraints.rules.runtime/)", "~CanBeChild_Context");
@@ -28,7 +28,7 @@ public final class ContextUtil {
   }
 
   public static SNodeReference matchKindForRuleKind(SNode ruleKind, TemplateQueryContext genContext) {
-    ruleKind = SNodeOperations.cast(genContext.getOriginalCopiedInputNode(ruleKind), MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554248L, "jetbrains.mps.lang.constraints.rules.structure.ConstraintsRuleKind"));
+    ruleKind = SNodeOperations.cast(genContext.getOriginalCopiedInputNode(ruleKind), MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554248L, "jetbrains.mps.lang.constraints.rules.structure.RuleKind"));
     SNodeReference pointer = SNodeOperations.getPointer(ruleKind);
     if (Objects.equals(pointer, new SNodePointer("r:bf693f8c-6f67-4402-a1e2-e61c34b6993e(jetbrains.mps.lang.constraints.rules.constraints2)", "8657450212265562055"))) {
       return new SNodePointer("8e98f4e2-decf-4e97-bf80-9109e8b759ee/java:jetbrains.mps.core.aspects.constraints.rules.kinds(jetbrains.mps.lang.constraints.rules.runtime/)", "~CanBeChild_RuleKind");

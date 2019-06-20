@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.errors.item;
 
-import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeParent_RuleKind;
 import jetbrains.mps.errors.MessageStatus;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -26,7 +25,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 

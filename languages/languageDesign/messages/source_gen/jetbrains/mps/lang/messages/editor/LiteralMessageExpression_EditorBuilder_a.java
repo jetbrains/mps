@@ -64,7 +64,7 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
       setCellContext(editorCell);
       Style style = new StyleImpl();
       style.set(StyleAttributes.AUTO_DELETABLE, true);
-      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_MAGENTA));
+      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.LIGHT_BLUE));
       editorCell.getStyle().putAll(style);
       editorCell.addKeyMap(new LiteralMessageExpression_split());
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));

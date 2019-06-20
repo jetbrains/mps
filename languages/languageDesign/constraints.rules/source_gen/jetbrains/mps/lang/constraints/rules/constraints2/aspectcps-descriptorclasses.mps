@@ -159,11 +159,11 @@
       <concept id="315923949159026769" name="jetbrains.mps.lang.constraints.rules.structure.ConstraintsDefNativeNode" flags="ng" index="1DMZdT">
         <reference id="315923949159027763" name="conceptParameter" index="1DMZsr" />
       </concept>
-      <concept id="7291380803376071240" name="jetbrains.mps.lang.constraints.rules.structure.ConstraintsRuleKind" flags="ng" index="3Qpn9X">
+      <concept id="7291380803376071240" name="jetbrains.mps.lang.constraints.rules.structure.RuleKind" flags="ng" index="3Qpn9X">
         <child id="7291380803376071326" name="contextMember" index="3QpnaF" />
         <child id="5473446470512654130" name="parameter" index="3RW26y" />
       </concept>
-      <concept id="5473446470512654133" name="jetbrains.mps.lang.constraints.rules.structure.ConstraintsRuleKindParameterConcept" flags="ng" index="3RW26_" />
+      <concept id="5473446470512654133" name="jetbrains.mps.lang.constraints.rules.structure.RuleKindParameterConcept" flags="ng" index="3RW26_" />
       <concept id="5473446470512342705" name="jetbrains.mps.lang.constraints.rules.structure.ConstraintsDefNative" flags="ng" index="3RXm0x">
         <child id="5473446470512342706" name="type" index="3RXm0y" />
       </concept>
@@ -529,7 +529,7 @@
           <node concept="2$VJBW" id="27" role="385v07">
             <property role="2$VJBR" value="4575984242822723321" />
             <node concept="2x4n5u" id="28" role="3iCydw">
-              <property role="2x4mPI" value="ConstraintsRoot" />
+              <property role="2x4mPI" value="ConstraintsRoot2" />
               <property role="2x4n5l" value="1je9us348lqn5" />
               <node concept="2V$Bhx" id="29" role="2x4n5j">
                 <property role="2V$B1T" value="47257bf3-78d3-470b-89d9-8c3261a61d15" />
@@ -1078,7 +1078,7 @@
           <node concept="XkiVB" id="5a" role="3cqZAp">
             <ref role="37wK5l" to="o99v:~BaseRule.&lt;init&gt;(org.jetbrains.mps.openapi.language.SAbstractConcept,jetbrains.mps.core.aspects.constraints.rules.RuleKind,jetbrains.mps.core.aspects.constraints.rules.RuleId,org.jetbrains.mps.openapi.model.SNodeReference)" resolve="BaseRule" />
             <node concept="37vLTw" id="5b" role="37wK5m">
-              <ref role="3cqZAo" to=":^" resolve="CONCEPT" />
+              <ref role="3cqZAo" node="2N" resolve="CONCEPT" />
             </node>
             <node concept="Rm8GO" id="5c" role="37wK5m">
               <ref role="Rm8GQ" to="pdwk:~CanBeChild_RuleKind.INSTANCE" resolve="INSTANCE" />
@@ -1114,10 +1114,10 @@
                 <node concept="2OqwBi" id="5r" role="2Oq$k0">
                   <node concept="2OqwBi" id="5u" role="2Oq$k0">
                     <node concept="37vLTw" id="5x" role="2Oq$k0">
-                      <ref role="3cqZAo" to=":^" resolve="context" />
+                      <ref role="3cqZAo" node="5f" resolve="context" />
                     </node>
                     <node concept="liA8E" id="5y" role="2OqNvi">
-                      <ref role="37wK5l" to=":^" resolve="getNode" />
+                      <ref role="37wK5l" to="pdwk:~CanBeChild_Context.getNode()" resolve="getNode" />
                     </node>
                     <node concept="cd27G" id="5z" role="lGtFl">
                       <node concept="3u3nmq" id="5$" role="cd27D">
@@ -1156,10 +1156,10 @@
                 <ref role="37wK5l" to="33ny:~Collection.contains(java.lang.Object)" resolve="contains" />
                 <node concept="2OqwBi" id="5F" role="37wK5m">
                   <node concept="37vLTw" id="5H" role="2Oq$k0">
-                    <ref role="3cqZAo" to=":^" resolve="context" />
+                    <ref role="3cqZAo" node="5f" resolve="context" />
                   </node>
                   <node concept="liA8E" id="5I" role="2OqNvi">
-                    <ref role="37wK5l" to=":^" resolve="getLink" />
+                    <ref role="37wK5l" to="pdwk:~CanBeChild_Context.getLink()" resolve="getLink" />
                   </node>
                   <node concept="cd27G" id="5J" role="lGtFl">
                     <node concept="3u3nmq" id="5K" role="cd27D">
@@ -1268,8 +1268,8 @@
         <node concept="YeOm9" id="6o" role="2ShVmc">
           <node concept="1Y3b0j" id="6q" role="YeSDq">
             <property role="2bfB8j" value="true" />
-            <ref role="37wK5l" to="16ha:~BaseMessageProvider.&lt;init&gt;(jetbrains.mps.core.aspects.constraints.rules.ConstraintsRuleId)" resolve="BaseMessageProvider" />
             <ref role="1Y3XeK" to="16ha:~BaseMessageProvider" resolve="BaseMessageProvider" />
+            <ref role="37wK5l" to="16ha:~BaseMessageProvider.&lt;init&gt;(jetbrains.mps.core.aspects.constraints.rules.RuleId)" resolve="BaseMessageProvider" />
             <node concept="3Tm1VV" id="6s" role="1B3o_S">
               <node concept="cd27G" id="6x" role="lGtFl">
                 <node concept="3u3nmq" id="6y" role="cd27D">
@@ -1347,10 +1347,10 @@
                             <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                             <node concept="2OqwBi" id="76" role="37wK5m">
                               <node concept="37vLTw" id="78" role="2Oq$k0">
-                                <ref role="3cqZAo" to=":^" resolve="context" />
+                                <ref role="3cqZAo" node="6C" resolve="context" />
                               </node>
                               <node concept="liA8E" id="79" role="2OqNvi">
-                                <ref role="37wK5l" to=":^" resolve="getLink" />
+                                <ref role="37wK5l" to="pdwk:~CanBeChild_Context.getLink()" resolve="getLink" />
                               </node>
                             </node>
                             <node concept="cd27G" id="77" role="lGtFl">

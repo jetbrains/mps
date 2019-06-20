@@ -10,6 +10,7 @@ import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeChild_Context;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeChild_Context.Builder;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeChild_RuleKind;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeParent_Context;
+import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeParent_RuleKind;
 import jetbrains.mps.core.aspects.reporting.api.MessageProvider;
 import jetbrains.mps.core.aspects.reporting.api.ReportingAspectRegistry;
 import jetbrains.mps.errors.item.ConstraintsReportItem;
@@ -71,6 +72,64 @@ public class ConstraintsChecker extends AbstractNodeCheckerInEditor implements I
     final SAbstractConcept nodeConcept = SNodeOperations.getConcept(node);
     final SNode parent = SNodeOperations.getParent(node);
 
+    if (!nodeConcept.isValid()) {
+      errorsCollector.addError(new ConceptMissingError(node, nodeConcept));
+    }
+
+    checkParentChild(node, errorsCollector, nodeConcept, parent);
+
+    checkCanBeRoot(node, errorsCollector, nodeConcept);
+
+    checkCanBeAncestor(node, errorsCollector, parent);
+
+    checkProperties(node, errorsCollector, nodeConcept);
+  }
+
+  private void checkProperties(SNode node, LanguageErrorsCollector errorsCollector, SAbstractConcept nodeConcept) {
+    Iterable<SProperty> props = nodeConcept.getProperties();
+    for (final SProperty property : Sequence.fromIterable(props)) {
+      runCheck(errorsCollector, new _FunctionTypes._return_P1_E0<Boolean, CheckingNodeContext>() {
+        public Boolean invoke(CheckingNodeContext context) {
+          return ModelConstraints.validatePropertyValue(node, property, SNodeAccessUtil.getPropertyValue(node, property), context);
+        }
+      }, new _FunctionTypes._return_P1_E0<ConstraintsReportItem.PropertyConstraintReportItem, TypesystemRuleId>() {
+        public ConstraintsReportItem.PropertyConstraintReportItem invoke(TypesystemRuleId ruleId) {
+          return new ConstraintsReportItem.PropertyConstraintReportItem(node, property, ruleId);
+        }
+      });
+    }
+  }
+
+  private void checkCanBeAncestor(SNode node, LanguageErrorsCollector errorsCollector, SNode parent) {
+    for (final Wrappers._T<SNode> ancestor = new Wrappers._T<SNode>(parent); ancestor.value != null; ancestor.value = SNodeOperations.getParent(ancestor.value)) {
+      runCheck(errorsCollector, new _FunctionTypes._return_P1_E0<Boolean, CheckingNodeContext>() {
+        public Boolean invoke(CheckingNodeContext context) {
+          return ModelConstraints.canBeAncestorDirect(ancestor.value, node, context);
+        }
+      }, new _FunctionTypes._return_P1_E0<ConstraintsReportItem.CanBeAncestorFailedReportItem, TypesystemRuleId>() {
+        public ConstraintsReportItem.CanBeAncestorFailedReportItem invoke(TypesystemRuleId ruleId) {
+          return new ConstraintsReportItem.CanBeAncestorFailedReportItem(node, ancestor.value, ruleId);
+        }
+      });
+    }
+  }
+
+  private void checkCanBeRoot(SNode node, LanguageErrorsCollector errorsCollector, SAbstractConcept nodeConcept) {
+    if ((SNodeOperations.getParent(node) == null)) {
+      final SModel model = SNodeOperations.getModel(node);
+      runCheck(errorsCollector, new _FunctionTypes._return_P1_E0<Boolean, CheckingNodeContext>() {
+        public Boolean invoke(CheckingNodeContext context) {
+          return ModelConstraints.canBeRoot(nodeConcept, model, context);
+        }
+      }, new _FunctionTypes._return_P1_E0<ConstraintsReportItem.CanBeRootFailedReportItem, TypesystemRuleId>() {
+        public ConstraintsReportItem.CanBeRootFailedReportItem invoke(TypesystemRuleId ruleId) {
+          return new ConstraintsReportItem.CanBeRootFailedReportItem(node, ruleId);
+        }
+      });
+    }
+  }
+
+  private void checkParentChild(SNode node, LanguageErrorsCollector errorsCollector, SAbstractConcept nodeConcept, SNode parent) {
     if (parent != null) {
       errorsCollector.addDependency(parent);
       SConcept parentConcept = SNodeOperations.getConcept(parent);
@@ -97,7 +156,7 @@ public class ConstraintsChecker extends AbstractNodeCheckerInEditor implements I
           if (!failingRules.isEmpty()) {
             @NotNull Rule<CanBeParent_Context> ruleWeReport = failingRules.get(0);
             ReportingAspectRegistry reportingRegistry = getReportingAspectRegistry();
-            String message = null;
+            String message = CanBeParent_RuleKind.INSTANCE.getDefaultMessage(context).toText();
             if (reportingRegistry != null) {
               MessageProvider<CanBeParent_Context> messageProvider = reportingRegistry.findMessageForRule(nodeConcept, ruleWeReport, context);
               message = messageProvider.yieldMessage(context).toText();
@@ -107,48 +166,6 @@ public class ConstraintsChecker extends AbstractNodeCheckerInEditor implements I
           }
         }
       }
-    }
-
-    if ((SNodeOperations.getParent(node) == null)) {
-      final SModel model = SNodeOperations.getModel(node);
-      runCheck(errorsCollector, new _FunctionTypes._return_P1_E0<Boolean, CheckingNodeContext>() {
-        public Boolean invoke(CheckingNodeContext context) {
-          return ModelConstraints.canBeRoot(nodeConcept, model, context);
-        }
-      }, new _FunctionTypes._return_P1_E0<ConstraintsReportItem.CanBeRootFailedReportItem, RuleIdFlavouredItem.TypesystemRuleId>() {
-        public ConstraintsReportItem.CanBeRootFailedReportItem invoke(RuleIdFlavouredItem.TypesystemRuleId ruleId) {
-          return new ConstraintsReportItem.CanBeRootFailedReportItem(node, ruleId);
-        }
-      });
-    }
-    if (!(SNodeOperations.getConcept(node).isValid())) {
-      errorsCollector.addError(new ConceptMissingError(node, node.getConcept()));
-    }
-
-    for (final Wrappers._T<SNode> ancestor = new Wrappers._T<SNode>(parent); ancestor.value != null; ancestor.value = SNodeOperations.getParent(ancestor.value)) {
-      runCheck(errorsCollector, new _FunctionTypes._return_P1_E0<Boolean, CheckingNodeContext>() {
-        public Boolean invoke(CheckingNodeContext context) {
-          return ModelConstraints.canBeAncestorDirect(ancestor.value, node, context);
-        }
-      }, new _FunctionTypes._return_P1_E0<ConstraintsReportItem.CanBeAncestorFailedReportItem, RuleIdFlavouredItem.TypesystemRuleId>() {
-        public ConstraintsReportItem.CanBeAncestorFailedReportItem invoke(RuleIdFlavouredItem.TypesystemRuleId ruleId) {
-          return new ConstraintsReportItem.CanBeAncestorFailedReportItem(node, ancestor.value, ruleId);
-        }
-      });
-    }
-
-    // Properties validation 
-    Iterable<SProperty> props = nodeConcept.getProperties();
-    for (final SProperty property : Sequence.fromIterable(props)) {
-      runCheck(errorsCollector, new _FunctionTypes._return_P1_E0<Boolean, CheckingNodeContext>() {
-        public Boolean invoke(CheckingNodeContext context) {
-          return ModelConstraints.validatePropertyValue(node, property, SNodeAccessUtil.getPropertyValue(node, property), context);
-        }
-      }, new _FunctionTypes._return_P1_E0<ConstraintsReportItem.PropertyConstraintReportItem, RuleIdFlavouredItem.TypesystemRuleId>() {
-        public ConstraintsReportItem.PropertyConstraintReportItem invoke(RuleIdFlavouredItem.TypesystemRuleId ruleId) {
-          return new ConstraintsReportItem.PropertyConstraintReportItem(node, property, ruleId);
-        }
-      });
     }
   }
 

@@ -31,11 +31,11 @@ import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.EditorManager;
 import jetbrains.mps.openapi.editor.update.AttributeKind;
 
-/*package*/ class ConstraintsRuleKindParameterConcept_EditorBuilder_a extends AbstractEditorBuilder {
+/*package*/ class RuleKindParameterConcept_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
   private SNode myNode;
 
-  public ConstraintsRuleKindParameterConcept_EditorBuilder_a(@NotNull EditorContext context, @NotNull SNode node) {
+  public RuleKindParameterConcept_EditorBuilder_a(@NotNull EditorContext context, @NotNull SNode node) {
     super(context);
     myNode = node;
   }
@@ -52,7 +52,7 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
 
   private EditorCell createCollection_0() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Indent());
-    editorCell.setCellId("Collection_h0h0ar_a");
+    editorCell.setCellId("Collection_ag1uem_a");
     editorCell.setBig(true);
     setCellContext(editorCell);
     editorCell.addEditorCell(createComponent_0());

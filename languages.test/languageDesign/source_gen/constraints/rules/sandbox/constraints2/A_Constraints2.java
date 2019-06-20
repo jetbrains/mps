@@ -63,7 +63,7 @@ public final class A_Constraints2 extends BaseConstraintsDescriptor2 {
     }
     @Override
     public boolean check(@NotNull CanBeChild_Context context) {
-      return SPropertyOperations.getInteger(context.getNode(), MetaAdapterFactory.getProperty(0xa6518565787648e9L, 0x8d439ef97836a52eL, 0x7825711952b6d480L, 0x7825711952b815edL, "a")) < 100;
+      return SPropertyOperations.getInteger(context.getNode(), MetaAdapterFactory.getProperty(0xa6518565787648e9L, 0x8d439ef97836a52eL, 0x7825711952b6d480L, 0x7825711952b815edL, "a")) < 100 && true && true && true && true && true && true && true & true;
     }
   }
   public static final class Rule_third extends BaseRule<CanBeChild_Context> {

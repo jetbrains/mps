@@ -57,7 +57,7 @@
   </registry>
   <node concept="1TIwiD" id="6kKc3mjlk8x">
     <property role="EcuMT" value="7291380803376071201" />
-    <property role="TrG5h" value="ConstraintsRoot" />
+    <property role="TrG5h" value="ConstraintsRoot2" />
     <property role="19KtqR" value="true" />
     <property role="34LRSv" value="constraints root" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
@@ -66,7 +66,7 @@
       <property role="20lmBu" value="aggregation" />
       <property role="20lbJX" value="0..n" />
       <property role="20kJfa" value="block" />
-      <ref role="20lvS9" node="$V5NfaEDtA" resolve="ConstraintsBlock" />
+      <ref role="20lvS9" node="$V5NfaEDtA" resolve="Block" />
     </node>
     <node concept="PrWs8" id="6kKc3mjlk8y" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
@@ -84,31 +84,35 @@
   </node>
   <node concept="1TIwiD" id="6kKc3mjlk96">
     <property role="EcuMT" value="7291380803376071238" />
-    <property role="TrG5h" value="ConstraintsRuleBlock" />
+    <property role="TrG5h" value="RuleBlock" />
+    <property role="34LRSv" value="Add rules for the kind" />
     <node concept="1TJgyj" id="6kKc3mjlkaw" role="1TKVEi">
       <property role="IQ2ns" value="7291380803376071328" />
       <property role="20lmBu" value="aggregation" />
       <property role="20kJfa" value="member" />
       <property role="20lbJX" value="0..n" />
-      <ref role="20lvS9" node="6kKc3mjqoIo" resolve="ConstraintsRuleBlockMember" />
+      <ref role="20lvS9" node="6kKc3mjqoIo" resolve="RuleBlockMember" />
     </node>
     <node concept="1TJgyj" id="6kKc3mjlk9b" role="1TKVEi">
       <property role="IQ2ns" value="7291380803376071243" />
       <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="kind" />
       <property role="20lbJX" value="1" />
-      <ref role="20lvS9" node="6kKc3mjlk98" resolve="ConstraintsRuleKind" />
+      <ref role="20lvS9" node="6kKc3mjlk98" resolve="RuleKind" />
     </node>
     <node concept="PrWs8" id="6kKc3mjtE8N" role="PzmwI">
       <ref role="PrY4T" to="tpck:3fifI_xCcJN" resolve="ScopeProvider" />
     </node>
     <node concept="PrWs8" id="$V5NfaEDtE" role="PzmwI">
-      <ref role="PrY4T" node="$V5NfaEDtA" resolve="ConstraintsBlock" />
+      <ref role="PrY4T" node="$V5NfaEDtA" resolve="Block" />
+    </node>
+    <node concept="t5JxF" id="19J4M2ypwEb" role="lGtFl">
+      <property role="t5JxN" value="allows to define additional rules per-concept, meaning for each kind the new rules will be considered alongside with the rules from the ancestors" />
     </node>
   </node>
   <node concept="1TIwiD" id="6kKc3mjlk98">
     <property role="EcuMT" value="7291380803376071240" />
-    <property role="TrG5h" value="ConstraintsRuleKind" />
+    <property role="TrG5h" value="RuleKind" />
     <property role="34LRSv" value="rule kind" />
     <property role="19KtqR" value="true" />
     <node concept="1TJgyj" id="4JP_D2W1rsM" role="1TKVEi">
@@ -116,7 +120,7 @@
       <property role="20lmBu" value="aggregation" />
       <property role="20kJfa" value="parameter" />
       <property role="20lbJX" value="0..n" />
-      <ref role="20lvS9" node="4JP_D2W1rsP" resolve="ConstraintsRuleKindParameterConcept" />
+      <ref role="20lvS9" node="4JP_D2W1rsP" resolve="RuleKindParameterConcept" />
     </node>
     <node concept="PrWs8" id="6kKc3mjmAXJ" role="PzmwI">
       <ref role="PrY4T" to="tpee:hCUYCKd" resolve="IValidIdentifier" />
@@ -162,7 +166,7 @@
     <property role="TrG5h" value="ConstraintsRule" />
     <property role="34LRSv" value="rule" />
     <property role="R4oN_" value="constraints rule" />
-    <ref role="1TJDcQ" node="6kKc3mjqoIo" resolve="ConstraintsRuleBlockMember" />
+    <ref role="1TJDcQ" node="6kKc3mjqoIo" resolve="RuleBlockMember" />
     <node concept="PrWs8" id="6kKc3mjmAXM" role="PzmwI">
       <ref role="PrY4T" to="tpee:hCUYCKd" resolve="IValidIdentifier" />
     </node>
@@ -180,7 +184,7 @@
     <property role="EcuMT" value="7291380803377228245" />
     <property role="TrG5h" value="ConstraintsDef" />
     <property role="34LRSv" value="def" />
-    <ref role="1TJDcQ" node="6kKc3mjqoIo" resolve="ConstraintsRuleBlockMember" />
+    <ref role="1TJDcQ" node="6kKc3mjqoIo" resolve="RuleBlockMember" />
     <node concept="1TJgyj" id="4JP_D2W0fqJ" role="1TKVEi">
       <property role="IQ2ns" value="5473446470512342703" />
       <property role="20lmBu" value="aggregation" />
@@ -210,7 +214,7 @@
   </node>
   <node concept="1TIwiD" id="6kKc3mjqoIo">
     <property role="EcuMT" value="7291380803377400728" />
-    <property role="TrG5h" value="ConstraintsRuleBlockMember" />
+    <property role="TrG5h" value="RuleBlockMember" />
     <property role="R5$K7" value="true" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
   </node>
@@ -232,7 +236,7 @@
   </node>
   <node concept="1TIwiD" id="4JP_D2W1rsP">
     <property role="EcuMT" value="5473446470512654133" />
-    <property role="TrG5h" value="ConstraintsRuleKindParameterConcept" />
+    <property role="TrG5h" value="RuleKindParameterConcept" />
     <property role="34LRSv" value="parametrized by concept" />
     <node concept="PrWs8" id="4JP_D2W1rsQ" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
@@ -248,7 +252,7 @@
       <property role="20lmBu" value="reference" />
       <property role="20lbJX" value="1" />
       <property role="20kJfa" value="conceptParameter" />
-      <ref role="20lvS9" node="4JP_D2W1rsP" resolve="ConstraintsRuleKindParameterConcept" />
+      <ref role="20lvS9" node="4JP_D2W1rsP" resolve="RuleKindParameterConcept" />
     </node>
     <node concept="PrWs8" id="hyoMxHEp1j" role="PzmwI">
       <ref role="PrY4T" node="6kKc3mjq0oG" resolve="TypedIdentifier" />
@@ -278,7 +282,10 @@
   </node>
   <node concept="PlHQZ" id="$V5NfaEDtA">
     <property role="EcuMT" value="665150881178228582" />
-    <property role="TrG5h" value="ConstraintsBlock" />
+    <property role="TrG5h" value="Block" />
+    <node concept="t5JxF" id="19J4M2ypwEe" role="lGtFl">
+      <property role="t5JxN" value="constraint* root consists from the blocks. As for 192 there is only a 'RuleBlock' available, but later other constraints features will move into constraints*" />
+    </node>
   </node>
   <node concept="1TIwiD" id="35M2kEOxcOG">
     <property role="EcuMT" value="3562920471664315692" />

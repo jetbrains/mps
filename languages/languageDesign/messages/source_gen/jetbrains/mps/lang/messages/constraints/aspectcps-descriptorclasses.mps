@@ -831,7 +831,7 @@
           <node concept="3fqX7Q" id="3M" role="3clFbG">
             <node concept="2OqwBi" id="3O" role="3fr31v">
               <node concept="37vLTw" id="3Q" role="2Oq$k0">
-                <ref role="3cqZAo" to=":^" resolve="childNode" />
+                <ref role="3cqZAo" node="3C" resolve="childNode" />
                 <node concept="cd27G" id="3T" role="lGtFl">
                   <node concept="3u3nmq" id="3U" role="cd27D">
                     <property role="3u3nmv" value="5258059200642174287" />
@@ -1694,7 +1694,7 @@
                   <ref role="1Pybhc" to="i8bi:5IkW5anFfnn" resolve="SPropertyOperations" />
                   <ref role="37wK5l" to="i8bi:5IkW5anFfon" resolve="getString" />
                   <node concept="37vLTw" id="9f" role="37wK5m">
-                    <ref role="3cqZAo" to=":^" resolve="propertyValue" />
+                    <ref role="3cqZAo" node="8N" resolve="propertyValue" />
                   </node>
                 </node>
                 <node concept="cd27G" id="9e" role="lGtFl">
@@ -2480,7 +2480,7 @@
                                         <ref role="37wK5l" to="35tq:~Scope.getScope(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.language.SContainmentLink,int,org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="getScope" />
                                         <node concept="2OqwBi" id="ed" role="37wK5m">
                                           <node concept="37vLTw" id="ei" role="2Oq$k0">
-                                            <ref role="3cqZAo" to=":^" resolve="_context" />
+                                            <ref role="3cqZAo" node="dJ" resolve="_context" />
                                             <node concept="cd27G" id="el" role="lGtFl">
                                               <node concept="3u3nmq" id="em" role="cd27D">
                                                 <property role="3u3nmv" value="5258059200644226248" />
@@ -2511,7 +2511,7 @@
                                             </node>
                                           </node>
                                           <node concept="37vLTw" id="er" role="2Oq$k0">
-                                            <ref role="3cqZAo" to=":^" resolve="_context" />
+                                            <ref role="3cqZAo" node="dJ" resolve="_context" />
                                             <node concept="cd27G" id="ev" role="lGtFl">
                                               <node concept="3u3nmq" id="ew" role="cd27D">
                                                 <property role="3u3nmv" value="5258059200644226248" />
@@ -2526,7 +2526,7 @@
                                         </node>
                                         <node concept="2OqwBi" id="ef" role="37wK5m">
                                           <node concept="37vLTw" id="ey" role="2Oq$k0">
-                                            <ref role="3cqZAo" to=":^" resolve="_context" />
+                                            <ref role="3cqZAo" node="dJ" resolve="_context" />
                                             <node concept="cd27G" id="e_" role="lGtFl">
                                               <node concept="3u3nmq" id="eA" role="cd27D">
                                                 <property role="3u3nmv" value="5258059200644226248" />
@@ -3752,7 +3752,7 @@
                   <node concept="2OqwBi" id="lJ" role="37vLTx">
                     <node concept="2OqwBi" id="lM" role="2Oq$k0">
                       <node concept="37vLTw" id="lP" role="2Oq$k0">
-                        <ref role="3cqZAo" to=":^" resolve="node" />
+                        <ref role="3cqZAo" node="lc" resolve="node" />
                         <node concept="cd27G" id="lS" role="lGtFl">
                           <node concept="3u3nmq" id="lT" role="cd27D">
                             <property role="3u3nmv" value="1213100949163" />
@@ -3816,7 +3816,7 @@
             <node concept="2OqwBi" id="lC" role="3clFbw">
               <node concept="2OqwBi" id="m5" role="2Oq$k0">
                 <node concept="37vLTw" id="m8" role="2Oq$k0">
-                  <ref role="3cqZAo" to=":^" resolve="node" />
+                  <ref role="3cqZAo" node="lc" resolve="node" />
                   <node concept="cd27G" id="mb" role="lGtFl">
                     <node concept="3u3nmq" id="mc" role="cd27D">
                       <property role="3u3nmv" value="6465435720988325133" />

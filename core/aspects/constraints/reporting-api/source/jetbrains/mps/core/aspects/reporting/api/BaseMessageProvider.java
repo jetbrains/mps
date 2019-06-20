@@ -17,7 +17,6 @@ package jetbrains.mps.core.aspects.reporting.api;
 
 import jetbrains.mps.core.aspects.constraints.rules.RuleContext;
 import jetbrains.mps.core.aspects.constraints.rules.RuleId;
-import jetbrains.mps.core.aspects.constraints.rules.RuleKind;
 import org.jetbrains.annotations.NotNull;
 
 public abstract class BaseMessageProvider<C extends RuleContext> implements MessageProvider<C> {

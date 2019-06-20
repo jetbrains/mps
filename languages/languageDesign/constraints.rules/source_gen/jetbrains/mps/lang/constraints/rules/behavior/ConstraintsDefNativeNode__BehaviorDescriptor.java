@@ -37,7 +37,7 @@ public final class ConstraintsDefNativeNode__BehaviorDescriptor extends BaseBHDe
     return _quotation_createNode_ovygyc_a0a0();
   }
   /*package*/ static SNode buildTypeForRule_id4JP_D2W1aNL(@NotNull SNode __thisNode__, SNode rule) {
-    return _quotation_createNode_ovygyc_a0a1(ConstraintsRuleKindParameterConcept__BehaviorDescriptor.getConcept_idhyoMxHE5dl.invoke(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getReferenceLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x46263286da99051L, 0x46263286da99433L, "conceptParameter")), rule));
+    return _quotation_createNode_ovygyc_a0a1(RuleKindParameterConcept__BehaviorDescriptor.getConcept_idhyoMxHE5dl.invoke(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getReferenceLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x46263286da99051L, 0x46263286da99433L, "conceptParameter")), rule));
   }
 
   /*package*/ ConstraintsDefNativeNode__BehaviorDescriptor() {

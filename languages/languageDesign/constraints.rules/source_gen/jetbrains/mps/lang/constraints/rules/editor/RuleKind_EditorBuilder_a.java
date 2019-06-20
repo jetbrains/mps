@@ -42,11 +42,11 @@ import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 
-/*package*/ class ConstraintsRuleKind_EditorBuilder_a extends AbstractEditorBuilder {
+/*package*/ class RuleKind_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
   private SNode myNode;
 
-  public ConstraintsRuleKind_EditorBuilder_a(@NotNull EditorContext context, @NotNull SNode node) {
+  public RuleKind_EditorBuilder_a(@NotNull EditorContext context, @NotNull SNode node) {
     super(context);
     myNode = node;
   }
@@ -63,7 +63,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 
   private EditorCell createCollection_0() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Indent());
-    editorCell.setCellId("Collection_boqn43_a");
+    editorCell.setCellId("Collection_velomm_a");
     editorCell.setBig(true);
     setCellContext(editorCell);
     editorCell.addEditorCell(createComponent_0());
@@ -108,17 +108,17 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
     }
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new ConstraintsRuleKind_EditorBuilder_a.parameterListHandler_boqn43_c0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new RuleKind_EditorBuilder_a.parameterListHandler_velomm_c0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_parameter");
     editorCell.setSRole(handler.getElementSRole());
     return editorCell;
   }
-  private static class parameterListHandler_boqn43_c0 extends RefNodeListHandler {
+  private static class parameterListHandler_velomm_c0 extends RefNodeListHandler {
     @NotNull
     private SNode myNode;
 
-    public parameterListHandler_boqn43_c0(SNode ownerNode, EditorContext context) {
+    public parameterListHandler_velomm_c0(SNode ownerNode, EditorContext context) {
       super(context, false);
       myNode = ownerNode;
     }
@@ -131,7 +131,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
       return MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554248L, 0x4bf59690bc05b732L, "parameter");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x4bf59690bc05b735L, "jetbrains.mps.lang.constraints.rules.structure.ConstraintsRuleKindParameterConcept");
+      return MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x4bf59690bc05b735L, "jetbrains.mps.lang.constraints.rules.structure.RuleKindParameterConcept");
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -141,7 +141,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(parameterListHandler_boqn43_c0.this.getNode(), MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554248L, 0x4bf59690bc05b732L, "parameter")));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(parameterListHandler_velomm_c0.this.getNode(), MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554248L, 0x4bf59690bc05b732L, "parameter")));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -167,7 +167,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
   }
   private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "");
-    editorCell.setCellId("Constant_boqn43_d0");
+    editorCell.setCellId("Constant_velomm_d0");
     Style style = new StyleImpl();
     style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, true);
     editorCell.getStyle().putAll(style);
@@ -175,7 +175,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
     return editorCell;
   }
   private EditorCell createRefNodeList_1() {
-    AbstractCellListHandler handler = new ConstraintsRuleKind_EditorBuilder_a.contextMemberListHandler_boqn43_e0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new RuleKind_EditorBuilder_a.contextMemberListHandler_velomm_e0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_contextMember");
     Style style = new StyleImpl();
@@ -186,11 +186,11 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
     editorCell.setSRole(handler.getElementSRole());
     return editorCell;
   }
-  private static class contextMemberListHandler_boqn43_e0 extends RefNodeListHandler {
+  private static class contextMemberListHandler_velomm_e0 extends RefNodeListHandler {
     @NotNull
     private SNode myNode;
 
-    public contextMemberListHandler_boqn43_e0(SNode ownerNode, EditorContext context) {
+    public contextMemberListHandler_velomm_e0(SNode ownerNode, EditorContext context) {
       super(context, false);
       myNode = ownerNode;
     }
@@ -213,7 +213,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(contextMemberListHandler_boqn43_e0.this.getNode(), MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554248L, 0x653030359355429eL, "contextMember")));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(contextMemberListHandler_velomm_e0.this.getNode(), MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554248L, 0x653030359355429eL, "contextMember")));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();

@@ -10,11 +10,15 @@
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
+      <concept id="1224500764161" name="jetbrains.mps.baseLanguage.structure.BitwiseAndExpression" flags="nn" index="pVHWs" />
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
       </concept>
       <concept id="1070534370425" name="jetbrains.mps.baseLanguage.structure.IntegerType" flags="in" index="10Oyi0" />
+      <concept id="1068580123137" name="jetbrains.mps.baseLanguage.structure.BooleanConstant" flags="nn" index="3clFbT">
+        <property id="1068580123138" name="value" index="3clFbU" />
+      </concept>
       <concept id="1068580320020" name="jetbrains.mps.baseLanguage.structure.IntegerConstant" flags="nn" index="3cmrfG">
         <property id="1068580320021" name="value" index="3cmrfH" />
       </concept>
@@ -25,6 +29,7 @@
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
+      <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
     </language>
     <language id="b3551702-269c-4f05-ba61-58060cef4292" name="jetbrains.mps.lang.constraints.messages">
       <concept id="315923949160549991" name="jetbrains.mps.lang.constraints.messages.structure.ConstraintsRuleWithMessage" flags="ng" index="1DCEPf">
@@ -39,11 +44,11 @@
       <concept id="7291380803377228245" name="jetbrains.mps.lang.constraints.rules.structure.ConstraintsDef" flags="ng" index="3QlHBw">
         <child id="5473446470512342703" name="type" index="3RXm0Z" />
       </concept>
-      <concept id="7291380803376071201" name="jetbrains.mps.lang.constraints.rules.structure.ConstraintsRoot" flags="ng" index="3Qpn8k">
+      <concept id="7291380803376071201" name="jetbrains.mps.lang.constraints.rules.structure.ConstraintsRoot2" flags="ng" index="3Qpn8k">
         <reference id="7291380803380183169" name="concept" index="3QD32O" />
         <child id="7291380803376071241" name="block" index="3Qpn9W" />
       </concept>
-      <concept id="7291380803376071238" name="jetbrains.mps.lang.constraints.rules.structure.ConstraintsRuleBlock" flags="ng" index="3Qpn9N">
+      <concept id="7291380803376071238" name="jetbrains.mps.lang.constraints.rules.structure.RuleBlock" flags="ng" index="3Qpn9N">
         <reference id="7291380803376071243" name="kind" index="3Qpn9Y" />
         <child id="7291380803376071328" name="member" index="3Qpnal" />
       </concept>
@@ -122,13 +127,13 @@
         <node concept="1DCEQD" id="A7NuYsQkK2" role="1DCEQI">
           <node concept="16I2mz" id="A7NuYsQkK4" role="16N$OO">
             <node concept="16N$OT" id="A7NuYsQkM8" role="16I2mt">
-              <property role="16N$OU" value="Node is " />
+              <property role="16N$OU" value="Node is '" />
             </node>
             <node concept="16Iohu" id="A7NuYsQkM2" role="16I2mt">
               <ref role="16E0hz" to="qffw:hyoMxHFKoi" resolve="node" />
             </node>
             <node concept="16N$OT" id="A7NuYsQkMF" role="16I2mt">
-              <property role="16N$OU" value=", life is \%Life\%" />
+              <property role="16N$OU" value="', life is \%Life\%" />
             </node>
           </node>
         </node>
@@ -136,28 +141,86 @@
       <node concept="1DCEPf" id="4zSofKenLpk" role="3Qpnal">
         <property role="TrG5h" value="second" />
         <property role="EcuMT" value="5258059200644191828" />
-        <node concept="3eOVzh" id="4zSofKenLpm" role="3QpH_s">
-          <node concept="3cmrfG" id="4zSofKenLpn" role="3uHU7w">
-            <property role="3cmrfH" value="100" />
-          </node>
-          <node concept="2OqwBi" id="4zSofKenLpo" role="3uHU7B">
-            <node concept="3QpRc$" id="q4prYF3Kih" role="2Oq$k0">
-              <ref role="3QpVTF" to="qffw:hyoMxHFKoi" resolve="node" />
+        <node concept="1Wc70l" id="40CvJkJ$WH1" role="3QpH_s">
+          <node concept="1Wc70l" id="40CvJkJ$TFC" role="3uHU7B">
+            <node concept="1Wc70l" id="40CvJkJ$QAq" role="3uHU7B">
+              <node concept="1Wc70l" id="40CvJkJ$Q$i" role="3uHU7B">
+                <node concept="1Wc70l" id="40CvJkJ$Qh6" role="3uHU7B">
+                  <node concept="1Wc70l" id="40CvJkJ$Qfo" role="3uHU7B">
+                    <node concept="1Wc70l" id="40CvJkJ$PRD" role="3uHU7B">
+                      <node concept="3eOVzh" id="4zSofKenLpm" role="3uHU7B">
+                        <node concept="2OqwBi" id="4zSofKenLpo" role="3uHU7B">
+                          <node concept="3QpRc$" id="q4prYF3Kih" role="2Oq$k0">
+                            <ref role="3QpVTF" to="qffw:hyoMxHFKoi" resolve="node" />
+                          </node>
+                          <node concept="3TrcHB" id="4zSofKenLps" role="2OqNvi">
+                            <ref role="3TsBF5" to="ktae:7w_sh_iI1nH" resolve="a" />
+                          </node>
+                        </node>
+                        <node concept="3cmrfG" id="4zSofKenLpn" role="3uHU7w">
+                          <property role="3cmrfH" value="100" />
+                        </node>
+                      </node>
+                      <node concept="3clFbT" id="40CvJkJ$PS6" role="3uHU7w">
+                        <property role="3clFbU" value="true" />
+                      </node>
+                    </node>
+                    <node concept="3clFbT" id="40CvJkJ$Qgb" role="3uHU7w">
+                      <property role="3clFbU" value="true" />
+                    </node>
+                  </node>
+                  <node concept="3clFbT" id="40CvJkJ$QhN" role="3uHU7w">
+                    <property role="3clFbU" value="true" />
+                  </node>
+                </node>
+                <node concept="3clFbT" id="40CvJkJ$Q_7" role="3uHU7w">
+                  <property role="3clFbU" value="true" />
+                </node>
+              </node>
+              <node concept="3clFbT" id="40CvJkJ$ToL" role="3uHU7w">
+                <property role="3clFbU" value="true" />
+              </node>
             </node>
-            <node concept="3TrcHB" id="4zSofKenLps" role="2OqNvi">
-              <ref role="3TsBF5" to="ktae:7w_sh_iI1nH" resolve="a" />
+            <node concept="3clFbT" id="40CvJkJ$Wpz" role="3uHU7w">
+              <property role="3clFbU" value="true" />
+            </node>
+          </node>
+          <node concept="pVHWs" id="19J4M2ypya7" role="3uHU7w">
+            <node concept="3clFbT" id="40CvJkJA1bq" role="3uHU7B">
+              <property role="3clFbU" value="true" />
+            </node>
+            <node concept="3clFbT" id="40CvJkJA1io" role="3uHU7w">
+              <property role="3clFbU" value="true" />
             </node>
           </node>
         </node>
         <node concept="1DCEQD" id="4zSofKenLpt" role="1DCEQI">
           <node concept="16I2mz" id="4zSofKenLpv" role="16N$OO">
-            <node concept="16N$OT" id="5hCLR$mfgvL" role="16I2mt">
-              <property role="16N$OU" value="The property a of " />
+            <node concept="16N$OT" id="19J4M2ypyjZ" role="16I2mt">
+              <property role="16N$OU" value="The property 'a'=" />
             </node>
-            <node concept="16Iohu" id="5hCLR$mfgvM" role="16I2mt">
+            <node concept="16Iohu" id="19J4M2ypyk0" role="16I2mt">
               <ref role="16E0hz" node="6fJcw0tqvnD" resolve="nodeA" />
             </node>
-            <node concept="16N$OT" id="5hCLR$mfgCs" role="16I2mt">
+            <node concept="16N$OT" id="19J4M2ypyk1" role="16I2mt">
+              <property role="16N$OU" value=" of the node '" />
+            </node>
+            <node concept="16Iohu" id="5hCLR$mfgvM" role="16I2mt">
+              <ref role="16E0hz" to="qffw:hyoMxHFKoi" resolve="node" />
+            </node>
+            <node concept="16N$OT" id="19J4M2yp$Da" role="16I2mt">
+              <property role="16N$OU" value="'" />
+            </node>
+            <node concept="16N$OT" id="19J4M2ypzTt" role="16I2mt">
+              <property role="16N$OU" value=" in the role '" />
+            </node>
+            <node concept="16Iohu" id="19J4M2ypzTu" role="16I2mt">
+              <ref role="16E0hz" to="qffw:7qY6fvuNl5$" resolve="link" />
+            </node>
+            <node concept="16N$OT" id="19J4M2yp$CS" role="16I2mt">
+              <property role="16N$OU" value="'" />
+            </node>
+            <node concept="16N$OT" id="19J4M2ypzTv" role="16I2mt">
               <property role="16N$OU" value=" is too large, please change" />
             </node>
           </node>
@@ -181,18 +244,54 @@
     <property role="TrG5h" value="A_Messags2" />
     <ref role="3Z9TSV" to="ktae:7w_sh_iHHi0" resolve="A" />
     <node concept="3QByp$" id="4zSofKenZrA" role="3QBEN7">
-      <ref role="3QBypx" node="hyoMxHLT5C" resolve="third" />
+      <ref role="3QBypx" node="A7NuYsQkJT" resolve="first" />
       <node concept="16I2mz" id="4zSofKenZrB" role="16N$OO">
-        <node concept="16N$OT" id="4zSofKenZrO" role="16I2mt">
-          <property role="16N$OU" value="I OVERRIDE YOU" />
+        <node concept="16N$OT" id="19J4M2ypwEn" role="16I2mt">
+          <property role="16N$OU" value="The property " />
+        </node>
+        <node concept="16N$OT" id="19J4M2ypxsG" role="16I2mt">
+          <property role="16N$OU" value="'a'=" />
+        </node>
+        <node concept="16Iohu" id="19J4M2ypxsH" role="16I2mt">
+          <ref role="16E0hz" node="6fJcw0tqvnD" resolve="nodeA" />
+        </node>
+        <node concept="16N$OT" id="19J4M2ypwEp" role="16I2mt">
+          <property role="16N$OU" value=" of the node '" />
+        </node>
+        <node concept="16Iohu" id="19J4M2ypwEi" role="16I2mt">
+          <ref role="16E0hz" to="qffw:hyoMxHFKoi" resolve="node" />
+        </node>
+        <node concept="16N$OT" id="19J4M2ypzS8" role="16I2mt">
+          <property role="16N$OU" value="' in the role '" />
+        </node>
+        <node concept="16Iohu" id="19J4M2ypzS9" role="16I2mt">
+          <ref role="16E0hz" to="qffw:7qY6fvuNl5$" resolve="link" />
+        </node>
+        <node concept="16N$OT" id="19J4M2ypzSa" role="16I2mt">
+          <property role="16N$OU" value="' is too small" />
         </node>
       </node>
     </node>
-    <node concept="3QByp$" id="4zSofKenZrQ" role="3QBEN7">
+    <node concept="3QByp$" id="19J4M2ypwGp" role="3QBEN7">
       <ref role="3QBypx" node="hyoMxHLT5C" resolve="third" />
-      <node concept="16I2mz" id="4zSofKenZrR" role="16N$OO">
-        <node concept="16N$OT" id="4zSofKeodi3" role="16I2mt">
-          <property role="16N$OU" value="I OVERRIDE YOU TWICE" />
+      <node concept="16I2mz" id="19J4M2ypwGq" role="16N$OO">
+        <node concept="16N$OT" id="19J4M2ypwGr" role="16I2mt">
+          <property role="16N$OU" value="The property " />
+        </node>
+        <node concept="16N$OT" id="19J4M2ypz1a" role="16I2mt">
+          <property role="16N$OU" value="'a' of the node '" />
+        </node>
+        <node concept="16Iohu" id="19J4M2ypwGu" role="16I2mt">
+          <ref role="16E0hz" to="qffw:hyoMxHFKoi" resolve="node" />
+        </node>
+        <node concept="16N$OT" id="19J4M2ypzTb" role="16I2mt">
+          <property role="16N$OU" value="' in the role '" />
+        </node>
+        <node concept="16Iohu" id="19J4M2ypzTc" role="16I2mt">
+          <ref role="16E0hz" to="qffw:7qY6fvuNl5$" resolve="link" />
+        </node>
+        <node concept="16N$OT" id="19J4M2ypzTd" role="16I2mt">
+          <property role="16N$OU" value="' could not be equal to '65'" />
         </node>
       </node>
     </node>

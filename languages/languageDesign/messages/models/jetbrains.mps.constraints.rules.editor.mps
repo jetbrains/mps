@@ -1286,7 +1286,7 @@
         <property role="VOm3f" value="true" />
       </node>
       <node concept="VechU" id="4zSofKeajWj" role="3F10Kt">
-        <property role="Vb096" value="DARK_MAGENTA" />
+        <property role="Vb096" value="LIGHT_BLUE" />
       </node>
     </node>
   </node>

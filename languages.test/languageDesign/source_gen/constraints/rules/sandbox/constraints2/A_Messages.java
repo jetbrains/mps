@@ -16,36 +16,36 @@ import java.util.Arrays;
 public final class A_Messages extends BaseMessageDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xa6518565787648e9L, 0x8d439ef97836a52eL, 0x7825711952b6d480L, "constraints.rules.sandbox.structure.A");
 
-  private static final MessageProvider<CanBeChild_Context> MSGPROVIDER_THIRD_xwdw45_a = new BaseMessageProvider<CanBeChild_Context>(A_Constraints2.Rule_third.ID_THIRD) {
+  private static final MessageProvider<CanBeChild_Context> MSGPROVIDER_FIRST_xwdw45_a = new BaseMessageProvider<CanBeChild_Context>(A_Constraints2.Rule_first.ID_FIRST) {
     @NotNull
     @Override
     public MessageProvider.StringMsg yieldMessage(CanBeChild_Context context) {
-      return new MessageProvider.StringMsg("I OVERRIDE YOU");
+      return new MessageProvider.StringMsg("The property " + "'a'=" + String.valueOf(A_Constraints2.getNodeA(context)) + " of the node '" + String.valueOf(context.getNode()) + "' in the role '" + String.valueOf(context.getLink()) + "' is too small");
     }
   };
   private static final MessageProvider<CanBeChild_Context> MSGPROVIDER_THIRD_xwdw45_b = new BaseMessageProvider<CanBeChild_Context>(A_Constraints2.Rule_third.ID_THIRD) {
     @NotNull
     @Override
     public MessageProvider.StringMsg yieldMessage(CanBeChild_Context context) {
-      return new MessageProvider.StringMsg("I OVERRIDE YOU TWICE");
+      return new MessageProvider.StringMsg("The property " + "'a' of the node '" + String.valueOf(context.getNode()) + "' in the role '" + String.valueOf(context.getLink()) + "' could not be equal to '65'");
     }
   };
   private static final MessageProvider<CanBeChild_Context> MSGPROVIDER_FIRST_xwdw45_c = new BaseMessageProvider<CanBeChild_Context>(A_Constraints2.Rule_first.ID_FIRST) {
     @NotNull
     @Override
     public MessageProvider.StringMsg yieldMessage(CanBeChild_Context context) {
-      return new MessageProvider.StringMsg("Node is " + String.valueOf(context.getNode()) + ", life is %Life%");
+      return new MessageProvider.StringMsg("Node is '" + String.valueOf(context.getNode()) + "', life is %Life%");
     }
   };
   private static final MessageProvider<CanBeChild_Context> MSGPROVIDER_SECOND_xwdw45_d = new BaseMessageProvider<CanBeChild_Context>(A_Constraints2.Rule_second.ID_SECOND) {
     @NotNull
     @Override
     public MessageProvider.StringMsg yieldMessage(CanBeChild_Context context) {
-      return new MessageProvider.StringMsg("The property a of " + String.valueOf(A_Constraints2.DefNodeA.getNodeA(context)) + " is too large, please change");
+      return new MessageProvider.StringMsg("The property 'a'=" + String.valueOf(A_Constraints2.getNodeA(context)) + " of the node '" + String.valueOf(context.getNode()) + "'" + " in the role '" + String.valueOf(context.getLink()) + "'" + " is too large, please change");
     }
   };
 
-  private static final List<MessageProvider<?>> PROVIDERS = Collections.unmodifiableList(Arrays.<MessageProvider<?>>asList(MSGPROVIDER_THIRD_xwdw45_a, MSGPROVIDER_THIRD_xwdw45_b, MSGPROVIDER_FIRST_xwdw45_c, MSGPROVIDER_SECOND_xwdw45_d));
+  private static final List<MessageProvider<?>> PROVIDERS = Collections.unmodifiableList(Arrays.<MessageProvider<?>>asList(MSGPROVIDER_FIRST_xwdw45_a, MSGPROVIDER_THIRD_xwdw45_b, MSGPROVIDER_FIRST_xwdw45_c, MSGPROVIDER_SECOND_xwdw45_d));
 
   public A_Messages() {
     super(CONCEPT);

@@ -5,34 +5,26 @@ package jetbrains.mps.lang.constraints.rules.behavior;
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.core.aspects.behaviour.api.SMethod;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
-import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
+import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
-public final class ConstraintsRuleKindParameterConcept__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x4bf59690bc05b735L, "jetbrains.mps.lang.constraints.rules.structure.ConstraintsRuleKindParameterConcept");
+public final class RuleKind__BehaviorDescriptor extends BaseBHDescriptor {
+  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554248L, "jetbrains.mps.lang.constraints.rules.structure.RuleKind");
 
-  public static final SMethod<SNode> getConcept_idhyoMxHE5dl = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getConcept").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hyoMxHE5dl").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getConcept_idhyoMxHE5dl);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList();
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
-  /*package*/ static SNode getConcept_idhyoMxHE5dl(@NotNull SNode __thisNode__, SNode rule) {
-    return (SNode) ConstraintsExpressionHolder__BehaviorDescriptor.getApplicableConcept_idhyoMxHE6M$.invoke(rule);
-  }
 
-  /*package*/ ConstraintsRuleKindParameterConcept__BehaviorDescriptor() {
+  /*package*/ RuleKind__BehaviorDescriptor() {
   }
 
   @Override
@@ -47,8 +39,6 @@ public final class ConstraintsRuleKindParameterConcept__BehaviorDescriptor exten
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
-      case 0:
-        return (T) ((SNode) getConcept_idhyoMxHE5dl(node, (SNode) parameters[0]));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

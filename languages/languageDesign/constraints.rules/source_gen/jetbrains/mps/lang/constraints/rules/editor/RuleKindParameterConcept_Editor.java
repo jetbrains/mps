@@ -7,8 +7,8 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
 
-public class ConstraintsRuleBlock_Editor extends DefaultNodeEditor {
+public class RuleKindParameterConcept_Editor extends DefaultNodeEditor {
   public EditorCell createEditorCell(EditorContext editorContext, SNode node) {
-    return new ConstraintsRuleBlock_EditorBuilder_a(editorContext, node).createCell();
+    return new RuleKindParameterConcept_EditorBuilder_a(editorContext, node).createCell();
   }
 }
