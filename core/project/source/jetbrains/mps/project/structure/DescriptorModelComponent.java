@@ -17,6 +17,7 @@ package jetbrains.mps.project.structure;
 
 import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.smodel.SModelStereotype;
+import jetbrains.mps.util.containers.MultiMap;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelListener;
@@ -35,6 +36,7 @@ import org.jetbrains.mps.openapi.module.SRepositoryListenerBase;
  * don't have project always (e.g. when building/generating modules from Ant), but we still need these models in that scenario as well.
  * Either shall introduce Project everywhere, and dedicated layer of ProjectCoreComponents, or need a better solution to address lifecycle of
  * repository-specific components (there are others, e.g. FastNodeFinderManager)
+ *
  * @author Artem Tikhomirov
  * @since 3.4
  */
@@ -61,6 +63,8 @@ public class DescriptorModelComponent implements CoreComponent {
 
   private static class ModuleTracker extends SRepositoryListenerBase implements SRepositoryAttachListener {
     private final DescriptorModelProvider[] myProviders;
+    private MultiMap<SModule, DescriptorModelProvider> myModule2DescriptorProviders = new MultiMap<>();
+
     // listener is attached to modules of interest only
     private final SModuleListenerBase myModuleListener = new SModuleListenerBase() {
       @Override
@@ -126,6 +130,7 @@ public class DescriptorModelComponent implements CoreComponent {
       boolean rv = false;
       for (DescriptorModelProvider mp : myProviders) {
         if (mp.isApplicable(module)) {
+          myModule2DescriptorProviders.putValue(module, mp);
           mp.refreshModule(module);
           rv = true;
         }
@@ -139,12 +144,11 @@ public class DescriptorModelComponent implements CoreComponent {
      */
     boolean forget(SModule module) {
       boolean rv = false;
-      for (DescriptorModelProvider mp : myProviders) {
-        if (mp.isApplicable(module)) {
-          mp.forgetModule(module);
-          rv = true;
-        }
+      for (DescriptorModelProvider mp : myModule2DescriptorProviders.get(module)) {
+        mp.forgetModule(module);
+        rv = true;
       }
+      myModule2DescriptorProviders.remove(module);
       return rv;
     }
 
