@@ -40,7 +40,7 @@ public class RuleKindParameterConcept_Constraints extends BaseConstraintsDescrip
     };
   }
   private static boolean staticCanBeAChild(final SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return Objects.equals(link, MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554248L, 0x4bf59690bc05b732L, "parameter")) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(parentNode, MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554248L, "jetbrains.mps.lang.constraints.rules.structure.RuleKind")), MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554248L, 0x4bf59690bc05b732L, "parameter"))).where(new IWhereFilter<SNode>() {
+    return Objects.equals(link, MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554248L, 0x4bf59690bc05b732L, "parameters")) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(parentNode, MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554248L, "jetbrains.mps.lang.constraints.rules.structure.RuleKind")), MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554248L, 0x4bf59690bc05b732L, "parameters"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return it != node;
       }

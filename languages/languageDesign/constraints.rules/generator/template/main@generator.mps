@@ -405,7 +405,7 @@
     <node concept="2rT7sh" id="6kKc3mjAnYi" role="2rTMjI">
       <property role="TrG5h" value="constraintsRootClass" />
       <ref role="2rZz_L" to="tpee:fz12cDA" resolve="ClassConcept" />
-      <ref role="2rTdP9" to="bm42:6kKc3mjlk8x" resolve="ConstraintsRoot" />
+      <ref role="2rTdP9" to="bm42:6kKc3mjlk8x" resolve="ConstraintsRoot2" />
     </node>
     <node concept="2VPoh5" id="5Cioe7RLOha" role="2VS0gm">
       <ref role="2sBCQV" node="5BFePKcKj4n" resolve="constraintsDescriptorClass" />
@@ -427,63 +427,84 @@
       </node>
     </node>
     <node concept="3aamgX" id="6kKc3mjn8Kf" role="3acgRq">
-      <ref role="30HIoZ" to="bm42:6kKc3mjlOch" resolve="ContextReference" />
+      <ref role="30HIoZ" to="bm42:6kKc3mjlOch" resolve="TypedDefReference" />
       <node concept="j$656" id="q4prYF3oM5" role="1lVwrX">
         <ref role="v9R2y" node="6kKc3mjnagA" resolve="reduce_ContextRefOperation" />
       </node>
     </node>
     <node concept="2rT7sh" id="6kKc3mjmZO$" role="2rTMjI">
       <property role="TrG5h" value="ruleKind" />
-      <ref role="2rTdP9" to="bm42:6kKc3mjlk98" resolve="ConstraintsRuleKind" />
+      <ref role="2rTdP9" to="bm42:6kKc3mjlk98" resolve="RuleKind" />
       <ref role="2rZz_L" to="tpee:g7pOWCK" resolve="Classifier" />
     </node>
     <node concept="2rT7sh" id="6kKc3mjnlQG" role="2rTMjI">
       <property role="TrG5h" value="defGet" />
-      <ref role="2rTdP9" to="bm42:6kKc3mjq0oG" resolve="TypedIdentifier" />
+      <ref role="2rTdP9" to="bm42:6kKc3mjq0oG" resolve="TypedDef" />
       <ref role="2rZz_L" to="tpee:fIYIFWa" resolve="StaticMethodDeclaration" />
     </node>
     <node concept="2rT7sh" id="41nfzDbPu_y" role="2rTMjI">
       <property role="TrG5h" value="defClass" />
-      <ref role="2rTdP9" to="bm42:6kKc3mjq0oG" resolve="TypedIdentifier" />
+      <ref role="2rTdP9" to="bm42:6kKc3mjq0oG" resolve="TypedDef" />
       <ref role="2rZz_L" to="tpee:fz12cDA" resolve="ClassConcept" />
     </node>
     <node concept="2rT7sh" id="$V5NfaJdkP" role="2rTMjI">
       <property role="TrG5h" value="ruleField" />
       <ref role="2rZz_L" to="tpee:fz12cDC" resolve="FieldDeclaration" />
-      <ref role="2rTdP9" to="bm42:6kKc3mjm6Ry" resolve="ConstraintsRule" />
+      <ref role="2rTdP9" to="bm42:6kKc3mjm6Ry" resolve="Rule" />
     </node>
     <node concept="2rT7sh" id="$V5NfaJe$5" role="2rTMjI">
       <property role="TrG5h" value="ruleConstructor" />
-      <ref role="2rTdP9" to="bm42:6kKc3mjm6Ry" resolve="ConstraintsRule" />
+      <ref role="2rTdP9" to="bm42:6kKc3mjm6Ry" resolve="Rule" />
       <ref role="2rZz_L" to="tpee:fzclF84" resolve="ConstructorDeclaration" />
     </node>
     <node concept="2rT7sh" id="68U29HUdE6H" role="2rTMjI">
       <property role="TrG5h" value="ruleClass" />
-      <ref role="2rTdP9" to="bm42:6kKc3mjm6Ry" resolve="ConstraintsRule" />
+      <ref role="2rTdP9" to="bm42:6kKc3mjm6Ry" resolve="Rule" />
       <ref role="2rZz_L" to="tpee:fz12cDA" resolve="ClassConcept" />
     </node>
     <node concept="2rT7sh" id="68U29HUcG8v" role="2rTMjI">
       <property role="TrG5h" value="ruleID" />
-      <ref role="2rTdP9" to="bm42:6kKc3mjm6Ry" resolve="ConstraintsRule" />
+      <ref role="2rTdP9" to="bm42:6kKc3mjm6Ry" resolve="Rule" />
       <ref role="2rZz_L" to="tpee:f$Wx3kv" resolve="StaticFieldDeclaration" />
     </node>
     <node concept="3lhOvk" id="6kKc3mjmNTK" role="3lj3bC">
-      <ref role="30HIoZ" to="bm42:6kKc3mjlk8x" resolve="ConstraintsRoot" />
+      <ref role="30HIoZ" to="bm42:6kKc3mjlk8x" resolve="ConstraintsRoot2" />
       <ref role="3lhOvi" node="6kKc3mjmw41" resolve="Generated_ConstraintsDescriptor2" />
       <ref role="2sgKRv" node="6kKc3mjAnYi" resolve="constraintsRootClass" />
     </node>
     <node concept="3aamgX" id="6fJcw0tu1pb" role="3acgRq">
-      <ref role="30HIoZ" to="bm42:6kKc3mjm6Ry" resolve="ConstraintsRule" />
+      <ref role="30HIoZ" to="bm42:6kKc3mjm6Ry" resolve="Rule" />
       <ref role="2sgKRv" node="68U29HUdE6H" resolve="ruleClass" />
       <node concept="j$656" id="6fJcw0tu1pc" role="1lVwrX">
         <ref role="v9R2y" node="6fJcw0tu1p9" resolve="reduce_ConstraintsRule" />
       </node>
     </node>
     <node concept="3aamgX" id="4rknBOXVlly" role="3acgRq">
-      <ref role="30HIoZ" to="bm42:6kKc3mjpIBl" resolve="ConstraintsDef" />
+      <ref role="30HIoZ" to="bm42:6kKc3mjpIBl" resolve="DefForRule" />
       <ref role="2sgKRv" node="41nfzDbPu_y" resolve="defClass" />
       <node concept="j$656" id="4rknBOXVllz" role="1lVwrX">
         <ref role="v9R2y" node="4rknBOXVllw" resolve="reduce_ConstraintsDef" />
+      </node>
+    </node>
+    <node concept="3aamgX" id="19J4M2ysCA6" role="3acgRq">
+      <ref role="30HIoZ" to="bm42:19J4M2yrfvL" resolve="ExpressionWrapper" />
+      <node concept="gft3U" id="19J4M2ysCAo" role="1lVwrX">
+        <node concept="3cpWs6" id="19J4M2yteXL" role="gfFT$">
+          <node concept="29HgVG" id="19J4M2yteYg" role="lGtFl">
+            <node concept="3NFfHV" id="19J4M2yteYh" role="3NFExx">
+              <node concept="3clFbS" id="19J4M2yteYi" role="2VODD2">
+                <node concept="3clFbF" id="19J4M2yteYo" role="3cqZAp">
+                  <node concept="2OqwBi" id="19J4M2yteYj" role="3clFbG">
+                    <node concept="3TrEf2" id="19J4M2yteYm" role="2OqNvi">
+                      <ref role="3Tt5mk" to="bm42:19J4M2yrjkd" resolve="expression" />
+                    </node>
+                    <node concept="30H73N" id="19J4M2yteYn" role="2Oq$k0" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
       </node>
     </node>
   </node>
@@ -536,12 +557,12 @@
                   <node concept="3cpWsn" id="3Y1amMrfzan" role="3cpWs9">
                     <property role="TrG5h" value="ruleKind" />
                     <node concept="3Tqbb2" id="3Y1amMrfysc" role="1tU5fm">
-                      <ref role="ehGHo" to="bm42:6kKc3mjlk98" resolve="ConstraintsRuleKind" />
+                      <ref role="ehGHo" to="bm42:6kKc3mjlk98" resolve="RuleKind" />
                     </node>
                     <node concept="2OqwBi" id="3Y1amMrfzao" role="33vP2m">
                       <node concept="30H73N" id="3Y1amMrfzap" role="2Oq$k0" />
                       <node concept="2qgKlT" id="3Y1amMrfzaq" role="2OqNvi">
-                        <ref role="37wK5l" to="zezp:6kKc3mjmXYb" resolve="getRuleKind" />
+                        <ref role="37wK5l" to="zezp:19J4M2yrjsx" resolve="getRuleKind" />
                       </node>
                     </node>
                   </node>
@@ -696,7 +717,7 @@
     </node>
     <node concept="3Tm1VV" id="6kKc3mjmw42" role="1B3o_S" />
     <node concept="n94m4" id="6kKc3mjmw43" role="lGtFl">
-      <ref role="n9lRv" to="bm42:6kKc3mjlk8x" resolve="ConstraintsRoot" />
+      <ref role="n9lRv" to="bm42:6kKc3mjlk8x" resolve="ConstraintsRoot2" />
     </node>
     <node concept="17Uvod" id="6kKc3mj$_0C" role="lGtFl">
       <property role="2qtEX9" value="name" />
@@ -760,17 +781,17 @@
                     </node>
                     <node concept="v3k3i" id="$V5NfaL0ip" role="2OqNvi">
                       <node concept="chp4Y" id="$V5NfaL0iq" role="v3oSu">
-                        <ref role="cht4Q" to="bm42:6kKc3mjlk96" resolve="ConstraintsRuleBlock" />
+                        <ref role="cht4Q" to="bm42:6kKc3mjlk96" resolve="RuleBlock" />
                       </node>
                     </node>
                   </node>
                   <node concept="13MTOL" id="$V5NfaL0ir" role="2OqNvi">
-                    <ref role="13MTZf" to="bm42:6kKc3mjlkaw" resolve="member" />
+                    <ref role="13MTZf" to="bm42:6kKc3mjlkaw" resolve="members" />
                   </node>
                 </node>
                 <node concept="v3k3i" id="$V5NfaL0is" role="2OqNvi">
                   <node concept="chp4Y" id="$V5NfaL0it" role="v3oSu">
-                    <ref role="cht4Q" to="bm42:6kKc3mjm6Ry" resolve="ConstraintsRule" />
+                    <ref role="cht4Q" to="bm42:6kKc3mjm6Ry" resolve="Rule" />
                   </node>
                 </node>
               </node>
@@ -804,12 +825,12 @@
                   </node>
                   <node concept="v3k3i" id="4rknBOXVwqo" role="2OqNvi">
                     <node concept="chp4Y" id="4rknBOXVwqp" role="v3oSu">
-                      <ref role="cht4Q" to="bm42:6kKc3mjlk96" resolve="ConstraintsRuleBlock" />
+                      <ref role="cht4Q" to="bm42:6kKc3mjlk96" resolve="RuleBlock" />
                     </node>
                   </node>
                 </node>
                 <node concept="13MTOL" id="4rknBOXVwqq" role="2OqNvi">
-                  <ref role="13MTZf" to="bm42:6kKc3mjlkaw" resolve="member" />
+                  <ref role="13MTZf" to="bm42:6kKc3mjlkaw" resolve="members" />
                 </node>
               </node>
             </node>
@@ -826,7 +847,7 @@
   </node>
   <node concept="13MO4I" id="6kKc3mjnagA">
     <property role="TrG5h" value="reduce_ContextRefOperation" />
-    <ref role="3gUMe" to="bm42:6kKc3mjlOch" resolve="ContextReference" />
+    <ref role="3gUMe" to="bm42:6kKc3mjlOch" resolve="TypedDefReference" />
     <node concept="312cEu" id="6kKc3mjncrA" role="13RCb5">
       <property role="2bfB8j" value="true" />
       <property role="TrG5h" value="Rule" />
@@ -923,7 +944,7 @@
                             <node concept="2Xjw5R" id="41nfzDbP5xr" role="2OqNvi">
                               <node concept="1xMEDy" id="41nfzDbP5xt" role="1xVPHs">
                                 <node concept="chp4Y" id="41nfzDbP5AU" role="ri$Ld">
-                                  <ref role="cht4Q" to="bm42:6kKc3mjlk98" resolve="ConstraintsRuleKind" />
+                                  <ref role="cht4Q" to="bm42:6kKc3mjlk98" resolve="RuleKind" />
                                 </node>
                               </node>
                             </node>
@@ -1190,7 +1211,7 @@
                         <node concept="1r8y6K" id="1rgpeH9xlt5" role="2OqNvi" />
                       </node>
                       <node concept="2RRcyG" id="5FFmclY2lMP" role="2OqNvi">
-                        <ref role="2RRcyH" to="bm42:6kKc3mjlk8x" resolve="ConstraintsRoot" />
+                        <ref role="2RRcyH" to="bm42:6kKc3mjlk8x" resolve="ConstraintsRoot2" />
                       </node>
                     </node>
                   </node>
@@ -1250,7 +1271,7 @@
   </node>
   <node concept="13MO4I" id="4rknBOXVllw">
     <property role="TrG5h" value="reduce_ConstraintsDef" />
-    <ref role="3gUMe" to="bm42:6kKc3mjpIBl" resolve="ConstraintsDef" />
+    <ref role="3gUMe" to="bm42:6kKc3mjpIBl" resolve="DefForRule" />
     <node concept="312cEu" id="4rknBOXVllF" role="13RCb5">
       <property role="TrG5h" value="DescriptorClass" />
       <node concept="312cEu" id="41nfzDbPp4j" role="jymVt">
@@ -1265,8 +1286,8 @@
                     <node concept="3clFbS" id="41nfzDbPp4q" role="2VODD2">
                       <node concept="3clFbF" id="41nfzDbPp4r" role="3cqZAp">
                         <node concept="2OqwBi" id="41nfzDbPp4s" role="3clFbG">
-                          <node concept="3TrEf2" id="41nfzDbPp4t" role="2OqNvi">
-                            <ref role="3Tt5mk" to="bm42:6kKc3mjlI_D" resolve="expression" />
+                          <node concept="3TrEf2" id="19J4M2ysC4K" role="2OqNvi">
+                            <ref role="3Tt5mk" to="bm42:19J4M2yrqiF" resolve="expr" />
                           </node>
                           <node concept="30H73N" id="41nfzDbPp4u" role="2Oq$k0" />
                         </node>
@@ -1293,7 +1314,7 @@
                         <node concept="2OqwBi" id="41nfzDbPp4A" role="37wK5m">
                           <node concept="30H73N" id="41nfzDbPp4B" role="2Oq$k0" />
                           <node concept="2qgKlT" id="41nfzDbPp4C" role="2OqNvi">
-                            <ref role="37wK5l" to="zezp:6kKc3mjmXYb" resolve="getRuleKind" />
+                            <ref role="37wK5l" to="zezp:19J4M2yrjsx" resolve="getRuleKind" />
                           </node>
                         </node>
                         <node concept="1iwH7S" id="41nfzDbPp4D" role="37wK5m" />
@@ -1399,7 +1420,7 @@
                             <node concept="2OqwBi" id="41nfzDbPlCm" role="2Oq$k0">
                               <node concept="30H73N" id="41nfzDbPlv$" role="2Oq$k0" />
                               <node concept="2qgKlT" id="41nfzDbPqWr" role="2OqNvi">
-                                <ref role="37wK5l" to="zezp:35M2kEOy5Ld" resolve="getUsedDefs" />
+                                <ref role="37wK5l" to="zezp:19J4M2yrjsZ" resolve="getUsedDefs" />
                               </node>
                             </node>
                             <node concept="13MTOL" id="41nfzDbPrq3" role="2OqNvi">
@@ -1448,8 +1469,8 @@
                               <ref role="3Tt5mk" to="bm42:35M2kEOxcPB" resolve="condition" />
                             </node>
                           </node>
-                          <node concept="3TrEf2" id="41nfzDbPi8e" role="2OqNvi">
-                            <ref role="3Tt5mk" to="bm42:6kKc3mjlI_D" resolve="expression" />
+                          <node concept="3TrEf2" id="19J4M2yrPyz" role="2OqNvi">
+                            <ref role="3Tt5mk" to="bm42:19J4M2yro9m" resolve="expr" />
                           </node>
                         </node>
                       </node>
@@ -1475,7 +1496,7 @@
                         <node concept="2OqwBi" id="41nfzDbPdEk" role="37wK5m">
                           <node concept="30H73N" id="41nfzDbPdEl" role="2Oq$k0" />
                           <node concept="2qgKlT" id="41nfzDbPdEm" role="2OqNvi">
-                            <ref role="37wK5l" to="zezp:6kKc3mjmXYb" resolve="getRuleKind" />
+                            <ref role="37wK5l" to="zezp:19J4M2yrjsx" resolve="getRuleKind" />
                           </node>
                         </node>
                         <node concept="1iwH7S" id="41nfzDbPdEn" role="37wK5m" />
@@ -1567,7 +1588,7 @@
   </node>
   <node concept="13MO4I" id="6fJcw0tu1p9">
     <property role="TrG5h" value="reduce_ConstraintsRule" />
-    <ref role="3gUMe" to="bm42:6kKc3mjm6Ry" resolve="ConstraintsRule" />
+    <ref role="3gUMe" to="bm42:6kKc3mjm6Ry" resolve="Rule" />
     <node concept="312cEu" id="6fJcw0tu1zD" role="13RCb5">
       <property role="TrG5h" value="DescriptorClass" />
       <node concept="Wx3nA" id="4rknBOXVRDt" role="jymVt">
@@ -1725,7 +1746,7 @@
                           <node concept="2OqwBi" id="5hCLR$mfAWA" role="37wK5m">
                             <node concept="30H73N" id="5hCLR$mfAp0" role="2Oq$k0" />
                             <node concept="2qgKlT" id="5hCLR$mfBds" role="2OqNvi">
-                              <ref role="37wK5l" to="zezp:6kKc3mjmXYb" resolve="getRuleKind" />
+                              <ref role="37wK5l" to="zezp:19J4M2yrjsx" resolve="getRuleKind" />
                             </node>
                           </node>
                           <node concept="1iwH7S" id="5hCLR$mfAGO" role="37wK5m" />
@@ -1790,7 +1811,7 @@
                         <node concept="2OqwBi" id="4Np0kcCajBe" role="37wK5m">
                           <node concept="30H73N" id="4Np0kcCajl6" role="2Oq$k0" />
                           <node concept="2qgKlT" id="4Np0kcCaka8" role="2OqNvi">
-                            <ref role="37wK5l" to="zezp:6kKc3mjmXYb" resolve="getRuleKind" />
+                            <ref role="37wK5l" to="zezp:19J4M2yrjsx" resolve="getRuleKind" />
                           </node>
                         </node>
                         <node concept="1iwH7S" id="4cGwgqnYbuB" role="37wK5m" />
@@ -1828,7 +1849,7 @@
                         <node concept="2OqwBi" id="35M2kEOxS7W" role="2Oq$k0">
                           <node concept="30H73N" id="35M2kEOxS7X" role="2Oq$k0" />
                           <node concept="3TrEf2" id="35M2kEOxS7Y" role="2OqNvi">
-                            <ref role="3Tt5mk" to="bm42:35M2kEOxcPB" resolve="condition" />
+                            <ref role="3Tt5mk" to="bm42:19J4M2yrsuX" resolve="condition" />
                           </node>
                         </node>
                         <node concept="3x8VRR" id="35M2kEOxS7Z" role="2OqNvi" />
@@ -1845,8 +1866,8 @@
                     <node concept="3clFbS" id="6kKc3mjmU_y" role="2VODD2">
                       <node concept="3clFbF" id="6kKc3mjmU_C" role="3cqZAp">
                         <node concept="2OqwBi" id="6kKc3mjmU_z" role="3clFbG">
-                          <node concept="3TrEf2" id="6kKc3mjmU_A" role="2OqNvi">
-                            <ref role="3Tt5mk" to="bm42:6kKc3mjlI_D" resolve="expression" />
+                          <node concept="3TrEf2" id="19J4M2yrSo7" role="2OqNvi">
+                            <ref role="3Tt5mk" to="bm42:19J4M2yrqiS" resolve="expr" />
                           </node>
                           <node concept="30H73N" id="6kKc3mjmU_B" role="2Oq$k0" />
                         </node>
@@ -1870,7 +1891,7 @@
                     <node concept="2OqwBi" id="4cGwgqnY74L" role="2Oq$k0">
                       <node concept="30H73N" id="4cGwgqnY6Nw" role="2Oq$k0" />
                       <node concept="3TrEf2" id="4cGwgqnY7kh" role="2OqNvi">
-                        <ref role="3Tt5mk" to="bm42:35M2kEOxcPB" resolve="condition" />
+                        <ref role="3Tt5mk" to="bm42:19J4M2yrsuX" resolve="condition" />
                       </node>
                     </node>
                     <node concept="3x8VRR" id="4cGwgqnY7Fx" role="2OqNvi" />
@@ -1901,7 +1922,7 @@
                         <node concept="2OqwBi" id="35M2kEOxvG5" role="37wK5m">
                           <node concept="30H73N" id="35M2kEOxvG6" role="2Oq$k0" />
                           <node concept="2qgKlT" id="35M2kEOxvG7" role="2OqNvi">
-                            <ref role="37wK5l" to="zezp:6kKc3mjmXYb" resolve="getRuleKind" />
+                            <ref role="37wK5l" to="zezp:19J4M2yrjsx" resolve="getRuleKind" />
                           </node>
                         </node>
                         <node concept="1iwH7S" id="4cGwgqnY834" role="37wK5m" />
@@ -1957,7 +1978,7 @@
                             <node concept="2OqwBi" id="41nfzDbRazR" role="2Oq$k0">
                               <node concept="30H73N" id="41nfzDbRazS" role="2Oq$k0" />
                               <node concept="2qgKlT" id="41nfzDbRazT" role="2OqNvi">
-                                <ref role="37wK5l" to="zezp:35M2kEOy5Ld" resolve="getUsedDefs" />
+                                <ref role="37wK5l" to="zezp:19J4M2yrjsZ" resolve="getUsedDefs" />
                               </node>
                             </node>
                             <node concept="13MTOL" id="41nfzDbRazU" role="2OqNvi">
@@ -1999,13 +2020,13 @@
                     <node concept="3clFbS" id="35M2kEOx_co" role="2VODD2">
                       <node concept="3clFbF" id="35M2kEOx_cp" role="3cqZAp">
                         <node concept="2OqwBi" id="35M2kEOx_cq" role="3clFbG">
-                          <node concept="3TrEf2" id="35M2kEOxD1L" role="2OqNvi">
-                            <ref role="3Tt5mk" to="bm42:6kKc3mjlI_D" resolve="expression" />
+                          <node concept="3TrEf2" id="19J4M2yrRSR" role="2OqNvi">
+                            <ref role="3Tt5mk" to="bm42:19J4M2yro9m" resolve="expr" />
                           </node>
                           <node concept="2OqwBi" id="35M2kEOxCvI" role="2Oq$k0">
                             <node concept="30H73N" id="35M2kEOx_cs" role="2Oq$k0" />
                             <node concept="3TrEf2" id="35M2kEOxCL3" role="2OqNvi">
-                              <ref role="3Tt5mk" to="bm42:35M2kEOxcPB" resolve="condition" />
+                              <ref role="3Tt5mk" to="bm42:19J4M2yrsuX" resolve="condition" />
                             </node>
                           </node>
                         </node>
@@ -2024,7 +2045,7 @@
                     <node concept="2OqwBi" id="35M2kEOxBGo" role="2Oq$k0">
                       <node concept="30H73N" id="35M2kEOxBrT" role="2Oq$k0" />
                       <node concept="3TrEf2" id="35M2kEOxBUn" role="2OqNvi">
-                        <ref role="3Tt5mk" to="bm42:35M2kEOxcPB" resolve="condition" />
+                        <ref role="3Tt5mk" to="bm42:19J4M2yrsuX" resolve="condition" />
                       </node>
                     </node>
                     <node concept="3x8VRR" id="35M2kEOxCeW" role="2OqNvi" />
@@ -2053,7 +2074,7 @@
                       <node concept="2OqwBi" id="4Np0kcCaeC6" role="37wK5m">
                         <node concept="30H73N" id="4Np0kcCa0na" role="2Oq$k0" />
                         <node concept="2qgKlT" id="4Np0kcCag4H" role="2OqNvi">
-                          <ref role="37wK5l" to="zezp:6kKc3mjmXYb" resolve="getRuleKind" />
+                          <ref role="37wK5l" to="zezp:19J4M2yrjsx" resolve="getRuleKind" />
                         </node>
                       </node>
                       <node concept="1iwH7S" id="4cGwgqnY47h" role="37wK5m" />

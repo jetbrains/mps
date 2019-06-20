@@ -23,9 +23,9 @@ public final class A_Constraints2 extends BaseConstraintsDescriptor2 {
 
   public static final Rule<CanBeChild_Context> first_id686743897209654265 = new A_Constraints2.Rule_first();
   public static final Rule<CanBeChild_Context> second_id5258059200644191828 = new A_Constraints2.Rule_second();
-  public static final Rule<CanBeChild_Context> third_id315923949160993128 = new A_Constraints2.Rule_third();
+  public static final Rule<CanBeChild_Context> third_id1328301445984467171 = new A_Constraints2.Rule_third();
 
-  private static final List<Rule<?>> RULES = Collections.unmodifiableList(Arrays.<Rule<?>>asList(first_id686743897209654265, second_id5258059200644191828, third_id315923949160993128));
+  private static final List<Rule<?>> RULES = Collections.unmodifiableList(Arrays.<Rule<?>>asList(first_id686743897209654265, second_id5258059200644191828, third_id1328301445984467171));
 
   /*package*/ A_Constraints2() {
     super(CONCEPT);
@@ -51,7 +51,7 @@ public final class A_Constraints2 extends BaseConstraintsDescriptor2 {
     }
     @Override
     public boolean check(@NotNull CanBeChild_Context context) {
-      return SPropertyOperations.getInteger(context.getNode(), MetaAdapterFactory.getProperty(0xa6518565787648e9L, 0x8d439ef97836a52eL, 0x7825711952b6d480L, 0x7825711952b815edL, "a")) > 1;
+      return A_Constraints2.DefNodeA.getNodeA(context) > 1;
     }
   }
   public static final class Rule_second extends BaseRule<CanBeChild_Context> {
@@ -63,12 +63,12 @@ public final class A_Constraints2 extends BaseConstraintsDescriptor2 {
     }
     @Override
     public boolean check(@NotNull CanBeChild_Context context) {
-      return SPropertyOperations.getInteger(context.getNode(), MetaAdapterFactory.getProperty(0xa6518565787648e9L, 0x8d439ef97836a52eL, 0x7825711952b6d480L, 0x7825711952b815edL, "a")) < 100 && true && true && true && true && true && true && true & true;
+      return A_Constraints2.DefNodeA.getNodeA(context) < 100;
     }
   }
   public static final class Rule_third extends BaseRule<CanBeChild_Context> {
-    private static final SNodeReference SOURCE_NODE_REF = PersistenceFacade.getInstance().createNodeReference("r:d8115b4c-62c9-4566-9bc7-9fa3c8929293(constraints.rules.sandbox.constraints2)/315923949160993128");
-    public static final RuleId ID_THIRD = new RuleId(315923949160993128L, SOURCE_NODE_REF);
+    private static final SNodeReference SOURCE_NODE_REF = PersistenceFacade.getInstance().createNodeReference("r:d8115b4c-62c9-4566-9bc7-9fa3c8929293(constraints.rules.sandbox.constraints2)/1328301445984467171");
+    public static final RuleId ID_THIRD = new RuleId(1328301445984467171L, SOURCE_NODE_REF);
 
     public Rule_third() {
       super(CONCEPT, CanBeChild_RuleKind.INSTANCE, ID_THIRD, SOURCE_NODE_REF);

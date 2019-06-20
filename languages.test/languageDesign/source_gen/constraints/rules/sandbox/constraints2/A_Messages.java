@@ -20,7 +20,7 @@ public final class A_Messages extends BaseMessageDescriptor {
     @NotNull
     @Override
     public MessageProvider.StringMsg yieldMessage(CanBeChild_Context context) {
-      return new MessageProvider.StringMsg("The property " + "'a'=" + String.valueOf(A_Constraints2.getNodeA(context)) + " of the node '" + String.valueOf(context.getNode()) + "' in the role '" + String.valueOf(context.getLink()) + "' is too small");
+      return new MessageProvider.StringMsg("The property " + "'a'=" + String.valueOf(A_Constraints2.DefNodeA.getNodeA(context)) + " of the node '" + String.valueOf(context.getNode()) + "' in the role '" + String.valueOf(context.getLink()) + "' is too small");
     }
   };
   private static final MessageProvider<CanBeChild_Context> MSGPROVIDER_THIRD_xwdw45_b = new BaseMessageProvider<CanBeChild_Context>(A_Constraints2.Rule_third.ID_THIRD) {
@@ -41,7 +41,7 @@ public final class A_Messages extends BaseMessageDescriptor {
     @NotNull
     @Override
     public MessageProvider.StringMsg yieldMessage(CanBeChild_Context context) {
-      return new MessageProvider.StringMsg("The property 'a'=" + String.valueOf(A_Constraints2.getNodeA(context)) + " of the node '" + String.valueOf(context.getNode()) + "'" + " in the role '" + String.valueOf(context.getLink()) + "'" + " is too large, please change");
+      return new MessageProvider.StringMsg("The property 'a'=" + String.valueOf(A_Constraints2.DefNodeA.getNodeA(context)) + " of the node '" + String.valueOf(context.getNode()) + "'" + " in the role '" + String.valueOf(context.getLink()) + "'" + " is too large, please change");
     }
   };
 

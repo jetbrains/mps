@@ -44,7 +44,7 @@ public final class PseudoBaseConcept_Constraints2 extends BaseConstraintsDescrip
     }
     @Override
     public boolean check(@NotNull CanBeChild_Context context) {
-      return SNodeOperations.getConcept(context.getNode()).getContainmentLinks().contains(context.getLink());
+      return context.getLink() == null || SNodeOperations.getConcept(context.getNode()).getContainmentLinks().contains(context.getLink());
     }
   }
 }

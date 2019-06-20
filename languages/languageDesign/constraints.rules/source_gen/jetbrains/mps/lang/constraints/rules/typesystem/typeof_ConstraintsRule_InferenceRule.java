@@ -20,14 +20,14 @@ public class typeof_ConstraintsRule_InferenceRule extends AbstractInferenceRule_
   public void applyRule(final SNode constraintsRule, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(constraintsRule, MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359356e968L, 0x653030359356e969L, "expression"));
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(SLinkOperations.getTarget(constraintsRule, MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, 0x126f1320a26da4b8L, "expr")), MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x126f1320a26cf7f1L, 0x126f1320a26d350dL, "expression"));
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:61c80a02-cc27-4085-b38d-beaf0fede70a(jetbrains.mps.lang.constraints.rules.typesystem)", "7201029305263589583", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:61c80a02-cc27-4085-b38d-beaf0fede70a(jetbrains.mps.lang.constraints.rules.typesystem)", "7201029305263586820", true), (SNode) createBooleanType_utdjwt_a1a0c0a0a0b(), true, true, _info_12389875345);
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, "jetbrains.mps.lang.constraints.rules.structure.ConstraintsRule");
+    return MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, "jetbrains.mps.lang.constraints.rules.structure.Rule");
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);

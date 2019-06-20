@@ -13,11 +13,14 @@
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
+      <concept id="1080223426719" name="jetbrains.mps.baseLanguage.structure.OrExpression" flags="nn" index="22lmx$" />
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
       </concept>
+      <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
+      <concept id="1068580123152" name="jetbrains.mps.baseLanguage.structure.EqualsExpression" flags="nn" index="3clFbC" />
       <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
@@ -25,35 +28,44 @@
       <concept id="1107535904670" name="jetbrains.mps.baseLanguage.structure.ClassifierType" flags="in" index="3uibUv">
         <reference id="1107535924139" name="classifier" index="3uigEE" />
       </concept>
+      <concept id="1081773326031" name="jetbrains.mps.baseLanguage.structure.BinaryOperation" flags="nn" index="3uHJSO">
+        <child id="1081773367579" name="rightExpression" index="3uHU7w" />
+        <child id="1081773367580" name="leftExpression" index="3uHU7B" />
+      </concept>
     </language>
     <language id="47257bf3-78d3-470b-89d9-8c3261a61d15" name="jetbrains.mps.lang.constraints.rules">
-      <concept id="315923949159026769" name="jetbrains.mps.lang.constraints.rules.structure.ConstraintsDefNativeNode" flags="ng" index="1DMZdT">
+      <concept id="1328301445982517233" name="jetbrains.mps.lang.constraints.rules.structure.ExpressionWrapper" flags="ng" index="2K0Yjh">
+        <child id="1328301445982532877" name="expression" index="2K0yoH" />
+      </concept>
+      <concept id="315923949159026769" name="jetbrains.mps.lang.constraints.rules.structure.NativeTypedNodeDef" flags="ng" index="1DMZdT">
         <reference id="315923949159027763" name="conceptParameter" index="1DMZsr" />
       </concept>
-      <concept id="315923949160453290" name="jetbrains.mps.lang.constraints.rules.structure.ConstraintsRuleIdHolder" flags="ng" index="1DRju2">
+      <concept id="315923949160453290" name="jetbrains.mps.lang.constraints.rules.structure.RuleIdHolder" flags="ng" index="1DRju2">
         <property id="6714410169261853888" name="ruleId" index="EcuMT" />
       </concept>
-      <concept id="7291380803376071201" name="jetbrains.mps.lang.constraints.rules.structure.ConstraintsRoot" flags="ng" index="3Qpn8k">
+      <concept id="7291380803376071201" name="jetbrains.mps.lang.constraints.rules.structure.ConstraintsRoot2" flags="ng" index="3Qpn8k">
         <reference id="7291380803380183169" name="concept" index="3QD32O" />
         <child id="7291380803376071241" name="block" index="3Qpn9W" />
       </concept>
-      <concept id="7291380803376071238" name="jetbrains.mps.lang.constraints.rules.structure.ConstraintsRuleBlock" flags="ng" index="3Qpn9N">
+      <concept id="7291380803376071238" name="jetbrains.mps.lang.constraints.rules.structure.RuleBlock" flags="ng" index="3Qpn9N">
         <reference id="7291380803376071243" name="kind" index="3Qpn9Y" />
-        <child id="7291380803376071328" name="member" index="3Qpnal" />
+        <child id="7291380803376071328" name="members" index="3Qpnal" />
       </concept>
-      <concept id="7291380803376071240" name="jetbrains.mps.lang.constraints.rules.structure.ConstraintsRuleKind" flags="ng" index="3Qpn9X">
-        <child id="7291380803376071326" name="contextMember" index="3QpnaF" />
-        <child id="5473446470512654130" name="parameter" index="3RW26y" />
+      <concept id="7291380803376071240" name="jetbrains.mps.lang.constraints.rules.structure.RuleKind" flags="ng" index="3Qpn9X">
+        <child id="7291380803376071326" name="contextMembers" index="3QpnaF" />
+        <child id="5473446470512654130" name="parameters" index="3RW26y" />
       </concept>
       <concept id="7291380803376179560" name="jetbrains.mps.lang.constraints.rules.structure.ConstraintsExpressionHolder" flags="ng" index="3QpH_t">
         <child id="7291380803376179561" name="expression" index="3QpH_s" />
       </concept>
-      <concept id="7291380803376202513" name="jetbrains.mps.lang.constraints.rules.structure.ContextReference" flags="ng" index="3QpRc$">
+      <concept id="7291380803376202513" name="jetbrains.mps.lang.constraints.rules.structure.TypedDefReference" flags="ng" index="3QpRc$">
         <reference id="7291380803376221790" name="declaration" index="3QpVTF" />
       </concept>
-      <concept id="7291380803376279010" name="jetbrains.mps.lang.constraints.rules.structure.ConstraintsRule" flags="ng" index="3Qq5Rn" />
-      <concept id="5473446470512654133" name="jetbrains.mps.lang.constraints.rules.structure.ConstraintsRuleKindParameterConcept" flags="ng" index="3RW26_" />
-      <concept id="5473446470512342705" name="jetbrains.mps.lang.constraints.rules.structure.ConstraintsDefNative" flags="ng" index="3RXm0x">
+      <concept id="7291380803376279010" name="jetbrains.mps.lang.constraints.rules.structure.Rule" flags="ng" index="3Qq5Rn">
+        <child id="1328301445982561464" name="expr" index="2K0Fuo" />
+      </concept>
+      <concept id="5473446470512654133" name="jetbrains.mps.lang.constraints.rules.structure.RuleKindParameterConcept" flags="ng" index="3RW26_" />
+      <concept id="5473446470512342705" name="jetbrains.mps.lang.constraints.rules.structure.TypedNativeDef" flags="ng" index="3RXm0x">
         <child id="5473446470512342706" name="type" index="3RXm0y" />
       </concept>
     </language>
@@ -189,6 +201,35 @@
             <ref role="37wK5l" to="33ny:~Collection.contains(java.lang.Object)" resolve="contains" />
             <node concept="3QpRc$" id="5hCLR$mfP0B" role="37wK5m">
               <ref role="3QpVTF" node="7qY6fvuNl5$" resolve="link" />
+            </node>
+          </node>
+        </node>
+        <node concept="2K0Yjh" id="19J4M2ywoOf" role="2K0Fuo">
+          <node concept="22lmx$" id="19J4M2ywqRW" role="2K0yoH">
+            <node concept="3clFbC" id="19J4M2ywrMS" role="3uHU7B">
+              <node concept="10Nm6u" id="19J4M2ywrTt" role="3uHU7w" />
+              <node concept="3QpRc$" id="19J4M2ywqZk" role="3uHU7B">
+                <ref role="3QpVTF" node="7qY6fvuNl5$" resolve="link" />
+              </node>
+            </node>
+            <node concept="2OqwBi" id="19J4M2ywqlG" role="3uHU7w">
+              <node concept="2OqwBi" id="19J4M2ywpF$" role="2Oq$k0">
+                <node concept="2OqwBi" id="19J4M2ywplF" role="2Oq$k0">
+                  <node concept="3QpRc$" id="19J4M2ywpcp" role="2Oq$k0">
+                    <ref role="3QpVTF" node="hyoMxHFKoi" resolve="node" />
+                  </node>
+                  <node concept="2yIwOk" id="19J4M2ywptv" role="2OqNvi" />
+                </node>
+                <node concept="liA8E" id="19J4M2ywpSJ" role="2OqNvi">
+                  <ref role="37wK5l" to="c17a:~SAbstractConcept.getContainmentLinks()" resolve="getContainmentLinks" />
+                </node>
+              </node>
+              <node concept="liA8E" id="19J4M2ywqL_" role="2OqNvi">
+                <ref role="37wK5l" to="33ny:~Collection.contains(java.lang.Object)" resolve="contains" />
+                <node concept="3QpRc$" id="19J4M2ywqON" role="37wK5m">
+                  <ref role="3QpVTF" node="7qY6fvuNl5$" resolve="link" />
+                </node>
+              </node>
             </node>
           </node>
         </node>

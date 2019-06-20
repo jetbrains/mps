@@ -199,6 +199,9 @@
       <concept id="2644386474300074836" name="jetbrains.mps.lang.smodel.structure.ConceptIdRefExpression" flags="nn" index="35c_gC">
         <reference id="2644386474300074837" name="conceptDeclaration" index="35c_gD" />
       </concept>
+      <concept id="1139621453865" name="jetbrains.mps.lang.smodel.structure.Node_IsInstanceOfOperation" flags="nn" index="1mIQ4w">
+        <child id="1177027386292" name="conceptArgument" index="cj9EA" />
+      </concept>
       <concept id="1172008320231" name="jetbrains.mps.lang.smodel.structure.Node_IsNotNullOperation" flags="nn" index="3x8VRR" />
       <concept id="1144101972840" name="jetbrains.mps.lang.smodel.structure.OperationParm_Concept" flags="ng" index="1xMEDy">
         <child id="1207343664468" name="conceptArgument" index="ri$Ld" />
@@ -242,11 +245,11 @@
     </language>
   </registry>
   <node concept="1M2fIO" id="6kKc3mjlWeI">
-    <ref role="1M2myG" to="bm42:6kKc3mjlOch" resolve="ContextReference" />
+    <ref role="1M2myG" to="bm42:6kKc3mjlOch" resolve="TypedDefReference" />
     <node concept="1N5Pfh" id="6kKc3mju2TG" role="1Mr941">
       <ref role="1N5Vy1" to="bm42:6kKc3mjlSTu" resolve="declaration" />
       <node concept="1dDu$B" id="6kKc3mju2TK" role="1N6uqs">
-        <ref role="1dDu$A" to="bm42:6kKc3mjq0oG" resolve="TypedIdentifier" />
+        <ref role="1dDu$A" to="bm42:6kKc3mjq0oG" resolve="TypedDef" />
       </node>
     </node>
   </node>
@@ -356,7 +359,7 @@
                     <node concept="nLn13" id="hyoMxHG5H4" role="1m5AlR" />
                   </node>
                   <node concept="3Tsc0h" id="hyoMxHG6$c" role="2OqNvi">
-                    <ref role="3TtcxE" to="bm42:4JP_D2W1rsM" resolve="parameter" />
+                    <ref role="3TtcxE" to="bm42:4JP_D2W1rsM" resolve="parameters" />
                   </node>
                 </node>
                 <node concept="3zZkjj" id="hyoMxHGazT" role="2OqNvi">
@@ -384,7 +387,7 @@
               <node concept="2DA6wF" id="hyoMxHG4G2" role="3uHU7B" />
               <node concept="359W_D" id="hyoMxHG54U" role="3uHU7w">
                 <ref role="359W_E" to="bm42:6kKc3mjlk98" resolve="RuleKind" />
-                <ref role="359W_F" to="bm42:4JP_D2W1rsM" resolve="parameter" />
+                <ref role="359W_F" to="bm42:4JP_D2W1rsM" resolve="parameters" />
               </node>
             </node>
           </node>
@@ -561,6 +564,23 @@
                     </node>
                   </node>
                 </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="1M2fIO" id="19J4M2ysiNj">
+    <ref role="1M2myG" to="bm42:19J4M2yrl9V" resolve="RuleBlockMember" />
+    <node concept="9S07l" id="19J4M2ysiNk" role="9Vyp8">
+      <node concept="3clFbS" id="19J4M2ysiNl" role="2VODD2">
+        <node concept="3clFbF" id="19J4M2ysiRe" role="3cqZAp">
+          <node concept="2OqwBi" id="19J4M2ysj3p" role="3clFbG">
+            <node concept="nLn13" id="19J4M2ysiRd" role="2Oq$k0" />
+            <node concept="1mIQ4w" id="19J4M2ysja3" role="2OqNvi">
+              <node concept="chp4Y" id="19J4M2ysjfX" role="cj9EA">
+                <ref role="cht4Q" to="bm42:6kKc3mjlk96" resolve="RuleBlock" />
               </node>
             </node>
           </node>

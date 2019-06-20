@@ -2548,7 +2548,7 @@
                                           </node>
                                         </node>
                                         <node concept="35c_gC" id="eg" role="37wK5m">
-                                          <ref role="35c_gD" to="bm42:6kKc3mjq0oG" resolve="TypedIdentifier" />
+                                          <ref role="35c_gD" to="bm42:6kKc3mjq0oG" resolve="TypedDef" />
                                           <node concept="cd27G" id="eE" role="lGtFl">
                                             <node concept="3u3nmq" id="eF" role="cd27D">
                                               <property role="3u3nmv" value="5258059200644226248" />

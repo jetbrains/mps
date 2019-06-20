@@ -22,15 +22,15 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class ApplicableCondition__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x3172094ab484cd2cL, "jetbrains.mps.lang.constraints.rules.structure.ApplicableCondition");
 
-  public static final SMethod<SNode> getContainingRule_id1dKBELviPCA = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getContainingRule").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1dKBELviPCA").build();
+  public static final SMethod<SNode> getContainingBlockMember_id1dKBELviPCA = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getContainingBlockMember").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1dKBELviPCA").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getContainingRule_id1dKBELviPCA);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getContainingBlockMember_id1dKBELviPCA);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
-  /*package*/ static SNode getContainingRule_id1dKBELviPCA(@NotNull SNode __thisNode__) {
-    return SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), MetaAdapterFactory.getInterfaceConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359356e968L, "jetbrains.mps.lang.constraints.rules.structure.ConstraintsExpressionHolder"));
+  /*package*/ static SNode getContainingBlockMember_id1dKBELviPCA(@NotNull SNode __thisNode__) {
+    return SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), MetaAdapterFactory.getInterfaceConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x126f1320a26d527bL, "jetbrains.mps.lang.constraints.rules.structure.RuleBlockMember"));
   }
 
   /*package*/ ApplicableCondition__BehaviorDescriptor() {
@@ -49,7 +49,7 @@ public final class ApplicableCondition__BehaviorDescriptor extends BaseBHDescrip
     }
     switch (methodIndex) {
       case 0:
-        return (T) ((SNode) getContainingRule_id1dKBELviPCA(node));
+        return (T) ((SNode) getContainingBlockMember_id1dKBELviPCA(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

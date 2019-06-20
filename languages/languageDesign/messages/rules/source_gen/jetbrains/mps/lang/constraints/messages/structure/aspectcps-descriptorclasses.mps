@@ -933,7 +933,7 @@
             <node concept="liA8E" id="4J" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.super_(java.lang.String,long,long,long)" resolve="super_" />
               <node concept="Xl_RD" id="4K" role="37wK5m">
-                <property role="Xl_RC" value="jetbrains.mps.lang.constraints.rules.structure.ConstraintsRule" />
+                <property role="Xl_RC" value="jetbrains.mps.lang.constraints.rules.structure.Rule" />
               </node>
               <node concept="1adDum" id="4L" role="37wK5m">
                 <property role="1adDun" value="0x47257bf378d3470bL" />

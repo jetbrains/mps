@@ -6,7 +6,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.lang.constraints.rules.behavior.ConstraintsRuleIdHolder__BehaviorDescriptor;
+import jetbrains.mps.lang.constraints.rules.behavior.RuleIdHolder__BehaviorDescriptor;
 
 public final class NameHelper {
   private final SNode myRuleDecl;
@@ -27,6 +27,6 @@ public final class NameHelper {
 
   @NotNull
   public String getGeneratedId() {
-    return ConstraintsRuleIdHolder__BehaviorDescriptor.getRuleId_id6kKc3mjG9Hb.invoke(myRuleDecl);
+    return RuleIdHolder__BehaviorDescriptor.getRuleId_id6kKc3mjG9Hb.invoke(myRuleDecl);
   }
 }

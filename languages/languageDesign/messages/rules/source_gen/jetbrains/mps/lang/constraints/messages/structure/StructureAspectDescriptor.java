@@ -58,7 +58,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForConstraintsRuleWithMessage() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.constraints.messages", "ConstraintsRuleWithMessage", 0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.constraints.rules.structure.ConstraintsRule", 0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L);
+    b.super_("jetbrains.mps.lang.constraints.rules.structure.Rule", 0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L);
     b.origin("r:ee5c0e5f-69e3-4669-a4e4-2d16da1e8263(jetbrains.mps.lang.constraints.messages.structure)/315923949160549991");
     b.version(2);
     b.aggregate("messageProvider", 0x46263286dc0ce86L).target(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce81L).optional(false).ordered(true).multiple(false).origin("315923949160550022").done();

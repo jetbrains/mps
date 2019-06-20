@@ -22,9 +22,9 @@
       <node id="5258059200644194987" at="30,0,31,0" concept="7" trace="getCustomizingRule_id4zSofKenMaQ" />
       <node id="5258059200644194987" at="31,0,32,0" concept="7" trace="getScope_id52_Geb4QDV$" />
       <node id="5258059200644194987" at="33,0,34,0" concept="7" trace="BH_METHODS" />
-      <node id="5258059200644286949" at="39,247,40,189" concept="5" />
+      <node id="5258059200644286949" at="39,240,40,177" concept="5" />
       <node id="7291380803378260338" at="41,28,42,99" concept="6" />
-      <node id="5258059200644290868" at="43,14,44,258" concept="6" />
+      <node id="5258059200644290868" at="43,14,44,251" concept="6" />
       <node id="7291380803378285907" at="46,12,47,18" concept="6" />
       <node id="5258059200644194987" at="55,114,56,21" concept="2" />
       <node id="5258059200644194987" at="60,114,61,49" concept="5" />
@@ -44,7 +44,7 @@
       <node id="5258059200644194987" at="75,49,78,5" concept="3" />
       <node id="5258059200644194987" at="54,0,58,0" concept="4" trace="initNode#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/core/aspects/behaviour/api/SConstructor;[Ljava/lang/Object;)V" />
       <node id="5258059200644194987" at="78,5,82,5" concept="9" />
-      <node id="5258059200644288119" at="40,189,45,7" concept="3" />
+      <node id="5258059200644288119" at="40,177,45,7" concept="3" />
       <node id="5258059200644194987" at="85,0,90,0" concept="4" trace="getDeclaredMethods#()Ljava/util/List;" />
       <node id="5258059200644194987" at="91,0,96,0" concept="4" trace="getConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="5258059200644194987" at="64,5,70,5" concept="9" />
@@ -55,7 +55,7 @@
       <scope id="5258059200644194987" at="35,63,35,63" />
       <scope id="5258059200644194987" at="51,53,51,53" />
       <scope id="5258059200644288121" at="41,28,42,99" />
-      <scope id="5258059200644290781" at="43,14,44,258" />
+      <scope id="5258059200644290781" at="43,14,44,251" />
       <scope id="7291380803378285589" at="46,12,47,18" />
       <scope id="5258059200644194987" at="55,114,56,21" />
       <scope id="5258059200644194987" at="62,26,63,56" />
@@ -76,7 +76,7 @@
       </scope>
       <scope id="5258059200644194987" at="85,0,90,0" />
       <scope id="5258059200644194987" at="91,0,96,0" />
-      <scope id="7291380803378258528" at="39,247,45,7">
+      <scope id="7291380803378258528" at="39,240,45,7">
         <var name="block" id="5258059200644286950" />
       </scope>
       <scope id="5258059200644194987" at="74,128,82,5">

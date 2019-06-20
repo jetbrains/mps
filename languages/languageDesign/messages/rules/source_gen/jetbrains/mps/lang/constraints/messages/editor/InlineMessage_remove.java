@@ -25,7 +25,7 @@ public class InlineMessage_remove {
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
         if (!(DeletionApproverUtil.approve(editorContext, node))) {
-          SNode replacement = SNodeFactoryOperations.replaceWithNewChild(SNodeOperations.cast(SNodeOperations.getParent(node), MetaAdapterFactory.getConcept(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, "jetbrains.mps.lang.constraints.messages.structure.ConstraintsRuleWithMessage")), MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, "jetbrains.mps.lang.constraints.rules.structure.ConstraintsRule"));
+          SNode replacement = SNodeFactoryOperations.replaceWithNewChild(SNodeOperations.cast(SNodeOperations.getParent(node), MetaAdapterFactory.getConcept(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, "jetbrains.mps.lang.constraints.messages.structure.ConstraintsRuleWithMessage")), MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, "jetbrains.mps.lang.constraints.rules.structure.Rule"));
           SelectionUtil.selectLabelCellWithSelection(editorContext, replacement, SelectionManager.LAST_EDITABLE_CELL, -1, -1);
         }
       }

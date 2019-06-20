@@ -10,10 +10,10 @@
   </root>
   <root nodeRef="r:0a04f96b-dac5-4ea1-9fd0-9fb1105a1fa4(jetbrains.mps.lang.constraints.rules.actions)/315923949159711975">
     <file name="TypedIdentifier_preserveName.java">
-      <node id="315923949159713056" at="15,222,16,506" concept="0" />
+      <node id="315923949159713056" at="15,215,16,499" concept="0" />
       <node id="315923949159711989" at="14,91,17,7" concept="1" />
       <node id="315923949159711976" at="14,0,19,0" concept="2" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
-      <scope id="315923949159711991" at="15,222,16,506" />
+      <scope id="315923949159711991" at="15,215,16,499" />
       <scope id="315923949159711976" at="14,91,17,7" />
       <scope id="315923949159711976" at="14,0,19,0">
         <var name="enclosingNode" id="315923949159711976" />
@@ -27,11 +27,11 @@
   </root>
   <root nodeRef="r:0a04f96b-dac5-4ea1-9fd0-9fb1105a1fa4(jetbrains.mps.lang.constraints.rules.actions)/5258059200640692078">
     <file name="ConstraintsRule_factories.java">
-      <node id="5258059200640694095" at="16,213,17,497" concept="0" />
-      <node id="5258059200640699510" at="17,497,18,538" concept="0" />
+      <node id="5258059200640694095" at="16,202,17,486" concept="0" />
+      <node id="5258059200640699510" at="17,486,18,515" concept="0" />
       <node id="5258059200640692092" at="15,91,19,7" concept="1" />
       <node id="5258059200640692079" at="15,0,21,0" concept="2" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
-      <scope id="5258059200640692094" at="16,213,18,538" />
+      <scope id="5258059200640692094" at="16,202,18,515" />
       <scope id="5258059200640692079" at="15,91,19,7" />
       <scope id="5258059200640692079" at="15,0,21,0">
         <var name="enclosingNode" id="5258059200640692079" />

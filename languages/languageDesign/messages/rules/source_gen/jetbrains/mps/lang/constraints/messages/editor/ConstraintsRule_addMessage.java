@@ -109,7 +109,7 @@ public class ConstraintsRule_addMessage extends TransformationMenuBase {
 
       @Override
       public void execute(@NotNull String pattern) {
-        SNode transformingRule = SNodeOperations.cast(SNodeOperations.getPrevSibling(_context.getNode()), MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, "jetbrains.mps.lang.constraints.rules.structure.ConstraintsRule"));
+        SNode transformingRule = SNodeOperations.cast(SNodeOperations.getPrevSibling(_context.getNode()), MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, "jetbrains.mps.lang.constraints.rules.structure.Rule"));
         SNode replacement = SNodeFactoryOperations.replaceWithNewChild(transformingRule, MetaAdapterFactory.getConcept(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, "jetbrains.mps.lang.constraints.messages.structure.ConstraintsRuleWithMessage"));
         SNodeOperations.deleteNode(_context.getNode());
         SelectionUtil.selectCell(_context.getEditorContext(), SLinkOperations.getTarget(replacement, MetaAdapterFactory.getContainmentLink(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, 0x46263286dc0ce86L, "messageProvider")), SelectionManager.LAST_EDITABLE_CELL);
@@ -117,7 +117,7 @@ public class ConstraintsRule_addMessage extends TransformationMenuBase {
 
       @Override
       public boolean canExecute(@NotNull String pattern) {
-        return SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SNodeOperations.getPrevSibling(_context.getNode()))), MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, "jetbrains.mps.lang.constraints.rules.structure.ConstraintsRule"));
+        return SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SNodeOperations.getPrevSibling(_context.getNode()))), MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, "jetbrains.mps.lang.constraints.rules.structure.Rule"));
       }
 
 

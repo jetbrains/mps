@@ -10,8 +10,8 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.lang.constraints.rules.behavior.ConstraintsExpressionHolder__BehaviorDescriptor;
-import jetbrains.mps.lang.constraints.rules.behavior.TypedIdentifier__BehaviorDescriptor;
+import jetbrains.mps.lang.constraints.rules.behavior.RuleBlockMember__BehaviorDescriptor;
+import jetbrains.mps.lang.constraints.rules.behavior.TypedDef__BehaviorDescriptor;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
@@ -20,10 +20,10 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 public class check_ConstraintsRule_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_ConstraintsRule_NonTypesystemRule() {
   }
-  public void applyRule(final SNode constraintsRule, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(constraintsRule, MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x13709eac5f4898edL, 0x3172094ab484cd67L, "condition")) == null)) {
-      for (SNode usedDef : Sequence.fromIterable(ConstraintsExpressionHolder__BehaviorDescriptor.getUsedDefs_id35M2kEOy5Ld.invoke(constraintsRule))) {
-        if (!(!((boolean) TypedIdentifier__BehaviorDescriptor.hasApplicableCondition_id35M2kEOydzo.invoke(SLinkOperations.getTarget(usedDef, MetaAdapterFactory.getReferenceLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593574311L, 0x6530303593578e5eL, "declaration")))))) {
+  public void applyRule(final SNode rule, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
+    if ((SLinkOperations.getTarget(rule, MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, 0x126f1320a26dc7bdL, "condition")) == null)) {
+      for (SNode usedDef : Sequence.fromIterable(RuleBlockMember__BehaviorDescriptor.getUsedDefs_id19J4M2yrjsZ.invoke(rule))) {
+        if (!(!((boolean) TypedDef__BehaviorDescriptor.hasApplicableCondition_id35M2kEOydzo.invoke(SLinkOperations.getTarget(usedDef, MetaAdapterFactory.getReferenceLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593574311L, 0x6530303593578e5eL, "declaration")))))) {
           MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(usedDef, "Condition definitions can be used only within conditional rules", "r:61c80a02-cc27-4085-b38d-beaf0fede70a(jetbrains.mps.lang.constraints.rules.typesystem)", "3562920471664595498", null, errorTarget);
         }
@@ -31,7 +31,7 @@ public class check_ConstraintsRule_NonTypesystemRule extends AbstractNonTypesyst
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, "jetbrains.mps.lang.constraints.rules.structure.ConstraintsRule");
+    return MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, "jetbrains.mps.lang.constraints.rules.structure.Rule");
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);

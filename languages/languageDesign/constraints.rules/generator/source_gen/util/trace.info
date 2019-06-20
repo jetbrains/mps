@@ -60,7 +60,7 @@
       <node id="66188535716408472" at="14,46,15,26" concept="1" />
       <node id="1540166288377306430" at="19,38,20,57" concept="6" />
       <node id="1540166288377365872" at="24,36,25,167" concept="6" />
-      <node id="8452785328911042429" at="29,34,30,98" concept="6" />
+      <node id="8452785328911042429" at="29,34,30,87" concept="6" />
       <node id="7082824793308708548" at="14,0,17,0" concept="0" trace="NameHelper#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="7082824793308696498" at="18,0,22,0" concept="4" trace="getGeneratedString#()Ljava/lang/String;" />
       <node id="1540166288377365897" at="23,0,27,0" concept="4" trace="getGeneratedName#()Ljava/lang/String;" />
@@ -68,7 +68,7 @@
       <scope id="7082824793308708552" at="14,46,15,26" />
       <scope id="7082824793308696506" at="19,38,20,57" />
       <scope id="1540166288377365854" at="24,36,25,167" />
-      <scope id="1540166288377303472" at="29,34,30,98" />
+      <scope id="1540166288377303472" at="29,34,30,87" />
       <scope id="7082824793308708548" at="14,0,17,0">
         <var name="ruleDecl" id="1540166288377303867" />
       </scope>

@@ -126,7 +126,7 @@
       <property role="TrG5h" value="getCustomizingRule" />
       <node concept="3Tm1VV" id="4zSofKenMaR" role="1B3o_S" />
       <node concept="3Tqbb2" id="4zSofKenMb6" role="3clF45">
-        <ref role="ehGHo" to="bm42:6kKc3mjm6Ry" resolve="ConstraintsRule" />
+        <ref role="ehGHo" to="bm42:6kKc3mjm6Ry" resolve="Rule" />
       </node>
       <node concept="3clFbS" id="4zSofKenMaT" role="3clF47" />
     </node>
@@ -145,7 +145,7 @@
             </node>
             <node concept="2Zo12i" id="4zSofKenVIo" role="2OqNvi">
               <node concept="chp4Y" id="4zSofKenVLw" role="2Zo12j">
-                <ref role="cht4Q" to="bm42:6kKc3mjq0oG" resolve="TypedIdentifier" />
+                <ref role="cht4Q" to="bm42:6kKc3mjq0oG" resolve="TypedDef" />
               </node>
             </node>
           </node>
@@ -154,7 +154,7 @@
               <node concept="3cpWsn" id="4zSofKeo8BA" role="3cpWs9">
                 <property role="TrG5h" value="block" />
                 <node concept="3Tqbb2" id="4zSofKeo8Bg" role="1tU5fm">
-                  <ref role="ehGHo" to="bm42:6kKc3mjlk96" resolve="ConstraintsRuleBlock" />
+                  <ref role="ehGHo" to="bm42:6kKc3mjlk96" resolve="RuleBlock" />
                 </node>
                 <node concept="2OqwBi" id="4zSofKeo8BB" role="33vP2m">
                   <node concept="2OqwBi" id="4zSofKeo8BC" role="2Oq$k0">
@@ -164,7 +164,7 @@
                     </node>
                   </node>
                   <node concept="2qgKlT" id="4zSofKeo8BF" role="2OqNvi">
-                    <ref role="37wK5l" to="zezp:6kKc3mjn3VM" resolve="getBlock" />
+                    <ref role="37wK5l" to="zezp:19J4M2yrjsD" resolve="getBlock" />
                   </node>
                 </node>
               </node>
@@ -206,7 +206,7 @@
                         </node>
                         <node concept="3clFbT" id="4zSofKeobHD" role="37wK5m" />
                         <node concept="35c_gC" id="4zSofKeobJA" role="37wK5m">
-                          <ref role="35c_gD" to="bm42:6kKc3mjq0oG" resolve="TypedIdentifier" />
+                          <ref role="35c_gD" to="bm42:6kKc3mjq0oG" resolve="TypedDef" />
                         </node>
                       </node>
                     </node>
@@ -257,7 +257,7 @@
         </node>
       </node>
       <node concept="3Tqbb2" id="4zSofKenNiH" role="3clF45">
-        <ref role="ehGHo" to="bm42:6kKc3mjm6Ry" resolve="ConstraintsRule" />
+        <ref role="ehGHo" to="bm42:6kKc3mjm6Ry" resolve="Rule" />
       </node>
     </node>
   </node>

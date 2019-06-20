@@ -9,36 +9,30 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
-  private ConceptPresentation props_AbstractConstraintsDefNative;
   private ConceptPresentation props_ApplicableCondition;
   private ConceptPresentation props_ApplicableConditionHolder;
   private ConceptPresentation props_Block;
-  private ConceptPresentation props_ConstraintsDef;
-  private ConceptPresentation props_ConstraintsDefNative;
-  private ConceptPresentation props_ConstraintsDefNativeNode;
-  private ConceptPresentation props_ConstraintsExpressionHolder;
   private ConceptPresentation props_ConstraintsRoot2;
-  private ConceptPresentation props_ConstraintsRule;
-  private ConceptPresentation props_ConstraintsRuleIdHolder;
-  private ConceptPresentation props_ContextReference;
+  private ConceptPresentation props_DefForRule;
+  private ConceptPresentation props_ExpressionWrapper;
+  private ConceptPresentation props_NativeDef;
+  private ConceptPresentation props_NativeTypedNodeDef;
   private ConceptPresentation props_PseudoBaseConcept;
+  private ConceptPresentation props_Rule;
   private ConceptPresentation props_RuleBlock;
   private ConceptPresentation props_RuleBlockMember;
+  private ConceptPresentation props_RuleIdHolder;
   private ConceptPresentation props_RuleKind;
   private ConceptPresentation props_RuleKindParameterConcept;
-  private ConceptPresentation props_TypedIdentifier;
+  private ConceptPresentation props_TypedDef;
+  private ConceptPresentation props_TypedDefReference;
+  private ConceptPresentation props_TypedNativeDef;
 
   @Override
   @Nullable
   public ConceptPresentation getDescriptor(SAbstractConcept c) {
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
-      case LanguageConceptSwitch.AbstractConstraintsDefNative:
-        if (props_AbstractConstraintsDefNative == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          props_AbstractConstraintsDefNative = cpb.create();
-        }
-        return props_AbstractConstraintsDefNative;
       case LanguageConceptSwitch.ApplicableCondition:
         if (props_ApplicableCondition == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -58,33 +52,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_Block = cpb.create();
         }
         return props_Block;
-      case LanguageConceptSwitch.ConstraintsDef:
-        if (props_ConstraintsDef == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.presentationByName();
-          props_ConstraintsDef = cpb.create();
-        }
-        return props_ConstraintsDef;
-      case LanguageConceptSwitch.ConstraintsDefNative:
-        if (props_ConstraintsDefNative == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.presentationByName();
-          props_ConstraintsDefNative = cpb.create();
-        }
-        return props_ConstraintsDefNative;
-      case LanguageConceptSwitch.ConstraintsDefNativeNode:
-        if (props_ConstraintsDefNativeNode == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.presentationByName();
-          props_ConstraintsDefNativeNode = cpb.create();
-        }
-        return props_ConstraintsDefNativeNode;
-      case LanguageConceptSwitch.ConstraintsExpressionHolder:
-        if (props_ConstraintsExpressionHolder == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          props_ConstraintsExpressionHolder = cpb.create();
-        }
-        return props_ConstraintsExpressionHolder;
       case LanguageConceptSwitch.ConstraintsRoot2:
         if (props_ConstraintsRoot2 == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -92,33 +59,47 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_ConstraintsRoot2 = cpb.create();
         }
         return props_ConstraintsRoot2;
-      case LanguageConceptSwitch.ConstraintsRule:
-        if (props_ConstraintsRule == null) {
+      case LanguageConceptSwitch.DefForRule:
+        if (props_DefForRule == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.shortDesc("constraints rule");
           cpb.presentationByName();
-          props_ConstraintsRule = cpb.create();
+          props_DefForRule = cpb.create();
         }
-        return props_ConstraintsRule;
-      case LanguageConceptSwitch.ConstraintsRuleIdHolder:
-        if (props_ConstraintsRuleIdHolder == null) {
+        return props_DefForRule;
+      case LanguageConceptSwitch.ExpressionWrapper:
+        if (props_ExpressionWrapper == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          props_ConstraintsRuleIdHolder = cpb.create();
+          cpb.rawPresentation("ExpressionWrapper");
+          props_ExpressionWrapper = cpb.create();
         }
-        return props_ConstraintsRuleIdHolder;
-      case LanguageConceptSwitch.ContextReference:
-        if (props_ContextReference == null) {
+        return props_ExpressionWrapper;
+      case LanguageConceptSwitch.NativeDef:
+        if (props_NativeDef == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.presentationByReference(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593574311L, 0x6530303593578e5eL, "declaration", "", "");
-          props_ContextReference = cpb.create();
+          props_NativeDef = cpb.create();
         }
-        return props_ContextReference;
+        return props_NativeDef;
+      case LanguageConceptSwitch.NativeTypedNodeDef:
+        if (props_NativeTypedNodeDef == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_NativeTypedNodeDef = cpb.create();
+        }
+        return props_NativeTypedNodeDef;
       case LanguageConceptSwitch.PseudoBaseConcept:
         if (props_PseudoBaseConcept == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           props_PseudoBaseConcept = cpb.create();
         }
         return props_PseudoBaseConcept;
+      case LanguageConceptSwitch.Rule:
+        if (props_Rule == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("constraints rule");
+          cpb.presentationByName();
+          props_Rule = cpb.create();
+        }
+        return props_Rule;
       case LanguageConceptSwitch.RuleBlock:
         if (props_RuleBlock == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -132,6 +113,12 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_RuleBlockMember = cpb.create();
         }
         return props_RuleBlockMember;
+      case LanguageConceptSwitch.RuleIdHolder:
+        if (props_RuleIdHolder == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_RuleIdHolder = cpb.create();
+        }
+        return props_RuleIdHolder;
       case LanguageConceptSwitch.RuleKind:
         if (props_RuleKind == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -146,12 +133,26 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_RuleKindParameterConcept = cpb.create();
         }
         return props_RuleKindParameterConcept;
-      case LanguageConceptSwitch.TypedIdentifier:
-        if (props_TypedIdentifier == null) {
+      case LanguageConceptSwitch.TypedDef:
+        if (props_TypedDef == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          props_TypedIdentifier = cpb.create();
+          props_TypedDef = cpb.create();
         }
-        return props_TypedIdentifier;
+        return props_TypedDef;
+      case LanguageConceptSwitch.TypedDefReference:
+        if (props_TypedDefReference == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByReference(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593574311L, 0x6530303593578e5eL, "declaration", "", "");
+          props_TypedDefReference = cpb.create();
+        }
+        return props_TypedDefReference;
+      case LanguageConceptSwitch.TypedNativeDef:
+        if (props_TypedNativeDef == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_TypedNativeDef = cpb.create();
+        }
+        return props_TypedNativeDef;
     }
     return null;
   }

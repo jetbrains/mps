@@ -41,7 +41,7 @@ public class MacroMessageExpression_Constraints extends BaseConstraintsDescripto
           }
           @Override
           public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
-            Scope scope = Scope.getScope(_context.getContextNode(), _context.getContainmentLink(), _context.getPosition(), MetaAdapterFactory.getInterfaceConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359368062cL, "jetbrains.mps.lang.constraints.rules.structure.TypedIdentifier"));
+            Scope scope = Scope.getScope(_context.getContextNode(), _context.getContainmentLink(), _context.getPosition(), MetaAdapterFactory.getInterfaceConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359368062cL, "jetbrains.mps.lang.constraints.rules.structure.TypedDef"));
             return (scope == null ? new EmptyScope() : scope);
           }
         };

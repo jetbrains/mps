@@ -17,7 +17,7 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.constraints.rules.behavior.ConstraintsExpressionHolder__BehaviorDescriptor;
+import jetbrains.mps.lang.constraints.rules.behavior.RuleBlockMember__BehaviorDescriptor;
 import jetbrains.mps.lang.core.behavior.ScopeProvider__BehaviorDescriptor;
 import jetbrains.mps.scope.ModelPlusImportedScope;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -36,12 +36,12 @@ public final class MessageProvider__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
-    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), MetaAdapterFactory.getInterfaceConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359368062cL, "jetbrains.mps.lang.constraints.rules.structure.TypedIdentifier"))) {
-      SNode block = ConstraintsExpressionHolder__BehaviorDescriptor.getBlock_id6kKc3mjn3VM.invoke(MessageProvider__BehaviorDescriptor.getCustomizingRule_id4zSofKenMaQ.invoke(__thisNode__));
+    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), MetaAdapterFactory.getInterfaceConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359368062cL, "jetbrains.mps.lang.constraints.rules.structure.TypedDef"))) {
+      SNode block = RuleBlockMember__BehaviorDescriptor.getBlock_id19J4M2yrjsD.invoke(MessageProvider__BehaviorDescriptor.getCustomizingRule_id4zSofKenMaQ.invoke(__thisNode__));
       if ((block != null)) {
         return ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke(block, kind, child);
       } else {
-        return new ModelPlusImportedScope(SNodeOperations.getModel(__thisNode__), false, MetaAdapterFactory.getInterfaceConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359368062cL, "jetbrains.mps.lang.constraints.rules.structure.TypedIdentifier"));
+        return new ModelPlusImportedScope(SNodeOperations.getModel(__thisNode__), false, MetaAdapterFactory.getInterfaceConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359368062cL, "jetbrains.mps.lang.constraints.rules.structure.TypedDef"));
       }
     } else {
       return null;

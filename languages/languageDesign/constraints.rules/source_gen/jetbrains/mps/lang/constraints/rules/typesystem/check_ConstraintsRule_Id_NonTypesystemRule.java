@@ -25,43 +25,43 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 public class check_ConstraintsRule_Id_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_ConstraintsRule_Id_NonTypesystemRule() {
   }
-  public void applyRule(final SNode cr, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!(SModuleOperations.isAspect(SNodeOperations.getModel(cr), "constraints2"))) {
+  public void applyRule(final SNode rule, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
+    if (!(SModuleOperations.isAspect(SNodeOperations.getModel(rule), "constraints2"))) {
       return;
     }
 
-    if (isEmptyString(SPropertyOperations.getString(cr, MetaAdapterFactory.getProperty(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x46263286dbf54aaL, 0x5d2e6079771f8cc0L, "ruleId")))) {
+    if (isEmptyString(SPropertyOperations.getString(rule, MetaAdapterFactory.getProperty(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x46263286dbf54aaL, 0x5d2e6079771f8cc0L, "ruleId")))) {
       {
         MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(cr, "Rule id is not defined", "r:61c80a02-cc27-4085-b38d-beaf0fede70a(jetbrains.mps.lang.constraints.rules.typesystem)", "1587916991969781666", null, errorTarget);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(rule, "Rule id is not defined", "r:61c80a02-cc27-4085-b38d-beaf0fede70a(jetbrains.mps.lang.constraints.rules.typesystem)", "1587916991969781666", null, errorTarget);
         {
           BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.constraints.rules.typesystem.correct_RuleId_QuickFix", true);
-          intentionProvider.putArgument("rule", cr);
+          intentionProvider.putArgument("rule", rule);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
       }
     } else {
-      if (ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(cr), MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, "jetbrains.mps.lang.constraints.rules.structure.ConstraintsRule"))).any(new IWhereFilter<SNode>() {
+      if (ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(rule), MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, "jetbrains.mps.lang.constraints.rules.structure.Rule"))).any(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return it != cr && Objects.equals(SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x46263286dbf54aaL, 0x5d2e6079771f8cc0L, "ruleId")), SPropertyOperations.getString(cr, MetaAdapterFactory.getProperty(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x46263286dbf54aaL, 0x5d2e6079771f8cc0L, "ruleId")));
+          return it != rule && Objects.equals(SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x46263286dbf54aaL, 0x5d2e6079771f8cc0L, "ruleId")), SPropertyOperations.getString(rule, MetaAdapterFactory.getProperty(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x46263286dbf54aaL, 0x5d2e6079771f8cc0L, "ruleId")));
         }
       })) {
         {
           MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(cr, "Duplicate rule id", "r:61c80a02-cc27-4085-b38d-beaf0fede70a(jetbrains.mps.lang.constraints.rules.typesystem)", "5424895381998262898", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(rule, "Duplicate rule id", "r:61c80a02-cc27-4085-b38d-beaf0fede70a(jetbrains.mps.lang.constraints.rules.typesystem)", "5424895381998262898", null, errorTarget);
           {
             BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.constraints.rules.typesystem.correct_RuleId_QuickFix", true);
-            intentionProvider.putArgument("rule", cr);
+            intentionProvider.putArgument("rule", rule);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }
         }
-      } else if (!(Objects.equals(SPropertyOperations.getString(cr, MetaAdapterFactory.getProperty(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x46263286dbf54aaL, 0x5d2e6079771f8cc0L, "ruleId")), ConceptIdHelper.getNodeIdString(cr)))) {
+      } else if (!(Objects.equals(SPropertyOperations.getString(rule, MetaAdapterFactory.getProperty(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x46263286dbf54aaL, 0x5d2e6079771f8cc0L, "ruleId")), ConceptIdHelper.getNodeIdString(rule)))) {
         {
           MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(cr, "Node id and rule id differ", "r:61c80a02-cc27-4085-b38d-beaf0fede70a(jetbrains.mps.lang.constraints.rules.typesystem)", "2819660830273583910", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(rule, "Node id and rule id differ", "r:61c80a02-cc27-4085-b38d-beaf0fede70a(jetbrains.mps.lang.constraints.rules.typesystem)", "2819660830273583910", null, errorTarget);
           {
             BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.constraints.rules.typesystem.correct_RuleId_QuickFix", true);
-            intentionProvider.putArgument("rule", cr);
+            intentionProvider.putArgument("rule", rule);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }
         }
@@ -69,7 +69,7 @@ public class check_ConstraintsRule_Id_NonTypesystemRule extends AbstractNonTypes
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getInterfaceConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x46263286dbf54aaL, "jetbrains.mps.lang.constraints.rules.structure.ConstraintsRuleIdHolder");
+    return MetaAdapterFactory.getInterfaceConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x46263286dbf54aaL, "jetbrains.mps.lang.constraints.rules.structure.RuleIdHolder");
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);

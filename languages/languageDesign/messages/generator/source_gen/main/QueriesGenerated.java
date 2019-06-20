@@ -15,7 +15,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.generator.template.ReferenceMacroContext;
 import util.ContextUtil;
-import jetbrains.mps.lang.constraints.rules.behavior.ConstraintsExpressionHolder__BehaviorDescriptor;
+import jetbrains.mps.lang.constraints.rules.behavior.RuleBlockMember__BehaviorDescriptor;
 import jetbrains.mps.lang.messages.behavior.MessageProvider__BehaviorDescriptor;
 import jetbrains.mps.generator.template.IfMacroContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -69,19 +69,19 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x6530303593ae1607L, 0x63c2f3669ce56d5dL, "concept"));
   }
   public static Object referenceMacro_GetReferent_1_1(final ReferenceMacroContext _context) {
-    return _context.getOutputNodeByInputNodeAndMappingLabel(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x6530303593ae1651L, 0x6530303593ae1654L, "rule")), MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, "jetbrains.mps.lang.constraints.rules.structure.ConstraintsRule")), "ruleID");
+    return _context.getOutputNodeByInputNodeAndMappingLabel(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x6530303593ae1651L, 0x6530303593ae1654L, "rule")), MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, "jetbrains.mps.lang.constraints.rules.structure.Rule")), "ruleID");
   }
   public static Object referenceMacro_GetReferent_1_2(final ReferenceMacroContext _context) {
-    return _context.getOutputNodeByInputNodeAndMappingLabel(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x6530303593ae1651L, 0x6530303593ae1654L, "rule")), MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, "jetbrains.mps.lang.constraints.rules.structure.ConstraintsRule")), "ruleClass");
+    return _context.getOutputNodeByInputNodeAndMappingLabel(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x6530303593ae1651L, 0x6530303593ae1654L, "rule")), MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, "jetbrains.mps.lang.constraints.rules.structure.Rule")), "ruleClass");
   }
   public static Object referenceMacro_GetReferent_1_3(final ReferenceMacroContext _context) {
-    return ContextUtil.matchContextForRuleKind(ConstraintsExpressionHolder__BehaviorDescriptor.getRuleKind_id6kKc3mjmXYb.invoke(MessageProvider__BehaviorDescriptor.getCustomizingRule_id4zSofKenMaQ.invoke(_context.getNode())), _context);
+    return ContextUtil.matchContextForRuleKind(RuleBlockMember__BehaviorDescriptor.getRuleKind_id19J4M2yrjsx.invoke(MessageProvider__BehaviorDescriptor.getCustomizingRule_id4zSofKenMaQ.invoke(_context.getNode())), _context);
   }
   public static Object referenceMacro_GetReferent_1_4(final ReferenceMacroContext _context) {
-    return ContextUtil.matchContextForRuleKind(ConstraintsExpressionHolder__BehaviorDescriptor.getRuleKind_id6kKc3mjmXYb.invoke(MessageProvider__BehaviorDescriptor.getCustomizingRule_id4zSofKenMaQ.invoke(_context.getNode())), _context);
+    return ContextUtil.matchContextForRuleKind(RuleBlockMember__BehaviorDescriptor.getRuleKind_id19J4M2yrjsx.invoke(MessageProvider__BehaviorDescriptor.getCustomizingRule_id4zSofKenMaQ.invoke(_context.getNode())), _context);
   }
   public static Object referenceMacro_GetReferent_1_5(final ReferenceMacroContext _context) {
-    return ContextUtil.matchContextForRuleKind(ConstraintsExpressionHolder__BehaviorDescriptor.getRuleKind_id6kKc3mjmXYb.invoke(MessageProvider__BehaviorDescriptor.getCustomizingRule_id4zSofKenMaQ.invoke(_context.getNode())), _context);
+    return ContextUtil.matchContextForRuleKind(RuleBlockMember__BehaviorDescriptor.getRuleKind_id19J4M2yrjsx.invoke(MessageProvider__BehaviorDescriptor.getCustomizingRule_id4zSofKenMaQ.invoke(_context.getNode())), _context);
   }
   public static Object referenceMacro_GetReferent_1_6(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "messageProvider");

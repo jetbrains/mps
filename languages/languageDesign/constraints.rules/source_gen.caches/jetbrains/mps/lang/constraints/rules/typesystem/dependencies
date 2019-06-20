@@ -5,7 +5,7 @@
     <classNode dependClassName="jetbrains.mps.lang.constraints.rules.typesystem.check_ConstraintsRule_NonTypesystemRule" />
     <classNode dependClassName="jetbrains.mps.lang.constraints.rules.typesystem.typeof_ConstraintsDef_InferenceRule" />
     <classNode dependClassName="jetbrains.mps.lang.constraints.rules.typesystem.typeof_ConstraintsRule_InferenceRule" />
-    <classNode dependClassName="jetbrains.mps.lang.constraints.rules.typesystem.typeof_ContextReference_InferenceRule" />
+    <classNode dependClassName="jetbrains.mps.lang.constraints.rules.typesystem.typeof_TypedDefReference_InferenceRule" />
     <classNode dependClassName="jetbrains.mps.lang.typesystem.runtime.InferenceRule_Runtime" />
     <classNode dependClassName="jetbrains.mps.lang.typesystem.runtime.NonTypesystemRule_Runtime" />
     <classNode extendsClassName="jetbrains.mps.lang.typesystem.runtime.BaseHelginsDescriptor" />
@@ -37,8 +37,8 @@
     <classNode dependClassName="jetbrains.mps.errors.messageTargets.MessageTarget" />
     <classNode dependClassName="jetbrains.mps.errors.messageTargets.NodeMessageTarget" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
-    <classNode dependClassName="jetbrains.mps.lang.constraints.rules.behavior.ConstraintsExpressionHolder__BehaviorDescriptor" />
-    <classNode dependClassName="jetbrains.mps.lang.constraints.rules.behavior.TypedIdentifier__BehaviorDescriptor" />
+    <classNode dependClassName="jetbrains.mps.lang.constraints.rules.behavior.RuleBlockMember__BehaviorDescriptor" />
+    <classNode dependClassName="jetbrains.mps.lang.constraints.rules.behavior.TypedDef__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
     <classNode dependClassName="jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
@@ -81,9 +81,9 @@
     <classNode extendsClassName="jetbrains.mps.lang.typesystem.runtime.AbstractInferenceRule_Runtime" />
     <classNode extendsClassName="jetbrains.mps.lang.typesystem.runtime.InferenceRule_Runtime" />
   </dependency>
-  <dependency className="jetbrains.mps.lang.constraints.rules.typesystem.typeof_ContextReference_InferenceRule">
-    <classNode dependClassName="jetbrains.mps.lang.constraints.rules.behavior.ContextReference__BehaviorDescriptor" />
-    <classNode dependClassName="jetbrains.mps.lang.constraints.rules.behavior.TypedIdentifier__BehaviorDescriptor" />
+  <dependency className="jetbrains.mps.lang.constraints.rules.typesystem.typeof_TypedDefReference_InferenceRule">
+    <classNode dependClassName="jetbrains.mps.lang.constraints.rules.behavior.TypedDefReference__BehaviorDescriptor" />
+    <classNode dependClassName="jetbrains.mps.lang.constraints.rules.behavior.TypedDef__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
     <classNode dependClassName="jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />

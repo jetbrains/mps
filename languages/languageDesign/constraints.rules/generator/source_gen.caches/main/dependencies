@@ -31,9 +31,9 @@
     <classNode dependClassName="jetbrains.mps.generator.template.TemplateVarContext" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
-    <classNode dependClassName="jetbrains.mps.lang.constraints.rules.behavior.ConstraintsExpressionHolder__BehaviorDescriptor" />
-    <classNode dependClassName="jetbrains.mps.lang.constraints.rules.behavior.ConstraintsRuleIdHolder__BehaviorDescriptor" />
-    <classNode dependClassName="jetbrains.mps.lang.constraints.rules.behavior.TypedIdentifier__BehaviorDescriptor" />
+    <classNode dependClassName="jetbrains.mps.lang.constraints.rules.behavior.RuleBlockMember__BehaviorDescriptor" />
+    <classNode dependClassName="jetbrains.mps.lang.constraints.rules.behavior.RuleIdHolder__BehaviorDescriptor" />
+    <classNode dependClassName="jetbrains.mps.lang.constraints.rules.behavior.TypedDef__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations" />

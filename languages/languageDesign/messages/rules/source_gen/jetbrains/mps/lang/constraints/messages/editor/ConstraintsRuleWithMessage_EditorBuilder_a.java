@@ -128,14 +128,14 @@ import jetbrains.mps.editor.runtime.style.CellAlign;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new ConstraintsRuleWithMessage_EditorBuilder_a.expressionSingleRoleHandler_11x2m6_d0a(myNode, MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359356e968L, 0x653030359356e969L, "expression"), getEditorContext());
+    SingleRoleCellProvider provider = new ConstraintsRuleWithMessage_EditorBuilder_a.exprSingleRoleHandler_11x2m6_d0a(myNode, MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, 0x126f1320a26da4b8L, "expr"), getEditorContext());
     return provider.createCell();
   }
-  private static class expressionSingleRoleHandler_11x2m6_d0a extends SingleRoleCellProvider {
+  private static class exprSingleRoleHandler_11x2m6_d0a extends SingleRoleCellProvider {
     @NotNull
     private SNode myNode;
 
-    public expressionSingleRoleHandler_11x2m6_d0a(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
+    public exprSingleRoleHandler_11x2m6_d0a(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
       super(containmentLink, context);
       myNode = ownerNode;
     }
@@ -148,8 +148,8 @@ import jetbrains.mps.editor.runtime.style.CellAlign;
 
     protected EditorCell createChildCell(SNode child) {
       EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359356e968L, 0x653030359356e969L, "expression"), child));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359356e968L, 0x653030359356e969L, "expression"), child));
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, 0x126f1320a26da4b8L, "expr"), child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, 0x126f1320a26da4b8L, "expr"), child));
       installCellInfo(child, editorCell, false);
       return editorCell;
     }
@@ -161,7 +161,7 @@ import jetbrains.mps.editor.runtime.style.CellAlign;
         editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
       }
       if (editorCell.getSRole() == null) {
-        editorCell.setSRole(MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359356e968L, 0x653030359356e969L, "expression"));
+        editorCell.setSRole(MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, 0x126f1320a26da4b8L, "expr"));
       }
       Style style = new StyleImpl();
       style.set(StyleAttributes.INDENT_LAYOUT_INDENT, true);
@@ -170,10 +170,10 @@ import jetbrains.mps.editor.runtime.style.CellAlign;
     @Override
     protected EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359356e968L, 0x653030359356e969L, "expression")));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, 0x126f1320a26da4b8L, "expr")));
       try {
         EditorCell editorCell = super.createEmptyCell();
-        editorCell.setCellId("empty_expression");
+        editorCell.setCellId("empty_expr");
         installCellInfo(null, editorCell, true);
         setCellContext(editorCell);
         return editorCell;
@@ -182,7 +182,7 @@ import jetbrains.mps.editor.runtime.style.CellAlign;
       }
     }
     protected String getNoTargetText() {
-      return "<no expression>";
+      return "<no expr>";
     }
   }
   private EditorCell createCollection_2() {
