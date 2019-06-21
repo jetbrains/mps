@@ -18,8 +18,8 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.SModelInternal;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.constraints.rules.statistics.ConstraintAnalyzer;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
@@ -64,13 +64,18 @@ public final class ConvertConstraints_Intention extends AbstractIntentionDescrip
       SLinkOperations.setTarget(newRoot, MetaAdapterFactory.getReferenceLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554221L, 0x6530303593940081L, "concept"), SLinkOperations.getTarget(node, MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x11a720969b6L, "concept")));
       SPropertyOperations.assign(newRoot, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage"), SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage")));
       if ((SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x5d05239254eb05daL, "canBeChild")) != null)) {
-        ListSequence.fromList(SLinkOperations.getChildren(newRoot, MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554221L, 0x6530303593554249L, "block"))).addElement(_quotation_createNode_kwcbwx_a0a0a4a0(new ConstraintAnalyzer().analyzeConceptFunction(SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x5d05239254eb05daL, "canBeChild"))).toBlock()));
+        ConstraintAnalyzer.Result analyzerResult = new ConstraintAnalyzer().analyzeConceptFunction(SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x5d05239254eb05daL, "canBeChild")));
+        SNode block = ListSequence.fromList(SLinkOperations.getChildren(newRoot, MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554221L, 0x6530303593554249L, "block"))).addElement(_quotation_createNode_kwcbwx_a0a0b0e0a(analyzerResult.toBlock()));
+        for (SNode eh : ListSequence.fromList(SNodeOperations.getNodeDescendants(block, MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, "jetbrains.mps.lang.constraints.rules.structure.Rule"), false, new SAbstractConcept[]{}))) {
+          new ConstraintAnalyzer().replaceConceptFunctions(SLinkOperations.getTarget(SLinkOperations.getTarget(eh, MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, 0x126f1320a26da4b8L, "expr")), MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x126f1320a26cf7f1L, 0x126f1320a26d350dL, "expression")), analyzerResult.varsToDefs());
+        }
       }
       if ((SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x5d05239254e7e6a8L, "canBeParent")) != null)) {
-        ListSequence.fromList(SLinkOperations.getChildren(newRoot, MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554221L, 0x6530303593554249L, "block"))).addElement(_quotation_createNode_kwcbwx_a0a0a5a0(new ConstraintAnalyzer().analyzeConceptFunction(SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x5d05239254e7e6a8L, "canBeParent"))).toBlock()));
-      }
-      for (SNode eh : ListSequence.fromList(SNodeOperations.getNodeDescendants(newRoot, MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, "jetbrains.mps.lang.constraints.rules.structure.Rule"), false, new SAbstractConcept[]{}))) {
-        new ConstraintAnalyzer().replaceConceptFunctions(SLinkOperations.getTarget(SLinkOperations.getTarget(eh, MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, 0x126f1320a26da4b8L, "expr")), MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x126f1320a26cf7f1L, 0x126f1320a26d350dL, "expression")));
+        ConstraintAnalyzer.Result analyzerResult = new ConstraintAnalyzer().analyzeConceptFunction(SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x5d05239254e7e6a8L, "canBeParent")));
+        SNode block = ListSequence.fromList(SLinkOperations.getChildren(newRoot, MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554221L, 0x6530303593554249L, "block"))).addElement(_quotation_createNode_kwcbwx_a0a0b0f0a(analyzerResult.toBlock()));
+        for (SNode eh : ListSequence.fromList(SNodeOperations.getNodeDescendants(block, MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, "jetbrains.mps.lang.constraints.rules.structure.Rule"), false, new SAbstractConcept[]{}))) {
+          new ConstraintAnalyzer().replaceConceptFunctions(SLinkOperations.getTarget(SLinkOperations.getTarget(eh, MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, 0x126f1320a26da4b8L, "expr")), MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x126f1320a26cf7f1L, 0x126f1320a26d350dL, "expression")), analyzerResult.varsToDefs());
+        }
       }
     }
     @Override
@@ -78,7 +83,7 @@ public final class ConvertConstraints_Intention extends AbstractIntentionDescrip
       return ConvertConstraints_Intention.this;
     }
   }
-  private static SNode _quotation_createNode_kwcbwx_a0a0a4a0(Object parameter_1) {
+  private static SNode _quotation_createNode_kwcbwx_a0a0b0e0a(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
@@ -93,7 +98,7 @@ public final class ConvertConstraints_Intention extends AbstractIntentionDescrip
     }
     return quotedNode_2;
   }
-  private static SNode _quotation_createNode_kwcbwx_a0a0a5a0(Object parameter_1) {
+  private static SNode _quotation_createNode_kwcbwx_a0a0b0f0a(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
