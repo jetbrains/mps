@@ -19,7 +19,6 @@ import org.apache.log4j.Logger;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.baseLanguage.actions.ModuleDependencyUtils;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
@@ -88,8 +87,7 @@ public class StaticMethodDeclarationPsvmTemplate extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        ModuleDependencyUtils.addDependencyOnJDKIfMissing(_context.getModel().getModule());
-        return _quotation_createNode_segscv_a1a0a();
+        return _quotation_createNode_segscv_a0a0a();
       }
 
       @Override
@@ -108,7 +106,7 @@ public class StaticMethodDeclarationPsvmTemplate extends SubstituteMenuBase {
       }
     }
   }
-  private static SNode _quotation_createNode_segscv_a1a0a() {
+  private static SNode _quotation_createNode_segscv_a0a0a() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     SNode quotedNode_2 = null;

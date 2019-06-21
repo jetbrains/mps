@@ -19,7 +19,6 @@ import org.apache.log4j.Logger;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.baseLanguage.actions.ModuleDependencyUtils;
 import jetbrains.mps.smodel.runtime.IconResource;
 import jetbrains.mps.smodel.runtime.IconResourceUtil;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
@@ -92,8 +91,7 @@ public class liveTemplates_Expression extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        ModuleDependencyUtils.addDependencyOnJDKIfMissing(_context.getModel().getModule());
-        return _quotation_createNode_9g126d_a1a0a();
+        return _quotation_createNode_9g126d_a0a0a();
       }
 
       @Override
@@ -160,8 +158,7 @@ public class liveTemplates_Expression extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        ModuleDependencyUtils.addDependencyOnJDKIfMissing(_context.getModel().getModule());
-        return _quotation_createNode_9g126d_a1a0b();
+        return _quotation_createNode_9g126d_a0a0b();
       }
 
       @Override
@@ -189,7 +186,7 @@ public class liveTemplates_Expression extends SubstituteMenuBase {
       }
     }
   }
-  private static SNode _quotation_createNode_9g126d_a1a0a() {
+  private static SNode _quotation_createNode_9g126d_a0a0a() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     SNode quotedNode_2 = null;
@@ -204,7 +201,7 @@ public class liveTemplates_Expression extends SubstituteMenuBase {
     quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation"), quotedNode_3);
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_9g126d_a1a0b() {
+  private static SNode _quotation_createNode_9g126d_a0a0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     SNode quotedNode_2 = null;

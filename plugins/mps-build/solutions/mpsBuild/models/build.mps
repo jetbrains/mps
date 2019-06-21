@@ -2120,9 +2120,6 @@
           <node concept="L2wRC" id="LjzjD8FOg8" role="39821P">
             <ref role="L2wRA" node="5d4qc2fzGWE" resolve="jetbrains.mps.devkit.aspect.migration" />
           </node>
-          <node concept="L2wRC" id="4SHe$PEgHsn" role="39821P">
-            <ref role="L2wRA" node="6V7hsz2LOm1" resolve="jetbrains.mps.devkit.baseLanguage" />
-          </node>
           <node concept="3_J27D" id="6X9_iRm9QQH" role="Nbhlr">
             <node concept="3Mxwew" id="6X9_iRm9QQI" role="3MwsjC">
               <property role="3MwjfP" value="devkits" />
@@ -6009,26 +6006,6 @@
         </node>
         <node concept="3LEDTM" id="LjzjD8FKPo" role="3LEDUa">
           <ref role="3LEDTN" node="5cCcm$KATVz" resolve="jetbrains.mps.lang.migration.runtime" />
-        </node>
-      </node>
-      <node concept="3LEwk6" id="6V7hsz2LOm1" role="2G$12L">
-        <property role="BnDLt" value="true" />
-        <property role="TrG5h" value="jetbrains.mps.devkit.baseLanguage" />
-        <property role="3LESm3" value="18688581-50cc-456d-9d5d-17b459d83391" />
-        <node concept="398BVA" id="6V7hsz2LOoI" role="3LF7KH">
-          <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
-          <node concept="2Ry0Ak" id="6V7hsz2LOrZ" role="iGT6I">
-            <property role="2Ry0Am" value="core" />
-            <node concept="2Ry0Ak" id="6V7hsz2Mmh5" role="2Ry0An">
-              <property role="2Ry0Am" value="devkits" />
-              <node concept="2Ry0Ak" id="6V7hsz2MmiC" role="2Ry0An">
-                <property role="2Ry0Am" value="jetbrains.mps.devkit.baseLanguage" />
-                <node concept="2Ry0Ak" id="6V7hsz2Mmkb" role="2Ry0An">
-                  <property role="2Ry0Am" value="jetbrains.mps.devkit.baseLanguage.devkit" />
-                </node>
-              </node>
-            </node>
-          </node>
         </node>
       </node>
     </node>
