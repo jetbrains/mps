@@ -42,8 +42,9 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 
 public class ModelDiffViewer implements FrameDiffTool.DiffViewer {
-  public static Key<SNodeId> DIFF_SHOW_ROOTID = new Key<SNodeId>("MPS.diff.rootid");
-  public static Key<Bounds> DIFF_NAVIGATE_TO = new Key<Bounds>("MPS.diff.navigateto");
+  public static final Key<SNodeId> DIFF_SHOW_ROOTID = new Key<SNodeId>("MPS.diff.rootid");
+  public static final Key<Bounds> DIFF_NAVIGATE_TO = new Key<Bounds>("MPS.diff.navigateto");
+  public static final Key<Boolean> DIFF_SHOW_TREE = Key.create("MPS.diff.showtree");
 
   private ModelDifferenceViewer myViewer;
 
@@ -57,13 +58,15 @@ public class ModelDiffViewer implements FrameDiffTool.DiffViewer {
       Tuples._2<SModel, SNodeId> oldModel = getModelAndRoot(mpsProject, contents.get(0), type);
       Tuples._2<SModel, SNodeId> newModel = getModelAndRoot(mpsProject, contents.get(1), type);
       SNodeId rootId = (newModel._1() != null ? newModel._1() : oldModel._1());
-      myViewer = new ModelDifferenceViewer(mpsProject, oldModel._0(), newModel._0(), rootId, false);
+      final boolean showTree = DIFF_SHOW_TREE.get(request, false);
+      myViewer = new ModelDifferenceViewer(mpsProject, oldModel._0(), newModel._0(), rootId, showTree);
     } else {
       SModel oldModel = ModelDiffViewer.getModel(mpsProject, contents.get(0), type);
       SModel newModel = ModelDiffViewer.getModel(mpsProject, contents.get(1), type);
       //  show one root only if requested 
       SNodeId rootId = request.getUserData(DIFF_SHOW_ROOTID);
-      myViewer = new ModelDifferenceViewer(mpsProject, oldModel, newModel, rootId, true);
+      final boolean showTree = DIFF_SHOW_TREE.get(request, true);
+      myViewer = new ModelDifferenceViewer(mpsProject, oldModel, newModel, rootId, showTree);
       // navigate to specific place in editor if requested 
       Bounds scrollTo = request.getUserData(DIFF_NAVIGATE_TO);
       if (scrollTo != null) {

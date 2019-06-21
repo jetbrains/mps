@@ -8042,7 +8042,7 @@
       <property role="2dlcS1" value="false" />
       <property role="2dld4O" value="false" />
       <property role="TrG5h" value="DIFF_SHOW_ROOTID" />
-      <property role="3TUv4t" value="false" />
+      <property role="3TUv4t" value="true" />
       <node concept="3Tm1VV" id="3bsyx4MRJT_" role="1B3o_S" />
       <node concept="3uibUv" id="3bsyx4MRWK4" role="1tU5fm">
         <ref role="3uigEE" to="zn9m:~Key" resolve="Key" />
@@ -8066,7 +8066,7 @@
       <property role="2dlcS1" value="false" />
       <property role="2dld4O" value="false" />
       <property role="TrG5h" value="DIFF_NAVIGATE_TO" />
-      <property role="3TUv4t" value="false" />
+      <property role="3TUv4t" value="true" />
       <node concept="3Tm1VV" id="2XVPiKXGj6t" role="1B3o_S" />
       <node concept="3uibUv" id="2XVPiKXGj6u" role="1tU5fm">
         <ref role="3uigEE" to="zn9m:~Key" resolve="Key" />
@@ -8083,6 +8083,24 @@
           <node concept="Xl_RD" id="2XVPiKXGj6z" role="37wK5m">
             <property role="Xl_RC" value="MPS.diff.navigateto" />
           </node>
+        </node>
+      </node>
+    </node>
+    <node concept="Wx3nA" id="1vsKl3K0pUU" role="jymVt">
+      <property role="TrG5h" value="DIFF_SHOW_TREE" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm1VV" id="1vsKl3K0qLE" role="1B3o_S" />
+      <node concept="3uibUv" id="1vsKl3K0rbp" role="1tU5fm">
+        <ref role="3uigEE" to="zn9m:~Key" resolve="Key" />
+        <node concept="3uibUv" id="1vsKl3K0rA9" role="11_B2D">
+          <ref role="3uigEE" to="wyt6:~Boolean" resolve="Boolean" />
+        </node>
+      </node>
+      <node concept="2YIFZM" id="1vsKl3K0ssj" role="33vP2m">
+        <ref role="37wK5l" to="zn9m:~Key.create(java.lang.String)" resolve="create" />
+        <ref role="1Pybhc" to="zn9m:~Key" resolve="Key" />
+        <node concept="Xl_RD" id="1vsKl3K0sMU" role="37wK5m">
+          <property role="Xl_RC" value="MPS.diff.showtree" />
         </node>
       </node>
     </node>
@@ -8327,6 +8345,25 @@
                 </node>
               </node>
             </node>
+            <node concept="3cpWs8" id="1vsKl3K0xFs" role="3cqZAp">
+              <node concept="3cpWsn" id="1vsKl3K0xFt" role="3cpWs9">
+                <property role="TrG5h" value="showTree" />
+                <property role="3TUv4t" value="true" />
+                <node concept="10P_77" id="1vsKl3K0xFu" role="1tU5fm" />
+                <node concept="2OqwBi" id="1vsKl3K0xFv" role="33vP2m">
+                  <node concept="37vLTw" id="1vsKl3K0xF_" role="2Oq$k0">
+                    <ref role="3cqZAo" node="1vsKl3K0pUU" resolve="DIFF_SHOW_TREE" />
+                  </node>
+                  <node concept="liA8E" id="1vsKl3K0xFw" role="2OqNvi">
+                    <ref role="37wK5l" to="zn9m:~Key.get(com.intellij.openapi.util.UserDataHolder,java.lang.Object)" resolve="get" />
+                    <node concept="37vLTw" id="1vsKl3K0xFx" role="37wK5m">
+                      <ref role="3cqZAo" node="5zPLqcHM9y1" resolve="request" />
+                    </node>
+                    <node concept="3clFbT" id="1vsKl3K0xFy" role="37wK5m" />
+                  </node>
+                </node>
+              </node>
+            </node>
             <node concept="3clFbF" id="Tzj6YXEMTj" role="3cqZAp">
               <node concept="37vLTI" id="Tzj6YXEMTk" role="3clFbG">
                 <node concept="2ShNRf" id="Tzj6YXEMTl" role="37vLTx">
@@ -8354,7 +8391,9 @@
                     <node concept="37vLTw" id="Tzj6YXERbM" role="37wK5m">
                       <ref role="3cqZAo" node="Tzj6YXEQRG" resolve="rootId" />
                     </node>
-                    <node concept="3clFbT" id="Tzj6YXEMTr" role="37wK5m" />
+                    <node concept="37vLTw" id="1vsKl3K0ziF" role="37wK5m">
+                      <ref role="3cqZAo" node="1vsKl3K0xFt" resolve="showTree" />
+                    </node>
                   </node>
                 </node>
                 <node concept="37vLTw" id="Tzj6YXEMTs" role="37vLTJ">
@@ -8491,6 +8530,27 @@
                   </node>
                 </node>
               </node>
+              <node concept="3cpWs8" id="1vsKl3K0vFf" role="3cqZAp">
+                <node concept="3cpWsn" id="1vsKl3K0vFg" role="3cpWs9">
+                  <property role="TrG5h" value="showTree" />
+                  <property role="3TUv4t" value="true" />
+                  <node concept="10P_77" id="1vsKl3K0wM3" role="1tU5fm" />
+                  <node concept="2OqwBi" id="1vsKl3K0vFh" role="33vP2m">
+                    <node concept="37vLTw" id="1vsKl3K0vFi" role="2Oq$k0">
+                      <ref role="3cqZAo" node="1vsKl3K0pUU" resolve="DIFF_SHOW_TREE" />
+                    </node>
+                    <node concept="liA8E" id="1vsKl3K0vFj" role="2OqNvi">
+                      <ref role="37wK5l" to="zn9m:~Key.get(com.intellij.openapi.util.UserDataHolder,java.lang.Object)" resolve="get" />
+                      <node concept="37vLTw" id="1vsKl3K0vFk" role="37wK5m">
+                        <ref role="3cqZAo" node="5zPLqcHM9y1" resolve="request" />
+                      </node>
+                      <node concept="3clFbT" id="1vsKl3K0vFl" role="37wK5m">
+                        <property role="3clFbU" value="true" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
               <node concept="3clFbF" id="5zPLqcHLMi6" role="3cqZAp">
                 <node concept="37vLTI" id="5zPLqcHLMo4" role="3clFbG">
                   <node concept="2ShNRf" id="5zPLqcHMa$r" role="37vLTx">
@@ -8508,8 +8568,8 @@
                       <node concept="37vLTw" id="3bsyx4MS4Yj" role="37wK5m">
                         <ref role="3cqZAo" node="3bsyx4MS2gk" resolve="rootId" />
                       </node>
-                      <node concept="3clFbT" id="IOaVVguqYq" role="37wK5m">
-                        <property role="3clFbU" value="true" />
+                      <node concept="37vLTw" id="1vsKl3K0xre" role="37wK5m">
+                        <ref role="3cqZAo" node="1vsKl3K0vFg" resolve="showTree" />
                       </node>
                     </node>
                   </node>
