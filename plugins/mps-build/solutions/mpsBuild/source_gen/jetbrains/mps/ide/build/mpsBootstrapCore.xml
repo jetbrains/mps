@@ -300,6 +300,19 @@
       <zipfileset file="${mps_home}/core/devkits/jetbrains.mps.devkit.aspect.migration.devkit/jetbrains.mps.devkit.aspect.migration.devkit" prefix="module" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.devkit.aspect.migration.jar" />
     </jar>
+    <mkdir dir="${build.tmp}/default/jetbrains.mps.devkit.baseLanguage.jar" />
+    <mkdir dir="${build.tmp}/default/jetbrains.mps.devkit.baseLanguage.jar/META-INF" />
+    <echoxml file="${build.tmp}/default/jetbrains.mps.devkit.baseLanguage.jar/META-INF/module.xml">
+      <module namespace="jetbrains.mps.devkit.baseLanguage" type="devkit" uuid="18688581-50cc-456d-9d5d-17b459d83391">
+        <dependencies />
+        <uses />
+        <sources jar="." descriptor="jetbrains.mps.devkit.baseLanguage.devkit" />
+      </module>
+    </echoxml>
+    <jar destfile="${build.layout}/languages/devkits/jetbrains.mps.devkit.baseLanguage.jar" duplicate="preserve">
+      <zipfileset file="${mps_home}/core/devkits/jetbrains.mps.devkit.baseLanguage/jetbrains.mps.devkit.baseLanguage.devkit" prefix="module" />
+      <fileset dir="${build.tmp}/default/jetbrains.mps.devkit.baseLanguage.jar" />
+    </jar>
     <mkdir dir="${build.layout}/languages/make" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.make.facet.jar" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.make.facet.jar/META-INF" />
