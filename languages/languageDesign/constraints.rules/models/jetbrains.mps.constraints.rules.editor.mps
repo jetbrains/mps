@@ -550,7 +550,6 @@
       </node>
       <node concept="1iCGBv" id="19J4M2yvLJ8" role="3EZMnx">
         <ref role="1NtTu8" to="bm42:19J4M2yrqiS" resolve="expr" />
-        <node concept="VPM3Z" id="19J4M2yvLK3" role="3F10Kt" />
         <node concept="lj46D" id="19J4M2yvLK4" role="3F10Kt">
           <property role="VOm3f" value="true" />
         </node>

@@ -59,7 +59,7 @@ public final class ConvertConstraints_Intention extends AbstractIntentionDescrip
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode newRoot = SModelOperations.createNewRootNode(SNodeOperations.getModel(node), MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554221L, "jetbrains.mps.lang.constraints.rules.structure.ConstraintsRoot"));
+      SNode newRoot = SModelOperations.createNewRootNode(SNodeOperations.getModel(node), MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554221L, "jetbrains.mps.lang.constraints.rules.structure.ConstraintsRoot2"));
       as_7gkkuw_a0a1a2g(SNodeOperations.getModel(node), SModelInternal.class).addLanguage(MetaAdapterFactory.getLanguage(0x47257bf378d3470bL, 0x89d98c3261a61d15L, "jetbrains.mps.lang.constraints.rules"));
       SLinkOperations.setTarget(newRoot, MetaAdapterFactory.getReferenceLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554221L, 0x6530303593940081L, "concept"), SLinkOperations.getTarget(node, MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x11a720969b6L, "concept")));
       SPropertyOperations.assign(newRoot, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage"), SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage")));
@@ -67,10 +67,10 @@ public final class ConvertConstraints_Intention extends AbstractIntentionDescrip
         ListSequence.fromList(SLinkOperations.getChildren(newRoot, MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554221L, 0x6530303593554249L, "block"))).addElement(_quotation_createNode_kwcbwx_a0a0a4a0(new ConstraintAnalyzer().analyzeConceptFunction(SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x5d05239254eb05daL, "canBeChild"))).toBlock()));
       }
       if ((SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x5d05239254e7e6a8L, "canBeParent")) != null)) {
-        ListSequence.fromList(SLinkOperations.getChildren(newRoot, MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554221L, 0x6530303593554249L, "block"))).addElement(_quotation_createNode_kwcbwx_a0a0a5a0(new ConstraintAnalyzer().analyzeConceptFunction(SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x5d05239254eb05daL, "canBeChild"))).toBlock()));
+        ListSequence.fromList(SLinkOperations.getChildren(newRoot, MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554221L, 0x6530303593554249L, "block"))).addElement(_quotation_createNode_kwcbwx_a0a0a5a0(new ConstraintAnalyzer().analyzeConceptFunction(SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x5d05239254e7e6a8L, "canBeParent"))).toBlock()));
       }
-      for (SNode eh : ListSequence.fromList(SNodeOperations.getNodeDescendants(newRoot, MetaAdapterFactory.getInterfaceConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359356e968L, "jetbrains.mps.lang.constraints.rules.structure.ConstraintsExpressionHolder"), false, new SAbstractConcept[]{}))) {
-        new ConstraintAnalyzer().replaceConceptFunctions(SLinkOperations.getTarget(eh, MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359356e968L, 0x653030359356e969L, "expression")));
+      for (SNode eh : ListSequence.fromList(SNodeOperations.getNodeDescendants(newRoot, MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, "jetbrains.mps.lang.constraints.rules.structure.Rule"), false, new SAbstractConcept[]{}))) {
+        new ConstraintAnalyzer().replaceConceptFunctions(SLinkOperations.getTarget(SLinkOperations.getTarget(eh, MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, 0x126f1320a26da4b8L, "expr")), MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x126f1320a26cf7f1L, 0x126f1320a26d350dL, "expression")));
       }
     }
     @Override
@@ -83,12 +83,12 @@ public final class ConvertConstraints_Intention extends AbstractIntentionDescrip
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;
-    quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x47257bf378d3470bL, 0x89d98c3261a61d15L, "jetbrains.mps.lang.constraints.rules"), 0x6530303593554246L, "ConstraintsRuleBlock"), null, null, false);
+    quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x47257bf378d3470bL, 0x89d98c3261a61d15L, "jetbrains.mps.lang.constraints.rules"), 0x6530303593554246L, "RuleBlock"), null, null, false);
     quotedNode_2.setReference(MetaAdapterFactory.getReferenceLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554246L, 0x653030359355424bL, "kind"), SReference.create(MetaAdapterFactory.getReferenceLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554246L, 0x653030359355424bL, "kind"), quotedNode_2, facade.createModelReference("r:bf693f8c-6f67-4402-a1e2-e61c34b6993e(jetbrains.mps.lang.constraints.rules.constraints2)"), facade.createNodeId("8657450212265562055")));
     {
       List<SNode> nodes = (List<SNode>) parameter_1;
       for (SNode child : nodes) {
-        quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554246L, 0x65303035935542a0L, "member"), SNodeOperations.copyIfNecessary(child));
+        quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554246L, 0x65303035935542a0L, "members"), SNodeOperations.copyIfNecessary(child));
       }
     }
     return quotedNode_2;
@@ -98,12 +98,12 @@ public final class ConvertConstraints_Intention extends AbstractIntentionDescrip
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;
-    quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x47257bf378d3470bL, 0x89d98c3261a61d15L, "jetbrains.mps.lang.constraints.rules"), 0x6530303593554246L, "ConstraintsRuleBlock"), null, null, false);
+    quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x47257bf378d3470bL, 0x89d98c3261a61d15L, "jetbrains.mps.lang.constraints.rules"), 0x6530303593554246L, "RuleBlock"), null, null, false);
     quotedNode_2.setReference(MetaAdapterFactory.getReferenceLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554246L, 0x653030359355424bL, "kind"), SReference.create(MetaAdapterFactory.getReferenceLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554246L, 0x653030359355424bL, "kind"), quotedNode_2, facade.createModelReference("r:bf693f8c-6f67-4402-a1e2-e61c34b6993e(jetbrains.mps.lang.constraints.rules.constraints2)"), facade.createNodeId("8556303794924492211")));
     {
       List<SNode> nodes = (List<SNode>) parameter_1;
       for (SNode child : nodes) {
-        quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554246L, 0x65303035935542a0L, "member"), SNodeOperations.copyIfNecessary(child));
+        quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554246L, 0x65303035935542a0L, "members"), SNodeOperations.copyIfNecessary(child));
       }
     }
     return quotedNode_2;
