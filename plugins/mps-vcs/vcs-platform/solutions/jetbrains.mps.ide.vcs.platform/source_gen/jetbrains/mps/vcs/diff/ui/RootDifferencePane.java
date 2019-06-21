@@ -79,6 +79,14 @@ public class RootDifferencePane implements IHighlighter {
 
     createActionGroup(isEditable, rootName);
   }
+
+  /*package*/ void setEditorTitles(String before, String after) {
+    myOldEditor.setTitle(before);
+    myNewEditor.setTitle(after);
+    myOldEditor.getTopComponent().repaint();
+    myNewEditor.getTopComponent().repaint();
+  }
+
   private void createActionGroup(boolean isEditable, String rootName) {
     myActionGroup = new DefaultActionGroup();
     myActionGroup.addAll(myTraverser.previousAction(), myTraverser.nextAction());

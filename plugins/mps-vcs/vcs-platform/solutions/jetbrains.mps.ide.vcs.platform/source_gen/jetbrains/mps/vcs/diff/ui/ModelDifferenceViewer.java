@@ -173,7 +173,11 @@ public class ModelDifferenceViewer implements DataProvider {
   public void setContentTitles(String before, String after) {
     myContentTitles[0] = before;
     myContentTitles[1] = after;
+    if (myRootDifferencePane != null) {
+      myRootDifferencePane.setEditorTitles(before, after);
+    }
   }
+
   public void resetCurrentRoot() {
     if (myRootDifferencePane == null) {
       return;

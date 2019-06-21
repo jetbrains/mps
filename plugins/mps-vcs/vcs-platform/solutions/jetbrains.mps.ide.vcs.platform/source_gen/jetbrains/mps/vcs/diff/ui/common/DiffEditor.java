@@ -4,6 +4,7 @@ package jetbrains.mps.vcs.diff.ui.common;
 
 import jetbrains.mps.openapi.editor.message.EditorMessageOwner;
 import javax.swing.JPanel;
+import javax.swing.JLabel;
 import jetbrains.mps.nodeEditor.inspector.InspectorEditorComponent;
 import java.util.Map;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
@@ -19,7 +20,6 @@ import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.openapi.editor.extensions.EditorExtensionUtil;
 import java.awt.Dimension;
 import java.awt.BorderLayout;
-import javax.swing.JLabel;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.annotations.NotNull;
@@ -42,8 +42,11 @@ import jetbrains.mps.nodefs.MPSNodeVirtualFile;
 public class DiffEditor implements EditorMessageOwner {
   private DiffEditor.MainEditorComponent myMainEditorComponent;
   private JPanel myTopComponent;
+  private JLabel myTitle;
   private InspectorEditorComponent myInspector;
   private Map<ModelChange, List<ChangeEditorMessage>> myChangeToMessages = MapSequence.fromMap(new HashMap<ModelChange, List<ChangeEditorMessage>>());
+
+
   public DiffEditor(final IProject project, SNode node, String contentTitle, boolean isLeftEditor) {
     myMainEditorComponent = new DiffEditor.MainEditorComponent(project.getRepository(), true, isLeftEditor);
     myInspector = new InspectorEditorComponent(project.getRepository(), new EditorConfigurationBuilder().rightToLeft(isLeftEditor).build());
@@ -62,26 +65,34 @@ public class DiffEditor implements EditorMessageOwner {
     });
 
     myTopComponent = new JPanel(new BorderLayout());
-    JLabel title = new JLabel(contentTitle);
-    title.setToolTipText(contentTitle);
-    myTopComponent.add(title, BorderLayout.NORTH);
+    myTitle = new JLabel(contentTitle);
+    myTitle.setToolTipText(contentTitle);
+    myTopComponent.add(myTitle, BorderLayout.NORTH);
     myTopComponent.add(myMainEditorComponent.getExternalComponent(), BorderLayout.CENTER);
     myTopComponent.setPreferredSize(new Dimension());
   }
+
+  public void setTitle(String title) {
+    myTitle.setText(title);
+  }
+
   public SNode getEditedNode() {
     return getMainEditor().getEditedNode();
   }
+
   public void editRoot(@Nullable SNodeId rootId, @NotNull SModel model) {
     SNode root = (rootId == null ? null : model.getNode(rootId));
     if (SNodeOperations.getParent(root) == null) {
       getMainEditor().editNode(root);
     }
   }
+
   public void editNode(@NotNull SNodeId nodeId, @NotNull SModel model) {
     SNode node = model.getNode(nodeId);
     assert node != null;
     getMainEditor().editNode(node);
   }
+
   public void inspect(SNode node) {
     String[] initialEditorHints = myMainEditorComponent.getEditorHintsForNode(node);
     boolean needToEdit = myInspector.getUpdater().setInitialEditorHints(initialEditorHints);
@@ -90,6 +101,7 @@ public class DiffEditor implements EditorMessageOwner {
       myInspector.getHighlightManager().repaintAndRebuildEditorMessages();
     }
   }
+
   public JComponent getTopComponent() {
     return myTopComponent;
   }
@@ -143,6 +155,7 @@ public class DiffEditor implements EditorMessageOwner {
   private Iterable<EditorComponent> getEditorComponents() {
     return Sequence.fromArray(new EditorComponent[]{myMainEditorComponent, myInspector});
   }
+
   public class MainEditorComponent extends EditorComponent {
     private DiffFileEditor myDiffFileEditor;
     private CommandContextWithVF myCommandContext;
@@ -152,10 +165,6 @@ public class DiffEditor implements EditorMessageOwner {
       myDiffFileEditor = new DiffFileEditor(this);
       setDefaultPopupGroupId(((String) BHReflection.invoke0(SNodeOperations.getNode("r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)", "426251916200108583"), MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181da058d2L, "jetbrains.mps.lang.plugin.structure.ActionGroupDeclaration"), SMethodTrimmedId.create("getGeneratedClassFQName", MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181da058d2L, "jetbrains.mps.lang.plugin.structure.ActionGroupDeclaration"), "hEwJa8g"))));
     }
-    @Deprecated
-    public MainEditorComponent(SRepository repository, boolean rightToLeft) {
-      this(repository, false, rightToLeft);
-    }
 
     @Override
     public EditorCell createEmptyCell() {
@@ -164,7 +173,7 @@ public class DiffEditor implements EditorMessageOwner {
 
     @Override
     public Object getData(@NonNls String dataId) {
-      if (dataId.equals(PlatformDataKeys.FILE_EDITOR.getName())) {
+      if (PlatformDataKeys.FILE_EDITOR.is(dataId)) {
         return myDiffFileEditor;
       }
       return super.getData(dataId);
