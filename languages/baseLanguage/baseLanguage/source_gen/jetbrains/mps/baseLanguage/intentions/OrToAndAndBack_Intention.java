@@ -80,7 +80,11 @@ public final class OrToAndAndBack_Intention extends AbstractIntentionDescriptor 
       }
       SLinkOperations.setTarget(operation, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression"), leftCandidate);
       SLinkOperations.setTarget(operation, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression"), rightCandidate);
-      SNodeOperations.replaceWithAnother(node, operation);
+      SNode toNegate = SNodeOperations.replaceWithAnother(node, operation);
+      while (SNodeOperations.hasRole(toNegate, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression")) || SNodeOperations.hasRole(toNegate, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, 0xfbcf6c30a4L, "expression"))) {
+        toNegate = SNodeOperations.cast(SNodeOperations.getParent(toNegate), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"));
+      }
+      SNodeOperations.replaceWithAnother(toNegate, IntentionUtils.negateBooleanNodes(toNegate));
     }
     @Override
     public IntentionDescriptor getDescriptor() {
