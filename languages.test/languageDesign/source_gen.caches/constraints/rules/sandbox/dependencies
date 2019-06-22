@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
-  <dependency className="constraints.rules.sandbox.GeneratedMessagesAspectDescriptor">
-    <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.reporting.api.MessagesDescriptor" />
-    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
-    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
-    <classNode extendsClassName="jetbrains.mps.core.aspects.reporting.api.MessagesAspectDescriptor" />
-  </dependency>
   <dependency className="constraints.rules.sandbox.Language">
     <classNode dependClassName="constraints.rules.sandbox.constraints.ConstraintsAspectDescriptor" />
     <classNode dependClassName="constraints.rules.sandbox.constraints2.GeneratedConstraintsAspectDescriptor2" />
+    <classNode dependClassName="constraints.rules.sandbox.constraints2.GeneratedMessagesAspectDescriptor" />
     <classNode dependClassName="constraints.rules.sandbox.editor.EditorAspectDescriptorImpl" />
     <classNode dependClassName="constraints.rules.sandbox.structure.ConceptPresentationAspectImpl" />
     <classNode dependClassName="constraints.rules.sandbox.structure.StructureAspectDescriptor" />
@@ -18,6 +12,7 @@
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.Collection" />
     <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.ConstraintsAspectDescriptor2" />
+    <classNode dependClassName="jetbrains.mps.core.aspects.reporting.api.MessagesAspectDescriptor" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.ids.SLanguageId" />
     <classNode dependClassName="jetbrains.mps.smodel.runtime.ConceptPresentationAspect" />
