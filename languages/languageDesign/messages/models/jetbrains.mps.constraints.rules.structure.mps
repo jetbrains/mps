@@ -9,6 +9,7 @@
     <import index="tpce" ref="r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)" />
     <import index="bm42" ref="r:83f25986-cdbc-469a-a327-db97a2ec5a39(jetbrains.mps.lang.constraints.rules.structure)" />
     <import index="hypd" ref="r:aa31e43e-9240-4f4d-b6db-5c1c9a86c59e(jetbrains.mps.lang.project.structure)" />
+    <import index="qbpv" ref="r:63fc051d-731b-428a-af30-ceee8d76dfaa(jetbrains.mps.lang.constraints.rules.kinds.structure)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
   </imports>
   <registry>
@@ -89,7 +90,7 @@
       <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="rule" />
       <property role="20lbJX" value="1" />
-      <ref role="20lvS9" to="bm42:6kKc3mjm6Ry" resolve="ConstraintsRule" />
+      <ref role="20lvS9" to="bm42:6kKc3mjm6Ry" resolve="Rule" />
     </node>
     <node concept="PrWs8" id="4zSofKecqAK" role="PzmwI">
       <ref role="PrY4T" node="4zSofKecfg2" resolve="MessageProvider" />
@@ -146,7 +147,7 @@
       <property role="20lmBu" value="reference" />
       <property role="20lbJX" value="1" />
       <property role="20kJfa" value="declaration" />
-      <ref role="20lvS9" to="bm42:6kKc3mjq0oG" resolve="TypedIdentifier" />
+      <ref role="20lvS9" to="qbpv:6kKc3mjq0oG" resolve="TypedDef" />
     </node>
   </node>
   <node concept="1TIwiD" id="4zSofKeg4lv">

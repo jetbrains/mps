@@ -10,7 +10,9 @@
   </imports>
   <registry>
     <language id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor">
-      <concept id="1071666914219" name="jetbrains.mps.lang.editor.structure.ConceptEditorDeclaration" flags="ig" index="24kQdi" />
+      <concept id="1071666914219" name="jetbrains.mps.lang.editor.structure.ConceptEditorDeclaration" flags="ig" index="24kQdi">
+        <child id="1078153129734" name="inspectedCellModel" index="6VMZX" />
+      </concept>
       <concept id="1140524381322" name="jetbrains.mps.lang.editor.structure.CellModel_ListWithRole" flags="ng" index="2czfm3">
         <child id="1140524464360" name="cellLayout" index="2czzBx" />
       </concept>
@@ -18,6 +20,7 @@
       <concept id="1106270571710" name="jetbrains.mps.lang.editor.structure.CellLayout_Vertical" flags="nn" index="2iRkQZ" />
       <concept id="1237303669825" name="jetbrains.mps.lang.editor.structure.CellLayout_Indent" flags="nn" index="l2Vlx" />
       <concept id="1237307900041" name="jetbrains.mps.lang.editor.structure.IndentLayoutIndentStyleClassItem" flags="ln" index="lj46D" />
+      <concept id="1237308012275" name="jetbrains.mps.lang.editor.structure.IndentLayoutNewLineStyleClassItem" flags="ln" index="ljvvj" />
       <concept id="1237375020029" name="jetbrains.mps.lang.editor.structure.IndentLayoutNewLineChildrenStyleClassItem" flags="ln" index="pj6Ft" />
       <concept id="1237385578942" name="jetbrains.mps.lang.editor.structure.IndentLayoutOnNewLineStyleClassItem" flags="ln" index="pVoyu" />
       <concept id="1080736578640" name="jetbrains.mps.lang.editor.structure.BaseEditorComponent" flags="ig" index="2wURMF">
@@ -47,44 +50,68 @@
     </language>
   </registry>
   <node concept="24kQdi" id="7FO6JFyzuQw">
-    <ref role="1XX52x" to="ktae:7w_sh_iHHi0" resolve="A" />
+    <ref role="1XX52x" to="ktae:7w_sh_iHHi0" resolve="ChildConcept1" />
     <node concept="3EZMnI" id="7FO6JFyzuQB" role="2wV5jI">
       <node concept="2iRfu4" id="7FO6JFyzuQC" role="2iSdaV" />
       <node concept="3F0ifn" id="7FO6JFyzuQy" role="3EZMnx">
-        <property role="3F0ifm" value="A concept has property" />
+        <property role="3F0ifm" value="ChildConcept has property" />
       </node>
       <node concept="3F0A7n" id="7FO6JFyzuQK" role="3EZMnx">
-        <ref role="1NtTu8" to="ktae:7w_sh_iI1nH" resolve="a" />
+        <ref role="1NtTu8" to="ktae:7w_sh_iI1nH" resolve="testProp" />
       </node>
     </node>
   </node>
   <node concept="24kQdi" id="7FO6JFyzxCL">
-    <ref role="1XX52x" to="ktae:7FO6JFyzxCl" resolve="B" />
+    <ref role="1XX52x" to="ktae:7FO6JFyzxCl" resolve="ParentConcept1" />
     <node concept="3EZMnI" id="7FO6JFyzxCQ" role="2wV5jI">
       <node concept="3F0ifn" id="7FO6JFyzxCN" role="3EZMnx">
-        <property role="3F0ifm" value="B concept has children:" />
+        <property role="3F0ifm" value="ParentConcept has children:" />
       </node>
       <node concept="3F2HdR" id="3Y1amMrg_Sg" role="3EZMnx">
-        <ref role="1NtTu8" to="ktae:7FO6JFyzxCm" resolve="as" />
-        <node concept="lj46D" id="19J4M2yr1AD" role="3F10Kt">
+        <ref role="1NtTu8" to="ktae:7FO6JFyzxCm" resolve="children" />
+        <node concept="pVoyu" id="1A68nfHCc4h" role="3F10Kt">
           <property role="VOm3f" value="true" />
         </node>
-        <node concept="l2Vlx" id="3Y1amMrg_Sm" role="2czzBx" />
-        <node concept="pj6Ft" id="3Y1amMrg_Sp" role="3F10Kt">
+        <node concept="lj46D" id="19J4M2yr1AD" role="3F10Kt">
           <property role="VOm3f" value="true" />
         </node>
         <node concept="pVoyu" id="19J4M2yr3xz" role="3F10Kt">
           <property role="VOm3f" value="true" />
         </node>
+        <node concept="ljvvj" id="1A68nfHC8yO" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+        <node concept="2iRfu4" id="1A68nfHCf_J" role="2czzBx" />
       </node>
       <node concept="2iRkQZ" id="7FO6JFyzyJV" role="2iSdaV" />
     </node>
+    <node concept="3EZMnI" id="6ijHUgUTFD_" role="6VMZX">
+      <node concept="2iRfu4" id="6ijHUgUTFDA" role="2iSdaV" />
+      <node concept="3F0ifn" id="6ijHUgUTFDI" role="3EZMnx">
+        <property role="3F0ifm" value="canHaveChildren" />
+      </node>
+      <node concept="3F0A7n" id="6ijHUgUTFDz" role="3EZMnx">
+        <ref role="1NtTu8" to="ktae:6ijHUgUSyYU" resolve="canHaveChildren" />
+      </node>
+    </node>
+  </node>
+  <node concept="24kQdi" id="3Y1amMrgrrn">
+    <ref role="1XX52x" to="ktae:3Y1amMrgpJU" resolve="ChildOfAConceptWithIncorrectContainmentLink" />
+    <node concept="3EZMnI" id="3Y1amMrgrrp" role="2wV5jI">
+      <node concept="2iRfu4" id="3Y1amMrgrrq" role="2iSdaV" />
+      <node concept="3F0ifn" id="3Y1amMrgrrr" role="3EZMnx">
+        <property role="3F0ifm" value="C concept has property" />
+      </node>
+      <node concept="3F0A7n" id="3Y1amMrgrrs" role="3EZMnx">
+        <ref role="1NtTu8" to="ktae:3Y1amMrgrqW" resolve="c" />
+      </node>
+    </node>
   </node>
   <node concept="24kQdi" id="3Y1amMrgpKn">
-    <ref role="1XX52x" to="ktae:3Y1amMrgpJV" resolve="D" />
+    <ref role="1XX52x" to="ktae:3Y1amMrgpJV" resolve="ConceptWithIncorrectContaimentLink" />
     <node concept="3EZMnI" id="3Y1amMrgpKp" role="2wV5jI">
       <node concept="3F0ifn" id="3Y1amMrgpKq" role="3EZMnx">
-        <property role="3F0ifm" value="D concept has children:" />
+        <property role="3F0ifm" value="The concept has children:" />
       </node>
       <node concept="3F2HdR" id="3Y1amMrgwXU" role="3EZMnx">
         <ref role="1NtTu8" to="ktae:3VxH6EnG6yj" resolve="cc" />
@@ -96,15 +123,46 @@
       <node concept="2iRkQZ" id="3Y1amMrgpKv" role="2iSdaV" />
     </node>
   </node>
-  <node concept="24kQdi" id="3Y1amMrgrrn">
-    <ref role="1XX52x" to="ktae:3Y1amMrgpJU" resolve="C" />
-    <node concept="3EZMnI" id="3Y1amMrgrrp" role="2wV5jI">
-      <node concept="2iRfu4" id="3Y1amMrgrrq" role="2iSdaV" />
-      <node concept="3F0ifn" id="3Y1amMrgrrr" role="3EZMnx">
-        <property role="3F0ifm" value="C concept has property" />
+  <node concept="24kQdi" id="6ijHUgUTFDu">
+    <ref role="1XX52x" to="ktae:6ijHUgUTFDn" resolve="ChildConcept2" />
+    <node concept="3EZMnI" id="6ijHUgUTFDv" role="2wV5jI">
+      <node concept="2iRfu4" id="6ijHUgUTFDw" role="2iSdaV" />
+      <node concept="3F0ifn" id="6ijHUgUTFDx" role="3EZMnx">
+        <property role="3F0ifm" value="ChildConcept has property" />
       </node>
-      <node concept="3F0A7n" id="3Y1amMrgrrs" role="3EZMnx">
-        <ref role="1NtTu8" to="ktae:3Y1amMrgrqW" resolve="c" />
+      <node concept="3F0A7n" id="6ijHUgUTFDy" role="3EZMnx">
+        <ref role="1NtTu8" to="ktae:6ijHUgUTFDo" resolve="testProp" />
+      </node>
+    </node>
+  </node>
+  <node concept="24kQdi" id="6ijHUgUTFDM">
+    <ref role="1XX52x" to="ktae:6ijHUgUTFDq" resolve="ParentConcept2" />
+    <node concept="3EZMnI" id="6ijHUgUTFDN" role="2wV5jI">
+      <node concept="3F0ifn" id="6ijHUgUTFDO" role="3EZMnx">
+        <property role="3F0ifm" value="ParentConcept has children:" />
+      </node>
+      <node concept="3F2HdR" id="6ijHUgUTFDP" role="3EZMnx">
+        <ref role="1NtTu8" to="ktae:6ijHUgUTFDr" resolve="children" />
+        <node concept="lj46D" id="6ijHUgUTFDQ" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+        <node concept="l2Vlx" id="6ijHUgUTFDR" role="2czzBx" />
+        <node concept="pj6Ft" id="6ijHUgUTFDS" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+        <node concept="pVoyu" id="6ijHUgUTFDT" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+      </node>
+      <node concept="2iRkQZ" id="6ijHUgUTFDU" role="2iSdaV" />
+    </node>
+    <node concept="3EZMnI" id="6ijHUgUTFDV" role="6VMZX">
+      <node concept="2iRfu4" id="6ijHUgUTFDW" role="2iSdaV" />
+      <node concept="3F0ifn" id="6ijHUgUTFDX" role="3EZMnx">
+        <property role="3F0ifm" value="canHaveChildren" />
+      </node>
+      <node concept="3F0A7n" id="6ijHUgUTFDY" role="3EZMnx">
+        <ref role="1NtTu8" to="ktae:6ijHUgUTFDt" resolve="canHaveChildren" />
       </node>
     </node>
   </node>

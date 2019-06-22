@@ -30,7 +30,7 @@ public final class TypedDefReference__BehaviorDescriptor extends BaseBHDescripto
   }
 
   /*package*/ static SNode getEnclosingMember_id4JP_D2W1bUb(@NotNull SNode __thisNode__) {
-    return SNodeOperations.getNodeAncestor(__thisNode__, MetaAdapterFactory.getInterfaceConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x126f1320a26d527bL, "jetbrains.mps.lang.constraints.rules.structure.RuleBlockMember"), false, false);
+    return SNodeOperations.getNodeAncestor(__thisNode__, MetaAdapterFactory.getInterfaceConcept(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb51750L, "jetbrains.mps.lang.constraints.rules.skeleton.structure.RuleBlockMember"), false, false);
   }
 
   /*package*/ TypedDefReference__BehaviorDescriptor() {

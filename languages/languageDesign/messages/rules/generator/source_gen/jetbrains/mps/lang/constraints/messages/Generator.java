@@ -23,7 +23,7 @@ public class Generator extends TemplateModuleInterpreted2 {
   @NotNull
   @Override
   public SModuleReference getModuleReference() {
-    return PersistenceFacade.getInstance().createModuleReference("912c2ebb-0d18-45fd-bc82-3be45c521836(jetbrains.mps.lang.constraints.messages#01)");
+    return PersistenceFacade.getInstance().createModuleReference("912c2ebb-0d18-45fd-bc82-3be45c521836(jetbrains.mps.lang.rulesAndMessages#01)");
   }
 
   @Override

@@ -27,7 +27,7 @@ public class check_LinkToAbstractConcept_NonTypesystemRule extends AbstractNonTy
         if (ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getNotImplementedConceptMethods_idhEwILIz.invoke(concept)).isNotEmpty()) {
           {
             MessageTarget errorTarget = new NodeMessageTarget();
-            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(linkToCheck, "The link's target concept has abstract unimplemented methods.\n" + " It is better to have default implementation for every such method since at the present moment\n" + "MPS creates instances of abstract concepts which are contained as a child link in some concept\n " + "and any method of such concept might be spuriously invoked.\n" + "That obviously might lead to unnecessary errors in the client's code.", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "3021881260572292358", null, errorTarget);
+            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(linkToCheck, "The link's target concept has abstract unimplemented methods.\n" + " It is better to have default implementation for every such method since at the present moment\n" + "MPS creates instances of abstract concepts which are contained as a child link in some concept\n " + "and any method of such concept might be spuriously invoked.\n", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "3021881260572292358", null, errorTarget);
           }
         }
       }

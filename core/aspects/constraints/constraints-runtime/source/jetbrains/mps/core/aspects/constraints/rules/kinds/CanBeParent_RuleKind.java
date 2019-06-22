@@ -41,7 +41,7 @@ public enum CanBeParent_RuleKind implements RuleKind<CanBeParent_Context>, Legac
   @NotNull
   @Override
   public Msg getDefaultMessage(@NotNull CanBeParent_Context context) {
-    String text = MessageFormat.format("Node ''{0}'' cannot be parent of node ''{1}''", context.getChildNode(), context.getParentNode());
+    String text = MessageFormat.format("Node ''{1}'' cannot be parent of node ''{0}''", context.getChildNode(), context.getParentNode());
     return new StringMsg(text);
   }
 }

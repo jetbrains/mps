@@ -3228,7 +3228,7 @@
                               </node>
                             </node>
                             <node concept="Xl_RD" id="2Q$HO4BeHh1" role="3uHU7w">
-                              <property role="Xl_RC" value="&lt;/i&gt; has successfully cloned" />
+                              <property role="Xl_RC" value="&lt;/i&gt; has been successfully cloned" />
                             </node>
                           </node>
                           <node concept="10M0yZ" id="2Q$HO4BeHh2" role="37wK5m">

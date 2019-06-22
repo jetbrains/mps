@@ -23,7 +23,9 @@ public final class GeneratedConstraintsAspectDescriptor2 implements ConstraintsA
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return new A_Constraints2();
+        return new ChildConcept1_Constraints2();
+      case 1:
+        return new ParentConcept1_Constraints2();
       default:
     }
     return null;
@@ -34,5 +36,5 @@ public final class GeneratedConstraintsAspectDescriptor2 implements ConstraintsA
   public List<RuleKind> getRegisteredRuleKinds() {
     return Arrays.<RuleKind>asList(CanBeChild_RuleKind.INSTANCE, CanBeParent_RuleKind.INSTANCE);
   }
-  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xa6518565787648e9L, 0x8d439ef97836a52eL, 0x7825711952b6d480L)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xa6518565787648e9L, 0x8d439ef97836a52eL, 0x7825711952b6d480L), MetaIdFactory.conceptId(0xa6518565787648e9L, 0x8d439ef97836a52eL, 0x7af41afae28e1a15L)).seal();
 }

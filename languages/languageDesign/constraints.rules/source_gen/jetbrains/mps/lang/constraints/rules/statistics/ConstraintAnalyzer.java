@@ -23,7 +23,7 @@ import java.util.Iterator;
 import java.util.Objects;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.lang.constraints.rules.behavior.RuleBlockMember__BehaviorDescriptor;
+import jetbrains.mps.lang.constraints.rules.skeleton.behavior.RuleBlockMember__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.module.SearchScope;
 import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
@@ -436,7 +436,7 @@ public class ConstraintAnalyzer {
   public void replaceConceptFunctions(final SNode expression, Map<SNode, SNode> replaceVariables) {
     if (SNodeOperations.isInstanceOf(expression, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101c66e2c0bL, "jetbrains.mps.baseLanguage.structure.ConceptFunctionParameter"))) {
       SAbstractConcept cncpt = SNodeOperations.getConcept(expression);
-      SNodeOperations.replaceWithAnother(expression, createTypedDefReference_6fp4o1_a0a0a0a0a41(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(RuleBlockMember__BehaviorDescriptor.getRuleKind_id19J4M2yrjsx.invoke(SNodeOperations.getNodeAncestor(expression, MetaAdapterFactory.getInterfaceConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x126f1320a26d527bL, "jetbrains.mps.lang.constraints.rules.structure.RuleBlockMember"), false, false)), MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593554248L, 0x653030359355429eL, "contextMembers")), MetaAdapterFactory.getInterfaceConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359368062cL, "jetbrains.mps.lang.constraints.rules.structure.TypedDef"))).where(new IWhereFilter<SNode>() {
+      SNodeOperations.replaceWithAnother(expression, createTypedDefReference_6fp4o1_a0a0a0a0a41(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(RuleBlockMember__BehaviorDescriptor.getRuleKind_id1BFxp3HHhyj.invoke(SNodeOperations.getNodeAncestor(expression, MetaAdapterFactory.getInterfaceConcept(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb51750L, "jetbrains.mps.lang.constraints.rules.skeleton.structure.RuleBlockMember"), false, false)), MetaAdapterFactory.getContainmentLink(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, 0x6530303593554248L, 0x653030359355429eL, "contextMembers")), MetaAdapterFactory.getInterfaceConcept(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, 0x653030359368062cL, "jetbrains.mps.lang.constraints.rules.kinds.structure.TypedDef"))).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), SConceptOperations.conceptAlias(SNodeOperations.getConcept(expression)));
         }
@@ -501,13 +501,13 @@ public class ConstraintAnalyzer {
     quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression"), quotedNode_5);
     return quotedNode_3;
   }
-  private static SNode createTypedDefReference_6fp4o1_a0a0a0a0a41(SNode node0) {
+  private static SNode createTypedDefReference_6fp4o1_a0a0a0a0o(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593574311L, "jetbrains.mps.lang.constraints.rules.structure.TypedDefReference"), null, null, false);
     n1.setReferenceTarget(MetaAdapterFactory.getReferenceLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593574311L, 0x6530303593578e5eL, "declaration"), node0);
     return n1;
   }
-  private static SNode createTypedDefReference_6fp4o1_a0a0a0a0o(SNode node0) {
+  private static SNode createTypedDefReference_6fp4o1_a0a0a0a0a41(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593574311L, "jetbrains.mps.lang.constraints.rules.structure.TypedDefReference"), null, null, false);
     n1.setReferenceTarget(MetaAdapterFactory.getReferenceLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593574311L, 0x6530303593578e5eL, "declaration"), node0);

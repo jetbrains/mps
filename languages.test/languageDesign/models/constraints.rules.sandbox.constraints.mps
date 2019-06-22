@@ -47,7 +47,7 @@
     </language>
   </registry>
   <node concept="1M2fIO" id="1uv0FAtCoKz">
-    <ref role="1M2myG" to="ktae:7w_sh_iHHi0" resolve="A" />
+    <ref role="1M2myG" to="ktae:7w_sh_iHHi0" resolve="ChildConcept1" />
     <node concept="9S07l" id="1uv0FAtCoK$" role="9Vyp8">
       <node concept="3clFbS" id="1uv0FAtCoK_" role="2VODD2">
         <node concept="3clFbF" id="1uv0FAtCoOs" role="3cqZAp">
@@ -58,7 +58,27 @@
             <node concept="2OqwBi" id="1uv0FAtCp0T" role="3uHU7B">
               <node concept="EsrRn" id="1uv0FAtCoOr" role="2Oq$k0" />
               <node concept="3TrcHB" id="1uv0FAtCp7M" role="2OqNvi">
-                <ref role="3TsBF5" to="ktae:7w_sh_iI1nH" resolve="a" />
+                <ref role="3TsBF5" to="ktae:7w_sh_iI1nH" resolve="testProp" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="1M2fIO" id="6ijHUgUTNxf">
+    <ref role="1M2myG" to="ktae:6ijHUgUTFDn" resolve="ChildConcept2" />
+    <node concept="9S07l" id="6ijHUgUTNxg" role="9Vyp8">
+      <node concept="3clFbS" id="6ijHUgUTNxh" role="2VODD2">
+        <node concept="3clFbF" id="6ijHUgUTNxi" role="3cqZAp">
+          <node concept="3y3z36" id="6ijHUgUTNxj" role="3clFbG">
+            <node concept="3cmrfG" id="6ijHUgUTNxk" role="3uHU7w">
+              <property role="3cmrfH" value="55" />
+            </node>
+            <node concept="2OqwBi" id="6ijHUgUTNxl" role="3uHU7B">
+              <node concept="EsrRn" id="6ijHUgUTNxm" role="2Oq$k0" />
+              <node concept="3TrcHB" id="6ijHUgUTNxn" role="2OqNvi">
+                <ref role="3TsBF5" to="ktae:6ijHUgUTFDo" resolve="testProp" />
               </node>
             </node>
           </node>

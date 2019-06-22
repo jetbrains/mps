@@ -44,10 +44,10 @@
   </registry>
   <node concept="1TIwiD" id="7w_sh_iHHi0">
     <property role="EcuMT" value="8657450212265481344" />
-    <property role="TrG5h" value="A" />
+    <property role="TrG5h" value="ChildConcept1" />
     <node concept="1TJgyi" id="7w_sh_iI1nH" role="1TKVEl">
       <property role="IQ2nx" value="8657450212265563629" />
-      <property role="TrG5h" value="a" />
+      <property role="TrG5h" value="testProp" />
       <ref role="AX2Wp" to="tpck:fKAQMTA" resolve="integer" />
     </node>
     <node concept="PrWs8" id="3VxH6EnFLtC" role="PzmwI">
@@ -56,23 +56,28 @@
   </node>
   <node concept="1TIwiD" id="7FO6JFyzxCl">
     <property role="EcuMT" value="8859736031789718037" />
-    <property role="TrG5h" value="B" />
+    <property role="TrG5h" value="ParentConcept1" />
     <property role="19KtqR" value="true" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="7FO6JFyzxCm" role="1TKVEi">
       <property role="IQ2ns" value="8859736031789718038" />
       <property role="20lmBu" value="aggregation" />
-      <property role="20kJfa" value="as" />
+      <property role="20kJfa" value="children" />
       <property role="20lbJX" value="0..n" />
-      <ref role="20lvS9" node="7w_sh_iHHi0" resolve="A" />
+      <ref role="20lvS9" node="7w_sh_iHHi0" resolve="ChildConcept1" />
     </node>
     <node concept="PrWs8" id="3VxH6EnFLtG" role="PzmwI">
       <ref role="PrY4T" to="bm42:3VxH6EnEK6S" resolve="PseudoBaseConcept" />
     </node>
+    <node concept="1TJgyi" id="6ijHUgUSyYU" role="1TKVEl">
+      <property role="IQ2nx" value="7247338141359681466" />
+      <property role="TrG5h" value="canHaveChildren" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+    </node>
   </node>
   <node concept="1TIwiD" id="3Y1amMrgpJU">
     <property role="EcuMT" value="4575984242823109626" />
-    <property role="TrG5h" value="C" />
+    <property role="TrG5h" value="ChildOfAConceptWithIncorrectContainmentLink" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyi" id="3Y1amMrgrqW" role="1TKVEl">
       <property role="IQ2nx" value="4575984242823116476" />
@@ -85,7 +90,7 @@
   </node>
   <node concept="1TIwiD" id="3Y1amMrgpJV">
     <property role="EcuMT" value="4575984242823109627" />
-    <property role="TrG5h" value="D" />
+    <property role="TrG5h" value="ConceptWithIncorrectContaimentLink" />
     <property role="19KtqR" value="true" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="3VxH6EnG6yj" role="1TKVEi">
@@ -93,10 +98,43 @@
       <property role="20lmBu" value="aggregation" />
       <property role="20kJfa" value="cc" />
       <property role="20lbJX" value="0..n" />
-      <ref role="20lvS9" node="3Y1amMrgpJU" resolve="C" />
+      <ref role="20lvS9" node="3Y1amMrgpJU" resolve="ChildOfAConceptWithIncorrectContainmentLink" />
     </node>
     <node concept="PrWs8" id="3VxH6EnFLtI" role="PzmwI">
       <ref role="PrY4T" to="bm42:3VxH6EnEK6S" resolve="PseudoBaseConcept" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="6ijHUgUTFDn">
+    <property role="EcuMT" value="7247338141359979095" />
+    <property role="TrG5h" value="ChildConcept2" />
+    <node concept="1TJgyi" id="6ijHUgUTFDo" role="1TKVEl">
+      <property role="IQ2nx" value="7247338141359979096" />
+      <property role="TrG5h" value="testProp" />
+      <ref role="AX2Wp" to="tpck:fKAQMTA" resolve="integer" />
+    </node>
+    <node concept="PrWs8" id="6ijHUgUTFDp" role="PzmwI">
+      <ref role="PrY4T" to="bm42:3VxH6EnEK6S" resolve="PseudoBaseConcept" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="6ijHUgUTFDq">
+    <property role="EcuMT" value="7247338141359979098" />
+    <property role="TrG5h" value="ParentConcept2" />
+    <property role="19KtqR" value="true" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="6ijHUgUTFDr" role="1TKVEi">
+      <property role="IQ2ns" value="7247338141359979099" />
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="children" />
+      <property role="20lbJX" value="0..n" />
+      <ref role="20lvS9" node="7w_sh_iHHi0" resolve="ChildConcept1" />
+    </node>
+    <node concept="PrWs8" id="6ijHUgUTFDs" role="PzmwI">
+      <ref role="PrY4T" to="bm42:3VxH6EnEK6S" resolve="PseudoBaseConcept" />
+    </node>
+    <node concept="1TJgyi" id="6ijHUgUTFDt" role="1TKVEl">
+      <property role="IQ2nx" value="7247338141359979101" />
+      <property role="TrG5h" value="canHaveChildren" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
     </node>
   </node>
 </model>

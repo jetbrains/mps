@@ -30,7 +30,7 @@ public final class ApplicableCondition__BehaviorDescriptor extends BaseBHDescrip
   }
 
   /*package*/ static SNode getContainingBlockMember_id1dKBELviPCA(@NotNull SNode __thisNode__) {
-    return SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), MetaAdapterFactory.getInterfaceConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x126f1320a26d527bL, "jetbrains.mps.lang.constraints.rules.structure.RuleBlockMember"));
+    return SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), MetaAdapterFactory.getInterfaceConcept(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb51750L, "jetbrains.mps.lang.constraints.rules.skeleton.structure.RuleBlockMember"));
   }
 
   /*package*/ ApplicableCondition__BehaviorDescriptor() {

@@ -14,13 +14,13 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 
 public class Scopes {
   public static Scope forConceptsInSameLanguage(SModel model, SAbstractConcept metaConcept) {
-    return new FullyQualifiedNamedElementsScope(Concepts.getConceptsInSameLanguage(model, metaConcept));
+    return new FullyQualifiedNamedElementsScope(ConstraintsUtilConcepts.getConceptsInSameLanguage(model, metaConcept));
   }
   public static Scope forConcepts(SNode contextNode, SAbstractConcept metaConcept) {
-    return new FullyQualifiedNamedElementsScope(Concepts.getAvailableConcepts(contextNode, metaConcept));
+    return new FullyQualifiedNamedElementsScope(ConstraintsUtilConcepts.getAvailableConcepts(contextNode, metaConcept));
   }
   public static Scope forLanguageConcepts(SNode contextNode, SAbstractConcept metaConcept) {
-    return new FullyQualifiedNamedElementsScope(Concepts.getAvailableLanguageConcepts(contextNode, metaConcept));
+    return new FullyQualifiedNamedElementsScope(ConstraintsUtilConcepts.getAvailableLanguageConcepts(contextNode, metaConcept));
   }
   public static Scope forSubconcepts(SNode contextNode, final SNode conceptNode) {
     if (conceptNode == null) {

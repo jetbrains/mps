@@ -30,20 +30,20 @@ import static java.util.Objects.requireNonNull;
 @Immutable
 public class CanBeChild_Context implements RuleContext {
   @NotNull private final SAbstractConcept myConcept;
-  @Nullable private final SNode myNode;
+  @Nullable private final SNode myChildNode;
   @NotNull private final SNode myParentNode;
   @Nullable/*TODO @NotNull*/ private final SContainmentLink myLink;
 
-  private CanBeChild_Context(@NotNull SNode node) {
-    myNode = node;
-    myParentNode = requireNonNull(node.getParent());
-    myConcept = node.getConcept();
-    myLink = node.getContainmentLink();
+  private CanBeChild_Context(@NotNull SNode childNode) {
+    myChildNode = childNode;
+    myParentNode = requireNonNull(childNode.getParent());
+    myConcept = childNode.getConcept();
+    myLink = childNode.getContainmentLink();
   }
 
   private CanBeChild_Context(@NotNull SAbstractConcept concept, @Nullable SNode node, @NotNull SNode parentNode, SContainmentLink link) {
     myConcept = concept;
-    myNode = node;
+    myChildNode = node;
     myParentNode = parentNode;
     myLink = link;
   }
@@ -60,8 +60,8 @@ public class CanBeChild_Context implements RuleContext {
   }
 
   @Nullable
-  public SNode getNode() {
-    return myNode;
+  public SNode getChildNode() {
+    return myChildNode;
   }
 
   @NotNull

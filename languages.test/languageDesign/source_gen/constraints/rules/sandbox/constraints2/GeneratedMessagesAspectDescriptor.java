@@ -18,7 +18,7 @@ public final class GeneratedMessagesAspectDescriptor implements MessagesAspectDe
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return new A_Messages();
+        return new ChildConcept1_Messages();
       default:
         return null;
     }

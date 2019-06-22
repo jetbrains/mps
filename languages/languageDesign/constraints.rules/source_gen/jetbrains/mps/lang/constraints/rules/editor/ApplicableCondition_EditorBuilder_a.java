@@ -15,13 +15,13 @@ import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.constraints.rules.behavior.RuleBlockMember__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.constraints.rules.behavior.ApplicableCondition__BehaviorDescriptor;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.lang.constraints.rules.behavior.TypedDef__BehaviorDescriptor;
+import jetbrains.mps.lang.constraints.rules.kinds.behavior.TypedDef__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Horizontal;
-import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.nodeEditor.cellProviders.CellProviderWithRole;
 import jetbrains.mps.lang.editor.cellProviders.RefCellCellProvider;
 import jetbrains.mps.nodeEditor.EditorManager;
@@ -33,13 +33,13 @@ import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
+import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.nodeEditor.AbstractCellProvider;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 
 /*package*/ class ApplicableCondition_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -82,7 +82,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
     return editorCell;
   }
   private boolean nodeCondition_80dwug_a1a0() {
-    return Sequence.fromIterable(SLinkOperations.collect(RuleBlockMember__BehaviorDescriptor.getUsedDefs_id19J4M2yrjsZ.invoke(ApplicableCondition__BehaviorDescriptor.getContainingBlockMember_id1dKBELviPCA.invoke(myNode)), MetaAdapterFactory.getReferenceLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593574311L, 0x6530303593578e5eL, "declaration"))).any(new IWhereFilter<SNode>() {
+    return Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.getNodeDescendants(ApplicableCondition__BehaviorDescriptor.getContainingBlockMember_id1dKBELviPCA.invoke(myNode), MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593574311L, "jetbrains.mps.lang.constraints.rules.structure.TypedDefReference"), false, new SAbstractConcept[]{}), MetaAdapterFactory.getReferenceLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593574311L, 0x6530303593578e5eL, "declaration"))).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return (boolean) TypedDef__BehaviorDescriptor.hasApplicableCondition_id35M2kEOydzo.invoke(it);
       }
@@ -94,14 +94,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
     Style style = new StyleImpl();
     style.set(StyleAttributes.SELECTABLE, false);
     editorCell.getStyle().putAll(style);
-    editorCell.addEditorCell(createConstant_0());
     editorCell.addEditorCell(createRefCell_0());
-    return editorCell;
-  }
-  private EditorCell createConstant_0() {
-    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "when");
-    editorCell.setCellId("Constant_80dwug_a0a0");
-    editorCell.setDefaultText("");
     return editorCell;
   }
   private EditorCell createRefCell_0() {
@@ -152,19 +145,19 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 
     private EditorCell createCollection_3() {
       EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Indent());
-      editorCell.setCellId("Collection_80dwug_a0b0a0");
+      editorCell.setCellId("Collection_80dwug_a0a0a0");
       editorCell.addEditorCell(createRefNode_0());
       return editorCell;
     }
     private EditorCell createRefNode_0() {
-      SingleRoleCellProvider provider = new ApplicableCondition_EditorBuilder_a.Inline_Builder0.expressionSingleRoleHandler_80dwug_a0a1a0a(myNode, MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x126f1320a26cf7f1L, 0x126f1320a26d350dL, "expression"), getEditorContext());
+      SingleRoleCellProvider provider = new ApplicableCondition_EditorBuilder_a.Inline_Builder0.expressionSingleRoleHandler_80dwug_a0a0a0a(myNode, MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x126f1320a26cf7f1L, 0x126f1320a26d350dL, "expression"), getEditorContext());
       return provider.createCell();
     }
-    private static class expressionSingleRoleHandler_80dwug_a0a1a0a extends SingleRoleCellProvider {
+    private static class expressionSingleRoleHandler_80dwug_a0a0a0a extends SingleRoleCellProvider {
       @NotNull
       private SNode myNode;
 
-      public expressionSingleRoleHandler_80dwug_a0a1a0a(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
+      public expressionSingleRoleHandler_80dwug_a0a0a0a(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
         super(containmentLink, context);
         myNode = ownerNode;
       }
@@ -218,11 +211,11 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
     Style style = new StyleImpl();
     style.set(StyleAttributes.SELECTABLE, false);
     editorCell.getStyle().putAll(style);
-    editorCell.addEditorCell(createConstant_1());
+    editorCell.addEditorCell(createConstant_0());
     editorCell.addEditorCell(createCustom_0());
     return editorCell;
   }
-  private EditorCell createConstant_1() {
+  private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, " and");
     editorCell.setCellId("Constant_80dwug_a1a0");
     editorCell.setDefaultText("");
@@ -231,13 +224,16 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
   private EditorCell createCustom_0() {
     AbstractCellProvider provider = new _FunctionTypes._return_P0_E0<AbstractCellProvider>() {
       public AbstractCellProvider invoke() {
-        final List<SNode> requiredDefs = Sequence.fromIterable(SLinkOperations.collect(RuleBlockMember__BehaviorDescriptor.getUsedDefs_id19J4M2yrjsZ.invoke(ApplicableCondition__BehaviorDescriptor.getContainingBlockMember_id1dKBELviPCA.invoke(myNode)), MetaAdapterFactory.getReferenceLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593574311L, 0x6530303593578e5eL, "declaration"))).distinct().where(new IWhereFilter<SNode>() {
+        SNode enclosingRule = ApplicableCondition__BehaviorDescriptor.getContainingBlockMember_id1dKBELviPCA.invoke(myNode);
+        final List<SNode> usedDefs = SNodeOperations.getNodeDescendants(enclosingRule, MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593574311L, "jetbrains.mps.lang.constraints.rules.structure.TypedDefReference"), false, new SAbstractConcept[]{});
+        Iterable<SNode> defsDeclWithApplicability = Sequence.fromIterable(SLinkOperations.collect(usedDefs, MetaAdapterFactory.getReferenceLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593574311L, 0x6530303593578e5eL, "declaration"))).distinct().where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             return (boolean) TypedDef__BehaviorDescriptor.hasApplicableCondition_id35M2kEOydzo.invoke(it);
           }
-        }).select(new ISelector<SNode, SNode>() {
+        });
+        final List<SNode> requiredDefs = Sequence.fromIterable(defsDeclWithApplicability).select(new ISelector<SNode, SNode>() {
           public SNode select(final SNode def) {
-            return Sequence.fromIterable(RuleBlockMember__BehaviorDescriptor.getUsedDefs_id19J4M2yrjsZ.invoke(ApplicableCondition__BehaviorDescriptor.getContainingBlockMember_id1dKBELviPCA.invoke(myNode))).where(new IWhereFilter<SNode>() {
+            return ListSequence.fromList(usedDefs).where(new IWhereFilter<SNode>() {
               public boolean accept(SNode ref) {
                 return SLinkOperations.getTarget(ref, MetaAdapterFactory.getReferenceLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593574311L, 0x6530303593578e5eL, "declaration")) == def;
               }

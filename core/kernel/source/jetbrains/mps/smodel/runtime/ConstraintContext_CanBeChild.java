@@ -61,7 +61,7 @@ public final class ConstraintContext_CanBeChild {
 
   @Nullable
   public SNode getNode() {
-    return myNewContext.getNode();
+    return myNewContext.getChildNode();
   }
 
   @NotNull

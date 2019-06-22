@@ -46,9 +46,17 @@
       </node>
     </node>
     <node concept="2VgMA2" id="p4S6WR9xjG" role="2VgMA7">
-      <node concept="2V$Bhx" id="6kKc3mj$4JN" role="1t_9vn">
+      <node concept="2V$Bhx" id="1dKt_a0mwdZ" role="1t_9vn">
         <property role="2V$B1T" value="47257bf3-78d3-470b-89d9-8c3261a61d15" />
-        <property role="2V$B1Q" value="jetbrains.mps.constraints.rules" />
+        <property role="2V$B1Q" value="jetbrains.mps.lang.constraints.rules" />
+      </node>
+      <node concept="2V$Bhx" id="1dKt_a0mwdL" role="1t_9vn">
+        <property role="2V$B1T" value="5dae8159-ab99-46bb-a40d-0cee30ee7018" />
+        <property role="2V$B1Q" value="jetbrains.mps.lang.constraints.rules.kinds" />
+      </node>
+      <node concept="2V$Bhx" id="1dKt_a0mwdU" role="1t_9vn">
+        <property role="2V$B1T" value="134c38d4-e3af-4d9e-b069-1c7df0a4005d" />
+        <property role="2V$B1Q" value="jetbrains.mps.lang.constraints.rules.skeleton" />
       </node>
       <node concept="2V$Bhx" id="2rhesRz5hVh" role="1t_9vn">
         <property role="2V$B1T" value="ad93155d-79b2-4759-b10c-55123e763903" />

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <debug-info version="2">
   <root>
+    <file name="GeneratedMessagesAspectDescriptor.java">
+      <unit at="10,0,16,0" name="constraints.rules.sandbox.GeneratedMessagesAspectDescriptor" />
+    </file>
     <file name="Language.java">
       <unit at="19,0,64,0" name="constraints.rules.sandbox.Language" />
     </file>

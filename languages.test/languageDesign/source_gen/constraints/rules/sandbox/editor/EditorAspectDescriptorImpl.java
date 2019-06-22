@@ -18,13 +18,17 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     SAbstractConcept cncpt = ((SAbstractConcept) concept);
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return Collections.<ConceptEditor>singletonList(new A_Editor());
+        return Collections.<ConceptEditor>singletonList(new ChildConcept1_Editor());
       case 1:
-        return Collections.<ConceptEditor>singletonList(new B_Editor());
+        return Collections.<ConceptEditor>singletonList(new ChildConcept2_Editor());
       case 2:
-        return Collections.<ConceptEditor>singletonList(new C_Editor());
+        return Collections.<ConceptEditor>singletonList(new ChildOfAConceptWithIncorrectContainmentLink_Editor());
       case 3:
-        return Collections.<ConceptEditor>singletonList(new D_Editor());
+        return Collections.<ConceptEditor>singletonList(new ConceptWithIncorrectContaimentLink_Editor());
+      case 4:
+        return Collections.<ConceptEditor>singletonList(new ParentConcept1_Editor());
+      case 5:
+        return Collections.<ConceptEditor>singletonList(new ParentConcept2_Editor());
       default:
     }
     return Collections.<ConceptEditor>emptyList();
@@ -32,5 +36,5 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
 
 
 
-  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xa6518565787648e9L, 0x8d439ef97836a52eL, 0x7825711952b6d480L), MetaIdFactory.conceptId(0xa6518565787648e9L, 0x8d439ef97836a52eL, 0x7af41afae28e1a15L), MetaIdFactory.conceptId(0xa6518565787648e9L, 0x8d439ef97836a52eL, 0x3f81296c9b419bfaL), MetaIdFactory.conceptId(0xa6518565787648e9L, 0x8d439ef97836a52eL, 0x3f81296c9b419bfbL)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xa6518565787648e9L, 0x8d439ef97836a52eL, 0x7825711952b6d480L), MetaIdFactory.conceptId(0xa6518565787648e9L, 0x8d439ef97836a52eL, 0x6493b7a43ae6ba57L), MetaIdFactory.conceptId(0xa6518565787648e9L, 0x8d439ef97836a52eL, 0x3f81296c9b419bfaL), MetaIdFactory.conceptId(0xa6518565787648e9L, 0x8d439ef97836a52eL, 0x3f81296c9b419bfbL), MetaIdFactory.conceptId(0xa6518565787648e9L, 0x8d439ef97836a52eL, 0x7af41afae28e1a15L), MetaIdFactory.conceptId(0xa6518565787648e9L, 0x8d439ef97836a52eL, 0x6493b7a43ae6ba5aL)).seal();
 }

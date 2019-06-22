@@ -41,7 +41,7 @@ public enum CanBeChild_RuleKind implements RuleKind<CanBeChild_Context>, LegacyK
   @NotNull
   @Override
   public Msg getDefaultMessage(@NotNull CanBeChild_Context context) {
-    String text = MessageFormat.format("Node ''{0}'' cannot be child of node ''{1}''", context.getNode(), context.getParentNode());
+    String text = MessageFormat.format("Node ''{0}'' cannot be child of node ''{1}''", context.getChildNode(), context.getParentNode());
     return new StringMsg(text);
   }
 }

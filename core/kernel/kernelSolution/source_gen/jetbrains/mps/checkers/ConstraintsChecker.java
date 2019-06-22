@@ -22,6 +22,7 @@ import jetbrains.mps.errors.item.RuleIdFlavouredItem;
 import jetbrains.mps.errors.item.RuleIdFlavouredItem.TypesystemRuleId;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.project.validation.ConceptFeatureMissingError;
 import jetbrains.mps.project.validation.ConceptMissingError;
 import jetbrains.mps.smodel.constraints.ModelConstraints;
 import jetbrains.mps.smodel.constraints.ConstraintsFacade;
@@ -31,6 +32,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -129,11 +131,14 @@ public class ConstraintsChecker extends AbstractNodeCheckerInEditor implements I
     }
   }
 
-  private void checkParentChild(SNode node, LanguageErrorsCollector errorsCollector, SAbstractConcept nodeConcept, SNode parent) {
-    if (parent != null) {
-      errorsCollector.addDependency(parent);
-      SConcept parentConcept = SNodeOperations.getConcept(parent);
+  private void checkParentChild(SNode node, LanguageErrorsCollector errorsCollector, SAbstractConcept nodeConcept, SNode parentNode) {
+    if (parentNode != null) {
+      errorsCollector.addDependency(parentNode);
+      SConcept parentConcept = SNodeOperations.getConcept(parentNode);
       if (parentConcept.isValid()) {
+        {
+          checkContainmentLinkIsPresentInConcept(node, errorsCollector, parentConcept);
+        }
         {
           final CanBeChild_Context context = new Builder().buildFromNode(node);
           List<Rule<CanBeChild_Context>> failingRules = errorsCollector.runCheckingAction(() -> ConstraintsFacade.checkCanBeChild(context));
@@ -162,7 +167,7 @@ public class ConstraintsChecker extends AbstractNodeCheckerInEditor implements I
               message = messageProvider.yieldMessage(context).toText();
             }
             TypesystemRuleId ruleId = new TypesystemRuleId(ruleWeReport.getRuleSourceNode());
-            errorsCollector.addError(new CanBeParentFailedReportItem(node, message, ruleId));
+            errorsCollector.addError(new CanBeParentFailedReportItem(parentNode, message, ruleId));
           }
         }
       }
@@ -178,12 +183,11 @@ public class ConstraintsChecker extends AbstractNodeCheckerInEditor implements I
   }
 
   private boolean checkContainmentLinkIsPresentInConcept(SNode node, LanguageErrorsCollector errorsCollector, SConcept parentConcept) {
-//    SContainmentLink link = node.getContainmentLink();
-//    if (!(parentConcept.getContainmentLinks().contains(link))) {
-//      errorsCollector.addError(new ConceptFeatureMissingError(node, SNodeOperations.getContainingLink(node)));
-//      return true;
-//    }
-//    return false;
-    return true;
+    SContainmentLink link = node.getContainmentLink();
+    if (!(parentConcept.getContainmentLinks().contains(link))) {
+      errorsCollector.addError(new ConceptFeatureMissingError(node, SNodeOperations.getContainingLink(node)));
+      return true;
+    }
+    return false;
   }
 }

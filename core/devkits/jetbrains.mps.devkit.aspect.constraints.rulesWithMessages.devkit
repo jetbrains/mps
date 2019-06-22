@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dev-kit name="jetbrains.mps.devkit.aspect.constraints.rulesWithMessages" uuid="4843b9cf-86fe-47f2-87c9-f256294fd740">
-  <exported-language name="b3551702-269c-4f05-ba61-58060cef4292(jetbrains.mps.lang.constraints.messages)" />
+  <exported-language name="b3551702-269c-4f05-ba61-58060cef4292(jetbrains.mps.lang.rulesAndMessages)" />
   <extendedDevKits>
     <extendedDevKit>2843b9cf-86fe-47f2-87c9-f256294fd769(jetbrains.mps.devkit.aspect.constraints.rules)</extendedDevKit>
   </extendedDevKits>

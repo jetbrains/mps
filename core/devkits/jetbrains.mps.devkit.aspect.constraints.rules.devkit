@@ -2,6 +2,8 @@
 <dev-kit name="jetbrains.mps.devkit.aspect.constraints.rules" uuid="2843b9cf-86fe-47f2-87c9-f256294fd769">
   <exported-language name="47257bf3-78d3-470b-89d9-8c3261a61d15(jetbrains.mps.lang.constraints.rules)" />
   <exported-language name="ad93155d-79b2-4759-b10c-55123e763903(jetbrains.mps.lang.messages)" />
+  <exported-language name="134c38d4-e3af-4d9e-b069-1c7df0a4005d(jetbrains.mps.lang.constraints.rules.skeleton)" />
+  <exported-language name="5dae8159-ab99-46bb-a40d-0cee30ee7018(jetbrains.mps.lang.constraints.rules.kinds)" />
   <extendedDevKits>
     <extendedDevKit>fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)</extendedDevKit>
   </extendedDevKits>

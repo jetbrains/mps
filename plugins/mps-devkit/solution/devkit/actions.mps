@@ -136,8 +136,8 @@
     <import index="35tq" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.scope(MPS.Core/)" />
     <import index="yha4" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.workbench.choose(MPS.Platform/)" />
     <import index="6f4m" ref="528ff3b9-5fc4-40dd-931f-c6ce3650640e/r:f69c3fa1-0e30-4980-84e2-190ae44e4c3d(jetbrains.mps.lang.migration.runtime/jetbrains.mps.lang.migration.runtime.base)" />
-    <import index="xjbk" ref="r:81fbdfb8-d4d2-41cc-b797-345d9f028d39(jetbrains.mps.lang.constraints.rules.plugin)" />
-    <import index="bm42" ref="r:83f25986-cdbc-469a-a327-db97a2ec5a39(jetbrains.mps.lang.constraints.rules.structure)" implicit="true" />
+    <import index="mqj2" ref="r:1d4f6f82-1219-47a2-a4fa-ac3ba14c9fd5(jetbrains.mps.lang.constraints.rules.skeleton.structure)" />
+    <import index="10hr" ref="r:d674956e-add1-4c62-993b-3cd157f5ca62(jetbrains.mps.lang.constraints.rules.skeleton.plugin)" />
   </imports>
   <registry>
     <language id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources">
@@ -15446,7 +15446,7 @@
           <node concept="3cpWsn" id="4JP_D2W1KPc" role="3cpWs9">
             <property role="TrG5h" value="aspectModel" />
             <node concept="1qvjxa" id="4JP_D2W1KPd" role="33vP2m">
-              <ref role="1quiSB" to="xjbk:6kKc3mjuEw_" resolve="constraints2" />
+              <ref role="1quiSB" to="10hr:6kKc3mjuEw_" resolve="constraints2" />
               <node concept="37vLTw" id="4JP_D2W1KPe" role="1qvjxb">
                 <ref role="3cqZAo" node="4JP_D2W1KOT" resolve="module" />
               </node>
@@ -15508,7 +15508,7 @@
             <node concept="2ShNRf" id="4JP_D2W1KPB" role="3clFbG">
               <node concept="Tc6Ow" id="4JP_D2W1KPC" role="2ShVmc">
                 <node concept="35c_gC" id="4JP_D2W1KPD" role="HW$Y0">
-                  <ref role="35c_gD" to="bm42:6kKc3mjlk8x" resolve="ConstraintsRoot" />
+                  <ref role="35c_gD" to="mqj2:1BFxp3HFZzq" resolve="ConstraintsRoot2" />
                 </node>
                 <node concept="3uibUv" id="4JP_D2W1KPE" role="HW$YZ">
                   <ref role="3uigEE" to="c17a:~SConcept" resolve="SConcept" />
@@ -15532,9 +15532,6 @@
           </node>
         </node>
       </node>
-    </node>
-    <node concept="1QGGSu" id="hyoMxH_DIK" role="3xeRvj">
-      <node concept="10Nm6u" id="hyoMxH_DIL" role="3xaMm5" />
     </node>
   </node>
 </model>

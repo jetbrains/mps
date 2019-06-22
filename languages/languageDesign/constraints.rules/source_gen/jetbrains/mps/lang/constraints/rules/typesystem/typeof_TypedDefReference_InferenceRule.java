@@ -7,22 +7,36 @@ import jetbrains.mps.lang.typesystem.runtime.InferenceRule_Runtime;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
-import jetbrains.mps.lang.constraints.rules.behavior.TypedDefReference__BehaviorDescriptor;
-import jetbrains.mps.typesystem.inference.EquationInfo;
-import jetbrains.mps.lang.constraints.rules.behavior.TypedDef__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.lang.constraints.rules.kinds.behavior.TypedDef__BehaviorDescriptor;
+import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 
 public class typeof_TypedDefReference_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_TypedDefReference_InferenceRule() {
   }
   public void applyRule(final SNode defRef, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode enclosingMember = TypedDefReference__BehaviorDescriptor.getEnclosingMember_id4JP_D2W1bUb.invoke(defRef);
+    SNode type = null;
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(defRef, MetaAdapterFactory.getReferenceLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593574311L, 0x6530303593578e5eL, "declaration")), MetaAdapterFactory.getConcept(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, 0x46263286da99051L, "jetbrains.mps.lang.constraints.rules.kinds.structure.NativeTypedNodeDef"))) {
+      SNode root = SNodeOperations.cast(SNodeOperations.getContainingRoot(defRef), MetaAdapterFactory.getConcept(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edaff8daL, "jetbrains.mps.lang.constraints.rules.skeleton.structure.ConstraintsRoot2"));
+      SNode applicableConcept = SLinkOperations.getTarget(root, MetaAdapterFactory.getReferenceLink(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edaff8daL, 0x19eb8590edaff8deL, "concept"));
+      if (applicableConcept != null) {
+        type = _quotation_createNode_otd0uk_a0a0c0b0b(applicableConcept);
+      }
+    }
+    if (type == null) {
+      type = TypedDef__BehaviorDescriptor.getErasedType_id4JP_D2W1aPH.invoke(SLinkOperations.getTarget(defRef, MetaAdapterFactory.getReferenceLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593574311L, 0x6530303593578e5eL, "declaration")));
+    }
+
     {
       SNode _nodeToCheck_1029348928467 = defRef;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:61c80a02-cc27-4085-b38d-beaf0fede70a(jetbrains.mps.lang.constraints.rules.typesystem)", "7291380803376377960", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:61c80a02-cc27-4085-b38d-beaf0fede70a(jetbrains.mps.lang.constraints.rules.typesystem)", "7291380803376377535", true), (SNode) TypedDef__BehaviorDescriptor.buildTypeForRule_id4JP_D2W1aNL.invoke(SLinkOperations.getTarget(defRef, MetaAdapterFactory.getReferenceLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593574311L, 0x6530303593578e5eL, "declaration")), enclosingMember), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:61c80a02-cc27-4085-b38d-beaf0fede70a(jetbrains.mps.lang.constraints.rules.typesystem)", "7291380803376377535", true), (SNode) type, _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -33,5 +47,12 @@ public class typeof_TypedDefReference_InferenceRule extends AbstractInferenceRul
   }
   public boolean overrides() {
     return false;
+  }
+  private static SNode _quotation_createNode_otd0uk_a0a0c0b0b(Object parameter_1) {
+    PersistenceFacade facade = PersistenceFacade.getInstance();
+    SNode quotedNode_2 = null;
+    quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x108f968b3caL, "SNodeType"), null, null, false);
+    SNodeAccessUtil.setReferenceTarget(quotedNode_2, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept"), (SNode) parameter_1);
+    return quotedNode_2;
   }
 }

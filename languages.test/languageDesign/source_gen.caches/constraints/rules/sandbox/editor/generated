@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-26a3t98rnnng8mh017odzg08493gh47">
-  <files names="A_Editor.java:A_EditorBuilder_a.java:B_Editor.java:B_EditorBuilder_a.java:C_Editor.java:C_EditorBuilder_a.java:D_Editor.java:D_EditorBuilder_a.java:EditorAspectDescriptorImpl.java" />
+<product version="3" modelHash="-68df2jgerfn7v147uvdcptwuodfsddj">
+  <files names="ChildConcept1_Editor.java:ChildConcept1_EditorBuilder_a.java:ChildConcept2_Editor.java:ChildConcept2_EditorBuilder_a.java:ChildOfAConceptWithIncorrectContainmentLink_Editor.java:ChildOfAConceptWithIncorrectContainmentLink_EditorBuilder_a.java:ConceptWithIncorrectContaimentLink_Editor.java:ConceptWithIncorrectContaimentLink_EditorBuilder_a.java:EditorAspectDescriptorImpl.java:ParentConcept1_Editor.java:ParentConcept1_EditorBuilder_a.java:ParentConcept1_InspectorBuilder_a.java:ParentConcept2_Editor.java:ParentConcept2_EditorBuilder_a.java:ParentConcept2_InspectorBuilder_a.java" />
 </product>
 

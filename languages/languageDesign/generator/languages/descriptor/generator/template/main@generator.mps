@@ -279,6 +279,7 @@
       <concept id="1167169188348" name="jetbrains.mps.lang.generator.structure.TemplateFunctionParameter_sourceNode" flags="nn" index="30H73N" />
       <concept id="1167169308231" name="jetbrains.mps.lang.generator.structure.BaseMappingRule" flags="ng" index="30H$t8">
         <property id="7898029224680692134" name="description" index="2n97ot" />
+        <reference id="1200917515464" name="labelDeclaration" index="2sgKRv" />
         <reference id="1167169349424" name="applicableConcept" index="30HIoZ" />
         <child id="1167169362365" name="conditionFunction" index="30HLyM" />
       </concept>
@@ -1702,9 +1703,15 @@
       <ref role="2rZz_L" to="tpee:fK9aQHR" resolve="BlockStatement" />
       <ref role="2rTdP9" to="yv2q:7OJukvJ5je_" resolve="LanguageDescriptor" />
     </node>
+    <node concept="2rT7sh" id="1FBVWoju0cP" role="2rTMjI">
+      <property role="TrG5h" value="langFromDescriptor" />
+      <ref role="2rTdP9" to="yv2q:7OJukvJ5je_" resolve="LanguageDescriptor" />
+      <ref role="2rZz_L" to="tpee:fz12cDA" resolve="ClassConcept" />
+    </node>
     <node concept="3lhOvk" id="7BqJJVi3vhE" role="3lj3bC">
       <ref role="30HIoZ" to="yv2q:7OJukvJ5je_" resolve="LanguageDescriptor" />
       <ref role="3lhOvi" node="7OJukvJ5j$M" resolve="Language" />
+      <ref role="2sgKRv" node="1FBVWoju0cP" resolve="langFromDescriptor" />
     </node>
     <node concept="2VPoh5" id="3pzUVOrW$VM" role="2VS0gm">
       <ref role="2VPoh2" node="1uh_eNRSFyP" resolve="language descriptor" />

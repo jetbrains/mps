@@ -46,6 +46,7 @@
       <modulePath path="$PROJECT_DIR$/editor/editor-runtime/jetbrains.mps.editor.runtime.msd" folder="core.aspects.editor" />
       <modulePath path="$PROJECT_DIR$/editor/editorlang-runtime/jetbrains.mps.editorlang.runtime.msd" folder="core.aspects.editor" />
       <modulePath path="$PROJECT_DIR$/editor/typesystemIntegration/typesystemIntegration.msd" folder="core.aspects.editor" />
+      <modulePath path="$PROJECT_DIR$/languages.test/constraints.rulesAndMessages.sandbox/constraints.rulesAndMessages.sandbox.mpl" folder="" />
       <modulePath path="$PROJECT_DIR$/languages.test/languageDesign/constraints.rules.sandbox.mpl" folder="" />
       <modulePath path="$PROJECT_DIR$/languages.test/languageDesign/lang.editor.editorTest.extension/jetbrains.mps.lang.editor.editorTest.extension.mpl" folder="core.aspects.editor" />
       <modulePath path="$PROJECT_DIR$/languages.test/languageDesign/lang.editor.editorTest/jetbrains.mps.lang.editor.editorTest.mpl" folder="core.aspects.editor" />
@@ -113,7 +114,7 @@
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/behavior/languages/behavior/jetbrains.mps.lang.behavior.mpl" folder="core.aspects.behavior" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/behavior/languages/testlang/jetbrains.mps.lang.behavior.test.mpl" folder="core.aspects.behavior" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/checkedName/jetbrains.mps.lang.checkedName.mpl" folder="core.languages" />
-      <modulePath path="$PROJECT_DIR$/languages/languageDesign/constraints.rules.kind/jetbrains.mps.lang.constraints.rules.kind.mpl" folder="core.aspects.constraints" />
+      <modulePath path="$PROJECT_DIR$/languages/languageDesign/constraints.rules.kinds/jetbrains.mps.lang.constraints.rules.kinds.mpl" folder="core.aspects.constraints" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/constraints.rules.skeleton/jetbrains.mps.lang.constraints.rules.skeleton.mpl" folder="core.aspects.constraints" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/constraints.rules/jetbrains.mps.lang.constraints.rules.mpl" folder="core.aspects.constraints" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/constraints/jetbrains.mps.lang.constraints.mpl" folder="core.aspects.constraints" />
@@ -147,7 +148,7 @@
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/make/languages/script/jetbrains.mps.make.script.mpl" folder="core.make" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/make/solutions/jetbrains.mps.make.sandbox/jetbrains.mps.make.sandbox.msd" folder="core.make" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/messages/jetbrains.mps.lang.messages.mpl" folder="core.aspects.reporting" />
-      <modulePath path="$PROJECT_DIR$/languages/languageDesign/messages/rules/jetbrains.mps.lang.constraints.messages.mpl" folder="core.aspects.reporting" />
+      <modulePath path="$PROJECT_DIR$/languages/languageDesign/messages/rules/jetbrains.mps.lang.rulesAndMessages.mpl" folder="core.aspects.reporting" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/migration/jetbrains.mps.lang.migration.mpl" folder="core.aspects.migration" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/migration/solutions/actions/jetbrains.mps.lang.migration.actions.msd" folder="core.aspects.migration" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/migration/util/jetbrains.mps.lang.migration.util.mpl" folder="core.aspects.migration" />

@@ -52,6 +52,7 @@ public class Mapping_LanguageModule extends MapConfigBase implements TemplateMap
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> result = new Template_Language().apply(environment, context);
+      environment.registerLabel(context.getInput(), result, "langFromDescriptor");
       return result;
     }
   }

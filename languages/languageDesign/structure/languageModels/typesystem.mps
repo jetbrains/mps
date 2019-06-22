@@ -4608,10 +4608,7 @@
               <node concept="3clFbJ" id="2BJSfVLNMV0" role="3cqZAp">
                 <node concept="3clFbS" id="2BJSfVLNMV2" role="3clFbx">
                   <node concept="a7r0C" id="2BJSfVLOzk6" role="3cqZAp">
-                    <node concept="3cpWs3" id="2BJSfVLO$X3" role="a7wSD">
-                      <node concept="Xl_RD" id="2BJSfVLO$Xj" role="3uHU7w">
-                        <property role="Xl_RC" value="That obviously might lead to unnecessary errors in the client's code." />
-                      </node>
+                    <node concept="3cpWs3" id="2BJSfVLO$Zy" role="a7wSD">
                       <node concept="3cpWs3" id="2BJSfVLO$xx" role="3uHU7B">
                         <node concept="3cpWs3" id="2BJSfVLO$xE" role="3uHU7B">
                           <node concept="Xl_RD" id="2BJSfVLO$xK" role="3uHU7B">
@@ -4621,14 +4618,12 @@
                             <property role="Xl_RC" value=" It is better to have default implementation for every such method since at the present moment\n" />
                           </node>
                         </node>
-                        <node concept="3cpWs3" id="2BJSfVLO$Zy" role="3uHU7w">
-                          <node concept="Xl_RD" id="2BJSfVLO$ZC" role="3uHU7B">
-                            <property role="Xl_RC" value="MPS creates instances of abstract concepts which are contained as a child link in some concept\n " />
-                          </node>
-                          <node concept="Xl_RD" id="2BJSfVLO$ZE" role="3uHU7w">
-                            <property role="Xl_RC" value="and any method of such concept might be spuriously invoked.\n" />
-                          </node>
+                        <node concept="Xl_RD" id="2BJSfVLO$ZC" role="3uHU7w">
+                          <property role="Xl_RC" value="MPS creates instances of abstract concepts which are contained as a child link in some concept\n " />
                         </node>
+                      </node>
+                      <node concept="Xl_RD" id="2BJSfVLO$ZE" role="3uHU7w">
+                        <property role="Xl_RC" value="and any method of such concept might be spuriously invoked.\n" />
                       </node>
                     </node>
                     <node concept="1YBJjd" id="2BJSfVLO$Xl" role="2OEOjV">

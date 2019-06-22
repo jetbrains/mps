@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
+  <dependency className="constraints.rules.sandbox.GeneratedMessagesAspectDescriptor">
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="jetbrains.mps.core.aspects.reporting.api.MessagesDescriptor" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
+    <classNode extendsClassName="jetbrains.mps.core.aspects.reporting.api.MessagesAspectDescriptor" />
+  </dependency>
   <dependency className="constraints.rules.sandbox.Language">
     <classNode dependClassName="constraints.rules.sandbox.constraints.ConstraintsAspectDescriptor" />
     <classNode dependClassName="constraints.rules.sandbox.constraints2.GeneratedConstraintsAspectDescriptor2" />

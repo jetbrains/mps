@@ -50,7 +50,7 @@ public final class CloneModuleDialog extends AbstractModuleCreationDialog {
       myResult = helper.copy();
       ApplicationManager.getApplication().invokeLater(new Runnable() {
         public void run() {
-          showPopup(ModuleNameUtil.getModuleType(myModuleOriginal) + " <i>" + myModuleOriginal.getModuleName() + "</i> has successfully cloned", MessageType.INFO);
+          showPopup(ModuleNameUtil.getModuleType(myModuleOriginal) + " <i>" + myModuleOriginal.getModuleName() + "</i> has been successfully cloned", MessageType.INFO);
         }
       });
     } catch (final CopyNotSupportedException e) {

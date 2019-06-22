@@ -12,8 +12,6 @@ import jetbrains.mps.openapi.actions.descriptor.ActionAspectDescriptor;
 import jetbrains.mps.lang.constraints.rules.actions.ActionAspectDescriptorImpl;
 import jetbrains.mps.smodel.runtime.BehaviorAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsAspectDescriptor;
-import jetbrains.mps.core.aspects.reporting.api.MessagesAspectDescriptor;
-import jetbrains.mps.lang.constraints.rules.constraints2.GeneratedMessagesAspectDescriptor;
 import jetbrains.mps.core.aspects.constraints.rules.ConstraintsAspectDescriptor2;
 import jetbrains.mps.lang.constraints.rules.constraints2.GeneratedConstraintsAspectDescriptor2;
 import jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor;
@@ -49,8 +47,9 @@ public class Language extends LanguageRuntime {
 
   @Override
   protected void fillExtendedLanguages(Collection<SLanguage> extendedLanguages) {
-    extendedLanguages.add(MetaAdapterFactory.getLanguage(SLanguageId.deserialize("c72da2b9-7cce-4447-8389-f407dc1158b7"), "jetbrains.mps.lang.structure"));
     extendedLanguages.add(MetaAdapterFactory.getLanguage(SLanguageId.deserialize("f3061a53-9226-4cc5-a443-f952ceaf5816"), "jetbrains.mps.baseLanguage"));
+    extendedLanguages.add(MetaAdapterFactory.getLanguage(SLanguageId.deserialize("5dae8159-ab99-46bb-a40d-0cee30ee7018"), "jetbrains.mps.lang.constraints.rules.kinds"));
+    extendedLanguages.add(MetaAdapterFactory.getLanguage(SLanguageId.deserialize("134c38d4-e3af-4d9e-b069-1c7df0a4005d"), "jetbrains.mps.lang.constraints.rules.skeleton"));
   }
 
   @Override
@@ -63,9 +62,6 @@ public class Language extends LanguageRuntime {
     }
     if (aspectClass == ConstraintsAspectDescriptor.class) {
       return aspectClass.cast(new jetbrains.mps.lang.constraints.rules.constraints.ConstraintsAspectDescriptor());
-    }
-    if (aspectClass == MessagesAspectDescriptor.class) {
-      return aspectClass.cast(new GeneratedMessagesAspectDescriptor());
     }
     if (aspectClass == ConstraintsAspectDescriptor2.class) {
       return aspectClass.cast(new GeneratedConstraintsAspectDescriptor2());
