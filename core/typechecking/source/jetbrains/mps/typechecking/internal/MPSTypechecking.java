@@ -24,6 +24,7 @@ import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.typechecking.backend.TypecheckingBackend;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.module.SRepository;
 
 /**
  * MPS Core Component ® responsible for management of TypecheckingFaçade.
@@ -33,11 +34,9 @@ import org.jetbrains.annotations.NotNull;
 public class MPSTypechecking extends ComponentPlugin implements ComponentHost {
 
   // dependencies
-  @NotNull
-  private final LanguageRegistry myLanguageRegistry;
-
-  @NotNull
-  private final ClassLoaderManager myClassLoaderManager;
+  @NotNull private final LanguageRegistry myLanguageRegistry;
+  @NotNull private final ClassLoaderManager myClassLoaderManager;
+  @NotNull private final SRepository myRepository;
 
   // internal components
   private LanguageScopeFactory myLanguageScopeFactory;
@@ -48,9 +47,12 @@ public class MPSTypechecking extends ComponentPlugin implements ComponentHost {
    * This class is to be instantiated only by the appropriate component manager, who is solely authorized to do so.
    * What, never heard of dependency injection?
    */
-  public MPSTypechecking(@NotNull LanguageRegistry languageRegistry, @NotNull ClassLoaderManager classLoaderManager) {
+  public MPSTypechecking(@NotNull LanguageRegistry languageRegistry,
+                         @NotNull ClassLoaderManager classLoaderManager,
+                         @NotNull SRepository repository) {
     myLanguageRegistry = languageRegistry;
     myClassLoaderManager = classLoaderManager;
+    myRepository = repository;
   }
 
   @NotNull
@@ -62,7 +64,7 @@ public class MPSTypechecking extends ComponentPlugin implements ComponentHost {
   public void init() {
     super.init();
     this.myTypecheckingBackend = init(new TypecheckingBackend());
-    this.myLanguageScopeFactory = init(new LanguageScopeFactory(myLanguageRegistry));
+    this.myLanguageScopeFactory = init(new LanguageScopeFactory(myLanguageRegistry, myRepository));
     this.myTypecheckingFacadeComponent = init(new TypecheckingFacadeComponent(myLanguageRegistry, myLanguageScopeFactory, myTypecheckingBackend));
   }
 

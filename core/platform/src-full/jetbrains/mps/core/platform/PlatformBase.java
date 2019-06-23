@@ -24,10 +24,12 @@ import jetbrains.mps.ide.findusages.MPSFindUsages;
 import jetbrains.mps.lang.dataFlow.MPSDataFlow;
 import jetbrains.mps.make.facets.MPSMake;
 import jetbrains.mps.persistence.MPSPersistence;
+import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.text.impl.MPSTextGenerator;
 import jetbrains.mps.typechecking.internal.MPSTypechecking;
 import jetbrains.mps.typesystem.MPSTypesystem;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
@@ -63,7 +65,9 @@ class PlatformBase implements Platform {
         public void run() {
           initAndRegister(new MPSProjectValidation(PlatformBase.this));
           initAndRegister(new MPSMake(myCore.getLanguageRegistry()));
-          MPSTypechecking mpsTypechecking = new MPSTypechecking(myCore.getLanguageRegistry(), myCore.getClassLoaderManager());
+          MPSTypechecking mpsTypechecking = new MPSTypechecking(myCore.getLanguageRegistry(),
+                                                                myCore.getClassLoaderManager(),
+                                                                myCore.findComponent(MPSModuleRepository.class));
           initAndRegister(mpsTypechecking);
           initAndRegister(new MPSTypesystem(myCore.getLanguageRegistry(), myCore.getClassLoaderManager(), mpsTypechecking));
           initAndRegister(new MPSGenerator(myCore));

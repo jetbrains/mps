@@ -24,6 +24,7 @@ import jetbrains.mps.util.SimpleLRUCache;
 import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SLanguage;
+import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.AbstractList;
 import java.util.ArrayList;
@@ -45,6 +46,7 @@ public class LanguageScopeFactory implements CoreComponent, LanguageRegistryList
 
   // dependency
   private final LanguageRegistry myLanguageRegistry;
+  private final SRepository myRepository;
 
   /**
    * @deprecated
@@ -61,9 +63,15 @@ public class LanguageScopeFactory implements CoreComponent, LanguageRegistryList
 
   private SimpleLRUCache<LanguagesHolder> myCachedLanguages;
 
-  public LanguageScopeFactory(LanguageRegistry languageRegistry) {
+  public LanguageScopeFactory(@NotNull LanguageRegistry languageRegistry, @NotNull SRepository repository) {
     myLanguageRegistry = languageRegistry;
+    myRepository = repository;
     initCache();
+  }
+
+  @NotNull
+  public SRepository getRepository() {
+    return myRepository;
   }
 
   @Override

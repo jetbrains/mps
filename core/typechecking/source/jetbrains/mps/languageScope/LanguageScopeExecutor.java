@@ -15,13 +15,18 @@
  */
 package jetbrains.mps.languageScope;
 
-import jetbrains.mps.smodel.SModelOperations;
+import jetbrains.mps.smodel.ModelDependencyResolver;
+import jetbrains.mps.smodel.SLanguageHierarchy;
+import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.util.Computable;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.Collection;
+import java.util.Set;
 
 public class LanguageScopeExecutor {
 
@@ -38,10 +43,21 @@ public class LanguageScopeExecutor {
     return execWithModelScope(sModel, computable, languageScopeFactory);
   }
 
-  public static <T> T execWithModelScope(@Nullable SModel sModel, @Nullable Computable<T> computable,
-                                          LanguageScopeFactory languageScopeFactory) {
-    LanguageScope languageScope = sModel == null ? LanguageScope.getGlobal() :
-                                  languageScopeFactory.getLanguageScope(SModelOperations.getAllLanguageImports(sModel));
+  public static <T> T execWithModelScope(@Nullable SModel model,
+                                         @Nullable Computable<T> computable,
+                                         @NotNull LanguageScopeFactory languageScopeFactory) {
+    LanguageScope languageScope;
+    if (model == null) {
+      languageScope = LanguageScope.getGlobal();
+    } else {
+      SRepository repository = languageScopeFactory.getRepository();
+      LanguageRegistry lr = LanguageRegistry.getInstance(repository);
+      final Collection<SLanguage> languageImports = new ModelDependencyResolver(lr, repository).usedLanguages(model);
+      final SLanguageHierarchy languageHierarchy = new SLanguageHierarchy(lr, languageImports);
+      final Set<SLanguage> usedLangDeps = languageHierarchy.getExtended();
+      usedLangDeps.addAll(languageHierarchy.getAggregated());
+      languageScope = languageScopeFactory.getLanguageScope(usedLangDeps);
+    }
     try{
       LanguageScope.pushCurrent(languageScope, computable);
       return computable.compute();
