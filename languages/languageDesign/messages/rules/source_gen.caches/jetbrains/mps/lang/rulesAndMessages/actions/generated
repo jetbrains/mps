@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="ek16xpmekz1owqvyos2b55gcr6ylrz7" />
+<product version="3" modelHash="6uoyxf2ozob9mm7jdcqdvml5olbc2tk">
+  <files names="ActionAspectDescriptorImpl.java:ForRuleWithMessage.java" />
+</product>
 

@@ -19,6 +19,8 @@ import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
+import jetbrains.mps.editor.runtime.EditorCell_Empty;
+import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.lang.editor.cellProviders.SReferenceCellProvider;
 import jetbrains.mps.util.Computable;
@@ -43,7 +45,6 @@ import jetbrains.mps.openapi.editor.menus.transformation.SPropertyInfo;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Property;
 import jetbrains.mps.nodeEditor.cells.SPropertyAccessor;
 import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteEasily;
-import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
 import jetbrains.mps.nodeEditor.cellMenu.SPropertySubstituteInfo;
 import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 
@@ -73,12 +74,13 @@ import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
     setCellContext(editorCell);
     editorCell.addEditorCell(createConstant_0());
     editorCell.addEditorCell(createRefNode_0());
+    editorCell.addEditorCell(createEmpty_0());
     editorCell.addEditorCell(createConstant_1());
     editorCell.addEditorCell(createRefCell_0());
     return editorCell;
   }
   private EditorCell createConstant_0() {
-    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "message");
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "show message");
     editorCell.setCellId("Constant_dgsr4v_a0");
     editorCell.setDefaultText("");
     return editorCell;
@@ -138,9 +140,16 @@ import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
       return "<no message>";
     }
   }
+  private EditorCell createEmpty_0() {
+    EditorCell_Empty editorCell = new EditorCell_Empty(getEditorContext(), myNode);
+    editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteNode(editorCell.getSNode(), CellAction_DeleteNode.DeleteDirection.FORWARD));
+    editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteNode(editorCell.getSNode(), CellAction_DeleteNode.DeleteDirection.BACKWARD));
+    editorCell.setCellId("Empty_dgsr4v_c0");
+    return editorCell;
+  }
   private EditorCell createConstant_1() {
-    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "for rule");
-    editorCell.setCellId("Constant_dgsr4v_c0");
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "for the failed rule");
+    editorCell.setCellId("Constant_dgsr4v_d0");
     editorCell.setDefaultText("");
     return editorCell;
   }

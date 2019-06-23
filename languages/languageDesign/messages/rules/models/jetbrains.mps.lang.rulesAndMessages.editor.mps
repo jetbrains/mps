@@ -204,18 +204,8 @@
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
-        <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
-      </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
-      </concept>
-      <concept id="709746936026466394" name="jetbrains.mps.lang.core.structure.ChildAttribute" flags="ng" index="3VBwX9">
-        <property id="709746936026609031" name="linkId" index="3V$3ak" />
-        <property id="709746936026609029" name="role_DebugInfo" index="3V$3am" />
-      </concept>
-      <concept id="4452961908202556907" name="jetbrains.mps.lang.core.structure.BaseCommentAttribute" flags="ng" index="1X3_iC">
-        <child id="3078666699043039389" name="commentedNode" index="8Wnug" />
       </concept>
     </language>
   </registry>
@@ -227,20 +217,15 @@
         <ref role="1NtTu8" to="t16r:1dKt_a0ob3W" resolve="rule" />
       </node>
       <node concept="3EZMnI" id="40CvJkJzGIY" role="3EZMnx">
-        <node concept="1X3_iC" id="7M8nn$yghNA" role="lGtFl">
-          <property role="3V$3am" value="styleItem" />
-          <property role="3V$3ak" value="18bc6592-03a6-4e29-a83a-7ff23bde13ba/1219418625346/1219418656006" />
-          <node concept="VPXOz" id="52CT$p9rHSP" role="8Wnug">
-            <property role="VOm3f" value="true" />
-          </node>
+        <node concept="VPXOz" id="52CT$p9rHSP" role="3F10Kt">
+          <property role="VOm3f" value="true" />
         </node>
-        <node concept="3F0ifn" id="6Q2nboo7BRU" role="3EZMnx">
-          <property role="3F0ifm" value=":::" />
-          <ref role="1k5W1q" to="bgop:5GbbOB11OBg" resolve="WhenHint" />
+        <node concept="37jFXN" id="5jg33KK9Mqt" role="3F10Kt">
+          <property role="37lx6p" value="RIGHT" />
         </node>
         <node concept="2iRfu4" id="40CvJkJzGIZ" role="2iSdaV" />
         <node concept="3F0ifn" id="6Q2nboo7HCB" role="3EZMnx">
-          <property role="3F0ifm" value="when fails show" />
+          <property role="3F0ifm" value="-&gt; when fails show" />
           <ref role="1k5W1q" to="bgop:5GbbOB11OBg" resolve="WhenHint" />
           <node concept="3$7jql" id="7M8nn$yg90$" role="3F10Kt">
             <property role="3$6WeP" value="1" />
@@ -253,9 +238,6 @@
               <ref role="1NtTu8" to="t9po:4zSofKedyR8" resolve="message" />
             </node>
           </node>
-        </node>
-        <node concept="37jFXN" id="40CvJkJ$TL5" role="3F10Kt">
-          <property role="37lx6p" value="RIGHT" />
         </node>
       </node>
     </node>

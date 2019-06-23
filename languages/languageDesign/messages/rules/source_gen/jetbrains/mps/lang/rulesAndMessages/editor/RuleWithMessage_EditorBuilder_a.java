@@ -118,25 +118,16 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent;
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Horizontal());
     editorCell.setCellId("Collection_3p777_b0");
     Style style = new StyleImpl();
+    style.set(StyleAttributes.DRAW_BORDER, true);
     style.set(StyleAttributes.HORIZONTAL_ALIGN, CellAlign.RIGHT);
     editorCell.getStyle().putAll(style);
     editorCell.addEditorCell(createConstant_0());
-    editorCell.addEditorCell(createConstant_1());
     editorCell.addEditorCell(createRefCell_0());
     return editorCell;
   }
   private EditorCell createConstant_0() {
-    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, ":::");
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "-> when fails show");
     editorCell.setCellId("Constant_3p777_a1a");
-    Style style = new StyleImpl();
-    new WhenHintStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
-    editorCell.getStyle().putAll(style);
-    editorCell.setDefaultText("");
-    return editorCell;
-  }
-  private EditorCell createConstant_1() {
-    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "when fails show");
-    editorCell.setCellId("Constant_3p777_b1a");
     Style style = new StyleImpl();
     new WhenHintStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
     style.set(StyleAttributes.PADDING_RIGHT, new Padding(1, Measure.SPACES));
@@ -192,19 +183,19 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent;
 
     private EditorCell createCollection_2() {
       EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Indent());
-      editorCell.setCellId("Collection_3p777_a0c1a");
+      editorCell.setCellId("Collection_3p777_a0b1a");
       editorCell.addEditorCell(createRefNode_1());
       return editorCell;
     }
     private EditorCell createRefNode_1() {
-      SingleRoleCellProvider provider = new RuleWithMessage_EditorBuilder_a.Inline_Builder0.messageSingleRoleHandler_3p777_a0a2b0(myNode, MetaAdapterFactory.getContainmentLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e30f402L, 0x48f860fc0e362dc8L, "message"), getEditorContext());
+      SingleRoleCellProvider provider = new RuleWithMessage_EditorBuilder_a.Inline_Builder0.messageSingleRoleHandler_3p777_a0a1b0(myNode, MetaAdapterFactory.getContainmentLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e30f402L, 0x48f860fc0e362dc8L, "message"), getEditorContext());
       return provider.createCell();
     }
-    private static class messageSingleRoleHandler_3p777_a0a2b0 extends SingleRoleCellProvider {
+    private static class messageSingleRoleHandler_3p777_a0a1b0 extends SingleRoleCellProvider {
       @NotNull
       private SNode myNode;
 
-      public messageSingleRoleHandler_3p777_a0a2b0(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
+      public messageSingleRoleHandler_3p777_a0a1b0(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
         super(containmentLink, context);
         myNode = ownerNode;
       }
