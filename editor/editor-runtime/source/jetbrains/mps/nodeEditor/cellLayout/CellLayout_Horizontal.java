@@ -16,9 +16,16 @@
 package jetbrains.mps.nodeEditor.cellLayout;
 
 import jetbrains.mps.editor.runtime.TextBuilderImpl;
+import jetbrains.mps.editor.runtime.style.CellAlign;
+import jetbrains.mps.editor.runtime.style.StyleAttributes;
+import jetbrains.mps.nodeEditor.EditorSettings;
 import jetbrains.mps.openapi.editor.TextBuilder;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * User: Sergey Dmitriev
@@ -61,13 +68,73 @@ public class CellLayout_Horizontal extends AbstractCellLayout {
 
     int baseline = y + ascent + topInset;
 
-    editorCells.setWidth(width);
-    editorCells.setHeight(ascent + descent + topInset + bottomInset);
-
     for (EditorCell editorCell : editorCells) {
       editorCell.setBaseline(baseline);
       editorCell.relayout();
     }
+
+    editorCells.setWidth(width);
+    editorCells.setHeight(ascent + descent + topInset + bottomInset);
+
+    if (!isInsideGird) {
+      alignCellsToRightGreedy(editorCells);
+    }
+  }
+
+  private void alignCellsToRightGreedy(EditorCell_Collection editorCells) {
+    List<EditorCell> cellsToMove = new ArrayList<>();
+    boolean smbWantsToRight = false;
+    for (Iterator<EditorCell> rev = editorCells.reverseIterator(); rev.hasNext();) {
+      EditorCell cell = rev.next();
+      CellAlign cellAlign = cell.getStyle().get(StyleAttributes.HORIZONTAL_ALIGN);
+      if (smbWantsToRight && cellAlign != CellAlign.RIGHT) {
+        break;
+      }
+      if (cellAlign != null && cellAlign != CellAlign.RIGHT) {
+        break;
+      }
+      if (cellAlign == CellAlign.RIGHT) {
+        smbWantsToRight = true;
+      }
+      cellsToMove.add(cell);
+    }
+    if (smbWantsToRight) {
+      moveToRight(editorCells, cellsToMove);
+    }
+  }
+
+  private void moveToRight(EditorCell_Collection editorCells, List<EditorCell> cellsToMove) {
+    List<EditorCell> movedCells = new ArrayList<>();
+    boolean anyoneAligned = false;
+    int maxWidth = getMaxWidth(editorCells);
+    int width = 0;
+    for (EditorCell cell : cellsToMove) {
+      CellAlign cellAlign = cell.getStyle().get(StyleAttributes.HORIZONTAL_ALIGN);
+      if (cellAlign != CellAlign.RIGHT) {
+        break;
+      }
+      width += cell.getWidth();
+      if (maxWidth - width > cell.getX()) {
+        anyoneAligned = true;
+        cell.moveTo(maxWidth - width, cell.getY());
+        movedCells.add(cell);
+      } else {
+        break;
+      }
+    }
+    if (anyoneAligned) {
+      for (EditorCell cell : movedCells) {
+        cell.relayout();
+      }
+      editorCells.setWidth(maxWidth - editorCells.getRootParent().getX());
+    }
+  }
+
+  private int getMaxWidth(EditorCell_Collection editorCells) {
+    if (editorCells.getStyle().isSpecified(StyleAttributes.MAX_WIDTH)) {
+      return editorCells.getX() + editorCells.getStyle().get(StyleAttributes.MAX_WIDTH);
+    }
+    return editorCells.getRootParent().getX() + EditorSettings.getInstance().getVerticalBoundWidth();
   }
 
   @Override
