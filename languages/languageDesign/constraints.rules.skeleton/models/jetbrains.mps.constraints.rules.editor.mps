@@ -173,10 +173,6 @@
           </node>
         </node>
       </node>
-      <node concept="3F0ifn" id="1BFxp3HHhvL" role="3EZMnx">
-        <property role="3F0ifm" value=":" />
-        <ref role="1k5W1q" node="52CT$p9rdIc" resolve="RuleBlockDeclaration" />
-      </node>
       <node concept="3F2HdR" id="1BFxp3HHhvN" role="3EZMnx">
         <ref role="1NtTu8" to="mqj2:1BFxp3HHhtb" resolve="members" />
         <node concept="l2Vlx" id="1BFxp3HHhvO" role="2czzBx" />

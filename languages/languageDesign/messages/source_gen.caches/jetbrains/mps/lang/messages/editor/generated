@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-9ul5lj3ap3lpc6dv5rb5scr8ks1zaux">
+<product version="3" modelHash="-e7dzvorpj12opjstfdathcznysgd70j">
   <files names="CombinedMessageExpression_Editor.java:CombinedMessageExpression_EditorBuilder_a.java:CombinedMessageExpression_SubstituteMenu.java:Constraints2_styles_StyleSheet.java:EditorAspectDescriptorImpl.java:LiteralMessageExpression_Editor.java:LiteralMessageExpression_EditorBuilder_a.java:LiteralMessageExpression_SubstituteMenu.java:LiteralMessageExpression_split.java:MacroMessageExpression_Editor.java:MacroMessageExpression_EditorBuilder_a.java:MacroMessageExpression_TransformationMenu.java:MacroMessageExpression_complete.java:MacroMessageExpression_delete.java:MessageExpression_Editor.java:MessageExpression_EditorBuilder_a.java:MessageProviderForRule_Editor.java:MessageProviderForRule_EditorBuilder_a.java:MessageProvider_Delete.java:MessagesRoot_Editor.java:MessagesRoot_EditorBuilder_a.java" />
 </product>
 

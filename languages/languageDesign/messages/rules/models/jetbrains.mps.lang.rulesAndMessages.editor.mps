@@ -69,9 +69,6 @@
       </concept>
       <concept id="1139535439104" name="jetbrains.mps.lang.editor.structure.CellActionMap_ExecuteFunction" flags="in" index="1hAIg9" />
       <concept id="5692353713941573329" name="jetbrains.mps.lang.editor.structure.QueryFunction_TransformationMenu_ActionLabelText" flags="ig" index="1hCUdq" />
-      <concept id="1088013125922" name="jetbrains.mps.lang.editor.structure.CellModel_RefCell" flags="sg" stub="730538219795941030" index="1iCGBv">
-        <child id="1088186146602" name="editorComponent" index="1sWHZn" />
-      </concept>
       <concept id="1381004262292414836" name="jetbrains.mps.lang.editor.structure.ICellStyle" flags="ng" index="1k5N5V">
         <reference id="1381004262292426837" name="parentStyleClass" index="1k5W1q" />
       </concept>
@@ -81,7 +78,6 @@
       <concept id="730181322658904464" name="jetbrains.mps.lang.editor.structure.SubstituteMenuPart_IncludeMenu" flags="ng" index="1s_PAr">
         <child id="730181322658904467" name="menuReference" index="1s_PAo" />
       </concept>
-      <concept id="1088185857835" name="jetbrains.mps.lang.editor.structure.InlineEditorComponent" flags="ig" index="1sVBvm" />
       <concept id="1215007762405" name="jetbrains.mps.lang.editor.structure.FloatStyleClassItem" flags="ln" index="3$6MrZ">
         <property id="1215007802031" name="value" index="3$6WeP" />
       </concept>
@@ -213,8 +209,11 @@
     <ref role="1XX52x" to="t16r:hyoMxHKcTB" resolve="RuleWithMessage" />
     <node concept="3EZMnI" id="6Q2nboo7wnS" role="2wV5jI">
       <node concept="2iRfu4" id="6Q2nboo7wnT" role="2iSdaV" />
-      <node concept="3F1sOY" id="1dKt_a0ob4f" role="3EZMnx">
-        <ref role="1NtTu8" to="t16r:1dKt_a0ob3W" resolve="rule" />
+      <node concept="3EZMnI" id="5VED60U3bBj" role="3EZMnx">
+        <node concept="2iRkQZ" id="5VED60U3bBk" role="2iSdaV" />
+        <node concept="3F1sOY" id="1dKt_a0ob4f" role="3EZMnx">
+          <ref role="1NtTu8" to="t16r:1dKt_a0ob3W" resolve="rule" />
+        </node>
       </node>
       <node concept="3EZMnI" id="40CvJkJzGIY" role="3EZMnx">
         <node concept="VPXOz" id="52CT$p9rHSP" role="3F10Kt">
@@ -231,12 +230,10 @@
             <property role="3$6WeP" value="1" />
           </node>
         </node>
-        <node concept="1iCGBv" id="7M8nn$ybzpw" role="3EZMnx">
-          <ref role="1NtTu8" to="t16r:hyoMxHKcU6" resolve="messageProvider" />
-          <node concept="1sVBvm" id="7M8nn$ybzpy" role="1sWHZn">
-            <node concept="3F1sOY" id="7M8nn$ybzpF" role="2wV5jI">
-              <ref role="1NtTu8" to="t9po:4zSofKedyR8" resolve="message" />
-            </node>
+        <node concept="3EZMnI" id="5VED60U3dF7" role="3EZMnx">
+          <node concept="2iRkQZ" id="5VED60U3dF8" role="2iSdaV" />
+          <node concept="3F1sOY" id="5VED60U2Jx8" role="3EZMnx">
+            <ref role="1NtTu8" to="t16r:hyoMxHKcU6" resolve="messageProvider" />
           </node>
         </node>
       </node>
@@ -244,16 +241,9 @@
   </node>
   <node concept="24kQdi" id="hyoMxHKDHA">
     <ref role="1XX52x" to="t16r:hyoMxHKcU1" resolve="InlineMessageProvider" />
-    <node concept="3EZMnI" id="hyoMxHKDHC" role="2wV5jI">
-      <node concept="3F0ifn" id="hyoMxHKDHJ" role="3EZMnx">
-        <property role="3F0ifm" value="message" />
-        <ref role="1ERwB7" node="4zSofKean5_" resolve="InlineMessage_remove" />
-      </node>
-      <node concept="3F1sOY" id="4zSofKedyRf" role="3EZMnx">
-        <ref role="1NtTu8" to="t9po:4zSofKedyR8" resolve="message" />
-        <ref role="1ERwB7" node="4zSofKean5_" resolve="InlineMessage_remove" />
-      </node>
-      <node concept="2iRkQZ" id="19J4M2yz8CF" role="2iSdaV" />
+    <node concept="3F1sOY" id="4zSofKedyRf" role="2wV5jI">
+      <ref role="1NtTu8" to="t9po:4zSofKedyR8" resolve="message" />
+      <ref role="1ERwB7" node="4zSofKean5_" resolve="InlineMessage_remove" />
     </node>
   </node>
   <node concept="1h_SRR" id="4zSofKean5_">
@@ -474,6 +464,30 @@
     </node>
     <node concept="A1WHr" id="7M8nn$yc3jB" role="AmTjC">
       <ref role="2ZyFGn" to="mqj2:1BFxp3HHhtg" resolve="RuleBlockMember" />
+    </node>
+  </node>
+  <node concept="1h_SRR" id="5VED60U2Mgt">
+    <property role="TrG5h" value="RuleBlockActions" />
+    <ref role="1h_SK9" to="mqj2:1BFxp3HHhta" resolve="RuleBlock" />
+    <node concept="1hA7zw" id="5VED60U2Mgu" role="1h_SK8">
+      <property role="1hAc7j" value="insert_action_id" />
+      <node concept="1hAIg9" id="5VED60U2Mgv" role="1hA7z_">
+        <node concept="3clFbS" id="5VED60U2Mgw" role="2VODD2">
+          <node concept="3clFbF" id="5VED60U2MgH" role="3cqZAp">
+            <node concept="2OqwBi" id="5VED60U2NEf" role="3clFbG">
+              <node concept="2OqwBi" id="5VED60U2Mp5" role="2Oq$k0">
+                <node concept="0IXxy" id="5VED60U2MgG" role="2Oq$k0" />
+                <node concept="3Tsc0h" id="5VED60U2M$F" role="2OqNvi">
+                  <ref role="3TtcxE" to="mqj2:1BFxp3HHhtb" resolve="members" />
+                </node>
+              </node>
+              <node concept="2DeJg1" id="5VED60U2Ppp" role="2OqNvi">
+                <ref role="1A0vxQ" to="t16r:hyoMxHKcTB" resolve="RuleWithMessage" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
     </node>
   </node>
 </model>

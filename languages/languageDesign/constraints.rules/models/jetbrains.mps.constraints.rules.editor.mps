@@ -405,7 +405,7 @@
               </node>
               <node concept="OXEIz" id="7M8nn$ye4cA" role="P5bDN">
                 <node concept="1oHujT" id="7M8nn$ye4cE" role="OY2wv">
-                  <property role="1oHujS" value="when" />
+                  <property role="1oHujS" value="when (provide a custom condition)" />
                   <node concept="1oIgkG" id="7M8nn$ye4cF" role="1oHujR">
                     <node concept="3clFbS" id="7M8nn$ye4cG" role="2VODD2">
                       <node concept="3clFbF" id="7M8nn$ye4cT" role="3cqZAp">
