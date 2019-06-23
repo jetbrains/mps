@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="5wtht0762fzzmo5ibf2ao42skl2f9nj">
-  <files names="ConstraintsRoot2_Editor.java:ConstraintsRoot2_EditorBuilder_a.java:Constraints_Styles_StyleSheet.java:EditorAspectDescriptorImpl.java:RuleBlock_Editor.java:RuleBlock_EditorBuilder_a.java" />
+<product version="3" modelHash="bid3vosukmk7gdpofa500hzxhqe6ro0">
+  <files names="ConstraintsRoot2_Editor.java:ConstraintsRoot2_EditorBuilder_a.java:Constraints_Styles_StyleSheet.java:EditorAspectDescriptorImpl.java:RuleBlockMember_SubstituteMenu.java:RuleBlockMember_TransformationMenu.java:RuleBlock_Editor.java:RuleBlock_EditorBuilder_a.java" />
 </product>
 

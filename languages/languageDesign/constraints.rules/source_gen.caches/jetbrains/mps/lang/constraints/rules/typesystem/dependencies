@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
   <dependency className="jetbrains.mps.lang.constraints.rules.typesystem.TypesystemDescriptor">
-    <classNode dependClassName="jetbrains.mps.lang.constraints.rules.typesystem.check_ConstraintsRule_Id_NonTypesystemRule" />
+    <classNode dependClassName="jetbrains.mps.lang.constraints.rules.typesystem.check_ConstraintsRuleId_NonTypesystemRule" />
     <classNode dependClassName="jetbrains.mps.lang.constraints.rules.typesystem.check_ConstraintsRule_NonTypesystemRule" />
     <classNode dependClassName="jetbrains.mps.lang.constraints.rules.typesystem.typeof_ConstraintsDef_InferenceRule" />
     <classNode dependClassName="jetbrains.mps.lang.constraints.rules.typesystem.typeof_ConstraintsRule_InferenceRule" />
@@ -10,7 +10,7 @@
     <classNode dependClassName="jetbrains.mps.lang.typesystem.runtime.NonTypesystemRule_Runtime" />
     <classNode extendsClassName="jetbrains.mps.lang.typesystem.runtime.BaseHelginsDescriptor" />
   </dependency>
-  <dependency className="jetbrains.mps.lang.constraints.rules.typesystem.check_ConstraintsRule_Id_NonTypesystemRule">
+  <dependency className="jetbrains.mps.lang.constraints.rules.typesystem.check_ConstraintsRuleId_NonTypesystemRule">
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.Objects" />
     <classNode dependClassName="jetbrains.mps.errors.BaseQuickFixProvider" />

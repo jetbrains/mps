@@ -19,14 +19,14 @@
   </root>
   <root nodeRef="r:61c80a02-cc27-4085-b38d-beaf0fede70a(jetbrains.mps.lang.constraints.rules.typesystem)/315923949160219714">
     <file name="TypesystemDescriptor.java">
-      <node id="315923949160219714" at="27,5,28,101" concept="6" />
-      <node id="315923949160219714" at="28,101,29,55" concept="2" />
+      <node id="315923949160219714" at="27,5,28,100" concept="6" />
+      <node id="315923949160219714" at="28,100,29,55" concept="2" />
       <node id="315923949160219714" at="26,5,30,5" concept="0" />
       <scope id="315923949160219714" at="27,5,29,55">
         <var name="nonTypesystemRule" id="315923949160219714" />
       </scope>
     </file>
-    <file name="check_ConstraintsRule_Id_NonTypesystemRule.java">
+    <file name="check_ConstraintsRuleId_NonTypesystemRule.java">
       <node id="315923949160605736" at="29,88,30,13" concept="7" />
       <node id="771747693430361526" at="31,5,32,0" concept="9" />
       <node id="1587916991969781666" at="34,7,35,60" concept="6" />
@@ -49,7 +49,7 @@
       <node id="315923949160219714" at="74,68,75,102" concept="7" />
       <node id="315923949160219714" at="77,30,78,17" concept="7" />
       <node id="6714410169261876697" at="80,52,81,44" concept="7" />
-      <node id="315923949160219714" at="26,0,28,0" concept="1" trace="check_ConstraintsRule_Id_NonTypesystemRule#()V" />
+      <node id="315923949160219714" at="26,0,28,0" concept="1" trace="check_ConstraintsRuleId_NonTypesystemRule#()V" />
       <node id="315923949160605734" at="28,117,31,5" concept="4" />
       <node id="5424895381998248116" at="45,0,48,0" concept="5" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="315923949160219714" at="71,0,74,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -66,7 +66,7 @@
       <node id="5424895381998224336" at="43,10,69,5" concept="0" />
       <node id="1587916991969778221" at="32,0,69,5" concept="4" />
       <node id="315923949160219714" at="28,0,71,0" concept="5" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
-      <scope id="315923949160219714" at="26,55,26,55" />
+      <scope id="315923949160219714" at="26,54,26,54" />
       <scope id="315923949160605735" at="29,88,30,13" />
       <scope id="5424895381998248117" at="45,41,46,368" />
       <scope id="315923949160219714" at="71,50,72,175" />
@@ -116,8 +116,8 @@
         <var name="status" id="315923949160219714" />
         <var name="typeCheckingContext" id="315923949160219714" />
       </scope>
-      <unit id="5424895381998248116" at="44,245,48,7" name="jetbrains.mps.lang.constraints.rules.typesystem.check_ConstraintsRule_Id_NonTypesystemRule$1" />
-      <unit id="315923949160219714" at="25,0,84,0" name="jetbrains.mps.lang.constraints.rules.typesystem.check_ConstraintsRule_Id_NonTypesystemRule" />
+      <unit id="5424895381998248116" at="44,245,48,7" name="jetbrains.mps.lang.constraints.rules.typesystem.check_ConstraintsRuleId_NonTypesystemRule$1" />
+      <unit id="315923949160219714" at="25,0,84,0" name="jetbrains.mps.lang.constraints.rules.typesystem.check_ConstraintsRuleId_NonTypesystemRule" />
     </file>
   </root>
   <root nodeRef="r:61c80a02-cc27-4085-b38d-beaf0fede70a(jetbrains.mps.lang.constraints.rules.typesystem)/315923949160351505">

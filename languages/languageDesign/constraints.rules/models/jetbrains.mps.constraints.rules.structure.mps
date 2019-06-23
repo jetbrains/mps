@@ -167,10 +167,6 @@
       <ref role="20lvS9" node="19J4M2yrfvL" resolve="ExpressionWrapper" />
     </node>
   </node>
-  <node concept="PlHQZ" id="3VxH6EnEK6S">
-    <property role="EcuMT" value="4531101070015529400" />
-    <property role="TrG5h" value="PseudoBaseConcept" />
-  </node>
   <node concept="1TIwiD" id="19J4M2yrfvL">
     <property role="EcuMT" value="1328301445982517233" />
     <property role="TrG5h" value="ExpressionWrapper" />

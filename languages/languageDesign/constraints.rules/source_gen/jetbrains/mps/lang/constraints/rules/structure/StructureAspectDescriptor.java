@@ -17,7 +17,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptApplicableCondition = createDescriptorForApplicableCondition();
   /*package*/ final ConceptDescriptor myConceptDefForRule = createDescriptorForDefForRule();
   /*package*/ final ConceptDescriptor myConceptExpressionWrapper = createDescriptorForExpressionWrapper();
-  /*package*/ final ConceptDescriptor myConceptPseudoBaseConcept = createDescriptorForPseudoBaseConcept();
   /*package*/ final ConceptDescriptor myConceptRule = createDescriptorForRule();
   /*package*/ final ConceptDescriptor myConceptRuleIdHolder = createDescriptorForRuleIdHolder();
   /*package*/ final ConceptDescriptor myConceptTypedDefReference = createDescriptorForTypedDefReference();
@@ -37,7 +36,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptApplicableCondition, myConceptDefForRule, myConceptExpressionWrapper, myConceptPseudoBaseConcept, myConceptRule, myConceptRuleIdHolder, myConceptTypedDefReference);
+    return Arrays.asList(myConceptApplicableCondition, myConceptDefForRule, myConceptExpressionWrapper, myConceptRule, myConceptRuleIdHolder, myConceptTypedDefReference);
   }
 
   @Override
@@ -50,8 +49,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptDefForRule;
       case LanguageConceptSwitch.ExpressionWrapper:
         return myConceptExpressionWrapper;
-      case LanguageConceptSwitch.PseudoBaseConcept:
-        return myConceptPseudoBaseConcept;
       case LanguageConceptSwitch.Rule:
         return myConceptRule;
       case LanguageConceptSwitch.RuleIdHolder:
@@ -101,13 +98,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:83f25986-cdbc-469a-a327-db97a2ec5a39(jetbrains.mps.lang.constraints.rules.structure)/1328301445982517233");
     b.version(2);
     b.aggregate("expression", 0x126f1320a26d350dL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(false).origin("1328301445982532877").done();
-    return b.create();
-  }
-  private static ConceptDescriptor createDescriptorForPseudoBaseConcept() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.constraints.rules", "PseudoBaseConcept", 0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x3ee1b46a97ab01b8L);
-    b.interface_();
-    b.origin("r:83f25986-cdbc-469a-a327-db97a2ec5a39(jetbrains.mps.lang.constraints.rules.structure)/4531101070015529400");
-    b.version(2);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForRule() {

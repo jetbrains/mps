@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="3ye57f9twu99zo10nmapocd4f2v3f83">
-  <files names="ConstraintsRuleWithMessage_Editor.java:ConstraintsRuleWithMessage_EditorBuilder_a.java:ConstraintsRule_addMessage.java:EditorAspectDescriptorImpl.java:InlineMessageProvider_Editor.java:InlineMessageProvider_EditorBuilder_a.java:InlineMessage_remove.java" />
+<product version="3" modelHash="44kn0uhbogk1doou54p5wf9y9g8l99b">
+  <files names="AddMyselfToMenuOfRuleBlockMember.java:AddMyselfToTransformationMenu.java:EditorAspectDescriptorImpl.java:GAGAGA.java:InlineMessageProvider_Editor.java:InlineMessageProvider_EditorBuilder_a.java:InlineMessage_remove.java:RuleWithMessage_Editor.java:RuleWithMessage_EditorBuilder_a.java:Rule_addMessage.java" />
 </product>
 

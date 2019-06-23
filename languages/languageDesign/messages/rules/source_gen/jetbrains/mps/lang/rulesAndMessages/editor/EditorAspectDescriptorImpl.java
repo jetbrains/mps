@@ -9,6 +9,9 @@ import jetbrains.mps.openapi.editor.descriptor.ConceptEditor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import java.util.Collections;
 import jetbrains.mps.openapi.editor.descriptor.TransformationMenu;
+import jetbrains.mps.openapi.editor.descriptor.NamedMenuId;
+import java.util.Arrays;
+import jetbrains.mps.openapi.editor.descriptor.SubstituteMenu;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
@@ -19,9 +22,9 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     SAbstractConcept cncpt = ((SAbstractConcept) concept);
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return Collections.<ConceptEditor>singletonList(new ConstraintsRuleWithMessage_Editor());
-      case 1:
         return Collections.<ConceptEditor>singletonList(new InlineMessageProvider_Editor());
+      case 1:
+        return Collections.<ConceptEditor>singletonList(new RuleWithMessage_Editor());
       default:
     }
     return Collections.<ConceptEditor>emptyList();
@@ -34,12 +37,47 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     SAbstractConcept cncpt = concept;
     switch (conceptIndex1.index(cncpt)) {
       case 0:
-        return Collections.<TransformationMenu>singletonList(new ConstraintsRule_addMessage());
+        return Collections.<TransformationMenu>singletonList(new AddMyselfToTransformationMenu());
+      case 1:
+        return Collections.<TransformationMenu>singletonList(new Rule_addMessage());
       default:
     }
     return Collections.<TransformationMenu>emptyList();
   }
+  @NotNull
+  @Override
+  public Collection<TransformationMenu> getDeclaredNamedTransformationMenus(NamedMenuId menuId) {
+    SAbstractConcept cncpt = (SAbstractConcept) menuId.getConcept();
+    switch (conceptIndex2.index(cncpt)) {
+      case 0:
+        if (true) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0a1a4, menuId.getFqName())) {
+            case 0:
+              return Arrays.asList(new TransformationMenu[]{new GAGAGA()});
+            default:
+          }
+        }
+        break;
+      default:
+    }
 
-  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L), MetaIdFactory.conceptId(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce81L)).seal();
-  private static final ConceptSwitchIndex conceptIndex1 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb51750L)).seal();
+    return Collections.<TransformationMenu>emptyList();
+  }
+  @NotNull
+  @Override
+  public Collection<SubstituteMenu> getDeclaredDefaultSubstituteMenus(SAbstractConcept concept) {
+    SAbstractConcept cncpt = concept;
+    switch (conceptIndex3.index(cncpt)) {
+      case 0:
+        return Collections.<SubstituteMenu>singletonList(new AddMyselfToMenuOfRuleBlockMember());
+      default:
+    }
+    return Collections.<SubstituteMenu>emptyList();
+  }
+
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce81L), MetaIdFactory.conceptId(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L)).seal();
+  private static final ConceptSwitchIndex conceptIndex1 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb51750L), MetaIdFactory.conceptId(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L)).seal();
+  private static final ConceptSwitchIndex conceptIndex2 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L)).seal();
+  private static final ConceptSwitchIndex conceptIndex3 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb51750L)).seal();
+  private static String[] stringSwitchCases_xbvbvu_a0a0a0a1a4 = new String[]{"jetbrains.mps.lang.rulesAndMessages.editor.GAGAGA"};
 }

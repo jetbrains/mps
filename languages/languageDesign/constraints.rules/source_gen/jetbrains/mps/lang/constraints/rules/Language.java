@@ -8,6 +8,8 @@ import java.util.Collection;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.runtime.ILanguageAspect;
+import jetbrains.mps.core.aspects.reporting.api.MessagesAspectDescriptor;
+import jetbrains.mps.lang.constraints.rules.constraints2.GeneratedMessagesAspectDescriptor;
 import jetbrains.mps.openapi.actions.descriptor.ActionAspectDescriptor;
 import jetbrains.mps.lang.constraints.rules.actions.ActionAspectDescriptorImpl;
 import jetbrains.mps.smodel.runtime.BehaviorAspectDescriptor;
@@ -54,6 +56,9 @@ public class Language extends LanguageRuntime {
 
   @Override
   protected <T extends ILanguageAspect> T createAspect(Class<T> aspectClass) {
+    if (aspectClass == MessagesAspectDescriptor.class) {
+      return aspectClass.cast(new GeneratedMessagesAspectDescriptor());
+    }
     if (aspectClass == ActionAspectDescriptor.class) {
       return aspectClass.cast(new ActionAspectDescriptorImpl());
     }

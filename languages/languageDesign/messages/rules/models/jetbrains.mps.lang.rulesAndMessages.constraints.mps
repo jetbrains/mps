@@ -50,7 +50,7 @@
             <node concept="nLn13" id="1dKt_a0ofOk" role="2Oq$k0" />
             <node concept="1mIQ4w" id="1dKt_a0og5R" role="2OqNvi">
               <node concept="chp4Y" id="1dKt_a0ogoE" role="cj9EA">
-                <ref role="cht4Q" to="t16r:hyoMxHKcTB" resolve="ConstraintsRuleWithMessage" />
+                <ref role="cht4Q" to="t16r:hyoMxHKcTB" resolve="RuleWithMessage" />
               </node>
             </node>
           </node>

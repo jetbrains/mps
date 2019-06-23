@@ -8,7 +8,6 @@
   <registry>
     <language id="a6518565-7876-48e9-8d43-9ef97836a52e" name="constraints.rules.sandbox">
       <concept id="8859736031789718037" name="constraints.rules.sandbox.structure.ParentConcept1" flags="ng" index="2ouw3J">
-        <property id="7247338141359681466" name="canHaveChildren" index="1uspwu" />
         <child id="8859736031789718038" name="children" index="2ouw3G" />
       </concept>
       <concept id="4575984242823109626" name="constraints.rules.sandbox.structure.ChildOfAConceptWithIncorrectContainmentLink" flags="ng" index="2$Kbam">
@@ -23,9 +22,8 @@
     </language>
   </registry>
   <node concept="2ouw3J" id="7FO6JFyzxJl">
-    <property role="1uspwu" value="true" />
     <node concept="E$Ump" id="7FO6JFyzxJm" role="2ouw3G">
-      <property role="EBmjO" value="65" />
+      <property role="EBmjO" value="66" />
     </node>
   </node>
   <node concept="2$Kban" id="3VxH6EnG6yg">

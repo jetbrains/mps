@@ -83,7 +83,7 @@
           <node concept="2OqwBi" id="1dKt_a0ogEz" role="3clFbG">
             <node concept="1PxgMI" id="4zSofKenMKU" role="2Oq$k0">
               <node concept="chp4Y" id="4zSofKenMLD" role="3oSUPX">
-                <ref role="cht4Q" to="t16r:hyoMxHKcTB" resolve="ConstraintsRuleWithMessage" />
+                <ref role="cht4Q" to="t16r:hyoMxHKcTB" resolve="RuleWithMessage" />
               </node>
               <node concept="2OqwBi" id="4zSofKenMoC" role="1m5AlR">
                 <node concept="13iPFW" id="4zSofKenMeE" role="2Oq$k0" />

@@ -12,17 +12,15 @@ public final class LanguageConceptSwitch {
   public static final int ApplicableCondition = 0;
   public static final int DefForRule = 1;
   public static final int ExpressionWrapper = 2;
-  public static final int PseudoBaseConcept = 3;
-  public static final int Rule = 4;
-  public static final int RuleIdHolder = 5;
-  public static final int TypedDefReference = 6;
+  public static final int Rule = 3;
+  public static final int RuleIdHolder = 4;
+  public static final int TypedDefReference = 5;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0x47257bf378d3470bL, 0x89d98c3261a61d15L);
     builder.put(0x3172094ab484cd2cL, ApplicableCondition);
     builder.put(0x653030359366e9d5L, DefForRule);
     builder.put(0x126f1320a26cf7f1L, ExpressionWrapper);
-    builder.put(0x3ee1b46a97ab01b8L, PseudoBaseConcept);
     builder.put(0x6530303593586de2L, Rule);
     builder.put(0x46263286dbf54aaL, RuleIdHolder);
     builder.put(0x6530303593574311L, TypedDefReference);

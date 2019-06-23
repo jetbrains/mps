@@ -12,7 +12,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_ApplicableCondition;
   private ConceptPresentation props_DefForRule;
   private ConceptPresentation props_ExpressionWrapper;
-  private ConceptPresentation props_PseudoBaseConcept;
   private ConceptPresentation props_Rule;
   private ConceptPresentation props_RuleIdHolder;
   private ConceptPresentation props_TypedDefReference;
@@ -43,12 +42,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_ExpressionWrapper = cpb.create();
         }
         return props_ExpressionWrapper;
-      case LanguageConceptSwitch.PseudoBaseConcept:
-        if (props_PseudoBaseConcept == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          props_PseudoBaseConcept = cpb.create();
-        }
-        return props_PseudoBaseConcept;
       case LanguageConceptSwitch.Rule:
         if (props_Rule == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

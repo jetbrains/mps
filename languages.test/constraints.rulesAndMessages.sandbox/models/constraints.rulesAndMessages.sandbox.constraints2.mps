@@ -2,7 +2,10 @@
 <model ref="r:1f9c133f-fd7b-4552-9a99-e00fc7530617(constraints.rulesAndMessages.sandbox.constraints2)">
   <persistence version="9" />
   <languages>
-    <devkit ref="2843b9cf-86fe-47f2-87c9-f256294fd769(jetbrains.mps.devkit.aspect.constraints.rules)" />
+    <use id="b3551702-269c-4f05-ba61-58060cef4292" name="jetbrains.mps.lang.rulesAndMessages" version="0" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
+    <use id="ad93155d-79b2-4759-b10c-55123e763903" name="jetbrains.mps.lang.messages" version="0" />
+    <devkit ref="4843b9cf-86fe-47f2-87c9-f256294fd740(jetbrains.mps.devkit.aspect.constraints.rulesWithMessages)" />
   </languages>
   <imports>
     <import index="qffw" ref="r:bf693f8c-6f67-4402-a1e2-e61c34b6993e(jetbrains.mps.lang.constraints.rules.constraints2)" />
@@ -26,6 +29,13 @@
       </concept>
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
+    </language>
+    <language id="b3551702-269c-4f05-ba61-58060cef4292" name="jetbrains.mps.lang.rulesAndMessages">
+      <concept id="315923949160549991" name="jetbrains.mps.lang.rulesAndMessages.structure.RuleWithMessage" flags="ng" index="1DCEPf">
+        <child id="1400749580825440508" name="rule" index="2j4cqI" />
+        <child id="315923949160550022" name="messageProvider" index="1DCEQI" />
+      </concept>
+      <concept id="315923949160550017" name="jetbrains.mps.lang.rulesAndMessages.structure.InlineMessageProvider" flags="ng" index="1DCEQD" />
     </language>
     <language id="134c38d4-e3af-4d9e-b069-1c7df0a4005d" name="jetbrains.mps.lang.constraints.rules.skeleton">
       <concept id="1867733327984720090" name="jetbrains.mps.lang.constraints.rules.skeleton.structure.ConstraintsRoot2" flags="ng" index="3Oh7Pa">
@@ -53,6 +63,20 @@
       <concept id="7291380803376279010" name="jetbrains.mps.lang.constraints.rules.structure.Rule" flags="ng" index="3Qq5Rn">
         <child id="1328301445982561464" name="expr" index="2K0Fuo" />
         <child id="1328301445982570429" name="condition" index="2K0Hit" />
+      </concept>
+    </language>
+    <language id="ad93155d-79b2-4759-b10c-55123e763903" name="jetbrains.mps.lang.messages">
+      <concept id="5258059200642172255" name="jetbrains.mps.lang.messages.structure.CombinedMessageExpression" flags="ng" index="16I2mz">
+        <child id="5258059200642172257" name="part" index="16I2mt" />
+      </concept>
+      <concept id="5258059200642278562" name="jetbrains.mps.lang.messages.structure.MacroMessageExpression" flags="ng" index="16Iohu">
+        <reference id="5258059200643228831" name="declaration" index="16E0hz" />
+      </concept>
+      <concept id="5258059200641168386" name="jetbrains.mps.lang.messages.structure.MessageProvider" flags="ng" index="16M9jY">
+        <child id="5258059200641510856" name="message" index="16N$OO" />
+      </concept>
+      <concept id="5258059200641510853" name="jetbrains.mps.lang.messages.structure.LiteralMessageExpression" flags="ng" index="16N$OT">
+        <property id="5258059200641510854" name="message" index="16N$OU" />
       </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
@@ -85,59 +109,104 @@
     <ref role="3Oh7Pe" to="npmf:7w_sh_iHHi0" resolve="ChildConcept1" />
     <node concept="3OnDbq" id="6ijHUgUSgF_" role="3Oh7Pb">
       <ref role="3OnDbs" to="qffw:1dKt_a0noks" resolve="CanBeChild" />
-      <node concept="3Qq5Rn" id="6ijHUgUSC4F" role="3OnDbr">
-        <property role="EcuMT" value="7247338141359702315" />
-        <property role="TrG5h" value="parentIsOfCorrectConcept" />
-        <node concept="2K0Yjh" id="6ijHUgUSC4H" role="2K0Fuo">
-          <node concept="2OqwBi" id="6ijHUgUSCU0" role="2K0yoH">
-            <node concept="2OqwBi" id="6ijHUgUSChZ" role="2Oq$k0">
-              <node concept="3QpRc$" id="6ijHUgUSCa9" role="2Oq$k0">
-                <ref role="3QpVTF" to="qffw:1dKt_a0nok$" resolve="parentNode" />
+      <node concept="1DCEPf" id="7M8nn$ybZUj" role="3OnDbr">
+        <node concept="3Qq5Rn" id="7M8nn$ybZUs" role="2j4cqI">
+          <property role="TrG5h" value="parentCncptCorrect" />
+          <property role="EcuMT" value="8973525032381709980" />
+          <node concept="2K0Yjh" id="7M8nn$ybZUu" role="2K0Fuo">
+            <node concept="2OqwBi" id="7M8nn$ybZUv" role="2K0yoH">
+              <node concept="2OqwBi" id="7M8nn$ybZUw" role="2Oq$k0">
+                <node concept="3QpRc$" id="7M8nn$ybZUx" role="2Oq$k0">
+                  <ref role="3QpVTF" to="qffw:1dKt_a0nok$" resolve="parentNode" />
+                </node>
+                <node concept="2yIwOk" id="7M8nn$ybZUy" role="2OqNvi" />
               </node>
-              <node concept="2yIwOk" id="6ijHUgUSCjm" role="2OqNvi" />
-            </node>
-            <node concept="3O6GUB" id="6ijHUgUSD6X" role="2OqNvi">
-              <node concept="chp4Y" id="6ijHUgUSDaI" role="3QVz_e">
-                <ref role="cht4Q" to="npmf:7FO6JFyzxCl" resolve="ParentConcept1" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3Qq5Rn" id="6ijHUgUSyX3" role="3OnDbr">
-        <property role="EcuMT" value="7247338141359681347" />
-        <property role="TrG5h" value="notTooSmallProperty" />
-        <node concept="2K0Yjh" id="6ijHUgUSyX4" role="2K0Fuo">
-          <node concept="3eOSWO" id="6ijHUgUS$W8" role="2K0yoH">
-            <node concept="3cmrfG" id="6ijHUgUS$Wb" role="3uHU7w">
-              <property role="3cmrfH" value="1" />
-            </node>
-            <node concept="2OqwBi" id="6ijHUgUSzeC" role="3uHU7B">
-              <node concept="3QpRc$" id="6ijHUgUSDGw" role="2Oq$k0">
-                <ref role="3QpVTF" to="qffw:1dKt_a0nokv" resolve="childNode" />
-              </node>
-              <node concept="3TrcHB" id="6ijHUgUSzmt" role="2OqNvi">
-                <ref role="3TsBF5" to="npmf:7w_sh_iI1nH" resolve="testProp" />
+              <node concept="3O6GUB" id="7M8nn$ybZUz" role="2OqNvi">
+                <node concept="chp4Y" id="7M8nn$ybZU$" role="3QVz_e">
+                  <ref role="cht4Q" to="npmf:7FO6JFyzxCl" resolve="ParentConcept1" />
+                </node>
               </node>
             </node>
           </node>
         </node>
-      </node>
-      <node concept="3Qq5Rn" id="6ijHUgUSDSr" role="3OnDbr">
-        <property role="EcuMT" value="7247338141359709723" />
-        <property role="TrG5h" value="notTooLargeProperty" />
-        <node concept="2K0Yjh" id="6ijHUgUSDSt" role="2K0Fuo">
-          <node concept="3eOVzh" id="6ijHUgUSFvV" role="2K0yoH">
-            <node concept="3cmrfG" id="6ijHUgUSFvY" role="3uHU7w">
-              <property role="3cmrfH" value="100" />
+        <node concept="1DCEQD" id="7M8nn$ybZV$" role="1DCEQI">
+          <node concept="16I2mz" id="7M8nn$ybZV_" role="16N$OO">
+            <node concept="16N$OT" id="7M8nn$yc09W" role="16I2mt">
+              <property role="16N$OU" value="The parent node '" />
             </node>
-            <node concept="2OqwBi" id="6ijHUgUSE8U" role="3uHU7B">
-              <node concept="3QpRc$" id="6ijHUgUSDZL" role="2Oq$k0">
-                <ref role="3QpVTF" to="qffw:1dKt_a0nokv" resolve="childNode" />
+            <node concept="16Iohu" id="7M8nn$ybZVE" role="16I2mt">
+              <ref role="16E0hz" to="qffw:1dKt_a0nok$" resolve="parentNode" />
+            </node>
+            <node concept="16N$OT" id="7M8nn$yc0a0" role="16I2mt">
+              <property role="16N$OU" value="' must be of ParentConcept1" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="1DCEPf" id="1GUSN3kB4yE" role="3OnDbr">
+        <node concept="3Qq5Rn" id="1GUSN3kB4yF" role="2j4cqI">
+          <property role="EcuMT" value="1962130386538219691" />
+          <property role="TrG5h" value="notTooSmallProperty" />
+          <node concept="2K0Yjh" id="6ijHUgUSyX4" role="2K0Fuo">
+            <node concept="3eOSWO" id="6ijHUgUS$W8" role="2K0yoH">
+              <node concept="3cmrfG" id="6ijHUgUS$Wb" role="3uHU7w">
+                <property role="3cmrfH" value="1" />
               </node>
-              <node concept="3TrcHB" id="6ijHUgUSEfW" role="2OqNvi">
-                <ref role="3TsBF5" to="npmf:7w_sh_iI1nH" resolve="testProp" />
+              <node concept="2OqwBi" id="6ijHUgUSzeC" role="3uHU7B">
+                <node concept="3QpRc$" id="6ijHUgUSDGw" role="2Oq$k0">
+                  <ref role="3QpVTF" to="qffw:1dKt_a0nokv" resolve="childNode" />
+                </node>
+                <node concept="3TrcHB" id="1GUSN3kBcYM" role="2OqNvi">
+                  <ref role="3TsBF5" to="npmf:7w_sh_iI1nH" resolve="testProp" />
+                </node>
               </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1DCEQD" id="3S9PUGX9Npa" role="1DCEQI">
+          <node concept="16I2mz" id="3S9PUGX9Npb" role="16N$OO">
+            <node concept="16N$OT" id="3S9PUGX9NU8" role="16I2mt">
+              <property role="16N$OU" value="The property 'testProp' in the node " />
+            </node>
+            <node concept="16Iohu" id="3S9PUGX9NLM" role="16I2mt">
+              <ref role="16E0hz" to="qffw:1dKt_a0nokv" resolve="childNode" />
+            </node>
+            <node concept="16N$OT" id="3S9PUGX9NUc" role="16I2mt">
+              <property role="16N$OU" value=" is too small" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="1DCEPf" id="1GUSN3kBdaf" role="3OnDbr">
+        <node concept="3Qq5Rn" id="1GUSN3kBdah" role="2j4cqI">
+          <property role="EcuMT" value="1962130386538254993" />
+          <property role="TrG5h" value="notTooLargeProperty" />
+          <node concept="2K0Yjh" id="1GUSN3kBdaj" role="2K0Fuo">
+            <node concept="3eOVzh" id="3S9PUGX9vLJ" role="2K0yoH">
+              <node concept="3cmrfG" id="3S9PUGX9vLM" role="3uHU7w">
+                <property role="3cmrfH" value="100" />
+              </node>
+              <node concept="2OqwBi" id="3S9PUGX9ukb" role="3uHU7B">
+                <node concept="3QpRc$" id="3S9PUGX9ubk" role="2Oq$k0">
+                  <ref role="3QpVTF" to="qffw:1dKt_a0nokv" resolve="childNode" />
+                </node>
+                <node concept="3TrcHB" id="3S9PUGX9uqU" role="2OqNvi">
+                  <ref role="3TsBF5" to="npmf:7w_sh_iI1nH" resolve="testProp" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1DCEQD" id="3S9PUGX9O31" role="1DCEQI">
+          <node concept="16I2mz" id="3S9PUGX9O32" role="16N$OO">
+            <node concept="16N$OT" id="3S9PUGX9O4f" role="16I2mt">
+              <property role="16N$OU" value="The property 'testProp' in the node " />
+            </node>
+            <node concept="16Iohu" id="3S9PUGX9O49" role="16I2mt">
+              <ref role="16E0hz" to="qffw:1dKt_a0nokv" resolve="childNode" />
+            </node>
+            <node concept="16N$OT" id="3S9PUGX9O4j" role="16I2mt">
+              <property role="16N$OU" value=" is too large" />
             </node>
           </node>
         </node>
@@ -148,62 +217,80 @@
     <ref role="3Oh7Pe" to="npmf:7FO6JFyzxCl" resolve="ParentConcept1" />
     <node concept="3OnDbq" id="6ijHUgUTa2R" role="3Oh7Pb">
       <ref role="3OnDbs" to="qffw:1dKt_a0nokQ" resolve="CanBeParent" />
-      <node concept="3Qq5Rn" id="6ijHUgUTezw" role="3OnDbr">
-        <property role="EcuMT" value="7247338141359859936" />
-        <property role="TrG5h" value="propertyIsSetCorrectly" />
-        <node concept="2K0Yjh" id="6ijHUgUTezx" role="2K0Fuo">
-          <node concept="2OqwBi" id="6ijHUgUTeGX" role="2K0yoH">
-            <node concept="3QpRc$" id="6ijHUgUTezN" role="2Oq$k0">
-              <ref role="3QpVTF" to="qffw:1dKt_a0nokS" resolve="parentNode" />
+      <node concept="1DCEPf" id="7M8nn$yhbVs" role="3OnDbr">
+        <node concept="3Qq5Rn" id="7M8nn$yhbVu" role="2j4cqI">
+          <property role="EcuMT" value="8973525032383069918" />
+          <property role="TrG5h" value="propertyIsSetCorrectly" />
+          <node concept="2K0Yjh" id="7M8nn$yhbVw" role="2K0Fuo">
+            <node concept="2OqwBi" id="7M8nn$yheY5" role="2K0yoH">
+              <node concept="3QpRc$" id="7M8nn$yhePr" role="2Oq$k0">
+                <ref role="3QpVTF" to="qffw:1dKt_a0nokS" resolve="parentNode" />
+              </node>
+              <node concept="3TrcHB" id="7M8nn$yheZc" role="2OqNvi">
+                <ref role="3TsBF5" to="npmf:6ijHUgUSyYU" resolve="canHaveChildren" />
+              </node>
             </node>
-            <node concept="3TrcHB" id="6ijHUgUTeNZ" role="2OqNvi">
-              <ref role="3TsBF5" to="npmf:6ijHUgUSyYU" resolve="canHaveChildren" />
+          </node>
+        </node>
+        <node concept="1DCEQD" id="7M8nn$yhh6l" role="1DCEQI">
+          <node concept="16I2mz" id="7M8nn$yhh6m" role="16N$OO">
+            <node concept="16N$OT" id="7M8nn$yhh6y" role="16I2mt">
+              <property role="16N$OU" value="The node cannot have children if the property is set to false" />
             </node>
           </node>
         </node>
       </node>
-      <node concept="3Qq5Rn" id="6ijHUgUTeZy" role="3OnDbr">
-        <property role="EcuMT" value="7247338141359861730" />
-        <property role="TrG5h" value="propertyInChildIsSetCorrectly" />
-        <node concept="2K0Yjh" id="6ijHUgUTeZz" role="2K0Fuo">
-          <node concept="3y3z36" id="6ijHUgUThVX" role="2K0yoH">
-            <node concept="3cmrfG" id="6ijHUgUThZ5" role="3uHU7w">
-              <property role="3cmrfH" value="65" />
-            </node>
-            <node concept="2OqwBi" id="6ijHUgUTfjz" role="3uHU7B">
-              <node concept="1PxgMI" id="6ijHUgUTf9$" role="2Oq$k0">
-                <node concept="chp4Y" id="6ijHUgUTf9X" role="3oSUPX">
-                  <ref role="cht4Q" to="npmf:7w_sh_iHHi0" resolve="ChildConcept1" />
+      <node concept="1DCEPf" id="7M8nn$yhbW$" role="3OnDbr">
+        <node concept="3Qq5Rn" id="7M8nn$yhbWA" role="2j4cqI">
+          <property role="EcuMT" value="8973525032383069990" />
+          <property role="TrG5h" value="propertyInChildIsSetCorrectly" />
+          <node concept="2K0Yjh" id="7M8nn$yhbWC" role="2K0Fuo">
+            <node concept="3y3z36" id="7M8nn$yhgEA" role="2K0yoH">
+              <node concept="3cmrfG" id="7M8nn$yhgFi" role="3uHU7w">
+                <property role="3cmrfH" value="65" />
+              </node>
+              <node concept="2OqwBi" id="7M8nn$yhfje" role="3uHU7B">
+                <node concept="1PxgMI" id="7M8nn$yhf9n" role="2Oq$k0">
+                  <node concept="chp4Y" id="7M8nn$yhf9K" role="3oSUPX">
+                    <ref role="cht4Q" to="npmf:7w_sh_iHHi0" resolve="ChildConcept1" />
+                  </node>
+                  <node concept="3QpRc$" id="7M8nn$yhf1p" role="1m5AlR">
+                    <ref role="3QpVTF" to="qffw:1dKt_a0nokT" resolve="childNode" />
+                  </node>
                 </node>
-                <node concept="3QpRc$" id="6ijHUgUTf6R" role="1m5AlR">
-                  <ref role="3QpVTF" to="qffw:1dKt_a0nokT" resolve="childNode" />
+                <node concept="3TrcHB" id="7M8nn$yhfq_" role="2OqNvi">
+                  <ref role="3TsBF5" to="npmf:7w_sh_iI1nH" resolve="testProp" />
                 </node>
               </node>
-              <node concept="3TrcHB" id="6ijHUgUTfrd" role="2OqNvi">
-                <ref role="3TsBF5" to="npmf:7w_sh_iI1nH" resolve="testProp" />
+            </node>
+          </node>
+          <node concept="25XGhA" id="7M8nn$yhgHm" role="2K0Hit">
+            <node concept="2K0Yjh" id="7M8nn$yhgHn" role="2K0D5Q">
+              <node concept="1Wc70l" id="7M8nn$yhgOS" role="2K0yoH">
+                <node concept="2OqwBi" id="7M8nn$yhgST" role="3uHU7w">
+                  <node concept="3QpRc$" id="7M8nn$yhgPq" role="2Oq$k0">
+                    <ref role="3QpVTF" to="qffw:1dKt_a0nokT" resolve="childNode" />
+                  </node>
+                  <node concept="1mIQ4w" id="7M8nn$yhgYz" role="2OqNvi">
+                    <node concept="chp4Y" id="7M8nn$yhh0E" role="cj9EA">
+                      <ref role="cht4Q" to="npmf:7w_sh_iHHi0" resolve="ChildConcept1" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="3y3z36" id="7M8nn$yhgOs" role="3uHU7B">
+                  <node concept="3QpRc$" id="7M8nn$yhgI1" role="3uHU7B">
+                    <ref role="3QpVTF" to="qffw:1dKt_a0nokT" resolve="childNode" />
+                  </node>
+                  <node concept="10Nm6u" id="7M8nn$yhgOz" role="3uHU7w" />
+                </node>
               </node>
             </node>
           </node>
         </node>
-        <node concept="25XGhA" id="6ijHUgUThZR" role="2K0Hit">
-          <node concept="2K0Yjh" id="6ijHUgUThZS" role="2K0D5Q">
-            <node concept="1Wc70l" id="6ijHUgUTibm" role="2K0yoH">
-              <node concept="3y3z36" id="6ijHUgUTij9" role="3uHU7B">
-                <node concept="10Nm6u" id="6ijHUgUTinh" role="3uHU7w" />
-                <node concept="3QpRc$" id="6ijHUgUTifw" role="3uHU7B">
-                  <ref role="3QpVTF" to="qffw:1dKt_a0nokT" resolve="childNode" />
-                </node>
-              </node>
-              <node concept="2OqwBi" id="6ijHUgUTi4_" role="3uHU7w">
-                <node concept="3QpRc$" id="6ijHUgUTi2T" role="2Oq$k0">
-                  <ref role="3QpVTF" to="qffw:1dKt_a0nokT" resolve="childNode" />
-                </node>
-                <node concept="1mIQ4w" id="6ijHUgUTi5w" role="2OqNvi">
-                  <node concept="chp4Y" id="6ijHUgUTi7i" role="cj9EA">
-                    <ref role="cht4Q" to="npmf:7w_sh_iHHi0" resolve="ChildConcept1" />
-                  </node>
-                </node>
-              </node>
+        <node concept="1DCEQD" id="7M8nn$yhh6K" role="1DCEQI">
+          <node concept="16I2mz" id="7M8nn$yhh6L" role="16N$OO">
+            <node concept="16N$OT" id="7M8nn$yhha6" role="16I2mt">
+              <property role="16N$OU" value="The child property cannot be equal to 65" />
             </node>
           </node>
         </node>

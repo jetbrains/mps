@@ -25,7 +25,7 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
     {
-      NonTypesystemRule_Runtime nonTypesystemRule = new check_ConstraintsRule_Id_NonTypesystemRule();
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_ConstraintsRuleId_NonTypesystemRule();
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
   }

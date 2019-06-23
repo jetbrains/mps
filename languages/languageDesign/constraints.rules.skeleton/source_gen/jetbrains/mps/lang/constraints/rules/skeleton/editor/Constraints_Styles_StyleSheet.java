@@ -54,7 +54,7 @@ public class Constraints_Styles_StyleSheet {
     @Override
     public void apply(Style style, EditorCell editorCell) {
       style.set(StyleAttributes.FONT_STYLE, MPSFonts.PLAIN);
-      style.set(StyleAttributes.PADDING_BOTTOM, new Padding(0.1, Measure.SPACES));
+      style.set(StyleAttributes.PADDING_BOTTOM, new Padding(0.2, Measure.SPACES));
       style.set(StyleAttributes.PADDING_TOP, new Padding(0.2, Measure.SPACES));
     }
 

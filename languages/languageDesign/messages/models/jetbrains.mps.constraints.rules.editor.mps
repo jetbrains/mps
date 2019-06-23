@@ -99,6 +99,7 @@
         <child id="1136930944870" name="item" index="2QnnpI" />
       </concept>
       <concept id="3383245079137382180" name="jetbrains.mps.lang.editor.structure.StyleClass" flags="ig" index="14StLt" />
+      <concept id="8313721352726366579" name="jetbrains.mps.lang.editor.structure.CellModel_Empty" flags="ng" index="35HoNQ" />
       <concept id="8998492695583109601" name="jetbrains.mps.lang.editor.structure.QueryFunction_SubstituteMenu_CanSubstitute" flags="ig" index="16Na2f" />
       <concept id="8998492695583125082" name="jetbrains.mps.lang.editor.structure.SubstituteFeature_MatchingText" flags="ng" index="16NfWO">
         <child id="8998492695583129244" name="query" index="16NeZM" />
@@ -413,13 +414,14 @@
     <ref role="1XX52x" to="t9po:6kKc3mjFxph" resolve="MessageProviderForRule" />
     <node concept="3EZMnI" id="6kKc3mjFxpL" role="2wV5jI">
       <node concept="3F0ifn" id="6kKc3mjFxpS" role="3EZMnx">
-        <property role="3F0ifm" value="message" />
+        <property role="3F0ifm" value="show message" />
       </node>
       <node concept="3F1sOY" id="4zSofKed$cf" role="3EZMnx">
         <ref role="1NtTu8" to="t9po:4zSofKedyR8" resolve="message" />
       </node>
+      <node concept="35HoNQ" id="3S9PUGX9OlE" role="3EZMnx" />
       <node concept="3F0ifn" id="6kKc3mjFxq6" role="3EZMnx">
-        <property role="3F0ifm" value="for rule" />
+        <property role="3F0ifm" value="for the failed rule" />
       </node>
       <node concept="l2Vlx" id="6kKc3mjFxpO" role="2iSdaV" />
       <node concept="1iCGBv" id="4zSofKeeUoe" role="3EZMnx">

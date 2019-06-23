@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-bhfg397e1yh95913y4lukhf75fpc7x1">
-  <files names="ApplicableCondition_Editor.java:ApplicableCondition_EditorBuilder_a.java:ConstraintsDef_isDefined.java:ConstraintsDef_isDefined_ComponentBuilder_a.java:Constraints_Styles_StyleSheet.java:DefForRule_Editor.java:DefForRule_EditorBuilder_a.java:EditorAspectDescriptorImpl.java:ExpressionWrapper_Editor.java:ExpressionWrapper_EditorBuilder_a.java:Rule_Editor.java:Rule_EditorBuilder_a.java:Rule_InspectorBuilder_a.java:TypedDefReference_Editor.java:TypedDefReference_EditorBuilder_a.java:TypedDefReference_SubstituteMenu.java" />
+<product version="3" modelHash="38hr04g7ss5wb09epwv16m4j1wdp9zu">
+  <files names="AddMyselfToMenuOfRuleBlockMember.java:ApplicableCondition_Editor.java:ApplicableCondition_EditorBuilder_a.java:ConstraintsDef_isDefined.java:ConstraintsDef_isDefined_ComponentBuilder_a.java:Constraints_Styles_StyleSheet.java:DefForRule_Editor.java:DefForRule_EditorBuilder_a.java:EditorAspectDescriptorImpl.java:ExpressionWrapper_Editor.java:ExpressionWrapper_EditorBuilder_a.java:Rule_Editor.java:Rule_EditorBuilder_a.java:Rule_InspectorBuilder_a.java:TypedDefReference_Editor.java:TypedDefReference_EditorBuilder_a.java:TypedDefReference_SubstituteMenu.java:delete_exprWrapper.java" />
 </product>
 

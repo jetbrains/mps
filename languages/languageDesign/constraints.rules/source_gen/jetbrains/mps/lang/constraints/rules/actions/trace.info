@@ -5,25 +5,39 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
   <root>
     <file name="ActionAspectDescriptorImpl.java">
-      <unit at="13,0,30,0" name="jetbrains.mps.lang.constraints.rules.actions.ActionAspectDescriptorImpl" />
+      <unit at="13,0,32,0" name="jetbrains.mps.lang.constraints.rules.actions.ActionAspectDescriptorImpl" />
     </file>
   </root>
   <root nodeRef="r:0a04f96b-dac5-4ea1-9fd0-9fb1105a1fa4(jetbrains.mps.lang.constraints.rules.actions)/5258059200640692078">
     <file name="ConstraintsRule_factories.java">
       <node id="5258059200640694095" at="16,202,17,486" concept="0" />
       <node id="5258059200640699510" at="17,486,18,515" concept="0" />
+      <node id="8973525032383071886" at="24,215,25,540" concept="0" />
+      <node id="8973525032383079351" at="26,199,27,353" concept="0" />
       <node id="5258059200640692092" at="15,91,19,7" concept="1" />
+      <node id="8973525032383070642" at="23,91,28,7" concept="1" />
       <node id="5258059200640692079" at="15,0,21,0" concept="2" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
+      <node id="8973525032383070599" at="23,0,30,0" concept="2" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
+      <scope id="8973525032383070644" at="24,215,25,540" />
+      <scope id="8973525032383077625" at="26,199,27,353" />
       <scope id="5258059200640692094" at="16,202,18,515" />
       <scope id="5258059200640692079" at="15,91,19,7" />
+      <scope id="8973525032383070599" at="23,91,28,7" />
       <scope id="5258059200640692079" at="15,0,21,0">
         <var name="enclosingNode" id="5258059200640692079" />
         <var name="model" id="5258059200640692079" />
         <var name="newNode" id="5258059200640692079" />
         <var name="sampleNode" id="5258059200640692079" />
       </scope>
+      <scope id="8973525032383070599" at="23,0,30,0">
+        <var name="enclosingNode" id="8973525032383070599" />
+        <var name="model" id="8973525032383070599" />
+        <var name="newNode" id="8973525032383070599" />
+        <var name="sampleNode" id="8973525032383070599" />
+      </scope>
       <unit id="5258059200640692079" at="14,0,22,0" name="jetbrains.mps.lang.constraints.rules.actions.ConstraintsRule_factories$NodeFactory_5258059200640692079" />
-      <unit id="5258059200640692078" at="13,0,23,0" name="jetbrains.mps.lang.constraints.rules.actions.ConstraintsRule_factories" />
+      <unit id="8973525032383070599" at="22,0,31,0" name="jetbrains.mps.lang.constraints.rules.actions.ConstraintsRule_factories$NodeFactory_8973525032383070599" />
+      <unit id="5258059200640692078" at="13,0,32,0" name="jetbrains.mps.lang.constraints.rules.actions.ConstraintsRule_factories" />
     </file>
   </root>
 </debug-info>

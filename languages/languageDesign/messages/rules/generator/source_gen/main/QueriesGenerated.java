@@ -44,7 +44,7 @@ public class QueriesGenerated extends QueryProviderBase {
     @NotNull final SNode myConcept = SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x6530303593ae1607L, 0x63c2f3669ce56d5dL, "concept"));
     return ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(_context.getNode()), MetaAdapterFactory.getConcept(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edaff8daL, "jetbrains.mps.lang.constraints.rules.skeleton.structure.ConstraintsRoot2"))).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Objects.equals(SLinkOperations.getTarget(it, MetaAdapterFactory.getReferenceLink(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edaff8daL, 0x19eb8590edaff8deL, "concept")), myConcept) && ListSequence.fromList(SNodeOperations.getNodeDescendants(it, MetaAdapterFactory.getConcept(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, "jetbrains.mps.lang.rulesAndMessages.structure.ConstraintsRuleWithMessage"), false, new SAbstractConcept[]{})).isNotEmpty();
+        return Objects.equals(SLinkOperations.getTarget(it, MetaAdapterFactory.getReferenceLink(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edaff8daL, 0x19eb8590edaff8deL, "concept")), myConcept) && ListSequence.fromList(SNodeOperations.getNodeDescendants(it, MetaAdapterFactory.getConcept(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, "jetbrains.mps.lang.rulesAndMessages.structure.RuleWithMessage"), false, new SAbstractConcept[]{})).isNotEmpty();
       }
     });
   }
@@ -63,7 +63,7 @@ public class QueriesGenerated extends QueryProviderBase {
       public boolean accept(SNode it) {
         return Objects.equals(SLinkOperations.getTarget(it, MetaAdapterFactory.getReferenceLink(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edaff8daL, 0x19eb8590edaff8deL, "concept")), myConcept);
       }
-    }).first(), MetaAdapterFactory.getConcept(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, "jetbrains.mps.lang.rulesAndMessages.structure.ConstraintsRuleWithMessage"), false, new SAbstractConcept[]{});
+    }).first(), MetaAdapterFactory.getConcept(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, "jetbrains.mps.lang.rulesAndMessages.structure.RuleWithMessage"), false, new SAbstractConcept[]{});
   }
   public static SNode weavingRule_ContextQuery_0_0(final WeavingMappingRuleContext _context) {
     return _context.getCopiedOutputNodeForInputNode(_context.getNode());

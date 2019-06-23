@@ -8,9 +8,11 @@
     <classNode dependClassName="jetbrains.mps.lang.rulesAndMessages.behavior.BehaviorAspectDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.rulesAndMessages.constraints.ConstraintsAspectDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.rulesAndMessages.editor.EditorAspectDescriptorImpl" />
+    <classNode dependClassName="jetbrains.mps.lang.rulesAndMessages.intentions.IntentionsDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.rulesAndMessages.structure.ConceptPresentationAspectImpl" />
     <classNode dependClassName="jetbrains.mps.lang.rulesAndMessages.structure.StructureAspectDescriptor" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor" />
+    <classNode dependClassName="jetbrains.mps.openapi.intentions.IntentionAspectDescriptor" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.ids.SLanguageId" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="jetbrains.mps.smodel.runtime.BehaviorAspectDescriptor" />

@@ -9,22 +9,14 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
-  private ConceptPresentation props_ConstraintsRuleWithMessage;
   private ConceptPresentation props_InlineMessageProvider;
+  private ConceptPresentation props_RuleWithMessage;
 
   @Override
   @Nullable
   public ConceptPresentation getDescriptor(SAbstractConcept c) {
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
-      case LanguageConceptSwitch.ConstraintsRuleWithMessage:
-        if (props_ConstraintsRuleWithMessage == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.shortDesc("rule with message");
-          cpb.rawPresentation("rule");
-          props_ConstraintsRuleWithMessage = cpb.create();
-        }
-        return props_ConstraintsRuleWithMessage;
       case LanguageConceptSwitch.InlineMessageProvider:
         if (props_InlineMessageProvider == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -32,6 +24,14 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_InlineMessageProvider = cpb.create();
         }
         return props_InlineMessageProvider;
+      case LanguageConceptSwitch.RuleWithMessage:
+        if (props_RuleWithMessage == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("rule with message");
+          cpb.rawPresentation("rule");
+          props_RuleWithMessage = cpb.create();
+        }
+        return props_RuleWithMessage;
     }
     return null;
   }

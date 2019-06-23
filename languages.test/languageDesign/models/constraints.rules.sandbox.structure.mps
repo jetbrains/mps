@@ -7,7 +7,6 @@
   </languages>
   <imports>
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
-    <import index="bm42" ref="r:83f25986-cdbc-469a-a327-db97a2ec5a39(jetbrains.mps.lang.constraints.rules.structure)" implicit="true" />
   </imports>
   <registry>
     <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
@@ -16,13 +15,9 @@
         <child id="1071489727083" name="linkDeclaration" index="1TKVEi" />
         <child id="1071489727084" name="propertyDeclaration" index="1TKVEl" />
       </concept>
-      <concept id="1169127622168" name="jetbrains.mps.lang.structure.structure.InterfaceConceptReference" flags="ig" index="PrWs8">
-        <reference id="1169127628841" name="intfc" index="PrY4T" />
-      </concept>
       <concept id="1071489090640" name="jetbrains.mps.lang.structure.structure.ConceptDeclaration" flags="ig" index="1TIwiD">
         <property id="1096454100552" name="rootable" index="19KtqR" />
         <reference id="1071489389519" name="extends" index="1TJDcQ" />
-        <child id="1169129564478" name="implements" index="PzmwI" />
       </concept>
       <concept id="1071489288299" name="jetbrains.mps.lang.structure.structure.PropertyDeclaration" flags="ig" index="1TJgyi">
         <property id="241647608299431129" name="propertyId" index="IQ2nx" />
@@ -50,9 +45,6 @@
       <property role="TrG5h" value="testProp" />
       <ref role="AX2Wp" to="tpck:fKAQMTA" resolve="integer" />
     </node>
-    <node concept="PrWs8" id="3VxH6EnFLtC" role="PzmwI">
-      <ref role="PrY4T" to="bm42:3VxH6EnEK6S" resolve="PseudoBaseConcept" />
-    </node>
   </node>
   <node concept="1TIwiD" id="7FO6JFyzxCl">
     <property role="EcuMT" value="8859736031789718037" />
@@ -65,9 +57,6 @@
       <property role="20kJfa" value="children" />
       <property role="20lbJX" value="0..n" />
       <ref role="20lvS9" node="7w_sh_iHHi0" resolve="ChildConcept1" />
-    </node>
-    <node concept="PrWs8" id="3VxH6EnFLtG" role="PzmwI">
-      <ref role="PrY4T" to="bm42:3VxH6EnEK6S" resolve="PseudoBaseConcept" />
     </node>
     <node concept="1TJgyi" id="6ijHUgUSyYU" role="1TKVEl">
       <property role="IQ2nx" value="7247338141359681466" />
@@ -84,9 +73,6 @@
       <property role="TrG5h" value="c" />
       <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
     </node>
-    <node concept="PrWs8" id="3VxH6EnFLtE" role="PzmwI">
-      <ref role="PrY4T" to="bm42:3VxH6EnEK6S" resolve="PseudoBaseConcept" />
-    </node>
   </node>
   <node concept="1TIwiD" id="3Y1amMrgpJV">
     <property role="EcuMT" value="4575984242823109627" />
@@ -100,9 +86,6 @@
       <property role="20lbJX" value="0..n" />
       <ref role="20lvS9" node="3Y1amMrgpJU" resolve="ChildOfAConceptWithIncorrectContainmentLink" />
     </node>
-    <node concept="PrWs8" id="3VxH6EnFLtI" role="PzmwI">
-      <ref role="PrY4T" to="bm42:3VxH6EnEK6S" resolve="PseudoBaseConcept" />
-    </node>
   </node>
   <node concept="1TIwiD" id="6ijHUgUTFDn">
     <property role="EcuMT" value="7247338141359979095" />
@@ -111,9 +94,6 @@
       <property role="IQ2nx" value="7247338141359979096" />
       <property role="TrG5h" value="testProp" />
       <ref role="AX2Wp" to="tpck:fKAQMTA" resolve="integer" />
-    </node>
-    <node concept="PrWs8" id="6ijHUgUTFDp" role="PzmwI">
-      <ref role="PrY4T" to="bm42:3VxH6EnEK6S" resolve="PseudoBaseConcept" />
     </node>
   </node>
   <node concept="1TIwiD" id="6ijHUgUTFDq">
@@ -127,9 +107,6 @@
       <property role="20kJfa" value="children" />
       <property role="20lbJX" value="0..n" />
       <ref role="20lvS9" node="7w_sh_iHHi0" resolve="ChildConcept1" />
-    </node>
-    <node concept="PrWs8" id="6ijHUgUTFDs" role="PzmwI">
-      <ref role="PrY4T" to="bm42:3VxH6EnEK6S" resolve="PseudoBaseConcept" />
     </node>
     <node concept="1TJgyi" id="6ijHUgUTFDt" role="1TKVEl">
       <property role="IQ2nx" value="7247338141359979101" />

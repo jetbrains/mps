@@ -114,6 +114,9 @@ public class QueriesGenerated extends QueryProviderBase {
   public static boolean ifMacro_Condition_4_0(final IfMacroContext _context) {
     return (SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e41e4a2L, 0x48f860fc0e50649fL, "declaration")), MetaAdapterFactory.getConcept(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, 0x6530303593554248L, "jetbrains.mps.lang.constraints.rules.kinds.structure.RuleKind"), false, false) != null);
   }
+  public static boolean ifMacro_Condition_5_0(final IfMacroContext _context) {
+    return ((SModel) _context.getVariable("var:model")) != null;
+  }
   public static SNode sourceNodeQuery_1_0(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e30f402L, 0x48f860fc0e362dc8L, "message"));
   }
@@ -151,13 +154,20 @@ public class QueriesGenerated extends QueryProviderBase {
     return (SNode) StatementList__BehaviorDescriptor.getFirstStatement_id4GU1DgEHJ2u.invoke(SNodeOperations.cast(_context.getMainContextNode(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
   }
   public static Object varMacro_Value_5_0(final TemplateVarContext _context) {
+    // rather we generate in lang.descriptor refs to all ILanguageAspect instances in all of the models in the module, 
+    // then we use weaves/reductions to use this references in order to restore the ref to the <GeneratedAspectDescriptor>. 
+    //  
     final SRepository repository = _context.getOriginalInputModel().getRepository();
-    return ModelReference__BehaviorDescriptor.toModelReference_id2BHFktfnfdc.invoke(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xf4ad079dbc714ffbL, 0x96009328705cf998L, 0x7d2f7947ef1533a5L, 0x179194ecf7e0953bL, "language")), MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x5869770da61dfe2bL, "model"))).findFirst(new IWhereFilter<SNode>() {
+    SNode constraints2Ref = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xf4ad079dbc714ffbL, 0x96009328705cf998L, 0x7d2f7947ef1533a5L, 0x179194ecf7e0953bL, "language")), MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x5869770da61dfe2bL, "model"))).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         SModel resolved = ModelReference__BehaviorDescriptor.toModelReference_id2BHFktfnfdc.invoke(it).resolve(repository);
         return isEmptyString(SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe27L, 0x5c5cb5cdd09abfb1L, "stereotype"))) && SModuleOperations.isAspect(resolved, "constraints2");
       }
-    })).resolve(repository);
+    });
+    if (constraints2Ref == null) {
+      return null;
+    }
+    return ModelReference__BehaviorDescriptor.toModelReference_id2BHFktfnfdc.invoke(constraints2Ref).resolve(repository);
   }
   private final Map<String, CreateRootCondition> crcMethods = new HashMap<String, CreateRootCondition>();
   {
@@ -372,6 +382,7 @@ public class QueriesGenerated extends QueryProviderBase {
     int i = 0;
     imcMethods.put("8276826811723549583", new QueriesGenerated.IfMC(i++));
     imcMethods.put("4636242761502389218", new QueriesGenerated.IfMC(i++));
+    imcMethods.put("668954446732559948", new QueriesGenerated.IfMC(i++));
   }
   @NotNull
   @Override
@@ -394,6 +405,8 @@ public class QueriesGenerated extends QueryProviderBase {
           return QueriesGenerated.ifMacro_Condition_3_0(ctx);
         case 1:
           return QueriesGenerated.ifMacro_Condition_4_0(ctx);
+        case 2:
+          return QueriesGenerated.ifMacro_Condition_5_0(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no condition method for if macro %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }

@@ -31,7 +31,7 @@ public final class InlineMessageProvider__BehaviorDescriptor extends BaseBHDescr
   }
 
   /*package*/ static SNode getCustomizingRule_id4zSofKenMaQ(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), MetaAdapterFactory.getConcept(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, "jetbrains.mps.lang.rulesAndMessages.structure.ConstraintsRuleWithMessage")), MetaAdapterFactory.getContainmentLink(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, 0x137076528060b0fcL, "rule"));
+    return SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), MetaAdapterFactory.getConcept(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, "jetbrains.mps.lang.rulesAndMessages.structure.RuleWithMessage")), MetaAdapterFactory.getContainmentLink(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, 0x137076528060b0fcL, "rule"));
   }
 
   /*package*/ InlineMessageProvider__BehaviorDescriptor() {

@@ -43,7 +43,7 @@
   </registry>
   <node concept="1TIwiD" id="hyoMxHKcTB">
     <property role="EcuMT" value="315923949160549991" />
-    <property role="TrG5h" value="ConstraintsRuleWithMessage" />
+    <property role="TrG5h" value="RuleWithMessage" />
     <property role="34LRSv" value="rule" />
     <property role="R4oN_" value="rule with message" />
     <node concept="1TJgyj" id="1dKt_a0ob3W" role="1TKVEi">

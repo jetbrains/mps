@@ -55,13 +55,13 @@
       <property role="2V$B1T" value="5dae8159-ab99-46bb-a40d-0cee30ee7018" />
       <property role="2V$B1Q" value="jetbrains.mps.lang.constraints.rules.kinds" />
     </node>
-    <node concept="2V$Bhx" id="1TfWqDAKbo9" role="QG$2i">
-      <property role="2V$B1T" value="47257bf3-78d3-470b-89d9-8c3261a61d15" />
-      <property role="2V$B1Q" value="jetbrains.mps.lang.constraints.rules" />
+    <node concept="2V$Bhx" id="1FBVWoj_yHD" role="QG$2i">
+      <property role="2V$B1T" value="b3551702-269c-4f05-ba61-58060cef4292" />
+      <property role="2V$B1Q" value="jetbrains.mps.lang.rulesAndMessages" />
     </node>
-    <node concept="T9mpH" id="6bTaywoF4dB" role="TkT64">
-      <property role="T9mpF" value="2843b9cf-86fe-47f2-87c9-f256294fd769" />
-      <property role="T9mpE" value="jetbrains.mps.devkit.aspect.constraints.rules" />
+    <node concept="T9mpH" id="1FBVWoj_$mb" role="TkT64">
+      <property role="T9mpF" value="4843b9cf-86fe-47f2-87c9-f256294fd740" />
+      <property role="T9mpE" value="jetbrains.mps.devkit.aspect.constraints.rulesWithMessages" />
     </node>
     <node concept="2vPdvu" id="7w_sh_iHHi1" role="3F_NFc">
       <node concept="1SjbrP" id="7w_sh_iHHit" role="2vPdvg">

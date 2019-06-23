@@ -29,7 +29,7 @@
       <node id="1400749580825565612" at="51,0,54,0" concept="4" trace="referenceMacro_GetReferent_2_0#(Ljetbrains/mps/generator/template/ReferenceMacroContext;)Ljava/lang/Object;" />
       <node id="5155963451167373638" at="57,0,60,0" concept="4" trace="sourceNodeQuery_2_0#(Ljetbrains/mps/generator/template/SourceSubstituteMacroNodeContext;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="5155963451167379072" at="63,0,66,0" concept="1" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="5155963451167379062" at="61,215,66,218" concept="3" />
+      <node id="5155963451167379062" at="61,215,66,207" concept="3" />
       <node id="5155963451167378346" at="60,0,68,0" concept="4" trace="sourceNodesQuery_2_0#(Ljetbrains/mps/generator/template/SourceSubstituteMacroNodesContext;)Ljava/lang/Iterable;" />
       <scope id="1400749580825565613" at="51,93,52,95" />
       <scope id="5155963451167373639" at="57,92,58,358" />
@@ -46,7 +46,7 @@
       <scope id="5155963451167379072" at="63,0,66,0">
         <var name="it" id="5155963451167379072" />
       </scope>
-      <scope id="5155963451167378347" at="60,104,66,218">
+      <scope id="5155963451167378347" at="60,104,66,207">
         <var name="myConcept" id="5155963451167379056" />
       </scope>
       <scope id="5155963451167378346" at="60,0,68,0">
@@ -58,7 +58,7 @@
   <root nodeRef="r:adc831e9-1d88-4ceb-8acb-e4cd3ccdce71(main@generator)/315923949160924440">
     <file name="QueriesGenerated.java">
       <node id="1438037335490692636" at="43,83,44,215" concept="2" />
-      <node id="1438037335490769140" at="46,39,47,484" concept="3" />
+      <node id="1438037335490769140" at="46,39,47,473" concept="3" />
       <node id="1438037335490667058" at="68,94,69,72" concept="3" />
       <node id="1438037335490667022" at="73,14,74,74" concept="0" />
       <node id="1438037335490667022" at="111,15,112,58" concept="3" />
@@ -68,7 +68,7 @@
       <node id="1438037335490667023" at="68,0,71,0" concept="4" trace="weavingRule_ContextQuery_0_0#(Ljetbrains/mps/generator/template/WeavingMappingRuleContext;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="1438037335490670918" at="44,215,49,7" concept="3" />
       <node id="1438037335490669250" at="43,0,51,0" concept="4" trace="rule_Condition_0_0#(Ljetbrains/mps/generator/template/BaseMappingRuleContext;)Z" />
-      <scope id="1438037335490769139" at="46,39,47,484" />
+      <scope id="1438037335490769139" at="46,39,47,473" />
       <scope id="1438037335490667024" at="68,94,69,72" />
       <scope id="1438037335490667022" at="111,15,112,58" />
       <scope id="1438037335490667022" at="120,15,121,68" />

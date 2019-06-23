@@ -58,11 +58,11 @@ public class LanguageAspectsEP_extension extends Extension.Default<LanguageAspec
         }).ofType(SModel.class).toListSequence();
       }
       public SModuleReference getDefaultDevkit() {
-        return PersistenceFacade.getInstance().createModuleReference("2843b9cf-86fe-47f2-87c9-f256294fd769(jetbrains.mps.devkit.aspect.constraints.rules)");
+        return PersistenceFacade.getInstance().createModuleReference("4843b9cf-86fe-47f2-87c9-f256294fd740(jetbrains.mps.devkit.aspect.constraints.rulesWithMessages)");
       }
       @NotNull
       public Collection<SLanguage> getMainLanguages() {
-        return ListSequence.fromListAndArray(new ArrayList<SLanguage>(), MetaAdapterFactory.getLanguage(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, "jetbrains.mps.lang.constraints.rules.skeleton"), MetaAdapterFactory.getLanguage(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, "jetbrains.mps.lang.constraints.rules.kinds"), MetaAdapterFactory.getLanguage(0x47257bf378d3470bL, 0x89d98c3261a61d15L, "jetbrains.mps.lang.constraints.rules"));
+        return ListSequence.fromListAndArray(new ArrayList<SLanguage>(), MetaAdapterFactory.getLanguage(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, "jetbrains.mps.lang.constraints.rules.skeleton"), MetaAdapterFactory.getLanguage(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, "jetbrains.mps.lang.constraints.rules.kinds"), MetaAdapterFactory.getLanguage(0xb3551702269c4f05L, 0xba6158060cef4292L, "jetbrains.mps.lang.rulesAndMessages"));
       }
       @Nullable
       public LanguageAspectGenerator getGenerator() {

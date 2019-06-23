@@ -13,8 +13,8 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder2;
 
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
-  /*package*/ final ConceptDescriptor myConceptConstraintsRuleWithMessage = createDescriptorForConstraintsRuleWithMessage();
   /*package*/ final ConceptDescriptor myConceptInlineMessageProvider = createDescriptorForInlineMessageProvider();
+  /*package*/ final ConceptDescriptor myConceptRuleWithMessage = createDescriptorForRuleWithMessage();
   private final LanguageConceptSwitch myIndexSwitch;
 
   public StructureAspectDescriptor() {
@@ -30,17 +30,17 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptConstraintsRuleWithMessage, myConceptInlineMessageProvider);
+    return Arrays.asList(myConceptInlineMessageProvider, myConceptRuleWithMessage);
   }
 
   @Override
   @Nullable
   public ConceptDescriptor getDescriptor(SConceptId id) {
     switch (myIndexSwitch.index(id)) {
-      case LanguageConceptSwitch.ConstraintsRuleWithMessage:
-        return myConceptConstraintsRuleWithMessage;
       case LanguageConceptSwitch.InlineMessageProvider:
         return myConceptInlineMessageProvider;
+      case LanguageConceptSwitch.RuleWithMessage:
+        return myConceptRuleWithMessage;
       default:
         return null;
     }
@@ -55,17 +55,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     return myIndexSwitch.index(c);
   }
 
-  private static ConceptDescriptor createDescriptorForConstraintsRuleWithMessage() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.rulesAndMessages", "ConstraintsRuleWithMessage", 0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L);
-    b.class_(false, false, false);
-    b.parent(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb51750L);
-    b.origin("r:ee5c0e5f-69e3-4669-a4e4-2d16da1e8263(jetbrains.mps.lang.rulesAndMessages.structure)/315923949160549991");
-    b.version(2);
-    b.aggregate("rule", 0x137076528060b0fcL).target(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L).optional(false).ordered(true).multiple(false).origin("1400749580825440508").done();
-    b.aggregate("messageProvider", 0x46263286dc0ce86L).target(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce81L).optional(true).ordered(true).multiple(false).origin("315923949160550022").done();
-    b.alias("rule");
-    return b.create();
-  }
   private static ConceptDescriptor createDescriptorForInlineMessageProvider() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.rulesAndMessages", "InlineMessageProvider", 0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce81L);
     b.class_(false, false, false);
@@ -73,6 +62,17 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:ee5c0e5f-69e3-4669-a4e4-2d16da1e8263(jetbrains.mps.lang.rulesAndMessages.structure)/315923949160550017");
     b.version(2);
     b.alias("message");
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForRuleWithMessage() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.rulesAndMessages", "RuleWithMessage", 0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L);
+    b.class_(false, false, false);
+    b.parent(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb51750L);
+    b.origin("r:ee5c0e5f-69e3-4669-a4e4-2d16da1e8263(jetbrains.mps.lang.rulesAndMessages.structure)/315923949160549991");
+    b.version(2);
+    b.aggregate("rule", 0x137076528060b0fcL).target(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L).optional(false).ordered(true).multiple(false).origin("1400749580825440508").done();
+    b.aggregate("messageProvider", 0x46263286dc0ce86L).target(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce81L).optional(true).ordered(true).multiple(false).origin("315923949160550022").done();
+    b.alias("rule");
     return b.create();
   }
 }

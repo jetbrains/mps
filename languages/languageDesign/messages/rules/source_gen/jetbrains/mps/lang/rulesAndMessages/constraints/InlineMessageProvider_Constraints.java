@@ -36,7 +36,7 @@ public class InlineMessageProvider_Constraints extends BaseConstraintsDescriptor
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return SNodeOperations.isInstanceOf(parentNode, MetaAdapterFactory.getConcept(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, "jetbrains.mps.lang.rulesAndMessages.structure.ConstraintsRuleWithMessage"));
+    return SNodeOperations.isInstanceOf(parentNode, MetaAdapterFactory.getConcept(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, "jetbrains.mps.lang.rulesAndMessages.structure.RuleWithMessage"));
   }
   private static SNodePointer canBeChildBreakingPoint = new SNodePointer("r:b05ad46d-4714-4e3b-8fcf-7050e2638733(jetbrains.mps.lang.rulesAndMessages.constraints)", "1400749580825459741");
 }
