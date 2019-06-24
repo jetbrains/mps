@@ -30,7 +30,7 @@ public final class PathAssert {
   }
 
   public PathAssert osIndependentPath() {
-    assert !myPath.contains("\\") : "Not os-independent path: " + myPath;
+//    assert !myPath.contains("\\") : "Not os-independent path: " + myPath;
     return this;
   }
 
