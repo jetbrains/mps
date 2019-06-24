@@ -6,10 +6,10 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 /*package*/ class PropertyDifference extends DifferenceItem {
   private final SProperty myProperty;
-  private final String myActualValue;
-  private final String myExpectedValue;
+  private final Object myActualValue;
+  private final Object myExpectedValue;
 
-  public PropertyDifference(SProperty property, String actualValue, String expectedValue) {
+  public PropertyDifference(SProperty property, Object actualValue, Object expectedValue) {
     myProperty = property;
     myActualValue = actualValue;
     myExpectedValue = expectedValue;

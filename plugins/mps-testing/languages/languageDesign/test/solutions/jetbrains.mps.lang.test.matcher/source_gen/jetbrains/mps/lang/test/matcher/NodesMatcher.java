@@ -15,6 +15,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SReference;
 import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.language.SDataType;
+import org.jetbrains.mps.openapi.language.SType;
+import java.util.Objects;
 
 /**
  * XXX could add options to parameterize instance prior to diff. E.g. dumpDiff()/debugDiff to use in scenarios where diff().isEmpty() is used but it's handy to see true diff in case anything goes wrong
@@ -308,23 +311,19 @@ public final class NodesMatcher {
 
     private void matchProperties(SNode a, SNode b) {
       HashSet<SProperty> properties = new HashSet<SProperty>();
-      for (SProperty p : a.getProperties()) {
-        properties.add(p);
+      for (SProperty property : a.getProperties()) {
+        properties.add(property);
       }
-      for (SProperty p : b.getProperties()) {
-        properties.add(p);
+      for (SProperty property : b.getProperties()) {
+        properties.add(property);
       }
-      for (SProperty key : properties) {
-        String p1 = a.getProperty(key);
-        String p2 = b.getProperty(key);
-        if (p1 == null && "false".equals(p2)) {
-          continue;
-        }
-        if (p2 == null && "false".equals(p1)) {
-          continue;
-        }
-        if (p1 == null || p2 == null || !(p1.equals(p2))) {
-          myDifferences.add(new PropertyDifference(key, p1, p2));
+      for (SProperty property : properties) {
+        SDataType type = property.getType();
+        Object pa = type.fromString(a.getProperty(property));
+        Object pb = type.fromString(b.getProperty(property));
+        if (pa == SType.NOT_A_VALUE || !(Objects.equals(pa, pb))) {
+          // populate an error for incorrect values, even if their persistence texts are equal 
+          myDifferences.add(new PropertyDifference(property, pa, pb));
         }
       }
     }
