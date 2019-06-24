@@ -123,12 +123,6 @@
         <reference id="75717156636551009" name="forConcept" index="1hH6sV" />
       </concept>
     </language>
-    <language id="134c38d4-e3af-4d9e-b069-1c7df0a4005d" name="jetbrains.mps.lang.constraints.rules.skeleton">
-      <concept id="1867733327985055562" name="jetbrains.mps.lang.constraints.rules.skeleton.structure.RuleBlock" flags="ng" index="3OnDbq">
-        <reference id="1867733327985055564" name="kind" index="3OnDbs" />
-        <child id="1867733327985055563" name="members" index="3OnDbr" />
-      </concept>
-    </language>
     <language id="c7d5b9dd-a05f-4be2-bc73-f2e16994cc67" name="jetbrains.mps.baseLanguage.lightweightdsl">
       <concept id="8880393040217246788" name="jetbrains.mps.baseLanguage.lightweightdsl.structure.MethodParameterInstance" flags="ig" index="ffn8J">
         <reference id="8880393040217294897" name="decl" index="ffrpq" />
@@ -142,19 +136,25 @@
       </concept>
     </language>
     <language id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation">
-      <concept id="1196350785110" name="jetbrains.mps.lang.quotation.structure.AbstractAntiquotation" flags="ng" index="2c44t0">
-        <child id="1196350785111" name="expression" index="2c44t1" />
+      <concept id="5455284157994012186" name="jetbrains.mps.lang.quotation.structure.NodeBuilderInitLink" flags="ng" index="2pIpSj">
+        <reference id="5455284157994012188" name="link" index="2pIpSl" />
       </concept>
-      <concept id="1196350785118" name="jetbrains.mps.lang.quotation.structure.ListAntiquotation" flags="ng" index="2c44t8" />
-      <concept id="1196350785113" name="jetbrains.mps.lang.quotation.structure.Quotation" flags="nn" index="2c44tf">
-        <child id="1196350785114" name="quotedNode" index="2c44tc" />
+      <concept id="5455284157993911097" name="jetbrains.mps.lang.quotation.structure.NodeBuilderInitPart" flags="ng" index="2pJxcK">
+        <child id="5455284157993911094" name="expression" index="2pJxcZ" />
       </concept>
-    </language>
-    <language id="47257bf3-78d3-470b-89d9-8c3261a61d15" name="jetbrains.mps.lang.constraints.rules">
-      <concept id="7291380803376179560" name="jetbrains.mps.lang.constraints.rules.structure.ConstraintsExpressionHolder" flags="ng" index="3QpH_t">
-        <child id="7291380803376179561" name="expression" index="3QpH_s" />
+      <concept id="5455284157993863837" name="jetbrains.mps.lang.quotation.structure.NodeBuilder" flags="nn" index="2pJPEk">
+        <child id="5455284157993863838" name="quotedNode" index="2pJPEn" />
       </concept>
-      <concept id="7291380803376279010" name="jetbrains.mps.lang.constraints.rules.structure.Rule" flags="ng" index="3Qq5Rn" />
+      <concept id="5455284157993863840" name="jetbrains.mps.lang.quotation.structure.NodeBuilderNode" flags="nn" index="2pJPED">
+        <reference id="5455284157993910961" name="concept" index="2pJxaS" />
+        <child id="5455284157993911099" name="values" index="2pJxcM" />
+      </concept>
+      <concept id="8182547171709752110" name="jetbrains.mps.lang.quotation.structure.NodeBuilderExpression" flags="nn" index="36biLy">
+        <child id="8182547171709752112" name="expression" index="36biLW" />
+      </concept>
+      <concept id="8182547171709614739" name="jetbrains.mps.lang.quotation.structure.NodeBuilderRef" flags="nn" index="36bGnv">
+        <reference id="8182547171709614741" name="target" index="36bGnp" />
+      </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
       <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
@@ -194,9 +194,6 @@
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
-        <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
-      </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
@@ -562,14 +559,19 @@
                     </node>
                   </node>
                   <node concept="TSZUe" id="1FBVWoj$1Ts" role="2OqNvi">
-                    <node concept="2c44tf" id="1FBVWoj$25S" role="25WWJ7">
-                      <node concept="3OnDbq" id="1FBVWoj$2cm" role="2c44tc">
-                        <ref role="3OnDbs" to="qffw:1dKt_a0noks" resolve="CanBeChild" />
-                        <node concept="3Qq5Rn" id="1FBVWoj$3jm" role="3OnDbr">
-                          <property role="TrG5h" value="a" />
-                          <node concept="3clFbT" id="1FBVWoj$3jn" role="3QpH_s" />
-                          <node concept="2c44t8" id="1FBVWoj$3jo" role="lGtFl">
-                            <node concept="2OqwBi" id="1FBVWoj$3jp" role="2c44t1">
+                    <node concept="2pJPEk" id="SlG8On5btx" role="25WWJ7">
+                      <node concept="2pJPED" id="SlG8On5bts" role="2pJPEn">
+                        <ref role="2pJxaS" to="mqj2:1BFxp3HHhta" resolve="RuleBlock" />
+                        <node concept="2pIpSj" id="SlG8On5btt" role="2pJxcM">
+                          <ref role="2pIpSl" to="mqj2:1BFxp3HHhtc" resolve="kind" />
+                          <node concept="36bGnv" id="SlG8On5btu" role="2pJxcZ">
+                            <ref role="36bGnp" to="qffw:1dKt_a0noks" resolve="CanBeChild" />
+                          </node>
+                        </node>
+                        <node concept="2pIpSj" id="SlG8On5btw" role="2pJxcM">
+                          <ref role="2pIpSl" to="mqj2:1BFxp3HHhtb" resolve="members" />
+                          <node concept="36biLy" id="SlG8On5btv" role="2pJxcZ">
+                            <node concept="2OqwBi" id="1FBVWoj$3jp" role="36biLW">
                               <node concept="37vLTw" id="1FBVWoj$3jq" role="2Oq$k0">
                                 <ref role="3cqZAo" node="1NLt_nKLRtg" resolve="analyzerResult" />
                               </node>
@@ -689,14 +691,19 @@
                     </node>
                   </node>
                   <node concept="TSZUe" id="1FBVWoj$7zu" role="2OqNvi">
-                    <node concept="2c44tf" id="1FBVWoj$7JX" role="25WWJ7">
-                      <node concept="3OnDbq" id="1FBVWoj$7SI" role="2c44tc">
-                        <ref role="3OnDbs" to="qffw:1dKt_a0nokQ" resolve="CanBeParent" />
-                        <node concept="3Qq5Rn" id="1FBVWoj$8eM" role="3OnDbr">
-                          <property role="TrG5h" value="a" />
-                          <node concept="3clFbT" id="1FBVWoj$8eN" role="3QpH_s" />
-                          <node concept="2c44t8" id="1FBVWoj$8eO" role="lGtFl">
-                            <node concept="2OqwBi" id="1FBVWoj$8eP" role="2c44t1">
+                    <node concept="2pJPEk" id="SlG8On5bgd" role="25WWJ7">
+                      <node concept="2pJPED" id="SlG8On5bg8" role="2pJPEn">
+                        <ref role="2pJxaS" to="mqj2:1BFxp3HHhta" resolve="RuleBlock" />
+                        <node concept="2pIpSj" id="SlG8On5bg9" role="2pJxcM">
+                          <ref role="2pIpSl" to="mqj2:1BFxp3HHhtc" resolve="kind" />
+                          <node concept="36bGnv" id="SlG8On5bga" role="2pJxcZ">
+                            <ref role="36bGnp" to="qffw:1dKt_a0nokQ" resolve="CanBeParent" />
+                          </node>
+                        </node>
+                        <node concept="2pIpSj" id="SlG8On5bgc" role="2pJxcM">
+                          <ref role="2pIpSl" to="mqj2:1BFxp3HHhtb" resolve="members" />
+                          <node concept="36biLy" id="SlG8On5bgb" role="2pJxcZ">
+                            <node concept="2OqwBi" id="1FBVWoj$8eP" role="36biLW">
                               <node concept="37vLTw" id="1FBVWoj$8eQ" role="2Oq$k0">
                                 <ref role="3cqZAo" node="1NLt_nKLRu4" resolve="analyzerResult" />
                               </node>
