@@ -46,7 +46,7 @@ class MacroHelperImpl implements MacroHelper {
 
   @Override
   public String shrinkPath(@Nullable String absolutePath) {
-    new PathAssert(absolutePath).osIndependentPath().noDots().absolute();
+    new PathAssert(absolutePath).osIndependentPath();
 
     if (absolutePath == null) {
       return null;

@@ -30,7 +30,7 @@ import jetbrains.mps.project.structure.project.ModulePath;
 import jetbrains.mps.project.structure.project.ProjectDescriptor;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.WorkbenchModelAccess;
-import jetbrains.mps.util.MacroHelper.MacroNoHelper;
+import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.util.annotation.ToRemove;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -82,7 +82,7 @@ public class StandaloneMPSProject extends MPSProject implements PersistentStateC
       String presentableUrl = getProject().getPresentableUrl();
       assert presentableUrl != null; // by contract the project is default <=> url == null
       File projectFile = new File(presentableUrl);
-      return new ProjectDescriptorPersistence(projectFile, new MacroNoHelper()).save(descriptor);
+      return new ProjectDescriptorPersistence(projectFile, MacrosFactory.getGlobal()).save(descriptor);
     });
   }
 

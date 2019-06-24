@@ -18,6 +18,7 @@ package jetbrains.mps.project;
 import jetbrains.mps.project.persistence.ProjectDescriptorPersistence;
 import jetbrains.mps.project.structure.project.ProjectDescriptor;
 import jetbrains.mps.util.MacroHelper;
+import jetbrains.mps.util.MacrosFactory;
 import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -35,7 +36,7 @@ public class ElementProjectDataSource implements ProjectDataSource {
   @NotNull private final MacroHelper myMacroHelper;
 
   public ElementProjectDataSource(@Nullable Element element, @NotNull File projectFile) {
-    this(element, projectFile, new MacroHelper.MacroNoHelper());
+    this(element, projectFile, MacrosFactory.getGlobal());
   }
 
   public ElementProjectDataSource(@Nullable Element element, @NotNull File projectFile, @NotNull MacroHelper macroHelper) {

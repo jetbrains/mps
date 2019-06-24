@@ -17,7 +17,11 @@ package jetbrains.mps.vfs;
 
 import org.jetbrains.annotations.Nullable;
 
+import java.util.regex.Pattern;
+
 public interface MacroProcessor {
+  Pattern MACRO_PATTERN = Pattern.compile("(\\$\\{[^${]*})");
+
   String expandPath(@Nullable String path);
   String shrinkPath(@Nullable String path);
 }
