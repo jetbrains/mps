@@ -24,7 +24,6 @@
   <extensions defaultExtensionNs="com.intellij">
     <projectService serviceInterface="jetbrains.mps.ide.make.MakeServiceConfiguration"
                   serviceImplementation="jetbrains.mps.ide.make.MakeServiceConfiguration"/>
-    <virtualFileSystem implementationClass="com.intellij.openapi.vfs.impl.jrt.JrtFileSystemImpl" key="jrt" physical="true"/>
   </extensions>
 
 </components>

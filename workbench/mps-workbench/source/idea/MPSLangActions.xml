@@ -205,7 +205,7 @@
       <action id="QuickImplementations" class="jetbrains.mps.codeInsight.hint.actions.MockShowImplementationsAction"/>
       <action id="QuickJavaDoc" class="jetbrains.mps.codeInsight.documentation.actions.MockShowQuickDocInfoAction"/>
 
-      <add-to-group group-id="ViewMenu" anchor="after" relative-to-action="ToolWindowsGroup"/>
+      <add-to-group group-id="ViewMenu" anchor="after" relative-to-action="ViewAppearanceGroup"/>
     </group>
     <!--
     <group id="CodeEditorBaseGroup">
@@ -456,7 +456,7 @@
       <action id="NewFile" class="com.intellij.ide.actions.CreateFileAction"/>
       <action id="NewScratchFile" class="com.intellij.ide.scratch.ScratchFileActions$NewFileAction" />
       <action id="NewDir" class="com.intellij.ide.actions.CreateDirectoryOrPackageAction"/>
-      <group class="com.intellij.ide.fileTemplates.actions.FileTemplateSeparator"/>
+      <group class="com.intellij.ide.fileTemplates.actions.FileTemplateSeparator" id="FileTemplateSeparatorGroup"/>
       <action id="NewFromTemplate" class="com.intellij.ide.fileTemplates.actions.CreateFromTemplateGroup"/>
     -->
     </group>
@@ -1081,7 +1081,7 @@
         <reference id="Vcs.Checkout"/>
       </group>
       <separator/>
-      <group class="com.intellij.openapi.vcs.actions.ShowAnnotateOperationsPopup$Group" text="Annotated Line" popup="true"/>
+      <group class="com.intellij.openapi.vcs.actions.ShowAnnotateOperationsPopup$Group" text="Annotated Line" popup="true" id="ShowAnnotateOperationsPopupGroup"/>
       <separator text="Local History"/>
       <!-- Action is disabled
       <reference id="LocalHistory.ShowHistory"/>
@@ -1107,6 +1107,7 @@
 
     <!--
     <group>
+      &lt;!&ndash; suppress PluginXmlCapitalization &ndash;&gt;
       <action class="com.intellij.execution.testframework.actions.ViewAssertEqualsDiffAction"
               text="View assertEquals Difference" id="openAssertEqualsDiff" use-shortcut-of="Diff.ShowDiff"/>
       <separator/>
@@ -1114,13 +1115,13 @@
     </group>
     <group>
       <action class="com.intellij.execution.testframework.sm.runner.history.actions.ImportTestsGroup"
-              text="Import Test Results" icon="AllIcons.ToolbarDecorator.Import" id="ImportTests"/>
+              text="Import Test Results" icon="AllIcons.Vcs.History" id="ImportTests"/>
       <action class="com.intellij.execution.testframework.sm.runner.history.actions.ImportTestsFromFileAction"
-              text="Import Test From File" id="ImportTestsFromFile"/>
+              text="Import Test From File" id="ImportTestsFromFile" icon="AllIcons.ToolbarDecorator.Import"/>
       <add-to-group group-id="RunMenu" anchor="after" relative-to-action="editRunConfigurations"/>
     </group>
 
-    <action id="DumpLookupElementWeights" class="com.intellij.internal.DumpLookupElementWeights" text="Dump lookup element weights to log">
+    <action id="DumpLookupElementWeights" class="com.intellij.internal.DumpLookupElementWeights" text="Dump Lookup Element Weights to Log">
       <add-to-group group-id="MaintenanceGroup" anchor="last"/>
     </action>
 
@@ -1247,13 +1248,16 @@
     <group id="RunDashboardPopup">
       <action id="RunDashboard.EditConfiguration" class="com.intellij.execution.dashboard.actions.EditConfigurationAction"
               text="Edit Configuration" icon="AllIcons.Actions.EditSource"
-              use-shortcut-of="EditSource"/>
+              use-shortcut-of="EditSourceInNewWindow"/>
       <action id="RunDashboard.CopyConfiguration" class="com.intellij.execution.dashboard.actions.CopyConfigurationAction"
               text="Copy Configuration" icon="AllIcons.Actions.Copy"
               use-shortcut-of="EditorDuplicate"/>
       <action id="RunDashboard.RemoveConfiguration" class="com.intellij.execution.dashboard.actions.RemoveConfigurationAction"
               text="Remove Configuration" icon="AllIcons.General.Remove"
               use-shortcut-of="$Delete"/>
+      <separator/>
+      <action id="RunDashboard.ClearContent" class="com.intellij.execution.dashboard.actions.ClearContentAction"
+              text="Clear Content" icon="AllIcons.Actions.Cancel"/>
       <separator/>
       <action id="RunDashboard.GroupConfigurations" class="com.intellij.execution.dashboard.actions.GroupConfigurationsAction"
               text="Group Configurations" icon="AllIcons.Actions.GroupByPackage"/>
@@ -1280,17 +1284,19 @@
               text="Split By Type" icon="AllIcons.Modules.Split"/>
     </group>
     <group id="ServiceViewNodeToolbar">
-      <group class="com.intellij.execution.services.ServiceViewActionProvider$ItemToolbarActionGroup"/>
+      <group class="com.intellij.execution.services.ServiceViewActionProvider$ItemToolbarActionGroup" id="ServiceViewItemToolbarGroup"/>
       <separator/>
     </group>
     <group id="ServiceViewNodePopup">
-      <group class="com.intellij.execution.services.ServiceViewActionProvider$ItemPopupActionGroup"/>
+      <group class="com.intellij.execution.services.ServiceViewActionProvider$ItemPopupActionGroup" id="ServiceViewItemPopupGroup"/>
       <separator/>
       <reference id="ServiceView.FlattenServices"/>
       <separator/>
       <reference id="ServiceView.ShowInNewTab"/>
       <reference id="ServiceView.SplitToNewTabs"/>
       <reference id="ServiceView.SplitByType"/>
+      <separator/>
+      <reference id="$Delete"/>
       <separator/>
       <reference id="EditSource"/>
     </group>
@@ -1318,14 +1324,14 @@
           <reference ref="Vcs.UpdateProject"/>
           <reference ref="CheckinProject"/>
         </group>
-        <group id="TouchBarDefault_ctrl" text="Default with Ctrl key">
+        <group id="TouchBarDefault_ctrl" text="Default with Ctrl Key">
           <separator/>
         </group>
-        <group id="TouchBarDefault_alt" text="Default with Alt key">
+        <group id="TouchBarDefault_alt" text="Default with Alt Key">
           <reference ref="SelectInProjectView"/>
           <separator text="type.flexible"/>
         </group>
-        <group id="TouchBarDefault_cmd" text="Default with Cmd key">
+        <group id="TouchBarDefault_cmd" text="Default with Cmd Key">
           <!--Use Cmd modifier key to show Navigation buttons, Bookmark and Breakpoint toggles and to Show Usages/-->
           <!--Cmd key is used, because it’s used in most of the action shortcuts: Back/Forward, Breakpoint and Find Usages./-->
           <reference ref="Back"/>
@@ -1342,14 +1348,14 @@
           <reference ref="ShowUsages"/>
           -->
         </group>
-        <group id="TouchBarDefault_cmd.alt" text="Default with Alt+Cmd key">
+        <group id="TouchBarDefault_cmd.alt" text="Default with Alt+Cmd Key">
           <separator text="type.flexible"/>
           <!-- MPS Patch: use our find usages action -->
           <!--
           <reference ref="FindUsages"/>
           -->
         </group>
-        <group id="TouchBarDefault_shift" text="Default with Shift key">
+        <group id="TouchBarDefault_shift" text="Default with Shift Key">
           <!--Use Shift to show Refactor actions/-->
 
           <!-- MPS Patch: use our rename, change signature, clone & move actions -->
@@ -1383,7 +1389,7 @@
           -->
         </group>
         <separator text="type.small"/>
-        <group id="TouchBarDebug_alt" text="Debugger with Alt key">
+        <group id="TouchBarDebug_alt" text="Debugger with Alt Key">
           <!--
           <reference ref="ViewBreakpoints"/>
           -->
@@ -1415,7 +1421,7 @@
     </action>
 
     <action id="ShowControlFlowAction" class="com.intellij.internal.cfgView.ShowControlFlowAction"
-            text="Show control flow" internal="true">
+            text="Show Control Flow" internal="true">
       <add-to-group group-id="Internal" anchor="last"/>
     </action>
     <group id="TodoMainGroup" text="TODO">
