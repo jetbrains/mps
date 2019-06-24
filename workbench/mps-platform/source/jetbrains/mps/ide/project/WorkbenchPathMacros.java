@@ -20,33 +20,63 @@ import com.intellij.ide.DataManager;
 import com.intellij.notification.Notification;
 import com.intellij.notification.NotificationListener;
 import com.intellij.notification.NotificationType;
-import com.intellij.notification.Notifications;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
-import com.intellij.openapi.application.PathMacros;
-import com.intellij.openapi.components.ApplicationComponent;
+import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.application.ModalityState;
+import com.intellij.openapi.components.BaseComponent;
 import com.intellij.openapi.options.ShowSettingsUtil;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectManager;
+import com.intellij.openapi.project.ProjectManagerListener;
+import com.intellij.openapi.startup.StartupManager;
 import com.intellij.openapi.ui.Messages;
-import com.intellij.util.Consumer;
+import com.intellij.util.messages.MessageBusConnection;
 import jetbrains.mps.ide.MPSCoreComponents;
+import jetbrains.mps.project.PathMacros;
 import jetbrains.mps.project.PathMacrosProvider;
-import jetbrains.mps.util.EqualUtil;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.concurrency.Promise;
 
-import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkEvent.EventType;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
-public class WorkbenchPathMacros implements ApplicationComponent, PathMacrosProvider {
-  private final MPSCoreComponents myCoreComponents;
-  private final PathMacros myPathMacrosIdea;
+import static com.intellij.notification.Notifications.SYSTEM_MESSAGES_GROUP_ID;
 
-  public WorkbenchPathMacros(MPSCoreComponents coreComponents, PathMacros ideaPathMacros) {
+public class WorkbenchPathMacros implements BaseComponent, PathMacrosProvider {
+  private final MPSCoreComponents myCoreComponents;
+  private final com.intellij.openapi.application.PathMacros myPathMacrosIdea;
+  private final ProjectManagerListener myProjectsListener = new MyProjectManagerListener();
+
+  private final NotificationListener myListener = (notification, event) -> {
+    if (event.getEventType() != EventType.ACTIVATED) {
+      return;
+    }
+    Promise<DataContext> promise = DataManager.getInstance().getDataContextFromFocusAsync();
+    promise.onSuccess(dataContext -> {
+      Project project = PlatformDataKeys.PROJECT.getData(dataContext);
+      Map<String, String> oldMacroses = collectMacroses();
+      ShowSettingsUtil.getInstance()
+                      .showSettingsDialog(project, new PathMacroConfigurable().getDisplayName());
+      Map<String, String> newMacroses = collectMacroses();
+      if (Objects.equals(oldMacroses, newMacroses)) return;
+
+      int res = Messages.showYesNoDialog(
+          "All opened projects should be reloaded in order to apply changes.\n" +
+          "Reload all opened projects?", "Reload Projects", null);
+      if (res == Messages.NO) return;
+
+      ProjectManager pm = ProjectManager.getInstance();
+      for (Project p : pm.getOpenProjects()) {
+        pm.reloadProject(p);
+      }
+    });
+  };
+
+  public WorkbenchPathMacros(MPSCoreComponents coreComponents, com.intellij.openapi.application.PathMacros ideaPathMacros) {
     myCoreComponents = coreComponents;
     myPathMacrosIdea = ideaPathMacros;
   }
@@ -57,12 +87,14 @@ public class WorkbenchPathMacros implements ApplicationComponent, PathMacrosProv
     return "Workbench path macros provider";
   }
 
-  private jetbrains.mps.project.PathMacros getMPSCounterpart() {
-    return myCoreComponents.getPlatform().findComponent(jetbrains.mps.project.PathMacros.class);
+  private PathMacros getMPSCounterpart() {
+    return myCoreComponents.getPlatform().findComponent(PathMacros.class);
   }
 
   @Override
   public void initComponent() {
+    MessageBusConnection connection = ApplicationManager.getApplication().getMessageBus().connect();
+    connection.subscribe(ProjectManager.TOPIC, myProjectsListener);
     getMPSCounterpart().addMacrosProvider(this);
   }
 
@@ -88,48 +120,39 @@ public class WorkbenchPathMacros implements ApplicationComponent, PathMacrosProv
 
   @Override
   public void report(String message, String macro) {
-    Notifications.Bus.notify(new Notification(Notifications.SYSTEM_MESSAGES_GROUP_ID, "Undefined macro", macro + " <html><a href=''>fix...</a></html>", NotificationType.ERROR,
-                                              (notification, event) -> {
-                                                if (event.getEventType() != EventType.ACTIVATED) {
-                                                  return;
-                                                }
-                                                DataManager.getInstance().getDataContextFromFocus().doWhenDone((Consumer<DataContext>) dataContext -> {
-                                                  Project project = PlatformDataKeys.PROJECT.getData(dataContext);
-
-                                                  Map<String, String> oldMacroses = collectMacroses();
-                                                  ShowSettingsUtil.getInstance().showSettingsDialog(project, new PathMacroConfigurable().getDisplayName());
-                                                  Map<String, String> newMacroses = collectMacroses();
-                                                  if (sameMaps(oldMacroses, newMacroses)) return;
-
-                                                  int res = Messages.showYesNoDialog(
-                                                      "All opened projects should be reloaded in order to apply changes.\n" +
-                                                      "Reload all opened projects?", "Reload Projects", null);
-                                                  if (res == Messages.NO) return;
-
-                                                  ProjectManager pm = ProjectManager.getInstance();
-                                                  for (Project p : pm.getOpenProjects()) {
-                                                    pm.reloadProject(p);
-                                                  }
-                                                });
-                                              }));
+    notifyAboutUndefinedMacros(macro);
   }
 
-  private boolean sameMaps(Map<String, String> m1, Map<String, String> m2) {
-    Set<String> keys = new HashSet<>();
-    keys.addAll(m1.keySet());
-    keys.addAll(m2.keySet());
-
-    for (String key : keys) {
-      if (!EqualUtil.equals(m1.get(key), m2.get(key))) return false;
-    }
-    return true;
+  private void notifyAboutUndefinedMacros(@NotNull String macro) {
+    String title = "Unknown macro(s) are detected";
+    String content = "MPS may work incorrectly.\n" +
+                     "<html><a href=''>Please define the macro '" + macro + "'.</a></html>";
+    Notification notification = new Notification(SYSTEM_MESSAGES_GROUP_ID, title, content, NotificationType.ERROR, myListener);
+    Promise<DataContext> promise = DataManager.getInstance().getDataContextFromFocusAsync();
+    promise.onSuccess(context -> {
+      Project project = PlatformDataKeys.PROJECT.getData(context);
+      Runnable runnable = () -> notification.notify(project);
+      if (project != null) {
+        StartupManager.getInstance(project).runWhenProjectIsInitialized(runnable);
+      } else {
+        ApplicationManager.getApplication().invokeLater(runnable, ModalityState.defaultModalityState());
+      }
+    });
   }
 
+  @NotNull
   private Map<String, String> collectMacroses() {
     HashMap<String, String> res = new HashMap<>();
     for (String name : myPathMacrosIdea.getUserMacroNames()) {
       res.put(name, myPathMacrosIdea.getValue(name));
     }
     return res;
+  }
+
+  private final class MyProjectManagerListener implements ProjectManagerListener {
+    @Override
+    public void projectClosed(@NotNull Project project) {
+      getMPSCounterpart().clear();
+    }
   }
 }

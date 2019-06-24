@@ -25,11 +25,14 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-public class PathMacros implements CoreComponent {
+/**
+ * Here we store all the global mps-macros mappings
+ */
+public final class PathMacros implements CoreComponent {
   private static PathMacros INSTANCE;
 
-  private List<PathMacrosProvider> myMacrosProviders = new CopyOnWriteArrayList<>();
-  private Set<String> reported = new HashSet<>();
+  private final List<PathMacrosProvider> myMacrosProviders = new CopyOnWriteArrayList<>();
+  private final Set<String> myReported = new HashSet<>();
 
   /**
    * @deprecated it is a CoreComponent, one can get it from MPSPlatform
@@ -57,21 +60,28 @@ public class PathMacros implements CoreComponent {
     INSTANCE = null;
   }
 
+  /**
+   * not the best solution but it does not bother me now
+   */
+  public void clear() {
+    myReported.clear();
+  }
+
   public Set<String> getNames() {
     Set<String> result = null;
     boolean modifiable = false;
     for (PathMacrosProvider p : myMacrosProviders) {
-      Set<String> pnames = p.getNames();
-      if (pnames == null || pnames.isEmpty()) continue;
+      Set<String> names = p.getNames();
+      if (names == null || names.isEmpty()) continue;
       if (result == null) {
-        result = pnames;
+        result = names;
         continue;
       }
       if (!modifiable) {
         result = new HashSet<>(result);
         modifiable = true;
       }
-      result.addAll(pnames);
+      result.addAll(names);
     }
     return result != null ? result : Collections.emptySet();
   }
@@ -80,17 +90,17 @@ public class PathMacros implements CoreComponent {
     Set<String> result = null;
     boolean modifiable = false;
     for (PathMacrosProvider p : myMacrosProviders) {
-      Set<String> pnames = p.getUserNames();
-      if (pnames == null || pnames.isEmpty()) continue;
+      Set<String> names = p.getUserNames();
+      if (names == null || names.isEmpty()) continue;
       if (result == null) {
-        result = pnames;
+        result = names;
         continue;
       }
       if (!modifiable) {
         result = new HashSet<>(result);
         modifiable = true;
       }
-      result.addAll(pnames);
+      result.addAll(names);
     }
     return result != null ? result : Collections.emptySet();
   }
@@ -106,9 +116,9 @@ public class PathMacros implements CoreComponent {
   }
 
   public void report(String message, String macro) {
-    if (reported.contains(macro)) return;
+    if (myReported.contains(macro)) return;
 
-    reported.add(macro);
+    myReported.add(macro);
     for (PathMacrosProvider p : myMacrosProviders) {
       p.report(message, macro);
     }

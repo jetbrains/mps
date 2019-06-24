@@ -18,6 +18,7 @@ package jetbrains.mps.util;
 import jetbrains.mps.library.ModulesMiner;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.MPSExtentions;
+import jetbrains.mps.project.PathMacros;
 import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.util.PathAssert;
@@ -66,7 +67,7 @@ public final class MacrosFactory implements MacroHelper.Source {
     String name = moduleFile.getPath().toLowerCase();
     for (String ext : extensions) {
       if (name.endsWith(ext)) {
-        return new MacroHelperImpl(moduleFile, new ModuleMacros());
+        return new MacroHelperImpl(moduleFile, new ModuleMacros(PathMacros.getInstance()));
       }
     }
     return null;
@@ -93,18 +94,15 @@ public final class MacrosFactory implements MacroHelper.Source {
   }
 
   public static MacroHelper forProjectFile(IFile projectFile) {
-    return new MacroHelperImpl(projectFile, new ProjectMacros());
+    return new MacroHelperImpl(projectFile, new ProjectMacros(PathMacros.getInstance()));
   }
 
   public static MacroHelper getGlobal() {
-    return new MacroHelperImpl(null, new HomeMacros());
+    return new MacroHelperImpl(null, new HomeMacros(PathMacros.getInstance()));
   }
 
   /**
    * Checks whether {@code path} contains a macro.
-   *
-   * @param path a non-null string
-   * @return {@code true} if {@code path} starts with "${" and contains "}", {@code false} otherwise.
    * FIXME AP contains or equals? Does MacroHelpers and others replace macros in the middle of a path?
    */
   public static boolean containsMacro(@NotNull String path) {
@@ -112,6 +110,10 @@ public final class MacrosFactory implements MacroHelper.Source {
   }
 
   private static class ModuleMacros extends HomeMacros {
+    protected ModuleMacros(@NotNull PathMacros component) {
+      super(component);
+    }
+
     @Override
     protected String expand(String path, IFile anchorFile) {
       new PathAssert(path).osIndependentPath();
@@ -145,6 +147,10 @@ public final class MacrosFactory implements MacroHelper.Source {
 
   private static class ProjectMacros extends HomeMacros {
     public static final String PROJECT = "$PROJECT_DIR$";
+
+    protected ProjectMacros(@NotNull PathMacros component) {
+      super(component);
+    }
 
     @Override
     protected String expand(String path, IFile anchorFile) {
@@ -180,6 +186,10 @@ public final class MacrosFactory implements MacroHelper.Source {
   }
 
   private static class HomeMacros extends Macros {
+    protected HomeMacros(@NotNull PathMacros component) {
+      super(component);
+    }
+
     @Override
     protected String expand(String path, @Nullable IFile anchorFile) {
       new PathAssert(path).osIndependentPath();

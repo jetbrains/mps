@@ -18,16 +18,19 @@ package jetbrains.mps.util;
 import jetbrains.mps.project.PathMacros;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.IFileSystem;
-import jetbrains.mps.vfs.VFSManager;
-import jetbrains.mps.vfs.path.Path;
 import jetbrains.mps.vfs.util.PathAssert;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.io.File;
 import java.util.Set;
 
 class Macros {
+  private final PathMacros myComponent;
+
+  protected Macros(@NotNull PathMacros component) {
+    myComponent = component;
+  }
+
   protected String expand(String path, @Nullable IFile anchorFile) {
     new PathAssert(path).osIndependentPath();
 
@@ -36,9 +39,9 @@ class Macros {
     }
     int macroEnd = path.indexOf('}');
     String macro = path.substring(2, macroEnd);
-    String macroValue = PathMacros.getInstance().getValue(macro);
+    String macroValue = myComponent.getValue(macro);
     if (macroValue == null) {
-      PathMacros.getInstance().report("Please define path variable in path variables section of settings", macro);
+      myComponent.report("Please define path variable in path variables section of settings", macro);
       return path;
     }
     String expanded = macroValue + path.substring(macroEnd + 1);
@@ -49,9 +52,9 @@ class Macros {
     new PathAssert(absolutePath).osIndependentPath().noDots().absolute();
 
     String fileName;
-    Set<String> macroNames = PathMacros.getInstance().getNames();
+    Set<String> macroNames = myComponent.getNames();
     for (String macro : macroNames) {
-      String path = PathMacros.getInstance().getValue(macro);
+      String path = myComponent.getValue(macro);
       if (path != null) {
         path = FileUtil.normalize(path);//hack for 19.1, replace with assertion in 19.2
         if (pathStartsWith(absolutePath, path)) {
