@@ -234,7 +234,7 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
 
   protected final void setModuleReference(@NotNull SModuleReference reference) {
     assertCanChange();
-    assert myModuleReference == null || reference.getModuleId().equals(myModuleReference.getModuleId()) : "module id can't be changed";
+    assert myModuleReference == null || reference.getModuleId().equals(myModuleReference.getModuleId()) : "module id can't be changed: " + myModuleReference;
     myModuleReference = reference;
   }
 
