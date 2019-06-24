@@ -250,18 +250,13 @@ public class ChangesCalculationTest extends ChangesTestBase {
     }
   }
 
-  private List<ModelChange> applyAndDiff(final Runnable todo) {
-    return new ModelAccessHelper(ourProject.getRepository()).runReadAction(new Computable<List<ModelChange>>() {
-      public List<ModelChange> compute() {
-        // the reason we have to modify detached model inside a model read is that some tests touch references, and our Root sample 
-        // has references pointing outside. We'd rather fix this sample to be self-contained 
-        todo.run();
-        // FIXME the only reason buildChangeSet is wrapped into model read is that SProperty.getType() still goes 
-        //     into getDeclarationNode(). Drop once there's generated support for property types. 
-        ModelChangeSet diff = ChangeSetBuilder.buildChangeSet(myReferenceModel, myTestModel);
-        return diff.getModelChanges();
-      }
-    });
+  private List<ModelChange> applyAndDiff(Runnable todo) {
+    // the reason we have to modify detached model inside a model read is that some tests touch references, and our Root sample 
+    // has references pointing outside. We'd rather fix this sample to be self-contained 
+    ourProject.getModelAccess().runReadAction(todo);
+    // diff of detached models shall not require model read 
+    ModelChangeSet diff = ChangeSetBuilder.buildChangeSet(myReferenceModel, myTestModel);
+    return diff.getModelChanges();
   }
   private static SNode createClassConcept_7w1430_a0a0a0b0k() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
