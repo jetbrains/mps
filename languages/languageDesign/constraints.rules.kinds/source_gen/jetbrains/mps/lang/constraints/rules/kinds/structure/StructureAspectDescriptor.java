@@ -14,6 +14,7 @@ import jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder2;
 
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptNativeDef = createDescriptorForNativeDef();
+  /*package*/ final ConceptDescriptor myConceptNativeTypedConceptDef = createDescriptorForNativeTypedConceptDef();
   /*package*/ final ConceptDescriptor myConceptNativeTypedNodeDef = createDescriptorForNativeTypedNodeDef();
   /*package*/ final ConceptDescriptor myConceptRuleKind = createDescriptorForRuleKind();
   /*package*/ final ConceptDescriptor myConceptRuleKindParameterConcept = createDescriptorForRuleKindParameterConcept();
@@ -34,7 +35,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptNativeDef, myConceptNativeTypedNodeDef, myConceptRuleKind, myConceptRuleKindParameterConcept, myConceptTypedDef, myConceptTypedNativeDef);
+    return Arrays.asList(myConceptNativeDef, myConceptNativeTypedConceptDef, myConceptNativeTypedNodeDef, myConceptRuleKind, myConceptRuleKindParameterConcept, myConceptTypedDef, myConceptTypedNativeDef);
   }
 
   @Override
@@ -43,6 +44,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     switch (myIndexSwitch.index(id)) {
       case LanguageConceptSwitch.NativeDef:
         return myConceptNativeDef;
+      case LanguageConceptSwitch.NativeTypedConceptDef:
+        return myConceptNativeTypedConceptDef;
       case LanguageConceptSwitch.NativeTypedNodeDef:
         return myConceptNativeTypedNodeDef;
       case LanguageConceptSwitch.RuleKind:
@@ -73,6 +76,16 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, 0x653030359368062cL);
     b.origin("r:63fc051d-731b-428a-af30-ceee8d76dfaa(jetbrains.mps.lang.constraints.rules.kinds.structure)/1328301445982536381");
     b.version(2);
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForNativeTypedConceptDef() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.constraints.rules.kinds", "NativeTypedConceptDef", 0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, 0x26084ede749bc5f2L);
+    b.class_(true, false, false);
+    b.parent(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, 0x126f1320a26d42bdL);
+    b.origin("r:63fc051d-731b-428a-af30-ceee8d76dfaa(jetbrains.mps.lang.constraints.rules.kinds.structure)/2740527090601018866");
+    b.version(2);
+    b.associate("conceptParameter", 0x26084ede749bc5f3L).target(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, 0x4bf59690bc05b735L).optional(false).origin("2740527090601018867").done();
+    b.alias("node<>");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForNativeTypedNodeDef() {

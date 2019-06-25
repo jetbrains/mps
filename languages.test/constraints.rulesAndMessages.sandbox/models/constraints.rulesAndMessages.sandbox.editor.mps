@@ -7,6 +7,7 @@
   </languages>
   <imports>
     <import index="npmf" ref="r:3fd4e667-8fcb-4728-850d-184116dcdf79(constraints.rulesAndMessages.sandbox.structure)" implicit="true" />
+    <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
   </imports>
   <registry>
     <language id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor">
@@ -18,6 +19,7 @@
       </concept>
       <concept id="1106270549637" name="jetbrains.mps.lang.editor.structure.CellLayout_Horizontal" flags="nn" index="2iRfu4" />
       <concept id="1106270571710" name="jetbrains.mps.lang.editor.structure.CellLayout_Vertical" flags="nn" index="2iRkQZ" />
+      <concept id="1106270637846" name="jetbrains.mps.lang.editor.structure.CellLayout_Flow" flags="nn" index="2iR$Sn" />
       <concept id="1237303669825" name="jetbrains.mps.lang.editor.structure.CellLayout_Indent" flags="nn" index="l2Vlx" />
       <concept id="1237307900041" name="jetbrains.mps.lang.editor.structure.IndentLayoutIndentStyleClassItem" flags="ln" index="lj46D" />
       <concept id="1237375020029" name="jetbrains.mps.lang.editor.structure.IndentLayoutNewLineChildrenStyleClassItem" flags="ln" index="pj6Ft" />
@@ -28,6 +30,11 @@
       <concept id="1186414536763" name="jetbrains.mps.lang.editor.structure.BooleanStyleSheetItem" flags="ln" index="VOi$J">
         <property id="1186414551515" name="flag" index="VOm3f" />
       </concept>
+      <concept id="1215007762405" name="jetbrains.mps.lang.editor.structure.FloatStyleClassItem" flags="ln" index="3$6MrZ">
+        <property id="1215007802031" name="value" index="3$6WeP" />
+      </concept>
+      <concept id="1215007883204" name="jetbrains.mps.lang.editor.structure.PaddingLeftStyleClassItem" flags="ln" index="3$7fVu" />
+      <concept id="1215007897487" name="jetbrains.mps.lang.editor.structure.PaddingRightStyleClassItem" flags="ln" index="3$7jql" />
       <concept id="1139848536355" name="jetbrains.mps.lang.editor.structure.CellModel_WithRole" flags="ng" index="1$h60E">
         <reference id="1140103550593" name="relationDeclaration" index="1NtTu8" />
       </concept>
@@ -52,8 +59,38 @@
     <ref role="1XX52x" to="npmf:7w_sh_iHHi0" resolve="ChildConcept1" />
     <node concept="3EZMnI" id="7FO6JFyzuQB" role="2wV5jI">
       <node concept="2iRfu4" id="7FO6JFyzuQC" role="2iSdaV" />
-      <node concept="3F0ifn" id="7FO6JFyzuQy" role="3EZMnx">
-        <property role="3F0ifm" value="ChildConcept has property" />
+      <node concept="3EZMnI" id="2o8jHTOBTe_" role="3EZMnx">
+        <node concept="2iR$Sn" id="2o8jHTOBTeA" role="2iSdaV" />
+        <node concept="3F0ifn" id="2o8jHTOBTeB" role="3EZMnx">
+          <property role="3F0ifm" value="ChildConcept" />
+          <node concept="3$7fVu" id="2o8jHTOBTeC" role="3F10Kt">
+            <property role="3$6WeP" value="0.5" />
+          </node>
+          <node concept="3$7jql" id="2o8jHTOBTeD" role="3F10Kt">
+            <property role="3$6WeP" value="0.5" />
+          </node>
+        </node>
+        <node concept="3F0A7n" id="2o8jHTOBTfg" role="3EZMnx">
+          <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
+        </node>
+        <node concept="3F0ifn" id="2o8jHTOBTeE" role="3EZMnx">
+          <property role="3F0ifm" value="has" />
+          <node concept="3$7fVu" id="2o8jHTOBTeF" role="3F10Kt">
+            <property role="3$6WeP" value="0.5" />
+          </node>
+          <node concept="3$7jql" id="2o8jHTOBTeG" role="3F10Kt">
+            <property role="3$6WeP" value="0.5" />
+          </node>
+        </node>
+        <node concept="3F0ifn" id="2o8jHTOBTeH" role="3EZMnx">
+          <property role="3F0ifm" value="property" />
+          <node concept="3$7fVu" id="2o8jHTOBTeI" role="3F10Kt">
+            <property role="3$6WeP" value="0.5" />
+          </node>
+          <node concept="3$7jql" id="2o8jHTOBTeJ" role="3F10Kt">
+            <property role="3$6WeP" value="0.5" />
+          </node>
+        </node>
       </node>
       <node concept="3F0A7n" id="7FO6JFyzuQK" role="3EZMnx">
         <ref role="1NtTu8" to="npmf:7w_sh_iI1nH" resolve="testProp" />
@@ -63,19 +100,55 @@
   <node concept="24kQdi" id="7FO6JFyzxCL">
     <ref role="1XX52x" to="npmf:7FO6JFyzxCl" resolve="ParentConcept1" />
     <node concept="3EZMnI" id="7FO6JFyzxCQ" role="2wV5jI">
-      <node concept="3F0ifn" id="7FO6JFyzxCN" role="3EZMnx">
-        <property role="3F0ifm" value="ParentConcept has children:" />
+      <node concept="3EZMnI" id="2o8jHTOBTfs" role="3EZMnx">
+        <node concept="2iR$Sn" id="2o8jHTOBTft" role="2iSdaV" />
+        <node concept="3F0ifn" id="2o8jHTOBTfu" role="3EZMnx">
+          <property role="3F0ifm" value="ParentConcept" />
+          <node concept="3$7fVu" id="2o8jHTOBTfv" role="3F10Kt">
+            <property role="3$6WeP" value="0.5" />
+          </node>
+          <node concept="3$7jql" id="2o8jHTOBTfw" role="3F10Kt">
+            <property role="3$6WeP" value="0.5" />
+          </node>
+        </node>
+        <node concept="3F0A7n" id="2o8jHTOBTgq" role="3EZMnx">
+          <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
+        </node>
+        <node concept="3F0ifn" id="2o8jHTOBTfx" role="3EZMnx">
+          <property role="3F0ifm" value="has" />
+          <node concept="3$7fVu" id="2o8jHTOBTfy" role="3F10Kt">
+            <property role="3$6WeP" value="0.5" />
+          </node>
+          <node concept="3$7jql" id="2o8jHTOBTfz" role="3F10Kt">
+            <property role="3$6WeP" value="0.5" />
+          </node>
+        </node>
+        <node concept="3F0ifn" id="2o8jHTOBTf$" role="3EZMnx">
+          <property role="3F0ifm" value="children:" />
+          <node concept="3$7fVu" id="2o8jHTOBTf_" role="3F10Kt">
+            <property role="3$6WeP" value="0.5" />
+          </node>
+          <node concept="3$7jql" id="2o8jHTOBTfA" role="3F10Kt">
+            <property role="3$6WeP" value="0.5" />
+          </node>
+        </node>
       </node>
-      <node concept="3F2HdR" id="3Y1amMrg_Sg" role="3EZMnx">
-        <ref role="1NtTu8" to="npmf:7FO6JFyzxCm" resolve="children" />
-        <node concept="lj46D" id="19J4M2yr1AD" role="3F10Kt">
-          <property role="VOm3f" value="true" />
+      <node concept="3EZMnI" id="2o8jHTOAPRO" role="3EZMnx">
+        <node concept="l2Vlx" id="2o8jHTOAPRP" role="2iSdaV" />
+        <node concept="3F2HdR" id="3Y1amMrg_Sg" role="3EZMnx">
+          <ref role="1NtTu8" to="npmf:7FO6JFyzxCm" resolve="children" />
+          <node concept="lj46D" id="19J4M2yr1AD" role="3F10Kt">
+            <property role="VOm3f" value="true" />
+          </node>
+          <node concept="l2Vlx" id="3Y1amMrg_Sm" role="2czzBx" />
+          <node concept="pj6Ft" id="3Y1amMrg_Sp" role="3F10Kt">
+            <property role="VOm3f" value="true" />
+          </node>
+          <node concept="pVoyu" id="19J4M2yr3xz" role="3F10Kt">
+            <property role="VOm3f" value="true" />
+          </node>
         </node>
-        <node concept="l2Vlx" id="3Y1amMrg_Sm" role="2czzBx" />
-        <node concept="pj6Ft" id="3Y1amMrg_Sp" role="3F10Kt">
-          <property role="VOm3f" value="true" />
-        </node>
-        <node concept="pVoyu" id="19J4M2yr3xz" role="3F10Kt">
+        <node concept="pj6Ft" id="2o8jHTOAPS3" role="3F10Kt">
           <property role="VOm3f" value="true" />
         </node>
       </node>

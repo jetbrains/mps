@@ -6,8 +6,9 @@
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.ConstraintsDescriptor2" />
     <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.RuleKind" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeChild_RuleKind" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeParent_RuleKind" />
+    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeChildRuleKind" />
+    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeParentRuleKind" />
+    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeRootRuleKind" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />

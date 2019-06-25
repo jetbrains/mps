@@ -7,11 +7,17 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <root>
+    <file name="ChildConcept1_Messages.java">
+      <unit at="16,0,53,0" name="constraints.rulesAndMessages.sandbox.constraints2.ChildConcept1_Messages" />
+    </file>
     <file name="GeneratedConstraintsAspectDescriptor2.java">
-      <unit at="19,0,41,0" name="constraints.rulesAndMessages.sandbox.constraints2.GeneratedConstraintsAspectDescriptor2" />
+      <unit at="20,0,42,0" name="constraints.rulesAndMessages.sandbox.constraints2.GeneratedConstraintsAspectDescriptor2" />
     </file>
     <file name="GeneratedMessagesAspectDescriptor.java">
-      <unit at="11,0,19,0" name="constraints.rulesAndMessages.sandbox.constraints2.GeneratedMessagesAspectDescriptor" />
+      <unit at="14,0,30,0" name="constraints.rulesAndMessages.sandbox.constraints2.GeneratedMessagesAspectDescriptor" />
+    </file>
+    <file name="ParentConcept1_Messages.java">
+      <unit at="16,0,46,0" name="constraints.rulesAndMessages.sandbox.constraints2.ParentConcept1_Messages" />
     </file>
   </root>
   <root nodeRef="r:1f9c133f-fd7b-4552-9a99-e00fc7530617(constraints.rulesAndMessages.sandbox.constraints2)/2184230058468666857">
@@ -25,32 +31,32 @@
       <node id="2184230058468666857" at="37,43,38,17" concept="3" />
       <node id="8973525032381709980" at="42,0,43,0" concept="4" trace="SOURCE_NODE_REF" />
       <node id="8973525032381709980" at="43,0,44,0" concept="4" trace="ID_parentCncptCorrect" />
-      <node id="8973525032381709980" at="45,38,46,91" concept="5" />
-      <node id="8973525032381709980" at="49,63,50,282" concept="3" />
+      <node id="8973525032381709980" at="45,38,46,90" concept="5" />
+      <node id="8973525032381709980" at="49,62,50,282" concept="3" />
       <node id="1962130386538219691" at="54,0,55,0" concept="4" trace="SOURCE_NODE_REF" />
       <node id="1962130386538219691" at="55,0,56,0" concept="4" trace="ID_notTooSmallProperty" />
-      <node id="1962130386538219691" at="57,39,58,92" concept="5" />
-      <node id="1962130386538219691" at="61,63,62,200" concept="3" />
+      <node id="1962130386538219691" at="57,39,58,91" concept="5" />
+      <node id="1962130386538219691" at="61,62,62,200" concept="3" />
       <node id="1962130386538254993" at="66,0,67,0" concept="4" trace="SOURCE_NODE_REF" />
       <node id="1962130386538254993" at="67,0,68,0" concept="4" trace="ID_notTooLargeProperty" />
-      <node id="1962130386538254993" at="69,39,70,92" concept="5" />
-      <node id="1962130386538254993" at="73,63,74,202" concept="3" />
+      <node id="1962130386538254993" at="69,39,70,91" concept="5" />
+      <node id="1962130386538254993" at="73,62,74,202" concept="3" />
       <node id="2184230058468666857" at="26,0,29,0" concept="0" trace="ChildConcept1_Constraints2#()V" />
       <node id="8973525032381709980" at="45,0,48,0" concept="0" trace="Rule_parentCncptCorrect#()V" />
       <node id="1962130386538219691" at="57,0,60,0" concept="0" trace="Rule_notTooSmallProperty#()V" />
       <node id="1962130386538254993" at="69,0,72,0" concept="0" trace="Rule_notTooLargeProperty#()V" />
-      <node id="8973525032381709980" at="48,0,52,0" concept="2" trace="check#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/CanBeChild_Context;)Z" />
-      <node id="1962130386538219691" at="60,0,64,0" concept="2" trace="check#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/CanBeChild_Context;)Z" />
-      <node id="1962130386538254993" at="72,0,76,0" concept="2" trace="check#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/CanBeChild_Context;)Z" />
+      <node id="8973525032381709980" at="48,0,52,0" concept="2" trace="check#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/CanBeChildContext;)Z" />
+      <node id="1962130386538219691" at="60,0,64,0" concept="2" trace="check#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/CanBeChildContext;)Z" />
+      <node id="1962130386538254993" at="72,0,76,0" concept="2" trace="check#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/CanBeChildContext;)Z" />
       <node id="2184230058468666857" at="35,0,40,0" concept="2" trace="getDeclaredRules#()Ljava/util/List;" />
       <scope id="2184230058468666857" at="26,44,27,19" />
       <scope id="2184230058468666857" at="37,43,38,17" />
-      <scope id="8973525032381709980" at="45,38,46,91" />
-      <scope id="8973525032381709980" at="49,63,50,282" />
-      <scope id="1962130386538219691" at="57,39,58,92" />
-      <scope id="1962130386538219691" at="61,63,62,200" />
-      <scope id="1962130386538254993" at="69,39,70,92" />
-      <scope id="1962130386538254993" at="73,63,74,202" />
+      <scope id="8973525032381709980" at="45,38,46,90" />
+      <scope id="8973525032381709980" at="49,62,50,282" />
+      <scope id="1962130386538219691" at="57,39,58,91" />
+      <scope id="1962130386538219691" at="61,62,62,200" />
+      <scope id="1962130386538254993" at="69,39,70,91" />
+      <scope id="1962130386538254993" at="73,62,74,202" />
       <scope id="2184230058468666857" at="26,0,29,0" />
       <scope id="8973525032381709980" at="45,0,48,0" />
       <scope id="1962130386538219691" at="57,0,60,0" />
@@ -70,6 +76,32 @@
       <unit id="1962130386538254993" at="65,0,77,0" name="constraints.rulesAndMessages.sandbox.constraints2.ChildConcept1_Constraints2$Rule_notTooLargeProperty" />
       <unit id="2184230058468666857" at="23,0,78,0" name="constraints.rulesAndMessages.sandbox.constraints2.ChildConcept1_Constraints2" />
     </file>
+    <file name="ChildConcept1_Messages.java">
+      <node id="8973525032381709971" at="22,78,23,138" concept="3" />
+      <node id="1962130386538219690" at="29,78,30,142" concept="3" />
+      <node id="1962130386538254991" at="36,78,37,142" concept="3" />
+      <node id="8973525032381709971" at="20,0,25,0" concept="2" trace="yieldMessage#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/CanBeChildContext;)Ljetbrains/mps/core/aspects/reporting/api/MessageProvider/StringMsg;" />
+      <node id="1962130386538219690" at="27,0,32,0" concept="2" trace="yieldMessage#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/CanBeChildContext;)Ljetbrains/mps/core/aspects/reporting/api/MessageProvider/StringMsg;" />
+      <node id="1962130386538254991" at="34,0,39,0" concept="2" trace="yieldMessage#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/CanBeChildContext;)Ljetbrains/mps/core/aspects/reporting/api/MessageProvider/StringMsg;" />
+      <node id="8973525032381709971" at="19,0,26,0" concept="4" trace="MSGPROVIDER_PARENTCNCPTCORRECT_db6343_a" />
+      <node id="1962130386538219690" at="26,0,33,0" concept="4" trace="MSGPROVIDER_NOTTOOSMALLPROPERTY_db6343_b" />
+      <node id="1962130386538254991" at="33,0,40,0" concept="4" trace="MSGPROVIDER_NOTTOOLARGEPROPERTY_db6343_c" />
+      <scope id="8973525032381709971" at="22,78,23,138" />
+      <scope id="1962130386538219690" at="29,78,30,142" />
+      <scope id="1962130386538254991" at="36,78,37,142" />
+      <scope id="8973525032381709971" at="20,0,25,0">
+        <var name="context" id="8973525032381709971" />
+      </scope>
+      <scope id="1962130386538219690" at="27,0,32,0">
+        <var name="context" id="1962130386538219690" />
+      </scope>
+      <scope id="1962130386538254991" at="34,0,39,0">
+        <var name="context" id="1962130386538254991" />
+      </scope>
+      <unit id="8973525032381709971" at="19,104,25,3" name="constraints.rulesAndMessages.sandbox.constraints2.ChildConcept1_Messages$1" />
+      <unit id="1962130386538219690" at="26,105,32,3" name="constraints.rulesAndMessages.sandbox.constraints2.ChildConcept1_Messages$2" />
+      <unit id="1962130386538254991" at="33,105,39,3" name="constraints.rulesAndMessages.sandbox.constraints2.ChildConcept1_Messages$3" />
+    </file>
   </root>
   <root nodeRef="r:1f9c133f-fd7b-4552-9a99-e00fc7530617(constraints.rulesAndMessages.sandbox.constraints2)/7247338141359841462">
     <file name="ParentConcept1_Constraints2.java">
@@ -81,36 +113,36 @@
       <node id="7247338141359841462" at="35,43,36,17" concept="3" />
       <node id="8973525032383069918" at="40,0,41,0" concept="4" trace="SOURCE_NODE_REF" />
       <node id="8973525032383069918" at="41,0,42,0" concept="4" trace="ID_propertyIsSetCorrectly" />
-      <node id="8973525032383069918" at="43,42,44,96" concept="5" />
-      <node id="8973525032383069918" at="47,64,48,204" concept="3" />
+      <node id="8973525032383069918" at="43,42,44,95" concept="5" />
+      <node id="8973525032383069918" at="47,63,48,204" concept="3" />
       <node id="8973525032383069990" at="52,0,53,0" concept="4" trace="SOURCE_NODE_REF" />
       <node id="8973525032383069990" at="53,0,54,0" concept="4" trace="ID_propertyInChildIsSetCorrectly" />
-      <node id="8973525032383069990" at="55,49,56,103" concept="5" />
+      <node id="8973525032383069990" at="55,49,56,102" concept="5" />
       <node id="8973525032383069990" at="60,34,61,20" concept="3" />
       <node id="8973525032383069990" at="62,7,63,382" concept="3" />
-      <node id="8973525032383069990" at="67,68,68,258" concept="3" />
+      <node id="8973525032383069990" at="67,67,68,258" concept="3" />
       <node id="7247338141359841462" at="25,0,28,0" concept="0" trace="ParentConcept1_Constraints2#()V" />
       <node id="8973525032383069918" at="43,0,46,0" concept="0" trace="Rule_propertyIsSetCorrectly#()V" />
       <node id="8973525032383069990" at="55,0,58,0" concept="0" trace="Rule_propertyInChildIsSetCorrectly#()V" />
-      <node id="8973525032383069990" at="59,64,62,7" concept="1" />
-      <node id="8973525032383069918" at="46,0,50,0" concept="2" trace="check#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/CanBeParent_Context;)Z" />
-      <node id="8973525032383069990" at="66,0,70,0" concept="2" trace="appliesTo#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/CanBeParent_Context;)Z" />
+      <node id="8973525032383069990" at="59,63,62,7" concept="1" />
+      <node id="8973525032383069918" at="46,0,50,0" concept="2" trace="check#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/CanBeParentContext;)Z" />
+      <node id="8973525032383069990" at="66,0,70,0" concept="2" trace="appliesTo#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/CanBeParentContext;)Z" />
       <node id="7247338141359841462" at="33,0,38,0" concept="2" trace="getDeclaredRules#()Ljava/util/List;" />
-      <node id="8973525032383069990" at="58,0,65,0" concept="2" trace="check#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/CanBeParent_Context;)Z" />
+      <node id="8973525032383069990" at="58,0,65,0" concept="2" trace="check#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/CanBeParentContext;)Z" />
       <scope id="7247338141359841462" at="25,45,26,19" />
       <scope id="7247338141359841462" at="35,43,36,17" />
-      <scope id="8973525032383069918" at="43,42,44,96" />
-      <scope id="8973525032383069918" at="47,64,48,204" />
-      <scope id="8973525032383069990" at="55,49,56,103" />
+      <scope id="8973525032383069918" at="43,42,44,95" />
+      <scope id="8973525032383069918" at="47,63,48,204" />
+      <scope id="8973525032383069990" at="55,49,56,102" />
       <scope id="8973525032383069990" at="60,34,61,20" />
-      <scope id="8973525032383069990" at="67,68,68,258" />
+      <scope id="8973525032383069990" at="67,67,68,258" />
       <scope id="7247338141359841462" at="25,0,28,0" />
       <scope id="8973525032383069918" at="43,0,46,0" />
       <scope id="8973525032383069990" at="55,0,58,0" />
       <scope id="8973525032383069918" at="46,0,50,0">
         <var name="context" id="8973525032383069918" />
       </scope>
-      <scope id="8973525032383069990" at="59,64,63,382" />
+      <scope id="8973525032383069990" at="59,63,63,382" />
       <scope id="8973525032383069990" at="66,0,70,0">
         <var name="context" id="8973525032383069990" />
       </scope>
@@ -121,6 +153,24 @@
       <unit id="8973525032383069918" at="39,0,51,0" name="constraints.rulesAndMessages.sandbox.constraints2.ParentConcept1_Constraints2$Rule_propertyIsSetCorrectly" />
       <unit id="8973525032383069990" at="51,0,71,0" name="constraints.rulesAndMessages.sandbox.constraints2.ParentConcept1_Constraints2$Rule_propertyInChildIsSetCorrectly" />
       <unit id="7247338141359841462" at="22,0,72,0" name="constraints.rulesAndMessages.sandbox.constraints2.ParentConcept1_Constraints2" />
+    </file>
+    <file name="ParentConcept1_Messages.java">
+      <node id="8973525032383069916" at="22,79,23,108" concept="3" />
+      <node id="8973525032383069988" at="29,79,30,87" concept="3" />
+      <node id="8973525032383069916" at="20,0,25,0" concept="2" trace="yieldMessage#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/CanBeParentContext;)Ljetbrains/mps/core/aspects/reporting/api/MessageProvider/StringMsg;" />
+      <node id="8973525032383069988" at="27,0,32,0" concept="2" trace="yieldMessage#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/CanBeParentContext;)Ljetbrains/mps/core/aspects/reporting/api/MessageProvider/StringMsg;" />
+      <node id="8973525032383069916" at="19,0,26,0" concept="4" trace="MSGPROVIDER_PROPERTYISSETCORRECTLY_36wrwc_a" />
+      <node id="8973525032383069988" at="26,0,33,0" concept="4" trace="MSGPROVIDER_PROPERTYINCHILDISSETCORRECTLY_36wrwc_b" />
+      <scope id="8973525032383069916" at="22,79,23,108" />
+      <scope id="8973525032383069988" at="29,79,30,87" />
+      <scope id="8973525032383069916" at="20,0,25,0">
+        <var name="context" id="8973525032383069916" />
+      </scope>
+      <scope id="8973525032383069988" at="27,0,32,0">
+        <var name="context" id="8973525032383069988" />
+      </scope>
+      <unit id="8973525032383069916" at="19,109,25,3" name="constraints.rulesAndMessages.sandbox.constraints2.ParentConcept1_Messages$1" />
+      <unit id="8973525032383069988" at="26,116,32,3" name="constraints.rulesAndMessages.sandbox.constraints2.ParentConcept1_Messages$2" />
     </file>
   </root>
 </debug-info>

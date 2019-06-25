@@ -32,8 +32,6 @@
         <reference id="1867733327984720094" name="concept" index="3Oh7Pe" />
         <child id="1867733327984720091" name="block" index="3Oh7Pb" />
       </concept>
-      <concept id="1867733327984720096" name="jetbrains.mps.lang.constraints.rules.skeleton.structure.Block" flags="ng" index="3Oh7PK" />
-      <concept id="1867733327985055568" name="jetbrains.mps.lang.constraints.rules.skeleton.structure.RuleBlockMember" flags="ng" index="3OnDb0" />
       <concept id="1867733327985055562" name="jetbrains.mps.lang.constraints.rules.skeleton.structure.RuleBlock" flags="ng" index="3OnDbq">
         <reference id="1867733327985055564" name="kind" index="3OnDbs" />
         <child id="1867733327985055563" name="members" index="3OnDbr" />
@@ -108,8 +106,6 @@
     <ref role="3Oh7Pe" to="ktae:7w_sh_iHHi0" resolve="ChildConcept1" />
     <node concept="3OnDbq" id="6ijHUgUSgF_" role="3Oh7Pb">
       <ref role="3OnDbs" to="qffw:1dKt_a0noks" resolve="CanBeChild" />
-      <node concept="3OnDb0" id="2o8jHTOA1O$" role="3OnDbr" />
-      <node concept="3OnDb0" id="2o8jHTOA1Oc" role="3OnDbr" />
       <node concept="3Qq5Rn" id="6ijHUgUSC4F" role="3OnDbr">
         <property role="EcuMT" value="7247338141359702315" />
         <property role="TrG5h" value="parentIsOfCorrectConcept" />
@@ -168,9 +164,6 @@
         </node>
       </node>
     </node>
-    <node concept="3Oh7PK" id="2o8jHTO_XuP" role="3Oh7Pb" />
-    <node concept="3Oh7PK" id="2o8jHTO_Byr" role="3Oh7Pb" />
-    <node concept="3Oh7PK" id="2o8jHTO_Bp1" role="3Oh7Pb" />
   </node>
   <node concept="3Oh7Pa" id="6ijHUgUTa2Q">
     <ref role="3Oh7Pe" to="ktae:7FO6JFyzxCl" resolve="ParentConcept1" />

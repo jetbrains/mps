@@ -13,6 +13,7 @@ import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 
 public final class BehaviorAspectDescriptor extends BaseBehaviorAspectDescriptor {
   private final BHDescriptor myNativeTypedNodeDef__BehaviorDescriptor = new NativeTypedNodeDef__BehaviorDescriptor();
+  private final BHDescriptor myNativeTypedConceptDef__BehaviorDescriptor = new NativeTypedConceptDef__BehaviorDescriptor();
   private final BHDescriptor myTypedNativeDef__BehaviorDescriptor = new TypedNativeDef__BehaviorDescriptor();
   private final BHDescriptor myTypedDef__BehaviorDescriptor = new TypedDef__BehaviorDescriptor();
 
@@ -24,14 +25,16 @@ public final class BehaviorAspectDescriptor extends BaseBehaviorAspectDescriptor
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return myNativeTypedNodeDef__BehaviorDescriptor;
+        return myNativeTypedConceptDef__BehaviorDescriptor;
       case 1:
-        return myTypedDef__BehaviorDescriptor;
+        return myNativeTypedNodeDef__BehaviorDescriptor;
       case 2:
+        return myTypedDef__BehaviorDescriptor;
+      case 3:
         return myTypedNativeDef__BehaviorDescriptor;
       default:
     }
     return null;
   }
-  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, 0x46263286da99051L), MetaIdFactory.conceptId(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, 0x653030359368062cL), MetaIdFactory.conceptId(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, 0x4bf59690bc00f6b1L)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, 0x26084ede749bc5f2L), MetaIdFactory.conceptId(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, 0x46263286da99051L), MetaIdFactory.conceptId(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, 0x653030359368062cL), MetaIdFactory.conceptId(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, 0x4bf59690bc00f6b1L)).seal();
 }

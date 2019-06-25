@@ -6,7 +6,7 @@ import jetbrains.mps.core.aspects.constraints.rules.BaseConstraintsDescriptor2;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.constraints.rules.Rule;
-import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeParent_Context;
+import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeParentContext;
 import java.util.List;
 import java.util.Collections;
 import java.util.Arrays;
@@ -15,7 +15,7 @@ import jetbrains.mps.core.aspects.constraints.rules.BaseRule;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.core.aspects.constraints.rules.RuleId;
-import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeParent_RuleKind;
+import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeParentRuleKind;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 
@@ -25,8 +25,8 @@ public final class ParentConcept1_Constraints2 extends BaseConstraintsDescriptor
   /*package*/ ParentConcept1_Constraints2() {
     super(CONCEPT);
   }
-  public static final Rule<CanBeParent_Context> propertyIsSetCorrectly_id8973525032383069918 = new ParentConcept1_Constraints2.Rule_propertyIsSetCorrectly();
-  public static final Rule<CanBeParent_Context> propertyInChildIsSetCorrectly_id8973525032383069990 = new ParentConcept1_Constraints2.Rule_propertyInChildIsSetCorrectly();
+  public static final Rule<CanBeParentContext> propertyIsSetCorrectly_id8973525032383069918 = new ParentConcept1_Constraints2.Rule_propertyIsSetCorrectly();
+  public static final Rule<CanBeParentContext> propertyInChildIsSetCorrectly_id8973525032383069990 = new ParentConcept1_Constraints2.Rule_propertyInChildIsSetCorrectly();
 
   private static final List<Rule<?>> RULES = Collections.unmodifiableList(Arrays.<Rule<?>>asList(propertyIsSetCorrectly_id8973525032383069918, propertyInChildIsSetCorrectly_id8973525032383069990));
 
@@ -36,27 +36,27 @@ public final class ParentConcept1_Constraints2 extends BaseConstraintsDescriptor
     return RULES;
   }
 
-  public static final class Rule_propertyIsSetCorrectly extends BaseRule<CanBeParent_Context> {
+  public static final class Rule_propertyIsSetCorrectly extends BaseRule<CanBeParentContext> {
     private static final SNodeReference SOURCE_NODE_REF = PersistenceFacade.getInstance().createNodeReference("r:1f9c133f-fd7b-4552-9a99-e00fc7530617(constraints.rulesAndMessages.sandbox.constraints2)/8973525032383069918");
     public static final RuleId ID_propertyIsSetCorrectly = new RuleId(8973525032383069918L, SOURCE_NODE_REF);
 
     public Rule_propertyIsSetCorrectly() {
-      super(CONCEPT, CanBeParent_RuleKind.INSTANCE, ID_propertyIsSetCorrectly, SOURCE_NODE_REF);
+      super(CONCEPT, CanBeParentRuleKind.INSTANCE, ID_propertyIsSetCorrectly, SOURCE_NODE_REF);
     }
     @Override
-    public boolean check(@NotNull CanBeParent_Context context) {
+    public boolean check(@NotNull CanBeParentContext context) {
       return SPropertyOperations.getBoolean(context.getParentNode(), MetaAdapterFactory.getProperty(0xfc39d7264089464aL, 0x8fc15f71edfdf03bL, 0x7af41afae28e1a15L, 0x6493b7a43ae22fbaL, "canHaveChildren"));
     }
   }
-  public static final class Rule_propertyInChildIsSetCorrectly extends BaseRule<CanBeParent_Context> {
+  public static final class Rule_propertyInChildIsSetCorrectly extends BaseRule<CanBeParentContext> {
     private static final SNodeReference SOURCE_NODE_REF = PersistenceFacade.getInstance().createNodeReference("r:1f9c133f-fd7b-4552-9a99-e00fc7530617(constraints.rulesAndMessages.sandbox.constraints2)/8973525032383069990");
     public static final RuleId ID_propertyInChildIsSetCorrectly = new RuleId(8973525032383069990L, SOURCE_NODE_REF);
 
     public Rule_propertyInChildIsSetCorrectly() {
-      super(CONCEPT, CanBeParent_RuleKind.INSTANCE, ID_propertyInChildIsSetCorrectly, SOURCE_NODE_REF);
+      super(CONCEPT, CanBeParentRuleKind.INSTANCE, ID_propertyInChildIsSetCorrectly, SOURCE_NODE_REF);
     }
     @Override
-    public boolean check(@NotNull CanBeParent_Context context) {
+    public boolean check(@NotNull CanBeParentContext context) {
       if (!(appliesTo(context))) {
         return true;
       }
@@ -64,7 +64,7 @@ public final class ParentConcept1_Constraints2 extends BaseConstraintsDescriptor
     }
 
     @Override
-    public boolean appliesTo(@NotNull CanBeParent_Context context) {
+    public boolean appliesTo(@NotNull CanBeParentContext context) {
       return context.getChildNode() != null && SNodeOperations.isInstanceOf(context.getChildNode(), MetaAdapterFactory.getConcept(0xfc39d7264089464aL, 0x8fc15f71edfdf03bL, 0x7825711952b6d480L, "constraints.rulesAndMessages.sandbox.structure.ChildConcept1"));
     }
   }

@@ -10,6 +10,7 @@ import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
   private ConceptPresentation props_NativeDef;
+  private ConceptPresentation props_NativeTypedConceptDef;
   private ConceptPresentation props_NativeTypedNodeDef;
   private ConceptPresentation props_RuleKind;
   private ConceptPresentation props_RuleKindParameterConcept;
@@ -27,6 +28,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_NativeDef = cpb.create();
         }
         return props_NativeDef;
+      case LanguageConceptSwitch.NativeTypedConceptDef:
+        if (props_NativeTypedConceptDef == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_NativeTypedConceptDef = cpb.create();
+        }
+        return props_NativeTypedConceptDef;
       case LanguageConceptSwitch.NativeTypedNodeDef:
         if (props_NativeTypedNodeDef == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

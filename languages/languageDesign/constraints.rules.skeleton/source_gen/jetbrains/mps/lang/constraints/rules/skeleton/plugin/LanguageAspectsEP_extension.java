@@ -58,7 +58,7 @@ public class LanguageAspectsEP_extension extends Extension.Default<LanguageAspec
         }).ofType(SModel.class).toListSequence();
       }
       public SModuleReference getDefaultDevkit() {
-        return PersistenceFacade.getInstance().createModuleReference("4843b9cf-86fe-47f2-87c9-f256294fd740(jetbrains.mps.devkit.aspect.constraints.rulesWithMessages)");
+        return PersistenceFacade.getInstance().createModuleReference("4843b9cf-86fe-47f2-87c9-f256294fd740(jetbrains.mps.devkit.aspect.constraints.rulesAndMessages)");
       }
       @NotNull
       public Collection<SLanguage> getMainLanguages() {

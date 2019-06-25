@@ -68,6 +68,7 @@
       </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
+      <concept id="6677504323281689838" name="jetbrains.mps.lang.smodel.structure.SConceptType" flags="in" index="3bZ5Sz" />
       <concept id="1138055754698" name="jetbrains.mps.lang.smodel.structure.SNodeType" flags="in" index="3Tqbb2">
         <reference id="1138405853777" name="concept" index="ehGHo" />
       </concept>
@@ -155,6 +156,27 @@
         </node>
       </node>
       <node concept="3Tqbb2" id="hyoMxHEp2H" role="3clF45">
+        <ref role="ehGHo" to="tpee:fz3vP1H" resolve="Type" />
+      </node>
+    </node>
+  </node>
+  <node concept="13h7C7" id="2o8jHTOAWLG">
+    <ref role="13h7C2" to="qbpv:2o8jHTOAWnM" resolve="NativeTypedConceptDef" />
+    <node concept="13hLZK" id="2o8jHTOAWLH" role="13h7CW">
+      <node concept="3clFbS" id="2o8jHTOAWLI" role="2VODD2" />
+    </node>
+    <node concept="13i0hz" id="2o8jHTOAWLJ" role="13h7CS">
+      <property role="TrG5h" value="getErasedType" />
+      <ref role="13i0hy" node="4JP_D2W1aPH" resolve="getErasedType" />
+      <node concept="3Tm1VV" id="2o8jHTOAWLK" role="1B3o_S" />
+      <node concept="3clFbS" id="2o8jHTOAWLL" role="3clF47">
+        <node concept="3clFbF" id="2o8jHTOAWLM" role="3cqZAp">
+          <node concept="2c44tf" id="2o8jHTOAWLN" role="3clFbG">
+            <node concept="3bZ5Sz" id="2o8jHTOAWPw" role="2c44tc" />
+          </node>
+        </node>
+      </node>
+      <node concept="3Tqbb2" id="2o8jHTOAWLP" role="3clF45">
         <ref role="ehGHo" to="tpee:fz3vP1H" resolve="Type" />
       </node>
     </node>

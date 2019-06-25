@@ -59,9 +59,9 @@
       <property role="2V$B1T" value="b3551702-269c-4f05-ba61-58060cef4292" />
       <property role="2V$B1Q" value="jetbrains.mps.lang.rulesAndMessages" />
     </node>
-    <node concept="T9mpH" id="1FBVWoj_$mb" role="TkT64">
+    <node concept="T9mpH" id="2OM9A8S4Igo" role="TkT64">
       <property role="T9mpF" value="4843b9cf-86fe-47f2-87c9-f256294fd740" />
-      <property role="T9mpE" value="jetbrains.mps.devkit.aspect.constraints.rulesWithMessages" />
+      <property role="T9mpE" value="jetbrains.mps.devkit.aspect.constraints.rulesAndMessages" />
     </node>
     <node concept="2vPdvu" id="7w_sh_iHHi1" role="3F_NFc">
       <node concept="1SjbrP" id="7w_sh_iHHit" role="2vPdvg">

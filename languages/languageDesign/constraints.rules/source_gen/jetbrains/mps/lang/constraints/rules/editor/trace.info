@@ -788,94 +788,32 @@
   </root>
   <root nodeRef="r:c333438f-9631-41c0-a716-72d23eed1ba4(jetbrains.mps.lang.constraints.rules.editor)/668954446731666655">
     <file name="AddMyselfToMenuOfRuleBlockMember.java">
-      <node id="668954446731666655" at="24,45,25,16" concept="12" />
-      <node id="668954446731666655" at="29,118,30,140" concept="7" />
-      <node id="668954446731667492" at="30,140,31,76" concept="2" />
-      <node id="668954446731724829" at="31,76,32,76" concept="2" />
-      <node id="668954446731666655" at="32,76,33,18" concept="8" />
-      <node id="668954446731666655" at="38,91,39,49" concept="2" />
-      <node id="668954446731666655" at="39,49,40,281" concept="2" />
-      <node id="668954446731666655" at="41,9,42,44" concept="8" />
-      <node id="668954446731666655" at="43,15,44,50" concept="2" />
-      <node id="668954446731667492" at="53,80,54,51" concept="2" />
-      <node id="668954446731667492" at="54,51,55,260" concept="2" />
-      <node id="668954446731667492" at="56,11,57,42" concept="8" />
-      <node id="668954446731667492" at="58,17,59,52" concept="2" />
-      <node id="668954446731667492" at="64,82,65,70" concept="7" />
-      <node id="668954446731667492" at="65,70,66,80" concept="7" />
-      <node id="668954446731667492" at="66,80,67,128" concept="8" />
-      <node id="668954446731667492" at="69,86,70,161" concept="8" />
-      <node id="668954446731724829" at="77,80,78,51" concept="2" />
-      <node id="668954446731724829" at="78,51,79,266" concept="2" />
-      <node id="668954446731724829" at="80,11,81,42" concept="8" />
-      <node id="668954446731724829" at="82,17,83,52" concept="2" />
-      <node id="668954446731724829" at="88,82,89,70" concept="7" />
-      <node id="668954446731724829" at="89,70,90,80" concept="7" />
-      <node id="668954446731724829" at="90,80,91,128" concept="8" />
-      <node id="668954446731724829" at="93,86,94,167" concept="8" />
-      <node id="668954446731666655" at="24,0,27,0" concept="1" trace="AddMyselfToMenuOfRuleBlockMember#()V" />
-      <node id="668954446731667492" at="69,0,72,0" concept="6" trace="getConceptToFindMenuFor#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="668954446731724829" at="93,0,96,0" concept="6" trace="getConceptToFindMenuFor#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="668954446731666655" at="40,281,45,5" concept="13" />
-      <node id="668954446731667492" at="55,260,60,7" concept="13" />
-      <node id="668954446731724829" at="79,266,84,7" concept="13" />
-      <node id="668954446731667492" at="62,0,69,0" concept="6" trace="getMenuLookup#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuLookup;" />
-      <node id="668954446731724829" at="86,0,93,0" concept="6" trace="getMenuLookup#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuLookup;" />
-      <node id="668954446731666655" at="27,0,35,0" concept="6" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <node id="668954446731666655" at="36,0,47,0" concept="6" trace="createMenuItems#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <node id="668954446731667492" at="51,0,62,0" concept="6" trace="createItems#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <node id="668954446731724829" at="75,0,86,0" concept="6" trace="createItems#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <scope id="668954446731666655" at="24,45,25,16" />
-      <scope id="668954446731666655" at="41,9,42,44" />
-      <scope id="668954446731666655" at="43,15,44,50" />
-      <scope id="668954446731667492" at="56,11,57,42" />
-      <scope id="668954446731667492" at="58,17,59,52" />
-      <scope id="668954446731667492" at="69,86,70,161" />
-      <scope id="668954446731724829" at="80,11,81,42" />
-      <scope id="668954446731724829" at="82,17,83,52" />
-      <scope id="668954446731724829" at="93,86,94,167" />
-      <scope id="668954446731666655" at="24,0,27,0" />
-      <scope id="668954446731667492" at="64,82,67,128">
-        <var name="conceptToFindMenuFor" id="668954446731667492" />
-        <var name="editorContext" id="668954446731667492" />
-      </scope>
-      <scope id="668954446731667492" at="69,0,72,0">
-        <var name="_context" id="668954446731667492" />
-      </scope>
-      <scope id="668954446731724829" at="88,82,91,128">
-        <var name="conceptToFindMenuFor" id="668954446731724829" />
-        <var name="editorContext" id="668954446731724829" />
-      </scope>
-      <scope id="668954446731724829" at="93,0,96,0">
-        <var name="_context" id="668954446731724829" />
-      </scope>
-      <scope id="668954446731666655" at="29,118,33,18">
+      <node id="668954446731666655" at="16,45,17,16" concept="12" />
+      <node id="668954446731666655" at="21,118,22,140" concept="7" />
+      <node id="668954446731666655" at="22,140,23,18" concept="8" />
+      <node id="668954446731666655" at="28,91,29,49" concept="2" />
+      <node id="668954446731666655" at="29,49,30,281" concept="2" />
+      <node id="668954446731666655" at="31,9,32,44" concept="8" />
+      <node id="668954446731666655" at="33,15,34,50" concept="2" />
+      <node id="668954446731666655" at="16,0,19,0" concept="1" trace="AddMyselfToMenuOfRuleBlockMember#()V" />
+      <node id="668954446731666655" at="30,281,35,5" concept="13" />
+      <node id="668954446731666655" at="19,0,25,0" concept="6" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
+      <node id="668954446731666655" at="26,0,37,0" concept="6" trace="createMenuItems#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
+      <scope id="668954446731666655" at="16,45,17,16" />
+      <scope id="668954446731666655" at="31,9,32,44" />
+      <scope id="668954446731666655" at="33,15,34,50" />
+      <scope id="668954446731666655" at="21,118,23,18">
         <var name="result" id="668954446731666655" />
       </scope>
-      <scope id="668954446731666655" at="38,91,45,5" />
-      <scope id="668954446731667492" at="53,80,60,7" />
-      <scope id="668954446731667492" at="62,0,69,0">
-        <var name="_context" id="668954446731667492" />
-      </scope>
-      <scope id="668954446731724829" at="77,80,84,7" />
-      <scope id="668954446731724829" at="86,0,93,0">
-        <var name="_context" id="668954446731724829" />
-      </scope>
-      <scope id="668954446731666655" at="27,0,35,0">
+      <scope id="668954446731666655" at="16,0,19,0" />
+      <scope id="668954446731666655" at="19,0,25,0">
         <var name="_context" id="668954446731666655" />
       </scope>
-      <scope id="668954446731666655" at="36,0,47,0">
+      <scope id="668954446731666655" at="28,91,35,5" />
+      <scope id="668954446731666655" at="26,0,37,0">
         <var name="context" id="668954446731666655" />
       </scope>
-      <scope id="668954446731667492" at="51,0,62,0">
-        <var name="context" id="668954446731667492" />
-      </scope>
-      <scope id="668954446731724829" at="75,0,86,0">
-        <var name="context" id="668954446731724829" />
-      </scope>
-      <unit id="668954446731667492" at="49,0,73,0" name="jetbrains.mps.lang.constraints.rules.editor.AddMyselfToMenuOfRuleBlockMember$SMP_Include_y0tsy8_a" />
-      <unit id="668954446731724829" at="73,0,97,0" name="jetbrains.mps.lang.constraints.rules.editor.AddMyselfToMenuOfRuleBlockMember$SMP_Include_y0tsy8_b" />
-      <unit id="668954446731666655" at="23,0,98,0" name="jetbrains.mps.lang.constraints.rules.editor.AddMyselfToMenuOfRuleBlockMember" />
+      <unit id="668954446731666655" at="15,0,40,0" name="jetbrains.mps.lang.constraints.rules.editor.AddMyselfToMenuOfRuleBlockMember" />
     </file>
   </root>
   <root nodeRef="r:c333438f-9631-41c0-a716-72d23eed1ba4(jetbrains.mps.lang.constraints.rules.editor)/7291380803376071611">

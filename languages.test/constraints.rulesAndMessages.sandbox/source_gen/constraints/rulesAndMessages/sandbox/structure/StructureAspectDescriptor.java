@@ -58,6 +58,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForChildConcept1() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("constraints.rulesAndMessages.sandbox", "ChildConcept1", 0xfc39d7264089464aL, 0x8fc15f71edfdf03bL, 0x7825711952b6d480L);
     b.class_(false, false, false);
+    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:3fd4e667-8fcb-4728-850d-184116dcdf79(constraints.rulesAndMessages.sandbox.structure)/8657450212265481344");
     b.version(2);
     b.property("testProp", 0x7825711952b815edL).type(PrimitiveTypeId.INTEGER).origin("8657450212265563629").done();
@@ -66,6 +67,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForParentConcept1() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("constraints.rulesAndMessages.sandbox", "ParentConcept1", 0xfc39d7264089464aL, 0x8fc15f71edfdf03bL, 0x7af41afae28e1a15L);
     b.class_(false, false, true);
+    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:3fd4e667-8fcb-4728-850d-184116dcdf79(constraints.rulesAndMessages.sandbox.structure)/8859736031789718037");
     b.version(2);
     b.property("canHaveChildren", 0x6493b7a43ae22fbaL).type(PrimitiveTypeId.BOOLEAN).origin("7247338141359681466").done();

@@ -12,13 +12,13 @@
     <file name="ContextUtil.java">
       <node id="4575984242822971007" at="19,105,20,244" concept="1" />
       <node id="4575984242822959852" at="20,244,21,66" concept="5" />
-      <node id="8525842417252896863" at="22,168,23,196" concept="6" />
-      <node id="8525842417252896874" at="24,175,25,197" concept="6" />
+      <node id="8525842417252896863" at="22,168,23,195" concept="6" />
+      <node id="8525842417252896874" at="24,175,25,196" concept="6" />
       <node id="8525842417252896883" at="26,5,27,16" concept="6" />
       <node id="4575984242823006864" at="30,102,31,244" concept="1" />
       <node id="4575984242823006873" at="31,244,32,66" concept="5" />
-      <node id="4575984242823006881" at="33,168,34,197" concept="6" />
-      <node id="4575984242823006890" at="35,175,36,198" concept="6" />
+      <node id="4575984242823006881" at="33,168,34,196" concept="6" />
+      <node id="4575984242823006890" at="35,175,36,197" concept="6" />
       <node id="4575984242823006897" at="37,5,38,16" concept="6" />
       <node id="469612135036132490" at="41,66,42,199" concept="6" />
       <node id="4575984242822876825" at="16,0,18,0" concept="0" trace="ContextUtil#()V" />
@@ -28,10 +28,10 @@
       <node id="5537458604776842939" at="19,0,29,0" concept="7" trace="matchContextForRuleKind#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/generator/template/TemplateQueryContext;)Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
       <node id="4575984242823006862" at="30,0,40,0" concept="7" trace="matchKindForRuleKind#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/generator/template/TemplateQueryContext;)Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
       <scope id="4575984242822876828" at="16,25,16,25" />
-      <scope id="8525842417252896862" at="22,168,23,196" />
-      <scope id="8525842417252896873" at="24,175,25,197" />
-      <scope id="4575984242823006880" at="33,168,34,197" />
-      <scope id="4575984242823006889" at="35,175,36,198" />
+      <scope id="8525842417252896862" at="22,168,23,195" />
+      <scope id="8525842417252896873" at="24,175,25,196" />
+      <scope id="4575984242823006880" at="33,168,34,196" />
+      <scope id="4575984242823006889" at="35,175,36,197" />
       <scope id="469612135036128235" at="41,66,42,199" />
       <scope id="4575984242822876825" at="16,0,18,0" />
       <scope id="469612135036128231" at="41,0,44,0">
@@ -56,26 +56,35 @@
   </root>
   <root nodeRef="r:7fc220b5-3806-43f7-a6e6-6f3ea2d76c9c(util)/7082824793308696454">
     <file name="NameHelper.java">
-      <node id="66188535716407265" at="12,0,13,0" concept="2" trace="myRuleDecl" />
-      <node id="66188535716408472" at="14,46,15,26" concept="1" />
-      <node id="1540166288377306430" at="19,38,20,57" concept="6" />
-      <node id="1540166288377365872" at="24,36,25,167" concept="6" />
-      <node id="8452785328911042429" at="29,34,30,87" concept="6" />
-      <node id="7082824793308708548" at="14,0,17,0" concept="0" trace="NameHelper#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="7082824793308696498" at="18,0,22,0" concept="4" trace="getGeneratedString#()Ljava/lang/String;" />
-      <node id="1540166288377365897" at="23,0,27,0" concept="4" trace="getGeneratedName#()Ljava/lang/String;" />
-      <node id="1540166288377303469" at="28,0,32,0" concept="4" trace="getGeneratedId#()Ljava/lang/String;" />
-      <scope id="7082824793308708552" at="14,46,15,26" />
-      <scope id="7082824793308696506" at="19,38,20,57" />
-      <scope id="1540166288377365854" at="24,36,25,167" />
-      <scope id="1540166288377303472" at="29,34,30,87" />
-      <scope id="7082824793308708548" at="14,0,17,0">
+      <node id="66188535716407265" at="13,0,14,0" concept="2" trace="myRuleDecl" />
+      <node id="2740527090601642797" at="14,0,15,0" concept="2" trace="myGenContext" />
+      <node id="66188535716408472" at="16,79,17,26" concept="1" />
+      <node id="2740527090601643679" at="17,26,18,30" concept="1" />
+      <node id="1540166288377306430" at="22,38,23,57" concept="6" />
+      <node id="2740527090601648540" at="28,174,29,83" concept="1" />
+      <node id="1540166288377365872" at="30,5,31,167" concept="6" />
+      <node id="2740527090601650932" at="36,94,37,81" concept="1" />
+      <node id="8452785328911042429" at="38,5,39,87" concept="6" />
+      <node id="2740527090601645200" at="27,36,30,5" concept="3" />
+      <node id="2740527090601650930" at="35,34,38,5" concept="3" />
+      <node id="7082824793308708548" at="16,0,20,0" concept="0" trace="NameHelper#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/generator/template/TemplateQueryContext;)V" />
+      <node id="7082824793308696498" at="21,0,25,0" concept="4" trace="getGeneratedString#()Ljava/lang/String;" />
+      <node id="1540166288377365897" at="26,0,33,0" concept="4" trace="getGeneratedName#()Ljava/lang/String;" />
+      <node id="1540166288377303469" at="34,0,41,0" concept="4" trace="getGeneratedId#()Ljava/lang/String;" />
+      <scope id="7082824793308696506" at="22,38,23,57" />
+      <scope id="2740527090601645202" at="28,174,29,83" />
+      <scope id="2740527090601650931" at="36,94,37,81" />
+      <scope id="7082824793308708552" at="16,79,18,30" />
+      <scope id="7082824793308708548" at="16,0,20,0">
+        <var name="genContext" id="2740527090601641990" />
         <var name="ruleDecl" id="1540166288377303867" />
       </scope>
-      <scope id="7082824793308696498" at="18,0,22,0" />
-      <scope id="1540166288377365897" at="23,0,27,0" />
-      <scope id="1540166288377303469" at="28,0,32,0" />
-      <unit id="7082824793308696454" at="11,0,33,0" name="util.NameHelper" />
+      <scope id="7082824793308696498" at="21,0,25,0" />
+      <scope id="1540166288377365854" at="27,36,31,167" />
+      <scope id="1540166288377303472" at="35,34,39,87" />
+      <scope id="1540166288377365897" at="26,0,33,0" />
+      <scope id="1540166288377303469" at="34,0,41,0" />
+      <unit id="7082824793308696454" at="12,0,42,0" name="util.NameHelper" />
     </file>
   </root>
 </debug-info>

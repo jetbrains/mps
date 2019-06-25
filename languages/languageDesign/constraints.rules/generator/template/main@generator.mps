@@ -1047,14 +1047,14 @@
               <node concept="37vLTw" id="4rknBOXVSS6" role="37wK5m">
                 <ref role="3cqZAo" node="4rknBOXVRDt" resolve="CONCEPT" />
               </node>
-              <node concept="Rm8GO" id="$V5NfaK5DH" role="37wK5m">
-                <ref role="1Px2BO" to="pdwk:~CanBeChild_RuleKind" resolve="CanBeChild_RuleKind" />
-                <ref role="Rm8GQ" to="pdwk:~CanBeChild_RuleKind.INSTANCE" resolve="INSTANCE" />
-                <node concept="1ZhdrF" id="$V5NfaK5DI" role="lGtFl">
+              <node concept="Rm8GO" id="2o8jHTODBRJ" role="37wK5m">
+                <ref role="Rm8GQ" to="pdwk:~CanBeChildRuleKind.INSTANCE" resolve="INSTANCE" />
+                <ref role="1Px2BO" to="pdwk:~CanBeChildRuleKind" resolve="CanBeChildRuleKind" />
+                <node concept="1ZhdrF" id="2o8jHTODBZw" role="lGtFl">
                   <property role="2qtEX8" value="enumClass" />
                   <property role="P3scX" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1083260308424/1144432896254" />
-                  <node concept="3$xsQk" id="$V5NfaK5DJ" role="3$ytzL">
-                    <node concept="3clFbS" id="$V5NfaK5DK" role="2VODD2">
+                  <node concept="3$xsQk" id="2o8jHTODBZx" role="3$ytzL">
+                    <node concept="3clFbS" id="2o8jHTODBZy" role="2VODD2">
                       <node concept="3cpWs6" id="5hCLR$mf_RC" role="3cqZAp">
                         <node concept="2YIFZM" id="5hCLR$mfAfl" role="3cqZAk">
                           <ref role="37wK5l" to="tgww:3Y1amMrg0Ee" resolve="matchKindForRuleKind" />
@@ -1114,7 +1114,7 @@
               <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
             </node>
             <node concept="3uibUv" id="3xcEe9RM7FD" role="1tU5fm">
-              <ref role="3uigEE" to="pdwk:~CanBeChild_Context" resolve="CanBeChild_Context" />
+              <ref role="3uigEE" to="pdwk:~CanBeChildContext" resolve="CanBeChildContext" />
               <node concept="1ZhdrF" id="7qY6fvuNWJi" role="lGtFl">
                 <property role="2qtEX8" value="classifier" />
                 <property role="P3scX" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1107535904670/1107535924139" />
@@ -1225,7 +1225,7 @@
               <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
             </node>
             <node concept="3uibUv" id="35M2kEOxvFZ" role="1tU5fm">
-              <ref role="3uigEE" to="pdwk:~CanBeChild_Context" resolve="CanBeChild_Context" />
+              <ref role="3uigEE" to="pdwk:~CanBeChildContext" resolve="CanBeChildContext" />
               <node concept="1ZhdrF" id="35M2kEOxvG0" role="lGtFl">
                 <property role="2qtEX8" value="classifier" />
                 <property role="P3scX" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1107535904670/1107535924139" />
@@ -1381,7 +1381,7 @@
         <node concept="3uibUv" id="$V5NfaJC2f" role="1zkMxy">
           <ref role="3uigEE" to="o99v:~BaseRule" resolve="BaseRule" />
           <node concept="3uibUv" id="7phS86NkeBk" role="11_B2D">
-            <ref role="3uigEE" to="pdwk:~CanBeChild_Context" resolve="CanBeChild_Context" />
+            <ref role="3uigEE" to="pdwk:~CanBeChildContext" resolve="CanBeChildContext" />
             <node concept="1ZhdrF" id="7phS86NkeBl" role="lGtFl">
               <property role="2qtEX8" value="classifier" />
               <property role="P3scX" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1107535904670/1107535924139" />
@@ -1648,7 +1648,7 @@
         <node concept="3uibUv" id="1BFxp3HIuNj" role="1tU5fm">
           <ref role="3uigEE" to="o99v:~Rule" resolve="Rule" />
           <node concept="3uibUv" id="1BFxp3HIuNk" role="11_B2D">
-            <ref role="3uigEE" to="pdwk:~CanBeChild_Context" resolve="CanBeChild_Context" />
+            <ref role="3uigEE" to="pdwk:~CanBeChildContext" resolve="CanBeChildContext" />
             <node concept="1ZhdrF" id="1BFxp3HIuNl" role="lGtFl">
               <property role="2qtEX8" value="classifier" />
               <property role="P3scX" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1107535904670/1107535924139" />
@@ -1695,6 +1695,7 @@
                     <node concept="1pGfFk" id="1BFxp3HIuND" role="2ShVmc">
                       <ref role="37wK5l" to="tgww:69bfTY3vFV4" resolve="NameHelper" />
                       <node concept="30H73N" id="1BFxp3HIuNE" role="37wK5m" />
+                      <node concept="1iwH7S" id="2o8jHTODrhc" role="37wK5m" />
                     </node>
                   </node>
                   <node concept="liA8E" id="1BFxp3HIuNF" role="2OqNvi">

@@ -22,7 +22,7 @@
   </root>
   <root nodeRef="r:15a53890-cd48-425f-9829-419e5561b668(main@generator)/1867733327985372265">
     <file name="QueriesGenerated.java">
-      <node id="1867733327985372390" at="78,88,79,67" concept="5" />
+      <node id="1867733327985372390" at="78,88,79,77" concept="5" />
       <node id="1867733327985372376" at="114,93,115,110" concept="4" />
       <node id="1867733327985372382" at="115,110,116,67" concept="5" />
       <node id="1867733327985372408" at="118,93,119,99" concept="5" />
@@ -40,8 +40,8 @@
       <node id="1867733327985372472" at="347,15,348,87" concept="5" />
       <node id="1867733327985372387" at="363,200,364,195" concept="1" />
       <node id="1867733327985372387" at="398,15,399,66" concept="5" />
-      <node id="1867733327985372373" at="458,94,459,94" concept="1" />
-      <node id="1867733327985372405" at="459,94,460,85" concept="1" />
+      <node id="1867733327985372373" at="458,93,459,93" concept="1" />
+      <node id="1867733327985372405" at="459,93,460,85" concept="1" />
       <node id="1867733327985608762" at="460,85,461,80" concept="1" />
       <node id="1867733327985372373" at="503,16,504,70" concept="5" />
       <node id="1867733327985372405" at="505,16,506,70" concept="5" />
@@ -59,7 +59,7 @@
       <node id="1867733327985451599" at="196,0,199,0" concept="7" trace="varMacro_Value_4_0#(Ljetbrains/mps/generator/template/TemplateVarContext;)Ljava/lang/Object;" />
       <node id="1867733327985599180" at="199,0,202,0" concept="7" trace="varMacro_Value_4_1#(Ljetbrains/mps/generator/template/TemplateVarContext;)Ljava/lang/Object;" />
       <node id="1867733327985372374" at="114,0,118,0" concept="7" trace="referenceMacro_GetReferent_4_0#(Ljetbrains/mps/generator/template/ReferenceMacroContext;)Ljava/lang/Object;" />
-      <scope id="1867733327985372389" at="78,88,79,67" />
+      <scope id="1867733327985372389" at="78,88,79,77" />
       <scope id="1867733327985372407" at="118,93,119,99" />
       <scope id="1867733327985608764" at="121,93,122,93" />
       <scope id="1867733327985429655" at="171,104,172,65" />
@@ -261,12 +261,12 @@
       <node id="3562920471664488461" at="435,15,436,61" concept="5" />
       <node id="4840385564835867234" at="437,15,438,61" concept="5" />
       <node id="3562920471664422873" at="439,15,440,61" concept="5" />
-      <node id="665150881179654766" at="453,86,454,93" concept="1" />
-      <node id="8556303794924669906" at="454,93,455,93" concept="1" />
-      <node id="3562920471664392960" at="455,93,456,93" concept="1" />
-      <node id="4636242761502992616" at="456,93,457,78" concept="1" />
-      <node id="8525842417252886997" at="457,78,458,94" concept="1" />
-      <node id="665150881179654766" at="493,15,494,70" concept="5" />
+      <node id="2740527090601721824" at="453,86,454,93" concept="1" />
+      <node id="8556303794924669906" at="454,93,455,92" concept="1" />
+      <node id="3562920471664392960" at="455,92,456,92" concept="1" />
+      <node id="4636242761502992616" at="456,92,457,78" concept="1" />
+      <node id="8525842417252886997" at="457,78,458,93" concept="1" />
+      <node id="2740527090601721824" at="493,15,494,70" concept="5" />
       <node id="8556303794924669906" at="495,15,496,70" concept="5" />
       <node id="3562920471664392960" at="497,15,498,70" concept="5" />
       <node id="4636242761502992616" at="499,15,500,70" concept="5" />
@@ -277,7 +277,7 @@
       <node id="2219208159861526305" at="69,0,72,0" concept="7" trace="propertyMacro_GetValue_3_1#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />
       <node id="7077979228229233092" at="72,0,75,0" concept="7" trace="propertyMacro_GetValue_3_2#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />
       <node id="7291380803376469525" at="75,0,78,0" concept="7" trace="propertyMacro_GetValue_3_3#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />
-      <node id="665150881179654767" at="99,0,102,0" concept="7" trace="referenceMacro_GetReferent_3_0#(Ljetbrains/mps/generator/template/ReferenceMacroContext;)Ljava/lang/Object;" />
+      <node id="2740527090601721825" at="99,0,102,0" concept="7" trace="referenceMacro_GetReferent_3_0#(Ljetbrains/mps/generator/template/ReferenceMacroContext;)Ljava/lang/Object;" />
       <node id="8556303794924669907" at="102,0,105,0" concept="7" trace="referenceMacro_GetReferent_3_1#(Ljetbrains/mps/generator/template/ReferenceMacroContext;)Ljava/lang/Object;" />
       <node id="3562920471664392961" at="105,0,108,0" concept="7" trace="referenceMacro_GetReferent_3_2#(Ljetbrains/mps/generator/template/ReferenceMacroContext;)Ljava/lang/Object;" />
       <node id="4636242761502992617" at="108,0,111,0" concept="7" trace="referenceMacro_GetReferent_3_3#(Ljetbrains/mps/generator/template/ReferenceMacroContext;)Ljava/lang/Object;" />
@@ -298,7 +298,7 @@
       <scope id="2219208159861526306" at="69,88,70,101" />
       <scope id="7077979228229233093" at="72,88,73,183" />
       <scope id="7291380803376469526" at="75,88,76,185" />
-      <scope id="665150881179654768" at="99,93,100,144" />
+      <scope id="2740527090601721826" at="99,93,100,144" />
       <scope id="8556303794924669908" at="102,93,103,147" />
       <scope id="3562920471664392962" at="105,93,106,147" />
       <scope id="4636242761502992618" at="108,93,109,92" />
@@ -320,7 +320,7 @@
       <scope id="3562920471664488461" at="435,15,436,61" />
       <scope id="4840385564835867234" at="437,15,438,61" />
       <scope id="3562920471664422873" at="439,15,440,61" />
-      <scope id="665150881179654766" at="493,15,494,70" />
+      <scope id="2740527090601721824" at="493,15,494,70" />
       <scope id="8556303794924669906" at="495,15,496,70" />
       <scope id="3562920471664392960" at="497,15,498,70" />
       <scope id="4636242761502992616" at="499,15,500,70" />
@@ -339,8 +339,8 @@
       <scope id="7291380803376469525" at="75,0,78,0">
         <var name="_context" id="7291380803376469525" />
       </scope>
-      <scope id="665150881179654767" at="99,0,102,0">
-        <var name="_context" id="665150881179654767" />
+      <scope id="2740527090601721825" at="99,0,102,0">
+        <var name="_context" id="2740527090601721825" />
       </scope>
       <scope id="8556303794924669907" at="102,0,105,0">
         <var name="_context" id="8556303794924669907" />

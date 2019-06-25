@@ -106,6 +106,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e41e4a2L, 0x48f860fc0e50649fL, "declaration")), "defGet");
   }
   public static Object referenceMacro_GetReferent_5_0(final ReferenceMacroContext _context) {
+    System.out.println("MODEL " + ((SModel) _context.getVariable("var:model")));
     return _context.getOutputNodeByMappingLabel("messagesDescriptorClass", ((SModel) _context.getVariable("var:model")));
   }
   public static boolean ifMacro_Condition_3_0(final IfMacroContext _context) {

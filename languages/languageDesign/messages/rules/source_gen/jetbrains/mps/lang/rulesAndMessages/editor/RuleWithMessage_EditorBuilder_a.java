@@ -52,6 +52,7 @@ import jetbrains.mps.editor.runtime.style.Measure;
     editorCell.setCellId("Collection_3p777_a");
     editorCell.setBig(true);
     setCellContext(editorCell);
+    NoDelete.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.addEditorCell(createCollection_1());
     editorCell.addEditorCell(createCollection_2());
     return editorCell;
@@ -140,6 +141,7 @@ import jetbrains.mps.editor.runtime.style.Measure;
   private EditorCell createCollection_3() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Vertical());
     editorCell.setCellId("Collection_3p777_b1a");
+    NoDelete.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.addEditorCell(createRefNode_1());
     return editorCell;
   }
@@ -179,6 +181,8 @@ import jetbrains.mps.editor.runtime.style.Measure;
       if (editorCell.getSRole() == null) {
         editorCell.setSRole(MetaAdapterFactory.getContainmentLink(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, 0x46263286dc0ce86L, "messageProvider"));
       }
+      NoDelete.setCellActions(editorCell, getNode(), getEditorContext());
+      editorCell.addKeyMap(new ForMessageProviderKeyMap());
     }
     @Override
     protected EditorCell createEmptyCell() {
@@ -195,7 +199,7 @@ import jetbrains.mps.editor.runtime.style.Measure;
       }
     }
     protected String getNoTargetText() {
-      return "<no messageProvider>";
+      return "<no message>";
     }
   }
 }

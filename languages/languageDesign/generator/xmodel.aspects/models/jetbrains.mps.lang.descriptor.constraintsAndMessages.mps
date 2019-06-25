@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model ref="r:eb170f89-5bd6-47c2-9480-a0a681dee400(jetbrains.mps.lang.descriptor.constraintsWithMessages)" doNotGenerate="true">
+<model ref="r:eb170f89-5bd6-47c2-9480-a0a681dee400(jetbrains.mps.lang.descriptor.constraintsAndMessages)" doNotGenerate="true">
   <persistence version="9" />
   <languages>
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
@@ -34,7 +34,7 @@
     </language>
   </registry>
   <node concept="2VgMpV" id="p4S6WRbOUP">
-    <property role="TrG5h" value="ConstraintsWithMessagesRulesPlan" />
+    <property role="TrG5h" value="ConstraintsAndMessagesRulesPlan" />
     <node concept="2VgMA2" id="p4S6WR3TYX" role="2VgMA7">
       <node concept="2V$Bhx" id="p4S6WR3TZ3" role="1t_9vn">
         <property role="2V$B1T" value="ceab5195-25ea-4f22-9b92-103b95ca8c0c" />

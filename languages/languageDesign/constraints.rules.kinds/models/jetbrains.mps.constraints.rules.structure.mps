@@ -129,5 +129,24 @@
       <ref role="PrY4T" node="6kKc3mjq0oG" resolve="TypedDef" />
     </node>
   </node>
+  <node concept="1TIwiD" id="2o8jHTOAWnM">
+    <property role="EcuMT" value="2740527090601018866" />
+    <property role="TrG5h" value="NativeTypedConceptDef" />
+    <property role="34LRSv" value="node&lt;&gt;" />
+    <property role="R5$K2" value="true" />
+    <node concept="1TJgyj" id="2o8jHTOAWnN" role="1TKVEi">
+      <property role="IQ2ns" value="2740527090601018867" />
+      <property role="20lmBu" value="reference" />
+      <property role="20lbJX" value="1" />
+      <property role="20kJfa" value="conceptParameter" />
+      <ref role="20lvS9" node="4JP_D2W1rsP" resolve="RuleKindParameterConcept" />
+    </node>
+    <node concept="PrWs8" id="2o8jHTOAWnO" role="PzmwI">
+      <ref role="PrY4T" node="19J4M2yrkaX" resolve="NativeDef" />
+    </node>
+    <node concept="t5JxF" id="2o8jHTOAWnP" role="lGtFl">
+      <property role="t5JxN" value="constant type for concept&lt;C&gt; in the rule kind" />
+    </node>
+  </node>
 </model>
 

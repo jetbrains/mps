@@ -10,6 +10,9 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Collection;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
+import jetbrains.mps.openapi.editor.style.Style;
+import jetbrains.mps.editor.runtime.style.StyleImpl;
+import jetbrains.mps.lang.constraints.rules.kinds.editor.NativeDefStyles_StyleSheet.NativeDefStyleStyleClass;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.editor.menus.transformation.SPropertyInfo;
@@ -32,18 +35,9 @@ import jetbrains.mps.lang.editor.cellProviders.SingleRoleCellProvider;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
 import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
-import jetbrains.mps.nodeEditor.cellMenu.CompositeSubstituteInfo;
-import jetbrains.mps.lang.editor.cellProviders.AggregationCellContext;
-import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
-import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfoPartEx;
+import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
+import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
-import jetbrains.mps.lang.editor.generator.internal.PrimaryReplaceChildMenuCellMenuPart;
-import jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor;
-import jetbrains.mps.nodeEditor.cellMenu.CellContext;
-import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
-import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_ReplaceNode_CustomNodeConcept;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 /*package*/ class TypedNativeDef_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -78,6 +72,9 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
   private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "def");
     editorCell.setCellId("Constant_rrqa9g_a0");
+    Style style = new StyleImpl();
+    new NativeDefStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
   }
@@ -145,7 +142,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
     private void installCellInfo(SNode child, EditorCell editorCell, boolean isEmpty) {
       if (editorCell.getSubstituteInfo() == null || editorCell.getSubstituteInfo() instanceof DefaultSubstituteInfo) {
-        editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new AggregationCellContext(myNode, child, MetaAdapterFactory.getContainmentLink(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, 0x4bf59690bc00f6b1L, 0x4bf59690bc00f6b2L, "type"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type")), new SubstituteInfoPartExt[]{new TypedNativeDef_EditorBuilder_a.typeSingleRoleHandler_rrqa9g_d0.TypedNativeDef_type_cellMenu_rrqa9g_a0d0(), new TypedNativeDef_EditorBuilder_a.typeSingleRoleHandler_rrqa9g_d0.ReplaceWith_NativeTypedNodeDef_cellMenu_rrqa9g_b0d0(), new SChildSubstituteInfoPartEx(editorCell)}));
+        editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
       }
       if (editorCell.getSRole() == null) {
         editorCell.setSRole(MetaAdapterFactory.getContainmentLink(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, 0x4bf59690bc00f6b1L, 0x4bf59690bc00f6b2L, "type"));
@@ -167,26 +164,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
     }
     protected String getNoTargetText() {
       return "<no type>";
-    }
-    public static class TypedNativeDef_type_cellMenu_rrqa9g_a0d0 extends PrimaryReplaceChildMenuCellMenuPart {
-      public TypedNativeDef_type_cellMenu_rrqa9g_a0d0() {
-      }
-
-      @Override
-      protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
-        return new EditorMenuDescriptorBase("primary replace child menu", new SNodePointer("r:9c52f381-93f4-47f9-bd21-f9de8f562b1c(jetbrains.mps.lang.constraints.rules.kinds.editor)", "315923949160064346"));
-      }
-    }
-    public static class ReplaceWith_NativeTypedNodeDef_cellMenu_rrqa9g_b0d0 extends AbstractCellMenuPart_ReplaceNode_CustomNodeConcept {
-      public ReplaceWith_NativeTypedNodeDef_cellMenu_rrqa9g_b0d0() {
-      }
-      public SAbstractConcept getReplacementConcept() {
-        return MetaAdapterFactory.getConcept(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, 0x46263286da99051L, "jetbrains.mps.lang.constraints.rules.kinds.structure.NativeTypedNodeDef");
-      }
-      @Override
-      protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
-        return new EditorMenuDescriptorBase("replace node (custom node concept: " + "NativeTypedNodeDef" + ")", new SNodePointer("r:9c52f381-93f4-47f9-bd21-f9de8f562b1c(jetbrains.mps.lang.constraints.rules.kinds.editor)", "315923949160104172"));
-      }
     }
   }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model ref="r:6dda976c-1b90-4b12-9c1c-d7b95337bf45(first)" doNotGenerate="true">
+<model ref="r:6dda976c-1b90-4b12-9c1c-d7b95337bf45(onlyRules)" doNotGenerate="true">
   <persistence version="9" />
   <languages>
     <use id="a6518565-7876-48e9-8d43-9ef97836a52e" name="constraints.rules.sandbox" version="0" />

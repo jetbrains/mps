@@ -27,6 +27,7 @@
       </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
+      <concept id="1143226024141" name="jetbrains.mps.lang.smodel.structure.SModelType" flags="in" index="H_c77" />
       <concept id="6677504323281689838" name="jetbrains.mps.lang.smodel.structure.SConceptType" flags="in" index="3bZ5Sz" />
       <concept id="1138055754698" name="jetbrains.mps.lang.smodel.structure.SNodeType" flags="in" index="3Tqbb2" />
     </language>
@@ -78,6 +79,19 @@
       <node concept="3uibUv" id="1dKt_a0nokW" role="3RXm0y">
         <ref role="3uigEE" to="c17a:~SContainmentLink" resolve="SContainmentLink" />
       </node>
+    </node>
+  </node>
+  <node concept="3Qpn9X" id="2o8jHTOAWn8">
+    <property role="TrG5h" value="CanBeRoot" />
+    <node concept="3RW26_" id="2o8jHTOAWn9" role="3RW26y">
+      <property role="TrG5h" value="C" />
+    </node>
+    <node concept="3RXm0x" id="2o8jHTOB84D" role="3QpnaF">
+      <property role="TrG5h" value="def" />
+    </node>
+    <node concept="3RXm0x" id="2o8jHTOAWnt" role="3QpnaF">
+      <property role="TrG5h" value="model" />
+      <node concept="H_c77" id="2o8jHTOAWnK" role="3RXm0y" />
     </node>
   </node>
 </model>
