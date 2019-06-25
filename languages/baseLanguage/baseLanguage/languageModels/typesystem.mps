@@ -69312,5 +69312,46 @@
       </node>
     </node>
   </node>
+  <node concept="18kY7G" id="3EngrbvrNnd">
+    <property role="TrG5h" value="check_LocalMethodCall_TypeArguments" />
+    <property role="3GE5qa" value="classifiers.refs" />
+    <node concept="3clFbS" id="3EngrbvrNne" role="18ibNy">
+      <node concept="3clFbJ" id="3EngrbvrQzi" role="3cqZAp">
+        <node concept="2OqwBi" id="3EngrbvrTck" role="3clFbw">
+          <node concept="2OqwBi" id="3EngrbvrQKL" role="2Oq$k0">
+            <node concept="1YBJjd" id="3EngrbvrQzU" role="2Oq$k0">
+              <ref role="1YBMHb" node="3EngrbvrNng" resolve="localMethodCall" />
+            </node>
+            <node concept="3Tsc0h" id="3EngrbvrR2U" role="2OqNvi">
+              <ref role="3TtcxE" to="tpee:4k0WLUKaBu8" resolve="typeArgument" />
+            </node>
+          </node>
+          <node concept="3GX2aA" id="3EngrbvrVN3" role="2OqNvi" />
+        </node>
+        <node concept="3clFbS" id="3EngrbvrQzk" role="3clFbx">
+          <node concept="2MkqsV" id="3EngrbvrVO6" role="3cqZAp">
+            <node concept="Xl_RD" id="3EngrbvrVOw" role="2MkJ7o">
+              <property role="Xl_RC" value="Local method calls cannot have type arguments" />
+            </node>
+            <node concept="2OqwBi" id="3EngrbvrYLn" role="2OEOjV">
+              <node concept="2OqwBi" id="3EngrbvrWkQ" role="2Oq$k0">
+                <node concept="1YBJjd" id="3EngrbvrWa1" role="2Oq$k0">
+                  <ref role="1YBMHb" node="3EngrbvrNng" resolve="localMethodCall" />
+                </node>
+                <node concept="3Tsc0h" id="3EngrbvrWEf" role="2OqNvi">
+                  <ref role="3TtcxE" to="tpee:4k0WLUKaBu8" resolve="typeArgument" />
+                </node>
+              </node>
+              <node concept="1uHKPH" id="3Engrbvs1oY" role="2OqNvi" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="3EngrbvrNng" role="1YuTPh">
+      <property role="TrG5h" value="localMethodCall" />
+      <ref role="1YaFvo" to="tpee:6LFqxSRBTg4" resolve="LocalMethodCall" />
+    </node>
+  </node>
 </model>
 
