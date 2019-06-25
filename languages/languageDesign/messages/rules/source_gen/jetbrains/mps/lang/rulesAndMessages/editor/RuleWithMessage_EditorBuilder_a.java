@@ -121,7 +121,6 @@ import jetbrains.mps.editor.runtime.style.Measure;
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Horizontal());
     editorCell.setCellId("Collection_3p777_b0");
     Style style = new StyleImpl();
-    style.set(StyleAttributes.DRAW_BORDER, true);
     style.set(StyleAttributes.HORIZONTAL_ALIGN, CellAlign.RIGHT);
     editorCell.getStyle().putAll(style);
     editorCell.addEditorCell(createConstant_0());

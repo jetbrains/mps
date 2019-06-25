@@ -45,10 +45,6 @@
         <child id="1638911550608610281" name="executeFunction" index="IWgqQ" />
         <child id="5692353713941573325" name="textFunction" index="1hCUd6" />
       </concept>
-      <concept id="1186414536763" name="jetbrains.mps.lang.editor.structure.BooleanStyleSheetItem" flags="ln" index="VOi$J">
-        <property id="1186414551515" name="flag" index="VOm3f" />
-      </concept>
-      <concept id="1186414976055" name="jetbrains.mps.lang.editor.structure.DrawBorderStyleClassItem" flags="ln" index="VPXOz" />
       <concept id="1630016958697718209" name="jetbrains.mps.lang.editor.structure.IMenuReference_Default" flags="ng" index="2Z_bC8">
         <reference id="1630016958698373342" name="concept" index="2ZyFGn" />
       </concept>
@@ -216,9 +212,6 @@
         </node>
       </node>
       <node concept="3EZMnI" id="40CvJkJzGIY" role="3EZMnx">
-        <node concept="VPXOz" id="52CT$p9rHSP" role="3F10Kt">
-          <property role="VOm3f" value="true" />
-        </node>
         <node concept="37jFXN" id="5jg33KK9Mqt" role="3F10Kt">
           <property role="37lx6p" value="RIGHT" />
         </node>
