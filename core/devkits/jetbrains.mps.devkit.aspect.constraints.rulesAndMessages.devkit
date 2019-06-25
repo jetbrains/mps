@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dev-kit name="jetbrains.mps.devkit.aspect.constraints.rulesWithMessages" uuid="4843b9cf-86fe-47f2-87c9-f256294fd740">
+<dev-kit name="jetbrains.mps.devkit.aspect.constraints.rulesAndMessages" uuid="4843b9cf-86fe-47f2-87c9-f256294fd740">
   <exported-language name="b3551702-269c-4f05-ba61-58060cef4292(jetbrains.mps.lang.rulesAndMessages)" />
   <exported-language name="134c38d4-e3af-4d9e-b069-1c7df0a4005d(jetbrains.mps.lang.constraints.rules.skeleton)" />
   <exported-language name="5dae8159-ab99-46bb-a40d-0cee30ee7018(jetbrains.mps.lang.constraints.rules.kinds)" />

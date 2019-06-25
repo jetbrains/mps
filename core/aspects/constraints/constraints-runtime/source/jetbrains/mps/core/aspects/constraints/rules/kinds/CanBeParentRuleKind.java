@@ -33,7 +33,6 @@ public enum CanBeParentRuleKind implements RuleKind<CanBeParentContext>, LegacyK
   }
 
   @NotNull
-  @Override
   public Builder getContextBuilder() {
     return new Builder();
   }
