@@ -333,6 +333,7 @@ import jetbrains.mps.editor.runtime.style.FocusPolicy;
   private EditorCell createConstant_3() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "");
     editorCell.setCellId("Constant_27y5p7_b2a");
+    AddParameterToDefaultClassCreator.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setDefaultText("");
     return editorCell;
   }
