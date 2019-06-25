@@ -254,6 +254,10 @@ public abstract class SModelDescriptorStub implements SModelInternal, SModel, Fa
   @Override
   public final void addModelImport(@NotNull SModelReference ref) {
     assertCanChange();
+    if (ref.equals(getReference())) {
+      // don't add references to self
+      return;
+    }
     getSModel().addModelImport(new ImportElement(ref));
   }
 
