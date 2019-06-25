@@ -24,7 +24,7 @@ import java.io.File;
 public final class PathAssert {
   private final String myPath;
 
-  public PathAssert(String path) {
+  public PathAssert(@NotNull String path) {
     myPath = path;
   }
 

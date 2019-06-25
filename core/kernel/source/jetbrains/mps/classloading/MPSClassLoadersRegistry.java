@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.classloading;
 
-import jetbrains.mps.classloading.ClassLoadersHolder.ClassLoaderNotFoundException;
 import jetbrains.mps.classloading.ClassLoadersHolder.ClassLoadingProgress;
 import jetbrains.mps.classloading.DeployListener.ResourceTrackerCallback;
 import jetbrains.mps.module.ReloadableModule;
