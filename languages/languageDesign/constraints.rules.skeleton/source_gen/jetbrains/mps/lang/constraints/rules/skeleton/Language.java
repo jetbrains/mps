@@ -10,6 +10,8 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.runtime.ILanguageAspect;
 import jetbrains.mps.core.aspects.constraints.rules.ConstraintsAspectDescriptor2;
 import jetbrains.mps.lang.constraints.rules.skeleton.constraints.GeneratedConstraintsAspectDescriptor2;
+import jetbrains.mps.core.aspects.reporting.api.MessagesAspectDescriptor;
+import jetbrains.mps.lang.constraints.rules.skeleton.constraints.GeneratedMessagesAspectDescriptor;
 import jetbrains.mps.smodel.runtime.BehaviorAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsAspectDescriptor;
 import jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor;
@@ -48,6 +50,9 @@ public class Language extends LanguageRuntime {
   protected <T extends ILanguageAspect> T createAspect(Class<T> aspectClass) {
     if (aspectClass == ConstraintsAspectDescriptor2.class) {
       return aspectClass.cast(new GeneratedConstraintsAspectDescriptor2());
+    }
+    if (aspectClass == MessagesAspectDescriptor.class) {
+      return aspectClass.cast(new GeneratedMessagesAspectDescriptor());
     }
     if (aspectClass == BehaviorAspectDescriptor.class) {
       return aspectClass.cast(new jetbrains.mps.lang.constraints.rules.skeleton.behavior.BehaviorAspectDescriptor());

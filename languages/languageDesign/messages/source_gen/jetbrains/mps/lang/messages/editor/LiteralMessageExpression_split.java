@@ -16,14 +16,6 @@ import jetbrains.mps.openapi.editor.selection.SingularSelection;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Label;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.editor.runtime.selection.SelectionUtil;
-import jetbrains.mps.openapi.editor.selection.SelectionManager;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
 
 public class LiteralMessageExpression_split extends KeyMapImpl {
   public LiteralMessageExpression_split() {
@@ -73,53 +65,10 @@ public class LiteralMessageExpression_split extends KeyMapImpl {
       return !(Objects.equals(SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc5L, 0x48f860fc0e362dc6L, "message")).charAt(splitPosition - 1), '\\'));
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      Selection selection = editorContext.getSelectionManager().getSelection();
-      if (selection instanceof SingularSelection) {
-        EditorCell selectedCell = ((SingularSelection) selection).getEditorCell();
-        if (selectedCell instanceof EditorCell_Label) {
-          int splitPosition = ((EditorCell_Label) selectedCell).getCaretPosition();
-          String messageToSplit = SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc5L, 0x48f860fc0e362dc6L, "message"));
-          List<SNode> messages = ListSequence.fromList(new ArrayList<SNode>());
-          if (splitPosition > 0) {
-            ListSequence.fromList(messages).addElement(createLiteralMessageExpression_vu13fp_a0a0a3a1a1a0a(messageToSplit.substring(0, splitPosition)));
-          }
-          SNode macro = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e41e4a2L, "jetbrains.mps.lang.messages.structure.MacroMessageExpression"));
-          ListSequence.fromList(messages).addElement(macro);
-          if (splitPosition < messageToSplit.length()) {
-            ListSequence.fromList(messages).addElement(createLiteralMessageExpression_vu13fp_a0a0a6a1a1a0a(messageToSplit.substring(splitPosition)));
-          }
-          if (SNodeOperations.hasRole(node, MetaAdapterFactory.getContainmentLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e40455fL, 0x48f860fc0e404561L, "part"))) {
-            SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(node), MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e40455fL, "jetbrains.mps.lang.messages.structure.CombinedMessageExpression")), MetaAdapterFactory.getContainmentLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e40455fL, 0x48f860fc0e404561L, "part")).addAll(SNodeOperations.getIndexInParent(node), messages);
-            SNodeOperations.deleteNode(node);
-          } else {
-            SNodeOperations.replaceWithAnother(node, createCombinedMessageExpression_vu13fp_a0a0a0h0b0b0a0(messages));
-          }
-          SelectionUtil.selectCell(editorContext, macro, SelectionManager.FIRST_EDITABLE_CELL);
-        }
-      }
+      CellSplitUtil.insertMacro(editorContext, node, null);
     }
     public String getKeyStroke() {
       return "any %";
-    }
-    private static SNode createLiteralMessageExpression_vu13fp_a0a0a3a1a1a0a(Object p0) {
-      PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc5L, "jetbrains.mps.lang.messages.structure.LiteralMessageExpression"), null, null, false);
-      n1.setProperty(MetaAdapterFactory.getProperty(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc5L, 0x48f860fc0e362dc6L, "message"), p0 + "");
-      return n1;
-    }
-    private static SNode createLiteralMessageExpression_vu13fp_a0a0a6a1a1a0a(Object p0) {
-      PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc5L, "jetbrains.mps.lang.messages.structure.LiteralMessageExpression"), null, null, false);
-      n1.setProperty(MetaAdapterFactory.getProperty(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc5L, 0x48f860fc0e362dc6L, "message"), p0 + "");
-      return n1;
-    }
-    private static SNode createCombinedMessageExpression_vu13fp_a0a0a0h0b0b0a0(Iterable<? extends SNode> seq0) {
-      PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e40455fL, "jetbrains.mps.lang.messages.structure.CombinedMessageExpression"), null, null, false);
-      for (SNode n : seq0) {
-        n1.addChild(MetaAdapterFactory.getContainmentLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e40455fL, 0x48f860fc0e404561L, "part"), SNodeOperations.copyIfNecessary(SNodeOperations.cast(n, MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc4L, "jetbrains.mps.lang.messages.structure.MessageExpression"))));
-      }
-      return n1;
     }
   }
 }
