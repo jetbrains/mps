@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  */
 package jetbrains.mps.nodeEditor.actions;
 
-import jetbrains.mps.editor.runtime.commands.EditorCommand;
+import jetbrains.mps.editor.runtime.commands.EditorCommandAdapter;
 import jetbrains.mps.openapi.editor.EditorComponent;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.CellAction;
@@ -23,6 +23,7 @@ import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.module.ModelAccess;
 
 /**
  * The class which does the execution of the cell action.
@@ -50,15 +51,18 @@ class CellActionExecuter {
 
   void execute() {
     myEditorContext.runWithContextCell(myContextCell, () -> {
+      final Runnable r = () -> myAction.execute(myEditorContext);
+      final ModelAccess modelAccess = myEditorContext.getRepository().getModelAccess();
       if (myAction.executeInCommand()) {
-        myEditorContext.getRepository().getModelAccess().executeCommand(new EditorCommand(myEditorContext) {
-          @Override
-          public void doExecute() {
-            myAction.execute(myEditorContext);
-          }
-        });
+        modelAccess.executeCommand(new EditorCommandAdapter(r, myEditorContext));
       } else {
-        myAction.execute(myEditorContext);
+        // editor actions often go beyond cell information and traverse nodes associated with the cell (e.g. NodeEditorActions$EnlargeSelection),
+        // keep extra burden of model read here.
+        if (modelAccess.canRead()) {
+          r.run();
+        } else {
+          modelAccess.runReadAction(r);
+        }
       }
     });
   }
