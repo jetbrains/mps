@@ -2,8 +2,8 @@
 <model ref="r:b27aeb14-fefb-4745-88f9-0731c33985d8(jetbrains.mps.lang.rulesAndMessages.editor)">
   <persistence version="9" />
   <languages>
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="-1" />
-    <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="-1" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="12" />
+    <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="4" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -30,6 +30,7 @@
       <concept id="1106270571710" name="jetbrains.mps.lang.editor.structure.CellLayout_Vertical" flags="nn" index="2iRkQZ" />
       <concept id="3459162043708467089" name="jetbrains.mps.lang.editor.structure.CellActionMap_CanExecuteFunction" flags="in" index="jK8Ss" />
       <concept id="6089045305654894366" name="jetbrains.mps.lang.editor.structure.SubstituteMenuReference_Default" flags="ng" index="2kknPJ" />
+      <concept id="1237303669825" name="jetbrains.mps.lang.editor.structure.CellLayout_Indent" flags="nn" index="l2Vlx" />
       <concept id="7671875129586001610" name="jetbrains.mps.lang.editor.structure.TransformationMenuPart_IncludeSubstituteMenu" flags="ng" index="ulPW2">
         <child id="6089045305656903122" name="menuReference" index="2ks2uz" />
       </concept>
@@ -101,10 +102,6 @@
         <child id="730181322658904467" name="menuReference" index="1s_PAo" />
       </concept>
       <concept id="1088185857835" name="jetbrains.mps.lang.editor.structure.InlineEditorComponent" flags="ig" index="1sVBvm" />
-      <concept id="1215007762405" name="jetbrains.mps.lang.editor.structure.FloatStyleClassItem" flags="ln" index="3$6MrZ">
-        <property id="1215007802031" name="value" index="3$6WeP" />
-      </concept>
-      <concept id="1215007897487" name="jetbrains.mps.lang.editor.structure.PaddingRightStyleClassItem" flags="ln" index="3$7jql" />
       <concept id="1139848536355" name="jetbrains.mps.lang.editor.structure.CellModel_WithRole" flags="ng" index="1$h60E">
         <property id="1214560368769" name="emptyNoTargetText" index="39s7Ar" />
         <property id="1139852716018" name="noTargetText" index="1$x2rV" />
@@ -264,35 +261,24 @@
   <node concept="24kQdi" id="6kKc3mjm6R_">
     <ref role="1XX52x" to="t16r:hyoMxHKcTB" resolve="RuleWithMessage" />
     <node concept="3EZMnI" id="6Q2nboo7wnS" role="2wV5jI">
-      <ref role="1ERwB7" node="2o8jHTOCR94" resolve="NoDelete" />
       <node concept="2iRfu4" id="6Q2nboo7wnT" role="2iSdaV" />
-      <node concept="3EZMnI" id="5VED60U3bBj" role="3EZMnx">
-        <node concept="2iRkQZ" id="5VED60U3bBk" role="2iSdaV" />
-        <node concept="3F1sOY" id="1dKt_a0ob4f" role="3EZMnx">
-          <ref role="1NtTu8" to="t16r:1dKt_a0ob3W" resolve="rule" />
-        </node>
+      <node concept="3F1sOY" id="1dKt_a0ob4f" role="3EZMnx">
+        <ref role="1NtTu8" to="t16r:1dKt_a0ob3W" resolve="rule" />
       </node>
       <node concept="3EZMnI" id="40CvJkJzGIY" role="3EZMnx">
         <node concept="37jFXN" id="5jg33KK9Mqt" role="3F10Kt">
           <property role="37lx6p" value="RIGHT" />
         </node>
-        <node concept="2iRfu4" id="40CvJkJzGIZ" role="2iSdaV" />
         <node concept="3F0ifn" id="6Q2nboo7HCB" role="3EZMnx">
           <property role="3F0ifm" value="-&gt; when fails show" />
           <ref role="1k5W1q" to="bgop:5GbbOB11OBg" resolve="WhenHint" />
-          <node concept="3$7jql" id="7M8nn$yg90$" role="3F10Kt">
-            <property role="3$6WeP" value="1" />
-          </node>
         </node>
-        <node concept="3EZMnI" id="5VED60U3dF7" role="3EZMnx">
-          <ref role="1ERwB7" node="2o8jHTOCR94" resolve="NoDelete" />
-          <node concept="2iRkQZ" id="5VED60U3dF8" role="2iSdaV" />
-          <node concept="3F1sOY" id="5VED60U2Jx8" role="3EZMnx">
-            <property role="39s7Ar" value="true" />
-            <property role="1$x2rV" value="&lt;default message&gt;" />
-            <ref role="1NtTu8" to="t16r:hyoMxHKcU6" resolve="messageProvider" />
-            <ref role="34QXea" node="2RaX98HtgEm" resolve="ForRuleWithMessageKeyMap" />
-          </node>
+        <node concept="l2Vlx" id="3LOLRuvo2vg" role="2iSdaV" />
+        <node concept="3F1sOY" id="5VED60U2Jx8" role="3EZMnx">
+          <property role="39s7Ar" value="true" />
+          <property role="1$x2rV" value="&lt;default message&gt;" />
+          <ref role="1NtTu8" to="t16r:hyoMxHKcU6" resolve="messageProvider" />
+          <ref role="34QXea" node="2o8jHTOCWSy" resolve="ForMessageProviderKeyMap" />
         </node>
       </node>
     </node>
@@ -436,6 +422,29 @@
                 </node>
               </node>
               <node concept="2DeJnS" id="3LOLRuvmc78" role="2OqNvi">
+                <ref role="1$SOMD" to="t16r:hyoMxHKcTB" resolve="RuleWithMessage" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1hA7zw" id="3LOLRuvnB7V" role="1h_SK8">
+      <property role="1hAc7j" value="insert_before_action_id" />
+      <node concept="1hAIg9" id="3LOLRuvnB7W" role="1hA7z_">
+        <node concept="3clFbS" id="3LOLRuvnB7X" role="2VODD2">
+          <node concept="3clFbF" id="3LOLRuvnB9Q" role="3cqZAp">
+            <node concept="2OqwBi" id="3LOLRuvnB9R" role="3clFbG">
+              <node concept="1PxgMI" id="3LOLRuvnB9S" role="2Oq$k0">
+                <node concept="chp4Y" id="3LOLRuvnB9T" role="3oSUPX">
+                  <ref role="cht4Q" to="t16r:hyoMxHKcTB" resolve="RuleWithMessage" />
+                </node>
+                <node concept="2OqwBi" id="3LOLRuvnB9U" role="1m5AlR">
+                  <node concept="0IXxy" id="3LOLRuvnB9V" role="2Oq$k0" />
+                  <node concept="1mfA1w" id="3LOLRuvnB9W" role="2OqNvi" />
+                </node>
+              </node>
+              <node concept="2DeJnS" id="3LOLRuvnB9X" role="2OqNvi">
                 <ref role="1$SOMD" to="t16r:hyoMxHKcTB" resolve="RuleWithMessage" />
               </node>
             </node>

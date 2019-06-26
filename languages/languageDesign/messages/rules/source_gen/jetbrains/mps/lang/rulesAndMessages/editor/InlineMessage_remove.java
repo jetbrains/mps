@@ -47,6 +47,17 @@ public class InlineMessage_remove {
 
     };
   }
+  /*package*/ static AbstractCellAction createAction_INSERT_BEFORE(final SNode node) {
+    return new AbstractCellAction() {
+      public void execute(EditorContext editorContext) {
+        this.execute_internal(editorContext, node);
+      }
+      public void execute_internal(EditorContext editorContext, SNode node) {
+        SNodeFactoryOperations.insertNewNextSiblingChild(SNodeOperations.cast(SNodeOperations.getParent(node), MetaAdapterFactory.getConcept(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, "jetbrains.mps.lang.rulesAndMessages.structure.RuleWithMessage")), MetaAdapterFactory.getConcept(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, "jetbrains.mps.lang.rulesAndMessages.structure.RuleWithMessage"));
+      }
+
+    };
+  }
 
   public static void setCellActions(EditorCell editorCell, SNode node, EditorContext context) {
     CellAction originalDelete = editorCell.getAction(CellActionType.DELETE);
@@ -71,6 +82,7 @@ public class InlineMessage_remove {
     // set cell actions defined directly in this action map 
     editorCell.setAction(CellActionType.DELETE, createAction_DELETE(node));
     editorCell.setAction(CellActionType.INSERT, createAction_INSERT(node));
+    editorCell.setAction(CellActionType.INSERT_BEFORE, createAction_INSERT_BEFORE(node));
 
   }
 
@@ -84,6 +96,9 @@ public class InlineMessage_remove {
     }
     if (Objects.equals(actionType, CellActionType.INSERT)) {
       editorCell.setAction(actionType, createAction_INSERT(node));
+    }
+    if (Objects.equals(actionType, CellActionType.INSERT_BEFORE)) {
+      editorCell.setAction(actionType, createAction_INSERT_BEFORE(node));
     }
   }
 }
