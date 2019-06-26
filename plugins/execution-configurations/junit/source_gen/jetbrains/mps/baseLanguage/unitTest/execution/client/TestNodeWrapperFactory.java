@@ -40,8 +40,12 @@ public enum TestNodeWrapperFactory {
   LanguageTestMethodNodeWrapperFactory(MetaAdapterFactory.getInterfaceConcept(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x11b27438a3dL, "jetbrains.mps.baseLanguage.unitTest.structure.ITestMethod"), false) {
     @Nullable
     public ITestNodeWrapper<SNode> wrap(@NotNull SNode node) {
-      ITestNodeWrapper testCase = TestNodeWrapperFactory.LanguageTestCaseNodeWrapperFactory.wrap(ITestMethod__BehaviorDescriptor.getTestCase_idhGBgWVd.invoke(node));
-      return (testCase == null ? null : new LanguageTestWrapper(testCase, node));
+      SNode testCase = ITestMethod__BehaviorDescriptor.getTestCase_idhGBgWVd.invoke(node);
+      if (testCase == null) {
+        return null;
+      }
+      ITestNodeWrapper testCaseWrap = TestNodeWrapperFactory.LanguageTestCaseNodeWrapperFactory.wrap(testCase);
+      return (testCaseWrap == null ? null : new LanguageTestWrapper(testCaseWrap, node));
     }
 
   },
@@ -86,7 +90,7 @@ public enum TestNodeWrapperFactory {
   JUnit4MethodsNodeWrapperFactory(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration"), false) {
     @Nullable
     public ITestNodeWrapper<SNode> wrap(@NotNull SNode node) {
-      // XXX it's not clear to me how this story works in case test method comes from an abstract class (i.e. if we've got non-trivial test class hierarch) 
+      // XXX it's not clear to me how this story works in case test method comes from an abstract class (i.e. if we've got non-trivial test class hierarchy) 
       //     It seems that in this case we just create an odd testcase for the abstract class. 
       //     JUnit4MethodWrapper.getTestCase used to take node.ancestor<ClassConcept>, so it has been like that for a while. 
       if (JUnit4MethodWrapper.isJUnit4TestMethod(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration")))) {
