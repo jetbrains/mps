@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -73,7 +73,7 @@ public class NodeSubstituteChooserHandler {
 
     SubstituteAction action = getOnlyActionToExecute(pattern);
     if (action != null) {
-      getRepository().getModelAccess().executeCommand(new EditorCommand(getEditorContext()) {
+      getRepository().getModelAccess().executeCommandInEDT(new EditorCommand(getEditorContext()) {
         @Override
         protected void doExecute() {
           action.substitute(getEditorContext(), pattern);
