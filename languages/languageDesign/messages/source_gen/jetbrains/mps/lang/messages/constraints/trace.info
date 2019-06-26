@@ -15,6 +15,12 @@
     <file name="ConstraintsAspectDescriptor.java">
       <unit at="13,0,39,0" name="jetbrains.mps.lang.messages.constraints.ConstraintsAspectDescriptor" />
     </file>
+    <file name="GeneratedConstraintsAspectDescriptor2.java">
+      <unit at="17,0,31,0" name="jetbrains.mps.lang.messages.constraints.GeneratedConstraintsAspectDescriptor2" />
+    </file>
+    <file name="GeneratedMessagesAspectDescriptor.java">
+      <unit at="11,0,19,0" name="jetbrains.mps.lang.messages.constraints.GeneratedMessagesAspectDescriptor" />
+    </file>
   </root>
   <root nodeRef="r:a692cc04-06b7-49e7-9956-49ba1dc83c45(jetbrains.mps.lang.messages.constraints)/1938781798615217550">
     <file name="MessageProviderForRule_Constraints.java">

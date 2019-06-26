@@ -76,7 +76,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(2);
     b.associate("concept", 0x19eb8590edaff8deL).target(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL).optional(false).origin("1867733327984720094").done();
     b.aggregate("block", 0x19eb8590edaff8dbL).target(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edaff8e0L).optional(true).ordered(true).multiple(true).origin("1867733327984720091").done();
-    b.alias("constraints root");
+    b.alias("Concept Constraints Rules");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForRuleBlock() {

@@ -181,8 +181,7 @@ import jetbrains.mps.editor.runtime.style.Measure;
       if (editorCell.getSRole() == null) {
         editorCell.setSRole(MetaAdapterFactory.getContainmentLink(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, 0x46263286dc0ce86L, "messageProvider"));
       }
-      NoDelete.setCellActions(editorCell, getNode(), getEditorContext());
-      editorCell.addKeyMap(new ForMessageProviderKeyMap());
+      editorCell.addKeyMap(new ForRuleWithMessageKeyMap());
     }
     @Override
     protected EditorCell createEmptyCell() {

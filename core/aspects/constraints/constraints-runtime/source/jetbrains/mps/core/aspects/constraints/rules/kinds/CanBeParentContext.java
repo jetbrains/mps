@@ -30,7 +30,7 @@ import static java.util.Objects.*;
 @Immutable
 public class CanBeParentContext implements RuleContext {
   @NotNull private final SAbstractConcept myConcept;
-  @NotNull private final SNode myParentNode;
+  @Nullable private final SNode myParentNode;
   @NotNull private final SAbstractConcept myChildConcept;
   @Nullable private final SNode myChildNode;
   @Nullable/*TODO @NotNull*/ private final SContainmentLink myLink;
@@ -65,7 +65,7 @@ public class CanBeParentContext implements RuleContext {
     return CanBeParentRuleKind.INSTANCE;
   }
 
-  @NotNull
+  @Nullable
   public SNode getParentNode() {
     return myParentNode;
   }
@@ -91,7 +91,7 @@ public class CanBeParentContext implements RuleContext {
     private SAbstractConcept childConcept;
     private SContainmentLink link;
 
-    public Builder node(@NotNull SNode node) {
+    public Builder node(@Nullable SNode node) {
       this.node = node;
       return this;
     }

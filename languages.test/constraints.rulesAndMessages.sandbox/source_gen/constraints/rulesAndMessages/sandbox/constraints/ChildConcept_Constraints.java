@@ -36,7 +36,7 @@ public class ChildConcept_Constraints extends BaseConstraintsDescriptor {
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return SPropertyOperations.getInteger(node, MetaAdapterFactory.getProperty(0xfc39d7264089464aL, 0x8fc15f71edfdf03bL, 0x7825711952b6d480L, 0x7825711952b815edL, "testProp")) != 55;
+    return SPropertyOperations.getInteger(node, MetaAdapterFactory.getProperty(0xfc39d7264089464aL, 0x8fc15f71edfdf03bL, 0x7825711952b6d480L, 0x3bd294e15414985dL, "tolerance")) != 55;
   }
   private static SNodePointer canBeChildBreakingPoint = new SNodePointer("r:50e6e59b-26e4-4ba1-9996-7aefbabd31cf(constraints.rulesAndMessages.sandbox.constraints)", "1702082180406152228");
 }

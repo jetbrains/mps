@@ -8,10 +8,10 @@ import java.util.Collection;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.smodel.runtime.ILanguageAspect;
 import jetbrains.mps.core.aspects.reporting.api.MessagesAspectDescriptor;
-import constraints.rulesAndMessages.sandbox.constraints2.GeneratedMessagesAspectDescriptor;
-import jetbrains.mps.smodel.runtime.ConstraintsAspectDescriptor;
+import constraints.rulesAndMessages.sandbox.constraints.GeneratedMessagesAspectDescriptor;
 import jetbrains.mps.core.aspects.constraints.rules.ConstraintsAspectDescriptor2;
-import constraints.rulesAndMessages.sandbox.constraints2.GeneratedConstraintsAspectDescriptor2;
+import constraints.rulesAndMessages.sandbox.constraints.GeneratedConstraintsAspectDescriptor2;
+import jetbrains.mps.smodel.runtime.ConstraintsAspectDescriptor;
 import jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor;
 import constraints.rulesAndMessages.sandbox.editor.EditorAspectDescriptorImpl;
 import jetbrains.mps.smodel.runtime.StructureAspectDescriptor;
@@ -48,11 +48,11 @@ public class Language extends LanguageRuntime {
     if (aspectClass == MessagesAspectDescriptor.class) {
       return aspectClass.cast(new GeneratedMessagesAspectDescriptor());
     }
-    if (aspectClass == ConstraintsAspectDescriptor.class) {
-      return aspectClass.cast(new constraints.rulesAndMessages.sandbox.constraints.ConstraintsAspectDescriptor());
-    }
     if (aspectClass == ConstraintsAspectDescriptor2.class) {
       return aspectClass.cast(new GeneratedConstraintsAspectDescriptor2());
+    }
+    if (aspectClass == ConstraintsAspectDescriptor.class) {
+      return aspectClass.cast(new constraints.rulesAndMessages.sandbox.constraints.ConstraintsAspectDescriptor());
     }
     if (aspectClass == EditorAspectDescriptor.class) {
       return aspectClass.cast(new EditorAspectDescriptorImpl());

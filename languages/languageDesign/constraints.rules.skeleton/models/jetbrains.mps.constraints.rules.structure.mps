@@ -51,7 +51,7 @@
     <property role="EcuMT" value="1867733327984720090" />
     <property role="TrG5h" value="ConstraintsRoot2" />
     <property role="19KtqR" value="true" />
-    <property role="34LRSv" value="constraints root" />
+    <property role="34LRSv" value="Concept Constraints Rules" />
     <property role="R4oN_" value="define rules here" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="1BFxp3HFZzr" role="1TKVEi">

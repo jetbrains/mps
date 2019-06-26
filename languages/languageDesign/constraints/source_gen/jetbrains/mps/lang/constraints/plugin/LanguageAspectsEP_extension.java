@@ -14,6 +14,8 @@ import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
+import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
@@ -58,17 +60,24 @@ public class LanguageAspectsEP_extension extends Extension.Default<LanguageAspec
           }
         }).ofType(SModel.class).toListSequence();
       }
+      public SModuleReference getDefaultDevkit() {
+        return PersistenceFacade.getInstance().createModuleReference("00000000-0000-4000-0000-5604ebd4f22c(jetbrains.mps.devkit.aspect.constraints)");
+      }
       @NotNull
       public Collection<SLanguage> getMainLanguages() {
-        return ListSequence.fromListAndArray(new ArrayList<SLanguage>(), MetaAdapterFactory.getLanguage(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, "jetbrains.mps.lang.constraints"));
+        return ListSequence.fromListAndArray(new ArrayList<SLanguage>(), MetaAdapterFactory.getLanguage(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, "jetbrains.mps.lang.constraints"), MetaAdapterFactory.getLanguage(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, "jetbrains.mps.lang.constraints.rules.skeleton"));
       }
       @Nullable
       public LanguageAspectGenerator getGenerator() {
         return null;
       }
+      @NotNull
+      public Collection<SLanguage> getAdditionalLanguages() {
+        return ListSequence.fromListAndArray(new ArrayList<SLanguage>(), MetaAdapterFactory.getLanguage(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, "jetbrains.mps.lang.constraints.rules.kinds"), MetaAdapterFactory.getLanguage(0xb3551702269c4f05L, 0xba6158060cef4292L, "jetbrains.mps.lang.rulesAndMessages"));
+      }
       @Nullable
       public IconResource getIconResource() {
-        return IconContainer.RESOURCE_a0a6a0a0a1;
+        return IconContainer.RESOURCE_a0a8a0a0a1;
       }
       @Nullable
       public String getHelpUrl() {

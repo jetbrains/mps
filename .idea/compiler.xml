@@ -913,6 +913,7 @@
       <directory url="file://$PROJECT_DIR$/workbench/mps-workbench/pluginSolutions/lang.typesystem/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/workbench/mps-workbench/pluginSolutions/lang.typesystem/test_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/IdeaPlugin" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/languages.test/constraints.rulesAndMessages.sandbox" includeSubdirectories="true" />
     </excludeFromCompile>
     <wildcardResourcePatterns>
       <entry name="!?*.java" />

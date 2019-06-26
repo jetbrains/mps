@@ -185,7 +185,7 @@
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleImpl" />
     <classNode dependClassName="jetbrains.mps.lang.constraints.rules.editor.Constraints_Styles_StyleSheet.WhenHintStyleClass" />
     <classNode dependClassName="jetbrains.mps.lang.editor.cellProviders.SingleRoleCellProvider" />
-    <classNode dependClassName="jetbrains.mps.lang.rulesAndMessages.editor.ForMessageProviderKeyMap" />
+    <classNode dependClassName="jetbrains.mps.lang.rulesAndMessages.editor.ForRuleWithMessageKeyMap" />
     <classNode dependClassName="jetbrains.mps.lang.rulesAndMessages.editor.NoDelete" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellLayout.CellLayout_Horizontal" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellLayout.CellLayout_Vertical" />

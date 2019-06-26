@@ -15,6 +15,12 @@
     <file name="ConstraintsAspectDescriptor.java">
       <unit at="13,0,35,0" name="jetbrains.mps.lang.constraints.rules.kinds.constraints.ConstraintsAspectDescriptor" />
     </file>
+    <file name="GeneratedConstraintsAspectDescriptor2.java">
+      <unit at="17,0,31,0" name="jetbrains.mps.lang.constraints.rules.kinds.constraints.GeneratedConstraintsAspectDescriptor2" />
+    </file>
+    <file name="GeneratedMessagesAspectDescriptor.java">
+      <unit at="11,0,19,0" name="jetbrains.mps.lang.constraints.rules.kinds.constraints.GeneratedMessagesAspectDescriptor" />
+    </file>
   </root>
   <root nodeRef="r:52ea8481-08b2-4cbd-ad9d-1b42825f7d09(jetbrains.mps.lang.constraints.rules.kinds.constraints)/2740527090601168261">
     <file name="NativeTypedConceptDef_Constraints.java">
@@ -159,7 +165,7 @@
       <node id="4575984242822668305" at="30,55,31,70" concept="1" />
       <node id="4575984242822668305" at="32,9,33,0" concept="7" />
       <node id="4575984242822668305" at="33,0,34,22" concept="5" />
-      <node id="4575984242822668554" at="38,57,39,209" concept="5" />
+      <node id="4575984242822668554" at="38,57,39,208" concept="5" />
       <node id="4575984242822668305" at="41,0,42,0" concept="8" trace="canBeRootBreakingPoint" />
       <node id="4575984242822668305" at="19,0,22,0" concept="0" trace="RuleKind_Constraints#()V" />
       <node id="4575984242822668305" at="29,0,32,9" concept="2" />
@@ -169,7 +175,7 @@
       <node id="4575984242822668305" at="23,0,38,0" concept="3" trace="calculateCanBeRootConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
       <scope id="4575984242822668305" at="19,33,20,169" />
       <scope id="4575984242822668305" at="30,55,31,70" />
-      <scope id="4575984242822668307" at="38,57,39,209" />
+      <scope id="4575984242822668307" at="38,57,39,208" />
       <scope id="4575984242822668305" at="19,0,22,0" />
       <scope id="4575984242822668305" at="38,0,41,0">
         <var name="model" id="4575984242822668305" />

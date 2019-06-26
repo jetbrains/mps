@@ -3,9 +3,11 @@
   <persistence version="9" />
   <languages>
     <use id="7ab1a6fa-0a11-4b95-9e48-75f363d6cb00" name="jetbrains.mps.lang.generator.plan" version="1" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
   </languages>
   <imports>
     <import index="7j7i" ref="r:647e430d-4f1a-4d18-8ace-69f2d9711419(jetbrains.mps.lang.descriptor.aspects@genplan)" />
+    <import index="i9n5" ref="r:56b79522-04a6-42fd-9e1c-336da21ec8e3(jetbrains.mps.lang.descriptor.constraints@genplan)" />
   </imports>
   <registry>
     <language id="7ab1a6fa-0a11-4b95-9e48-75f363d6cb00" name="jetbrains.mps.lang.generator.plan">
@@ -62,28 +64,59 @@
         <property role="2V$B1T" value="ad93155d-79b2-4759-b10c-55123e763903" />
         <property role="2V$B1Q" value="jetbrains.mps.lang.messages" />
       </node>
+      <node concept="2V$Bhx" id="3ZKqOfpDb3a" role="1t_9vn">
+        <property role="2V$B1T" value="3f4bc5f5-c6c1-4a28-8b10-c83066ffa4a1" />
+        <property role="2V$B1Q" value="jetbrains.mps.lang.constraints" />
+      </node>
+      <node concept="2V$Bhx" id="3ZKqOfpDb3n" role="1t_9vn">
+        <property role="2V$B1T" value="982eb8df-2c96-4bd7-9963-11712ea622e5" />
+        <property role="2V$B1Q" value="jetbrains.mps.lang.resources" />
+      </node>
     </node>
-    <node concept="2VgMA1" id="p4S6WR3TZu" role="2VgMA7">
-      <node concept="3ps6a7" id="p4S6WR3TZB" role="3ps6aC">
+    <node concept="2VgMA1" id="3ZKqOfpDwxF" role="2VgMA7">
+      <node concept="3ps6a7" id="3ZKqOfpDwxG" role="3ps6aC">
         <ref role="3ps6dU" to="7j7i:52lx2FqH$9v" resolve="DescriptorClasses" />
       </node>
     </node>
-    <node concept="2VgMA2" id="2fM90PxfrMy" role="2VgMA7">
-      <node concept="2V$Bhx" id="2fM90PxfrMI" role="1t_9vn">
+    <node concept="2VgMA2" id="3ZKqOfpDwxH" role="2VgMA7">
+      <node concept="2V$Bhx" id="3ZKqOfpDwxI" role="1t_9vn">
+        <property role="2V$B1T" value="d4615e3b-d671-4ba9-af01-2b78369b0ba7" />
+        <property role="2V$B1Q" value="jetbrains.mps.lang.pattern" />
+      </node>
+    </node>
+    <node concept="2VgMA2" id="3ZKqOfpDwxJ" role="2VgMA7">
+      <node concept="2V$Bhx" id="3ZKqOfpDwxK" role="1t_9vn">
+        <property role="2V$B1T" value="7a5dda62-9140-4668-ab76-d5ed1746f2b2" />
+        <property role="2V$B1Q" value="jetbrains.mps.lang.typesystem" />
+      </node>
+    </node>
+    <node concept="2VgMA2" id="3ZKqOfpDwxL" role="2VgMA7">
+      <node concept="2V$Bhx" id="3ZKqOfpDwxM" role="1t_9vn">
+        <property role="2V$B1T" value="3a13115c-633c-4c5c-bbcc-75c4219e9555" />
+        <property role="2V$B1Q" value="jetbrains.mps.lang.quotation" />
+      </node>
+    </node>
+    <node concept="2VgMA2" id="3ZKqOfpDwxN" role="2VgMA7">
+      <node concept="2V$Bhx" id="3ZKqOfpDwxO" role="1t_9vn">
+        <property role="2V$B1T" value="774bf8a0-62e5-41e1-af63-f4812e60e48b" />
+        <property role="2V$B1Q" value="jetbrains.mps.baseLanguage.checkedDots" />
+      </node>
+    </node>
+    <node concept="2VgMA2" id="3ZKqOfpDwxP" role="2VgMA7">
+      <node concept="2V$Bhx" id="3ZKqOfpDwxQ" role="1t_9vn">
+        <property role="2V$B1T" value="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" />
+        <property role="2V$B1Q" value="jetbrains.mps.lang.actions" />
+      </node>
+      <node concept="2V$Bhx" id="3ZKqOfpDwxR" role="1t_9vn">
         <property role="2V$B1T" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1" />
         <property role="2V$B1Q" value="jetbrains.mps.lang.smodel" />
       </node>
-      <node concept="2V$Bhx" id="5BFePKcJm3R" role="1t_9vn">
+      <node concept="2V$Bhx" id="3ZKqOfpDwxS" role="1t_9vn">
         <property role="2V$B1T" value="69b8a993-9b87-4d96-bf0c-3559f4bb0c63" />
         <property role="2V$B1Q" value="jetbrains.mps.lang.slanguage" />
       </node>
     </node>
-    <node concept="2VgMA1" id="6bTaywoG8LG" role="2VgMA7">
-      <node concept="3ps6a7" id="6bTaywoG8LW" role="3ps6aC">
-        <ref role="3ps6dU" to="7j7i:4LuITgyAILq" resolve="BeforeBaseLang" />
-      </node>
-    </node>
-    <node concept="NozSJ" id="2fM90PxfrMg" role="2VgMA7">
+    <node concept="NozSJ" id="3ZKqOfpDwxT" role="2VgMA7">
       <ref role="NozSM" to="7j7i:2fM90Pxfljd" resolve="BaseLanguageWithExtensions" />
     </node>
   </node>

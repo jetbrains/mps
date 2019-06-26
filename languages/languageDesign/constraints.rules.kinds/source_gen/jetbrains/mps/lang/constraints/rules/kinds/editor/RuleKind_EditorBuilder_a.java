@@ -113,7 +113,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
     }
   }
   private EditorCell createConstant_1() {
-    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "parameterised by");
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "parameterised by concept");
     editorCell.setCellId("Constant_velomm_c0");
     Style style = new StyleImpl();
     new RuleKindStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);

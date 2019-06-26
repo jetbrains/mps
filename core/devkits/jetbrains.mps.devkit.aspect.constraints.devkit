@@ -3,10 +3,11 @@
   <exported-language name="3f4bc5f5-c6c1-4a28-8b10-c83066ffa4a1(jetbrains.mps.lang.constraints)" />
   <extendedDevKits>
     <extendedDevKit>fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)</extendedDevKit>
+    <extendedDevKit>4843b9cf-86fe-47f2-87c9-f256294fd740(jetbrains.mps.devkit.aspect.constraints.rulesAndMessages)</extendedDevKit>
   </extendedDevKits>
   <exported-solutions>
     <exported-solution>a9e4c532-c5f5-4bb7-99ef-42abb73bbb70(jetbrains.mps.lang.descriptor.aspects)</exported-solution>
   </exported-solutions>
-  <generation-plan model="r:56b79522-04a6-42fd-9e1c-336da21ec8e3(jetbrains.mps.lang.descriptor.constraints@genplan)" />
+  <generation-plan model="r:eb170f89-5bd6-47c2-9480-a0a681dee400(jetbrains.mps.lang.descriptor.constraintsAndMessages)" />
 </dev-kit>
 

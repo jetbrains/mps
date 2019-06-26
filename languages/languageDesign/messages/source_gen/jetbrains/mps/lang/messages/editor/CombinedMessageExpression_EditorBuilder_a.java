@@ -53,6 +53,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Error;
     AbstractCellListHandler handler = new CombinedMessageExpression_EditorBuilder_a.partListHandler_u74he1_a0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_part");
+    NoDelete.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setSRole(handler.getElementSRole());
     return editorCell;
   }

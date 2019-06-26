@@ -287,8 +287,7 @@
             <property role="39s7Ar" value="true" />
             <property role="1$x2rV" value="&lt;no message&gt;" />
             <ref role="1NtTu8" to="t16r:hyoMxHKcU6" resolve="messageProvider" />
-            <ref role="1ERwB7" node="2o8jHTOCR94" resolve="NoDelete" />
-            <ref role="34QXea" node="2o8jHTOCWSy" resolve="ForMessageProviderKeyMap" />
+            <ref role="34QXea" node="2RaX98HtgEm" resolve="ForRuleWithMessageKeyMap" />
           </node>
         </node>
       </node>

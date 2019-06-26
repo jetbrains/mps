@@ -12,13 +12,13 @@
     <file name="ContextUtil.java">
       <node id="4575984242822971007" at="19,105,20,244" concept="1" />
       <node id="4575984242822959852" at="20,244,21,66" concept="5" />
-      <node id="8525842417252896863" at="22,168,23,195" concept="6" />
-      <node id="8525842417252896874" at="24,175,25,196" concept="6" />
+      <node id="8525842417252896863" at="22,167,23,195" concept="6" />
+      <node id="8525842417252896874" at="24,174,25,196" concept="6" />
       <node id="8525842417252896883" at="26,5,27,16" concept="6" />
       <node id="4575984242823006864" at="30,102,31,244" concept="1" />
       <node id="4575984242823006873" at="31,244,32,66" concept="5" />
-      <node id="4575984242823006881" at="33,168,34,196" concept="6" />
-      <node id="4575984242823006890" at="35,175,36,197" concept="6" />
+      <node id="4575984242823006881" at="33,167,34,196" concept="6" />
+      <node id="4575984242823006890" at="35,174,36,197" concept="6" />
       <node id="4575984242823006897" at="37,5,38,16" concept="6" />
       <node id="469612135036132490" at="41,66,42,199" concept="6" />
       <node id="4575984242822876825" at="16,0,18,0" concept="0" trace="ContextUtil#()V" />
@@ -28,10 +28,10 @@
       <node id="5537458604776842939" at="19,0,29,0" concept="7" trace="matchContextForRuleKind#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/generator/template/TemplateQueryContext;)Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
       <node id="4575984242823006862" at="30,0,40,0" concept="7" trace="matchKindForRuleKind#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/generator/template/TemplateQueryContext;)Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
       <scope id="4575984242822876828" at="16,25,16,25" />
-      <scope id="8525842417252896862" at="22,168,23,195" />
-      <scope id="8525842417252896873" at="24,175,25,196" />
-      <scope id="4575984242823006880" at="33,168,34,196" />
-      <scope id="4575984242823006889" at="35,175,36,197" />
+      <scope id="8525842417252896862" at="22,167,23,195" />
+      <scope id="8525842417252896873" at="24,174,25,196" />
+      <scope id="4575984242823006880" at="33,167,34,196" />
+      <scope id="4575984242823006889" at="35,174,36,197" />
       <scope id="469612135036128235" at="41,66,42,199" />
       <scope id="4575984242822876825" at="16,0,18,0" />
       <scope id="469612135036128231" at="41,0,44,0">

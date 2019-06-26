@@ -945,10 +945,10 @@
                   <node concept="liA8E" id="4N" role="2OqNvi">
                     <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.property(java.lang.String,long)" resolve="property" />
                     <node concept="Xl_RD" id="4O" role="37wK5m">
-                      <property role="Xl_RC" value="testProp" />
+                      <property role="Xl_RC" value="tolerance" />
                     </node>
                     <node concept="1adDum" id="4P" role="37wK5m">
-                      <property role="1adDun" value="0x7825711952b815edL" />
+                      <property role="1adDun" value="0x3bd294e15414985dL" />
                     </node>
                   </node>
                 </node>
@@ -963,7 +963,7 @@
               <node concept="liA8E" id="4J" role="2OqNvi">
                 <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2$PropertyBuilder.origin(java.lang.String)" resolve="origin" />
                 <node concept="Xl_RD" id="4R" role="37wK5m">
-                  <property role="Xl_RC" value="8657450212265563629" />
+                  <property role="Xl_RC" value="4310671488846174301" />
                 </node>
               </node>
             </node>

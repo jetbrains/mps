@@ -13,6 +13,7 @@
     <import index="qbpv" ref="r:63fc051d-731b-428a-af30-ceee8d76dfaa(jetbrains.mps.lang.constraints.rules.kinds.structure)" />
     <import index="mqj2" ref="r:1d4f6f82-1219-47a2-a4fa-ac3ba14c9fd5(jetbrains.mps.lang.constraints.rules.skeleton.structure)" />
     <import index="10hr" ref="r:d674956e-add1-4c62-993b-3cd157f5ca62(jetbrains.mps.lang.constraints.rules.skeleton.plugin)" />
+    <import index="beg" ref="r:09811e4e-aa47-4ea2-ad3d-57b7b9ffc7e3(jetbrains.mps.lang.constraints.plugin)" />
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" implicit="true" />
     <import index="tpce" ref="r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)" implicit="true" />
   </imports>
@@ -420,7 +421,7 @@
               <node concept="I4A8Y" id="hyoMxHKqwH" role="2OqNvi" />
             </node>
             <node concept="3zA4fs" id="hyoMxHKqwI" role="2OqNvi">
-              <ref role="3zA4av" to="10hr:6kKc3mjuEw_" resolve="constraints2" />
+              <ref role="3zA4av" to="beg:2LiUEk8oQ$g" resolve="constraints" />
             </node>
           </node>
         </node>

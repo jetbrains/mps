@@ -339,7 +339,7 @@
         <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
       </node>
       <node concept="3F0ifn" id="2o8jHTOBKDw" role="3EZMnx">
-        <property role="3F0ifm" value="parameterised by" />
+        <property role="3F0ifm" value="parameterised by concept" />
         <ref role="1k5W1q" node="2o8jHTOBKsJ" resolve="RuleKindStyle" />
       </node>
       <node concept="3F2HdR" id="2o8jHTOBKO7" role="3EZMnx">

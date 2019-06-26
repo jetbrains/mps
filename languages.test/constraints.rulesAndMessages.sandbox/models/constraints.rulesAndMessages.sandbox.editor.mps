@@ -93,7 +93,7 @@
         </node>
       </node>
       <node concept="3F0A7n" id="7FO6JFyzuQK" role="3EZMnx">
-        <ref role="1NtTu8" to="npmf:7w_sh_iI1nH" resolve="testProp" />
+        <ref role="1NtTu8" to="npmf:3Ji_e5k59xt" resolve="tolerance" />
       </node>
     </node>
   </node>

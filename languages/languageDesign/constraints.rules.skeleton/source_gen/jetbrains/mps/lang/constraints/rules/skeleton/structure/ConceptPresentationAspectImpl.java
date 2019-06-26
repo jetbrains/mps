@@ -28,6 +28,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.ConstraintsRoot2:
         if (props_ConstraintsRoot2 == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("define rules here");
           cpb.presentationByName();
           props_ConstraintsRoot2 = cpb.create();
         }

@@ -2,8 +2,8 @@
 <dependenciesRoot>
   <dependency className="constraints.rulesAndMessages.sandbox.Language">
     <classNode dependClassName="constraints.rulesAndMessages.sandbox.constraints.ConstraintsAspectDescriptor" />
-    <classNode dependClassName="constraints.rulesAndMessages.sandbox.constraints2.GeneratedConstraintsAspectDescriptor2" />
-    <classNode dependClassName="constraints.rulesAndMessages.sandbox.constraints2.GeneratedMessagesAspectDescriptor" />
+    <classNode dependClassName="constraints.rulesAndMessages.sandbox.constraints.GeneratedConstraintsAspectDescriptor2" />
+    <classNode dependClassName="constraints.rulesAndMessages.sandbox.constraints.GeneratedMessagesAspectDescriptor" />
     <classNode dependClassName="constraints.rulesAndMessages.sandbox.editor.EditorAspectDescriptorImpl" />
     <classNode dependClassName="constraints.rulesAndMessages.sandbox.structure.ConceptPresentationAspectImpl" />
     <classNode dependClassName="constraints.rulesAndMessages.sandbox.structure.StructureAspectDescriptor" />

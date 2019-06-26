@@ -15,10 +15,10 @@
     <import index="plwl" ref="r:f938de2d-dde3-41ef-a191-4915871564f2(jetbrains.mps.lang.constraints.rules.statistics)" />
     <import index="tp1t" ref="r:00000000-0000-4000-0000-011c8959030d(jetbrains.mps.lang.constraints.structure)" />
     <import index="bm42" ref="r:83f25986-cdbc-469a-a327-db97a2ec5a39(jetbrains.mps.lang.constraints.rules.structure)" />
-    <import index="qffw" ref="r:bf693f8c-6f67-4402-a1e2-e61c34b6993e(jetbrains.mps.lang.constraints.rules.constraints2)" />
     <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
     <import index="6bz1" ref="r:d3905048-7598-4a84-931a-cbbcbcda146d(jetbrains.mps.lang.intentions.methods)" />
     <import index="cj4x" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor(MPS.Editor/)" />
+    <import index="v0oi" ref="r:52c0a9e8-a4f1-4d97-9c33-d3c28d77688f(jetbrains.mps.lang.constraints.rules.constraints)" />
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" implicit="true" />
     <import index="mqj2" ref="r:1d4f6f82-1219-47a2-a4fa-ac3ba14c9fd5(jetbrains.mps.lang.constraints.rules.skeleton.structure)" implicit="true" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
@@ -565,7 +565,7 @@
                         <node concept="2pIpSj" id="SlG8On5btt" role="2pJxcM">
                           <ref role="2pIpSl" to="mqj2:1BFxp3HHhtc" resolve="kind" />
                           <node concept="36bGnv" id="SlG8On5btu" role="2pJxcZ">
-                            <ref role="36bGnp" to="qffw:1dKt_a0noks" resolve="CanBeChild" />
+                            <ref role="36bGnp" to="v0oi:1dKt_a0noks" resolve="CanBeChild" />
                           </node>
                         </node>
                         <node concept="2pIpSj" id="SlG8On5btw" role="2pJxcM">
@@ -697,7 +697,7 @@
                         <node concept="2pIpSj" id="SlG8On5bg9" role="2pJxcM">
                           <ref role="2pIpSl" to="mqj2:1BFxp3HHhtc" resolve="kind" />
                           <node concept="36bGnv" id="SlG8On5bga" role="2pJxcZ">
-                            <ref role="36bGnp" to="qffw:1dKt_a0nokQ" resolve="CanBeParent" />
+                            <ref role="36bGnp" to="v0oi:1dKt_a0nokQ" resolve="CanBeParent" />
                           </node>
                         </node>
                         <node concept="2pIpSj" id="SlG8On5bgc" role="2pJxcM">

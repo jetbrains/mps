@@ -26,7 +26,7 @@ public class check_ConstraintsRuleId_NonTypesystemRule extends AbstractNonTypesy
   public check_ConstraintsRuleId_NonTypesystemRule() {
   }
   public void applyRule(final SNode rule, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!(SModuleOperations.isAspect(SNodeOperations.getModel(rule), "constraints2"))) {
+    if (!(SModuleOperations.isAspect(SNodeOperations.getModel(rule), "constraints"))) {
       return;
     }
 

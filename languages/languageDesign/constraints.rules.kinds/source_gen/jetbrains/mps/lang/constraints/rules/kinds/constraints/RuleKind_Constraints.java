@@ -36,7 +36,7 @@ public class RuleKind_Constraints extends BaseConstraintsDescriptor {
     };
   }
   private static boolean staticCanBeARoot(SModel model) {
-    return Objects.equals(SModelOperations.getPointer(model), PersistenceFacade.getInstance().createModelReference("r:bf693f8c-6f67-4402-a1e2-e61c34b6993e(jetbrains.mps.lang.constraints.rules.constraints2)"));
+    return Objects.equals(SModelOperations.getPointer(model), PersistenceFacade.getInstance().createModelReference("r:52c0a9e8-a4f1-4d97-9c33-d3c28d77688f(jetbrains.mps.lang.constraints.rules.constraints)"));
   }
   private static SNodePointer canBeRootBreakingPoint = new SNodePointer("r:52ea8481-08b2-4cbd-ad9d-1b42825f7d09(jetbrains.mps.lang.constraints.rules.kinds.constraints)", "4575984242822668306");
 }

@@ -223,10 +223,10 @@
         <node concept="3clFbF" id="3Y1amMreI4a" role="3cqZAp">
           <node concept="17R0WA" id="3Y1amMreIgi" role="3clFbG">
             <node concept="1Xw6AR" id="3Y1amMreIkx" role="3uHU7w">
-              <node concept="1dCxOl" id="3Y1amMreI_h" role="1XwpL7">
-                <property role="1XweGQ" value="r:bf693f8c-6f67-4402-a1e2-e61c34b6993e" />
-                <node concept="1j_P7g" id="3Y1amMreI_i" role="1j$8Uc">
-                  <property role="1j_P7h" value="jetbrains.mps.lang.constraints.rules.constraints2" />
+              <node concept="1dCxOl" id="3Ji_e5k4wjp" role="1XwpL7">
+                <property role="1XweGQ" value="r:52c0a9e8-a4f1-4d97-9c33-d3c28d77688f" />
+                <node concept="1j_P7g" id="3Ji_e5k4wjq" role="1j$8Uc">
+                  <property role="1j_P7h" value="jetbrains.mps.lang.constraints.rules.constraints" />
                 </node>
               </node>
             </node>
