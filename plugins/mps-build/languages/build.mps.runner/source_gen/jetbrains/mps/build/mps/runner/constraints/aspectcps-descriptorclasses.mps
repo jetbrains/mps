@@ -1169,7 +1169,7 @@
                                         <ref role="37wK5l" to="35tq:~Scope.getScope(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.language.SContainmentLink,int,org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="getScope" />
                                         <node concept="2OqwBi" id="6c" role="37wK5m">
                                           <node concept="37vLTw" id="6h" role="2Oq$k0">
-                                            <ref role="3cqZAo" to=":^" resolve="_context" />
+                                            <ref role="3cqZAo" node="5I" resolve="_context" />
                                             <node concept="cd27G" id="6k" role="lGtFl">
                                               <node concept="3u3nmq" id="6l" role="cd27D">
                                                 <property role="3u3nmv" value="1350734474210764500" />
@@ -1200,7 +1200,7 @@
                                             </node>
                                           </node>
                                           <node concept="37vLTw" id="6q" role="2Oq$k0">
-                                            <ref role="3cqZAo" to=":^" resolve="_context" />
+                                            <ref role="3cqZAo" node="5I" resolve="_context" />
                                             <node concept="cd27G" id="6u" role="lGtFl">
                                               <node concept="3u3nmq" id="6v" role="cd27D">
                                                 <property role="3u3nmv" value="1350734474210764500" />
@@ -1215,7 +1215,7 @@
                                         </node>
                                         <node concept="2OqwBi" id="6e" role="37wK5m">
                                           <node concept="37vLTw" id="6x" role="2Oq$k0">
-                                            <ref role="3cqZAo" to=":^" resolve="_context" />
+                                            <ref role="3cqZAo" node="5I" resolve="_context" />
                                             <node concept="cd27G" id="6$" role="lGtFl">
                                               <node concept="3u3nmq" id="6_" role="cd27D">
                                                 <property role="3u3nmv" value="1350734474210764500" />
@@ -1661,7 +1661,7 @@
           </node>
           <node concept="2OqwBi" id="8w" role="3clFbw">
             <node concept="37vLTw" id="8T" role="2Oq$k0">
-              <ref role="3cqZAo" to=":^" resolve="parentNode" />
+              <ref role="3cqZAo" node="8k" resolve="parentNode" />
               <node concept="cd27G" id="8W" role="lGtFl">
                 <node concept="3u3nmq" id="8X" role="cd27D">
                   <property role="3u3nmv" value="8421617199856525928" />
@@ -1695,7 +1695,7 @@
                 <node concept="1PxgMI" id="9a" role="2Oq$k0">
                   <property role="1BlNFB" value="true" />
                   <node concept="37vLTw" id="9d" role="1m5AlR">
-                    <ref role="3cqZAo" to=":^" resolve="parentNode" />
+                    <ref role="3cqZAo" node="8k" resolve="parentNode" />
                     <node concept="cd27G" id="9g" role="lGtFl">
                       <node concept="3u3nmq" id="9h" role="cd27D">
                         <property role="3u3nmv" value="1227128029536566469" />
