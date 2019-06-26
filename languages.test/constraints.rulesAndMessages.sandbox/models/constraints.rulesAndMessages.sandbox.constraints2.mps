@@ -17,6 +17,7 @@
         <child id="1197027833540" name="operation" index="2OqNvi" />
       </concept>
       <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
+      <concept id="1068431790191" name="jetbrains.mps.baseLanguage.structure.Expression" flags="nn" index="33vP2n" />
       <concept id="1068580320020" name="jetbrains.mps.baseLanguage.structure.IntegerConstant" flags="nn" index="3cmrfG">
         <property id="1068580320021" name="value" index="3cmrfH" />
       </concept>
@@ -35,7 +36,7 @@
         <child id="315923949160550022" name="messageProvider" index="1DCEQI" />
       </concept>
       <concept id="315923949160550017" name="jetbrains.mps.lang.rulesAndMessages.structure.InlineMessageProvider" flags="ng" index="1DCEQD">
-        <child id="5258059200641510856" name="" index="16N$OO" />
+        <child id="5258059200641510856" name="message" index="16N$OO" />
       </concept>
     </language>
     <language id="134c38d4-e3af-4d9e-b069-1c7df0a4005d" name="jetbrains.mps.lang.constraints.rules.skeleton">
@@ -151,7 +152,18 @@
             </node>
           </node>
           <node concept="16I2mz" id="2RaX98Ht8Uy" role="16N$OO">
-            <node concept="16N$OT" id="2RaX98Ht8Uz" role="16I2mt" />
+            <node concept="16N$OT" id="3ZKqOfps_nS" role="16I2mt">
+              <property role="16N$OU" value="fdsfa" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="1DCEPf" id="3ZKqOfps_pE" role="3OnDbr">
+        <node concept="3Qq5Rn" id="3ZKqOfps_pG" role="2j4cqI">
+          <property role="EcuMT" value="4607300357955147372" />
+          <property role="TrG5h" value="parentCncptIsCorrect" />
+          <node concept="2K0Yjh" id="3ZKqOfps_pI" role="2K0Fuo">
+            <node concept="33vP2n" id="3ZKqOfps_pK" role="2K0yoH" />
           </node>
         </node>
       </node>

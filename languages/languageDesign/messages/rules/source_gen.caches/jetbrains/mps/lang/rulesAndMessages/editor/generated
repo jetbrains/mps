@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="e5w9gcvngfwqnw14c43ywo2feepuc">
-  <files names="AddMyselfToMenuOfRuleBlockMember.java:AddMyselfToTransformationMenu.java:EditorAspectDescriptorImpl.java:ForMessageProvider.java:ForMessageProviderKeyMap.java:InlineMessageProvider_Editor.java:InlineMessageProvider_EditorBuilder_a.java:InlineMessage_remove.java:NoDelete.java:RuleBlockActions.java:RuleWithMessage_Editor.java:RuleWithMessage_EditorBuilder_a.java:Rule_addMessage.java" />
+<product version="3" modelHash="-61zuibsfw0yu8s39897xzuwoy2d2gug">
+  <files names="AddMyselfToMenuOfRuleBlockMember.java:AddMyselfToTransformationMenu.java:EditorAspectDescriptorImpl.java:ForMessageProvider.java:ForMessageProviderKeyMap.java:ForRuleWithMessageKeyMap.java:InlineMessageProvider_Editor.java:InlineMessageProvider_EditorBuilder_a.java:InlineMessage_remove.java:NoDelete.java:RuleBlockActions.java:RuleWithMessage_Editor.java:RuleWithMessage_EditorBuilder_a.java:RuleWithMessage_InspectorBuilder_a.java:Rule_addMessage.java" />
 </product>
 

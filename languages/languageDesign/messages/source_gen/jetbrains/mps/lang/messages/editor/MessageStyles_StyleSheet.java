@@ -27,10 +27,10 @@ public class MessageStyles_StyleSheet {
    * @deprecated Since MPS 3.5 use generated StyleClass
    */
   @Deprecated
-  public static void apply_MessageText(Style style, EditorCell editorCell) {
+  public static void apply_MessageLiteral(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new MessageStyles_StyleSheet.MessageTextStyleClass(editorContext, node).apply(style, editorCell);
+    new MessageStyles_StyleSheet.MessageLiteralStyleClass(editorContext, node).apply(style, editorCell);
   }
 
   public static class MessageMacroStyleClass extends AbstractStyleClass {
@@ -44,14 +44,13 @@ public class MessageStyles_StyleSheet {
     }
 
   }
-  public static class MessageTextStyleClass extends AbstractStyleClass {
-    public MessageTextStyleClass(EditorContext editorContext, SNode node) {
+  public static class MessageLiteralStyleClass extends AbstractStyleClass {
+    public MessageLiteralStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      style.set(StyleAttributes.DRAW_BRACKETS, true);
       style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.LIGHT_BLUE));
     }
 

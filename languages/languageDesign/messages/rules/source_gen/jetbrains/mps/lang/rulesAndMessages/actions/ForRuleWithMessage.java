@@ -20,8 +20,4 @@ public class ForRuleWithMessage {
       }
     }
   }
-  public static class NodeFactory_6990313848119294884 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-    }
-  }
 }

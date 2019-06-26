@@ -101,7 +101,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
       }
     };
 
-    provider.setNoTargetText("");
+    provider.setNoTargetText("<no def>");
     EditorCell editorCell = provider.createCell();
 
     if (editorCell.getSRole() == null) {

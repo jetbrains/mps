@@ -141,6 +141,7 @@
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/generator/xmodel.aspects/jetbrains.mps.lang.descriptor.aspects.msd" folder="core.aspects.descriptor" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/intentions/jetbrains.mps.lang.intentions.mpl" folder="core.aspects.intentions" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/jetbrains.mps.lang.editor.imageGen/jetbrains.mps.lang.editor.imageGen.mpl" folder="core.aspects.editor" />
+      <modulePath path="$PROJECT_DIR$/languages/languageDesign/jetbrains.mps.lang.reporting/jetbrains.mps.lang.reporting.mpl" folder="core.aspects.reporting" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/make/languages/facet/jetbrains.mps.make.facet.mpl" folder="core.make" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/make/languages/gentest/jetbrains.mps.tool.gentest.mpl" folder="core.tool" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/make/languages/outlook/jetbrains.mps.make.outlook.mpl" folder="core.make" />

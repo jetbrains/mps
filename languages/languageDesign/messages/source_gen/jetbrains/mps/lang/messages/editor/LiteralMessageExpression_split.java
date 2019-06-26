@@ -34,7 +34,7 @@ public class LiteralMessageExpression_split extends KeyMapImpl {
   }
   public static class LiteralMessageExpression_split_Action0 extends KeyMapActionImpl {
     public LiteralMessageExpression_split_Action0() {
-      this.setShownInPopupMenu(false);
+      this.setShownInPopupMenu(true);
     }
     public boolean isMenuAlwaysShown() {
       return false;
