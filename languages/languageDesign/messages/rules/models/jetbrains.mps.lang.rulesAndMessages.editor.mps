@@ -285,7 +285,7 @@
           <node concept="2iRkQZ" id="5VED60U3dF8" role="2iSdaV" />
           <node concept="3F1sOY" id="5VED60U2Jx8" role="3EZMnx">
             <property role="39s7Ar" value="true" />
-            <property role="1$x2rV" value="&lt;no message&gt;" />
+            <property role="1$x2rV" value="&lt;default message&gt;" />
             <ref role="1NtTu8" to="t16r:hyoMxHKcU6" resolve="messageProvider" />
             <ref role="34QXea" node="2RaX98HtgEm" resolve="ForRuleWithMessageKeyMap" />
           </node>

@@ -198,7 +198,7 @@ import jetbrains.mps.editor.runtime.style.Measure;
       }
     }
     protected String getNoTargetText() {
-      return "<no message>";
+      return "<default message>";
     }
   }
 }
