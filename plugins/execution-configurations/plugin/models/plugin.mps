@@ -112,6 +112,7 @@
     <import index="lhc4" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.annotations(MPS.OpenAPI/)" />
     <import index="eurq" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs.path(MPS.Core/)" />
     <import index="z0rn" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util.xmlb.annotations(MPS.IDEA/)" />
+    <import index="ifj7" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs.util(MPS.Core/)" />
     <import index="tprs" ref="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)" implicit="true" />
     <import index="v23q" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi(MPS.IDEA/)" implicit="true" />
     <import index="hypd" ref="r:aa31e43e-9240-4f4d-b6db-5c1c9a86c59e(jetbrains.mps.lang.project.structure)" implicit="true" />
@@ -7291,28 +7292,25 @@
             <node concept="17RlXB" id="q00jVsP8EM" role="2OqNvi" />
           </node>
         </node>
+        <node concept="3SKdUt" id="Tf5XLcwdma" role="3cqZAp">
+          <node concept="3SKdUq" id="Tf5XLcwdmb" role="3SKWNk">
+            <property role="3SKdUp" value="path came here may be from UI or from sources with system separators" />
+          </node>
+        </node>
         <node concept="3clFbF" id="q00jVsP8EN" role="3cqZAp">
-          <node concept="2OqwBi" id="q00jVsP8EO" role="3clFbG">
-            <node concept="2OqwBi" id="q00jVsP8EP" role="2Oq$k0">
-              <node concept="2YIFZM" id="q00jVsP8EQ" role="2Oq$k0">
-                <ref role="37wK5l" to="18ew:~MacrosFactory.getGlobal()" resolve="getGlobal" />
-                <ref role="1Pybhc" to="18ew:~MacrosFactory" resolve="MacrosFactory" />
-              </node>
-              <node concept="liA8E" id="q00jVsP8ER" role="2OqNvi">
-                <ref role="37wK5l" to="18ew:~MacroHelper.expandPath(java.lang.String)" resolve="expandPath" />
-                <node concept="37vLTw" id="2BHiRxgmNGy" role="37wK5m">
+          <node concept="2OqwBi" id="q00jVsP8EP" role="3clFbG">
+            <node concept="2YIFZM" id="q00jVsP8EQ" role="2Oq$k0">
+              <ref role="37wK5l" to="18ew:~MacrosFactory.getGlobal()" resolve="getGlobal" />
+              <ref role="1Pybhc" to="18ew:~MacrosFactory" resolve="MacrosFactory" />
+            </node>
+            <node concept="liA8E" id="q00jVsP8ER" role="2OqNvi">
+              <ref role="37wK5l" to="18ew:~MacroHelper.expandPath(java.lang.String)" resolve="expandPath" />
+              <node concept="2YIFZM" id="Tf5XLcwdNY" role="37wK5m">
+                <ref role="37wK5l" to="ifj7:~PathUtil.toSystemIndependent(java.lang.String)" resolve="toSystemIndependent" />
+                <ref role="1Pybhc" to="ifj7:~PathUtil" resolve="PathUtil" />
+                <node concept="37vLTw" id="Tf5XLcwdNZ" role="37wK5m">
                   <ref role="3cqZAo" node="q00jVsP8EX" resolve="path" />
                 </node>
-              </node>
-            </node>
-            <node concept="liA8E" id="q00jVsP8ET" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~String.replace(java.lang.CharSequence,java.lang.CharSequence)" resolve="replace" />
-              <node concept="10M0yZ" id="q00jVsP8EU" role="37wK5m">
-                <ref role="1PxDUh" to="guwi:~File" resolve="File" />
-                <ref role="3cqZAo" to="guwi:~File.separator" resolve="separator" />
-              </node>
-              <node concept="Xl_RD" id="q00jVsP8EV" role="37wK5m">
-                <property role="Xl_RC" value="/" />
               </node>
             </node>
           </node>
@@ -7347,28 +7345,25 @@
             <node concept="17RlXB" id="q00jVsP8Fa" role="2OqNvi" />
           </node>
         </node>
+        <node concept="3SKdUt" id="Tf5XLcw5mj" role="3cqZAp">
+          <node concept="3SKdUq" id="Tf5XLcw5ml" role="3SKWNk">
+            <property role="3SKdUp" value="path came here may be from UI or from sources with system separators" />
+          </node>
+        </node>
         <node concept="3clFbF" id="q00jVsP8Fb" role="3cqZAp">
-          <node concept="2OqwBi" id="q00jVsP8Fc" role="3clFbG">
-            <node concept="2OqwBi" id="q00jVsP8Fd" role="2Oq$k0">
-              <node concept="2YIFZM" id="q00jVsP8Fe" role="2Oq$k0">
-                <ref role="37wK5l" to="18ew:~MacrosFactory.getGlobal()" resolve="getGlobal" />
-                <ref role="1Pybhc" to="18ew:~MacrosFactory" resolve="MacrosFactory" />
-              </node>
-              <node concept="liA8E" id="q00jVsP8Ff" role="2OqNvi">
-                <ref role="37wK5l" to="18ew:~MacroHelper.shrinkPath(java.lang.String)" resolve="shrinkPath" />
-                <node concept="37vLTw" id="2BHiRxgmC7r" role="37wK5m">
+          <node concept="2OqwBi" id="q00jVsP8Fd" role="3clFbG">
+            <node concept="2YIFZM" id="q00jVsP8Fe" role="2Oq$k0">
+              <ref role="37wK5l" to="18ew:~MacrosFactory.getGlobal()" resolve="getGlobal" />
+              <ref role="1Pybhc" to="18ew:~MacrosFactory" resolve="MacrosFactory" />
+            </node>
+            <node concept="liA8E" id="q00jVsP8Ff" role="2OqNvi">
+              <ref role="37wK5l" to="18ew:~MacroHelper.shrinkPath(java.lang.String)" resolve="shrinkPath" />
+              <node concept="2YIFZM" id="Tf5XLcwd0E" role="37wK5m">
+                <ref role="37wK5l" to="ifj7:~PathUtil.toSystemIndependent(java.lang.String)" resolve="toSystemIndependent" />
+                <ref role="1Pybhc" to="ifj7:~PathUtil" resolve="PathUtil" />
+                <node concept="37vLTw" id="Tf5XLcwd5F" role="37wK5m">
                   <ref role="3cqZAo" node="q00jVsP8F0" resolve="path" />
                 </node>
-              </node>
-            </node>
-            <node concept="liA8E" id="q00jVsP8Fh" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~String.replace(java.lang.CharSequence,java.lang.CharSequence)" resolve="replace" />
-              <node concept="10M0yZ" id="q00jVsP8Fi" role="37wK5m">
-                <ref role="1PxDUh" to="guwi:~File" resolve="File" />
-                <ref role="3cqZAo" to="guwi:~File.separator" resolve="separator" />
-              </node>
-              <node concept="Xl_RD" id="q00jVsP8Fj" role="37wK5m">
-                <property role="Xl_RC" value="/" />
               </node>
             </node>
           </node>
