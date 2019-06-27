@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +26,7 @@ import jetbrains.mps.smodel.ModelImports;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.smodel.StaticReference;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -41,11 +42,11 @@ import jetbrains.mps.idea.java.psiStubs.JavaForeignIdBuilder;
  */
 
 public abstract class MPSPsiJavaRef extends MPSPsiRef {
-  public MPSPsiJavaRef(String role, SModelReference model, SNodeId nodeId, PsiManager manager) {
+  public MPSPsiJavaRef(SReferenceLink role, SModelReference model, SNodeId nodeId, PsiManager manager) {
     super(role, model, nodeId, manager);
   }
 
-  public MPSPsiJavaRef(String role, String referenceText, PsiManager manager) {
+  public MPSPsiJavaRef(SReferenceLink role, String referenceText, PsiManager manager) {
     super(role, referenceText, manager);
   }
 

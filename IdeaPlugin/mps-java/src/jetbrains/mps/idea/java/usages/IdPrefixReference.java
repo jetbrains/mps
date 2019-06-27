@@ -102,7 +102,7 @@ public class IdPrefixReference implements PsiReference {
     SNodeReference source = ((MPSPsiNode) myParent).getSNodeReference();
 
     final MoveRenameBatch mrb = myParent.getProject().getComponent(MoveRenameBatch.class);
-    mrb.scheduleIdPrefixRefUpdate(source, myAssociationLink.getName(), () -> handleRename(newTarget));
+    mrb.scheduleIdPrefixRefUpdate(source, myAssociationLink, () -> handleRename(newTarget));
     return myParent;
   }
 
@@ -111,7 +111,7 @@ public class IdPrefixReference implements PsiReference {
     SNodeReference source = ((MPSPsiNode) myParent).getSNodeReference();
     final NodePtr newTargetPtr = JavaForeignIdBuilder.computeNodePtr(element);
     final MoveRenameBatch mrb = myParent.getProject().getComponent(MoveRenameBatch.class);
-    mrb.scheduleIdPrefixRefUpdate(source, myAssociationLink.getName(), () -> handleRename(newTargetPtr));
+    mrb.scheduleIdPrefixRefUpdate(source, myAssociationLink, () -> handleRename(newTargetPtr));
     return myParent;
   }
 

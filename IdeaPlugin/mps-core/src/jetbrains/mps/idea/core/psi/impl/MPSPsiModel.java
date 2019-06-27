@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,13 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jetbrains.mps.idea.core.psi.impl;
 
 import com.intellij.ide.impl.ProjectViewSelectInTarget;
 import com.intellij.ide.projectView.impl.ProjectViewPane;
 import com.intellij.lang.FileASTNode;
-import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.util.Ref;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiDirectory;
@@ -504,9 +502,9 @@ public class MPSPsiModel extends MPSPsiNodeBase implements PsiDirectory {
       }
       MPSPsiRef psiRef = null;
       if (ref instanceof StaticReference) {
-        psiRef = MPSPsiProvider.getInstance(getProject()).createReferenceNode(ref.getLink().getName(), linkTargetConcept, ref.getTargetSModelReference(), ref.getTargetNodeId());
+        psiRef = MPSPsiProvider.getInstance(getProject()).createReferenceNode(ref.getLink(), linkTargetConcept, ref.getTargetSModelReference(), ref.getTargetNodeId());
       } else if (ref instanceof DynamicReference) {
-        psiRef = MPSPsiProvider.getInstance(getProject()).createReferenceNode(ref.getLink().getName(), linkTargetConcept, ((DynamicReference) ref).getResolveInfo());
+        psiRef = MPSPsiProvider.getInstance(getProject()).createReferenceNode(ref.getLink(), linkTargetConcept, ((DynamicReference) ref).getResolveInfo());
       }
       if (psiRef != null) {
         psiNode.addChild(null, psiRef);

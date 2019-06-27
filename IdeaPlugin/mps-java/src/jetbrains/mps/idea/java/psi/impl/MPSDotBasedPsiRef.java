@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2013 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jetbrains.mps.idea.java.psi.impl;
 
 import com.intellij.psi.PsiElement;
@@ -37,11 +36,11 @@ import org.jetbrains.mps.openapi.model.SReference;
  */
 public class MPSDotBasedPsiRef extends MPSPsiJavaRef {
 
-  public MPSDotBasedPsiRef(String role, SModelReference model, SNodeId nodeId, PsiManager manager) {
+  public MPSDotBasedPsiRef(SReferenceLink role, SModelReference model, SNodeId nodeId, PsiManager manager) {
     super(role, model, nodeId, manager);
   }
 
-  public MPSDotBasedPsiRef(String role, String referenceText, PsiManager manager) {
+  public MPSDotBasedPsiRef(SReferenceLink role, String referenceText, PsiManager manager) {
     super(role, referenceText, manager);
   }
 
@@ -61,7 +60,7 @@ public class MPSDotBasedPsiRef extends MPSPsiJavaRef {
           SNode source = sref.getSourceNode();
 
           if (sref instanceof StaticReference) {
-            String oldTargetIdString = ((StaticReference) sref).getTargetNodeId().toString();
+            String oldTargetIdString = sref.getTargetNodeId().toString();
             int lastDot = oldTargetIdString.lastIndexOf(".");
             String newTargetIdString;
             if (lastDot < 0) {

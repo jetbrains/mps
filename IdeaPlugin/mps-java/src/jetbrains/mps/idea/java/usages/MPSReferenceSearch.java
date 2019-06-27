@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jetbrains.mps.idea.java.usages;
 
 import com.intellij.openapi.application.QueryExecutorBase;
@@ -116,7 +115,7 @@ public class MPSReferenceSearch extends QueryExecutorBase<PsiReference, Referenc
             MPSPsiNode psiNode = (MPSPsiNode) psiProvider.getPsi(source);
             // the source could have come from the psi stub itself
             if (psiNode == null) return;
-            String refRole = sReference.getRole();
+            String refRole = sReference.getLink().getName();
             MPSPsiRef[] refs = psiNode.getReferences(refRole);
             if (refs.length == 0) continue;
 

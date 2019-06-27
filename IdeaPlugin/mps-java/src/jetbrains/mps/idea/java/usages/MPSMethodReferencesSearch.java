@@ -36,6 +36,7 @@ import jetbrains.mps.idea.core.usages.IdeaSearchScope;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.smodel.SNodeUtil;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SReference;
 
@@ -45,7 +46,6 @@ import java.util.logging.Logger;
 /**
  * danilla 3/6/13
  */
-
 public class MPSMethodReferencesSearch extends QueryExecutorBase<PsiReference, SearchParameters> {
 
   private static Logger LOG = Logger.getLogger(MPSMethodReferencesSearch.class.getName());
@@ -103,12 +103,14 @@ public class MPSMethodReferencesSearch extends QueryExecutorBase<PsiReference, S
               if (refTarget == null) continue;
               if (refTarget.getConcept().isSubConceptOf(SNodeUtil.concept_BaseMethodDeclaration)) {
                 // supposedly our reference
-                String role = sref.getRole();
+                SReferenceLink role = sref.getLink();
 
                 PsiElement usagePsiElement = MPSPsiProvider.getInstance(method.getProject()).getPsi(usageNode);
                 if (!(usagePsiElement instanceof MPSPsiNode)) continue;
                 for (PsiElement e : usagePsiElement.getChildren()) {
-                  if (!(e instanceof MPSPsiRef)) continue;
+                  if (!(e instanceof MPSPsiRef)) {
+                    continue;
+                  }
                   if (role.equals(((MPSPsiRef) e).getRole())) {
                     consumer.process(e.getReference());
                   }
