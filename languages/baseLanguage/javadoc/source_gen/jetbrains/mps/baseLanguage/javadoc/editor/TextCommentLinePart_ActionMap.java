@@ -8,14 +8,14 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.editor.runtime.deletionApprover.DeletionApproverUtil;
+import jetbrains.mps.editor.runtime.selection.SelectionUtil;
+import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.baseLanguage.javadoc.behavior.CommentLinePart__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Label;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.baseLanguage.javadoc.behavior.CommentLine__BehaviorDescriptor;
-import jetbrains.mps.editor.runtime.selection.SelectionUtil;
-import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
@@ -40,10 +40,13 @@ public class TextCommentLinePart_ActionMap {
           if (isFirstLine) {
             //  This is beginning of comment lines container 
             if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(SNodeOperations.getParent(currentNode)), MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, "jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment"))) {
-              if (DeletionApproverUtil.approve(editorContext, SNodeOperations.getParent(SNodeOperations.getParent(currentNode)))) {
+              SNode docComment = SNodeOperations.as(SNodeOperations.getParent(SNodeOperations.getParent(currentNode)), MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, "jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment"));
+              if (DeletionApproverUtil.approve(editorContext, docComment, "commentCollection")) {
                 return;
               }
-              SNodeOperations.deleteNode(SNodeOperations.getParent(SNodeOperations.getParent(currentNode)));
+              SNode documentedNode = SNodeOperations.getParent(docComment);
+              SNodeOperations.deleteNode(docComment);
+              SelectionUtil.selectCell(editorContext, documentedNode, SelectionManager.FIRST_CELL);
             } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(SNodeOperations.getParent(currentNode)), MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990286L, "jetbrains.mps.baseLanguage.javadoc.structure.CommentLinePart"))) {
               NodeCaretPair nodeCaret = CommentLinePart__BehaviorDescriptor.smartDelete_id7PYAiugbmRz.invoke(SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.getParent(currentNode)), MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990286L, "jetbrains.mps.baseLanguage.javadoc.structure.CommentLinePart")), ((boolean) false));
               editorContext.selectWRTFocusPolicy(nodeCaret.myNode);
