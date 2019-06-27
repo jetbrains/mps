@@ -57,7 +57,7 @@
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
-    <classNode extendsClassName="jetbrains.mps.core.aspects.reporting.api.MessagesAspectDescriptor" />
+    <classNode extendsClassName="MessagesAspectDescriptor" />
   </dependency>
   <dependency className="jetbrains.mps.lang.constraints.rules.skeleton.constraints.RuleBlockMember_Constraints">
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />

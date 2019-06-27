@@ -13,16 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jetbrains.mps.core.aspects.reporting.api;
+package jetbrains.mps.core.aspects.feedback.api;
 
-import org.jetbrains.mps.annotations.Internal;
-import jetbrains.mps.smodel.runtime.ILanguageAspect;
-import org.jetbrains.annotations.Nullable;
+import jetbrains.mps.core.aspects.constraints.rules.RuleContext;
+import jetbrains.mps.core.aspects.constraints.rules.RuleId;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
-@Internal
-public interface MessagesAspectDescriptor extends ILanguageAspect {
-  @Nullable
-  MessagesDescriptor getDescriptor(@NotNull SAbstractConcept concept);
+public abstract class BaseMessageProvider<C extends RuleContext> implements MessageProvider<C> {
+  private final RuleId myRuleId;
+
+  public BaseMessageProvider(@NotNull RuleId ruleId) {
+    myRuleId = ruleId;
+  }
+
+  @NotNull
+  @Override
+  public final RuleId forRuleId() {
+    return myRuleId;
+  }
 }

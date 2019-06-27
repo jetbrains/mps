@@ -5,7 +5,7 @@
       <modulePath path="$PROJECT_DIR$/core/aspects/behavior/behavior-api/jetbrains.mps.lang.behavior.api.msd" folder="core.aspects.behavior" />
       <modulePath path="$PROJECT_DIR$/core/aspects/behavior/behavior-runtime/jetbrains.mps.lang.behavior.runtime.msd" folder="core.aspects.behavior" />
       <modulePath path="$PROJECT_DIR$/core/aspects/constraints/constraints-runtime/jetbrains.mps.lang.constraints.rules.runtime.msd" folder="core.aspects.constraints" />
-      <modulePath path="$PROJECT_DIR$/core/aspects/constraints/reporting-api/jetbrains.mps.lang.messages.api.msd" folder="core.aspects.feedback" />
+      <modulePath path="$PROJECT_DIR$/core/aspects/feedback/feedback-api/jetbrains.mps.lang.messages.api.msd" folder="core.aspects.feedback" />
       <modulePath path="$PROJECT_DIR$/core/dataFlowRuntime/jetbrains.mps.dataFlow.runtime.msd" folder="core.aspects.dataflow" />
       <modulePath path="$PROJECT_DIR$/core/devkits/jetbrains.mps.devkit.aspect.constraints.devkit" folder="core.aspects.descriptor" />
       <modulePath path="$PROJECT_DIR$/core/devkits/jetbrains.mps.devkit.aspect.constraints.rules.devkit" folder="core.aspects.descriptor" />

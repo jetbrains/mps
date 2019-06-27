@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jetbrains.mps.core.aspects.reporting.api;
+package jetbrains.mps.core.aspects.feedback.api;
 
 import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.components.ComponentPlugin;

@@ -13,25 +13,44 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jetbrains.mps.core.aspects.reporting.api;
+package jetbrains.mps.core.aspects.feedback.api;
 
 import jetbrains.mps.core.aspects.constraints.rules.RuleContext;
 import jetbrains.mps.core.aspects.constraints.rules.RuleId;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import jetbrains.mps.core.aspects.constraints.rules.RuleKind;
+import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.annotations.Internal;
-
-import java.util.List;
+import org.jetbrains.annotations.NotNull;
 
 /**
- * Not so sure about the naming and the main purpose of this aspect
- *
- * @author apyshkin, mburyakov
+ * provides custom messages for failed rules
  */
 @Internal
-public interface MessagesDescriptor {
-  @NotNull List<MessageProvider<?>> getDeclaredMessageProviders();
-  @NotNull List<MessageProvider<?>> getMessageProviders();
+public interface MessageProvider<Context extends RuleContext> {
+  @NotNull RuleId forRuleId();
 
-  @NotNull <C extends RuleContext> MessageProvider<C> getMessageProvider(@NotNull RuleId ruleId, @NotNull C context);
+  @NotNull Msg yieldMessage(@NotNull Context context);
+
+  default boolean appliesTo(@NotNull Context context) {
+    return true;
+  }
+
+  interface Msg {
+    @NotNull String toText();
+  }
+
+  @Immutable
+  final class StringMsg implements Msg {
+    private final String myMsg;
+
+    public StringMsg(@NotNull String msg) {
+      myMsg = msg;
+    }
+
+    @Override
+    @NotNull
+    public String toText() {
+      return myMsg;
+    }
+  }
 }

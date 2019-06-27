@@ -18,7 +18,7 @@ package jetbrains.mps.core.aspects.constraints.rules;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * An identifier for rule
+ * rule identifier
  *
  * @author apyshkin, mburyakov
  */

@@ -13,22 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jetbrains.mps.core.aspects.reporting.api;
+package jetbrains.mps.core.aspects.feedback.api;
 
-import jetbrains.mps.core.aspects.constraints.rules.Rule;
 import jetbrains.mps.core.aspects.constraints.rules.RuleContext;
 import jetbrains.mps.core.aspects.constraints.rules.RuleId;
 import jetbrains.mps.core.aspects.constraints.rules.RuleKind;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.LegacyKind;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.util.DepthFirstConceptIterator;
 import org.jetbrains.mps.util.UniqueIterator;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
@@ -43,7 +39,7 @@ import java.util.stream.StreamSupport;
  * @author apyshkin
  */
 @Immutable
-public abstract class BaseMessageDescriptor implements MessagesDescriptor {
+public abstract class BaseMessageDescriptor implements MessageDescriptor {
   @NotNull private final SAbstractConcept myConcept;
 
   private final AtomicReference<ReportingAspectRegistry> myRegistry = new AtomicReference<>();
@@ -106,7 +102,7 @@ public abstract class BaseMessageDescriptor implements MessagesDescriptor {
   }
 
   @NotNull
-  private MessagesDescriptor getDescriptor(@NotNull SAbstractConcept concept) {
+  private MessageDescriptor getDescriptor(@NotNull SAbstractConcept concept) {
     if (concept.equals(myConcept)) {
       return this;
     }

@@ -44,12 +44,12 @@
     <classNode dependClassName="java.util.Collections" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeChildContext" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.reporting.api.BaseMessageProvider" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.reporting.api.MessageProvider" />
+    <classNode dependClassName="BaseMessageProvider" />
+    <classNode dependClassName="MessageProvider" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
-    <classNode extendsClassName="jetbrains.mps.core.aspects.reporting.api.BaseMessageDescriptor" />
+    <classNode extendsClassName="BaseMessageDescriptor" />
   </dependency>
   <dependency className="constraints.rulesAndMessages.sandbox.constraints.ConstraintsAspectDescriptor">
     <classNode dependClassName="constraints.rulesAndMessages.sandbox.constraints.ChildConcept_Constraints" />
@@ -92,7 +92,7 @@
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
-    <classNode extendsClassName="jetbrains.mps.core.aspects.reporting.api.MessagesAspectDescriptor" />
+    <classNode extendsClassName="MessagesAspectDescriptor" />
   </dependency>
   <dependency className="constraints.rulesAndMessages.sandbox.constraints.ParentConcept_Constraints2">
     <classNode dependClassName="java.lang.Override" />
@@ -122,12 +122,12 @@
     <classNode dependClassName="java.util.Collections" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeParentContext" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.reporting.api.BaseMessageProvider" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.reporting.api.MessageProvider" />
+    <classNode dependClassName="BaseMessageProvider" />
+    <classNode dependClassName="MessageProvider" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
-    <classNode extendsClassName="jetbrains.mps.core.aspects.reporting.api.BaseMessageDescriptor" />
+    <classNode extendsClassName="BaseMessageDescriptor" />
   </dependency>
 </dependenciesRoot>
 

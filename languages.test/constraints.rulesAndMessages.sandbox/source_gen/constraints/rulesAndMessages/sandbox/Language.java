@@ -7,7 +7,7 @@ import jetbrains.mps.smodel.adapter.ids.SLanguageId;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.smodel.runtime.ILanguageAspect;
-import jetbrains.mps.core.aspects.reporting.api.MessagesAspectDescriptor;
+import jetbrains.mps.core.aspects.feedback.api.MessagesAspectDescriptor;
 import constraints.rulesAndMessages.sandbox.constraints.GeneratedMessagesAspectDescriptor;
 import jetbrains.mps.core.aspects.constraints.rules.ConstraintsAspectDescriptor2;
 import constraints.rulesAndMessages.sandbox.constraints.GeneratedConstraintsAspectDescriptor2;

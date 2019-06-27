@@ -18,7 +18,7 @@ package jetbrains.mps.core.platform;
 import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.components.ComponentPlugin;
 import jetbrains.mps.components.CoreComponent;
-import jetbrains.mps.core.aspects.reporting.api.MPSReporting;
+import jetbrains.mps.core.aspects.feedback.api.MPSReporting;
 import jetbrains.mps.generator.MPSGenerator;
 import jetbrains.mps.ide.findusages.MPSFindUsages;
 import jetbrains.mps.lang.dataFlow.MPSDataFlow;
@@ -29,7 +29,6 @@ import jetbrains.mps.text.impl.MPSTextGenerator;
 import jetbrains.mps.typechecking.internal.MPSTypechecking;
 import jetbrains.mps.typesystem.MPSTypesystem;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.ArrayDeque;
 import java.util.Deque;

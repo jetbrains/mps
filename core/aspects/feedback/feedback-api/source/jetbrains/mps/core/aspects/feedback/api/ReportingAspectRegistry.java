@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jetbrains.mps.core.aspects.reporting.api;
+package jetbrains.mps.core.aspects.feedback.api;
 
 import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.core.aspects.constraints.rules.Rule;
@@ -36,18 +36,18 @@ public final class ReportingAspectRegistry implements CoreComponent {
 
   private final LanguageRegistry myLanguageRegistry;
   private final MyLanguageRegistryListener myListener = new MyLanguageRegistryListener();
-  private final Map<SAbstractConcept, MessagesDescriptor> myConcept2Descriptor = new HashMap<>();
+  private final Map<SAbstractConcept, MessageDescriptor> myConcept2Descriptor = new HashMap<>();
 
   public ReportingAspectRegistry(@NotNull LanguageRegistry languageRegistry) {
     myLanguageRegistry = languageRegistry;
   }
 
   @NotNull
-  MessagesDescriptor getMessagesDescriptor(@NotNull SAbstractConcept concept) {
+  MessageDescriptor getMessagesDescriptor(@NotNull SAbstractConcept concept) {
     if (myConcept2Descriptor.containsKey(concept)) {
       return myConcept2Descriptor.get(concept);
     }
-    MessagesDescriptor descriptor = null;
+    MessageDescriptor descriptor = null;
     LanguageRuntime conceptLang = myLanguageRegistry.getLanguage(concept.getLanguage());
     if (conceptLang == null) {
       LOG.warn("No language for: " + concept + ", while looking for constraints descriptor.");
@@ -57,24 +57,24 @@ public final class ReportingAspectRegistry implements CoreComponent {
         descriptor = aspect.getDescriptor(concept);
       }
     }
-    MessagesDescriptor messagesDescriptor = descriptor != null ? descriptor : new EmptyMessagesDescriptor(concept);
+    MessageDescriptor messageDescriptor = descriptor != null ? descriptor : new EmptyMessageDescriptor(concept);
     synchronized (LOG) {
-      if (messagesDescriptor instanceof BaseMessageDescriptor) {
-        if (!((BaseMessageDescriptor) messagesDescriptor).isInitialized()) {
-          ((BaseMessageDescriptor) messagesDescriptor).init(this);
+      if (messageDescriptor instanceof BaseMessageDescriptor) {
+        if (!((BaseMessageDescriptor) messageDescriptor).isInitialized()) {
+          ((BaseMessageDescriptor) messageDescriptor).init(this);
         }
       }
     }
-    if (myConcept2Descriptor.putIfAbsent(concept, messagesDescriptor) == null) {
-      return messagesDescriptor;
+    if (myConcept2Descriptor.putIfAbsent(concept, messageDescriptor) == null) {
+      return messageDescriptor;
     }
     return myConcept2Descriptor.get(concept);
   }
 
   @NotNull
   public <C extends RuleContext> MessageProvider<C> findMessageForRule(@NotNull SAbstractConcept concept, @NotNull Rule<C> rule, @NotNull C context) {
-    MessagesDescriptor messagesDescriptor = getMessagesDescriptor(concept);
-    return messagesDescriptor.getMessageProvider(rule.getId(), context);
+    MessageDescriptor messageDescriptor = getMessagesDescriptor(concept);
+    return messageDescriptor.getMessageProvider(rule.getId(), context);
   }
 
 
@@ -107,8 +107,8 @@ public final class ReportingAspectRegistry implements CoreComponent {
     }
   }
 
-  private static final class EmptyMessagesDescriptor extends BaseMessageDescriptor {
-    public EmptyMessagesDescriptor(@NotNull SAbstractConcept concept) {
+  private static final class EmptyMessageDescriptor extends BaseMessageDescriptor {
+    public EmptyMessageDescriptor(@NotNull SAbstractConcept concept) {
       super(concept);
     }
 

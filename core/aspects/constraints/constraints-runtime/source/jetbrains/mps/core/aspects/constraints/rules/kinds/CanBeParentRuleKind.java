@@ -17,8 +17,8 @@ package jetbrains.mps.core.aspects.constraints.rules.kinds;
 
 import jetbrains.mps.core.aspects.constraints.rules.RuleKind;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeParentContext.Builder;
-import jetbrains.mps.core.aspects.reporting.api.MessageProvider.Msg;
-import jetbrains.mps.core.aspects.reporting.api.MessageProvider.StringMsg;
+import jetbrains.mps.core.aspects.feedback.api.MessageProvider.Msg;
+import jetbrains.mps.core.aspects.feedback.api.MessageProvider.StringMsg;
 import org.jetbrains.annotations.NotNull;
 
 import java.text.MessageFormat;
