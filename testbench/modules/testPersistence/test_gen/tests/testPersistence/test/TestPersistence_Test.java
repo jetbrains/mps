@@ -40,9 +40,10 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import java.util.HashSet;
 import jetbrains.mps.util.IterableUtil;
 import java.util.Iterator;
-import jetbrains.mps.util.SNodeOperations;
-import java.util.Map;
+import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SReference;
+import java.util.Map;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -239,12 +240,12 @@ public class TestPersistence_Test extends BaseTransformationTest {
       }
     }
     public void assertPropertyEquals(SNode expectedNode, SNode actualNode) {
-      HashSet<String> propertes = new HashSet<String>();
-      propertes.addAll(IterableUtil.asCollection(expectedNode.getPropertyNames()));
-      propertes.addAll(IterableUtil.asCollection(actualNode.getPropertyNames()));
-      for (String key : propertes) {
-        String expectedProperty = SNodeOperations.getProperties(expectedNode).get(key);
-        String actualProperty = SNodeOperations.getProperties(actualNode).get(key);
+      HashSet<SProperty> propertes = new HashSet<SProperty>();
+      propertes.addAll(IterableUtil.asCollection(expectedNode.getProperties()));
+      propertes.addAll(IterableUtil.asCollection(actualNode.getProperties()));
+      for (SProperty key : propertes) {
+        String expectedProperty = expectedNode.getProperty(key);
+        String actualProperty = actualNode.getProperty(key);
         Assert.assertEquals(this.getErrorString("property " + key, expectedNode, actualNode), expectedProperty, actualProperty);
       }
     }
@@ -252,25 +253,32 @@ public class TestPersistence_Test extends BaseTransformationTest {
       return "Different " + text + " for nodes " + expectedNode + " and " + actualNode + ".";
     }
     public void assertReferenceEquals(SNode expectedNode, SNode actualNode) {
-      Set<String> roles = new HashSet<String>();
-      roles.addAll(SNodeOperations.getReferenceRoles(expectedNode));
-      roles.addAll(SNodeOperations.getReferenceRoles(actualNode));
-      Map<String, Set<SReference>> expRoleToReferenceMap = this.createRoleToReferenceMap(expectedNode);
-      Map<String, Set<SReference>> actRoleToReferenceMap = this.createRoleToReferenceMap(actualNode);
-      for (String role : roles) {
+      Set<SReferenceLink> roles = new HashSet<SReferenceLink>();
+      for (SReference r : expectedNode.getReferences()) {
+        roles.add(r.getLink());
+      }
+      for (SReference r : actualNode.getReferences()) {
+        roles.add(r.getLink());
+      }
+      Map<SReferenceLink, Set<SReference>> expRoleToReferenceMap = this.createRoleToReferenceMap(expectedNode);
+      Map<SReferenceLink, Set<SReference>> actRoleToReferenceMap = this.createRoleToReferenceMap(actualNode);
+      for (SReferenceLink role : roles) {
         Assert.assertEquals(this.getErrorString("different number of referents in role " + role, expectedNode, actualNode), expRoleToReferenceMap.get(role).size(), actRoleToReferenceMap.get(role).size());
         SReference expectedReference = expectedNode.getReference(role);
         SReference actualReference = actualNode.getReference(role);
         this.assertReferenceEquals(this.getErrorString("reference in role " + role, expectedNode, actualNode), expectedReference, actualReference);
       }
     }
-    public Map<String, Set<SReference>> createRoleToReferenceMap(SNode expectedNode) {
-      Map<String, Set<SReference>> expRoleToReferenceMap = new HashMap<String, Set<SReference>>();
-      for (SReference ref : expectedNode.getReferences()) {
-        if (expRoleToReferenceMap.get(ref.getRole()) == null) {
-          expRoleToReferenceMap.put(ref.getRole(), new HashSet<SReference>());
+    public Map<SReferenceLink, Set<SReference>> createRoleToReferenceMap(SNode n) {
+      // XXX I don't get why there's map with set, MPS doesn't support associations with cardinality > 1 
+      Map<SReferenceLink, Set<SReference>> expRoleToReferenceMap = new HashMap<SReferenceLink, Set<SReference>>();
+      for (SReference ref : n.getReferences()) {
+        Set<SReference> set = expRoleToReferenceMap.get(ref.getLink());
+        if (set == null) {
+          set = new HashSet<SReference>();
+          expRoleToReferenceMap.put(ref.getLink(), set);
         }
-        expRoleToReferenceMap.get(ref.getRole()).add(ref);
+        set.add(ref);
       }
       return expRoleToReferenceMap;
     }
@@ -282,7 +290,7 @@ public class TestPersistence_Test extends BaseTransformationTest {
       Assert.assertNotNull(errorString, actualReference);
       // assertIdEqualsOrBothNull(errorString, expectedReference.getTargetNode(), actualReference.getTargetNode()); 
       Assert.assertEquals(errorString, ((jetbrains.mps.smodel.SReference) expectedReference).getResolveInfo(), ((jetbrains.mps.smodel.SReference) actualReference).getResolveInfo());
-      Assert.assertEquals(errorString, expectedReference.getRole(), actualReference.getRole());
+      Assert.assertEquals(errorString, expectedReference.getLink(), actualReference.getLink());
       Assert.assertEquals(errorString, expectedReference.getTargetNodeId(), actualReference.getTargetNodeId());
     }
     public void assertIdEqualsOrBothNull(String errorString, SNode expectedNode, SNode actualNode) {
