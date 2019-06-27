@@ -40,6 +40,13 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
           intentions[0] = new NodeTransformerBasedIntentionFactory(new ConvertConstraints(), NodeTransformer.Kind.INTENTION);
         }
         break;
+      case 1:
+        if (true) {
+          // concept 
+          intentions = new IntentionFactory[1];
+          intentions[0] = new AddCondition_Intention();
+        }
+        break;
       default:
     }
     myCached.put(concept, intentions);
@@ -49,9 +56,10 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
   @NotNull
   @Override
   public Collection<IntentionFactory> getAllIntentions() {
-    IntentionFactory[] rv = new IntentionFactory[1];
-    rv[0] = new NodeTransformerBasedIntentionFactory(new ConvertConstraints(), NodeTransformer.Kind.INTENTION);
+    IntentionFactory[] rv = new IntentionFactory[2];
+    rv[0] = new AddCondition_Intention();
+    rv[1] = new NodeTransformerBasedIntentionFactory(new ConvertConstraints(), NodeTransformer.Kind.INTENTION);
     return Arrays.asList(rv);
   }
-  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL), MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L)).seal();
 }
