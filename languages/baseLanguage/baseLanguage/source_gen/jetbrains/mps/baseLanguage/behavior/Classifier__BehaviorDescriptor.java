@@ -243,7 +243,11 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static List<SNode> getMembers_idhEwJjl2(@NotNull SNode __thisNode__) {
     List<SNode> members = new ArrayList<SNode>();
-    ListSequence.fromList(members).addSequence(Sequence.fromIterable(SNodeOperations.ofConcept(Classifier__BehaviorDescriptor.members_id1hodSy8nQmC.invoke(__thisNode__), MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept"))));
+    ListSequence.fromList(members).addSequence(Sequence.fromIterable(Classifier__BehaviorDescriptor.members_id1hodSy8nQmC.invoke(__thisNode__)).where(new IWhereFilter<SNode>() {
+      public boolean accept(SNode it) {
+        return SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept")) || SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118f0b909f7L, "jetbrains.mps.baseLanguage.structure.InstanceInitializer")) || SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c7538039dL, "jetbrains.mps.baseLanguage.structure.StaticInitializer"));
+      }
+    }));
     return members;
   }
   @Deprecated

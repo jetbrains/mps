@@ -24,6 +24,7 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
 import jetbrains.mps.workbench.choose.NodePointerNavigationItem;
 import jetbrains.mps.smodel.SNodePointer;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import com.intellij.navigation.ItemPresentation;
 
 public class MemberContainerStructureModel implements StructureViewModel {
@@ -101,6 +102,8 @@ public class MemberContainerStructureModel implements StructureViewModel {
   }
 
   /*package*/ static class Presentation extends NodePointerNavigationItem {
+    private String alternativePresentation = null;
+
     /*package*/ Presentation() {
       super(new SNodePointer(null), null, null);
       // just a fact root element 
@@ -108,11 +111,24 @@ public class MemberContainerStructureModel implements StructureViewModel {
 
     /*package*/ Presentation(SNode n) {
       super(n);
+      if (SNodeOperations.isInstanceOf(n, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118f0b909f7L, "jetbrains.mps.baseLanguage.structure.InstanceInitializer"))) {
+        alternativePresentation = "class initializer";
+      } else if (SNodeOperations.isInstanceOf(n, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c7538039dL, "jetbrains.mps.baseLanguage.structure.StaticInitializer"))) {
+        alternativePresentation = "static class initializer";
+      }
     }
 
     @Override
     public String getLocationString() {
       return null;
+    }
+    @Nullable
+    @Override
+    public String getPresentableText() {
+      if (alternativePresentation != null) {
+        return alternativePresentation;
+      }
+      return super.getPresentableText();
     }
   }
 
