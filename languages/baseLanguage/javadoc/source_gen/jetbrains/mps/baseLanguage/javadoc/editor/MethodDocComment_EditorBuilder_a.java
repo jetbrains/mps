@@ -179,6 +179,7 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
     private EditorCell createConstant_1() {
       EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "");
       editorCell.setCellId("Constant_ls0i5e_a1a0");
+      InsertAnEmptyCommentLineAfterEnter.setCellActions(editorCell, myNode, getEditorContext());
       editorCell.addKeyMap(new InsertAnEmptyCommentLine());
       editorCell.setDefaultText("");
       return editorCell;

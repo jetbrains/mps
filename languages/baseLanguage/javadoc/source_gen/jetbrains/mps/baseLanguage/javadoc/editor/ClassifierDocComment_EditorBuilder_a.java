@@ -179,6 +179,7 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
       Style style = new StyleImpl();
       style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, true);
       editorCell.getStyle().putAll(style);
+      InsertAnEmptyCommentLineAfterEnter.setCellActions(editorCell, myNode, getEditorContext());
       editorCell.addKeyMap(new InsertAnEmptyCommentLine());
       editorCell.setDefaultText("");
       return editorCell;
