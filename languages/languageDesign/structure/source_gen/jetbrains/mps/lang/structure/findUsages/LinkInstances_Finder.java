@@ -57,14 +57,15 @@ public class LinkInstances_Finder extends GeneratedFinder {
       boolean isChild = SPropertyOperations.hasEnumValue(node, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass"), "aggregation");
       // find instances and link examples 
       for (SNode instance : ListSequence.fromList(FindUtils.executeFinder("jetbrains.mps.lang.structure.findUsages.ConceptInstances_Finder", conceptDeclaration, scope, monitor))) {
-        for (String role : roles) {
-          if (isChild) {
-            for (SNode child : Sequence.fromIterable(instance.getChildren(role))) {
+        if (isChild) {
+          for (SNode child : Sequence.fromIterable(instance.getChildren())) {
+            if (SetSequence.fromSet(roles).contains(child.getContainmentLink().getName())) {
               callback.onUsageFound(createSingleResult(child));
             }
-          } else {
-            SReference reference = instance.getReference(role);
-            if (reference != null) {
+          }
+        } else {
+          for (SReference reference : Sequence.fromIterable(instance.getReferences())) {
+            if (SetSequence.fromSet(roles).contains(reference.getLink().getName())) {
               callback.onUsageFound(createSingleResult(reference.getSourceNode()));
             }
           }
