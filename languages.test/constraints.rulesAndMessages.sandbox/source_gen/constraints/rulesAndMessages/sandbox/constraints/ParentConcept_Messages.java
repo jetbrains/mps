@@ -16,12 +16,13 @@ import java.util.Arrays;
 public final class ParentConcept_Messages extends BaseMessageDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xfc39d7264089464aL, 0x8fc15f71edfdf03bL, 0x7af41afae28e1a15L, "constraints.rulesAndMessages.sandbox.structure.ParentConcept");
 
-  private static final MessageProvider<CanBeParentContext> MSGPROVIDER_childIsOfCorrectConcept_737pd2_a = new BaseMessageProvider<CanBeParentContext>(ParentConcept_Constraints2.Rule_childIsOfCorrectConcept.ID_childIsOfCorrectConcept) {
-    @NotNull
-    @Override
-    public MessageProvider.StringMsg yieldMessage(CanBeParentContext context) {
-      return new MessageProvider.StringMsg("");
-    }
+  private static final MessageProvider<CanBeParentContext> MSGPROVIDER_childIsOfCorrectConcept_737pd2_a =
+      new BaseMessageProvider<CanBeParentContext>(ParentConcept_Constraints2.Rule_childIsOfCorrectConcept.ID_childIsOfCorrectConcept) {
+        @NotNull
+        @Override
+        public MessageProvider.StringMsg yieldMessage(CanBeParentContext context) {
+          return new MessageProvider.StringMsg("");
+        }
   };
   private static final MessageProvider<CanBeParentContext> MSGPROVIDER_propertyIsSetCorrectly_737pd2_b = new BaseMessageProvider<CanBeParentContext>(ParentConcept_Constraints2.Rule_propertyIsSetCorrectly.ID_propertyIsSetCorrectly) {
     @NotNull

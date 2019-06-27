@@ -14,6 +14,7 @@
   <imports>
     <import index="npmf" ref="r:3fd4e667-8fcb-4728-850d-184116dcdf79(constraints.rulesAndMessages.sandbox.structure)" />
     <import index="v0oi" ref="r:52c0a9e8-a4f1-4d97-9c33-d3c28d77688f(jetbrains.mps.lang.constraints.rules.constraints)" />
+    <import index="prp3" ref="r:52ea8481-08b2-4cbd-ad9d-1b42825f7d09(jetbrains.mps.lang.constraints.rules.kinds.constraints)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -143,7 +144,7 @@
   <node concept="3Oh7Pa" id="1TfWqDAKmRD">
     <ref role="3Oh7Pe" to="npmf:7w_sh_iHHi0" resolve="ChildConcept" />
     <node concept="3OnDbq" id="6ijHUgUSgF_" role="3Oh7Pb">
-      <ref role="3OnDbs" to="v0oi:1dKt_a0noks" resolve="CanBeChild" />
+      <ref role="3OnDbs" to="prp3:1dKt_a0noks" resolve="CanBeChild" />
       <node concept="1DCEPf" id="3Ji_e5k4sxV" role="3OnDbr">
         <node concept="3Qq5Rn" id="3Ji_e5k4sxW" role="2j4cqI">
           <property role="EcuMT" value="4310671488845990012" />
@@ -152,7 +153,7 @@
             <node concept="2OqwBi" id="3Ji_e5k5aQk" role="2K0yoH">
               <node concept="2OqwBi" id="3Ji_e5k5b2z" role="2Oq$k0">
                 <node concept="3QpRc$" id="3Ji_e5k4syf" role="2Oq$k0">
-                  <ref role="3QpVTF" to="v0oi:1dKt_a0nok$" resolve="parentNode" />
+                  <ref role="3QpVTF" to="prp3:1dKt_a0nok$" resolve="parentNode" />
                 </node>
                 <node concept="2yIwOk" id="3Ji_e5k5b4B" role="2OqNvi" />
               </node>
@@ -176,7 +177,7 @@
               </node>
               <node concept="2OqwBi" id="3Ji_e5k5b$e" role="3uHU7B">
                 <node concept="3QpRc$" id="3Ji_e5k5br3" role="2Oq$k0">
-                  <ref role="3QpVTF" to="v0oi:1dKt_a0nokv" resolve="childNode" />
+                  <ref role="3QpVTF" to="prp3:1dKt_a0nokv" resolve="childNode" />
                 </node>
                 <node concept="3TrcHB" id="3Ji_e5k5b_6" role="2OqNvi">
                   <ref role="3TsBF5" to="npmf:3Ji_e5k59xt" resolve="tolerance" />
@@ -191,7 +192,7 @@
               <property role="16N$OU" value="The tolerance is too high in the node " />
             </node>
             <node concept="16Iohu" id="3Ji_e5k5eCP" role="16I2mt">
-              <ref role="16E0hz" to="v0oi:1dKt_a0nokv" resolve="childNode" />
+              <ref role="16E0hz" to="prp3:1dKt_a0nokv" resolve="childNode" />
             </node>
           </node>
         </node>
@@ -207,7 +208,7 @@
               </node>
               <node concept="2OqwBi" id="3Ji_e5k5d9N" role="3uHU7B">
                 <node concept="3QpRc$" id="3Ji_e5k5d9O" role="2Oq$k0">
-                  <ref role="3QpVTF" to="v0oi:1dKt_a0nokv" resolve="childNode" />
+                  <ref role="3QpVTF" to="prp3:1dKt_a0nokv" resolve="childNode" />
                 </node>
                 <node concept="3TrcHB" id="3Ji_e5k5d9P" role="2OqNvi">
                   <ref role="3TsBF5" to="npmf:3Ji_e5k59xt" resolve="tolerance" />
@@ -222,7 +223,7 @@
   <node concept="3Oh7Pa" id="6ijHUgUTa2Q">
     <ref role="3Oh7Pe" to="npmf:7FO6JFyzxCl" resolve="ParentConcept" />
     <node concept="3OnDbq" id="6ijHUgUTa2R" role="3Oh7Pb">
-      <ref role="3OnDbs" to="v0oi:1dKt_a0nokQ" resolve="CanBeParent" />
+      <ref role="3OnDbs" to="prp3:1dKt_a0nokQ" resolve="CanBeParent" />
       <node concept="1DCEPf" id="3Ji_e5k4I7L" role="3OnDbr">
         <node concept="3Qq5Rn" id="3Ji_e5k4I7N" role="2j4cqI">
           <property role="EcuMT" value="4310671488846062067" />
@@ -230,7 +231,7 @@
           <node concept="2K0Yjh" id="3Ji_e5k4I7P" role="2K0Fuo">
             <node concept="2OqwBi" id="3Ji_e5k4ImD" role="2K0yoH">
               <node concept="3QpRc$" id="3Ji_e5k4I8V" role="2Oq$k0">
-                <ref role="3QpVTF" to="v0oi:6ijHUgUTibb" resolve="childConcept" />
+                <ref role="3QpVTF" to="prp3:6ijHUgUTibb" resolve="childConcept" />
               </node>
               <node concept="3O6GUB" id="3Ji_e5k4IxR" role="2OqNvi">
                 <node concept="chp4Y" id="3Ji_e5k4I$P" role="3QVz_e">
@@ -249,7 +250,7 @@
           <node concept="2K0Yjh" id="7M8nn$yhbVw" role="2K0Fuo">
             <node concept="2OqwBi" id="7M8nn$yheY5" role="2K0yoH">
               <node concept="3QpRc$" id="7M8nn$yhePr" role="2Oq$k0">
-                <ref role="3QpVTF" to="v0oi:1dKt_a0nokS" resolve="parentNode" />
+                <ref role="3QpVTF" to="prp3:1dKt_a0nokS" resolve="parentNode" />
               </node>
               <node concept="3TrcHB" id="7M8nn$yheZc" role="2OqNvi">
                 <ref role="3TsBF5" to="npmf:6ijHUgUSyYU" resolve="canHaveChildren" />
@@ -266,7 +267,7 @@
               <property role="16N$OU" value="' " />
             </node>
             <node concept="16Iohu" id="3Ji_e5k4I5O" role="16I2mt">
-              <ref role="16E0hz" to="v0oi:1dKt_a0nokS" resolve="parentNode" />
+              <ref role="16E0hz" to="prp3:1dKt_a0nokS" resolve="parentNode" />
             </node>
             <node concept="16N$OT" id="3Ji_e5k4I5T" role="16I2mt">
               <property role="16N$OU" value="' cannot be a parent" />
@@ -286,7 +287,7 @@
                     <ref role="cht4Q" to="npmf:7w_sh_iHHi0" resolve="ChildConcept" />
                   </node>
                   <node concept="3QpRc$" id="7M8nn$yhf1p" role="1m5AlR">
-                    <ref role="3QpVTF" to="v0oi:1dKt_a0nokT" resolve="childNode" />
+                    <ref role="3QpVTF" to="prp3:1dKt_a0nokT" resolve="childNode" />
                   </node>
                 </node>
                 <node concept="3TrcHB" id="3Ji_e5k59XD" role="2OqNvi">
@@ -302,7 +303,7 @@
             <node concept="2K0Yjh" id="7M8nn$yhgHn" role="2K0D5Q">
               <node concept="2OqwBi" id="3Ji_e5k5awN" role="2K0yoH">
                 <node concept="3QpRc$" id="3Ji_e5k5ake" role="2Oq$k0">
-                  <ref role="3QpVTF" to="v0oi:1dKt_a0nokS" resolve="parentNode" />
+                  <ref role="3QpVTF" to="prp3:1dKt_a0nokS" resolve="parentNode" />
                 </node>
                 <node concept="3TrcHB" id="3Ji_e5k5aDm" role="2OqNvi">
                   <ref role="3TsBF5" to="npmf:6ijHUgUSyYU" resolve="canHaveChildren" />
@@ -320,7 +321,7 @@
               <property role="16N$OU" value=" in the child node '" />
             </node>
             <node concept="16Iohu" id="3Ji_e5k5adV" role="16I2mt">
-              <ref role="16E0hz" to="v0oi:1dKt_a0nokT" resolve="childNode" />
+              <ref role="16E0hz" to="prp3:1dKt_a0nokT" resolve="childNode" />
             </node>
             <node concept="16N$OT" id="3Ji_e5k7lE6" role="16I2mt">
               <property role="16N$OU" value="'" />

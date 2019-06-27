@@ -28,7 +28,7 @@ public abstract class BaseMessageProvider<C extends RuleContext> implements Mess
 
   @NotNull
   @Override
-  public RuleId forRuleId() {
+  public final RuleId forRuleId() {
     return myRuleId;
   }
 }

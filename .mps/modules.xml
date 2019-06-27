@@ -128,6 +128,7 @@
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/feedback/messages/jetbrains.mps.lang.feedback.messages.mpl" folder="core.aspects.feedback" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/feedback/problem/failingRule/jetbrains.mps.lang.feedback.problem.failingRule.mpl" folder="core.aspects.feedback" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/feedback/problem/problem/jetbrains.mps.lang.feedback.problem.mpl" folder="core.aspects.feedback" />
+      <modulePath path="$PROJECT_DIR$/languages/languageDesign/feedback/problem/scopes/jetbrains.mps.lang.feedback.problem.scopes.mpl" folder="core.aspects.feedback" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/feedback/skeleton/jetbrains.mps.lang.feedback.skeleton.mpl" folder="core.aspects.feedback" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/findUsages/jetbrains.mps.lang.findUsages.mpl" folder="core.aspects.findUsages" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/generator/languages/descriptor/jetbrains.mps.lang.descriptor.mpl" folder="core.aspects.descriptor" />

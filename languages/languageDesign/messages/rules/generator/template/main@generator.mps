@@ -19,6 +19,7 @@
     <import index="mqj2" ref="r:1d4f6f82-1219-47a2-a4fa-ac3ba14c9fd5(jetbrains.mps.lang.constraints.rules.skeleton.structure)" />
     <import index="v0oi" ref="r:52c0a9e8-a4f1-4d97-9c33-d3c28d77688f(jetbrains.mps.lang.constraints.rules.constraints)" />
     <import index="wff5" ref="r:2ac18004-8536-478a-bf05-03a0f407633f(jetbrains.mps.lang.feedback.skeleton.structure)" />
+    <import index="prp3" ref="r:52ea8481-08b2-4cbd-ad9d-1b42825f7d09(jetbrains.mps.lang.constraints.rules.kinds.constraints)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
   </imports>
   <registry>
@@ -678,7 +679,7 @@
     <property role="TrG5h" value="reduce_RuleWithMessage" />
     <ref role="3gUMe" to="t16r:hyoMxHKcTB" resolve="RuleWithMessage" />
     <node concept="3OnDbq" id="1dKt_a0opRX" role="13RCb5">
-      <ref role="3OnDbs" to="v0oi:1dKt_a0noks" resolve="CanBeChild" />
+      <ref role="3OnDbs" to="prp3:1dKt_a0noks" resolve="CanBeChild" />
       <node concept="3Qq5Rn" id="19J4M2yytEK" role="3OnDbr">
         <property role="EcuMT" value="12" />
         <property role="TrG5h" value="AA" />

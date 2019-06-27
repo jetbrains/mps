@@ -10,7 +10,6 @@
   <imports>
     <import index="xjeg" ref="r:99b2bb53-594f-4076-8629-aea0f8ec5bfd(jetbrains.mps.lang.feedback.problem.failingRule.structure)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
-    <import index="1j73" ref="r:0c439b35-97f7-4a6a-9add-6619e8c46f29(jetbrains.mps.lang.feedback.messages.editor)" implicit="true" />
   </imports>
   <registry>
     <language id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor">
@@ -100,8 +99,8 @@
     <node concept="3EZMnI" id="5sUTrySNjU1" role="2wV5jI">
       <node concept="2iRfu4" id="5sUTrySNjU2" role="2iSdaV" />
       <node concept="1iCGBv" id="4zSofKeeUoe" role="3EZMnx">
-        <ref role="1ERwB7" to="1j73:4zSofKeeX0D" resolve="MessageProvider_Delete" />
         <ref role="1NtTu8" to="xjeg:5sUTrySNhio" resolve="rule" />
+        <ref role="1ERwB7" node="4zSofKeeX0D" resolve="FailingRuleProblem_Delete" />
         <node concept="1sVBvm" id="4zSofKeeUog" role="1sWHZn">
           <node concept="3F0A7n" id="4zSofKeeUoq" role="2wV5jI">
             <property role="1Intyy" value="true" />
