@@ -33,7 +33,6 @@ import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.openapi.editor.menus.transformation.SPropertyInfo;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Property;
 import jetbrains.mps.nodeEditor.cells.SPropertyAccessor;
-import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteEasily;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.execution.settings.editor.ExecutionSettings_StyleSheet.persistentConfigurationRefStyleClass;
@@ -163,8 +162,6 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParen
         getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
         EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, true, false), myNode);
         editorCell.setDefaultText("<no name>");
-        editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteEasily(myNode, CellAction_DeleteNode.DeleteDirection.FORWARD));
-        editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteEasily(myNode, CellAction_DeleteNode.DeleteDirection.BACKWARD));
         editorCell.setCellId("property_name");
         Style style = new StyleImpl();
         new persistentConfigurationRefStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
@@ -258,8 +255,6 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParen
         getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
         EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, true, false), myNode);
         editorCell.setDefaultText("<no name>");
-        editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteEasily(myNode, CellAction_DeleteNode.DeleteDirection.FORWARD));
-        editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteEasily(myNode, CellAction_DeleteNode.DeleteDirection.BACKWARD));
         editorCell.setCellId("property_name1");
         Style style = new StyleImpl();
         new persistentConfigurationRefDeprecatedStyleClass(getEditorContext(), getNode()).apply(style, editorCell);

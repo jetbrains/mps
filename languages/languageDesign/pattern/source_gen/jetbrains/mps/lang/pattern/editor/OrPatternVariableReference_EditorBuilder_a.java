@@ -39,7 +39,6 @@ import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.openapi.editor.menus.transformation.SPropertyInfo;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Property;
 import jetbrains.mps.nodeEditor.cells.SPropertyAccessor;
-import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteEasily;
 import jetbrains.mps.nodeEditor.cellMenu.SPropertySubstituteInfo;
 import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 
@@ -157,8 +156,6 @@ import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
         getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
         EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, true, false), myNode);
         editorCell.setDefaultText("<no varName>");
-        editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteEasily(myNode, CellAction_DeleteNode.DeleteDirection.FORWARD));
-        editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteEasily(myNode, CellAction_DeleteNode.DeleteDirection.BACKWARD));
         editorCell.setCellId("property_varName");
         editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
         setCellContext(editorCell);

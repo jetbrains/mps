@@ -27,7 +27,6 @@
     <classNode dependClassName="java.util.Objects" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.EditorCell_Empty" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.impl.CellUtil" />
-    <classNode dependClassName="jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteEasily" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleAttributes" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleImpl" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />
@@ -82,7 +81,6 @@
     <classNode dependClassName="java.util.Objects" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.EditorCell_Empty" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.impl.CellUtil" />
-    <classNode dependClassName="jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteEasily" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleAttributes" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleImpl" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />
@@ -137,7 +135,6 @@
     <classNode dependClassName="java.util.Objects" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.EditorCell_Empty" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.impl.CellUtil" />
-    <classNode dependClassName="jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteEasily" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleAttributes" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleImpl" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />

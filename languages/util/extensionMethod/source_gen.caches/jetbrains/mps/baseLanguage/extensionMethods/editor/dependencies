@@ -64,7 +64,6 @@
     <classNode dependClassName="java.util.Objects" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.BaseMethodParameterInformationQuery" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.impl.CellUtil" />
-    <classNode dependClassName="jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteEasily" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleAttributes" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleImpl" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />
@@ -151,7 +150,6 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.LeftParenAfterNameStyleClass" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParenStyleClass" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.extensionMethods.editor.ExtensionMethodDeclaration_Actions" />
-    <classNode dependClassName="jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSPropertyOrNode" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.FocusPolicy" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleAttributes" />
@@ -246,7 +244,6 @@
     <classNode dependClassName="java.util.Objects" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.StaticFieldStyleClass" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.impl.CellUtil" />
-    <classNode dependClassName="jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteEasily" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleAttributes" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleImpl" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />
@@ -355,7 +352,6 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.MPSMethodCallStyleClass" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.BaseMethodParameterInformationQuery" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.impl.CellUtil" />
-    <classNode dependClassName="jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteEasily" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleAttributes" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleImpl" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />
@@ -425,7 +421,6 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.KeyWordStyleClass" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.LeftBraceStyleClass" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightBraceStyleClass" />
-    <classNode dependClassName="jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSPropertyOrNode" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleAttributes" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleImpl" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />
@@ -532,7 +527,6 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.KeyWordStyleClass" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.LeftBraceStyleClass" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightBraceStyleClass" />
-    <classNode dependClassName="jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSPropertyOrNode" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleAttributes" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleImpl" />

@@ -105,7 +105,6 @@
     <classNode dependClassName="jetbrains.mps.core.xml.editor.XmlSS_StyleSheet.xmlAttributeNameStyleClass" />
     <classNode dependClassName="jetbrains.mps.core.xml.editor.XmlSS_StyleSheet.xmlAttributeValueStyleClass" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.cells.BigCellUtil" />
-    <classNode dependClassName="jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSPropertyOrNode" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.FocusPolicy" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleAttributes" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleImpl" />
@@ -299,7 +298,6 @@
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.Objects" />
     <classNode dependClassName="jetbrains.mps.core.xml.behavior.XmlPart__BehaviorDescriptor" />
-    <classNode dependClassName="jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSPropertyOrNode" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleAttributes" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleImpl" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />
@@ -309,7 +307,6 @@
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.EditorManager" />
-    <classNode dependClassName="jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellMenu.SPropertySubstituteInfo" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cells.EditorCell_Collection" />
@@ -317,7 +314,6 @@
     <classNode dependClassName="jetbrains.mps.nodeEditor.cells.EditorCell_Property" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cells.SPropertyAccessor" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />
-    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.CellActionType" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.menus.transformation.SPropertyInfo" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.style.Style" />
@@ -342,7 +338,6 @@
     <classNode dependClassName="jetbrains.mps.core.xml.behavior.XmlValuePart__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.core.xml.editor.XmlSS_StyleSheet.xmlAttrCharRefValueStyleClass" />
     <classNode dependClassName="jetbrains.mps.core.xml.editor.delete_XmlEntityRefValueDelete" />
-    <classNode dependClassName="jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSPropertyOrNode" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleAttributes" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleImpl" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />
@@ -352,7 +347,6 @@
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.EditorManager" />
-    <classNode dependClassName="jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellMenu.SPropertySubstituteInfo" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cells.EditorCell_Collection" />
@@ -360,7 +354,6 @@
     <classNode dependClassName="jetbrains.mps.nodeEditor.cells.EditorCell_Property" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cells.SPropertyAccessor" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />
-    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.CellActionType" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.menus.transformation.SPropertyInfo" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.style.Style" />
@@ -396,7 +389,6 @@
     <classNode dependClassName="java.util.Objects" />
     <classNode dependClassName="jetbrains.mps.core.xml.behavior.XmlPart__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.core.xml.editor.XmlSS_StyleSheet.xmlCharRefStyleClass" />
-    <classNode dependClassName="jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSPropertyOrNode" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleAttributes" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleImpl" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />
@@ -406,7 +398,6 @@
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.EditorManager" />
-    <classNode dependClassName="jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellMenu.SPropertySubstituteInfo" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cells.EditorCell_Collection" />
@@ -414,7 +405,6 @@
     <classNode dependClassName="jetbrains.mps.nodeEditor.cells.EditorCell_Property" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cells.SPropertyAccessor" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />
-    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.CellActionType" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.menus.transformation.SPropertyInfo" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.style.Style" />
@@ -437,7 +427,6 @@
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.Objects" />
     <classNode dependClassName="jetbrains.mps.core.xml.editor.XmlSS_StyleSheet.xmlCommentStyleClass" />
-    <classNode dependClassName="jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSPropertyOrNode" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleImpl" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
@@ -446,12 +435,10 @@
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.EditorManager" />
-    <classNode dependClassName="jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellMenu.SPropertySubstituteInfo" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cells.EditorCell_Property" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cells.SPropertyAccessor" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />
-    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.CellActionType" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.menus.transformation.SPropertyInfo" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.style.Style" />
@@ -612,7 +599,6 @@
     <classNode dependClassName="jetbrains.mps.core.xml.editor.XmlSS_StyleSheet.xmlAttributeValueStyleClass" />
     <classNode dependClassName="jetbrains.mps.core.xml.editor.XmlSS_StyleSheet.xmlTagNameStyleClass" />
     <classNode dependClassName="jetbrains.mps.core.xml.editor.XmlSS_StyleSheet.xmlTagPunctuationStyleClass" />
-    <classNode dependClassName="jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSPropertyOrNode" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleAttributes" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleImpl" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />
@@ -622,7 +608,6 @@
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.EditorManager" />
-    <classNode dependClassName="jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellMenu.SPropertySubstituteInfo" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cells.EditorCell_Collection" />
@@ -630,7 +615,6 @@
     <classNode dependClassName="jetbrains.mps.nodeEditor.cells.EditorCell_Property" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cells.SPropertyAccessor" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />
-    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.CellActionType" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.menus.transformation.SPropertyInfo" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.style.Style" />
@@ -678,7 +662,6 @@
     <classNode dependClassName="jetbrains.mps.core.xml.editor.XmlSS_StyleSheet.xmlAttributeValueStyleClass" />
     <classNode dependClassName="jetbrains.mps.core.xml.editor.XmlSS_StyleSheet.xmlTagNameStyleClass" />
     <classNode dependClassName="jetbrains.mps.core.xml.editor.XmlSS_StyleSheet.xmlTagPunctuationStyleClass" />
-    <classNode dependClassName="jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSPropertyOrNode" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleAttributes" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleImpl" />
@@ -695,7 +678,6 @@
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.EditorManager" />
-    <classNode dependClassName="jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellMenu.CellContext" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellMenu.CompositeSubstituteInfo" />
@@ -797,7 +779,6 @@
     <classNode dependClassName="jetbrains.mps.core.xml.editor.XmlSS_StyleSheet.xmlTagPunctuationStyleClass" />
     <classNode dependClassName="jetbrains.mps.core.xml.editor.delete_XmlElement_shortNotation" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.cells.EmptyCellAction" />
-    <classNode dependClassName="jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSPropertyOrNode" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleAttributes" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleImpl" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />
@@ -888,7 +869,6 @@
     <classNode dependClassName="jetbrains.mps.core.xml.constraints.XmlNameUtil" />
     <classNode dependClassName="jetbrains.mps.core.xml.editor.XmlSS_StyleSheet.xmlAttrEntityRefValueStyleClass" />
     <classNode dependClassName="jetbrains.mps.core.xml.editor.delete_XmlEntityRefValueDelete" />
-    <classNode dependClassName="jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSPropertyOrNode" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleAttributes" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleImpl" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />
@@ -901,7 +881,6 @@
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.EditorManager" />
-    <classNode dependClassName="jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellMenu.CellContext" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellMenu.CompositeSubstituteInfo" />
@@ -913,7 +892,6 @@
     <classNode dependClassName="jetbrains.mps.nodeEditor.cells.SPropertyAccessor" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.menus.EditorMenuTraceInfoImpl" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />
-    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.CellActionType" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.cells.SubstituteAction" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo" />
@@ -959,7 +937,6 @@
     <classNode dependClassName="jetbrains.mps.core.xml.behavior.XmlPart__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.core.xml.constraints.XmlNameUtil" />
     <classNode dependClassName="jetbrains.mps.core.xml.editor.XmlSS_StyleSheet.xmlEntityRefStyleClass" />
-    <classNode dependClassName="jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSPropertyOrNode" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleAttributes" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleImpl" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />
@@ -972,7 +949,6 @@
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.EditorManager" />
-    <classNode dependClassName="jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellMenu.CellContext" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellMenu.CompositeSubstituteInfo" />
@@ -984,7 +960,6 @@
     <classNode dependClassName="jetbrains.mps.nodeEditor.cells.SPropertyAccessor" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.menus.EditorMenuTraceInfoImpl" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />
-    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.CellActionType" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.cells.SubstituteAction" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo" />
@@ -1015,7 +990,6 @@
     <classNode dependClassName="jetbrains.mps.core.xml.editor.ExternalIdMenu" />
     <classNode dependClassName="jetbrains.mps.core.xml.editor.XmlSS_StyleSheet.xmlAttributeValueStyleClass" />
     <classNode dependClassName="jetbrains.mps.core.xml.editor.XmlSS_StyleSheet.xmlTagNameStyleClass" />
-    <classNode dependClassName="jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSPropertyOrNode" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleImpl" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
@@ -1025,7 +999,6 @@
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.EditorManager" />
-    <classNode dependClassName="jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellMenu.BasicCellContext" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellMenu.CellContext" />
@@ -1038,7 +1011,6 @@
     <classNode dependClassName="jetbrains.mps.nodeEditor.cells.EditorCell_Property" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cells.SPropertyAccessor" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />
-    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.CellActionType" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.cells.SubstituteAction" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.menus.transformation.SPropertyInfo" />
@@ -1062,7 +1034,6 @@
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.Objects" />
-    <classNode dependClassName="jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSPropertyOrNode" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleAttributes" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleImpl" />
@@ -1075,7 +1046,6 @@
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.EditorManager" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.MPSColors" />
-    <classNode dependClassName="jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo" />
@@ -1139,7 +1109,6 @@
     <classNode dependClassName="jetbrains.mps.core.xml.editor.XmlSS_StyleSheet.xmlPIDataStyleClass" />
     <classNode dependClassName="jetbrains.mps.core.xml.editor.XmlSS_StyleSheet.xmlPIStyleClass" />
     <classNode dependClassName="jetbrains.mps.core.xml.editor.XmlSS_StyleSheet.xmlPITargetStyleClass" />
-    <classNode dependClassName="jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSPropertyOrNode" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleAttributes" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleImpl" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />
@@ -1149,7 +1118,6 @@
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.EditorManager" />
-    <classNode dependClassName="jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellMenu.SPropertySubstituteInfo" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cells.EditorCell_Collection" />
@@ -1157,7 +1125,6 @@
     <classNode dependClassName="jetbrains.mps.nodeEditor.cells.EditorCell_Property" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cells.SPropertyAccessor" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />
-    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.CellActionType" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.menus.transformation.SPropertyInfo" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.style.Style" />
@@ -1247,7 +1214,6 @@
     <classNode dependClassName="jetbrains.mps.core.xml.behavior.XmlValuePart__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.core.xml.editor.XmlSS_StyleSheet.xmlAttributeValueStyleClass" />
     <classNode dependClassName="jetbrains.mps.core.xml.editor.XmlTextValue_text" />
-    <classNode dependClassName="jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSPropertyOrNode" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleAttributes" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleImpl" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />
@@ -1260,7 +1226,6 @@
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.EditorManager" />
-    <classNode dependClassName="jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellMenu.CellContext" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellMenu.CompositeSubstituteInfo" />
@@ -1271,7 +1236,6 @@
     <classNode dependClassName="jetbrains.mps.nodeEditor.cells.EditorCell_Property" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cells.SPropertyAccessor" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />
-    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.CellActionType" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.menus.transformation.SPropertyInfo" />
@@ -1326,7 +1290,6 @@
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.Objects" />
     <classNode dependClassName="jetbrains.mps.core.xml.behavior.XmlPart__BehaviorDescriptor" />
-    <classNode dependClassName="jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSPropertyOrNode" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleAttributes" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleImpl" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />
@@ -1340,7 +1303,6 @@
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.EditorManager" />
-    <classNode dependClassName="jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellMenu.CellContext" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellMenu.CompositeSubstituteInfo" />
@@ -1351,7 +1313,6 @@
     <classNode dependClassName="jetbrains.mps.nodeEditor.cells.EditorCell_Property" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cells.SPropertyAccessor" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />
-    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.CellActionType" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.menus.transformation.SPropertyInfo" />
@@ -1491,7 +1452,6 @@
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.Objects" />
     <classNode dependClassName="jetbrains.mps.core.xml.behavior.XmlPart__BehaviorDescriptor" />
-    <classNode dependClassName="jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSPropertyOrNode" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleAttributes" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleImpl" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />
@@ -1501,12 +1461,10 @@
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.EditorManager" />
-    <classNode dependClassName="jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellMenu.SPropertySubstituteInfo" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cells.EditorCell_Property" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cells.SPropertyAccessor" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />
-    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.CellActionType" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.menus.transformation.SPropertyInfo" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.style.Style" />

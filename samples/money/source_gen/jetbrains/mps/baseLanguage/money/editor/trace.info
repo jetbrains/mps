@@ -28,112 +28,108 @@
       <unit id="1186667875272" at="10,0,15,0" name="jetbrains.mps.baseLanguage.money.editor.MoneyLiteral_Editor" />
     </file>
     <file name="MoneyLiteral_EditorBuilder_a.java">
-      <node id="1186667875272" at="35,92,36,19" concept="8" />
-      <node id="1186667875272" at="36,19,37,18" concept="1" />
-      <node id="1186667875272" at="42,26,43,18" concept="7" />
-      <node id="1186667875272" at="46,39,47,32" concept="7" />
-      <node id="1186667875272" at="50,43,51,118" concept="6" />
-      <node id="1186667875272" at="51,118,52,48" concept="1" />
-      <node id="1186667875272" at="52,48,53,28" concept="1" />
-      <node id="1186667875272" at="53,28,54,31" concept="1" />
-      <node id="1186668023743" at="54,31,55,49" concept="1" />
-      <node id="1186668032201" at="55,49,56,49" concept="1" />
-      <node id="1186667875272" at="56,49,57,22" concept="7" />
-      <node id="1186668023743" at="59,41,60,39" concept="1" />
-      <node id="1186668023743" at="61,9,62,148" concept="6" />
-      <node id="1186668023743" at="62,148,63,76" concept="1" />
-      <node id="1186668023743" at="63,76,64,149" concept="6" />
-      <node id="1186668023743" at="64,149,65,47" concept="1" />
-      <node id="1186668023743" at="65,47,66,153" concept="1" />
-      <node id="1186668023743" at="66,153,67,157" concept="1" />
-      <node id="1186668023743" at="67,157,68,46" concept="1" />
-      <node id="1186668023743" at="68,46,69,86" concept="1" />
-      <node id="1186668023743" at="69,86,70,33" concept="1" />
-      <node id="1186668023743" at="70,33,71,306" concept="6" />
-      <node id="1186668023743" at="73,41,74,118" concept="7" />
-      <node id="1186668023743" at="77,74,78,89" concept="6" />
-      <node id="1186668023743" at="78,89,79,145" concept="7" />
-      <node id="1186668023743" at="80,12,81,24" concept="7" />
-      <node id="1186668023743" at="82,15,83,40" concept="1" />
-      <node id="1186668032201" at="86,41,87,39" concept="1" />
-      <node id="1186668032201" at="88,9,89,150" concept="6" />
-      <node id="1186668032201" at="89,150,90,76" concept="1" />
-      <node id="1186668032201" at="90,76,91,149" concept="6" />
-      <node id="1186668032201" at="91,149,92,49" concept="1" />
-      <node id="1186668032201" at="92,49,93,153" concept="1" />
-      <node id="1186668032201" at="93,153,94,157" concept="1" />
-      <node id="1186668032201" at="94,157,95,48" concept="1" />
-      <node id="1186668032201" at="95,48,96,86" concept="1" />
-      <node id="1186668032201" at="96,86,97,33" concept="1" />
-      <node id="1186668032201" at="97,33,98,306" concept="6" />
-      <node id="1186668032201" at="100,41,101,118" concept="7" />
-      <node id="1186668032201" at="104,74,105,89" concept="6" />
-      <node id="1186668032201" at="105,89,106,145" concept="7" />
-      <node id="1186668032201" at="107,12,108,24" concept="7" />
-      <node id="1186668032201" at="109,15,110,40" concept="1" />
-      <node id="1186667875272" at="32,0,34,0" concept="2" trace="myNode" />
-      <node id="1186667875272" at="46,0,49,0" concept="5" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <node id="1186668023743" at="73,0,76,0" concept="5" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="1186668032201" at="100,0,103,0" concept="5" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="1186667875272" at="35,0,39,0" concept="0" trace="MoneyLiteral_EditorBuilder_a#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="1186667875272" at="40,0,45,0" concept="5" trace="getNode#()Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="1186668023743" at="71,306,76,9" concept="6" />
-      <node id="1186668023743" at="76,9,81,24" concept="4" />
-      <node id="1186668032201" at="98,306,103,9" concept="6" />
-      <node id="1186668032201" at="103,9,108,24" concept="4" />
-      <node id="1186667875272" at="50,0,59,0" concept="5" trace="createCollection_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <node id="1186668023743" at="60,39,84,5" concept="10" />
-      <node id="1186668032201" at="87,39,111,5" concept="10" />
-      <node id="1186668023743" at="59,0,86,0" concept="5" trace="createProperty_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <node id="1186668032201" at="86,0,113,0" concept="5" trace="createProperty_1#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <scope id="1186667875272" at="42,26,43,18" />
-      <scope id="1186667875272" at="46,39,47,32" />
-      <scope id="1186668023743" at="73,41,74,118" />
-      <scope id="1186668023743" at="82,15,83,40" />
-      <scope id="1186668032201" at="100,41,101,118" />
-      <scope id="1186668032201" at="109,15,110,40" />
-      <scope id="1186667875272" at="35,92,37,18" />
-      <scope id="1186668023743" at="77,74,79,145">
+      <node id="1186667875272" at="32,92,33,19" concept="8" />
+      <node id="1186667875272" at="33,19,34,18" concept="1" />
+      <node id="1186667875272" at="39,26,40,18" concept="7" />
+      <node id="1186667875272" at="43,39,44,32" concept="7" />
+      <node id="1186667875272" at="47,43,48,118" concept="6" />
+      <node id="1186667875272" at="48,118,49,48" concept="1" />
+      <node id="1186667875272" at="49,48,50,28" concept="1" />
+      <node id="1186667875272" at="50,28,51,31" concept="1" />
+      <node id="1186668023743" at="51,31,52,49" concept="1" />
+      <node id="1186668032201" at="52,49,53,49" concept="1" />
+      <node id="1186667875272" at="53,49,54,22" concept="7" />
+      <node id="1186668023743" at="56,41,57,39" concept="1" />
+      <node id="1186668023743" at="58,9,59,148" concept="6" />
+      <node id="1186668023743" at="59,148,60,76" concept="1" />
+      <node id="1186668023743" at="60,76,61,149" concept="6" />
+      <node id="1186668023743" at="61,149,62,47" concept="1" />
+      <node id="1186668023743" at="62,47,63,46" concept="1" />
+      <node id="1186668023743" at="63,46,64,86" concept="1" />
+      <node id="1186668023743" at="64,86,65,33" concept="1" />
+      <node id="1186668023743" at="65,33,66,306" concept="6" />
+      <node id="1186668023743" at="68,41,69,118" concept="7" />
+      <node id="1186668023743" at="72,74,73,89" concept="6" />
+      <node id="1186668023743" at="73,89,74,145" concept="7" />
+      <node id="1186668023743" at="75,12,76,24" concept="7" />
+      <node id="1186668023743" at="77,15,78,40" concept="1" />
+      <node id="1186668032201" at="81,41,82,39" concept="1" />
+      <node id="1186668032201" at="83,9,84,150" concept="6" />
+      <node id="1186668032201" at="84,150,85,76" concept="1" />
+      <node id="1186668032201" at="85,76,86,149" concept="6" />
+      <node id="1186668032201" at="86,149,87,49" concept="1" />
+      <node id="1186668032201" at="87,49,88,48" concept="1" />
+      <node id="1186668032201" at="88,48,89,86" concept="1" />
+      <node id="1186668032201" at="89,86,90,33" concept="1" />
+      <node id="1186668032201" at="90,33,91,306" concept="6" />
+      <node id="1186668032201" at="93,41,94,118" concept="7" />
+      <node id="1186668032201" at="97,74,98,89" concept="6" />
+      <node id="1186668032201" at="98,89,99,145" concept="7" />
+      <node id="1186668032201" at="100,12,101,24" concept="7" />
+      <node id="1186668032201" at="102,15,103,40" concept="1" />
+      <node id="1186667875272" at="29,0,31,0" concept="2" trace="myNode" />
+      <node id="1186667875272" at="43,0,46,0" concept="5" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="1186668023743" at="68,0,71,0" concept="5" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="1186668032201" at="93,0,96,0" concept="5" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="1186667875272" at="32,0,36,0" concept="0" trace="MoneyLiteral_EditorBuilder_a#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="1186667875272" at="37,0,42,0" concept="5" trace="getNode#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="1186668023743" at="66,306,71,9" concept="6" />
+      <node id="1186668023743" at="71,9,76,24" concept="4" />
+      <node id="1186668032201" at="91,306,96,9" concept="6" />
+      <node id="1186668032201" at="96,9,101,24" concept="4" />
+      <node id="1186667875272" at="47,0,56,0" concept="5" trace="createCollection_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="1186668023743" at="57,39,79,5" concept="10" />
+      <node id="1186668032201" at="82,39,104,5" concept="10" />
+      <node id="1186668023743" at="56,0,81,0" concept="5" trace="createProperty_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="1186668032201" at="81,0,106,0" concept="5" trace="createProperty_1#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <scope id="1186667875272" at="39,26,40,18" />
+      <scope id="1186667875272" at="43,39,44,32" />
+      <scope id="1186668023743" at="68,41,69,118" />
+      <scope id="1186668023743" at="77,15,78,40" />
+      <scope id="1186668032201" at="93,41,94,118" />
+      <scope id="1186668032201" at="102,15,103,40" />
+      <scope id="1186667875272" at="32,92,34,18" />
+      <scope id="1186668023743" at="72,74,74,145">
         <var name="manager" id="1186668023743" />
       </scope>
-      <scope id="1186668032201" at="104,74,106,145">
+      <scope id="1186668032201" at="97,74,99,145">
         <var name="manager" id="1186668032201" />
       </scope>
-      <scope id="1186667875272" at="46,0,49,0" />
-      <scope id="1186668023743" at="73,0,76,0">
+      <scope id="1186667875272" at="43,0,46,0" />
+      <scope id="1186668023743" at="68,0,71,0">
         <var name="it" id="1186668023743" />
       </scope>
-      <scope id="1186668032201" at="100,0,103,0">
+      <scope id="1186668032201" at="93,0,96,0">
         <var name="it" id="1186668032201" />
       </scope>
-      <scope id="1186667875272" at="35,0,39,0">
+      <scope id="1186667875272" at="32,0,36,0">
         <var name="context" id="1186667875272" />
         <var name="node" id="1186667875272" />
       </scope>
-      <scope id="1186667875272" at="40,0,45,0" />
-      <scope id="1186667875272" at="50,43,57,22">
+      <scope id="1186667875272" at="37,0,42,0" />
+      <scope id="1186667875272" at="47,43,54,22">
         <var name="editorCell" id="1186667875272" />
       </scope>
-      <scope id="1186667875272" at="50,0,59,0" />
-      <scope id="1186668023743" at="61,9,81,24">
+      <scope id="1186667875272" at="47,0,56,0" />
+      <scope id="1186668023743" at="58,9,76,24">
         <var name="currentPropertyAttributes" id="1186668023743" />
         <var name="editorCell" id="1186668023743" />
         <var name="property" id="1186668023743" />
         <var name="propertyAttributes" id="1186668023743" />
       </scope>
-      <scope id="1186668032201" at="88,9,108,24">
+      <scope id="1186668032201" at="83,9,101,24">
         <var name="currentPropertyAttributes" id="1186668032201" />
         <var name="editorCell" id="1186668032201" />
         <var name="property" id="1186668032201" />
         <var name="propertyAttributes" id="1186668032201" />
       </scope>
-      <scope id="1186668023743" at="59,41,84,5" />
-      <scope id="1186668032201" at="86,41,111,5" />
-      <scope id="1186668023743" at="59,0,86,0" />
-      <scope id="1186668032201" at="86,0,113,0" />
-      <unit id="1186668023743" at="72,102,76,7" name="jetbrains.mps.baseLanguage.money.editor.MoneyLiteral_EditorBuilder_a$1" />
-      <unit id="1186668032201" at="99,102,103,7" name="jetbrains.mps.baseLanguage.money.editor.MoneyLiteral_EditorBuilder_a$2" />
-      <unit id="1186667875272" at="31,0,114,0" name="jetbrains.mps.baseLanguage.money.editor.MoneyLiteral_EditorBuilder_a" />
+      <scope id="1186668023743" at="56,41,79,5" />
+      <scope id="1186668032201" at="81,41,104,5" />
+      <scope id="1186668023743" at="56,0,81,0" />
+      <scope id="1186668032201" at="81,0,106,0" />
+      <unit id="1186668023743" at="67,102,71,7" name="jetbrains.mps.baseLanguage.money.editor.MoneyLiteral_EditorBuilder_a$1" />
+      <unit id="1186668032201" at="92,102,96,7" name="jetbrains.mps.baseLanguage.money.editor.MoneyLiteral_EditorBuilder_a$2" />
+      <unit id="1186667875272" at="28,0,107,0" name="jetbrains.mps.baseLanguage.money.editor.MoneyLiteral_EditorBuilder_a" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895903f5(jetbrains.mps.baseLanguage.money.editor)/1187343582397">

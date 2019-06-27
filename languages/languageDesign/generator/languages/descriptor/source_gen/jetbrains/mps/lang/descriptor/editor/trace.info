@@ -155,64 +155,62 @@
       <unit id="3919235298192592793" at="24,0,120,0" name="jetbrains.mps.lang.descriptor.editor.GeneratorDescriptor_EditorBuilder_a" />
     </file>
     <file name="GeneratorDescriptor_InspectorBuilder_a.java">
-      <node id="3919235298192592793" at="33,102,34,19" concept="7" />
-      <node id="3919235298192592793" at="34,19,35,18" concept="1" />
-      <node id="3919235298192592793" at="40,26,41,18" concept="6" />
-      <node id="3919235298192592793" at="44,39,45,30" concept="6" />
-      <node id="263208052639628438" at="48,41,49,39" concept="1" />
-      <node id="263208052639628438" at="50,9,51,146" concept="5" />
-      <node id="263208052639628438" at="51,146,52,76" concept="1" />
-      <node id="263208052639628438" at="52,76,53,149" concept="5" />
-      <node id="263208052639628438" at="53,149,54,45" concept="1" />
-      <node id="263208052639628438" at="54,45,55,153" concept="1" />
-      <node id="263208052639628438" at="55,153,56,157" concept="1" />
-      <node id="263208052639628438" at="56,157,57,44" concept="1" />
-      <node id="263208052639628438" at="57,44,58,30" concept="1" />
-      <node id="263208052639628438" at="58,30,59,33" concept="1" />
-      <node id="263208052639628438" at="59,33,60,86" concept="1" />
-      <node id="263208052639628438" at="60,86,61,33" concept="1" />
-      <node id="263208052639628438" at="61,33,62,306" concept="5" />
-      <node id="263208052639628438" at="64,41,65,118" concept="6" />
-      <node id="263208052639628438" at="68,74,69,89" concept="5" />
-      <node id="263208052639628438" at="69,89,70,145" concept="6" />
-      <node id="263208052639628438" at="71,12,72,24" concept="6" />
-      <node id="263208052639628438" at="73,15,74,40" concept="1" />
-      <node id="3919235298192592793" at="30,0,32,0" concept="2" trace="myNode" />
-      <node id="3919235298192592793" at="44,0,47,0" concept="4" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <node id="263208052639628438" at="64,0,67,0" concept="4" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="3919235298192592793" at="33,0,37,0" concept="0" trace="GeneratorDescriptor_InspectorBuilder_a#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="3919235298192592793" at="38,0,43,0" concept="4" trace="getNode#()Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="263208052639628438" at="62,306,67,9" concept="5" />
-      <node id="263208052639628438" at="67,9,72,24" concept="3" />
-      <node id="263208052639628438" at="49,39,75,5" concept="8" />
-      <node id="263208052639628438" at="48,0,77,0" concept="4" trace="createProperty_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <scope id="3919235298192592793" at="40,26,41,18" />
-      <scope id="3919235298192592793" at="44,39,45,30" />
-      <scope id="263208052639628438" at="64,41,65,118" />
-      <scope id="263208052639628438" at="73,15,74,40" />
-      <scope id="3919235298192592793" at="33,102,35,18" />
-      <scope id="263208052639628438" at="68,74,70,145">
+      <node id="3919235298192592793" at="30,102,31,19" concept="7" />
+      <node id="3919235298192592793" at="31,19,32,18" concept="1" />
+      <node id="3919235298192592793" at="37,26,38,18" concept="6" />
+      <node id="3919235298192592793" at="41,39,42,30" concept="6" />
+      <node id="263208052639628438" at="45,41,46,39" concept="1" />
+      <node id="263208052639628438" at="47,9,48,146" concept="5" />
+      <node id="263208052639628438" at="48,146,49,76" concept="1" />
+      <node id="263208052639628438" at="49,76,50,149" concept="5" />
+      <node id="263208052639628438" at="50,149,51,45" concept="1" />
+      <node id="263208052639628438" at="51,45,52,44" concept="1" />
+      <node id="263208052639628438" at="52,44,53,30" concept="1" />
+      <node id="263208052639628438" at="53,30,54,33" concept="1" />
+      <node id="263208052639628438" at="54,33,55,86" concept="1" />
+      <node id="263208052639628438" at="55,86,56,33" concept="1" />
+      <node id="263208052639628438" at="56,33,57,306" concept="5" />
+      <node id="263208052639628438" at="59,41,60,118" concept="6" />
+      <node id="263208052639628438" at="63,74,64,89" concept="5" />
+      <node id="263208052639628438" at="64,89,65,145" concept="6" />
+      <node id="263208052639628438" at="66,12,67,24" concept="6" />
+      <node id="263208052639628438" at="68,15,69,40" concept="1" />
+      <node id="3919235298192592793" at="27,0,29,0" concept="2" trace="myNode" />
+      <node id="3919235298192592793" at="41,0,44,0" concept="4" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="263208052639628438" at="59,0,62,0" concept="4" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="3919235298192592793" at="30,0,34,0" concept="0" trace="GeneratorDescriptor_InspectorBuilder_a#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="3919235298192592793" at="35,0,40,0" concept="4" trace="getNode#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="263208052639628438" at="57,306,62,9" concept="5" />
+      <node id="263208052639628438" at="62,9,67,24" concept="3" />
+      <node id="263208052639628438" at="46,39,70,5" concept="8" />
+      <node id="263208052639628438" at="45,0,72,0" concept="4" trace="createProperty_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <scope id="3919235298192592793" at="37,26,38,18" />
+      <scope id="3919235298192592793" at="41,39,42,30" />
+      <scope id="263208052639628438" at="59,41,60,118" />
+      <scope id="263208052639628438" at="68,15,69,40" />
+      <scope id="3919235298192592793" at="30,102,32,18" />
+      <scope id="263208052639628438" at="63,74,65,145">
         <var name="manager" id="263208052639628438" />
       </scope>
-      <scope id="3919235298192592793" at="44,0,47,0" />
-      <scope id="263208052639628438" at="64,0,67,0">
+      <scope id="3919235298192592793" at="41,0,44,0" />
+      <scope id="263208052639628438" at="59,0,62,0">
         <var name="it" id="263208052639628438" />
       </scope>
-      <scope id="3919235298192592793" at="33,0,37,0">
+      <scope id="3919235298192592793" at="30,0,34,0">
         <var name="context" id="3919235298192592793" />
         <var name="node" id="3919235298192592793" />
       </scope>
-      <scope id="3919235298192592793" at="38,0,43,0" />
-      <scope id="263208052639628438" at="50,9,72,24">
+      <scope id="3919235298192592793" at="35,0,40,0" />
+      <scope id="263208052639628438" at="47,9,67,24">
         <var name="currentPropertyAttributes" id="263208052639628438" />
         <var name="editorCell" id="263208052639628438" />
         <var name="property" id="263208052639628438" />
         <var name="propertyAttributes" id="263208052639628438" />
       </scope>
-      <scope id="263208052639628438" at="48,41,75,5" />
-      <scope id="263208052639628438" at="48,0,77,0" />
-      <unit id="263208052639628438" at="63,102,67,7" name="jetbrains.mps.lang.descriptor.editor.GeneratorDescriptor_InspectorBuilder_a$1" />
-      <unit id="3919235298192592793" at="29,0,78,0" name="jetbrains.mps.lang.descriptor.editor.GeneratorDescriptor_InspectorBuilder_a" />
+      <scope id="263208052639628438" at="45,41,70,5" />
+      <scope id="263208052639628438" at="45,0,72,0" />
+      <unit id="263208052639628438" at="58,102,62,7" name="jetbrains.mps.lang.descriptor.editor.GeneratorDescriptor_InspectorBuilder_a$1" />
+      <unit id="3919235298192592793" at="26,0,73,0" name="jetbrains.mps.lang.descriptor.editor.GeneratorDescriptor_InspectorBuilder_a" />
     </file>
   </root>
   <root nodeRef="r:7ed7a88c-17bf-40a5-be72-b50cea0614c7(jetbrains.mps.lang.descriptor.editor)/9020561928507175846">
