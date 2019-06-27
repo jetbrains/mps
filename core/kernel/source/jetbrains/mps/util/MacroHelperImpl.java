@@ -51,13 +51,12 @@ class MacroHelperImpl implements MacroHelper {
       return null;
     }
 
-    // fixme MM
-    new PathAssert(absolutePath).osIndependentPath()/*.noDots().absolute()*/;
-
     //this is to support undefined path vars
     if (absolutePath.startsWith("${")) {
       return absolutePath;
     }
+
+    new PathAssert(absolutePath).osIndependentPath().noDots().absolute();
 
     return macros.shrink(absolutePath, anchorFile);
   }
