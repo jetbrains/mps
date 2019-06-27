@@ -176,6 +176,10 @@
       <concept id="1145404486709" name="jetbrains.mps.lang.smodel.structure.SemanticDowncastExpression" flags="nn" index="2JrnkZ">
         <child id="1145404616321" name="leftExpression" index="2JrQYb" />
       </concept>
+      <concept id="2644386474302386080" name="jetbrains.mps.lang.smodel.structure.PropertyIdRefExpression" flags="nn" index="355D3s">
+        <reference id="2644386474302386081" name="conceptDeclaration" index="355D3t" />
+        <reference id="2644386474302386082" name="propertyDeclaration" index="355D3u" />
+      </concept>
       <concept id="1139613262185" name="jetbrains.mps.lang.smodel.structure.Node_GetParentOperation" flags="nn" index="1mfA1w" />
       <concept id="1139621453865" name="jetbrains.mps.lang.smodel.structure.Node_IsInstanceOfOperation" flags="nn" index="1mIQ4w">
         <child id="1177027386292" name="conceptArgument" index="cj9EA" />
@@ -1753,9 +1757,10 @@
                   <node concept="_YI3z" id="4xqiThWQp_A" role="2JrQYb" />
                 </node>
                 <node concept="liA8E" id="4xqiThWQp_B" role="2OqNvi">
-                  <ref role="37wK5l" to="mhbf:~SNode.getProperty(java.lang.String)" resolve="getProperty" />
-                  <node concept="Xl_RD" id="4xqiThWQp_C" role="37wK5m">
-                    <property role="Xl_RC" value="isNative" />
+                  <ref role="37wK5l" to="mhbf:~SNode.getProperty(org.jetbrains.mps.openapi.language.SProperty)" resolve="getProperty" />
+                  <node concept="355D3s" id="7_781d1kNwD" role="37wK5m">
+                    <ref role="355D3t" to="tpee:6LFqxSRBTg8" resolve="MethodDeclaration" />
+                    <ref role="355D3u" to="tpee:7fN3zRTn0HN" resolve="isNative" />
                   </node>
                 </node>
               </node>

@@ -7,6 +7,7 @@ import jetbrains.mps.lang.script.runtime.AbstractMigrationRefactoring;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
@@ -30,7 +31,12 @@ public final class MigrationToUpdateAllConstants_MigrationScript extends BaseMig
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return node.getProperty("value") != null;
+        for (SProperty prop : node.getProperties()) {
+          if (prop.getName().equals("value")) {
+            return true;
+          }
+        }
+        return false;
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
