@@ -244,7 +244,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   private final Map<String, ReferenceTargetQuery> rtqMethods = new HashMap<String, ReferenceTargetQuery>();
   {
-    rtqMethods.put("4310671488846482360", new QueriesGenerated.RTQ(0, null));
+    rtqMethods.put("4310671488846482360", new QueriesGenerated.RTQ(0, "AA"));
   }
   @NotNull
   @Override

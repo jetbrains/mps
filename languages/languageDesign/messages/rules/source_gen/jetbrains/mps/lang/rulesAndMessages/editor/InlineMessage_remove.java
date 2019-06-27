@@ -8,9 +8,6 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.editor.runtime.deletionApprover.DeletionApproverUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.editor.runtime.selection.SelectionUtil;
-import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
@@ -25,13 +22,8 @@ public class InlineMessage_remove {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        // todo: ??? 
-        if (!(DeletionApproverUtil.approve(editorContext, node))) {
-          SNode ruleWithMsg = SNodeOperations.cast(SNodeOperations.getParent(node), MetaAdapterFactory.getConcept(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, "jetbrains.mps.lang.rulesAndMessages.structure.RuleWithMessage"));
-          if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(ruleWithMsg, MetaAdapterFactory.getContainmentLink(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, 0x46263286dc0ce86L, "messageProvider")))) {
-            SelectionUtil.selectLabelCellWithSelection(editorContext, SLinkOperations.getTarget(ruleWithMsg, MetaAdapterFactory.getContainmentLink(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, 0x137076528060b0fcL, "rule")), SelectionManager.LAST_EDITABLE_CELL, -1, -1);
-            return;
-          }
+        if (!(DeletionApproverUtil.approve(editorContext, SNodeOperations.cast(SNodeOperations.getParent(node), MetaAdapterFactory.getConcept(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, "jetbrains.mps.lang.rulesAndMessages.structure.RuleWithMessage"))))) {
+          SNodeOperations.deleteNode(SNodeOperations.getParent(node));
         }
       }
 

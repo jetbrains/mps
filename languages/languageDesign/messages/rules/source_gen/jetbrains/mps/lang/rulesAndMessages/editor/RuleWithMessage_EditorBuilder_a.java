@@ -18,13 +18,6 @@ import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
-import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent;
-import jetbrains.mps.openapi.editor.style.Style;
-import jetbrains.mps.editor.runtime.style.StyleImpl;
-import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import jetbrains.mps.editor.runtime.style.CellAlign;
-import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
-import jetbrains.mps.lang.constraints.rules.editor.Constraints_Styles_StyleSheet.WhenHintStyleClass;
 
 /*package*/ class RuleWithMessage_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -51,7 +44,7 @@ import jetbrains.mps.lang.constraints.rules.editor.Constraints_Styles_StyleSheet
     editorCell.setBig(true);
     setCellContext(editorCell);
     editorCell.addEditorCell(createRefNode_0());
-    editorCell.addEditorCell(createCollection_1());
+    editorCell.addEditorCell(createRefNode_1());
     return editorCell;
   }
   private EditorCell createRefNode_0() {
@@ -109,34 +102,15 @@ import jetbrains.mps.lang.constraints.rules.editor.Constraints_Styles_StyleSheet
       return "<no rule>";
     }
   }
-  private EditorCell createCollection_1() {
-    EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Indent());
-    editorCell.setCellId("Collection_3p777_b0");
-    Style style = new StyleImpl();
-    style.set(StyleAttributes.HORIZONTAL_ALIGN, CellAlign.RIGHT);
-    editorCell.getStyle().putAll(style);
-    editorCell.addEditorCell(createConstant_0());
-    editorCell.addEditorCell(createRefNode_1());
-    return editorCell;
-  }
-  private EditorCell createConstant_0() {
-    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "-> when fails show");
-    editorCell.setCellId("Constant_3p777_a1a");
-    Style style = new StyleImpl();
-    new WhenHintStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
-    editorCell.getStyle().putAll(style);
-    editorCell.setDefaultText("");
-    return editorCell;
-  }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new RuleWithMessage_EditorBuilder_a.messageProviderSingleRoleHandler_3p777_b1a(myNode, MetaAdapterFactory.getContainmentLink(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, 0x46263286dc0ce86L, "messageProvider"), getEditorContext());
+    SingleRoleCellProvider provider = new RuleWithMessage_EditorBuilder_a.messageProviderSingleRoleHandler_3p777_b0(myNode, MetaAdapterFactory.getContainmentLink(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, 0x46263286dc0ce86L, "messageProvider"), getEditorContext());
     return provider.createCell();
   }
-  private static class messageProviderSingleRoleHandler_3p777_b1a extends SingleRoleCellProvider {
+  private static class messageProviderSingleRoleHandler_3p777_b0 extends SingleRoleCellProvider {
     @NotNull
     private SNode myNode;
 
-    public messageProviderSingleRoleHandler_3p777_b1a(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
+    public messageProviderSingleRoleHandler_3p777_b0(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
       super(containmentLink, context);
       myNode = ownerNode;
     }
@@ -180,7 +154,7 @@ import jetbrains.mps.lang.constraints.rules.editor.Constraints_Styles_StyleSheet
       }
     }
     protected String getNoTargetText() {
-      return "<default message>";
+      return "<no messageProvider>";
     }
   }
 }

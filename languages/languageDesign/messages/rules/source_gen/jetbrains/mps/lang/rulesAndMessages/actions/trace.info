@@ -10,22 +10,21 @@
   </root>
   <root nodeRef="r:fe5b6dc3-eea1-4086-b8f8-2cdc7ac36f3e(jetbrains.mps.lang.rulesAndMessages.actions)/6990313848119162802">
     <file name="ForRuleWithMessage.java">
-      <node id="6990313848119162817" at="14,91,15,187" concept="0" />
-      <node id="6990313848119177187" at="17,380,18,544" concept="0" />
-      <node id="6990313848119167009" at="16,211,19,9" concept="1" />
-      <node id="6990313848119164697" at="15,187,20,7" concept="1" />
-      <node id="6990313848119162803" at="14,0,22,0" concept="2" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
-      <scope id="6990313848119167011" at="17,380,18,544" />
-      <scope id="6990313848119164699" at="16,211,19,9" />
-      <scope id="6990313848119162803" at="14,91,20,7" />
-      <scope id="6990313848119162803" at="14,0,22,0">
+      <node id="6990313848119177187" at="16,380,17,544" concept="0" />
+      <node id="6990313848119167009" at="15,211,18,9" concept="1" />
+      <node id="6990313848119164697" at="14,91,19,7" concept="1" />
+      <node id="6990313848119162803" at="14,0,21,0" concept="2" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
+      <scope id="6990313848119167011" at="16,380,17,544" />
+      <scope id="6990313848119164699" at="15,211,18,9" />
+      <scope id="6990313848119162803" at="14,91,19,7" />
+      <scope id="6990313848119162803" at="14,0,21,0">
         <var name="enclosingNode" id="6990313848119162803" />
         <var name="model" id="6990313848119162803" />
         <var name="newNode" id="6990313848119162803" />
         <var name="sampleNode" id="6990313848119162803" />
       </scope>
-      <unit id="6990313848119162803" at="13,0,23,0" name="jetbrains.mps.lang.rulesAndMessages.actions.ForRuleWithMessage$NodeFactory_6990313848119162803" />
-      <unit id="6990313848119162802" at="12,0,24,0" name="jetbrains.mps.lang.rulesAndMessages.actions.ForRuleWithMessage" />
+      <unit id="6990313848119162803" at="13,0,22,0" name="jetbrains.mps.lang.rulesAndMessages.actions.ForRuleWithMessage$NodeFactory_6990313848119162803" />
+      <unit id="6990313848119162802" at="12,0,23,0" name="jetbrains.mps.lang.rulesAndMessages.actions.ForRuleWithMessage" />
     </file>
   </root>
 </debug-info>

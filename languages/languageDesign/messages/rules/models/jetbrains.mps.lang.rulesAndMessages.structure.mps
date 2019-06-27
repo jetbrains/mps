@@ -57,7 +57,7 @@
       <property role="IQ2ns" value="315923949160550022" />
       <property role="20lmBu" value="aggregation" />
       <property role="20kJfa" value="messageProvider" />
-      <property role="20lbJX" value="0..1" />
+      <property role="20lbJX" value="1" />
       <ref role="20lvS9" node="hyoMxHKcU1" resolve="InlineMessageProvider" />
     </node>
     <node concept="PrWs8" id="1dKt_a0ob3U" role="PzmwI">
@@ -73,7 +73,7 @@
       <property role="IQ2ns" value="5258059200641510856" />
       <property role="20lmBu" value="aggregation" />
       <property role="20kJfa" value="message" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="0..1" />
       <ref role="20lvS9" to="t9po:4zSofKeg4lv" resolve="CombinedMessageExpression" />
     </node>
     <node concept="PrWs8" id="4zSofKecqAN" role="PzmwI">

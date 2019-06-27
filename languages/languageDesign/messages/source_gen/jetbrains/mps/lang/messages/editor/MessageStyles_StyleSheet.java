@@ -10,6 +10,8 @@ import jetbrains.mps.editor.runtime.style.AbstractStyleClass;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.nodeEditor.MPSColors;
+import java.awt.Color;
+import com.intellij.util.ui.UIUtil;
 
 public class MessageStyles_StyleSheet {
   /**
@@ -51,8 +53,15 @@ public class MessageStyles_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.LIGHT_BLUE));
+      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_t8xsd0_a0b()));
     }
 
+    private Color _StyleParameter_QueryFunction_t8xsd0_a0b() {
+      if (UIUtil.isUnderDarcula()) {
+        return MPSColors.LIGHT_BLUE;
+      } else {
+        return MPSColors.DARK_MAGENTA;
+      }
+    }
   }
 }

@@ -306,9 +306,6 @@
       <node concept="3F2HdR" id="1BFxp3HHhvN" role="3EZMnx">
         <ref role="1NtTu8" to="mqj2:1BFxp3HHhtb" resolve="members" />
         <node concept="2EHx9g" id="3LOLRuvm1gQ" role="2czzBx" />
-        <node concept="pj6Ft" id="1BFxp3HHhvP" role="3F10Kt">
-          <property role="VOm3f" value="true" />
-        </node>
         <node concept="lj46D" id="1BFxp3HHhvQ" role="3F10Kt">
           <property role="VOm3f" value="true" />
         </node>

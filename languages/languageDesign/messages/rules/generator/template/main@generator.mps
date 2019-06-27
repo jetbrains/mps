@@ -186,12 +186,18 @@
       </concept>
     </language>
     <language id="ad93155d-79b2-4759-b10c-55123e763903" name="jetbrains.mps.lang.messages">
-      <concept id="5258059200642172255" name="jetbrains.mps.lang.messages.structure.CombinedMessageExpression" flags="ng" index="16I2mz" />
+      <concept id="5258059200642172255" name="jetbrains.mps.lang.messages.structure.CombinedMessageExpression" flags="ng" index="16I2mz">
+        <child id="5258059200642172257" name="part" index="16I2mt" />
+      </concept>
+      <concept id="5258059200641510853" name="jetbrains.mps.lang.messages.structure.LiteralMessageExpression" flags="ng" index="16N$OT">
+        <property id="5258059200641510854" name="message" index="16N$OU" />
+      </concept>
       <concept id="7291380803381892615" name="jetbrains.mps.lang.messages.structure.MessagesRoot" flags="ng" index="3QByoM">
         <reference id="7188575577281228125" name="concept" index="3Z9TSV" />
         <child id="7291380803381927154" name="messageProviders" index="3QBEN7" />
       </concept>
       <concept id="7291380803381892689" name="jetbrains.mps.lang.messages.structure.MessageProviderForRule" flags="ng" index="3QByp$">
+        <reference id="7291380803381892692" name="rule" index="3QBypx" />
         <child id="5258059200641510856" name="message" index="16N$OO" />
       </concept>
     </language>
@@ -537,6 +543,7 @@
       <property role="TrG5h" value="GAGAGA" />
       <ref role="3Z9TSV" to="tpck:gw2VY9q" resolve="BaseConcept" />
       <node concept="3QByp$" id="3Ji_e5k6jH7" role="3QBEN7">
+        <ref role="3QBypx" node="19J4M2yytEK" resolve="AA" />
         <node concept="16I2mz" id="3Ji_e5k6jH8" role="16N$OO">
           <node concept="29HgVG" id="3Ji_e5k6lG3" role="lGtFl">
             <node concept="3NFfHV" id="3Ji_e5k6lG4" role="3NFExx">
@@ -556,6 +563,9 @@
                 </node>
               </node>
             </node>
+          </node>
+          <node concept="16N$OT" id="45qMCT9jkJn" role="16I2mt">
+            <property role="16N$OU" value="message" />
           </node>
         </node>
         <node concept="raruj" id="3Ji_e5k6k1U" role="lGtFl" />

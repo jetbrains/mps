@@ -11,6 +11,8 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.editor.runtime.cells.CellIdManager;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
@@ -36,6 +38,8 @@ public class MacroMessageExpression_delete {
           SNodeOperations.deleteNode(SNodeOperations.getPrevSibling(replacement));
           SNodeOperations.deleteNode(SNodeOperations.getNextSibling(replacement));
           SelectionUtil.selectLabelCellAnSetCaret(editorContext, replacement, "*" + CellIdManager.createPropertyId("message"), prevMessage.length());
+        } else if (ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(node), MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e40455fL, "jetbrains.mps.lang.messages.structure.CombinedMessageExpression")), MetaAdapterFactory.getContainmentLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e40455fL, 0x48f860fc0e404561L, "part"))).count() == 1) {
+          SNodeOperations.deleteNode(SNodeOperations.getParent(node));
         } else {
           SNodeOperations.deleteNode(node);
         }
