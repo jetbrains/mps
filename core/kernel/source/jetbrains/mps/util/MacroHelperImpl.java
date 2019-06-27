@@ -36,22 +36,23 @@ class MacroHelperImpl implements MacroHelper {
 
   @Override
   public String expandPath(@Nullable String path) {
-    new PathAssert(path).osIndependentPath();
-
     if (path == null) {
       return null;
     }
+
+    new PathAssert(path).osIndependentPath();
+
     return macros.expand(path, anchorFile);
   }
 
   @Override
   public String shrinkPath(@Nullable String absolutePath) {
-    // fixme MM
-    new PathAssert(absolutePath).osIndependentPath()/*.noDots().absolute()*/;
-
     if (absolutePath == null) {
       return null;
     }
+
+    // fixme MM
+    new PathAssert(absolutePath).osIndependentPath()/*.noDots().absolute()*/;
 
     //this is to support undefined path vars
     if (absolutePath.startsWith("${")) {
