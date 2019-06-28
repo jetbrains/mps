@@ -16,6 +16,7 @@
       <module fileurl="file://$PROJECT_DIR$/core/components/components.iml" filepath="$PROJECT_DIR$/core/components/components.iml" group="core" />
       <module fileurl="file://$PROJECT_DIR$/core/aspects/constraints/constraints-api/constraints-api.iml" filepath="$PROJECT_DIR$/core/aspects/constraints/constraints-api/constraints-api.iml" group="core/aspects/constraints" />
       <module fileurl="file://$PROJECT_DIR$/core/aspects/constraints/constraints-runtime/constraints-runtime.iml" filepath="$PROJECT_DIR$/core/aspects/constraints/constraints-runtime/constraints-runtime.iml" group="core/aspects/constraints" />
+      <module fileurl="file://$PROJECT_DIR$/core/aspects/feedback/context/context.iml" filepath="$PROJECT_DIR$/core/aspects/feedback/context/context.iml" group="core/aspects/feedback" />
       <module fileurl="file://$PROJECT_DIR$/core/dataFlowRuntime/dataflow-rt.iml" filepath="$PROJECT_DIR$/core/dataFlowRuntime/dataflow-rt.iml" group="core" />
       <module fileurl="file://$PROJECT_DIR$/plugins/debugger-api/api/debugger-api-api.iml" filepath="$PROJECT_DIR$/plugins/debugger-api/api/debugger-api-api.iml" group="plugins/debugger/debugger-api" />
       <module fileurl="file://$PROJECT_DIR$/plugins/debugger-api/runtime/debugger-api-runtime.iml" filepath="$PROJECT_DIR$/plugins/debugger-api/runtime/debugger-api-runtime.iml" group="plugins/debugger/debugger-api" />
@@ -31,7 +32,7 @@
       <module fileurl="file://$PROJECT_DIR$/core/tool/environment/environment.iml" filepath="$PROJECT_DIR$/core/tool/environment/environment.iml" group="core" />
       <module fileurl="file://$PROJECT_DIR$/plugins/execution-api/execution-api.iml" filepath="$PROJECT_DIR$/plugins/execution-api/execution-api.iml" group="plugins/execution" />
       <module fileurl="file://$PROJECT_DIR$/plugins/execution-languages/languages/jetbrains.mps.execution.impl/execution-impl.iml" filepath="$PROJECT_DIR$/plugins/execution-languages/languages/jetbrains.mps.execution.impl/execution-impl.iml" group="plugins/execution" />
-      <module fileurl="file://$PROJECT_DIR$/core/aspects/constraints/feedback-api/feedback-api.iml" filepath="$PROJECT_DIR$/core/aspects/constraints/feedback-api/feedback-api.iml" group="core/aspects/constraints" />
+      <module fileurl="file://$PROJECT_DIR$/core/aspects/feedback/feedback-api/feedback-api.iml" filepath="$PROJECT_DIR$/core/aspects/feedback/feedback-api/feedback-api.iml" group="core/aspects/feedback" />
       <module fileurl="file://$PROJECT_DIR$/core/findUsages-runtime/findUsages-runtime.iml" filepath="$PROJECT_DIR$/core/findUsages-runtime/findUsages-runtime.iml" group="core" />
       <module fileurl="file://$PROJECT_DIR$/core/generator/generator-engine.iml" filepath="$PROJECT_DIR$/core/generator/generator-engine.iml" group="core" />
       <module fileurl="file://$PROJECT_DIR$/tools/gensources/gensources.iml" filepath="$PROJECT_DIR$/tools/gensources/gensources.iml" />
@@ -44,6 +45,8 @@
       <module fileurl="file://$PROJECT_DIR$/core/logging/logging.iml" filepath="$PROJECT_DIR$/core/logging/logging.iml" group="core" />
       <module fileurl="file://$PROJECT_DIR$/core/make-runtime/solutions/jetbrains.mps.make.facets/make-facets.iml" filepath="$PROJECT_DIR$/core/make-runtime/solutions/jetbrains.mps.make.facets/make-facets.iml" group="core" />
       <module fileurl="file://$PROJECT_DIR$/core/make-runtime/make-runtime.iml" filepath="$PROJECT_DIR$/core/make-runtime/make-runtime.iml" group="core" />
+      <module fileurl="file://$PROJECT_DIR$/core/aspects/feedback/messages-api/messages-api.iml" filepath="$PROJECT_DIR$/core/aspects/feedback/messages-api/messages-api.iml" group="core/aspects/feedback" />
+      <module fileurl="file://$PROJECT_DIR$/core/aspects/feedback/messages-for-rules/messages-for-rules.iml" filepath="$PROJECT_DIR$/core/aspects/feedback/messages-for-rules/messages-for-rules.iml" group="core/aspects/feedback" />
       <module fileurl="file://$PROJECT_DIR$/plugins/mps-migration/migration-platform/migration-platform.iml" filepath="$PROJECT_DIR$/plugins/mps-migration/migration-platform/migration-platform.iml" group="plugins" />
       <module fileurl="file://$PROJECT_DIR$/plugins/mps-migration/migration-workbench/migration-workbench.iml" filepath="$PROJECT_DIR$/plugins/mps-migration/migration-workbench/migration-workbench.iml" group="plugins" />
       <module fileurl="file://$PROJECT_DIR$/core/migration-runtime/migrations-runtime.iml" filepath="$PROJECT_DIR$/core/migration-runtime/migrations-runtime.iml" group="core" />
@@ -79,6 +82,7 @@
       <module fileurl="file://$PROJECT_DIR$/core/patternRuntime/pattern-runtime.iml" filepath="$PROJECT_DIR$/core/patternRuntime/pattern-runtime.iml" group="core" />
       <module fileurl="file://$PROJECT_DIR$/core/persistence/persistence.iml" filepath="$PROJECT_DIR$/core/persistence/persistence.iml" group="core" />
       <module fileurl="file://$PROJECT_DIR$/core/platform/platform.iml" filepath="$PROJECT_DIR$/core/platform/platform.iml" group="core" />
+      <module fileurl="file://$PROJECT_DIR$/core/aspects/feedback/problem/problem.iml" filepath="$PROJECT_DIR$/core/aspects/feedback/problem/problem.iml" group="core/aspects/feedback" />
       <module fileurl="file://$PROJECT_DIR$/core/project/project.iml" filepath="$PROJECT_DIR$/core/project/project.iml" group="core" />
       <module fileurl="file://$PROJECT_DIR$/core/project-check/project-check.iml" filepath="$PROJECT_DIR$/core/project-check/project-check.iml" group="core" />
       <module fileurl="file://$PROJECT_DIR$/core/refactoring/refactoring.iml" filepath="$PROJECT_DIR$/core/refactoring/refactoring.iml" group="core" />

@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.core.aspects.constraints.rules;
 
+import jetbrains.mps.core.context.Context;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.language.LanguageRuntime;
 import org.apache.log4j.LogManager;
@@ -77,17 +78,15 @@ public final class ConstraintsRegistry2 {
   }
 
   @NotNull
-  private <C extends RuleContext> List<Rule<C>> getApplicableRules(@NotNull SAbstractConcept concept,
-                                                                   @NotNull C context) {
+  private <C extends Context> List<Rule<C>> getApplicableRules(@NotNull SAbstractConcept concept, @NotNull RuleKind kind, @NotNull C context) {
     @NotNull ConstraintsDescriptor2 descriptor = requireNonNull(getConstraintsDescriptor2(concept));
-    //noinspection unchecked
-    return descriptor.getApplicableRules(context);
+    return descriptor.getApplicableRules(kind, context);
   }
 
   @NotNull
-  public <C extends RuleContext> List<Rule<C>> getFailingRulesFor(@NotNull C context) {
+  public <C extends Context> List<Rule<C>> getPerConceptFailingRulesFor(@NotNull SAbstractConcept concept, @NotNull RuleKind kind, @NotNull C context) {
     List<Rule<C>> rules = new ArrayList<>();
-    for (Rule<C> rule : getApplicableRules(context.getConcept(), context)) {
+    for (Rule<C> rule : getApplicableRules(concept, kind, context)) {
       if (!rule.check(context)) {
         rules.add(rule);
       }

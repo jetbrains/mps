@@ -16,7 +16,7 @@
 package jetbrains.mps.smodel.constraints;
 
 import jetbrains.mps.core.aspects.constraints.rules.Rule;
-import jetbrains.mps.core.aspects.constraints.rules.RuleContext;
+import jetbrains.mps.core.context.Context;
 import jetbrains.mps.core.aspects.constraints.rules.RuleId;
 import jetbrains.mps.core.aspects.constraints.rules.RuleKind;
 import org.jetbrains.annotations.NotNull;
@@ -28,13 +28,13 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
  * for now it is here
  * todo we can move it deeper into the old constraints, namely implement the method #check
  */
-final class AdaptedLegacyConstraintsRule<C extends RuleContext> implements Rule<C> {
+final class AdaptedLegacyConstraintsRule<C extends Context> implements Rule<C> {
   @NotNull
-  private final RuleKind<C> myKind;
+  private final RuleKind myKind;
   private final SAbstractConcept myConcept;
   private final SNodeReference myDebugInfo;
 
-  AdaptedLegacyConstraintsRule(@NotNull SAbstractConcept concept, @NotNull RuleKind<C> kind, @Nullable SNodeReference sourceNodeRef) {
+  AdaptedLegacyConstraintsRule(@NotNull SAbstractConcept concept, @NotNull RuleKind kind, @Nullable SNodeReference sourceNodeRef) {
     myKind = kind;
     myDebugInfo = sourceNodeRef;
     myConcept = concept;
@@ -60,7 +60,7 @@ final class AdaptedLegacyConstraintsRule<C extends RuleContext> implements Rule<
 
   @NotNull
   @Override
-  public RuleKind<C> getKind() {
+  public RuleKind getKind() {
     return myKind;
   }
 

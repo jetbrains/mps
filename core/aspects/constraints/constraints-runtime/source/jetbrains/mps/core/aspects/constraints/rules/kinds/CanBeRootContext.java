@@ -15,15 +15,20 @@
  */
 package jetbrains.mps.core.aspects.constraints.rules.kinds;
 
-import jetbrains.mps.core.aspects.constraints.rules.RuleContext;
-import jetbrains.mps.core.aspects.constraints.rules.RuleKind;
+import jetbrains.mps.core.context.Context;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.model.SModel;
 
+/**
+ * The trivial context of the can-be-root scenario.
+ * Usually one wants to know whether it is possible to have his concept as root in the given model
+ *
+ * @author apyshkin
+ */
 @Immutable
-public class CanBeRootContext implements RuleContext {
+public final class CanBeRootContext implements Context {
   @NotNull private final SAbstractConcept myConcept;
   @NotNull private final SModel myModel;
 
@@ -35,12 +40,6 @@ public class CanBeRootContext implements RuleContext {
   @NotNull
   public SAbstractConcept getConcept() {
     return myConcept;
-  }
-
-  @NotNull
-  @Override
-  public RuleKind<? extends RuleContext> getKind() {
-    return CanBeRootRuleKind.INSTANCE;
   }
 
   @NotNull

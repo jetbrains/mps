@@ -1489,5 +1489,9 @@
     <orderEntry type="module" module-name="startup-util" />
     <orderEntry type="module" module-name="feedback-api" />
     <orderEntry type="module" module-name="constraints-runtime" />
+    <orderEntry type="module" module-name="messages-api" />
+    <orderEntry type="module" module-name="problem" />
+    <orderEntry type="module" module-name="messages-for-rules" />
+    <orderEntry type="module" module-name="context" />
   </component>
 </module>

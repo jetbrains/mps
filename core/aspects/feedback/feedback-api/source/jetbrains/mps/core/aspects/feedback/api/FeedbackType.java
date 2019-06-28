@@ -15,22 +15,6 @@
  */
 package jetbrains.mps.core.aspects.feedback.api;
 
-import jetbrains.mps.core.aspects.constraints.rules.RuleContext;
-import jetbrains.mps.core.aspects.constraints.rules.RuleId;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.annotations.Internal;
-
-import java.util.List;
-
-/**
- * Not so sure about the naming and the main purpose of this aspect
- *
- * @author apyshkin, mburyakov
- */
-@Internal
-public interface MessageDescriptor {
-  @NotNull List<MessageProvider<?>> getDeclaredMessageProviders();
-  @NotNull List<MessageProvider<?>> getMessageProviders();
-
-  @NotNull <C extends RuleContext> MessageProvider<C> getMessageProvider(@NotNull RuleId ruleId, @NotNull C context);
+public interface FeedbackType {
+  // Id getId()
 }

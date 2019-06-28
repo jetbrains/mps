@@ -13,16 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jetbrains.mps.core.aspects.feedback.api;
+package jetbrains.mps.core.aspects.feedback.messages;
 
-import org.jetbrains.mps.annotations.Internal;
-import jetbrains.mps.smodel.runtime.ILanguageAspect;
-import org.jetbrains.annotations.Nullable;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.core.aspects.feedback.api.FeedbackType;
 
-@Internal
-public interface MessagesAspectDescriptor extends ILanguageAspect {
-  @Nullable
-  MessageDescriptor getDescriptor(@NotNull SAbstractConcept concept);
+/**
+ * As for 192, only one thing we have for a feedback -- showing messages in the editor
+ *
+ * @author apyshkin
+ */
+public enum PredefinedFeedbackTypes implements FeedbackType {
+  SHOW_MESSAGE
 }

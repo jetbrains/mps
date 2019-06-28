@@ -15,7 +15,7 @@
  */
 package jetbrains.mps.smodel.runtime;
 
-import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeParentContext;
+import jetbrains.mps.core.aspects.constraints.rules.kinds.ContainmentContext;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -30,26 +30,30 @@ import org.jetbrains.mps.openapi.model.SNode;
  */
 // @Deprecated
 public final class ConstraintContext_CanBeParent {
-  @NotNull private final CanBeParentContext myNewContext;
+  @NotNull private final ContainmentContext myNewContext;
 
-  private ConstraintContext_CanBeParent(@NotNull CanBeParentContext context) {
+  private ConstraintContext_CanBeParent(@NotNull ContainmentContext context) {
     myNewContext = context;
   }
 
   public ConstraintContext_CanBeParent(@NotNull SNode childNode) {
-    myNewContext = new CanBeParentContext.Builder().buildFromChildNode(childNode);
+    myNewContext = new ContainmentContext.Builder().buildFromChildNode(childNode);
   }
 
   public ConstraintContext_CanBeParent(@NotNull SAbstractConcept childConcept, @NotNull SNode node, SContainmentLink link) {
-    myNewContext = new CanBeParentContext.Builder().childConcept(childConcept).node(node).link(link).build();
+    myNewContext = new ContainmentContext.Builder()
+                       .childConcept(childConcept)
+                       .parentNode(node)
+                       .link(link)
+                       .build();
   }
 
-  public static ConstraintContext_CanBeParent convert(@NotNull CanBeParentContext context) {
+  public static ConstraintContext_CanBeParent convert(@NotNull ContainmentContext context) {
     return new ConstraintContext_CanBeParent(context);
   }
 
   @NotNull
-  public CanBeParentContext adapt() {
+  public ContainmentContext adapt() {
     return myNewContext;
   }
 
@@ -74,6 +78,6 @@ public final class ConstraintContext_CanBeParent {
 
   @NotNull
   public SAbstractConcept getConcept() {
-    return myNewContext.getConcept();
+    return myNewContext.getParentConcept();
   }
 }

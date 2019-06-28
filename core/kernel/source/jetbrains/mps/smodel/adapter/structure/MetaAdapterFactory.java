@@ -61,6 +61,7 @@ public abstract class MetaAdapterFactory {
   private static final TLongObjectHashMap<List<SLanguageAdapterById>> ourLanguages = new TLongObjectHashMap<>(200);
 
   // there are 5 thousand concepts in MPS alone, don't need to be shy, rehash would be more expensive.
+  // - which rehash is expensive? 4 longs hashcode, 5000 elements rehash? come on. That is so premature
   private static final TLongObjectHashMap<List<ConceptBucket>> ourConcepts = new TLongObjectHashMap<>(5000);
   private static final TLongObjectHashMap<List<InterfaceBucket>> ourInterfaces = new TLongObjectHashMap<>(1000);
   private static final TLongObjectHashMap<List<ConstrainedStringDataTypeBucket>> ourConstrainedStringDataTypes = new TLongObjectHashMap<>(1000);

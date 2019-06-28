@@ -9,7 +9,7 @@ import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.smodel.runtime.ILanguageAspect;
 import jetbrains.mps.core.aspects.constraints.rules.ConstraintsAspectDescriptor2;
 import jetbrains.mps.lang.messages.constraints.GeneratedConstraintsAspectDescriptor2;
-import jetbrains.mps.core.aspects.feedback.api.MessagesAspectDescriptor;
+import jetbrains.mps.core.aspects.feedback.api.FeedbackAspect;
 import jetbrains.mps.lang.messages.constraints.GeneratedMessagesAspectDescriptor;
 import jetbrains.mps.openapi.actions.descriptor.ActionAspectDescriptor;
 import jetbrains.mps.lang.messages.actions.ActionAspectDescriptorImpl;
@@ -51,7 +51,7 @@ public class Language extends LanguageRuntime {
     if (aspectClass == ConstraintsAspectDescriptor2.class) {
       return aspectClass.cast(new GeneratedConstraintsAspectDescriptor2());
     }
-    if (aspectClass == MessagesAspectDescriptor.class) {
+    if (aspectClass == FeedbackAspect.class) {
       return aspectClass.cast(new GeneratedMessagesAspectDescriptor());
     }
     if (aspectClass == ActionAspectDescriptor.class) {

@@ -18,7 +18,7 @@ package jetbrains.mps.core.platform;
 import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.components.ComponentPlugin;
 import jetbrains.mps.components.CoreComponent;
-import jetbrains.mps.core.aspects.feedback.api.MPSReporting;
+import jetbrains.mps.core.aspects.feedback.api.MPSFeedbackPlugin;
 import jetbrains.mps.generator.MPSGenerator;
 import jetbrains.mps.ide.findusages.MPSFindUsages;
 import jetbrains.mps.lang.dataFlow.MPSDataFlow;
@@ -72,7 +72,7 @@ class PlatformBase implements Platform {
           initAndRegister(new MPSGenerator(myCore));
           initAndRegister(new MPSFindUsages(myCore.getLanguageRegistry()));
           initAndRegister(new MPSTextGenerator(myCore.getLanguageRegistry()));
-          initAndRegister(new MPSReporting(myCore.getLanguageRegistry()));
+          initAndRegister(new MPSFeedbackPlugin(myCore.getLanguageRegistry()));
           initAndRegister(new MPSDataFlow(myCore.getClassLoaderManager()));
         }
       }.run();

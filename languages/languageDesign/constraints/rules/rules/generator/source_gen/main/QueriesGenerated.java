@@ -452,11 +452,11 @@ public class QueriesGenerated extends QueryProviderBase {
     rtqMethods.put("4636242761502555060", new QueriesGenerated.RTQ(4, "Def"));
     rtqMethods.put("4636242761502481039", new QueriesGenerated.RTQ(5, "RuleContext"));
     rtqMethods.put("2740527090601721824", new QueriesGenerated.RTQ(6, "CanBeChildRuleKind"));
-    rtqMethods.put("8556303794924669906", new QueriesGenerated.RTQ(7, "CanBeChildContext"));
-    rtqMethods.put("3562920471664392960", new QueriesGenerated.RTQ(8, "CanBeChildContext"));
+    rtqMethods.put("8556303794924669906", new QueriesGenerated.RTQ(7, "ContainmentContext"));
+    rtqMethods.put("3562920471664392960", new QueriesGenerated.RTQ(8, "ContainmentContext"));
     rtqMethods.put("4636242761502992616", new QueriesGenerated.RTQ(9, "Def"));
-    rtqMethods.put("8525842417252886997", new QueriesGenerated.RTQ(10, "CanBeChildContext"));
-    rtqMethods.put("1867733327985372373", new QueriesGenerated.RTQ(11, "CanBeChildContext"));
+    rtqMethods.put("8525842417252886997", new QueriesGenerated.RTQ(10, "ContainmentContext"));
+    rtqMethods.put("1867733327985372373", new QueriesGenerated.RTQ(11, "ContainmentContext"));
     rtqMethods.put("1867733327985372405", new QueriesGenerated.RTQ(12, "RuleClass"));
     rtqMethods.put("1867733327985608762", new QueriesGenerated.RTQ(13, "RULE"));
   }

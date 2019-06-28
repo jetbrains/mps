@@ -20,9 +20,9 @@ public final class ContextUtil {
     ruleKind = SNodeOperations.cast(genContext.getOriginalCopiedInputNode(ruleKind), MetaAdapterFactory.getConcept(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, 0x6530303593554248L, "jetbrains.mps.lang.constraints.rules.kinds.structure.RuleKind"));
     SNodeReference pointer = SNodeOperations.getPointer(ruleKind);
     if (Objects.equals(pointer, new SNodePointer("r:52c0a9e8-a4f1-4d97-9c33-d3c28d77688f(jetbrains.mps.lang.constraints.rules.constraints)", "1400749580825232668"))) {
-      return new SNodePointer("8e98f4e2-decf-4e97-bf80-9109e8b759ee/java:jetbrains.mps.core.aspects.constraints.rules.kinds(jetbrains.mps.lang.constraints.rules.runtime/)", "~CanBeChildContext");
+      return new SNodePointer("8e98f4e2-decf-4e97-bf80-9109e8b759ee/java:jetbrains.mps.core.aspects.constraints.rules.kinds(jetbrains.mps.lang.constraints.rules.runtime/)", "~ContainmentContext");
     } else if (Objects.equals(pointer, new SNodePointer("r:52c0a9e8-a4f1-4d97-9c33-d3c28d77688f(jetbrains.mps.lang.constraints.rules.constraints)", "1400749580825232694"))) {
-      return new SNodePointer("8e98f4e2-decf-4e97-bf80-9109e8b759ee/java:jetbrains.mps.core.aspects.constraints.rules.kinds(jetbrains.mps.lang.constraints.rules.runtime/)", "~CanBeParentContext");
+      return new SNodePointer("8e98f4e2-decf-4e97-bf80-9109e8b759ee/java:jetbrains.mps.core.aspects.constraints.rules.kinds(jetbrains.mps.lang.constraints.rules.runtime/)", "~ContainmentContext");
     }
     return null;
   }

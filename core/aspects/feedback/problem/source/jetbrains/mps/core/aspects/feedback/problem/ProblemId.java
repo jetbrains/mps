@@ -13,18 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jetbrains.mps.core.aspects.constraints.rules;
+package jetbrains.mps.core.aspects.feedback.problem;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.annotations.Internal;
-
-/**
- * Not so sure about builder for context construction
- * @param <Context>
- *
- * @author apyshkin
- */
-@Internal
-public interface ContextBuilder<Context extends RuleContext> {
-  @NotNull Context build();
+public interface ProblemId {
+  long getId();
 }

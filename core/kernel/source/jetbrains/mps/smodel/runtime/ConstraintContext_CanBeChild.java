@@ -15,8 +15,7 @@
  */
 package jetbrains.mps.smodel.runtime;
 
-import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeChildContext;
-import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeChildContext.Builder;
+import jetbrains.mps.core.aspects.constraints.rules.kinds.ContainmentContext;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -24,7 +23,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SNode;
 
 /**
- * Legacy, {@link CanBeChildContext} is the replacement
+ * Legacy, {@link ContainmentContext} is the replacement
  * Arguments of 'can be child' constraint function
  * [AP]
  *
@@ -33,29 +32,30 @@ import org.jetbrains.mps.openapi.model.SNode;
  */
 // @Deprecated
 public final class ConstraintContext_CanBeChild {
-  @NotNull private final CanBeChildContext myNewContext;
+  @NotNull private final ContainmentContext myNewContext;
 
-  private ConstraintContext_CanBeChild(@NotNull CanBeChildContext newContext) {
+  private ConstraintContext_CanBeChild(@NotNull ContainmentContext newContext) {
     myNewContext = newContext;
   }
 
   public ConstraintContext_CanBeChild(@NotNull SNode node) {
-    myNewContext = new Builder().buildFromNode(node);
+    myNewContext = new ContainmentContext.Builder().buildFromChildNode(node);
   }
 
   public ConstraintContext_CanBeChild(@NotNull SAbstractConcept concept, @NotNull SNode parentNode, SContainmentLink link) {
-    myNewContext = new Builder().concept(concept)
-                                .parentNode(parentNode)
-                                .link(link).build();
+    myNewContext = new ContainmentContext.Builder().childConcept(concept)
+                                                   .parentNode(parentNode)
+                                                   .link(link)
+                                                   .build();
   }
 
   @NotNull
-  public static ConstraintContext_CanBeChild convert(@NotNull CanBeChildContext context) {
+  public static ConstraintContext_CanBeChild convert(@NotNull ContainmentContext context) {
     return new ConstraintContext_CanBeChild(context);
   }
 
   @NotNull
-  public CanBeChildContext adapt() {
+  public ContainmentContext adapt() {
     return myNewContext;
   }
 
@@ -71,7 +71,7 @@ public final class ConstraintContext_CanBeChild {
 
   @NotNull
   public SAbstractConcept getConcept() {
-    return myNewContext.getConcept();
+    return myNewContext.getChildConcept();
   }
 
   public SContainmentLink getLink() {

@@ -32,5 +32,9 @@
     <orderEntry type="module" module-name="baseLanguage-runtime" exported="" />
     <orderEntry type="module" module-name="constraints-runtime" />
     <orderEntry type="module" module-name="feedback-api" />
+    <orderEntry type="module" module-name="feedback-api" />
+    <orderEntry type="module" module-name="messages-api" />
+    <orderEntry type="module" module-name="context" />
+    <orderEntry type="module" module-name="messages-for-rules" />
   </component>
 </module>

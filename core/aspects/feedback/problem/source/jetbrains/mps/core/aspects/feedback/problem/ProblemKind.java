@@ -13,22 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jetbrains.mps.core.aspects.feedback.api;
+package jetbrains.mps.core.aspects.feedback.problem;
 
-import jetbrains.mps.core.aspects.constraints.rules.RuleContext;
-import jetbrains.mps.core.aspects.constraints.rules.RuleId;
+import jetbrains.mps.core.context.ContextGenre;
 import org.jetbrains.annotations.NotNull;
 
-public abstract class BaseMessageProvider<C extends RuleContext> implements MessageProvider<C> {
-  private final RuleId myRuleId;
+public interface ProblemKind {
 
-  public BaseMessageProvider(@NotNull RuleId ruleId) {
-    myRuleId = ruleId;
-  }
-
-  @NotNull
-  @Override
-  public final RuleId forRuleId() {
-    return myRuleId;
+  /**
+   * @return the associated type of context for this problem kind
+   */
+  @NotNull default ContextGenre getContextGenre() {
+    throw new UnsupportedOperationException("not implemented");
   }
 }

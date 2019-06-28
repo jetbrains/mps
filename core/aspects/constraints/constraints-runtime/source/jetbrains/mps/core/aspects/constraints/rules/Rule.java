@@ -15,10 +15,13 @@
  */
 package jetbrains.mps.core.aspects.constraints.rules;
 
+import jetbrains.mps.core.context.Context;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+
+import java.util.Objects;
 
 /**
  * Constraints rule is a basic notion of the new constraints (2019.2).
@@ -26,13 +29,13 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
  * expressed in a rather simple form --- the set of rules.
  * Each rule is a simple check (for now it is just a boolean type bl expression).
  *
- * @param <Context> -- each rule is applicable to a rule kind, and rule kind always has a <it>context</it>
+ * @param <C> -- each rule is applicable to a rule kind, and rule kind always has a <it>context</it>
  *                 against which this rule will be checked.
  *
  * @since 192
  * @author apyshkin, mburyakov
  */
-public interface Rule<Context extends RuleContext> {
+public interface Rule<C extends Context> {
   /**
    * as always: the rule is per-concept entity
    */
@@ -42,8 +45,7 @@ public interface Rule<Context extends RuleContext> {
    * each rule has an id.
    * we need id in order to mention the rule somewhere out of the aspect 'constraints'
    */
-  @NotNull
-  RuleId getId();
+  @NotNull RuleId getId();
 
   /**
    * @return pure debug info
@@ -55,20 +57,20 @@ public interface Rule<Context extends RuleContext> {
    * each rule belongs to the specific rule kind, which is declared elsewhere.
    * a rule makes sense only in the view of this kind
    */
-  @NotNull RuleKind<Context> getKind();
+  @NotNull RuleKind getKind();
 
   /**
    * the essence of the rule.
-   * Here the rule performs the check within the given context
+   * here the rule performs the check within the given context
    *
    * @return false iff the check is failed
    */
-  boolean check(@NotNull Context context);
+  boolean check(@NotNull C context);
 
   /**
    * @return the applicability condition
    */
-  default boolean appliesTo(@NotNull Context context) {
-    return true;
+  default boolean appliesTo(@NotNull C context) {
+    return Objects.equals(getKind().getLinkedContextGenre(), context.getCategory());
   }
 }

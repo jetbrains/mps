@@ -13,26 +13,37 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jetbrains.mps.core.aspects.feedback.api;
+package jetbrains.mps.core.aspects.feedback.messages;
 
-import jetbrains.mps.core.aspects.constraints.rules.RuleContext;
-import jetbrains.mps.core.aspects.constraints.rules.RuleId;
-import jetbrains.mps.core.aspects.constraints.rules.RuleKind;
+import jetbrains.mps.core.aspects.feedback.api.FeedbackProvider;
+import jetbrains.mps.core.aspects.feedback.api.FeedbackType;
+import jetbrains.mps.core.aspects.feedback.problem.ProblemId;
+import jetbrains.mps.core.context.Context;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.annotations.Internal;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * provides custom messages for failed rules
  */
 @Internal
-public interface MessageProvider<Context extends RuleContext> {
-  @NotNull RuleId forRuleId();
+public interface MessageProvider<C extends Context> extends FeedbackProvider<C> {
+  @NotNull ProblemId forProblemId();
 
-  @NotNull Msg yieldMessage(@NotNull Context context);
+  @NotNull default Msg yieldMessage(@NotNull C context) {
+    feedback(context);
+    return new StringMsg("");
+  }
 
-  default boolean appliesTo(@NotNull Context context) {
-    return true;
+  @Override
+  default /*final*/ void feedback(@NotNull C context) {
+    // nop
+  }
+
+  @Override
+  @NotNull
+  default /*final*/ FeedbackType getType() {
+    return PredefinedFeedbackTypes.SHOW_MESSAGE;
   }
 
   interface Msg {

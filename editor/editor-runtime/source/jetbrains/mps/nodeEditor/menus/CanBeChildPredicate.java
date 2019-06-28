@@ -15,8 +15,8 @@
  */
 package jetbrains.mps.nodeEditor.menus;
 
-import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeChildContext;
-import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeChildContext.Builder;
+import jetbrains.mps.core.aspects.constraints.rules.Rule;
+import jetbrains.mps.core.aspects.constraints.rules.kinds.ContainmentContext;
 import jetbrains.mps.smodel.constraints.ConstraintsFacade;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -24,6 +24,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SNode;
 
+import java.util.List;
 import java.util.function.Predicate;
 
 /**
@@ -44,10 +45,11 @@ public class CanBeChildPredicate implements Predicate<SAbstractConcept> {
   @Override
   public boolean test(@Nullable SAbstractConcept concept) {
     if (concept == null) return true;
-    CanBeChildContext context = new Builder().concept(concept)
-                                             .parentNode(myParentNode)
-                                             .link(myContainmentLink).build();
+    ContainmentContext context = new ContainmentContext.Builder().childConcept(concept)
+                                                                 .parentNode(myParentNode)
+                                                                 .link(myContainmentLink).build();
 
-    return ConstraintsFacade.checkCanBeChild(context).isEmpty();
+    List<Rule<ContainmentContext>> rules = ConstraintsFacade.checkCanBeChild(context);
+    return rules.isEmpty();
   }
 }

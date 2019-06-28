@@ -13,27 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jetbrains.mps.core.aspects.constraints.rules;
+package jetbrains.mps.core.aspects.feedback.api;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 /**
- * Each particular <it>constraint</it> in the aspect 'constraints' requires
- * its own unique context.
+ * I consider the possibility that there will be 'global' descriptors not attached to any concept
  *
- * This interface represents the abstraction of this notion.
- * Anything really can be a context.
- * // fixme: [not so sure] the only thing we require is that each
- * // fixme context makes sense for a particular MPS concept.
- *
- * @author apyshkin, mburyakov
+ * @author apyshkin
  */
-public interface RuleContext {
-  /**
-   * @return the concept constraints of which we will regard
-   */
+public interface FeedbackPerConceptDescriptor extends FeedbackDescriptor {
   @NotNull SAbstractConcept getConcept();
-
-  @NotNull RuleKind<? extends RuleContext> getKind();
 }

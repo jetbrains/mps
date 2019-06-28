@@ -22,25 +22,25 @@ import jetbrains.mps.smodel.language.LanguageRegistry;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public final class MPSReporting extends ComponentPlugin implements ComponentHost {
+public final class MPSFeedbackPlugin extends ComponentPlugin implements ComponentHost {
   private final LanguageRegistry myLanguageRegistry;
-  private ReportingAspectRegistry myReportingAspectRegistry;
+  private FeedbackAspectRegistry myFeedbackAspectRegistry;
 
-  public MPSReporting(@NotNull LanguageRegistry languageRegistry) {
+  public MPSFeedbackPlugin(@NotNull LanguageRegistry languageRegistry) {
     myLanguageRegistry = languageRegistry;
   }
 
   @Override
   public void init() {
     super.init();
-    myReportingAspectRegistry = init(new ReportingAspectRegistry(myLanguageRegistry));
+    myFeedbackAspectRegistry = init(new FeedbackAspectRegistry(myLanguageRegistry));
   }
 
   @Nullable
   @Override
   public <T extends CoreComponent> T findComponent(@NotNull Class<T> componentClass) {
-    if (componentClass.isAssignableFrom(ReportingAspectRegistry.class)) {
-      return componentClass.cast(myReportingAspectRegistry);
+    if (componentClass.isAssignableFrom(FeedbackAspectRegistry.class)) {
+      return componentClass.cast(myFeedbackAspectRegistry);
     }
     return null;
   }

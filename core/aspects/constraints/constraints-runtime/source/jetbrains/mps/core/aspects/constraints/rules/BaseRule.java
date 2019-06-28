@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.core.aspects.constraints.rules;
 
+import jetbrains.mps.core.context.Context;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -23,19 +24,19 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 /**
  * all generated rules inherit this one
  */
-public abstract class BaseRule<Context extends RuleContext> implements Rule<Context> {
+public abstract class BaseRule<C extends Context> implements Rule<C> {
   private final SAbstractConcept myConcept;
-  private final RuleKind<Context> myRuleKind;
+  private final RuleKind myCheckKind;
   private final RuleId myRuleId;
   @Nullable private final SNodeReference myDebugInfo;
-//  private final Predicate<Context> myCheckPredicate; // aaaaaaaaaaaaaaaa cannot use the method refs from java 8......
+//  private final Predicate<Context> myCheckPredicate; // AP cannot use the method refs from java 8......
 
   protected BaseRule(@NotNull SAbstractConcept concept,
-                     @NotNull RuleKind<Context> ruleKind,
+                     @NotNull RuleKind checkKind,
                      @NotNull RuleId ruleId,
                      @Nullable SNodeReference debugInfo) {
     myConcept = concept;
-    myRuleKind = ruleKind;
+    myCheckKind = checkKind;
     myRuleId = ruleId;
     myDebugInfo = debugInfo;
 //    myCheckPredicate = checkPredicate;
@@ -55,12 +56,12 @@ public abstract class BaseRule<Context extends RuleContext> implements Rule<Cont
 
   @NotNull
   @Override
-  public RuleKind<Context> getKind() {
-    return myRuleKind;
+  public RuleKind getKind() {
+    return myCheckKind;
   }
 
   @Override
-  public abstract boolean check(@NotNull Context context);
+  public abstract boolean check(@NotNull C context);
 
   @NotNull
   @Override
@@ -72,9 +73,4 @@ public abstract class BaseRule<Context extends RuleContext> implements Rule<Cont
   public String toString() {
     return "The rule '" + myRuleId + "' [" + myDebugInfo + "]";
   }
-
-//  public static <Context extends ConstraintsContext> BaseConstraintsRule create(@NotNull SAbstractConcept concept,
-//                                                                                @NotNull ConstraintsRuleKind<Context> ruleKind,
-//                                                                                @NotNull ConstraintsRuleId ruleId) {
-//  }
 }

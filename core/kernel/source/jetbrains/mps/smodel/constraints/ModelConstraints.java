@@ -15,6 +15,9 @@
  */
 package jetbrains.mps.smodel.constraints;
 
+import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeChildKind;
+import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeParentKind;
+import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeRootKind;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
 import jetbrains.mps.smodel.constraints.ReferenceDescriptor.OkReferenceDescriptor;
@@ -40,7 +43,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SReference;
 
-import static jetbrains.mps.smodel.constraints.ConstraintsFacade.checkRulesOfKind;
+import static jetbrains.mps.smodel.constraints.ConstraintsFacade.checkPerConceptRulesOfKind;
 import static jetbrains.mps.smodel.constraints.ConstraintsFacade.legacyCanBeChild;
 import static jetbrains.mps.smodel.constraints.ConstraintsFacade.legacyCanBeParent;
 import static jetbrains.mps.smodel.constraints.ConstraintsFacade.legacyCanBeRoot;
@@ -122,7 +125,7 @@ public class ModelConstraints {
   public static boolean canBeRoot(@NotNull SAbstractConcept concept, @NotNull SModel model, CheckingNodeContext checkingNodeContext) {
     ConstraintContext_CanBeRoot context = new ConstraintContext_CanBeRoot(concept, model);
     boolean legacyResult = legacyCanBeRoot(context, checkingNodeContext);
-    return legacyResult && checkRulesOfKind(context.adapt()).isEmpty();
+    return legacyResult && checkPerConceptRulesOfKind(concept, CanBeRootKind.INSTANCE, context.adapt()).isEmpty();
   }
 
   // private canBe* section
@@ -151,12 +154,12 @@ public class ModelConstraints {
 
   private static boolean canBeParent0(@NotNull ConstraintContext_CanBeParent context, @Nullable CheckingNodeContext checkingNodeContext) {
     boolean legacyResult = legacyCanBeParent(context, checkingNodeContext);
-    return legacyResult && checkRulesOfKind(context.adapt()).isEmpty();
+    return legacyResult && checkPerConceptRulesOfKind(context.getConcept(), CanBeParentKind.INSTANCE, context.adapt()).isEmpty();
   }
 
   private static boolean canBeChild0(@NotNull ConstraintContext_CanBeChild context, @Nullable CheckingNodeContext checkingNodeContext) {
     boolean legacyResult = legacyCanBeChild(context, checkingNodeContext);
-    return legacyResult && checkRulesOfKind(context.adapt()).isEmpty();
+    return legacyResult && checkPerConceptRulesOfKind(context.getConcept(), CanBeChildKind.INSTANCE, context.adapt()).isEmpty();
   }
 
   // scopes part

@@ -12,6 +12,6 @@
     <orderEntry type="module" module-name="smodel" />
     <orderEntry type="module" module-name="mps-annotations" />
     <orderEntry type="module" module-name="kernel" />
-    <orderEntry type="module" module-name="feedback-api" />
+    <orderEntry type="module" module-name="context" exported="" />
   </component>
 </module>

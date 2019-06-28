@@ -114,16 +114,20 @@ public interface IssueKindReportItem extends ReportItem {
   final class ItemKind {
     private final CheckerCategory myChecker;
     private final String mySpecialization;
+
     private ItemKind(@NotNull CheckerCategory checker, @Nullable String specialization) {
-      this.myChecker =  checker;
-      this.mySpecialization = specialization;
+      myChecker =  checker;
+      mySpecialization = specialization;
     }
+
     public CheckerCategory getChecker() {
       return myChecker;
     }
+
     public String getSpecialization() {
       return mySpecialization;
     }
+
     @Override
     public boolean equals(Object o) {
       if (!(o instanceof ItemKind)) {
@@ -137,10 +141,12 @@ public interface IssueKindReportItem extends ReportItem {
       }
       return mySpecialization.equals(((ItemKind) o).mySpecialization);
     }
+
     @Override
     public int hashCode() {
       return myChecker.hashCode() + (mySpecialization == null ? 0 : mySpecialization.hashCode());
     }
+
     @Override
     public String toString() {
       return myChecker + (mySpecialization == null ? "" : " (" + mySpecialization + ")");
@@ -182,8 +188,10 @@ public interface IssueKindReportItem extends ReportItem {
 
   abstract class PathObject {
     public abstract Object resolve(SRepository repository);
+
     public static class NodePathObject extends PathObject {
       private SNodeReference myNodeReference;
+
       public NodePathObject(SNodeReference nodeReference) {
         myNodeReference = nodeReference;
       }
@@ -191,6 +199,7 @@ public interface IssueKindReportItem extends ReportItem {
       public SNode resolve(SRepository repository) {
         return myNodeReference.resolve(repository);
       }
+
       @Override
       public boolean equals(Object o) {
         if (this == o) {
@@ -202,6 +211,7 @@ public interface IssueKindReportItem extends ReportItem {
         NodePathObject that = (NodePathObject) o;
         return myNodeReference.equals(that.myNodeReference);
       }
+
       @Override
       public int hashCode() {
         return myNodeReference.hashCode();

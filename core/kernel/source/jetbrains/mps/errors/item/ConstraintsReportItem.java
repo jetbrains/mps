@@ -50,6 +50,7 @@ public abstract class ConstraintsReportItem extends NodeReportItemBase implement
     return new LinkedHashSet<>(Arrays.asList(FLAVOUR_ISSUE_KIND, FLAVOUR_RULE_ID, FLAVOUR_NODE));
   }
 
+  @Internal
   public static class PropertyConstraintReportItem extends ConstraintsReportItem implements NodeFeatureReportItem {
     private SProperty myProperty;
     public PropertyConstraintReportItem(@NotNull SNode node, SProperty property, TypesystemRuleId ruleId) {

@@ -15,12 +15,14 @@
  */
 package jetbrains.mps.core.aspects.constraints.rules;
 
+import jetbrains.mps.core.context.Context;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Common interface for all the constraints descriptors.
@@ -59,7 +61,7 @@ public interface ConstraintsDescriptor2 {
   }
 
   @NotNull
-  default <C extends RuleContext> List<Rule<C>> getRules(@NotNull RuleKind<C> kind) {
+  default <C extends Context> List<Rule<C>> getRules(@NotNull RuleKind kind) {
     List<Rule<?>> rules = getRules();
     return rules.stream()
                 .filter(it1 -> it1.getKind().equals(kind))
@@ -68,10 +70,11 @@ public interface ConstraintsDescriptor2 {
   }
 
   @NotNull
-  default <C extends RuleContext> List<Rule<C>> getApplicableRules(@NotNull C context) {
-    return getRules((RuleKind<C>) context.getKind()).stream()
-                                                    .filter(rule -> rule.appliesTo(context))
-                                                    .collect(Collectors.toList());
+  default <C extends Context> List<Rule<C>> getApplicableRules(@NotNull RuleKind kind, @NotNull C context) {
+    Stream<Rule<Context>> ruleStream = getRules(kind).stream().filter(rule -> rule.appliesTo(context));
+
+    return ruleStream.map(r -> (Rule<C>) r)
+                     .collect(Collectors.toList());
   }
 
   /**
