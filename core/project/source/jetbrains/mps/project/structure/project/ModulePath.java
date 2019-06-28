@@ -30,7 +30,7 @@ import java.util.Objects;
 @Immutable
 public final class ModulePath {
   @NotNull
-  private final String myPath; // always canonical path to the module descriptor file, never null
+  private final String myPath; // a path corresponding with the path format returned by IFile.getPath(): absolute, no odd "." and "..", straight slashes etc. FSes other than file/jar are not yet supported
   @NotNull
   private final String myVirtualFolder; // virtual folder, optional, never null
 

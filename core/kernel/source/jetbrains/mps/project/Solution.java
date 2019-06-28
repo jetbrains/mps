@@ -224,7 +224,7 @@ public class Solution extends ReloadableModuleBase {
       }
       if (!jrtPaths.isEmpty()){
         MementoImpl memento = new MementoImpl();
-        for(QualifiedPath jp:jrtPaths){
+        for(QualifiedPath jp: jrtPaths){
           memento.createChild("path").put("value", jp.serialize(new MacroNoHelper()));
         }
         populateModelRoot(classType, memento);
