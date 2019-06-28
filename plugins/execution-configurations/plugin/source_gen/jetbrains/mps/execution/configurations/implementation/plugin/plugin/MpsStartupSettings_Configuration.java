@@ -14,8 +14,9 @@ import com.intellij.openapi.util.WriteExternalException;
 import com.intellij.util.xmlb.XmlSerializer;
 import com.intellij.openapi.util.InvalidDataException;
 import jetbrains.mps.util.MacrosFactory;
-import java.io.File;
+import jetbrains.mps.vfs.util.PathUtil;
 import com.intellij.openapi.application.PathManager;
+import java.io.File;
 import org.apache.log4j.Level;
 
 public class MpsStartupSettings_Configuration implements IPersistentConfiguration {
@@ -46,13 +47,15 @@ public class MpsStartupSettings_Configuration implements IPersistentConfiguratio
     if ((path == null || path.length() == 0)) {
       return path;
     }
-    return MacrosFactory.getGlobal().expandPath(path).replace(File.separator, "/");
+    // path came here may be from UI or from sources with system separators 
+    return MacrosFactory.getGlobal().expandPath(PathUtil.toSystemIndependent(path));
   }
   private String shrinkPath(String path) {
     if ((path == null || path.length() == 0)) {
       return path;
     }
-    return MacrosFactory.getGlobal().shrinkPath(path).replace(File.separator, "/");
+    // path came here may be from UI or from sources with system separators 
+    return MacrosFactory.getGlobal().shrinkPath(PathUtil.toSystemIndependent(path));
   }
   public void setShrinkedSettingsPath(@NotNull String path) {
     this.setSettingsPath(shrinkPath(path));

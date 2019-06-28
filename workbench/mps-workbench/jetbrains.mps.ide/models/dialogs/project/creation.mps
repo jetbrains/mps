@@ -2,9 +2,9 @@
 <model ref="r:478bf62d-84fb-4fba-aeda-183fb2769e64(jetbrains.mps.ide.dialogs.project.creation)">
   <persistence version="9" />
   <languages>
-    <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="-1" />
-    <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="-1" />
-    <use id="63650c59-16c8-498a-99c8-005c7ee9515d" name="jetbrains.mps.lang.access" version="-1" />
+    <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
+    <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="0" />
+    <use id="63650c59-16c8-498a-99c8-005c7ee9515d" name="jetbrains.mps.lang.access" version="0" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
   </languages>
   <imports>
@@ -2287,42 +2287,38 @@
                     </node>
                   </node>
                   <node concept="2OqwBi" id="3l7t_CReZH1" role="37wK5m">
-                    <node concept="2OqwBi" id="3l7t_CReZH2" role="2Oq$k0">
-                      <node concept="37vLTw" id="3l7t_CReZH3" role="2Oq$k0">
-                        <ref role="3cqZAo" node="1pyYjDPRa0d" resolve="myModelStereotype" />
-                      </node>
-                      <node concept="liA8E" id="3l7t_CReZH4" role="2OqNvi">
-                        <ref role="37wK5l" to="dxuu:~JComboBox.getItemAt(int)" resolve="getItemAt" />
-                        <node concept="2OqwBi" id="3l7t_CReZH5" role="37wK5m">
-                          <node concept="37vLTw" id="3l7t_CReZH6" role="2Oq$k0">
-                            <ref role="3cqZAo" node="1pyYjDPRa0d" resolve="myModelStereotype" />
-                          </node>
-                          <node concept="liA8E" id="3l7t_CReZH7" role="2OqNvi">
-                            <ref role="37wK5l" to="dxuu:~JComboBox.getSelectedIndex()" resolve="getSelectedIndex" />
-                          </node>
-                        </node>
-                      </node>
-                    </node>
                     <node concept="liA8E" id="3l7t_CReZH8" role="2OqNvi">
                       <ref role="37wK5l" to="wyt6:~String.trim()" resolve="trim" />
+                    </node>
+                    <node concept="1eOMI4" id="3ZUi$n55WpX" role="2Oq$k0">
+                      <node concept="10QFUN" id="3ZUi$n55WpW" role="1eOMHV">
+                        <node concept="2OqwBi" id="3ZUi$n55WpT" role="10QFUP">
+                          <node concept="37vLTw" id="3ZUi$n55WpU" role="2Oq$k0">
+                            <ref role="3cqZAo" node="1pyYjDPRa0d" resolve="myModelStereotype" />
+                          </node>
+                          <node concept="liA8E" id="qVThsXFnjz" role="2OqNvi">
+                            <ref role="37wK5l" to="dxuu:~JComboBox.getSelectedItem():java.lang.Object" resolve="getSelectedItem" />
+                          </node>
+                        </node>
+                        <node concept="3uibUv" id="3ZUi$n563Hc" role="10QFUM">
+                          <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+                        </node>
+                      </node>
                     </node>
                   </node>
                 </node>
               </node>
-              <node concept="2OqwBi" id="3l7t_CReZH9" role="37wK5m">
-                <node concept="37vLTw" id="3l7t_CReZHa" role="2Oq$k0">
-                  <ref role="3cqZAo" node="1pyYjDPRa0i" resolve="myModelRoots" />
-                </node>
-                <node concept="liA8E" id="3l7t_CReZHb" role="2OqNvi">
-                  <ref role="37wK5l" to="dxuu:~JComboBox.getItemAt(int)" resolve="getItemAt" />
-                  <node concept="2OqwBi" id="3l7t_CReZHc" role="37wK5m">
-                    <node concept="37vLTw" id="3l7t_CReZHd" role="2Oq$k0">
-                      <ref role="3cqZAo" node="1pyYjDPRa0i" resolve="myModelRoots" />
-                    </node>
-                    <node concept="liA8E" id="3l7t_CReZHe" role="2OqNvi">
-                      <ref role="37wK5l" to="dxuu:~JComboBox.getSelectedIndex()" resolve="getSelectedIndex" />
-                    </node>
+              <node concept="10QFUN" id="3ZUi$n56r1v" role="37wK5m">
+                <node concept="2OqwBi" id="3ZUi$n56r1s" role="10QFUP">
+                  <node concept="37vLTw" id="3ZUi$n56r1t" role="2Oq$k0">
+                    <ref role="3cqZAo" node="1pyYjDPRa0i" resolve="myModelRoots" />
                   </node>
+                  <node concept="liA8E" id="qVThsXFwE_" role="2OqNvi">
+                    <ref role="37wK5l" to="dxuu:~JComboBox.getSelectedItem():java.lang.Object" resolve="getSelectedItem" />
+                  </node>
+                </node>
+                <node concept="3uibUv" id="3ZUi$n56r1o" role="10QFUM">
+                  <ref role="3uigEE" to="dush:~ModelRoot" resolve="ModelRoot" />
                 </node>
               </node>
               <node concept="2OqwBi" id="3l7t_CReZHf" role="37wK5m">

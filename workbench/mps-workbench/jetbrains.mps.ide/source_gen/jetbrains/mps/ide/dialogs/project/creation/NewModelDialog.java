@@ -209,7 +209,7 @@ public class NewModelDialog extends DialogWrapper {
   }
 
   public ModelCreateHelper makeHelper() {
-    return new ModelCreateHelper(myProject, myModule, new SModelName(myModelName.getText(), myModelStereotype.getItemAt(myModelStereotype.getSelectedIndex()).trim()), myModelRoots.getItemAt(myModelRoots.getSelectedIndex()), myModelStorageFormat.getItemAt(myModelStorageFormat.getSelectedIndex()));
+    return new ModelCreateHelper(myProject, myModule, new SModelName(myModelName.getText(), ((String) myModelStereotype.getSelectedItem()).trim()), (ModelRoot) myModelRoots.getSelectedItem(), myModelStorageFormat.getItemAt(myModelStorageFormat.getSelectedIndex()));
   }
 
   private boolean check() {
