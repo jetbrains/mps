@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.typechecking;
 
+import jetbrains.mps.errors.item.NodeReportItem;
 import jetbrains.mps.lang.pattern.INodeMatchingPattern;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -23,6 +24,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.function.Consumer;
 
 /**
  * Embodies all queries available to clients of the type checker.
@@ -126,5 +128,12 @@ public interface TypecheckingQueries {
     if (type == null) return null;
     return coerceType(type, targetPattern);
   }
+
+  /**
+   * Runs typechecking on a root, collecting the errors reported.
+   * The implementation may employ different strategies when deciding whether to run type checking every time or use cached info.
+   * Regardless of whether types were checked or not, the {@param errorsConsumer} must receive all errors in this root.
+   */
+  void checkRoot(SNode root, Consumer<? super NodeReportItem> errorsConsumer);
 
 }

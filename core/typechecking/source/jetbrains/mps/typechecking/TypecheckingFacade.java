@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.typechecking;
 
+import jetbrains.mps.errors.item.NodeReportItem;
 import jetbrains.mps.lang.pattern.INodeMatchingPattern;
 import jetbrains.mps.typechecking.backend.TypecheckingSessionHandler;
 import org.jetbrains.annotations.NotNull;
@@ -23,6 +24,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.Collection;
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 /**
@@ -104,6 +106,11 @@ public abstract class TypecheckingFacade extends TypecheckingSessionHandler impl
   public SNode strongCoerceType(SNode type, @NotNull INodeMatchingPattern targetPattern) {
     if (type == null) return null;
     return controller().strongCoerceType(type, targetPattern);
+  }
+
+  @Override
+  public void checkRoot(SNode root, Consumer<? super NodeReportItem> errorsConsumer) {
+    controller().checkRoot(root, errorsConsumer);
   }
 
   protected static TypecheckingFacade getContextInstance() {

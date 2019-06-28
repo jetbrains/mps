@@ -21,6 +21,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.model.SNode;
 
+import java.util.List;
+
 /**
  * Handles a single default (basic) session.
  *
@@ -28,10 +30,12 @@ import org.jetbrains.mps.openapi.model.SNode;
  */
 public class DefaultTypecheckingController extends TypecheckingController {
 
+  private final Flags myDefaultFlags;
   private TypecheckingSession myDefaultSession;
 
-  public DefaultTypecheckingController(TypecheckingBackend typecheckingBackend) {
+  public DefaultTypecheckingController(TypecheckingBackend typecheckingBackend, Flags defaultFlags) {
     super(typecheckingBackend);
+    this.myDefaultFlags = defaultFlags;
   }
 
   @Override
@@ -70,10 +74,11 @@ public class DefaultTypecheckingController extends TypecheckingController {
   protected TypecheckingQueries getQueries(@NotNull SNode src, SNode trg, SConcept trgConcept) {
     // request new session on demand
     if (myDefaultSession == null) {
-      this.myDefaultSession = new TypecheckingSession(this, Flags.basic());
+      this.myDefaultSession = new TypecheckingSession(this, myDefaultFlags);
     }
     TypecheckingProvider provider = selectProvider(src, trg, trgConcept);
     return myDefaultSession.getQueries(provider);
   }
 
 }
+

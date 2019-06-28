@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.typechecking.backend;
 
+import jetbrains.mps.errors.item.NodeReportItem;
 import jetbrains.mps.lang.pattern.INodeMatchingPattern;
 import jetbrains.mps.typechecking.TypecheckingQueries;
 import jetbrains.mps.typechecking.backend.TypecheckingSession.Flags;
@@ -24,6 +25,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.Collection;
+import java.util.List;
+import java.util.function.Consumer;
 
 /**
  * A composite of {@link TypecheckingQueries} coming from different providers.
@@ -99,6 +102,11 @@ public abstract class TypecheckingController implements TypecheckingQueries {
   @Override
   public SNode strongCoerceType(SNode type, @NotNull INodeMatchingPattern targetPattern) {
     return getQueries(type, null, targetPattern.getConcept()).strongCoerceType(type, targetPattern);
+  }
+
+  @Override
+  public void checkRoot(SNode root, Consumer<? super NodeReportItem> errorsConsumer) {
+    getQueries(root, null, null).checkRoot(root, errorsConsumer);
   }
 
   /**

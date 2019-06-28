@@ -24,6 +24,7 @@ import jetbrains.mps.typechecking.backend.SharedSessionTypecheckingController;
 import jetbrains.mps.typechecking.backend.TypecheckingBackend;
 import jetbrains.mps.typechecking.backend.TypecheckingController;
 import jetbrains.mps.typechecking.backend.TypecheckingSession;
+import jetbrains.mps.typechecking.backend.TypecheckingSession.Flags;
 import jetbrains.mps.typechecking.backend.WorkbenchTypecheckingController;
 import org.jetbrains.annotations.NotNull;
 
@@ -69,8 +70,8 @@ public class TypecheckingFacadeComponent implements CoreComponent {
                 return new WorkbenchTypecheckingController(myTypecheckingBackend);
               }
 
-              public TypecheckingController isolated() {
-                return new DefaultTypecheckingController(myTypecheckingBackend);
+              public TypecheckingController isolated(Flags flags) {
+                return new DefaultTypecheckingController(myTypecheckingBackend, flags);
               }
 
               public TypecheckingController shared(@NotNull TypecheckingSession session) {
@@ -82,11 +83,11 @@ public class TypecheckingFacadeComponent implements CoreComponent {
             // TODO correctly initialize facade for threads other than AWT
             return createFacade(new TypecheckingControllerFactory() {
               public TypecheckingController context() {
-                return new DefaultTypecheckingController(myTypecheckingBackend);
+                return new DefaultTypecheckingController(myTypecheckingBackend, Flags.basic());
               }
 
-              public TypecheckingController isolated() {
-                return new DefaultTypecheckingController(myTypecheckingBackend);
+              public TypecheckingController isolated(Flags flags) {
+                return new DefaultTypecheckingController(myTypecheckingBackend, flags);
               }
 
               public TypecheckingController shared(@NotNull TypecheckingSession session) {
@@ -115,7 +116,7 @@ public class TypecheckingFacadeComponent implements CoreComponent {
 
     TypecheckingController context();
 
-    TypecheckingController isolated();
+    TypecheckingController isolated(Flags flags);
 
     TypecheckingController shared(@NotNull TypecheckingSession session);
 
@@ -158,8 +159,8 @@ public class TypecheckingFacadeComponent implements CoreComponent {
     }
 
     @Override
-    protected void overrideIsolatedController() {
-      myControllerStack.push(myControllerFactory.isolated());
+    protected void overrideIsolatedController(Flags flags) {
+      myControllerStack.push(myControllerFactory.isolated(flags));
     }
 
     @Override

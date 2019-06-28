@@ -16,6 +16,9 @@
 package jetbrains.mps.typesystem;
 
 import jetbrains.mps.classloading.ClassLoaderManager;
+import jetbrains.mps.errors.IErrorReporter;
+import jetbrains.mps.errors.item.NodeReportItem;
+import jetbrains.mps.errors.item.TypesystemReportItemAdapter;
 import jetbrains.mps.lang.pattern.ConceptMatchingPattern;
 import jetbrains.mps.lang.pattern.INodeMatchingPattern;
 import jetbrains.mps.newTypesystem.context.IncrementalTypecheckingContext;
@@ -26,6 +29,7 @@ import jetbrains.mps.typechecking.backend.TypecheckingSession.Flags;
 import jetbrains.mps.typesystem.inference.TypeChecker;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.typesystem.inference.util.StructuralNodeSet;
+import jetbrains.mps.util.Pair;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -33,6 +37,8 @@ import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
+import java.util.function.Consumer;
 import java.util.function.Function;
 
 /**
@@ -85,6 +91,20 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
       myFlags = flags;
     }
 
+    @Nullable
+    @Override
+    public SNode getTypeOf(SNode expression) {
+      if (expression == null) return null;
+      return compute((tcc) -> tcc.getTypeOf(expression, TypeChecker.getInstance()));
+    }
+
+    @Nullable
+    @Override
+    public SNode getInferredType(SNode expression) {
+      if (expression == null) return null;
+      return compute((tcc) -> tcc.getTypeOf(expression, TypeChecker.getInstance()));
+    }
+
     @Override
     public final boolean convertsTo(@NotNull SNode typeA, @NotNull SNode typeB) {
       return TypeChecker.getInstance().getSubtypingManager().isSubtype(typeA, typeB, true);
@@ -135,8 +155,26 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
       return TypeChecker.getInstance().getRuntimeSupport().coerce_(type, targetPattern, false);
     }
 
-  }
+    @Override
+    public void checkRoot(SNode root, Consumer<? super NodeReportItem> errorsConsumer) {
+      run((tcc) -> {
+        // the typechecking context is expected to have been created with the same root node
+        if (tcc.getNode() == null || tcc.getNode() != root) return;
+        tcc.checkRoot(true);
+        tcc.getNodesWithErrors(true)
+           .stream()
+           .flatMap((pair) -> pair.o2.stream())
+           .map(TypesystemReportItemAdapter::new)
+           .forEach(errorsConsumer);
+      });
+    }
 
+    protected abstract <R> R compute(Function<? super TypeCheckingContext, R> fun);
+
+    protected abstract void run(Consumer<? super TypeCheckingContext> fun);
+
+  }
+  
   private static class IncrementalLegacyTypecheckingQueries extends AbstractLegacyTypecheckingQueries implements LegacyTypecheckingQueries {
 
     private final IncrementalTypecheckingContext myTypecheckingContext;
@@ -146,25 +184,10 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
       this.myTypecheckingContext = typecheckingContext;
     }
 
-    @Nullable
-    @Override
-    public SNode getTypeOf(SNode expression) {
-      if (expression == null) return null;
-      return myTypecheckingContext.getTypeOf(expression, TypeChecker.getInstance());
-    }
-
-    @Nullable
-    @Override
-    public SNode getInferredType(SNode expression) {
-      if (expression == null) return null;
-      return myTypecheckingContext.getTypeOf(expression, TypeChecker.getInstance());
-    }
-
     @Override
     public boolean isIncremental() {
       return true;
     }
-
     @Override
     public TypeCheckingContext getTypeCheckingContext() {
       return myTypecheckingContext;
@@ -174,26 +197,22 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
       myTypecheckingContext.dispose();
     }
 
+    @Override
+    protected <R> R compute(Function<? super TypeCheckingContext, R> fun) {
+      return fun.apply(myTypecheckingContext);
+    }
+
+    @Override
+    protected void run(Consumer<? super TypeCheckingContext> fun) {
+      fun.accept(myTypecheckingContext);
+    }
+
   }
 
   private static class TargetLegacyTypecheckingQueries extends AbstractLegacyTypecheckingQueries implements LegacyTypecheckingQueries {
 
     public TargetLegacyTypecheckingQueries(Flags flags) {
       super(flags);
-    }
-
-    @Nullable
-    @Override
-    public SNode getTypeOf(SNode expression) {
-      if (expression == null) return null;
-      return withTypeCheckingContext((tcc) -> tcc.getTypeOf(expression, TypeChecker.getInstance()));
-    }
-
-    @Nullable
-    @Override
-    public SNode getInferredType(SNode expression) {
-      if (expression == null) return null;
-      return withTypeCheckingContext((tcc) -> tcc.getTypeOf(expression, TypeChecker.getInstance()));
     }
 
     @Override
@@ -205,15 +224,29 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
     public TypeCheckingContext getTypeCheckingContext() {
       throw new UnsupportedOperationException();
     }
-    
-    protected <R> R withTypeCheckingContext(Function<? super TypeCheckingContext, R> fun) {
-      final TargetTypecheckingContext typecheckingContext = new TargetTypecheckingContext(myFlags.getRoot(), TypeChecker.getInstance());
+
+    protected <R> R compute(Function<? super TypeCheckingContext, R> fun) {
+      final TypeCheckingContext tcc = withTypecheckingContext();
       try {
-        return fun.apply(typecheckingContext);
+        return fun.apply(tcc);
 
       } finally {
-        typecheckingContext.dispose();
+        tcc.dispose();
       }
+    }
+    protected void run(Consumer<? super TypeCheckingContext> fun) {
+      final TypeCheckingContext tcc = withTypecheckingContext();
+      try {
+        fun.accept(tcc);
+
+      } finally {
+        tcc.dispose();
+      }
+    }
+
+    @NotNull
+    protected TargetTypecheckingContext withTypecheckingContext() {
+      return new TargetTypecheckingContext(myFlags.getRoot(), TypeChecker.getInstance());
     }
 
   }
@@ -228,14 +261,14 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
     @Override
     public SNode getTypeOf(SNode expression) {
       if (expression == null) return null;
-      return withTypeCheckingContext((tcc) -> tcc.getTypeOf_generationMode(expression));
+      return compute((tcc) -> tcc.getTypeOf_generationMode(expression));
     }
 
     @Nullable
     @Override
     public SNode getInferredType(SNode expression) {
       if (expression == null) return null;
-      return withTypeCheckingContext((tcc) -> tcc.getTypeOf_generationMode(expression));
+      return compute((tcc) -> tcc.getTypeOf_generationMode(expression));
     }
 
   }

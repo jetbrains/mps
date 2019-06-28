@@ -41,7 +41,7 @@ public class TypecheckingSession {
 
   protected TypecheckingSession(TypecheckingController controller, Flags flags) {
     myController = controller;
-    myFlags = flags;
+    myFlags = new Flags(flags); // defensive copying of a mutable parameter
   }
 
   public Flags flags() {
@@ -98,17 +98,17 @@ public class TypecheckingSession {
     public static long FLAG_INCREMENTAL   = 0x1 << 3;
     public static long FLAG_GENERATOR     = 0x1 << 4;
 
-    private final long myFlags;
-    private final SNode myRoot;
+    private long myFlags;
+    private SNode myRoot;
 
     @NotNull
     public static Flags basic() {
-      return new Flags(null, FLAG_BASIC);
+      return new Flags(FLAG_BASIC);
     }
 
     @NotNull
     public static Flags generator() {
-      return new Flags(null, FLAG_GENERATOR);
+      return new Flags(FLAG_GENERATOR);
     }
 
     @NotNull
@@ -118,12 +118,14 @@ public class TypecheckingSession {
 
     @NotNull
     public Flags caching() {
-      return new Flags(myRoot, myFlags | FLAG_CACHING);
+      this.myFlags |= FLAG_CACHING;
+      return this;
     }
 
     @NotNull
     public Flags incremental() {
-      return new Flags(myRoot, myFlags | FLAG_INCREMENTAL);
+      this.myFlags |= FLAG_INCREMENTAL;
+      return this;
     }
 
     public SNode getRoot() {
@@ -149,6 +151,15 @@ public class TypecheckingSession {
     @Override
     public String toString() {
       return "[root=" + myRoot + (myRoot != null ? " (" + myRoot.getReference() + ")" : "") + ", flags=" + myFlags + "]";
+    }
+
+    protected Flags(Flags copyFrom) {
+      this.myRoot = copyFrom.myRoot;
+      this.myFlags = copyFrom.myFlags;
+    }
+
+    private Flags(long flags) {
+      this.myFlags = flags;
     }
 
     private Flags(SNode root, long flags) {

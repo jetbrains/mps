@@ -38,7 +38,7 @@ public class WorkbenchTypecheckingController extends DefaultTypecheckingControll
   private Map<SNodeHandle, TypecheckingSession> myRootSessions = new HashMap<>();
 
   public WorkbenchTypecheckingController(TypecheckingBackend typecheckingBackend) {
-    super(typecheckingBackend);
+    super(typecheckingBackend, Flags.basic());
   }
 
   @Override

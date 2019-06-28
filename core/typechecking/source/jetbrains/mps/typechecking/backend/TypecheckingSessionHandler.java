@@ -78,11 +78,12 @@ public abstract class TypecheckingSessionHandler {
 
   /**
    * Requests that the code is launched in isolation from the currently active session.  
+   * A new transient typechecking session with the default flags.
    */
   public final <T> T runIsolated(Supplier<T> code) {
     T t;
     try {
-      overrideIsolatedController();
+      overrideIsolatedController(Flags.basic());
       t = code.get();
     }
     finally {
@@ -93,10 +94,41 @@ public abstract class TypecheckingSessionHandler {
 
   /**
    * Requests that the code is launched in isolation from the currently active session.
+   * A new transient typechecking session with the specified flags.
+   */
+  public final <T> T runIsolated(Flags flags, Supplier<T> code) {
+    T t;
+    try {
+      overrideIsolatedController(flags);
+      t = code.get();
+    }
+    finally {
+      resetOverride();
+    }
+    return t;
+  }
+
+  /**
+   * Requests that the code is launched in isolation from the currently active session.
+   * A new transient typechecking session with the default flags.
    */
   public final void runIsolated(Runnable code) {
     try {
-      overrideIsolatedController();
+      overrideIsolatedController(Flags.basic());
+      code.run();
+    }
+    finally {
+      resetOverride();
+    }
+  }
+
+  /**
+   * Requests that the code is launched in isolation from the currently active session.
+   * A new transient typechecking session with the specified flags.
+   */
+  public final void runIsolated(Flags flags, Runnable code) {
+    try {
+      overrideIsolatedController(flags);
       code.run();
     }
     finally {
@@ -119,9 +151,10 @@ public abstract class TypecheckingSessionHandler {
   protected abstract void overrideSharedController(@NotNull TypecheckingSession session);
 
   /**
-   * Eagerly initialize and install a session for running typechecking queries in isolation. 
+   * Eagerly initialize and install a session for running typechecking queries in isolation.
+   * @param flags
    */
-  protected abstract void overrideIsolatedController();
+  protected abstract void overrideIsolatedController(Flags flags);
 
   /**
    * Clears the previously installed override controller.

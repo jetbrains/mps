@@ -29,7 +29,7 @@ public class SharedSessionTypecheckingController extends DefaultTypecheckingCont
   private TypecheckingSession mySharedSession;
 
   public SharedSessionTypecheckingController(TypecheckingBackend typecheckingBackend, TypecheckingSession session) {
-    super(typecheckingBackend);
+    super(typecheckingBackend, Flags.basic());
     mySharedSession = session;
     mySharedSession.incUsages();
   }
