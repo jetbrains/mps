@@ -22,8 +22,8 @@ import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
 import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.smodel.action.DefaultChildNodeSetter;
 import jetbrains.mps.smodel.action.DefaultChildNodeSubstituteAction;
+import jetbrains.mps.smodel.action.DefaultSChildSetter;
 import jetbrains.mps.smodel.action.IChildNodeSetter;
 import jetbrains.mps.smodel.action.NodeFactoryManager;
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
@@ -46,7 +46,7 @@ public abstract class AbstractCellMenuPart_ReplaceChild_Item implements Substitu
     final SNode parentNode = cellContext.get(BasicCellContext.EDITED_NODE);
     SContainmentLink containmentLink = cellContext.get(AggregationCellContext.LINK);
     SAbstractConcept defaultConceptOfChild = cellContext.get(AggregationCellContext.CHILD_CONCEPT);
-    IChildNodeSetter setter = new DefaultChildNodeSetter(containmentLink.getDeclarationNode());
+    IChildNodeSetter setter = new DefaultSChildSetter(containmentLink);
     final SNode currentChild = cellContext.getOpt(AggregationCellContext.CURRENT_CHILD_NODE);
 
     final IOperationContext context = editorContext.getOperationContext();

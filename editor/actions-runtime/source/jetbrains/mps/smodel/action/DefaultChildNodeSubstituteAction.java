@@ -24,7 +24,6 @@ import jetbrains.mps.nodeEditor.cellMenu.AbstractNodeSubstituteInfo;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
 import jetbrains.mps.typechecking.TypecheckingFacade;
-import jetbrains.mps.typesystem.inference.TypeChecker;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.Nullable;
@@ -144,9 +143,7 @@ public class DefaultChildNodeSubstituteAction extends AbstractNodeSubstituteActi
   }
 
   private SContainmentLink getLink() {
-    if (mySetter instanceof DefaultChildNodeSetter) {
-      return MetaAdapterByDeclaration.getContainmentLink(((DefaultChildNodeSetter) mySetter).getLinkDeclaration());
-    } else if (mySetter instanceof DefaultSChildSetter) {
+    if (mySetter instanceof DefaultSChildSetter) {
       return ((DefaultSChildSetter) mySetter).getLink();
     }
     return null;
