@@ -6448,7 +6448,7 @@
                         <node concept="liA8E" id="_l" role="2OqNvi">
                           <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.aggregate(java.lang.String,long)" resolve="aggregate" />
                           <node concept="Xl_RD" id="_m" role="37wK5m">
-                            <property role="Xl_RC" value="queryBlock" />
+                            <property role="Xl_RC" value="queryFunction" />
                           </node>
                           <node concept="1adDum" id="_n" role="37wK5m">
                             <property role="1adDun" value="0x120cd55c89bL" />

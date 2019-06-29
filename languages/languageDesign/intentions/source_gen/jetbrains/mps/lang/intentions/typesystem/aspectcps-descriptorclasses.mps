@@ -610,7 +610,7 @@
     </node>
   </node>
   <node concept="312cEu" id="2e">
-    <property role="3GE5qa" value="old" />
+    <property role="3GE5qa" value="traditional" />
     <property role="TrG5h" value="typeof_ConceptFunctionParameter_childNode_InferenceRule" />
     <node concept="3clFbW" id="2f" role="jymVt">
       <node concept="3clFbS" id="2o" role="3clF47">
@@ -1121,7 +1121,7 @@
     </node>
   </node>
   <node concept="312cEu" id="5o">
-    <property role="3GE5qa" value="old" />
+    <property role="3GE5qa" value="traditional" />
     <property role="TrG5h" value="typeof_ConceptFunctionParameter_node_InferenceRule" />
     <node concept="3clFbW" id="5p" role="jymVt">
       <node concept="3clFbS" id="5y" role="3clF47">
@@ -1992,7 +1992,7 @@
                           </node>
                         </node>
                         <node concept="3TrEf2" id="b0" role="2OqNvi">
-                          <ref role="3Tt5mk" to="tp3j:i3dlsyr" resolve="queryBlock" />
+                          <ref role="3Tt5mk" to="tp3j:i3dlsyr" resolve="queryFunction" />
                           <node concept="cd27G" id="b4" role="lGtFl">
                             <node concept="3u3nmq" id="b5" role="cd27D">
                               <property role="3u3nmv" value="1240414324632" />
@@ -2319,7 +2319,7 @@
     </node>
   </node>
   <node concept="312cEu" id="cL">
-    <property role="3GE5qa" value="new.parameter" />
+    <property role="3GE5qa" value="classLike.parameter" />
     <property role="TrG5h" value="typeof_ForConceptParameterDeclaration_InferenceRule" />
     <node concept="3clFbW" id="cM" role="jymVt">
       <node concept="3clFbS" id="cV" role="3clF47">

@@ -61,7 +61,7 @@
     </language>
   </registry>
   <node concept="1M2fIO" id="hQOgExi">
-    <property role="3GE5qa" value="old" />
+    <property role="3GE5qa" value="traditional" />
     <ref role="1M2myG" to="tp3j:hmS6QkF" resolve="IntentionDeclaration" />
     <node concept="2NXJUA" id="hQOgHAO" role="2NY200">
       <node concept="3clFbS" id="hQOgHAP" role="2VODD2">
@@ -84,7 +84,7 @@
     </node>
   </node>
   <node concept="1M2fIO" id="5rGvd38DcHu">
-    <property role="3GE5qa" value="new" />
+    <property role="3GE5qa" value="classLike" />
     <ref role="1M2myG" to="tp3j:2c3oNEsfAwl" resolve="SurroundWithIntentionDeclaration" />
     <node concept="2NXJUA" id="5rGvd38DcHw" role="2NY200">
       <node concept="3clFbS" id="5rGvd38DcHx" role="2VODD2">

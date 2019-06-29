@@ -110,7 +110,7 @@
   <node concept="1YbPZF" id="hmSkZ6f">
     <property role="18ip37" value="true" />
     <property role="TrG5h" value="typeof_ConceptFunctionParameter_node" />
-    <property role="3GE5qa" value="old" />
+    <property role="3GE5qa" value="traditional" />
     <node concept="3clFbS" id="hmSkZ6g" role="18ibNy">
       <node concept="3cpWs8" id="hmSkZ6h" role="3cqZAp">
         <node concept="3cpWsn" id="hmSkZ6i" role="3cpWs9">
@@ -203,7 +203,7 @@
                 <ref role="3cqZAo" node="i38ZRQa" resolve="intention" />
               </node>
               <node concept="3TrEf2" id="i3et8uo" role="2OqNvi">
-                <ref role="3Tt5mk" to="tp3j:i3dlsyr" resolve="queryBlock" />
+                <ref role="3Tt5mk" to="tp3j:i3dlsyr" resolve="queryFunction" />
               </node>
             </node>
             <node concept="3TrEf2" id="i3et8Vx" role="2OqNvi">
@@ -220,7 +220,7 @@
   </node>
   <node concept="1YbPZF" id="38RcvkhOstk">
     <property role="TrG5h" value="typeof_ConceptFunctionParameter_childNode" />
-    <property role="3GE5qa" value="old" />
+    <property role="3GE5qa" value="traditional" />
     <node concept="3clFbS" id="38RcvkhOstl" role="18ibNy">
       <node concept="1Z5TYs" id="38RcvkhOsvm" role="3cqZAp">
         <node concept="mw_s8" id="38RcvkhOsvq" role="1ZfhKB">
@@ -245,7 +245,7 @@
   <node concept="1YbPZF" id="5ChbRjKJ1AY">
     <property role="TrG5h" value="typeof_ForConceptParameterDeclaration" />
     <property role="18ip37" value="true" />
-    <property role="3GE5qa" value="new.parameter" />
+    <property role="3GE5qa" value="classLike.parameter" />
     <node concept="3clFbS" id="5ChbRjKJ1AZ" role="18ibNy">
       <node concept="1Z5TYs" id="5ChbRjKJ1Ga" role="3cqZAp">
         <node concept="mw_s8" id="4y11RyiW0mW" role="1ZfhKB">

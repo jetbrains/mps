@@ -302,8 +302,8 @@
       <node id="1240395258925" at="295,33,296,135" concept="0" />
       <node id="1240395258925" at="296,135,297,110" concept="0" />
       <node id="1240395258925" at="297,110,298,17" concept="0" />
-      <node id="1240395532443" at="298,17,299,187" concept="0" />
-      <node id="1240395258925" at="299,187,300,54" concept="0" />
+      <node id="1240395532443" at="298,17,299,190" concept="0" />
+      <node id="1240395258925" at="299,190,300,54" concept="0" />
       <node id="1240395258925" at="300,54,301,39" concept="0" />
       <node id="1240395258925" at="301,39,302,22" concept="4" />
       <node id="1240395258925" at="293,0,304,0" concept="6" trace="createDescriptorForParameterizedIntentionDeclaration#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />

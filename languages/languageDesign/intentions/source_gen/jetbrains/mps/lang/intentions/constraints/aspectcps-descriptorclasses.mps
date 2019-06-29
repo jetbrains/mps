@@ -258,7 +258,7 @@
   </node>
   <node concept="39dXUE" id="y" />
   <node concept="312cEu" id="z">
-    <property role="3GE5qa" value="old" />
+    <property role="3GE5qa" value="traditional" />
     <property role="TrG5h" value="IntentionDeclaration_Constraints" />
     <node concept="3Tm1VV" id="$" role="1B3o_S">
       <node concept="cd27G" id="F" role="lGtFl">
@@ -872,7 +872,7 @@
     </node>
   </node>
   <node concept="312cEu" id="4j">
-    <property role="3GE5qa" value="new" />
+    <property role="3GE5qa" value="classLike" />
     <property role="TrG5h" value="SurroundWithIntentionDeclaration_Constraints" />
     <node concept="3Tm1VV" id="4k" role="1B3o_S">
       <node concept="cd27G" id="4r" role="lGtFl">
