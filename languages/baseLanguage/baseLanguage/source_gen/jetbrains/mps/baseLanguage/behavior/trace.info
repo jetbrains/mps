@@ -6510,8 +6510,8 @@
       <node id="304895491242222962" at="89,5,90,0" concept="14" />
       <node id="304895491242222964" at="90,0,91,271" concept="12" />
       <node id="304895491242223213" at="94,363,95,371" concept="11" />
-      <node id="304895491242223073" at="95,371,96,173" concept="12" />
-      <node id="4477106456911036205" at="97,372,98,508" concept="12" />
+      <node id="304895491242223073" at="95,371,96,422" concept="12" />
+      <node id="4477106456911036205" at="97,372,98,1092" concept="12" />
       <node id="304895491242223010" at="99,5,100,0" concept="14" />
       <node id="304895491242222999" at="100,0,101,258" concept="12" />
       <node id="7074068829090132551" at="103,93,104,53" concept="13" />
@@ -6607,7 +6607,7 @@
       </scope>
       <scope id="9120987546530543292" at="80,31,81,22" />
       <scope id="4477106456911049844" at="86,172,87,522" />
-      <scope id="4477106456911030032" at="97,372,98,508" />
+      <scope id="4477106456911030032" at="97,372,98,1092" />
       <scope id="7074068829090133120" at="105,364,106,43" />
       <scope id="1240475641063" at="109,592,110,20" />
       <scope id="7074068829090384046" at="117,368,118,43" />
@@ -6638,7 +6638,7 @@
       <scope id="1213877348222" at="46,0,48,0">
         <var name="__thisNode__" id="1213877348222" />
       </scope>
-      <scope id="304895491242223012" at="94,363,96,173">
+      <scope id="304895491242223012" at="94,363,96,422">
         <var name="declaration" id="304895491242223214" />
       </scope>
       <scope id="1213877348222" at="49,0,52,0">
@@ -13923,7 +13923,7 @@
       <node id="1213877524603" at="35,0,36,0" concept="15" trace="getCompileTimeConstantValue_idi1LP2xI" />
       <node id="1213877524603" at="36,0,37,0" concept="15" trace="lvalue_id1653mnvAgpj" />
       <node id="1213877524603" at="38,0,39,0" concept="15" trace="BH_METHODS" />
-      <node id="1238861460603" at="43,91,44,331" concept="12" />
+      <node id="1238861460603" at="43,91,44,740" concept="12" />
       <node id="1238863363508" at="47,410,48,840" concept="12" />
       <node id="3788422799272874127" at="49,5,50,0" concept="14" />
       <node id="4269075651248721543" at="50,0,51,190" concept="11" />
@@ -13973,7 +13973,7 @@
       <node id="1213877524603" at="85,0,100,0" concept="10" trace="invokeSpecial0#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/core/aspects/behaviour/api/SMethod;[Ljava/lang/Object;)null" />
       <node id="1213877524603" at="46,0,72,0" concept="16" trace="getCompileTimeConstantValue_idi1LP2xI#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/module/SModule;)Ljava/lang/Object;" />
       <scope id="1213877524603" at="40,63,40,63" />
-      <scope id="1238861348248" at="43,91,44,331" />
+      <scope id="1238861348248" at="43,91,44,740" />
       <scope id="1238863363489" at="47,410,48,840" />
       <scope id="4269075651248721578" at="56,24,57,19" />
       <scope id="3417429744615223703" at="59,0,60,22">
