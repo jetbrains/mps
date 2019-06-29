@@ -146,6 +146,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.ParameterizedDescriptionBlock:
         if (props_ParameterizedDescriptionBlock == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.deprecated(true);
           cpb.rawPresentation("description");
           props_ParameterizedDescriptionBlock = cpb.create();
         }
@@ -153,6 +154,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.ParameterizedExecuteBlock:
         if (props_ParameterizedExecuteBlock == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.deprecated(true);
           cpb.rawPresentation("execute");
           props_ParameterizedExecuteBlock = cpb.create();
         }
