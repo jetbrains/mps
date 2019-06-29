@@ -35,7 +35,7 @@ public final class SourceSubstituteMacro__BehaviorDescriptor extends BaseBHDescr
 
   /*package*/ static boolean suppress_id2WmWrdnSpX7(@NotNull SNode __thisNode__, SNode child) {
     Iterable<SNode> noAttr = ListSequence.fromList(SNodeOperations.getChildren(SNodeOperations.getParent(__thisNode__))).subtract(ListSequence.fromList(AttributeOperations.getAttributeList(SNodeOperations.getParent(__thisNode__), new IAttributeDescriptor.AllAttributes())));
-    return ListSequence.fromList(SNodeOperations.getNodeAncestors(child, null, true)).intersect(Sequence.fromIterable(noAttr)).isNotEmpty();
+    return child == SNodeOperations.getParent(__thisNode__) || ListSequence.fromList(SNodeOperations.getNodeAncestors(child, null, true)).intersect(Sequence.fromIterable(noAttr)).isNotEmpty();
   }
 
   /*package*/ SourceSubstituteMacro__BehaviorDescriptor() {
