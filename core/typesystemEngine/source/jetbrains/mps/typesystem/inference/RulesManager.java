@@ -32,13 +32,17 @@ import jetbrains.mps.lang.typesystem.runtime.SubstituteType_Runtime;
 import jetbrains.mps.lang.typesystem.runtime.SubtypingRule_Runtime;
 import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.util.Pair;
+import jetbrains.mps.util.containers.MultiMap;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.mps.openapi.model.SNode;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class RulesManager {
@@ -167,12 +171,25 @@ public class RulesManager {
 
   public List<Pair<NonTypesystemRule_Runtime, IsApplicableStatus>> getNonTypesystemRules(SNode node) {
     ensureAllRulesLoaded();
-    List<Pair<NonTypesystemRule_Runtime, IsApplicableStatus>> result = new LinkedList<>();
+    List<Pair<NonTypesystemRule_Runtime, IsApplicableStatus>> result = new ArrayList<>();
+    List<NonTypesystemRule_Runtime> activeForOverride = new ArrayList<>();
     Set<NonTypesystemRule_Runtime> ruleSet;
     ruleSet = myNonTypeSystemRules.getRules(node);
     for (NonTypesystemRule_Runtime rule : ruleSet) {
+      boolean isOverridden = false;
+      for (NonTypesystemRule_Runtime otherRule : activeForOverride) {
+        if (otherRule.overrides(rule)) {
+          isOverridden = true;
+          break;
+        }
+      }
+      if (isOverridden) {
+        activeForOverride.add(rule);
+        continue;
+      }
       IsApplicableStatus status = rule.isApplicableAndPattern(node);
       if (status.isApplicable()) {
+        activeForOverride.add(rule);
         result.add(new Pair<>(rule, status));
       }
     }
