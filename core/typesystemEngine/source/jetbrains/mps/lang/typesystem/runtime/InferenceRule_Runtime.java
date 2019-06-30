@@ -19,6 +19,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 
 public interface InferenceRule_Runtime extends ICheckingRule_Runtime {
 
-  boolean supercedesAttributed(SNode argument, IsApplicableStatus status);
+  boolean supersedesAttributed(SNode argument, IsApplicableStatus status);
 
 }

@@ -196,10 +196,10 @@ import java.util.Set;
       if (rules != null && !rules.isEmpty()) {
         nodesAndRules.add(new Pair<>(nodeOrAttr, rules));
 
-        // check if the last rule applicable to an attribute supercedes the rules that may follow (last one wins)
+        // check if the last rule applicable to an attribute supersedes the rules that may follow (last one wins)
         // this has no effect if we're looking at the attributed node
         Pair<InferenceRule_Runtime, IsApplicableStatus> lastPair = rules.get(rules.size() - 1);
-        if (lastPair.o1.supercedesAttributed(nodeOrAttr, lastPair.o2)) {
+        if (lastPair.o1.supersedesAttributed(nodeOrAttr, lastPair.o2)) {
           break;
         }
       }

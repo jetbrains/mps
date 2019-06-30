@@ -924,7 +924,7 @@
       <node id="1174643207657" at="418,0,422,0" concept="6" trace="createRefNode_2#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="1174643207657" at="426,0,430,0" concept="1" trace="overridesFunSingleRoleHandler_robprv_a1c1b0#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SContainmentLink;Ljetbrains/mps/openapi/editor/EditorContext;)V" />
       <node id="1174643207657" at="515,0,519,0" concept="6" trace="createRefNode_3#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <node id="1174643207657" at="523,0,527,0" concept="1" trace="supercedesFunSingleRoleHandler_robprv_b3b1a#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SContainmentLink;Ljetbrains/mps/openapi/editor/EditorContext;)V" />
+      <node id="1174643207657" at="523,0,527,0" concept="1" trace="supersedesFunSingleRoleHandler_robprv_b3b1a#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SContainmentLink;Ljetbrains/mps/openapi/editor/EditorContext;)V" />
       <node id="1215446326928" at="618,0,622,0" concept="6" trace="createIndentCell_1#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="1174643207657" at="622,0,626,0" concept="6" trace="createRefNode_4#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="1174643207657" at="630,0,634,0" concept="1" trace="bodySingleRoleHandler_robprv_b6b1a#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SContainmentLink;Ljetbrains/mps/openapi/editor/EditorContext;)V" />
@@ -1373,7 +1373,7 @@
       <unit id="1183469471357" at="146,0,179,0" name="jetbrains.mps.lang.typesystem.editor.InferenceRule_EditorBuilder_a$InferenceRule_name_cellMenu_robprv_a0b0a" />
       <unit id="1174643207657" at="337,0,388,0" name="jetbrains.mps.lang.typesystem.editor.InferenceRule_EditorBuilder_a$applicableFunSingleRoleHandler_robprv_c1b1a" />
       <unit id="1174643207657" at="422,0,473,0" name="jetbrains.mps.lang.typesystem.editor.InferenceRule_EditorBuilder_a$overridesFunSingleRoleHandler_robprv_a1c1b0" />
-      <unit id="1174643207657" at="519,0,570,0" name="jetbrains.mps.lang.typesystem.editor.InferenceRule_EditorBuilder_a$supercedesFunSingleRoleHandler_robprv_b3b1a" />
+      <unit id="1174643207657" at="519,0,570,0" name="jetbrains.mps.lang.typesystem.editor.InferenceRule_EditorBuilder_a$supersedesFunSingleRoleHandler_robprv_b3b1a" />
       <unit id="1174643207657" at="626,0,677,0" name="jetbrains.mps.lang.typesystem.editor.InferenceRule_EditorBuilder_a$bodySingleRoleHandler_robprv_b6b1a" />
       <unit id="1174643207657" at="251,0,305,0" name="jetbrains.mps.lang.typesystem.editor.InferenceRule_EditorBuilder_a$applicableNodeSingleRoleHandler_robprv_c0b1a" />
       <unit id="1174643207657" at="72,0,699,0" name="jetbrains.mps.lang.typesystem.editor.InferenceRule_EditorBuilder_a" />

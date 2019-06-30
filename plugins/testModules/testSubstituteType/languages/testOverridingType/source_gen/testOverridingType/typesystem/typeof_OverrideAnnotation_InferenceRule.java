@@ -41,7 +41,7 @@ public class typeof_OverrideAnnotation_InferenceRule extends AbstractInferenceRu
   public boolean overrides() {
     return false;
   }
-  public boolean supercedesAttributed(final SNode overrideAnnotation, IsApplicableStatus status) {
+  public boolean supersedesAttributed(final SNode overrideAnnotation, IsApplicableStatus status) {
     return true;
   }
 }

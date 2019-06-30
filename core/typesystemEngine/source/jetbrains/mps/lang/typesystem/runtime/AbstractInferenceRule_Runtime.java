@@ -29,7 +29,7 @@ public abstract class AbstractInferenceRule_Runtime implements InferenceRule_Run
   }
 
   @Override
-  public boolean supercedesAttributed(SNode argument, IsApplicableStatus status) {
+  public boolean supersedesAttributed(SNode argument, IsApplicableStatus status) {
     return false;
   }
 

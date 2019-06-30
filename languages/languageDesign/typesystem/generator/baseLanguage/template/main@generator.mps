@@ -3,11 +3,11 @@
   <persistence version="9" />
   <languages>
     <use id="df345b11-b8c7-4213-ac66-48d2a9b75d88" name="jetbrains.mps.baseLanguageInternal" version="-1" />
-    <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="3" />
-    <use id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext" version="1" />
+    <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="-1" />
+    <use id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext" version="-1" />
     <use id="13744753-c81f-424a-9c1b-cf8943bf4e86" name="jetbrains.mps.lang.sharedConcepts" version="-1" />
-    <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="2" />
-    <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="2" />
+    <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="-1" />
+    <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="-1" />
     <use id="69b8a993-9b87-4d96-bf0c-3559f4bb0c63" name="jetbrains.mps.lang.slanguage" version="-1" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
@@ -45,8 +45,8 @@
     <import index="ze1i" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.runtime(MPS.Core/)" />
     <import index="1ka" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typechecking(MPS.Core/)" />
     <import index="tp3t" ref="r:00000000-0000-4000-0000-011c89590345(jetbrains.mps.lang.pattern.structure)" />
-    <import index="tpeq" ref="r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)" />
     <import index="9cxc" ref="r:ad005773-c03e-4650-b713-903a4cb6eda9(jetbrains.mps.lang.typesystem.enumMigration)" />
+    <import index="tpeq" ref="r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)" />
     <import index="tp3r" ref="r:00000000-0000-4000-0000-011c8959034b(jetbrains.mps.lang.quotation.structure)" implicit="true" />
   </imports>
   <registry>
@@ -2403,7 +2403,7 @@
       <ref role="2rZz_L" to="tpee:fzclF8t" resolve="InstanceMethodDeclaration" />
     </node>
     <node concept="2rT7sh" id="6lCixFIgnjR" role="2rTMjI">
-      <property role="TrG5h" value="supercedesMethod" />
+      <property role="TrG5h" value="supersedesMethod" />
       <ref role="2rZz_L" to="tpee:fzclF8t" resolve="InstanceMethodDeclaration" />
     </node>
     <node concept="2rT7sh" id="hG0d$9m" role="2rTMjI">
@@ -3298,7 +3298,7 @@
       <node concept="10P_77" id="3DXEio5HUNM" role="3clF45" />
     </node>
     <node concept="3clFb_" id="6lCixFIggXo" role="jymVt">
-      <property role="TrG5h" value="supercedesAttributed" />
+      <property role="TrG5h" value="supersedesAttributed" />
       <node concept="10P_77" id="6lCixFIggXp" role="3clF45" />
       <node concept="3Tm1VV" id="6lCixFIggXq" role="1B3o_S" />
       <node concept="3clFbS" id="6lCixFIggXr" role="3clF47">
@@ -3322,7 +3322,7 @@
                       </node>
                     </node>
                     <node concept="3TrEf2" id="6lCixFIgkxP" role="2OqNvi">
-                      <ref role="3Tt5mk" to="tpd4:6lCixFI9LG8" resolve="supercedesFun" />
+                      <ref role="3Tt5mk" to="tpd4:6lCixFI9LG8" resolve="supersedesFun" />
                     </node>
                   </node>
                   <node concept="3x8VRR" id="6lCixFIggXC" role="2OqNvi" />
@@ -3341,8 +3341,8 @@
         </node>
       </node>
       <node concept="1sPUBX" id="6lCixFIggXH" role="lGtFl">
-        <ref role="v9R2y" node="6lCixFIguMc" resolve="Rule_to_supercedes_method_switch" />
-        <ref role="2rW$FS" node="6lCixFIgnjR" resolve="supercedesMethod" />
+        <ref role="v9R2y" node="6lCixFIguMc" resolve="Rule_to_supersedes_method_switch" />
+        <ref role="2rW$FS" node="6lCixFIgnjR" resolve="supersedesMethod" />
       </node>
       <node concept="37vLTG" id="6lCixFIggXI" role="3clF46">
         <property role="TrG5h" value="argument" />
@@ -23215,21 +23215,21 @@
   </node>
   <node concept="jVnub" id="6lCixFIguMc">
     <property role="3GE5qa" value="definition.rule" />
-    <property role="TrG5h" value="Rule_to_supercedes_method_switch" />
+    <property role="TrG5h" value="Rule_to_supersedes_method_switch" />
     <node concept="3aamgX" id="6lCixFIguMd" role="3aUrZf">
       <property role="36QftV" value="true" />
       <ref role="30HIoZ" to="tpd4:h5YbPVU" resolve="InferenceRule" />
       <node concept="j$656" id="6lCixFIgwN_" role="1lVwrX">
-        <ref role="v9R2y" node="6lCixFIguMg" resolve="Rule_to_supercedes_method" />
+        <ref role="v9R2y" node="6lCixFIguMg" resolve="Rule_to_supersedes_method" />
       </node>
     </node>
   </node>
   <node concept="13MO4I" id="6lCixFIguMg">
     <property role="3GE5qa" value="definition.rule" />
-    <property role="TrG5h" value="Rule_to_supercedes_method" />
+    <property role="TrG5h" value="Rule_to_supersedes_method" />
     <ref role="3gUMe" to="tpd4:h5YbPVU" resolve="InferenceRule" />
     <node concept="3clFb_" id="6lCixFIguMh" role="13RCb5">
-      <property role="TrG5h" value="supercedesAttributed" />
+      <property role="TrG5h" value="supersedesAttributed" />
       <node concept="10P_77" id="6lCixFIguMi" role="3clF45" />
       <node concept="37vLTG" id="6lCixFIguMj" role="3clF46">
         <property role="TrG5h" value="argument" />
@@ -23272,7 +23272,7 @@
                   <node concept="2OqwBi" id="6lCixFIguMA" role="2Oq$k0">
                     <node concept="30H73N" id="6lCixFIguMB" role="2Oq$k0" />
                     <node concept="3TrEf2" id="6lCixFIgwd6" role="2OqNvi">
-                      <ref role="3Tt5mk" to="tpd4:6lCixFI9LG8" resolve="supercedesFun" />
+                      <ref role="3Tt5mk" to="tpd4:6lCixFI9LG8" resolve="supersedesFun" />
                     </node>
                   </node>
                   <node concept="3TrEf2" id="6lCixFIguMD" role="2OqNvi">
@@ -23398,7 +23398,7 @@
                             <node concept="2OqwBi" id="133zdNd3Rb$" role="2Oq$k0">
                               <node concept="1iwH7S" id="133zdNd3Rb_" role="2Oq$k0" />
                               <node concept="1iwH70" id="133zdNd3RbA" role="2OqNvi">
-                                <ref role="1iwH77" node="6lCixFIgnjR" resolve="supercedesMethod" />
+                                <ref role="1iwH77" node="6lCixFIgnjR" resolve="supersedesMethod" />
                                 <node concept="2OqwBi" id="133zdNd3RbB" role="1iwH7V">
                                   <node concept="30H73N" id="133zdNd3RbC" role="2Oq$k0" />
                                   <node concept="2Xjw5R" id="133zdNd3RbD" role="2OqNvi">

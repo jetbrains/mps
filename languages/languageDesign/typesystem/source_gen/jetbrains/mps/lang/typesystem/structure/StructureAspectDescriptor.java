@@ -826,7 +826,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x3e3c1137fe6cb778L);
     b.origin("r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)/1174643105530");
     b.version(2);
-    b.aggregate("supercedesFun", 0x65684a1aee271b08L).target(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x65684a1aee252403L).optional(true).ordered(true).multiple(false).origin("7307171874933775112").done();
+    b.aggregate("supersedesFun", 0x65684a1aee271b08L).target(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x65684a1aee252403L).optional(true).ordered(true).multiple(false).origin("7307171874933775112").done();
     b.aggregate("applicableFun", 0x669222c8f194bfa3L).target(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x669222c8f1941d7fL).optional(true).ordered(true).multiple(false).origin("7391008184910266275").done();
     b.kind(ConceptKind.INTERFACE, StaticScope.GLOBAL);
     b.alias("Inference Rule");

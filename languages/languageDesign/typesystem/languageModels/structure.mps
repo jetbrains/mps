@@ -151,7 +151,7 @@
     <ref role="1TJDcQ" node="hp8hY$D" resolve="AbstractCheckingRule" />
     <node concept="1TJgyj" id="6lCixFI9LG8" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <property role="20kJfa" value="supercedesFun" />
+      <property role="20kJfa" value="supersedesFun" />
       <property role="IQ2ns" value="7307171874933775112" />
       <ref role="20lvS9" node="6lCixFI9ig3" resolve="SupersedeConceptFunction" />
     </node>
@@ -520,18 +520,6 @@
     <property role="3GE5qa" value="query" />
     <property role="EcuMT" value="1176558773329" />
     <ref role="1TJDcQ" to="tpee:fzclF8l" resolve="Statement" />
-    <node concept="1TJgyi" id="3Ftr4R6BH9e" role="1TKVEl">
-      <property role="TrG5h" value="strong" />
-      <property role="IQ2nx" value="4614734314076988359" />
-      <ref role="AX2Wp" node="3Ftr4R6BFC0" resolve="InequalityProperty" />
-      <node concept="3l_iC" id="3Ftr4R6BH9f" role="lGtFl">
-        <node concept="1TJgyi" id="40aP6yznmf7" role="3l_iP">
-          <property role="TrG5h" value="strong" />
-          <property role="IQ2nx" value="4614734314076988359" />
-          <ref role="AX2Wp" node="6HBcgFN52a$" resolve="InequalityProperty" />
-        </node>
-      </node>
-    </node>
     <node concept="1TJgyj" id="h7KnV$E" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="pattern" />
@@ -558,6 +546,18 @@
       <property role="20kJfa" value="elseClause" />
       <property role="IQ2ns" value="1220447035659" />
       <ref role="20lvS9" to="tpee:fzclF80" resolve="StatementList" />
+    </node>
+    <node concept="1TJgyi" id="3Ftr4R6BH9e" role="1TKVEl">
+      <property role="TrG5h" value="strong" />
+      <property role="IQ2nx" value="4614734314076988359" />
+      <ref role="AX2Wp" node="3Ftr4R6BFC0" resolve="InequalityProperty" />
+      <node concept="3l_iC" id="3Ftr4R6BH9f" role="lGtFl">
+        <node concept="1TJgyi" id="40aP6yznmf7" role="3l_iP">
+          <property role="TrG5h" value="strong" />
+          <property role="IQ2nx" value="4614734314076988359" />
+          <ref role="AX2Wp" node="6HBcgFN52a$" resolve="InequalityProperty" />
+        </node>
+      </node>
     </node>
   </node>
   <node concept="1TIwiD" id="h8eJokL">
@@ -647,18 +647,6 @@
     <property role="3GE5qa" value="query" />
     <property role="EcuMT" value="1178870617262" />
     <ref role="1TJDcQ" to="tpee:fz3vP1J" resolve="Expression" />
-    <node concept="1TJgyi" id="3Ftr4R6BH9g" role="1TKVEl">
-      <property role="TrG5h" value="strong" />
-      <property role="IQ2nx" value="7739208407757214262" />
-      <ref role="AX2Wp" node="3Ftr4R6BFC0" resolve="InequalityProperty" />
-      <node concept="3l_iC" id="3Ftr4R6BH9h" role="lGtFl">
-        <node concept="1TJgyi" id="6HBcgFN5t8Q" role="3l_iP">
-          <property role="TrG5h" value="strong" />
-          <property role="IQ2nx" value="7739208407757214262" />
-          <ref role="AX2Wp" node="6HBcgFN52a$" resolve="InequalityProperty" />
-        </node>
-      </node>
-    </node>
     <node concept="1TJgyj" id="h9Ub_0O" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="pattern" />
@@ -672,6 +660,18 @@
       <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="1178870894645" />
       <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
+    </node>
+    <node concept="1TJgyi" id="3Ftr4R6BH9g" role="1TKVEl">
+      <property role="TrG5h" value="strong" />
+      <property role="IQ2nx" value="7739208407757214262" />
+      <ref role="AX2Wp" node="3Ftr4R6BFC0" resolve="InequalityProperty" />
+      <node concept="3l_iC" id="3Ftr4R6BH9h" role="lGtFl">
+        <node concept="1TJgyi" id="6HBcgFN5t8Q" role="3l_iP">
+          <property role="TrG5h" value="strong" />
+          <property role="IQ2nx" value="7739208407757214262" />
+          <ref role="AX2Wp" node="6HBcgFN52a$" resolve="InequalityProperty" />
+        </node>
+      </node>
     </node>
   </node>
   <node concept="1TIwiD" id="h9UdQCX">
@@ -2010,6 +2010,52 @@
     <property role="EcuMT" value="7391008184910224767" />
     <ref role="1TJDcQ" to="tpee:gyVMwX8" resolve="ConceptFunction" />
   </node>
+  <node concept="25R3W" id="3Ftr4R6BFC0">
+    <property role="TrG5h" value="InequalityProperty" />
+    <property role="3GE5qa" value="definition.statement.inequality" />
+    <property role="3F6X1D" value="7739208407757103780" />
+    <ref role="1H5jkz" node="3Ftr4R6BFC2" resolve="as_is" />
+    <node concept="2JgGob" id="3Ftr4R6BFC1" role="lGtFl">
+      <property role="3scbB" value="5CkWgdpp3fb/int_ordinal" />
+      <property role="3sfsH" value="5CkWgdpp0p2/by_presentation" />
+      <node concept="AxPO7" id="6HBcgFN52a$" role="3lCyv">
+        <property role="TrG5h" value="InequalityProperty" />
+        <property role="3GE5qa" value="definition.statement.inequality" />
+        <property role="3F6X1D" value="7739208407757103780" />
+        <ref role="M4eZT" to="tpck:fKAQMTA" resolve="integer" />
+        <node concept="M4N5e" id="6HBcgFN52a_" role="M5hS2">
+          <property role="1uS6qv" value="0" />
+          <property role="1uS6qo" value="as is" />
+        </node>
+        <node concept="M4N5e" id="6HBcgFN52aA" role="M5hS2">
+          <property role="1uS6qv" value="1" />
+          <property role="1uS6qo" value="same as inequality" />
+        </node>
+        <node concept="M4N5e" id="6HBcgFN52aB" role="M5hS2">
+          <property role="1uS6qv" value="2" />
+          <property role="1uS6qo" value="opposite to inequality" />
+        </node>
+      </node>
+    </node>
+    <node concept="25R33" id="3Ftr4R6BFC2" role="25R1y">
+      <property role="TrG5h" value="as_is" />
+      <property role="1L1pqM" value="as is" />
+      <property role="3tVfz5" value="7739208407757103781" />
+      <ref role="2wpffI" node="6HBcgFN52a_" />
+    </node>
+    <node concept="25R33" id="3Ftr4R6BFC3" role="25R1y">
+      <property role="TrG5h" value="same_as_inequality" />
+      <property role="1L1pqM" value="same as inequality" />
+      <property role="3tVfz5" value="7739208407757103782" />
+      <ref role="2wpffI" node="6HBcgFN52aA" />
+    </node>
+    <node concept="25R33" id="3Ftr4R6BFC4" role="25R1y">
+      <property role="TrG5h" value="opposite_to_inequality" />
+      <property role="1L1pqM" value="opposite to inequality" />
+      <property role="3tVfz5" value="7739208407757103783" />
+      <ref role="2wpffI" node="6HBcgFN52aB" />
+    </node>
+  </node>
   <node concept="25R3W" id="3Ftr4R6BFAD">
     <property role="TrG5h" value="InequationPriority" />
     <property role="3GE5qa" value="definition.statement.inequality" />
@@ -2073,52 +2119,6 @@
       <property role="TrG5h" value="inf" />
       <property role="3tVfz5" value="1212056211202" />
       <ref role="2wpffI" node="hCObwW2" />
-    </node>
-  </node>
-  <node concept="25R3W" id="3Ftr4R6BFC0">
-    <property role="TrG5h" value="InequalityProperty" />
-    <property role="3GE5qa" value="definition.statement.inequality" />
-    <property role="3F6X1D" value="7739208407757103780" />
-    <ref role="1H5jkz" node="3Ftr4R6BFC2" resolve="as_is" />
-    <node concept="2JgGob" id="3Ftr4R6BFC1" role="lGtFl">
-      <property role="3scbB" value="5CkWgdpp3fb/int_ordinal" />
-      <property role="3sfsH" value="5CkWgdpp0p2/by_presentation" />
-      <node concept="AxPO7" id="6HBcgFN52a$" role="3lCyv">
-        <property role="TrG5h" value="InequalityProperty" />
-        <property role="3GE5qa" value="definition.statement.inequality" />
-        <property role="3F6X1D" value="7739208407757103780" />
-        <ref role="M4eZT" to="tpck:fKAQMTA" resolve="integer" />
-        <node concept="M4N5e" id="6HBcgFN52a_" role="M5hS2">
-          <property role="1uS6qv" value="0" />
-          <property role="1uS6qo" value="as is" />
-        </node>
-        <node concept="M4N5e" id="6HBcgFN52aA" role="M5hS2">
-          <property role="1uS6qv" value="1" />
-          <property role="1uS6qo" value="same as inequality" />
-        </node>
-        <node concept="M4N5e" id="6HBcgFN52aB" role="M5hS2">
-          <property role="1uS6qv" value="2" />
-          <property role="1uS6qo" value="opposite to inequality" />
-        </node>
-      </node>
-    </node>
-    <node concept="25R33" id="3Ftr4R6BFC2" role="25R1y">
-      <property role="TrG5h" value="as_is" />
-      <property role="1L1pqM" value="as is" />
-      <property role="3tVfz5" value="7739208407757103781" />
-      <ref role="2wpffI" node="6HBcgFN52a_" />
-    </node>
-    <node concept="25R33" id="3Ftr4R6BFC3" role="25R1y">
-      <property role="TrG5h" value="same_as_inequality" />
-      <property role="1L1pqM" value="same as inequality" />
-      <property role="3tVfz5" value="7739208407757103782" />
-      <ref role="2wpffI" node="6HBcgFN52aA" />
-    </node>
-    <node concept="25R33" id="3Ftr4R6BFC4" role="25R1y">
-      <property role="TrG5h" value="opposite_to_inequality" />
-      <property role="1L1pqM" value="opposite to inequality" />
-      <property role="3tVfz5" value="7739208407757103783" />
-      <ref role="2wpffI" node="6HBcgFN52aB" />
     </node>
   </node>
 </model>

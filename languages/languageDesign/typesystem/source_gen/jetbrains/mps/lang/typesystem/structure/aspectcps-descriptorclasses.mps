@@ -28195,7 +28195,7 @@
                         <node concept="liA8E" id="2Av" role="2OqNvi">
                           <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.aggregate(java.lang.String,long)" resolve="aggregate" />
                           <node concept="Xl_RD" id="2Aw" role="37wK5m">
-                            <property role="Xl_RC" value="supercedesFun" />
+                            <property role="Xl_RC" value="supersedesFun" />
                           </node>
                           <node concept="1adDum" id="2Ax" role="37wK5m">
                             <property role="1adDun" value="0x65684a1aee271b08L" />

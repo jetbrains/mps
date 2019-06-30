@@ -44,7 +44,7 @@ public class typeof_UnconditionalOverrideAnnotation_InferenceRule extends Abstra
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
-  public boolean supercedesAttributed(final SNode overrideAnnotation, IsApplicableStatus status) {
+  public boolean supersedesAttributed(final SNode overrideAnnotation, IsApplicableStatus status) {
     return true;
   }
   private static SNode _quotation_createNode_ldhnbc_a1a0c0a0a0a2() {

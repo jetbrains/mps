@@ -2,12 +2,12 @@
 <model ref="r:00000000-0000-4000-0000-011c895902b0(jetbrains.mps.lang.typesystem.editor)">
   <persistence version="9" />
   <languages>
-    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="13" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
-    <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="4" />
-    <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
+    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="-1" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="-1" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="-1" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="-1" />
+    <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="-1" />
+    <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="-1" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -929,11 +929,11 @@
           </node>
           <node concept="3EZMnI" id="6qi8GzL_cfN" role="3EZMnx">
             <node concept="3F0ifn" id="6qi8GzL_cfO" role="3EZMnx">
-              <property role="3F0ifm" value="supercedes attributed" />
+              <property role="3F0ifm" value="supersedes attributed" />
             </node>
             <node concept="3F1sOY" id="6qi8GzL_cfP" role="3EZMnx">
               <property role="1$x2rV" value="false" />
-              <ref role="1NtTu8" to="tpd4:6lCixFI9LG8" resolve="supercedesFun" />
+              <ref role="1NtTu8" to="tpd4:6lCixFI9LG8" resolve="supersedesFun" />
             </node>
             <node concept="VPM3Z" id="6qi8GzL_cfQ" role="3F10Kt">
               <property role="VOm3f" value="false" />
@@ -949,7 +949,7 @@
                         <node concept="Bykcj" id="2_1mL0eofVs" role="2OqNvi">
                           <node concept="1aIX9F" id="2_1mL0eofVt" role="1xVPHs">
                             <node concept="26LbJo" id="2_1mL0eofVu" role="1aIX9E">
-                              <ref role="26LbJp" to="tpd4:6lCixFI9LG8" resolve="supercedesFun" />
+                              <ref role="26LbJp" to="tpd4:6lCixFI9LG8" resolve="supersedesFun" />
                             </node>
                           </node>
                         </node>
