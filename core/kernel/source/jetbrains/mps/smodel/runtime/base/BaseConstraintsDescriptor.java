@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.smodel.runtime.base;
 
+import jetbrains.mps.kernel.model.SModelUtil;
 import jetbrains.mps.smodel.adapter.structure.concept.SAbstractConceptAdapter;
 import jetbrains.mps.smodel.language.ConceptRegistry;
 import jetbrains.mps.smodel.runtime.CheckingNodeContext;
@@ -27,7 +28,6 @@ import jetbrains.mps.smodel.runtime.ConstraintFunction;
 import jetbrains.mps.smodel.runtime.ConstraintFunctions;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.IconResource;
-import jetbrains.mps.smodel.runtime.InheritanceIterable;
 import jetbrains.mps.smodel.runtime.PropertyConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
@@ -44,7 +44,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
-import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class BaseConstraintsDescriptor implements ConstraintsDescriptor {
   private final SAbstractConcept myConcept;
@@ -59,7 +59,7 @@ public class BaseConstraintsDescriptor implements ConstraintsDescriptor {
   private final ConcurrentHashMap<SReferenceLink, ReferenceConstraintsDescriptor> referencesConstraints = new ConcurrentHashMap<>();
 
   public BaseConstraintsDescriptor(SAbstractConcept concept) {
-    this.myConcept = concept;
+    myConcept = concept;
 
     propertiesConstraints.putAll(getSpecifiedProperties());
     referencesConstraints.putAll(getSpecifiedReferences());
@@ -126,12 +126,13 @@ public class BaseConstraintsDescriptor implements ConstraintsDescriptor {
     return myDefaultScopeConstraint;
   }
 
-  private <C, R> List<ConstraintFunction<C, R>> collectParents(Function<BaseConstraintsDescriptor, ConstraintFunction<C, R>> mapper) {
-    return new InheritanceIterable(myConcept).stream()
-        .map(BaseConstraintsDescriptor::getDescriptor)
-        .filter(Objects::nonNull)
-        .map(mapper)
-        .collect(Collectors.toList());
+  private <C, R> Stream<ConstraintFunction<C, R>> collectParents(Function<BaseConstraintsDescriptor, ConstraintFunction<C, R>> mapper) {
+    // fixme rewrite without recursion
+    List<SAbstractConcept> directSuperConcepts = SModelUtil.getDirectSuperConcepts(myConcept);
+    return directSuperConcepts.stream()
+                              .map(BaseConstraintsDescriptor::getDescriptor)
+                              .filter(Objects::nonNull)
+                              .map(mapper);
   }
 
   protected static BaseConstraintsDescriptor getDescriptor(SAbstractConcept concept) {

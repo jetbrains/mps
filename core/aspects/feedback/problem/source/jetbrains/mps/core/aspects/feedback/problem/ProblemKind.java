@@ -21,6 +21,8 @@ import org.jetbrains.annotations.NotNull;
 public interface ProblemKind {
 
   /**
+   * NOTE we will need it when we introduce a context in the MPS world
+   *
    * @return the associated type of context for this problem kind
    */
   @NotNull default ContextGenre getContextGenre() {

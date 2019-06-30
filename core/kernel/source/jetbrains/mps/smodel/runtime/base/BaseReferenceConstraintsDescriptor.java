@@ -15,13 +15,13 @@
  */
 package jetbrains.mps.smodel.runtime.base;
 
+import jetbrains.mps.kernel.model.SModelUtil;
 import jetbrains.mps.smodel.adapter.ids.SReferenceLinkId;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.adapter.structure.concept.SAbstractConceptAdapter;
 import jetbrains.mps.smodel.language.ConceptRegistry;
 import jetbrains.mps.smodel.runtime.ConceptDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
-import jetbrains.mps.smodel.runtime.InheritanceIterable;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsDispatchable;
 import jetbrains.mps.smodel.runtime.ReferenceDescriptor;
@@ -81,7 +81,8 @@ public class BaseReferenceConstraintsDescriptor implements ReferenceConstraintsD
   @Nullable
   private static ReferenceConstraintsDescriptor getSomethingUsingInheritance(SAbstractConcept concept, SReferenceLink referenceLinkId,
       InheritanceCalculateParameters parameters) {
-    for (SAbstractConcept parent : new InheritanceIterable(concept)) {
+    // fixme rewrite without recursion
+    for (SAbstractConcept parent : SModelUtil.getDirectSuperConcepts(concept)) {
       if (!((SAbstractConceptAdapter) parent).hasReference(referenceLinkId)) {
         continue;
       }

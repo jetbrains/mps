@@ -19,9 +19,9 @@ import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  *
@@ -40,10 +40,10 @@ public final class ConstraintFunctions {
    * If none constraint functions supplied, it always returns true.
    */
   @NotNull
-  public static <Context> ConstraintFunction<Context, Boolean> createBooleanComposition(Iterable<ConstraintFunction<Context, Boolean>> constraints) {
+  public static <Context> ConstraintFunction<Context, Boolean> createBooleanComposition(Stream<ConstraintFunction<Context, Boolean>> constraints) {
     List<ConstraintFunction<Context, Boolean>> constraintList = collectConstraints(constraints);
 
-    if (constraintList.size() == 0) {
+    if (constraintList.isEmpty()) {
       return (ConstraintFunction<Context, Boolean>) EMPTY_BOOLEAN_COMPOSITION;
     }
     if (constraintList.size() == 1) {
@@ -59,8 +59,7 @@ public final class ConstraintFunctions {
    */
   @NotNull
   public static <Context> ConstraintFunction<Context, ReferenceScopeProvider> createScopeProviderComposition(
-      Iterable<ConstraintFunction<Context, ReferenceScopeProvider>> constraints
-  ) {
+      Stream<ConstraintFunction<Context, ReferenceScopeProvider>> constraints) {
     List<ConstraintFunction<Context, ReferenceScopeProvider>> constraintList = collectConstraints(constraints);
 
     if (constraintList.size() == 0) {
@@ -108,10 +107,8 @@ public final class ConstraintFunctions {
   }
 
   // filtering out duplicated constraint functions
-  private static <C, R> List<ConstraintFunction<C, R>> collectConstraints(Iterable<ConstraintFunction<C, R>> constraints) {
-    LinkedHashSet<ConstraintFunction<C, R>> constraintSet = new LinkedHashSet<>();
-    constraints.forEach(constraintSet::add);
-    return new ArrayList<>(constraintSet);
+  private static <C, R> List<ConstraintFunction<C, R>> collectConstraints(Stream<ConstraintFunction<C, R>> constraints) {
+    return constraints.distinct().collect(Collectors.toList());
   }
 
   private static final ConstraintFunction<?, Boolean> EMPTY_BOOLEAN_COMPOSITION = (context, checkingNodeContext) -> true;

@@ -36,6 +36,7 @@ public interface FeedbackProvider<C extends Context> {
    */
   @NotNull FeedbackType getType();
 
+  // todo NB probably we will need applicability here. lets do it later
 //  default boolean appliesTo(@NotNull C context) {
 //    return true;
 //  }

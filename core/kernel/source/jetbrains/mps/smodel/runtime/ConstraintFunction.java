@@ -39,7 +39,7 @@ import org.jetbrains.annotations.Nullable;
  *
  * Example:
  *
- * Assuming, there is concepts A, B, C, D:
+ * Assuming, there are concepts A, B, C, D:
  *  A extends B, C;
  *  B extends D;
  *  C extends D.

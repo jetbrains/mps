@@ -29,7 +29,7 @@ import org.jetbrains.mps.openapi.model.SNode;
  * ConstraintsDescriptor is specific to a single concept
  * Generated constraints roots inherit from this interface
  *
- * @author sorokin
+ * @author unknown, sorokin
  */
 public interface ConstraintsDescriptor {
   // legacy part
@@ -40,6 +40,22 @@ public interface ConstraintsDescriptor {
   boolean canBeParent(@NotNull ConstraintContext_CanBeParent context, @Nullable CheckingNodeContext checkingNodeContext);
 
   boolean canBeAncestor(@NotNull ConstraintContext_CanBeAncestor context, @Nullable CheckingNodeContext checkingNodeContext);
+
+  default boolean canBeChildIsDeclared() {
+    return true;
+  }
+
+  default boolean canBeParentIsDeclared() {
+    return true;
+  }
+
+  default boolean canBeRootIsDeclared() {
+    return true;
+  }
+
+  default boolean canBeAncestorIsDeclared() {
+    return true;
+  }
 
   PropertyConstraintsDescriptor getProperty(SProperty property);
 
