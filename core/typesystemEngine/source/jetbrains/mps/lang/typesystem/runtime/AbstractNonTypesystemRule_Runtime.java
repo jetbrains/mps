@@ -29,11 +29,6 @@ public abstract class AbstractNonTypesystemRule_Runtime implements NonTypesystem
   }
 
   @Override
-  public boolean overrides(SNode argument, IsApplicableStatus status) {
-    return overrides();
-  }
-
-  @Override
   public boolean overrides() {
     return false;
   }
