@@ -220,8 +220,8 @@ public class ConstraintsChecker extends AbstractNodeCheckerInEditor implements I
     SContainmentLink link = node.getContainmentLink();
     if (!(parentConcept.getContainmentLinks().contains(link))) {
       errorsCollector.addError(new ConceptFeatureMissingError(node, SNodeOperations.getContainingLink(node)));
-      return true;
+      return false;
     }
-    return false;
+    return true;
   }
 }
