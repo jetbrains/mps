@@ -1523,9 +1523,12 @@
             <node concept="3cpWs6" id="7qeGd28R2Sv" role="3cqZAp">
               <node concept="2OqwBi" id="fMeCEH9RUl" role="3cqZAk">
                 <node concept="liA8E" id="1m3n$n10Qar" role="2OqNvi">
-                  <ref role="37wK5l" to="xx25:~SEnumerationAdapter.getLiteralById(long)" resolve="getLiteralById" />
+                  <ref role="37wK5l" to="xx25:~SEnumerationAdapter.getLiteralById(long,java.lang.String)" resolve="getLiteralById" />
                   <node concept="37vLTw" id="1m3n$n10UAx" role="37wK5m">
                     <ref role="3cqZAo" node="1eSXJReoP29" resolve="memberId" />
+                  </node>
+                  <node concept="37vLTw" id="64HFK4ZUyFO" role="37wK5m">
+                    <ref role="3cqZAo" node="64HFK4ZUy51" resolve="enumMemberName" />
                   </node>
                 </node>
                 <node concept="1eOMI4" id="7qeGd28R2fU" role="2Oq$k0">
@@ -1567,6 +1570,10 @@
       <node concept="37vLTG" id="1eSXJReoP29" role="3clF46">
         <property role="TrG5h" value="memberId" />
         <node concept="3cpWsb" id="1eSXJReoPsF" role="1tU5fm" />
+      </node>
+      <node concept="37vLTG" id="64HFK4ZUy51" role="3clF46">
+        <property role="TrG5h" value="enumMemberName" />
+        <node concept="17QB3L" id="64HFK4ZUyhO" role="1tU5fm" />
       </node>
     </node>
     <node concept="2YIFZL" id="RUp6jEzCRE" role="jymVt">
@@ -13278,6 +13285,9 @@
                   <node concept="37vLTw" id="7q4qlnqfJO_" role="37wK5m">
                     <ref role="3cqZAo" node="5okb0OxU87E" resolve="enumMemberId" />
                   </node>
+                  <node concept="37vLTw" id="64HFK4ZUxrq" role="37wK5m">
+                    <ref role="3cqZAo" node="64HFK4ZUt$m" resolve="enumMemberName" />
+                  </node>
                 </node>
               </node>
             </node>
@@ -13301,6 +13311,12 @@
       <node concept="37vLTG" id="5okb0OxU87E" role="3clF46">
         <property role="TrG5h" value="enumMemberId" />
         <node concept="3cpWsb" id="7q4qlnqfB9V" role="1tU5fm" />
+      </node>
+      <node concept="37vLTG" id="64HFK4ZUt$m" role="3clF46">
+        <property role="TrG5h" value="enumMemberName" />
+        <node concept="3uibUv" id="64HFK4ZUwix" role="1tU5fm">
+          <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+        </node>
       </node>
     </node>
     <node concept="2tJIrI" id="5okb0OxU7CU" role="jymVt" />
@@ -15065,7 +15081,7 @@
               <ref role="3cqZAo" node="7DKVVH$LYqd" resolve="enumeration" />
             </node>
             <node concept="liA8E" id="5xOmJgD7pXS" role="2OqNvi">
-              <ref role="37wK5l" to="xx25:~SEnumerationAdapter.serialize(org.jetbrains.mps.openapi.language.SEnumerationLiteral)" resolve="serialize" />
+              <ref role="37wK5l" to="xx25:~SEnumerationAdapter.toString(java.lang.Object)" resolve="toString" />
               <node concept="37vLTw" id="5xOmJgD7yYL" role="37wK5m">
                 <ref role="3cqZAo" node="7DKVVH$LGUX" resolve="member" />
               </node>
@@ -15117,15 +15133,43 @@
             </node>
           </node>
         </node>
-        <node concept="3cpWs6" id="5xOmJgD7$Td" role="3cqZAp">
-          <node concept="2OqwBi" id="5xOmJgD7$Te" role="3cqZAk">
-            <node concept="37vLTw" id="5xOmJgD8$Dc" role="2Oq$k0">
-              <ref role="3cqZAo" node="5xOmJgD8o$5" resolve="enumeration" />
+        <node concept="3cpWs8" id="5PPx1PrKcfc" role="3cqZAp">
+          <node concept="3cpWsn" id="5PPx1PrKcfd" role="3cpWs9">
+            <property role="TrG5h" value="value" />
+            <node concept="3uibUv" id="5PPx1PrKc8o" role="1tU5fm">
+              <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
             </node>
-            <node concept="liA8E" id="5xOmJgD7$Tg" role="2OqNvi">
-              <ref role="37wK5l" to="xx25:~SEnumerationAdapter.deserialize(java.lang.String)" resolve="deserialize" />
-              <node concept="37vLTw" id="5xOmJgD8AzV" role="37wK5m">
-                <ref role="3cqZAo" node="5xOmJgD7Gwy" resolve="value" />
+            <node concept="2OqwBi" id="5PPx1PrKcfe" role="33vP2m">
+              <node concept="37vLTw" id="5PPx1PrKcff" role="2Oq$k0">
+                <ref role="3cqZAo" node="5xOmJgD8o$5" resolve="enumeration" />
+              </node>
+              <node concept="liA8E" id="5PPx1PrKcfg" role="2OqNvi">
+                <ref role="37wK5l" to="xx25:~SEnumerationAdapter.fromString(java.lang.String)" resolve="fromString" />
+                <node concept="37vLTw" id="5PPx1PrKcfh" role="37wK5m">
+                  <ref role="3cqZAo" node="5xOmJgD7Gwy" resolve="serializedValue" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="5xOmJgD7$Td" role="3cqZAp">
+          <node concept="3K4zz7" id="5PPx1PrKdS3" role="3cqZAk">
+            <node concept="10Nm6u" id="5PPx1PrKe0R" role="3K4E3e" />
+            <node concept="10QFUN" id="5PPx1PrKeJP" role="3K4GZi">
+              <node concept="37vLTw" id="5PPx1PrKfy4" role="10QFUP">
+                <ref role="3cqZAo" node="5PPx1PrKcfd" resolve="value" />
+              </node>
+              <node concept="3uibUv" id="5PPx1PrKeRC" role="10QFUM">
+                <ref role="3uigEE" to="c17a:~SEnumerationLiteral" resolve="SEnumerationLiteral" />
+              </node>
+            </node>
+            <node concept="3clFbC" id="5PPx1PrKcYy" role="3K4Cdx">
+              <node concept="10M0yZ" id="5PPx1PrKdGR" role="3uHU7w">
+                <ref role="3cqZAo" to="c17a:~SType.NOT_A_VALUE" resolve="NOT_A_VALUE" />
+                <ref role="1PxDUh" to="c17a:~SType" resolve="SType" />
+              </node>
+              <node concept="37vLTw" id="5PPx1PrKcfi" role="3uHU7B">
+                <ref role="3cqZAo" node="5PPx1PrKcfd" resolve="value" />
               </node>
             </node>
           </node>
@@ -15152,7 +15196,7 @@
         <node concept="17QB3L" id="5xOmJgD7QRC" role="1tU5fm" />
       </node>
       <node concept="37vLTG" id="5xOmJgD7Gwy" role="3clF46">
-        <property role="TrG5h" value="value" />
+        <property role="TrG5h" value="serializedValue" />
         <node concept="3uibUv" id="5xOmJgD7Gwx" role="1tU5fm">
           <ref role="3uigEE" to="wyt6:~String" resolve="String" />
         </node>

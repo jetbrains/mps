@@ -16,6 +16,7 @@
 package jetbrains.mps.smodel.adapter.structure.types;
 
 import jetbrains.mps.util.StringUtil;
+import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SDataType;
@@ -41,7 +42,11 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
  *
  * At the point, where `typeof(node.ABCprop)` will become an enum member but not a primitive type,
  * we can change semantic and remove this class.
+ *
+ * @deprecated since typeof(node.ABCprop) eventually become enum member
  */
+@Deprecated
+@ToRemove(version = 19.2)
 public class InvalidEnumerationLiteral implements SEnumerationLiteral {
 
   @NotNull

@@ -116,9 +116,9 @@ public class SEnumOperations {
   public static SEnumerationLiteral getMemberForName(SEnumeration enumeration, String name) {
     return (enumeration == null ? null : enumeration.getLiteral(name));
   }
-  public static SEnumerationLiteral getMember(SEnumeration enumeration, long memberId) {
+  public static SEnumerationLiteral getMember(SEnumeration enumeration, long memberId, String enumMemberName) {
     if (enumeration instanceof SEnumerationAdapter) {
-      return ((SEnumerationAdapter) enumeration).getLiteralById(memberId);
+      return ((SEnumerationAdapter) enumeration).getLiteralById(memberId, enumMemberName);
     }
     return null;
   }

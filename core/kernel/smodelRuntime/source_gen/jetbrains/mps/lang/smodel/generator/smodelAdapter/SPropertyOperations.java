@@ -55,10 +55,10 @@ public class SPropertyOperations {
       SNodeAccessUtil.setPropertyValue(node, property, propertyValue);
     }
   }
-  public static void setEnum(SNode node, SProperty property, long enumMemberId) {
+  public static void setEnum(SNode node, SProperty property, long enumMemberId, String enumMemberName) {
     if (node != null) {
       SEnumeration enumeration = as_sbyy7e_a0a0a0a9(property.getType(), SEnumeration.class);
-      SNodeAccessUtil.setPropertyValue(node, property, SEnumOperations.getMember(enumeration, enumMemberId));
+      SNodeAccessUtil.setPropertyValue(node, property, SEnumOperations.getMember(enumeration, enumMemberId, enumMemberName));
     }
   }
 
@@ -251,12 +251,13 @@ public class SPropertyOperations {
       return null;
     }
     SEnumerationAdapter enumeration = as_sbyy7e_a0a1a04(member.getEnumeration(), SEnumerationAdapter.class);
-    return enumeration.serialize(member);
+    return enumeration.toString(member);
   }
 
-  public static SEnumerationLiteral deserializeEnummember(long uuidHigh, long uuidLow, long enumId, String fqEnumNameHint, String value) {
+  public static SEnumerationLiteral deserializeEnummember(long uuidHigh, long uuidLow, long enumId, String fqEnumNameHint, String serializedValue) {
     SEnumerationAdapter enumeration = as_sbyy7e_a0a0a24(MetaAdapterFactory.getEnumeration(uuidHigh, uuidLow, enumId, fqEnumNameHint), SEnumerationAdapter.class);
-    return enumeration.deserialize(value);
+    Object value = enumeration.fromString(serializedValue);
+    return (value == SType.NOT_A_VALUE ? null : (SEnumerationLiteral) value);
   }
   private static <T> T as_sbyy7e_a0a0a0a9(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);

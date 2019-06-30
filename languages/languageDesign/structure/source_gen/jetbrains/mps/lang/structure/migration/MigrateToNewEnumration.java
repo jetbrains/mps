@@ -133,8 +133,8 @@ public class MigrateToNewEnumration extends MigrationScriptBase {
         }
       }).toListSequence();
 
-      ListSequence.fromList(SLinkOperations.getChildren(generatedMigrationUtils, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member"))).addElement(genereateFromEnumMethod("name", enumm, _quotation_createNode_3t318f_c0a0d0l0m(), memberNames, SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e9237b686f1e935L, "jetbrains.mps.lang.structure.structure.EnumCustomMethodReplacementKind"), 0x2e9237b686f1e93aL)));
-      ListSequence.fromList(SLinkOperations.getChildren(generatedMigrationUtils, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member"))).addElement(genereateToEnumMethod("fromName", "name", enumm, _quotation_createNode_3t318f_d0a0e0l0m(), memberNames, SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e9237b686f1e935L, "jetbrains.mps.lang.structure.structure.EnumCustomMethodReplacementKind"), 0x2e9237b686f1e93eL)));
+      ListSequence.fromList(SLinkOperations.getChildren(generatedMigrationUtils, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member"))).addElement(genereateFromEnumMethod("name", enumm, _quotation_createNode_3t318f_c0a0d0l0m(), memberNames, SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e9237b686f1e935L, "jetbrains.mps.lang.structure.structure.EnumCustomMethodReplacementKind"), 0x2e9237b686f1e93aL, "memberToName")));
+      ListSequence.fromList(SLinkOperations.getChildren(generatedMigrationUtils, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member"))).addElement(genereateToEnumMethod("fromName", "name", enumm, _quotation_createNode_3t318f_d0a0e0l0m(), memberNames, SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e9237b686f1e935L, "jetbrains.mps.lang.structure.structure.EnumCustomMethodReplacementKind"), 0x2e9237b686f1e93eL, "nameToMember")));
     }
 
     if (SEnumOperations.isMember(SPropertyOperations.getEnum(enumMigration, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f103596433e4L, "valueOpMigration")), 0x5a14f103596433d8L)) {
@@ -163,8 +163,8 @@ public class MigrateToNewEnumration extends MigrationScriptBase {
         }).toListSequence();
 
       }
-      ListSequence.fromList(SLinkOperations.getChildren(generatedMigrationUtils, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member"))).addElement(genereateFromEnumMethod("value", enumm, valueType, memberValues, SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e9237b686f1e935L, "jetbrains.mps.lang.structure.structure.EnumCustomMethodReplacementKind"), 0x2e9237b686f1e936L)));
-      ListSequence.fromList(SLinkOperations.getChildren(generatedMigrationUtils, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member"))).addElement(genereateToEnumMethod("fromValue", "value", enumm, valueType, memberValues, SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e9237b686f1e935L, "jetbrains.mps.lang.structure.structure.EnumCustomMethodReplacementKind"), 0x2e9237b686f1e937L)));
+      ListSequence.fromList(SLinkOperations.getChildren(generatedMigrationUtils, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member"))).addElement(genereateFromEnumMethod("value", enumm, valueType, memberValues, SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e9237b686f1e935L, "jetbrains.mps.lang.structure.structure.EnumCustomMethodReplacementKind"), 0x2e9237b686f1e936L, "memberToValue")));
+      ListSequence.fromList(SLinkOperations.getChildren(generatedMigrationUtils, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member"))).addElement(genereateToEnumMethod("fromValue", "value", enumm, valueType, memberValues, SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e9237b686f1e935L, "jetbrains.mps.lang.structure.structure.EnumCustomMethodReplacementKind"), 0x2e9237b686f1e937L, "valueToMember")));
     }
   }
 
@@ -192,59 +192,59 @@ public class MigrateToNewEnumration extends MigrationScriptBase {
     // As first operations have much more usages, we initially trying to migrate them in a sane way,  
     // then care about latter 
 
-    SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f103596433e4L, "valueOpMigration"), 0x5a14f103596433d8L);
-    SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035964062eL, "nameOpMigration"), 0x5a14f10359640645L);
+    SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f103596433e4L, "valueOpMigration"), 0x5a14f103596433d8L, "by_custom_methods");
+    SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035964062eL, "nameOpMigration"), 0x5a14f10359640645L, "by_custom_methods");
 
     if (SLinkOperations.hasPointer(oldEnum, MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0xfc3210ef05L, "memberDataType"), new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1082983657063"))) {
 
-      SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f103596433e4L, "valueOpMigration"), 0x5a14f103596433c6L);
+      SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f103596433e4L, "valueOpMigration"), 0x5a14f103596433c6L, "boolean");
 
       if (oldNamesSuite(oldEnum)) {
-        SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035964062eL, "nameOpMigration"), 0x5a14f10359640641L);
+        SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035964062eL, "nameOpMigration"), 0x5a14f10359640641L, "by_name");
       } else if (externalEqualsOldName(oldEnum)) {
-        SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035964062eL, "nameOpMigration"), 0x5a14f10359640642L);
+        SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035964062eL, "nameOpMigration"), 0x5a14f10359640642L, "by_presentation");
       }
 
     } else if (SLinkOperations.hasPointer(oldEnum, MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0xfc3210ef05L, "memberDataType"), new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1082983657062"))) {
 
       if (internalValuesAreOrdinal(oldEnum)) {
-        SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f103596433e4L, "valueOpMigration"), 0x5a14f103596433cbL);
+        SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f103596433e4L, "valueOpMigration"), 0x5a14f103596433cbL, "int_ordinal");
       } else if (internalValuesAreOrdinalPlusOne(oldEnum)) {
-        SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f103596433e4L, "valueOpMigration"), 0x5a14f103596433d1L);
+        SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f103596433e4L, "valueOpMigration"), 0x5a14f103596433d1L, "int_ordinal_plus_one");
       }
 
       if (oldNamesSuite(oldEnum)) {
-        SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035964062eL, "nameOpMigration"), 0x5a14f10359640641L);
+        SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035964062eL, "nameOpMigration"), 0x5a14f10359640641L, "by_name");
       } else if (externalEqualsOldName(oldEnum)) {
-        SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035964062eL, "nameOpMigration"), 0x5a14f10359640642L);
+        SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035964062eL, "nameOpMigration"), 0x5a14f10359640642L, "by_presentation");
       }
 
     } else {
       if (internalEqualsOldName(oldEnum)) {
         if (internalValueSuite(oldEnum)) {
-          SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f103596433e4L, "valueOpMigration"), 0x5a14f103596433beL);
-          SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035964062eL, "nameOpMigration"), 0x5a14f10359640641L);
+          SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f103596433e4L, "valueOpMigration"), 0x5a14f103596433beL, "string_name");
+          SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035964062eL, "nameOpMigration"), 0x5a14f10359640641L, "by_name");
         } else if (externalEqualsInternal(oldEnum)) {
-          SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f103596433e4L, "valueOpMigration"), 0x5a14f103596433bfL);
-          SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035964062eL, "nameOpMigration"), 0x5a14f10359640642L);
+          SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f103596433e4L, "valueOpMigration"), 0x5a14f103596433bfL, "string_presentation");
+          SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035964062eL, "nameOpMigration"), 0x5a14f10359640642L, "by_presentation");
         }
       } else {
         if (internalValueSuite(oldEnum) && externalEqualsOldName(oldEnum)) {
-          SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f103596433e4L, "valueOpMigration"), 0x5a14f103596433beL);
-          SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035964062eL, "nameOpMigration"), 0x5a14f10359640642L);
+          SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f103596433e4L, "valueOpMigration"), 0x5a14f103596433beL, "string_name");
+          SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035964062eL, "nameOpMigration"), 0x5a14f10359640642L, "by_presentation");
           namingStrategy = BY_INTERNAL_VALUE;
         } else if (oldNamesSuite(oldEnum) && externalEqualsInternal(oldEnum)) {
-          SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f103596433e4L, "valueOpMigration"), 0x5a14f103596433bfL);
-          SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035964062eL, "nameOpMigration"), 0x5a14f10359640641L);
+          SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f103596433e4L, "valueOpMigration"), 0x5a14f103596433bfL, "string_presentation");
+          SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035964062eL, "nameOpMigration"), 0x5a14f10359640641L, "by_name");
         } else if (internalValueSuite(oldEnum)) {
-          SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f103596433e4L, "valueOpMigration"), 0x5a14f103596433beL);
+          SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f103596433e4L, "valueOpMigration"), 0x5a14f103596433beL, "string_name");
           namingStrategy = BY_INTERNAL_VALUE;
         } else if (externalEqualsInternal(oldEnum)) {
-          SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f103596433e4L, "valueOpMigration"), 0x5a14f103596433bfL);
+          SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f103596433e4L, "valueOpMigration"), 0x5a14f103596433bfL, "string_presentation");
         } else if (oldNamesSuite(oldEnum)) {
-          SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035964062eL, "nameOpMigration"), 0x5a14f10359640641L);
+          SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035964062eL, "nameOpMigration"), 0x5a14f10359640641L, "by_name");
         } else if (externalEqualsOldName(oldEnum)) {
-          SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035964062eL, "nameOpMigration"), 0x5a14f10359640642L);
+          SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035964062eL, "nameOpMigration"), 0x5a14f10359640642L, "by_presentation");
         }
       }
     }
