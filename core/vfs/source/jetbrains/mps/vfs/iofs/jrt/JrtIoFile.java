@@ -205,7 +205,7 @@ public class JrtIoFile implements IFile {
       return myFS.getFile(myJdkPath, myModule, null);
     }
 
-    return myFS.getFile(myJdkPath, myModule, myPathInModule.substring(index));
+    return myFS.getFile(myJdkPath, myModule, myPathInModule.substring(0, index));
   }
 
   //----------------- pure fs-delegating methods ----------------------
