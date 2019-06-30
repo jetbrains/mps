@@ -127,6 +127,11 @@ public abstract class TypeCheckingContext {
 
   public abstract boolean checkIfNotChecked(SNode node, boolean useNonTypesystemRules);
 
+  /**
+   * Do both checkRoot and applyNonTypesystemRules.
+   */
+  public abstract void checkAll(boolean refreshTypes, boolean useNonTypesystemRules);
+
   public abstract void checkRoot();
 
   public abstract void checkRoot(boolean refreshTypes);

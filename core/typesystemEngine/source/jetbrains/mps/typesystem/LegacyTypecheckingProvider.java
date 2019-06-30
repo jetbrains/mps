@@ -37,6 +37,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -160,8 +161,7 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
       run((tcc) -> {
         // the typechecking context is expected to have been created with the same root node
         if (tcc.getNode() == null || tcc.getNode() != root) return;
-        tcc.checkRoot(true);
-        tcc.getNodesWithErrors(true)
+        tcc.checkRootAndGetErrors(true)
            .stream()
            .flatMap((pair) -> pair.o2.stream())
            .map(TypesystemReportItemAdapter::new)

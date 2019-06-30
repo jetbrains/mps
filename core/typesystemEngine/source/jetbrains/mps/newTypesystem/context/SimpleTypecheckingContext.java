@@ -237,16 +237,21 @@ public abstract class SimpleTypecheckingContext<
       try {
         this.myCurrentlyChecking = true;
         if (!isCheckedRoot(useNonTypesystemRules)) {
-          checkRoot();
-          if (useNonTypesystemRules) {
-            applyNonTypesystemRules();
-          }
+          checkAll(false, useNonTypesystemRules);
         }
         return true;
       }
       finally {
         this.myCurrentlyChecking = false;
       }
+    }
+  }
+
+  @Override
+  public void checkAll(boolean refreshTypes, boolean useNonTypesystemRules) {
+    checkRoot(refreshTypes);
+    if (useNonTypesystemRules) {
+      applyNonTypesystemRules();
     }
   }
 

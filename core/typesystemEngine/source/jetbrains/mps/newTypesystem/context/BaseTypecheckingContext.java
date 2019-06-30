@@ -206,4 +206,5 @@ public abstract class BaseTypecheckingContext extends TypeCheckingContext {
   public void checkRootInTraceMode(final boolean refreshTypes) {
     assert false;
   }
+
 }
