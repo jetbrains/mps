@@ -46,6 +46,7 @@
       <module fileurl="file://$PROJECT_DIR$/core/make-runtime/solutions/jetbrains.mps.make.facets/make-facets.iml" filepath="$PROJECT_DIR$/core/make-runtime/solutions/jetbrains.mps.make.facets/make-facets.iml" group="core" />
       <module fileurl="file://$PROJECT_DIR$/core/make-runtime/make-runtime.iml" filepath="$PROJECT_DIR$/core/make-runtime/make-runtime.iml" group="core" />
       <module fileurl="file://$PROJECT_DIR$/core/aspects/feedback/messages-api/messages-api.iml" filepath="$PROJECT_DIR$/core/aspects/feedback/messages-api/messages-api.iml" group="core/aspects/feedback" />
+      <module fileurl="file://$PROJECT_DIR$/core/aspects/feedback/messages-for-legacy-constraints/messages-for-legacy-constraints.iml" filepath="$PROJECT_DIR$/core/aspects/feedback/messages-for-legacy-constraints/messages-for-legacy-constraints.iml" group="core/aspects/feedback" />
       <module fileurl="file://$PROJECT_DIR$/core/aspects/feedback/messages-for-rules/messages-for-rules.iml" filepath="$PROJECT_DIR$/core/aspects/feedback/messages-for-rules/messages-for-rules.iml" group="core/aspects/feedback" />
       <module fileurl="file://$PROJECT_DIR$/plugins/mps-migration/migration-platform/migration-platform.iml" filepath="$PROJECT_DIR$/plugins/mps-migration/migration-platform/migration-platform.iml" group="plugins" />
       <module fileurl="file://$PROJECT_DIR$/plugins/mps-migration/migration-workbench/migration-workbench.iml" filepath="$PROJECT_DIR$/plugins/mps-migration/migration-workbench/migration-workbench.iml" group="plugins" />
