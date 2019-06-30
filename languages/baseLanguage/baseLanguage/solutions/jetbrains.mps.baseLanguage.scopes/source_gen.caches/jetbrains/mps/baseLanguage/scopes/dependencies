@@ -256,13 +256,10 @@
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations" />
-    <classNode dependClassName="jetbrains.mps.newTypesystem.SubtypingUtil" />
     <classNode dependClassName="jetbrains.mps.scope.Scope" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="jetbrains.mps.smodel.constraints.ModelConstraints" />
     <classNode dependClassName="jetbrains.mps.typechecking.TypecheckingFacade" />
-    <classNode dependClassName="jetbrains.mps.typesystem.inference.SubtypingManager" />
-    <classNode dependClassName="jetbrains.mps.typesystem.inference.TypeChecker" />
     <classNode dependClassName="jetbrains.mps.typesystem.inference.util.StructuralNodeMap" />
     <classNode dependClassName="jetbrains.mps.util.Pair" />
     <classNode dependClassName="jetbrains.mps.util.SNodeOperations" />

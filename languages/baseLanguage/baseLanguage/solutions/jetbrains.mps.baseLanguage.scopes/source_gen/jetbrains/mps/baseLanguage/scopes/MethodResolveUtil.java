@@ -18,16 +18,13 @@ import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.typesystem.inference.util.StructuralNodeMap;
 import java.util.Set;
-import jetbrains.mps.typesystem.inference.SubtypingManager;
-import jetbrains.mps.typesystem.inference.TypeChecker;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
-import jetbrains.mps.newTypesystem.SubtypingUtil;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.internal.collections.runtime.IMapping;
 import java.util.Iterator;
-import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.baseLanguage.behavior.IMethodCall__BehaviorDescriptor;
@@ -138,7 +135,6 @@ public class MethodResolveUtil {
   private static List<SNode> selectByParameterTypeNode(@Nullable SNode typeOfArg, int indexOfArg, List<SNode> candidates, Map<SNode, SNode> typeByTypeVar, boolean mostSpecific, boolean isWeak) {
     List<SNode> result = new ArrayList<SNode>();
     StructuralNodeMap<Set<SNode>> typesOfParamToMethods = new StructuralNodeMap<Set<SNode>>();
-    SubtypingManager subtypingManager = TypeChecker.getInstance().getSubtypingManager();
     for (SNode candidate : candidates) {
       boolean varArg = false;
       List<SNode> params = SLinkOperations.getChildren(candidate, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"));
@@ -159,7 +155,10 @@ public class MethodResolveUtil {
       }
       typeOfParam = GenericTypesUtil.getTypeWithResolvedTypeVars(typeOfParam, typeByTypeVar);
       typeOfParam = GenericTypesUtil.methodParamTypeWoutTypeVars(typeOfParam, methodTypeVariableDecls);
-      if (subtypingManager.isSubtype(typeOfArg, typeOfParam, isWeak)) {
+      // only respect boxing-unboxing 
+      boolean boxingInvolved = SNodeOperations.isInstanceOf(typeOfArg, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f0ad8bde4L, "jetbrains.mps.baseLanguage.structure.PrimitiveType")) != SNodeOperations.isInstanceOf(typeOfParam, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f0ad8bde4L, "jetbrains.mps.baseLanguage.structure.PrimitiveType"));
+      // in case boxing is involved and isWeak is false, isSubtype is always false 
+      if ((isWeak || !(boxingInvolved)) && TypecheckingFacade.getFromContext().isSubtype(typeOfArg, typeOfParam)) {
         Set<SNode> methods = typesOfParamToMethods.get(typeOfParam);
         if (methods == null) {
           methods = new HashSet<SNode>();
@@ -171,8 +170,8 @@ public class MethodResolveUtil {
     }
     if (mostSpecific) {
       Set<SNode> goodParamTypes = typesOfParamToMethods.keySet();
-      Set<SNode> mostSpecificTypes = SubtypingUtil.mostSpecificTypes(goodParamTypes);
-      if (!(mostSpecificTypes.isEmpty())) {
+      Iterable<SNode> mostSpecificTypes = selectMostSpecific(goodParamTypes);
+      if (!(Sequence.fromIterable(mostSpecificTypes).isEmpty())) {
         result = new ArrayList<SNode>();
         for (SNode mostSpecificType : mostSpecificTypes) {
           result.addAll(typesOfParamToMethods.get(mostSpecificType));
@@ -181,6 +180,36 @@ public class MethodResolveUtil {
     }
     return result;
   }
+
+  private static Iterable<SNode> selectMostSpecific(Iterable<SNode> types) {
+    List<SNode> subtypes = ListSequence.fromList(new ArrayList<SNode>());
+
+with_next_t:
+    for (SNode t : types) {
+      if (t == null) {
+        continue;
+      }
+
+      for (int i = 0; i < ListSequence.fromList(subtypes).count(); i++) {
+        SNode s = ListSequence.fromList(subtypes).getElement(i);
+        if (s == t) {
+          continue with_next_t;
+        }
+        if (TypecheckingFacade.getFromContext().isSubtype(s, t)) {
+          continue with_next_t;
+        }
+        if (TypecheckingFacade.getFromContext().isSubtype(t, s)) {
+          ListSequence.fromList(subtypes).setElement(i, t);
+          continue with_next_t;
+        }
+      }
+      // invariant: no element of subtypes is either same as or a sub/supertype of t 
+      ListSequence.fromList(subtypes).addElement(t);
+    }
+
+    return subtypes;
+  }
+
   public static Map<SNode, SNode> getTypesByTypeVars(@NotNull SNode classifier, Iterable<SNode> typeParameters) {
     Map<SNode, SNode> typeByTypeVar = MapSequence.fromMap(new HashMap<SNode, SNode>());
     for (IMapping<SNode, SNode> elem : MapSequence.fromMap(ClassifierScopeUtils.resolveClassifierTypeVars(classifier))) {
