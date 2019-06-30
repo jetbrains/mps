@@ -7,6 +7,7 @@
   </languages>
   <imports>
     <import index="qbpv" ref="r:63fc051d-731b-428a-af30-ceee8d76dfaa(jetbrains.mps.lang.constraints.rules.kinds.structure)" />
+    <import index="iwhd" ref="r:bd012d1c-91a4-4783-a33f-d2037e757f6d(jetbrains.mps.lang.context.defs.structure)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
   </imports>
   <registry>
@@ -71,7 +72,7 @@
       <property role="20lmBu" value="reference" />
       <property role="20lbJX" value="1" />
       <property role="20kJfa" value="declaration" />
-      <ref role="20lvS9" to="qbpv:6kKc3mjq0oG" resolve="TypedDef" />
+      <ref role="20lvS9" to="iwhd:6kKc3mjq0oG" resolve="TypedDef" />
     </node>
   </node>
   <node concept="1TIwiD" id="4zSofKeg4lv">

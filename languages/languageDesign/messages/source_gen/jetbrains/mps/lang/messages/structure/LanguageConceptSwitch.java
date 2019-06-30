@@ -13,9 +13,6 @@ public final class LanguageConceptSwitch {
   public static final int LiteralMessageExpression = 1;
   public static final int MacroMessageExpression = 2;
   public static final int MessageExpression = 3;
-  public static final int MessageProvider = 4;
-  public static final int MessageProviderForRule = 5;
-  public static final int MessagesRoot = 6;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0xad93155d79b24759L, 0xb10c55123e763903L);
@@ -23,9 +20,6 @@ public final class LanguageConceptSwitch {
     builder.put(0x48f860fc0e362dc5L, LiteralMessageExpression);
     builder.put(0x48f860fc0e41e4a2L, MacroMessageExpression);
     builder.put(0x48f860fc0e362dc4L, MessageExpression);
-    builder.put(0x48f860fc0e30f402L, MessageProvider);
-    builder.put(0x6530303593ae1651L, MessageProviderForRule);
-    builder.put(0x6530303593ae1607L, MessagesRoot);
     myIndex = builder.seal();
   }
 

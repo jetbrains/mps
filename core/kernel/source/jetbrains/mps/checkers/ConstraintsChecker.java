@@ -106,10 +106,13 @@ public class ConstraintsChecker extends AbstractNodeCheckerInEditor implements I
     checkProperties(node, errorsCollector, nodeConcept);
   }
 
+  // rewrite report items so that they respect problems
+  // then all these checks will turn into one
+
   private void checkProperties(@NotNull SNode node, LanguageErrorsCollector errorsCollector, SAbstractConcept concept) {
     for (SProperty property : concept.getProperties()) {
       FailingPropertyConstraintContext context = new FailingPropertyConstraintContext(node, property, SNodeAccessUtil.getPropertyValue(node, property));
-      List<FailingPropertyConstraintProblem> problems = errorsCollector.runCheckingAction(() -> ConstraintsChildAndPropFacade.checkPropertyValue(context));
+      List<? extends Problem> problems = errorsCollector.runCheckingAction(() -> ConstraintsChildAndPropFacade.checkPropertyValue(context));
       if (!problems.isEmpty()) {
         for (Problem problem : problems) {
           TypesystemRuleId ruleId = new TypesystemRuleId(problem.getProblemSource());

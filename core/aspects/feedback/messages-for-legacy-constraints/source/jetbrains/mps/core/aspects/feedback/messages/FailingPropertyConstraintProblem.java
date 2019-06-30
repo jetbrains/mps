@@ -52,10 +52,10 @@ public final class FailingPropertyConstraintProblem implements Problem {
     return mySourceNode;
   }
 
-  private static final class FailingPropertyConstraintProblemId implements ProblemId {
+  public static final class FailingPropertyConstraintProblemId implements ProblemId {
     private final SProperty myPropId;
 
-    private FailingPropertyConstraintProblemId(@NotNull SProperty propId) {
+    public FailingPropertyConstraintProblemId(@NotNull SProperty propId) {
       myPropId = propId;
     }
 

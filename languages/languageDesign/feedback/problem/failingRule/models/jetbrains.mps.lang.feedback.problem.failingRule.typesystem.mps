@@ -20,6 +20,9 @@
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
       </concept>
+      <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
+        <child id="1145553007750" name="creator" index="2ShVmc" />
+      </concept>
       <concept id="1137021947720" name="jetbrains.mps.baseLanguage.structure.ConceptFunction" flags="in" index="2VMwT0">
         <child id="1137022507850" name="body" index="2VODD2" />
       </concept>
@@ -91,6 +94,9 @@
         <reference id="1174650432090" name="applicableNode" index="1YBMHb" />
       </concept>
     </language>
+    <language id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions">
+      <concept id="5979988948250981289" name="jetbrains.mps.lang.actions.structure.SNodeCreatorAndInitializer" flags="nn" index="2fJWfE" />
+    </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
       <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
         <reference id="1177026940964" name="conceptDeclaration" index="cht4Q" />
@@ -101,6 +107,9 @@
         <child id="3906496115198199033" name="conceptArgument" index="3oSUPX" />
       </concept>
       <concept id="1172008320231" name="jetbrains.mps.lang.smodel.structure.Node_IsNotNullOperation" flags="nn" index="3x8VRR" />
+      <concept id="1180636770613" name="jetbrains.mps.lang.smodel.structure.SNodeCreator" flags="nn" index="3zrR0B">
+        <child id="1180636770616" name="createdType" index="3zrR0E" />
+      </concept>
       <concept id="1140137987495" name="jetbrains.mps.lang.smodel.structure.SNodeTypeCastExpression" flags="nn" index="1PxgMI" />
       <concept id="1138055754698" name="jetbrains.mps.lang.smodel.structure.SNodeType" flags="in" index="3Tqbb2">
         <reference id="1138405853777" name="concept" index="ehGHo" />
@@ -170,12 +179,17 @@
               <node concept="37vLTw" id="5sUTrySNqsE" role="3uHU7w">
                 <ref role="3cqZAo" node="5sUTrySNqs$" resolve="ruleKind" />
               </node>
-              <node concept="2OqwBi" id="5sUTrySNnzl" role="3uHU7B">
-                <node concept="1YBJjd" id="5sUTrySNnpO" role="2Oq$k0">
-                  <ref role="1YBMHb" node="5sUTrySNmFP" resolve="problem" />
+              <node concept="2OqwBi" id="1mFJTG7aDz" role="3uHU7B">
+                <node concept="2OqwBi" id="5sUTrySNnzl" role="2Oq$k0">
+                  <node concept="1YBJjd" id="5sUTrySNnpO" role="2Oq$k0">
+                    <ref role="1YBMHb" node="5sUTrySNmFP" resolve="problem" />
+                  </node>
+                  <node concept="3TrEf2" id="5sUTrySNnFN" role="2OqNvi">
+                    <ref role="3Tt5mk" to="xjeg:5sUTrySNhVO" resolve="kind" />
+                  </node>
                 </node>
-                <node concept="3TrEf2" id="5sUTrySNnFN" role="2OqNvi">
-                  <ref role="3Tt5mk" to="xjeg:5sUTrySNhVO" resolve="kind" />
+                <node concept="3TrEf2" id="1mFJTG7aW$" role="2OqNvi">
+                  <ref role="3Tt5mk" to="xjeg:1mFJTG71EA" resolve="ruleKind" />
                 </node>
               </node>
             </node>
@@ -206,15 +220,45 @@
     <property role="TrG5h" value="FixRuleKind" />
     <node concept="Q5ZZ6" id="5sUTrySNqC$" role="Q6x$H">
       <node concept="3clFbS" id="5sUTrySNqC_" role="2VODD2">
+        <node concept="3cpWs8" id="1mFJTG7b06" role="3cqZAp">
+          <node concept="3cpWsn" id="1mFJTG7b07" role="3cpWs9">
+            <property role="TrG5h" value="failingRuleNode" />
+            <node concept="3Tqbb2" id="1mFJTG7aXP" role="1tU5fm">
+              <ref role="ehGHo" to="xjeg:5sUTrySNgNR" resolve="FailingRuleProblem" />
+            </node>
+            <node concept="1PxgMI" id="1mFJTG7b08" role="33vP2m">
+              <node concept="chp4Y" id="1mFJTG7b09" role="3oSUPX">
+                <ref role="cht4Q" to="xjeg:5sUTrySNgNR" resolve="FailingRuleProblem" />
+              </node>
+              <node concept="Q6c8r" id="1mFJTG7b0a" role="1m5AlR" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="1mFJTG7bCw" role="3cqZAp">
+          <node concept="37vLTI" id="1mFJTG7bHr" role="3clFbG">
+            <node concept="2ShNRf" id="1mFJTG7bQC" role="37vLTx">
+              <node concept="2fJWfE" id="1mFJTG7c24" role="2ShVmc">
+                <node concept="3Tqbb2" id="1mFJTG7c26" role="3zrR0E">
+                  <ref role="ehGHo" to="xjeg:1mFJTG5QXp" resolve="FailingRuleProblemKind" />
+                </node>
+              </node>
+            </node>
+            <node concept="2OqwBi" id="1mFJTG7c8J" role="37vLTJ">
+              <node concept="37vLTw" id="1mFJTG7bCu" role="2Oq$k0">
+                <ref role="3cqZAo" node="1mFJTG7b07" resolve="failingRuleNode" />
+              </node>
+              <node concept="3TrEf2" id="1mFJTG7c9N" role="2OqNvi">
+                <ref role="3Tt5mk" to="xjeg:5sUTrySNhVO" resolve="kind" />
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="5sUTrySNqMH" role="3cqZAp">
           <node concept="37vLTI" id="5sUTrySNrxx" role="3clFbG">
             <node concept="2OqwBi" id="5sUTrySNsgt" role="37vLTx">
               <node concept="2OqwBi" id="5sUTrySNrS8" role="2Oq$k0">
-                <node concept="1PxgMI" id="5sUTrySNrFb" role="2Oq$k0">
-                  <node concept="chp4Y" id="5sUTrySNrFT" role="3oSUPX">
-                    <ref role="cht4Q" to="xjeg:5sUTrySNgNR" resolve="FailingRuleProblem" />
-                  </node>
-                  <node concept="Q6c8r" id="5sUTrySNryG" role="1m5AlR" />
+                <node concept="37vLTw" id="1mFJTG7b0b" role="2Oq$k0">
+                  <ref role="3cqZAo" node="1mFJTG7b07" resolve="failingRuleNode" />
                 </node>
                 <node concept="3TrEf2" id="5sUTrySNs3y" role="2OqNvi">
                   <ref role="3Tt5mk" to="xjeg:5sUTrySNhio" resolve="rule" />
@@ -224,15 +268,17 @@
                 <ref role="37wK5l" to="4boq:1BFxp3HHhyj" resolve="getRuleKind" />
               </node>
             </node>
-            <node concept="2OqwBi" id="5sUTrySNqTd" role="37vLTJ">
-              <node concept="1PxgMI" id="5sUTrySNraC" role="2Oq$k0">
-                <node concept="chp4Y" id="5sUTrySNrcb" role="3oSUPX">
-                  <ref role="cht4Q" to="xjeg:5sUTrySNgNR" resolve="FailingRuleProblem" />
+            <node concept="2OqwBi" id="1mFJTG7cmw" role="37vLTJ">
+              <node concept="2OqwBi" id="5sUTrySNqTd" role="2Oq$k0">
+                <node concept="37vLTw" id="1mFJTG7b0c" role="2Oq$k0">
+                  <ref role="3cqZAo" node="1mFJTG7b07" resolve="failingRuleNode" />
                 </node>
-                <node concept="Q6c8r" id="5sUTrySNqMG" role="1m5AlR" />
+                <node concept="3TrEf2" id="5sUTrySNrlF" role="2OqNvi">
+                  <ref role="3Tt5mk" to="xjeg:5sUTrySNhVO" resolve="kind" />
+                </node>
               </node>
-              <node concept="3TrEf2" id="5sUTrySNrlF" role="2OqNvi">
-                <ref role="3Tt5mk" to="xjeg:5sUTrySNhVO" resolve="kind" />
+              <node concept="3TrEf2" id="1mFJTG7cAS" role="2OqNvi">
+                <ref role="3Tt5mk" to="xjeg:1mFJTG71EA" resolve="ruleKind" />
               </node>
             </node>
           </node>

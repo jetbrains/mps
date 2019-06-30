@@ -307,7 +307,7 @@
     </file>
     <file name="typeof_TypedDefReference_InferenceRule.java">
       <node id="1867733327984704572" at="23,119,24,22" concept="6" />
-      <node id="1328301445983352813" at="25,378,26,253" concept="6" />
+      <node id="1328301445983352813" at="25,367,26,253" concept="6" />
       <node id="1328301445983345493" at="26,253,27,196" concept="6" />
       <node id="315923949159027451" at="28,38,29,73" concept="2" />
       <node id="1867733327984708426" at="32,23,33,248" concept="2" />
@@ -349,7 +349,7 @@
         <var name="argument" id="7291380803376371708" />
       </scope>
       <scope id="7291380803376371708" at="48,0,51,0" />
-      <scope id="1867733327984699150" at="25,378,30,7">
+      <scope id="1867733327984699150" at="25,367,30,7">
         <var name="applicableConcept" id="1328301445983345494" />
         <var name="root" id="1328301445983352814" />
       </scope>

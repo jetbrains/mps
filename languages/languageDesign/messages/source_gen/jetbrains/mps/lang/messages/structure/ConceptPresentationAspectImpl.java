@@ -13,9 +13,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_LiteralMessageExpression;
   private ConceptPresentation props_MacroMessageExpression;
   private ConceptPresentation props_MessageExpression;
-  private ConceptPresentation props_MessageProvider;
-  private ConceptPresentation props_MessageProviderForRule;
-  private ConceptPresentation props_MessagesRoot;
 
   @Override
   @Nullable
@@ -49,26 +46,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_MessageExpression = cpb.create();
         }
         return props_MessageExpression;
-      case LanguageConceptSwitch.MessageProvider:
-        if (props_MessageProvider == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          props_MessageProvider = cpb.create();
-        }
-        return props_MessageProvider;
-      case LanguageConceptSwitch.MessageProviderForRule:
-        if (props_MessageProviderForRule == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.rawPresentation("message");
-          props_MessageProviderForRule = cpb.create();
-        }
-        return props_MessageProviderForRule;
-      case LanguageConceptSwitch.MessagesRoot:
-        if (props_MessagesRoot == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.presentationByName();
-          props_MessagesRoot = cpb.create();
-        }
-        return props_MessagesRoot;
     }
     return null;
   }

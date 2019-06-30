@@ -8,12 +8,18 @@ import jetbrains.mps.core.aspects.constraints.rules.kinds.ContainmentContext;
 import jetbrains.mps.core.aspects.feedback.api.BaseFeedbackDescriptor;
 import jetbrains.mps.core.aspects.feedback.api.FeedbackProvider;
 import jetbrains.mps.core.aspects.feedback.messages.BaseMessageProvider;
+import jetbrains.mps.core.aspects.feedback.messages.FailingPropertyConstraintContext;
+import jetbrains.mps.core.aspects.feedback.messages.FailingPropertyConstraintProblem;
+import jetbrains.mps.core.aspects.feedback.messages.FailingPropertyConstraintProblem.FailingPropertyConstraintProblemId;
+import jetbrains.mps.core.aspects.feedback.messages.FailingRuleKindProblemId;
 import jetbrains.mps.core.aspects.feedback.messages.FailingRuleProblemId;
 import jetbrains.mps.core.aspects.feedback.messages.FailingRuleProblemKind;
 import jetbrains.mps.core.aspects.feedback.messages.MessageProvider;
+import jetbrains.mps.core.aspects.feedback.messages.PredefinedConstraintProblemKind;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 import java.util.stream.Stream;
 
@@ -29,8 +35,9 @@ public final class ParentConcept_Messages extends BaseFeedbackDescriptor {
     }
   };
 
+  // only no concept is available, probably in another class even
   private static final FeedbackProvider<ContainmentContext> MSGPROVIDER_canBeParentDefaultMessage =
-      new BaseMessageProvider<ContainmentContext>(new FailingRuleProblemKind(CanBeParentKind.INSTANCE).getId()) {
+      new BaseMessageProvider<ContainmentContext>(new FailingRuleKindProblemId(CanBeParentKind.INSTANCE)) {
         @NotNull
         @Override
         public Msg yieldMessage(@NotNull ContainmentContext context) {
@@ -38,6 +45,29 @@ public final class ParentConcept_Messages extends BaseFeedbackDescriptor {
         }
       };
 
+  private static final SProperty theProp = null;
+
+  // who generates what
+  // problem.props -> the constructor parameter 'id' AND the template parameter 'Context'
+  // feedback -> everything else
+
+  private static final FeedbackProvider<FailingPropertyConstraintContext> MSGPROVIDER_propMsg =
+      new BaseMessageProvider<FailingPropertyConstraintContext>(new FailingPropertyConstraintProblemId(theProp)) {
+        @NotNull
+        @Override
+        public Msg yieldMessage(@NotNull FailingPropertyConstraintContext context) {
+          return new MessageProvider.StringMsg("sdsf" + context.getProperty());
+        }
+      };
+
+  private static final FeedbackProvider<FailingPropertyConstraintContext> MSGPROVIDER_propDefaultMsg =
+      new BaseMessageProvider<FailingPropertyConstraintContext>(PredefinedConstraintProblemKind.PROPERTY_CONSTRAINTS) {
+        @NotNull
+        @Override
+        public Msg yieldMessage(@NotNull FailingPropertyConstraintContext context) {
+          return new MessageProvider.StringMsg("sdsf" + context.getProperty());
+        }
+      };
 
   private static final Stream<FeedbackProvider> PROVIDERS = Stream.of(MSGPROVIDER_childIsOfCorrectConcept_737pd2_a);
 

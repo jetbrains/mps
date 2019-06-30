@@ -16,6 +16,7 @@
     <import index="4boq" ref="r:724e6e38-de05-4794-9500-38fefe925278(jetbrains.mps.lang.constraints.rules.skeleton.behavior)" />
     <import index="mqj2" ref="r:1d4f6f82-1219-47a2-a4fa-ac3ba14c9fd5(jetbrains.mps.lang.constraints.rules.skeleton.structure)" />
     <import index="zezp" ref="r:7991a70a-e27d-498f-be5b-c967b5f29e47(jetbrains.mps.lang.constraints.rules.behavior)" />
+    <import index="iwhd" ref="r:bd012d1c-91a4-4783-a33f-d2037e757f6d(jetbrains.mps.lang.context.defs.structure)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
   </imports>
   <registry>
@@ -3218,7 +3219,7 @@
               <node concept="3cpWsn" id="1NLt_nKTDZu" role="3cpWs9">
                 <property role="TrG5h" value="defToReplace" />
                 <node concept="3Tqbb2" id="1NLt_nKTADc" role="1tU5fm">
-                  <ref role="ehGHo" to="qbpv:6kKc3mjq0oG" resolve="TypedDef" />
+                  <ref role="ehGHo" to="iwhd:6kKc3mjq0oG" resolve="TypedDef" />
                 </node>
                 <node concept="10Nm6u" id="1NLt_nKTG4j" role="33vP2m" />
               </node>
@@ -3260,7 +3261,7 @@
                           </node>
                           <node concept="v3k3i" id="1NLt_nKTDZF" role="2OqNvi">
                             <node concept="chp4Y" id="SlG8On4LxW" role="v3oSu">
-                              <ref role="cht4Q" to="qbpv:6kKc3mjq0oG" resolve="TypedDef" />
+                              <ref role="cht4Q" to="iwhd:6kKc3mjq0oG" resolve="TypedDef" />
                             </node>
                           </node>
                         </node>

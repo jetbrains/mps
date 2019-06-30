@@ -72,7 +72,7 @@ public class ReplaceWithNodeType extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new ReplaceWithNodeType.SMP_Group_9dsb23_a.SMP_Wrap_9dsb23_a0(), MetaAdapterFactory.getConcept(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, 0x46263286da99051L, "jetbrains.mps.lang.constraints.rules.kinds.structure.NativeTypedNodeDef")));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new ReplaceWithNodeType.SMP_Group_9dsb23_a.SMP_Wrap_9dsb23_a0(), MetaAdapterFactory.getConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x46263286da99051L, "jetbrains.mps.lang.context.defs.structure.NativeTypedNodeDef")));
     }
     private class SMP_Wrap_9dsb23_a0 extends WrapperSubstituteMenuPart {
       @NotNull
@@ -97,7 +97,7 @@ public class ReplaceWithNodeType extends SubstituteMenuBase {
           @Nullable
           @Override
           public SAbstractConcept getOutputConcept() {
-            return MetaAdapterFactory.getConcept(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, 0x46263286da99051L, "jetbrains.mps.lang.constraints.rules.kinds.structure.NativeTypedNodeDef");
+            return MetaAdapterFactory.getConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x46263286da99051L, "jetbrains.mps.lang.context.defs.structure.NativeTypedNodeDef");
           }
           @Nullable
           @Override
@@ -130,7 +130,7 @@ public class ReplaceWithNodeType extends SubstituteMenuBase {
         return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
       }
       private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-        return MetaAdapterFactory.getConcept(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, 0x46263286da99051L, "jetbrains.mps.lang.constraints.rules.kinds.structure.NativeTypedNodeDef");
+        return MetaAdapterFactory.getConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x46263286da99051L, "jetbrains.mps.lang.context.defs.structure.NativeTypedNodeDef");
       }
     }
   }

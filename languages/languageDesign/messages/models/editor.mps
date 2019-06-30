@@ -14,8 +14,8 @@
     <import index="g1qu" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util.ui(MPS.IDEA/)" />
     <import index="exr9" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor(MPS.Editor/)" />
     <import index="o8zo" ref="r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)" />
+    <import index="iwhd" ref="r:bd012d1c-91a4-4783-a33f-d2037e757f6d(jetbrains.mps.lang.context.defs.structure)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
-    <import index="qbpv" ref="r:63fc051d-731b-428a-af30-ceee8d76dfaa(jetbrains.mps.lang.constraints.rules.kinds.structure)" implicit="true" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" implicit="true" />
   </imports>
   <registry>
@@ -1169,13 +1169,13 @@
                     <node concept="7Obwk" id="5sUTrySNauX" role="37wK5m" />
                     <node concept="10Nm6u" id="5sUTrySNaVe" role="37wK5m" />
                     <node concept="35c_gC" id="5sUTrySNb1W" role="37wK5m">
-                      <ref role="35c_gD" to="qbpv:6kKc3mjq0oG" resolve="TypedDef" />
+                      <ref role="35c_gD" to="iwhd:6kKc3mjq0oG" resolve="TypedDef" />
                     </node>
                   </node>
                 </node>
                 <node concept="v3k3i" id="3LOLRuvk_5e" role="2OqNvi">
                   <node concept="chp4Y" id="3LOLRuvk_8P" role="v3oSu">
-                    <ref role="cht4Q" to="qbpv:6kKc3mjq0oG" resolve="TypedDef" />
+                    <ref role="cht4Q" to="iwhd:6kKc3mjq0oG" resolve="TypedDef" />
                   </node>
                 </node>
               </node>
@@ -1234,7 +1234,7 @@
           </node>
         </node>
         <node concept="3Tqbb2" id="3LOLRuvkydn" role="2ZBHrp">
-          <ref role="ehGHo" to="qbpv:6kKc3mjq0oG" resolve="TypedDef" />
+          <ref role="ehGHo" to="iwhd:6kKc3mjq0oG" resolve="TypedDef" />
         </node>
       </node>
     </node>
@@ -1616,7 +1616,7 @@
       <node concept="37vLTG" id="3LOLRuvmN9g" role="3clF46">
         <property role="TrG5h" value="target" />
         <node concept="3Tqbb2" id="3LOLRuvmNsJ" role="1tU5fm">
-          <ref role="ehGHo" to="qbpv:6kKc3mjq0oG" resolve="TypedDef" />
+          <ref role="ehGHo" to="iwhd:6kKc3mjq0oG" resolve="TypedDef" />
         </node>
       </node>
     </node>

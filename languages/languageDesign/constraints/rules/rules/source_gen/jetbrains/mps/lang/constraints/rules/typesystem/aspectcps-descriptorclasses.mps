@@ -6,15 +6,14 @@
   <languages />
   <imports>
     <import index="e2hu" ref="r:61c80a02-cc27-4085-b38d-beaf0fede70a(jetbrains.mps.lang.constraints.rules.typesystem)" />
-    <import index="qkth" ref="r:b973253b-b433-4ca6-bda5-aea854415ed0(jetbrains.mps.lang.constraints.rules.kinds.behavior)" />
     <import index="2gg1" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.errors(MPS.Core/)" />
+    <import index="4d13" ref="r:bfef6725-b58e-47c1-9fba-6e80a685f593(jetbrains.mps.lang.context.defs.behavior)" />
     <import index="twe9" ref="r:28e6d713-c3c3-493e-8d97-e9a2c49f28ce(jetbrains.mps.lang.structure.util)" />
     <import index="zavc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.errors.messageTargets(MPS.Core/)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="mqj2" ref="r:1d4f6f82-1219-47a2-a4fa-ac3ba14c9fd5(jetbrains.mps.lang.constraints.rules.skeleton.structure)" />
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
-    <import index="qbpv" ref="r:63fc051d-731b-428a-af30-ceee8d76dfaa(jetbrains.mps.lang.constraints.rules.kinds.structure)" />
     <import index="qurh" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.typesystem.runtime(MPS.Core/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="bm42" ref="r:83f25986-cdbc-469a-a327-db97a2ec5a39(jetbrains.mps.lang.constraints.rules.structure)" />
@@ -22,6 +21,7 @@
     <import index="u78q" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typesystem.inference(MPS.Core/)" />
     <import index="beg" ref="r:09811e4e-aa47-4ea2-ad3d-57b7b9ffc7e3(jetbrains.mps.lang.constraints.plugin)" />
     <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
+    <import index="iwhd" ref="r:bd012d1c-91a4-4783-a33f-d2037e757f6d(jetbrains.mps.lang.context.defs.structure)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
   </imports>
   <registry>
@@ -2182,7 +2182,7 @@
                           </node>
                         </node>
                         <node concept="2qgKlT" id="bo" role="2OqNvi">
-                          <ref role="37wK5l" to="qkth:35M2kEOydzo" resolve="hasApplicableCondition" />
+                          <ref role="37wK5l" to="4d13:35M2kEOydzo" resolve="hasApplicableCondition" />
                           <node concept="cd27G" id="by" role="lGtFl">
                             <node concept="3u3nmq" id="bz" role="cd27D">
                               <property role="3u3nmv" value="3562920471664597668" />
@@ -4378,7 +4378,7 @@
             </node>
             <node concept="1mIQ4w" id="oS" role="2OqNvi">
               <node concept="chp4Y" id="p2" role="cj9EA">
-                <ref role="cht4Q" to="qbpv:hyoMxHEp1h" resolve="NativeTypedNodeDef" />
+                <ref role="cht4Q" to="iwhd:hyoMxHEp1h" resolve="NativeTypedNodeDef" />
                 <node concept="cd27G" id="p4" role="lGtFl">
                   <node concept="3u3nmq" id="p5" role="cd27D">
                     <property role="3u3nmv" value="1867733327984702054" />
@@ -4432,7 +4432,7 @@
                     </node>
                   </node>
                   <node concept="2qgKlT" id="pk" role="2OqNvi">
-                    <ref role="37wK5l" to="qkth:4JP_D2W1aPH" resolve="getErasedType" />
+                    <ref role="37wK5l" to="4d13:4JP_D2W1aPH" resolve="getErasedType" />
                     <node concept="cd27G" id="pu" role="lGtFl">
                       <node concept="3u3nmq" id="pv" role="cd27D">
                         <property role="3u3nmv" value="1867733327984708261" />

@@ -14,6 +14,8 @@
     <import index="mqj2" ref="r:1d4f6f82-1219-47a2-a4fa-ac3ba14c9fd5(jetbrains.mps.lang.constraints.rules.skeleton.structure)" />
     <import index="10hr" ref="r:d674956e-add1-4c62-993b-3cd157f5ca62(jetbrains.mps.lang.constraints.rules.skeleton.plugin)" />
     <import index="beg" ref="r:09811e4e-aa47-4ea2-ad3d-57b7b9ffc7e3(jetbrains.mps.lang.constraints.plugin)" />
+    <import index="4d13" ref="r:bfef6725-b58e-47c1-9fba-6e80a685f593(jetbrains.mps.lang.context.defs.behavior)" />
+    <import index="iwhd" ref="r:bd012d1c-91a4-4783-a33f-d2037e757f6d(jetbrains.mps.lang.context.defs.structure)" />
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" implicit="true" />
     <import index="tpce" ref="r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)" implicit="true" />
   </imports>
@@ -349,7 +351,7 @@
           </node>
           <node concept="1mIQ4w" id="1BFxp3HFV9h" role="2OqNvi">
             <node concept="chp4Y" id="1BFxp3HFV9A" role="cj9EA">
-              <ref role="cht4Q" to="qbpv:hyoMxHEp1h" resolve="NativeTypedNodeDef" />
+              <ref role="cht4Q" to="iwhd:hyoMxHEp1h" resolve="NativeTypedNodeDef" />
             </node>
           </node>
         </node>
@@ -368,7 +370,7 @@
                   </node>
                 </node>
                 <node concept="2qgKlT" id="1BFxp3HFWE_" role="2OqNvi">
-                  <ref role="37wK5l" to="qkth:4JP_D2W1aPH" resolve="getErasedType" />
+                  <ref role="37wK5l" to="4d13:4JP_D2W1aPH" resolve="getErasedType" />
                 </node>
               </node>
               <node concept="37vLTw" id="1BFxp3HFWHg" role="37vLTJ">
@@ -743,7 +745,7 @@
                       </node>
                     </node>
                     <node concept="2qgKlT" id="35M2kEOyhE$" role="2OqNvi">
-                      <ref role="37wK5l" to="qkth:35M2kEOydzo" resolve="hasApplicableCondition" />
+                      <ref role="37wK5l" to="4d13:35M2kEOydzo" resolve="hasApplicableCondition" />
                     </node>
                   </node>
                 </node>

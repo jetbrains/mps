@@ -94,7 +94,7 @@
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
     <classNode dependClassName="jetbrains.mps.lang.constraints.rules.behavior.ApplicableCondition__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.constraints.rules.editor.Constraints_Styles_StyleSheet.WhenHintStyleClass" />
-    <classNode dependClassName="jetbrains.mps.lang.constraints.rules.kinds.behavior.TypedDef__BehaviorDescriptor" />
+    <classNode dependClassName="jetbrains.mps.lang.context.defs.behavior.TypedDef__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.editor.cellProviders.SingleRoleCellProvider" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />

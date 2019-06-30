@@ -159,11 +159,6 @@
       <property role="IQ2nx" value="241647608299431129" />
       <ref role="AX2Wp" node="3H1xM9LtLda" resolve="IDNumber" />
     </node>
-    <node concept="1TJgyi" id="5VED60U3DBj" role="1TKVEl">
-      <property role="IQ2nx" value="6839459717313370579" />
-      <property role="TrG5h" value="gagaga" />
-      <ref role="AX2Wp" to="tpck:fKAQMTA" resolve="integer" />
-    </node>
     <node concept="PrWs8" id="50$LP2ztBgn" role="PzmwI">
       <ref role="PrY4T" to="tpck:19gBtYEAf4C" resolve="InterfacePart" />
     </node>

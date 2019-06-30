@@ -12,6 +12,7 @@
     <import index="bm42" ref="r:83f25986-cdbc-469a-a327-db97a2ec5a39(jetbrains.mps.lang.constraints.rules.structure)" />
     <import index="qbpv" ref="r:63fc051d-731b-428a-af30-ceee8d76dfaa(jetbrains.mps.lang.constraints.rules.kinds.structure)" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
+    <import index="iwhd" ref="r:bd012d1c-91a4-4783-a33f-d2037e757f6d(jetbrains.mps.lang.context.defs.structure)" />
   </imports>
   <registry>
     <language id="3f4bc5f5-c6c1-4a28-8b10-c83066ffa4a1" name="jetbrains.mps.lang.constraints">
@@ -33,7 +34,7 @@
     <node concept="1N5Pfh" id="6kKc3mju2TG" role="1Mr941">
       <ref role="1N5Vy1" to="bm42:6kKc3mjlSTu" resolve="declaration" />
       <node concept="1dDu$B" id="6kKc3mju2TK" role="1N6uqs">
-        <ref role="1dDu$A" to="qbpv:6kKc3mjq0oG" resolve="TypedDef" />
+        <ref role="1dDu$A" to="iwhd:6kKc3mjq0oG" resolve="TypedDef" />
       </node>
     </node>
   </node>

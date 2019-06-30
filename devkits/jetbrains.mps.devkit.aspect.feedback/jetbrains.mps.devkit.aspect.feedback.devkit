@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dev-kit name="jetbrains.mps.devkit.aspect.feedback" uuid="0845ddb4-34c2-4a32-b2ae-270bffc5b430">
+  <exported-language name="cd17a113-ca4e-472f-a8de-c49008f9eea8(jetbrains.mps.lang.feedback)" />
+  <exported-language name="16e76fe3-9534-4def-afb7-925a169a7c0b(jetbrains.mps.lang.feedback.messages)" />
+  <exported-language name="517077fd-e44f-4338-a475-1d29781dfdb8(jetbrains.mps.lang.feedback.skeleton)" />
+  <exported-language name="033598a4-76a9-47e1-ac89-a300c0fceab8(jetbrains.mps.lang.feedback.problem)" />
+  <exported-language name="db2a46c2-ebec-4b6c-b6c2-f9b55b9b6f8a(jetbrains.mps.lang.feedback.problem.failingRule)" />
+  <exported-solutions>
+    <exported-solution>a9e4c532-c5f5-4bb7-99ef-42abb73bbb70(jetbrains.mps.lang.descriptor.aspects)</exported-solution>
+  </exported-solutions>
+  <generation-plan model="r:b2450103-82ba-4770-b915-a940947c0fb1(jetbrains.mps.lang.descriptor.feedback@genplan)" />
+</dev-kit>
+

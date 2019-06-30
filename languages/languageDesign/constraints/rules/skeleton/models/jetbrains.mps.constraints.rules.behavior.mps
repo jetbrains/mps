@@ -16,6 +16,7 @@
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" />
     <import index="mqj2" ref="r:1d4f6f82-1219-47a2-a4fa-ac3ba14c9fd5(jetbrains.mps.lang.constraints.rules.skeleton.structure)" />
     <import index="qbpv" ref="r:63fc051d-731b-428a-af30-ceee8d76dfaa(jetbrains.mps.lang.constraints.rules.kinds.structure)" />
+    <import index="iwhd" ref="r:bd012d1c-91a4-4783-a33f-d2037e757f6d(jetbrains.mps.lang.context.defs.structure)" />
   </imports>
   <registry>
     <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
@@ -195,7 +196,7 @@
             </node>
             <node concept="3O6GUB" id="1BFxp3HHhwF" role="2OqNvi">
               <node concept="chp4Y" id="1BFxp3HHhwG" role="3QVz_e">
-                <ref role="cht4Q" to="qbpv:6kKc3mjq0oG" resolve="TypedDef" />
+                <ref role="cht4Q" to="iwhd:6kKc3mjq0oG" resolve="TypedDef" />
               </node>
             </node>
           </node>
@@ -214,7 +215,7 @@
                       </node>
                       <node concept="v3k3i" id="1BFxp3HHhwQ" role="2OqNvi">
                         <node concept="chp4Y" id="1BFxp3HHiGi" role="v3oSu">
-                          <ref role="cht4Q" to="qbpv:6kKc3mjq0oG" resolve="TypedDef" />
+                          <ref role="cht4Q" to="iwhd:6kKc3mjq0oG" resolve="TypedDef" />
                         </node>
                       </node>
                     </node>
@@ -233,7 +234,7 @@
                         </node>
                         <node concept="v3k3i" id="1BFxp3HHhwZ" role="2OqNvi">
                           <node concept="chp4Y" id="1BFxp3HHhx0" role="v3oSu">
-                            <ref role="cht4Q" to="qbpv:6kKc3mjq0oG" resolve="TypedDef" />
+                            <ref role="cht4Q" to="iwhd:6kKc3mjq0oG" resolve="TypedDef" />
                           </node>
                         </node>
                       </node>

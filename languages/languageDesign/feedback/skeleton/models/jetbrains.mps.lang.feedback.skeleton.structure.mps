@@ -41,10 +41,10 @@
   </registry>
   <node concept="1TIwiD" id="6kKc3mjFxo7">
     <property role="EcuMT" value="7291380803381892615" />
-    <property role="TrG5h" value="FeedbackRoot" />
+    <property role="TrG5h" value="FeedbackPerConceptRoot" />
     <property role="19KtqR" value="true" />
     <property role="34LRSv" value="Feedback Root" />
-    <property role="R4oN_" value="here you provide feedback for different problems" />
+    <property role="R4oN_" value="provides feedback for different problems" />
     <node concept="1TJgyj" id="6f2WQqsTmPt" role="1TKVEi">
       <property role="IQ2ns" value="7188575577281228125" />
       <property role="20lmBu" value="reference" />

@@ -13,8 +13,9 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.lang.constraints.rules.behavior.RuleIdHolder__BehaviorDescriptor;
 import util.NameHelper;
 import jetbrains.mps.generator.template.ReferenceMacroContext;
-import util.ContextUtil;
+import util.ContextMethodUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import util.KindUtil;
 import jetbrains.mps.lang.constraints.rules.skeleton.behavior.RuleBlockMember__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.template.IfMacroContext;
@@ -24,7 +25,7 @@ import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.lang.constraints.rules.kinds.behavior.TypedDef__BehaviorDescriptor;
+import jetbrains.mps.lang.context.defs.behavior.TypedDef__BehaviorDescriptor;
 import jetbrains.mps.generator.template.WeavingMappingRuleContext;
 import jetbrains.mps.generator.template.TemplateVarContext;
 import jetbrains.mps.textgen.trace.TracingUtil;
@@ -79,7 +80,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return new NameHelper(_context.getNode(), _context).getGeneratedString();
   }
   public static Object referenceMacro_GetReferent_1_0(final ReferenceMacroContext _context) {
-    return ContextUtil.getContextMethodName(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593574311L, 0x6530303593578e5eL, "declaration")));
+    return ContextMethodUtil.getContextMethodName(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593574311L, 0x6530303593578e5eL, "declaration")));
   }
   public static Object referenceMacro_GetReferent_1_1(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593574311L, 0x6530303593578e5eL, "declaration")), "defGet");
@@ -88,32 +89,32 @@ public class QueriesGenerated extends QueryProviderBase {
     return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593574311L, 0x6530303593578e5eL, "declaration")), "defClass");
   }
   public static Object referenceMacro_GetReferent_2_0(final ReferenceMacroContext _context) {
-    return ContextUtil.matchContextForRuleKind(RuleBlockMember__BehaviorDescriptor.getRuleKind_id1BFxp3HHhyj.invoke(_context.getNode()), _context);
+    return KindUtil.matchContextForRuleKind(RuleBlockMember__BehaviorDescriptor.getRuleKind_id1BFxp3HHhyj.invoke(_context.getNode()), _context);
   }
   public static Object referenceMacro_GetReferent_2_1(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "defClass");
   }
   public static Object referenceMacro_GetReferent_2_2(final ReferenceMacroContext _context) {
-    return ContextUtil.matchContextForRuleKind(RuleBlockMember__BehaviorDescriptor.getRuleKind_id1BFxp3HHhyj.invoke(_context.getNode()), _context);
+    return KindUtil.matchContextForRuleKind(RuleBlockMember__BehaviorDescriptor.getRuleKind_id1BFxp3HHhyj.invoke(_context.getNode()), _context);
   }
   public static Object referenceMacro_GetReferent_3_0(final ReferenceMacroContext _context) {
-    return ContextUtil.matchKindForRuleKind(RuleBlockMember__BehaviorDescriptor.getRuleKind_id1BFxp3HHhyj.invoke(_context.getNode()), _context);
+    return KindUtil.matchKindForRuleKind(RuleBlockMember__BehaviorDescriptor.getRuleKind_id1BFxp3HHhyj.invoke(_context.getNode()), _context);
   }
   public static Object referenceMacro_GetReferent_3_1(final ReferenceMacroContext _context) {
-    return ContextUtil.matchContextForRuleKind(RuleBlockMember__BehaviorDescriptor.getRuleKind_id1BFxp3HHhyj.invoke(_context.getNode()), _context);
+    return KindUtil.matchContextForRuleKind(RuleBlockMember__BehaviorDescriptor.getRuleKind_id1BFxp3HHhyj.invoke(_context.getNode()), _context);
   }
   public static Object referenceMacro_GetReferent_3_2(final ReferenceMacroContext _context) {
-    return ContextUtil.matchContextForRuleKind(RuleBlockMember__BehaviorDescriptor.getRuleKind_id1BFxp3HHhyj.invoke(_context.getNode()), _context);
+    return KindUtil.matchContextForRuleKind(RuleBlockMember__BehaviorDescriptor.getRuleKind_id1BFxp3HHhyj.invoke(_context.getNode()), _context);
   }
   public static Object referenceMacro_GetReferent_3_3(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "defClass");
   }
   public static Object referenceMacro_GetReferent_3_4(final ReferenceMacroContext _context) {
-    return ContextUtil.matchContextForRuleKind(RuleBlockMember__BehaviorDescriptor.getRuleKind_id1BFxp3HHhyj.invoke(_context.getNode()), _context);
+    return KindUtil.matchContextForRuleKind(RuleBlockMember__BehaviorDescriptor.getRuleKind_id1BFxp3HHhyj.invoke(_context.getNode()), _context);
   }
   public static Object referenceMacro_GetReferent_4_0(final ReferenceMacroContext _context) {
     SNode ruleKind = RuleBlockMember__BehaviorDescriptor.getRuleKind_id1BFxp3HHhyj.invoke(_context.getNode());
-    return ContextUtil.matchContextForRuleKind(ruleKind, _context);
+    return KindUtil.matchContextForRuleKind(ruleKind, _context);
   }
   public static Object referenceMacro_GetReferent_4_1(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "ruleConstructor");
@@ -122,7 +123,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return _context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "ruleField");
   }
   public static boolean ifMacro_Condition_1_0(final IfMacroContext _context) {
-    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593574311L, 0x6530303593578e5eL, "declaration")), MetaAdapterFactory.getInterfaceConcept(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, 0x126f1320a26d42bdL, "jetbrains.mps.lang.constraints.rules.kinds.structure.NativeDef"));
+    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593574311L, 0x6530303593578e5eL, "declaration")), MetaAdapterFactory.getInterfaceConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x126f1320a26d42bdL, "jetbrains.mps.lang.context.defs.structure.NativeDef"));
   }
   public static boolean ifMacro_Condition_2_0(final IfMacroContext _context) {
     return (SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359366e9d5L, 0x3172094ab484cd67L, "condition")) != null);
@@ -445,13 +446,13 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   private final Map<String, ReferenceTargetQuery> rtqMethods = new HashMap<String, ReferenceTargetQuery>();
   {
-    rtqMethods.put("4636242761502387300", new QueriesGenerated.RTQ(0, "getConcept"));
+    rtqMethods.put("4636242761502387300", new QueriesGenerated.RTQ(0, null));
     rtqMethods.put("4636242761502876135", new QueriesGenerated.RTQ(1, "getDef"));
     rtqMethods.put("4636242761502876145", new QueriesGenerated.RTQ(2, "Def"));
-    rtqMethods.put("4636242761502527777", new QueriesGenerated.RTQ(3, "RuleContext"));
+    rtqMethods.put("4636242761502527777", new QueriesGenerated.RTQ(3, "Context"));
     rtqMethods.put("4636242761502555060", new QueriesGenerated.RTQ(4, "Def"));
-    rtqMethods.put("4636242761502481039", new QueriesGenerated.RTQ(5, "RuleContext"));
-    rtqMethods.put("2740527090601721824", new QueriesGenerated.RTQ(6, "CanBeChildRuleKind"));
+    rtqMethods.put("4636242761502481039", new QueriesGenerated.RTQ(5, "Context"));
+    rtqMethods.put("4996591504622387070", new QueriesGenerated.RTQ(6, "CanBeChildKind"));
     rtqMethods.put("8556303794924669906", new QueriesGenerated.RTQ(7, "ContainmentContext"));
     rtqMethods.put("3562920471664392960", new QueriesGenerated.RTQ(8, "ContainmentContext"));
     rtqMethods.put("4636242761502992616", new QueriesGenerated.RTQ(9, "Def"));

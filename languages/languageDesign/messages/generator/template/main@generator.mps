@@ -17,6 +17,7 @@
     <import index="yv2q" ref="r:cdf8afc0-fdc6-47ca-b829-7b2226168efa(jetbrains.mps.lang.descriptor.structure)" />
     <import index="wff5" ref="r:2ac18004-8536-478a-bf05-03a0f407633f(jetbrains.mps.lang.feedback.skeleton.structure)" />
     <import index="m19b" ref="r:bce9672d-89d3-47d7-90eb-dde7199917c2(jetbrains.mps.lang.feedback.messages.structure)" />
+    <import index="tjjq" ref="6e98f4e2-decf-4e97-bf80-9109e8b759ef/java:jetbrains.mps.core.context(jetbrains.mps.lang.feedback.alltogether/)" />
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" implicit="true" />
     <import index="tpek" ref="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)" implicit="true" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
@@ -274,7 +275,7 @@
       <node concept="2rT7sh" id="6f2WQqsThF2" role="8Wnug">
         <property role="TrG5h" value="messagesRootClass" />
         <ref role="2rZz_L" to="tpee:fz12cDA" resolve="ClassConcept" />
-        <ref role="2rTdP9" to="wff5:6kKc3mjFxo7" resolve="FeedbackRoot" />
+        <ref role="2rTdP9" to="wff5:6kKc3mjFxo7" resolve="FeedbackPerConceptRoot" />
       </node>
     </node>
     <node concept="1X3_iC" id="5sUTrySOBzL" role="lGtFl">
@@ -301,7 +302,7 @@
       <node concept="3lhOvk" id="47X3GcVZmhx" role="8Wnug">
         <ref role="2sgKRv" node="6f2WQqsThF2" resolve="messagesRootClass" />
         <ref role="3lhOvi" node="6kKc3mjG117" resolve="Generated_MessagesDescriptor" />
-        <ref role="30HIoZ" to="wff5:6kKc3mjFxo7" resolve="FeedbackRoot" />
+        <ref role="30HIoZ" to="wff5:6kKc3mjFxo7" resolve="FeedbackPerConceptRoot" />
       </node>
     </node>
     <node concept="3aamgX" id="4zSofKedTjp" role="3acgRq">
@@ -482,8 +483,8 @@
       </node>
       <node concept="37vLTG" id="A7NuYsRw$H" role="3clF46">
         <property role="TrG5h" value="context" />
-        <node concept="3uibUv" id="41nfzDbOQ91" role="1tU5fm">
-          <ref role="3uigEE" to="o99v:~RuleContext" resolve="RuleContext" />
+        <node concept="3uibUv" id="1mFJTG6mZM" role="1tU5fm">
+          <ref role="3uigEE" to="tjjq:~Context" resolve="Context" />
         </node>
       </node>
       <node concept="3clFbS" id="A7NuYsRw$T" role="3clF47">

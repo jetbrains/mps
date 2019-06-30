@@ -51,11 +51,11 @@
     </language>
   </registry>
   <node concept="24kQdi" id="6kKc3mjFxox">
-    <ref role="1XX52x" to="wff5:6kKc3mjFxo7" resolve="FeedbackRoot" />
+    <ref role="1XX52x" to="wff5:6kKc3mjFxo7" resolve="FeedbackPerConceptRoot" />
     <node concept="3EZMnI" id="6kKc3mjFxoA" role="2wV5jI">
       <node concept="l2Vlx" id="6kKc3mjFxoB" role="2iSdaV" />
       <node concept="3F0ifn" id="6kKc3mjFxoC" role="3EZMnx">
-        <property role="3F0ifm" value="messages" />
+        <property role="3F0ifm" value="feedback" />
       </node>
       <node concept="3F0A7n" id="hyoMxHLeM_" role="3EZMnx">
         <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />

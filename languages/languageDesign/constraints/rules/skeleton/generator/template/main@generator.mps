@@ -172,7 +172,6 @@
       <concept id="1095416546421" name="jetbrains.mps.lang.generator.structure.MappingConfiguration" flags="ig" index="bUwia">
         <child id="1200911492601" name="mappingLabel" index="2rTMjI" />
         <child id="1167088157977" name="createRootRule" index="2VS0gm" />
-        <child id="1167172143858" name="weavingMappingRule" index="30SoJX" />
         <child id="1167514678247" name="rootMappingRule" index="3lj3bC" />
       </concept>
       <concept id="5015072279636592410" name="jetbrains.mps.lang.generator.structure.VarMacro_ValueQuery" flags="in" index="2jfdEK" />
@@ -357,39 +356,43 @@
   </registry>
   <node concept="bUwia" id="6kKc3mjlk7F">
     <property role="TrG5h" value="main" />
-    <node concept="30QchW" id="1FBVWoju25b" role="30SoJX">
-      <ref role="30HIoZ" to="yv2q:7OJukvJ5je_" resolve="LanguageDescriptor" />
-      <node concept="j$656" id="1FBVWoju7do" role="1fOSGc">
-        <ref role="v9R2y" node="1FBVWoju27a" resolve="weaveInLanguageJava" />
-      </node>
-      <node concept="3gB$ML" id="1FBVWoju25d" role="3gCiVm">
-        <node concept="3clFbS" id="1FBVWoju25e" role="2VODD2">
-          <node concept="3clFbF" id="1BFxp3HJ8TL" role="3cqZAp">
-            <node concept="2OqwBi" id="1FBVWojy0Ix" role="3clFbG">
-              <node concept="2OqwBi" id="1BFxp3HJ93$" role="2Oq$k0">
-                <node concept="1iwH7S" id="1BFxp3HJ8TK" role="2Oq$k0" />
-                <node concept="1iwH70" id="1BFxp3HJ9ad" role="2OqNvi">
-                  <ref role="1iwH77" to="ucur:81GU9xcJ5s" resolve="aspectLoop" />
-                  <node concept="30H73N" id="1FBVWoju8KP" role="1iwH7V" />
+    <node concept="1X3_iC" id="4lnto0oLh4A" role="lGtFl">
+      <property role="3V$3am" value="weavingMappingRule" />
+      <property role="3V$3ak" value="b401a680-8325-4110-8fd3-84331ff25bef/1095416546421/1167172143858" />
+      <node concept="30QchW" id="1FBVWoju25b" role="8Wnug">
+        <ref role="30HIoZ" to="yv2q:7OJukvJ5je_" resolve="LanguageDescriptor" />
+        <node concept="j$656" id="1FBVWoju7do" role="1fOSGc">
+          <ref role="v9R2y" node="1FBVWoju27a" resolve="weaveInLanguageJava" />
+        </node>
+        <node concept="3gB$ML" id="1FBVWoju25d" role="3gCiVm">
+          <node concept="3clFbS" id="1FBVWoju25e" role="2VODD2">
+            <node concept="3clFbF" id="1BFxp3HJ8TL" role="3cqZAp">
+              <node concept="2OqwBi" id="1FBVWojy0Ix" role="3clFbG">
+                <node concept="2OqwBi" id="1BFxp3HJ93$" role="2Oq$k0">
+                  <node concept="1iwH7S" id="1BFxp3HJ8TK" role="2Oq$k0" />
+                  <node concept="1iwH70" id="1BFxp3HJ9ad" role="2OqNvi">
+                    <ref role="1iwH77" to="ucur:81GU9xcJ5s" resolve="aspectLoop" />
+                    <node concept="30H73N" id="1FBVWoju8KP" role="1iwH7V" />
+                  </node>
                 </node>
+                <node concept="1mfA1w" id="1FBVWojy0Wp" role="2OqNvi" />
               </node>
-              <node concept="1mfA1w" id="1FBVWojy0Wp" role="2OqNvi" />
             </node>
           </node>
         </node>
-      </node>
-      <node concept="O$s7w" id="1FBVWojy7fT" role="O$dGz">
-        <node concept="3clFbS" id="1FBVWojy7fU" role="2VODD2">
-          <node concept="3clFbF" id="1FBVWojy7iH" role="3cqZAp">
-            <node concept="2OqwBi" id="1FBVWojy9jF" role="3clFbG">
-              <node concept="1PxgMI" id="1FBVWojy93V" role="2Oq$k0">
-                <node concept="chp4Y" id="1FBVWojy96c" role="3oSUPX">
-                  <ref role="cht4Q" to="tpee:fzclF80" resolve="StatementList" />
+        <node concept="O$s7w" id="1FBVWojy7fT" role="O$dGz">
+          <node concept="3clFbS" id="1FBVWojy7fU" role="2VODD2">
+            <node concept="3clFbF" id="1FBVWojy7iH" role="3cqZAp">
+              <node concept="2OqwBi" id="1FBVWojy9jF" role="3clFbG">
+                <node concept="1PxgMI" id="1FBVWojy93V" role="2Oq$k0">
+                  <node concept="chp4Y" id="1FBVWojy96c" role="3oSUPX">
+                    <ref role="cht4Q" to="tpee:fzclF80" resolve="StatementList" />
+                  </node>
+                  <node concept="32cCaI" id="1FBVWojy7iG" role="1m5AlR" />
                 </node>
-                <node concept="32cCaI" id="1FBVWojy7iG" role="1m5AlR" />
-              </node>
-              <node concept="2qgKlT" id="1FBVWojy9Bl" role="2OqNvi">
-                <ref role="37wK5l" to="tpek:4GU1DgEHJ2u" resolve="getFirstStatement" />
+                <node concept="2qgKlT" id="1FBVWojy9Bl" role="2OqNvi">
+                  <ref role="37wK5l" to="tpek:4GU1DgEHJ2u" resolve="getFirstStatement" />
+                </node>
               </node>
             </node>
           </node>
@@ -549,19 +552,19 @@
             <ref role="37wK5l" to="33ny:~Arrays.asList(java.lang.Object...)" resolve="asList" />
             <ref role="1Pybhc" to="33ny:~Arrays" resolve="Arrays" />
             <node concept="Rm8GO" id="7w_sh_iEUc9" role="37wK5m">
-              <ref role="1Px2BO" to="pdwk:~CanBeChildRuleKind" resolve="CanBeChildRuleKind" />
-              <ref role="Rm8GQ" to="pdwk:~CanBeChildRuleKind.INSTANCE" resolve="INSTANCE" />
+              <ref role="1Px2BO" to="pdwk:~CanBeChildKind" resolve="CanBeChildKind" />
+              <ref role="Rm8GQ" to="pdwk:~CanBeChildKind.INSTANCE" resolve="INSTANCE" />
             </node>
             <node concept="3uibUv" id="4cGwgqnYgla" role="3PaCim">
               <ref role="3uigEE" to="o99v:~RuleKind" resolve="RuleKind" />
             </node>
             <node concept="Rm8GO" id="2o8jHTOC2QB" role="37wK5m">
-              <ref role="Rm8GQ" to="pdwk:~CanBeParentRuleKind.INSTANCE" resolve="INSTANCE" />
-              <ref role="1Px2BO" to="pdwk:~CanBeParentRuleKind" resolve="CanBeParentRuleKind" />
+              <ref role="1Px2BO" to="pdwk:~CanBeParentKind" resolve="CanBeParentKind" />
+              <ref role="Rm8GQ" to="pdwk:~CanBeParentKind.INSTANCE" resolve="INSTANCE" />
             </node>
             <node concept="Rm8GO" id="2o8jHTOC38H" role="37wK5m">
-              <ref role="Rm8GQ" to="pdwk:~CanBeRootRuleKind.INSTANCE" resolve="INSTANCE" />
-              <ref role="1Px2BO" to="pdwk:~CanBeRootRuleKind" resolve="CanBeRootRuleKind" />
+              <ref role="1Px2BO" to="pdwk:~CanBeRootKind" resolve="CanBeRootKind" />
+              <ref role="Rm8GQ" to="pdwk:~CanBeRootKind.INSTANCE" resolve="INSTANCE" />
             </node>
           </node>
         </node>

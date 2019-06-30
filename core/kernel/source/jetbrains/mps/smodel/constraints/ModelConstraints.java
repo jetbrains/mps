@@ -221,7 +221,9 @@ public class ModelConstraints {
     if (result.isEmpty()) {
       return true;
     }
-    checkingNodeContext.setBreakingNode(result.get(0).getProblemSource());
+    if (checkingNodeContext != null) {
+      checkingNodeContext.setBreakingNode(result.get(0).getProblemSource());
+    }
     return false;
   }
 }

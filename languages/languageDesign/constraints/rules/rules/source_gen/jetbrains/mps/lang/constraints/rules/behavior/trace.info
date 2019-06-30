@@ -123,7 +123,7 @@
       <node id="5473446470512588155" at="89,5,93,5" concept="9" />
       <node id="5473446470512588155" at="96,0,101,0" concept="4" trace="getDeclaredMethods#()Ljava/util/List;" />
       <node id="5473446470512588155" at="102,0,107,0" concept="4" trace="getConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="7201029305263665750" at="43,241,49,8" concept="6" />
+      <node id="7201029305263665750" at="43,230,49,8" concept="6" />
       <node id="7201029305263665744" at="42,116,52,5" concept="3" />
       <node id="5473446470512588155" at="71,5,81,5" concept="9" />
       <node id="5473446470512588155" at="84,0,95,0" concept="4" trace="invokeSpecial0#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Ljetbrains/mps/core/aspects/behaviour/api/SMethod;[Ljava/lang/Object;)null" />
@@ -165,7 +165,7 @@
       </scope>
       <scope id="5473446470512588155" at="96,0,101,0" />
       <scope id="5473446470512588155" at="102,0,107,0" />
-      <scope id="7201029305263665749" at="43,241,49,8" />
+      <scope id="7201029305263665749" at="43,230,49,8" />
       <scope id="5473446470512588155" at="85,128,93,5">
         <var name="methodIndex" id="5473446470512588155" />
       </scope>

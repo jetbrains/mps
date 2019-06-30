@@ -17,21 +17,13 @@
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.ConstraintsDescriptor2" />
     <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.RuleKind" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeChildRuleKind" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeParentRuleKind" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeRootRuleKind" />
+    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeChildKind" />
+    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeParentKind" />
+    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeRootKind" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
     <classNode extendsClassName="jetbrains.mps.core.aspects.constraints.rules.ConstraintsAspectDescriptor2" />
-  </dependency>
-  <dependency className="jetbrains.mps.lang.rulesAndMessages.constraints.GeneratedMessagesAspectDescriptor">
-    <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.reporting.api.MessagesDescriptor" />
-    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
-    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
-    <classNode extendsClassName="MessagesAspectDescriptor" />
   </dependency>
   <dependency className="jetbrains.mps.lang.rulesAndMessages.constraints.InlineMessageProvider_Constraints">
     <classNode dependClassName="java.lang.Boolean" />

@@ -15,6 +15,7 @@
     <language id="f159adf4-3c93-40f9-9c5a-1f245a8697af" name="jetbrains.mps.lang.aspect">
       <concept id="3433054418424672374" name="jetbrains.mps.lang.aspect.structure.SimpleLanguageAspectDescriptor" flags="ng" index="3vrhyV">
         <child id="6106419185511570295" name="mainLanguages" index="QG$2i" />
+        <child id="8222125370833980146" name="devkit" index="TkT64" />
         <child id="2343319097654255233" name="order" index="3F_NFc" />
       </concept>
       <concept id="174635545557784815" name="jetbrains.mps.lang.aspect.structure.SimpleAspectOrderRef" flags="ng" index="1SjbrP" />
@@ -28,6 +29,10 @@
       </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
+      <concept id="8222125370833354011" name="jetbrains.mps.lang.smodel.structure.DevkitPointer" flags="ng" index="T9mpH">
+        <property id="8222125370833354012" name="devkitName" index="T9mpE" />
+        <property id="8222125370833354013" name="devkitId" index="T9mpF" />
+      </concept>
       <concept id="3542851458883438784" name="jetbrains.mps.lang.smodel.structure.LanguageId" flags="nn" index="2V$Bhx">
         <property id="3542851458883439831" name="namespace" index="2V$B1Q" />
         <property id="3542851458883439832" name="languageId" index="2V$B1T" />
@@ -49,6 +54,10 @@
       <property role="2V$B1T" value="cd17a113-ca4e-472f-a8de-c49008f9eea8" />
       <property role="2V$B1Q" value="jetbrains.mps.lang.feedback" />
     </node>
+    <node concept="2V$Bhx" id="5ca4zTvKy48" role="QG$2i">
+      <property role="2V$B1T" value="517077fd-e44f-4338-a475-1d29781dfdb8" />
+      <property role="2V$B1Q" value="jetbrains.mps.lang.feedback.skeleton" />
+    </node>
     <node concept="2V$Bhx" id="5sUTrySNtW0" role="QG$2i">
       <property role="2V$B1T" value="16e76fe3-9534-4def-afb7-925a169a7c0b" />
       <property role="2V$B1Q" value="jetbrains.mps.lang.feedback.messages" />
@@ -60,6 +69,10 @@
       <node concept="1SjbrP" id="5sUTrySNtVR" role="2vPdvg">
         <ref role="2vPdvl" node="5sUTrySNtVx" resolve="feedback" />
       </node>
+    </node>
+    <node concept="T9mpH" id="5ca4zTvKOOL" role="TkT64">
+      <property role="T9mpF" value="0845ddb4-34c2-4a32-b2ae-270bffc5b430" />
+      <property role="T9mpE" value="jetbrains.mps.devkit.aspect.feedback" />
     </node>
   </node>
 </model>

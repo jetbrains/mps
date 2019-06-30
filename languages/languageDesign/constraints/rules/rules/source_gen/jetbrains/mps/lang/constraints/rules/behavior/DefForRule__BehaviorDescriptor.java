@@ -40,7 +40,7 @@ public final class DefForRule__BehaviorDescriptor extends BaseBHDescriptor {
     return SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359366e9d5L, 0x4bf59690bc00f6afL, "type"));
   }
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
-    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), MetaAdapterFactory.getInterfaceConcept(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, 0x653030359368062cL, "jetbrains.mps.lang.constraints.rules.kinds.structure.TypedDef"))) {
+    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), MetaAdapterFactory.getInterfaceConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x653030359368062cL, "jetbrains.mps.lang.context.defs.structure.TypedDef"))) {
       return new FilteringScope(ScopeUtils.lazyParentScope(__thisNode__, kind)) {
         @Override
         public boolean isExcluded(SNode node) {

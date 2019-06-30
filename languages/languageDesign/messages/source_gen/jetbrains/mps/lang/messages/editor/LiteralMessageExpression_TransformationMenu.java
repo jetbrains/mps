@@ -20,7 +20,7 @@ import jetbrains.mps.lang.editor.menus.ParameterizedMenuPart;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.core.behavior.ScopeProvider__BehaviorDescriptor;
+import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.SingleItemMenuPart;
 import org.apache.log4j.Logger;
@@ -77,7 +77,7 @@ public class LiteralMessageExpression_TransformationMenu extends TransformationM
     @Nullable
     @Override
     protected Iterable<? extends SNode> getParameters(TransformationMenuContext _context) {
-      return SNodeOperations.ofConcept(ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke(SNodeOperations.getNodeAncestor(_context.getNode(), MetaAdapterFactory.getInterfaceConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e30f402L, "jetbrains.mps.lang.messages.structure.MessageProvider"), false, false), MetaAdapterFactory.getInterfaceConcept(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, 0x653030359368062cL, "jetbrains.mps.lang.constraints.rules.kinds.structure.TypedDef"), _context.getNode()).getAvailableElements(null), MetaAdapterFactory.getInterfaceConcept(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, 0x653030359368062cL, "jetbrains.mps.lang.constraints.rules.kinds.structure.TypedDef"));
+      return SNodeOperations.ofConcept(Scope.getScope(_context.getNode(), null, MetaAdapterFactory.getInterfaceConcept(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, 0x653030359368062cL, "jetbrains.mps.lang.constraints.rules.kinds.structure.TypedDef")).getAvailableElements(null), MetaAdapterFactory.getInterfaceConcept(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, 0x653030359368062cL, "jetbrains.mps.lang.constraints.rules.kinds.structure.TypedDef"));
     }
     @NotNull
     @Override

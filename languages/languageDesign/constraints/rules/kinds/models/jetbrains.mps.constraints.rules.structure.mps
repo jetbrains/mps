@@ -8,7 +8,7 @@
   <imports>
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
-    <import index="sis7" ref="r:ff619a2b-8fe7-4627-a515-9b4874d6fc53(jetbrains.mps.lang.feedback.problem.structure)" />
+    <import index="iwhd" ref="r:bd012d1c-91a4-4783-a33f-d2037e757f6d(jetbrains.mps.lang.context.defs.structure)" />
   </imports>
   <registry>
     <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
@@ -17,12 +17,8 @@
       </concept>
       <concept id="1169125787135" name="jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration" flags="ig" index="PkWjJ">
         <property id="6714410169261853888" name="conceptId" index="EcuMT" />
-        <property id="4628067390765956807" name="final" index="R5$K2" />
         <property id="5092175715804935370" name="conceptAlias" index="34LRSv" />
         <child id="1071489727083" name="linkDeclaration" index="1TKVEi" />
-      </concept>
-      <concept id="1169125989551" name="jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration" flags="ig" index="PlHQZ">
-        <child id="1169127546356" name="extends" index="PrDN$" />
       </concept>
       <concept id="1169127622168" name="jetbrains.mps.lang.structure.structure.InterfaceConceptReference" flags="ig" index="PrWs8">
         <reference id="1169127628841" name="intfc" index="PrY4T" />
@@ -48,36 +44,6 @@
       </concept>
     </language>
   </registry>
-  <node concept="1TIwiD" id="4JP_D2W0fqL">
-    <property role="EcuMT" value="5473446470512342705" />
-    <property role="TrG5h" value="TypedNativeDef" />
-    <property role="34LRSv" value="def" />
-    <node concept="1TJgyj" id="4JP_D2W0fqM" role="1TKVEi">
-      <property role="IQ2ns" value="5473446470512342706" />
-      <property role="20lmBu" value="aggregation" />
-      <property role="20kJfa" value="type" />
-      <property role="20lbJX" value="1" />
-      <ref role="20lvS9" to="tpee:fz3vP1H" resolve="Type" />
-    </node>
-    <node concept="PrWs8" id="19J4M2yrkb1" role="PzmwI">
-      <ref role="PrY4T" node="19J4M2yrkaX" resolve="NativeDef" />
-    </node>
-  </node>
-  <node concept="PlHQZ" id="6kKc3mjq0oG">
-    <property role="EcuMT" value="7291380803377301036" />
-    <property role="TrG5h" value="TypedDef" />
-    <node concept="PrWs8" id="6kKc3mjqoIl" role="PrDN$">
-      <ref role="PrY4T" to="tpee:hCUYCKd" resolve="IValidIdentifier" />
-    </node>
-  </node>
-  <node concept="1TIwiD" id="4JP_D2W1rsP">
-    <property role="EcuMT" value="5473446470512654133" />
-    <property role="TrG5h" value="RuleKindParameterConcept" />
-    <property role="34LRSv" value="parametrized by concept" />
-    <node concept="PrWs8" id="4JP_D2W1rsQ" role="PzmwI">
-      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
-    </node>
-  </node>
   <node concept="1TIwiD" id="6kKc3mjlk98">
     <property role="EcuMT" value="7291380803376071240" />
     <property role="TrG5h" value="RuleKind" />
@@ -88,68 +54,20 @@
       <property role="20lmBu" value="aggregation" />
       <property role="20kJfa" value="parameters" />
       <property role="20lbJX" value="0..n" />
-      <ref role="20lvS9" node="4JP_D2W1rsP" resolve="RuleKindParameterConcept" />
+      <ref role="20lvS9" to="iwhd:4JP_D2W1rsP" resolve="ContextConceptParameter" />
     </node>
     <node concept="PrWs8" id="6kKc3mjmAXJ" role="PzmwI">
       <ref role="PrY4T" to="tpee:hCUYCKd" resolve="IValidIdentifier" />
-    </node>
-    <node concept="PrWs8" id="5sUTrySNhWk" role="PzmwI">
-      <ref role="PrY4T" to="sis7:5sUTrySN9z$" resolve="ProblemKind" />
     </node>
     <node concept="1TJgyj" id="6kKc3mjlkau" role="1TKVEi">
       <property role="IQ2ns" value="7291380803376071326" />
       <property role="20lmBu" value="aggregation" />
       <property role="20lbJX" value="0..n" />
       <property role="20kJfa" value="contextMembers" />
-      <ref role="20lvS9" node="19J4M2yrkaX" resolve="NativeDef" />
+      <ref role="20lvS9" to="iwhd:19J4M2yrkaX" resolve="NativeDef" />
     </node>
     <node concept="t5JxF" id="1FBVWojs6yS" role="lGtFl">
       <property role="t5JxN" value="Each rule has a certain kind. The kind is usually associated with a specific context, which is passed to the rule to check smth within that context." />
-    </node>
-  </node>
-  <node concept="1TIwiD" id="hyoMxHEp1h">
-    <property role="EcuMT" value="315923949159026769" />
-    <property role="TrG5h" value="NativeTypedNodeDef" />
-    <property role="34LRSv" value="node&lt;&gt;" />
-    <property role="R5$K2" value="true" />
-    <node concept="1TJgyj" id="hyoMxHEpgN" role="1TKVEi">
-      <property role="IQ2ns" value="315923949159027763" />
-      <property role="20lmBu" value="reference" />
-      <property role="20lbJX" value="1" />
-      <property role="20kJfa" value="conceptParameter" />
-      <ref role="20lvS9" node="4JP_D2W1rsP" resolve="RuleKindParameterConcept" />
-    </node>
-    <node concept="PrWs8" id="19J4M2yrkb4" role="PzmwI">
-      <ref role="PrY4T" node="19J4M2yrkaX" resolve="NativeDef" />
-    </node>
-    <node concept="t5JxF" id="1BFxp3HFZnS" role="lGtFl">
-      <property role="t5JxN" value="constant type for node&lt;C&gt; in the rule kind" />
-    </node>
-  </node>
-  <node concept="PlHQZ" id="19J4M2yrkaX">
-    <property role="EcuMT" value="1328301445982536381" />
-    <property role="TrG5h" value="NativeDef" />
-    <node concept="PrWs8" id="19J4M2yrkaY" role="PrDN$">
-      <ref role="PrY4T" node="6kKc3mjq0oG" resolve="TypedDef" />
-    </node>
-  </node>
-  <node concept="1TIwiD" id="2o8jHTOAWnM">
-    <property role="EcuMT" value="2740527090601018866" />
-    <property role="TrG5h" value="NativeTypedConceptDef" />
-    <property role="34LRSv" value="node&lt;&gt;" />
-    <property role="R5$K2" value="true" />
-    <node concept="1TJgyj" id="2o8jHTOAWnN" role="1TKVEi">
-      <property role="IQ2ns" value="2740527090601018867" />
-      <property role="20lmBu" value="reference" />
-      <property role="20lbJX" value="1" />
-      <property role="20kJfa" value="conceptParameter" />
-      <ref role="20lvS9" node="4JP_D2W1rsP" resolve="RuleKindParameterConcept" />
-    </node>
-    <node concept="PrWs8" id="2o8jHTOAWnO" role="PzmwI">
-      <ref role="PrY4T" node="19J4M2yrkaX" resolve="NativeDef" />
-    </node>
-    <node concept="t5JxF" id="2o8jHTOAWnP" role="lGtFl">
-      <property role="t5JxN" value="constant type for concept&lt;C&gt; in the rule kind" />
     </node>
   </node>
 </model>

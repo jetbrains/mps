@@ -8,6 +8,7 @@
   <imports>
     <import index="qbpv" ref="r:63fc051d-731b-428a-af30-ceee8d76dfaa(jetbrains.mps.lang.constraints.rules.kinds.structure)" />
     <import index="t9po" ref="r:21b4a58c-8629-4511-bd63-7fc9a4e5fc38(jetbrains.mps.lang.messages.structure)" />
+    <import index="iwhd" ref="r:bd012d1c-91a4-4783-a33f-d2037e757f6d(jetbrains.mps.lang.context.defs.structure)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
   </imports>
   <registry>
@@ -98,7 +99,7 @@
     <node concept="1N5Pfh" id="4zSofKenM8x" role="1Mr941">
       <ref role="1N5Vy1" to="t9po:4zSofKek6iv" resolve="declaration" />
       <node concept="1dDu$B" id="4zSofKenTN8" role="1N6uqs">
-        <ref role="1dDu$A" to="qbpv:6kKc3mjq0oG" resolve="TypedDef" />
+        <ref role="1dDu$A" to="iwhd:6kKc3mjq0oG" resolve="TypedDef" />
       </node>
     </node>
   </node>

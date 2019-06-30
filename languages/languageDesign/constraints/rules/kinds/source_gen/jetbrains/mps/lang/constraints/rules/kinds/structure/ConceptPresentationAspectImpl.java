@@ -9,39 +9,13 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
-  private ConceptPresentation props_NativeDef;
-  private ConceptPresentation props_NativeTypedConceptDef;
-  private ConceptPresentation props_NativeTypedNodeDef;
   private ConceptPresentation props_RuleKind;
-  private ConceptPresentation props_RuleKindParameterConcept;
-  private ConceptPresentation props_TypedDef;
-  private ConceptPresentation props_TypedNativeDef;
 
   @Override
   @Nullable
   public ConceptPresentation getDescriptor(SAbstractConcept c) {
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
-      case LanguageConceptSwitch.NativeDef:
-        if (props_NativeDef == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          props_NativeDef = cpb.create();
-        }
-        return props_NativeDef;
-      case LanguageConceptSwitch.NativeTypedConceptDef:
-        if (props_NativeTypedConceptDef == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.presentationByName();
-          props_NativeTypedConceptDef = cpb.create();
-        }
-        return props_NativeTypedConceptDef;
-      case LanguageConceptSwitch.NativeTypedNodeDef:
-        if (props_NativeTypedNodeDef == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.presentationByName();
-          props_NativeTypedNodeDef = cpb.create();
-        }
-        return props_NativeTypedNodeDef;
       case LanguageConceptSwitch.RuleKind:
         if (props_RuleKind == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -49,26 +23,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_RuleKind = cpb.create();
         }
         return props_RuleKind;
-      case LanguageConceptSwitch.RuleKindParameterConcept:
-        if (props_RuleKindParameterConcept == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.presentationByName();
-          props_RuleKindParameterConcept = cpb.create();
-        }
-        return props_RuleKindParameterConcept;
-      case LanguageConceptSwitch.TypedDef:
-        if (props_TypedDef == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          props_TypedDef = cpb.create();
-        }
-        return props_TypedDef;
-      case LanguageConceptSwitch.TypedNativeDef:
-        if (props_TypedNativeDef == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.presentationByName();
-          props_TypedNativeDef = cpb.create();
-        }
-        return props_TypedNativeDef;
     }
     return null;
   }

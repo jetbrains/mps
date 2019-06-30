@@ -47,14 +47,11 @@
     <node concept="PrWs8" id="4zSofKenTNa" role="PrDN$">
       <ref role="PrY4T" to="tpck:3fifI_xCcJN" resolve="ScopeProvider" />
     </node>
-    <node concept="PrWs8" id="5sUTrySNco9" role="PrDN$">
-      <ref role="PrY4T" to="z0wo:5sUTrySNcd9" resolve="Feedback" />
-    </node>
   </node>
   <node concept="1TIwiD" id="6kKc3mjFxph">
     <property role="EcuMT" value="7291380803381892689" />
     <property role="TrG5h" value="ShowMessage" />
-    <property role="34LRSv" value="message" />
+    <property role="34LRSv" value="show message" />
     <node concept="1TJgyj" id="4zSofKedyR8" role="1TKVEi">
       <property role="IQ2ns" value="5258059200641510856" />
       <property role="20lmBu" value="aggregation" />
@@ -64,6 +61,9 @@
     </node>
     <node concept="PrWs8" id="4zSofKecqAK" role="PzmwI">
       <ref role="PrY4T" node="4zSofKecfg2" resolve="MessageProvider" />
+    </node>
+    <node concept="PrWs8" id="1mFJTG5Tpe" role="PzmwI">
+      <ref role="PrY4T" to="z0wo:5sUTrySNcd9" resolve="Feedback" />
     </node>
   </node>
 </model>

@@ -15,6 +15,7 @@
     <import index="mqj2" ref="r:1d4f6f82-1219-47a2-a4fa-ac3ba14c9fd5(jetbrains.mps.lang.constraints.rules.skeleton.structure)" />
     <import index="4boq" ref="r:724e6e38-de05-4794-9500-38fefe925278(jetbrains.mps.lang.constraints.rules.skeleton.behavior)" />
     <import index="o8zo" ref="r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)" />
+    <import index="iwhd" ref="r:bd012d1c-91a4-4783-a33f-d2037e757f6d(jetbrains.mps.lang.context.defs.structure)" />
   </imports>
   <registry>
     <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
@@ -143,7 +144,7 @@
               </node>
               <node concept="2Zo12i" id="4zSofKenVIo" role="2OqNvi">
                 <node concept="chp4Y" id="4zSofKenVLw" role="2Zo12j">
-                  <ref role="cht4Q" to="qbpv:6kKc3mjq0oG" resolve="TypedDef" />
+                  <ref role="cht4Q" to="iwhd:6kKc3mjq0oG" resolve="TypedDef" />
                 </node>
               </node>
             </node>
@@ -202,7 +203,7 @@
                           </node>
                           <node concept="3clFbT" id="4zSofKeobHD" role="37wK5m" />
                           <node concept="35c_gC" id="4zSofKeobJA" role="37wK5m">
-                            <ref role="35c_gD" to="qbpv:6kKc3mjq0oG" resolve="TypedDef" />
+                            <ref role="35c_gD" to="iwhd:6kKc3mjq0oG" resolve="TypedDef" />
                           </node>
                         </node>
                       </node>
@@ -230,7 +231,7 @@
               </node>
               <node concept="3clFbT" id="5sUTrySNd9a" role="37wK5m" />
               <node concept="35c_gC" id="5sUTrySNd9b" role="37wK5m">
-                <ref role="35c_gD" to="qbpv:6kKc3mjq0oG" resolve="TypedDef" />
+                <ref role="35c_gD" to="iwhd:6kKc3mjq0oG" resolve="TypedDef" />
               </node>
             </node>
           </node>

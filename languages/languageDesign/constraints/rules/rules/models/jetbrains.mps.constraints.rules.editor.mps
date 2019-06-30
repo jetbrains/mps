@@ -15,6 +15,8 @@
     <import index="qkth" ref="r:b973253b-b433-4ca6-bda5-aea854415ed0(jetbrains.mps.lang.constraints.rules.kinds.behavior)" />
     <import index="mqj2" ref="r:1d4f6f82-1219-47a2-a4fa-ac3ba14c9fd5(jetbrains.mps.lang.constraints.rules.skeleton.structure)" />
     <import index="qbpv" ref="r:63fc051d-731b-428a-af30-ceee8d76dfaa(jetbrains.mps.lang.constraints.rules.kinds.structure)" />
+    <import index="4d13" ref="r:bfef6725-b58e-47c1-9fba-6e80a685f593(jetbrains.mps.lang.context.defs.behavior)" />
+    <import index="iwhd" ref="r:bd012d1c-91a4-4783-a33f-d2037e757f6d(jetbrains.mps.lang.context.defs.structure)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
     <import index="22ra" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.update(MPS.Editor/)" implicit="true" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" implicit="true" />
@@ -448,7 +450,7 @@
                               <ref role="3cqZAo" node="41nfzDbO$2N" resolve="it" />
                             </node>
                             <node concept="2qgKlT" id="41nfzDbO$2M" role="2OqNvi">
-                              <ref role="37wK5l" to="qkth:35M2kEOydzo" resolve="hasApplicableCondition" />
+                              <ref role="37wK5l" to="4d13:35M2kEOydzo" resolve="hasApplicableCondition" />
                             </node>
                           </node>
                         </node>
@@ -510,7 +512,7 @@
                     <property role="TrG5h" value="defsDeclWithApplicability" />
                     <node concept="A3Dl8" id="1BFxp3HHsSm" role="1tU5fm">
                       <node concept="3Tqbb2" id="1BFxp3HHsSp" role="A3Ik2">
-                        <ref role="ehGHo" to="qbpv:6kKc3mjq0oG" resolve="TypedDef" />
+                        <ref role="ehGHo" to="iwhd:6kKc3mjq0oG" resolve="TypedDef" />
                       </node>
                     </node>
                     <node concept="2OqwBi" id="1BFxp3HHsYl" role="33vP2m">
@@ -534,7 +536,7 @@
                                   <ref role="3cqZAo" node="1BFxp3HHsYy" resolve="it" />
                                 </node>
                                 <node concept="2qgKlT" id="1BFxp3HHsYx" role="2OqNvi">
-                                  <ref role="37wK5l" to="qkth:35M2kEOydzo" resolve="hasApplicableCondition" />
+                                  <ref role="37wK5l" to="4d13:35M2kEOydzo" resolve="hasApplicableCondition" />
                                 </node>
                               </node>
                             </node>

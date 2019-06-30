@@ -9,23 +9,11 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 public final class LanguageConceptSwitch {
   private final LanguageConceptIndex myIndex;
-  public static final int NativeDef = 0;
-  public static final int NativeTypedConceptDef = 1;
-  public static final int NativeTypedNodeDef = 2;
-  public static final int RuleKind = 3;
-  public static final int RuleKindParameterConcept = 4;
-  public static final int TypedDef = 5;
-  public static final int TypedNativeDef = 6;
+  public static final int RuleKind = 0;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L);
-    builder.put(0x126f1320a26d42bdL, NativeDef);
-    builder.put(0x26084ede749bc5f2L, NativeTypedConceptDef);
-    builder.put(0x46263286da99051L, NativeTypedNodeDef);
     builder.put(0x6530303593554248L, RuleKind);
-    builder.put(0x4bf59690bc05b735L, RuleKindParameterConcept);
-    builder.put(0x653030359368062cL, TypedDef);
-    builder.put(0x4bf59690bc00f6b1L, TypedNativeDef);
     myIndex = builder.seal();
   }
 

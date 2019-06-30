@@ -18,9 +18,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptLiteralMessageExpression = createDescriptorForLiteralMessageExpression();
   /*package*/ final ConceptDescriptor myConceptMacroMessageExpression = createDescriptorForMacroMessageExpression();
   /*package*/ final ConceptDescriptor myConceptMessageExpression = createDescriptorForMessageExpression();
-  /*package*/ final ConceptDescriptor myConceptMessageProvider = createDescriptorForMessageProvider();
-  /*package*/ final ConceptDescriptor myConceptMessageProviderForRule = createDescriptorForMessageProviderForRule();
-  /*package*/ final ConceptDescriptor myConceptMessagesRoot = createDescriptorForMessagesRoot();
   private final LanguageConceptSwitch myIndexSwitch;
 
   public StructureAspectDescriptor() {
@@ -35,7 +32,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptCombinedMessageExpression, myConceptLiteralMessageExpression, myConceptMacroMessageExpression, myConceptMessageExpression, myConceptMessageProvider, myConceptMessageProviderForRule, myConceptMessagesRoot);
+    return Arrays.asList(myConceptCombinedMessageExpression, myConceptLiteralMessageExpression, myConceptMacroMessageExpression, myConceptMessageExpression);
   }
 
   @Override
@@ -50,12 +47,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptMacroMessageExpression;
       case LanguageConceptSwitch.MessageExpression:
         return myConceptMessageExpression;
-      case LanguageConceptSwitch.MessageProvider:
-        return myConceptMessageProvider;
-      case LanguageConceptSwitch.MessageProviderForRule:
-        return myConceptMessageProviderForRule;
-      case LanguageConceptSwitch.MessagesRoot:
-        return myConceptMessagesRoot;
       default:
         return null;
     }
@@ -102,36 +93,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, true, false);
     b.origin("r:21b4a58c-8629-4511-bd63-7fc9a4e5fc38(jetbrains.mps.lang.messages.structure)/5258059200641510852");
     b.version(2);
-    return b.create();
-  }
-  private static ConceptDescriptor createDescriptorForMessageProvider() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.messages", "MessageProvider", 0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e30f402L);
-    b.interface_();
-    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x33d23ee961a0cbf3L);
-    b.origin("r:21b4a58c-8629-4511-bd63-7fc9a4e5fc38(jetbrains.mps.lang.messages.structure)/5258059200641168386");
-    b.version(2);
-    return b.create();
-  }
-  private static ConceptDescriptor createDescriptorForMessageProviderForRule() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.messages", "MessageProviderForRule", 0xad93155d79b24759L, 0xb10c55123e763903L, 0x6530303593ae1651L);
-    b.class_(false, false, false);
-    b.parent(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e30f402L);
-    b.origin("r:21b4a58c-8629-4511-bd63-7fc9a4e5fc38(jetbrains.mps.lang.messages.structure)/7291380803381892689");
-    b.version(2);
-    b.associate("rule", 0x6530303593ae1654L).target(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L).optional(false).origin("7291380803381892692").done();
-    b.aggregate("message", 0x48f860fc0e362dc8L).target(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e40455fL).optional(false).ordered(true).multiple(false).origin("5258059200641510856").done();
-    b.alias("message");
-    return b.create();
-  }
-  private static ConceptDescriptor createDescriptorForMessagesRoot() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.messages", "MessagesRoot", 0xad93155d79b24759L, 0xb10c55123e763903L, 0x6530303593ae1607L);
-    b.class_(false, false, true);
-    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
-    b.origin("r:21b4a58c-8629-4511-bd63-7fc9a4e5fc38(jetbrains.mps.lang.messages.structure)/7291380803381892615");
-    b.version(2);
-    b.associate("concept", 0x63c2f3669ce56d5dL).target(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL).optional(false).origin("7188575577281228125").done();
-    b.aggregate("messageProviders", 0x6530303593ae9cf2L).target(0xad93155d79b24759L, 0xb10c55123e763903L, 0x6530303593ae1651L).optional(true).ordered(true).multiple(true).origin("7291380803381927154").done();
-    b.alias("messages root");
     return b.create();
   }
 }

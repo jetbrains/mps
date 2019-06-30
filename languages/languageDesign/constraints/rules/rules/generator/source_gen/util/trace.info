@@ -5,53 +5,20 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068390468200:jetbrains.mps.baseLanguage.structure.FieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <root nodeRef="r:7fc220b5-3806-43f7-a6e6-6f3ea2d76c9c(util)/5537458604776791622">
-    <file name="ContextUtil.java">
-      <node id="4575984242822971007" at="19,105,20,244" concept="1" />
-      <node id="4575984242822959852" at="20,244,21,66" concept="5" />
-      <node id="8525842417252896863" at="22,167,23,195" concept="6" />
-      <node id="8525842417252896874" at="24,174,25,196" concept="6" />
-      <node id="8525842417252896883" at="26,5,27,16" concept="6" />
-      <node id="4575984242823006864" at="30,102,31,244" concept="1" />
-      <node id="4575984242823006873" at="31,244,32,66" concept="5" />
-      <node id="4575984242823006881" at="33,167,34,196" concept="6" />
-      <node id="4575984242823006890" at="35,174,36,197" concept="6" />
-      <node id="4575984242823006897" at="37,5,38,16" concept="6" />
-      <node id="469612135036132490" at="41,66,42,199" concept="6" />
-      <node id="4575984242822876825" at="16,0,18,0" concept="0" trace="ContextUtil#()V" />
-      <node id="469612135036128231" at="41,0,44,0" concept="7" trace="getContextMethodName#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
-      <node id="8525842417252896861" at="21,66,26,5" concept="3" />
-      <node id="4575984242823006879" at="32,66,37,5" concept="3" />
-      <node id="5537458604776842939" at="19,0,29,0" concept="7" trace="matchContextForRuleKind#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/generator/template/TemplateQueryContext;)Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-      <node id="4575984242823006862" at="30,0,40,0" concept="7" trace="matchKindForRuleKind#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/generator/template/TemplateQueryContext;)Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-      <scope id="4575984242822876828" at="16,25,16,25" />
-      <scope id="8525842417252896862" at="22,167,23,195" />
-      <scope id="8525842417252896873" at="24,174,25,196" />
-      <scope id="4575984242823006880" at="33,167,34,196" />
-      <scope id="4575984242823006889" at="35,174,36,197" />
-      <scope id="469612135036128235" at="41,66,42,199" />
-      <scope id="4575984242822876825" at="16,0,18,0" />
-      <scope id="469612135036128231" at="41,0,44,0">
-        <var name="contextMember" id="469612135036128577" />
+    <file name="ContextMethodUtil.java">
+      <node id="469612135036132490" at="21,56,22,189" concept="5" />
+      <node id="4575984242822876825" at="18,0,20,0" concept="0" trace="ContextMethodUtil#()V" />
+      <node id="469612135036128231" at="21,0,24,0" concept="6" trace="getContextMethodName#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <scope id="4575984242822876828" at="18,31,18,31" />
+      <scope id="469612135036128235" at="21,56,22,189" />
+      <scope id="4575984242822876825" at="18,0,20,0" />
+      <scope id="469612135036128231" at="21,0,24,0">
+        <var name="def" id="469612135036128577" />
       </scope>
-      <scope id="5537458604776791650" at="19,105,27,16">
-        <var name="pointer" id="4575984242822959853" />
-      </scope>
-      <scope id="4575984242823006863" at="30,102,38,16">
-        <var name="pointer" id="4575984242823006874" />
-      </scope>
-      <scope id="5537458604776842939" at="19,0,29,0">
-        <var name="genContext" id="4575984242822932460" />
-        <var name="ruleKind" id="5537458604776816855" />
-      </scope>
-      <scope id="4575984242823006862" at="30,0,40,0">
-        <var name="genContext" id="4575984242823006901" />
-        <var name="ruleKind" id="4575984242823006899" />
-      </scope>
-      <unit id="5537458604776791622" at="15,0,45,0" name="util.ContextUtil" />
+      <unit id="5537458604776791622" at="17,0,25,0" name="util.ContextMethodUtil" />
     </file>
   </root>
   <root nodeRef="r:7fc220b5-3806-43f7-a6e6-6f3ea2d76c9c(util)/7082824793308696454">
@@ -60,11 +27,11 @@
       <node id="2740527090601642797" at="14,0,15,0" concept="2" trace="myGenContext" />
       <node id="66188535716408472" at="16,79,17,26" concept="1" />
       <node id="2740527090601643679" at="17,26,18,30" concept="1" />
-      <node id="1540166288377306430" at="22,38,23,57" concept="6" />
+      <node id="1540166288377306430" at="22,38,23,57" concept="5" />
       <node id="2740527090601648540" at="28,174,29,83" concept="1" />
-      <node id="1540166288377365872" at="30,5,31,167" concept="6" />
+      <node id="1540166288377365872" at="30,5,31,167" concept="5" />
       <node id="2740527090601650932" at="36,94,37,81" concept="1" />
-      <node id="8452785328911042429" at="38,5,39,87" concept="6" />
+      <node id="8452785328911042429" at="38,5,39,87" concept="5" />
       <node id="2740527090601645200" at="27,36,30,5" concept="3" />
       <node id="2740527090601650930" at="35,34,38,5" concept="3" />
       <node id="7082824793308708548" at="16,0,20,0" concept="0" trace="NameHelper#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/generator/template/TemplateQueryContext;)V" />

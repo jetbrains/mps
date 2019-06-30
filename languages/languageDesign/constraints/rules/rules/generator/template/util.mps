@@ -2,6 +2,7 @@
 <model ref="r:7fc220b5-3806-43f7-a6e6-6f3ea2d76c9c(util)">
   <persistence version="9" />
   <languages>
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
     <devkit ref="a2eb3a43-fcc2-4200-80dc-c60110c4862d(jetbrains.mps.devkit.templates)" />
   </languages>
   <imports>
@@ -12,6 +13,7 @@
     <import index="qbpv" ref="r:63fc051d-731b-428a-af30-ceee8d76dfaa(jetbrains.mps.lang.constraints.rules.kinds.structure)" />
     <import index="v0oi" ref="r:52c0a9e8-a4f1-4d97-9c33-d3c28d77688f(jetbrains.mps.lang.constraints.rules.constraints)" />
     <import index="prp3" ref="r:52ea8481-08b2-4cbd-ad9d-1b42825f7d09(jetbrains.mps.lang.constraints.rules.kinds.constraints)" />
+    <import index="iwhd" ref="r:bd012d1c-91a4-4783-a33f-d2037e757f6d(jetbrains.mps.lang.context.defs.structure)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
     <import index="zezp" ref="r:7991a70a-e27d-498f-be5b-c967b5f29e47(jetbrains.mps.lang.constraints.rules.behavior)" implicit="true" />
   </imports>
@@ -107,6 +109,18 @@
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
     </language>
+    <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
+      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
+        <child id="8465538089690331502" name="body" index="TZ5H$" />
+      </concept>
+      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
+        <child id="8970989240999019149" name="part" index="1dT_Ay" />
+      </concept>
+      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
+        <property id="8970989240999019144" name="text" index="1dT_AB" />
+      </concept>
+      <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+    </language>
     <language id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext">
       <concept id="1217960179967" name="jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_ShowErrorMessage" flags="nn" index="2k5nB$" />
       <concept id="1217960314443" name="jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_ShowMessageBase" flags="nn" index="2k5Stg">
@@ -125,6 +139,9 @@
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
+      <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
+        <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
+      </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
@@ -327,7 +344,7 @@
     <node concept="3Tm1VV" id="69bfTY3vCY7" role="1B3o_S" />
   </node>
   <node concept="312cEu" id="4Np0kcC9DT6">
-    <property role="TrG5h" value="ContextUtil" />
+    <property role="TrG5h" value="ContextMethodUtil" />
     <property role="1EXbeo" value="true" />
     <node concept="3clFbW" id="3Y1amMrfwUp" role="jymVt">
       <node concept="3cqZAl" id="3Y1amMrfwUq" role="3clF45" />
@@ -339,9 +356,9 @@
     <node concept="2YIFZL" id="q4prYF2CJB" role="jymVt">
       <property role="TrG5h" value="getContextMethodName" />
       <node concept="37vLTG" id="q4prYF2CP1" role="3clF46">
-        <property role="TrG5h" value="contextMember" />
+        <property role="TrG5h" value="def" />
         <node concept="3Tqbb2" id="q4prYF2CPp" role="1tU5fm">
-          <ref role="ehGHo" to="qbpv:6kKc3mjq0oG" resolve="TypedDef" />
+          <ref role="ehGHo" to="iwhd:6kKc3mjq0oG" resolve="TypedDef" />
         </node>
       </node>
       <node concept="17QB3L" id="q4prYF2EuS" role="3clF45" />
@@ -357,7 +374,7 @@
               <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
               <node concept="2OqwBi" id="q4prYF3k7K" role="37wK5m">
                 <node concept="37vLTw" id="q4prYF3jSR" role="2Oq$k0">
-                  <ref role="3cqZAo" node="q4prYF2CP1" resolve="contextMember" />
+                  <ref role="3cqZAo" node="q4prYF2CP1" resolve="def" />
                 </node>
                 <node concept="3TrcHB" id="q4prYF3khk" role="2OqNvi">
                   <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
@@ -365,6 +382,33 @@
               </node>
             </node>
           </node>
+        </node>
+      </node>
+    </node>
+    <node concept="3UR2Jj" id="1mFJTG6LZy" role="lGtFl">
+      <node concept="TZ5HA" id="1mFJTG6LZz" role="TZ5H$">
+        <node concept="1dT_AC" id="1mFJTG6LZ$" role="1dT_Ay">
+          <property role="1dT_AB" value="here we claim that every MPS def is one-to-one with its java counterpart." />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="1mFJTG6M6F" role="TZ5H$">
+        <node concept="1dT_AC" id="1mFJTG6M6G" role="1dT_Ay">
+          <property role="1dT_AB" value="For now Kinds are non-generatable language stub construction" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="1mFJTG6M6O" role="TZ5H$">
+        <node concept="1dT_AC" id="1mFJTG6M6P" role="1dT_Ay">
+          <property role="1dT_AB" value="It is still a question whether we need to generate kinds" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="1mFJTG6M7X" role="TZ5H$">
+        <node concept="1dT_AC" id="1mFJTG6M7Y" role="1dT_Ay">
+          <property role="1dT_AB" value="" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="1mFJTG6M7K" role="TZ5H$">
+        <node concept="1dT_AC" id="1mFJTG6M7L" role="1dT_Ay">
+          <property role="1dT_AB" value="apyshkin, mburyakov" />
         </node>
       </node>
     </node>

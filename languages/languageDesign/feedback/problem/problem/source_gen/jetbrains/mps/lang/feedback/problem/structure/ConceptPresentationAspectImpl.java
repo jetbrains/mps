@@ -11,6 +11,7 @@ import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
   private ConceptPresentation props_Problem;
   private ConceptPresentation props_ProblemKind;
+  private ConceptPresentation props_ProblemKindRoot;
 
   @Override
   @Nullable
@@ -29,6 +30,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_ProblemKind = cpb.create();
         }
         return props_ProblemKind;
+      case LanguageConceptSwitch.ProblemKindRoot:
+        if (props_ProblemKindRoot == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_ProblemKindRoot = cpb.create();
+        }
+        return props_ProblemKindRoot;
     }
     return null;
   }

@@ -23,6 +23,10 @@
     <import index="mqj2" ref="r:1d4f6f82-1219-47a2-a4fa-ac3ba14c9fd5(jetbrains.mps.lang.constraints.rules.skeleton.structure)" />
     <import index="4boq" ref="r:724e6e38-de05-4794-9500-38fefe925278(jetbrains.mps.lang.constraints.rules.skeleton.behavior)" />
     <import index="w3ru" ref="r:0a75cbc0-11b2-43e7-9663-13020b577a3f(main@generator)" />
+    <import index="tjjq" ref="6e98f4e2-decf-4e97-bf80-9109e8b759ef/java:jetbrains.mps.core.context(jetbrains.mps.lang.feedback.alltogether/)" />
+    <import index="mo3b" ref="r:693e7312-21d7-4b8c-bc92-c79ef99b1277(util)" />
+    <import index="4d13" ref="r:bfef6725-b58e-47c1-9fba-6e80a685f593(jetbrains.mps.lang.context.defs.behavior)" />
+    <import index="iwhd" ref="r:bd012d1c-91a4-4783-a33f-d2037e757f6d(jetbrains.mps.lang.context.defs.structure)" />
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" implicit="true" />
     <import index="t9po" ref="r:21b4a58c-8629-4511-bd63-7fc9a4e5fc38(jetbrains.mps.lang.messages.structure)" implicit="true" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
@@ -358,12 +362,12 @@
     <node concept="2rT7sh" id="6kKc3mjnlQG" role="2rTMjI">
       <property role="TrG5h" value="defGet" />
       <ref role="2rZz_L" to="tpee:fIYIFWa" resolve="StaticMethodDeclaration" />
-      <ref role="2rTdP9" to="qbpv:6kKc3mjq0oG" resolve="TypedDef" />
+      <ref role="2rTdP9" to="iwhd:6kKc3mjq0oG" resolve="TypedDef" />
     </node>
     <node concept="2rT7sh" id="41nfzDbPu_y" role="2rTMjI">
       <property role="TrG5h" value="defClass" />
       <ref role="2rZz_L" to="tpee:fz12cDA" resolve="ClassConcept" />
-      <ref role="2rTdP9" to="qbpv:6kKc3mjq0oG" resolve="TypedDef" />
+      <ref role="2rTdP9" to="iwhd:6kKc3mjq0oG" resolve="TypedDef" />
     </node>
     <node concept="2rT7sh" id="$V5NfaJdkP" role="2rTMjI">
       <property role="TrG5h" value="ruleField" />
@@ -438,8 +442,8 @@
         </node>
         <node concept="37vLTG" id="6fJcw0tqDZH" role="3clF46">
           <property role="TrG5h" value="context" />
-          <node concept="3uibUv" id="4cGwgqnYj2h" role="1tU5fm">
-            <ref role="3uigEE" to="o99v:~RuleContext" resolve="RuleContext" />
+          <node concept="3uibUv" id="4lnto0oK3kR" role="1tU5fm">
+            <ref role="3uigEE" to="tjjq:~Context" resolve="Context" />
           </node>
         </node>
       </node>
@@ -449,8 +453,8 @@
         <property role="TrG5h" value="check" />
         <node concept="37vLTG" id="6kKc3mjnADw" role="3clF46">
           <property role="TrG5h" value="context" />
-          <node concept="3uibUv" id="4cGwgqnYiMP" role="1tU5fm">
-            <ref role="3uigEE" to="o99v:~RuleContext" resolve="RuleContext" />
+          <node concept="3uibUv" id="4lnto0oK3uv" role="1tU5fm">
+            <ref role="3uigEE" to="tjjq:~Context" resolve="Context" />
           </node>
         </node>
         <node concept="3Tm1VV" id="6kKc3mjncsS" role="1B3o_S" />
@@ -518,7 +522,7 @@
                           </node>
                           <node concept="1mIQ4w" id="6ijHUgUUcKp" role="2OqNvi">
                             <node concept="chp4Y" id="6ijHUgUUdab" role="cj9EA">
-                              <ref role="cht4Q" to="qbpv:19J4M2yrkaX" resolve="NativeDef" />
+                              <ref role="cht4Q" to="iwhd:19J4M2yrkaX" resolve="NativeDef" />
                             </node>
                           </node>
                         </node>
@@ -618,7 +622,7 @@
           <node concept="37vLTG" id="41nfzDbPp4v" role="3clF46">
             <property role="TrG5h" value="context" />
             <node concept="3uibUv" id="41nfzDbPp4w" role="1tU5fm">
-              <ref role="3uigEE" to="o99v:~RuleContext" resolve="RuleContext" />
+              <ref role="3uigEE" to="tjjq:~Context" resolve="Context" />
               <node concept="1ZhdrF" id="41nfzDbPp4x" role="lGtFl">
                 <property role="2qtEX8" value="classifier" />
                 <property role="P3scX" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1107535904670/1107535924139" />
@@ -626,8 +630,8 @@
                   <node concept="3clFbS" id="41nfzDbPp4z" role="2VODD2">
                     <node concept="3clFbF" id="41nfzDbPp4$" role="3cqZAp">
                       <node concept="2YIFZM" id="41nfzDbPp4_" role="3clFbG">
-                        <ref role="37wK5l" to="tgww:4Np0kcC9QqV" resolve="matchContextForRuleKind" />
-                        <ref role="1Pybhc" to="tgww:4Np0kcC9DT6" resolve="ContextUtil" />
+                        <ref role="1Pybhc" to="mo3b:4Np0kcC9DT6" resolve="KindUtil" />
+                        <ref role="37wK5l" to="mo3b:4Np0kcC9QqV" resolve="matchContextForRuleKind" />
                         <node concept="2OqwBi" id="41nfzDbPp4A" role="37wK5m">
                           <node concept="30H73N" id="41nfzDbPp4B" role="2Oq$k0" />
                           <node concept="2qgKlT" id="41nfzDbPp4C" role="2OqNvi">
@@ -759,7 +763,7 @@
                                     <ref role="3cqZAo" node="41nfzDbR307" resolve="it" />
                                   </node>
                                   <node concept="2qgKlT" id="41nfzDbR3AI" role="2OqNvi">
-                                    <ref role="37wK5l" to="qkth:35M2kEOydzo" resolve="hasApplicableCondition" />
+                                    <ref role="37wK5l" to="4d13:35M2kEOydzo" resolve="hasApplicableCondition" />
                                   </node>
                                 </node>
                               </node>
@@ -804,7 +808,7 @@
           <node concept="37vLTG" id="41nfzDbPdEd" role="3clF46">
             <property role="TrG5h" value="context" />
             <node concept="3uibUv" id="41nfzDbPdEe" role="1tU5fm">
-              <ref role="3uigEE" to="o99v:~RuleContext" resolve="RuleContext" />
+              <ref role="3uigEE" to="tjjq:~Context" resolve="Context" />
               <node concept="1ZhdrF" id="41nfzDbPdEf" role="lGtFl">
                 <property role="2qtEX8" value="classifier" />
                 <property role="P3scX" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1107535904670/1107535924139" />
@@ -812,8 +816,8 @@
                   <node concept="3clFbS" id="41nfzDbPdEh" role="2VODD2">
                     <node concept="3clFbF" id="41nfzDbPdEi" role="3cqZAp">
                       <node concept="2YIFZM" id="41nfzDbPdEj" role="3clFbG">
-                        <ref role="37wK5l" to="tgww:4Np0kcC9QqV" resolve="matchContextForRuleKind" />
-                        <ref role="1Pybhc" to="tgww:4Np0kcC9DT6" resolve="ContextUtil" />
+                        <ref role="1Pybhc" to="mo3b:4Np0kcC9DT6" resolve="KindUtil" />
+                        <ref role="37wK5l" to="mo3b:4Np0kcC9QqV" resolve="matchContextForRuleKind" />
                         <node concept="2OqwBi" id="41nfzDbPdEk" role="37wK5m">
                           <node concept="30H73N" id="41nfzDbPdEl" role="2Oq$k0" />
                           <node concept="2qgKlT" id="41nfzDbPdEm" role="2OqNvi">
@@ -1047,18 +1051,18 @@
               <node concept="37vLTw" id="4rknBOXVSS6" role="37wK5m">
                 <ref role="3cqZAo" node="4rknBOXVRDt" resolve="CONCEPT" />
               </node>
-              <node concept="Rm8GO" id="2o8jHTODBRJ" role="37wK5m">
-                <ref role="Rm8GQ" to="pdwk:~CanBeChildRuleKind.INSTANCE" resolve="INSTANCE" />
-                <ref role="1Px2BO" to="pdwk:~CanBeChildRuleKind" resolve="CanBeChildRuleKind" />
-                <node concept="1ZhdrF" id="2o8jHTODBZw" role="lGtFl">
+              <node concept="Rm8GO" id="4lnto0oK7QL" role="37wK5m">
+                <ref role="Rm8GQ" to="pdwk:~CanBeChildKind.INSTANCE" resolve="INSTANCE" />
+                <ref role="1Px2BO" to="pdwk:~CanBeChildKind" resolve="CanBeChildKind" />
+                <node concept="1ZhdrF" id="4lnto0oK7XY" role="lGtFl">
                   <property role="2qtEX8" value="enumClass" />
                   <property role="P3scX" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1083260308424/1144432896254" />
-                  <node concept="3$xsQk" id="2o8jHTODBZx" role="3$ytzL">
-                    <node concept="3clFbS" id="2o8jHTODBZy" role="2VODD2">
+                  <node concept="3$xsQk" id="4lnto0oK7XZ" role="3$ytzL">
+                    <node concept="3clFbS" id="4lnto0oK7Y0" role="2VODD2">
                       <node concept="3cpWs6" id="5hCLR$mf_RC" role="3cqZAp">
                         <node concept="2YIFZM" id="5hCLR$mfAfl" role="3cqZAk">
-                          <ref role="37wK5l" to="tgww:3Y1amMrg0Ee" resolve="matchKindForRuleKind" />
-                          <ref role="1Pybhc" to="tgww:4Np0kcC9DT6" resolve="ContextUtil" />
+                          <ref role="1Pybhc" to="mo3b:4Np0kcC9DT6" resolve="KindUtil" />
+                          <ref role="37wK5l" to="mo3b:3Y1amMrg0Ee" resolve="matchKindForRuleKind" />
                           <node concept="2OqwBi" id="5hCLR$mfAWA" role="37wK5m">
                             <node concept="30H73N" id="5hCLR$mfAp0" role="2Oq$k0" />
                             <node concept="2qgKlT" id="5hCLR$mfBds" role="2OqNvi">
@@ -1114,7 +1118,7 @@
               <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
             </node>
             <node concept="3uibUv" id="3xcEe9RM7FD" role="1tU5fm">
-              <ref role="3uigEE" to="pdwk:~CanBeChildContext" resolve="CanBeChildContext" />
+              <ref role="3uigEE" to="pdwk:~ContainmentContext" resolve="ContainmentContext" />
               <node concept="1ZhdrF" id="7qY6fvuNWJi" role="lGtFl">
                 <property role="2qtEX8" value="classifier" />
                 <property role="P3scX" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1107535904670/1107535924139" />
@@ -1122,8 +1126,8 @@
                   <node concept="3clFbS" id="7qY6fvuNWJk" role="2VODD2">
                     <node concept="3clFbF" id="4Np0kcCajl4" role="3cqZAp">
                       <node concept="2YIFZM" id="4Np0kcCajl5" role="3clFbG">
-                        <ref role="37wK5l" to="tgww:4Np0kcC9QqV" resolve="matchContextForRuleKind" />
-                        <ref role="1Pybhc" to="tgww:4Np0kcC9DT6" resolve="ContextUtil" />
+                        <ref role="1Pybhc" to="mo3b:4Np0kcC9DT6" resolve="KindUtil" />
+                        <ref role="37wK5l" to="mo3b:4Np0kcC9QqV" resolve="matchContextForRuleKind" />
                         <node concept="2OqwBi" id="4Np0kcCajBe" role="37wK5m">
                           <node concept="30H73N" id="4Np0kcCajl6" role="2Oq$k0" />
                           <node concept="2qgKlT" id="4Np0kcCaka8" role="2OqNvi">
@@ -1225,7 +1229,7 @@
               <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
             </node>
             <node concept="3uibUv" id="35M2kEOxvFZ" role="1tU5fm">
-              <ref role="3uigEE" to="pdwk:~CanBeChildContext" resolve="CanBeChildContext" />
+              <ref role="3uigEE" to="pdwk:~ContainmentContext" resolve="ContainmentContext" />
               <node concept="1ZhdrF" id="35M2kEOxvG0" role="lGtFl">
                 <property role="2qtEX8" value="classifier" />
                 <property role="P3scX" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1107535904670/1107535924139" />
@@ -1233,8 +1237,8 @@
                   <node concept="3clFbS" id="35M2kEOxvG2" role="2VODD2">
                     <node concept="3clFbF" id="35M2kEOxvG3" role="3cqZAp">
                       <node concept="2YIFZM" id="35M2kEOxvG4" role="3clFbG">
-                        <ref role="1Pybhc" to="tgww:4Np0kcC9DT6" resolve="ContextUtil" />
-                        <ref role="37wK5l" to="tgww:4Np0kcC9QqV" resolve="matchContextForRuleKind" />
+                        <ref role="1Pybhc" to="mo3b:4Np0kcC9DT6" resolve="KindUtil" />
+                        <ref role="37wK5l" to="mo3b:4Np0kcC9QqV" resolve="matchContextForRuleKind" />
                         <node concept="2OqwBi" id="35M2kEOxvG5" role="37wK5m">
                           <node concept="30H73N" id="35M2kEOxvG6" role="2Oq$k0" />
                           <node concept="2qgKlT" id="35M2kEOxvG7" role="2OqNvi">
@@ -1316,7 +1320,7 @@
                                     <ref role="3cqZAo" node="41nfzDbRa$3" resolve="it" />
                                   </node>
                                   <node concept="2qgKlT" id="41nfzDbRa$2" role="2OqNvi">
-                                    <ref role="37wK5l" to="qkth:35M2kEOydzo" resolve="hasApplicableCondition" />
+                                    <ref role="37wK5l" to="4d13:35M2kEOydzo" resolve="hasApplicableCondition" />
                                   </node>
                                 </node>
                               </node>
@@ -1381,7 +1385,7 @@
         <node concept="3uibUv" id="$V5NfaJC2f" role="1zkMxy">
           <ref role="3uigEE" to="o99v:~BaseRule" resolve="BaseRule" />
           <node concept="3uibUv" id="7phS86NkeBk" role="11_B2D">
-            <ref role="3uigEE" to="pdwk:~CanBeChildContext" resolve="CanBeChildContext" />
+            <ref role="3uigEE" to="pdwk:~ContainmentContext" resolve="ContainmentContext" />
             <node concept="1ZhdrF" id="7phS86NkeBl" role="lGtFl">
               <property role="2qtEX8" value="classifier" />
               <property role="P3scX" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1107535904670/1107535924139" />
@@ -1389,8 +1393,8 @@
                 <node concept="3clFbS" id="7phS86NkeBn" role="2VODD2">
                   <node concept="3clFbF" id="4Np0kcCa0n8" role="3cqZAp">
                     <node concept="2YIFZM" id="4Np0kcCa0n9" role="3clFbG">
-                      <ref role="37wK5l" to="tgww:4Np0kcC9QqV" resolve="matchContextForRuleKind" />
-                      <ref role="1Pybhc" to="tgww:4Np0kcC9DT6" resolve="ContextUtil" />
+                      <ref role="1Pybhc" to="mo3b:4Np0kcC9DT6" resolve="KindUtil" />
+                      <ref role="37wK5l" to="mo3b:4Np0kcC9QqV" resolve="matchContextForRuleKind" />
                       <node concept="2OqwBi" id="4Np0kcCaeC6" role="37wK5m">
                         <node concept="30H73N" id="4Np0kcCa0na" role="2Oq$k0" />
                         <node concept="2qgKlT" id="4Np0kcCag4H" role="2OqNvi">
@@ -1648,7 +1652,7 @@
         <node concept="3uibUv" id="1BFxp3HIuNj" role="1tU5fm">
           <ref role="3uigEE" to="o99v:~Rule" resolve="Rule" />
           <node concept="3uibUv" id="1BFxp3HIuNk" role="11_B2D">
-            <ref role="3uigEE" to="pdwk:~CanBeChildContext" resolve="CanBeChildContext" />
+            <ref role="3uigEE" to="pdwk:~ContainmentContext" resolve="ContainmentContext" />
             <node concept="1ZhdrF" id="1BFxp3HIuNl" role="lGtFl">
               <property role="2qtEX8" value="classifier" />
               <property role="P3scX" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1107535904670/1107535924139" />
@@ -1670,8 +1674,8 @@
                   </node>
                   <node concept="3clFbF" id="1BFxp3HIuNu" role="3cqZAp">
                     <node concept="2YIFZM" id="1BFxp3HIuNv" role="3clFbG">
-                      <ref role="37wK5l" to="tgww:4Np0kcC9QqV" resolve="matchContextForRuleKind" />
-                      <ref role="1Pybhc" to="tgww:4Np0kcC9DT6" resolve="ContextUtil" />
+                      <ref role="1Pybhc" to="mo3b:4Np0kcC9DT6" resolve="KindUtil" />
+                      <ref role="37wK5l" to="mo3b:4Np0kcC9QqV" resolve="matchContextForRuleKind" />
                       <node concept="37vLTw" id="1BFxp3HIuNw" role="37wK5m">
                         <ref role="3cqZAo" node="1BFxp3HIuNp" resolve="ruleKind" />
                       </node>
@@ -1924,8 +1928,8 @@
         <node concept="3Tm1VV" id="1BFxp3HIuOQ" role="1B3o_S" />
         <node concept="37vLTG" id="1BFxp3HIuP3" role="3clF46">
           <property role="TrG5h" value="context" />
-          <node concept="3uibUv" id="1BFxp3HIuP4" role="1tU5fm">
-            <ref role="3uigEE" to="o99v:~RuleContext" resolve="RuleContext" />
+          <node concept="3uibUv" id="4lnto0oKqsX" role="1tU5fm">
+            <ref role="3uigEE" to="tjjq:~Context" resolve="Context" />
           </node>
         </node>
         <node concept="raruj" id="1BFxp3HJ8Nu" role="lGtFl" />

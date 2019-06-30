@@ -10,6 +10,7 @@
     <import index="tpce" ref="r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)" />
     <import index="qbpv" ref="r:63fc051d-731b-428a-af30-ceee8d76dfaa(jetbrains.mps.lang.constraints.rules.kinds.structure)" />
     <import index="mqj2" ref="r:1d4f6f82-1219-47a2-a4fa-ac3ba14c9fd5(jetbrains.mps.lang.constraints.rules.skeleton.structure)" />
+    <import index="iwhd" ref="r:bd012d1c-91a4-4783-a33f-d2037e757f6d(jetbrains.mps.lang.context.defs.structure)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
   </imports>
   <registry>
@@ -65,7 +66,7 @@
       <property role="20lmBu" value="reference" />
       <property role="20lbJX" value="1" />
       <property role="20kJfa" value="declaration" />
-      <ref role="20lvS9" to="qbpv:6kKc3mjq0oG" resolve="TypedDef" />
+      <ref role="20lvS9" to="iwhd:6kKc3mjq0oG" resolve="TypedDef" />
     </node>
   </node>
   <node concept="1TIwiD" id="6kKc3mjm6Ry">
@@ -124,7 +125,7 @@
       <ref role="PrY4T" to="mqj2:1BFxp3HHhtg" resolve="RuleBlockMember" />
     </node>
     <node concept="PrWs8" id="6kKc3mjq0oP" role="PzmwI">
-      <ref role="PrY4T" to="qbpv:6kKc3mjq0oG" resolve="TypedDef" />
+      <ref role="PrY4T" to="iwhd:6kKc3mjq0oG" resolve="TypedDef" />
     </node>
     <node concept="PrWs8" id="6fJcw0tqQ_q" role="PzmwI">
       <ref role="PrY4T" to="tpck:3fifI_xCcJN" resolve="ScopeProvider" />

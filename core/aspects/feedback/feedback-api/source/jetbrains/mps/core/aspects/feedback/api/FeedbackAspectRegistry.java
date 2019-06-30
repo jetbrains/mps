@@ -52,8 +52,7 @@ public final class FeedbackAspectRegistry implements CoreComponent {
     if (descriptors == null) {
       descriptors = Stream.of(new EmptyFeedbackPerConceptDescriptor(concept));
     }
-    initDescriptors(descriptors);
-    return descriptors;
+    return initDescriptors(descriptors);
   }
 
   @NotNull
@@ -68,13 +67,12 @@ public final class FeedbackAspectRegistry implements CoreComponent {
         descriptors = aspect.getPerLanguageDescriptors();
       }
     }
-    initDescriptors(descriptors);
-    return descriptors;
+    return initDescriptors(descriptors);
   }
 
 
-  private void initDescriptors(Stream<? extends FeedbackDescriptor> descriptors) {
-    descriptors.forEach(it -> {
+  private <F extends FeedbackDescriptor> Stream<F> initDescriptors(Stream<F> descriptors) {
+    return descriptors.peek(it -> {
       //noinspection SynchronizationOnLocalVariableOrMethodParameter
       synchronized (it) {
         if (!it.isInitialized()) {

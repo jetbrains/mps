@@ -7,8 +7,6 @@ import jetbrains.mps.smodel.adapter.ids.SLanguageId;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.smodel.runtime.ILanguageAspect;
-import jetbrains.mps.core.aspects.constraints.rules.ConstraintsAspectDescriptor2;
-import jetbrains.mps.lang.feedback.problem.constraints.GeneratedConstraintsAspectDescriptor2;
 import jetbrains.mps.smodel.runtime.StructureAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConceptPresentationAspect;
 import jetbrains.mps.lang.feedback.problem.structure.ConceptPresentationAspectImpl;
@@ -40,9 +38,6 @@ public class Language extends LanguageRuntime {
 
   @Override
   protected <T extends ILanguageAspect> T createAspect(Class<T> aspectClass) {
-    if (aspectClass == ConstraintsAspectDescriptor2.class) {
-      return aspectClass.cast(new GeneratedConstraintsAspectDescriptor2());
-    }
     if (aspectClass == StructureAspectDescriptor.class) {
       return aspectClass.cast(new jetbrains.mps.lang.feedback.problem.structure.StructureAspectDescriptor());
     }

@@ -15,6 +15,8 @@
     <import index="qkth" ref="r:b973253b-b433-4ca6-bda5-aea854415ed0(jetbrains.mps.lang.constraints.rules.kinds.behavior)" />
     <import index="qbpv" ref="r:63fc051d-731b-428a-af30-ceee8d76dfaa(jetbrains.mps.lang.constraints.rules.kinds.structure)" />
     <import index="mqj2" ref="r:1d4f6f82-1219-47a2-a4fa-ac3ba14c9fd5(jetbrains.mps.lang.constraints.rules.skeleton.structure)" />
+    <import index="4d13" ref="r:bfef6725-b58e-47c1-9fba-6e80a685f593(jetbrains.mps.lang.context.defs.behavior)" />
+    <import index="iwhd" ref="r:bd012d1c-91a4-4783-a33f-d2037e757f6d(jetbrains.mps.lang.context.defs.structure)" />
   </imports>
   <registry>
     <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
@@ -175,7 +177,7 @@
     </node>
     <node concept="13i0hz" id="4JP_D2W1bm6" role="13h7CS">
       <property role="TrG5h" value="getErasedType" />
-      <ref role="13i0hy" to="qkth:4JP_D2W1aPH" resolve="getErasedType" />
+      <ref role="13i0hy" to="4d13:4JP_D2W1aPH" resolve="getErasedType" />
       <node concept="3Tm1VV" id="4JP_D2W1bm7" role="1B3o_S" />
       <node concept="3clFbS" id="4JP_D2W1bma" role="3clF47">
         <node concept="3clFbF" id="4JP_D2W1bmp" role="3cqZAp">
@@ -203,7 +205,7 @@
             </node>
             <node concept="3O6GUB" id="6fJcw0tqN9j" role="2OqNvi">
               <node concept="chp4Y" id="6fJcw0tqN9k" role="3QVz_e">
-                <ref role="cht4Q" to="qbpv:6kKc3mjq0oG" resolve="TypedDef" />
+                <ref role="cht4Q" to="iwhd:6kKc3mjq0oG" resolve="TypedDef" />
               </node>
             </node>
           </node>
@@ -224,7 +226,7 @@
                       <node concept="37vLTG" id="6fJcw0tqPui" role="3clF46">
                         <property role="TrG5h" value="node" />
                         <node concept="3Tqbb2" id="6fJcw0tqPuj" role="1tU5fm">
-                          <ref role="ehGHo" to="qbpv:6kKc3mjq0oG" resolve="TypedDef" />
+                          <ref role="ehGHo" to="iwhd:6kKc3mjq0oG" resolve="TypedDef" />
                         </node>
                       </node>
                       <node concept="3clFbS" id="6fJcw0tqPul" role="3clF47">
@@ -269,7 +271,7 @@
     </node>
     <node concept="13i0hz" id="35M2kEOye1C" role="13h7CS">
       <property role="TrG5h" value="hasApplicableCondition" />
-      <ref role="13i0hy" to="qkth:35M2kEOydzo" resolve="hasApplicableCondition" />
+      <ref role="13i0hy" to="4d13:35M2kEOydzo" resolve="hasApplicableCondition" />
       <node concept="3Tm1VV" id="35M2kEOye1D" role="1B3o_S" />
       <node concept="3clFbS" id="35M2kEOye1I" role="3clF47">
         <node concept="3clFbF" id="35M2kEOye1N" role="3cqZAp">
