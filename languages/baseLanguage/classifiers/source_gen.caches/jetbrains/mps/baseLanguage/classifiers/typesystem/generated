@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="5ky7dnetgtb8wjznlst55vb534fafzl">
-  <files names="BaseClassifierType_subtypeOf_Object_SubtypingRule.java:TypesystemDescriptor.java:check_DefaultClassifierFieldDeclaration_NonTypesystemRule.java:check_IMemberOperation_NonTypesystemRule.java:typeof_DefaultClassifierFieldAccessOperation_InferenceRule.java:typeof_DefaultMethodCallOperation_InferenceRule.java:typeof_SuperClassifierExpresson_InferenceRule.java:typeof_ThisClassifierExpresson_InferenceRule.java" />
-</product>
-
