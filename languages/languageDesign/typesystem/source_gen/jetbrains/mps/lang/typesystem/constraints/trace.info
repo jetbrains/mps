@@ -17,7 +17,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1076505808687:jetbrains.mps.baseLanguage.structure.WhileStatement" />
   <root>
     <file name="ConstraintsAspectDescriptor.java">
-      <unit at="13,0,69,0" name="jetbrains.mps.lang.typesystem.constraints.ConstraintsAspectDescriptor" />
+      <unit at="13,0,71,0" name="jetbrains.mps.lang.typesystem.constraints.ConstraintsAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902ae(jetbrains.mps.lang.typesystem.constraints)/1213104837475">
@@ -1035,6 +1035,50 @@
       </scope>
       <unit id="8401916545537506435" at="27,24,36,5" name="jetbrains.mps.lang.typesystem.constraints.TypeVarScope$1" />
       <unit id="1229172087075579624" at="16,0,102,0" name="jetbrains.mps.lang.typesystem.constraints.TypeVarScope" />
+    </file>
+  </root>
+  <root nodeRef="r:00000000-0000-4000-0000-011c895902ae(jetbrains.mps.lang.typesystem.constraints)/2329696648449887824">
+    <file name="CheckingRuleReference_Constraints.java">
+      <node id="2329696648449887824" at="23,46,24,169" concept="13" />
+      <node id="2329696648449887825" at="31,44,32,20" concept="9" />
+      <node id="2329696648449887825" at="39,63,40,57" concept="9" />
+      <node id="2329696648449887825" at="43,122,44,273" concept="8" />
+      <node id="2329696648449887825" at="44,273,45,62" concept="9" />
+      <node id="2329696648449887824" at="49,6,50,131" concept="8" />
+      <node id="2329696648449887825" at="50,131,51,42" concept="3" />
+      <node id="2329696648449887824" at="51,42,52,22" concept="9" />
+      <node id="2329696648449887824" at="54,0,55,0" concept="11" trace="breakingNode_tnh7bq_a0a0a0a0a1a0a0a0c" />
+      <node id="2329696648449887824" at="23,0,26,0" concept="2" trace="CheckingRuleReference_Constraints#()V" />
+      <node id="2329696648449887825" at="30,0,34,0" concept="7" trace="hasOwnScopeProvider#()Z" />
+      <node id="2329696648449887825" at="38,0,42,0" concept="7" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="2329696648449887825" at="42,0,47,0" concept="7" trace="createScope#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
+      <node id="2329696648449887825" at="36,56,47,10" concept="9" />
+      <node id="2329696648449887825" at="34,0,49,0" concept="7" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
+      <node id="2329696648449887825" at="28,90,49,6" concept="8" />
+      <node id="2329696648449887824" at="27,0,54,0" concept="7" trace="getSpecifiedReferences#()Ljava/util/Map;" />
+      <scope id="2329696648449887824" at="23,46,24,169" />
+      <scope id="2329696648449887825" at="31,44,32,20" />
+      <scope id="2329696648449887825" at="39,63,40,57" />
+      <scope id="2329696648449887825" at="43,122,45,62">
+        <var name="scope" id="2329696648449887825" />
+      </scope>
+      <scope id="2329696648449887824" at="23,0,26,0" />
+      <scope id="2329696648449887825" at="30,0,34,0" />
+      <scope id="2329696648449887825" at="38,0,42,0" />
+      <scope id="2329696648449887825" at="42,0,47,0">
+        <var name="_context" id="2329696648449887825" />
+        <var name="operationContext" id="2329696648449887825" />
+      </scope>
+      <scope id="2329696648449887825" at="36,56,47,10" />
+      <scope id="2329696648449887825" at="34,0,49,0" />
+      <scope id="2329696648449887824" at="28,90,52,22">
+        <var name="d0" id="2329696648449887825" />
+        <var name="references" id="2329696648449887824" />
+      </scope>
+      <scope id="2329696648449887824" at="27,0,54,0" />
+      <unit id="2329696648449887825" at="37,19,47,9" name="jetbrains.mps.lang.typesystem.constraints.CheckingRuleReference_Constraints$1$1" />
+      <unit id="2329696648449887825" at="29,48,49,5" name="jetbrains.mps.lang.typesystem.constraints.CheckingRuleReference_Constraints$1" />
+      <unit id="2329696648449887824" at="22,0,56,0" name="jetbrains.mps.lang.typesystem.constraints.CheckingRuleReference_Constraints" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902ae(jetbrains.mps.lang.typesystem.constraints)/6405009306797516357">

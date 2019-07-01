@@ -921,6 +921,16 @@
     <node concept="1QGGSu" id="4Q8sAA5iJQ8" role="rwd14">
       <property role="1iqoE4" value="${module}/icons/nontypesystem.png" />
     </node>
+    <node concept="PrWs8" id="21kJG8Hhx6G" role="PzmwI">
+      <ref role="PrY4T" to="tpck:3fifI_xCcJN" resolve="ScopeProvider" />
+    </node>
+    <node concept="1TJgyj" id="21kJG8HcIcC" role="1TKVEi">
+      <property role="IQ2ns" value="2329696648448631592" />
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="overridenRules" />
+      <property role="20lbJX" value="0..n" />
+      <ref role="20lvS9" node="21kJG8H0nwI" resolve="CheckingRuleReference" />
+    </node>
   </node>
   <node concept="1TIwiD" id="hv5pCJM">
     <property role="19KtqR" value="true" />
@@ -2119,6 +2129,19 @@
       <property role="TrG5h" value="inf" />
       <property role="3tVfz5" value="1212056211202" />
       <ref role="2wpffI" node="hCObwW2" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="21kJG8H0nwI">
+    <property role="EcuMT" value="2329696648445392942" />
+    <property role="3GE5qa" value="definition.rule" />
+    <property role="TrG5h" value="CheckingRuleReference" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="21kJG8H0nwJ" role="1TKVEi">
+      <property role="IQ2ns" value="2329696648445392943" />
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="declaration" />
+      <property role="20lbJX" value="1" />
+      <ref role="20lvS9" node="hp8kY3U" resolve="NonTypesystemRule" />
     </node>
   </node>
 </model>
