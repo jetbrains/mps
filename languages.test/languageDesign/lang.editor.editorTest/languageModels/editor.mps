@@ -2,10 +2,10 @@
 <model ref="r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)">
   <persistence version="9" />
   <languages>
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
-    <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="4" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="13" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="-1" />
+    <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="-1" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="-1" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="-1" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -7194,6 +7194,203 @@
     <ref role="1XX52x" to="68nn:367vPD06cFP" resolve="SubstTestAbstractChild_WithDefaultConcreteConcept" />
     <node concept="3F0ifn" id="367vPD06d6Y" role="2wV5jI">
       <property role="3F0ifm" value="SubstTestAbstractChild_WithDefaultConcreteConcept" />
+    </node>
+  </node>
+  <node concept="24kQdi" id="3AsrwZReiVP">
+    <property role="3GE5qa" value="completion.smart" />
+    <ref role="1XX52x" to="68nn:3AsrwZReiVq" resolve="SmartCompletionSimpleRef" />
+    <node concept="3EZMnI" id="3AsrwZReiVR" role="2wV5jI">
+      <node concept="3F0ifn" id="3AsrwZReiVY" role="3EZMnx">
+        <property role="3F0ifm" value="child with reference" />
+      </node>
+      <node concept="1iCGBv" id="3AsrwZReiW4" role="3EZMnx">
+        <ref role="1NtTu8" to="68nn:3AsrwZReiVr" resolve="reference" />
+        <node concept="1sVBvm" id="3AsrwZReiW6" role="1sWHZn">
+          <node concept="3F0A7n" id="3AsrwZReiWe" role="2wV5jI">
+            <property role="1Intyy" value="true" />
+            <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
+          </node>
+        </node>
+      </node>
+      <node concept="l2Vlx" id="3AsrwZReiVU" role="2iSdaV" />
+    </node>
+  </node>
+  <node concept="24kQdi" id="64$ALJKxQNi">
+    <property role="3GE5qa" value="completion.smart" />
+    <ref role="1XX52x" to="68nn:64$ALJKxQMb" resolve="SmartCompletionChildToRef" />
+    <node concept="3EZMnI" id="64$ALJKxQNs" role="2wV5jI">
+      <node concept="l2Vlx" id="64$ALJKxQNt" role="2iSdaV" />
+      <node concept="3F0A7n" id="64$ALJKxQNn" role="3EZMnx">
+        <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
+      </node>
+      <node concept="3F0ifn" id="64$ALJKxQN_" role="3EZMnx">
+        <property role="3F0ifm" value=":" />
+      </node>
+      <node concept="3F1sOY" id="64$ALJKxQNH" role="3EZMnx">
+        <ref role="1NtTu8" to="68nn:64$ALJKxQNq" resolve="type" />
+      </node>
+    </node>
+  </node>
+  <node concept="24kQdi" id="64$ALJKxQOX">
+    <property role="3GE5qa" value="completion.smart" />
+    <ref role="1XX52x" to="68nn:64$ALJKxQM6" resolve="SmartCompletionParent" />
+    <node concept="3EZMnI" id="64$ALJKxQOZ" role="2wV5jI">
+      <node concept="l2Vlx" id="64$ALJKxQP0" role="2iSdaV" />
+      <node concept="3F0ifn" id="64$ALJKxQP1" role="3EZMnx">
+        <property role="3F0ifm" value="smart completion parent" />
+      </node>
+      <node concept="3F0ifn" id="64$ALJKxQPb" role="3EZMnx">
+        <property role="3F0ifm" value="{" />
+        <node concept="3mYdg7" id="64$ALJKxQPc" role="3F10Kt">
+          <property role="1413C4" value="body-brace" />
+        </node>
+        <node concept="ljvvj" id="64$ALJKxQPd" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+      </node>
+      <node concept="3EZMnI" id="64$ALJKxQPe" role="3EZMnx">
+        <node concept="l2Vlx" id="64$ALJKxQPf" role="2iSdaV" />
+        <node concept="lj46D" id="64$ALJKxQPg" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+        <node concept="3F0ifn" id="64$ALJKxQPh" role="3EZMnx">
+          <property role="3F0ifm" value="type" />
+        </node>
+        <node concept="3F0ifn" id="64$ALJKxQPi" role="3EZMnx">
+          <property role="3F0ifm" value=":" />
+          <node concept="11L4FC" id="64$ALJKxQPj" role="3F10Kt">
+            <property role="VOm3f" value="true" />
+          </node>
+          <node concept="ljvvj" id="64$ALJKxQPk" role="3F10Kt">
+            <property role="VOm3f" value="true" />
+          </node>
+        </node>
+        <node concept="3F1sOY" id="64$ALJKxQPl" role="3EZMnx">
+          <ref role="1NtTu8" to="68nn:64$ALJKxQMl" resolve="type" />
+          <node concept="lj46D" id="64$ALJKxQPm" role="3F10Kt">
+            <property role="VOm3f" value="true" />
+          </node>
+          <node concept="ljvvj" id="64$ALJKxQPn" role="3F10Kt">
+            <property role="VOm3f" value="true" />
+          </node>
+        </node>
+        <node concept="3F0ifn" id="64$ALJKxQPo" role="3EZMnx">
+          <node concept="ljvvj" id="64$ALJKxQPp" role="3F10Kt">
+            <property role="VOm3f" value="true" />
+          </node>
+        </node>
+        <node concept="3F0ifn" id="64$ALJKxQPq" role="3EZMnx">
+          <property role="3F0ifm" value="children to ref" />
+        </node>
+        <node concept="3F0ifn" id="64$ALJKxQPr" role="3EZMnx">
+          <property role="3F0ifm" value=":" />
+          <node concept="11L4FC" id="64$ALJKxQPs" role="3F10Kt">
+            <property role="VOm3f" value="true" />
+          </node>
+          <node concept="ljvvj" id="64$ALJKxQPt" role="3F10Kt">
+            <property role="VOm3f" value="true" />
+          </node>
+        </node>
+        <node concept="3F2HdR" id="64$ALJKxQPu" role="3EZMnx">
+          <ref role="1NtTu8" to="68nn:64$ALJKxQM9" resolve="childrenToRef" />
+          <node concept="l2Vlx" id="64$ALJKxQPv" role="2czzBx" />
+          <node concept="pj6Ft" id="64$ALJKxQPw" role="3F10Kt">
+            <property role="VOm3f" value="true" />
+          </node>
+          <node concept="lj46D" id="64$ALJKxQPx" role="3F10Kt">
+            <property role="VOm3f" value="true" />
+          </node>
+          <node concept="ljvvj" id="64$ALJKxQPy" role="3F10Kt">
+            <property role="VOm3f" value="true" />
+          </node>
+        </node>
+        <node concept="3F0ifn" id="64$ALJKxQPz" role="3EZMnx">
+          <node concept="ljvvj" id="64$ALJKxQP$" role="3F10Kt">
+            <property role="VOm3f" value="true" />
+          </node>
+        </node>
+        <node concept="3F0ifn" id="64$ALJKxQP_" role="3EZMnx">
+          <property role="3F0ifm" value="child to complete" />
+        </node>
+        <node concept="3F0ifn" id="64$ALJKxQPA" role="3EZMnx">
+          <property role="3F0ifm" value=":" />
+          <node concept="11L4FC" id="64$ALJKxQPB" role="3F10Kt">
+            <property role="VOm3f" value="true" />
+          </node>
+          <node concept="ljvvj" id="64$ALJKxQPC" role="3F10Kt">
+            <property role="VOm3f" value="true" />
+          </node>
+        </node>
+        <node concept="3F1sOY" id="64$ALJKxQPD" role="3EZMnx">
+          <ref role="1NtTu8" to="68nn:64$ALJKxQMp" resolve="childToComplete" />
+          <node concept="lj46D" id="64$ALJKxQPE" role="3F10Kt">
+            <property role="VOm3f" value="true" />
+          </node>
+          <node concept="ljvvj" id="64$ALJKxQPF" role="3F10Kt">
+            <property role="VOm3f" value="true" />
+          </node>
+        </node>
+        <node concept="3F0ifn" id="64$ALJKxQRW" role="3EZMnx">
+          <node concept="ljvvj" id="64$ALJKxQRX" role="3F10Kt">
+            <property role="VOm3f" value="true" />
+          </node>
+        </node>
+        <node concept="3F0ifn" id="64$ALJKxQP9" role="3EZMnx">
+          <property role="3F0ifm" value="simple ref" />
+          <node concept="pVoyu" id="64$ALJKxQWh" role="3F10Kt">
+            <property role="VOm3f" value="true" />
+          </node>
+        </node>
+        <node concept="3F1sOY" id="64$ALJKxQPa" role="3EZMnx">
+          <ref role="1NtTu8" to="68nn:3AsrwZReiWl" resolve="childSimpleRef" />
+          <node concept="ljvvj" id="3AsrwZReiXc" role="3F10Kt">
+            <property role="VOm3f" value="true" />
+          </node>
+        </node>
+        <node concept="3F0ifn" id="3AsrwZReiWz" role="3EZMnx">
+          <node concept="ljvvj" id="3AsrwZReiW$" role="3F10Kt">
+            <property role="VOm3f" value="true" />
+          </node>
+        </node>
+        <node concept="3F0ifn" id="3AsrwZReiWx" role="3EZMnx">
+          <property role="3F0ifm" value="smart ref" />
+          <node concept="pVoyu" id="3AsrwZReiWy" role="3F10Kt">
+            <property role="VOm3f" value="true" />
+          </node>
+        </node>
+        <node concept="3F1sOY" id="3AsrwZReiWw" role="3EZMnx">
+          <ref role="1NtTu8" to="68nn:64$ALJKxQOu" resolve="childSmartRef" />
+        </node>
+      </node>
+      <node concept="3F0ifn" id="64$ALJKxQPG" role="3EZMnx">
+        <property role="3F0ifm" value="}" />
+        <node concept="3mYdg7" id="64$ALJKxQPH" role="3F10Kt">
+          <property role="1413C4" value="body-brace" />
+        </node>
+        <node concept="pVoyu" id="64$ALJK$gxy" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="24kQdi" id="64$ALJKxQOg">
+    <property role="3GE5qa" value="completion.smart" />
+    <ref role="1XX52x" to="68nn:64$ALJKxQNM" resolve="SmartCompletionSmartRef" />
+    <node concept="1iCGBv" id="64$ALJKxQOi" role="2wV5jI">
+      <ref role="1NtTu8" to="68nn:64$ALJKxQNP" resolve="reference" />
+      <node concept="1sVBvm" id="64$ALJKxQOk" role="1sWHZn">
+        <node concept="3F0A7n" id="64$ALJKxQOr" role="2wV5jI">
+          <property role="1Intyy" value="true" />
+          <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="24kQdi" id="64$ALJKz6_D">
+    <property role="3GE5qa" value="completion.smart" />
+    <ref role="1XX52x" to="68nn:64$ALJKywP4" resolve="SmartCompletionTypedChild" />
+    <node concept="PMmxH" id="64$ALJKz6_L" role="2wV5jI">
+      <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
     </node>
   </node>
 </model>

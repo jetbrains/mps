@@ -102,6 +102,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_SimpleNodesContainer;
   private ConceptPresentation props_SimplePropertyAttribute;
   private ConceptPresentation props_SimplePropertyContainer;
+  private ConceptPresentation props_SmartCompletionChildToRef;
+  private ConceptPresentation props_SmartCompletionParent;
+  private ConceptPresentation props_SmartCompletionSimpleRef;
+  private ConceptPresentation props_SmartCompletionSmartRef;
+  private ConceptPresentation props_SmartCompletionTypedChild;
+  private ConceptPresentation props_SmartCompletionTypedChild_Boolean;
+  private ConceptPresentation props_SmartCompletionTypedChild_Integer;
   private ConceptPresentation props_StubBlock;
   private ConceptPresentation props_StyleChild;
   private ConceptPresentation props_StyleParent;
@@ -781,6 +788,54 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_SimplePropertyContainer = cpb.create();
         }
         return props_SimplePropertyContainer;
+      case LanguageConceptSwitch.SmartCompletionChildToRef:
+        if (props_SmartCompletionChildToRef == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_SmartCompletionChildToRef = cpb.create();
+        }
+        return props_SmartCompletionChildToRef;
+      case LanguageConceptSwitch.SmartCompletionParent:
+        if (props_SmartCompletionParent == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("SmartCompletionParent");
+          props_SmartCompletionParent = cpb.create();
+        }
+        return props_SmartCompletionParent;
+      case LanguageConceptSwitch.SmartCompletionSimpleRef:
+        if (props_SmartCompletionSimpleRef == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("simple ref");
+          props_SmartCompletionSimpleRef = cpb.create();
+        }
+        return props_SmartCompletionSimpleRef;
+      case LanguageConceptSwitch.SmartCompletionSmartRef:
+        if (props_SmartCompletionSmartRef == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByReference(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x61249b1bf0876cf2L, 0x61249b1bf0876cf5L, "reference", "", "");
+          props_SmartCompletionSmartRef = cpb.create();
+        }
+        return props_SmartCompletionSmartRef;
+      case LanguageConceptSwitch.SmartCompletionTypedChild:
+        if (props_SmartCompletionTypedChild == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_SmartCompletionTypedChild = cpb.create();
+        }
+        return props_SmartCompletionTypedChild;
+      case LanguageConceptSwitch.SmartCompletionTypedChild_Boolean:
+        if (props_SmartCompletionTypedChild_Boolean == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("bool");
+          props_SmartCompletionTypedChild_Boolean = cpb.create();
+        }
+        return props_SmartCompletionTypedChild_Boolean;
+      case LanguageConceptSwitch.SmartCompletionTypedChild_Integer:
+        if (props_SmartCompletionTypedChild_Integer == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("int");
+          props_SmartCompletionTypedChild_Integer = cpb.create();
+        }
+        return props_SmartCompletionTypedChild_Integer;
       case LanguageConceptSwitch.StubBlock:
         if (props_StubBlock == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

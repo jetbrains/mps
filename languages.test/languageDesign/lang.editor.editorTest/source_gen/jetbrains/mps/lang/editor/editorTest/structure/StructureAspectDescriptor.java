@@ -109,6 +109,13 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptSimpleNodesContainer = createDescriptorForSimpleNodesContainer();
   /*package*/ final ConceptDescriptor myConceptSimplePropertyAttribute = createDescriptorForSimplePropertyAttribute();
   /*package*/ final ConceptDescriptor myConceptSimplePropertyContainer = createDescriptorForSimplePropertyContainer();
+  /*package*/ final ConceptDescriptor myConceptSmartCompletionChildToRef = createDescriptorForSmartCompletionChildToRef();
+  /*package*/ final ConceptDescriptor myConceptSmartCompletionParent = createDescriptorForSmartCompletionParent();
+  /*package*/ final ConceptDescriptor myConceptSmartCompletionSimpleRef = createDescriptorForSmartCompletionSimpleRef();
+  /*package*/ final ConceptDescriptor myConceptSmartCompletionSmartRef = createDescriptorForSmartCompletionSmartRef();
+  /*package*/ final ConceptDescriptor myConceptSmartCompletionTypedChild = createDescriptorForSmartCompletionTypedChild();
+  /*package*/ final ConceptDescriptor myConceptSmartCompletionTypedChild_Boolean = createDescriptorForSmartCompletionTypedChild_Boolean();
+  /*package*/ final ConceptDescriptor myConceptSmartCompletionTypedChild_Integer = createDescriptorForSmartCompletionTypedChild_Integer();
   /*package*/ final ConceptDescriptor myConceptStubBlock = createDescriptorForStubBlock();
   /*package*/ final ConceptDescriptor myConceptStyleChild = createDescriptorForStyleChild();
   /*package*/ final ConceptDescriptor myConceptStyleParent = createDescriptorForStyleParent();
@@ -151,11 +158,12 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   public void reportDependencies(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies deps) {
     deps.extendedLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
     deps.extendedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
+    deps.aggregatedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
   }
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptAbstract_SubstTestChild_WithNextApplicableEditorAndMenu, myConceptActionMapDeleteBackspaceTester, myConceptActionMapImportTester, myConceptActionMapIndividualImportTester, myConceptAttractsFocusBlock, myConceptAttributeChild, myConceptAttributeWithChildren, myConceptAttributedConcept, myConceptAutoResolveChildWithErrorCell, myConceptAutoResolveNodeToReference, myConceptAutoResolveRoot, myConceptBar, myConceptBinaryExpression, myConceptBracesBlock, myConceptBracesStubBlock, myConceptClassReference, myConceptCollapsedByDefault, myConceptCollapsedConditionally, myConceptCollapsibleConcept, myConceptCompletionChild, myConceptCompletionParent, myConceptComposition, myConceptContainer, myConceptCustomPlaceholder, myConceptDelTestAbstractChild, myConceptDelTestChild1, myConceptDelTestChildContainer, myConceptDelTestChildReferenceContainer, myConceptDelTestChildSpecialContainer, myConceptDelTestChildWithSmartReference, myConceptDelTestChildWithUsualReference, myConceptDelTestNodeToReference, myConceptDelTestRoot, myConceptDelTestSpecialAbstractChild, myConceptDelTestSpecialChild1, myConceptDeleteLineTestChild, myConceptDeleteLineTestChildWithNested, myConceptDeleteLineTestReadOnlyChild, myConceptDeleteLineTestRoot, myConceptDeleteWrapperChild, myConceptDeleteWrapperRoot, myConceptFoldedCell, myConceptFoldingContainer, myConceptFoo, myConceptIBaseTestBlock, myConceptIDelTestChild, myConceptIDelTestConcreteChild, myConceptISpecialDelTestChild, myConceptISpecialDelTestConcreteChild, myConceptImmediateCompletionChild, myConceptInitAbstractChild, myConceptInitChildWithDirectCycle_card1, myConceptInitChildWithDirectCycle_card1n, myConceptInitChildWithIndirectCycle_card1, myConceptInitChildWithIndirectCycle_card1n, myConceptInitChildWithTwoSameConceptChildren, myConceptInitContainer, myConceptInitGrandChild, myConceptInitGrandChildWithIndirectCycle_card1, myConceptInitGrandChildWithIndirectCycle_card1n, myConceptInspectorBlock, myConceptIntegerLiteral, myConceptLabelConceptWithProperty, myConceptMenuTraceChildCellMenu, myConceptMenuTraceGrandChildCellMenu, myConceptMenuTraceGrandChildSubChildCellMenu, myConceptMenuTraceNodeToReference, myConceptMenuTraceParent, myConceptMenuTraceSubstituteChild, myConceptMenuTraceSubstituteSubChild1, myConceptMenuTraceSubstituteSubChild2, myConceptMenuTraceTransformationChild, myConceptMenuTraceTransformationChildSuper, myConceptMenuTraceTransformationChildWithEnum, myConceptNonEmptyProperty, myConceptNonSelectableContainer, myConceptNotEditableVaraileReference, myConceptPlaceholderChild, myConceptPlaceholderChildAttribute, myConceptPlaceholderParent, myConceptPlusExpression, myConceptReferenceAnnotataion, myConceptSelectable, myConceptSelectableContainer, myConceptSelectableCustomizedContainer, myConceptSelectionChild, myConceptSelectionContainer, myConceptSideTranformWrapper, myConceptSimpleNode, myConceptSimpleNodeHidingAttribute, myConceptSimpleNodesContainer, myConceptSimplePropertyAttribute, myConceptSimplePropertyContainer, myConceptStubBlock, myConceptStyleChild, myConceptStyleParent, myConceptSubstMiddlewareChild, myConceptSubstTestAbstractChild, myConceptSubstTestAbstractChild_WithDefaultConcreteConcept, myConceptSubstTestBooleanPropertyChild, myConceptSubstTestChild_DefaultConcreteConcept, myConceptSubstTestChild_WithNextApplicableEditorAndMenu_1, myConceptSubstTestChild_WithNextApplicableEditorAndMenu_2, myConceptSubstTestEnumPropertyChild, myConceptSubstTestRoot, myConceptSubstTestRoot_NoEditor, myConceptSwingComponent, myConceptSwingComponentContainer, myConceptSwingComponentinFoldedCell, myConceptTestBlockList, myConceptTwoStepDeleteAbstractChildContainer, myConceptTwoStepDeleteAttribute, myConceptTwoStepDeleteCellCollectionChild, myConceptTwoStepDeleteCustomChild, myConceptTwoStepDeleteCustomChildContainer, myConceptTwoStepDeleteDefaultChild, myConceptTwoStepDeleteDefaultChildContainer, myConceptTwoStepDeleteLabelChild, myConceptTwoStepDeleteTestRoot, myConceptVariableDeclarationBlock, myConceptVariableDeclarationReference, myConceptVerticalLayoutBlockList);
+    return Arrays.asList(myConceptAbstract_SubstTestChild_WithNextApplicableEditorAndMenu, myConceptActionMapDeleteBackspaceTester, myConceptActionMapImportTester, myConceptActionMapIndividualImportTester, myConceptAttractsFocusBlock, myConceptAttributeChild, myConceptAttributeWithChildren, myConceptAttributedConcept, myConceptAutoResolveChildWithErrorCell, myConceptAutoResolveNodeToReference, myConceptAutoResolveRoot, myConceptBar, myConceptBinaryExpression, myConceptBracesBlock, myConceptBracesStubBlock, myConceptClassReference, myConceptCollapsedByDefault, myConceptCollapsedConditionally, myConceptCollapsibleConcept, myConceptCompletionChild, myConceptCompletionParent, myConceptComposition, myConceptContainer, myConceptCustomPlaceholder, myConceptDelTestAbstractChild, myConceptDelTestChild1, myConceptDelTestChildContainer, myConceptDelTestChildReferenceContainer, myConceptDelTestChildSpecialContainer, myConceptDelTestChildWithSmartReference, myConceptDelTestChildWithUsualReference, myConceptDelTestNodeToReference, myConceptDelTestRoot, myConceptDelTestSpecialAbstractChild, myConceptDelTestSpecialChild1, myConceptDeleteLineTestChild, myConceptDeleteLineTestChildWithNested, myConceptDeleteLineTestReadOnlyChild, myConceptDeleteLineTestRoot, myConceptDeleteWrapperChild, myConceptDeleteWrapperRoot, myConceptFoldedCell, myConceptFoldingContainer, myConceptFoo, myConceptIBaseTestBlock, myConceptIDelTestChild, myConceptIDelTestConcreteChild, myConceptISpecialDelTestChild, myConceptISpecialDelTestConcreteChild, myConceptImmediateCompletionChild, myConceptInitAbstractChild, myConceptInitChildWithDirectCycle_card1, myConceptInitChildWithDirectCycle_card1n, myConceptInitChildWithIndirectCycle_card1, myConceptInitChildWithIndirectCycle_card1n, myConceptInitChildWithTwoSameConceptChildren, myConceptInitContainer, myConceptInitGrandChild, myConceptInitGrandChildWithIndirectCycle_card1, myConceptInitGrandChildWithIndirectCycle_card1n, myConceptInspectorBlock, myConceptIntegerLiteral, myConceptLabelConceptWithProperty, myConceptMenuTraceChildCellMenu, myConceptMenuTraceGrandChildCellMenu, myConceptMenuTraceGrandChildSubChildCellMenu, myConceptMenuTraceNodeToReference, myConceptMenuTraceParent, myConceptMenuTraceSubstituteChild, myConceptMenuTraceSubstituteSubChild1, myConceptMenuTraceSubstituteSubChild2, myConceptMenuTraceTransformationChild, myConceptMenuTraceTransformationChildSuper, myConceptMenuTraceTransformationChildWithEnum, myConceptNonEmptyProperty, myConceptNonSelectableContainer, myConceptNotEditableVaraileReference, myConceptPlaceholderChild, myConceptPlaceholderChildAttribute, myConceptPlaceholderParent, myConceptPlusExpression, myConceptReferenceAnnotataion, myConceptSelectable, myConceptSelectableContainer, myConceptSelectableCustomizedContainer, myConceptSelectionChild, myConceptSelectionContainer, myConceptSideTranformWrapper, myConceptSimpleNode, myConceptSimpleNodeHidingAttribute, myConceptSimpleNodesContainer, myConceptSimplePropertyAttribute, myConceptSimplePropertyContainer, myConceptSmartCompletionChildToRef, myConceptSmartCompletionParent, myConceptSmartCompletionSimpleRef, myConceptSmartCompletionSmartRef, myConceptSmartCompletionTypedChild, myConceptSmartCompletionTypedChild_Boolean, myConceptSmartCompletionTypedChild_Integer, myConceptStubBlock, myConceptStyleChild, myConceptStyleParent, myConceptSubstMiddlewareChild, myConceptSubstTestAbstractChild, myConceptSubstTestAbstractChild_WithDefaultConcreteConcept, myConceptSubstTestBooleanPropertyChild, myConceptSubstTestChild_DefaultConcreteConcept, myConceptSubstTestChild_WithNextApplicableEditorAndMenu_1, myConceptSubstTestChild_WithNextApplicableEditorAndMenu_2, myConceptSubstTestEnumPropertyChild, myConceptSubstTestRoot, myConceptSubstTestRoot_NoEditor, myConceptSwingComponent, myConceptSwingComponentContainer, myConceptSwingComponentinFoldedCell, myConceptTestBlockList, myConceptTwoStepDeleteAbstractChildContainer, myConceptTwoStepDeleteAttribute, myConceptTwoStepDeleteCellCollectionChild, myConceptTwoStepDeleteCustomChild, myConceptTwoStepDeleteCustomChildContainer, myConceptTwoStepDeleteDefaultChild, myConceptTwoStepDeleteDefaultChildContainer, myConceptTwoStepDeleteLabelChild, myConceptTwoStepDeleteTestRoot, myConceptVariableDeclarationBlock, myConceptVariableDeclarationReference, myConceptVerticalLayoutBlockList);
   }
 
   @Override
@@ -348,6 +356,20 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptSimplePropertyAttribute;
       case LanguageConceptSwitch.SimplePropertyContainer:
         return myConceptSimplePropertyContainer;
+      case LanguageConceptSwitch.SmartCompletionChildToRef:
+        return myConceptSmartCompletionChildToRef;
+      case LanguageConceptSwitch.SmartCompletionParent:
+        return myConceptSmartCompletionParent;
+      case LanguageConceptSwitch.SmartCompletionSimpleRef:
+        return myConceptSmartCompletionSimpleRef;
+      case LanguageConceptSwitch.SmartCompletionSmartRef:
+        return myConceptSmartCompletionSmartRef;
+      case LanguageConceptSwitch.SmartCompletionTypedChild:
+        return myConceptSmartCompletionTypedChild;
+      case LanguageConceptSwitch.SmartCompletionTypedChild_Boolean:
+        return myConceptSmartCompletionTypedChild_Boolean;
+      case LanguageConceptSwitch.SmartCompletionTypedChild_Integer:
+        return myConceptSmartCompletionTypedChild_Integer;
       case LanguageConceptSwitch.StubBlock:
         return myConceptStubBlock;
       case LanguageConceptSwitch.StyleChild:
@@ -1216,6 +1238,70 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:1a7fc406-f263-498c-a126-51036fe6a9da(jetbrains.mps.lang.editor.editorTest.structure)/3195708693940803614");
     b.version(2);
     b.property("property", 0x2c59702023f818ddL).type(PrimitiveTypeId.INTEGER).origin("3195708693940803805").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForSmartCompletionChildToRef() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.editorTest", "SmartCompletionChildToRef", 0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x61249b1bf0876c8bL);
+    b.class_(false, false, false);
+    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
+    b.origin("r:1a7fc406-f263-498c-a126-51036fe6a9da(jetbrains.mps.lang.editor.editorTest.structure)/6999890265142422667");
+    b.version(2);
+    b.aggregate("type", 0x61249b1bf0876cdaL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL).optional(false).ordered(true).multiple(false).origin("6999890265142422746").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForSmartCompletionParent() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.editorTest", "SmartCompletionParent", 0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x61249b1bf0876c86L);
+    b.class_(false, false, false);
+    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x33d23ee961a0cbf3L);
+    b.origin("r:1a7fc406-f263-498c-a126-51036fe6a9da(jetbrains.mps.lang.editor.editorTest.structure)/6999890265142422662");
+    b.version(2);
+    b.aggregate("type", 0x61249b1bf0876c95L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL).optional(false).ordered(true).multiple(false).origin("6999890265142422677").done();
+    b.aggregate("childrenToRef", 0x61249b1bf0876c89L).target(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x61249b1bf0876c8bL).optional(true).ordered(true).multiple(true).origin("6999890265142422665").done();
+    b.aggregate("childToComplete", 0x61249b1bf0876c99L).target(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x61249b1bf08a0d44L).optional(true).ordered(true).multiple(false).origin("6999890265142422681").done();
+    b.aggregate("childSimpleRef", 0x399c6e0ff7392f15L).target(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x399c6e0ff7392edaL).optional(true).ordered(true).multiple(false).origin("4151313971380039445").done();
+    b.aggregate("childSmartRef", 0x61249b1bf0876d1eL).target(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x61249b1bf0876cf2L).optional(true).ordered(true).multiple(false).origin("6999890265142422814").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForSmartCompletionSimpleRef() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.editorTest", "SmartCompletionSimpleRef", 0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x399c6e0ff7392edaL);
+    b.class_(false, false, false);
+    b.origin("r:1a7fc406-f263-498c-a126-51036fe6a9da(jetbrains.mps.lang.editor.editorTest.structure)/4151313971380039386");
+    b.version(2);
+    b.associate("reference", 0x399c6e0ff7392edbL).target(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x61249b1bf0876c8bL).optional(false).origin("4151313971380039387").done();
+    b.alias("simple ref");
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForSmartCompletionSmartRef() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.editorTest", "SmartCompletionSmartRef", 0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x61249b1bf0876cf2L);
+    b.class_(false, false, false);
+    b.origin("r:1a7fc406-f263-498c-a126-51036fe6a9da(jetbrains.mps.lang.editor.editorTest.structure)/6999890265142422770");
+    b.version(2);
+    b.associate("reference", 0x61249b1bf0876cf5L).target(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x61249b1bf0876c8bL).optional(false).origin("6999890265142422773").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForSmartCompletionTypedChild() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.editorTest", "SmartCompletionTypedChild", 0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x61249b1bf08a0d44L);
+    b.class_(false, true, false);
+    b.origin("r:1a7fc406-f263-498c-a126-51036fe6a9da(jetbrains.mps.lang.editor.editorTest.structure)/6999890265142594884");
+    b.version(2);
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForSmartCompletionTypedChild_Boolean() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.editorTest", "SmartCompletionTypedChild_Boolean", 0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x61249b1bf08a0d4aL);
+    b.class_(false, false, false);
+    b.super_("jetbrains.mps.lang.editor.editorTest.structure.SmartCompletionTypedChild", 0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x61249b1bf08a0d44L);
+    b.origin("r:1a7fc406-f263-498c-a126-51036fe6a9da(jetbrains.mps.lang.editor.editorTest.structure)/6999890265142594890");
+    b.version(2);
+    b.alias("bool");
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForSmartCompletionTypedChild_Integer() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.editorTest", "SmartCompletionTypedChild_Integer", 0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x61249b1bf08a0d49L);
+    b.class_(false, false, false);
+    b.super_("jetbrains.mps.lang.editor.editorTest.structure.SmartCompletionTypedChild", 0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x61249b1bf08a0d44L);
+    b.origin("r:1a7fc406-f263-498c-a126-51036fe6a9da(jetbrains.mps.lang.editor.editorTest.structure)/6999890265142594889");
+    b.version(2);
+    b.alias("int");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForStubBlock() {

@@ -2,16 +2,16 @@
 <model ref="r:f27d9626-8ef5-4cba-bce0-6aa6369f05ff(jetbrains.mps.lang.editor.completion.test)">
   <persistence version="9" />
   <languages>
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
-    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
-    <use id="443f4c36-fcf5-4eb6-9500-8d06ed259e3e" name="jetbrains.mps.baseLanguage.classifiers" version="0" />
-    <use id="9ded098b-ad6a-4657-bfd9-48636cfe8bc3" name="jetbrains.mps.lang.traceable" version="0" />
-    <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="1" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
-    <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
-    <use id="81f0abb8-d71e-4d13-a0c1-d2291fbb28b7" name="jetbrains.mps.lang.editor.editorTest" version="0" />
-    <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="4" />
-    <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="2" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="-1" />
+    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="-1" />
+    <use id="443f4c36-fcf5-4eb6-9500-8d06ed259e3e" name="jetbrains.mps.baseLanguage.classifiers" version="-1" />
+    <use id="9ded098b-ad6a-4657-bfd9-48636cfe8bc3" name="jetbrains.mps.lang.traceable" version="-1" />
+    <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="-1" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="-1" />
+    <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="-1" />
+    <use id="81f0abb8-d71e-4d13-a0c1-d2291fbb28b7" name="jetbrains.mps.lang.editor.editorTest" version="-1" />
+    <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="-1" />
+    <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="-1" />
   </languages>
   <imports>
     <import index="ekwn" ref="r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)" />
@@ -97,6 +97,8 @@
         <reference id="1144433057691" name="classifier" index="1PxDUh" />
       </concept>
       <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
+      <concept id="1070534370425" name="jetbrains.mps.baseLanguage.structure.IntegerType" flags="in" index="10Oyi0" />
+      <concept id="1070534644030" name="jetbrains.mps.baseLanguage.structure.BooleanType" flags="in" index="10P_77" />
       <concept id="1070534934090" name="jetbrains.mps.baseLanguage.structure.CastExpression" flags="nn" index="10QFUN">
         <child id="1070534934091" name="type" index="10QFUM" />
         <child id="1070534934092" name="expression" index="10QFUP" />
@@ -221,6 +223,20 @@
       </concept>
     </language>
     <language id="81f0abb8-d71e-4d13-a0c1-d2291fbb28b7" name="jetbrains.mps.lang.editor.editorTest">
+      <concept id="6999890265142422667" name="jetbrains.mps.lang.editor.editorTest.structure.SmartCompletionChildToRef" flags="ng" index="2hCZug">
+        <child id="6999890265142422746" name="type" index="2hCZv1" />
+      </concept>
+      <concept id="6999890265142422662" name="jetbrains.mps.lang.editor.editorTest.structure.SmartCompletionParent" flags="ng" index="2hCZut">
+        <child id="6999890265142422814" name="childSmartRef" index="2hCZo5" />
+        <child id="6999890265142422681" name="childToComplete" index="2hCZu2" />
+        <child id="6999890265142422677" name="type" index="2hCZue" />
+        <child id="6999890265142422665" name="childrenToRef" index="2hCZui" />
+        <child id="4151313971380039445" name="childSimpleRef" index="3eDk4q" />
+      </concept>
+      <concept id="6999890265142422770" name="jetbrains.mps.lang.editor.editorTest.structure.SmartCompletionSmartRef" flags="ng" index="2hCZvD">
+        <reference id="6999890265142422773" name="reference" index="2hCZvI" />
+      </concept>
+      <concept id="6999890265142594889" name="jetbrains.mps.lang.editor.editorTest.structure.SmartCompletionTypedChild_Integer" flags="ng" index="2hFDpi" />
       <concept id="775415105914266118" name="jetbrains.mps.lang.editor.editorTest.structure.MenuTraceParent" flags="ng" index="ZJN7C">
         <child id="3631615103242228891" name="menuTraceChildWithEnum" index="3fP48E" />
         <child id="1384684774806479021" name="menuTraceTransformation" index="1N30fq" />
@@ -232,6 +248,9 @@
         <child id="6292171174659005454" name="child" index="34OHhm" />
       </concept>
       <concept id="6292171174658974637" name="jetbrains.mps.lang.editor.editorTest.structure.CompletionChild" flags="ng" index="34OAJP" />
+      <concept id="4151313971380039386" name="jetbrains.mps.lang.editor.editorTest.structure.SmartCompletionSimpleRef" flags="ng" index="3eDk3l">
+        <reference id="4151313971380039387" name="reference" index="3eDk3k" />
+      </concept>
       <concept id="913276302144826765" name="jetbrains.mps.lang.editor.editorTest.structure.MenuTraceNodeToReference" flags="ng" index="1fGRpS" />
       <concept id="3631615103242227667" name="jetbrains.mps.lang.editor.editorTest.structure.MenuTraceTransformationChildWithEnum" flags="ng" index="3fP5_y" />
       <concept id="1384684774806073980" name="jetbrains.mps.lang.editor.editorTest.structure.MenuTraceTransformationChild" flags="ng" index="1N0_4b" />
@@ -8016,6 +8035,184 @@
           <property role="OXtK3" value="true" />
           <property role="p6zMq" value="14" />
           <property role="p6zMs" value="14" />
+          <property role="LIFWd" value="property_name" />
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="LiM7Y" id="64$ALJKxNsq">
+    <property role="TrG5h" value="CompleteSmart_Child" />
+    <property role="3GE5qa" value="smart" />
+    <node concept="3clFbS" id="64$ALJKxNsr" role="LjaKd">
+      <node concept="2HxZob" id="64$ALJKxNss" role="3cqZAp">
+        <node concept="1iFQzN" id="64$ALJKxNst" role="3iKnsn">
+          <ref role="1iFR8X" to="ekwn:2XByp9s_umy" resolve="CompleteSmart" />
+        </node>
+      </node>
+      <node concept="3vwNmj" id="64$ALJK_k_Q" role="3cqZAp">
+        <node concept="1Wc70l" id="64$ALJK_kPj" role="3vwVQn">
+          <node concept="3clFbC" id="64$ALJK_nGF" role="3uHU7w">
+            <node concept="3cmrfG" id="64$ALJK_nGU" role="3uHU7w">
+              <property role="3cmrfH" value="1" />
+            </node>
+            <node concept="2OqwBi" id="64$ALJK_mvl" role="3uHU7B">
+              <node concept="2OqwBi" id="64$ALJK_luD" role="2Oq$k0">
+                <node concept="369mXd" id="64$ALJK_kQM" role="2Oq$k0" />
+                <node concept="liA8E" id="64$ALJK_mmj" role="2OqNvi">
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
+                </node>
+              </node>
+              <node concept="liA8E" id="64$ALJK_mEE" role="2OqNvi">
+                <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.getNumberOfActions()" resolve="getNumberOfActions" />
+              </node>
+            </node>
+          </node>
+          <node concept="2OqwBi" id="64$ALJK_klj" role="3uHU7B">
+            <node concept="2OqwBi" id="64$ALJK_jlK" role="2Oq$k0">
+              <node concept="369mXd" id="64$ALJK_iIg" role="2Oq$k0" />
+              <node concept="liA8E" id="64$ALJK_kcV" role="2OqNvi">
+                <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
+              </node>
+            </node>
+            <node concept="liA8E" id="64$ALJK_kw9" role="2OqNvi">
+              <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible()" resolve="isVisible" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="yd1bK" id="64$ALJK_gUG" role="3cqZAp">
+        <node concept="pLAjd" id="64$ALJK_gUI" role="yd6KS">
+          <property role="pLAjf" value="VK_ENTER" />
+        </node>
+      </node>
+    </node>
+    <node concept="2hCZut" id="64$ALJKyt8D" role="LiRBU">
+      <node concept="10Oyi0" id="64$ALJKywM0" role="2hCZue" />
+      <node concept="LIFWc" id="64$ALJKz6$u" role="lGtFl">
+        <property role="ZRATv" value="true" />
+        <property role="OXtK3" value="true" />
+        <property role="p6zMq" value="0" />
+        <property role="p6zMs" value="0" />
+        <property role="LIFWd" value="empty_childToComplete" />
+      </node>
+    </node>
+    <node concept="2hCZut" id="64$ALJKywMb" role="LiZbd">
+      <node concept="10Oyi0" id="64$ALJKywMc" role="2hCZue" />
+      <node concept="2hFDpi" id="64$ALJKz6$C" role="2hCZu2">
+        <node concept="LIFWc" id="64$ALJKzCcU" role="lGtFl">
+          <property role="ZRATv" value="true" />
+          <property role="OXtK3" value="true" />
+          <property role="p6zMq" value="3" />
+          <property role="p6zMs" value="3" />
+          <property role="LIFWd" value="ALIAS_EDITOR_COMPONENT" />
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="LiM7Y" id="64$ALJK$gwa">
+    <property role="TrG5h" value="CompleteSmart_SmartReference" />
+    <property role="3GE5qa" value="smart" />
+    <node concept="3clFbS" id="64$ALJK$gwb" role="LjaKd">
+      <node concept="2TK7Tu" id="64$ALJK_ol$" role="3cqZAp">
+        <property role="2TTd_B" value="var" />
+      </node>
+      <node concept="2HxZob" id="64$ALJK$gwc" role="3cqZAp">
+        <node concept="1iFQzN" id="64$ALJK$gwd" role="3iKnsn">
+          <ref role="1iFR8X" to="ekwn:2XByp9s_umy" resolve="CompleteSmart" />
+        </node>
+      </node>
+    </node>
+    <node concept="2hCZut" id="64$ALJK$gwe" role="LiRBU">
+      <node concept="2hCZug" id="64$ALJK$gwf" role="2hCZui">
+        <property role="TrG5h" value="var1" />
+        <node concept="10Oyi0" id="64$ALJK$gwg" role="2hCZv1" />
+      </node>
+      <node concept="2hCZug" id="64$ALJK$gwh" role="2hCZui">
+        <property role="TrG5h" value="var2" />
+        <node concept="10P_77" id="64$ALJK$gwi" role="2hCZv1" />
+      </node>
+      <node concept="10Oyi0" id="64$ALJK$gwj" role="2hCZue" />
+      <node concept="LIFWc" id="3AsrwZRgaSA" role="lGtFl">
+        <property role="ZRATv" value="true" />
+        <property role="OXtK3" value="true" />
+        <property role="p6zMq" value="0" />
+        <property role="p6zMs" value="0" />
+        <property role="LIFWd" value="empty_childSmartRef" />
+      </node>
+    </node>
+    <node concept="2hCZut" id="64$ALJK$gwl" role="LiZbd">
+      <node concept="2hCZug" id="64$ALJK$gwm" role="2hCZui">
+        <property role="TrG5h" value="var1" />
+        <node concept="10Oyi0" id="64$ALJK$gwn" role="2hCZv1" />
+      </node>
+      <node concept="2hCZug" id="64$ALJK$gwo" role="2hCZui">
+        <property role="TrG5h" value="var2" />
+        <node concept="10P_77" id="64$ALJK$gwp" role="2hCZv1" />
+      </node>
+      <node concept="10Oyi0" id="64$ALJK$gwq" role="2hCZue" />
+      <node concept="2hCZvD" id="64$ALJK$gx6" role="2hCZo5">
+        <ref role="2hCZvI" node="64$ALJK$gwm" resolve="var1" />
+        <node concept="LIFWc" id="3AsrwZRgaSP" role="lGtFl">
+          <property role="ZRATv" value="true" />
+          <property role="OXtK3" value="true" />
+          <property role="p6zMq" value="4" />
+          <property role="p6zMs" value="4" />
+          <property role="LIFWd" value="property_name" />
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="LiM7Y" id="64$ALJK$ezr">
+    <property role="TrG5h" value="CompleteSmart_Reference" />
+    <property role="3GE5qa" value="smart" />
+    <node concept="3clFbS" id="64$ALJK$ezs" role="LjaKd">
+      <node concept="2TK7Tu" id="64$ALJK_od1" role="3cqZAp">
+        <property role="2TTd_B" value="var" />
+      </node>
+      <node concept="2HxZob" id="64$ALJK$ezt" role="3cqZAp">
+        <node concept="1iFQzN" id="64$ALJK$ezu" role="3iKnsn">
+          <ref role="1iFR8X" to="ekwn:2XByp9s_umy" resolve="CompleteSmart" />
+        </node>
+      </node>
+    </node>
+    <node concept="2hCZut" id="64$ALJK$ezv" role="LiRBU">
+      <node concept="2hCZug" id="64$ALJK$e$6" role="2hCZui">
+        <property role="TrG5h" value="var1" />
+        <node concept="10Oyi0" id="64$ALJK$eHo" role="2hCZv1" />
+      </node>
+      <node concept="2hCZug" id="64$ALJK$eHz" role="2hCZui">
+        <property role="TrG5h" value="var2" />
+        <node concept="10P_77" id="64$ALJK$gkC" role="2hCZv1" />
+      </node>
+      <node concept="10Oyi0" id="64$ALJK$gq_" role="2hCZue" />
+      <node concept="3eDk3l" id="3AsrwZRgaUl" role="3eDk4q">
+        <ref role="3eDk3k" node="64$ALJK$eHz" resolve="var2" />
+        <node concept="LIFWc" id="3AsrwZRgVZU" role="lGtFl">
+          <property role="LIFWa" value="0" />
+          <property role="OXtK3" value="true" />
+          <property role="p6zMq" value="0" />
+          <property role="p6zMs" value="0" />
+          <property role="LIFWd" value="property_name" />
+        </node>
+      </node>
+    </node>
+    <node concept="2hCZut" id="64$ALJK$ezy" role="LiZbd">
+      <node concept="2hCZug" id="64$ALJK$gl7" role="2hCZui">
+        <property role="TrG5h" value="var1" />
+        <node concept="10Oyi0" id="64$ALJK$gl8" role="2hCZv1" />
+      </node>
+      <node concept="2hCZug" id="64$ALJK$gl9" role="2hCZui">
+        <property role="TrG5h" value="var2" />
+        <node concept="10P_77" id="64$ALJK$gla" role="2hCZv1" />
+      </node>
+      <node concept="10Oyi0" id="64$ALJK$gv3" role="2hCZue" />
+      <node concept="3eDk3l" id="3AsrwZRgW0g" role="3eDk4q">
+        <ref role="3eDk3k" node="64$ALJK$gl7" resolve="var1" />
+        <node concept="LIFWc" id="3AsrwZRgW4M" role="lGtFl">
+          <property role="ZRATv" value="true" />
+          <property role="OXtK3" value="true" />
+          <property role="p6zMq" value="4" />
+          <property role="p6zMs" value="4" />
           <property role="LIFWd" value="property_name" />
         </node>
       </node>

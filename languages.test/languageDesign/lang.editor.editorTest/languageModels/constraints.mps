@@ -361,5 +361,29 @@
     <ref role="1M2myG" to="68nn:367vPD06cFP" resolve="SubstTestAbstractChild_WithDefaultConcreteConcept" />
     <ref role="1MND4H" to="68nn:367vPD06d6u" resolve="SubstTestChild_DefaultConcreteConcept" />
   </node>
+  <node concept="1M2fIO" id="64$ALJK_sLp">
+    <property role="3GE5qa" value="completion.smart" />
+    <ref role="1M2myG" to="68nn:64$ALJKxQM6" resolve="SmartCompletionParent" />
+  </node>
+  <node concept="1M2fIO" id="64$ALJK_sLR">
+    <property role="3GE5qa" value="completion.smart" />
+    <ref role="1M2myG" to="68nn:64$ALJKxQNM" resolve="SmartCompletionSmartRef" />
+    <node concept="1N5Pfh" id="64$ALJK_sLS" role="1Mr941">
+      <ref role="1N5Vy1" to="68nn:64$ALJKxQNP" resolve="reference" />
+      <node concept="1dDu$B" id="64$ALJK_sLT" role="1N6uqs">
+        <ref role="1dDu$A" to="68nn:64$ALJKxQMb" resolve="SmartCompletionChildToRef" />
+      </node>
+    </node>
+  </node>
+  <node concept="1M2fIO" id="3AsrwZRgbAZ">
+    <property role="3GE5qa" value="completion.smart" />
+    <ref role="1M2myG" to="68nn:3AsrwZReiVq" resolve="SmartCompletionSimpleRef" />
+    <node concept="1N5Pfh" id="3AsrwZRgbB0" role="1Mr941">
+      <ref role="1N5Vy1" to="68nn:3AsrwZReiVr" resolve="reference" />
+      <node concept="1dDu$B" id="3AsrwZRgbB4" role="1N6uqs">
+        <ref role="1dDu$A" to="68nn:64$ALJKxQMb" resolve="SmartCompletionChildToRef" />
+      </node>
+    </node>
+  </node>
 </model>
 
