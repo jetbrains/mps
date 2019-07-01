@@ -167,7 +167,4 @@ public class SEnumOperations {
   public static boolean isMember(SEnumerationLiteral enumMember, long id) {
     return enumMember != null && MetaIdHelper.getEnumerationLiteral(enumMember).getIdValue() == id;
   }
-  public static int getMemberOrdinal(SEnumerationLiteral enumMember) {
-    return (enumMember == null ? -1 : enumMember.getOrdinal());
-  }
 }

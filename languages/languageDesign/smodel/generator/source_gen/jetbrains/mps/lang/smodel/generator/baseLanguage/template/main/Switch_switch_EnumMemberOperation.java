@@ -28,7 +28,7 @@ import jetbrains.mps.generator.template.ReductionRuleQueryContext;
 public class Switch_switch_EnumMemberOperation extends TemplateSwitchBase implements TemplateSwitchMapping {
   private final Iterable<TemplateReductionRule> rules;
   public Switch_switch_EnumMemberOperation() {
-    rules = TemplateUtil.<TemplateReductionRule>asIterable(new Switch_switch_EnumMemberOperation.ReductionRule0(), new Switch_switch_EnumMemberOperation.ReductionRule1(), new Switch_switch_EnumMemberOperation.ReductionRule2(), new Switch_switch_EnumMemberOperation.ReductionRule3(), new Switch_switch_EnumMemberOperation.ReductionRule4(), new Switch_switch_EnumMemberOperation.ReductionRule5(), new Switch_switch_EnumMemberOperation.ReductionRule6(), new Switch_switch_EnumMemberOperation.ReductionRule7());
+    rules = TemplateUtil.<TemplateReductionRule>asIterable(new Switch_switch_EnumMemberOperation.ReductionRule0(), new Switch_switch_EnumMemberOperation.ReductionRule1(), new Switch_switch_EnumMemberOperation.ReductionRule2(), new Switch_switch_EnumMemberOperation.ReductionRule3(), new Switch_switch_EnumMemberOperation.ReductionRule4(), new Switch_switch_EnumMemberOperation.ReductionRule5(), new Switch_switch_EnumMemberOperation.ReductionRule6());
   }
   public SNodeReference getSwitchNode() {
     return new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2733396919552954635");
@@ -276,32 +276,6 @@ public class Switch_switch_EnumMemberOperation extends TemplateSwitchBase implem
       return TemplateUtil.singletonList(tnode1);
     }
   }
-  /*package*/ static final class ReductionRule7 extends ReductionRuleBase {
-    public ReductionRule7() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4356229344309539886"), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x3c746f8223a8f615L, "jetbrains.mps.lang.smodel.structure.EnumMember_OrdinalOperation"), true);
-    }
-    @Override
-    public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
-      final TemplateExecutionEnvironment environment = context.getEnvironment();
-      final SNode tnode1 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfbbebabf09L, "StaticMethodCall"));
-      try {
-        tnode1.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"), SReference.create(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"), tnode1, PersistenceFacade.getInstance().createModelReference("r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)"), PersistenceFacade.getInstance().createNodeId("4356229344308880239")));
-        tnode1.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept"), SReference.create(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept"), tnode1, PersistenceFacade.getInstance().createModelReference("r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)"), PersistenceFacade.getInstance().createNodeId("1101499704720825413")));
-        TemplateContext context1 = context.subContext();
-        {
-          Collection<SNode> tlist2 = null;
-          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_118_8(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_8rqa92_b0a0c0d0c0b41));
-          tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_8rqa92_b0a0c0d0c0b41, "tpl/r:00000000-0000-4000-0000-011c89590303/4356229344309547433", context1);
-          for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
-            tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child3);
-          }
-          // TODO validate child 
-        }
-      } finally {
-      }
-      return TemplateUtil.singletonList(tnode1);
-    }
-  }
   private static SNodePointer copySrcMacro_8rqa92_b0a0c0d0c0b7 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2733396919552976231");
   private static SNodePointer copySrcMacro_8rqa92_b0a0c0d0c0c8 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2733396919552979428");
   private static SNodePointer copySrcMacro_8rqa92_b0a0c0d0b0d0c0c9 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2733396919552980113");
@@ -310,5 +284,4 @@ public class Switch_switch_EnumMemberOperation extends TemplateSwitchBase implem
   private static SNodePointer copySrcMacro_8rqa92_b0a0c0d0c0b21 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3689841190252940911");
   private static SNodePointer copySrcMacro_8rqa92_b0a0c0d0c0b31 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6202631021711034671");
   private static SNodePointer callMacro_8rqa92_b0a0a1a4a2a1n = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1144794804654544672");
-  private static SNodePointer copySrcMacro_8rqa92_b0a0c0d0c0b41 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4356229344309547434");
 }

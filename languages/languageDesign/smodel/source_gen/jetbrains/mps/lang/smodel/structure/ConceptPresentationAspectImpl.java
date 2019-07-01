@@ -52,7 +52,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_EnumMember_IsOperation;
   private ConceptPresentation props_EnumMember_NameOperation;
   private ConceptPresentation props_EnumMember_NameOperation_Old;
-  private ConceptPresentation props_EnumMember_OrdinalOperation;
   private ConceptPresentation props_EnumMember_PresentationOperation;
   private ConceptPresentation props_EnumMember_ValueOperation_Old;
   private ConceptPresentation props_EnumOperation;
@@ -524,13 +523,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_EnumMember_NameOperation_Old = cpb.create();
         }
         return props_EnumMember_NameOperation_Old;
-      case LanguageConceptSwitch.EnumMember_OrdinalOperation:
-        if (props_EnumMember_OrdinalOperation == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.rawPresentation("ordinal");
-          props_EnumMember_OrdinalOperation = cpb.create();
-        }
-        return props_EnumMember_OrdinalOperation;
       case LanguageConceptSwitch.EnumMember_PresentationOperation:
         if (props_EnumMember_PresentationOperation == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

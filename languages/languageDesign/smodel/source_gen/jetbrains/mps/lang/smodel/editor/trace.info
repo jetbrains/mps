@@ -23,7 +23,7 @@
       <unit at="24,0,88,0" name="jetbrains.mps.lang.smodel.editor.ConceptReference_SubstituteMenu" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <unit at="20,0,679,0" name="jetbrains.mps.lang.smodel.editor.EditorAspectDescriptorImpl" />
+      <unit at="20,0,677,0" name="jetbrains.mps.lang.smodel.editor.EditorAspectDescriptorImpl" />
     </file>
     <file name="EnumMemberReference_Old_SubstituteMenu.java">
       <unit at="101,0,122,0" name="jetbrains.mps.lang.smodel.editor.EnumMemberReference_Old_SubstituteMenu$SMP_Subconcepts_jz4s40_b" />
@@ -24710,55 +24710,6 @@
       <scope id="4175779910939087438" at="69,0,79,0" />
       <scope id="4175779910939087434" at="49,0,60,0" />
       <unit id="4175779910939087429" at="20,0,80,0" name="jetbrains.mps.lang.smodel.editor.Reference_GetLinkDeclarationOperation_InspectorBuilder_a" />
-    </file>
-  </root>
-  <root nodeRef="r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)/4356229344308819505">
-    <file name="EnumMember_OrdinalOperation_Editor.java">
-      <node id="4356229344308819505" at="11,79,12,93" concept="8" />
-      <node id="4356229344308819505" at="11,0,14,0" concept="6" trace="createEditorCell#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <scope id="4356229344308819505" at="11,79,12,93" />
-      <scope id="4356229344308819505" at="11,0,14,0">
-        <var name="editorContext" id="4356229344308819505" />
-        <var name="node" id="4356229344308819505" />
-      </scope>
-      <unit id="4356229344308819505" at="10,0,15,0" name="jetbrains.mps.lang.smodel.editor.EnumMember_OrdinalOperation_Editor" />
-    </file>
-    <file name="EnumMember_OrdinalOperation_EditorBuilder_a.java">
-      <node id="4356229344308819505" at="19,107,20,19" concept="13" />
-      <node id="4356229344308819505" at="20,19,21,18" concept="2" />
-      <node id="4356229344308819505" at="26,26,27,18" concept="8" />
-      <node id="4356229344308819505" at="30,39,31,31" concept="8" />
-      <node id="4356229344308819510" at="34,42,35,119" concept="7" />
-      <node id="4356229344308819510" at="35,119,36,72" concept="7" />
-      <node id="4356229344308819510" at="37,26,38,27" concept="2" />
-      <node id="4356229344308819510" at="38,27,39,30" concept="2" />
-      <node id="4356229344308819510" at="40,5,41,34" concept="7" />
-      <node id="8957262287569463528" at="41,34,42,47" concept="2" />
-      <node id="4356229344308819510" at="42,47,43,40" concept="2" />
-      <node id="4356229344308819510" at="43,40,44,22" concept="8" />
-      <node id="4356229344308819505" at="16,0,18,0" concept="3" trace="myNode" />
-      <node id="4356229344308819505" at="30,0,33,0" concept="6" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <node id="4356229344308819505" at="19,0,23,0" concept="1" trace="EnumMember_OrdinalOperation_EditorBuilder_a#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="4356229344308819510" at="36,72,40,5" concept="5" />
-      <node id="4356229344308819505" at="24,0,29,0" concept="6" trace="getNode#()Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="4356229344308819510" at="34,0,46,0" concept="6" trace="createComponent_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <scope id="4356229344308819505" at="26,26,27,18" />
-      <scope id="4356229344308819505" at="30,39,31,31" />
-      <scope id="4356229344308819505" at="19,107,21,18" />
-      <scope id="4356229344308819510" at="37,26,39,30" />
-      <scope id="4356229344308819505" at="30,0,33,0" />
-      <scope id="4356229344308819505" at="19,0,23,0">
-        <var name="context" id="4356229344308819505" />
-        <var name="node" id="4356229344308819505" />
-      </scope>
-      <scope id="4356229344308819505" at="24,0,29,0" />
-      <scope id="4356229344308819510" at="34,42,44,22">
-        <var name="bigCell" id="4356229344308819510" />
-        <var name="editorCell" id="4356229344308819510" />
-        <var name="style" id="4356229344308819510" />
-      </scope>
-      <scope id="4356229344308819510" at="34,0,46,0" />
-      <unit id="4356229344308819505" at="15,0,47,0" name="jetbrains.mps.lang.smodel.editor.EnumMember_OrdinalOperation_EditorBuilder_a" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)/4497478346159783452">

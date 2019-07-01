@@ -3079,16 +3079,6 @@
       <ref role="PrY4T" to="tpee:htgVS9_" resolve="IStatementListContainer" />
     </node>
   </node>
-  <node concept="1TIwiD" id="3LOrS8zEfol">
-    <property role="EcuMT" value="4356229344308819477" />
-    <property role="3GE5qa" value="enumerations" />
-    <property role="TrG5h" value="EnumMember_OrdinalOperation" />
-    <property role="34LRSv" value="ordinal" />
-    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
-    <node concept="PrWs8" id="3LOrS8zEfom" role="PzmwI">
-      <ref role="PrY4T" node="i3MheXj" resolve="EnumMemberOperation" />
-    </node>
-  </node>
   <node concept="1TIwiD" id="7rsG8eUFHRE">
     <property role="EcuMT" value="8564914671171067370" />
     <property role="3GE5qa" value="operation.datatype" />

@@ -1419,7 +1419,6 @@
     <classNode dependClassName="jetbrains.mps.lang.smodel.editor.EnumMember_IsOperation_Editor" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.editor.EnumMember_NameOperation_Editor" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.editor.EnumMember_NameOperation_Old_Editor" />
-    <classNode dependClassName="jetbrains.mps.lang.smodel.editor.EnumMember_OrdinalOperation_Editor" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.editor.EnumMember_PresentationOperation_Editor" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.editor.EnumMember_ValueOperation_Old_Editor" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.editor.EnumOperation_Alias" />
@@ -1895,25 +1894,6 @@
     <classNode dependClassName="jetbrains.mps.nodeEditor.cells.EditorCell_Constant" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
-    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
-    <classNode extendsClassName="jetbrains.mps.editor.runtime.descriptor.AbstractEditorBuilder" />
-  </dependency>
-  <dependency className="jetbrains.mps.lang.smodel.editor.EnumMember_OrdinalOperation_Editor">
-    <classNode dependClassName="jetbrains.mps.lang.smodel.editor.EnumMember_OrdinalOperation_EditorBuilder_a" />
-    <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />
-    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
-    <classNode extendsClassName="jetbrains.mps.nodeEditor.DefaultNodeEditor" />
-  </dependency>
-  <dependency className="jetbrains.mps.lang.smodel.editor.EnumMember_OrdinalOperation_EditorBuilder_a">
-    <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="jetbrains.mps.editor.runtime.cells.BigCellUtil" />
-    <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleAttributes" />
-    <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleImpl" />
-    <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />
-    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
-    <classNode dependClassName="jetbrains.mps.openapi.editor.style.Style" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.editor.runtime.descriptor.AbstractEditorBuilder" />

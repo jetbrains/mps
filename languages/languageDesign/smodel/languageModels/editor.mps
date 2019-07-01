@@ -10329,14 +10329,6 @@
       </node>
     </node>
   </node>
-  <node concept="24kQdi" id="3LOrS8zEfoL">
-    <property role="3GE5qa" value="enumerations" />
-    <ref role="1XX52x" to="tp25:3LOrS8zEfol" resolve="EnumMember_OrdinalOperation" />
-    <node concept="PMmxH" id="3LOrS8zEfoQ" role="2wV5jI">
-      <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
-      <node concept="VPxyj" id="7Le_Dva_azC" role="3F10Kt" />
-    </node>
-  </node>
   <node concept="24kQdi" id="45eRmv04PqL">
     <property role="3GE5qa" value="enumerations" />
     <ref role="1XX52x" to="tp25:45eRmv04Pqk" resolve="EnumMember_IsOperation" />

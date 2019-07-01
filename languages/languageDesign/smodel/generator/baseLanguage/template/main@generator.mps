@@ -20432,32 +20432,6 @@
         </node>
       </node>
     </node>
-    <node concept="3aamgX" id="3LOrS8zGZgI" role="3aUrZf">
-      <property role="36QftV" value="true" />
-      <ref role="30HIoZ" to="tp25:3LOrS8zEfol" resolve="EnumMember_OrdinalOperation" />
-      <node concept="gft3U" id="3LOrS8zGZW2" role="1lVwrX">
-        <node concept="2YIFZM" id="3LOrS8zH0Po" role="gfFT$">
-          <ref role="37wK5l" to="i8bi:3LOrS8zEudJ" resolve="getMemberOrdinal" />
-          <ref role="1Pybhc" to="i8bi:X9k2kW5hL5" resolve="SEnumOperations" />
-          <node concept="10Nm6u" id="3LOrS8zH16D" role="37wK5m">
-            <node concept="29HgVG" id="3LOrS8zH16E" role="lGtFl">
-              <node concept="3NFfHV" id="3LOrS8zH16F" role="3NFExx">
-                <node concept="3clFbS" id="3LOrS8zH16G" role="2VODD2">
-                  <node concept="3clFbF" id="3LOrS8zH16H" role="3cqZAp">
-                    <node concept="2OqwBi" id="3LOrS8zH16I" role="3clFbG">
-                      <node concept="1iwH7S" id="3LOrS8zH16J" role="2Oq$k0" />
-                      <node concept="3cR$yn" id="3LOrS8zH16K" role="2OqNvi">
-                        <ref role="3cRzXn" node="2nIYwg$6wjd" resolve="operand" />
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
   </node>
   <node concept="13MO4I" id="2nIYwg$6DcQ">
     <property role="3GE5qa" value="enum" />
