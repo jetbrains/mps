@@ -618,7 +618,6 @@
     </node>
   </node>
   <node concept="18kY7G" id="hHN$xyr">
-    <property role="18ip37" value="true" />
     <property role="TrG5h" value="ActionParameterTypeIsNotClassifier" />
     <property role="3GE5qa" value="Actions.Action" />
     <node concept="3clFbS" id="hHN$xys" role="18ibNy">
@@ -658,6 +657,12 @@
     <node concept="1YaCAy" id="hHN_bis" role="1YuTPh">
       <property role="TrG5h" value="parameter" />
       <ref role="1YaFvo" to="tp4k:hyS4$9Z" resolve="ActionParameterDeclaration" />
+    </node>
+    <node concept="dlsrG" id="7E$SATCNbBu" role="dp_RE">
+      <ref role="dlsrH" to="tpeh:i2vNA7d" resolve="check_FieldIsNeverUsedOrAssigned" />
+    </node>
+    <node concept="dlsrG" id="7E$SATCNbBy" role="dp_RE">
+      <ref role="dlsrH" to="tpeh:5KCJze_Hife" resolve="check_FieldDeclarationCanBeLocalVariable" />
     </node>
   </node>
   <node concept="1YbPZF" id="hQK3GMg">
