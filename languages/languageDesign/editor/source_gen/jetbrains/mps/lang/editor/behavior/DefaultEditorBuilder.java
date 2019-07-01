@@ -22,10 +22,10 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
-import java.util.Objects;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
+import jetbrains.mps.lang.structure.behavior.DataTypeDeclaration__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 
 public class DefaultEditorBuilder {
@@ -303,31 +303,13 @@ public class DefaultEditorBuilder {
     }
     return sb.toString();
   }
-  private boolean isStringProperty(SNode property) {
-    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(property, MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType")), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc3652de27L, "jetbrains.mps.lang.structure.structure.PrimitiveDataTypeDeclaration")))) {
-      return false;
-    }
-    if (!((Objects.equals(SPropertyOperations.getString(SNodeOperations.cast(SLinkOperations.getTarget(property, MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType")), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc3652de27L, "jetbrains.mps.lang.structure.structure.PrimitiveDataTypeDeclaration")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), "string")))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isBooleanProperty(SNode property) {
-    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(property, MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType")), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc3652de27L, "jetbrains.mps.lang.structure.structure.PrimitiveDataTypeDeclaration")))) {
-      return false;
-    }
-    if (!((Objects.equals(SPropertyOperations.getString(SNodeOperations.cast(SLinkOperations.getTarget(property, MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType")), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc3652de27L, "jetbrains.mps.lang.structure.structure.PrimitiveDataTypeDeclaration")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), "boolean")))) {
-      return false;
-    }
-    return true;
-  }
   private SNode getNameProperty(SNode concept) {
     final Map<SNode, Integer> idProperties = MapSequence.fromMap(new HashMap<SNode, Integer>());
     for (SNode property : ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(concept))) {
       if (SNodeOperations.is(SNodeOperations.getParent(property), new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626"))) {
         continue;
       }
-      if (!(isStringProperty(property))) {
+      if (!((boolean) DataTypeDeclaration__BehaviorDescriptor.isSimpleString_idhKtFG6a.invoke(SLinkOperations.getTarget(property, MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType"))))) {
         continue;
       }
       String name = SPropertyOperations.getString(property, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
@@ -336,6 +318,13 @@ public class DefaultEditorBuilder {
       prio += (name.toLowerCase().indexOf("name") >= 0 ? 1000 : 0);
       prio += (name.toLowerCase().indexOf("qualified") >= 0 ? 200 : 0);
       MapSequence.fromMap(idProperties).put(property, prio);
+    }
+    if (Sequence.fromIterable(MapSequence.fromMap(idProperties).values()).all(new IWhereFilter<Integer>() {
+      public boolean accept(Integer it) {
+        return it == 0;
+      }
+    })) {
+      return null;
     }
     return SetSequence.fromSet(MapSequence.fromMap(idProperties).keySet()).sort(new ISelector<SNode, Integer>() {
       public Integer select(SNode it) {
