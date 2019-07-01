@@ -235,6 +235,13 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
     for (SModuleFacet moduleFacet : myModule.getFacets()) {
       myModuleDescriptor.updateFacetDescriptor(moduleFacet);
     }
+
+    for (Generator generator : ((Language) myModule).getOwnedGenerators()) {
+      VersionFixer fixer = new VersionFixer(myProject, generator, true);
+      if (!fixer.areDepsSatisfied()) continue; //can't update module versions for a module with broken dep
+      fixer.updateImportVersions();
+    }
+
     // todo: !!!
     myModule.setModuleDescriptor(myModuleDescriptor);
     //In case of Generator saving lead to reload of containing Language
@@ -898,12 +905,8 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
       @Override
       public void apply() {
         LanguageDescriptor languageDescriptor = (LanguageDescriptor) myModuleDescriptor;
-
         languageDescriptor.getRuntimeModules().clear();
         languageDescriptor.getRuntimeModules().addAll(myTableItems);
-        for (Generator generator : ((Language) myModule).getOwnedGenerators()) {
-          new VersionFixer(myProject, generator, true).updateImportVersions();
-        }
       }
     }
 
