@@ -60,7 +60,10 @@ public class PrimList_Test extends TestCase {
       ListSequence.fromList(liBox).addElement(i);
     }
     long mem4 = this.getUsedMem();
-    Assert.assertTrue(2.5 * (mem2 - mem1) < (mem4 - mem3));
+
+    long memPrim = mem2 - mem1;
+    long memObj = mem4 - mem3;
+    Assert.assertTrue("MemPrim: " + memPrim + "; MemObj: " + memObj, 2.5 * memPrim < memObj);
     Assert.assertEquals((int) 100000, (int) ListSequence.fromList(liBox).count());
   }
   private long getUsedMem() {
