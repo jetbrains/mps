@@ -79,7 +79,6 @@ import jetbrains.mps.nodeEditor.MPSColors;
 import jetbrains.mps.nodeEditor.AbstractCellProvider;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.awt.Color;
-import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import java.awt.Font;
 import jetbrains.mps.nodeEditor.cells.ModelAccessor;
 import jetbrains.mps.util.EqualUtil;
@@ -541,21 +540,8 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightBrace
             collection.getStyle().set(StyleAttributes.TEXT_COLOR, Color.GRAY);
             for (SNode superRule : ListSequence.fromList(allSuperRules)) {
               EditorCell_Collection lineCell = EditorCell_Collection.createHorizontal(context, myNode);
-              EditorCell_Constant checkBox = new EditorCell_Constant(context, myNode, "[x]");
-              lineCell.addEditorCell(checkBox);
               EditorCell_Constant referenceCell = new EditorCell_Constant(context, myNode, SPropertyOperations.getString(superRule, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
               lineCell.addEditorCell(referenceCell);
-              checkBox.setAction(CellActionType.CLICK, new AbstractCellAction() {
-                @Override
-                public void execute(EditorContext editorContext) {
-                  SPropertyOperations.assign(myNode, MetaAdapterFactory.getProperty(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1164847e929L, 0x116484991d1L, "overrides"), false);
-                  ListSequence.fromList(SLinkOperations.getChildren(myNode, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1164853e0faL, 0x2054bec22d32e328L, "overridenRules"))).addSequence(ListSequence.fromList(allSuperRules).subtract(Sequence.fromIterable(Sequence.<SNode>singleton(superRule))).select(new ISelector<SNode, SNode>() {
-                    public SNode select(SNode it) {
-                      return createCheckingRuleReference_tg6zfx_a0a0a0a0b0a0a1a0f0c0a0a0b0a0b1b1b0(it);
-                    }
-                  }));
-                }
-              });
               referenceCell.getStyle().set(StyleAttributes.NAVIGATABLE_NODE, superRule);
               referenceCell.getStyle().set(StyleAttributes.FONT_STYLE, Font.PLAIN);
               collection.addEditorCell(lineCell);
@@ -714,11 +700,5 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightBrace
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
-  }
-  private static SNode createCheckingRuleReference_tg6zfx_a0a0a0a0b0a0a1a0f0c0a0a0b0a0b1b1b0(SNode node0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x2054bec22d01782eL, "jetbrains.mps.lang.typesystem.structure.CheckingRuleReference"), null, null, false);
-    n1.setReferenceTarget(MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x2054bec22d01782eL, 0x2054bec22d01782fL, "declaration"), node0);
-    return n1;
   }
 }
