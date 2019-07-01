@@ -3554,6 +3554,7 @@
     <classNode extendsClassName="jetbrains.mps.lang.typesystem.runtime.NonTypesystemRule_Runtime" />
   </dependency>
   <dependency className="jetbrains.mps.baseLanguage.typesystem.check_NestedNewExpression_NonTypesystemRule">
+    <classNode dependClassName="jetbrains.mps.baseLanguage.typesystem.check_GenericNewExpression_PointingToNonStaticFromStatic_NonTypesystemRule" />
     <classNode dependClassName="jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="jetbrains.mps.typesystem.inference.TypeCheckingContext" />

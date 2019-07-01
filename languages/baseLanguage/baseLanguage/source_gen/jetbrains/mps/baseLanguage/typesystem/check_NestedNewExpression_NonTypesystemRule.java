@@ -13,6 +13,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class check_NestedNewExpression_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_NestedNewExpression_NonTypesystemRule() {
   }
+  public boolean overrides(NonTypesystemRule_Runtime rule) {
+    if (rule instanceof check_GenericNewExpression_PointingToNonStaticFromStatic_NonTypesystemRule) {
+      return true;
+    }
+    return false;
+  }
   public void applyRule(final SNode nestedNewExpression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
   }
   public SAbstractConcept getApplicableConcept() {
@@ -22,6 +28,6 @@ public class check_NestedNewExpression_NonTypesystemRule extends AbstractNonType
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
-    return true;
+    return false;
   }
 }

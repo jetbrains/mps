@@ -22320,31 +22320,37 @@
       </scope>
     </file>
     <file name="check_NestedNewExpression_NonTypesystemRule.java">
-      <node id="58503241757786635" at="18,50,19,164" concept="13" />
-      <node id="58503241757786635" at="21,68,22,102" concept="13" />
-      <node id="58503241757786635" at="24,30,25,16" concept="13" />
+      <node id="58503241757786635" at="19,5,20,17" concept="13" />
+      <node id="58503241757786635" at="24,50,25,164" concept="13" />
+      <node id="58503241757786635" at="27,68,28,102" concept="13" />
+      <node id="58503241757786635" at="30,30,31,17" concept="13" />
       <node id="58503241757786635" at="14,0,16,0" concept="3" trace="check_NestedNewExpression_NonTypesystemRule#()V" />
-      <node id="58503241757786635" at="16,0,18,0" concept="11" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
-      <node id="58503241757786635" at="18,0,21,0" concept="11" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="58503241757786635" at="21,0,24,0" concept="11" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-      <node id="58503241757786635" at="24,0,27,0" concept="11" trace="overrides#()Z" />
+      <node id="58503241757786635" at="22,0,24,0" concept="11" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <node id="58503241757786635" at="24,0,27,0" concept="11" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="58503241757786635" at="27,0,30,0" concept="11" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="58503241757786635" at="30,0,33,0" concept="11" trace="overrides#()Z" />
+      <node id="58503241757786635" at="16,0,22,0" concept="11" trace="overrides#(Ljetbrains/mps/lang/typesystem/runtime/NonTypesystemRule_Runtime;)Z" />
       <scope id="58503241757786635" at="14,56,14,56" />
-      <scope id="58503241757786636" at="16,132,16,132" />
-      <scope id="58503241757786635" at="18,50,19,164" />
-      <scope id="58503241757786635" at="21,68,22,102" />
-      <scope id="58503241757786635" at="24,30,25,16" />
+      <scope id="58503241757786636" at="22,132,22,132" />
+      <scope id="58503241757786635" at="24,50,25,164" />
+      <scope id="58503241757786635" at="27,68,28,102" />
+      <scope id="58503241757786635" at="30,30,31,17" />
       <scope id="58503241757786635" at="14,0,16,0" />
-      <scope id="58503241757786635" at="16,0,18,0">
+      <scope id="58503241757786635" at="22,0,24,0">
         <var name="nestedNewExpression" id="58503241757786635" />
         <var name="status" id="58503241757786635" />
         <var name="typeCheckingContext" id="58503241757786635" />
       </scope>
-      <scope id="58503241757786635" at="18,0,21,0" />
-      <scope id="58503241757786635" at="21,0,24,0">
+      <scope id="58503241757786635" at="24,0,27,0" />
+      <scope id="58503241757786635" at="27,0,30,0">
         <var name="argument" id="58503241757786635" />
       </scope>
-      <scope id="58503241757786635" at="24,0,27,0" />
-      <unit id="58503241757786635" at="13,0,28,0" name="jetbrains.mps.baseLanguage.typesystem.check_NestedNewExpression_NonTypesystemRule" />
+      <scope id="58503241757786635" at="30,0,33,0" />
+      <scope id="58503241757786635" at="16,60,20,17" />
+      <scope id="58503241757786635" at="16,0,22,0">
+        <var name="rule" id="58503241757786635" />
+      </scope>
+      <unit id="58503241757786635" at="13,0,34,0" name="jetbrains.mps.baseLanguage.typesystem.check_NestedNewExpression_NonTypesystemRule" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)/5862977038373016151">
@@ -29635,6 +29641,11 @@
       </scope>
       <unit id="966837649720956653" at="41,279,45,5" name="jetbrains.mps.baseLanguage.typesystem.check_GenericNewExpression_PointingToNonStaticFromStatic_NonTypesystemRule$1" />
       <unit id="966837649712508218" at="24,0,67,0" name="jetbrains.mps.baseLanguage.typesystem.check_GenericNewExpression_PointingToNonStaticFromStatic_NonTypesystemRule" />
+    </file>
+    <file name="check_NestedNewExpression_NonTypesystemRule.java">
+      <node id="966837649712508218" at="17,101,18,18" concept="13" />
+      <node id="966837649712508218" at="16,60,19,5" concept="10" />
+      <scope id="966837649712508218" at="17,101,18,18" />
     </file>
   </root>
 </debug-info>

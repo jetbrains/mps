@@ -2,10 +2,10 @@
 <model ref="r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)">
   <persistence version="9" />
   <languages>
-    <use id="ed6d7656-532c-4bc2-81d1-af945aeb8280" name="jetbrains.mps.baseLanguage.blTypes" version="0" />
-    <use id="97a52717-898f-4598-8150-573d9fd03868" name="jetbrains.mps.lang.dataFlow.analyzers" version="0" />
-    <use id="774bf8a0-62e5-41e1-af63-f4812e60e48b" name="jetbrains.mps.baseLanguage.checkedDots" version="0" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="ed6d7656-532c-4bc2-81d1-af945aeb8280" name="jetbrains.mps.baseLanguage.blTypes" version="-1" />
+    <use id="97a52717-898f-4598-8150-573d9fd03868" name="jetbrains.mps.lang.dataFlow.analyzers" version="-1" />
+    <use id="774bf8a0-62e5-41e1-af63-f4812e60e48b" name="jetbrains.mps.baseLanguage.checkedDots" version="-1" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
     <devkit ref="00000000-0000-4000-0000-1de82b3a4936(jetbrains.mps.devkit.aspect.typesystem)" />
   </languages>
   <imports>
@@ -465,6 +465,9 @@
       <concept id="1207055528241" name="jetbrains.mps.lang.typesystem.structure.WarningStatement" flags="nn" index="a7r0C">
         <child id="1207055552304" name="warningText" index="a7wSD" />
       </concept>
+      <concept id="2329696648445392942" name="jetbrains.mps.lang.typesystem.structure.CheckingRuleReference" flags="ng" index="dlsrG">
+        <reference id="2329696648445392943" name="declaration" index="dlsrH" />
+      </concept>
       <concept id="1177068340529" name="jetbrains.mps.lang.typesystem.structure.ImmediateSupertypesExpression" flags="nn" index="eJogz">
         <child id="1177068475017" name="subtypeExpression" index="eJTer" />
       </concept>
@@ -564,7 +567,9 @@
         <property id="1195213689297" name="overrides" index="18ip37" />
         <child id="1195213635060" name="body" index="18ibNy" />
       </concept>
-      <concept id="1195214364922" name="jetbrains.mps.lang.typesystem.structure.NonTypesystemRule" flags="ig" index="18kY7G" />
+      <concept id="1195214364922" name="jetbrains.mps.lang.typesystem.structure.NonTypesystemRule" flags="ig" index="18kY7G">
+        <child id="2329696648448631592" name="overridenRules" index="dp_RE" />
+      </concept>
       <concept id="1188811367543" name="jetbrains.mps.lang.typesystem.structure.ComparisonRule" flags="ig" index="3aFulz">
         <child id="1188820750135" name="anotherNode" index="3bfgSz" />
       </concept>
@@ -56201,11 +56206,11 @@
                 <ref role="3uigEE" to="lui2:~SModule" resolve="SModule" />
               </node>
               <node concept="2OqwBi" id="220qeVzXaDQ" role="33vP2m">
-                <node concept="liA8E" id="220qeVzXaDV" role="2OqNvi">
-                  <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
-                </node>
                 <node concept="37vLTw" id="1uv0FAtCXa7" role="2Oq$k0">
                   <ref role="3cqZAo" node="1uv0FAtCXa2" resolve="model" />
+                </node>
+                <node concept="liA8E" id="220qeVzXaDV" role="2OqNvi">
+                  <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
                 </node>
               </node>
             </node>
@@ -59877,11 +59882,13 @@
   </node>
   <node concept="18kY7G" id="3fQ6dJbC8b">
     <property role="TrG5h" value="check_NestedNewExpression" />
-    <property role="18ip37" value="true" />
     <node concept="3clFbS" id="3fQ6dJbC8c" role="18ibNy" />
     <node concept="1YaCAy" id="3fQ6dJbC8e" role="1YuTPh">
       <property role="TrG5h" value="nestedNewExpression" />
       <ref role="1YaFvo" to="tpee:6kfBYRWHrp$" resolve="NestedNewExpression" />
+    </node>
+    <node concept="dlsrG" id="7E$SATCHZzK" role="dp_RE">
+      <ref role="dlsrH" node="PETrxa_AOU" resolve="check_GenericNewExpression_PointingToNonStaticFromStatic" />
     </node>
   </node>
   <node concept="1YbPZF" id="6kfBYRWJXwB">
