@@ -179,7 +179,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.collectMany(SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edaff8daL, 0x19eb8590edaff8dbL, "block")), MetaAdapterFactory.getConcept(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb5174aL, "jetbrains.mps.lang.constraints.rules.skeleton.structure.RuleBlock")), MetaAdapterFactory.getContainmentLink(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb5174aL, 0x19eb8590edb5174bL, "members"));
   }
   public static SNode weavingRule_ContextQuery_0_0(final WeavingMappingRuleContext _context) {
-    return _context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "constraintsRootClass");
+    return _context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "constraints2RootClass");
   }
   public static Object varMacro_Value_3_0(final TemplateVarContext _context) {
     // source node not specified or (likely, erroneously) points to the same (transient) model, 

@@ -61,5 +61,13 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
     <classNode extendsClassName="jetbrains.mps.core.aspects.constraints.rules.ConstraintsAspectDescriptor2" />
   </dependency>
+  <dependency className="multiAspectLang.constraints.GeneratedFeedbackAspectConstraints">
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.util.stream.Stream" />
+    <classNode dependClassName="jetbrains.mps.core.aspects.feedback.api.FeedbackPerConceptDescriptor" />
+    <classNode dependClassName="multiAspectLang.constraints.A_FeedbackRoot" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode extendsClassName="jetbrains.mps.core.aspects.feedback.api.FeedbackAspect" />
+  </dependency>
 </dependenciesRoot>
 

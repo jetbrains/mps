@@ -16,7 +16,7 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
     <classNode extendsClassName="jetbrains.mps.core.aspects.feedback.api.BaseFeedbackDescriptor" />
   </dependency>
-  <dependency className="multiAspectLang.feedback.GeneratedFeedbackAspect">
+  <dependency className="multiAspectLang.feedback.GeneratedFeedbackAspectFeedback">
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.stream.Stream" />
     <classNode dependClassName="jetbrains.mps.core.aspects.feedback.api.FeedbackPerConceptDescriptor" />

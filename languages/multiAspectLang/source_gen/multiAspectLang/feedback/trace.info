@@ -6,8 +6,8 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <root>
-    <file name="GeneratedFeedbackAspect.java">
-      <unit at="10,0,17,0" name="multiAspectLang.feedback.GeneratedFeedbackAspect" />
+    <file name="GeneratedFeedbackAspectFeedback.java">
+      <unit at="10,0,17,0" name="multiAspectLang.feedback.GeneratedFeedbackAspectFeedback" />
     </file>
   </root>
   <root nodeRef="r:ecf311aa-7fee-4454-acdb-4d199fb64430(multiAspectLang.feedback)/5983615114019032371">

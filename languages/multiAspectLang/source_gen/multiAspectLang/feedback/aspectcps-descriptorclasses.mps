@@ -587,9 +587,9 @@
     </node>
   </node>
   <node concept="312cEu" id="2z">
-    <property role="TrG5h" value="GeneratedFeedbackAspect" />
     <property role="3GE5qa" value="" />
     <property role="1EXbeo" value="true" />
+    <property role="TrG5h" value="GeneratedFeedbackAspectFeedback" />
     <node concept="3Tm1VV" id="2$" role="1B3o_S" />
     <node concept="3uibUv" id="2_" role="EKbjA">
       <ref role="3uigEE" to="9jwd:~FeedbackAspect" resolve="FeedbackAspect" />
@@ -672,11 +672,11 @@
       </node>
     </node>
     <node concept="39e2AJ" id="2O" role="39e2AI">
-      <property role="39e3Y2" value="aspectDescriptorClass" />
+      <property role="39e3Y2" value="feedbackAspectClass" />
       <node concept="39e2AG" id="31" role="39e3Y0">
         <property role="2mV_xN" value="true" />
         <node concept="39e2AT" id="32" role="39e2AY">
-          <ref role="39e2AS" node="2z" resolve="GeneratedFeedbackAspect" />
+          <ref role="39e2AS" node="2z" resolve="GeneratedFeedbackAspectFeedback" />
         </node>
       </node>
     </node>

@@ -387,7 +387,7 @@
   <root nodeRef="r:15a53890-cd48-425f-9829-419e5561b668(main@generator)/7291380803376071147">
     <file name="QueriesGenerated.java">
       <node id="1328301445983039384" at="140,92,141,194" concept="5" />
-      <node id="1867733327985544817" at="181,94,182,104" concept="5" />
+      <node id="1867733327985544817" at="181,94,182,105" concept="5" />
       <node id="1867733327985544684" at="205,14,206,74" concept="1" />
       <node id="1867733327985544684" at="243,15,244,22" concept="5" />
       <node id="1867733327985544684" at="252,15,253,68" concept="5" />
@@ -397,7 +397,7 @@
       <node id="1328301445983039377" at="140,0,143,0" concept="7" trace="sourceNodeQuery_0_0#(Ljetbrains/mps/generator/template/SourceSubstituteMacroNodeContext;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="1867733327985544686" at="181,0,184,0" concept="7" trace="weavingRule_ContextQuery_0_0#(Ljetbrains/mps/generator/template/WeavingMappingRuleContext;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <scope id="1328301445983039378" at="140,92,141,194" />
-      <scope id="1867733327985544687" at="181,94,182,104" />
+      <scope id="1867733327985544687" at="181,94,182,105" />
       <scope id="1867733327985544684" at="243,15,244,22" />
       <scope id="1867733327985544684" at="252,15,253,68" />
       <scope id="1867733327985544684" at="263,15,264,22" />

@@ -12,6 +12,9 @@
     <file name="GeneratedConstraintsAspectDescriptor2.java">
       <unit at="20,0,40,0" name="multiAspectLang.constraints.GeneratedConstraintsAspectDescriptor2" />
     </file>
+    <file name="GeneratedFeedbackAspectConstraints.java">
+      <unit at="10,0,17,0" name="multiAspectLang.constraints.GeneratedFeedbackAspectConstraints" />
+    </file>
   </root>
   <root nodeRef="r:5dbac061-aef9-4696-88ee-0f21fe5598f3(multiAspectLang.constraints)/24399255754237582">
     <file name="A_Constraints2.java">
