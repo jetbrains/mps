@@ -1168,8 +1168,8 @@
                   <node concept="liA8E" id="1HEP6IJFlxm" role="2OqNvi">
                     <ref role="37wK5l" to="dxuu:~JTextArea.setFont(java.awt.Font)" resolve="setFont" />
                     <node concept="2YIFZM" id="2ks2ddTDjPT" role="37wK5m">
-                      <ref role="37wK5l" to="g1qu:~UIUtil.getLabelFont()" resolve="getLabelFont" />
                       <ref role="1Pybhc" to="g1qu:~UIUtil" resolve="UIUtil" />
+                      <ref role="37wK5l" to="g1qu:~StartupUiUtil.getLabelFont()" resolve="getLabelFont" />
                     </node>
                   </node>
                   <node concept="37vLTw" id="3GM_nagTrvW" role="2Oq$k0">
