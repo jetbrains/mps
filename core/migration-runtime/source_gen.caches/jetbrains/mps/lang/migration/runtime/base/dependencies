@@ -298,6 +298,12 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.module.SModule" />
     <classNode extendsClassName="jetbrains.mps.lang.migration.runtime.base.BaseScriptReference" />
   </dependency>
+  <dependency className="jetbrains.mps.lang.migration.runtime.base.UsageOfMigrateNodeNotMigratedProblem">
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode extendsClassName="jetbrains.mps.lang.migration.runtime.base.NotMigratedNode" />
+  </dependency>
   <dependency className="jetbrains.mps.lang.migration.runtime.base.VersionFixer">
     <classNode dependClassName="java.lang.IllegalArgumentException" />
     <classNode dependClassName="java.lang.IllegalStateException" />

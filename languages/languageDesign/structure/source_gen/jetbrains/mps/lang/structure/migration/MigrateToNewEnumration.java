@@ -13,8 +13,17 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.structure.util.ConceptIdHelper;
-import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
+import jetbrains.mps.lang.migration.runtime.base.Problem;
+import org.jetbrains.mps.openapi.module.SearchScope;
+import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
+import jetbrains.mps.project.EditableFilteringScope;
+import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
+import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.lang.migration.runtime.base.DeprecatedConceptNotMigratedProblem;
+import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -25,10 +34,8 @@ import jetbrains.mps.lang.structure.behavior.EnumerationMemberDeclaration_Old__B
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.project.ModelImporter;
 import java.util.List;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.smodel.SNodePointer;
 import java.util.Objects;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.adapter.structure.types.SPrimitiveTypes;
 import org.jetbrains.mps.openapi.language.SType;
 import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
@@ -71,6 +78,27 @@ public class MigrateToNewEnumration extends MigrationScriptBase {
       SNode enumm = replaceWithNewEnum(oldEnum);
 
       generateReplacementMethods(enumm, behaviorModel);
+    }
+  }
+  @Override
+  public Iterable<Problem> check(SModule m) {
+    {
+      SearchScope scope_3t318f_a0e = CommandUtil.createScope(m);
+      final SearchScope scope_3t318f_a0e_0 = new EditableFilteringScope(scope_3t318f_a0e);
+      QueryExecutionContext context = new QueryExecutionContext() {
+        public SearchScope getDefaultSearchScope() {
+          return scope_3t318f_a0e_0;
+        }
+      };
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, "jetbrains.mps.lang.structure.structure.EnumerationDataTypeDeclaration_Old"), false)).where(new IWhereFilter<SNode>() {
+        public boolean accept(SNode it) {
+          return !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, "jetbrains.mps.lang.structure.structure.EnumMigrationInfo")));
+        }
+      }).select(new ISelector<SNode, DeprecatedConceptNotMigratedProblem>() {
+        public DeprecatedConceptNotMigratedProblem select(SNode it) {
+          return new DeprecatedConceptNotMigratedProblem(it);
+        }
+      });
     }
   }
   public MigrationScriptReference getDescriptor() {
@@ -311,7 +339,7 @@ public class MigrateToNewEnumration extends MigrationScriptBase {
   }
 
   private static boolean isValidIdentifier(String name) {
-    return (name != null && name.length() > 0) && (REGEXP_3t318f_a0a0a0a72.matcher(name).matches());
+    return (name != null && name.length() > 0) && (REGEXP_3t318f_a0a0a0a82.matcher(name).matches());
   }
 
   private interface NamingStrategy {
@@ -635,5 +663,5 @@ public class MigrateToNewEnumration extends MigrationScriptBase {
   private static boolean isEmptyString(String str) {
     return str == null || str.length() == 0;
   }
-  private static Pattern REGEXP_3t318f_a0a0a0a72 = Pattern.compile("[a-zA-Z\\$_][a-zA-Z0-9\\$_]*", 0);
+  private static Pattern REGEXP_3t318f_a0a0a0a82 = Pattern.compile("[a-zA-Z\\$_][a-zA-Z0-9\\$_]*", 0);
 }

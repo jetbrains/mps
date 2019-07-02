@@ -1699,5 +1699,23 @@
       <unit id="7363351619057170612" at="7,0,15,0" name="jetbrains.mps.lang.migration.runtime.base.DeprecatedConceptNotMigratedProblem" />
     </file>
   </root>
+  <root nodeRef="528ff3b9-5fc4-40dd-931f-c6ce3650640e/r:f69c3fa1-0e30-4980-84e2-190ae44e4c3d(jetbrains.mps.lang.migration.runtime/jetbrains.mps.lang.migration.runtime.base)/8938145142379316221">
+    <file name="UsageOfMigrateNodeNotMigratedProblem.java">
+      <node id="3899612785643216613" at="9,0,10,0" concept="5" trace="myTargetNode" />
+      <node id="8938145142379323738" at="11,83,12,22" concept="15" />
+      <node id="3899612785643220832" at="12,22,13,30" concept="4" />
+      <node id="8938145142379338724" at="17,30,18,86" concept="10" />
+      <node id="8938145142379323732" at="11,0,15,0" concept="2" trace="UsageOfMigrateNodeNotMigratedProblem#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="8938145142379318143" at="16,0,20,0" concept="8" trace="getMessage#()Ljava/lang/String;" />
+      <scope id="8938145142379318155" at="17,30,18,86" />
+      <scope id="8938145142379323736" at="11,83,13,30" />
+      <scope id="8938145142379323732" at="11,0,15,0">
+        <var name="sourceNode" id="8938145142379323739" />
+        <var name="targetNode" id="3899612785643213716" />
+      </scope>
+      <scope id="8938145142379318143" at="16,0,20,0" />
+      <unit id="8938145142379316221" at="7,0,21,0" name="jetbrains.mps.lang.migration.runtime.base.UsageOfMigrateNodeNotMigratedProblem" />
+    </file>
+  </root>
 </debug-info>
 

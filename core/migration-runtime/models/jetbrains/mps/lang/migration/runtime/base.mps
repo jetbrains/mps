@@ -10184,5 +10184,90 @@
     </node>
     <node concept="3Tm1VV" id="4dr7st0kFTN" role="1B3o_S" />
   </node>
+  <node concept="312cEu" id="7KaEUqipKfX">
+    <property role="3GE5qa" value="problem" />
+    <property role="TrG5h" value="UsageOfMigrateNodeNotMigratedProblem" />
+    <node concept="2tJIrI" id="3oudiFxPuj5" role="jymVt" />
+    <node concept="312cEg" id="3oudiFxPtV_" role="jymVt">
+      <property role="TrG5h" value="myTargetNode" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="3oudiFxPtHP" role="1B3o_S" />
+      <node concept="3uibUv" id="3oudiFxPu5a" role="1tU5fm">
+        <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="3oudiFxPubN" role="jymVt" />
+    <node concept="3Tm1VV" id="7KaEUqipKfY" role="1B3o_S" />
+    <node concept="3uibUv" id="7KaEUqipKG8" role="1zkMxy">
+      <ref role="3uigEE" node="4JdgAL_5vM9" resolve="NotMigratedNode" />
+    </node>
+    <node concept="3clFbW" id="7KaEUqipM5k" role="jymVt">
+      <node concept="3cqZAl" id="7KaEUqipM5l" role="3clF45" />
+      <node concept="3Tm1VV" id="7KaEUqipM5m" role="1B3o_S" />
+      <node concept="3clFbS" id="7KaEUqipM5o" role="3clF47">
+        <node concept="XkiVB" id="7KaEUqipM5q" role="3cqZAp">
+          <ref role="37wK5l" node="4JdgAL_5wEf" resolve="NotMigratedNode" />
+          <node concept="37vLTw" id="7KaEUqipM5u" role="37wK5m">
+            <ref role="3cqZAo" node="7KaEUqipM5r" resolve="sourceNode" />
+          </node>
+        </node>
+        <node concept="3clFbF" id="3oudiFxPuXw" role="3cqZAp">
+          <node concept="37vLTI" id="3oudiFxPvdt" role="3clFbG">
+            <node concept="37vLTw" id="3oudiFxPvoG" role="37vLTx">
+              <ref role="3cqZAo" node="3oudiFxPtek" resolve="targetNode" />
+            </node>
+            <node concept="37vLTw" id="3oudiFxPuXu" role="37vLTJ">
+              <ref role="3cqZAo" node="3oudiFxPtV_" resolve="myTargetNode" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="7KaEUqipM5r" role="3clF46">
+        <property role="TrG5h" value="sourceNode" />
+        <node concept="3uibUv" id="7KaEUqipM5t" role="1tU5fm">
+          <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="3oudiFxPtek" role="3clF46">
+        <property role="TrG5h" value="targetNode" />
+        <node concept="3uibUv" id="3oudiFxPtub" role="1tU5fm">
+          <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="3oudiFxPvM7" role="jymVt" />
+    <node concept="3clFb_" id="7KaEUqipKHZ" role="jymVt">
+      <property role="TrG5h" value="getMessage" />
+      <node concept="3Tm1VV" id="7KaEUqipKI0" role="1B3o_S" />
+      <node concept="3uibUv" id="7KaEUqipKI2" role="3clF45">
+        <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+      </node>
+      <node concept="3clFbS" id="7KaEUqipKIb" role="3clF47">
+        <node concept="3clFbF" id="7KaEUqipPJ$" role="3cqZAp">
+          <node concept="3cpWs3" id="7KaEUqipQ76" role="3clFbG">
+            <node concept="Xl_RD" id="7KaEUqipQ6C" role="3uHU7w">
+              <property role="Xl_RC" value="' was not migrated" />
+            </node>
+            <node concept="3cpWs3" id="7KaEUqipQ02" role="3uHU7B">
+              <node concept="Xl_RD" id="7KaEUqipPJz" role="3uHU7B">
+                <property role="Xl_RC" value="Usage of migrated node '" />
+              </node>
+              <node concept="2OqwBi" id="7KaEUqipQrT" role="3uHU7w">
+                <node concept="37vLTw" id="3oudiFxPvrJ" role="2Oq$k0">
+                  <ref role="3cqZAo" node="3oudiFxPtV_" resolve="myTargetNode" />
+                </node>
+                <node concept="liA8E" id="3oudiFxRV1j" role="2OqNvi">
+                  <ref role="37wK5l" to="mhbf:~SNode.getName()" resolve="getName" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="7KaEUqipKIc" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
+  </node>
 </model>
 

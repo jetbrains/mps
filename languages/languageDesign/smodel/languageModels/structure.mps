@@ -194,6 +194,10 @@
         <property role="1W_73K" value="&gt;" />
       </node>
     </node>
+    <node concept="asaX9" id="7KaEUqioOe9" role="lGtFl">
+      <property role="YLQ7P" value="Use EnumMemberReference instead" />
+      <property role="YLPcu" value="19.2" />
+    </node>
   </node>
   <node concept="1TIwiD" id="g$zfrMx">
     <property role="R5$K7" value="false" />
@@ -652,6 +656,10 @@
       <property role="20lbJX" value="fLJekj4" />
       <property role="IQ2ns" value="1146171026732" />
       <ref role="20lvS9" node="g$uoxbX" resolve="EnumMemberReference_Old" />
+    </node>
+    <node concept="asaX9" id="7Hg1hrtWZww" role="lGtFl">
+      <property role="YLPcu" value="19.2" />
+      <property role="YLQ7P" value="Use EnumMember_IsOperation instead" />
     </node>
   </node>
   <node concept="1TIwiD" id="gFy1jak">
@@ -2045,6 +2053,10 @@
       <property role="20lbJX" value="fLJekj4" />
       <property role="IQ2ns" value="6973815483243565416" />
       <ref role="20lvS9" to="tpce:fKM4N6M" resolve="EnumerationMemberDeclaration_Old" />
+    </node>
+    <node concept="asaX9" id="7KaEUqioMH2" role="lGtFl">
+      <property role="YLPcu" value="19.2" />
+      <property role="YLQ7P" value="Use Enum_MemberLiteral instead" />
     </node>
   </node>
   <node concept="1TIwiD" id="36vPRrqnoSW">

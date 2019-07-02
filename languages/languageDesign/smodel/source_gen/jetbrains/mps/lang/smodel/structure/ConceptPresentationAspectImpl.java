@@ -487,6 +487,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.EnumMemberReference_Old:
         if (props_EnumMemberReference_Old == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.deprecated(true);
           cpb.presentationByReference(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1091e6212fdL, 0x1091e625b13L, "enumMember", "<", ">");
           props_EnumMemberReference_Old = cpb.create();
         }
@@ -494,6 +495,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.EnumMemberValueRefExpression:
         if (props_EnumMemberValueRefExpression == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.deprecated(true);
           cpb.shortDesc("value");
           cpb.rawPresentation("enum member value/<name>/");
           props_EnumMemberValueRefExpression = cpb.create();
@@ -1398,6 +1400,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.Property_HasValue_Enum:
         if (props_Property_HasValue_Enum == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.deprecated(true);
           cpb.shortDesc("check value of enum property");
           cpb.rawPresentation("is");
           props_Property_HasValue_Enum = cpb.create();
