@@ -24,8 +24,9 @@ public final class A_Constraints2 extends BaseConstraintsDescriptor2 {
     super(CONCEPT);
   }
   public static final Rule<ContainmentContext> gagag_id24399255755528544 = new A_Constraints2.Rule_gagag();
+  public static final Rule<ContainmentContext> gagag2_id7716791493893590340 = new A_Constraints2.Rule_gagag2();
 
-  private static final List<Rule<?>> RULES = Collections.unmodifiableList(Arrays.<Rule<?>>asList(gagag_id24399255755528544));
+  private static final List<Rule<?>> RULES = Collections.unmodifiableList(Arrays.<Rule<?>>asList(gagag_id24399255755528544, gagag2_id7716791493893590340));
 
   @NotNull
   @Override
@@ -39,6 +40,18 @@ public final class A_Constraints2 extends BaseConstraintsDescriptor2 {
 
     public Rule_gagag() {
       super(CONCEPT, CanBeChildKind.INSTANCE, ID_gagag, SOURCE_NODE_REF);
+    }
+    @Override
+    public boolean check(@NotNull ContainmentContext context) {
+      return true;
+    }
+  }
+  public static final class Rule_gagag2 extends BaseRule<ContainmentContext> {
+    private static final SNodeReference SOURCE_NODE_REF = PersistenceFacade.getInstance().createNodeReference("r:5dbac061-aef9-4696-88ee-0f21fe5598f3(multiAspectLang.constraints)/7716791493893590340");
+    public static final RuleId ID_gagag2 = new RuleId(7716791493893590340L, SOURCE_NODE_REF);
+
+    public Rule_gagag2() {
+      super(CONCEPT, CanBeChildKind.INSTANCE, ID_gagag2, SOURCE_NODE_REF);
     }
     @Override
     public boolean check(@NotNull ContainmentContext context) {

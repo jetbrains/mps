@@ -6,19 +6,35 @@ import jetbrains.mps.core.aspects.feedback.api.BaseFeedbackDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.feedback.api.FeedbackProvider;
-import jetbrains.mps.core.context.Context;
+import jetbrains.mps.core.aspects.constraints.rules.kinds.ContainmentContext;
+import jetbrains.mps.core.aspects.feedback.messages.BaseMessageProvider;
+import jetbrains.mps.core.aspects.feedback.messages.FailingRuleProblemId;
+import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.core.aspects.feedback.messages.MessageProvider;
 import java.util.List;
 import java.util.Collections;
 import java.util.Arrays;
-import org.jetbrains.annotations.NotNull;
 import java.util.stream.Stream;
 
 public final class A_FeedbackRoot extends BaseFeedbackDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, "multiAspectLang.structure.A");
 
-  private static final FeedbackProvider<Context> PROVIDER = null;
+  private static final FeedbackProvider<ContainmentContext> MSGPROVIDER_WhenConstraintRuleFails_a = new BaseMessageProvider<ContainmentContext>(new FailingRuleProblemId(A_Constraints2.Rule_gagag.ID_gagag)) {
+    @NotNull
+    @Override
+    public MessageProvider.StringMsg yieldMessage(ContainmentContext context) {
+      return new MessageProvider.StringMsg("sddfg");
+    }
+  };
+  private static final FeedbackProvider<ContainmentContext> MSGPROVIDER_WhenConstraintRuleFails_b = new BaseMessageProvider<ContainmentContext>(new FailingRuleProblemId(A_Constraints2.Rule_gagag2.ID_gagag2)) {
+    @NotNull
+    @Override
+    public MessageProvider.StringMsg yieldMessage(ContainmentContext context) {
+      return new MessageProvider.StringMsg("sddfg");
+    }
+  };
 
-  private static final List<FeedbackProvider> PROVIDERS = Collections.unmodifiableList(Arrays.<FeedbackProvider>asList(PROVIDER));
+  private static final List<FeedbackProvider> PROVIDERS = Collections.unmodifiableList(Arrays.<FeedbackProvider>asList(MSGPROVIDER_WhenConstraintRuleFails_a, MSGPROVIDER_WhenConstraintRuleFails_b));
 
   public A_FeedbackRoot() {
     super(CONCEPT);
