@@ -21,6 +21,7 @@
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
+      <concept id="1080223426719" name="jetbrains.mps.baseLanguage.structure.OrExpression" flags="nn" index="22lmx$" />
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
       </concept>
@@ -372,11 +373,22 @@
     </node>
     <node concept="9S07l" id="6AHR5A_y27n" role="9Vyp8">
       <node concept="3clFbS" id="6AHR5A_y27o" role="2VODD2">
-        <node concept="1X3_iC" id="6GnzfDRf0ym" role="lGtFl">
-          <property role="3V$3am" value="statement" />
-          <property role="3V$3ak" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123136/1068581517665" />
-          <node concept="3cpWs6" id="6AHR5A_y2tI" role="8Wnug">
-            <node concept="2YIFZM" id="1KFbmnBQr8p" role="3cqZAk">
+        <node concept="3cpWs6" id="6AHR5A_y2tI" role="3cqZAp">
+          <node concept="22lmx$" id="6GnzfDRic7r" role="3cqZAk">
+            <node concept="3fqX7Q" id="6GnzfDRicW1" role="3uHU7B">
+              <node concept="2OqwBi" id="6GnzfDRicW3" role="3fr31v">
+                <node concept="2OqwBi" id="6GnzfDRicW4" role="2Oq$k0">
+                  <node concept="EsrRn" id="6GnzfDRicW5" role="2Oq$k0" />
+                  <node concept="2Rxl7S" id="6GnzfDRicW6" role="2OqNvi" />
+                </node>
+                <node concept="1mIQ4w" id="6GnzfDRicW7" role="2OqNvi">
+                  <node concept="chp4Y" id="6GnzfDRid4y" role="cj9EA">
+                    <ref role="cht4Q" to="wff5:6kKc3mjFxo7" resolve="FeedbackPerConceptRoot" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="2YIFZM" id="1KFbmnBQr8p" role="3uHU7w">
               <ref role="1Pybhc" to="w1kc:~SModelStereotype" resolve="SModelStereotype" />
               <ref role="37wK5l" to="w1kc:~SModelStereotype.isGeneratorModel(org.jetbrains.mps.openapi.model.SModel)" resolve="isGeneratorModel" />
               <node concept="2OqwBi" id="6AHR5A_y5jS" role="37wK5m">
@@ -386,9 +398,13 @@
             </node>
           </node>
         </node>
-        <node concept="3cpWs6" id="6GnzfDRf0Bu" role="3cqZAp">
-          <node concept="3clFbT" id="6GnzfDRf0Cw" role="3cqZAk">
-            <property role="3clFbU" value="true" />
+        <node concept="1X3_iC" id="6GnzfDRic2e" role="lGtFl">
+          <property role="3V$3am" value="statement" />
+          <property role="3V$3ak" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123136/1068581517665" />
+          <node concept="3cpWs6" id="6GnzfDRf0Bu" role="8Wnug">
+            <node concept="3clFbT" id="6GnzfDRf0Cw" role="3cqZAk">
+              <property role="3clFbU" value="true" />
+            </node>
           </node>
         </node>
       </node>

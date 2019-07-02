@@ -6,9 +6,6 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <root>
-    <file name="A_FeedbackRoot.java">
-      <unit at="19,0,49,0" name="multiAspectLang.constraints.A_FeedbackRoot" />
-    </file>
     <file name="ConstraintsAspectDescriptor.java">
       <unit at="10,0,20,0" name="multiAspectLang.constraints.ConstraintsAspectDescriptor" />
     </file>
@@ -59,22 +56,45 @@
       <unit id="24399255754237582" at="20,0,62,0" name="multiAspectLang.constraints.A_Constraints2" />
     </file>
     <file name="A_FeedbackRoot.java">
-      <node id="24399255755528543" at="25,79,26,52" concept="2" />
-      <node id="7716791493893590339" at="32,79,33,52" concept="2" />
-      <node id="24399255755528543" at="23,0,28,0" concept="1" trace="yieldMessage#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/ContainmentContext;)Ljetbrains/mps/core/aspects/feedback/messages/MessageProvider/StringMsg;" />
-      <node id="7716791493893590339" at="30,0,35,0" concept="1" trace="yieldMessage#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/ContainmentContext;)Ljetbrains/mps/core/aspects/feedback/messages/MessageProvider/StringMsg;" />
-      <node id="24399255755528543" at="22,0,29,0" concept="3" trace="MSGPROVIDER_WhenConstraintRuleFails_a" />
-      <node id="7716791493893590339" at="29,0,36,0" concept="3" trace="MSGPROVIDER_WhenConstraintRuleFails_b" />
-      <scope id="24399255755528543" at="25,79,26,52" />
-      <scope id="7716791493893590339" at="32,79,33,52" />
-      <scope id="24399255755528543" at="23,0,28,0">
+      <node id="24399255755528543" at="34,79,35,52" concept="2" />
+      <node id="7716791493893590339" at="41,79,42,52" concept="2" />
+      <node id="24399255755528543" at="32,0,37,0" concept="1" trace="yieldMessage#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/ContainmentContext;)Ljetbrains/mps/core/aspects/feedback/messages/MessageProvider/StringMsg;" />
+      <node id="7716791493893590339" at="39,0,44,0" concept="1" trace="yieldMessage#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/ContainmentContext;)Ljetbrains/mps/core/aspects/feedback/messages/MessageProvider/StringMsg;" />
+      <node id="24399255755528543" at="31,0,38,0" concept="3" trace="MSGPROVIDER_WhenConstraintRuleFails_b" />
+      <node id="7716791493893590339" at="38,0,45,0" concept="3" trace="MSGPROVIDER_WhenConstraintRuleFails_c" />
+      <scope id="24399255755528543" at="34,79,35,52" />
+      <scope id="7716791493893590339" at="41,79,42,52" />
+      <scope id="24399255755528543" at="32,0,37,0">
         <var name="context" id="24399255755528543" />
       </scope>
-      <scope id="7716791493893590339" at="30,0,35,0">
+      <scope id="7716791493893590339" at="39,0,44,0">
         <var name="context" id="7716791493893590339" />
       </scope>
-      <unit id="24399255755528543" at="22,104,28,3" name="multiAspectLang.constraints.A_FeedbackRoot$1" />
-      <unit id="7716791493893590339" at="29,104,35,3" name="multiAspectLang.constraints.A_FeedbackRoot$2" />
+      <unit id="24399255755528543" at="31,104,37,3" name="multiAspectLang.constraints.A_FeedbackRoot$2" />
+      <unit id="7716791493893590339" at="38,104,44,3" name="multiAspectLang.constraints.A_FeedbackRoot$3" />
+    </file>
+  </root>
+  <root nodeRef="r:5dbac061-aef9-4696-88ee-0f21fe5598f3(multiAspectLang.constraints)/7716791493893601226">
+    <file name="A_FeedbackRoot.java">
+      <node id="7716791493893601226" at="22,0,23,0" concept="3" trace="CONCEPT" />
+      <node id="7716791493893652418" at="27,68,28,58" concept="2" />
+      <node id="7716791493893601226" at="46,0,47,0" concept="3" trace="PROVIDERS" />
+      <node id="7716791493893601226" at="48,27,49,19" concept="4" />
+      <node id="7716791493893601226" at="54,58,55,30" concept="2" />
+      <node id="7716791493893601226" at="48,0,51,0" concept="0" trace="A_FeedbackRoot#()V" />
+      <node id="7716791493893652418" at="25,0,30,0" concept="1" trace="yieldMessage#(Ljetbrains/mps/core/context/Context;)Ljetbrains/mps/core/aspects/feedback/messages/MessageProvider/StringMsg;" />
+      <node id="7716791493893601226" at="52,0,57,0" concept="1" trace="getDeclaredProviders#()Ljava/util/stream/Stream;" />
+      <node id="7716791493893652418" at="24,0,31,0" concept="3" trace="MSGPROVIDER_WhenPropertyConstraintFails_a" />
+      <scope id="7716791493893652418" at="27,68,28,58" />
+      <scope id="7716791493893601226" at="48,27,49,19" />
+      <scope id="7716791493893601226" at="54,58,55,30" />
+      <scope id="7716791493893601226" at="48,0,51,0" />
+      <scope id="7716791493893652418" at="25,0,30,0">
+        <var name="context" id="7716791493893652418" />
+      </scope>
+      <scope id="7716791493893601226" at="52,0,57,0" />
+      <unit id="7716791493893652418" at="24,97,30,3" name="multiAspectLang.constraints.A_FeedbackRoot$1" />
+      <unit id="7716791493893601226" at="21,0,58,0" name="multiAspectLang.constraints.A_FeedbackRoot" />
     </file>
   </root>
 </debug-info>

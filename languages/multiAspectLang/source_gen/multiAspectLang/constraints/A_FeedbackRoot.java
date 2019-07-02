@@ -6,11 +6,13 @@ import jetbrains.mps.core.aspects.feedback.api.BaseFeedbackDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.feedback.api.FeedbackProvider;
-import jetbrains.mps.core.aspects.constraints.rules.kinds.ContainmentContext;
+import jetbrains.mps.core.context.Context;
 import jetbrains.mps.core.aspects.feedback.messages.BaseMessageProvider;
-import jetbrains.mps.core.aspects.feedback.messages.FailingRuleProblemId;
+import jetbrains.mps.core.aspects.feedback.messages.FailingPropertyConstraintProblemId;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.core.aspects.feedback.messages.MessageProvider;
+import jetbrains.mps.core.aspects.constraints.rules.kinds.ContainmentContext;
+import jetbrains.mps.core.aspects.feedback.messages.FailingRuleProblemId;
 import java.util.List;
 import java.util.Collections;
 import java.util.Arrays;
@@ -19,14 +21,21 @@ import java.util.stream.Stream;
 public final class A_FeedbackRoot extends BaseFeedbackDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, "multiAspectLang.structure.A");
 
-  private static final FeedbackProvider<ContainmentContext> MSGPROVIDER_WhenConstraintRuleFails_a = new BaseMessageProvider<ContainmentContext>(new FailingRuleProblemId(A_Constraints2.Rule_gagag.ID_gagag)) {
+  private static final FeedbackProvider<Context> MSGPROVIDER_WhenPropertyConstraintFails_a = new BaseMessageProvider<Context>(new FailingPropertyConstraintProblemId(MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0xad0053c7ae9194dL, 0xad0053c7af1bf58L, "anchorTag"))) {
+    @NotNull
+    @Override
+    public MessageProvider.StringMsg yieldMessage(Context context) {
+      return new MessageProvider.StringMsg("asdfadsfdsf");
+    }
+  };
+  private static final FeedbackProvider<ContainmentContext> MSGPROVIDER_WhenConstraintRuleFails_b = new BaseMessageProvider<ContainmentContext>(new FailingRuleProblemId(A_Constraints2.Rule_gagag.ID_gagag)) {
     @NotNull
     @Override
     public MessageProvider.StringMsg yieldMessage(ContainmentContext context) {
       return new MessageProvider.StringMsg("sddfg");
     }
   };
-  private static final FeedbackProvider<ContainmentContext> MSGPROVIDER_WhenConstraintRuleFails_b = new BaseMessageProvider<ContainmentContext>(new FailingRuleProblemId(A_Constraints2.Rule_gagag2.ID_gagag2)) {
+  private static final FeedbackProvider<ContainmentContext> MSGPROVIDER_WhenConstraintRuleFails_c = new BaseMessageProvider<ContainmentContext>(new FailingRuleProblemId(A_Constraints2.Rule_gagag2.ID_gagag2)) {
     @NotNull
     @Override
     public MessageProvider.StringMsg yieldMessage(ContainmentContext context) {
@@ -34,7 +43,7 @@ public final class A_FeedbackRoot extends BaseFeedbackDescriptor {
     }
   };
 
-  private static final List<FeedbackProvider> PROVIDERS = Collections.unmodifiableList(Arrays.<FeedbackProvider>asList(MSGPROVIDER_WhenConstraintRuleFails_a, MSGPROVIDER_WhenConstraintRuleFails_b));
+  private static final List<FeedbackProvider> PROVIDERS = Collections.unmodifiableList(Arrays.<FeedbackProvider>asList(MSGPROVIDER_WhenPropertyConstraintFails_a, MSGPROVIDER_WhenConstraintRuleFails_b, MSGPROVIDER_WhenConstraintRuleFails_c));
 
   public A_FeedbackRoot() {
     super(CONCEPT);

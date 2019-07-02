@@ -26,8 +26,10 @@
     <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.kinds.ContainmentContext" />
     <classNode dependClassName="jetbrains.mps.core.aspects.feedback.api.FeedbackProvider" />
     <classNode dependClassName="jetbrains.mps.core.aspects.feedback.messages.BaseMessageProvider" />
+    <classNode dependClassName="jetbrains.mps.core.aspects.feedback.messages.FailingPropertyConstraintProblemId" />
     <classNode dependClassName="jetbrains.mps.core.aspects.feedback.messages.FailingRuleProblemId" />
     <classNode dependClassName="jetbrains.mps.core.aspects.feedback.messages.MessageProvider" />
+    <classNode dependClassName="jetbrains.mps.core.context.Context" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="multiAspectLang.constraints.A_Constraints2" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />

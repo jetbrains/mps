@@ -28,6 +28,7 @@ import java.util.Objects;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.smodel.SNodePointer;
 
 public class FailingRuleProblem_Constraints extends BaseConstraintsDescriptor {
@@ -95,7 +96,7 @@ public class FailingRuleProblem_Constraints extends BaseConstraintsDescriptor {
     return references;
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return true;
+    return !(SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(node), MetaAdapterFactory.getConcept(0x517077fde44f4338L, 0xa4751d29781dfdb8L, 0x6530303593ae1607L, "jetbrains.mps.lang.feedback.skeleton.structure.FeedbackPerConceptRoot"))) || SModelStereotype.isGeneratorModel(SNodeOperations.getModel(node));
   }
   private static SNodePointer canBeChildBreakingPoint = new SNodePointer("r:a3bec607-7151-4d0d-93f7-37e8de283287(jetbrains.mps.lang.feedback.problem.failingRule.constraints)", "7614984822540739031");
   private static SNodePointer breakingNode_9cv73f_a0a0a0a0a1a0a0a0d = new SNodePointer("r:a3bec607-7151-4d0d-93f7-37e8de283287(jetbrains.mps.lang.feedback.problem.failingRule.constraints)", "1938781798615217722");

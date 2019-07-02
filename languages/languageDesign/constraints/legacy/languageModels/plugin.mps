@@ -68,6 +68,10 @@
       <property role="2V$B1T" value="5dae8159-ab99-46bb-a40d-0cee30ee7018" />
       <property role="2V$B1Q" value="jetbrains.mps.lang.constraints.rules.kinds" />
     </node>
+    <node concept="2V$Bhx" id="6GnzfDRikj_" role="QG$2i">
+      <property role="2V$B1T" value="cddf55b3-117e-46ec-837c-ff50eb7b89b0" />
+      <property role="2V$B1Q" value="jetbrains.mps.lang.feedback.problem.childAndProp" />
+    </node>
     <node concept="2V$Bhx" id="1FBVWoj_yHD" role="QG$2i">
       <property role="2V$B1T" value="b3551702-269c-4f05-ba61-58060cef4292" />
       <property role="2V$B1Q" value="jetbrains.mps.lang.rulesAndMessages" />
@@ -80,6 +84,22 @@
       <property role="2V$B1T" value="ea3159bf-f48e-4720-bde2-86dba75f0d34" />
       <property role="2V$B1Q" value="jetbrains.mps.lang.context.defs" />
     </node>
+    <node concept="2V$Bhx" id="6GnzfDRi9Xb" role="QG$2i">
+      <property role="2V$B1T" value="517077fd-e44f-4338-a475-1d29781dfdb8" />
+      <property role="2V$B1Q" value="jetbrains.mps.lang.feedback.skeleton" />
+    </node>
+    <node concept="2V$Bhx" id="4XK1Xd01vTw" role="QG$2i">
+      <property role="2V$B1T" value="033598a4-76a9-47e1-ac89-a300c0fceab8" />
+      <property role="2V$B1Q" value="jetbrains.mps.lang.feedback.problem" />
+    </node>
+    <node concept="2V$Bhx" id="5sUTrySNtVV" role="QG$2i">
+      <property role="2V$B1T" value="cd17a113-ca4e-472f-a8de-c49008f9eea8" />
+      <property role="2V$B1Q" value="jetbrains.mps.lang.feedback" />
+    </node>
+    <node concept="2V$Bhx" id="5sUTrySNtW0" role="QG$2i">
+      <property role="2V$B1T" value="16e76fe3-9534-4def-afb7-925a169a7c0b" />
+      <property role="2V$B1Q" value="jetbrains.mps.lang.feedback.messages" />
+    </node>
     <node concept="2vPci8" id="264$spPfZhg" role="3F_NFc">
       <ref role="2vPcib" to="tpcc:264$spPfYX1" resolve="MPSAspects" />
     </node>
@@ -87,9 +107,9 @@
       <property role="1sEMCp" value="/Constraints" />
       <ref role="1fZFei" to="tpcc:46nPloez0vX" resolve="ConfluenceDocUrl" />
     </node>
-    <node concept="T9mpH" id="4XK1Xd01vVP" role="TkT64">
-      <property role="T9mpF" value="4843b9cf-86fe-47f2-87c9-f256294fd740" />
-      <property role="T9mpE" value="jetbrains.mps.devkit.aspect.constraints.rulesAndMessages" />
+    <node concept="T9mpH" id="6GnzfDRiiE6" role="TkT64">
+      <property role="T9mpF" value="00000000-0000-4000-0000-5604ebd4f22c" />
+      <property role="T9mpE" value="jetbrains.mps.devkit.aspect.constraints" />
     </node>
   </node>
 </model>
