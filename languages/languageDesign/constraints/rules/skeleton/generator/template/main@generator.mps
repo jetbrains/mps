@@ -24,7 +24,6 @@
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="tpek" ref="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)" implicit="true" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
-    <import index="guwi" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)" implicit="true" />
     <import index="wev6" ref="r:f29914af-ae14-4589-b53d-f60c6018b368(jetbrains.mps.lang.project.behavior)" implicit="true" />
   </imports>
   <registry>
@@ -68,9 +67,6 @@
       </concept>
       <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
         <reference id="1144433194310" name="classConcept" index="1Pybhc" />
-      </concept>
-      <concept id="1070533707846" name="jetbrains.mps.baseLanguage.structure.StaticFieldReference" flags="nn" index="10M0yZ">
-        <reference id="1144433057691" name="classifier" index="1PxDUh" />
       </concept>
       <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
       <concept id="1070534934090" name="jetbrains.mps.baseLanguage.structure.CastExpression" flags="nn" index="10QFUN">
@@ -362,7 +358,7 @@
       <node concept="30QchW" id="1FBVWoju25b" role="8Wnug">
         <ref role="30HIoZ" to="yv2q:7OJukvJ5je_" resolve="LanguageDescriptor" />
         <node concept="j$656" id="1FBVWoju7do" role="1fOSGc">
-          <ref role="v9R2y" node="1FBVWoju27a" resolve="weaveInLanguageJava" />
+          <ref role="v9R2y" node="1FBVWoju27a" resolve="weaveRulesInLanguageJava" />
         </node>
         <node concept="3gB$ML" id="1FBVWoju25d" role="3gCiVm">
           <node concept="3clFbS" id="1FBVWoju25e" role="2VODD2">
@@ -647,7 +643,7 @@
     </node>
   </node>
   <node concept="13MO4I" id="1FBVWoju27a">
-    <property role="TrG5h" value="weaveInLanguageJava" />
+    <property role="TrG5h" value="weaveRulesInLanguageJava" />
     <ref role="3gUMe" to="yv2q:7OJukvJ5je_" resolve="LanguageDescriptor" />
     <node concept="312cEu" id="1FBVWoju2lt" role="13RCb5">
       <property role="TrG5h" value="Language" />
@@ -696,29 +692,6 @@
                               <property role="P3scX" value="f3061a53-9226-4cc5-a443-f952ceaf5816/2820489544401957797/2820489544401957798" />
                               <node concept="3$xsQk" id="3ZKqOfp_cFf" role="3$ytzL">
                                 <node concept="3clFbS" id="3ZKqOfp_cFg" role="2VODD2">
-                                  <node concept="1X3_iC" id="3ZKqOfpA4rg" role="lGtFl">
-                                    <property role="3V$3am" value="statement" />
-                                    <property role="3V$3ak" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123136/1068581517665" />
-                                    <node concept="3clFbF" id="3ZKqOfp_Gf2" role="8Wnug">
-                                      <node concept="2OqwBi" id="3ZKqOfp_GeZ" role="3clFbG">
-                                        <node concept="10M0yZ" id="3ZKqOfp_Gf0" role="2Oq$k0">
-                                          <ref role="1PxDUh" to="wyt6:~System" resolve="System" />
-                                          <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
-                                        </node>
-                                        <node concept="liA8E" id="3ZKqOfp_Gf1" role="2OqNvi">
-                                          <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
-                                          <node concept="3cpWs3" id="3ZKqOfp_HhM" role="37wK5m">
-                                            <node concept="37vLTw" id="3ZKqOfpAax9" role="3uHU7w">
-                                              <ref role="3cqZAo" node="3ZKqOfpAax4" resolve="model" />
-                                            </node>
-                                            <node concept="Xl_RD" id="3ZKqOfp_GJh" role="3uHU7B">
-                                              <property role="Xl_RC" value="MODEL " />
-                                            </node>
-                                          </node>
-                                        </node>
-                                      </node>
-                                    </node>
-                                  </node>
                                   <node concept="3cpWs8" id="3ZKqOfpAax3" role="3cqZAp">
                                     <node concept="3cpWsn" id="3ZKqOfpAax4" role="3cpWs9">
                                       <property role="TrG5h" value="model" />

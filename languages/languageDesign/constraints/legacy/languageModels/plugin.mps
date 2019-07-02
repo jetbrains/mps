@@ -24,7 +24,6 @@
     <language id="f159adf4-3c93-40f9-9c5a-1f245a8697af" name="jetbrains.mps.lang.aspect">
       <concept id="3433054418424672374" name="jetbrains.mps.lang.aspect.structure.SimpleLanguageAspectDescriptor" flags="ng" index="3vrhyV">
         <child id="6106419185511570295" name="mainLanguages" index="QG$2i" />
-        <child id="6106419185511570301" name="additionalLanguages" index="QG$2o" />
         <child id="8222125370833980146" name="devkit" index="TkT64" />
         <child id="4726480899534753275" name="helpUrl" index="1fTXyH" />
         <child id="3433054418425083029" name="icon" index="3vqPLo" />
@@ -54,14 +53,6 @@
   </registry>
   <node concept="3vrhyV" id="2LiUEk8oQ$g">
     <property role="TrG5h" value="constraints" />
-    <node concept="2V$Bhx" id="1TfWqDAKbnW" role="QG$2o">
-      <property role="2V$B1T" value="5dae8159-ab99-46bb-a40d-0cee30ee7018" />
-      <property role="2V$B1Q" value="jetbrains.mps.lang.constraints.rules.kinds" />
-    </node>
-    <node concept="2V$Bhx" id="1FBVWoj_yHD" role="QG$2o">
-      <property role="2V$B1T" value="b3551702-269c-4f05-ba61-58060cef4292" />
-      <property role="2V$B1Q" value="jetbrains.mps.lang.rulesAndMessages" />
-    </node>
     <node concept="1QGGSu" id="P5ZkC6w1ee" role="3vqPLo">
       <property role="1iqoE4" value="${module}/icons/constraintsModel.png" />
     </node>
@@ -73,6 +64,22 @@
       <property role="2V$B1T" value="134c38d4-e3af-4d9e-b069-1c7df0a4005d" />
       <property role="2V$B1Q" value="jetbrains.mps.lang.constraints.rules.skeleton" />
     </node>
+    <node concept="2V$Bhx" id="1TfWqDAKbnW" role="QG$2i">
+      <property role="2V$B1T" value="5dae8159-ab99-46bb-a40d-0cee30ee7018" />
+      <property role="2V$B1Q" value="jetbrains.mps.lang.constraints.rules.kinds" />
+    </node>
+    <node concept="2V$Bhx" id="1FBVWoj_yHD" role="QG$2i">
+      <property role="2V$B1T" value="b3551702-269c-4f05-ba61-58060cef4292" />
+      <property role="2V$B1Q" value="jetbrains.mps.lang.rulesAndMessages" />
+    </node>
+    <node concept="2V$Bhx" id="4XK1Xd01vSz" role="QG$2i">
+      <property role="2V$B1T" value="3ad5badc-1d9c-461c-b7b1-fa2fcd0a0ae7" />
+      <property role="2V$B1Q" value="jetbrains.mps.lang.context" />
+    </node>
+    <node concept="2V$Bhx" id="4XK1Xd01vSK" role="QG$2i">
+      <property role="2V$B1T" value="ea3159bf-f48e-4720-bde2-86dba75f0d34" />
+      <property role="2V$B1Q" value="jetbrains.mps.lang.context.defs" />
+    </node>
     <node concept="2vPci8" id="264$spPfZhg" role="3F_NFc">
       <ref role="2vPcib" to="tpcc:264$spPfYX1" resolve="MPSAspects" />
     </node>
@@ -80,9 +87,9 @@
       <property role="1sEMCp" value="/Constraints" />
       <ref role="1fZFei" to="tpcc:46nPloez0vX" resolve="ConfluenceDocUrl" />
     </node>
-    <node concept="T9mpH" id="3ZKqOfpAOrC" role="TkT64">
-      <property role="T9mpF" value="00000000-0000-4000-0000-5604ebd4f22c" />
-      <property role="T9mpE" value="jetbrains.mps.devkit.aspect.constraints" />
+    <node concept="T9mpH" id="4XK1Xd01vVP" role="TkT64">
+      <property role="T9mpF" value="4843b9cf-86fe-47f2-87c9-f256294fd740" />
+      <property role="T9mpE" value="jetbrains.mps.devkit.aspect.constraints.rulesAndMessages" />
     </node>
   </node>
 </model>

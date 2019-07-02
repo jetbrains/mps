@@ -1,46 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
-  <dependency className="multiAspectLang.constraints.A_Constraints2">
+  <dependency className="multiAspectLang.constraints.A_FeedbackRoot">
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.Arrays" />
     <classNode dependClassName="java.util.Collections" />
     <classNode dependClassName="java.util.List" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.BaseRule" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.Rule" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.RuleId" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeChildKind" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.kinds.ContainmentContext" />
+    <classNode dependClassName="java.util.stream.Stream" />
+    <classNode dependClassName="jetbrains.mps.core.aspects.feedback.api.FeedbackProvider" />
+    <classNode dependClassName="jetbrains.mps.core.context.Context" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.persistence.PersistenceFacade" />
-    <classNode extendsClassName="jetbrains.mps.core.aspects.constraints.rules.BaseConstraintsDescriptor2" />
-  </dependency>
-  <dependency className="multiAspectLang.constraints.ConstraintsAspectDescriptor">
-    <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="jetbrains.mps.smodel.runtime.ConstraintsDescriptor" />
-    <classNode dependClassName="jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
-    <classNode extendsClassName="jetbrains.mps.smodel.runtime.BaseConstraintsAspectDescriptor" />
-  </dependency>
-  <dependency className="multiAspectLang.constraints.GeneratedConstraintsAspectDescriptor2">
-    <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="java.util.Arrays" />
-    <classNode dependClassName="java.util.List" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.ConstraintsDescriptor2" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.RuleKind" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeChildKind" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeParentKind" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeRootKind" />
-    <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndex" />
-    <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder" />
-    <classNode dependClassName="jetbrains.mps.smodel.adapter.ids.MetaIdFactory" />
-    <classNode dependClassName="multiAspectLang.constraints.A_Constraints2" />
-    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
-    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
-    <classNode extendsClassName="jetbrains.mps.core.aspects.constraints.rules.ConstraintsAspectDescriptor2" />
+    <classNode extendsClassName="jetbrains.mps.core.aspects.feedback.api.BaseFeedbackDescriptor" />
   </dependency>
 </dependenciesRoot>
 

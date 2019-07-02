@@ -14,8 +14,8 @@ import jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder2;
 
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptProblem = createDescriptorForProblem();
-  /*package*/ final ConceptDescriptor myConceptProblemKind = createDescriptorForProblemKind();
   /*package*/ final ConceptDescriptor myConceptProblemKindRoot = createDescriptorForProblemKindRoot();
+  /*package*/ final ConceptDescriptor myConceptProblemPointsToKindRoot = createDescriptorForProblemPointsToKindRoot();
   private final LanguageConceptSwitch myIndexSwitch;
 
   public StructureAspectDescriptor() {
@@ -31,7 +31,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptProblem, myConceptProblemKind, myConceptProblemKindRoot);
+    return Arrays.asList(myConceptProblem, myConceptProblemKindRoot, myConceptProblemPointsToKindRoot);
   }
 
   @Override
@@ -40,10 +40,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     switch (myIndexSwitch.index(id)) {
       case LanguageConceptSwitch.Problem:
         return myConceptProblem;
-      case LanguageConceptSwitch.ProblemKind:
-        return myConceptProblemKind;
       case LanguageConceptSwitch.ProblemKindRoot:
         return myConceptProblemKindRoot;
+      case LanguageConceptSwitch.ProblemPointsToKindRoot:
+        return myConceptProblemPointsToKindRoot;
       default:
         return null;
     }
@@ -61,28 +61,27 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForProblem() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.feedback.problem", "Problem", 0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x573ae5b8b8caf72cL);
     b.interface_();
-    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:ff619a2b-8fe7-4627-a515-9b4874d6fc53(jetbrains.mps.lang.feedback.problem.structure)/6285588811486000940");
-    b.version(2);
-    b.associate("kind", 0x573ae5b8b8cc98e6L).target(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x573ae5b8b8cc98e4L).optional(false).origin("6285588811486107878").done();
-    return b.create();
-  }
-  private static ConceptDescriptor createDescriptorForProblemKind() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.feedback.problem", "ProblemKind", 0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x573ae5b8b8cc98e4L);
-    b.interface_();
-    b.origin("r:ff619a2b-8fe7-4627-a515-9b4874d6fc53(jetbrains.mps.lang.feedback.problem.structure)/6285588811486107876");
     b.version(2);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForProblemKindRoot() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.feedback.problem", "ProblemKindRoot", 0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x56aefe6c1afdffL);
     b.class_(true, false, true);
-    b.parent(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x573ae5b8b8cc98e4L);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:ff619a2b-8fe7-4627-a515-9b4874d6fc53(jetbrains.mps.lang.feedback.problem.structure)/24399255755750911");
     b.version(2);
     b.aggregate("context", 0x56aefe6c1b000dL).target(0x3ad5badc1d9c461cL, 0xb7b1fa2fcd0a0ae7L, 0x56aefe6c19b93dL).optional(false).ordered(true).multiple(false).origin("24399255755751437").done();
     b.alias("Problem Kind");
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForProblemPointsToKindRoot() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.feedback.problem", "ProblemPointsToKindRoot", 0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x6b178cfa773dc73aL);
+    b.class_(false, false, false);
+    b.parent(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x573ae5b8b8caf72cL);
+    b.origin("r:ff619a2b-8fe7-4627-a515-9b4874d6fc53(jetbrains.mps.lang.feedback.problem.structure)/7716791493892884282");
+    b.version(2);
+    b.associate("kind", 0x6b178cfa773dc73bL).target(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x56aefe6c1afdffL).optional(false).origin("7716791493892884283").done();
     return b.create();
   }
 }

@@ -62,7 +62,7 @@ public class LanguageAspectsEP_extension extends Extension.Default<LanguageAspec
       }
       @NotNull
       public Collection<SLanguage> getMainLanguages() {
-        return ListSequence.fromListAndArray(new ArrayList<SLanguage>(), MetaAdapterFactory.getLanguage(0xdb2a46c2ebec4b6cL, 0xb6c2f9b55b9b6f8aL, "jetbrains.mps.lang.feedback.problem.failingRule"), MetaAdapterFactory.getLanguage(0xcd17a113ca4e472fL, 0xa8dec49008f9eea8L, "jetbrains.mps.lang.feedback"), MetaAdapterFactory.getLanguage(0x517077fde44f4338L, 0xa4751d29781dfdb8L, "jetbrains.mps.lang.feedback.skeleton"), MetaAdapterFactory.getLanguage(0x16e76fe395344defL, 0xafb7925a169a7c0bL, "jetbrains.mps.lang.feedback.messages"));
+        return ListSequence.fromListAndArray(new ArrayList<SLanguage>(), MetaAdapterFactory.getLanguage(0x7127d40929f043e8L, 0x917ff016ea288944L, "jetbrains.mps.lang.feedback.problem.structural"), MetaAdapterFactory.getLanguage(0x33598a476a947e1L, 0xac89a300c0fceab8L, "jetbrains.mps.lang.feedback.problem"), MetaAdapterFactory.getLanguage(0xcd17a113ca4e472fL, 0xa8dec49008f9eea8L, "jetbrains.mps.lang.feedback"), MetaAdapterFactory.getLanguage(0x517077fde44f4338L, 0xa4751d29781dfdb8L, "jetbrains.mps.lang.feedback.skeleton"), MetaAdapterFactory.getLanguage(0x16e76fe395344defL, 0xafb7925a169a7c0bL, "jetbrains.mps.lang.feedback.messages"), MetaAdapterFactory.getLanguage(0x3ad5badc1d9c461cL, 0xb7b1fa2fcd0a0ae7L, "jetbrains.mps.lang.context"), MetaAdapterFactory.getLanguage(0xea3159bff48e4720L, 0xbde286dba75f0d34L, "jetbrains.mps.lang.context.defs"));
       }
       @Nullable
       public LanguageAspectGenerator getGenerator() {

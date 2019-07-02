@@ -10,8 +10,8 @@ import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
   private ConceptPresentation props_Problem;
-  private ConceptPresentation props_ProblemKind;
   private ConceptPresentation props_ProblemKindRoot;
+  private ConceptPresentation props_ProblemPointsToKindRoot;
 
   @Override
   @Nullable
@@ -24,12 +24,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_Problem = cpb.create();
         }
         return props_Problem;
-      case LanguageConceptSwitch.ProblemKind:
-        if (props_ProblemKind == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          props_ProblemKind = cpb.create();
-        }
-        return props_ProblemKind;
       case LanguageConceptSwitch.ProblemKindRoot:
         if (props_ProblemKindRoot == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -37,6 +31,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_ProblemKindRoot = cpb.create();
         }
         return props_ProblemKindRoot;
+      case LanguageConceptSwitch.ProblemPointsToKindRoot:
+        if (props_ProblemPointsToKindRoot == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByReference(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x6b178cfa773dc73aL, 0x6b178cfa773dc73bL, "kind", "", "");
+          props_ProblemPointsToKindRoot = cpb.create();
+        }
+        return props_ProblemPointsToKindRoot;
     }
     return null;
   }

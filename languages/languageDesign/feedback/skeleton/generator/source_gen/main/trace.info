@@ -89,11 +89,11 @@
   </root>
   <root nodeRef="r:88063101-bb85-46fe-9808-adf7c6c8b71d(main@generator)/7188575577281171690">
     <file name="QueriesGenerated.java">
-      <node id="4996591504622269481" at="64,104,65,217" concept="4" />
+      <node id="4996591504622269481" at="64,104,65,227" concept="4" />
       <node id="4996591504622268461" at="120,14,121,75" concept="0" />
       <node id="4996591504622268461" at="142,15,143,87" concept="4" />
       <node id="4996591504622268461" at="64,0,67,0" concept="6" trace="sourceNodesQuery_2_0#(Ljetbrains/mps/generator/template/SourceSubstituteMacroNodesContext;)Ljava/lang/Iterable;" />
-      <scope id="4996591504622268462" at="64,104,65,217" />
+      <scope id="4996591504622268462" at="64,104,65,227" />
       <scope id="4996591504622268461" at="142,15,143,87" />
       <scope id="4996591504622268461" at="64,0,67,0">
         <var name="_context" id="4996591504622268461" />

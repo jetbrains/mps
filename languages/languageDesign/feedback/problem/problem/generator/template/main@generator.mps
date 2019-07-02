@@ -30,8 +30,19 @@
       <concept id="1167327847730" name="jetbrains.mps.lang.generator.structure.Reduction_MappingRule" flags="lg" index="3aamgX">
         <child id="1169672767469" name="ruleConsequence" index="1lVwrX" />
       </concept>
+      <concept id="982871510064032177" name="jetbrains.mps.lang.generator.structure.IParameterizedTemplate" flags="ng" index="1s_3nv">
+        <child id="982871510064032342" name="parameter" index="1s_3oS" />
+      </concept>
       <concept id="8900764248744213868" name="jetbrains.mps.lang.generator.structure.InlineTemplateWithContext_RuleConsequence" flags="lg" index="1Koe21">
         <child id="8900764248744213871" name="contentNode" index="1Koe22" />
+      </concept>
+      <concept id="1805153994415891174" name="jetbrains.mps.lang.generator.structure.TemplateParameterDeclaration" flags="ng" index="1N15co">
+        <child id="1805153994415893199" name="type" index="1N15GL" />
+      </concept>
+    </language>
+    <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
+      <concept id="1138055754698" name="jetbrains.mps.lang.smodel.structure.SNodeType" flags="in" index="3Tqbb2">
+        <reference id="1138405853777" name="concept" index="ehGHo" />
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
@@ -51,7 +62,13 @@
     </node>
   </node>
   <node concept="jVnub" id="1mFJTG6NRv">
-    <property role="TrG5h" value="switchJavaContextFromProblemKind" />
+    <property role="TrG5h" value="switchJavaContextFromProblem" />
+    <node concept="1N15co" id="6GnzfDRecXj" role="1s_3oS">
+      <property role="TrG5h" value="problem" />
+      <node concept="3Tqbb2" id="6GnzfDRedm5" role="1N15GL">
+        <ref role="ehGHo" to="sis7:5sUTrySMJsG" resolve="Problem" />
+      </node>
+    </node>
     <node concept="1Koe21" id="1mFJTG6NRC" role="jxRDz">
       <node concept="3uibUv" id="1mFJTG6NUM" role="1Koe22">
         <ref role="3uigEE" to="tjjq:~Context" resolve="Context" />

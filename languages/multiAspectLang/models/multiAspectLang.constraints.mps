@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="134c38d4-e3af-4d9e-b069-1c7df0a4005d" name="jetbrains.mps.lang.constraints.rules.skeleton" version="0" />
-    <use id="3f4bc5f5-c6c1-4a28-8b10-c83066ffa4a1" name="jetbrains.mps.lang.constraints" version="-1" />
+    <use id="b3551702-269c-4f05-ba61-58060cef4292" name="jetbrains.mps.lang.rulesAndMessages" version="0" />
     <devkit ref="4843b9cf-86fe-47f2-87c9-f256294fd740(jetbrains.mps.devkit.aspect.constraints.rulesAndMessages)" />
   </languages>
   <imports>
@@ -77,7 +77,7 @@
         <node concept="1DCEQD" id="1mFJTG5T_z" role="1DCEQI">
           <node concept="16I2mz" id="1mFJTG5TPf" role="16N$OO">
             <node concept="16N$OT" id="6AHR5A_xSLk" role="16I2mt">
-              <property role="16N$OU" value="sdfg" />
+              <property role="16N$OU" value="sddfg" />
             </node>
           </node>
         </node>

@@ -14,8 +14,6 @@ import jetbrains.mps.lang.feedback.problem.failingRule.editor.EditorAspectDescri
 import jetbrains.mps.smodel.runtime.StructureAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConceptPresentationAspect;
 import jetbrains.mps.lang.feedback.problem.failingRule.structure.ConceptPresentationAspectImpl;
-import jetbrains.mps.lang.typesystem.runtime.IHelginsDescriptor;
-import jetbrains.mps.lang.feedback.problem.failingRule.typesystem.TypesystemDescriptor;
 
 public class Language extends LanguageRuntime {
   private final SLanguageId myId;
@@ -40,7 +38,7 @@ public class Language extends LanguageRuntime {
 
   @Override
   protected void fillExtendedLanguages(Collection<SLanguage> extendedLanguages) {
-    extendedLanguages.add(MetaAdapterFactory.getLanguage(SLanguageId.deserialize("cd17a113-ca4e-472f-a8de-c49008f9eea8"), "jetbrains.mps.lang.feedback"));
+    extendedLanguages.add(MetaAdapterFactory.getLanguage(SLanguageId.deserialize("033598a4-76a9-47e1-ac89-a300c0fceab8"), "jetbrains.mps.lang.feedback.problem"));
   }
 
   @Override
@@ -56,9 +54,6 @@ public class Language extends LanguageRuntime {
     }
     if (aspectClass == ConceptPresentationAspect.class) {
       return aspectClass.cast(new ConceptPresentationAspectImpl());
-    }
-    if (aspectClass == IHelginsDescriptor.class) {
-      return aspectClass.cast(new TypesystemDescriptor());
     }
     return null;
   }

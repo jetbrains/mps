@@ -9,8 +9,6 @@
     <classNode dependClassName="jetbrains.mps.lang.feedback.problem.failingRule.editor.EditorAspectDescriptorImpl" />
     <classNode dependClassName="jetbrains.mps.lang.feedback.problem.failingRule.structure.ConceptPresentationAspectImpl" />
     <classNode dependClassName="jetbrains.mps.lang.feedback.problem.failingRule.structure.StructureAspectDescriptor" />
-    <classNode dependClassName="jetbrains.mps.lang.feedback.problem.failingRule.typesystem.TypesystemDescriptor" />
-    <classNode dependClassName="jetbrains.mps.lang.typesystem.runtime.IHelginsDescriptor" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.ids.SLanguageId" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />

@@ -10,7 +10,6 @@ import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
   private ConceptPresentation props_FailingRuleProblem;
-  private ConceptPresentation props_FailingRuleProblemKind;
 
   @Override
   @Nullable
@@ -20,17 +19,10 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.FailingRuleProblem:
         if (props_FailingRuleProblem == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.presentationByName();
+          cpb.rawPresentation("when constraint rule fails");
           props_FailingRuleProblem = cpb.create();
         }
         return props_FailingRuleProblem;
-      case LanguageConceptSwitch.FailingRuleProblemKind:
-        if (props_FailingRuleProblemKind == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.presentationByReference(0xdb2a46c2ebec4b6cL, 0xb6c2f9b55b9b6f8aL, 0x56aefe6c176f59L, 0x56aefe6c1c1aa6L, "ruleKind", "", "");
-          props_FailingRuleProblemKind = cpb.create();
-        }
-        return props_FailingRuleProblemKind;
     }
     return null;
   }

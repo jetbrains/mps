@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<solution name="jetbrains.mps.lang.feedback.alltogether" uuid="6e98f4e2-decf-4e97-bf80-9109e8b759ef" moduleVersion="0" compileInMPS="false">
-  <compileInIDEA />
+<solution name="jetbrains.mps.lang.feedback.alltogether" uuid="6e98f4e2-decf-4e97-bf80-9109e8b759ef" moduleVersion="0" pluginKind="PLUGIN_CORE" compileInMPS="true">
   <models>
     <modelRoot contentPath="${module}" type="java_classes">
       <sourceRoot location="context/classes" />
@@ -9,17 +8,24 @@
       <sourceRoot location="messages-for-legacy-constraints/classes" />
       <sourceRoot location="messages-for-rules/classes" />
       <sourceRoot location="problem/classes" />
+      <sourceRoot location="messages-for-structure/classes" />
     </modelRoot>
   </models>
-  <facets>
-    <facet pluginId="com.intellij" type="ideaPlugin" />
-  </facets>
+  <stubModelEntries>
+    <stubModelEntry path="${module}/messages-api/classes" />
+    <stubModelEntry path="${module}/feedback-api/classes" />
+    <stubModelEntry path="${module}/context/classes" />
+    <stubModelEntry path="${module}/messages-for-legacy-constraints/classes" />
+    <stubModelEntry path="${module}" />
+    <stubModelEntry path="${module}/problem/classes" />
+    <stubModelEntry path="${module}/messages-for-structure/classes" />
+    <stubModelEntry path="${module}/messages-for-rules/classes" />
+  </stubModelEntries>
   <sourcePath />
   <dependencies>
     <dependency reexport="false">3f233e7f-b8a6-46d2-a57f-795d56775243(Annotations)</dependency>
     <dependency reexport="false">6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)</dependency>
     <dependency reexport="true">6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)</dependency>
-    <dependency reexport="false">a9e4c532-c5f5-4bb7-99ef-42abb73bbb70(jetbrains.mps.lang.descriptor.aspects)</dependency>
     <dependency reexport="false">8e98f4e2-decf-4e97-bf80-9109e8b759ee(jetbrains.mps.lang.constraints.rules.runtime)</dependency>
   </dependencies>
   <languageVersions>

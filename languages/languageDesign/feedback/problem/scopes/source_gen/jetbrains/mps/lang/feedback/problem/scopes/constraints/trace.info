@@ -4,6 +4,9 @@
     <file name="ConstraintsAspectDescriptor.java">
       <unit at="10,0,20,0" name="jetbrains.mps.lang.feedback.problem.scopes.constraints.ConstraintsAspectDescriptor" />
     </file>
+    <file name="GeneratedConstraintsAspectDescriptor2.java">
+      <unit at="17,0,31,0" name="jetbrains.mps.lang.feedback.problem.scopes.constraints.GeneratedConstraintsAspectDescriptor2" />
+    </file>
   </root>
 </debug-info>
 

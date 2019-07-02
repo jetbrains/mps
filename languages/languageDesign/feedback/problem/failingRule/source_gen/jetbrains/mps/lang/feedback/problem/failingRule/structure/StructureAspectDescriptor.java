@@ -14,7 +14,6 @@ import jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder2;
 
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptFailingRuleProblem = createDescriptorForFailingRuleProblem();
-  /*package*/ final ConceptDescriptor myConceptFailingRuleProblemKind = createDescriptorForFailingRuleProblemKind();
   private final LanguageConceptSwitch myIndexSwitch;
 
   public StructureAspectDescriptor() {
@@ -29,7 +28,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptFailingRuleProblem, myConceptFailingRuleProblemKind);
+    return Arrays.asList(myConceptFailingRuleProblem);
   }
 
   @Override
@@ -38,8 +37,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     switch (myIndexSwitch.index(id)) {
       case LanguageConceptSwitch.FailingRuleProblem:
         return myConceptFailingRuleProblem;
-      case LanguageConceptSwitch.FailingRuleProblemKind:
-        return myConceptFailingRuleProblemKind;
       default:
         return null;
     }
@@ -62,15 +59,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(2);
     b.associate("rule", 0x573ae5b8b8cd1498L).target(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L).optional(false).origin("6285588811486139544").done();
     b.alias("when constraint rule fails");
-    return b.create();
-  }
-  private static ConceptDescriptor createDescriptorForFailingRuleProblemKind() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.feedback.problem.failingRule", "FailingRuleProblemKind", 0xdb2a46c2ebec4b6cL, 0xb6c2f9b55b9b6f8aL, 0x56aefe6c176f59L);
-    b.class_(true, false, false);
-    b.parent(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x573ae5b8b8cc98e4L);
-    b.origin("r:99b2bb53-594f-4076-8629-aea0f8ec5bfd(jetbrains.mps.lang.feedback.problem.failingRule.structure)/24399255755517785");
-    b.version(2);
-    b.associate("ruleKind", 0x56aefe6c1c1aa6L).target(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, 0x6530303593554248L).optional(false).origin("24399255755823782").done();
     return b.create();
   }
 }

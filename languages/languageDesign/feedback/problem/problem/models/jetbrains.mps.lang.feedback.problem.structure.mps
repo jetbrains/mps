@@ -17,9 +17,7 @@
         <property id="5092175715804935370" name="conceptAlias" index="34LRSv" />
         <child id="1071489727083" name="linkDeclaration" index="1TKVEi" />
       </concept>
-      <concept id="1169125989551" name="jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration" flags="ig" index="PlHQZ">
-        <child id="1169127546356" name="extends" index="PrDN$" />
-      </concept>
+      <concept id="1169125989551" name="jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration" flags="ig" index="PlHQZ" />
       <concept id="1169127622168" name="jetbrains.mps.lang.structure.structure.InterfaceConceptReference" flags="ig" index="PrWs8">
         <reference id="1169127628841" name="intfc" index="PrY4T" />
       </concept>
@@ -45,20 +43,6 @@
   <node concept="PlHQZ" id="5sUTrySMJsG">
     <property role="EcuMT" value="6285588811486000940" />
     <property role="TrG5h" value="Problem" />
-    <node concept="1TJgyj" id="5sUTrySN9zA" role="1TKVEi">
-      <property role="IQ2ns" value="6285588811486107878" />
-      <property role="20lmBu" value="reference" />
-      <property role="20kJfa" value="kind" />
-      <property role="20lbJX" value="1" />
-      <ref role="20lvS9" node="5sUTrySN9z$" resolve="ProblemKind" />
-    </node>
-    <node concept="PrWs8" id="5sUTrySPKry" role="PrDN$">
-      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
-    </node>
-  </node>
-  <node concept="PlHQZ" id="5sUTrySN9z$">
-    <property role="EcuMT" value="6285588811486107876" />
-    <property role="TrG5h" value="ProblemKind" />
   </node>
   <node concept="1TIwiD" id="1mFJTG6JRZ">
     <property role="EcuMT" value="24399255755750911" />
@@ -74,11 +58,23 @@
       <property role="20lbJX" value="1" />
       <ref role="20lvS9" to="ceie:1mFJTG6r$X" resolve="Context" />
     </node>
-    <node concept="PrWs8" id="1mFJTG6K0f" role="PzmwI">
-      <ref role="PrY4T" node="5sUTrySN9z$" resolve="ProblemKind" />
-    </node>
     <node concept="PrWs8" id="1mFJTG6K7$" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="6GnzfDRfssU">
+    <property role="EcuMT" value="7716791493892884282" />
+    <property role="TrG5h" value="ProblemPointsToKindRoot" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="6GnzfDRfssV" role="1TKVEi">
+      <property role="IQ2ns" value="7716791493892884283" />
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="kind" />
+      <property role="20lbJX" value="1" />
+      <ref role="20lvS9" node="1mFJTG6JRZ" resolve="ProblemKindRoot" />
+    </node>
+    <node concept="PrWs8" id="6GnzfDRhs0$" role="PzmwI">
+      <ref role="PrY4T" node="5sUTrySMJsG" resolve="Problem" />
     </node>
   </node>
 </model>

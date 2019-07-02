@@ -88,6 +88,9 @@
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
+      <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
+      </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
@@ -121,6 +124,14 @@
       </concept>
       <concept id="4452961908202556907" name="jetbrains.mps.lang.core.structure.BaseCommentAttribute" flags="ng" index="1X3_iC">
         <child id="3078666699043039389" name="commentedNode" index="8Wnug" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
   </registry>
@@ -221,20 +232,44 @@
             </node>
           </node>
         </node>
-        <node concept="3cpWs6" id="5sUTrySNd94" role="3cqZAp">
-          <node concept="2ShNRf" id="5sUTrySNd95" role="3cqZAk">
-            <node concept="1pGfFk" id="5sUTrySNd96" role="2ShVmc">
-              <ref role="37wK5l" to="o8zo:4k9eBec$QVW" resolve="ModelPlusImportedScope" />
-              <node concept="2OqwBi" id="5sUTrySNd97" role="37wK5m">
-                <node concept="13iPFW" id="5sUTrySNd98" role="2Oq$k0" />
-                <node concept="I4A8Y" id="5sUTrySNd99" role="2OqNvi" />
-              </node>
-              <node concept="3clFbT" id="5sUTrySNd9a" role="37wK5m" />
-              <node concept="35c_gC" id="5sUTrySNd9b" role="37wK5m">
-                <ref role="35c_gD" to="iwhd:6kKc3mjq0oG" resolve="TypedDef" />
+        <node concept="3SKdUt" id="6GnzfDRetPR" role="3cqZAp">
+          <node concept="1PaTwC" id="6GnzfDRetPS" role="3ndbpf">
+            <node concept="3oM_SD" id="6GnzfDRetQR" role="1PaTwD">
+              <property role="3oM_SC" value="fixme" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="6GnzfDRerjD" role="3cqZAp">
+          <node concept="3clFbS" id="6GnzfDRerjF" role="3clFbx">
+            <node concept="3cpWs6" id="5sUTrySNd94" role="3cqZAp">
+              <node concept="2ShNRf" id="5sUTrySNd95" role="3cqZAk">
+                <node concept="1pGfFk" id="5sUTrySNd96" role="2ShVmc">
+                  <ref role="37wK5l" to="o8zo:4k9eBec$QVW" resolve="ModelPlusImportedScope" />
+                  <node concept="2OqwBi" id="5sUTrySNd97" role="37wK5m">
+                    <node concept="13iPFW" id="5sUTrySNd98" role="2Oq$k0" />
+                    <node concept="I4A8Y" id="5sUTrySNd99" role="2OqNvi" />
+                  </node>
+                  <node concept="3clFbT" id="5sUTrySNd9a" role="37wK5m" />
+                  <node concept="35c_gC" id="5sUTrySNd9b" role="37wK5m">
+                    <ref role="35c_gD" to="iwhd:6kKc3mjq0oG" resolve="TypedDef" />
+                  </node>
+                </node>
               </node>
             </node>
           </node>
+          <node concept="2OqwBi" id="6GnzfDRerDl" role="3clFbw">
+            <node concept="37vLTw" id="6GnzfDRerqQ" role="2Oq$k0">
+              <ref role="3cqZAo" node="4zSofKenTNV" resolve="kind" />
+            </node>
+            <node concept="2Zo12i" id="6GnzfDRerOZ" role="2OqNvi">
+              <node concept="chp4Y" id="6GnzfDRerSd" role="2Zo12j">
+                <ref role="cht4Q" to="iwhd:6kKc3mjq0oG" resolve="TypedDef" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="6GnzfDReshB" role="3cqZAp">
+          <node concept="10Nm6u" id="6GnzfDResoQ" role="3cqZAk" />
         </node>
       </node>
       <node concept="37vLTG" id="4zSofKenTNV" role="3clF46">

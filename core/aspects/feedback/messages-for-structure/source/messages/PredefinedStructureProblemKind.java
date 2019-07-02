@@ -34,7 +34,7 @@ public enum PredefinedStructureProblemKind implements ProblemKindAlsoProblem, Pr
       }
       SProperty p = ((MissingPropertyContext) context).getProperty();
       String conceptName = ((MissingPropertyContext) context).getNode().getConcept().getName();
-      return String.format("Property %s.%s doesn't belong to concept %s",
+      return String.format("Property %s.%s does not belong to the concept %s",
                            p.getOwner().getName(),
                            p.getName(),
                            conceptName);

@@ -18,9 +18,11 @@ package jetbrains.mps.core.aspects.feedback.messages;
 import jetbrains.mps.core.context.Context;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.model.SNode;
 
+@Immutable
 public final class FailingPropertyConstraintContext implements Context {
   private final SProperty myProperty;
   private final Object myValue;

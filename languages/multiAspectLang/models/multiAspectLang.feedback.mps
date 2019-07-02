@@ -4,18 +4,25 @@
   <languages>
     <use id="16e76fe3-9534-4def-afb7-925a169a7c0b" name="jetbrains.mps.lang.feedback.messages" version="0" />
     <use id="cd17a113-ca4e-472f-a8de-c49008f9eea8" name="jetbrains.mps.lang.feedback" version="0" />
-    <use id="db2a46c2-ebec-4b6c-b6c2-f9b55b9b6f8a" name="jetbrains.mps.lang.feedback.problem.failingRule" version="0" />
+    <use id="cddf55b3-117e-46ec-837c-ff50eb7b89b0" name="jetbrains.mps.lang.feedback.problem.childAndProp" version="0" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
     <devkit ref="0845ddb4-34c2-4a32-b2ae-270bffc5b430(jetbrains.mps.devkit.aspect.feedback)" />
   </languages>
   <imports>
     <import index="2e5h" ref="r:5dbac061-aef9-4696-88ee-0f21fe5598f3(multiAspectLang.constraints)" />
-    <import index="pljn" ref="r:7117f6c4-faaf-4889-b5b9-3fe628e41cf8(multiAspectLang.structure)" implicit="true" />
+    <import index="pljn" ref="r:7117f6c4-faaf-4889-b5b9-3fe628e41cf8(multiAspectLang.structure)" />
+    <import index="2u14" ref="r:5fb5395d-4f7b-4fac-941f-f4bc11c7dac5(jetbrains.mps.lang.feedback.problem.childAndProp.constraints)" />
+    <import index="1wpt" ref="r:44de6cb2-b6eb-47d2-bf88-1577a328d3f6(jetbrains.mps.lang.feedback.problem.structural.constraints)" implicit="true" />
   </imports>
   <registry>
     <language id="033598a4-76a9-47e1-ac89-a300c0fceab8" name="jetbrains.mps.lang.feedback.problem">
-      <concept id="6285588811486000940" name="jetbrains.mps.lang.feedback.problem.structure.Problem" flags="ng" index="3JW1ak">
-        <reference id="6285588811486107878" name="kind" index="3JXBPu" />
+      <concept id="7716791493892884282" name="" flags="ng" index="sa$J0">
+        <reference id="7716791493892884283" name="" index="sa$J1" />
+      </concept>
+    </language>
+    <language id="7127d409-29f0-43e8-917f-f016ea288944" name="jetbrains.mps.lang.feedback.problem.structural">
+      <concept id="5724083730281438001" name="jetbrains.mps.lang.feedback.problem.structural.structure.MissingPropertyProblem" flags="ng" index="ft9Ny">
+        <reference id="24399255755615671" name="property" index="1Gj$d9" />
       </concept>
     </language>
     <language id="cd17a113-ca4e-472f-a8de-c49008f9eea8" name="jetbrains.mps.lang.feedback">
@@ -36,11 +43,6 @@
         <property id="5258059200641510854" name="message" index="16N$OU" />
       </concept>
     </language>
-    <language id="db2a46c2-ebec-4b6c-b6c2-f9b55b9b6f8a" name="jetbrains.mps.lang.feedback.problem.failingRule">
-      <concept id="6285588811486137591" name="jetbrains.mps.lang.feedback.problem.failingRule.structure.FailingRuleProblem" flags="ng" index="3JXY_f">
-        <reference id="6285588811486139544" name="rule" index="3JXZ4w" />
-      </concept>
-    </language>
     <language id="517077fd-e44f-4338-a475-1d29781dfdb8" name="jetbrains.mps.lang.feedback.skeleton">
       <concept id="7291380803381892615" name="jetbrains.mps.lang.feedback.skeleton.structure.FeedbackPerConceptRoot" flags="ng" index="3QByoM">
         <reference id="7188575577281228125" name="concept" index="3Z9TSV" />
@@ -50,22 +52,16 @@
   </registry>
   <node concept="3QByoM" id="5ca4zTvKOON">
     <ref role="3Z9TSV" to="pljn:5ca4zTvKOOO" resolve="A" />
-    <node concept="3QByp$" id="1mFJTG63wV" role="3QBEN7">
-      <node concept="16I2mz" id="1mFJTG63wW" role="16N$OO">
-        <node concept="16N$OT" id="1mFJTG63wX" role="16I2mt">
-          <property role="16N$OU" value="msg" />
+    <node concept="3QByp$" id="6GnzfDRhs0c" role="3QBEN7">
+      <node concept="16I2mz" id="6GnzfDRhs0d" role="16N$OO">
+        <node concept="16N$OT" id="6GnzfDRhs0e" role="16I2mt">
+          <property role="16N$OU" value="asdf" />
         </node>
       </node>
-      <node concept="3JXY_f" id="1mFJTG63x3" role="3JXyrO">
-        <ref role="3JXZ4w" to="2e5h:1mFJTG5T_w" resolve="gagag" />
-        <ref role="3JXBPu" to=":^" />
+      <node concept="ft9Ny" id="6GnzfDRhs0k" role="3JXyrO">
+        <ref role="sa$J1" to="1wpt:4XK1Xd019ID" resolve="MissingProperty" />
+        <ref role="1Gj$d9" to="pljn:6AHR5A_xSNw" resolve="prop" />
       </node>
-    </node>
-    <node concept="3QByp$" id="6AHR5A_y9oG" role="3QBEN7">
-      <node concept="16I2mz" id="6AHR5A_y9oI" role="16N$OO">
-        <node concept="16N$OT" id="6AHR5A_y9oK" role="16I2mt" />
-      </node>
-      <node concept="3JW1ak" id="6AHR5A_y9oM" role="3JXyrO" />
     </node>
   </node>
 </model>

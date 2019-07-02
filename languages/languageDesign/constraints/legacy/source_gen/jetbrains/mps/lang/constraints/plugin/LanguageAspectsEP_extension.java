@@ -61,23 +61,19 @@ public class LanguageAspectsEP_extension extends Extension.Default<LanguageAspec
         }).ofType(SModel.class).toListSequence();
       }
       public SModuleReference getDefaultDevkit() {
-        return PersistenceFacade.getInstance().createModuleReference("00000000-0000-4000-0000-5604ebd4f22c(jetbrains.mps.devkit.aspect.constraints)");
+        return PersistenceFacade.getInstance().createModuleReference("4843b9cf-86fe-47f2-87c9-f256294fd740(jetbrains.mps.devkit.aspect.constraints.rulesAndMessages)");
       }
       @NotNull
       public Collection<SLanguage> getMainLanguages() {
-        return ListSequence.fromListAndArray(new ArrayList<SLanguage>(), MetaAdapterFactory.getLanguage(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, "jetbrains.mps.lang.constraints"), MetaAdapterFactory.getLanguage(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, "jetbrains.mps.lang.constraints.rules.skeleton"));
+        return ListSequence.fromListAndArray(new ArrayList<SLanguage>(), MetaAdapterFactory.getLanguage(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, "jetbrains.mps.lang.constraints"), MetaAdapterFactory.getLanguage(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, "jetbrains.mps.lang.constraints.rules.skeleton"), MetaAdapterFactory.getLanguage(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, "jetbrains.mps.lang.constraints.rules.kinds"), MetaAdapterFactory.getLanguage(0xb3551702269c4f05L, 0xba6158060cef4292L, "jetbrains.mps.lang.rulesAndMessages"), MetaAdapterFactory.getLanguage(0x3ad5badc1d9c461cL, 0xb7b1fa2fcd0a0ae7L, "jetbrains.mps.lang.context"), MetaAdapterFactory.getLanguage(0xea3159bff48e4720L, 0xbde286dba75f0d34L, "jetbrains.mps.lang.context.defs"));
       }
       @Nullable
       public LanguageAspectGenerator getGenerator() {
         return null;
       }
-      @NotNull
-      public Collection<SLanguage> getAdditionalLanguages() {
-        return ListSequence.fromListAndArray(new ArrayList<SLanguage>(), MetaAdapterFactory.getLanguage(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, "jetbrains.mps.lang.constraints.rules.kinds"), MetaAdapterFactory.getLanguage(0xb3551702269c4f05L, 0xba6158060cef4292L, "jetbrains.mps.lang.rulesAndMessages"));
-      }
       @Nullable
       public IconResource getIconResource() {
-        return IconContainer.RESOURCE_a0a8a0a0a1;
+        return IconContainer.RESOURCE_a0a7a0a0a1;
       }
       @Nullable
       public String getHelpUrl() {

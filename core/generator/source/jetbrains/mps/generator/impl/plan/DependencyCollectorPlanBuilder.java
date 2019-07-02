@@ -29,6 +29,7 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -84,7 +85,22 @@ public class DependencyCollectorPlanBuilder implements GenerationPlanBuilder {
   @Override
   public ModelGenerationPlan wrapUp(@NotNull PlanIdentity planIdentity) {
     // perhaps, empty MGP (with no steps) is better alternative?
-    throw new IllegalStateException("No need to wrapUp the plan here");
+    return new ModelGenerationPlan() {
+      @Override
+      public List<Step> getSteps() {
+        return Collections.emptyList();
+      }
+
+      @Override
+      public Collection<TemplateModule> getGenerators() {
+        return Collections.emptyList();
+      }
+
+      @Override
+      public boolean coversLanguage(SLanguage language) {
+        return false;
+      }
+    };
   }
 
   public Set<SLanguage> getRequiredLanguages() {

@@ -72,6 +72,10 @@
       <sourceFolder url="file://$MODULE_DIR$/../../languages/languageDesign/constraints/rules/rules/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../languages/languageDesign/constraints/rules/skeleton/generator/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../languages/languageDesign/constraints/rules/skeleton/source_gen" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../languages/languageDesign/context.defs/generator/source_gen" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../languages/languageDesign/context.defs/source_gen" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../languages/languageDesign/context/generator/source_gen" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../languages/languageDesign/context/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../languages/languageDesign/customAspect/generator/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../languages/languageDesign/customAspect/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../languages/languageDesign/dataFlow/generator/source_gen" isTestSource="false" />
@@ -191,6 +195,7 @@
       <sourceFolder url="file://$MODULE_DIR$/../../languages/languageDesign/typesystem/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../languages/languageDesign/util/jetbrains.mps.lang.util.order/generator/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../languages/languageDesign/util/jetbrains.mps.lang.util.order/source_gen" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../languages/multiAspectLang/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../languages/util/builders/generator/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../languages/util/builders/sandbox/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../languages/util/builders/source_gen" isTestSource="false" />
@@ -274,6 +279,10 @@
       <excludeFolder url="file://$MODULE_DIR$/../../languages/languageDesign/constraints/rules/rules/generator/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../languages/languageDesign/constraints/rules/skeleton/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../languages/languageDesign/constraints/rules/skeleton/generator/classes_gen" />
+      <excludeFolder url="file://$MODULE_DIR$/../../languages/languageDesign/context.defs/classes_gen" />
+      <excludeFolder url="file://$MODULE_DIR$/../../languages/languageDesign/context.defs/generator/classes_gen" />
+      <excludeFolder url="file://$MODULE_DIR$/../../languages/languageDesign/context/classes_gen" />
+      <excludeFolder url="file://$MODULE_DIR$/../../languages/languageDesign/context/generator/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../languages/languageDesign/customAspect/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../languages/languageDesign/customAspect/generator/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../languages/languageDesign/dataFlow/classes_gen" />
@@ -393,6 +402,7 @@
       <excludeFolder url="file://$MODULE_DIR$/../../languages/languageDesign/typesystem/generator/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../languages/languageDesign/util/jetbrains.mps.lang.util.order/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../languages/languageDesign/util/jetbrains.mps.lang.util.order/generator/classes_gen" />
+      <excludeFolder url="file://$MODULE_DIR$/../../languages/multiAspectLang/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../languages/util/builders/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../languages/util/builders/generator/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../languages/util/builders/sandbox/classes_gen" />
@@ -1530,5 +1540,6 @@
     <orderEntry type="module" module-name="messages-for-rules" />
     <orderEntry type="module" module-name="context" />
     <orderEntry type="module" module-name="messages-for-legacy-constraints" />
+    <orderEntry type="module" module-name="messages-for-structure" />
   </component>
 </module>

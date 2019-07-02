@@ -6,20 +6,28 @@ import jetbrains.mps.core.aspects.feedback.api.BaseFeedbackDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.feedback.api.FeedbackProvider;
-import jetbrains.mps.core.context.Context;
+import messages.MissingPropertyContext;
+import jetbrains.mps.core.aspects.feedback.messages.BaseMessageProvider;
+import messages.MissingPropertyProblemId;
+import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.core.aspects.feedback.messages.MessageProvider;
 import java.util.List;
 import java.util.Collections;
 import java.util.Arrays;
-import org.jetbrains.annotations.NotNull;
 import java.util.stream.Stream;
 
 public final class A_FeedbackRoot extends BaseFeedbackDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, "multiAspectLang.structure.A");
 
-  private static final FeedbackProvider<Context> PROVIDER = null;
-  private static final FeedbackProvider<Context> PROVIDER = null;
+  private static final FeedbackProvider<MissingPropertyContext> MSGPROVIDER_WhenPropertyDoesNotBelongToTheConcept_a = new BaseMessageProvider<MissingPropertyContext>(new MissingPropertyProblemId(MetaAdapterFactory.getProperty(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, 0x69addc59a5878ce0L, "prop"))) {
+    @NotNull
+    @Override
+    public MessageProvider.StringMsg yieldMessage(MissingPropertyContext context) {
+      return new MessageProvider.StringMsg("asdf");
+    }
+  };
 
-  private static final List<FeedbackProvider> PROVIDERS = Collections.unmodifiableList(Arrays.<FeedbackProvider>asList(PROVIDER, PROVIDER));
+  private static final List<FeedbackProvider> PROVIDERS = Collections.unmodifiableList(Arrays.<FeedbackProvider>asList(MSGPROVIDER_WhenPropertyDoesNotBelongToTheConcept_a));
 
   public A_FeedbackRoot() {
     super(CONCEPT);

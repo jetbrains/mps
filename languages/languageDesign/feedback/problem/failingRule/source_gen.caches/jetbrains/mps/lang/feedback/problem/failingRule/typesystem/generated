@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="a795fdhkbkug6ayghwznccrrf66cakj">
-  <files names="FixRuleKind_QuickFix.java:TypesystemDescriptor.java:check_FailingRuleProblem_NonTypesystemRule.java" />
+<product version="3" modelHash="-2er6a8qwp78svyqo99j07z3wwx0xga8">
+  <files names="TypesystemDescriptor.java" />
 </product>
 

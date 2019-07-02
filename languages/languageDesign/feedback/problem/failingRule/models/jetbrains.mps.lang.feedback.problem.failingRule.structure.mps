@@ -8,9 +8,7 @@
   <imports>
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
     <import index="bm42" ref="r:83f25986-cdbc-469a-a327-db97a2ec5a39(jetbrains.mps.lang.constraints.rules.structure)" />
-    <import index="z0wo" ref="r:817adc19-0c97-4bd9-994c-b53f2bb0a6a7(jetbrains.mps.lang.feedback.structure)" />
     <import index="sis7" ref="r:ff619a2b-8fe7-4627-a515-9b4874d6fc53(jetbrains.mps.lang.feedback.problem.structure)" />
-    <import index="qbpv" ref="r:63fc051d-731b-428a-af30-ceee8d76dfaa(jetbrains.mps.lang.constraints.rules.kinds.structure)" implicit="true" />
   </imports>
   <registry>
     <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
@@ -32,7 +30,6 @@
         <property id="1071599893252" name="sourceCardinality" index="20lbJX" />
         <property id="1071599937831" name="metaClass" index="20lmBu" />
         <property id="241647608299431140" name="linkId" index="IQ2ns" />
-        <reference id="1071599698500" name="specializedLink" index="20ksaX" />
         <reference id="1071599976176" name="target" index="20lvS9" />
       </concept>
     </language>
@@ -55,32 +52,8 @@
       <property role="20lbJX" value="1" />
       <ref role="20lvS9" to="bm42:6kKc3mjm6Ry" resolve="Rule" />
     </node>
-    <node concept="1TJgyj" id="5sUTrySNhVO" role="1TKVEi">
-      <property role="IQ2ns" value="6285588811486142196" />
-      <property role="20lmBu" value="reference" />
-      <property role="20kJfa" value="kind" />
-      <property role="20lbJX" value="1" />
-      <ref role="20ksaX" to="sis7:5sUTrySN9zA" resolve="kind" />
-      <ref role="20lvS9" node="1mFJTG5QXp" resolve="FailingRuleProblemKind" />
-    </node>
     <node concept="PrWs8" id="5sUTrySNgNS" role="PzmwI">
       <ref role="PrY4T" to="sis7:5sUTrySMJsG" resolve="Problem" />
-    </node>
-  </node>
-  <node concept="1TIwiD" id="1mFJTG5QXp">
-    <property role="EcuMT" value="24399255755517785" />
-    <property role="TrG5h" value="FailingRuleProblemKind" />
-    <property role="R5$K2" value="true" />
-    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
-    <node concept="PrWs8" id="1mFJTG5QXq" role="PzmwI">
-      <ref role="PrY4T" to="sis7:5sUTrySN9z$" resolve="ProblemKind" />
-    </node>
-    <node concept="1TJgyj" id="1mFJTG71EA" role="1TKVEi">
-      <property role="IQ2ns" value="24399255755823782" />
-      <property role="20lmBu" value="reference" />
-      <property role="20kJfa" value="ruleKind" />
-      <property role="20lbJX" value="1" />
-      <ref role="20lvS9" to="qbpv:6kKc3mjlk98" resolve="RuleKind" />
     </node>
   </node>
 </model>

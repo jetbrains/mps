@@ -46,9 +46,13 @@
   </registry>
   <node concept="3vrhyV" id="5sUTrySNtVx">
     <property role="TrG5h" value="feedback" />
-    <node concept="2V$Bhx" id="5sUTrySNtW7" role="QG$2i">
-      <property role="2V$B1T" value="db2a46c2-ebec-4b6c-b6c2-f9b55b9b6f8a" />
-      <property role="2V$B1Q" value="jetbrains.mps.lang.feedback.problem.failingRule" />
+    <node concept="2V$Bhx" id="4XK1Xd01vTh" role="QG$2i">
+      <property role="2V$B1T" value="7127d409-29f0-43e8-917f-f016ea288944" />
+      <property role="2V$B1Q" value="jetbrains.mps.lang.feedback.problem.structural" />
+    </node>
+    <node concept="2V$Bhx" id="4XK1Xd01vTw" role="QG$2i">
+      <property role="2V$B1T" value="033598a4-76a9-47e1-ac89-a300c0fceab8" />
+      <property role="2V$B1Q" value="jetbrains.mps.lang.feedback.problem" />
     </node>
     <node concept="2V$Bhx" id="5sUTrySNtVV" role="QG$2i">
       <property role="2V$B1T" value="cd17a113-ca4e-472f-a8de-c49008f9eea8" />
@@ -61,6 +65,14 @@
     <node concept="2V$Bhx" id="5sUTrySNtW0" role="QG$2i">
       <property role="2V$B1T" value="16e76fe3-9534-4def-afb7-925a169a7c0b" />
       <property role="2V$B1Q" value="jetbrains.mps.lang.feedback.messages" />
+    </node>
+    <node concept="2V$Bhx" id="4XK1Xd01vSX" role="QG$2i">
+      <property role="2V$B1T" value="3ad5badc-1d9c-461c-b7b1-fa2fcd0a0ae7" />
+      <property role="2V$B1Q" value="jetbrains.mps.lang.context" />
+    </node>
+    <node concept="2V$Bhx" id="4XK1Xd01vTa" role="QG$2i">
+      <property role="2V$B1T" value="ea3159bf-f48e-4720-bde2-86dba75f0d34" />
+      <property role="2V$B1Q" value="jetbrains.mps.lang.context.defs" />
     </node>
     <node concept="2vPdvu" id="5sUTrySNtV_" role="3F_NFc">
       <node concept="1SjbrP" id="5sUTrySNtVL" role="2vPdvg">

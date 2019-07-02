@@ -7,7 +7,6 @@
   </languages>
   <imports>
     <import index="tpce" ref="r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)" />
-    <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
     <import index="sis7" ref="r:ff619a2b-8fe7-4627-a515-9b4874d6fc53(jetbrains.mps.lang.feedback.problem.structure)" implicit="true" />
   </imports>
   <registry>
@@ -18,19 +17,14 @@
         <property id="5092175715804935370" name="conceptAlias" index="34LRSv" />
         <child id="1071489727083" name="linkDeclaration" index="1TKVEi" />
       </concept>
-      <concept id="1169127622168" name="jetbrains.mps.lang.structure.structure.InterfaceConceptReference" flags="ig" index="PrWs8">
-        <reference id="1169127628841" name="intfc" index="PrY4T" />
-      </concept>
       <concept id="1071489090640" name="jetbrains.mps.lang.structure.structure.ConceptDeclaration" flags="ig" index="1TIwiD">
         <reference id="1071489389519" name="extends" index="1TJDcQ" />
-        <child id="1169129564478" name="implements" index="PzmwI" />
       </concept>
       <concept id="1071489288298" name="jetbrains.mps.lang.structure.structure.LinkDeclaration" flags="ig" index="1TJgyj">
         <property id="1071599776563" name="role" index="20kJfa" />
         <property id="1071599893252" name="sourceCardinality" index="20lbJX" />
         <property id="1071599937831" name="metaClass" index="20lmBu" />
         <property id="241647608299431140" name="linkId" index="IQ2ns" />
-        <reference id="1071599698500" name="specializedLink" index="20ksaX" />
         <reference id="1071599976176" name="target" index="20lvS9" />
       </concept>
     </language>
@@ -45,24 +39,13 @@
     <property role="TrG5h" value="FailingPropertyConstraintsProblem" />
     <property role="R5$K2" value="true" />
     <property role="34LRSv" value="when property constraint fails" />
-    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
-    <node concept="PrWs8" id="1mFJTG6as7" role="PzmwI">
-      <ref role="PrY4T" to="sis7:5sUTrySMJsG" resolve="Problem" />
-    </node>
+    <ref role="1TJDcQ" to="sis7:6GnzfDRfssU" resolve="ProblemWithKind" />
     <node concept="1TJgyj" id="1mFJTG6eQR" role="1TKVEi">
       <property role="IQ2ns" value="24399255755615671" />
       <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="property" />
       <property role="20lbJX" value="1" />
       <ref role="20lvS9" to="tpce:f_TJgxF" resolve="PropertyDeclaration" />
-    </node>
-    <node concept="1TJgyj" id="1mFJTG6eQT" role="1TKVEi">
-      <property role="IQ2ns" value="24399255755615673" />
-      <property role="20lmBu" value="reference" />
-      <property role="20kJfa" value="kind" />
-      <property role="20lbJX" value="1" />
-      <ref role="20ksaX" to="sis7:5sUTrySN9zA" resolve="kind" />
-      <ref role="20lvS9" to="sis7:1mFJTG6JRZ" resolve="ProblemKindRoot" />
     </node>
   </node>
 </model>

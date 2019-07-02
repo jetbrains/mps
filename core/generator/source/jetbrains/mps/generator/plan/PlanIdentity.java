@@ -23,7 +23,7 @@ import org.jetbrains.annotations.NotNull;
  * contract, but for now uses plain String and mostly a marker to ease discovery of location where
  * identity is needed.
  * Shall identify plan only. Though CheckpointIdentity shall know it's {@code PlanIdentity}, this class shall
- * not hold all {@klinkplain CheckpointIdentity checkpoint identities} that report it as their plan.
+ * not hold all {@linkplain CheckpointIdentity checkpoint identities} that report it as their plan.
  *
  * FIXME likely plan identity shall respect modification timestamp for the plan, so that we don't use existing CP for an already modified plan
  *

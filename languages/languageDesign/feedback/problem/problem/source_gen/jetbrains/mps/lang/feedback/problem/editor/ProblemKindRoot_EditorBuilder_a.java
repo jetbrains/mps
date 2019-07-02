@@ -35,7 +35,7 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
 import jetbrains.mps.nodeEditor.cellProviders.CellProviderWithRole;
 import jetbrains.mps.lang.editor.cellProviders.RefCellCellProvider;
 import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
-import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Horizontal;
+import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Vertical;
 import jetbrains.mps.lang.editor.cellProviders.RefNodeListHandler;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -170,7 +170,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
     }
     private EditorCell createRefNodeList_0() {
       AbstractCellListHandler handler = new ProblemKindRoot_EditorBuilder_a.Inline_Builder0.defsListHandler_5crdyj_a0a2a(myNode, getEditorContext());
-      EditorCell_Collection editorCell = handler.createCells(new CellLayout_Horizontal(), false);
+      EditorCell_Collection editorCell = handler.createCells(new CellLayout_Vertical(), false);
       editorCell.setCellId("refNodeList_defs");
       editorCell.setSRole(handler.getElementSRole());
       return editorCell;
