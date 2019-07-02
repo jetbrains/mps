@@ -6866,7 +6866,7 @@
                       <node concept="3clFbF" id="7KaEUqipH1V" role="3cqZAp">
                         <node concept="2ShNRf" id="7KaEUqipIQD" role="3clFbG">
                           <node concept="1pGfFk" id="3oudiFxOGH8" role="2ShVmc">
-                            <ref role="37wK5l" to="6f4m:7KaEUqipM5k" resolve="UsageOfDeprecatedConceptNotMigratedProblem" />
+                            <ref role="37wK5l" to="6f4m:7KaEUqipM5k" resolve="UsageOfMigrateNodeNotMigratedProblem" />
                             <node concept="37vLTw" id="3oudiFxQdeU" role="37wK5m">
                               <ref role="3cqZAo" node="7KaEUqipGw2" resolve="it" />
                             </node>
