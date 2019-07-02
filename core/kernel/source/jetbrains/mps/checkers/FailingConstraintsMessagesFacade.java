@@ -19,17 +19,14 @@ import jetbrains.mps.core.aspects.constraints.rules.Rule;
 import jetbrains.mps.core.aspects.constraints.rules.RuleKind;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.LegacyRuleKind;
 import jetbrains.mps.core.aspects.feedback.api.FeedbackAspectRegistry;
-import jetbrains.mps.core.aspects.feedback.messages.FailingRuleProblemId;
+import jetbrains.mps.core.aspects.feedback.messages.FailingRuleProblem;
 import jetbrains.mps.core.aspects.feedback.messages.FailingRuleProblemKind;
-import jetbrains.mps.core.aspects.feedback.messages.LegacyProblemKind;
 import jetbrains.mps.core.aspects.feedback.messages.MessageProvider;
-import jetbrains.mps.core.aspects.feedback.messages.PredefinedFeedbackTypes;
 import jetbrains.mps.core.aspects.feedback.problem.Problem;
-import jetbrains.mps.core.aspects.feedback.problem.ProblemId;
-import jetbrains.mps.core.aspects.feedback.problem.ProblemKind;
-import jetbrains.mps.core.aspects.feedback.problem.ProblemKindAlsoProblem;
 import jetbrains.mps.core.context.Context;
+import jetbrains.mps.project.validation.MessagesFacade;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SLanguage;
 
@@ -44,49 +41,42 @@ import java.util.stream.Stream;
  * @author apyshkin
  */
 final class FailingConstraintsMessagesFacade {
-  private final FeedbackAspectRegistry myRegistry;
+  private final MessagesFacade myMainFacade;
+  @Nullable private final FeedbackAspectRegistry myRegistry;
 
-  public FailingConstraintsMessagesFacade(@NotNull FeedbackAspectRegistry registry) {
+  public FailingConstraintsMessagesFacade(@Nullable FeedbackAspectRegistry registry) {
     myRegistry = registry;
+    myMainFacade = new MessagesFacade(myRegistry);
   }
 
-  @NotNull
-  private <C extends Context> Stream<MessageProvider<C>> findMessagesForProblem(@NotNull SAbstractConcept concept,
-                                                                                @NotNull ProblemId problemId,
-                                                                                @NotNull C context) {
-    return myRegistry.getPerConceptDescriptors(concept)
-                     .filter(d -> d.getConcept().equals(concept))
-                     .flatMap(d -> d.getProvidersForProblem(PredefinedFeedbackTypes.SHOW_MESSAGE, problemId, context))
-                     .map(p -> (MessageProvider) p); // here we rely on the implicit knowledge: SHOW_MESSAGE <=> MessageProvider is in the generated code
-  }
-
-  @NotNull
-  private <C extends Context> Stream<MessageProvider<C>> findDefaultMessagesForProblemKind(@NotNull SLanguage language,
-                                                                                           @NotNull ProblemKind kind,
-                                                                                           @NotNull C context) {
-    if (kind instanceof ProblemKindAlsoProblem) {
-      ProblemId id = ((ProblemKindAlsoProblem) kind).getId();
-      return myRegistry.getPerLanguageDescriptors(language)
-                       .flatMap(d -> d.getProvidersForProblem(PredefinedFeedbackTypes.SHOW_MESSAGE, id, context))
-                       .map(p -> (MessageProvider<C>) p); // here we rely on the implicit knowledge: SHOW_MESSAGE <=> MessageProvider is in the generated code
-    }
-    return Stream.empty();
+  private boolean noRegistryPresent() {
+    return myRegistry == null;
   }
 
   @NotNull
   private <C extends Context> Stream<MessageProvider<C>> findMessagesForRule(@NotNull SAbstractConcept concept,
                                                                              @NotNull Rule<C> rule,
                                                                              @NotNull C context) {
-    FailingRuleProblemId problemId = new FailingRuleProblemId(rule.getId());
-    return findMessagesForProblem(concept, problemId, context);
+    FailingRuleProblem problem = new FailingRuleProblem(rule);
+    return myMainFacade.findMessagesForProblem(concept, problem, context);
   }
 
   @NotNull
   private <C extends Context> Stream<MessageProvider<C>> findDefaultMessagesForRuleKind(@NotNull SLanguage language,
                                                                                         @NotNull RuleKind kind,
                                                                                         @NotNull C context) {
-    return findDefaultMessagesForProblemKind(language, new FailingRuleProblemKind(kind), context);
+    return myMainFacade.findDefaultMessagesForProblemKind(language, new FailingRuleProblemKind(kind), context);
   }
+
+  @NotNull
+  private <C extends Context> List<String> legacyDefaults(@NotNull Rule rule, @NotNull C context) {
+    if (rule.getKind() instanceof LegacyRuleKind) {
+      LegacyRuleKind legacyKind = (LegacyRuleKind) rule.getKind();
+      return Collections.singletonList(legacyKind.getDefaultMessage(context));
+    }
+    return Collections.emptyList();
+  }
+
 
   /**
    * yes, a little duplication, not so smooth
@@ -95,14 +85,14 @@ final class FailingConstraintsMessagesFacade {
   <C extends Context> List<String> findTextMessagesForRule(@NotNull SAbstractConcept concept,
                                                            @NotNull Rule<C> rule,
                                                            @NotNull C context) {
+    if (noRegistryPresent()) {
+      return legacyDefaults(rule, context);
+    }
     List<MessageProvider> providers = findMessagesForRule(concept, rule, context).collect(Collectors.toList());
     if (providers.isEmpty()) {
       providers = findDefaultMessagesForRuleKind(concept.getLanguage(), rule.getKind(), context).collect(Collectors.toList());
       if (providers.isEmpty()) {
-        if (rule.getKind() instanceof LegacyRuleKind) {
-          LegacyRuleKind legacyKind = (LegacyRuleKind) rule.getKind();
-          return Collections.singletonList(legacyKind.getDefaultMessage(context));
-        }
+        return legacyDefaults(rule, context);
       }
     }
     return providers.stream()
@@ -114,18 +104,6 @@ final class FailingConstraintsMessagesFacade {
   <C extends Context> List<String> findTextMessagesForProblem(@NotNull SAbstractConcept concept,
                                                               @NotNull Problem problem,
                                                               @NotNull C context) {
-    List<MessageProvider> providers = findMessagesForProblem(concept, problem.getId(), context).collect(Collectors.toList());
-    if (providers.isEmpty()) {
-      providers = findDefaultMessagesForProblemKind(concept.getLanguage(), problem.getKind(), context).collect(Collectors.toList());
-      if (providers.isEmpty()) {
-        if (problem.getKind() instanceof LegacyProblemKind) {
-          LegacyProblemKind kind = (LegacyProblemKind) problem.getKind();
-          return Collections.singletonList(kind.getDefaultMessage(context));
-        }
-      }
-    }
-    return providers.stream()
-                    .map(p -> p.yieldMessage(context).toText())
-                    .collect(Collectors.toList());
+    return myMainFacade.findTextMessagesForProblem(concept, problem, context);
   }
 }

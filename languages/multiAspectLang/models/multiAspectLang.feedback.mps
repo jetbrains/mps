@@ -42,7 +42,7 @@
       </concept>
     </language>
     <language id="517077fd-e44f-4338-a475-1d29781dfdb8" name="jetbrains.mps.lang.feedback.skeleton">
-      <concept id="7291380803381892615" name="jetbrains.mps.lang.feedback.skeleton.structure.FeedbackRoot" flags="ng" index="3QByoM">
+      <concept id="7291380803381892615" name="jetbrains.mps.lang.feedback.skeleton.structure.FeedbackPerConceptRoot" flags="ng" index="3QByoM">
         <reference id="7188575577281228125" name="concept" index="3Z9TSV" />
         <child id="7291380803381927154" name="feedback" index="3QBEN7" />
       </concept>
@@ -61,16 +61,11 @@
         <ref role="3JXBPu" to=":^" />
       </node>
     </node>
-    <node concept="3QByp$" id="1mFJTG6agD" role="3QBEN7">
-      <node concept="16I2mz" id="1mFJTG6agF" role="16N$OO">
-        <node concept="16N$OT" id="1mFJTG6agH" role="16I2mt">
-          <property role="16N$OU" value="asdfasdfasd" />
-        </node>
+    <node concept="3QByp$" id="6AHR5A_y9oG" role="3QBEN7">
+      <node concept="16I2mz" id="6AHR5A_y9oI" role="16N$OO">
+        <node concept="16N$OT" id="6AHR5A_y9oK" role="16I2mt" />
       </node>
-      <node concept="3JXY_f" id="1mFJTG6agS" role="3JXyrO">
-        <ref role="3JXZ4w" to="2e5h:1mFJTG5T_w" resolve="gagag" />
-        <ref role="3JXBPu" to=":^" />
-      </node>
+      <node concept="3JW1ak" id="6AHR5A_y9oM" role="3JXyrO" />
     </node>
   </node>
 </model>

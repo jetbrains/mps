@@ -13,15 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jetbrains.mps.core.aspects.feedback.messages;
+package jetbrains.mps.core.aspects.feedback.problem;
 
 import jetbrains.mps.core.context.Context;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * Until I transfer all problem kinds into MPS this interface will be needed
+ * When we have all our default messages in the MPS model, we might want to get rid of it.
  *
  * @author apyshkin
+ * @since 192
  */
 public interface LegacyProblemKind {
   /**

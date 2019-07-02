@@ -18,6 +18,8 @@ package jetbrains.mps.project.validation;
 import jetbrains.mps.checkers.AbstractNodeCheckerInEditor;
 import jetbrains.mps.checkers.IChecker;
 import jetbrains.mps.checkers.LanguageErrorsCollector;
+import jetbrains.mps.components.ComponentHost;
+import jetbrains.mps.core.aspects.feedback.api.FeedbackAspectRegistry;
 import jetbrains.mps.errors.item.IssueKindReportItem;
 import jetbrains.mps.errors.item.IssueKindReportItem.CheckerCategory;
 import jetbrains.mps.errors.item.LanguageAbsentInRepoProblem;
@@ -25,6 +27,10 @@ import jetbrains.mps.errors.item.LanguageNotLoadedProblem;
 import jetbrains.mps.errors.item.NodeReportItem;
 import jetbrains.mps.errors.item.UnresolvedReferenceReportItem;
 import jetbrains.mps.util.IterableUtil;
+import messages.MissingPropertyContext;
+import messages.MissingPropertyProblem;
+import messages.PredefinedStructureProblemKind;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SLanguage;
@@ -38,18 +44,18 @@ import java.util.Collection;
 import java.util.List;
 
 public class StructureChecker extends AbstractNodeCheckerInEditor implements IChecker<SNode, NodeReportItem> {
+  private final ComponentHost myHost;
   private boolean myCheckMissingRuntimeLanguage = true;
   private boolean myCheckCardinalities = true;
   private boolean myCheckBrokenReferences = true;
 
-  public StructureChecker(boolean suppressErrors, boolean checkMissingRuntimeLanguage, boolean checkCardinalities,
-                          boolean checkBrokenReferences) {
-    myCheckMissingRuntimeLanguage = checkMissingRuntimeLanguage;
-    myCheckCardinalities = checkCardinalities;
-    myCheckBrokenReferences = checkBrokenReferences;
+  public StructureChecker(@Nullable ComponentHost host) {
+    myHost = host;
   }
 
-  public StructureChecker() {
+  public StructureChecker withoutMissingRTLanguages() {
+    myCheckMissingRuntimeLanguage = false;
+    return this;
   }
 
   public StructureChecker withoutBrokenReferences() {
@@ -120,25 +126,13 @@ public class StructureChecker extends AbstractNodeCheckerInEditor implements ICh
       return false;
     }
 
-    // in case of props, refs, links, list should be better than set
-    List<SProperty> props = IterableUtil.asList(concept.getProperties());
-    for (SProperty p : node.getProperties()) {
-      if (props.contains(p)) {
-        continue;
-      }
-      errorsCollector.addError(new ConceptFeatureMissingError(node, p));
-    }
+    checkMissingProperties(node, errorsCollector, concept);
+    checkMissingChildren(node, errorsCollector, concept);
+    checkMissingRefs(node, errorsCollector, concept);
+    return true;
+  }
 
-    List<SContainmentLink> links = IterableUtil.asList(concept.getContainmentLinks());
-    for (SNode n : node.getChildren()) {
-      SContainmentLink l = n.getContainmentLink();
-      if (links.contains(l)) {
-        continue;
-      }
-      assert l != null : "non-root node is supposed to have proper aggregation";
-//      errorsCollector.addError(new ConceptFeatureMissingError(node, l));
-    }
-
+  private void checkMissingRefs(SNode node, LanguageErrorsCollector errorsCollector, SConcept concept) {
     List<SReferenceLink> refs = IterableUtil.asList(concept.getReferenceLinks());
     for (SReference r : node.getReferences()) {
       SReferenceLink l = r.getLink();
@@ -147,7 +141,36 @@ public class StructureChecker extends AbstractNodeCheckerInEditor implements ICh
       }
       errorsCollector.addError(new ConceptFeatureMissingError(node, l));
     }
-    return true;
+  }
+
+  private void checkMissingChildren(SNode node, LanguageErrorsCollector errorsCollector, SConcept concept) {
+    List<SContainmentLink> links = IterableUtil.asList(concept.getContainmentLinks());
+    for (SNode n : node.getChildren()) {
+      SContainmentLink l = n.getContainmentLink();
+      if (links.contains(l)) {
+        continue;
+      }
+      assert l != null : "non-root node is supposed to have proper aggregation";
+      errorsCollector.addError(new ConceptFeatureMissingError(node, l));
+    }
+  }
+
+  private void checkMissingProperties(SNode node, LanguageErrorsCollector errorsCollector, SConcept concept) {
+    // in case of props, refs, links, list should be better than set
+    List<SProperty> props = IterableUtil.asList(concept.getProperties());
+    for (SProperty property : node.getProperties()) {
+      MissingPropertyProblem problem = new MissingPropertyProblem(property, null);
+      MissingPropertyContext context = new MissingPropertyContext(node, property);
+      if (!props.contains(property)) {
+        FeedbackAspectRegistry registry = getFeedbackAspectRegistry();
+        MessagesFacade facade = new MessagesFacade(registry);
+        // fixme pass source node, remove all this flavour hell
+        List<String> messages = facade.findTextMessagesForProblem(concept, problem, context);
+        for (String message : messages) {
+          errorsCollector.addError(new ConceptFeatureMissingError(node, message, property));
+        }
+      }
+    }
   }
 
   @Override
@@ -155,4 +178,11 @@ public class StructureChecker extends AbstractNodeCheckerInEditor implements ICh
     return IssueKindReportItem.STRUCTURE;
   }
 
+  @Nullable
+  private FeedbackAspectRegistry getFeedbackAspectRegistry() {
+    if (myHost == null) {
+      return null;
+    }
+    return myHost.findComponent(FeedbackAspectRegistry.class);
+  }
 }

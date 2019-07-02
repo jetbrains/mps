@@ -23,8 +23,6 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
-import java.util.Objects;
-
 public final class FailingPropertyConstraintProblem implements Problem {
   private final ProblemId myId;
   private final SNodeReference mySourceNode;
@@ -52,28 +50,4 @@ public final class FailingPropertyConstraintProblem implements Problem {
     return mySourceNode;
   }
 
-  public static final class FailingPropertyConstraintProblemId implements ProblemId {
-    private final SProperty myPropId;
-
-    public FailingPropertyConstraintProblemId(@NotNull SProperty propId) {
-      myPropId = propId;
-    }
-
-    private long getId() {
-      return myPropId.hashCode();
-    }
-
-    @Override
-    public int hashCode() {
-      return Long.hashCode(getId());
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-      if (obj instanceof FailingPropertyConstraintProblemId) {
-        return Objects.equals(obj, this);
-      }
-      return false;
-    }
-  }
 }

@@ -36,7 +36,7 @@
       <node id="6285588811486161650" at="41,0,44,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
       <node id="6285588811486161650" at="44,0,47,0" concept="4" trace="overrides#()Z" />
       <node id="6285588811486177848" at="29,288,33,11" concept="0" />
-      <node id="6285588811486177704" at="26,204,34,9" concept="0" />
+      <node id="6285588811486177704" at="26,360,34,9" concept="0" />
       <node id="6285588811486164584" at="25,257,35,7" concept="3" />
       <node id="6285588811486161660" at="23,120,36,5" concept="3" />
       <node id="6285588811486161650" at="23,0,38,0" concept="4" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
@@ -57,7 +57,7 @@
         <var name="_reporter_2309309498" id="6285588811486177704" />
         <var name="errorTarget" id="6285588811486177704" />
       </scope>
-      <scope id="6285588811486164586" at="26,204,34,9" />
+      <scope id="6285588811486164586" at="26,360,34,9" />
       <scope id="6285588811486161662" at="24,360,35,7">
         <var name="ruleKind" id="6285588811486177060" />
       </scope>
@@ -72,17 +72,21 @@
   </root>
   <root nodeRef="r:e984dbba-7892-4045-bad6-6e0b853b0486(jetbrains.mps.lang.feedback.problem.failingRule.typesystem)/6285588811486177827">
     <file name="FixRuleKind_QuickFix.java">
-      <node id="6285588811486177827" at="14,33,15,153" concept="7" />
-      <node id="6285588811486178477" at="17,35,18,788" concept="2" />
-      <node id="6285588811486177827" at="14,0,17,0" concept="1" trace="FixRuleKind_QuickFix#()V" />
-      <node id="6285588811486177827" at="17,0,20,0" concept="4" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <scope id="6285588811486177827" at="14,33,15,153" />
-      <scope id="6285588811486177829" at="17,35,18,788" />
-      <scope id="6285588811486177827" at="14,0,17,0" />
-      <scope id="6285588811486177827" at="17,0,20,0">
+      <node id="6285588811486177827" at="15,33,16,153" concept="7" />
+      <node id="24399255755862022" at="18,35,19,229" concept="5" />
+      <node id="24399255755864608" at="19,229,20,395" concept="2" />
+      <node id="6285588811486178477" at="20,395,21,574" concept="2" />
+      <node id="6285588811486177827" at="15,0,18,0" concept="1" trace="FixRuleKind_QuickFix#()V" />
+      <node id="6285588811486177827" at="18,0,23,0" concept="4" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <scope id="6285588811486177827" at="15,33,16,153" />
+      <scope id="6285588811486177827" at="15,0,18,0" />
+      <scope id="6285588811486177829" at="18,35,21,574">
+        <var name="failingRuleNode" id="24399255755862023" />
+      </scope>
+      <scope id="6285588811486177827" at="18,0,23,0">
         <var name="node" id="6285588811486177827" />
       </scope>
-      <unit id="6285588811486177827" at="13,0,21,0" name="jetbrains.mps.lang.feedback.problem.failingRule.typesystem.FixRuleKind_QuickFix" />
+      <unit id="6285588811486177827" at="14,0,24,0" name="jetbrains.mps.lang.feedback.problem.failingRule.typesystem.FixRuleKind_QuickFix" />
     </file>
   </root>
 </debug-info>

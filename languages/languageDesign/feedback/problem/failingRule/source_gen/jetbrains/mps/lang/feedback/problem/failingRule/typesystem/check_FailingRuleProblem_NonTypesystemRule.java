@@ -23,7 +23,7 @@ public class check_FailingRuleProblem_NonTypesystemRule extends AbstractNonTypes
   public void applyRule(final SNode problem, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if ((SLinkOperations.getTarget(problem, MetaAdapterFactory.getReferenceLink(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x573ae5b8b8caf72cL, 0x573ae5b8b8cc98e6L, "kind")) != null) && (SLinkOperations.getTarget(problem, MetaAdapterFactory.getReferenceLink(0xdb2a46c2ebec4b6cL, 0xb6c2f9b55b9b6f8aL, 0x573ae5b8b8cd0cf7L, 0x573ae5b8b8cd1498L, "rule")) != null)) {
       SNode ruleKind = RuleBlockMember__BehaviorDescriptor.getRuleKind_id1BFxp3HHhyj.invoke(SLinkOperations.getTarget(problem, MetaAdapterFactory.getReferenceLink(0xdb2a46c2ebec4b6cL, 0xb6c2f9b55b9b6f8aL, 0x573ae5b8b8cd0cf7L, 0x573ae5b8b8cd1498L, "rule")));
-      if (!(Objects.equals(SLinkOperations.getTarget(problem, MetaAdapterFactory.getReferenceLink(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x573ae5b8b8caf72cL, 0x573ae5b8b8cc98e6L, "kind")), ruleKind))) {
+      if (!(Objects.equals(SLinkOperations.getTarget(SLinkOperations.getTarget(problem, MetaAdapterFactory.getReferenceLink(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x573ae5b8b8caf72cL, 0x573ae5b8b8cc98e6L, "kind")), MetaAdapterFactory.getReferenceLink(0xdb2a46c2ebec4b6cL, 0xb6c2f9b55b9b6f8aL, 0x56aefe6c176f59L, 0x56aefe6c1c1aa6L, "ruleKind")), ruleKind))) {
         {
           MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(problem, "Rule kind must be equal to the kind of the rule", "r:e984dbba-7892-4045-bad6-6e0b853b0486(jetbrains.mps.lang.feedback.problem.failingRule.typesystem)", "6285588811486177704", null, errorTarget);

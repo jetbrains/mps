@@ -27,7 +27,6 @@ import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeRootKind;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.ContainmentContext;
 import jetbrains.mps.core.aspects.feedback.api.FeedbackAspectRegistry;
 import jetbrains.mps.core.aspects.feedback.messages.FailingPropertyConstraintContext;
-import jetbrains.mps.core.aspects.feedback.messages.FailingPropertyConstraintProblem;
 import jetbrains.mps.core.aspects.feedback.problem.Problem;
 import jetbrains.mps.errors.item.ConstraintsReportItem.CanBeAncestorFailedReportItem;
 import jetbrains.mps.errors.item.ConstraintsReportItem.CanBeChildFailedReportItem;
@@ -59,8 +58,6 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.List;
-
-import static jetbrains.mps.core.aspects.feedback.messages.PredefinedConstraintProblemKind.PROPERTY_CONSTRAINTS;
 
 public class ConstraintsChecker extends AbstractNodeCheckerInEditor implements IChecker<SNode, NodeReportItem> {
   private final ComponentHost myHost;
@@ -116,15 +113,10 @@ public class ConstraintsChecker extends AbstractNodeCheckerInEditor implements I
       if (!problems.isEmpty()) {
         for (Problem problem : problems) {
           TypesystemRuleId ruleId = new TypesystemRuleId(problem.getProblemSource());
-          FeedbackAspectRegistry registry = getFeedbackAspectRegistry();
-          if (registry != null) {
-            FailingConstraintsMessagesFacade facade = new FailingConstraintsMessagesFacade(registry);
-            List<String> messages = facade.findTextMessagesForProblem(concept, problem, context);
-            for (String message : messages) {
-              errorsCollector.addError(new PropertyConstraintReportItem(node, property, ruleId, message));
-            }
-          } else {
-            errorsCollector.addError(new PropertyConstraintReportItem(node, property, ruleId, PROPERTY_CONSTRAINTS.getDefaultMessage(context)));
+          FailingConstraintsMessagesFacade facade = getMessageFacade();
+          List<String> messages = facade.findTextMessagesForProblem(concept, problem, context);
+          for (String message : messages) {
+            errorsCollector.addError(new PropertyConstraintReportItem(node, property, ruleId, message));
           }
         }
       }
@@ -146,15 +138,10 @@ public class ConstraintsChecker extends AbstractNodeCheckerInEditor implements I
         List<Rule<CanBeRootContext>> failingRules = errorsCollector.runCheckingAction(() -> ConstraintsCanBeFacade.checkCanBeRoot(context));
         for (Rule<CanBeRootContext> rule : failingRules) {
           TypesystemRuleId ruleId = new TypesystemRuleId(rule.getRuleSourceNode());
-          FeedbackAspectRegistry registry = getFeedbackAspectRegistry();
-          if (registry != null) {
-            FailingConstraintsMessagesFacade facade = new FailingConstraintsMessagesFacade(registry);
-            List<String> messages = facade.findTextMessagesForRule(concept, rule, context);
-            for (String message : messages) {
-              errorsCollector.addError(new CanBeChildFailedReportItem(node, message, ruleId));
-            }
-          } else {
-            errorsCollector.addError(new CanBeRootFailedReportItem(node, CanBeRootKind.INSTANCE.getDefaultMessage(context), ruleId));
+          FailingConstraintsMessagesFacade facade = getMessageFacade();
+          List<String> messages = facade.findTextMessagesForRule(concept, rule, context);
+          for (String message : messages) {
+            errorsCollector.addError(new CanBeChildFailedReportItem(node, message, ruleId));
           }
         }
       }
@@ -177,15 +164,10 @@ public class ConstraintsChecker extends AbstractNodeCheckerInEditor implements I
           List<Rule<ContainmentContext>> failingRules = errorsCollector.runCheckingAction(() -> ConstraintsCanBeFacade.checkCanBeChild(context));
           for (Rule<ContainmentContext> rule : failingRules) {
             TypesystemRuleId ruleId = new TypesystemRuleId(rule.getRuleSourceNode());
-            FeedbackAspectRegistry registry = getFeedbackAspectRegistry();
-            if (registry != null) {
-              FailingConstraintsMessagesFacade facade = new FailingConstraintsMessagesFacade(registry);
-              List<String> messages = facade.findTextMessagesForRule(concept, rule, context);
-              for (String message : messages) {
-                errorsCollector.addError(new CanBeChildFailedReportItem(childNode, message, ruleId));
-              }
-            } else {
-              errorsCollector.addError(new CanBeChildFailedReportItem(childNode, CanBeChildKind.INSTANCE.getDefaultMessage(context), ruleId));
+            FailingConstraintsMessagesFacade facade = getMessageFacade();
+            List<String> messages = facade.findTextMessagesForRule(concept, rule, context);
+            for (String message : messages) {
+              errorsCollector.addError(new CanBeChildFailedReportItem(childNode, message, ruleId));
             }
           }
         }
@@ -195,20 +177,21 @@ public class ConstraintsChecker extends AbstractNodeCheckerInEditor implements I
           List<Rule<ContainmentContext>> failingRules = errorsCollector.runCheckingAction(() -> ConstraintsCanBeFacade.checkCanBeParent(context));
           for (Rule<ContainmentContext> rule : failingRules) {
             TypesystemRuleId ruleId = new TypesystemRuleId(rule.getRuleSourceNode());
-            FeedbackAspectRegistry registry = getFeedbackAspectRegistry();
-            if (registry != null) {
-              FailingConstraintsMessagesFacade facade = new FailingConstraintsMessagesFacade(registry);
-              List<String> messages = facade.findTextMessagesForRule(concept, rule, context);
-              for (String message : messages) {
-                errorsCollector.addError(new CanBeParentFailedReportItem(childNode, message, ruleId));
-              }
-            } else {
-              errorsCollector.addError(new CanBeParentFailedReportItem(childNode, CanBeParentKind.INSTANCE.getDefaultMessage(context), ruleId));
+            FailingConstraintsMessagesFacade facade = getMessageFacade();
+            List<String> messages = facade.findTextMessagesForRule(concept, rule, context);
+            for (String message : messages) {
+              errorsCollector.addError(new CanBeParentFailedReportItem(childNode, message, ruleId));
             }
           }
         }
       }
     }
+  }
+
+  @NotNull
+  private FailingConstraintsMessagesFacade getMessageFacade() {
+    FeedbackAspectRegistry registry = getFeedbackAspectRegistry();
+    return new FailingConstraintsMessagesFacade(registry);
   }
 
   @Nullable

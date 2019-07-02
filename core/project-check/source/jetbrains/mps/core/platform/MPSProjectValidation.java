@@ -53,7 +53,7 @@ public class MPSProjectValidation extends ComponentPlugin {
     if (registry == null) {
       return;
     }
-    myCheckers.add(new StructureChecker().withoutBrokenReferences());
+    myCheckers.add(new StructureChecker(myHost).withoutBrokenReferences());
     myCheckers.add(new ModelPropertiesChecker());
     myCheckers.add(new ModuleChecker());
     myCheckers.add(new ConstraintsChecker(myHost));

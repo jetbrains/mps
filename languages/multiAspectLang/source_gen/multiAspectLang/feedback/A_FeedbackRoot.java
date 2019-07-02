@@ -17,8 +17,9 @@ public final class A_FeedbackRoot extends BaseFeedbackDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, "multiAspectLang.structure.A");
 
   private static final FeedbackProvider<Context> PROVIDER = null;
+  private static final FeedbackProvider<Context> PROVIDER = null;
 
-  private static final List<FeedbackProvider> PROVIDERS = Collections.unmodifiableList(Arrays.<FeedbackProvider>asList(PROVIDER));
+  private static final List<FeedbackProvider> PROVIDERS = Collections.unmodifiableList(Arrays.<FeedbackProvider>asList(PROVIDER, PROVIDER));
 
   public A_FeedbackRoot() {
     super(CONCEPT);

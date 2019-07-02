@@ -37,5 +37,6 @@
     <orderEntry type="module" module-name="context" />
     <orderEntry type="module" module-name="messages-for-rules" />
     <orderEntry type="module" module-name="messages-for-legacy-constraints" />
+    <orderEntry type="module" module-name="project-check" />
   </component>
 </module>

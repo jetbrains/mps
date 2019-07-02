@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.core.aspects.feedback.messages;
 
+import jetbrains.mps.core.aspects.feedback.problem.LegacyProblemKind;
 import jetbrains.mps.core.aspects.feedback.problem.ProblemId;
 import jetbrains.mps.core.aspects.feedback.problem.ProblemKindAlsoProblem;
 import jetbrains.mps.core.context.Context;

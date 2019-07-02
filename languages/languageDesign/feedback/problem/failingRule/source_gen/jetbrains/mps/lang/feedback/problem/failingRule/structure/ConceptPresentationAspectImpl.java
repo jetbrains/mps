@@ -27,7 +27,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.FailingRuleProblemKind:
         if (props_FailingRuleProblemKind == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.rawPresentation("FailingRuleProblemKind");
+          cpb.presentationByReference(0xdb2a46c2ebec4b6cL, 0xb6c2f9b55b9b6f8aL, 0x56aefe6c176f59L, 0x56aefe6c1c1aa6L, "ruleKind", "", "");
           props_FailingRuleProblemKind = cpb.create();
         }
         return props_FailingRuleProblemKind;

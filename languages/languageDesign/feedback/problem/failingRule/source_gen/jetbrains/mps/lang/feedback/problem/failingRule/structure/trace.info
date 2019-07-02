@@ -15,15 +15,15 @@
       <unit at="10,0,30,0" name="jetbrains.mps.lang.feedback.problem.failingRule.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
-      <unit at="15,0,76,0" name="jetbrains.mps.lang.feedback.problem.failingRule.structure.StructureAspectDescriptor" />
+      <unit at="15,0,77,0" name="jetbrains.mps.lang.feedback.problem.failingRule.structure.StructureAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:99b2bb53-594f-4076-8629-aea0f8ec5bfd(jetbrains.mps.lang.feedback.problem.failingRule.structure)/24399255755517785">
     <file name="ConceptPresentationAspectImpl.java">
       <node id="24399255755517785" at="13,0,14,0" concept="1" trace="props_FailingRuleProblemKind" />
       <node id="24399255755517785" at="28,51,29,76" concept="3" />
-      <node id="24399255755517785" at="29,76,30,56" concept="0" />
-      <node id="24399255755517785" at="30,56,31,54" concept="0" />
+      <node id="24399255755517785" at="29,76,30,138" concept="0" />
+      <node id="24399255755517785" at="30,138,31,54" concept="0" />
       <node id="24399255755517785" at="32,9,33,44" concept="4" />
       <node id="24399255755517785" at="27,56,32,9" concept="2" />
       <scope id="24399255755517785" at="28,51,31,54">
@@ -43,13 +43,14 @@
       <node id="24399255755517785" at="69,33,70,75" concept="0" />
       <node id="24399255755517785" at="70,75,71,132" concept="0" />
       <node id="24399255755517785" at="71,132,72,17" concept="0" />
-      <node id="24399255755517785" at="72,17,73,22" concept="4" />
-      <node id="24399255755517785" at="67,0,75,0" concept="6" trace="createDescriptorForFailingRuleProblemKind#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <node id="24399255755823782" at="72,17,73,168" concept="0" />
+      <node id="24399255755517785" at="73,168,74,22" concept="4" />
+      <node id="24399255755517785" at="67,0,76,0" concept="6" trace="createDescriptorForFailingRuleProblemKind#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="24399255755517785" at="41,56,42,47" />
-      <scope id="24399255755517785" at="67,80,73,22">
+      <scope id="24399255755517785" at="67,80,74,22">
         <var name="b" id="24399255755517785" />
       </scope>
-      <scope id="24399255755517785" at="67,0,75,0" />
+      <scope id="24399255755517785" at="67,0,76,0" />
     </file>
   </root>
   <root nodeRef="r:99b2bb53-594f-4076-8629-aea0f8ec5bfd(jetbrains.mps.lang.feedback.problem.failingRule.structure)/6285588811486137591">

@@ -15,24 +15,38 @@
  */
 package jetbrains.mps.core.aspects.feedback.messages;
 
+import jetbrains.mps.core.aspects.constraints.rules.Rule;
+import jetbrains.mps.core.aspects.feedback.problem.Problem;
 import jetbrains.mps.core.aspects.feedback.problem.ProblemId;
-import jetbrains.mps.core.aspects.feedback.problem.ProblemKindAlsoProblem;
+import jetbrains.mps.core.aspects.feedback.problem.ProblemKind;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
-public enum RefOutOfScopeProblemKind implements ProblemKindAlsoProblem, ProblemId {
-  INSTANCE;
+@Immutable
+public final class FailingRuleProblem implements Problem {
+  @NotNull private final Rule myFailingRule;
+
+  public FailingRuleProblem(@NotNull Rule failingRule) {
+    myFailingRule = failingRule;
+  }
+
+  @NotNull
+  @Override
+  public ProblemKind getKind() {
+    return new FailingRuleProblemKind(myFailingRule.getKind());
+  }
 
   @NotNull
   @Override
   public ProblemId getId() {
-    return this;
+    return new FailingRuleProblemId(myFailingRule.getId());
   }
 
   @Nullable
   @Override
   public SNodeReference getProblemSource() {
-    return null;
+    return myFailingRule.getRuleSourceNode();
   }
 }

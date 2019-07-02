@@ -8,6 +8,7 @@ core/aspects/constraints/constraints-api/classes
 core/aspects/feedback/feedback-api/classes
 core/aspects/feedback/context/classes
 core/aspects/feedback/messages-for-legacy-constraints/classes
+core/aspects/feedback/messages-for-structure/classes
 core/aspects/feedback/messages-for-rules/classes
 core/aspects/feedback/problem/classes
 core/aspects/feedback/messages-api/classes

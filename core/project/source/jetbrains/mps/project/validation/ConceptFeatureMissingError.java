@@ -18,6 +18,7 @@ package jetbrains.mps.project.validation;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.errors.item.IssueKindReportItem;
 import jetbrains.mps.errors.item.NodeFeatureReportItem;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SConceptFeature;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -35,8 +36,8 @@ public class ConceptFeatureMissingError extends LanguageFeatureMissingError impl
     myConceptFeature = feature;
   }
 
-  public ConceptFeatureMissingError(SNode node, SProperty p) {
-    super(MessageStatus.ERROR, node.getReference(), String.format("Property %s.%s doesn't belong to concept %s", p.getOwner().getName(), p.getName(), node.getConcept().getName()));
+  public ConceptFeatureMissingError(SNode node, @NotNull String msg, SProperty p) {
+    super(MessageStatus.ERROR, node.getReference(), msg);
     myConceptFeature = p;
   }
 
