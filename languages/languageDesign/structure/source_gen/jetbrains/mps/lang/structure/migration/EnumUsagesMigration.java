@@ -22,7 +22,7 @@ public class EnumUsagesMigration {
   }
 
   public static SNode migrateEnumReference(SNode referenceNode, SReferenceLink link) {
-    SNode targetEnumeration = SNodeOperations.as(referenceNode.getReferenceTarget(link), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclartaion"));
+    SNode targetEnumeration = SNodeOperations.as(referenceNode.getReferenceTarget(link), MetaAdapterFactory.getInterfaceConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xeeb344f64a629e5L, "jetbrains.mps.lang.structure.structure.IEnumeration"));
     if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(targetEnumeration), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, "jetbrains.mps.lang.structure.structure.EnumMigrationInfo"))) {
       SNode newTargetEnumeration = SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.getParent(targetEnumeration)), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclartaion"));
       referenceNode.setReferenceTarget(link, newTargetEnumeration);

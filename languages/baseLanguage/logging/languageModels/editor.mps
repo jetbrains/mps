@@ -339,7 +339,7 @@
     </node>
     <node concept="2F$Pav" id="1KXtTGFTUxv" role="3ft7WO">
       <node concept="2ZThk1" id="1KXtTGFTUxw" role="2ZBHrp">
-        <ref role="2ZWj4r" to="tpib:gZ5eI4j" resolve="Severity" />
+        <ref role="2ZWj4r" to="tpib:3Ftr4R6BF2_" resolve="Severity" />
       </node>
       <node concept="2$S_p_" id="1KXtTGFTUxx" role="2$S_pT">
         <node concept="3clFbS" id="1KXtTGFTUxy" role="2VODD2">
@@ -566,7 +566,7 @@
     </node>
     <node concept="2F$Pav" id="4XBaoL6cdtO" role="3ft7WO">
       <node concept="2ZThk1" id="4XBaoL6cdtP" role="2ZBHrp">
-        <ref role="2ZWj4r" to="tpib:gZ5eI4j" resolve="Severity" />
+        <ref role="2ZWj4r" to="tpib:3Ftr4R6BF2_" resolve="Severity" />
       </node>
       <node concept="2$S_p_" id="4XBaoL6cdtQ" role="2$S_pT">
         <node concept="3clFbS" id="4XBaoL6cdtR" role="2VODD2">

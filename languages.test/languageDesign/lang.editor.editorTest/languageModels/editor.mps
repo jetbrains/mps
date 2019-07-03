@@ -2593,7 +2593,7 @@
     <ref role="aqKnT" to="68nn:P9hc2Kf3iI" resolve="SubstTestAbstractChild" />
     <node concept="2F$Pav" id="1wEcoXjJxZW" role="3ft7WO">
       <node concept="2ZThk1" id="1wEcoXjJxZX" role="2ZBHrp">
-        <ref role="2ZWj4r" to="68nn:P9hc2KfQmc" resolve="SubstTestEnum" />
+        <ref role="2ZWj4r" to="68nn:3Ftr4R6BF0H" resolve="SubstTestEnum" />
       </node>
       <node concept="2$S_p_" id="1wEcoXjJxZY" role="2$S_pT">
         <node concept="3clFbS" id="1wEcoXjJxZZ" role="2VODD2">

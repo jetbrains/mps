@@ -3300,12 +3300,12 @@
           <node concept="3cpWsn" id="20cGABpI$LF" role="3cpWs9">
             <property role="TrG5h" value="targetEnumeration" />
             <node concept="3Tqbb2" id="20cGABpI$LG" role="1tU5fm">
-              <ref role="ehGHo" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+              <ref role="ehGHo" to="tpce:VFd4X$DyB_" resolve="IEnumeration" />
             </node>
             <node concept="1PxgMI" id="20cGABpI$LH" role="33vP2m">
               <property role="1BlNFB" value="true" />
-              <node concept="chp4Y" id="20cGABpI_7x" role="3oSUPX">
-                <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+              <node concept="chp4Y" id="5ul67SvFqba" role="3oSUPX">
+                <ref role="cht4Q" to="tpce:VFd4X$DyB_" resolve="IEnumeration" />
               </node>
               <node concept="2OqwBi" id="20cGABpI$LJ" role="1m5AlR">
                 <node concept="liA8E" id="20cGABpI$LK" role="2OqNvi">

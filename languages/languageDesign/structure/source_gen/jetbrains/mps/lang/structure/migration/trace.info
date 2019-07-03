@@ -1125,7 +1125,7 @@
       <node id="2309416876627558790" at="17,273,18,64" concept="2" />
       <node id="2309416876627637353" at="18,64,19,31" concept="7" />
       <node id="2309416876627638946" at="20,5,21,16" concept="7" />
-      <node id="2309416876628397162" at="24,86,25,248" concept="6" />
+      <node id="2309416876628397162" at="24,86,25,246" concept="6" />
       <node id="2309416876628397174" at="26,239,27,288" concept="6" />
       <node id="2309416876628397184" at="27,288,28,67" concept="2" />
       <node id="2309416876628397191" at="28,67,29,34" concept="7" />
@@ -1136,7 +1136,7 @@
       <node id="1189424455255208250" at="39,5,40,16" concept="7" />
       <node id="1189424455255162073" at="35,128,39,5" concept="4" />
       <node id="2309416876627501445" at="15,236,20,5" concept="4" />
-      <node id="2309416876628397172" at="25,248,30,5" concept="4" />
+      <node id="2309416876628397172" at="25,246,30,5" concept="4" />
       <node id="1189424455255138757" at="34,0,42,0" concept="11" trace="migrateEnumPropertyAttribute#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="2309416876627494546" at="14,0,23,0" concept="11" trace="migratePropertyReference#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SReferenceLink;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="2309416876628397160" at="24,0,33,0" concept="11" trace="migrateEnumReference#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SReferenceLink;)Lorg/jetbrains/mps/openapi/model/SNode;" />
