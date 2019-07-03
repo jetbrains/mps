@@ -14,6 +14,9 @@
     <file name="ConstraintsAspectDescriptor.java">
       <unit at="13,0,31,0" name="constraints.rules.sandbox.constraints.ConstraintsAspectDescriptor" />
     </file>
+    <file name="GeneratedConstraintsAspectDescriptor2.java">
+      <unit at="17,0,31,0" name="constraints.rules.sandbox.constraints.GeneratedConstraintsAspectDescriptor2" />
+    </file>
   </root>
   <root nodeRef="r:e052807e-76ad-483b-a617-0c61e0d74de9(constraints.rules.sandbox.constraints)/1702082180406152227">
     <file name="ChildConcept1_Constraints.java">
