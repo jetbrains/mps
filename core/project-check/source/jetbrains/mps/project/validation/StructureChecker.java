@@ -49,6 +49,10 @@ public class StructureChecker extends AbstractNodeCheckerInEditor implements ICh
   private boolean myCheckCardinalities = true;
   private boolean myCheckBrokenReferences = true;
 
+  public StructureChecker() {
+    this(null);
+  }
+
   public StructureChecker(@Nullable ComponentHost host) {
     myHost = host;
   }
