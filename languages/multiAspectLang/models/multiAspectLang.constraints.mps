@@ -166,7 +166,7 @@
     <node concept="3QByp$" id="6GnzfDRinZ2" role="3QBEN7">
       <node concept="16I2mz" id="6GnzfDRinZ4" role="16N$OP">
         <node concept="16N$OT" id="7ghwUcl80JP" role="16I2mt">
-          <property role="16N$OU" value="Property constraints are broken for the property " />
+          <property role="16N$OU" value="Property constraints gagaga are broken for the property " />
         </node>
         <node concept="16Iohu" id="7ghwUcl80JQ" role="16I2mt">
           <ref role="16E0hz" to="2u14:1mFJTG7MCZ" resolve="property" />
@@ -174,20 +174,20 @@
       </node>
       <node concept="1GjwBS" id="6GnzfDRiqsF" role="3JXyrO">
         <ref role="sa$J1" to="2u14:1mFJTG7e$j" resolve="FailingPropertyConstraints" />
-        <ref role="1Gj$d9" to="pljn:6AHR5A_xSNw" resolve="prop" />
+        <ref role="1Gj$d9" to="pljn:50L3raJA9_o" resolve="prop" />
       </node>
     </node>
   </node>
   <node concept="1M2fIO" id="7ghwUcl80JT">
     <ref role="1M2myG" to="pljn:5ca4zTvKOOO" resolve="A" />
     <node concept="EnEH3" id="7ghwUcl80JW" role="1MhHOB">
-      <ref role="EomxK" to="pljn:6AHR5A_xSNw" resolve="prop" />
+      <ref role="EomxK" to="pljn:50L3raJA9_o" resolve="prop" />
       <node concept="QB0g5" id="7ghwUcl80JY" role="QCWH9">
         <node concept="3clFbS" id="7ghwUcl80JZ" role="2VODD2">
           <node concept="3clFbF" id="7ghwUcl82cY" role="3cqZAp">
             <node concept="3eOSWO" id="7ghwUcl86FY" role="3clFbG">
               <node concept="3cmrfG" id="7ghwUcl86G4" role="3uHU7w">
-                <property role="3cmrfH" value="1990" />
+                <property role="3cmrfH" value="199000" />
               </node>
               <node concept="1Wqviy" id="7ghwUcl82cX" role="3uHU7B" />
             </node>

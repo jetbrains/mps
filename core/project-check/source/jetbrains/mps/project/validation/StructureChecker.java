@@ -28,8 +28,7 @@ import jetbrains.mps.errors.item.NodeReportItem;
 import jetbrains.mps.errors.item.UnresolvedReferenceReportItem;
 import jetbrains.mps.util.IterableUtil;
 import messages.MissingPropertyContext;
-import messages.MissingPropertyProblem;
-import messages.PredefinedStructureProblemKind;
+import messages.MissingPropertyInConceptProblem;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -163,7 +162,7 @@ public class StructureChecker extends AbstractNodeCheckerInEditor implements ICh
     // in case of props, refs, links, list should be better than set
     List<SProperty> props = IterableUtil.asList(concept.getProperties());
     for (SProperty property : node.getProperties()) {
-      MissingPropertyProblem problem = new MissingPropertyProblem(property, null);
+      MissingPropertyInConceptProblem problem = new MissingPropertyInConceptProblem(concept, property, null);
       MissingPropertyContext context = new MissingPropertyContext(node, property);
       if (!props.contains(property)) {
         FeedbackAspectRegistry registry = getFeedbackAspectRegistry();

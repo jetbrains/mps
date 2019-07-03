@@ -70,7 +70,7 @@ import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
     return editorCell;
   }
   private EditorCell createConstant_0() {
-    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "when property constraints for");
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "when property constraint for");
     editorCell.setCellId("Constant_7uqjkl_a0");
     editorCell.setDefaultText("");
     return editorCell;

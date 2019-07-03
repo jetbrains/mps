@@ -15,6 +15,7 @@
     <import index="exr9" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor(MPS.Editor/)" />
     <import index="o8zo" ref="r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)" />
     <import index="iwhd" ref="r:bd012d1c-91a4-4783-a33f-d2037e757f6d(jetbrains.mps.lang.context.defs.structure)" />
+    <import index="lzb2" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ui(MPS.IDEA/)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" implicit="true" />
   </imports>
@@ -569,40 +570,28 @@
     <node concept="14StLt" id="4zSofKel4Jp" role="V601i">
       <property role="TrG5h" value="MessageMacro" />
       <node concept="VechU" id="4zSofKehgVV" role="3F10Kt">
-        <property role="Vb096" value="DARK_GREEN" />
-      </node>
-    </node>
-    <node concept="14StLt" id="2RaX98HsX6Z" role="V601i">
-      <property role="TrG5h" value="MessageLiteral" />
-      <node concept="VechU" id="2RaX98HsX7i" role="3F10Kt">
-        <node concept="3ZlJ5R" id="45qMCT9jKnh" role="VblUZ">
-          <node concept="3clFbS" id="45qMCT9jKni" role="2VODD2">
-            <node concept="3clFbJ" id="45qMCT9jNiR" role="3cqZAp">
-              <node concept="2YIFZM" id="45qMCT9jXC3" role="3clFbw">
-                <ref role="37wK5l" to="g1qu:~UIUtil.isUnderDarcula()" resolve="isUnderDarcula" />
-                <ref role="1Pybhc" to="g1qu:~UIUtil" resolve="UIUtil" />
-              </node>
-              <node concept="3clFbS" id="45qMCT9jNiT" role="3clFbx">
-                <node concept="3cpWs6" id="45qMCT9jXCC" role="3cqZAp">
-                  <node concept="10M0yZ" id="45qMCT9kcPf" role="3cqZAk">
-                    <ref role="3cqZAo" to="exr9:~MPSColors.LIGHT_BLUE" resolve="LIGHT_BLUE" />
-                    <ref role="1PxDUh" to="exr9:~MPSColors" resolve="MPSColors" />
-                  </node>
+        <property role="Vb096" value="yellow" />
+        <node concept="3ZlJ5R" id="7s9ueDJVd2Q" role="VblUZ">
+          <node concept="3clFbS" id="7s9ueDJVd2R" role="2VODD2">
+            <node concept="3clFbF" id="7s9ueDJVZ63" role="3cqZAp">
+              <node concept="2OqwBi" id="7s9ueDJVZwz" role="3clFbG">
+                <node concept="10M0yZ" id="7s9ueDJVZat" role="2Oq$k0">
+                  <ref role="3cqZAo" to="lzb2:~JBColor.YELLOW" resolve="YELLOW" />
+                  <ref role="1PxDUh" to="lzb2:~JBColor" resolve="JBColor" />
                 </node>
-              </node>
-              <node concept="9aQIb" id="45qMCT9kcQ4" role="9aQIa">
-                <node concept="3clFbS" id="45qMCT9kcQ5" role="9aQI4">
-                  <node concept="3cpWs6" id="45qMCT9kcQN" role="3cqZAp">
-                    <node concept="10M0yZ" id="45qMCT9kcVa" role="3cqZAk">
-                      <ref role="3cqZAo" to="exr9:~MPSColors.DARK_MAGENTA" resolve="DARK_MAGENTA" />
-                      <ref role="1PxDUh" to="exr9:~MPSColors" resolve="MPSColors" />
-                    </node>
-                  </node>
+                <node concept="liA8E" id="7s9ueDJVZSn" role="2OqNvi">
+                  <ref role="37wK5l" to="lzb2:~JBColor.darker()" resolve="darker" />
                 </node>
               </node>
             </node>
           </node>
         </node>
+      </node>
+    </node>
+    <node concept="14StLt" id="2RaX98HsX6Z" role="V601i">
+      <property role="TrG5h" value="MessageLiteral" />
+      <node concept="VechU" id="2RaX98HsX7i" role="3F10Kt">
+        <property role="Vb096" value="DARK_GREEN" />
       </node>
     </node>
   </node>

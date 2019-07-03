@@ -470,7 +470,7 @@
         <property role="Vbekb" value="BOLD" />
       </node>
       <node concept="VechU" id="40CvJkJ_cFd" role="3F10Kt">
-        <property role="Vb096" value="LIGHT_BLUE" />
+        <property role="Vb096" value="DARK_BLUE" />
       </node>
     </node>
   </node>

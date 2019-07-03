@@ -52,7 +52,7 @@
     <ref role="1XX52x" to="bb70:1mFJTG6as6" resolve="FailingPropertyConstraintsProblem" />
     <node concept="3EZMnI" id="5sUTrySNjU1" role="2wV5jI">
       <node concept="3F0ifn" id="1mFJTG6708" role="3EZMnx">
-        <property role="3F0ifm" value="when property constraints for" />
+        <property role="3F0ifm" value="when property constraint for" />
       </node>
       <node concept="2iRfu4" id="5sUTrySNjU2" role="2iSdaV" />
       <node concept="1iCGBv" id="4zSofKeeUoe" role="3EZMnx">

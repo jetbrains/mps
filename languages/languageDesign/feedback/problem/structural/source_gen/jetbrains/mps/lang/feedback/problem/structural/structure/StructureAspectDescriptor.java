@@ -13,7 +13,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder2;
 
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
-  /*package*/ final ConceptDescriptor myConceptMissingPropertyProblem = createDescriptorForMissingPropertyProblem();
+  /*package*/ final ConceptDescriptor myConceptMissingPropertyInConceptProblem = createDescriptorForMissingPropertyInConceptProblem();
   private final LanguageConceptSwitch myIndexSwitch;
 
   public StructureAspectDescriptor() {
@@ -28,15 +28,15 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptMissingPropertyProblem);
+    return Arrays.asList(myConceptMissingPropertyInConceptProblem);
   }
 
   @Override
   @Nullable
   public ConceptDescriptor getDescriptor(SConceptId id) {
     switch (myIndexSwitch.index(id)) {
-      case LanguageConceptSwitch.MissingPropertyProblem:
-        return myConceptMissingPropertyProblem;
+      case LanguageConceptSwitch.MissingPropertyInConceptProblem:
+        return myConceptMissingPropertyInConceptProblem;
       default:
         return null;
     }
@@ -51,14 +51,14 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     return myIndexSwitch.index(c);
   }
 
-  private static ConceptDescriptor createDescriptorForMissingPropertyProblem() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.feedback.problem.structural", "MissingPropertyProblem", 0x7127d40929f043e8L, 0x917ff016ea288944L, 0x4f7007d340049b31L);
+  private static ConceptDescriptor createDescriptorForMissingPropertyInConceptProblem() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.feedback.problem.structural", "MissingPropertyInConceptProblem", 0x7127d40929f043e8L, 0x917ff016ea288944L, 0x4f7007d340049b31L);
     b.class_(true, false, false);
     b.super_("jetbrains.mps.lang.feedback.problem.structure.ProblemPointsToKindRoot", 0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x6b178cfa773dc73aL);
     b.parent(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x573ae5b8b8caf72cL);
     b.origin("r:270d7173-b5a9-45a3-a074-68571d20064c(jetbrains.mps.lang.feedback.problem.structural.structure)/5724083730281438001");
     b.version(2);
-    b.associate("property", 0x56aefe6c18edb7L).target(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL).optional(false).origin("24399255755615671").done();
+    b.associate("concept", 0x5803115ad14c43b2L).target(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL).optional(false).origin("6341931782023955378").done();
     b.alias("when property does not belong to the concept");
     return b.create();
   }

@@ -24,9 +24,15 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.util.DepthFirstConceptIterator;
 import org.jetbrains.mps.util.UniqueIterator;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
@@ -76,18 +82,12 @@ public abstract class BaseFeedbackDescriptor implements FeedbackPerConceptDescri
    * @return null if there are no suitable providers declared for the given concept
    */
   @Nullable
-  private Stream<FeedbackProvider> getSuitableProvidersOrNull(@NotNull FeedbackType type,
-                                                              @NotNull ProblemId problemId,
-                                                              @NotNull SAbstractConcept concept) {
-    // yes, I've lost the laziness here, I know
-    Supplier<Stream<FeedbackProvider>> supplier = () -> getDescriptors(concept).flatMap(FeedbackDescriptor::getDeclaredProviders)
-                                                                               .filter(fp -> type.equals(fp.getType()))
-                                                                               .filter(fp -> problemId.equals(fp.forProblemId()));
-    if (supplier.get().findAny().isPresent()) {
-      return supplier.get();
-    } else {
-      return null;
-    }
+  private Stream<FeedbackProvider> getSuitableProviders(@NotNull FeedbackType type,
+                                                        @NotNull ProblemId problemId,
+                                                        @NotNull SAbstractConcept concept) {
+    return getDescriptors(concept).flatMap(FeedbackDescriptor::getDeclaredProviders)
+                                  .filter(fp -> type.equals(fp.getType()))
+                                  .filter(fp -> problemId.equals(fp.forProblemId()));
   }
 
   @NotNull
@@ -103,8 +103,7 @@ public abstract class BaseFeedbackDescriptor implements FeedbackPerConceptDescri
                                                                @NotNull ProblemId problemId,
                                                                @NotNull Context context) {
     checkDescriptorIsInitialized();
-    return allConceptsStream().map(concept -> getSuitableProvidersOrNull(type, problemId, concept))
-                              .filter(Objects::nonNull)
+    return allConceptsStream().map(concept -> getSuitableProviders(type, problemId, concept))
                               .findFirst()
                               .orElse(Stream.empty());
   }

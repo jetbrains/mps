@@ -391,7 +391,7 @@
                 </node>
               </node>
               <node concept="1adDum" id="14" role="37wK5m">
-                <property role="1adDun" value="0x69addc59a5878ce0L" />
+                <property role="1adDun" value="0x50310db2af989958L" />
                 <node concept="cd27G" id="1d" role="lGtFl">
                   <node concept="3u3nmq" id="1e" role="cd27D">
                     <property role="3u3nmv" value="8363610719461051385" />
@@ -855,7 +855,7 @@
           <node concept="3clFbF" id="3R" role="3cqZAp">
             <node concept="3eOSWO" id="3T" role="3clFbG">
               <node concept="3cmrfG" id="3V" role="3uHU7w">
-                <property role="3cmrfH" value="1990" />
+                <property role="3cmrfH" value="199000" />
                 <node concept="cd27G" id="3Y" role="lGtFl">
                   <node concept="3u3nmq" id="3Z" role="cd27D">
                     <property role="3u3nmv" value="8363610719461075716" />
@@ -867,7 +867,7 @@
                   <ref role="1Pybhc" to="i8bi:5IkW5anFfnn" resolve="SPropertyOperations" />
                   <ref role="37wK5l" to="i8bi:5IkW5anFfp2" resolve="getInteger" />
                   <node concept="37vLTw" id="42" role="37wK5m">
-                    <ref role="3cqZAo" to=":^" resolve="propertyValue" />
+                    <ref role="3cqZAo" node="3$" resolve="propertyValue" />
                   </node>
                 </node>
                 <node concept="cd27G" id="41" role="lGtFl">
@@ -1067,7 +1067,7 @@
                   </node>
                 </node>
                 <node concept="1adDum" id="57" role="37wK5m">
-                  <property role="1adDun" value="0x69addc59a5878ce0L" />
+                  <property role="1adDun" value="0x50310db2af989958L" />
                   <node concept="cd27G" id="5g" role="lGtFl">
                     <node concept="3u3nmq" id="5h" role="cd27D">
                       <property role="3u3nmv" value="8363610719461051385" />
@@ -1595,7 +1595,7 @@
           <node concept="XkiVB" id="8l" role="3cqZAp">
             <ref role="37wK5l" to="o99v:~BaseRule.&lt;init&gt;(org.jetbrains.mps.openapi.language.SAbstractConcept,jetbrains.mps.core.aspects.constraints.rules.RuleKind,jetbrains.mps.core.aspects.constraints.rules.RuleId,org.jetbrains.mps.openapi.model.SNodeReference)" resolve="BaseRule" />
             <node concept="37vLTw" id="8m" role="37wK5m">
-              <ref role="3cqZAo" to=":^" resolve="CONCEPT" />
+              <ref role="3cqZAo" node="5F" resolve="CONCEPT" />
             </node>
             <node concept="Rm8GO" id="8n" role="37wK5m">
               <ref role="Rm8GQ" to="pdwk:~CanBeChildKind.INSTANCE" resolve="INSTANCE" />
@@ -1702,7 +1702,7 @@
           <node concept="XkiVB" id="8Y" role="3cqZAp">
             <ref role="37wK5l" to="o99v:~BaseRule.&lt;init&gt;(org.jetbrains.mps.openapi.language.SAbstractConcept,jetbrains.mps.core.aspects.constraints.rules.RuleKind,jetbrains.mps.core.aspects.constraints.rules.RuleId,org.jetbrains.mps.openapi.model.SNodeReference)" resolve="BaseRule" />
             <node concept="37vLTw" id="8Z" role="37wK5m">
-              <ref role="3cqZAo" to=":^" resolve="CONCEPT" />
+              <ref role="3cqZAo" node="5F" resolve="CONCEPT" />
             </node>
             <node concept="Rm8GO" id="90" role="37wK5m">
               <ref role="Rm8GQ" to="pdwk:~CanBeChildKind.INSTANCE" resolve="INSTANCE" />
@@ -1850,7 +1850,7 @@
                     </node>
                   </node>
                   <node concept="1adDum" id="9Y" role="37wK5m">
-                    <property role="1adDun" value="0x69addc59a5878ce0L" />
+                    <property role="1adDun" value="0x50310db2af989958L" />
                     <node concept="cd27G" id="a7" role="lGtFl">
                       <node concept="3u3nmq" id="a8" role="cd27D">
                         <property role="3u3nmv" value="7716791493893662507" />
@@ -1915,10 +1915,10 @@
                           <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                           <node concept="2OqwBi" id="au" role="37wK5m">
                             <node concept="37vLTw" id="aw" role="2Oq$k0">
-                              <ref role="3cqZAo" to=":^" resolve="context" />
+                              <ref role="3cqZAo" node="ah" resolve="context" />
                             </node>
                             <node concept="liA8E" id="ax" role="2OqNvi">
-                              <ref role="37wK5l" to=":^" resolve="getProperty" />
+                              <ref role="37wK5l" to="j809:~FailingPropertyConstraintContext.getProperty()" resolve="getProperty" />
                             </node>
                           </node>
                           <node concept="cd27G" id="av" role="lGtFl">
@@ -1928,7 +1928,7 @@
                           </node>
                         </node>
                         <node concept="Xl_RD" id="as" role="3uHU7B">
-                          <property role="Xl_RC" value="Property constraints are broken for the property " />
+                          <property role="Xl_RC" value="Property constraints gagaga are broken for the property " />
                           <node concept="cd27G" id="az" role="lGtFl">
                             <node concept="3u3nmq" id="a$" role="cd27D">
                               <property role="3u3nmv" value="8363610719461051381" />

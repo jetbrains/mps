@@ -18,7 +18,23 @@ import java.util.Map;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.runtime.PropertyConstraintsDescriptor;
 import java.util.HashMap;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
+import jetbrains.mps.smodel.runtime.ReferenceConstraintsDescriptor;
+import jetbrains.mps.smodel.runtime.base.BaseReferenceConstraintsDescriptor;
+import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
+import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
+import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.scope.Scope;
+import jetbrains.mps.smodel.IOperationContext;
+import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.smodel.Language;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.scope.EmptyScope;
+import jetbrains.mps.lang.scopes.runtime.NamedElementsScope;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
+import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.smodel.SNodePointer;
 
 public class ConstraintsRoot2_Constraints extends BaseConstraintsDescriptor {
@@ -66,8 +82,46 @@ public class ConstraintsRoot2_Constraints extends BaseConstraintsDescriptor {
     properties.put(MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), new ConstraintsRoot2_Constraints.Name_Property(this));
     return properties;
   }
+  @Override
+  protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(MetaAdapterFactory.getReferenceLink(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edaff8daL, 0x19eb8590edaff8deL, "concept"), this) {
+      @Override
+      public boolean hasOwnScopeProvider() {
+        return true;
+      }
+      @Nullable
+      @Override
+      public ReferenceScopeProvider getScopeProvider() {
+        return new BaseScopeProvider() {
+          @Override
+          public SNodeReference getSearchScopeValidatorNode() {
+            return breakingNode_u83k1k_a0a0a0a0a1a0a0a0f;
+          }
+          @Override
+          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+            SModel structure = check_u83k1k_a0a0b0a0a0b0a0a0a5(Language.getLanguageForLanguageAspect(SNodeOperations.getModel(_context.getContextNode())));
+            if (structure == null) {
+              return new EmptyScope();
+            }
+
+            return new NamedElementsScope(SModelOperations.roots(structure, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration")));
+          }
+        };
+      }
+    };
+    Map<SReferenceLink, ReferenceConstraintsDescriptor> references = new HashMap<SReferenceLink, ReferenceConstraintsDescriptor>();
+    references.put(d0.getReference(), d0);
+    return references;
+  }
   private static boolean staticCanBeARoot(SModel model) {
-    return true;
+    return SModuleOperations.isAspect(model, "constraints") || SModelStereotype.isGeneratorModel(model);
+  }
+  private static SModel check_u83k1k_a0a0b0a0a0b0a0a0a5(Language checkedDotOperand) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.getStructureModelDescriptor();
+    }
+    return null;
   }
   private static SNodePointer canBeRootBreakingPoint = new SNodePointer("r:38d66f13-43df-406f-957b-078b52f2a2b9(jetbrains.mps.lang.constraints.rules.skeleton.constraints)", "1867733327984720171");
+  private static SNodePointer breakingNode_u83k1k_a0a0a0a0a1a0a0a0f = new SNodePointer("r:38d66f13-43df-406f-957b-078b52f2a2b9(jetbrains.mps.lang.constraints.rules.skeleton.constraints)", "6836281137582781546");
 }

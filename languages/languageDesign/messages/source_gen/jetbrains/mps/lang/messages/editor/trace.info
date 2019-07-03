@@ -1052,26 +1052,22 @@
       <node id="3299718585667277247" at="33,69,34,88" concept="7" />
       <node id="3299718585667277247" at="34,88,35,104" concept="2" />
       <node id="5258059200643484633" at="39,76,40,33" concept="12" />
-      <node id="5258059200642486011" at="44,59,45,110" concept="2" />
-      <node id="3299718585667277247" at="50,78,51,33" concept="12" />
-      <node id="3299718585667277266" at="55,59,56,132" concept="2" />
-      <node id="4709299072833411624" at="60,36,61,36" concept="8" />
-      <node id="4709299072833473971" at="62,14,63,38" concept="8" />
-      <node id="4709299072833473924" at="62,12,64,7" concept="0" />
+      <node id="5258059200642486011" at="44,59,45,132" concept="2" />
+      <node id="8577519913599496579" at="48,62,49,37" concept="8" />
+      <node id="3299718585667277247" at="53,78,54,33" concept="12" />
+      <node id="3299718585667277266" at="58,59,59,110" concept="2" />
       <node id="5258059200643484633" at="39,0,42,0" concept="1" trace="MessageMacroStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="3299718585667277247" at="50,0,53,0" concept="1" trace="MessageLiteralStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="8577519913599291574" at="48,0,51,0" concept="6" trace="_StyleParameter_QueryFunction_t8xsd0_a0a#()Ljava/awt/Color;" />
+      <node id="3299718585667277247" at="53,0,56,0" concept="1" trace="MessageLiteralStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="5258059200643484633" at="43,0,47,0" concept="6" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
-      <node id="3299718585667277247" at="54,0,58,0" concept="6" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
-      <node id="4709299072833369271" at="59,62,64,7" concept="5" />
+      <node id="3299718585667277247" at="57,0,61,0" concept="6" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
       <node id="5258059200643484633" at="21,0,27,0" concept="11" trace="apply_MessageMacro#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
       <node id="3299718585667277247" at="31,0,37,0" concept="11" trace="apply_MessageLiteral#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
-      <node id="4709299072833357265" at="59,0,66,0" concept="6" trace="_StyleParameter_QueryFunction_t8xsd0_a0b#()Ljava/awt/Color;" />
       <scope id="5258059200643484633" at="39,76,40,33" />
-      <scope id="5258059200643484633" at="44,59,45,110" />
-      <scope id="3299718585667277247" at="50,78,51,33" />
-      <scope id="3299718585667277247" at="55,59,56,132" />
-      <scope id="4709299072833369273" at="60,36,61,36" />
-      <scope id="4709299072833473925" at="62,14,63,38" />
+      <scope id="5258059200643484633" at="44,59,45,132" />
+      <scope id="8577519913599291575" at="48,62,49,37" />
+      <scope id="3299718585667277247" at="53,78,54,33" />
+      <scope id="3299718585667277247" at="58,59,59,110" />
       <scope id="5258059200643484633" at="22,77,25,102">
         <var name="editorContext" id="5258059200643484633" />
         <var name="node" id="5258059200643484633" />
@@ -1084,7 +1080,8 @@
         <var name="editorContext" id="5258059200643484633" />
         <var name="node" id="5258059200643484633" />
       </scope>
-      <scope id="3299718585667277247" at="50,0,53,0">
+      <scope id="8577519913599291574" at="48,0,51,0" />
+      <scope id="3299718585667277247" at="53,0,56,0">
         <var name="editorContext" id="3299718585667277247" />
         <var name="node" id="3299718585667277247" />
       </scope>
@@ -1092,11 +1089,10 @@
         <var name="editorCell" id="5258059200643484633" />
         <var name="style" id="5258059200643484633" />
       </scope>
-      <scope id="3299718585667277247" at="54,0,58,0">
+      <scope id="3299718585667277247" at="57,0,61,0">
         <var name="editorCell" id="3299718585667277247" />
         <var name="style" id="3299718585667277247" />
       </scope>
-      <scope id="4709299072833357266" at="59,62,64,7" />
       <scope id="5258059200643484633" at="21,0,27,0">
         <var name="editorCell" id="5258059200643484633" />
         <var name="style" id="5258059200643484633" />
@@ -1105,10 +1101,9 @@
         <var name="editorCell" id="3299718585667277247" />
         <var name="style" id="3299718585667277247" />
       </scope>
-      <scope id="4709299072833357265" at="59,0,66,0" />
-      <unit id="5258059200643484633" at="38,0,49,0" name="jetbrains.mps.lang.messages.editor.MessageStyles_StyleSheet$MessageMacroStyleClass" />
-      <unit id="3299718585667277247" at="49,0,67,0" name="jetbrains.mps.lang.messages.editor.MessageStyles_StyleSheet$MessageLiteralStyleClass" />
-      <unit id="5258059200643484630" at="16,0,68,0" name="jetbrains.mps.lang.messages.editor.MessageStyles_StyleSheet" />
+      <unit id="3299718585667277247" at="52,0,63,0" name="jetbrains.mps.lang.messages.editor.MessageStyles_StyleSheet$MessageLiteralStyleClass" />
+      <unit id="5258059200643484633" at="38,0,52,0" name="jetbrains.mps.lang.messages.editor.MessageStyles_StyleSheet$MessageMacroStyleClass" />
+      <unit id="5258059200643484630" at="16,0,64,0" name="jetbrains.mps.lang.messages.editor.MessageStyles_StyleSheet" />
     </file>
   </root>
   <root nodeRef="r:46037634-9be0-4da8-8dd8-3cb367171177(jetbrains.mps.lang.messages.editor)/5258059200643544752">

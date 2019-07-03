@@ -68,10 +68,10 @@
       <node concept="3F0ifn" id="6kKc3mjFxpS" role="3EZMnx">
         <property role="3F0ifm" value="show" />
         <node concept="3$7fVu" id="5sUTrySNjUP" role="3F10Kt">
-          <property role="3$6WeP" value="0.2" />
+          <property role="3$6WeP" value="0.4" />
         </node>
         <node concept="3$7jql" id="1mFJTG69us" role="3F10Kt">
-          <property role="3$6WeP" value="0.3" />
+          <property role="3$6WeP" value="0.4" />
         </node>
       </node>
       <node concept="3F1sOY" id="4zSofKed$cf" role="3EZMnx">

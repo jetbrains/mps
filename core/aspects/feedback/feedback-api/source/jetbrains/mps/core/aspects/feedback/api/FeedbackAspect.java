@@ -62,29 +62,4 @@ public interface FeedbackAspect extends ILanguageAspect, MultiAspectLanguageAspe
     return new CombinedFeedbackAspect(many);
   }
 
-  final class CombinedFeedbackAspect implements FeedbackAspect {
-    private final FeedbackAspect[] myMany;
-
-    public CombinedFeedbackAspect(FeedbackAspect... many) {
-      myMany = many;
-    }
-
-    @NotNull
-    @Override
-    public Stream<FeedbackPerConceptDescriptor> getPerConceptDescriptors() {
-      return Stream.of(myMany)
-                   .map(FeedbackAspect::getPerConceptDescriptors)
-                   .reduce(Stream::concat)
-                   .orElseGet(Stream::empty);
-    }
-
-    @NotNull
-    @Override
-    public Stream<FeedbackDescriptor> getPerLanguageDescriptors() {
-      return Stream.of(myMany)
-                   .map(FeedbackAspect::getPerLanguageDescriptors)
-                   .reduce(Stream::concat)
-                   .orElseGet(Stream::empty);
-    }
-  }
 }

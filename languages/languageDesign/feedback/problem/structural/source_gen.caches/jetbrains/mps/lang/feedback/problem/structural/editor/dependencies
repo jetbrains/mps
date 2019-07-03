@@ -3,7 +3,7 @@
   <dependency className="jetbrains.mps.lang.feedback.problem.structural.editor.EditorAspectDescriptorImpl">
     <classNode dependClassName="java.util.Collection" />
     <classNode dependClassName="java.util.Collections" />
-    <classNode dependClassName="jetbrains.mps.lang.feedback.problem.structural.editor.MissingPropertyProblem_Editor" />
+    <classNode dependClassName="jetbrains.mps.lang.feedback.problem.structural.editor.MissingPropertyInConceptProblem_Editor" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndex" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.ConceptEditor" />
@@ -12,15 +12,15 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
     <classNode extendsClassName="jetbrains.mps.nodeEditor.EditorAspectDescriptorBase" />
   </dependency>
-  <dependency className="jetbrains.mps.lang.feedback.problem.structural.editor.MissingPropertyProblem_Editor">
-    <classNode dependClassName="jetbrains.mps.lang.feedback.problem.structural.editor.MissingPropertyProblem_EditorBuilder_a" />
-    <classNode dependClassName="jetbrains.mps.lang.feedback.problem.structural.editor.MissingPropertyProblem_InspectorBuilder_a" />
+  <dependency className="jetbrains.mps.lang.feedback.problem.structural.editor.MissingPropertyInConceptProblem_Editor">
+    <classNode dependClassName="jetbrains.mps.lang.feedback.problem.structural.editor.MissingPropertyInConceptProblem_EditorBuilder_a" />
+    <classNode dependClassName="jetbrains.mps.lang.feedback.problem.structural.editor.MissingPropertyInConceptProblem_InspectorBuilder_a" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.nodeEditor.DefaultNodeEditor" />
   </dependency>
-  <dependency className="jetbrains.mps.lang.feedback.problem.structural.editor.MissingPropertyProblem_EditorBuilder_a">
+  <dependency className="jetbrains.mps.lang.feedback.problem.structural.editor.MissingPropertyInConceptProblem_EditorBuilder_a">
     <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.Objects" />
@@ -56,7 +56,7 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.editor.runtime.descriptor.AbstractEditorBuilder" />
   </dependency>
-  <dependency className="jetbrains.mps.lang.feedback.problem.structural.editor.MissingPropertyProblem_InspectorBuilder_a">
+  <dependency className="jetbrains.mps.lang.feedback.problem.structural.editor.MissingPropertyInConceptProblem_InspectorBuilder_a">
     <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.Objects" />

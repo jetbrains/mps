@@ -18,6 +18,9 @@
     <file name="ConstraintsAspectDescriptor.java">
       <unit at="13,0,137,0" name="jetbrains.mps.baseLanguage.constraints.ConstraintsAspectDescriptor" />
     </file>
+    <file name="GeneratedConstraintsAspectDescriptor2.java">
+      <unit at="17,0,31,0" name="jetbrains.mps.baseLanguage.constraints.GeneratedConstraintsAspectDescriptor2" />
+    </file>
     <file name="IconContainer.java">
       <unit at="7,0,13,0" name="jetbrains.mps.baseLanguage.constraints.IconContainer" />
     </file>
@@ -933,9 +936,9 @@
       <unit id="1213104847625" at="32,0,96,0" name="jetbrains.mps.baseLanguage.constraints.ClassConcept_Constraints" />
     </file>
     <file name="IconContainer.java">
-      <node id="1229065756974287006" at="8,0,9,0" concept="11" trace="RESOURCE_a0a0a0a1" />
-      <node id="1229065756974287971" at="9,0,10,0" concept="11" trace="RESOURCE_a1a0a1" />
-      <node id="1229065756974288936" at="10,0,11,0" concept="11" trace="RESOURCE_a0a1a1" />
+      <node id="1229065756974287006" at="8,0,9,0" concept="11" trace="RESOURCE_a0a0a0a0" />
+      <node id="1229065756974287971" at="9,0,10,0" concept="11" trace="RESOURCE_a1a0a0" />
+      <node id="1229065756974288936" at="10,0,11,0" concept="11" trace="RESOURCE_a0a1a0" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c1(jetbrains.mps.baseLanguage.constraints)/1213104855712">
@@ -3058,7 +3061,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c1(jetbrains.mps.baseLanguage.constraints)/7474456048895327068">
     <file name="IconContainer.java">
-      <node id="1229065756974290436" at="11,0,12,0" concept="11" trace="RESOURCE_a0a0b" />
+      <node id="1229065756974290436" at="11,0,12,0" concept="11" trace="RESOURCE_a0a0a" />
     </file>
     <file name="InstanceMethodDeclaration_Constraints.java">
       <node id="7474456048895327068" at="12,50,13,164" concept="13" />

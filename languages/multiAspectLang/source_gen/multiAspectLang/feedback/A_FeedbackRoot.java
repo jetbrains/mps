@@ -8,7 +8,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.feedback.api.FeedbackProvider;
 import messages.MissingPropertyContext;
 import jetbrains.mps.core.aspects.feedback.messages.BaseMessageProvider;
-import messages.MissingPropertyProblemId;
+import messages.MissingPropertyInConceptProblemId;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.core.aspects.feedback.messages.MessageProvider;
 import java.util.List;
@@ -19,11 +19,11 @@ import java.util.stream.Stream;
 public final class A_FeedbackRoot extends BaseFeedbackDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, "multiAspectLang.structure.A");
 
-  private static final FeedbackProvider<MissingPropertyContext> MSGPROVIDER_WhenPropertyDoesNotBelongToTheConcept_a = new BaseMessageProvider<MissingPropertyContext>(new MissingPropertyProblemId(MetaAdapterFactory.getProperty(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, 0x69addc59a5878ce0L, "prop"))) {
+  private static final FeedbackProvider<MissingPropertyContext> MSGPROVIDER_WhenPropertyDoesNotBelongToTheConcept_a = new BaseMessageProvider<MissingPropertyContext>(new MissingPropertyInConceptProblemId(MetaAdapterFactory.getConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, "multiAspectLang.structure.A"))) {
     @NotNull
     @Override
     public MessageProvider.StringMsg yieldMessage(MissingPropertyContext context) {
-      return new MessageProvider.StringMsg("property " + String.valueOf(context.getProperty()) + " does not belong to concept");
+      return new MessageProvider.StringMsg("The property does not belong to the concept GAGAGA");
     }
   };
 

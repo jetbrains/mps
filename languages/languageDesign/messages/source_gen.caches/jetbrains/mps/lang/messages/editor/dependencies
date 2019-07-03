@@ -383,7 +383,7 @@
     <classNode extendsClassName="jetbrains.mps.editor.runtime.descriptor.AbstractEditorBuilder" />
   </dependency>
   <dependency className="jetbrains.mps.lang.messages.editor.MessageStyles_StyleSheet">
-    <classNode dependClassName="com.intellij.util.ui.UIUtil" />
+    <classNode dependClassName="com.intellij.ui.JBColor" />
     <classNode dependClassName="java.awt.Color" />
     <classNode dependClassName="java.lang.Deprecated" />
     <classNode dependClassName="java.lang.Override" />

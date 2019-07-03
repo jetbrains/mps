@@ -18,8 +18,8 @@
       </concept>
     </language>
     <language id="7127d409-29f0-43e8-917f-f016ea288944" name="jetbrains.mps.lang.feedback.problem.structural">
-      <concept id="5724083730281438001" name="jetbrains.mps.lang.feedback.problem.structural.structure.MissingPropertyProblem" flags="ng" index="ft9Ny">
-        <reference id="24399255755615671" name="property" index="1Gj$d9" />
+      <concept id="5724083730281438001" name="jetbrains.mps.lang.feedback.problem.structural.structure.MissingPropertyInConceptProblem" flags="ng" index="ft9Ny">
+        <reference id="6341931782023955378" name="concept" index="29jPbC" />
       </concept>
     </language>
     <language id="cd17a113-ca4e-472f-a8de-c49008f9eea8" name="jetbrains.mps.lang.feedback">
@@ -36,9 +36,6 @@
       <concept id="5258059200642172255" name="jetbrains.mps.lang.messages.structure.CombinedMessageExpression" flags="ng" index="16I2mz">
         <child id="5258059200642172257" name="part" index="16I2mt" />
       </concept>
-      <concept id="5258059200642278562" name="jetbrains.mps.lang.messages.structure.MacroMessageExpression" flags="ng" index="16Iohu">
-        <reference id="5258059200643228831" name="declaration" index="16E0hz" />
-      </concept>
       <concept id="5258059200641510853" name="jetbrains.mps.lang.messages.structure.LiteralMessageExpression" flags="ng" index="16N$OT">
         <property id="5258059200641510854" name="message" index="16N$OU" />
       </concept>
@@ -52,21 +49,15 @@
   </registry>
   <node concept="3QByoM" id="5ca4zTvKOON">
     <ref role="3Z9TSV" to="pljn:5ca4zTvKOOO" resolve="A" />
-    <node concept="3QByp$" id="6GnzfDRhs0c" role="3QBEN7">
-      <node concept="16I2mz" id="6GnzfDRhs0d" role="16N$OO">
-        <node concept="16N$OT" id="7ghwUcl80JJ" role="16I2mt">
-          <property role="16N$OU" value="property " />
-        </node>
-        <node concept="16Iohu" id="7ghwUcl80JK" role="16I2mt">
-          <ref role="16E0hz" to="2u14:1mFJTG7MCZ" resolve="property" />
-        </node>
-        <node concept="16N$OT" id="7ghwUcl80JL" role="16I2mt">
-          <property role="16N$OU" value=" does not belong to concept" />
+    <node concept="3QByp$" id="5jNIJxKTq8h" role="3QBEN7">
+      <node concept="16I2mz" id="5jNIJxKTq8i" role="16N$OO">
+        <node concept="16N$OT" id="5jNIJxKTq8A" role="16I2mt">
+          <property role="16N$OU" value="The property does not belong to the concept GAGAGA" />
         </node>
       </node>
-      <node concept="ft9Ny" id="6GnzfDRhs0k" role="3JXyrO">
+      <node concept="ft9Ny" id="5jNIJxKTq8p" role="3JXyrO">
         <ref role="sa$J1" to="1wpt:4XK1Xd019ID" resolve="MissingProperty" />
-        <ref role="1Gj$d9" to="pljn:6AHR5A_xSNw" resolve="prop" />
+        <ref role="29jPbC" to="pljn:5ca4zTvKOOO" resolve="A" />
       </node>
     </node>
   </node>

@@ -40,16 +40,16 @@
   </registry>
   <node concept="1TIwiD" id="4XK1Xd019GL">
     <property role="EcuMT" value="5724083730281438001" />
-    <property role="TrG5h" value="MissingPropertyProblem" />
+    <property role="TrG5h" value="MissingPropertyInConceptProblem" />
     <property role="34LRSv" value="when property does not belong to the concept" />
     <property role="R5$K2" value="true" />
     <ref role="1TJDcQ" to="sis7:6GnzfDRfssU" resolve="ProblemPointsToKindRoot" />
-    <node concept="1TJgyj" id="1mFJTG6eQR" role="1TKVEi">
-      <property role="IQ2ns" value="24399255755615671" />
+    <node concept="1TJgyj" id="5w34lFhj4eM" role="1TKVEi">
+      <property role="IQ2ns" value="6341931782023955378" />
       <property role="20lmBu" value="reference" />
-      <property role="20kJfa" value="property" />
+      <property role="20kJfa" value="concept" />
       <property role="20lbJX" value="1" />
-      <ref role="20lvS9" to="tpce:f_TJgxF" resolve="PropertyDeclaration" />
+      <ref role="20lvS9" to="tpce:h0PkWnZ" resolve="AbstractConceptDeclaration" />
     </node>
     <node concept="PrWs8" id="4XK1Xd019Hs" role="PzmwI">
       <ref role="PrY4T" to="sis7:5sUTrySMJsG" resolve="Problem" />

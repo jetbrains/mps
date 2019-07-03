@@ -20,36 +20,36 @@
   </root>
   <root nodeRef="r:270d7173-b5a9-45a3-a074-68571d20064c(jetbrains.mps.lang.feedback.problem.structural.structure)/5724083730281438001">
     <file name="ConceptPresentationAspectImpl.java">
-      <node id="5724083730281438001" at="12,0,13,0" concept="1" trace="props_MissingPropertyProblem" />
-      <node id="5724083730281438001" at="20,51,21,76" concept="3" />
+      <node id="5724083730281438001" at="12,0,13,0" concept="1" trace="props_MissingPropertyInConceptProblem" />
+      <node id="5724083730281438001" at="20,60,21,76" concept="3" />
       <node id="5724083730281438001" at="21,76,22,78" concept="0" />
-      <node id="5724083730281438001" at="22,78,23,54" concept="0" />
-      <node id="5724083730281438001" at="24,9,25,44" concept="4" />
-      <node id="5724083730281438001" at="19,56,24,9" concept="2" />
-      <scope id="5724083730281438001" at="20,51,23,54">
+      <node id="5724083730281438001" at="22,78,23,63" concept="0" />
+      <node id="5724083730281438001" at="24,9,25,53" concept="4" />
+      <node id="5724083730281438001" at="19,65,24,9" concept="2" />
+      <scope id="5724083730281438001" at="20,60,23,63">
         <var name="cpb" id="5724083730281438001" />
       </scope>
-      <scope id="5724083730281438001" at="19,56,25,44" />
+      <scope id="5724083730281438001" at="19,65,25,53" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="5724083730281438001" at="12,0,13,0" concept="5" trace="MissingPropertyProblem" />
-      <node id="5724083730281438001" at="15,116,16,61" concept="0" />
+      <node id="5724083730281438001" at="12,0,13,0" concept="5" trace="MissingPropertyInConceptProblem" />
+      <node id="5724083730281438001" at="15,116,16,70" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
-      <node id="5724083730281438001" at="16,0,17,0" concept="1" trace="myConceptMissingPropertyProblem" />
-      <node id="5724083730281438001" at="38,56,39,47" concept="4" />
-      <node id="5724083730281438001" at="54,80,55,203" concept="3" />
-      <node id="5724083730281438001" at="55,203,56,33" concept="0" />
+      <node id="5724083730281438001" at="16,0,17,0" concept="1" trace="myConceptMissingPropertyInConceptProblem" />
+      <node id="5724083730281438001" at="38,65,39,56" concept="4" />
+      <node id="5724083730281438001" at="54,89,55,212" concept="3" />
+      <node id="5724083730281438001" at="55,212,56,33" concept="0" />
       <node id="5724083730281438001" at="56,33,57,148" concept="0" />
       <node id="5724083730281438001" at="57,148,58,75" concept="0" />
       <node id="5724083730281438001" at="58,75,59,133" concept="0" />
       <node id="5724083730281438001" at="59,133,60,17" concept="0" />
-      <node id="24399255755615671" at="60,17,61,162" concept="0" />
-      <node id="5724083730281438001" at="61,162,62,60" concept="0" />
+      <node id="6341931782023955378" at="60,17,61,166" concept="0" />
+      <node id="5724083730281438001" at="61,166,62,60" concept="0" />
       <node id="5724083730281438001" at="62,60,63,22" concept="4" />
-      <node id="5724083730281438001" at="54,0,65,0" concept="6" trace="createDescriptorForMissingPropertyProblem#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
-      <scope id="5724083730281438001" at="38,56,39,47" />
-      <scope id="5724083730281438001" at="54,80,63,22">
+      <node id="5724083730281438001" at="54,0,65,0" concept="6" trace="createDescriptorForMissingPropertyInConceptProblem#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="5724083730281438001" at="38,65,39,56" />
+      <scope id="5724083730281438001" at="54,89,63,22">
         <var name="b" id="5724083730281438001" />
       </scope>
       <scope id="5724083730281438001" at="54,0,65,0" />

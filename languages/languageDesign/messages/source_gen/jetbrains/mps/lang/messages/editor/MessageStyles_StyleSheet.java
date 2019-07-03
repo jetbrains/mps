@@ -9,9 +9,9 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.editor.runtime.style.AbstractStyleClass;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.openapi.editor.style.StyleRegistry;
-import jetbrains.mps.nodeEditor.MPSColors;
 import java.awt.Color;
-import com.intellij.util.ui.UIUtil;
+import com.intellij.ui.JBColor;
+import jetbrains.mps.nodeEditor.MPSColors;
 
 public class MessageStyles_StyleSheet {
   /**
@@ -42,9 +42,12 @@ public class MessageStyles_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
+      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_t8xsd0_a0a()));
     }
 
+    private Color _StyleParameter_QueryFunction_t8xsd0_a0a() {
+      return JBColor.YELLOW.darker();
+    }
   }
   public static class MessageLiteralStyleClass extends AbstractStyleClass {
     public MessageLiteralStyleClass(EditorContext editorContext, SNode node) {
@@ -53,15 +56,8 @@ public class MessageStyles_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_t8xsd0_a0b()));
+      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
     }
 
-    private Color _StyleParameter_QueryFunction_t8xsd0_a0b() {
-      if (UIUtil.isUnderDarcula()) {
-        return MPSColors.LIGHT_BLUE;
-      } else {
-        return MPSColors.DARK_MAGENTA;
-      }
-    }
   }
 }

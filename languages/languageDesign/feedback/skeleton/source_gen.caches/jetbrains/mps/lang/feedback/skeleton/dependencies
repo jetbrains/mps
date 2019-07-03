@@ -6,6 +6,7 @@
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.Collection" />
     <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.ConstraintsAspectDescriptor2" />
+    <classNode dependClassName="jetbrains.mps.core.aspects.feedback.api.FeedbackAspect" />
     <classNode dependClassName="jetbrains.mps.lang.feedback.skeleton.constraints.ConstraintsAspectDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.feedback.skeleton.constraints.GeneratedConstraintsAspectDescriptor2" />
     <classNode dependClassName="jetbrains.mps.lang.feedback.skeleton.editor.EditorAspectDescriptorImpl" />

@@ -39,7 +39,7 @@
         <property role="3F0ifm" value="concept A::" />
       </node>
       <node concept="3F0A7n" id="6AHR5A_xSOd" role="3EZMnx">
-        <ref role="1NtTu8" to="pljn:6AHR5A_xSNw" resolve="prop" />
+        <ref role="1NtTu8" to="pljn:50L3raJA9_o" resolve="prop" />
       </node>
     </node>
   </node>

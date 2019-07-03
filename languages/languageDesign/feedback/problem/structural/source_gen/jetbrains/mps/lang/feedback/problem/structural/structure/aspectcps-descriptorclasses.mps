@@ -197,7 +197,7 @@
       <property role="eg7rD" value="false" />
       <property role="34CwA1" value="false" />
       <property role="3TUv4t" value="false" />
-      <property role="TrG5h" value="props_MissingPropertyProblem" />
+      <property role="TrG5h" value="props_MissingPropertyInConceptProblem" />
       <node concept="3uibUv" id="6" role="1tU5fm">
         <ref role="3uigEE" to="ze1i:~ConceptPresentation" resolve="ConceptPresentation" />
       </node>
@@ -305,7 +305,7 @@
                         </node>
                       </node>
                       <node concept="37vLTw" id="Q" role="37vLTJ">
-                        <ref role="3cqZAo" node="2" resolve="props_MissingPropertyProblem" />
+                        <ref role="3cqZAo" node="2" resolve="props_MissingPropertyInConceptProblem" />
                       </node>
                     </node>
                   </node>
@@ -313,19 +313,19 @@
                 <node concept="3clFbC" id="$" role="3clFbw">
                   <node concept="10Nm6u" id="T" role="3uHU7w" />
                   <node concept="37vLTw" id="U" role="3uHU7B">
-                    <ref role="3cqZAo" node="2" resolve="props_MissingPropertyProblem" />
+                    <ref role="3cqZAo" node="2" resolve="props_MissingPropertyInConceptProblem" />
                   </node>
                 </node>
               </node>
               <node concept="3cpWs6" id="y" role="3cqZAp">
                 <node concept="37vLTw" id="V" role="3cqZAk">
-                  <ref role="3cqZAo" node="2" resolve="props_MissingPropertyProblem" />
+                  <ref role="3cqZAo" node="2" resolve="props_MissingPropertyInConceptProblem" />
                 </node>
               </node>
             </node>
             <node concept="10M0yZ" id="w" role="3Kbmr1">
               <ref role="1PxDUh" node="14" resolve="LanguageConceptSwitch" />
-              <ref role="3cqZAo" node="16" resolve="MissingPropertyProblem" />
+              <ref role="3cqZAo" node="16" resolve="MissingPropertyInConceptProblem" />
             </node>
           </node>
         </node>
@@ -381,7 +381,7 @@
       <property role="2dlcS1" value="false" />
       <property role="2dld4O" value="false" />
       <property role="3TUv4t" value="true" />
-      <property role="TrG5h" value="MissingPropertyProblem" />
+      <property role="TrG5h" value="MissingPropertyInConceptProblem" />
       <node concept="3Tm1VV" id="1g" role="1B3o_S" />
       <node concept="10Oyi0" id="1h" role="1tU5fm" />
       <node concept="3cmrfG" id="1i" role="33vP2m">
@@ -423,7 +423,7 @@
                 <property role="1adDun" value="0x4f7007d340049b31L" />
               </node>
               <node concept="37vLTw" id="1z" role="37wK5m">
-                <ref role="3cqZAo" node="16" resolve="MissingPropertyProblem" />
+                <ref role="3cqZAo" node="16" resolve="MissingPropertyInConceptProblem" />
               </node>
             </node>
           </node>
@@ -509,12 +509,12 @@
       <property role="eg7rD" value="false" />
       <property role="34CwA1" value="false" />
       <property role="3TUv4t" value="true" />
-      <property role="TrG5h" value="myConceptMissingPropertyProblem" />
+      <property role="TrG5h" value="myConceptMissingPropertyInConceptProblem" />
       <node concept="3uibUv" id="2g" role="1tU5fm">
         <ref role="3uigEE" to="ze1i:~ConceptDescriptor" resolve="ConceptDescriptor" />
       </node>
       <node concept="1rXfSq" id="2h" role="33vP2m">
-        <ref role="37wK5l" node="2f" resolve="createDescriptorForMissingPropertyProblem" />
+        <ref role="37wK5l" node="2f" resolve="createDescriptorForMissingPropertyInConceptProblem" />
       </node>
     </node>
     <node concept="312cEg" id="1Z" role="jymVt">
@@ -594,7 +594,7 @@
             <ref role="1Pybhc" to="33ny:~Arrays" resolve="Arrays" />
             <ref role="37wK5l" to="33ny:~Arrays.asList(java.lang.Object...)" resolve="asList" />
             <node concept="37vLTw" id="2J" role="37wK5m">
-              <ref role="3cqZAo" node="1Y" resolve="myConceptMissingPropertyProblem" />
+              <ref role="3cqZAo" node="1Y" resolve="myConceptMissingPropertyInConceptProblem" />
             </node>
           </node>
         </node>
@@ -629,13 +629,13 @@
             <node concept="3clFbS" id="2W" role="3Kbo56">
               <node concept="3cpWs6" id="2Y" role="3cqZAp">
                 <node concept="37vLTw" id="2Z" role="3cqZAk">
-                  <ref role="3cqZAo" node="1Y" resolve="myConceptMissingPropertyProblem" />
+                  <ref role="3cqZAo" node="1Y" resolve="myConceptMissingPropertyInConceptProblem" />
                 </node>
               </node>
             </node>
             <node concept="10M0yZ" id="2X" role="3Kbmr1">
               <ref role="1PxDUh" node="14" resolve="LanguageConceptSwitch" />
-              <ref role="3cqZAo" node="16" resolve="MissingPropertyProblem" />
+              <ref role="3cqZAo" node="16" resolve="MissingPropertyInConceptProblem" />
             </node>
           </node>
           <node concept="2OqwBi" id="2U" role="3KbGdf">
@@ -719,7 +719,7 @@
       <property role="od$2w" value="false" />
       <property role="DiZV1" value="false" />
       <property role="2aFKle" value="false" />
-      <property role="TrG5h" value="createDescriptorForMissingPropertyProblem" />
+      <property role="TrG5h" value="createDescriptorForMissingPropertyInConceptProblem" />
       <node concept="3clFbS" id="3l" role="3clF47">
         <node concept="3cpWs8" id="3o" role="3cqZAp">
           <node concept="3cpWsn" id="3x" role="3cpWs9">
@@ -734,7 +734,7 @@
                   <property role="Xl_RC" value="jetbrains.mps.lang.feedback.problem.structural" />
                 </node>
                 <node concept="Xl_RD" id="3A" role="37wK5m">
-                  <property role="Xl_RC" value="MissingPropertyProblem" />
+                  <property role="Xl_RC" value="MissingPropertyInConceptProblem" />
                 </node>
                 <node concept="1adDum" id="3B" role="37wK5m">
                   <property role="1adDun" value="0x7127d40929f043e8L" />
@@ -843,10 +843,10 @@
                     <node concept="liA8E" id="4f" role="2OqNvi">
                       <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.associate(java.lang.String,long)" resolve="associate" />
                       <node concept="Xl_RD" id="4g" role="37wK5m">
-                        <property role="Xl_RC" value="property" />
+                        <property role="Xl_RC" value="concept" />
                       </node>
                       <node concept="1adDum" id="4h" role="37wK5m">
-                        <property role="1adDun" value="0x56aefe6c18edb7L" />
+                        <property role="1adDun" value="0x5803115ad14c43b2L" />
                       </node>
                     </node>
                   </node>
@@ -859,7 +859,7 @@
                       <property role="1adDun" value="0x8389f407dc1158b7L" />
                     </node>
                     <node concept="1adDum" id="4k" role="37wK5m">
-                      <property role="1adDun" value="0xf979bd086bL" />
+                      <property role="1adDun" value="0x1103553c5ffL" />
                     </node>
                   </node>
                 </node>
@@ -871,7 +871,7 @@
               <node concept="liA8E" id="49" role="2OqNvi">
                 <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2$AssociationLinkBuilder.origin(java.lang.String)" resolve="origin" />
                 <node concept="Xl_RD" id="4m" role="37wK5m">
-                  <property role="Xl_RC" value="24399255755615671" />
+                  <property role="Xl_RC" value="6341931782023955378" />
                 </node>
               </node>
             </node>

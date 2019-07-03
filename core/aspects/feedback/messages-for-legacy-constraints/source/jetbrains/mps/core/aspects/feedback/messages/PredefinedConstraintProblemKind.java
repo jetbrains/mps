@@ -33,7 +33,7 @@ public enum PredefinedConstraintProblemKind implements ProblemKindAlsoProblem, P
         throw new IllegalArgumentException("Received illegal context " + context);
       }
       SProperty property = ((FailingPropertyConstraintContext) context).getProperty();
-      return "Property constraint violation for property \"" + property.getName() + "\"";
+      return "Property constraint violation for the property \"" + property.getName() + "\"";
     }
   },
   REFERENCE_SCOPE_CONSTRAINTS() {

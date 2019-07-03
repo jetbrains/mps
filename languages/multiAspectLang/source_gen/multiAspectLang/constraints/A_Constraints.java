@@ -22,7 +22,7 @@ public class A_Constraints extends BaseConstraintsDescriptor {
 
   public static class Prop_Property extends BasePropertyConstraintsDescriptor {
     public Prop_Property(ConstraintsDescriptor container) {
-      super(MetaAdapterFactory.getProperty(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, 0x69addc59a5878ce0L, "prop"), container);
+      super(MetaAdapterFactory.getProperty(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, 0x50310db2af989958L, "prop"), container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -38,13 +38,13 @@ public class A_Constraints extends BaseConstraintsDescriptor {
       return result;
     }
     private static boolean staticValidateProperty(SNode node, String propertyValue) {
-      return (SPropertyOperations.getInteger(propertyValue)) > 1990;
+      return (SPropertyOperations.getInteger(propertyValue)) > 199000;
     }
   }
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(MetaAdapterFactory.getProperty(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, 0x69addc59a5878ce0L, "prop"), new A_Constraints.Prop_Property(this));
+    properties.put(MetaAdapterFactory.getProperty(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, 0x50310db2af989958L, "prop"), new A_Constraints.Prop_Property(this));
     return properties;
   }
 }

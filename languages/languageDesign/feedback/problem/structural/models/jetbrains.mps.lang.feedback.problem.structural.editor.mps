@@ -41,24 +41,21 @@
     </language>
   </registry>
   <node concept="24kQdi" id="4XK1Xd019Ia">
-    <ref role="1XX52x" to="uj7v:4XK1Xd019GL" resolve="MissingPropertyProblem" />
+    <ref role="1XX52x" to="uj7v:4XK1Xd019GL" resolve="MissingPropertyInConceptProblem" />
     <node concept="3EZMnI" id="5sUTrySNjU1" role="2wV5jI">
       <node concept="3F0ifn" id="1mFJTG6708" role="3EZMnx">
-        <property role="3F0ifm" value="when property" />
+        <property role="3F0ifm" value="when property does not belong to concept" />
       </node>
-      <node concept="1iCGBv" id="4XK1Xd019Ir" role="3EZMnx">
-        <ref role="1NtTu8" to="uj7v:1mFJTG6eQR" resolve="property" />
-        <node concept="1sVBvm" id="4XK1Xd019It" role="1sWHZn">
-          <node concept="3F0A7n" id="4XK1Xd019IA" role="2wV5jI">
+      <node concept="1iCGBv" id="5w34lFhj4eV" role="3EZMnx">
+        <ref role="1NtTu8" to="uj7v:5w34lFhj4eM" resolve="concept" />
+        <node concept="1sVBvm" id="5w34lFhj4eX" role="1sWHZn">
+          <node concept="3F0A7n" id="5w34lFhj4f5" role="2wV5jI">
             <property role="1Intyy" value="true" />
             <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
           </node>
         </node>
       </node>
       <node concept="2iRfu4" id="5sUTrySNjU2" role="2iSdaV" />
-      <node concept="3F0ifn" id="5sUTrySNmFh" role="3EZMnx">
-        <property role="3F0ifm" value="does not belong to concept" />
-      </node>
     </node>
     <node concept="3EZMnI" id="6GnzfDReZxy" role="6VMZX">
       <node concept="1iCGBv" id="6GnzfDReZxD" role="3EZMnx">

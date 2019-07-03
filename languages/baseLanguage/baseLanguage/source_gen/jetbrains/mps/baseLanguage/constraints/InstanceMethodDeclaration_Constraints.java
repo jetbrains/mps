@@ -13,7 +13,7 @@ public class InstanceMethodDeclaration_Constraints extends BaseConstraintsDescri
     super(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration"));
   }
   public IconResource getInstanceIcon(SNode node) {
-    return ((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(node) ? IconContainer.RESOURCE_a0a0b : null);
+    return ((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(node) ? IconContainer.RESOURCE_a0a0a : null);
   }
 
 }

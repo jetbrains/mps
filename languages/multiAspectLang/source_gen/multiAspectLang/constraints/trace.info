@@ -84,7 +84,7 @@
   <root nodeRef="r:5dbac061-aef9-4696-88ee-0f21fe5598f3(multiAspectLang.constraints)/7716791493893601226">
     <file name="A_FeedbackRoot.java">
       <node id="7716791493893601226" at="22,0,23,0" concept="6" trace="CONCEPT" />
-      <node id="7716791493893652418" at="27,93,28,136" concept="5" />
+      <node id="7716791493893652418" at="27,93,28,143" concept="5" />
       <node id="7716791493893601226" at="46,0,47,0" concept="6" trace="PROVIDERS" />
       <node id="7716791493893601226" at="48,27,49,19" concept="8" />
       <node id="7716791493893601226" at="54,58,55,30" concept="5" />
@@ -92,7 +92,7 @@
       <node id="7716791493893652418" at="25,0,30,0" concept="3" trace="yieldMessage#(Ljetbrains/mps/core/aspects/feedback/messages/FailingPropertyConstraintContext;)Ljetbrains/mps/core/aspects/feedback/messages/MessageProvider/StringMsg;" />
       <node id="7716791493893601226" at="52,0,57,0" concept="3" trace="getDeclaredProviders#()Ljava/util/stream/Stream;" />
       <node id="7716791493893652418" at="24,0,31,0" concept="6" trace="MSGPROVIDER_WhenPropertyConstraintFails_a" />
-      <scope id="7716791493893652418" at="27,93,28,136" />
+      <scope id="7716791493893652418" at="27,93,28,143" />
       <scope id="7716791493893601226" at="48,27,49,19" />
       <scope id="7716791493893601226" at="54,58,55,30" />
       <scope id="7716791493893601226" at="48,0,51,0" />
@@ -113,7 +113,7 @@
       <node id="8363610719461051388" at="33,109,34,67" concept="4" />
       <node id="8363610719461051388" at="35,53,36,75" concept="1" />
       <node id="8363610719461051388" at="37,7,38,20" concept="5" />
-      <node id="8363610719461057342" at="40,85,41,68" concept="5" />
+      <node id="8363610719461057342" at="40,85,41,70" concept="5" />
       <node id="8363610719461051385" at="45,84,46,119" concept="4" />
       <node id="8363610719461051388" at="46,119,47,182" concept="1" />
       <node id="8363610719461051385" at="47,182,48,22" concept="5" />
@@ -128,7 +128,7 @@
       <scope id="8363610719461051388" at="24,59,25,147" />
       <scope id="8363610719461051388" at="28,38,29,18" />
       <scope id="8363610719461051388" at="35,53,36,75" />
-      <scope id="8363610719461051391" at="40,85,41,68" />
+      <scope id="8363610719461051391" at="40,85,41,70" />
       <scope id="8363610719461051385" at="19,0,22,0" />
       <scope id="8363610719461051388" at="24,0,27,0">
         <var name="container" id="8363610719461051388" />

@@ -1,3 +1,107 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<debug-info version="2" />
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
+  <root>
+    <file name="ConstraintsAspectDescriptor.java">
+      <unit at="13,0,29,0" name="jetbrains.mps.lang.feedback.problem.structural.constraints.ConstraintsAspectDescriptor" />
+    </file>
+    <file name="GeneratedConstraintsAspectDescriptor2.java">
+      <unit at="17,0,31,0" name="jetbrains.mps.lang.feedback.problem.structural.constraints.GeneratedConstraintsAspectDescriptor2" />
+    </file>
+  </root>
+  <root nodeRef="r:44de6cb2-b6eb-47d2-bf88-1577a328d3f6(jetbrains.mps.lang.feedback.problem.structural.constraints)/5724083730281438591">
+    <file name="MissingPropertyInConceptProblem_Constraints.java">
+      <node id="5724083730281438591" at="32,56,33,196" concept="9" />
+      <node id="7716791493892404436" at="40,44,41,20" concept="5" />
+      <node id="7716791493892404436" at="48,63,49,57" concept="5" />
+      <node id="7716791493892415016" at="52,122,53,272" concept="4" />
+      <node id="7716791493892404483" at="53,272,54,88" concept="5" />
+      <node id="7966406217186699968" at="61,44,62,20" concept="5" />
+      <node id="7966406217186699968" at="69,63,70,57" concept="5" />
+      <node id="6836281137582781558" at="73,122,74,155" concept="4" />
+      <node id="6836281137582781568" at="75,36,76,38" concept="5" />
+      <node id="6836281137582781574" at="77,13,78,0" concept="6" />
+      <node id="6836281137582781575" at="78,0,79,235" concept="5" />
+      <node id="5724083730281438591" at="83,6,84,131" concept="4" />
+      <node id="7716791493892404436" at="84,131,85,42" concept="1" />
+      <node id="7966406217186699968" at="85,42,86,42" concept="1" />
+      <node id="5724083730281438591" at="86,42,87,22" concept="5" />
+      <node id="6836281137582781560" at="90,36,91,61" concept="5" />
+      <node id="6836281137582781560" at="92,5,93,16" concept="5" />
+      <node id="5724083730281438591" at="95,0,96,0" concept="7" trace="breakingNode_7oncdj_a0a0a0a0a1a0a0a0c" />
+      <node id="5724083730281438591" at="96,0,97,0" concept="7" trace="breakingNode_7oncdj_a0a0a0a0a1a0a0b0c" />
+      <node id="5724083730281438591" at="32,0,35,0" concept="0" trace="MissingPropertyInConceptProblem_Constraints#()V" />
+      <node id="6836281137582781566" at="74,155,77,13" concept="2" />
+      <node id="6836281137582781560" at="89,85,92,5" concept="2" />
+      <node id="7716791493892404436" at="39,0,43,0" concept="3" trace="hasOwnScopeProvider#()Z" />
+      <node id="7716791493892404436" at="47,0,51,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="7966406217186699968" at="60,0,64,0" concept="3" trace="hasOwnScopeProvider#()Z" />
+      <node id="7966406217186699968" at="68,0,72,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="7716791493892404436" at="51,0,56,0" concept="3" trace="createScope#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
+      <node id="6836281137582781560" at="89,0,95,0" concept="8" trace="check_7oncdj_a0a0b0a0a0b0a0a1a2#(Ljetbrains/mps/smodel/Language;)Lorg/jetbrains/mps/openapi/model/SModel;" />
+      <node id="7966406217186699968" at="72,0,81,0" concept="3" trace="createScope#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
+      <node id="7716791493892404436" at="45,56,56,10" concept="5" />
+      <node id="7716791493892404436" at="43,0,58,0" concept="3" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
+      <node id="7966406217186699968" at="66,56,81,10" concept="5" />
+      <node id="7966406217186699968" at="64,0,83,0" concept="3" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
+      <node id="7716791493892404436" at="37,90,58,6" concept="4" />
+      <node id="7966406217186699968" at="58,6,83,6" concept="4" />
+      <node id="5724083730281438591" at="36,0,89,0" concept="3" trace="getSpecifiedReferences#()Ljava/util/Map;" />
+      <scope id="5724083730281438591" at="32,56,33,196" />
+      <scope id="7716791493892404436" at="40,44,41,20" />
+      <scope id="7716791493892404436" at="48,63,49,57" />
+      <scope id="7966406217186699968" at="61,44,62,20" />
+      <scope id="7966406217186699968" at="69,63,70,57" />
+      <scope id="6836281137582781567" at="75,36,76,38" />
+      <scope id="6836281137582781560" at="90,36,91,61" />
+      <scope id="7716791493892404436" at="52,122,54,88">
+        <var name="concrete" id="7716791493892415017" />
+      </scope>
+      <scope id="5724083730281438591" at="32,0,35,0" />
+      <scope id="7716791493892404436" at="39,0,43,0" />
+      <scope id="7716791493892404436" at="47,0,51,0" />
+      <scope id="7966406217186699968" at="60,0,64,0" />
+      <scope id="7966406217186699968" at="68,0,72,0" />
+      <scope id="6836281137582781560" at="89,85,93,16" />
+      <scope id="7716791493892404436" at="51,0,56,0">
+        <var name="_context" id="7716791493892404436" />
+        <var name="operationContext" id="7716791493892404436" />
+      </scope>
+      <scope id="7966406217186699968" at="73,122,79,235">
+        <var name="structure" id="6836281137582781559" />
+      </scope>
+      <scope id="6836281137582781560" at="89,0,95,0">
+        <var name="checkedDotOperand" id="6836281137582781560" />
+      </scope>
+      <scope id="7966406217186699968" at="72,0,81,0">
+        <var name="_context" id="7966406217186699968" />
+        <var name="operationContext" id="7966406217186699968" />
+      </scope>
+      <scope id="7716791493892404436" at="45,56,56,10" />
+      <scope id="7716791493892404436" at="43,0,58,0" />
+      <scope id="7966406217186699968" at="66,56,81,10" />
+      <scope id="7966406217186699968" at="64,0,83,0" />
+      <scope id="5724083730281438591" at="37,90,87,22">
+        <var name="d0" id="7716791493892404436" />
+        <var name="d1" id="7966406217186699968" />
+        <var name="references" id="5724083730281438591" />
+      </scope>
+      <scope id="5724083730281438591" at="36,0,89,0" />
+      <unit id="7716791493892404436" at="46,19,56,9" name="jetbrains.mps.lang.feedback.problem.structural.constraints.MissingPropertyInConceptProblem_Constraints$1$1" />
+      <unit id="7966406217186699968" at="67,19,81,9" name="jetbrains.mps.lang.feedback.problem.structural.constraints.MissingPropertyInConceptProblem_Constraints$2$1" />
+      <unit id="7716791493892404436" at="38,48,58,5" name="jetbrains.mps.lang.feedback.problem.structural.constraints.MissingPropertyInConceptProblem_Constraints$1" />
+      <unit id="7966406217186699968" at="59,48,83,5" name="jetbrains.mps.lang.feedback.problem.structural.constraints.MissingPropertyInConceptProblem_Constraints$2" />
+      <unit id="5724083730281438591" at="31,0,98,0" name="jetbrains.mps.lang.feedback.problem.structural.constraints.MissingPropertyInConceptProblem_Constraints" />
+    </file>
+  </root>
+</debug-info>
 
