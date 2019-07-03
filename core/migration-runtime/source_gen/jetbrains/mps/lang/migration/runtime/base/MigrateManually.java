@@ -4,20 +4,24 @@ package jetbrains.mps.lang.migration.runtime.base;
 
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.errors.item.NodeReportItem;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
 public class MigrateManually extends Problem<SNode> implements NodeReportItem {
-  private SNode myAnnotation;
   private String myMsg;
   public MigrateManually(SNode annotation) {
-    super(SNodeOperations.getParent(annotation));
-    myAnnotation = annotation;
-    myMsg = ((String) BHReflection.invoke0(annotation, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2274019e61f0c2c8L, "jetbrains.mps.lang.core.structure.MigrationAnnotation_old"), SMethodTrimmedId.create("getResultsMessage", null, "29O0pTxWdnZ")));
+    this(((String) BHReflection.invoke0(annotation, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2274019e61f0c2c8L, "jetbrains.mps.lang.core.structure.MigrationAnnotation_old"), SMethodTrimmedId.create("getResultsMessage", null, "29O0pTxWdnZ"))), SNodeOperations.getParent(annotation));
+  }
+  public static MigrateManually fromAnnotation(SNode annotation) {
+    return new MigrateManually(((String) BHReflection.invoke0(annotation, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2274019e61f0c2c8L, "jetbrains.mps.lang.core.structure.MigrationAnnotation_old"), SMethodTrimmedId.create("getResultsMessage", null, "29O0pTxWdnZ"))), SNodeOperations.getParent(annotation));
+  }
+  public MigrateManually(String message, SNode node) {
+    super(node);
+    myMsg = message;
   }
   public String getCategory() {
     return "migrate manually";

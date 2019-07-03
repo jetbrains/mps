@@ -12278,12 +12278,11 @@
                             </node>
                             <node concept="liA8E" id="2wbhCYFQBlo" role="2OqNvi">
                               <ref role="37wK5l" to="yyf4:~Processor.process(java.lang.Object)" resolve="process" />
-                              <node concept="2ShNRf" id="6ADPXMKlOhe" role="37wK5m">
-                                <node concept="1pGfFk" id="29O0pTxXS3b" role="2ShVmc">
-                                  <ref role="37wK5l" to="6f4m:29O0pTxXOoa" resolve="MigrateManually" />
-                                  <node concept="2GrUjf" id="2wbhCYFQAVt" role="37wK5m">
-                                    <ref role="2Gs0qQ" node="2wbhCYFQ_U1" resolve="ann" />
-                                  </node>
+                              <node concept="2YIFZM" id="1lWwAy3eWEP" role="37wK5m">
+                                <ref role="37wK5l" to="6f4m:1lWwAy3eQB7" resolve="fromAnnotation" />
+                                <ref role="1Pybhc" to="6f4m:29O0pTxXOo9" resolve="MigrateManually" />
+                                <node concept="2GrUjf" id="1lWwAy3eWPI" role="37wK5m">
+                                  <ref role="2Gs0qQ" node="2wbhCYFQ_U1" resolve="ann" />
                                 </node>
                               </node>
                             </node>

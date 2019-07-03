@@ -17,6 +17,7 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.migration.runtime.base.MigrateManually;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 
@@ -47,28 +48,10 @@ public class NonTypesystemRule_PatternOverrides_check extends MigrationScriptBas
       List<Problem> result = ListSequence.fromList(new ArrayList<Problem>());
       for (SNode rule : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1164853e0faL, "jetbrains.mps.lang.typesystem.structure.NonTypesystemRule"), false))) {
         if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(rule, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e7b5c73L, 0x1117e7b9c40L, "applicableNode")), MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2c3e68L, "jetbrains.mps.lang.typesystem.structure.PatternCondition"))) {
-          ListSequence.fromList(result).addElement(new Problem<SNode>(rule) {
-            @Override
-            public String getMessage() {
-              return "Checking rule with pattern condition. Use intention to move pattern inside the rule body.";
-            }
-            @Override
-            public String getCategory() {
-              return "migrate manually";
-            }
-          });
+          ListSequence.fromList(result).addElement(new MigrateManually("Checking rule with pattern condition. Use intention to move pattern inside the rule body.", rule));
         }
         if (SPropertyOperations.getBoolean(rule, MetaAdapterFactory.getProperty(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1164847e929L, 0x116484991d1L, "overrides"))) {
-          ListSequence.fromList(result).addElement(new Problem<SNode>(rule) {
-            @Override
-            public String getMessage() {
-              return "Rule with 'overrides' flag without explicitly enumerating rules to override";
-            }
-            @Override
-            public String getCategory() {
-              return "migrate manually";
-            }
-          });
+          ListSequence.fromList(result).addElement(new MigrateManually("Rule with 'overrides' flag without explicitly enumerating rules to override", rule));
         }
       }
       return result;

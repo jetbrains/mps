@@ -31,12 +31,6 @@
       <concept id="4836112446988635817" name="jetbrains.mps.baseLanguage.structure.UndefinedType" flags="in" index="2jxLKc" />
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
-      <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
-        <reference id="1188208074048" name="annotation" index="2AI5Lk" />
-      </concept>
-      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
-        <child id="1188208488637" name="annotation" index="2AJF6D" />
-      </concept>
       <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
         <child id="1154032183016" name="body" index="2LFqv$" />
       </concept>
@@ -49,9 +43,6 @@
       </concept>
       <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
         <property id="1070475926801" name="value" index="Xl_RC" />
-      </concept>
-      <concept id="1182160077978" name="jetbrains.mps.baseLanguage.structure.AnonymousClassCreator" flags="nn" index="YeOm9">
-        <child id="1182160096073" name="cls" index="YeSDq" />
       </concept>
       <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
         <reference id="1144433194310" name="classConcept" index="1Pybhc" />
@@ -81,13 +72,10 @@
         <child id="5680397130376446158" name="type" index="1tU5fm" />
       </concept>
       <concept id="1068580123132" name="jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration" flags="ng" index="3clF44">
-        <property id="4276006055363816570" name="isSynchronized" index="od$2w" />
-        <property id="1181808852946" name="isFinal" index="DiZV1" />
         <child id="1068580123133" name="returnType" index="3clF45" />
         <child id="1068580123134" name="parameter" index="3clF46" />
         <child id="1068580123135" name="body" index="3clF47" />
       </concept>
-      <concept id="1068580123165" name="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" flags="ig" index="3clFb_" />
       <concept id="1068580123152" name="jetbrains.mps.baseLanguage.structure.EqualsExpression" flags="nn" index="3clFbC" />
       <concept id="1068580123155" name="jetbrains.mps.baseLanguage.structure.ExpressionStatement" flags="nn" index="3clFbF">
         <child id="1068580123156" name="expression" index="3clFbG" />
@@ -121,11 +109,7 @@
       </concept>
       <concept id="1212685548494" name="jetbrains.mps.baseLanguage.structure.ClassCreator" flags="nn" index="1pGfFk" />
       <concept id="1107461130800" name="jetbrains.mps.baseLanguage.structure.Classifier" flags="ng" index="3pOWGL">
-        <property id="521412098689998745" name="nonStatic" index="2bfB8j" />
         <child id="5375687026011219971" name="member" index="jymVt" unordered="true" />
-      </concept>
-      <concept id="7812454656619025416" name="jetbrains.mps.baseLanguage.structure.MethodDeclaration" flags="ng" index="1rXfSm">
-        <property id="8355037393041754995" name="isNative" index="2aFKle" />
       </concept>
       <concept id="1107535904670" name="jetbrains.mps.baseLanguage.structure.ClassifierType" flags="in" index="3uibUv">
         <reference id="1107535924139" name="classifier" index="3uigEE" />
@@ -141,10 +125,6 @@
         <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
-      <concept id="1170345865475" name="jetbrains.mps.baseLanguage.structure.AnonymousClass" flags="ig" index="1Y3b0j">
-        <reference id="1170346070688" name="classifier" index="1Y3XeK" />
-        <child id="1201186121363" name="typeParameter" index="2Ghqu4" />
-      </concept>
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
       <concept id="1199569711397" name="jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral" flags="nn" index="1bVj0M">
@@ -211,7 +191,6 @@
       <concept id="1139621453865" name="jetbrains.mps.lang.smodel.structure.Node_IsInstanceOfOperation" flags="nn" index="1mIQ4w">
         <child id="1177027386292" name="conceptArgument" index="cj9EA" />
       </concept>
-      <concept id="1138055754698" name="jetbrains.mps.lang.smodel.structure.SNodeType" flags="in" index="3Tqbb2" />
       <concept id="1138056022639" name="jetbrains.mps.lang.smodel.structure.SPropertyAccess" flags="nn" index="3TrcHB">
         <reference id="1138056395725" name="property" index="3TsBF5" />
       </concept>
@@ -957,53 +936,13 @@
                         </node>
                         <node concept="TSZUe" id="e2eVnzKTvY" role="2OqNvi">
                           <node concept="2ShNRf" id="e2eVnzKRrb" role="25WWJ7">
-                            <node concept="YeOm9" id="e2eVnzKRrc" role="2ShVmc">
-                              <node concept="1Y3b0j" id="e2eVnzKRrd" role="YeSDq">
-                                <property role="2bfB8j" value="true" />
-                                <ref role="37wK5l" to="6f4m:3n7MNzOKQKS" resolve="Problem" />
-                                <ref role="1Y3XeK" to="6f4m:3n7MNzO_IjP" resolve="Problem" />
-                                <node concept="3Tm1VV" id="e2eVnzKRre" role="1B3o_S" />
-                                <node concept="3clFb_" id="e2eVnzKRrf" role="jymVt">
-                                  <property role="TrG5h" value="getMessage" />
-                                  <node concept="3Tm1VV" id="e2eVnzKRrg" role="1B3o_S" />
-                                  <node concept="3uibUv" id="e2eVnzKRrh" role="3clF45">
-                                    <ref role="3uigEE" to="wyt6:~String" resolve="String" />
-                                  </node>
-                                  <node concept="3clFbS" id="e2eVnzKRri" role="3clF47">
-                                    <node concept="3clFbF" id="e2eVnzKXPQ" role="3cqZAp">
-                                      <node concept="Xl_RD" id="e2eVnzKXPP" role="3clFbG">
-                                        <property role="Xl_RC" value="Checking rule with pattern condition. Use intention to move pattern inside the rule body." />
-                                      </node>
-                                    </node>
-                                  </node>
-                                  <node concept="2AHcQZ" id="e2eVnzKRrj" role="2AJF6D">
-                                    <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-                                  </node>
-                                </node>
-                                <node concept="3clFb_" id="e2eVnzKRrk" role="jymVt">
-                                  <property role="TrG5h" value="getCategory" />
-                                  <property role="od$2w" value="false" />
-                                  <property role="DiZV1" value="false" />
-                                  <property role="2aFKle" value="false" />
-                                  <node concept="3Tm1VV" id="e2eVnzKRrl" role="1B3o_S" />
-                                  <node concept="3uibUv" id="e2eVnzKRrm" role="3clF45">
-                                    <ref role="3uigEE" to="wyt6:~String" resolve="String" />
-                                  </node>
-                                  <node concept="3clFbS" id="e2eVnzKRrn" role="3clF47">
-                                    <node concept="3clFbF" id="e2eVnzKRro" role="3cqZAp">
-                                      <node concept="Xl_RD" id="e2eVnzKRrp" role="3clFbG">
-                                        <property role="Xl_RC" value="migrate manually" />
-                                      </node>
-                                    </node>
-                                  </node>
-                                  <node concept="2AHcQZ" id="e2eVnzKRrq" role="2AJF6D">
-                                    <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-                                  </node>
-                                </node>
-                                <node concept="3Tqbb2" id="e2eVnzKRrr" role="2Ghqu4" />
-                                <node concept="2GrUjf" id="e2eVnzKTKt" role="37wK5m">
-                                  <ref role="2Gs0qQ" node="e2eVnzKQPF" resolve="rule" />
-                                </node>
+                            <node concept="1pGfFk" id="1lWwAy3f0c3" role="2ShVmc">
+                              <ref role="37wK5l" to="6f4m:1lWwAy3eOun" resolve="MigrateManually" />
+                              <node concept="Xl_RD" id="e2eVnzKXPP" role="37wK5m">
+                                <property role="Xl_RC" value="Checking rule with pattern condition. Use intention to move pattern inside the rule body." />
+                              </node>
+                              <node concept="2GrUjf" id="e2eVnzKTKt" role="37wK5m">
+                                <ref role="2Gs0qQ" node="e2eVnzKQPF" resolve="rule" />
                               </node>
                             </node>
                           </node>
@@ -1036,53 +975,13 @@
                         </node>
                         <node concept="TSZUe" id="e2eVnzKTUC" role="2OqNvi">
                           <node concept="2ShNRf" id="e2eVnzKTUD" role="25WWJ7">
-                            <node concept="YeOm9" id="e2eVnzKTUE" role="2ShVmc">
-                              <node concept="1Y3b0j" id="e2eVnzKTUF" role="YeSDq">
-                                <property role="2bfB8j" value="true" />
-                                <ref role="37wK5l" to="6f4m:3n7MNzOKQKS" resolve="Problem" />
-                                <ref role="1Y3XeK" to="6f4m:3n7MNzO_IjP" resolve="Problem" />
-                                <node concept="3Tm1VV" id="e2eVnzKTUG" role="1B3o_S" />
-                                <node concept="3clFb_" id="e2eVnzKTUH" role="jymVt">
-                                  <property role="TrG5h" value="getMessage" />
-                                  <node concept="3Tm1VV" id="e2eVnzKTUI" role="1B3o_S" />
-                                  <node concept="3uibUv" id="e2eVnzKTUJ" role="3clF45">
-                                    <ref role="3uigEE" to="wyt6:~String" resolve="String" />
-                                  </node>
-                                  <node concept="3clFbS" id="e2eVnzKTUK" role="3clF47">
-                                    <node concept="3clFbF" id="e2eVnzKXVX" role="3cqZAp">
-                                      <node concept="Xl_RD" id="e2eVnzKXVY" role="3clFbG">
-                                        <property role="Xl_RC" value="Rule with 'overrides' flag without explicitly enumerating rules to override" />
-                                      </node>
-                                    </node>
-                                  </node>
-                                  <node concept="2AHcQZ" id="e2eVnzKTUL" role="2AJF6D">
-                                    <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-                                  </node>
-                                </node>
-                                <node concept="3clFb_" id="e2eVnzKTUM" role="jymVt">
-                                  <property role="TrG5h" value="getCategory" />
-                                  <property role="od$2w" value="false" />
-                                  <property role="DiZV1" value="false" />
-                                  <property role="2aFKle" value="false" />
-                                  <node concept="3Tm1VV" id="e2eVnzKTUN" role="1B3o_S" />
-                                  <node concept="3uibUv" id="e2eVnzKTUO" role="3clF45">
-                                    <ref role="3uigEE" to="wyt6:~String" resolve="String" />
-                                  </node>
-                                  <node concept="3clFbS" id="e2eVnzKTUP" role="3clF47">
-                                    <node concept="3clFbF" id="e2eVnzKTUQ" role="3cqZAp">
-                                      <node concept="Xl_RD" id="e2eVnzKTUR" role="3clFbG">
-                                        <property role="Xl_RC" value="migrate manually" />
-                                      </node>
-                                    </node>
-                                  </node>
-                                  <node concept="2AHcQZ" id="e2eVnzKTUS" role="2AJF6D">
-                                    <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-                                  </node>
-                                </node>
-                                <node concept="3Tqbb2" id="e2eVnzKTUT" role="2Ghqu4" />
-                                <node concept="2GrUjf" id="e2eVnzKTUU" role="37wK5m">
-                                  <ref role="2Gs0qQ" node="e2eVnzKQPF" resolve="rule" />
-                                </node>
+                            <node concept="1pGfFk" id="1lWwAy3f0Mc" role="2ShVmc">
+                              <ref role="37wK5l" to="6f4m:1lWwAy3eOun" resolve="MigrateManually" />
+                              <node concept="Xl_RD" id="e2eVnzKXVY" role="37wK5m">
+                                <property role="Xl_RC" value="Rule with 'overrides' flag without explicitly enumerating rules to override" />
+                              </node>
+                              <node concept="2GrUjf" id="1lWwAy3f1fz" role="37wK5m">
+                                <ref role="2Gs0qQ" node="e2eVnzKQPF" resolve="rule" />
                               </node>
                             </node>
                           </node>
