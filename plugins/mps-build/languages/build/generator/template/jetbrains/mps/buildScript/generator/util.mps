@@ -149,6 +149,9 @@
       <concept id="1196350785113" name="jetbrains.mps.lang.quotation.structure.Quotation" flags="nn" index="2c44tf">
         <child id="1196350785114" name="quotedNode" index="2c44tc" />
       </concept>
+      <concept id="4056363777117001481" name="jetbrains.mps.lang.quotation.structure.StringToTypedValueMigrationInfo" flags="ng" index="AAgTk">
+        <property id="2173356959483005420" name="stringValueMigrated" index="3qcH_f" />
+      </concept>
       <concept id="1196866233735" name="jetbrains.mps.lang.quotation.structure.PropertyAntiquotation" flags="ng" index="2EMmih" />
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
@@ -1232,6 +1235,7 @@
                           <property role="2qtEX9" value="text" />
                           <property role="3hQQBS" value="XmlTextValue" />
                           <property role="P4ACc" value="479c7a8c-02f9-43b5-9139-d910cb22f298/6666499814681541919/6666499814681541920" />
+                          <property role="3qcH_f" value="true" />
                           <node concept="37vLTw" id="3GM_nagTtgC" role="2c44t1">
                             <ref role="3cqZAo" node="5bUGwboXCc1" resolve="val" />
                           </node>
@@ -1367,6 +1371,7 @@
                           <property role="2qtEX9" value="text" />
                           <property role="3hQQBS" value="XmlTextValue" />
                           <property role="P4ACc" value="479c7a8c-02f9-43b5-9139-d910cb22f298/6666499814681541919/6666499814681541920" />
+                          <property role="3qcH_f" value="true" />
                           <node concept="37vLTw" id="3GM_nagTwLP" role="2c44t1">
                             <ref role="3cqZAo" node="7B9bSSBH7jc" resolve="val" />
                           </node>

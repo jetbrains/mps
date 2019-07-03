@@ -201,9 +201,7 @@
         <child id="2360002718792622193" name="resource" index="ElOA9" />
       </concept>
       <concept id="4671800353872995469" name="jetbrains.mps.make.script.structure.ConceptFunctionParameter_progressMonitor" flags="nn" index="EWnkA" />
-      <concept id="7077360340906447917" name="jetbrains.mps.make.script.structure.ResultStatement" flags="nn" index="3D7k6m">
-        <property id="7077360340906447918" name="result" index="3D7k6l" />
-      </concept>
+      <concept id="7077360340906447917" name="jetbrains.mps.make.script.structure.ResultStatement" flags="nn" index="3D7k6m" />
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
@@ -254,7 +252,7 @@
         <ref role="15KeV8" to="fy8e:taepSZ9r$W" resolve="reconcile" />
       </node>
       <node concept="15KeVb" id="emRLGQDYq1" role="15LFui">
-        <property role="3HPxAp" value="AFTER" />
+        <property role="3HPxAp" value="7fB872ucjBA/AFTER" />
         <ref role="15KeV8" to="tpcq:5L5h3brvDHA" resolve="textGen" />
       </node>
       <node concept="2aLE7I" id="emRLGQDYpS" role="ElM8M">
@@ -262,9 +260,7 @@
           <node concept="3clFbS" id="emRLGQDYpU" role="2VODD2">
             <node concept="3clFbJ" id="1igPMF3DttP" role="3cqZAp">
               <node concept="3clFbS" id="1igPMF3DttQ" role="3clFbx">
-                <node concept="3D7k6m" id="1igPMF3Dtyf" role="3cqZAp">
-                  <property role="3D7k6l" value="SUCCESS" />
-                </node>
+                <node concept="3D7k6m" id="1igPMF3Dtyf" role="3cqZAp" />
               </node>
               <node concept="2OqwBi" id="1igPMF3DttW" role="3clFbw">
                 <node concept="10M0yZ" id="1igPMF3DttT" role="2Oq$k0">

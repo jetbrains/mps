@@ -145,6 +145,9 @@
       </concept>
       <concept id="7453996997717780434" name="jetbrains.mps.lang.smodel.structure.Node_GetSConceptOperation" flags="nn" index="2yIwOk" />
       <concept id="1143234257716" name="jetbrains.mps.lang.smodel.structure.Node_GetModelOperation" flags="nn" index="I4A8Y" />
+      <concept id="1966870290088668512" name="jetbrains.mps.lang.smodel.structure.Enum_MemberLiteral" flags="ng" index="2ViDtV">
+        <reference id="1966870290088668516" name="memberDeclaration" index="2ViDtZ" />
+      </concept>
       <concept id="2644386474301421077" name="jetbrains.mps.lang.smodel.structure.LinkIdRefExpression" flags="nn" index="359W_D">
         <reference id="2644386474301421078" name="conceptDeclaration" index="359W_E" />
         <reference id="2644386474301421079" name="linkDeclaration" index="359W_F" />
@@ -152,16 +155,15 @@
       <concept id="2644386474300074836" name="jetbrains.mps.lang.smodel.structure.ConceptIdRefExpression" flags="nn" index="35c_gC">
         <reference id="2644386474300074837" name="conceptDeclaration" index="35c_gD" />
       </concept>
-      <concept id="6973815483243445083" name="jetbrains.mps.lang.smodel.structure.EnumMemberValueRefExpression" flags="nn" index="3f7Wdw">
-        <reference id="6973815483243565416" name="member" index="3f7u_j" />
-        <reference id="6973815483243564601" name="enum" index="3f7vo2" />
-      </concept>
       <concept id="1172326502327" name="jetbrains.mps.lang.smodel.structure.Concept_IsExactlyOperation" flags="nn" index="3O6GUB">
         <child id="1206733650006" name="conceptArgument" index="3QVz_e" />
       </concept>
       <concept id="1138055754698" name="jetbrains.mps.lang.smodel.structure.SNodeType" flags="in" index="3Tqbb2" />
       <concept id="1138056022639" name="jetbrains.mps.lang.smodel.structure.SPropertyAccess" flags="nn" index="3TrcHB">
         <reference id="1138056395725" name="property" index="3TsBF5" />
+      </concept>
+      <concept id="5779574625830813396" name="jetbrains.mps.lang.smodel.structure.EnumerationIdRefExpression" flags="ng" index="1XH99k">
+        <reference id="5779574625830813397" name="enumDeclaration" index="1XH99l" />
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
@@ -487,36 +489,44 @@
       </node>
     </node>
     <node concept="EnEH3" id="1o9RazLpvfb" role="1MhHOB">
-      <ref role="EomxK" to="wdez:1o9RazLpuEJ" resolve="enumPropertyWithIsValidConstraints" />
+      <ref role="EomxK" to="wdez:3Ftr4R6BHdc" resolve="enumPropertyWithIsValidConstraints" />
       <node concept="QB0g5" id="1o9RazLpvfd" role="QCWH9">
         <node concept="3clFbS" id="1o9RazLpvfe" role="2VODD2">
           <node concept="3clFbF" id="2Cc_hjaDoHW" role="3cqZAp">
             <node concept="17R0WA" id="2Cc_hjaDpsb" role="3clFbG">
-              <node concept="3f7Wdw" id="2Cc_hjaDpEx" role="3uHU7w">
-                <ref role="3f7vo2" to="wdez:qrtnJnJhw7" resolve="TestSubstituteEnumDataType" />
-                <ref role="3f7u_j" to="wdez:qrtnJnJhw8" />
-              </node>
               <node concept="1Wqviy" id="2Cc_hjaDoHU" role="3uHU7B" />
+              <node concept="2OqwBi" id="3Ftr4R8QOYl" role="3uHU7w">
+                <node concept="1XH99k" id="3Ftr4R8QOYm" role="2Oq$k0">
+                  <ref role="1XH99l" to="wdez:3Ftr4R6BFNk" resolve="TestSubstituteEnumDataType" />
+                </node>
+                <node concept="2ViDtV" id="3Ftr4R8QOYn" role="2OqNvi">
+                  <ref role="2ViDtZ" to="wdez:3Ftr4R6BFNm" resolve="myFirstValue" />
+                </node>
+              </node>
             </node>
           </node>
         </node>
       </node>
     </node>
     <node concept="EnEH3" id="1o9RazLqgMJ" role="1MhHOB">
-      <ref role="EomxK" to="wdez:1o9RazLqg7J" resolve="enumPropertyWithGetter" />
+      <ref role="EomxK" to="wdez:3Ftr4R6BHdg" resolve="enumPropertyWithGetter" />
       <node concept="Eqf_E" id="1o9RazLqgN2" role="EtsB7">
         <node concept="3clFbS" id="1o9RazLqgN3" role="2VODD2">
           <node concept="3cpWs6" id="1o9RazLqgVN" role="3cqZAp">
-            <node concept="3f7Wdw" id="1o9RazLqhgU" role="3cqZAk">
-              <ref role="3f7u_j" to="wdez:qrtnJnJhw8" />
-              <ref role="3f7vo2" to="wdez:qrtnJnJhw7" resolve="TestSubstituteEnumDataType" />
+            <node concept="2OqwBi" id="3Ftr4R8QOYr" role="3cqZAk">
+              <node concept="1XH99k" id="3Ftr4R8QOYs" role="2Oq$k0">
+                <ref role="1XH99l" to="wdez:3Ftr4R6BFNk" resolve="TestSubstituteEnumDataType" />
+              </node>
+              <node concept="2ViDtV" id="3Ftr4R8QOYt" role="2OqNvi">
+                <ref role="2ViDtZ" to="wdez:3Ftr4R6BFNm" resolve="myFirstValue" />
+              </node>
             </node>
           </node>
         </node>
       </node>
     </node>
     <node concept="EnEH3" id="1o9RazLqgMS" role="1MhHOB">
-      <ref role="EomxK" to="wdez:1o9RazLqfzx" resolve="enumPropertyWithSetter" />
+      <ref role="EomxK" to="wdez:3Ftr4R6BHde" resolve="enumPropertyWithSetter" />
       <node concept="1LLf8_" id="1o9RazLqhpP" role="1LXaQT">
         <node concept="3clFbS" id="1o9RazLqhpQ" role="2VODD2">
           <node concept="3clFbF" id="1o9RazLskWU" role="3cqZAp">

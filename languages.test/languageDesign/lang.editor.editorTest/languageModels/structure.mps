@@ -10,6 +10,17 @@
   </imports>
   <registry>
     <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
+      <concept id="3348158742936976480" name="jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration" flags="ng" index="25R33">
+        <property id="1421157252384165432" name="memberId" index="3tVfz5" />
+        <reference id="899069222106091871" name="oldMember" index="2wpffI" />
+      </concept>
+      <concept id="3348158742936976479" name="jetbrains.mps.lang.structure.structure.EnumerationDeclartaion" flags="ng" index="25R3W">
+        <reference id="1075010451642646892" name="defaultMember" index="1H5jkz" />
+        <child id="3348158742936976577" name="members" index="25R1y" />
+      </concept>
+      <concept id="6491077959632463275" name="jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo" flags="ng" index="3l_iC">
+        <child id="6491077959632463286" name="oldProperty" index="3l_iP" />
+      </concept>
       <concept id="7862711839422615209" name="jetbrains.mps.lang.structure.structure.DocumentedNodeAnnotation" flags="ng" index="t5JxF">
         <property id="7862711839422615217" name="text" index="t5JxN" />
       </concept>
@@ -19,10 +30,18 @@
       <concept id="6054523464627964745" name="jetbrains.mps.lang.structure.structure.AttributeInfo_AttributedConcept" flags="ng" index="trNpa">
         <reference id="6054523464627965081" name="concept" index="trN6q" />
       </concept>
+      <concept id="1082978164218" name="jetbrains.mps.lang.structure.structure.DataTypeDeclaration" flags="ng" index="AxPO6">
+        <property id="7791109065626895363" name="datatypeId" index="3F6X1D" />
+      </concept>
       <concept id="1082978164219" name="jetbrains.mps.lang.structure.structure.EnumerationDataTypeDeclaration_Old" flags="ng" index="AxPO7">
         <property id="1212080844762" name="hasNoDefaultMember" index="PDuV0" />
         <reference id="1083171729157" name="memberDataType" index="M4eZT" />
         <child id="1083172003582" name="member" index="M5hS2" />
+      </concept>
+      <concept id="1588368162884797030" name="jetbrains.mps.lang.structure.structure.EnumMigrationInfo" flags="ng" index="2JgGob">
+        <property id="6491077959634662372" name="valueOpMigration" index="3scbB" />
+        <property id="6491077959634650670" name="nameOpMigration" index="3sfsH" />
+        <child id="6491077959632451996" name="oldEnum" index="3lCyv" />
       </concept>
       <concept id="1083171877298" name="jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration_Old" flags="ig" index="M4N5e">
         <property id="1083923523172" name="externalValue" index="1uS6qo" />
@@ -91,9 +110,9 @@
     <property role="EcuMT" value="3702466984434609595" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="3dxNxGnPyR2" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="statement" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="3702466984434609602" />
       <ref role="20lvS9" node="3dxNxGnPYED" resolve="IBaseTestBlock" />
     </node>
@@ -154,9 +173,9 @@
     <property role="EcuMT" value="3582597462265868788" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="36RWm$n$F7Y" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="block" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="3582597462265868798" />
       <ref role="20lvS9" node="3dxNxGnPYED" resolve="IBaseTestBlock" />
     </node>
@@ -183,9 +202,9 @@
     <property role="EcuMT" value="5110219550149792114" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="4rF9pGiVP5Q" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="child" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="5110219550149792118" />
       <ref role="20lvS9" node="3dxNxGnPYED" resolve="IBaseTestBlock" />
     </node>
@@ -218,16 +237,16 @@
     <property role="EcuMT" value="5110219550150320602" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="4rF9pGiXQ7s" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="left" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="5110219550150320604" />
       <ref role="20lvS9" node="3dxNxGnPYED" resolve="IBaseTestBlock" />
     </node>
     <node concept="1TJgyj" id="4rF9pGiXQ7t" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="right" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="5110219550150320605" />
       <ref role="20lvS9" node="3dxNxGnPYED" resolve="IBaseTestBlock" />
     </node>
@@ -251,9 +270,9 @@
     <property role="EcuMT" value="2613454275903805304" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="2h4QH4RYdtT" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="child" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="2613454275903805305" />
       <ref role="20lvS9" node="3dxNxGnPYED" resolve="IBaseTestBlock" />
     </node>
@@ -277,9 +296,8 @@
     <property role="EcuMT" value="2613454275903920988" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="2h4QH4RYDHt" role="1TKVEi">
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="var" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="2613454275903920989" />
       <ref role="20lvS9" node="2h4QH4RYgVh" resolve="VariableDeclarationBlock" />
     </node>
@@ -317,9 +335,8 @@
       </node>
     </node>
     <node concept="1TJgyj" id="4jBMNo5V405" role="1TKVEi">
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="variableDeclaration" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="4965160547087302661" />
       <ref role="20lvS9" node="2h4QH4RYgVh" resolve="VariableDeclarationBlock" />
     </node>
@@ -333,9 +350,8 @@
     <property role="EcuMT" value="2399036385470202575" />
     <ref role="1TJDcQ" to="tpee:fzclF8l" resolve="Statement" />
     <node concept="1TJgyj" id="25b5I77c4eE" role="1TKVEi">
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="class" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="2399036385470202794" />
       <ref role="20lvS9" to="tpee:fz12cDA" resolve="ClassConcept" />
     </node>
@@ -369,9 +385,9 @@
     <property role="EcuMT" value="3447504547918837138" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="2ZnZLV$fJqv" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="children" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="3447504547918837407" />
       <ref role="20lvS9" node="2Lps20zY1wu" resolve="SimplePropertyContainer" />
     </node>
@@ -382,16 +398,16 @@
     <property role="EcuMT" value="7803854675610223138" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="6LcR7GqxcjN" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="child" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="7803854675610223859" />
       <ref role="20lvS9" node="6LcR7Gqxch7" resolve="DelTestAbstractChild" />
     </node>
     <node concept="1TJgyj" id="2znOOs7gLZ9" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="interfaceChild" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="2943053183527886793" />
       <ref role="20lvS9" node="2znOOs7gLZd" resolve="IDelTestChild" />
     </node>
@@ -414,7 +430,7 @@
     <property role="EcuMT" value="7803854675610450426" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="6LcR7Gqy3CQ" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="container" />
       <property role="IQ2ns" value="7803854675610450486" />
       <ref role="20lvS9" node="6LcR7Gqxc8y" resolve="DelTestChildContainer" />
@@ -426,88 +442,87 @@
     <property role="EcuMT" value="957371990174086071" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="P9hc2Kf3nJ" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="singleChild" />
       <property role="IQ2ns" value="957371990174086639" />
       <ref role="20lvS9" node="P9hc2Kf3iI" resolve="SubstTestAbstractChild" />
     </node>
     <node concept="1TJgyj" id="2wtgzyWe9_r" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="singleChildWithNonEmptyCell" />
       <property role="IQ2ns" value="2890539347285154139" />
       <ref role="20lvS9" node="P9hc2Kf3iI" resolve="SubstTestAbstractChild" />
     </node>
     <node concept="1TJgyj" id="ylzIYEG02o" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="singleChildWithCustomInsert" />
       <property role="IQ2ns" value="618557683845300376" />
       <ref role="20lvS9" node="P9hc2Kf3iI" resolve="SubstTestAbstractChild" />
     </node>
     <node concept="1TJgyj" id="ylzIYEGrgc" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="singleChildWithNonEmptyCellAndCustomInsert" />
       <property role="IQ2ns" value="618557683845411852" />
       <ref role="20lvS9" node="P9hc2Kf3iI" resolve="SubstTestAbstractChild" />
     </node>
     <node concept="1TJgyj" id="P9hc2KgOpM" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="multiChild" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="957371990174549618" />
       <ref role="20lvS9" node="P9hc2Kf3iI" resolve="SubstTestAbstractChild" />
     </node>
     <node concept="1TJgyj" id="ylzIYEH7TO" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="multiChildWithFactory" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="618557683845594740" />
       <ref role="20lvS9" node="P9hc2Kf3iI" resolve="SubstTestAbstractChild" />
     </node>
     <node concept="1TJgyj" id="ylzIYEIaQm" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="multiChildWithCustomInsert" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="618557683845868950" />
       <ref role="20lvS9" node="P9hc2Kf3iI" resolve="SubstTestAbstractChild" />
     </node>
     <node concept="1TJgyj" id="ylzIYEIiug" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="multiChildWithCustomEmptyCellAndInsert" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="618557683845900176" />
       <ref role="20lvS9" node="P9hc2Kf3iI" resolve="SubstTestAbstractChild" />
     </node>
     <node concept="1TJgyj" id="7UZdOvgzajQ" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="separatorChild" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="9133079350911739126" />
       <ref role="20lvS9" node="P9hc2Kf3iI" resolve="SubstTestAbstractChild" />
     </node>
     <node concept="1TJgyj" id="7UZdOvgzaJT" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="middlewareChild" />
       <property role="IQ2ns" value="9133079350911740921" />
       <ref role="20lvS9" node="7UZdOvgzaIm" resolve="SubstMiddlewareChild" />
     </node>
     <node concept="1TJgyj" id="woUdQL2A4G" role="1TKVEi">
       <property role="IQ2ns" value="583472190600143148" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="childWithNextEditorAndMenu" />
       <ref role="20lvS9" node="woUdQL3814" resolve="Abstract_SubstTestChild_WithNextApplicableEditorAndMenu" />
     </node>
     <node concept="1TJgyj" id="367vPD06d7q" role="1TKVEi">
       <property role="IQ2ns" value="3568961255313560026" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="multiChildWithDefaultConcreteConcept" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <ref role="20lvS9" node="367vPD06cFP" resolve="SubstTestAbstractChild_WithDefaultConcreteConcept" />
     </node>
     <node concept="1TJgyj" id="367vPD06d7B" role="1TKVEi">
       <property role="IQ2ns" value="3568961255313560039" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="singleChildWithDefaultConcreteConcept" />
-      <property role="20lbJX" value="0..1" />
       <ref role="20lvS9" node="367vPD06cFP" resolve="SubstTestAbstractChild_WithDefaultConcreteConcept" />
     </node>
   </node>
@@ -534,26 +549,17 @@
     <property role="TrG5h" value="SubstTestEnumPropertyChild" />
     <property role="EcuMT" value="957371990174086574" />
     <ref role="1TJDcQ" node="P9hc2Kf3iI" resolve="SubstTestAbstractChild" />
-    <node concept="1TJgyi" id="P9hc2KfU0I" role="1TKVEl">
+    <node concept="1TJgyi" id="3Ftr4R6BGZu" role="1TKVEl">
       <property role="TrG5h" value="myEnumProperty" />
       <property role="IQ2nx" value="957371990174310446" />
-      <ref role="AX2Wp" node="P9hc2KfQmc" resolve="SubstTestEnum" />
-    </node>
-  </node>
-  <node concept="AxPO7" id="P9hc2KfQmc">
-    <property role="3GE5qa" value="substitute" />
-    <property role="TrG5h" value="SubstTestEnum" />
-    <ref role="M4eZT" to="tpck:fKAOsGN" resolve="string" />
-    <node concept="M4N5e" id="P9hc2KfQmd" role="M5hS2">
-      <property role="1uS6qo" value="v1" />
-    </node>
-    <node concept="M4N5e" id="P9hc2KfQnj" role="M5hS2">
-      <property role="1uS6qo" value="v2" />
-      <property role="1uS6qv" value="v2" />
-    </node>
-    <node concept="M4N5e" id="P9hc2KfQnm" role="M5hS2">
-      <property role="1uS6qo" value="v3" />
-      <property role="1uS6qv" value="v3" />
+      <ref role="AX2Wp" node="3Ftr4R6BF0H" resolve="SubstTestEnum" />
+      <node concept="3l_iC" id="3Ftr4R6BGZv" role="lGtFl">
+        <node concept="1TJgyi" id="P9hc2KfU0I" role="3l_iP">
+          <property role="TrG5h" value="myEnumProperty" />
+          <property role="IQ2nx" value="957371990174310446" />
+          <ref role="AX2Wp" node="P9hc2KfQmc" resolve="SubstTestEnum" />
+        </node>
+      </node>
     </node>
   </node>
   <node concept="1TIwiD" id="7UZdOvgzaIm">
@@ -562,9 +568,9 @@
     <property role="EcuMT" value="9133079350911740822" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="7UZdOvgzaJQ" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="child" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="9133079350911740918" />
       <ref role="20lvS9" node="P9hc2Kf3iI" resolve="SubstTestAbstractChild" />
     </node>
@@ -581,13 +587,13 @@
     <property role="EcuMT" value="6240706158490120944" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="5qrsiYWpnbL" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="collapsedByDefault" />
       <property role="IQ2ns" value="6240706158490120945" />
       <ref role="20lvS9" node="5qrsiYWoAxo" resolve="CollapsedByDefault" />
     </node>
     <node concept="1TJgyj" id="K6TtETsmdm" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="collapsedConditionally" />
       <property role="IQ2ns" value="866632705892246358" />
       <ref role="20lvS9" node="K6TtETsmdp" resolve="CollapsedConditionally" />
@@ -610,8 +616,8 @@
     <property role="EcuMT" value="7429553584211899775" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="6sr4TWiFzm0" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="20kJfa" value="children" />
       <property role="IQ2ns" value="7429553584211899776" />
       <ref role="20lvS9" node="6sr4TWiFzlZ" resolve="CollapsibleConcept" />
@@ -630,9 +636,8 @@
     <property role="EcuMT" value="6519503956375920379" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="5DTV$TRy_Wr" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="child" />
-      <property role="20lbJX" value="0..1" />
       <property role="IQ2ns" value="6519503956375920411" />
       <ref role="20lvS9" node="5DTV$TRy_VW" resolve="StyleChild" />
     </node>
@@ -648,9 +653,9 @@
     <property role="EcuMT" value="1945799951702688164" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="1G0RFWHdw6A" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="child" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="1945799951702688166" />
       <ref role="20lvS9" node="1G0RFWHdw6C" resolve="InitAbstractChild" />
     </node>
@@ -662,8 +667,8 @@
     <property role="EcuMT" value="1945799951702688165" />
     <ref role="1TJDcQ" node="1G0RFWHdw6C" resolve="InitAbstractChild" />
     <node concept="1TJgyj" id="1G0RFWHdw6D" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
-      <property role="20lbJX" value="1" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="20kJfa" value="subChild" />
       <property role="IQ2ns" value="1945799951702688169" />
       <ref role="20lvS9" node="1G0RFWHdw6_" resolve="InitChildWithDirectCycle_card1" />
@@ -682,8 +687,8 @@
     <property role="EcuMT" value="8705753908477319482" />
     <ref role="1TJDcQ" node="1G0RFWHdw6C" resolve="InitAbstractChild" />
     <node concept="1TJgyj" id="7zh3gS0K_$V" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
-      <property role="20lbJX" value="1..n" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20lbJX" value="fLJekj6/1..n" />
       <property role="20kJfa" value="subChild" />
       <property role="IQ2ns" value="8705753908477319483" />
       <ref role="20lvS9" node="7zh3gS0K_$U" resolve="InitChildWithDirectCycle_card1n" />
@@ -696,8 +701,8 @@
     <property role="EcuMT" value="8705753908477435502" />
     <ref role="1TJDcQ" node="1G0RFWHdw6C" resolve="InitAbstractChild" />
     <node concept="1TJgyj" id="7zh3gS0L1TJ" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
-      <property role="20lbJX" value="1" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="20kJfa" value="subChild" />
       <property role="IQ2ns" value="8705753908477435503" />
       <ref role="20lvS9" node="7zh3gS0L1TK" resolve="InitGrandChildWithIndirectCycle_card1" />
@@ -709,9 +714,9 @@
     <property role="EcuMT" value="8705753908477435504" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="7zh3gS0L1TL" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="subchild" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="8705753908477435505" />
       <ref role="20lvS9" node="7zh3gS0L1TI" resolve="InitChildWithIndirectCycle_card1" />
     </node>
@@ -723,8 +728,8 @@
     <property role="EcuMT" value="8705753908477461657" />
     <ref role="1TJDcQ" node="1G0RFWHdw6C" resolve="InitAbstractChild" />
     <node concept="1TJgyj" id="7zh3gS0L8iq" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
-      <property role="20lbJX" value="1..n" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20lbJX" value="fLJekj6/1..n" />
       <property role="20kJfa" value="subChild" />
       <property role="IQ2ns" value="8705753908477461658" />
       <ref role="20lvS9" node="7zh3gS0L8it" resolve="InitGrandChildWithIndirectCycle_card1n" />
@@ -736,9 +741,9 @@
     <property role="EcuMT" value="8705753908477461661" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="7zh3gS0L8iu" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="subchild" />
-      <property role="20lbJX" value="1..n" />
+      <property role="20lbJX" value="fLJekj6/1..n" />
       <property role="IQ2ns" value="8705753908477461662" />
       <ref role="20lvS9" node="7zh3gS0L8ip" resolve="InitChildWithIndirectCycle_card1n" />
     </node>
@@ -749,8 +754,8 @@
     <property role="EcuMT" value="7023088407745947252" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="65R1r9DR89l" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="20kJfa" value="children" />
       <property role="IQ2ns" value="7023088407745954389" />
       <ref role="20lvS9" node="65R1r9DR89h" resolve="SelectionChild" />
@@ -774,16 +779,16 @@
     <property role="EcuMT" value="7454474523886895179" />
     <ref role="1TJDcQ" node="1G0RFWHdw6C" resolve="InitAbstractChild" />
     <node concept="1TJgyj" id="6tNBhlZu$1d" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="ch1" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="7454474523886895181" />
       <ref role="20lvS9" node="6tNBhlZu$1c" resolve="InitGrandChild" />
     </node>
     <node concept="1TJgyj" id="6tNBhlZu$1l" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="ch2" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="7454474523886895189" />
       <ref role="20lvS9" node="6tNBhlZu$1c" resolve="InitGrandChild" />
     </node>
@@ -807,9 +812,9 @@
     </node>
     <node concept="1TJgyj" id="nH9mMU35J5" role="1TKVEi">
       <property role="IQ2ns" value="427038688578132933" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="children" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <ref role="20lvS9" node="53lOj_WYUPg" resolve="AttributeChild" />
     </node>
   </node>
@@ -854,13 +859,13 @@
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="3r66m91DZ8d" role="1TKVEi">
       <property role="IQ2ns" value="3946870033235833357" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="simpleNode" />
       <ref role="20lvS9" node="3r66m91DWO2" resolve="SimpleNode" />
     </node>
     <node concept="1TJgyj" id="3r66m91DZ8f" role="1TKVEi">
       <property role="IQ2ns" value="3946870033235833359" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="anotherNode" />
       <ref role="20lvS9" node="3r66m91DWO2" resolve="SimpleNode" />
     </node>
@@ -877,18 +882,18 @@
     <property role="EcuMT" value="5383578965096699278" />
     <ref role="1TJDcQ" node="6LcR7Gqxc8y" resolve="DelTestChildContainer" />
     <node concept="1TJgyj" id="4EQk8IqQDmf" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="specialChild" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="5383578965096699279" />
       <ref role="20lvS9" node="4EQk8IqQDmd" resolve="DelTestSpecialAbstractChild" />
       <ref role="20ksaX" node="6LcR7GqxcjN" resolve="child" />
     </node>
     <node concept="1TJgyj" id="2znOOs7hk74" role="1TKVEi">
       <property role="IQ2ns" value="2943053183528026564" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="specialInterfaceChild" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <ref role="20lvS9" node="2znOOs7hk5B" resolve="ISpecialDelTestChild" />
       <ref role="20ksaX" node="2znOOs7gLZ9" resolve="interfaceChild" />
     </node>
@@ -945,8 +950,8 @@
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="VO5i9DB4QN" role="1TKVEi">
       <property role="IQ2ns" value="1077509448393313715" />
-      <property role="20lmBu" value="aggregation" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="20kJfa" value="child" />
       <ref role="20lvS9" node="VO5i9DB4QB" resolve="DeleteWrapperChild" />
     </node>
@@ -1002,25 +1007,25 @@
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="4KJeJqcNbGs" role="1TKVEi">
       <property role="IQ2ns" value="5489671301386517276" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="collapsedComponent" />
       <ref role="20lvS9" node="4KJeJqcKFDA" resolve="SwingComponent" />
     </node>
     <node concept="1TJgyj" id="4KJeJqcNbGu" role="1TKVEi">
       <property role="IQ2ns" value="5489671301386517278" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="expandedComponent" />
       <ref role="20lvS9" node="4KJeJqcKFDA" resolve="SwingComponent" />
     </node>
     <node concept="1TJgyj" id="3khGH3BKmjA" role="1TKVEi">
       <property role="IQ2ns" value="3824034168925414630" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="collapsedInnerContainer" />
       <ref role="20lvS9" node="4KJeJqcMYPi" resolve="SwingComponentContainer" />
     </node>
     <node concept="1TJgyj" id="3khGH3BKmjE" role="1TKVEi">
       <property role="IQ2ns" value="3824034168925414634" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="expandedInnerContainer" />
       <ref role="20lvS9" node="4KJeJqcMYPi" resolve="SwingComponentContainer" />
     </node>
@@ -1032,7 +1037,7 @@
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="3khGH3BURQZ" role="1TKVEi">
       <property role="IQ2ns" value="3824034168928173503" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="foldedCell" />
       <ref role="20lvS9" node="3khGH3BURR1" resolve="FoldedCell" />
     </node>
@@ -1056,13 +1061,13 @@
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="5tii5yjw9Ke" role="1TKVEi">
       <property role="IQ2ns" value="6292171174659005454" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="child" />
       <ref role="20lvS9" node="5tii5yjw2eH" resolve="CompletionChild" />
     </node>
     <node concept="1TJgyj" id="lKjGr4ffY1" role="1TKVEi">
       <property role="IQ2ns" value="391899783184056193" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="immediateCompletionChild" />
       <ref role="20lvS9" node="lKjGr4fekd" resolve="ImmediateCompletionChild" />
     </node>
@@ -1083,39 +1088,39 @@
     <ref role="1TJDcQ" node="2Byns3g9hP_" resolve="TwoStepDeleteAbstractChildContainer" />
     <node concept="1TJgyj" id="14TMHtI6Qp2" role="1TKVEi">
       <property role="IQ2ns" value="1241246198931351106" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="singleOptionalChild" />
       <ref role="20lvS9" node="2Byns3g9hPu" resolve="TwoStepDeleteDefaultChild" />
     </node>
     <node concept="1TJgyj" id="14TMHtI6Qp4" role="1TKVEi">
       <property role="IQ2ns" value="1241246198931351108" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="singleRequiredChild" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <ref role="20lvS9" node="2Byns3g9hPu" resolve="TwoStepDeleteDefaultChild" />
     </node>
     <node concept="1TJgyj" id="14TMHtI6Qp7" role="1TKVEi">
       <property role="IQ2ns" value="1241246198931351111" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="multipleChild" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <ref role="20lvS9" node="2Byns3g9hPu" resolve="TwoStepDeleteDefaultChild" />
     </node>
     <node concept="1TJgyj" id="14TMHtI9CLh" role="1TKVEi">
       <property role="IQ2ns" value="1241246198932081745" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="labelChild" />
       <ref role="20lvS9" node="14TMHtI9CLm" resolve="TwoStepDeleteLabelChild" />
     </node>
     <node concept="1TJgyj" id="14TMHtIabE0" role="1TKVEi">
       <property role="IQ2ns" value="1241246198932224640" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="cellCollectionChild" />
       <ref role="20lvS9" node="14TMHtIabE6" resolve="TwoStepDeleteCellCollectionChild" />
     </node>
     <node concept="1TJgyj" id="26oakFZDd7$" role="1TKVEi">
       <property role="IQ2ns" value="2420730201804952036" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="childWithAttribute" />
       <ref role="20lvS9" node="2Byns3g9hPu" resolve="TwoStepDeleteDefaultChild" />
     </node>
@@ -1154,7 +1159,7 @@
     <ref role="1TJDcQ" node="2Byns3g9hP_" resolve="TwoStepDeleteAbstractChildContainer" />
     <node concept="1TJgyj" id="14TMHtIcUao" role="1TKVEi">
       <property role="IQ2ns" value="1241246198932939416" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="child" />
       <ref role="20lvS9" node="14TMHtIcUa1" resolve="TwoStepDeleteCustomChild" />
     </node>
@@ -1188,7 +1193,7 @@
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="2Byns3g9ctQ" role="1TKVEi">
       <property role="IQ2ns" value="3018077782998828918" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="container" />
       <ref role="20lvS9" node="2Byns3g9hP_" resolve="TwoStepDeleteAbstractChildContainer" />
     </node>
@@ -1201,32 +1206,39 @@
     <property role="TrG5h" value="MenuTraceParent" />
     <property role="3GE5qa" value="menuTrace" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
-    <node concept="1TJgyi" id="39A5F7XGj6m" role="1TKVEl">
-      <property role="IQ2nx" value="3631615103242154390" />
+    <node concept="1TJgyi" id="3Ftr4R6BGZw" role="1TKVEl">
       <property role="TrG5h" value="enumProperty" />
-      <ref role="AX2Wp" node="39A5F7XGj6M" resolve="MenuTraceEnum" />
+      <property role="IQ2nx" value="3631615103242154390" />
+      <ref role="AX2Wp" node="3Ftr4R6BF1I" resolve="MenuTraceEnum" />
+      <node concept="3l_iC" id="3Ftr4R6BGZx" role="lGtFl">
+        <node concept="1TJgyi" id="39A5F7XGj6m" role="3l_iP">
+          <property role="IQ2nx" value="3631615103242154390" />
+          <property role="TrG5h" value="enumProperty" />
+          <ref role="AX2Wp" node="39A5F7XGj6M" resolve="MenuTraceEnum" />
+        </node>
+      </node>
     </node>
     <node concept="1TJgyj" id="F2OYSPvu87" role="1TKVEi">
       <property role="IQ2ns" value="775415105914266119" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="menuTraceSubstituteChild" />
       <ref role="20lvS9" node="F2OYSPvu89" resolve="MenuTraceSubstituteChild" />
     </node>
     <node concept="1TJgyj" id="1cRoRtw3ttv" role="1TKVEi">
       <property role="IQ2ns" value="1384684774803494751" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="menuTraceCellMenu" />
       <ref role="20lvS9" node="1cRoRtw3ttu" resolve="MenuTraceChildCellMenu" />
     </node>
     <node concept="1TJgyj" id="1cRoRtweQ2H" role="1TKVEi">
       <property role="IQ2ns" value="1384684774806479021" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="menuTraceTransformation" />
       <ref role="20lvS9" node="1cRoRtwdj9W" resolve="MenuTraceTransformationChild" />
     </node>
     <node concept="1TJgyj" id="39A5F7XG_ir" role="1TKVEi">
       <property role="IQ2ns" value="3631615103242228891" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="menuTraceChildWithEnum" />
       <ref role="20lvS9" node="39A5F7XG$Zj" resolve="MenuTraceTransformationChildWithEnum" />
     </node>
@@ -1239,7 +1251,6 @@
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="MGAZl34V8D" role="1TKVEi">
       <property role="IQ2ns" value="913276302144025129" />
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="nodeToReference" />
       <ref role="20lvS9" node="MGAZl37YQd" resolve="MenuTraceNodeToReference" />
     </node>
@@ -1281,7 +1292,7 @@
     </node>
     <node concept="1TJgyj" id="1cRoRtw4fCg" role="1TKVEi">
       <property role="IQ2ns" value="1384684774803700240" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="child" />
       <ref role="20lvS9" node="1cRoRtw4fCd" resolve="MenuTraceGrandChildCellMenu" />
     </node>
@@ -1332,28 +1343,21 @@
       </node>
     </node>
   </node>
-  <node concept="AxPO7" id="39A5F7XGj6M">
-    <property role="3GE5qa" value="menuTrace" />
-    <property role="TrG5h" value="MenuTraceEnum" />
-    <property role="PDuV0" value="true" />
-    <ref role="M4eZT" to="tpck:fKAOsGN" resolve="string" />
-    <node concept="M4N5e" id="39A5F7XGj6N" role="M5hS2">
-      <property role="1uS6qo" value="enum1" />
-      <property role="1uS6qv" value="enum1" />
-    </node>
-    <node concept="M4N5e" id="39A5F7XGj6O" role="M5hS2">
-      <property role="1uS6qo" value="enum2" />
-      <property role="1uS6qv" value="enum2" />
-    </node>
-  </node>
   <node concept="1TIwiD" id="39A5F7XG$Zj">
     <property role="EcuMT" value="3631615103242227667" />
     <property role="TrG5h" value="MenuTraceTransformationChildWithEnum" />
     <property role="3GE5qa" value="menuTrace.transformation" />
-    <node concept="1TJgyi" id="39A5F7XG_hN" role="1TKVEl">
-      <property role="IQ2nx" value="3631615103242228851" />
+    <node concept="1TJgyi" id="3Ftr4R6BGZy" role="1TKVEl">
       <property role="TrG5h" value="enum" />
-      <ref role="AX2Wp" node="39A5F7XGj6M" resolve="MenuTraceEnum" />
+      <property role="IQ2nx" value="3631615103242228851" />
+      <ref role="AX2Wp" node="3Ftr4R6BF1I" resolve="MenuTraceEnum" />
+      <node concept="3l_iC" id="3Ftr4R6BGZz" role="lGtFl">
+        <node concept="1TJgyi" id="39A5F7XG_hN" role="3l_iP">
+          <property role="IQ2nx" value="3631615103242228851" />
+          <property role="TrG5h" value="enum" />
+          <ref role="AX2Wp" node="39A5F7XGj6M" resolve="MenuTraceEnum" />
+        </node>
+      </node>
     </node>
   </node>
   <node concept="1TIwiD" id="6KrovOGOuVW">
@@ -1381,9 +1385,9 @@
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="6KrovOGOuW2" role="1TKVEi">
       <property role="IQ2ns" value="7789927720473980674" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="containers" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <ref role="20lvS9" node="6KrovOGOuVY" resolve="Container" />
     </node>
   </node>
@@ -1409,22 +1413,22 @@
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="5X9_bIv87wE" role="1TKVEi">
       <property role="IQ2ns" value="6866182640452532266" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="singleChild" />
       <ref role="20lvS9" node="5X9_bIv87wD" resolve="PlaceholderChild" />
     </node>
     <node concept="1TJgyj" id="5X9_bIv87wG" role="1TKVEi">
       <property role="IQ2ns" value="6866182640452532268" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="multipleChildren" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <ref role="20lvS9" node="5X9_bIv87wD" resolve="PlaceholderChild" />
     </node>
     <node concept="1TJgyj" id="64sE5JwoRpT" role="1TKVEi">
       <property role="IQ2ns" value="6997653033587013241" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="customPlaceholder" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <ref role="20lvS9" node="64sE5JwoRpS" resolve="CustomPlaceholder" />
     </node>
   </node>
@@ -1468,58 +1472,56 @@
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="5Q8f32J8IKM" role="1TKVEi">
       <property role="IQ2ns" value="6739703022154345522" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="verticalMultiple" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <ref role="20lvS9" node="5Q8f32J8IJR" resolve="DeleteLineTestChild" />
     </node>
     <node concept="1TJgyj" id="5Q8f32J8IKS" role="1TKVEi">
       <property role="IQ2ns" value="6739703022154345528" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="horizontalMultiple" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <ref role="20lvS9" node="5Q8f32J8IJR" resolve="DeleteLineTestChild" />
     </node>
     <node concept="1TJgyj" id="5Q8f32J8IKO" role="1TKVEi">
       <property role="IQ2ns" value="6739703022154345524" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="indentVerticalMultiple" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <ref role="20lvS9" node="5Q8f32J8IJR" resolve="DeleteLineTestChild" />
     </node>
     <node concept="1TJgyj" id="5Q8f32J8IKQ" role="1TKVEi">
       <property role="IQ2ns" value="6739703022154345526" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="indentHorizontalMultiple" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <ref role="20lvS9" node="5Q8f32J8IJR" resolve="DeleteLineTestChild" />
     </node>
     <node concept="1TJgyj" id="5Q8f32J8ILB" role="1TKVEi">
       <property role="IQ2ns" value="6739703022154345575" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="readOnlyChild" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <ref role="20lvS9" node="5Q8f32J8IPE" resolve="DeleteLineTestReadOnlyChild" />
     </node>
     <node concept="1TJgyj" id="5Q8f32J8IM8" role="1TKVEi">
       <property role="IQ2ns" value="6739703022154345608" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="verticalSingle" />
-      <property role="20lbJX" value="0..1" />
       <ref role="20lvS9" node="5Q8f32J8IJR" resolve="DeleteLineTestChild" />
     </node>
     <node concept="1TJgyj" id="5Q8f32J8IMl" role="1TKVEi">
       <property role="IQ2ns" value="6739703022154345621" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="horizontalSingle" />
-      <property role="20lbJX" value="0..1" />
       <ref role="20lvS9" node="5Q8f32J8IJR" resolve="DeleteLineTestChild" />
     </node>
     <node concept="1TJgyj" id="6LNwc8WAPZO" role="1TKVEi">
       <property role="IQ2ns" value="7814731350146768884" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="multipleChildrenWithNested" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <ref role="20lvS9" node="6LNwc8WAwY9" resolve="DeleteLineTestChildWithNested" />
     </node>
   </node>
@@ -1536,15 +1538,15 @@
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="6LNwc8WAwYa" role="1TKVEi">
       <property role="IQ2ns" value="7814731350146682762" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="singleChild" />
       <ref role="20lvS9" node="5Q8f32J8IJR" resolve="DeleteLineTestChild" />
     </node>
     <node concept="1TJgyj" id="6LNwc8WAwYc" role="1TKVEi">
       <property role="IQ2ns" value="7814731350146682764" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="horizontalChild" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <ref role="20lvS9" node="5Q8f32J8IJR" resolve="DeleteLineTestChild" />
     </node>
   </node>
@@ -1563,23 +1565,20 @@
     <property role="EcuMT" value="8820932044744203687" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="7DEfJmqPDQC" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="childWithUsualReference" />
-      <property role="20lbJX" value="0..1" />
       <property role="IQ2ns" value="8820932044744203688" />
       <ref role="20lvS9" node="7DEfJmqPDQG" resolve="DelTestChildWithUsualReference" />
     </node>
     <node concept="1TJgyj" id="7DEfJmqPDQM" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="childWithSmartReference" />
-      <property role="20lbJX" value="0..1" />
       <property role="IQ2ns" value="8820932044744203698" />
       <ref role="20lvS9" node="7DEfJmqPDQH" resolve="DelTestChildWithSmartReference" />
     </node>
     <node concept="1TJgyj" id="5EogwwlOCa4" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="childToReference" />
-      <property role="20lbJX" value="0..1" />
       <property role="IQ2ns" value="6528040262366823044" />
       <ref role="20lvS9" node="7DEfJmqPDQI" resolve="DelTestNodeToReference" />
     </node>
@@ -1595,9 +1594,7 @@
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="7DEfJmqPDSk" role="1TKVEi">
       <property role="IQ2ns" value="8820932044744203796" />
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="reference" />
-      <property role="20lbJX" value="0..1" />
       <ref role="20lvS9" node="7DEfJmqPDQI" resolve="DelTestNodeToReference" />
     </node>
   </node>
@@ -1608,9 +1605,8 @@
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="7DEfJmqPDTa" role="1TKVEi">
       <property role="IQ2ns" value="8820932044744203850" />
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="reference" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <ref role="20lvS9" node="7DEfJmqPDQI" resolve="DelTestNodeToReference" />
     </node>
   </node>
@@ -1650,13 +1646,12 @@
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="6BUu6R_5Lko" role="1TKVEi">
       <property role="IQ2ns" value="7636548531550360856" />
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="reference" />
       <ref role="20lvS9" node="6BUu6R_5Lkf" resolve="AutoResolveNodeToReference" />
     </node>
     <node concept="1TJgyj" id="6BUu6R_5MfW" role="1TKVEi">
       <property role="IQ2ns" value="7636548531550364668" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="childWithErrorCell" />
       <ref role="20lvS9" node="6BUu6R_5MeQ" resolve="AutoResolveChildWithErrorCell" />
     </node>
@@ -1731,17 +1726,92 @@
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="5DXkUDJKoMo" role="1TKVEi">
       <property role="IQ2ns" value="6520459826986847384" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="multiChildWithDefaultConcreteConcept" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <ref role="20lvS9" node="367vPD06cFP" resolve="SubstTestAbstractChild_WithDefaultConcreteConcept" />
     </node>
     <node concept="1TJgyj" id="5DXkUDJKoMp" role="1TKVEi">
       <property role="IQ2ns" value="6520459826986847385" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="singleChildWithDefaultConcreteConcept" />
-      <property role="20lbJX" value="0..1" />
       <ref role="20lvS9" node="367vPD06cFP" resolve="SubstTestAbstractChild_WithDefaultConcreteConcept" />
+    </node>
+  </node>
+  <node concept="25R3W" id="3Ftr4R6BF0H">
+    <property role="TrG5h" value="SubstTestEnum" />
+    <property role="3GE5qa" value="substitute" />
+    <property role="3F6X1D" value="957371990174295436" />
+    <ref role="1H5jkz" node="3Ftr4R6BF0J" resolve="v1" />
+    <node concept="2JgGob" id="3Ftr4R6BF0I" role="lGtFl">
+      <property role="3scbB" value="5CkWgdpp3fo/by_custom_methods" />
+      <property role="3sfsH" value="5CkWgdpp0p1/by_name" />
+      <node concept="AxPO7" id="P9hc2KfQmc" role="3lCyv">
+        <property role="3GE5qa" value="substitute" />
+        <property role="TrG5h" value="SubstTestEnum" />
+        <property role="3F6X1D" value="957371990174295436" />
+        <ref role="M4eZT" to="tpck:fKAOsGN" resolve="string" />
+        <node concept="M4N5e" id="P9hc2KfQmd" role="M5hS2">
+          <property role="1uS6qo" value="v1" />
+        </node>
+        <node concept="M4N5e" id="P9hc2KfQnj" role="M5hS2">
+          <property role="1uS6qo" value="v2" />
+          <property role="1uS6qv" value="v2" />
+        </node>
+        <node concept="M4N5e" id="P9hc2KfQnm" role="M5hS2">
+          <property role="1uS6qo" value="v3" />
+          <property role="1uS6qv" value="v3" />
+        </node>
+      </node>
+    </node>
+    <node concept="25R33" id="3Ftr4R6BF0J" role="25R1y">
+      <property role="TrG5h" value="v1" />
+      <property role="3tVfz5" value="957371990174295437" />
+      <ref role="2wpffI" node="P9hc2KfQmd" />
+    </node>
+    <node concept="25R33" id="3Ftr4R6BF0K" role="25R1y">
+      <property role="TrG5h" value="v2" />
+      <property role="3tVfz5" value="957371990174295507" />
+      <ref role="2wpffI" node="P9hc2KfQnj" />
+    </node>
+    <node concept="25R33" id="3Ftr4R6BF0L" role="25R1y">
+      <property role="TrG5h" value="v3" />
+      <property role="3tVfz5" value="957371990174295510" />
+      <ref role="2wpffI" node="P9hc2KfQnm" />
+    </node>
+  </node>
+  <node concept="25R3W" id="3Ftr4R6BF1I">
+    <property role="TrG5h" value="MenuTraceEnum" />
+    <property role="3GE5qa" value="menuTrace" />
+    <property role="3F6X1D" value="3631615103242154418" />
+    <node concept="2JgGob" id="3Ftr4R6BF1J" role="lGtFl">
+      <property role="3scbB" value="5CkWgdpp3eY/string_name" />
+      <property role="3sfsH" value="5CkWgdpp0p1/by_name" />
+      <node concept="AxPO7" id="39A5F7XGj6M" role="3lCyv">
+        <property role="3GE5qa" value="menuTrace" />
+        <property role="TrG5h" value="MenuTraceEnum" />
+        <property role="PDuV0" value="true" />
+        <property role="3F6X1D" value="3631615103242154418" />
+        <ref role="M4eZT" to="tpck:fKAOsGN" resolve="string" />
+        <node concept="M4N5e" id="39A5F7XGj6N" role="M5hS2">
+          <property role="1uS6qo" value="enum1" />
+          <property role="1uS6qv" value="enum1" />
+        </node>
+        <node concept="M4N5e" id="39A5F7XGj6O" role="M5hS2">
+          <property role="1uS6qo" value="enum2" />
+          <property role="1uS6qv" value="enum2" />
+        </node>
+      </node>
+    </node>
+    <node concept="25R33" id="3Ftr4R6BF1K" role="25R1y">
+      <property role="TrG5h" value="enum1" />
+      <property role="3tVfz5" value="3631615103242154419" />
+      <ref role="2wpffI" node="39A5F7XGj6N" />
+    </node>
+    <node concept="25R33" id="3Ftr4R6BF1L" role="25R1y">
+      <property role="TrG5h" value="enum2" />
+      <property role="3tVfz5" value="3631615103242154420" />
+      <ref role="2wpffI" node="39A5F7XGj6O" />
     </node>
   </node>
 </model>

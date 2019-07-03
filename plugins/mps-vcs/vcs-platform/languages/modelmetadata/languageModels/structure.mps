@@ -46,30 +46,30 @@
     <property role="EcuMT" value="8374934269827354989" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="444ZSQ068oQ" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="language" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="4685150495576720950" />
       <ref role="20lvS9" node="6o5s9kYTtqT" resolve="LanguageDependency" />
     </node>
     <node concept="1TJgyj" id="444ZSQ068oS" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="languageEngagedOnGeneration" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="4685150495576720952" />
       <ref role="20lvS9" node="6o5s9kYTtqT" resolve="LanguageDependency" />
     </node>
     <node concept="1TJgyj" id="444ZSQ068oV" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="devkit" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="4685150495576720955" />
       <ref role="20lvS9" node="3B8MzHTEEZx" resolve="ModuleReference" />
     </node>
     <node concept="1TJgyj" id="444ZSQ068oZ" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="import" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="4685150495576720959" />
       <ref role="20lvS9" node="3B8MzHTEEZu" resolve="ModelReference" />
     </node>

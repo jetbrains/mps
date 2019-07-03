@@ -70,7 +70,7 @@
     <property role="R5$K7" value="false" />
     <property role="R5$K2" value="false" />
     <property role="TrG5h" value="ProjectPluginDisposeBlock" />
-    <property role="2_RsDV" value="none" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
     <property role="3GE5qa" value="Custom.ProjectPlugin" />
     <property role="34LRSv" value="dispose" />
     <property role="EcuMT" value="481983775135178819" />
@@ -80,7 +80,7 @@
     <property role="R5$K7" value="false" />
     <property role="R5$K2" value="false" />
     <property role="TrG5h" value="ProjectPluginInitBlock" />
-    <property role="2_RsDV" value="none" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
     <property role="3GE5qa" value="Custom.ProjectPlugin" />
     <property role="34LRSv" value="init" />
     <property role="EcuMT" value="481983775135178825" />
@@ -90,14 +90,14 @@
     <property role="R5$K7" value="false" />
     <property role="R5$K2" value="false" />
     <property role="TrG5h" value="ApplicationPluginType" />
-    <property role="2_RsDV" value="none" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
     <property role="3GE5qa" value="Custom.ApplicationPlugin" />
     <property role="34LRSv" value="application plugin&lt;&gt;" />
     <property role="EcuMT" value="481983775135178831" />
     <ref role="1TJDcQ" to="tp4f:hyWtXx5" resolve="BaseClassifierType" />
     <node concept="1TJgyj" id="qKmr2orM1h" role="1TKVEi">
       <property role="20kJfa" value="plugin" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="481983775135178833" />
       <ref role="20lvS9" node="qKmr2orM1o" resolve="ApplicationPluginDeclaration" />
     </node>
@@ -115,21 +115,21 @@
       <ref role="PrY4T" to="tp4f:hyWqMFP" resolve="IClassifier" />
     </node>
     <node concept="1TJgyj" id="qKmr2orM1k" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="initBlock" />
       <property role="IQ2ns" value="481983775135178836" />
       <ref role="20lvS9" node="qKmr2orM19" resolve="ProjectPluginInitBlock" />
     </node>
     <node concept="1TJgyj" id="qKmr2orM1l" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="disposeBlock" />
       <property role="IQ2ns" value="481983775135178837" />
       <ref role="20lvS9" node="qKmr2orM13" resolve="ProjectPluginDisposeBlock" />
     </node>
     <node concept="1TJgyj" id="qKmr2orM1m" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="fieldDeclaration" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="481983775135178838" />
       <ref role="20lvS9" to="tp4f:hEBZ0aj" resolve="DefaultClassifierFieldDeclaration" />
     </node>
@@ -150,21 +150,21 @@
       <ref role="PrY4T" to="tp4f:hyWqMFP" resolve="IClassifier" />
     </node>
     <node concept="1TJgyj" id="qKmr2orM1q" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="initBlock" />
       <property role="IQ2ns" value="481983775135178842" />
       <ref role="20lvS9" node="qKmr2orM1z" resolve="ApplicationPluginInitBlock" />
     </node>
     <node concept="1TJgyj" id="qKmr2orM1r" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="disposeBlock" />
       <property role="IQ2ns" value="481983775135178843" />
       <ref role="20lvS9" node="qKmr2orM1u" resolve="ApplicationPluginDisposeBlock" />
     </node>
     <node concept="1TJgyj" id="qKmr2orM1s" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="fieldDeclaration" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="481983775135178844" />
       <ref role="20lvS9" to="tp4f:hEBZ0aj" resolve="DefaultClassifierFieldDeclaration" />
     </node>
@@ -176,7 +176,7 @@
     <property role="R5$K7" value="false" />
     <property role="R5$K2" value="false" />
     <property role="TrG5h" value="ApplicationPluginDisposeBlock" />
-    <property role="2_RsDV" value="none" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
     <property role="3GE5qa" value="Custom.ApplicationPlugin" />
     <property role="34LRSv" value="dispose" />
     <property role="EcuMT" value="481983775135178846" />
@@ -186,7 +186,7 @@
     <property role="R5$K7" value="false" />
     <property role="R5$K2" value="false" />
     <property role="TrG5h" value="ApplicationPluginInitBlock" />
-    <property role="2_RsDV" value="none" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
     <property role="3GE5qa" value="Custom.ApplicationPlugin" />
     <property role="34LRSv" value="init" />
     <property role="EcuMT" value="481983775135178851" />
@@ -196,14 +196,14 @@
     <property role="R5$K7" value="false" />
     <property role="R5$K2" value="false" />
     <property role="TrG5h" value="ProjectPluginType" />
-    <property role="2_RsDV" value="none" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
     <property role="3GE5qa" value="Custom.ProjectPlugin" />
     <property role="34LRSv" value="project plugin&lt;&gt;" />
     <property role="EcuMT" value="481983775135178856" />
     <ref role="1TJDcQ" to="tp4f:hyWtXx5" resolve="BaseClassifierType" />
     <node concept="1TJgyj" id="qKmr2orM1E" role="1TKVEi">
       <property role="20kJfa" value="plugin" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="481983775135178858" />
       <ref role="20lvS9" node="qKmr2orM1i" resolve="ProjectPluginDeclaration" />
     </node>
@@ -212,13 +212,13 @@
     <property role="R5$K7" value="false" />
     <property role="R5$K2" value="false" />
     <property role="TrG5h" value="GetToolInProjectOperation" />
-    <property role="2_RsDV" value="none" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
     <property role="3GE5qa" value="Tool" />
     <property role="EcuMT" value="681855071694758165" />
     <ref role="1TJDcQ" to="tp4k:2TmYHHddPWB" resolve="BaseProjectOperation" />
     <node concept="1TJgyj" id="_QrTcSEy4m" role="1TKVEi">
       <property role="20kJfa" value="tool" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="681855071694758166" />
       <ref role="20lvS9" to="tp4k:5FstybB4bRs" resolve="BaseToolDeclaration" />
     </node>
@@ -234,13 +234,13 @@
     <property role="R5$K7" value="false" />
     <property role="R5$K2" value="false" />
     <property role="TrG5h" value="GetPreferencesComponentInProjectOperation" />
-    <property role="2_RsDV" value="none" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
     <property role="3GE5qa" value="Preference" />
     <property role="EcuMT" value="681855071694758168" />
     <ref role="1TJDcQ" to="tp4k:2TmYHHddPWB" resolve="BaseProjectOperation" />
     <node concept="1TJgyj" id="_QrTcSEy4p" role="1TKVEi">
       <property role="20kJfa" value="componentDeclaration" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="681855071694758169" />
       <ref role="20lvS9" to="tp4k:hB4j29J" resolve="PreferencesComponentDeclaration" />
     </node>

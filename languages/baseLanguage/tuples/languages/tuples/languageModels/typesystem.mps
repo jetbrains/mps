@@ -196,9 +196,6 @@
         <child id="1175517851849" name="errorString" index="2MkJ7o" />
       </concept>
       <concept id="1179832490862" name="jetbrains.mps.lang.typesystem.structure.CreateStrongLessThanInequationStatement" flags="nn" index="2NvLDW" />
-      <concept id="1212056081426" name="jetbrains.mps.lang.typesystem.structure.AbstractInequationStatement" flags="ng" index="Ob1k8">
-        <property id="1212056105818" name="inequationPriority" index="Ob790" />
-      </concept>
       <concept id="1227096774658" name="jetbrains.mps.lang.typesystem.structure.MessageStatement" flags="ng" index="2OEH$v">
         <child id="1227096802790" name="nodeToReport" index="2OEOjV" />
       </concept>
@@ -542,7 +539,6 @@
         </node>
         <node concept="3clFbS" id="Hjn6ojf3Qr" role="2LFqv$">
           <node concept="1ZobV4" id="Hjn6ojf3Qs" role="3cqZAp">
-            <property role="Ob790" value="0" />
             <node concept="mw_s8" id="Hjn6ojf3Qt" role="1ZfhK$">
               <node concept="3M$PaV" id="Hjn6ojf3Qy" role="mwGJk">
                 <ref role="3M$S_o" node="Hjn6ojf3Ql" resolve="lmt" />
@@ -588,7 +584,6 @@
         </node>
       </node>
       <node concept="1ZobV4" id="i1LGedi" role="3cqZAp">
-        <property role="Ob790" value="0" />
         <node concept="mw_s8" id="i1LGf0G" role="1ZfhKB">
           <node concept="2c44tf" id="i1LGf0H" role="mwGJk">
             <node concept="10Oyi0" id="i1LGfJQ" role="2c44tc" />
@@ -1288,7 +1283,6 @@
             </node>
             <node concept="3clFbS" id="Hjn6ojf580" role="2LFqv$">
               <node concept="1ZobV4" id="Hjn6ojf581" role="3cqZAp">
-                <property role="Ob790" value="0" />
                 <node concept="mw_s8" id="Hjn6ojf582" role="1ZfhKB">
                   <node concept="3M$PaV" id="Hjn6ojf587" role="mwGJk">
                     <ref role="3M$S_o" node="Hjn6ojf57Z" resolve="rp" />
@@ -1435,7 +1429,6 @@
         </node>
       </node>
       <node concept="2NvLDW" id="3mrSnozwo_W" role="3cqZAp">
-        <property role="Ob790" value="0" />
         <node concept="mw_s8" id="3mrSnozwo_X" role="1ZfhK$">
           <node concept="1Z2H0r" id="3mrSnozwo_Y" role="mwGJk">
             <node concept="2OqwBi" id="3mrSnozwo_Z" role="1Z2MuG">

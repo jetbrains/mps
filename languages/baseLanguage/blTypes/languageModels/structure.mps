@@ -47,9 +47,9 @@
     <property role="EcuMT" value="1159268590033" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="gRDMI7g" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="extends" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="1159268590032" />
       <ref role="20lvS9" node="gRDMZzC" resolve="PrimitiveTypeRef" />
     </node>
@@ -66,7 +66,7 @@
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="gRDMZzB" role="1TKVEi">
       <property role="20kJfa" value="descriptor" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="1159268661479" />
       <ref role="20lvS9" node="gRDMI7h" resolve="PrimitiveTypeDescriptor" />
     </node>

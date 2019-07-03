@@ -2,13 +2,13 @@
 <model ref="r:00000000-0000-4000-0000-011c895902f0(jetbrains.mps.lang.generator.generationContext.editor)">
   <persistence version="9" />
   <languages>
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="12" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="13" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="4" />
-    <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="1" />
+    <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="2" />
   </languages>
   <imports>
     <import index="tpf3" ref="r:00000000-0000-4000-0000-011c895902f3(jetbrains.mps.lang.generator.generationContext.structure)" />
@@ -151,7 +151,6 @@
         <reference id="1140103550593" name="relationDeclaration" index="1NtTu8" />
       </concept>
       <concept id="1073389214265" name="jetbrains.mps.lang.editor.structure.EditorCellModel" flags="ng" index="3EYTF0">
-        <property id="1130859485024" name="attractsFocus" index="1cu_pB" />
         <child id="1142887637401" name="renderingCondition" index="pqm2j" />
         <child id="1164826688380" name="menuDescriptor" index="P5bDN" />
         <child id="4202667662392416064" name="transformationMenu" index="3vIgyS" />
@@ -438,7 +437,6 @@
   <node concept="24kQdi" id="hHr8Uty">
     <ref role="1XX52x" to="tpf3:hHiwH3j" resolve="GenerationContextOp_Base" />
     <node concept="PMmxH" id="2wdLO7KhYdo" role="2wV5jI">
-      <property role="1cu_pB" value="0" />
       <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
       <ref role="1k5W1q" node="hIqudHa" resolve="genContext_operation" />
       <node concept="3$7jql" id="2wdLO7KhYdp" role="3F10Kt">
@@ -499,7 +497,6 @@
     <ref role="1XX52x" to="tpf3:hIfTwd8" resolve="GenerationContextOp_UserObjectAccessBase" />
     <node concept="3EZMnI" id="hIfTU2b" role="2wV5jI">
       <node concept="PMmxH" id="2wdLO7KhYbO" role="3EZMnx">
-        <property role="1cu_pB" value="0" />
         <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
         <ref role="1k5W1q" node="hIqudHa" resolve="genContext_operation" />
         <node concept="OXEIz" id="2wdLO7KhYbP" role="P5bDN">
@@ -527,7 +524,6 @@
     <ref role="1XX52x" to="tpf3:hIk5Spb" resolve="GenerationContextOp_ShowMessageBase" />
     <node concept="3EZMnI" id="hIk6na5" role="2wV5jI">
       <node concept="PMmxH" id="2wdLO7KhYd3" role="3EZMnx">
-        <property role="1cu_pB" value="0" />
         <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
         <ref role="1k5W1q" node="hIqudHa" resolve="genContext_operation" />
         <node concept="OXEIz" id="2wdLO7KhYd4" role="P5bDN">
@@ -601,10 +597,10 @@
         <property role="VOm3f" value="true" />
       </node>
       <node concept="Vb9p2" id="hIquxOB" role="3F10Kt">
-        <property role="Vbekb" value="BOLD" />
+        <property role="Vbekb" value="g1_k_vY/BOLD" />
       </node>
       <node concept="VechU" id="hQGAzUl" role="3F10Kt">
-        <property role="Vb096" value="darkGray" />
+        <property role="Vb096" value="fLJRk5B/darkGray" />
       </node>
       <node concept="1uO$qF" id="3TwGi_N3NCX" role="3F10Kt">
         <node concept="3nzxsE" id="3TwGi_N3NCZ" role="1uO$qD">
@@ -849,10 +845,10 @@
       <node concept="1iCGBv" id="2bdIC8aACSm" role="3EZMnx">
         <ref role="1NtTu8" to="tpf3:2bdIC8aAwm4" resolve="importClause" />
         <node concept="Vb9p2" id="4sWLrFSC5RH" role="3F10Kt">
-          <property role="Vbekb" value="ITALIC" />
+          <property role="Vbekb" value="g1_kEg4/ITALIC" />
         </node>
         <node concept="VechU" id="4sWLrFSC5RI" role="3F10Kt">
-          <property role="Vb096" value="blue" />
+          <property role="Vb096" value="fLwANPu/blue" />
         </node>
         <node concept="1sVBvm" id="2bdIC8aACSn" role="1sWHZn">
           <node concept="1HlG4h" id="2bdIC8aACSp" role="2wV5jI">
@@ -932,10 +928,10 @@
     <node concept="3F0A7n" id="6suuiWXJwq7" role="2wV5jI">
       <ref role="1NtTu8" to="tpf3:6suuiWXJvYy" resolve="contextVarName" />
       <node concept="Vb9p2" id="6suuiWXJExA" role="3F10Kt">
-        <property role="Vbekb" value="BOLD" />
+        <property role="Vbekb" value="g1_k_vY/BOLD" />
       </node>
       <node concept="VechU" id="6suuiWXJExB" role="3F10Kt">
-        <property role="Vb096" value="DARK_MAGENTA" />
+        <property role="Vb096" value="g1_qVrt/DARK_MAGENTA" />
       </node>
     </node>
   </node>

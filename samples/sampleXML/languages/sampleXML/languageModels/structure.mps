@@ -69,9 +69,9 @@
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
     <node concept="1TJgyj" id="hP5YayS" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="rootElement" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="1225239603384" />
       <ref role="20lvS9" node="hP5YayT" resolve="Element" />
     </node>
@@ -85,16 +85,16 @@
     <property role="EcuMT" value="1225239603385" />
     <ref role="1TJDcQ" node="hP5YayY" resolve="ElementPart" />
     <node concept="1TJgyj" id="hP5YayU" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="attribute" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="1225239603386" />
       <ref role="20lvS9" node="hP5Yayx" resolve="Attribute" />
     </node>
     <node concept="1TJgyj" id="hP5YayV" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="content" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="1225239603387" />
       <ref role="20lvS9" node="hP5YayY" resolve="ElementPart" />
     </node>

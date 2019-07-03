@@ -2,8 +2,8 @@
 <model ref="r:13d16a02-6fc1-4986-8d3c-61aadbaeccd7(jetbrains.mps.baseLanguage.overloadedOperators.editor)">
   <persistence version="9" />
   <languages>
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="12" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="13" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="-1" />
   </languages>
@@ -260,7 +260,7 @@
             <ref role="1NtTu8" to="vgj4:qQXsgj0h88" resolve="operators" />
             <node concept="l2Vlx" id="3970G$Abhey" role="2czzBx" />
             <node concept="10DmGV" id="3970G$Abhez" role="3F10Kt">
-              <property role="10E5iX" value="indented" />
+              <property role="10E5iX" value="hGLCffT/indented" />
             </node>
             <node concept="ljvvj" id="3970G$Abhe$" role="3F10Kt">
               <property role="VOm3f" value="true" />
@@ -462,7 +462,7 @@
     <node concept="1Qtc8_" id="1wEcoXjJzLj" role="IW6Ez">
       <node concept="3cWJ9i" id="1wEcoXjJzLh" role="1Qtc8$">
         <node concept="CtIbL" id="1wEcoXjJzLi" role="CtIbM">
-          <property role="CtIbK" value="RIGHT" />
+          <property role="CtIbK" value="30NnNOohrQL/RIGHT" />
         </node>
       </node>
       <node concept="1GhOrh" id="1wEcoXjJzLl" role="1Qtc8A">
@@ -558,7 +558,7 @@
                   <node concept="1OKiuA" id="1wEcoXjJzM6" role="2OqNvi">
                     <node concept="1Q80Hx" id="1wEcoXjJzM7" role="lBI5i" />
                     <node concept="2B6iha" id="1wEcoXjJzM8" role="lGT1i">
-                      <property role="1lyBwo" value="mostRelevant" />
+                      <property role="1lyBwo" value="59pBc0SIIVt/mostRelevant" />
                     </node>
                     <node concept="3cmrfG" id="1wEcoXjJzM9" role="3dN3m$">
                       <property role="3cmrfH" value="-1" />

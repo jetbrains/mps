@@ -7,7 +7,7 @@
     <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="1" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
   </languages>
   <imports>
@@ -1546,7 +1546,7 @@
       <property role="2aFKle" value="false" />
       <node concept="3clFbS" id="ORe5oE8VAq" role="3clF47">
         <node concept="RRSsy" id="3jYQuSB331T" role="3cqZAp">
-          <property role="RRSoG" value="info" />
+          <property role="RRSoG" value="h1akgim/info" />
           <node concept="Xl_RD" id="4_5pru_JJCb" role="RRSoy">
             <property role="Xl_RC" value="Initializing editor" />
           </node>
@@ -7824,7 +7824,6 @@
         </node>
         <node concept="3clFbH" id="63oasX2eHq0" role="3cqZAp" />
         <node concept="RRSsy" id="3jYQuSB39L0" role="3cqZAp">
-          <property role="RRSoG" value="debug" />
           <node concept="3cpWs3" id="6RioKE3H1JB" role="RRSoy">
             <node concept="37vLTw" id="6RioKE3H4gl" role="3uHU7w">
               <ref role="3cqZAo" node="3fCX6WCBvHQ" resolve="myRoot" />
@@ -10125,7 +10124,7 @@
           </node>
         </node>
         <node concept="RRSsy" id="BMoFi_qkxV" role="3cqZAp">
-          <property role="RRSoG" value="info" />
+          <property role="RRSoG" value="h1akgim/info" />
           <node concept="Xl_RD" id="BMoFi_qkxW" role="RRSoy">
             <property role="Xl_RC" value="Initializing the test" />
           </node>

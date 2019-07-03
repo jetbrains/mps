@@ -5,12 +5,12 @@
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="1" />
     <use id="df345b11-b8c7-4213-ac66-48d2a9b75d88" name="jetbrains.mps.baseLanguageInternal" version="0" />
-    <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="2" />
+    <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="3" />
     <use id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext" version="1" />
     <use id="13744753-c81f-424a-9c1b-cf8943bf4e86" name="jetbrains.mps.lang.sharedConcepts" version="0" />
-    <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="1" />
+    <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="2" />
     <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="2" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
@@ -377,6 +377,13 @@
       </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
+      <concept id="4705942098322609812" name="jetbrains.mps.lang.smodel.structure.EnumMember_IsOperation" flags="ng" index="21noJN">
+        <child id="4705942098322609813" name="member" index="21noJM" />
+      </concept>
+      <concept id="4705942098322467729" name="jetbrains.mps.lang.smodel.structure.EnumMemberReference" flags="ng" index="21nZrQ">
+        <reference id="4705942098322467736" name="decl" index="21nZrZ" />
+      </concept>
+      <concept id="1966870290083281362" name="jetbrains.mps.lang.smodel.structure.EnumMember_NameOperation" flags="ng" index="24Tkf9" />
       <concept id="1204834851141" name="jetbrains.mps.lang.smodel.structure.PoundExpression" flags="ng" index="25Kdxt">
         <child id="1204834868751" name="expression" index="25KhWn" />
       </concept>
@@ -392,9 +399,6 @@
       <concept id="7400021826771268254" name="jetbrains.mps.lang.smodel.structure.SNodePointerType" flags="ig" index="2sp9CU" />
       <concept id="7400021826774799413" name="jetbrains.mps.lang.smodel.structure.NodePointerExpression" flags="ng" index="2tJFMh">
         <child id="7400021826774799510" name="ref" index="2tJFKM" />
-      </concept>
-      <concept id="1138676077309" name="jetbrains.mps.lang.smodel.structure.EnumMemberReference_Old" flags="nn" index="uoxfO">
-        <reference id="1138676095763" name="enumMember" index="uo_Cq" />
       </concept>
       <concept id="4693937538533521280" name="jetbrains.mps.lang.smodel.structure.OfConceptOperation" flags="ng" index="v3k3i">
         <child id="4693937538533538124" name="requestedConcept" index="v3oSu" />
@@ -417,9 +421,6 @@
       <concept id="1139613262185" name="jetbrains.mps.lang.smodel.structure.Node_GetParentOperation" flags="nn" index="1mfA1w" />
       <concept id="1139621453865" name="jetbrains.mps.lang.smodel.structure.Node_IsInstanceOfOperation" flags="nn" index="1mIQ4w">
         <child id="1177027386292" name="conceptArgument" index="cj9EA" />
-      </concept>
-      <concept id="1146171026731" name="jetbrains.mps.lang.smodel.structure.Property_HasValue_Enum" flags="nn" index="3t7uKx">
-        <child id="1146171026732" name="value" index="3t7uKA" />
       </concept>
       <concept id="1171999116870" name="jetbrains.mps.lang.smodel.structure.Node_IsNullOperation" flags="nn" index="3w_OXm" />
       <concept id="1172008320231" name="jetbrains.mps.lang.smodel.structure.Node_IsNotNullOperation" flags="nn" index="3x8VRR" />
@@ -4104,10 +4105,13 @@
                             <node concept="Xl_RD" id="4xJw7Bvg8h8" role="3uHU7w">
                               <property role="Xl_RC" value="_INT" />
                             </node>
-                            <node concept="2OqwBi" id="4xJw7Bvg1FN" role="3uHU7B">
-                              <node concept="30H73N" id="4xJw7Bvg1CX" role="2Oq$k0" />
-                              <node concept="3TrcHB" id="4xJw7Bvg1K6" role="2OqNvi">
-                                <ref role="3TsBF5" to="tp5g:4xJw7Bve0T$" resolve="level" />
+                            <node concept="2OqwBi" id="3Ftr4R8MEv_" role="3uHU7B">
+                              <node concept="24Tkf9" id="3Ftr4R8MEvB" role="2OqNvi" />
+                              <node concept="2OqwBi" id="4xJw7Bvg1FN" role="2Oq$k0">
+                                <node concept="30H73N" id="4xJw7Bvg1CX" role="2Oq$k0" />
+                                <node concept="3TrcHB" id="4xJw7Bvg1K6" role="2OqNvi">
+                                  <ref role="3TsBF5" to="tp5g:3Ftr4R6BHaB" resolve="level" />
+                                </node>
                               </node>
                             </node>
                           </node>
@@ -4134,12 +4138,12 @@
                             <node concept="2OqwBi" id="3jo$_o1yyxP" role="2Oq$k0">
                               <node concept="30H73N" id="3jo$_o1yyvm" role="2Oq$k0" />
                               <node concept="3TrcHB" id="3jo$_o1yy_W" role="2OqNvi">
-                                <ref role="3TsBF5" to="tp5g:4xJw7Bve0T$" resolve="level" />
+                                <ref role="3TsBF5" to="tp5g:3Ftr4R6BHaB" resolve="level" />
                               </node>
                             </node>
-                            <node concept="3t7uKx" id="3jo$_o1yzil" role="2OqNvi">
-                              <node concept="uoxfO" id="3jo$_o1yzin" role="3t7uKA">
-                                <ref role="uo_Cq" to="tp5g:4xJw7BvdBfM" />
+                            <node concept="21noJN" id="3Ftr4R8MEvC" role="2OqNvi">
+                              <node concept="21nZrQ" id="3Ftr4R8MEvD" role="21noJM">
+                                <ref role="21nZrZ" to="tp5g:3Ftr4R6BFGY" resolve="TRACE" />
                               </node>
                             </node>
                           </node>
@@ -7513,7 +7517,7 @@
     </node>
     <node concept="j$LIH" id="7OB8Y3vV5$0" role="jxRDz">
       <node concept="1lLz0L" id="7OB8Y3vV7m6" role="1lHHLF">
-        <property role="1lMjX7" value="error" />
+        <property role="1lMjX7" value="h1lM37o/error" />
         <property role="1lLB17" value="ICheckForExpectedRule should plug into ICheckForExpectedRule_hasExpectedMessage switch" />
       </node>
     </node>

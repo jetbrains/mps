@@ -22,7 +22,7 @@
     </language>
   </registry>
   <node concept="15_jI_" id="hzAE4vz">
-    <property role="3FifNy" value="reduceInheritors" />
+    <property role="3FifNy" value="hzAAZUd/reduceInheritors" />
     <property role="TrG5h" value="Input_root_1" />
     <node concept="15J_HG" id="hzAEcB7" role="15EZgy">
       <property role="TrG5h" value="input A" />

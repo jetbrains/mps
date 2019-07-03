@@ -5,8 +5,8 @@
     <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="4" />
     <use id="d7a92d38-f7db-40d0-8431-763b0c3c9f20" name="jetbrains.mps.lang.intentions" version="0" />
     <use id="13744753-c81f-424a-9c1b-cf8943bf4e86" name="jetbrains.mps.lang.sharedConcepts" version="0" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="12" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="13" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <use id="774bf8a0-62e5-41e1-af63-f4812e60e48b" name="jetbrains.mps.baseLanguage.checkedDots" version="0" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
@@ -349,7 +349,7 @@
             <node concept="1OKiuA" id="385mdrYGIRT" role="2OqNvi">
               <node concept="1XNTG" id="hBxOtgu" role="lBI5i" />
               <node concept="2B6iha" id="6Q2cACerpGF" role="lGT1i">
-                <property role="1lyBwo" value="firstEditable" />
+                <property role="1lyBwo" value="1S2pyLby17G/firstEditable" />
               </node>
             </node>
             <node concept="37vLTw" id="3GM_nagTrcH" role="2Oq$k0">
@@ -1083,7 +1083,7 @@
             <node concept="1OKiuA" id="385mdrYGIJI" role="2OqNvi">
               <node concept="1XNTG" id="7OfbjDRkwEz" role="lBI5i" />
               <node concept="2B6iha" id="7OfbjDRkwGu" role="lGT1i">
-                <property role="1lyBwo" value="lastEditable" />
+                <property role="1lyBwo" value="1S2pyLby17D/lastEditable" />
               </node>
             </node>
             <node concept="37vLTw" id="55ZGj5Hqy68" role="2Oq$k0">
@@ -1507,7 +1507,7 @@
             <node concept="1OKiuA" id="55ZGj5Hvj0l" role="2OqNvi">
               <node concept="1XNTG" id="55ZGj5Hvj0m" role="lBI5i" />
               <node concept="2B6iha" id="yji4X$8Xka" role="lGT1i">
-                <property role="1lyBwo" value="lastEditable" />
+                <property role="1lyBwo" value="1S2pyLby17D/lastEditable" />
               </node>
             </node>
             <node concept="37vLTw" id="55ZGj5Hvj0n" role="2Oq$k0">
@@ -1560,7 +1560,7 @@
             <node concept="1OKiuA" id="7QMvu5f$8zb" role="2OqNvi">
               <node concept="1XNTG" id="7QMvu5f$8zc" role="lBI5i" />
               <node concept="2B6iha" id="77jMvbi23XY" role="lGT1i">
-                <property role="1lyBwo" value="firstEditable" />
+                <property role="1lyBwo" value="1S2pyLby17G/firstEditable" />
               </node>
             </node>
             <node concept="2OqwBi" id="7QMvu5f$8ze" role="2Oq$k0">

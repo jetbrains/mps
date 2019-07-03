@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="90746344-04fd-4286-97d5-b46ae6a81709" name="jetbrains.mps.lang.migration" version="1" />
-    <use id="d4615e3b-d671-4ba9-af01-2b78369b0ba7" name="jetbrains.mps.lang.pattern" version="-1" />
+    <use id="d4615e3b-d671-4ba9-af01-2b78369b0ba7" name="jetbrains.mps.lang.pattern" version="2" />
     <use id="c7d5b9dd-a05f-4be2-bc73-f2e16994cc67" name="jetbrains.mps.baseLanguage.lightweightdsl" version="-1" />
     <use id="1a8554c4-eb84-43ba-8c34-6f0d90c6e75a" name="jetbrains.mps.lang.smodel.query" version="3" />
     <use id="c0080a47-7e37-4558-bee9-9ae18e690549" name="jetbrains.mps.lang.extension" version="-1" />
@@ -182,6 +182,9 @@
       <concept id="1196350785112" name="jetbrains.mps.lang.quotation.structure.Antiquotation" flags="ng" index="2c44te" />
       <concept id="1196350785113" name="jetbrains.mps.lang.quotation.structure.Quotation" flags="nn" index="2c44tf">
         <child id="1196350785114" name="quotedNode" index="2c44tc" />
+      </concept>
+      <concept id="4056363777117001481" name="jetbrains.mps.lang.quotation.structure.StringToTypedValueMigrationInfo" flags="ng" index="AAgTk">
+        <property id="2173356959483005420" name="stringValueMigrated" index="3qcH_f" />
       </concept>
       <concept id="1196866233735" name="jetbrains.mps.lang.quotation.structure.PropertyAntiquotation" flags="ng" index="2EMmih" />
     </language>
@@ -394,6 +397,7 @@
                   <property role="P4ACc" value="ceab5195-25ea-4f22-9b92-103b95ca8c0c/1169194658468/1169194664001" />
                   <property role="2qtEX9" value="name" />
                   <property role="2DMOqu" value="name" />
+                  <property role="3qcH_f" value="true" />
                 </node>
               </node>
             </node>
@@ -412,6 +416,7 @@
                 <node concept="2EMmih" id="3BInSoF6JJ_" role="lGtFl">
                   <property role="P4ACc" value="ceab5195-25ea-4f22-9b92-103b95ca8c0c/1169194658468/1169194664001" />
                   <property role="2qtEX9" value="name" />
+                  <property role="3qcH_f" value="true" />
                   <node concept="sveBF" id="3BInSoF6JKH" role="2c44t1">
                     <ref role="svcpe" node="3BInSoF6JCH" resolve="$name" />
                   </node>
@@ -886,6 +891,7 @@
                   <property role="P4ACc" value="ceab5195-25ea-4f22-9b92-103b95ca8c0c/1169194658468/1169194664001" />
                   <property role="2qtEX9" value="name" />
                   <property role="2DMOqu" value="name" />
+                  <property role="3qcH_f" value="true" />
                 </node>
                 <node concept="20X7yG" id="6oJSkzE9bqE" role="20X7yH">
                   <node concept="3clFbS" id="6oJSkzE9bqF" role="2VODD2" />
@@ -991,6 +997,7 @@
                 <node concept="2EMmih" id="3BInSoF6Ehv" role="lGtFl">
                   <property role="P4ACc" value="ceab5195-25ea-4f22-9b92-103b95ca8c0c/1169194658468/1169194664001" />
                   <property role="2qtEX9" value="name" />
+                  <property role="3qcH_f" value="true" />
                   <node concept="sveBF" id="3BInSoF6EiH" role="2c44t1">
                     <ref role="svcpe" node="3BInSoF6Egd" resolve="$name" />
                   </node>

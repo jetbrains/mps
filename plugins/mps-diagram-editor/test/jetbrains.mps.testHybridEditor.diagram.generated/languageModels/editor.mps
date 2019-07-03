@@ -6,8 +6,8 @@
     <use id="63650c59-16c8-498a-99c8-005c7ee9515d" name="jetbrains.mps.lang.access" version="0" />
     <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="4" />
     <use id="6106f611-7a74-42d1-80de-edc5c602bfd1" name="jetbrains.mps.lang.editor.diagram" version="1" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="12" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="13" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -1111,7 +1111,7 @@
     <property role="TrG5h" value="BlockActionMap" />
     <ref role="1h_SK9" to="adck:22C1ebGgZit" resolve="BlockInstance" />
     <node concept="1hA7zw" id="53wrLxG5NKL" role="1h_SK8">
-      <property role="1hAc7j" value="delete_action_id" />
+      <property role="1hAc7j" value="g_hAxAO/delete_action_id" />
       <node concept="1hAIg9" id="53wrLxG5NKM" role="1hA7z_">
         <node concept="3clFbS" id="53wrLxG5NKN" role="2VODD2">
           <node concept="2Gpval" id="53wrLxG5WGn" role="3cqZAp">
@@ -1195,7 +1195,7 @@
     <property role="TrG5h" value="ConnectorActionMap" />
     <ref role="1h_SK9" to="adck:22C1ebGh1km" resolve="ConnectorInstance" />
     <node concept="1hA7zw" id="53wrLxGombN" role="1h_SK8">
-      <property role="1hAc7j" value="delete_action_id" />
+      <property role="1hAc7j" value="g_hAxAO/delete_action_id" />
       <node concept="1hAIg9" id="53wrLxGombO" role="1hA7z_">
         <node concept="3clFbS" id="53wrLxGombP" role="2VODD2">
           <node concept="3clFbF" id="53wrLxGomck" role="3cqZAp">

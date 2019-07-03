@@ -96,9 +96,6 @@
       </concept>
       <concept id="1175147670730" name="jetbrains.mps.lang.typesystem.structure.SubtypingRule" flags="ig" index="2sgARr" />
       <concept id="1179832490862" name="jetbrains.mps.lang.typesystem.structure.CreateStrongLessThanInequationStatement" flags="nn" index="2NvLDW" />
-      <concept id="1212056081426" name="jetbrains.mps.lang.typesystem.structure.AbstractInequationStatement" flags="ng" index="Ob1k8">
-        <property id="1212056105818" name="inequationPriority" index="Ob790" />
-      </concept>
       <concept id="1195213580585" name="jetbrains.mps.lang.typesystem.structure.AbstractCheckingRule" flags="ig" index="18hYwZ">
         <child id="1195213635060" name="body" index="18ibNy" />
       </concept>
@@ -231,7 +228,6 @@
       <node concept="3clFbJ" id="4DPUXm606kc" role="3cqZAp">
         <node concept="3clFbS" id="4DPUXm606kd" role="3clFbx">
           <node concept="2NvLDW" id="4DPUXm606kO" role="3cqZAp">
-            <property role="Ob790" value="0" />
             <node concept="mw_s8" id="4DPUXm60c0A" role="1ZfhKB">
               <node concept="2pJPEk" id="2F8bNQsjZM" role="mwGJk">
                 <node concept="2pJPED" id="2F8bNQsjZL" role="2pJPEn">
@@ -384,7 +380,6 @@
     <property role="3GE5qa" value="settings" />
     <node concept="3clFbS" id="5HAZRDA9WtU" role="18ibNy">
       <node concept="2NvLDW" id="5HAZRDA9WtW" role="3cqZAp">
-        <property role="Ob790" value="0" />
         <node concept="mw_s8" id="5HAZRDA9WtY" role="1ZfhKB">
           <node concept="2pJPEk" id="2F8bNQsk1k" role="mwGJk">
             <node concept="2pJPED" id="2F8bNQsk1j" role="2pJPEn">

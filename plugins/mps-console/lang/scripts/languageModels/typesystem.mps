@@ -43,9 +43,6 @@
       <concept id="1185788614172" name="jetbrains.mps.lang.typesystem.structure.NormalTypeClause" flags="ng" index="mw_s8">
         <child id="1185788644032" name="normalType" index="mwGJk" />
       </concept>
-      <concept id="1212056081426" name="jetbrains.mps.lang.typesystem.structure.AbstractInequationStatement" flags="ng" index="Ob1k8">
-        <property id="1212056105818" name="inequationPriority" index="Ob790" />
-      </concept>
       <concept id="1195213580585" name="jetbrains.mps.lang.typesystem.structure.AbstractCheckingRule" flags="ig" index="18hYwZ">
         <child id="1195213635060" name="body" index="18ibNy" />
       </concept>
@@ -171,7 +168,6 @@
       </node>
       <node concept="1ZoDhX" id="2m7l5QF4Lpz" role="3cqZAp">
         <property role="3wDh2S" value="false" />
-        <property role="Ob790" value="0" />
         <node concept="mw_s8" id="2m7l5QF4JYV" role="1ZfhKB">
           <node concept="1Z2H0r" id="2m7l5QF4JYW" role="mwGJk">
             <node concept="2OqwBi" id="2m7l5QF4JYX" role="1Z2MuG">
@@ -200,7 +196,6 @@
         </node>
       </node>
       <node concept="1ZoDhX" id="5E9ElcTO6RG" role="3cqZAp">
-        <property role="Ob790" value="0" />
         <property role="3wDh2S" value="false" />
         <node concept="mw_s8" id="i3u9uEk" role="1ZfhKB">
           <node concept="1Z$b5t" id="2rpbYG7pUcr" role="mwGJk">

@@ -2,7 +2,7 @@
 <model ref="r:dc468d7c-ca2d-45f7-ace9-6f81e4694f66(jetbrains.mps.lang.resources.editor)">
   <persistence version="9" />
   <languages>
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="12" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="13" />
     <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="-1" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
@@ -113,7 +113,6 @@
         <reference id="7991336459489872009" name="outputConcept" index="3EoQqy" />
       </concept>
       <concept id="1073389214265" name="jetbrains.mps.lang.editor.structure.EditorCellModel" flags="ng" index="3EYTF0">
-        <property id="1130859485024" name="attractsFocus" index="1cu_pB" />
         <child id="1142887637401" name="renderingCondition" index="pqm2j" />
       </concept>
       <concept id="1073389446423" name="jetbrains.mps.lang.editor.structure.CellModel_Collection" flags="sn" stub="3013115976261988961" index="3EZMnI">
@@ -264,7 +263,7 @@
           <node concept="3F0ifn" id="7Mb2akaesrn" role="1QoS34">
             <property role="3F0ifm" value="&lt;no icon&gt;" />
             <node concept="VechU" id="7Mb2akaesro" role="3F10Kt">
-              <property role="Vb096" value="lightGray" />
+              <property role="Vb096" value="fLJRk5A/lightGray" />
             </node>
           </node>
           <node concept="1QoScp" id="7Mb2akaesrp" role="1QoVPY">
@@ -304,7 +303,7 @@
             <node concept="3F0ifn" id="7Mb2akaesrE" role="1QoVPY">
               <property role="3F0ifm" value="&lt;invalid path&gt;" />
               <node concept="VechU" id="7Mb2akaesrF" role="3F10Kt">
-                <property role="Vb096" value="red" />
+                <property role="Vb096" value="fLwANPn/red" />
               </node>
             </node>
           </node>
@@ -471,7 +470,6 @@
     <ref role="1XX52x" to="1oap:7Mb2akaesr7" resolve="OldIconReference" />
     <node concept="3EZMnI" id="7Mb2akaessq" role="2wV5jI">
       <node concept="PMmxH" id="2wdLO7KhY2g" role="3EZMnx">
-        <property role="1cu_pB" value="0" />
         <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
         <ref role="1k5W1q" to="tpen:hgVS8CF" resolve="KeyWord" />
       </node>
@@ -610,7 +608,7 @@
         </node>
       </node>
       <node concept="3F0A7n" id="1ng4Vf3VLdY" role="3EZMnx">
-        <ref role="1NtTu8" to="1oap:2p1v3tObyz1" resolve="r" />
+        <ref role="1NtTu8" to="1oap:3Ftr4R6BH86" resolve="r" />
       </node>
     </node>
   </node>
@@ -682,7 +680,7 @@
         </node>
       </node>
       <node concept="3F0A7n" id="2p1v3tObZtS" role="3EZMnx">
-        <ref role="1NtTu8" to="1oap:2p1v3tObwTy" resolve="r" />
+        <ref role="1NtTu8" to="1oap:3Ftr4R6BH88" resolve="r" />
       </node>
     </node>
   </node>
@@ -741,7 +739,7 @@
         <node concept="3F0ifn" id="Ib_Fk7zNf_" role="1QoS34">
           <property role="3F0ifm" value="&lt;no icon&gt;" />
           <node concept="VechU" id="Ib_Fk7zNfA" role="3F10Kt">
-            <property role="Vb096" value="lightGray" />
+            <property role="Vb096" value="fLJRk5A/lightGray" />
           </node>
         </node>
         <node concept="1QoScp" id="Ib_Fk7zNfB" role="1QoVPY">
@@ -781,7 +779,7 @@
           <node concept="3F0ifn" id="Ib_Fk7zNg4" role="1QoVPY">
             <property role="3F0ifm" value="&lt;invalid path&gt;" />
             <node concept="VechU" id="Ib_Fk7zNg5" role="3F10Kt">
-              <property role="Vb096" value="red" />
+              <property role="Vb096" value="fLwANPn/red" />
             </node>
           </node>
         </node>
@@ -1031,7 +1029,7 @@
           </node>
         </node>
         <node concept="Vb9p2" id="46nPloeAnUF" role="3F10Kt">
-          <property role="Vbekb" value="BOLD_ITALIC" />
+          <property role="Vbekb" value="g1_tSyq/BOLD_ITALIC" />
         </node>
       </node>
       <node concept="3F0A7n" id="4voYo4rtbR_" role="3EZMnx">

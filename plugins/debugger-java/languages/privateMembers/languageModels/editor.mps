@@ -4,8 +4,8 @@
   <languages>
     <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="4" />
     <use id="13744753-c81f-424a-9c1b-cf8943bf4e86" name="jetbrains.mps.lang.sharedConcepts" version="0" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="12" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="13" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
@@ -350,7 +350,7 @@
           <node concept="1sVBvm" id="4RXh7QRr0Gn" role="1sWHZn">
             <node concept="3F0A7n" id="4RXh7QRr0Go" role="2wV5jI">
               <property role="1Intyy" value="true" />
-              <property role="1cu_pB" value="1" />
+              <property role="1cu_pB" value="gtgu$YJ/1" />
               <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
               <ref role="1k5W1q" to="tpen:hrRWGGt" resolve="StaticField" />
             </node>
@@ -408,7 +408,7 @@
             </node>
             <node concept="ZcVJ$" id="4RXh7QRr0GK" role="OY2wv" />
             <node concept="ZEniJ" id="4RXh7QRr0GL" role="OY2wv">
-              <property role="1ezIyd" value="default_referent" />
+              <property role="1ezIyd" value="gWZPhPb/default_referent" />
               <node concept="3Tqbb2" id="4RXh7QRr0GM" role="1eyP2E" />
               <node concept="3GJtP1" id="4RXh7QRr0GN" role="ZF_Y3">
                 <node concept="3clFbS" id="4RXh7QRr0GO" role="2VODD2">

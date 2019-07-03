@@ -67,16 +67,15 @@
     <property role="EcuMT" value="2178507174411801538" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="1SVBbIvt9h0" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="20kJfa" value="fields" />
       <property role="IQ2ns" value="2178507174411801664" />
       <ref role="20lvS9" node="1SVBbIvt9g6" resolve="ExternalViewFigureParameter" />
     </node>
     <node concept="1TJgyj" id="1SVBbIvt9fR" role="1TKVEi">
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="classifier" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="2178507174411801591" />
       <ref role="20lvS9" to="tpee:fz12cDA" resolve="ClassConcept" />
     </node>
@@ -92,9 +91,8 @@
     <property role="EcuMT" value="2178507174411801606" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="1SVBbIvt9gL" role="1TKVEi">
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="fieldDeclaration" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="2178507174411801649" />
       <ref role="20lvS9" to="tpee:fz12cDC" resolve="FieldDeclaration" />
     </node>

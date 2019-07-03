@@ -54,9 +54,8 @@
     <property role="EcuMT" value="4560297596904469355" />
     <ref role="1TJDcQ" node="3X9rC2XzJdL" resolve="BuildMpsLayout_TestModules_Content" />
     <node concept="1TJgyj" id="3X9rC2XzJdG" role="1TKVEi">
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="group" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="4560297596904469356" />
       <ref role="20lvS9" to="kdzh:1jjYQYSgYJt" resolve="BuildMps_Group" />
     </node>
@@ -64,19 +63,18 @@
   <node concept="1TIwiD" id="3X9rC2XzJdH">
     <property role="TrG5h" value="BuildMpsLayout_TestModules" />
     <property role="3GE5qa" value="Project.Testing" />
-    <property role="2_RsDV" value="none" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
     <property role="34LRSv" value="test modules" />
     <property role="EcuMT" value="4560297596904469357" />
     <ref role="1TJDcQ" to="3ior:34DbxDwRlgt" resolve="BuildAspect" />
     <node concept="1TJgyj" id="5I1s5NvGLlK" role="1TKVEi">
       <property role="IQ2ns" value="6593674873639474544" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="options" />
-      <property role="20lbJX" value="0..1" />
       <ref role="20lvS9" node="5I1s5NvGLjw" resolve="BuildMpsLayout_TestModules_Options" />
     </node>
     <node concept="1TJgyj" id="6g2MV4s4KuI" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="haltonfailure" />
       <property role="IQ2ns" value="7206546315286874030" />
       <ref role="20lvS9" to="3ior:3NagsOfThPf" resolve="BuildString" />
@@ -94,9 +92,9 @@
       <ref role="PrY4T" to="tpck:3fifI_xCcJN" resolve="ScopeProvider" />
     </node>
     <node concept="1TJgyj" id="3X9rC2XzJdK" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="modules" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="4560297596904469360" />
       <ref role="20lvS9" node="3X9rC2XzJdL" resolve="BuildMpsLayout_TestModules_Content" />
     </node>
@@ -106,20 +104,19 @@
     <property role="R5$K2" value="false" />
     <property role="TrG5h" value="BuildMpsLayout_TestModules_Content" />
     <property role="3GE5qa" value="Project.Testing" />
-    <property role="2_RsDV" value="none" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
     <property role="EcuMT" value="4560297596904469361" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
   </node>
   <node concept="1TIwiD" id="3X9rC2XzJdM">
     <property role="TrG5h" value="BuildMpsLayout_TestModule" />
     <property role="3GE5qa" value="Project.Testing" />
-    <property role="2_RsDV" value="none" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
     <property role="EcuMT" value="4560297596904469362" />
     <ref role="1TJDcQ" node="3X9rC2XzJdL" resolve="BuildMpsLayout_TestModules_Content" />
     <node concept="1TJgyj" id="3X9rC2XzJdN" role="1TKVEi">
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="module" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="4560297596904469363" />
       <ref role="20lvS9" to="kdzh:2L4pT56gD3R" resolve="BuildMps_Solution" />
     </node>
@@ -142,8 +139,7 @@
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="5I1s5NvuWcp" role="1TKVEi">
       <property role="IQ2ns" value="6593674873635848985" />
-      <property role="20lmBu" value="reference" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="20kJfa" value="plugin" />
       <ref role="20lvS9" to="kdzh:5HVSRHdUrHO" resolve="BuildMps_IdeaPlugin" />
     </node>
@@ -154,16 +150,16 @@
     <property role="TrG5h" value="BuildMpsLayout_TestModules_Options" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="5I1s5NvGMfd" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="haltonfailure" />
       <property role="IQ2ns" value="6593674873639478221" />
       <ref role="20lvS9" to="3ior:3NagsOfThPf" resolve="BuildString" />
     </node>
     <node concept="1TJgyj" id="5I1s5NvuWcr" role="1TKVEi">
       <property role="IQ2ns" value="6593674873635848987" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="requiredPlugins" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <ref role="20lvS9" node="5I1s5NvuWco" resolve="RequiredPlugin" />
     </node>
   </node>

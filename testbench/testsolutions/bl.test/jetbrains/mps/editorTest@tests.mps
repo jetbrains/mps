@@ -10,15 +10,15 @@
     <use id="81f0abb8-d71e-4d13-a0c1-d2291fbb28b7" name="jetbrains.mps.lang.editor.editorTest" version="-1" />
     <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="-1" />
     <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="-1" />
-    <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="-1" />
+    <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="2" />
     <use id="b5734616-c4b0-4639-9c6a-f3a1cf5dc4db" name="testDefaultEditor" version="-1" />
     <use id="e228eea1-07ef-499c-8826-9c47a7e369db" name="testMoveElements" version="-1" />
     <use id="fdcdc48f-bfd8-4831-aa76-5abac2ffa010" name="jetbrains.mps.baseLanguage.jdk8" version="-1" />
     <use id="4dd3c558-f0fc-4807-bade-5d6bcad6b3f1" name="testSpaceCompletion" version="-1" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
-    <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="-1" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="-1" />
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="-1" />
+    <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="2" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="13" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <use id="63650c59-16c8-498a-99c8-005c7ee9515d" name="jetbrains.mps.lang.access" version="-1" />
   </languages>
@@ -10521,7 +10521,6 @@
       <property role="TrG5h" value="Julia" />
       <property role="32546v" value="23" />
       <property role="32546o" value="Beliaeva" />
-      <property role="1p9tbP" value="LEFT" />
       <node concept="LIFWc" id="5co60CafDYo" role="lGtFl">
         <property role="LIFWa" value="0" />
         <property role="OXtK3" value="true" />
@@ -10534,7 +10533,7 @@
       <property role="TrG5h" value="Julia" />
       <property role="32546v" value="23" />
       <property role="32546o" value="Beliaeva" />
-      <property role="1p9tbP" value="RIGHT" />
+      <property role="1p9tbP" value="hZ7kOz9/RIGHT" />
       <node concept="LIFWc" id="5co60CaiNtt" role="lGtFl">
         <property role="ZRATv" value="true" />
         <property role="OXtK3" value="true" />
@@ -12087,7 +12086,7 @@
             </node>
             <node concept="3clFbS" id="2tTgVY$$PBe" role="TDEfX">
               <node concept="RRSsy" id="683qm1GbJYR" role="3cqZAp">
-                <property role="RRSoG" value="error" />
+                <property role="RRSoG" value="gZ5fh_4/error" />
                 <node concept="LIFWc" id="683qm1GbJZ1" role="lGtFl">
                   <property role="LIFWa" value="0" />
                   <property role="OXtK3" value="true" />
@@ -12136,7 +12135,7 @@
             </node>
             <node concept="3clFbS" id="2tTgVY$_0mq" role="TDEfX">
               <node concept="RRSsy" id="683qm1GbKbE" role="3cqZAp">
-                <property role="RRSoG" value="error" />
+                <property role="RRSoG" value="gZ5fh_4/error" />
                 <node concept="Xl_RD" id="7yRd4V1FEme" role="RRSoy">
                   <property role="Xl_RC" value="Can't write messages" />
                 </node>
@@ -37455,7 +37454,7 @@
         <node concept="3cqZAl" id="40dJAnltLfM" role="3clF45">
           <node concept="1KehLL" id="3KhtvfNJP0$" role="lGtFl">
             <property role="1K8rM7" value="ALIAS_EDITOR_COMPONENT" />
-            <property role="1Kfyot" value="left" />
+            <property role="1Kfyot" value="Fg1jLUVyTf/left" />
           </node>
           <node concept="LIFWc" id="3KhtvfNJP1m" role="lGtFl">
             <property role="ZRATv" value="true" />

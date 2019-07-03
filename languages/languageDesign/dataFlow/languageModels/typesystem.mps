@@ -129,9 +129,6 @@
         <child id="1175517851849" name="errorString" index="2MkJ7o" />
       </concept>
       <concept id="1179832490862" name="jetbrains.mps.lang.typesystem.structure.CreateStrongLessThanInequationStatement" flags="nn" index="2NvLDW" />
-      <concept id="1212056081426" name="jetbrains.mps.lang.typesystem.structure.AbstractInequationStatement" flags="ng" index="Ob1k8">
-        <property id="1212056105818" name="inequationPriority" index="Ob790" />
-      </concept>
       <concept id="1227096774658" name="jetbrains.mps.lang.typesystem.structure.MessageStatement" flags="ng" index="2OEH$v">
         <child id="1227096802790" name="nodeToReport" index="2OEOjV" />
       </concept>
@@ -314,7 +311,6 @@
     <property role="3GE5qa" value="Instructions" />
     <node concept="3clFbS" id="hz_Ht48" role="18ibNy">
       <node concept="1ZobV4" id="hz_H_nF" role="3cqZAp">
-        <property role="Ob790" value="0" />
         <node concept="mw_s8" id="hz_H_NO" role="1ZfhKB">
           <node concept="2c44tf" id="hz_H_NP" role="mwGJk">
             <node concept="3Tqbb2" id="hz_HAHf" role="2c44tc" />
@@ -344,7 +340,6 @@
     <property role="3GE5qa" value="Positions" />
     <node concept="3clFbS" id="hz_IQVd" role="18ibNy">
       <node concept="1ZobV4" id="hz_IZ9o" role="3cqZAp">
-        <property role="Ob790" value="0" />
         <node concept="mw_s8" id="hz_IZDU" role="1ZfhKB">
           <node concept="2c44tf" id="hz_IZDV" role="mwGJk">
             <node concept="3Tqbb2" id="hz_J0sZ" role="2c44tc" />
@@ -374,7 +369,6 @@
     <property role="3GE5qa" value="Instructions" />
     <node concept="3clFbS" id="3LV213mVQU4" role="18ibNy">
       <node concept="2NvLDW" id="3LV213mVS8z" role="3cqZAp">
-        <property role="Ob790" value="0" />
         <node concept="mw_s8" id="3LV213mVS8C" role="1ZfhKB">
           <node concept="2c44tf" id="3LV213mVS8D" role="mwGJk">
             <node concept="3Tqbb2" id="3LV213mVS8F" role="2c44tc" />

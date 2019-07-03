@@ -11,8 +11,8 @@
     <use id="0272d3b4-4cc8-481e-9e2f-07793fbfcb41" name="jetbrains.mps.lang.editor.table" version="0" />
     <use id="13744753-c81f-424a-9c1b-cf8943bf4e86" name="jetbrains.mps.lang.sharedConcepts" version="0" />
     <use id="9ded098b-ad6a-4657-bfd9-48636cfe8bc3" name="jetbrains.mps.lang.traceable" version="0" />
-    <use id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure" version="7" />
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="12" />
+    <use id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure" version="9" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="13" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -702,7 +702,7 @@
         <node concept="3F0ifn" id="6sC7QXwU3v6" role="3EZMnx">
           <property role="3F0ifm" value="name filter:" />
           <node concept="VechU" id="6sC7QXwU3xO" role="3F10Kt">
-            <property role="Vb096" value="DARK_GREEN" />
+            <property role="Vb096" value="g1_qRwE/DARK_GREEN" />
           </node>
         </node>
         <node concept="3F0A7n" id="6sC7QXwU3w5" role="3EZMnx">
@@ -710,7 +710,7 @@
           <property role="1$x2rV" value="&lt;no filter&gt;" />
           <ref role="1NtTu8" to="ktbj:6sC7QXwR9qu" resolve="query" />
           <node concept="VechU" id="6sC7QXwU3xW" role="3F10Kt">
-            <property role="Vb096" value="DARK_GREEN" />
+            <property role="Vb096" value="g1_qRwE/DARK_GREEN" />
           </node>
         </node>
       </node>
@@ -1835,7 +1835,7 @@
     <property role="TrG5h" value="delComponent" />
     <ref role="1h_SK9" to="ktbj:5pu6noS5f54" resolve="Component" />
     <node concept="1hA7zw" id="6sC7QXwUWhW" role="1h_SK8">
-      <property role="1hAc7j" value="delete_action_id" />
+      <property role="1hAc7j" value="g_hAxAO/delete_action_id" />
       <node concept="1hAIg9" id="6sC7QXwUWhX" role="1hA7z_">
         <node concept="3clFbS" id="6sC7QXwUWhY" role="2VODD2">
           <node concept="3cpWs8" id="6sC7QXwVa_n" role="3cqZAp">
@@ -1952,7 +1952,7 @@
     <property role="TrG5h" value="delConnector" />
     <ref role="1h_SK9" to="ktbj:5pu6noS6R6w" resolve="Dependency" />
     <node concept="1hA7zw" id="6sC7QXwVfkB" role="1h_SK8">
-      <property role="1hAc7j" value="delete_action_id" />
+      <property role="1hAc7j" value="g_hAxAO/delete_action_id" />
       <node concept="1hAIg9" id="6sC7QXwVfkC" role="1hA7z_">
         <node concept="3clFbS" id="6sC7QXwVfkD" role="2VODD2">
           <node concept="3clFbF" id="6sC7QXwVfkI" role="3cqZAp">

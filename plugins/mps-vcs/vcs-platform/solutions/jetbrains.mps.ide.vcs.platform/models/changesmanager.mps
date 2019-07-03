@@ -8,7 +8,7 @@
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="-1" />
     <use id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples" version="-1" />
     <use id="63650c59-16c8-498a-99c8-005c7ee9515d" name="jetbrains.mps.lang.access" version="-1" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
   </languages>
   <imports>
@@ -805,7 +805,7 @@
         <node concept="3clFbJ" id="3eE6dTgTRnE" role="3cqZAp">
           <node concept="3clFbS" id="3eE6dTgTRnG" role="3clFbx">
             <node concept="RRSsy" id="3jYQuSB3899" role="3cqZAp">
-              <property role="RRSoG" value="error" />
+              <property role="RRSoG" value="gZ5fh_4/error" />
               <node concept="Xl_RD" id="3eE6dTgTRnY" role="RRSoy">
                 <property role="Xl_RC" value="" />
               </node>
@@ -1075,7 +1075,7 @@
                       </node>
                     </node>
                     <node concept="RRSsy" id="3jYQuSB389x" role="3cqZAp">
-                      <property role="RRSoG" value="error" />
+                      <property role="RRSoG" value="gZ5fh_4/error" />
                       <node concept="3cpWs3" id="3eE6dTgU8Xn" role="RRSoy">
                         <node concept="1rXfSq" id="4hiugqyyJD1" role="3uHU7w">
                           <ref role="37wK5l" to="wyt6:~Thread.getName()" resolve="getName" />
@@ -1524,7 +1524,7 @@
                   <node concept="TDmWw" id="2bNoq9f87d6" role="TEbGg">
                     <node concept="3clFbS" id="2bNoq9f87d7" role="TDEfX">
                       <node concept="RRSsy" id="2bNoq9f8a$e" role="3cqZAp">
-                        <property role="RRSoG" value="warn" />
+                        <property role="RRSoG" value="gZ5fksE/warn" />
                         <node concept="3cpWs3" id="2bNoq9f8a$f" role="RRSoy">
                           <node concept="2OqwBi" id="2bNoq9f8a$g" role="3uHU7w">
                             <node concept="37vLTw" id="2bNoq9f8a$h" role="2Oq$k0">
@@ -1645,7 +1645,7 @@
             </node>
             <node concept="3clFbS" id="6E4VEGZQxD7" role="TDEfX">
               <node concept="RRSsy" id="3jYQuSB33Vk" role="3cqZAp">
-                <property role="RRSoG" value="warn" />
+                <property role="RRSoG" value="gZ5fksE/warn" />
                 <node concept="3cpWs3" id="2bNoq9f602j" role="RRSoy">
                   <node concept="2OqwBi" id="2bNoq9f62Se" role="3uHU7w">
                     <node concept="37vLTw" id="2bNoq9f603t" role="2Oq$k0">
@@ -1888,7 +1888,7 @@
                   <property role="TyiWL" value="true" />
                   <node concept="3clFbS" id="2LgKyNJm_7n" role="3clFbx">
                     <node concept="RRSsy" id="3jYQuSB33Vs" role="3cqZAp">
-                      <property role="RRSoG" value="error" />
+                      <property role="RRSoG" value="gZ5fh_4/error" />
                       <node concept="3cpWs3" id="2LgKyNJ40Ig" role="RRSoy">
                         <node concept="3cpWs3" id="1by6S5vENvC" role="3uHU7B">
                           <node concept="3cpWs3" id="1by6S5vEO8q" role="3uHU7B">
@@ -2767,7 +2767,7 @@
                     </node>
                   </node>
                   <node concept="RRSsy" id="3jYQuSB35qd" role="3cqZAp">
-                    <property role="RRSoG" value="error" />
+                    <property role="RRSoG" value="gZ5fh_4/error" />
                     <node concept="37vLTw" id="3GM_nagTwGR" role="RRSow">
                       <ref role="3cqZAo" node="7sg$kIGEM3k" resolve="t" />
                     </node>
@@ -6908,7 +6908,7 @@
               </node>
             </node>
             <node concept="RRSsy" id="3jYQuSB34kx" role="3cqZAp">
-              <property role="RRSoG" value="warn" />
+              <property role="RRSoG" value="gZ5fksE/warn" />
               <node concept="2OqwBi" id="tOur21W$42" role="RRSoy">
                 <node concept="liA8E" id="tOur21WDfk" role="2OqNvi">
                   <ref role="37wK5l" to="wyt6:~StringBuilder.toString()" resolve="toString" />
@@ -7129,7 +7129,7 @@
         <node concept="3clFbJ" id="15yHJj8kkoW" role="3cqZAp">
           <node concept="3clFbS" id="15yHJj8kkoY" role="3clFbx">
             <node concept="RRSsy" id="3jYQuSB34kF" role="3cqZAp">
-              <property role="RRSoG" value="warn" />
+              <property role="RRSoG" value="gZ5fksE/warn" />
               <node concept="3cpWs3" id="15yHJj8kvsr" role="RRSoy">
                 <node concept="Xl_RD" id="15yHJj8kvvr" role="3uHU7w">
                   <property role="Xl_RC" value=" must be a project file and managed by IDEA FS" />

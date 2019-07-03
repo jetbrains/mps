@@ -200,7 +200,7 @@
         <node concept="3cqZAl" id="3bGuHn8PMbK" role="3clF45" />
         <node concept="3clFbS" id="3bGuHn8PMbL" role="3clF47">
           <node concept="RRSsy" id="3jYQuSB39KU" role="3cqZAp">
-            <property role="RRSoG" value="info" />
+            <property role="RRSoG" value="h1akgim/info" />
             <node concept="Xl_RD" id="35GdNdw5Cta" role="RRSoy">
               <property role="Xl_RC" value="info!" />
             </node>

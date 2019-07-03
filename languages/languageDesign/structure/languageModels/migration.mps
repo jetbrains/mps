@@ -290,6 +290,9 @@
         <reference id="5455284157993910961" name="concept" index="2pJxaS" />
         <child id="5455284157993911099" name="values" index="2pJxcM" />
       </concept>
+      <concept id="4056363777117001481" name="jetbrains.mps.lang.quotation.structure.StringToTypedValueMigrationInfo" flags="ng" index="AAgTk">
+        <property id="2173356959483005420" name="stringValueMigrated" index="3qcH_f" />
+      </concept>
       <concept id="1196866233735" name="jetbrains.mps.lang.quotation.structure.PropertyAntiquotation" flags="ng" index="2EMmih" />
       <concept id="8182547171709752110" name="jetbrains.mps.lang.quotation.structure.NodeBuilderExpression" flags="nn" index="36biLy">
         <child id="8182547171709752112" name="expression" index="36biLW" />
@@ -2780,6 +2783,7 @@
                               <node concept="2EMmih" id="46nPloeszbY" role="lGtFl">
                                 <property role="P4ACc" value="982eb8df-2c96-4bd7-9963-11712ea622e5/5177162104569058199/5177162104569058200" />
                                 <property role="2qtEX9" value="url" />
+                                <property role="3qcH_f" value="true" />
                                 <node concept="2OqwBi" id="46nPloesCUC" role="2c44t1">
                                   <node concept="37vLTw" id="46nPloesCGQ" role="2Oq$k0">
                                     <ref role="3cqZAo" node="46nPloesygh" resolve="it" />
@@ -6638,6 +6642,7 @@
                   <node concept="2EMmih" id="LU8F6FULuJ" role="lGtFl">
                     <property role="2qtEX9" value="name" />
                     <property role="P4ACc" value="ceab5195-25ea-4f22-9b92-103b95ca8c0c/1169194658468/1169194664001" />
+                    <property role="3qcH_f" value="true" />
                     <node concept="37vLTw" id="LU8F6FULuK" role="2c44t1">
                       <ref role="3cqZAo" node="LU8F6FULwK" resolve="argName" />
                     </node>
@@ -6657,6 +6662,7 @@
                 <node concept="2EMmih" id="LU8F6FULuQ" role="lGtFl">
                   <property role="2qtEX9" value="name" />
                   <property role="P4ACc" value="ceab5195-25ea-4f22-9b92-103b95ca8c0c/1169194658468/1169194664001" />
+                  <property role="3qcH_f" value="true" />
                   <node concept="37vLTw" id="LU8F6FULuR" role="2c44t1">
                     <ref role="3cqZAo" node="LU8F6FULwI" resolve="name" />
                   </node>
@@ -7072,6 +7078,7 @@
               <node concept="2EMmih" id="LU8F6FUeza" role="lGtFl">
                 <property role="2qtEX9" value="name" />
                 <property role="P4ACc" value="ceab5195-25ea-4f22-9b92-103b95ca8c0c/1169194658468/1169194664001" />
+                <property role="3qcH_f" value="true" />
                 <node concept="37vLTw" id="LU8F6FUezb" role="2c44t1">
                   <ref role="3cqZAo" node="LU8F6FUezn" resolve="name" />
                 </node>

@@ -2,7 +2,7 @@
 <model ref="r:716dc35d-6443-4b45-a1e5-08b46978f63d(jetbrains.mps.lang.editor.styleTests.editor)">
   <persistence version="9" />
   <languages>
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="12" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="13" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -277,7 +277,7 @@
       <node concept="17QB3L" id="5ISglset19K" role="3t5Oan" />
     </node>
     <node concept="3t5Usi" id="5ISglset19V" role="V601i">
-      <property role="iBDjm" value="false" />
+      <property role="iBDjm" value="7zL4upErSle/false" />
       <property role="TrG5h" value="test-simple-attribute" />
       <node concept="10P_77" id="5ISglset1af" role="3t5Oan" />
       <node concept="3clFbT" id="5ISglset1ao" role="3t49C2">
@@ -626,13 +626,13 @@
       <node concept="3F0ifn" id="10gsdiJCs$I" role="3EZMnx">
         <property role="3F0ifm" value="font family =" />
         <node concept="Vb9p2" id="10gsdiJCvrS" role="3F10Kt">
-          <property role="Vbekb" value="ITALIC" />
+          <property role="Vbekb" value="g1_kEg4/ITALIC" />
         </node>
       </node>
       <node concept="3F0A7n" id="10gsdiJCs$O" role="3EZMnx">
         <ref role="1NtTu8" to="dekf:7qnskOdizep" resolve="fontFamily" />
         <node concept="Vb9p2" id="10gsdiJCug0" role="3F10Kt">
-          <property role="Vbekb" value="ITALIC" />
+          <property role="Vbekb" value="g1_kEg4/ITALIC" />
         </node>
       </node>
       <node concept="3F0ifn" id="10gsdiJCT7V" role="3EZMnx">
@@ -641,13 +641,13 @@
       <node concept="3F0ifn" id="10gsdiJCs_j" role="3EZMnx">
         <property role="3F0ifm" value="font size =" />
         <node concept="Vb9p2" id="10gsdiJCvrY" role="3F10Kt">
-          <property role="Vbekb" value="ITALIC" />
+          <property role="Vbekb" value="g1_kEg4/ITALIC" />
         </node>
       </node>
       <node concept="3F0A7n" id="10gsdiJCs_l" role="3EZMnx">
         <ref role="1NtTu8" to="dekf:7qnskOdjDdr" resolve="fontSize" />
         <node concept="Vb9p2" id="10gsdiJCug2" role="3F10Kt">
-          <property role="Vbekb" value="ITALIC" />
+          <property role="Vbekb" value="g1_kEg4/ITALIC" />
         </node>
       </node>
       <node concept="l2Vlx" id="10gsdiJCxVW" role="2iSdaV" />

@@ -174,11 +174,10 @@
         <child id="1144104376918" name="parameter" index="1xVPHs" />
       </concept>
       <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
-      <concept id="1171407110247" name="jetbrains.mps.lang.smodel.structure.Node_GetAncestorOperation" flags="nn" index="2Xjw5R" />
-      <concept id="6973815483243445083" name="jetbrains.mps.lang.smodel.structure.EnumMemberValueRefExpression" flags="nn" index="3f7Wdw">
-        <reference id="6973815483243565416" name="member" index="3f7u_j" />
-        <reference id="6973815483243564601" name="enum" index="3f7vo2" />
+      <concept id="1966870290088668512" name="jetbrains.mps.lang.smodel.structure.Enum_MemberLiteral" flags="ng" index="2ViDtV">
+        <reference id="1966870290088668516" name="memberDeclaration" index="2ViDtZ" />
       </concept>
+      <concept id="1171407110247" name="jetbrains.mps.lang.smodel.structure.Node_GetAncestorOperation" flags="nn" index="2Xjw5R" />
       <concept id="1171999116870" name="jetbrains.mps.lang.smodel.structure.Node_IsNullOperation" flags="nn" index="3w_OXm" />
       <concept id="1172008320231" name="jetbrains.mps.lang.smodel.structure.Node_IsNotNullOperation" flags="nn" index="3x8VRR" />
       <concept id="1144101972840" name="jetbrains.mps.lang.smodel.structure.OperationParm_Concept" flags="ng" index="1xMEDy">
@@ -195,6 +194,9 @@
       </concept>
       <concept id="1138056282393" name="jetbrains.mps.lang.smodel.structure.SLinkListAccess" flags="nn" index="3Tsc0h">
         <reference id="1138056546658" name="link" index="3TtcxE" />
+      </concept>
+      <concept id="5779574625830813396" name="jetbrains.mps.lang.smodel.structure.EnumerationIdRefExpression" flags="ng" index="1XH99k">
+        <reference id="5779574625830813397" name="enumDeclaration" index="1XH99l" />
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
@@ -500,16 +502,20 @@
       <node concept="3clFbS" id="2tkRx60B0_t" role="2VODD2">
         <node concept="3clFbF" id="2tkRx60B40Q" role="3cqZAp">
           <node concept="37vLTI" id="2tkRx60B5YS" role="3clFbG">
-            <node concept="3f7Wdw" id="2tkRx60B6jn" role="37vLTx">
-              <ref role="3f7vo2" to="kdzh:eYcmk9QOkj" resolve="BuildMps_ModuleSourcesKind" />
-              <ref role="3f7u_j" to="kdzh:eYcmk9QOlj" />
+            <node concept="2OqwBi" id="3Ftr4R8EnRV" role="37vLTx">
+              <node concept="1XH99k" id="3Ftr4R8EnRW" role="2Oq$k0">
+                <ref role="1XH99l" to="kdzh:3Ftr4R6BFCz" resolve="BuildMps_ModuleSourcesKind" />
+              </node>
+              <node concept="2ViDtV" id="3Ftr4R8EnRX" role="2OqNvi">
+                <ref role="2ViDtZ" to="kdzh:3Ftr4R6BFCA" resolve="sources_and_tests" />
+              </node>
             </node>
             <node concept="2OqwBi" id="2tkRx60B4d8" role="37vLTJ">
               <node concept="QwW4i" id="2tkRx60B40P" role="2Oq$k0">
                 <ref role="QwW4h" node="2tkRx60B0BP" resolve="solution" />
               </node>
               <node concept="3TrcHB" id="2tkRx60B58u" role="2OqNvi">
-                <ref role="3TsBF5" to="kdzh:eYcmk9RcI2" resolve="sourcesKind" />
+                <ref role="3TsBF5" to="kdzh:3Ftr4R6BH9R" resolve="sourcesKind" />
               </node>
             </node>
           </node>

@@ -4,9 +4,9 @@
   <languages>
     <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="4" />
     <use id="13744753-c81f-424a-9c1b-cf8943bf4e86" name="jetbrains.mps.lang.sharedConcepts" version="0" />
-    <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="1" />
+    <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="2" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -23,6 +23,7 @@
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="tpc5" ref="r:00000000-0000-4000-0000-011c89590299(jetbrains.mps.lang.editor.editor)" />
+    <import index="9hsz" ref="r:16d53f5e-7835-4b72-9581-fafeae0db9b1(jetbrains.mps.lang.editor.enumMigration)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -590,13 +591,13 @@
                       </node>
                     </node>
                     <node concept="3TrcHB" id="hMftmEo" role="2OqNvi">
-                      <ref role="3TsBF5" to="tpc2:hgVb0di" resolve="color" />
+                      <ref role="3TsBF5" to="tpc2:3Ftr4R6BH0H" resolve="color" />
                     </node>
                   </node>
                   <node concept="2OqwBi" id="hMfsSEZ" role="37vLTJ">
                     <node concept="1r4Lsj" id="hMfsSqo" role="2Oq$k0" />
                     <node concept="3TrcHB" id="hMfsWp5" role="2OqNvi">
-                      <ref role="3TsBF5" to="tpc2:hgVb0di" resolve="color" />
+                      <ref role="3TsBF5" to="tpc2:3Ftr4R6BH0H" resolve="color" />
                     </node>
                   </node>
                 </node>

@@ -4,7 +4,7 @@
   <languages>
     <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="4" />
     <use id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior" version="2" />
-    <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="1" />
+    <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="2" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
@@ -202,6 +202,9 @@
       <concept id="5455284157993863840" name="jetbrains.mps.lang.quotation.structure.NodeBuilderNode" flags="nn" index="2pJPED">
         <reference id="5455284157993910961" name="concept" index="2pJxaS" />
         <child id="5455284157993911099" name="values" index="2pJxcM" />
+      </concept>
+      <concept id="4056363777117001481" name="jetbrains.mps.lang.quotation.structure.StringToTypedValueMigrationInfo" flags="ng" index="AAgTk">
+        <property id="2173356959483005420" name="stringValueMigrated" index="3qcH_f" />
       </concept>
       <concept id="1196866233735" name="jetbrains.mps.lang.quotation.structure.PropertyAntiquotation" flags="ng" index="2EMmih" />
       <concept id="8182547171709752110" name="jetbrains.mps.lang.quotation.structure.NodeBuilderExpression" flags="nn" index="36biLy">
@@ -2674,6 +2677,7 @@
               <node concept="2EMmih" id="3m06Jgses2d" role="lGtFl">
                 <property role="2qtEX9" value="value" />
                 <property role="P4ACc" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1070475926800/1070475926801" />
+                <property role="3qcH_f" value="true" />
                 <node concept="2OqwBi" id="3m06Jgsesfw" role="2c44t1">
                   <node concept="13iPFW" id="3m06Jgses3U" role="2Oq$k0" />
                   <node concept="3TrcHB" id="3m06Jgsetsy" role="2OqNvi">
@@ -2710,14 +2714,11 @@
                 <property role="2qtEX9" value="value" />
                 <property role="3hQQBS" value="BooleanConstant" />
                 <property role="P4ACc" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123137/1068580123138" />
-                <node concept="2YIFZM" id="3m06JgseAX7" role="2c44t1">
-                  <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-                  <ref role="37wK5l" to="wyt6:~String.valueOf(boolean)" resolve="valueOf" />
-                  <node concept="2OqwBi" id="3m06JgseAX8" role="37wK5m">
-                    <node concept="13iPFW" id="3m06JgseAX9" role="2Oq$k0" />
-                    <node concept="3TrcHB" id="3m06JgseAXa" role="2OqNvi">
-                      <ref role="3TsBF5" to="oubp:5BD$AU440V4" resolve="value" />
-                    </node>
+                <property role="3qcH_f" value="true" />
+                <node concept="2OqwBi" id="3m06JgseAX8" role="2c44t1">
+                  <node concept="13iPFW" id="3m06JgseAX9" role="2Oq$k0" />
+                  <node concept="3TrcHB" id="3m06JgseAXa" role="2OqNvi">
+                    <ref role="3TsBF5" to="oubp:5BD$AU440V4" resolve="value" />
                   </node>
                 </node>
               </node>
@@ -2750,14 +2751,11 @@
                 <property role="2qtEX9" value="value" />
                 <property role="3hQQBS" value="IntegerConstant" />
                 <property role="P4ACc" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1068580320020/1068580320021" />
-                <node concept="2YIFZM" id="3m06JgseABw" role="2c44t1">
-                  <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-                  <ref role="37wK5l" to="wyt6:~String.valueOf(int)" resolve="valueOf" />
-                  <node concept="2OqwBi" id="3m06JgsetN6" role="37wK5m">
-                    <node concept="13iPFW" id="3m06JgsetDq" role="2Oq$k0" />
-                    <node concept="3TrcHB" id="3m06Jgsezfh" role="2OqNvi">
-                      <ref role="3TsBF5" to="oubp:5BD$AU440V6" resolve="value" />
-                    </node>
+                <property role="3qcH_f" value="true" />
+                <node concept="2OqwBi" id="3m06JgsetN6" role="2c44t1">
+                  <node concept="13iPFW" id="3m06JgsetDq" role="2Oq$k0" />
+                  <node concept="3TrcHB" id="3m06Jgsezfh" role="2OqNvi">
+                    <ref role="3TsBF5" to="oubp:5BD$AU440V6" resolve="value" />
                   </node>
                 </node>
               </node>

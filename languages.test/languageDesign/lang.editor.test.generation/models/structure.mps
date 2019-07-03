@@ -58,7 +58,6 @@
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="2XU9kLAQhc" role="1TKVEi">
       <property role="IQ2ns" value="53454498078352460" />
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="navigable" />
       <ref role="20lvS9" to="tpck:gw2VY9q" resolve="BaseConcept" />
     </node>
@@ -98,23 +97,23 @@
     </node>
     <node concept="1TJgyj" id="2XU9kLFsIp" role="1TKVEi">
       <property role="IQ2ns" value="53454498079558553" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="children" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <ref role="20lvS9" node="2XU9kLFstH" resolve="RefNodeList" />
     </node>
     <node concept="1TJgyj" id="7LC8u44lWHN" role="1TKVEi">
       <property role="IQ2ns" value="8964452308605193075" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="additionalChildren" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <ref role="20lvS9" node="2XU9kLFstH" resolve="RefNodeList" />
     </node>
     <node concept="1TJgyj" id="dbAGe2ejUY" role="1TKVEi">
       <property role="IQ2ns" value="237453569861172926" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="differentTypeOfChildren" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <ref role="20lvS9" node="dbAGe2ejV2" resolve="TestTargetConcept" />
     </node>
   </node>

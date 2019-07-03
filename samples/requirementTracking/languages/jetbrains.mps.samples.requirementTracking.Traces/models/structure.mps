@@ -2,7 +2,7 @@
 <model ref="r:05198980-5b8a-4ebd-973e-1f184dcf1167(jetbrains.mps.samples.requirementTracking.Traces.structure)">
   <persistence version="9" />
   <languages>
-    <use id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure" version="7" />
+    <use id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure" version="9" />
     <devkit ref="78434eb8-b0e5-444b-850d-e7c4ad2da9ab(jetbrains.mps.devkit.aspect.structure)" />
   </languages>
   <imports>
@@ -52,9 +52,9 @@
     <ref role="1TJDcQ" to="tpck:2ULFgo8_XDk" resolve="NodeAttribute" />
     <node concept="1TJgyj" id="3BHdE7cP501" role="1TKVEi">
       <property role="IQ2ns" value="4174052498196418561" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="mentions" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <ref role="20lvS9" node="3BHdE7cPxwa" resolve="RequirementEntryReference" />
     </node>
     <node concept="M6xJ_" id="3BHdE7cOUil" role="lGtFl">
@@ -72,9 +72,8 @@
     <property role="TrG5h" value="RequirementEntryReference" />
     <node concept="1TJgyj" id="3BHdE7cPxwg" role="1TKVEi">
       <property role="IQ2ns" value="4174052498196535312" />
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="targetEntry" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <ref role="20lvS9" to="dub1:3BHdE7cMsjF" resolve="Entry" />
     </node>
   </node>

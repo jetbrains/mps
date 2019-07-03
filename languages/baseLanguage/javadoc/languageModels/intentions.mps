@@ -5,12 +5,12 @@
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="4" />
     <use id="d7a92d38-f7db-40d0-8431-763b0c3c9f20" name="jetbrains.mps.lang.intentions" version="0" />
-    <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="1" />
+    <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="2" />
     <use id="13744753-c81f-424a-9c1b-cf8943bf4e86" name="jetbrains.mps.lang.sharedConcepts" version="0" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="12" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="13" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -37,9 +37,7 @@
       <concept id="1194033889146" name="jetbrains.mps.lang.sharedConcepts.structure.ConceptFunctionParameter_editorContext" flags="nn" index="1XNTG" />
     </language>
     <language id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor">
-      <concept id="3547227755871693971" name="jetbrains.mps.lang.editor.structure.PredefinedSelector" flags="ng" index="2B6iha">
-        <property id="2162403111523065396" name="cellId" index="1lyBwo" />
-      </concept>
+      <concept id="3547227755871693971" name="jetbrains.mps.lang.editor.structure.PredefinedSelector" flags="ng" index="2B6iha" />
       <concept id="3647146066980922272" name="jetbrains.mps.lang.editor.structure.SelectInEditorOperation" flags="nn" index="1OKiuA">
         <child id="1948540814633499358" name="editorContext" index="lBI5i" />
         <child id="1948540814635895774" name="cellSelector" index="lGT1i" />
@@ -794,9 +792,7 @@
             </node>
             <node concept="1OKiuA" id="3VqtTADeQ9j" role="2OqNvi">
               <node concept="1XNTG" id="3VqtTADeWVH" role="lBI5i" />
-              <node concept="2B6iha" id="3VqtTADfuFS" role="lGT1i">
-                <property role="1lyBwo" value="first" />
-              </node>
+              <node concept="2B6iha" id="3VqtTADfuFS" role="lGT1i" />
             </node>
           </node>
         </node>
@@ -1260,9 +1256,7 @@
                 </node>
                 <node concept="1OKiuA" id="3VqtTADf2jz" role="2OqNvi">
                   <node concept="1XNTG" id="3VqtTADf2ts" role="lBI5i" />
-                  <node concept="2B6iha" id="3VqtTADfiSm" role="lGT1i">
-                    <property role="1lyBwo" value="first" />
-                  </node>
+                  <node concept="2B6iha" id="3VqtTADfiSm" role="lGT1i" />
                 </node>
               </node>
             </node>
@@ -1548,9 +1542,7 @@
             </node>
             <node concept="1OKiuA" id="3VqtTADeH8j" role="2OqNvi">
               <node concept="1XNTG" id="3VqtTADeHnP" role="lBI5i" />
-              <node concept="2B6iha" id="3VqtTADftGH" role="lGT1i">
-                <property role="1lyBwo" value="first" />
-              </node>
+              <node concept="2B6iha" id="3VqtTADftGH" role="lGT1i" />
             </node>
           </node>
         </node>
@@ -1784,9 +1776,7 @@
                 </node>
                 <node concept="1OKiuA" id="3VqtTADf6Yd" role="2OqNvi">
                   <node concept="1XNTG" id="3VqtTADf70H" role="lBI5i" />
-                  <node concept="2B6iha" id="3VqtTADfsZ2" role="lGT1i">
-                    <property role="1lyBwo" value="first" />
-                  </node>
+                  <node concept="2B6iha" id="3VqtTADfsZ2" role="lGT1i" />
                 </node>
               </node>
             </node>

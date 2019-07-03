@@ -5,7 +5,7 @@
     <use id="774bf8a0-62e5-41e1-af63-f4812e60e48b" name="jetbrains.mps.baseLanguage.checkedDots" version="-1" />
     <use id="63650c59-16c8-498a-99c8-005c7ee9515d" name="jetbrains.mps.lang.access" version="-1" />
     <use id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior" version="2" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
@@ -692,7 +692,7 @@
                                                         </node>
                                                         <node concept="3clFbS" id="1KUoCiqb7qm" role="TDEfX">
                                                           <node concept="RRSsy" id="3jYQuSB36N5" role="3cqZAp">
-                                                            <property role="RRSoG" value="error" />
+                                                            <property role="RRSoG" value="gZ5fh_4/error" />
                                                             <node concept="Xl_RD" id="1KUoCiqb7qp" role="RRSoy">
                                                               <property role="Xl_RC" value="Exception on query loading" />
                                                             </node>
@@ -711,7 +711,7 @@
                                                         </node>
                                                         <node concept="3clFbS" id="1KUoCiqb7qv" role="TDEfX">
                                                           <node concept="RRSsy" id="3jYQuSB36Nd" role="3cqZAp">
-                                                            <property role="RRSoG" value="error" />
+                                                            <property role="RRSoG" value="gZ5fh_4/error" />
                                                             <node concept="Xl_RD" id="1KUoCiqb7qx" role="RRSoy">
                                                               <property role="Xl_RC" value="Exception on query loading" />
                                                             </node>
@@ -762,7 +762,7 @@
                                       </node>
                                       <node concept="3clFbS" id="1KUoCiqb7qf" role="TDEfX">
                                         <node concept="RRSsy" id="3jYQuSB36Nl" role="3cqZAp">
-                                          <property role="RRSoG" value="error" />
+                                          <property role="RRSoG" value="gZ5fh_4/error" />
                                           <node concept="Xl_RD" id="1KUoCiqb7qh" role="RRSoy">
                                             <property role="Xl_RC" value="Exception on query loading" />
                                           </node>
@@ -1847,7 +1847,7 @@
                                 </node>
                                 <node concept="3clFbS" id="qgIopNngIl" role="TDEfX">
                                   <node concept="RRSsy" id="3jYQuSB36NP" role="3cqZAp">
-                                    <property role="RRSoG" value="warn" />
+                                    <property role="RRSoG" value="gZ5fksE/warn" />
                                     <node concept="3cpWs3" id="qgIopNoAwZ" role="RRSoy">
                                       <node concept="Xl_RD" id="qgIopNoBTn" role="3uHU7w">
                                         <property role="Xl_RC" value=" implements ConsoleHelpProvider but does not implement getHelp() method" />

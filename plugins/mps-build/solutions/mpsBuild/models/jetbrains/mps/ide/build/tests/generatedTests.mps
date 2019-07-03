@@ -489,7 +489,7 @@
       <node concept="1E1JtA" id="4rxYtJXJxz2" role="2G$12L">
         <property role="TrG5h" value="testSubstituteType" />
         <property role="3LESm3" value="f4227833-0d14-4ab5-8560-70880fd9d5ef" />
-        <property role="aoJFB" value="sources and tests" />
+        <property role="aoJFB" value="eYcmk9QOlj/sources and tests" />
         <node concept="55IIr" id="4rxYtJXJxz3" role="3LF7KH">
           <node concept="2Ry0Ak" id="4rxYtJXJxz4" role="iGT6I">
             <property role="2Ry0Am" value="plugins" />
@@ -538,7 +538,7 @@
       <node concept="1E1JtA" id="4rxYtJXJxzj" role="2G$12L">
         <property role="TrG5h" value="testSubtypingTest" />
         <property role="3LESm3" value="b3170ec7-82d9-4e10-a3f0-31baa75ffc0c" />
-        <property role="aoJFB" value="sources and tests" />
+        <property role="aoJFB" value="eYcmk9QOlj/sources and tests" />
         <node concept="55IIr" id="4rxYtJXJxzk" role="3LF7KH">
           <node concept="2Ry0Ak" id="4rxYtJXJxzl" role="iGT6I">
             <property role="2Ry0Am" value="plugins" />
@@ -592,7 +592,7 @@
       <node concept="1E1JtA" id="4rxYtJXJxz$" role="2G$12L">
         <property role="TrG5h" value="jetbrains.mps.baseLanguage.closures.test" />
         <property role="3LESm3" value="709a7100-da7a-45a1-948b-53fdd43f5421" />
-        <property role="aoJFB" value="sources and tests" />
+        <property role="aoJFB" value="eYcmk9QOlj/sources and tests" />
         <node concept="55IIr" id="4rxYtJXJxz_" role="3LF7KH">
           <node concept="2Ry0Ak" id="4rxYtJXJxzA" role="iGT6I">
             <property role="2Ry0Am" value="plugins" />
@@ -646,7 +646,7 @@
       <node concept="1E1JtA" id="4rxYtJXJxzP" role="2G$12L">
         <property role="TrG5h" value="tests.testDepViewer" />
         <property role="3LESm3" value="4c6a90ca-b7fe-4942-9ee4-58e09ff23d6d" />
-        <property role="aoJFB" value="sources and tests" />
+        <property role="aoJFB" value="eYcmk9QOlj/sources and tests" />
         <node concept="55IIr" id="4rxYtJXJxzQ" role="3LF7KH">
           <node concept="2Ry0Ak" id="4rxYtJXJxzR" role="iGT6I">
             <property role="2Ry0Am" value="testbench" />
@@ -708,7 +708,7 @@
       <node concept="1E1JtA" id="4rxYtJXJx$2" role="2G$12L">
         <property role="TrG5h" value="tests.testPersistence" />
         <property role="3LESm3" value="f2f32c65-17db-4e68-ad2f-8b0e2554dbd6" />
-        <property role="aoJFB" value="sources and tests" />
+        <property role="aoJFB" value="eYcmk9QOlj/sources and tests" />
         <node concept="55IIr" id="4rxYtJXJx$3" role="3LF7KH">
           <node concept="2Ry0Ak" id="4rxYtJXJx$4" role="iGT6I">
             <property role="2Ry0Am" value="testbench" />
@@ -760,7 +760,7 @@
       <node concept="1E1JtA" id="4rxYtJXJx$f" role="2G$12L">
         <property role="TrG5h" value="CloneModule.test" />
         <property role="3LESm3" value="99305b9b-aa2f-490a-a517-130cdd46b087" />
-        <property role="aoJFB" value="sources and tests" />
+        <property role="aoJFB" value="eYcmk9QOlj/sources and tests" />
         <node concept="55IIr" id="4rxYtJXJx$g" role="3LF7KH">
           <node concept="2Ry0Ak" id="4rxYtJXJx$h" role="iGT6I">
             <property role="2Ry0Am" value="testbench" />
@@ -817,7 +817,7 @@
       <node concept="1E1JtA" id="4rxYtJXJx$s" role="2G$12L">
         <property role="TrG5h" value="refactoring.test" />
         <property role="3LESm3" value="64b24ebe-97a2-466e-83d8-bd3afefcbb41" />
-        <property role="aoJFB" value="sources and tests" />
+        <property role="aoJFB" value="eYcmk9QOlj/sources and tests" />
         <node concept="55IIr" id="4rxYtJXJx$t" role="3LF7KH">
           <node concept="2Ry0Ak" id="4rxYtJXJx$u" role="iGT6I">
             <property role="2Ry0Am" value="testbench" />

@@ -150,9 +150,6 @@
         <child id="1175517851849" name="errorString" index="2MkJ7o" />
       </concept>
       <concept id="1179832490862" name="jetbrains.mps.lang.typesystem.structure.CreateStrongLessThanInequationStatement" flags="nn" index="2NvLDW" />
-      <concept id="1212056081426" name="jetbrains.mps.lang.typesystem.structure.AbstractInequationStatement" flags="ng" index="Ob1k8">
-        <property id="1212056105818" name="inequationPriority" index="Ob790" />
-      </concept>
       <concept id="1227096774658" name="jetbrains.mps.lang.typesystem.structure.MessageStatement" flags="ng" index="2OEH$v">
         <child id="1227096802791" name="helginsIntention" index="2OEOjU" />
         <child id="1227096802790" name="nodeToReport" index="2OEOjV" />
@@ -335,7 +332,6 @@
             <property role="TrG5h" value="elementType" />
           </node>
           <node concept="1ZoDhX" id="2P1z38GOyKi" role="3cqZAp">
-            <property role="Ob790" value="0" />
             <property role="3wDh2S" value="false" />
             <node concept="mw_s8" id="2P1z38GOyKo" role="1ZfhK$">
               <node concept="2c44tf" id="2P1z38GOyKp" role="mwGJk">

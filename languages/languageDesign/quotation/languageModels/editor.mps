@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="4" />
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="12" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="13" />
     <use id="774bf8a0-62e5-41e1-af63-f4812e60e48b" name="jetbrains.mps.baseLanguage.checkedDots" version="0" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
@@ -840,7 +840,7 @@
           <property role="VOm3f" value="true" />
         </node>
         <node concept="30gYXW" id="hF0kJRR" role="3F10Kt">
-          <property role="Vb096" value="cyan" />
+          <property role="Vb096" value="fLwANPt/cyan" />
         </node>
         <node concept="3$7jql" id="hFXFUNY" role="3F10Kt">
           <property role="3$6WeP" value="0.0" />
@@ -861,7 +861,7 @@
           <property role="VOm3f" value="true" />
         </node>
         <node concept="30gYXW" id="hF0kJTi" role="3F10Kt">
-          <property role="Vb096" value="cyan" />
+          <property role="Vb096" value="fLwANPt/cyan" />
         </node>
         <node concept="3mYdg7" id="58mW1s9_ESt" role="3F10Kt">
           <property role="1rAbXj" value="true" />
@@ -2016,7 +2016,7 @@
     <property role="TrG5h" value="_Quotation_createModel" />
     <ref role="1chiOs" to="tp3r:hqc44pp" resolve="Quotation" />
     <node concept="2PxR9H" id="hqc4$mr" role="2QnnpI">
-      <property role="2IlM53" value="caret_at_last_position" />
+      <property role="2IlM53" value="gAIlx3c/caret_at_last_position" />
       <node concept="2Py5lD" id="hqc4$ms" role="2PyaAO">
         <property role="2PWKIS" value="[" />
       </node>
@@ -2244,7 +2244,7 @@
     <ref role="1XX52x" to="tp3r:hqc44pp" resolve="Quotation" />
     <node concept="OXEIz" id="7CDYDAPrHdM" role="1XvlXI">
       <node concept="1ou48o" id="7CDYDAPrHef" role="OY2wv">
-        <property role="1ezIyd" value="default_referent" />
+        <property role="1ezIyd" value="gWZPhPb/default_referent" />
         <node concept="3GJtP1" id="7CDYDAPrHeg" role="1ou48n">
           <node concept="3clFbS" id="7CDYDAPrHeh" role="2VODD2">
             <node concept="3cpWs8" id="7CDYDAPrHei" role="3cqZAp">
@@ -2529,12 +2529,12 @@
             <property role="1Intyy" value="true" />
             <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
             <node concept="VechU" id="4IP40Bi36YM" role="3F10Kt">
-              <property role="Vb096" value="darkGray" />
+              <property role="Vb096" value="fLJRk5B/darkGray" />
             </node>
           </node>
         </node>
         <node concept="Vb9p2" id="4IP40Bi2YMW" role="3F10Kt">
-          <property role="Vbekb" value="BOLD" />
+          <property role="Vbekb" value="g1_k_vY/BOLD" />
         </node>
       </node>
       <node concept="3F0ifn" id="3v7fNhWaNsA" role="3EZMnx">
@@ -2740,7 +2740,7 @@
           </node>
         </node>
         <node concept="VechU" id="4IP40Bi38SF" role="3F10Kt">
-          <property role="Vb096" value="DARK_MAGENTA" />
+          <property role="Vb096" value="g1_qVrt/DARK_MAGENTA" />
         </node>
       </node>
       <node concept="3F0ifn" id="4IP40Bi38SB" role="3EZMnx">
@@ -2778,7 +2778,7 @@
           <property role="VOm3f" value="true" />
         </node>
         <node concept="30gYXW" id="4IP40Bi2Gwx" role="3F10Kt">
-          <property role="Vb096" value="magenta" />
+          <property role="Vb096" value="fLwANPs/magenta" />
           <node concept="1iSF2X" id="4IP40Bi2GwV" role="VblUZ">
             <property role="1iTho6" value="74a4c8" />
           </node>
@@ -2805,7 +2805,7 @@
           <property role="VOm3f" value="true" />
         </node>
         <node concept="30gYXW" id="4IP40Bi2GwB" role="3F10Kt">
-          <property role="Vb096" value="cyan" />
+          <property role="Vb096" value="fLwANPt/cyan" />
           <node concept="1iSF2X" id="4IP40Bi2GwX" role="VblUZ">
             <property role="1iTho6" value="74a4c8" />
           </node>

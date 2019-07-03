@@ -3,9 +3,9 @@
   <persistence version="9" />
   <languages>
     <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="-1" />
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="-1" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="13" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="-1" />
   </languages>
   <imports>
@@ -352,7 +352,7 @@
         </node>
       </node>
       <node concept="3F1sOY" id="3J6h25QeYYl" role="3EZMnx">
-        <property role="1cu_pB" value="1" />
+        <property role="1cu_pB" value="gtgu$YJ/1" />
         <ref role="1ERwB7" node="qdYczXcLw1" resolve="QueryParameterScopeValue_Actions_old" />
         <ref role="1NtTu8" to="3xdn:3J6h25QeYY9" resolve="value_old" />
       </node>
@@ -535,7 +535,7 @@
     <property role="TrG5h" value="QueryExpression_ParameterActions" />
     <ref role="1h_SK9" to="3xdn:3J6h25Q2UNX" resolve="QueryExpression" />
     <node concept="1hA7zw" id="3J6h25Q_ELe" role="1h_SK8">
-      <property role="1hAc7j" value="delete_action_id" />
+      <property role="1hAc7j" value="g_hAxAO/delete_action_id" />
       <node concept="1hAIg9" id="3J6h25Q_ELf" role="1hA7z_">
         <node concept="3clFbS" id="3J6h25Q_ELg" role="2VODD2">
           <node concept="3clFbJ" id="14TMHtHhOU0" role="3cqZAp">
@@ -675,7 +675,7 @@
     <property role="TrG5h" value="QueryParameterScopeValue_Actions_old" />
     <ref role="1h_SK9" to="3xdn:3J6h25Q6eOJ" resolve="QueryParameterScope_old" />
     <node concept="1hA7zw" id="qdYczXcLw2" role="1h_SK8">
-      <property role="1hAc7j" value="delete_action_id" />
+      <property role="1hAc7j" value="g_hAxAO/delete_action_id" />
       <node concept="1hAIg9" id="qdYczXcLw3" role="1hA7z_">
         <node concept="3clFbS" id="qdYczXcLw4" role="2VODD2">
           <node concept="3clFbJ" id="qdYczXcNvR" role="3cqZAp">
@@ -795,7 +795,7 @@
     <property role="TrG5h" value="CustomScope_old_Actions" />
     <ref role="1h_SK9" to="3xdn:31Tct3Txnn9" resolve="CustomScope_old" />
     <node concept="1hA7zw" id="1N$kF6q0sIh" role="1h_SK8">
-      <property role="1hAc7j" value="backspace_action_id" />
+      <property role="1hAc7j" value="7P1WhNABvta/backspace_action_id" />
       <node concept="1hAIg9" id="1N$kF6q0sIi" role="1hA7z_">
         <node concept="3clFbS" id="1N$kF6q0sIj" role="2VODD2">
           <node concept="3clFbF" id="1N$kF6q0sIs" role="3cqZAp">
@@ -836,7 +836,7 @@
           <node concept="3F0ifn" id="aH$ttDTONZ" role="1QoVPY">
             <property role="3F0ifm" value="editable" />
             <node concept="VechU" id="aH$ttDTOOj" role="3F10Kt">
-              <property role="Vb096" value="gray" />
+              <property role="Vb096" value="fLJRk5_/gray" />
             </node>
             <node concept="2SqB2G" id="aH$ttDUND8" role="2SqHTX">
               <property role="TrG5h" value="editable" />
@@ -857,7 +857,7 @@
         <node concept="3F0ifn" id="aH$ttDVoH8" role="3EZMnx">
           <property role="3F0ifm" value="models in" />
           <node concept="VechU" id="aH$ttDW$_7" role="3F10Kt">
-            <property role="Vb096" value="darkGray" />
+            <property role="Vb096" value="fLJRk5B/darkGray" />
           </node>
         </node>
         <node concept="VPM3Z" id="aH$ttDVkBi" role="3F10Kt">
@@ -965,7 +965,7 @@
     <property role="TrG5h" value="QueryParameterList_Actions" />
     <ref role="1h_SK9" to="3xdn:3J6h25Q5HRT" resolve="QueryParameterList" />
     <node concept="1hA7zw" id="72nsGSZcKgu" role="1h_SK8">
-      <property role="1hAc7j" value="delete_action_id" />
+      <property role="1hAc7j" value="g_hAxAO/delete_action_id" />
       <node concept="1hAIg9" id="72nsGSZcKgv" role="1hA7z_">
         <node concept="3clFbS" id="72nsGSZcKgw" role="2VODD2">
           <node concept="3cpWs8" id="72nsGSZcLrR" role="3cqZAp">
@@ -1027,7 +1027,7 @@
     <property role="TrG5h" value="QueryExpression_Actions" />
     <ref role="1h_SK9" to="3xdn:3J6h25Q2UNX" resolve="QueryExpression" />
     <node concept="1hA7zw" id="k7mxkFkcvJ" role="1h_SK8">
-      <property role="1hAc7j" value="backspace_action_id" />
+      <property role="1hAc7j" value="7P1WhNABvta/backspace_action_id" />
       <node concept="1hAIg9" id="k7mxkFkcvK" role="1hA7z_">
         <node concept="3clFbS" id="k7mxkFkcvL" role="2VODD2">
           <node concept="3cpWs8" id="k7mxkFkIBT" role="3cqZAp">
@@ -1232,7 +1232,7 @@
         </node>
       </node>
       <node concept="3F1sOY" id="238_VGTIKvm" role="3EZMnx">
-        <property role="1cu_pB" value="1" />
+        <property role="1cu_pB" value="gtgu$YJ/1" />
         <ref role="1ERwB7" node="238_VGTIKwf" resolve="QueryParameterScopeValue_Actions" />
         <ref role="1NtTu8" to="3xdn:238_VGTIKu$" resolve="value" />
       </node>
@@ -1243,7 +1243,7 @@
     <property role="TrG5h" value="QueryParameterScopeValue_Actions" />
     <ref role="1h_SK9" to="3xdn:238_VGTIKuz" resolve="QueryParameterScope" />
     <node concept="1hA7zw" id="238_VGTIKwg" role="1h_SK8">
-      <property role="1hAc7j" value="delete_action_id" />
+      <property role="1hAc7j" value="g_hAxAO/delete_action_id" />
       <node concept="1hAIg9" id="238_VGTIKwh" role="1hA7z_">
         <node concept="3clFbS" id="238_VGTIKwi" role="2VODD2">
           <node concept="3clFbJ" id="238_VGTIKwj" role="3cqZAp">
@@ -1437,7 +1437,7 @@
     <property role="TrG5h" value="CustomScope_Actions" />
     <ref role="1h_SK9" to="3xdn:238_VGTIKuD" resolve="CustomScope" />
     <node concept="1hA7zw" id="238_VGTIKyW" role="1h_SK8">
-      <property role="1hAc7j" value="backspace_action_id" />
+      <property role="1hAc7j" value="7P1WhNABvta/backspace_action_id" />
       <node concept="1hAIg9" id="238_VGTIKyX" role="1hA7z_">
         <node concept="3clFbS" id="238_VGTIKyY" role="2VODD2">
           <node concept="3clFbF" id="238_VGTIKyZ" role="3cqZAp">
@@ -1500,7 +1500,7 @@
     <property role="TrG5h" value="WithStatement_DeleteEditable" />
     <ref role="1h_SK9" to="3xdn:3F2FyKbNNqb" resolve="WithStatement" />
     <node concept="1hA7zw" id="aH$ttDUpvt" role="1h_SK8">
-      <property role="1hAc7j" value="delete_action_id" />
+      <property role="1hAc7j" value="g_hAxAO/delete_action_id" />
       <node concept="1hAIg9" id="aH$ttDUpvu" role="1hA7z_">
         <node concept="3clFbS" id="aH$ttDUpvv" role="2VODD2">
           <node concept="3clFbF" id="aH$ttDUpvK" role="3cqZAp">

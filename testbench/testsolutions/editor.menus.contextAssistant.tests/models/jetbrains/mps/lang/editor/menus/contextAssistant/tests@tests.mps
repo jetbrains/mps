@@ -8,7 +8,7 @@
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="-1" />
     <use id="9a629f9a-abc9-4c29-b1b8-db7f349f7fbc" name="jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage" version="-1" />
     <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="-1" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
   </languages>
   <imports>
     <import index="exr9" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor(MPS.Editor/)" />
@@ -374,7 +374,7 @@
     <property role="TrG5h" value="ContextAssistant_HandlesExceptionsFromIsApplicable" />
     <property role="3YCmrE" value="menu items that throw exception in 'isApplicable' are skipped but the menu is still shown" />
     <node concept="2ng5p9" id="3qLRTyyslBR" role="2ng5wh">
-      <property role="2nlSSt" value="ERROR" />
+      <property role="2nlSSt" value="4xJw7BvdBfa/ERROR" />
       <property role="2nlSSu" value="Intentional exception - ignore this" />
     </node>
     <node concept="1N2y4u" id="6cnCU_HRlYy" role="LiRBU">

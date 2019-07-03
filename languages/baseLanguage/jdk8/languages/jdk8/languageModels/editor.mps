@@ -2,7 +2,7 @@
 <model ref="r:e0b66e1e-58f0-4d4c-b699-45df07297948(jetbrains.mps.baseLanguage.jdk8.editor)">
   <persistence version="9" />
   <languages>
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="-1" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="13" />
     <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="-1" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
@@ -289,7 +289,7 @@
     <property role="TrG5h" value="SuperInterfaceMethodCall_actions" />
     <ref role="1h_SK9" to="jqf9:1vrGgVFsInp" resolve="SuperInterfaceMethodCall" />
     <node concept="1hA7zw" id="1kuOZsiN1eU" role="1h_SK8">
-      <property role="1hAc7j" value="delete_action_id" />
+      <property role="1hAc7j" value="g_hAxAO/delete_action_id" />
       <node concept="1hAIg9" id="1kuOZsiN1eV" role="1hA7z_">
         <node concept="3clFbS" id="1kuOZsiN1eW" role="2VODD2">
           <node concept="3clFbJ" id="4B_rn7pJ_Nn" role="3cqZAp">

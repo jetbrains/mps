@@ -51,9 +51,6 @@
       <concept id="1175517767210" name="jetbrains.mps.lang.typesystem.structure.ReportErrorStatement" flags="nn" index="2MkqsV">
         <child id="1175517851849" name="errorString" index="2MkJ7o" />
       </concept>
-      <concept id="1212056081426" name="jetbrains.mps.lang.typesystem.structure.AbstractInequationStatement" flags="ng" index="Ob1k8">
-        <property id="1212056105818" name="inequationPriority" index="Ob790" />
-      </concept>
       <concept id="1227096774658" name="jetbrains.mps.lang.typesystem.structure.MessageStatement" flags="ng" index="2OEH$v">
         <child id="1227096802790" name="nodeToReport" index="2OEOjV" />
       </concept>
@@ -123,7 +120,6 @@
     <property role="TrG5h" value="MatchRegexpStatement" />
     <node concept="3clFbS" id="h9gWUfY" role="18ibNy">
       <node concept="1ZobV4" id="h9gWUfZ" role="3cqZAp">
-        <property role="Ob790" value="0" />
         <node concept="mw_s8" id="hgnxcYw" role="1ZfhK$">
           <node concept="1Z2H0r" id="h9gWUg0" role="mwGJk">
             <node concept="2OqwBi" id="hxx$RW$" role="1Z2MuG">
@@ -152,7 +148,6 @@
     <property role="TrG5h" value="ForEachMatchStatement" />
     <node concept="3clFbS" id="h9gWUg7" role="18ibNy">
       <node concept="1ZobV4" id="h9gWUg8" role="3cqZAp">
-        <property role="Ob790" value="0" />
         <node concept="mw_s8" id="hgnxcYy" role="1ZfhK$">
           <node concept="1Z2H0r" id="h9gWUg9" role="mwGJk">
             <node concept="2OqwBi" id="hxx$JUo" role="1Z2MuG">
@@ -181,7 +176,6 @@
     <property role="TrG5h" value="ReplaceWithRegexpExpression" />
     <node concept="3clFbS" id="h9gWUgg" role="18ibNy">
       <node concept="1ZobV4" id="h9gWUgh" role="3cqZAp">
-        <property role="Ob790" value="0" />
         <node concept="mw_s8" id="hgnxcY$" role="1ZfhK$">
           <node concept="1Z2H0r" id="h9gWUgi" role="mwGJk">
             <node concept="2OqwBi" id="hxx$_jc" role="1Z2MuG">
@@ -210,7 +204,6 @@
     <property role="TrG5h" value="SplitExpression" />
     <node concept="3clFbS" id="h9gWUgp" role="18ibNy">
       <node concept="1ZobV4" id="h9gWUgq" role="3cqZAp">
-        <property role="Ob790" value="0" />
         <node concept="mw_s8" id="hgnxcYA" role="1ZfhK$">
           <node concept="1Z2H0r" id="h9gWUgr" role="mwGJk">
             <node concept="2OqwBi" id="hxx$DMW" role="1Z2MuG">
@@ -256,7 +249,6 @@
     <property role="TrG5h" value="FindMatchStatement" />
     <node concept="3clFbS" id="h9gWUgB" role="18ibNy">
       <node concept="1ZobV4" id="h9gWUgC" role="3cqZAp">
-        <property role="Ob790" value="0" />
         <node concept="mw_s8" id="hgnxcYC" role="1ZfhK$">
           <node concept="1Z2H0r" id="h9gWUgD" role="mwGJk">
             <node concept="2OqwBi" id="hxx$V3J" role="1Z2MuG">

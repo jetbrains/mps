@@ -8,7 +8,7 @@
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="-1" />
     <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="-1" />
     <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="-1" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <use id="22e72e4c-0f69-46ce-8403-6750153aa615" name="jetbrains.mps.execution.configurations" version="-1" />
   </languages>
@@ -402,7 +402,7 @@
               </node>
             </node>
             <node concept="RRSsy" id="3jYQuSB36Y2" role="3cqZAp">
-              <property role="RRSoG" value="info" />
+              <property role="RRSoG" value="h1akgim/info" />
               <node concept="Xl_RD" id="5vTxdEzyTYY" role="RRSoy">
                 <property role="Xl_RC" value="Starting in-process-execution" />
               </node>
@@ -1102,7 +1102,7 @@
               </node>
             </node>
             <node concept="RRSsy" id="3jYQuSB36Y8" role="3cqZAp">
-              <property role="RRSoG" value="info" />
+              <property role="RRSoG" value="h1akgim/info" />
               <node concept="Xl_RD" id="5vTxdEzz10B" role="RRSoy">
                 <property role="Xl_RC" value="Starting in-process-execution" />
               </node>
@@ -1757,7 +1757,7 @@
               </node>
             </node>
             <node concept="RRSsy" id="3jYQuSB36Ye" role="3cqZAp">
-              <property role="RRSoG" value="info" />
+              <property role="RRSoG" value="h1akgim/info" />
               <node concept="Xl_RD" id="5XEoQWrnLG" role="RRSoy">
                 <property role="Xl_RC" value="Starting in-process-execution" />
               </node>

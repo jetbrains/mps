@@ -2909,14 +2909,14 @@
   <node concept="2DaZZR" id="6dAEaqvbBih" />
   <node concept="Zd50a" id="4YyvUboEVi4">
     <property role="TrG5h" value="DefaultForGNOME" />
-    <property role="Zd52Q" value="Default for GNOME" />
+    <property role="Zd52Q" value="1E5xVYI0RcL/Default for GNOME" />
     <property role="Z2u3V" value="false" />
     <node concept="Zd509" id="4YyvUboEVi5" role="Zd508">
       <ref role="1bYAoF" node="68aArIS9HCw" resolve="EvaluateExpression" />
       <node concept="pLAjd" id="4YyvUboEVi6" role="Zd501">
         <property role="pLAjc" value="alt+shift" />
         <property role="pLAjf" value="VK_8" />
-        <property role="3hacHL" value="replace all" />
+        <property role="3hacHL" value="5SFo3Mf0QpD/replace all" />
       </node>
     </node>
   </node>

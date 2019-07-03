@@ -213,9 +213,7 @@
       <concept id="1068498886294" name="jetbrains.mps.baseLanguage.structure.AssignmentExpression" flags="nn" index="37vLTI" />
       <concept id="1225271177708" name="jetbrains.mps.baseLanguage.structure.StringType" flags="in" index="17QB3L" />
       <concept id="1225271369338" name="jetbrains.mps.baseLanguage.structure.IsEmptyOperation" flags="nn" index="17RlXB" />
-      <concept id="1225271546410" name="jetbrains.mps.baseLanguage.structure.TrimOperation" flags="nn" index="17S1cR">
-        <property id="1225271546413" name="trimKind" index="17S1cK" />
-      </concept>
+      <concept id="1225271546410" name="jetbrains.mps.baseLanguage.structure.TrimOperation" flags="nn" index="17S1cR" />
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
         <child id="5680397130376446158" name="type" index="1tU5fm" />
       </concept>
@@ -2358,9 +2356,7 @@
                 <node concept="37vLTw" id="2BHiRxgm8Nn" role="2Oq$k0">
                   <ref role="3cqZAo" node="3EnpNH2$tLV" resolve="line" />
                 </node>
-                <node concept="17S1cR" id="3EnpNH2$tMa" role="2OqNvi">
-                  <property role="17S1cK" value="both" />
-                </node>
+                <node concept="17S1cR" id="3EnpNH2$tMa" role="2OqNvi" />
               </node>
             </node>
           </node>

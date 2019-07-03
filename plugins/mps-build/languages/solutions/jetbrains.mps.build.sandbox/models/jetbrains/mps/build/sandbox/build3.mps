@@ -226,7 +226,7 @@
                 </node>
               </node>
               <node concept="3co7Ac" id="5zIo$W4rXIM" role="28jJR8">
-                <property role="3co7Am" value="crlf" />
+                <property role="3co7Am" value="3D3G23Q8WAM/crlf" />
                 <property role="3cpA_W" value="true" />
               </node>
             </node>
@@ -289,7 +289,7 @@
           </node>
         </node>
         <node concept="1tmT9g" id="5zIo$W4rXyx" role="39821P">
-          <property role="AB_bT" value="gzip" />
+          <property role="AB_bT" value="1HQQX4XU8$A/gzip" />
           <node concept="3_J27D" id="5zIo$W4rXyy" role="Nbhlr">
             <node concept="3Mxwew" id="5zIo$W4rXyz" role="3MwsjC">
               <property role="3MwjfP" value="tarfilesettest2.tar.gz" />
@@ -369,7 +369,7 @@
                       </node>
                     </node>
                     <node concept="3co7Ac" id="$8kyfUD03m" role="28jJR8">
-                      <property role="3co7Am" value="crlf" />
+                      <property role="3co7Am" value="3D3G23Q8WAM/crlf" />
                     </node>
                   </node>
                 </node>
@@ -452,7 +452,7 @@
         </node>
       </node>
       <node concept="1tmT9g" id="1HQQX4XUzRW" role="39821P">
-        <property role="AB_bT" value="gzip" />
+        <property role="AB_bT" value="1HQQX4XU8$A/gzip" />
         <node concept="398223" id="1HQQX4XU$8b" role="39821P">
           <node concept="3_J27D" id="1HQQX4XU$8c" role="Nbhlr">
             <node concept="3Mxwew" id="1HQQX4XU$8d" role="3MwsjC">
@@ -486,7 +486,7 @@
         </node>
       </node>
       <node concept="1tmT9g" id="7s9W5cElg6y" role="39821P">
-        <property role="AB_bT" value="bzip2" />
+        <property role="AB_bT" value="1HQQX4XU8$B/bzip2" />
         <node concept="3_J27D" id="7s9W5cElg6z" role="Nbhlr">
           <node concept="3Mxwew" id="7s9W5cElg6$" role="3MwsjC">
             <property role="3MwjfP" value="my.tar.bz2" />

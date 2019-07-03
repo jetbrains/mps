@@ -38,9 +38,9 @@
     <property role="EcuMT" value="3618324829955890003" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="38QROcrvMuw" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="element" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="3618324829955893152" />
       <ref role="20lvS9" to="dghb:hP5YayT" resolve="Element" />
     </node>

@@ -120,7 +120,6 @@
     <language id="0eddeefa-c2d6-4437-bc2c-de50fd4ce470" name="jetbrains.mps.lang.script">
       <concept id="1177457067821" name="jetbrains.mps.lang.script.structure.MigrationScript" flags="ig" index="_UgoZ">
         <property id="1177457669450" name="title" index="_Wzho" />
-        <property id="5299416737274925395" name="type" index="2BwPSy" />
         <child id="1177458178889" name="part" index="_YvDr" />
       </concept>
       <concept id="1177457850499" name="jetbrains.mps.lang.script.structure.MigrationScriptPart_Instance" flags="lg" index="_XfAh">
@@ -250,20 +249,20 @@
                     </node>
                   </node>
                   <node concept="3clFbC" id="1uUMibxOfdZ" role="3uHU7B">
-                    <node concept="2OqwBi" id="1uUMibxOfe5" role="3uHU7w">
-                      <node concept="3TrcHB" id="1uUMibxOfea" role="2OqNvi">
-                        <ref role="3TsBF5" to="tpce:fA0lm$B" resolve="metaClass" />
-                      </node>
-                      <node concept="37vLTw" id="2BHiRxglBzE" role="2Oq$k0">
-                        <ref role="3cqZAo" node="1uUMibxO6sQ" resolve="linkNode" />
-                      </node>
-                    </node>
                     <node concept="2OqwBi" id="1uUMibxO6tc" role="3uHU7B">
                       <node concept="2GrUjf" id="1uUMibxO6t9" role="2Oq$k0">
                         <ref role="2Gs0qQ" node="1uUMibxO6sU" resolve="linkDecl" />
                       </node>
                       <node concept="3TrcHB" id="1uUMibxOfdW" role="2OqNvi">
-                        <ref role="3TsBF5" to="tpce:fA0lm$B" resolve="metaClass" />
+                        <ref role="3TsBF5" to="tpce:3Ftr4R6BH8$" resolve="metaClass" />
+                      </node>
+                    </node>
+                    <node concept="2OqwBi" id="1uUMibxOfe5" role="3uHU7w">
+                      <node concept="3TrcHB" id="1uUMibxOfea" role="2OqNvi">
+                        <ref role="3TsBF5" to="tpce:3Ftr4R6BH8$" resolve="metaClass" />
+                      </node>
+                      <node concept="37vLTw" id="2BHiRxglBzE" role="2Oq$k0">
+                        <ref role="3cqZAo" node="1uUMibxO6sQ" resolve="linkNode" />
                       </node>
                     </node>
                   </node>
@@ -617,7 +616,6 @@
   <node concept="_UgoZ" id="3MXdqyhpc21">
     <property role="_Wzho" value="Remove backslashes from macros in iconPath" />
     <property role="TrG5h" value="RemoveBackslashesFromIconPath" />
-    <property role="2BwPSy" value="enhancement" />
     <node concept="_XfAh" id="3MXdqyhpc22" role="_YvDr">
       <property role="_XH9r" value="Remove backslashes from macros in iconPath" />
       <property role="1iWc8x" value="true" />

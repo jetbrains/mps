@@ -3,10 +3,10 @@
   <persistence version="9" />
   <languages>
     <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="4" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="12" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="13" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
-    <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="1" />
+    <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="2" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -240,7 +240,7 @@
         </node>
       </node>
       <node concept="3F1sOY" id="3ysSjmiKK91" role="3EZMnx">
-        <property role="1cu_pB" value="3" />
+        <property role="1cu_pB" value="hQNNVxO/3" />
         <ref role="1NtTu8" to="tpee:hqOqNr4" resolve="operation" />
         <ref role="1ERwB7" node="2P0iSQl3y9L" resolve="CheckedDotExpression_Actions_DeleteOperation" />
       </node>
@@ -252,7 +252,7 @@
     <ref role="1h_SK9" to="tpee:hqOqwz4" resolve="DotExpression" />
     <node concept="1hA7zw" id="4AZBXnbnf5e" role="1h_SK8">
       <property role="1hHO97" value="delete question mark" />
-      <property role="1hAc7j" value="delete_action_id" />
+      <property role="1hAc7j" value="g_hAxAO/delete_action_id" />
       <node concept="1hAIg9" id="4AZBXnbnf5f" role="1hA7z_">
         <node concept="3clFbS" id="4AZBXnbnf5g" role="2VODD2">
           <node concept="3cpWs8" id="4AZBXnbng_l" role="3cqZAp">
@@ -337,7 +337,7 @@
     <node concept="1Qtc8_" id="1wEcoXjJGdM" role="IW6Ez">
       <node concept="3cWJ9i" id="1wEcoXjJGdK" role="1Qtc8$">
         <node concept="CtIbL" id="1wEcoXjJGdL" role="CtIbM">
-          <property role="CtIbK" value="RIGHT" />
+          <property role="CtIbK" value="30NnNOohrQL/RIGHT" />
         </node>
       </node>
       <node concept="aenpk" id="1wEcoXjJGdO" role="1Qtc8A">
@@ -418,7 +418,7 @@
                   <node concept="1OKiuA" id="1wEcoXjJGet" role="2OqNvi">
                     <node concept="1Q80Hx" id="1wEcoXjJGeu" role="lBI5i" />
                     <node concept="2B6iha" id="1wEcoXjJGev" role="lGT1i">
-                      <property role="1lyBwo" value="mostRelevant" />
+                      <property role="1lyBwo" value="59pBc0SIIVt/mostRelevant" />
                     </node>
                     <node concept="3cmrfG" id="1wEcoXjJGew" role="3dN3m$">
                       <property role="3cmrfH" value="-1" />
@@ -443,7 +443,7 @@
     <node concept="1Qtc8_" id="1wEcoXjJGeD" role="IW6Ez">
       <node concept="3cWJ9i" id="1wEcoXjJGeB" role="1Qtc8$">
         <node concept="CtIbL" id="1wEcoXjJGeC" role="CtIbM">
-          <property role="CtIbK" value="LEFT" />
+          <property role="CtIbK" value="1A4kJjlVmVt/LEFT" />
         </node>
       </node>
       <node concept="3eGOoe" id="3tC0Uej4tet" role="1Qtc8$" />
@@ -541,7 +541,7 @@
                 <node concept="1OKiuA" id="1wEcoXjJGfk" role="2OqNvi">
                   <node concept="1Q80Hx" id="1wEcoXjJGfl" role="lBI5i" />
                   <node concept="2B6iha" id="1wEcoXjJGfm" role="lGT1i">
-                    <property role="1lyBwo" value="mostRelevant" />
+                    <property role="1lyBwo" value="59pBc0SIIVt/mostRelevant" />
                   </node>
                   <node concept="3cmrfG" id="1wEcoXjJGfn" role="3dN3m$">
                     <property role="3cmrfH" value="-1" />
@@ -573,7 +573,7 @@
     <ref role="1h_SK9" to="pxpg:3ysSjmiKK8V" resolve="CheckedDotExpression" />
     <node concept="1hA7zw" id="hqOsHA_" role="1h_SK8">
       <property role="1hHO97" value="Delete operation" />
-      <property role="1hAc7j" value="delete_action_id" />
+      <property role="1hAc7j" value="g_hAxAO/delete_action_id" />
       <node concept="1hAIg9" id="hqOsHAA" role="1hA7z_">
         <node concept="3clFbS" id="hqOsHAB" role="2VODD2">
           <node concept="3clFbJ" id="3I_1mW1ToYK" role="3cqZAp">
@@ -652,7 +652,7 @@
       </node>
     </node>
     <node concept="1hA7zw" id="2P0iSQl3p2V" role="1h_SK8">
-      <property role="1hAc7j" value="backspace_action_id" />
+      <property role="1hAc7j" value="7P1WhNABvta/backspace_action_id" />
       <property role="1hHO97" value="Backspace operation" />
       <node concept="1hAIg9" id="2P0iSQl3p2W" role="1hA7z_">
         <node concept="3clFbS" id="2P0iSQl3p2X" role="2VODD2">

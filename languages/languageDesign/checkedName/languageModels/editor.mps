@@ -2,7 +2,7 @@
 <model ref="r:745da36c-6731-41a7-aad3-c0bff6ba51dd(jetbrains.mps.lang.checkedName.editor)">
   <persistence version="9" />
   <languages>
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="12" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="13" />
   </languages>
   <imports>
     <import index="4j10" ref="r:31be9f37-1a76-49a2-a444-bd006ff675c1(jetbrains.mps.lang.checkedName.structure)" />
@@ -81,7 +81,7 @@
       <node concept="3F0ifn" id="4cWf37B8oX6" role="3EZMnx">
         <property role="3F0ifm" value="|" />
         <node concept="VechU" id="4cWf37B8oX7" role="3F10Kt">
-          <property role="Vb096" value="DARK_MAGENTA" />
+          <property role="Vb096" value="g1_qVrt/DARK_MAGENTA" />
         </node>
         <node concept="3$7jql" id="4cWf37B8oX8" role="3F10Kt">
           <property role="3$6WeP" value="0.0" />
@@ -122,7 +122,7 @@
     <node concept="PMmxH" id="7yODqqShHAH" role="2wV5jI">
       <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
       <node concept="Vb9p2" id="7yODqqShHAJ" role="3F10Kt">
-        <property role="Vbekb" value="BOLD" />
+        <property role="Vbekb" value="g1_k_vY/BOLD" />
       </node>
     </node>
   </node>

@@ -117,9 +117,6 @@
         <child id="1179479418730" name="argument" index="2usUpS" />
       </concept>
       <concept id="1179832490862" name="jetbrains.mps.lang.typesystem.structure.CreateStrongLessThanInequationStatement" flags="nn" index="2NvLDW" />
-      <concept id="1212056081426" name="jetbrains.mps.lang.typesystem.structure.AbstractInequationStatement" flags="ng" index="Ob1k8">
-        <property id="1212056105818" name="inequationPriority" index="Ob790" />
-      </concept>
       <concept id="1201607707634" name="jetbrains.mps.lang.typesystem.structure.InequationReplacementRule" flags="ig" index="35pCF_">
         <child id="1201607798918" name="supertypeNode" index="35pZ6h" />
         <child id="3592071576955708909" name="isApplicableClause" index="1xSnZW" />
@@ -365,7 +362,6 @@
     <property role="3GE5qa" value="job" />
     <node concept="3clFbS" id="230qvwa_M1X" role="18ibNy">
       <node concept="1ZobV4" id="230qvwa_M28" role="3cqZAp">
-        <property role="Ob790" value="0" />
         <property role="3wDh2S" value="true" />
         <node concept="mw_s8" id="230qvwa_M2c" role="1ZfhK$">
           <node concept="1Z2H0r" id="230qvwa_M20" role="mwGJk">
@@ -494,7 +490,6 @@
     <property role="3GE5qa" value="job.progress" />
     <node concept="3clFbS" id="apaq_sBNjm" role="18ibNy">
       <node concept="1ZobV4" id="apaq_sBOng" role="3cqZAp">
-        <property role="Ob790" value="0" />
         <property role="3wDh2S" value="true" />
         <node concept="mw_s8" id="apaq_sBOnl" role="1ZfhKB">
           <node concept="2c44tf" id="apaq_sBOnm" role="mwGJk">
@@ -517,7 +512,6 @@
       <node concept="3clFbJ" id="1DQidxxwA9F" role="3cqZAp">
         <node concept="3clFbS" id="1DQidxxwA9G" role="3clFbx">
           <node concept="1ZobV4" id="1DQidxxwAa3" role="3cqZAp">
-            <property role="Ob790" value="0" />
             <node concept="mw_s8" id="1DQidxxwAa8" role="1ZfhKB">
               <node concept="2c44tf" id="1DQidxxwAa9" role="mwGJk">
                 <node concept="17QB3L" id="1DQidxxwAac" role="2c44tc" />
@@ -560,7 +554,6 @@
     <property role="3GE5qa" value="job.progress" />
     <node concept="3clFbS" id="apaq_sBOnD" role="18ibNy">
       <node concept="1ZobV4" id="apaq_sBOnF" role="3cqZAp">
-        <property role="Ob790" value="0" />
         <property role="3wDh2S" value="true" />
         <node concept="mw_s8" id="apaq_sBOnH" role="1ZfhKB">
           <node concept="2c44tf" id="apaq_sBOnI" role="mwGJk">
@@ -581,7 +574,6 @@
         </node>
       </node>
       <node concept="1ZobV4" id="apaq_sBOnS" role="3cqZAp">
-        <property role="Ob790" value="0" />
         <property role="3wDh2S" value="true" />
         <node concept="mw_s8" id="apaq_sBOnU" role="1ZfhKB">
           <node concept="2c44tf" id="apaq_sBOnV" role="mwGJk">

@@ -2,8 +2,8 @@
 <model ref="r:00000000-0000-4000-0000-011c89590308(jetbrains.mps.lang.constraints.editor)">
   <persistence version="9" />
   <languages>
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="12" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="13" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
   </languages>
   <imports>
@@ -99,7 +99,6 @@
         <reference id="1140103550593" name="relationDeclaration" index="1NtTu8" />
       </concept>
       <concept id="1073389214265" name="jetbrains.mps.lang.editor.structure.EditorCellModel" flags="ng" index="3EYTF0">
-        <property id="1130859485024" name="attractsFocus" index="1cu_pB" />
         <reference id="1139959269582" name="actionMap" index="1ERwB7" />
         <child id="1142887637401" name="renderingCondition" index="pqm2j" />
       </concept>
@@ -240,7 +239,7 @@
           <property role="VOm3f" value="false" />
         </node>
         <node concept="VechU" id="hEZR8rS" role="3F10Kt">
-          <property role="Vb096" value="DARK_MAGENTA" />
+          <property role="Vb096" value="g1_qVrt/DARK_MAGENTA" />
         </node>
         <node concept="11LMrY" id="hX77qbV" role="3F10Kt">
           <property role="VOm3f" value="true" />
@@ -255,7 +254,7 @@
             <property role="1$x2rV" value="&lt;no name&gt;" />
             <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
             <node concept="VechU" id="hEZR8Cj" role="3F10Kt">
-              <property role="Vb096" value="DARK_MAGENTA" />
+              <property role="Vb096" value="g1_qVrt/DARK_MAGENTA" />
             </node>
             <node concept="3$7jql" id="hOIeUQ2" role="3F10Kt">
               <property role="3$6WeP" value="0.0" />
@@ -270,7 +269,7 @@
           <property role="VOm3f" value="false" />
         </node>
         <node concept="VechU" id="hEZR8BC" role="3F10Kt">
-          <property role="Vb096" value="DARK_MAGENTA" />
+          <property role="Vb096" value="g1_qVrt/DARK_MAGENTA" />
         </node>
         <node concept="11L4FC" id="hX77sz0" role="3F10Kt">
           <property role="VOm3f" value="true" />
@@ -385,10 +384,10 @@
           <property role="VOm3f" value="false" />
         </node>
         <node concept="VechU" id="hEZR8tO" role="3F10Kt">
-          <property role="Vb096" value="DARK_MAGENTA" />
+          <property role="Vb096" value="g1_qVrt/DARK_MAGENTA" />
         </node>
         <node concept="Vb9p2" id="hX78Zyp" role="3F10Kt">
-          <property role="Vbekb" value="BOLD" />
+          <property role="Vbekb" value="g1_k_vY/BOLD" />
         </node>
       </node>
       <node concept="1iCGBv" id="gI1yXcX" role="3EZMnx">
@@ -400,7 +399,7 @@
             <property role="1$x2rV" value="&lt;no name&gt;" />
             <ref role="1NtTu8" to="tpce:fA0kJcN" resolve="role" />
             <node concept="VechU" id="hEZR8yz" role="3F10Kt">
-              <property role="Vb096" value="DARK_MAGENTA" />
+              <property role="Vb096" value="g1_qVrt/DARK_MAGENTA" />
             </node>
             <node concept="3$7jql" id="hOIe$QP" role="3F10Kt">
               <property role="3$6WeP" value="0.0" />
@@ -415,10 +414,10 @@
           <property role="VOm3f" value="false" />
         </node>
         <node concept="VechU" id="hEZR8q$" role="3F10Kt">
-          <property role="Vb096" value="DARK_MAGENTA" />
+          <property role="Vb096" value="g1_qVrt/DARK_MAGENTA" />
         </node>
         <node concept="Vb9p2" id="hX792Fg" role="3F10Kt">
-          <property role="Vbekb" value="BOLD" />
+          <property role="Vbekb" value="g1_k_vY/BOLD" />
         </node>
         <node concept="ljvvj" id="1P_b4lPRu37" role="3F10Kt">
           <property role="VOm3f" value="true" />
@@ -540,10 +539,10 @@
           <node concept="3F0ifn" id="4USSAEFw49C" role="2ruayu">
             <property role="3F0ifm" value="&lt;no presentation (deprecated)&gt;" />
             <node concept="Vb9p2" id="4USSAEFw49G" role="3F10Kt">
-              <property role="Vbekb" value="ITALIC" />
+              <property role="Vbekb" value="g1_kEg4/ITALIC" />
             </node>
             <node concept="VechU" id="4USSAEFw49L" role="3F10Kt">
-              <property role="Vb096" value="gray" />
+              <property role="Vb096" value="fLJRk5_/gray" />
             </node>
           </node>
         </node>
@@ -965,7 +964,7 @@
           <node concept="3F0ifn" id="1P_b4lPRMjd" role="2czzBI">
             <property role="3F0ifm" value="&lt;&lt;property constraints&gt;&gt;" />
             <node concept="VechU" id="1P_b4lPRMje" role="3F10Kt">
-              <property role="Vb096" value="lightGray" />
+              <property role="Vb096" value="fLJRk5A/lightGray" />
             </node>
           </node>
           <node concept="pj6Ft" id="1P_b4lPRMjf" role="3F10Kt">
@@ -989,7 +988,7 @@
           <node concept="3F0ifn" id="1P_b4lPRMjm" role="2czzBI">
             <property role="3F0ifm" value="&lt;&lt;referent constraints&gt;&gt;" />
             <node concept="VechU" id="1P_b4lPRMjn" role="3F10Kt">
-              <property role="Vb096" value="lightGray" />
+              <property role="Vb096" value="fLJRk5A/lightGray" />
             </node>
           </node>
           <node concept="pj6Ft" id="1P_b4lPRMjo" role="3F10Kt">
@@ -1039,13 +1038,12 @@
     <node concept="3EZMnI" id="2a3L36d$3Vv" role="6VMZX">
       <node concept="3EZMnI" id="5rVfazo6Sf3" role="3EZMnx">
         <node concept="PMmxH" id="2wdLO7KhYb6" role="3EZMnx">
-          <property role="1cu_pB" value="0" />
           <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
           <node concept="VechU" id="2wdLO7KhYb7" role="3F10Kt">
-            <property role="Vb096" value="blue" />
+            <property role="Vb096" value="fLwANPu/blue" />
           </node>
           <node concept="30gYXW" id="2wdLO7KhYb8" role="3F10Kt">
-            <property role="Vb096" value="lightGray" />
+            <property role="Vb096" value="fLJRk5A/lightGray" />
           </node>
         </node>
         <node concept="VPM3Z" id="5rVfazo6Sf4" role="3F10Kt">
@@ -1055,10 +1053,10 @@
         <node concept="3F0ifn" id="4V7sGwd72gd" role="3EZMnx">
           <property role="3F0ifm" value="provider" />
           <node concept="VechU" id="4V7sGwd72ge" role="3F10Kt">
-            <property role="Vb096" value="blue" />
+            <property role="Vb096" value="fLwANPu/blue" />
           </node>
           <node concept="30gYXW" id="4V7sGwd72gf" role="3F10Kt">
-            <property role="Vb096" value="lightGray" />
+            <property role="Vb096" value="fLJRk5A/lightGray" />
           </node>
         </node>
       </node>
@@ -1068,7 +1066,6 @@
         </node>
       </node>
       <node concept="PMmxH" id="2wdLO7KhY9t" role="3EZMnx">
-        <property role="1cu_pB" value="0" />
         <ref role="PMmxG" to="tpco:5K$8XMPc9pW" resolve="ShortDescriptionEditorComponent" />
         <node concept="Vb9p2" id="2wdLO7KhY9u" role="3F10Kt" />
       </node>
@@ -1079,9 +1076,7 @@
       </node>
       <node concept="3F0ifn" id="2a3L36d$3VF" role="3EZMnx">
         <property role="3F0ifm" value="macros:" />
-        <node concept="Vb9p2" id="2a3L36d$3VG" role="3F10Kt">
-          <property role="Vbekb" value="PLAIN" />
-        </node>
+        <node concept="Vb9p2" id="2a3L36d$3VG" role="3F10Kt" />
       </node>
       <node concept="3EZMnI" id="2a3L36d$3VH" role="3EZMnx">
         <node concept="3EZMnI" id="2a3L36d$3VI" role="3EZMnx">
@@ -1090,9 +1085,7 @@
           </node>
           <node concept="3F0ifn" id="2a3L36d$3VK" role="3EZMnx">
             <property role="3F0ifm" value="model of node containing reference" />
-            <node concept="Vb9p2" id="2a3L36d$3VL" role="3F10Kt">
-              <property role="Vbekb" value="PLAIN" />
-            </node>
+            <node concept="Vb9p2" id="2a3L36d$3VL" role="3F10Kt" />
           </node>
           <node concept="VPM3Z" id="2a3L36d$3VM" role="3F10Kt">
             <property role="VOm3f" value="false" />
@@ -1105,9 +1098,7 @@
           </node>
           <node concept="3F0ifn" id="5rVfazo6Aup" role="3EZMnx">
             <property role="3F0ifm" value="false when reference is being created" />
-            <node concept="Vb9p2" id="5rVfazo6Auq" role="3F10Kt">
-              <property role="Vbekb" value="PLAIN" />
-            </node>
+            <node concept="Vb9p2" id="5rVfazo6Auq" role="3F10Kt" />
           </node>
           <node concept="VPM3Z" id="5rVfazo6Aur" role="3F10Kt">
             <property role="VOm3f" value="false" />
@@ -1120,9 +1111,7 @@
           </node>
           <node concept="3F0ifn" id="5rVfazo6AuM" role="3EZMnx">
             <property role="3F0ifm" value="node with the reference, or closest not-null context node" />
-            <node concept="Vb9p2" id="5rVfazo6AuN" role="3F10Kt">
-              <property role="Vbekb" value="PLAIN" />
-            </node>
+            <node concept="Vb9p2" id="5rVfazo6AuN" role="3F10Kt" />
           </node>
           <node concept="VPM3Z" id="5rVfazo6AuO" role="3F10Kt">
             <property role="VOm3f" value="false" />
@@ -1135,9 +1124,7 @@
           </node>
           <node concept="3F0ifn" id="5rVfazo6AuT" role="3EZMnx">
             <property role="3F0ifm" value="target role in contextNode" />
-            <node concept="Vb9p2" id="5rVfazo6AuU" role="3F10Kt">
-              <property role="Vbekb" value="PLAIN" />
-            </node>
+            <node concept="Vb9p2" id="5rVfazo6AuU" role="3F10Kt" />
           </node>
           <node concept="VPM3Z" id="5rVfazo6AuV" role="3F10Kt">
             <property role="VOm3f" value="false" />
@@ -1150,9 +1137,7 @@
           </node>
           <node concept="3F0ifn" id="5rVfazo6Av0" role="3EZMnx">
             <property role="3F0ifm" value="target index in contextRole" />
-            <node concept="Vb9p2" id="5rVfazo6Av1" role="3F10Kt">
-              <property role="Vbekb" value="PLAIN" />
-            </node>
+            <node concept="Vb9p2" id="5rVfazo6Av1" role="3F10Kt" />
           </node>
           <node concept="VPM3Z" id="5rVfazo6Av2" role="3F10Kt">
             <property role="VOm3f" value="false" />
@@ -1165,9 +1150,7 @@
           </node>
           <node concept="3F0ifn" id="e2N9peEN6D" role="3EZMnx">
             <property role="3F0ifm" value="node to present (target of the referenceNode's reference)" />
-            <node concept="Vb9p2" id="e2N9peEN6E" role="3F10Kt">
-              <property role="Vbekb" value="PLAIN" />
-            </node>
+            <node concept="Vb9p2" id="e2N9peEN6E" role="3F10Kt" />
           </node>
           <node concept="VPM3Z" id="e2N9peEN6F" role="3F10Kt">
             <property role="VOm3f" value="false" />
@@ -1204,7 +1187,7 @@
           <node concept="3F0ifn" id="5rVfazo6Avc" role="3EZMnx">
             <property role="3F0ifm" value="Deprecated:" />
             <node concept="Vb9p2" id="5rVfazo6Sf0" role="3F10Kt">
-              <property role="Vbekb" value="ITALIC" />
+              <property role="Vbekb" value="g1_kEg4/ITALIC" />
             </node>
           </node>
           <node concept="2iRfu4" id="5rVfazo6Avd" role="2iSdaV" />
@@ -1213,23 +1196,19 @@
           <node concept="3F0ifn" id="2a3L36d$3VV" role="3EZMnx">
             <property role="3F0ifm" value="referenceNode" />
             <node concept="Vb9p2" id="5rVfazo6SeW" role="3F10Kt">
-              <property role="Vbekb" value="ITALIC" />
+              <property role="Vbekb" value="g1_kEg4/ITALIC" />
             </node>
           </node>
           <node concept="3EZMnI" id="2a3L36d$3VW" role="3EZMnx">
             <node concept="3F0ifn" id="2a3L36d$3VX" role="3EZMnx">
               <property role="3F0ifm" value="node that contains reference link" />
-              <node concept="Vb9p2" id="2a3L36d$3VY" role="3F10Kt">
-                <property role="Vbekb" value="PLAIN" />
-              </node>
+              <node concept="Vb9p2" id="2a3L36d$3VY" role="3F10Kt" />
             </node>
             <node concept="3F0ifn" id="2a3L36d$3VZ" role="3EZMnx">
               <property role="3F0ifm" value="(optional - may not exist yet)" />
-              <node concept="Vb9p2" id="2a3L36d$3W0" role="3F10Kt">
-                <property role="Vbekb" value="PLAIN" />
-              </node>
+              <node concept="Vb9p2" id="2a3L36d$3W0" role="3F10Kt" />
               <node concept="30gYXW" id="2a3L36d$3W1" role="3F10Kt">
-                <property role="Vb096" value="pink" />
+                <property role="Vb096" value="fLwANPo/pink" />
               </node>
             </node>
             <node concept="VPM3Z" id="2a3L36d$3W2" role="3F10Kt">
@@ -1249,14 +1228,12 @@
           <node concept="3F0ifn" id="2a3L36d$3W8" role="3EZMnx">
             <property role="3F0ifm" value="linkTarget" />
             <node concept="Vb9p2" id="5rVfazo6SeX" role="3F10Kt">
-              <property role="Vbekb" value="ITALIC" />
+              <property role="Vbekb" value="g1_kEg4/ITALIC" />
             </node>
           </node>
           <node concept="3F0ifn" id="2a3L36d$3W9" role="3EZMnx">
             <property role="3F0ifm" value="concept where link can refer to (for specialized links)" />
-            <node concept="Vb9p2" id="2a3L36d$3Wa" role="3F10Kt">
-              <property role="Vbekb" value="PLAIN" />
-            </node>
+            <node concept="Vb9p2" id="2a3L36d$3Wa" role="3F10Kt" />
           </node>
           <node concept="2iRfu4" id="2a3L36d$3Wb" role="2iSdaV" />
         </node>
@@ -1264,7 +1241,7 @@
           <node concept="3F0ifn" id="2a3L36d$3Wd" role="3EZMnx">
             <property role="3F0ifm" value="enclosingNode" />
             <node concept="Vb9p2" id="5rVfazo6SeY" role="3F10Kt">
-              <property role="Vbekb" value="ITALIC" />
+              <property role="Vbekb" value="g1_kEg4/ITALIC" />
             </node>
           </node>
           <node concept="3EZMnI" id="2a3L36d$3We" role="3EZMnx">
@@ -1293,7 +1270,7 @@
           <node concept="3F0ifn" id="2a3L36d$3Wp" role="3EZMnx">
             <property role="3F0ifm" value="containingLink" />
             <node concept="Vb9p2" id="5rVfazo6SeZ" role="3F10Kt">
-              <property role="Vbekb" value="ITALIC" />
+              <property role="Vbekb" value="g1_kEg4/ITALIC" />
             </node>
           </node>
           <node concept="2iRfu4" id="2a3L36d$3Wq" role="2iSdaV" />
@@ -1332,7 +1309,7 @@
       <node concept="3F0ifn" id="7ipADkTf7eT" role="3EZMnx">
         <property role="3F0ifm" value="for" />
         <node concept="VechU" id="7ipADkTfhte" role="3F10Kt">
-          <property role="Vb096" value="DARK_BLUE" />
+          <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
         </node>
       </node>
       <node concept="1iCGBv" id="7ipADkTf7eV" role="3EZMnx">
@@ -1410,13 +1387,12 @@
     <node concept="3EZMnI" id="4OU1gA0w2D5" role="6VMZX">
       <node concept="3EZMnI" id="4OU1gA0w2D6" role="3EZMnx">
         <node concept="PMmxH" id="4OU1gA0w2D7" role="3EZMnx">
-          <property role="1cu_pB" value="0" />
           <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
           <node concept="VechU" id="4OU1gA0w2D8" role="3F10Kt">
-            <property role="Vb096" value="blue" />
+            <property role="Vb096" value="fLwANPu/blue" />
           </node>
           <node concept="30gYXW" id="4OU1gA0w2D9" role="3F10Kt">
-            <property role="Vb096" value="lightGray" />
+            <property role="Vb096" value="fLJRk5A/lightGray" />
           </node>
         </node>
         <node concept="VPM3Z" id="4OU1gA0w2Da" role="3F10Kt">
@@ -1426,10 +1402,10 @@
         <node concept="3F0ifn" id="4OU1gA0w2Dc" role="3EZMnx">
           <property role="3F0ifm" value="provider" />
           <node concept="VechU" id="4OU1gA0w2Dd" role="3F10Kt">
-            <property role="Vb096" value="blue" />
+            <property role="Vb096" value="fLwANPu/blue" />
           </node>
           <node concept="30gYXW" id="4OU1gA0w2De" role="3F10Kt">
-            <property role="Vb096" value="lightGray" />
+            <property role="Vb096" value="fLJRk5A/lightGray" />
           </node>
         </node>
       </node>
@@ -1439,7 +1415,6 @@
         </node>
       </node>
       <node concept="PMmxH" id="4OU1gA0w2Dh" role="3EZMnx">
-        <property role="1cu_pB" value="0" />
         <ref role="PMmxG" to="tpco:5K$8XMPc9pW" resolve="ShortDescriptionEditorComponent" />
         <node concept="Vb9p2" id="4OU1gA0w2Di" role="3F10Kt" />
       </node>
@@ -1450,9 +1425,7 @@
       </node>
       <node concept="3F0ifn" id="4OU1gA0w2Dl" role="3EZMnx">
         <property role="3F0ifm" value="macros:" />
-        <node concept="Vb9p2" id="4OU1gA0w2Dm" role="3F10Kt">
-          <property role="Vbekb" value="PLAIN" />
-        </node>
+        <node concept="Vb9p2" id="4OU1gA0w2Dm" role="3F10Kt" />
       </node>
       <node concept="3EZMnI" id="4OU1gA0w2Dn" role="3EZMnx">
         <node concept="3EZMnI" id="4OU1gA0w2Ec" role="3EZMnx">
@@ -1462,17 +1435,15 @@
           <node concept="3EZMnI" id="4OU1gA0w2Ef" role="3EZMnx">
             <node concept="3F0ifn" id="4OU1gA0w2Eg" role="3EZMnx">
               <property role="3F0ifm" value="node that contains reference link." />
-              <node concept="Vb9p2" id="4OU1gA0w2Eh" role="3F10Kt">
-                <property role="Vbekb" value="PLAIN" />
-              </node>
+              <node concept="Vb9p2" id="4OU1gA0w2Eh" role="3F10Kt" />
             </node>
             <node concept="3F0ifn" id="4OU1gA0w2Ei" role="3EZMnx">
               <property role="3F0ifm" value="(optional - may not exist yet. In this case, reference is being created)" />
               <node concept="Vb9p2" id="4OU1gA0w2Ej" role="3F10Kt">
-                <property role="Vbekb" value="ITALIC" />
+                <property role="Vbekb" value="g1_kEg4/ITALIC" />
               </node>
               <node concept="30gYXW" id="4OU1gA0w2Ek" role="3F10Kt">
-                <property role="Vb096" value="pink" />
+                <property role="Vb096" value="fLwANPo/pink" />
               </node>
             </node>
             <node concept="VPM3Z" id="4OU1gA0w2El" role="3F10Kt">
@@ -1495,14 +1466,12 @@
             </node>
             <node concept="3F0ifn" id="4OU1gA0w2DA" role="3EZMnx">
               <property role="3F0ifm" value="closest not-null context node." />
-              <node concept="Vb9p2" id="4OU1gA0w2DB" role="3F10Kt">
-                <property role="Vbekb" value="PLAIN" />
-              </node>
+              <node concept="Vb9p2" id="4OU1gA0w2DB" role="3F10Kt" />
             </node>
             <node concept="3F0ifn" id="4OU1gA0w6pe" role="3EZMnx">
               <property role="3F0ifm" value="if referenceNode exists then contextNode equals referenceNode." />
               <node concept="Vb9p2" id="4OU1gA0w6uj" role="3F10Kt">
-                <property role="Vbekb" value="ITALIC" />
+                <property role="Vbekb" value="g1_kEg4/ITALIC" />
               </node>
             </node>
             <node concept="2iRkQZ" id="4OU1gA0w6pf" role="2iSdaV" />
@@ -1522,9 +1491,7 @@
             </node>
             <node concept="3F0ifn" id="4OU1gA0w6AA" role="3EZMnx">
               <property role="3F0ifm" value="containment link between context node and its non-exist child" />
-              <node concept="Vb9p2" id="4OU1gA0w6AB" role="3F10Kt">
-                <property role="Vbekb" value="PLAIN" />
-              </node>
+              <node concept="Vb9p2" id="4OU1gA0w6AB" role="3F10Kt" />
             </node>
             <node concept="3F0ifn" id="4OU1gA0w7rF" role="3EZMnx">
               <property role="3F0ifm" value="where reference is being created." />
@@ -1533,7 +1500,7 @@
             <node concept="3F0ifn" id="4OU1gA0w6AC" role="3EZMnx">
               <property role="3F0ifm" value="if referenceNode exists then this parameter has no sence." />
               <node concept="Vb9p2" id="4OU1gA0w6AD" role="3F10Kt">
-                <property role="Vbekb" value="ITALIC" />
+                <property role="Vbekb" value="g1_kEg4/ITALIC" />
               </node>
             </node>
             <node concept="2iRkQZ" id="4OU1gA0w6AE" role="2iSdaV" />
@@ -1549,9 +1516,7 @@
           </node>
           <node concept="3F0ifn" id="4OU1gA0w2DM" role="3EZMnx">
             <property role="3F0ifm" value="context node child position in role." />
-            <node concept="Vb9p2" id="4OU1gA0w2DN" role="3F10Kt">
-              <property role="Vbekb" value="PLAIN" />
-            </node>
+            <node concept="Vb9p2" id="4OU1gA0w2DN" role="3F10Kt" />
           </node>
           <node concept="VPM3Z" id="4OU1gA0w2DO" role="3F10Kt">
             <property role="VOm3f" value="false" />
@@ -1571,14 +1536,12 @@
             </node>
             <node concept="3F0ifn" id="4OU1gA0w8rc" role="3EZMnx">
               <property role="3F0ifm" value="concept where link can refer to." />
-              <node concept="Vb9p2" id="4OU1gA0w8rd" role="3F10Kt">
-                <property role="Vbekb" value="PLAIN" />
-              </node>
+              <node concept="Vb9p2" id="4OU1gA0w8rd" role="3F10Kt" />
             </node>
             <node concept="3F0ifn" id="4OU1gA0w8rp" role="3EZMnx">
               <property role="3F0ifm" value="it can be useful in case when link is supposed to be specialized." />
               <node concept="Vb9p2" id="4OU1gA0w8t$" role="3F10Kt">
-                <property role="Vbekb" value="ITALIC" />
+                <property role="Vbekb" value="g1_kEg4/ITALIC" />
               </node>
             </node>
             <node concept="2iRkQZ" id="4OU1gA0w8re" role="2iSdaV" />
@@ -1604,7 +1567,7 @@
         <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
         <ref role="1ERwB7" node="30KOWJO2z9h" resolve="ConstraintsMigration_Actions" />
         <node concept="VechU" id="16XPKGFOoa7" role="3F10Kt">
-          <property role="Vb096" value="red" />
+          <property role="Vb096" value="fLwANPn/red" />
         </node>
         <node concept="VPxyj" id="30KOWJO2z8O" role="3F10Kt">
           <property role="VOm3f" value="false" />
@@ -1619,7 +1582,7 @@
     <property role="TrG5h" value="ConstraintsMigration_Actions" />
     <ref role="1h_SK9" to="tp1t:1GENxguHGdr" resolve="ConstraintsMigration" />
     <node concept="1hA7zw" id="30KOWJO2zah" role="1h_SK8">
-      <property role="1hAc7j" value="delete_action_id" />
+      <property role="1hAc7j" value="g_hAxAO/delete_action_id" />
       <node concept="1hAIg9" id="30KOWJO2zai" role="1hA7z_">
         <node concept="3clFbS" id="30KOWJO2zaj" role="2VODD2">
           <node concept="3clFbJ" id="14TMHtHecmv" role="3cqZAp">
@@ -1682,28 +1645,28 @@
           <node concept="3F0ifn" id="4ZpP10$NBiF" role="3EZMnx">
             <property role="3F0ifm" value="Some of super-concept editor components no longer support this presentation part after migration." />
             <node concept="Vb9p2" id="hoxUe06" role="3F10Kt">
-              <property role="Vbekb" value="ITALIC" />
+              <property role="Vbekb" value="g1_kEg4/ITALIC" />
             </node>
             <node concept="VechU" id="hoxUe07" role="3F10Kt">
-              <property role="Vb096" value="red" />
+              <property role="Vb096" value="fLwANPn/red" />
             </node>
           </node>
           <node concept="3F0ifn" id="4ZpP10$NIza" role="3EZMnx">
             <property role="3F0ifm" value="Consider to review editor components listed below and migrate them manually." />
             <node concept="Vb9p2" id="4ZpP10$NJ9w" role="3F10Kt">
-              <property role="Vbekb" value="ITALIC" />
+              <property role="Vbekb" value="g1_kEg4/ITALIC" />
             </node>
             <node concept="VechU" id="4ZpP10$NJ9x" role="3F10Kt">
-              <property role="Vb096" value="red" />
+              <property role="Vb096" value="fLwANPn/red" />
             </node>
           </node>
           <node concept="3F0ifn" id="4ZpP10$NJ8D" role="3EZMnx">
             <property role="3F0ifm" value="You can choose one of these options:" />
             <node concept="Vb9p2" id="4ZpP10$NJ9$" role="3F10Kt">
-              <property role="Vbekb" value="ITALIC" />
+              <property role="Vbekb" value="g1_kEg4/ITALIC" />
             </node>
             <node concept="VechU" id="4ZpP10$NJ9_" role="3F10Kt">
-              <property role="Vb096" value="red" />
+              <property role="Vb096" value="fLwANPn/red" />
             </node>
           </node>
           <node concept="3EZMnI" id="4ZpP10$NJ8Q" role="3EZMnx">
@@ -1718,28 +1681,28 @@
               <node concept="3F0ifn" id="4ZpP10$NJ9m" role="3EZMnx">
                 <property role="3F0ifm" value="1. Simply override super-concept editor" />
                 <node concept="Vb9p2" id="4ZpP10$NJ9N" role="3F10Kt">
-                  <property role="Vbekb" value="ITALIC" />
+                  <property role="Vbekb" value="g1_kEg4/ITALIC" />
                 </node>
                 <node concept="VechU" id="4ZpP10$NJ9O" role="3F10Kt">
-                  <property role="Vb096" value="red" />
+                  <property role="Vb096" value="fLwANPn/red" />
                 </node>
               </node>
               <node concept="3F0ifn" id="4ZpP10$NJ9p" role="3EZMnx">
                 <property role="3F0ifm" value="2. Extract reference cell into separate component and override it" />
                 <node concept="Vb9p2" id="4ZpP10$NJ9R" role="3F10Kt">
-                  <property role="Vbekb" value="ITALIC" />
+                  <property role="Vbekb" value="g1_kEg4/ITALIC" />
                 </node>
                 <node concept="VechU" id="4ZpP10$NJ9S" role="3F10Kt">
-                  <property role="Vb096" value="red" />
+                  <property role="Vb096" value="fLwANPn/red" />
                 </node>
               </node>
               <node concept="3F0ifn" id="4ZpP10$NJ9s" role="3EZMnx">
                 <property role="3F0ifm" value="3. Make reference cell delegates to behavior method and override this method" />
                 <node concept="Vb9p2" id="4ZpP10$NJ9V" role="3F10Kt">
-                  <property role="Vbekb" value="ITALIC" />
+                  <property role="Vbekb" value="g1_kEg4/ITALIC" />
                 </node>
                 <node concept="VechU" id="4ZpP10$NJ9W" role="3F10Kt">
-                  <property role="Vb096" value="red" />
+                  <property role="Vb096" value="fLwANPn/red" />
                 </node>
               </node>
               <node concept="2iRkQZ" id="4ZpP10$NJ9g" role="2iSdaV" />
@@ -1749,10 +1712,10 @@
           <node concept="3F0ifn" id="4ZpP10$NJvF" role="3EZMnx">
             <property role="3F0ifm" value="Editor components:" />
             <node concept="Vb9p2" id="4ZpP10$NJw6" role="3F10Kt">
-              <property role="Vbekb" value="ITALIC" />
+              <property role="Vbekb" value="g1_kEg4/ITALIC" />
             </node>
             <node concept="VechU" id="4ZpP10$NJw7" role="3F10Kt">
-              <property role="Vb096" value="red" />
+              <property role="Vb096" value="fLwANPn/red" />
             </node>
           </node>
           <node concept="3EZMnI" id="4ZpP10$NJwC" role="3EZMnx">

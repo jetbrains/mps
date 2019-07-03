@@ -50,9 +50,9 @@
     <property role="EcuMT" value="852022627621592861" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="JiZx3bYHWx" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="members" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="852022627621592865" />
       <ref role="20lvS9" node="JiZx3bYHWw" resolve="Member" />
     </node>

@@ -4,11 +4,11 @@
   <languages>
     <use id="df345b11-b8c7-4213-ac66-48d2a9b75d88" name="jetbrains.mps.baseLanguageInternal" version="0" />
     <use id="f3347d8a-0e79-4f35-8ac9-1574f25c986f" name="jetbrains.mps.execution.commands" version="0" />
-    <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="2" />
+    <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="3" />
     <use id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext" version="1" />
     <use id="13744753-c81f-424a-9c1b-cf8943bf4e86" name="jetbrains.mps.lang.sharedConcepts" version="0" />
-    <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="1" />
-    <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="1" />
+    <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="2" />
+    <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="2" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -279,6 +279,9 @@
       <concept id="1196350785112" name="jetbrains.mps.lang.quotation.structure.Antiquotation" flags="ng" index="2c44te" />
       <concept id="1196350785113" name="jetbrains.mps.lang.quotation.structure.Quotation" flags="nn" index="2c44tf">
         <child id="1196350785114" name="quotedNode" index="2c44tc" />
+      </concept>
+      <concept id="4056363777117001481" name="jetbrains.mps.lang.quotation.structure.StringToTypedValueMigrationInfo" flags="ng" index="AAgTk">
+        <property id="2173356959483005420" name="stringValueMigrated" index="3qcH_f" />
       </concept>
       <concept id="1196866233735" name="jetbrains.mps.lang.quotation.structure.PropertyAntiquotation" flags="ng" index="2EMmih" />
     </language>
@@ -1651,6 +1654,7 @@
                             <node concept="2EMmih" id="K16BhKDfmb" role="lGtFl">
                               <property role="2qtEX9" value="fqClassName" />
                               <property role="P4ACc" value="df345b11-b8c7-4213-ac66-48d2a9b75d88/1173996401517/1173996588177" />
+                              <property role="3qcH_f" value="true" />
                               <node concept="2OqwBi" id="K16BhKDfmc" role="2c44t1">
                                 <node concept="2OqwBi" id="1vfbBx2mf8E" role="2Oq$k0">
                                   <node concept="2OqwBi" id="K16BhKDfmd" role="2Oq$k0">
@@ -1803,6 +1807,7 @@
                                   <node concept="2EMmih" id="K16BhKDfn4" role="lGtFl">
                                     <property role="2qtEX9" value="methodName" />
                                     <property role="P4ACc" value="df345b11-b8c7-4213-ac66-48d2a9b75d88/1174294166120/1174294288199" />
+                                    <property role="3qcH_f" value="true" />
                                     <node concept="37vLTw" id="3GM_nagTvs8" role="2c44t1">
                                       <ref role="3cqZAo" node="5knQ58o6YQN" resolve="name" />
                                     </node>
@@ -1901,6 +1906,7 @@
                                         <node concept="2EMmih" id="K16BhKDfnE" role="lGtFl">
                                           <property role="2qtEX9" value="fqClassName" />
                                           <property role="P4ACc" value="df345b11-b8c7-4213-ac66-48d2a9b75d88/1173990517731/1173992483054" />
+                                          <property role="3qcH_f" value="true" />
                                           <node concept="2OqwBi" id="K16BhKDfnF" role="2c44t1">
                                             <node concept="2OqwBi" id="K16BhKDfnG" role="2Oq$k0">
                                               <node concept="37vLTw" id="3GM_nagTBGA" role="2Oq$k0">
@@ -1918,6 +1924,7 @@
                                         <node concept="2EMmih" id="K16BhKDfnK" role="lGtFl">
                                           <property role="2qtEX9" value="methodName" />
                                           <property role="P4ACc" value="df345b11-b8c7-4213-ac66-48d2a9b75d88/1173990517731/1173992444083" />
+                                          <property role="3qcH_f" value="true" />
                                           <node concept="2OqwBi" id="L_Hr3kEsiX" role="2c44t1">
                                             <node concept="2qgKlT" id="L_Hr3kEsiY" role="2OqNvi">
                                               <ref role="37wK5l" to="mdoc:JzCdmU6yOK" resolve="getGetDebuggerMethodName" />
@@ -2024,6 +2031,7 @@
                                           <node concept="2EMmih" id="K16BhKDfon" role="lGtFl">
                                             <property role="2qtEX9" value="methodName" />
                                             <property role="P4ACc" value="df345b11-b8c7-4213-ac66-48d2a9b75d88/1173990517731/1173992444083" />
+                                            <property role="3qcH_f" value="true" />
                                             <node concept="2OqwBi" id="K16BhKDfoo" role="2c44t1">
                                               <node concept="37vLTw" id="3GM_nagTywY" role="2Oq$k0">
                                                 <ref role="3cqZAo" node="K16BhKDfo2" resolve="method" />
@@ -2036,6 +2044,7 @@
                                           <node concept="2EMmih" id="K16BhKDfor" role="lGtFl">
                                             <property role="2qtEX9" value="fqClassName" />
                                             <property role="P4ACc" value="df345b11-b8c7-4213-ac66-48d2a9b75d88/1173990517731/1173992483054" />
+                                            <property role="3qcH_f" value="true" />
                                             <node concept="2OqwBi" id="K16BhKDfos" role="2c44t1">
                                               <node concept="2OqwBi" id="K16BhKDfot" role="2Oq$k0">
                                                 <node concept="37vLTw" id="3GM_nagTA4d" role="2Oq$k0">
@@ -3192,7 +3201,7 @@
   </node>
   <node concept="1pmfR0" id="K16BhKDfxT">
     <property role="TrG5h" value="setResolveInfoForParameters" />
-    <property role="1v3f2W" value="pre_processing" />
+    <property role="1v3f2W" value="hpv1Zf2/pre_processing" />
     <property role="1v3jST" value="true" />
     <node concept="1pplIY" id="K16BhKDfxU" role="1pqMTA">
       <node concept="3clFbS" id="K16BhKDfxV" role="2VODD2">
@@ -3824,7 +3833,7 @@
   </node>
   <node concept="1pmfR0" id="2Zihtt_EhH9">
     <property role="TrG5h" value="passDebuggerParameters" />
-    <property role="1v3f2W" value="pre_processing" />
+    <property role="1v3f2W" value="hpv1Zf2/pre_processing" />
     <property role="1v3jST" value="true" />
     <node concept="1pplIY" id="2Zihtt_EhHa" role="1pqMTA">
       <node concept="3clFbS" id="2Zihtt_EhHb" role="2VODD2">

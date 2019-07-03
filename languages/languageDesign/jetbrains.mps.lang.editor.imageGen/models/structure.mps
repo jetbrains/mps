@@ -36,7 +36,6 @@
       </concept>
       <concept id="1071489288298" name="jetbrains.mps.lang.structure.structure.LinkDeclaration" flags="ig" index="1TJgyj">
         <property id="1071599776563" name="role" index="20kJfa" />
-        <property id="1071599937831" name="metaClass" index="20lmBu" />
         <property id="241647608299431140" name="linkId" index="IQ2ns" />
         <reference id="1071599976176" name="target" index="20lvS9" />
       </concept>
@@ -54,7 +53,6 @@
     <property role="EcuMT" value="2359976223559993484" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="2OaO_a3$2sm" role="1TKVEi">
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="node" />
       <property role="IQ2ns" value="3245637733310277398" />
       <ref role="20lvS9" to="tpck:gw2VY9q" resolve="BaseConcept" />

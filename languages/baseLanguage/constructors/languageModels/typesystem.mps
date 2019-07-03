@@ -88,9 +88,6 @@
       <concept id="1175517767210" name="jetbrains.mps.lang.typesystem.structure.ReportErrorStatement" flags="nn" index="2MkqsV">
         <child id="1175517851849" name="errorString" index="2MkJ7o" />
       </concept>
-      <concept id="1212056081426" name="jetbrains.mps.lang.typesystem.structure.AbstractInequationStatement" flags="ng" index="Ob1k8">
-        <property id="1212056105818" name="inequationPriority" index="Ob790" />
-      </concept>
       <concept id="1227096774658" name="jetbrains.mps.lang.typesystem.structure.MessageStatement" flags="ng" index="2OEH$v">
         <child id="1227096802790" name="nodeToReport" index="2OEOjV" />
       </concept>
@@ -275,7 +272,6 @@
                 </node>
               </node>
               <node concept="1ZoDhX" id="1ZERt_dQL17" role="3cqZAp">
-                <property role="Ob790" value="0" />
                 <node concept="mw_s8" id="1ZERt_dQL18" role="1ZfhK$">
                   <node concept="1Z2H0r" id="1ZERt_dQL19" role="mwGJk">
                     <node concept="2OqwBi" id="1ZERt_dQL1a" role="1Z2MuG">

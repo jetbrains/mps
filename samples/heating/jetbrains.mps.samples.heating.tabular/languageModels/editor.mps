@@ -4,7 +4,7 @@
   <languages>
     <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="4" />
     <use id="0272d3b4-4cc8-481e-9e2f-07793fbfcb41" name="jetbrains.mps.lang.editor.table" version="0" />
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="12" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="13" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -1120,7 +1120,7 @@
     <property role="TrG5h" value="DeleteCustomizeInTabular" />
     <ref role="1h_SK9" to="vw7d:4p4E$NwyILf" resolve="DailyPlan" />
     <node concept="1hA7zw" id="1RZY6YZRIwm" role="1h_SK8">
-      <property role="1hAc7j" value="delete_action_id" />
+      <property role="1hAc7j" value="g_hAxAO/delete_action_id" />
       <node concept="1hAIg9" id="1RZY6YZRIwn" role="1hA7z_">
         <node concept="3clFbS" id="1RZY6YZRIwo" role="2VODD2">
           <node concept="3clFbJ" id="14TMHtHhYRf" role="3cqZAp">
@@ -1160,10 +1160,10 @@
     <node concept="1Qtc8_" id="1wEcoXjJM_v" role="IW6Ez">
       <node concept="3cWJ9i" id="1wEcoXjJM_w" role="1Qtc8$">
         <node concept="CtIbL" id="1wEcoXjJM_x" role="CtIbM">
-          <property role="CtIbK" value="LEFT" />
+          <property role="CtIbK" value="1A4kJjlVmVt/LEFT" />
         </node>
         <node concept="CtIbL" id="1wEcoXjJM_y" role="CtIbM">
-          <property role="CtIbK" value="RIGHT" />
+          <property role="CtIbK" value="30NnNOohrQL/RIGHT" />
         </node>
       </node>
       <node concept="3eGOoe" id="1LAhwtrLbKK" role="1Qtc8$" />

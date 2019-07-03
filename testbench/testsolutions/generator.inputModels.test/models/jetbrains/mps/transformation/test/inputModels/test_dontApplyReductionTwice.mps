@@ -30,7 +30,7 @@
   </registry>
   <node concept="15_jI_" id="hAy8Ecf">
     <property role="TrG5h" value="Input_root_1" />
-    <property role="3FifNy" value="dontApplyReductionTwice" />
+    <property role="3FifNy" value="hAxZnu$/dontApplyReductionTwice" />
   </node>
   <node concept="15npcT" id="hA_hgOj">
     <property role="TrG5h" value="Root_ToCopy" />

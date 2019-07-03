@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
   </languages>
@@ -202,15 +202,15 @@
       </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
+      <concept id="4705942098322467729" name="jetbrains.mps.lang.smodel.structure.EnumMemberReference" flags="ng" index="21nZrQ">
+        <reference id="4705942098322467736" name="decl" index="21nZrZ" />
+      </concept>
       <concept id="1140725362528" name="jetbrains.mps.lang.smodel.structure.Link_SetTargetOperation" flags="nn" index="2oxUTD">
         <child id="1140725362529" name="linkTarget" index="2oxUTC" />
       </concept>
       <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="1138661924179" name="jetbrains.mps.lang.smodel.structure.Property_SetOperation" flags="nn" index="tyxLq">
         <child id="1138662048170" name="value" index="tz02z" />
-      </concept>
-      <concept id="1138676077309" name="jetbrains.mps.lang.smodel.structure.EnumMemberReference_Old" flags="nn" index="uoxfO">
-        <reference id="1138676095763" name="enumMember" index="uo_Cq" />
       </concept>
       <concept id="1143226024141" name="jetbrains.mps.lang.smodel.structure.SModelType" flags="in" index="H_c77" />
       <concept id="1143235216708" name="jetbrains.mps.lang.smodel.structure.Model_CreateNewNodeOperation" flags="nn" index="I8ghe">
@@ -2330,12 +2330,12 @@
                       <ref role="3cqZAo" node="2n3WChpmgVD" resolve="rule" />
                     </node>
                     <node concept="3TrcHB" id="2n3WChpmgWC" role="2OqNvi">
-                      <ref role="3TsBF5" to="hypd:5xDtKQA7vSX" resolve="type" />
+                      <ref role="3TsBF5" to="hypd:3Ftr4R6BH7Y" resolve="type" />
                     </node>
                   </node>
                   <node concept="tyxLq" id="2n3WChpmw0l" role="2OqNvi">
-                    <node concept="uoxfO" id="2n3WChpmw0n" role="tz02z">
-                      <ref role="uo_Cq" to="hypd:5xDtKQA7vSW" />
+                    <node concept="21nZrQ" id="3Ftr4R8V$eQ" role="tz02z">
+                      <ref role="21nZrZ" to="hypd:3Ftr4R6BFrI" resolve="before_or_together" />
                     </node>
                   </node>
                 </node>
@@ -2356,12 +2356,12 @@
                       <ref role="3cqZAo" node="2n3WChpmgVD" resolve="rule" />
                     </node>
                     <node concept="3TrcHB" id="2n3WChpmw0L" role="2OqNvi">
-                      <ref role="3TsBF5" to="hypd:5xDtKQA7vSX" resolve="type" />
+                      <ref role="3TsBF5" to="hypd:3Ftr4R6BH7Y" resolve="type" />
                     </node>
                   </node>
                   <node concept="tyxLq" id="2n3WChpmw0Q" role="2OqNvi">
-                    <node concept="uoxfO" id="2n3WChpmw0S" role="tz02z">
-                      <ref role="uo_Cq" to="hypd:5xDtKQA7vSU" />
+                    <node concept="21nZrQ" id="3Ftr4R8V$eR" role="tz02z">
+                      <ref role="21nZrZ" to="hypd:3Ftr4R6BFrG" resolve="strictly_before" />
                     </node>
                   </node>
                 </node>
@@ -2378,12 +2378,12 @@
                       <ref role="3cqZAo" node="2n3WChpmgVD" resolve="rule" />
                     </node>
                     <node concept="3TrcHB" id="2iI_8zFGj06" role="2OqNvi">
-                      <ref role="3TsBF5" to="hypd:5xDtKQA7vSX" resolve="type" />
+                      <ref role="3TsBF5" to="hypd:3Ftr4R6BH7Y" resolve="type" />
                     </node>
                   </node>
                   <node concept="tyxLq" id="2iI_8zFGj0b" role="2OqNvi">
-                    <node concept="uoxfO" id="2iI_8zFGkfd" role="tz02z">
-                      <ref role="uo_Cq" to="hypd:2iI_8zFG7Cv" />
+                    <node concept="21nZrQ" id="3Ftr4R8V$eS" role="tz02z">
+                      <ref role="21nZrZ" to="hypd:3Ftr4R6BFrK" resolve="strictly_after" />
                     </node>
                   </node>
                 </node>
@@ -2408,12 +2408,12 @@
                       <ref role="3cqZAo" node="2n3WChpmgVD" resolve="rule" />
                     </node>
                     <node concept="3TrcHB" id="2iI_8zFGkfn" role="2OqNvi">
-                      <ref role="3TsBF5" to="hypd:5xDtKQA7vSX" resolve="type" />
+                      <ref role="3TsBF5" to="hypd:3Ftr4R6BH7Y" resolve="type" />
                     </node>
                   </node>
                   <node concept="tyxLq" id="2iI_8zFGkfo" role="2OqNvi">
-                    <node concept="uoxfO" id="2iI_8zFGkfp" role="tz02z">
-                      <ref role="uo_Cq" to="hypd:2iI_8zFG7Cu" />
+                    <node concept="21nZrQ" id="3Ftr4R8V$eT" role="tz02z">
+                      <ref role="21nZrZ" to="hypd:3Ftr4R6BFrJ" resolve="after_or_together" />
                     </node>
                   </node>
                 </node>
@@ -2437,12 +2437,12 @@
                     <ref role="3cqZAo" node="2n3WChpmgVD" resolve="rule" />
                   </node>
                   <node concept="3TrcHB" id="2n3WChpmw0u" role="2OqNvi">
-                    <ref role="3TsBF5" to="hypd:5xDtKQA7vSX" resolve="type" />
+                    <ref role="3TsBF5" to="hypd:3Ftr4R6BH7Y" resolve="type" />
                   </node>
                 </node>
                 <node concept="tyxLq" id="2n3WChpmw0z" role="2OqNvi">
-                  <node concept="uoxfO" id="2n3WChpmw0_" role="tz02z">
-                    <ref role="uo_Cq" to="hypd:5xDtKQA7vSV" />
+                  <node concept="21nZrQ" id="3Ftr4R8V$eU" role="tz02z">
+                    <ref role="21nZrZ" to="hypd:3Ftr4R6BFrH" resolve="strictly_together" />
                   </node>
                 </node>
               </node>

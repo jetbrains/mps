@@ -41,9 +41,9 @@
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="3hIFiK8N80D" role="1TKVEi">
       <property role="IQ2ns" value="3778147542048210985" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="properties" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <ref role="20lvS9" node="3hIFiK8N7YI" resolve="SimplePropertyDeclaration" />
     </node>
     <node concept="PrWs8" id="3hIFiK8N81u" role="PzmwI">
@@ -65,9 +65,9 @@
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="3hIFiK8N7Zl" role="1TKVEi">
       <property role="IQ2ns" value="3778147542048210901" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="concepts" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <ref role="20lvS9" node="4offtGnqKCW" resolve="SimpleConceptDeclaration" />
     </node>
   </node>

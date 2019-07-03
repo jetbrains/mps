@@ -29,7 +29,6 @@
       <concept id="1071489288298" name="jetbrains.mps.lang.structure.structure.LinkDeclaration" flags="ig" index="1TJgyj">
         <property id="1071599776563" name="role" index="20kJfa" />
         <property id="1071599893252" name="sourceCardinality" index="20lbJX" />
-        <property id="1071599937831" name="metaClass" index="20lmBu" />
         <property id="241647608299431140" name="linkId" index="IQ2ns" />
         <reference id="1071599976176" name="target" index="20lvS9" />
       </concept>
@@ -50,9 +49,8 @@
       <ref role="PrY4T" to="tpc2:6kJcyCQj9CC" resolve="IExtensibleTransformationMenuPart" />
     </node>
     <node concept="1TJgyj" id="2ytFvC$HnDi" role="1TKVEi">
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="intention" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="2926686622729992786" />
       <ref role="20lvS9" to="tp3j:2c3oNEsfcpP" resolve="BaseIntentionDeclaration" />
     </node>
@@ -75,9 +73,8 @@
     </node>
     <node concept="1TJgyj" id="46W80XA3sdU" role="1TKVEi">
       <property role="IQ2ns" value="4736696158595695482" />
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="refactoring" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <ref role="20lvS9" to="tp1h:5YKiRiBue95" resolve="Refactoring" />
     </node>
   </node>
@@ -92,9 +89,8 @@
     </node>
     <node concept="1TJgyj" id="20Jj4S2C96k" role="1TKVEi">
       <property role="IQ2ns" value="2319156231054332308" />
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="action" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <ref role="20lvS9" to="tp4k:hwsE7KS" resolve="ActionDeclaration" />
     </node>
   </node>

@@ -13,8 +13,8 @@
     <use id="f3347d8a-0e79-4f35-8ac9-1574f25c986f" name="jetbrains.mps.execution.commands" version="-1" />
     <use id="756e911c-3f1f-4a48-bdf5-a2ceb91b723c" name="jetbrains.mps.execution.settings" version="-1" />
     <use id="63650c59-16c8-498a-99c8-005c7ee9515d" name="jetbrains.mps.lang.access" version="-1" />
-    <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="-1" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
+    <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="2" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
   </languages>
@@ -1964,7 +1964,7 @@
         <node concept="3clFbJ" id="4YEli8eI_Gp" role="3cqZAp">
           <node concept="3clFbS" id="4YEli8eI_Gr" role="3clFbx">
             <node concept="RRSsy" id="3jYQuSB39O6" role="3cqZAp">
-              <property role="RRSoG" value="error" />
+              <property role="RRSoG" value="gZ5fh_4/error" />
               <node concept="3cpWs3" id="4YEli8eIHg6" role="RRSoy">
                 <node concept="Xl_RD" id="4YEli8eIHg9" role="3uHU7w">
                   <property role="Xl_RC" value=" classes are not managed by MPS" />
@@ -2015,7 +2015,7 @@
         <node concept="3clFbJ" id="7mvYbwTB7be" role="3cqZAp">
           <node concept="3clFbS" id="7mvYbwTB7bf" role="3clFbx">
             <node concept="RRSsy" id="3jYQuSB39Ok" role="3cqZAp">
-              <property role="RRSoG" value="error" />
+              <property role="RRSoG" value="gZ5fh_4/error" />
               <node concept="3cpWs3" id="7mvYbwTB6gu" role="RRSoy">
                 <node concept="3cpWs3" id="7mvYbwTB6gv" role="3uHU7B">
                   <node concept="Xl_RD" id="7mvYbwTB6gw" role="3uHU7B">
@@ -2067,7 +2067,7 @@
               <node concept="3clFbJ" id="7mvYbwTB7c6" role="3cqZAp">
                 <node concept="3clFbS" id="7mvYbwTB7c7" role="3clFbx">
                   <node concept="RRSsy" id="3jYQuSB39Oy" role="3cqZAp">
-                    <property role="RRSoG" value="error" />
+                    <property role="RRSoG" value="gZ5fh_4/error" />
                     <node concept="3cpWs3" id="7mvYbwTB6gP" role="RRSoy">
                       <node concept="3cpWs3" id="7mvYbwTB6gQ" role="3uHU7B">
                         <node concept="Xl_RD" id="7mvYbwTB6gR" role="3uHU7B">

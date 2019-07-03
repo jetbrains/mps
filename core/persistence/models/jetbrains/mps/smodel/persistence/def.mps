@@ -6,7 +6,7 @@
     <use id="774bf8a0-62e5-41e1-af63-f4812e60e48b" name="jetbrains.mps.baseLanguage.checkedDots" version="0" />
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="0" />
     <use id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples" version="0" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
   </languages>
   <imports>
@@ -901,7 +901,7 @@
           </node>
           <node concept="3clFbS" id="3McbO0WUe8p" role="3clFbx">
             <node concept="RRSsy" id="3jYQuSB37sb" role="3cqZAp">
-              <property role="RRSoG" value="error" />
+              <property role="RRSoG" value="gZ5fh_4/error" />
               <node concept="3cpWs3" id="3McbO0WUe8D" role="RRSoy">
                 <node concept="3cpWs3" id="3McbO0WUe8_" role="3uHU7B">
                   <node concept="3cpWs3" id="3McbO0WUe8x" role="3uHU7B">
@@ -1981,7 +1981,7 @@
               </node>
             </node>
             <node concept="RRSsy" id="3jYQuSB37st" role="3cqZAp">
-              <property role="RRSoG" value="error" />
+              <property role="RRSoG" value="gZ5fh_4/error" />
               <node concept="3cpWs3" id="2hcma6zMXGi" role="RRSoy">
                 <node concept="37vLTw" id="2BHiRxeuxT0" role="3uHU7w">
                   <ref role="3cqZAo" node="3McbO0WUe7f" resolve="myModelRef" />
@@ -2055,7 +2055,7 @@
           </node>
           <node concept="3clFbS" id="3McbO0WUef6" role="3clFbx">
             <node concept="RRSsy" id="3jYQuSB37sJ" role="3cqZAp">
-              <property role="RRSoG" value="error" />
+              <property role="RRSoG" value="gZ5fh_4/error" />
               <node concept="3cpWs3" id="3McbO0WUefI" role="RRSoy">
                 <node concept="3cpWs3" id="3McbO0WUefy" role="3uHU7B">
                   <node concept="3cpWs3" id="3McbO0WUefu" role="3uHU7B">

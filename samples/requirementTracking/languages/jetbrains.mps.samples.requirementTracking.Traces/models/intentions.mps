@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="d7a92d38-f7db-40d0-8431-763b0c3c9f20" name="jetbrains.mps.lang.intentions" version="0" />
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="12" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="13" />
     <use id="13744753-c81f-424a-9c1b-cf8943bf4e86" name="jetbrains.mps.lang.sharedConcepts" version="0" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
@@ -260,7 +260,7 @@
                 <node concept="1OKiuA" id="3BHdE7cP_Zf" role="2OqNvi">
                   <node concept="1XNTG" id="3BHdE7cPA1j" role="lBI5i" />
                   <node concept="2B6iha" id="3BHdE7cUXT3" role="lGT1i">
-                    <property role="1lyBwo" value="last" />
+                    <property role="1lyBwo" value="1S2pyLby17K/last" />
                   </node>
                   <node concept="3cmrfG" id="3BHdE7cUXVJ" role="3dN3m$">
                     <property role="3cmrfH" value="-1" />
@@ -508,7 +508,7 @@
                       <node concept="1OKiuA" id="3BHdE7cPCgD" role="2OqNvi">
                         <node concept="1XNTG" id="3BHdE7cPCkm" role="lBI5i" />
                         <node concept="2B6iha" id="3BHdE7cPEf7" role="lGT1i">
-                          <property role="1lyBwo" value="lastEditable" />
+                          <property role="1lyBwo" value="1S2pyLby17D/lastEditable" />
                         </node>
                       </node>
                     </node>

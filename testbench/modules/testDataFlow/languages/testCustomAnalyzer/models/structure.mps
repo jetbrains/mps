@@ -42,9 +42,9 @@
     <property role="EcuMT" value="8332528989793324756" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="7ez5JvPhCVm" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="child" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="8332528989793324758" />
       <ref role="20lvS9" node="7ez5JvPhCVl" resolve="Child" />
     </node>
@@ -71,9 +71,9 @@
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="68XlVg40dqX" role="1TKVEi">
       <property role="IQ2ns" value="7078910619969181373" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="child" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <ref role="20lvS9" node="68XlVg40dqV" resolve="OtherChild" />
     </node>
   </node>
@@ -83,7 +83,7 @@
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="68XlVg40drU" role="1TKVEi">
       <property role="IQ2ns" value="7078910619969181434" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="child" />
       <ref role="20lvS9" node="68XlVg40dqW" resolve="OtherSubChild" />
     </node>

@@ -4,9 +4,9 @@
   <languages>
     <use id="d5033cee-f632-44b6-b308-89d4fbde34ff" name="jetbrains.mps.build.startup" version="-1" />
     <use id="479c7a8c-02f9-43b5-9139-d910cb22f298" name="jetbrains.mps.core.xml" version="-1" />
-    <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="-1" />
+    <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="3" />
     <use id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext" version="1" />
-    <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="-1" />
+    <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="2" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -227,17 +227,17 @@
   <node concept="bUwia" id="3nFPImNh4eu">
     <property role="TrG5h" value="main" />
     <node concept="3lhOvk" id="54lRqzvuHD8" role="3lj3bC">
-      <property role="13Pg2o" value="true" />
+      <property role="13Pg2o" value="h94ayQF/true" />
       <ref role="30HIoZ" to="s7om:3nFPImNgRk8" resolve="MpsStartupScript" />
       <ref role="3lhOvi" node="7Muxx6JToTa" resolve="Info.plist" />
     </node>
     <node concept="3lhOvk" id="54lRqzvuLtp" role="3lj3bC">
-      <property role="13Pg2o" value="true" />
+      <property role="13Pg2o" value="h94ayQF/true" />
       <ref role="30HIoZ" to="s7om:3nFPImNgRk8" resolve="MpsStartupScript" />
       <ref role="3lhOvi" node="3T7P3nA9sus" resolve="mps.sh" />
     </node>
     <node concept="3lhOvk" id="54lRqzvuLtq" role="3lj3bC">
-      <property role="13Pg2o" value="true" />
+      <property role="13Pg2o" value="h94ayQF/true" />
       <ref role="30HIoZ" to="s7om:3nFPImNgRk8" resolve="MpsStartupScript" />
       <ref role="3lhOvi" node="1w81suLRS6O" resolve="mps.bat" />
     </node>

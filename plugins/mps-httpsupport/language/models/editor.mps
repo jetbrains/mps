@@ -2,7 +2,7 @@
 <model ref="r:3ad7ed19-3b79-47de-a735-e4bd1f1d2f78(jetbrains.mps.ide.httpsupport.editor)">
   <persistence version="9" />
   <languages>
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="12" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="13" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -410,7 +410,7 @@
     <property role="3GE5qa" value="handler" />
     <ref role="1h_SK9" to="ndib:21vgRr5xrgT" resolve="QueryParameter" />
     <node concept="1hA7zw" id="blMEiIaDci" role="1h_SK8">
-      <property role="1hAc7j" value="delete_action_id" />
+      <property role="1hAc7j" value="g_hAxAO/delete_action_id" />
       <node concept="1hAIg9" id="blMEiIaDcj" role="1hA7z_">
         <node concept="3clFbS" id="blMEiIaDck" role="2VODD2">
           <node concept="3clFbJ" id="14TMHtHea$c" role="3cqZAp">
@@ -517,7 +517,7 @@
       <node concept="3F0A7n" id="5YhakczH_1F" role="3EZMnx">
         <ref role="1NtTu8" to="ndib:5YhakczH_0X" resolve="type" />
         <node concept="VechU" id="5YhakczH_rj" role="3F10Kt">
-          <property role="Vb096" value="DARK_MAGENTA" />
+          <property role="Vb096" value="g1_qVrt/DARK_MAGENTA" />
         </node>
       </node>
       <node concept="3F0ifn" id="5YhakczH_0f" role="3EZMnx">
@@ -717,7 +717,7 @@
     <property role="3GE5qa" value="handler" />
     <ref role="1XX52x" to="ndib:5fiBL1fD$Vn" resolve="QueryPath" />
     <node concept="3F2HdR" id="5fiBL1fD$VQ" role="2wV5jI">
-      <property role="Q2I2d" value="punctuation" />
+      <property role="Q2I2d" value="g$1Qtxb/punctuation" />
       <ref role="1NtTu8" to="ndib:5fiBL1fD$VM" resolve="segmetns" />
     </node>
   </node>
@@ -756,7 +756,7 @@
       </node>
       <node concept="3cWJ9i" id="5fiBL1fEmDM" role="1Qtc8$">
         <node concept="CtIbL" id="5fiBL1fEmDO" role="CtIbM">
-          <property role="CtIbK" value="RIGHT" />
+          <property role="CtIbK" value="30NnNOohrQL/RIGHT" />
         </node>
       </node>
     </node>
@@ -801,7 +801,7 @@
     <node concept="1Qtc8_" id="blMEiIao$u" role="IW6Ez">
       <node concept="3cWJ9i" id="blMEiIao$$" role="1Qtc8$">
         <node concept="CtIbL" id="blMEiIao$A" role="CtIbM">
-          <property role="CtIbK" value="RIGHT" />
+          <property role="CtIbK" value="30NnNOohrQL/RIGHT" />
         </node>
       </node>
       <node concept="IWgqT" id="blMEiIao$E" role="1Qtc8A">

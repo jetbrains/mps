@@ -115,19 +115,21 @@
       </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
+      <concept id="4705942098322609812" name="jetbrains.mps.lang.smodel.structure.EnumMember_IsOperation" flags="ng" index="21noJN">
+        <child id="4705942098322609813" name="member" index="21noJM" />
+      </concept>
+      <concept id="4705942098322467729" name="jetbrains.mps.lang.smodel.structure.EnumMemberReference" flags="ng" index="21nZrQ">
+        <reference id="4705942098322467736" name="decl" index="21nZrZ" />
+      </concept>
       <concept id="5045161044515397667" name="jetbrains.mps.lang.smodel.structure.Node_PointerOperation" flags="ng" index="iZEcu" />
-      <concept id="1138676077309" name="jetbrains.mps.lang.smodel.structure.EnumMemberReference_Old" flags="nn" index="uoxfO">
-        <reference id="1138676095763" name="enumMember" index="uo_Cq" />
-      </concept>
-      <concept id="6973815483243445083" name="jetbrains.mps.lang.smodel.structure.EnumMemberValueRefExpression" flags="nn" index="3f7Wdw">
-        <reference id="6973815483243565416" name="member" index="3f7u_j" />
-        <reference id="6973815483243564601" name="enum" index="3f7vo2" />
-      </concept>
-      <concept id="1146171026731" name="jetbrains.mps.lang.smodel.structure.Property_HasValue_Enum" flags="nn" index="3t7uKx">
-        <child id="1146171026732" name="value" index="3t7uKA" />
+      <concept id="1966870290088668512" name="jetbrains.mps.lang.smodel.structure.Enum_MemberLiteral" flags="ng" index="2ViDtV">
+        <reference id="1966870290088668516" name="memberDeclaration" index="2ViDtZ" />
       </concept>
       <concept id="1138056022639" name="jetbrains.mps.lang.smodel.structure.SPropertyAccess" flags="nn" index="3TrcHB">
         <reference id="1138056395725" name="property" index="3TsBF5" />
+      </concept>
+      <concept id="5779574625830813396" name="jetbrains.mps.lang.smodel.structure.EnumerationIdRefExpression" flags="ng" index="1XH99k">
+        <reference id="5779574625830813397" name="enumDeclaration" index="1XH99l" />
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
@@ -602,12 +604,12 @@
               <node concept="2OqwBi" id="RTLLxv5XF1" role="2Oq$k0">
                 <node concept="2Sf5sV" id="RTLLxv5XF2" role="2Oq$k0" />
                 <node concept="3TrcHB" id="RTLLxv5XF3" role="2OqNvi">
-                  <ref role="3TsBF5" to="f4vt:3c1Y2R7PeLc" resolve="presentation" />
+                  <ref role="3TsBF5" to="f4vt:3Ftr4R6BHch" resolve="presentation" />
                 </node>
               </node>
-              <node concept="3t7uKx" id="RTLLxv5XF4" role="2OqNvi">
-                <node concept="uoxfO" id="RTLLxv5XF5" role="3t7uKA">
-                  <ref role="uo_Cq" to="f4vt:3c1Y2R7PdzZ" />
+              <node concept="21noJN" id="3Ftr4R8PolJ" role="2OqNvi">
+                <node concept="21nZrQ" id="3Ftr4R8PolK" role="21noJM">
+                  <ref role="21nZrZ" to="f4vt:3Ftr4R6BFMn" resolve="tabular" />
                 </node>
               </node>
             </node>
@@ -621,14 +623,18 @@
           <node concept="3clFbS" id="RTLLxv5T2u" role="3clFbx">
             <node concept="3clFbF" id="RTLLxv5T2L" role="3cqZAp">
               <node concept="37vLTI" id="RTLLxv5T2M" role="3clFbG">
-                <node concept="3f7Wdw" id="RTLLxv5T2N" role="37vLTx">
-                  <ref role="3f7vo2" to="f4vt:3c1Y2R7PdzP" resolve="WorkflowPresentation" />
-                  <ref role="3f7u_j" to="f4vt:3c1Y2R7PdzZ" />
+                <node concept="2OqwBi" id="3Ftr4R8PolV" role="37vLTx">
+                  <node concept="1XH99k" id="3Ftr4R8PolW" role="2Oq$k0">
+                    <ref role="1XH99l" to="f4vt:3Ftr4R6BFMk" resolve="WorkflowPresentation" />
+                  </node>
+                  <node concept="2ViDtV" id="3Ftr4R8PolX" role="2OqNvi">
+                    <ref role="2ViDtZ" to="f4vt:3Ftr4R6BFMn" resolve="tabular" />
+                  </node>
                 </node>
                 <node concept="2OqwBi" id="RTLLxv5T2O" role="37vLTJ">
                   <node concept="2Sf5sV" id="RTLLxv5T2P" role="2Oq$k0" />
                   <node concept="3TrcHB" id="RTLLxv5T2Q" role="2OqNvi">
-                    <ref role="3TsBF5" to="f4vt:3c1Y2R7PeLc" resolve="presentation" />
+                    <ref role="3TsBF5" to="f4vt:3Ftr4R6BHch" resolve="presentation" />
                   </node>
                 </node>
               </node>
@@ -639,12 +645,12 @@
               <node concept="2OqwBi" id="RTLLxv5X_P" role="2Oq$k0">
                 <node concept="2Sf5sV" id="RTLLxv5X_Q" role="2Oq$k0" />
                 <node concept="3TrcHB" id="RTLLxv5X_R" role="2OqNvi">
-                  <ref role="3TsBF5" to="f4vt:3c1Y2R7PeLc" resolve="presentation" />
+                  <ref role="3TsBF5" to="f4vt:3Ftr4R6BHch" resolve="presentation" />
                 </node>
               </node>
-              <node concept="3t7uKx" id="RTLLxv5X_S" role="2OqNvi">
-                <node concept="uoxfO" id="RTLLxv5X_T" role="3t7uKA">
-                  <ref role="uo_Cq" to="f4vt:3c1Y2R7PdzZ" />
+              <node concept="21noJN" id="3Ftr4R8PolP" role="2OqNvi">
+                <node concept="21nZrQ" id="3Ftr4R8PolQ" role="21noJM">
+                  <ref role="21nZrZ" to="f4vt:3Ftr4R6BFMn" resolve="tabular" />
                 </node>
               </node>
             </node>
@@ -653,14 +659,18 @@
             <node concept="3clFbS" id="RTLLxv5T31" role="9aQI4">
               <node concept="3clFbF" id="RTLLxv5T3i" role="3cqZAp">
                 <node concept="37vLTI" id="RTLLxv5T3j" role="3clFbG">
-                  <node concept="3f7Wdw" id="RTLLxv5T3k" role="37vLTx">
-                    <ref role="3f7vo2" to="f4vt:3c1Y2R7PdzP" resolve="WorkflowPresentation" />
-                    <ref role="3f7u_j" to="f4vt:3c1Y2R7PdzQ" />
+                  <node concept="2OqwBi" id="3Ftr4R8Pom1" role="37vLTx">
+                    <node concept="1XH99k" id="3Ftr4R8Pom2" role="2Oq$k0">
+                      <ref role="1XH99l" to="f4vt:3Ftr4R6BFMk" resolve="WorkflowPresentation" />
+                    </node>
+                    <node concept="2ViDtV" id="3Ftr4R8Pom3" role="2OqNvi">
+                      <ref role="2ViDtZ" to="f4vt:3Ftr4R6BFMm" resolve="structural" />
+                    </node>
                   </node>
                   <node concept="2OqwBi" id="RTLLxv5T3l" role="37vLTJ">
                     <node concept="2Sf5sV" id="RTLLxv5T3m" role="2Oq$k0" />
                     <node concept="3TrcHB" id="RTLLxv5T3n" role="2OqNvi">
-                      <ref role="3TsBF5" to="f4vt:3c1Y2R7PeLc" resolve="presentation" />
+                      <ref role="3TsBF5" to="f4vt:3Ftr4R6BHch" resolve="presentation" />
                     </node>
                   </node>
                 </node>

@@ -6,7 +6,7 @@
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="0" />
     <use id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples" version="0" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
   </languages>
   <imports>
@@ -3019,7 +3019,7 @@
         </node>
         <node concept="3clFbH" id="13cOvvwlvuS" role="3cqZAp" />
         <node concept="RRSsy" id="3jYQuSB37gH" role="3cqZAp">
-          <property role="RRSoG" value="info" />
+          <property role="RRSoG" value="h1akgim/info" />
           <node concept="Xl_RD" id="2TzypFyLJeH" role="RRSoy">
             <property role="Xl_RC" value="Reading models..." />
           </node>
@@ -3247,7 +3247,7 @@
           <node concept="9aQIb" id="2TzypFyLJg9" role="9aQIa">
             <node concept="3clFbS" id="2TzypFyLJga" role="9aQI4">
               <node concept="RRSsy" id="3jYQuSB37gN" role="3cqZAp">
-                <property role="RRSoG" value="error" />
+                <property role="RRSoG" value="gZ5fh_4/error" />
                 <node concept="2YIFZM" id="2TzypFyLJgc" role="RRSoy">
                   <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                   <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
@@ -3280,7 +3280,7 @@
         <node concept="SfApY" id="2TzypFyLJg$" role="3cqZAp">
           <node concept="3clFbS" id="2TzypFyLJg_" role="SfCbr">
             <node concept="RRSsy" id="3jYQuSB37gX" role="3cqZAp">
-              <property role="RRSoG" value="info" />
+              <property role="RRSoG" value="h1akgim/info" />
               <node concept="3cpWs3" id="2TzypFyLJgB" role="RRSoy">
                 <node concept="Xl_RD" id="2TzypFyLJgC" role="3uHU7w">
                   <property role="Xl_RC" value="..." />
@@ -3369,7 +3369,7 @@
             <node concept="3clFbJ" id="6Bj_f7BHx_B" role="3cqZAp">
               <node concept="3clFbS" id="6Bj_f7BHx_E" role="3clFbx">
                 <node concept="RRSsy" id="3jYQuSB37hf" role="3cqZAp">
-                  <property role="RRSoG" value="info" />
+                  <property role="RRSoG" value="h1akgim/info" />
                   <node concept="2YIFZM" id="2TzypFyLJhe" role="RRSoy">
                     <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                     <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
@@ -3454,7 +3454,7 @@
               <node concept="9aQIb" id="6Bj_f7BHAWD" role="9aQIa">
                 <node concept="3clFbS" id="6Bj_f7BHAWE" role="9aQI4">
                   <node concept="RRSsy" id="3jYQuSB37hZ" role="3cqZAp">
-                    <property role="RRSoG" value="info" />
+                    <property role="RRSoG" value="h1akgim/info" />
                     <node concept="2YIFZM" id="2TzypFyLJit" role="RRSoy">
                       <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                       <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
@@ -3508,7 +3508,7 @@
               </node>
               <node concept="3clFbS" id="2TzypFyLJhT" role="3clFbx">
                 <node concept="RRSsy" id="3jYQuSB37il" role="3cqZAp">
-                  <property role="RRSoG" value="info" />
+                  <property role="RRSoG" value="h1akgim/info" />
                   <node concept="2YIFZM" id="2TzypFyLJhV" role="RRSoy">
                     <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                     <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
@@ -3544,7 +3544,7 @@
                     </node>
                   </node>
                   <node concept="RRSsy" id="3jYQuSB37iv" role="3cqZAp">
-                    <property role="RRSoG" value="info" />
+                    <property role="RRSoG" value="h1akgim/info" />
                     <node concept="2YIFZM" id="5IRXTJLIA1y" role="RRSoy">
                       <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                       <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
@@ -3672,7 +3672,7 @@
                   <node concept="3clFbJ" id="13cOvvwMnSM" role="3cqZAp">
                     <node concept="3clFbS" id="13cOvvwMnSP" role="3clFbx">
                       <node concept="RRSsy" id="3jYQuSB37iD" role="3cqZAp">
-                        <property role="RRSoG" value="error" />
+                        <property role="RRSoG" value="gZ5fh_4/error" />
                         <node concept="Xl_RD" id="13cOvvwMQER" role="RRSoy">
                           <property role="Xl_RC" value="Error while saving result model" />
                         </node>
@@ -3700,7 +3700,7 @@
                     </node>
                   </node>
                   <node concept="RRSsy" id="3jYQuSB37iJ" role="3cqZAp">
-                    <property role="RRSoG" value="info" />
+                    <property role="RRSoG" value="h1akgim/info" />
                     <node concept="2YIFZM" id="2TzypFyLJi8" role="RRSoy">
                       <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                       <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
@@ -3758,7 +3758,7 @@
             </node>
             <node concept="3clFbS" id="2TzypFyLJiD" role="TDEfX">
               <node concept="RRSsy" id="3jYQuSB37iT" role="3cqZAp">
-                <property role="RRSoG" value="error" />
+                <property role="RRSoG" value="gZ5fh_4/error" />
                 <node concept="Xl_RD" id="2TzypFyLJiF" role="RRSoy">
                   <property role="Xl_RC" value="Exception while merging" />
                 </node>
@@ -3870,7 +3870,7 @@
             <node concept="3clFbJ" id="2TzypFyLJjv" role="3cqZAp">
               <node concept="3clFbS" id="2TzypFyLJjw" role="3clFbx">
                 <node concept="RRSsy" id="3jYQuSB37j1" role="3cqZAp">
-                  <property role="RRSoG" value="info" />
+                  <property role="RRSoG" value="h1akgim/info" />
                   <node concept="3cpWs3" id="2TzypFyLJjy" role="RRSoy">
                     <node concept="37vLTw" id="3GM_nagT_wr" role="3uHU7w">
                       <ref role="3cqZAo" node="2TzypFyLJjc" resolve="zipModel" />
@@ -3898,7 +3898,7 @@
             </node>
             <node concept="3clFbS" id="2TzypFyLJjF" role="TDEfX">
               <node concept="RRSsy" id="3jYQuSB37jb" role="3cqZAp">
-                <property role="RRSoG" value="error" />
+                <property role="RRSoG" value="gZ5fh_4/error" />
                 <node concept="2YIFZM" id="2TzypFyLJjH" role="RRSoy">
                   <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                   <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
@@ -4059,7 +4059,7 @@
           <node concept="TDmWw" id="7vnu9rGM1uI" role="TEbGg">
             <node concept="3clFbS" id="7vnu9rGM1uK" role="TDEfX">
               <node concept="RRSsy" id="3jYQuSB37jn" role="3cqZAp">
-                <property role="RRSoG" value="warn" />
+                <property role="RRSoG" value="gZ5fksE/warn" />
                 <node concept="Xl_RD" id="7vnu9rGM6uG" role="RRSoy">
                   <property role="Xl_RC" value="Failed to read model" />
                 </node>
@@ -4078,7 +4078,7 @@
           <node concept="TDmWw" id="4i_jb5gUi__" role="TEbGg">
             <node concept="3clFbS" id="4i_jb5gUi_A" role="TDEfX">
               <node concept="RRSsy" id="4i_jb5gUi_B" role="3cqZAp">
-                <property role="RRSoG" value="warn" />
+                <property role="RRSoG" value="gZ5fksE/warn" />
                 <node concept="Xl_RD" id="4i_jb5gUi_C" role="RRSoy">
                   <property role="Xl_RC" value="Failed to read model" />
                 </node>

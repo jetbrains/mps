@@ -6,7 +6,7 @@
     <use id="9f846aef-4e4a-4a84-828e-7e83fe2697f2" name="jetbrains.mps.build.mps.testManifest" version="-1" />
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="-1" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="-1" />
     <use id="69b8a993-9b87-4d96-bf0c-3559f4bb0c63" name="jetbrains.mps.lang.slanguage" version="-1" />
     <use id="1a8554c4-eb84-43ba-8c34-6f0d90c6e75a" name="jetbrains.mps.lang.smodel.query" version="-1" />
@@ -4630,7 +4630,7 @@
                   </node>
                   <node concept="3clFbH" id="3Qz3PJzm2v5" role="3cqZAp" />
                   <node concept="RRSsy" id="3Qz3PJzlyN4" role="3cqZAp">
-                    <property role="RRSoG" value="info" />
+                    <property role="RRSoG" value="h1akgim/info" />
                     <node concept="Xl_RD" id="3Qz3PJzlyN5" role="RRSoy">
                       <property role="Xl_RC" value="Refactoring starting..." />
                     </node>
@@ -4692,7 +4692,7 @@
                     </node>
                   </node>
                   <node concept="RRSsy" id="3Qz3PJzlyNy" role="3cqZAp">
-                    <property role="RRSoG" value="info" />
+                    <property role="RRSoG" value="h1akgim/info" />
                     <node concept="Xl_RD" id="3Qz3PJzlyNz" role="RRSoy">
                       <property role="Xl_RC" value="Refactoring finished" />
                     </node>
@@ -4703,7 +4703,7 @@
           </node>
           <node concept="3clFbH" id="3Qz3PJzlyOT" role="3cqZAp" />
           <node concept="RRSsy" id="3Qz3PJzlyP5" role="3cqZAp">
-            <property role="RRSoG" value="info" />
+            <property role="RRSoG" value="h1akgim/info" />
             <node concept="Xl_RD" id="3Qz3PJzlyP6" role="RRSoy">
               <property role="Xl_RC" value="Check finished" />
             </node>
@@ -6348,7 +6348,7 @@
             <node concept="1bVj0M" id="2Z44d$XOZgd" role="37wK5m">
               <node concept="3clFbS" id="2Z44d$XOZge" role="1bW5cS">
                 <node concept="RRSsy" id="42N3Xtulwu9" role="3cqZAp">
-                  <property role="RRSoG" value="info" />
+                  <property role="RRSoG" value="h1akgim/info" />
                   <node concept="Xl_RD" id="42N3Xtulwua" role="RRSoy">
                     <property role="Xl_RC" value="Cleaning generated classes..." />
                   </node>
@@ -6814,7 +6814,7 @@
                   </node>
                 </node>
                 <node concept="RRSsy" id="4Rb4I4dvlAl" role="3cqZAp">
-                  <property role="RRSoG" value="info" />
+                  <property role="RRSoG" value="h1akgim/info" />
                   <node concept="Xl_RD" id="4Rb4I4dvlAj" role="RRSoy">
                     <property role="Xl_RC" value="Refactoring starting..." />
                   </node>
@@ -6883,7 +6883,7 @@
                   </node>
                 </node>
                 <node concept="RRSsy" id="4Rb4I4dvlFL" role="3cqZAp">
-                  <property role="RRSoG" value="info" />
+                  <property role="RRSoG" value="h1akgim/info" />
                   <node concept="Xl_RD" id="4Rb4I4dvlFJ" role="RRSoy">
                     <property role="Xl_RC" value="Refactoring finished" />
                   </node>
@@ -6931,7 +6931,7 @@
         </node>
         <node concept="3clFbH" id="4Rb4I4dvlGD" role="3cqZAp" />
         <node concept="RRSsy" id="4Rb4I4dvl_b" role="3cqZAp">
-          <property role="RRSoG" value="info" />
+          <property role="RRSoG" value="h1akgim/info" />
           <node concept="Xl_RD" id="4Rb4I4dvl_d" role="RRSoy">
             <property role="Xl_RC" value="Checking for errors after refactoring..." />
           </node>
@@ -7027,14 +7027,14 @@
           </node>
         </node>
         <node concept="RRSsy" id="4Rb4I4dvlAN" role="3cqZAp">
-          <property role="RRSoG" value="info" />
+          <property role="RRSoG" value="h1akgim/info" />
           <node concept="Xl_RD" id="4Rb4I4dvlAT" role="RRSoy">
             <property role="Xl_RC" value="Checking finished" />
           </node>
         </node>
         <node concept="3clFbH" id="4Rb4I4dvlBr" role="3cqZAp" />
         <node concept="RRSsy" id="4Rb4I4dvlCR" role="3cqZAp">
-          <property role="RRSoG" value="info" />
+          <property role="RRSoG" value="h1akgim/info" />
           <node concept="Xl_RD" id="4Rb4I4dvlCT" role="RRSoy">
             <property role="Xl_RC" value="Making newly created migrations..." />
           </node>
@@ -7062,7 +7062,7 @@
         </node>
         <node concept="3clFbH" id="4Rb4I4dvl$D" role="3cqZAp" />
         <node concept="RRSsy" id="4Rb4I4dvlI7" role="3cqZAp">
-          <property role="RRSoG" value="info" />
+          <property role="RRSoG" value="h1akgim/info" />
           <node concept="Xl_RD" id="4Rb4I4dvlIf" role="RRSoy">
             <property role="Xl_RC" value="Migrating..." />
           </node>
@@ -7124,14 +7124,14 @@
           </node>
         </node>
         <node concept="RRSsy" id="4Rb4I4dvlC3" role="3cqZAp">
-          <property role="RRSoG" value="info" />
+          <property role="RRSoG" value="h1akgim/info" />
           <node concept="Xl_RD" id="4Rb4I4dvlBV" role="RRSoy">
             <property role="Xl_RC" value="Migration finished" />
           </node>
         </node>
         <node concept="3clFbH" id="4Rb4I4dvlF9" role="3cqZAp" />
         <node concept="RRSsy" id="4Rb4I4dvlFd" role="3cqZAp">
-          <property role="RRSoG" value="info" />
+          <property role="RRSoG" value="h1akgim/info" />
           <node concept="Xl_RD" id="4Rb4I4dvlFf" role="RRSoy">
             <property role="Xl_RC" value="Checking migration results..." />
           </node>
@@ -7154,7 +7154,7 @@
           </node>
         </node>
         <node concept="RRSsy" id="4Rb4I4dvlBn" role="3cqZAp">
-          <property role="RRSoG" value="info" />
+          <property role="RRSoG" value="h1akgim/info" />
           <node concept="Xl_RD" id="4Rb4I4dvlBp" role="RRSoy">
             <property role="Xl_RC" value="Check finished" />
           </node>
@@ -7517,7 +7517,7 @@
       <node concept="3Tm1VV" id="2Z44d$X_W5l" role="1B3o_S" />
       <node concept="3clFbS" id="2Z44d$X_W5m" role="3clF47">
         <node concept="RRSsy" id="2Z44d$XAQ_B" role="3cqZAp">
-          <property role="RRSoG" value="info" />
+          <property role="RRSoG" value="h1akgim/info" />
           <node concept="3cpWs3" id="2Z44d$XCB9c" role="RRSoy">
             <node concept="2OqwBi" id="2Z44d$XCETY" role="3uHU7w">
               <node concept="37vLTw" id="2Z44d$XCEjv" role="2Oq$k0">
@@ -7720,7 +7720,7 @@
           </node>
         </node>
         <node concept="RRSsy" id="4Rb4I4dvlFj" role="3cqZAp">
-          <property role="RRSoG" value="info" />
+          <property role="RRSoG" value="h1akgim/info" />
           <node concept="Xl_RD" id="4Rb4I4dvlFh" role="RRSoy">
             <property role="Xl_RC" value="Make finished" />
           </node>

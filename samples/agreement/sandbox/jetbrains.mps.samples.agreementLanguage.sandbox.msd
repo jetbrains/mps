@@ -10,7 +10,7 @@
     <dependency reexport="true">b1a9bc47-8a26-4792-8b68-4660c531090a(jetbrains.mps.samples.formulaLanguage)</dependency>
   </dependencies>
   <languageVersions>
-    <language slang="l:ceab5195-25ea-4f22-9b92-103b95ca8c0c:jetbrains.mps.lang.core" version="1" />
+    <language slang="l:ceab5195-25ea-4f22-9b92-103b95ca8c0c:jetbrains.mps.lang.core" version="2" />
     <language slang="l:144f7012-c2d5-43be-be2b-4bfb7dff6503:jetbrains.mps.samples.agreementLanguage" version="0" />
     <language slang="l:b1a9bc47-8a26-4792-8b68-4660c531090a:jetbrains.mps.samples.formulaLanguage" version="0" />
   </languageVersions>

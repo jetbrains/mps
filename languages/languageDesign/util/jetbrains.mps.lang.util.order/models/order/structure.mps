@@ -47,9 +47,9 @@
     <property role="34LRSv" value="Order" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="283lDAXPS59" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="seq" />
-      <property role="20lbJX" value="1..n" />
+      <property role="20lbJX" value="fLJekj6/1..n" />
       <property role="IQ2ns" value="2450897840534683977" />
       <ref role="20lvS9" node="283lDAXPS5b" resolve="OrderParticipantReference" />
     </node>
@@ -69,9 +69,8 @@
     <property role="EcuMT" value="2450897840534688273" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="283lDAXPT8i" role="1TKVEi">
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="order" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="2450897840534688274" />
       <ref role="20lvS9" node="283lDAXPS57" resolve="OrderDeclaration" />
     </node>
@@ -81,14 +80,13 @@
   </node>
   <node concept="1TIwiD" id="283lDAXPS5b">
     <property role="TrG5h" value="OrderParticipantReference" />
-    <property role="2_RsDV" value="none" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
     <property role="EcuMT" value="2450897840534683979" />
     <property role="R5$K7" value="true" />
     <property role="R5$K2" value="false" />
     <node concept="1TJgyj" id="283lDAXPS5c" role="1TKVEi">
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="target" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="2450897840534683980" />
       <ref role="20lvS9" node="22594Rb8c7s" resolve="OrderParticipant" />
     </node>

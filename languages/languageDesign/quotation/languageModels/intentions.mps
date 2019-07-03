@@ -227,6 +227,9 @@
         <reference id="5455284157993910961" name="concept" index="2pJxaS" />
         <child id="5455284157993911099" name="values" index="2pJxcM" />
       </concept>
+      <concept id="4056363777117001481" name="jetbrains.mps.lang.quotation.structure.StringToTypedValueMigrationInfo" flags="ng" index="AAgTk">
+        <property id="2173356959483005420" name="stringValueMigrated" index="3qcH_f" />
+      </concept>
       <concept id="1196866233735" name="jetbrains.mps.lang.quotation.structure.PropertyAntiquotation" flags="ng" index="2EMmih" />
       <concept id="8182547171709752110" name="jetbrains.mps.lang.quotation.structure.NodeBuilderExpression" flags="nn" index="36biLy">
         <child id="8182547171709752112" name="expression" index="36biLW" />
@@ -2358,8 +2361,13 @@
                               <property role="2qtEX9" value="value" />
                               <property role="3hQQBS" value="BooleanConstant" />
                               <property role="P4ACc" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123137/1068580123138" />
-                              <node concept="37vLTw" id="3v7fNhWfO1R" role="2c44t1">
-                                <ref role="3cqZAo" node="3v7fNhWfO1N" resolve="value" />
+                              <property role="3qcH_f" value="true" />
+                              <node concept="2YIFZM" id="3Ftr4RacHoV" role="2c44t1">
+                                <ref role="37wK5l" to="wyt6:~Boolean.parseBoolean(java.lang.String)" resolve="parseBoolean" />
+                                <ref role="1Pybhc" to="wyt6:~Boolean" resolve="Boolean" />
+                                <node concept="37vLTw" id="3v7fNhWfO1R" role="37wK5m">
+                                  <ref role="3cqZAo" node="3v7fNhWfO1N" resolve="value" />
+                                </node>
                               </node>
                             </node>
                           </node>
@@ -2389,8 +2397,13 @@
                               <property role="2qtEX9" value="value" />
                               <property role="3hQQBS" value="IntegerConstant" />
                               <property role="P4ACc" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1068580320020/1068580320021" />
-                              <node concept="37vLTw" id="3v7fNhWfO1Y" role="2c44t1">
-                                <ref role="3cqZAo" node="3v7fNhWfO1N" resolve="value" />
+                              <property role="3qcH_f" value="true" />
+                              <node concept="2YIFZM" id="3Ftr4RacHpk" role="2c44t1">
+                                <ref role="37wK5l" to="wyt6:~Integer.parseInt(java.lang.String)" resolve="parseInt" />
+                                <ref role="1Pybhc" to="wyt6:~Integer" resolve="Integer" />
+                                <node concept="37vLTw" id="3v7fNhWfO1Y" role="37wK5m">
+                                  <ref role="3cqZAo" node="3v7fNhWfO1N" resolve="value" />
+                                </node>
                               </node>
                             </node>
                           </node>
@@ -2419,6 +2432,7 @@
                             <node concept="2EMmih" id="3v7fNhWfO0Y" role="lGtFl">
                               <property role="2qtEX9" value="value" />
                               <property role="P4ACc" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1070475926800/1070475926801" />
+                              <property role="3qcH_f" value="true" />
                               <node concept="37vLTw" id="3v7fNhWfO1T" role="2c44t1">
                                 <ref role="3cqZAo" node="3v7fNhWfO1N" resolve="value" />
                               </node>
@@ -2578,6 +2592,7 @@
                                 <node concept="2EMmih" id="3v7fNhWfO1x" role="lGtFl">
                                   <property role="2qtEX9" value="value" />
                                   <property role="P4ACc" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1070475926800/1070475926801" />
+                                  <property role="3qcH_f" value="true" />
                                   <node concept="2YIFZM" id="3v7fNhWfO1y" role="2c44t1">
                                     <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
                                     <ref role="37wK5l" to="18ew:~NameUtil.escapeString(java.lang.String)" resolve="escapeString" />
@@ -3330,7 +3345,7 @@
               <node concept="3clFbJ" id="3v7fNhWwjL9" role="3cqZAp">
                 <node concept="3clFbS" id="3v7fNhWwjLb" role="3clFbx">
                   <node concept="2xdQw9" id="3v7fNhWwpjp" role="3cqZAp">
-                    <property role="2xdLsb" value="error" />
+                    <property role="2xdLsb" value="gZ5fh_4/error" />
                     <node concept="Xl_RD" id="3v7fNhWwpjr" role="9lYJi">
                       <property role="Xl_RC" value="Converting invalid quotation to light quotation may lead to unexpected results" />
                     </node>

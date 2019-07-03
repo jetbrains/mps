@@ -2,7 +2,7 @@
 <model ref="r:00000000-0000-4000-0000-011c8959040d(jetbrains.mps.samples.agreementLanguage.generator.util)">
   <persistence version="9" />
   <languages>
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
   </languages>
   <imports>
@@ -66,11 +66,14 @@
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
+      <concept id="4705942098322609812" name="jetbrains.mps.lang.smodel.structure.EnumMember_IsOperation" flags="ng" index="21noJN">
+        <child id="4705942098322609813" name="member" index="21noJM" />
+      </concept>
+      <concept id="4705942098322467729" name="jetbrains.mps.lang.smodel.structure.EnumMemberReference" flags="ng" index="21nZrQ">
+        <reference id="4705942098322467736" name="decl" index="21nZrZ" />
+      </concept>
       <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
         <reference id="1177026940964" name="conceptDeclaration" index="cht4Q" />
-      </concept>
-      <concept id="1138676077309" name="jetbrains.mps.lang.smodel.structure.EnumMemberReference_Old" flags="nn" index="uoxfO">
-        <reference id="1138676095763" name="enumMember" index="uo_Cq" />
       </concept>
       <concept id="2396822768958367367" name="jetbrains.mps.lang.smodel.structure.AbstractTypeCastExpression" flags="nn" index="$5XWr">
         <child id="6733348108486823193" name="leftExpression" index="1m5AlR" />
@@ -78,9 +81,6 @@
       </concept>
       <concept id="1139621453865" name="jetbrains.mps.lang.smodel.structure.Node_IsInstanceOfOperation" flags="nn" index="1mIQ4w">
         <child id="1177027386292" name="conceptArgument" index="cj9EA" />
-      </concept>
-      <concept id="1146171026731" name="jetbrains.mps.lang.smodel.structure.Property_HasValue_Enum" flags="nn" index="3t7uKx">
-        <child id="1146171026732" name="value" index="3t7uKA" />
       </concept>
       <concept id="1140137987495" name="jetbrains.mps.lang.smodel.structure.SNodeTypeCastExpression" flags="nn" index="1PxgMI" />
       <concept id="1138055754698" name="jetbrains.mps.lang.smodel.structure.SNodeType" flags="in" index="3Tqbb2">
@@ -174,12 +174,12 @@
                     <ref role="3cqZAo" node="hrqCJxf" resolve="eventVariable" />
                   </node>
                   <node concept="3TrcHB" id="hrqD9Z2" role="2OqNvi">
-                    <ref role="3TsBF5" to="tpna:gbs4N3m" resolve="type" />
+                    <ref role="3TsBF5" to="tpna:3Ftr4R6BHaQ" resolve="type" />
                   </node>
                 </node>
-                <node concept="3t7uKx" id="hrqD58X" role="2OqNvi">
-                  <node concept="uoxfO" id="hrqD58Y" role="3t7uKA">
-                    <ref role="uo_Cq" to="tpna:gbs1lSA" />
+                <node concept="21noJN" id="3Ftr4R8N0$c" role="2OqNvi">
+                  <node concept="21nZrQ" id="3Ftr4R8N0$d" role="21noJM">
+                    <ref role="21nZrZ" to="tpna:3Ftr4R6BFHu" resolve="Money" />
                   </node>
                 </node>
               </node>
@@ -210,12 +210,12 @@
                     </node>
                   </node>
                   <node concept="3TrcHB" id="hrqDotp" role="2OqNvi">
-                    <ref role="3TsBF5" to="tpna:gbs35k3" resolve="unit" />
+                    <ref role="3TsBF5" to="tpna:3Ftr4R6BHaO" resolve="unit" />
                   </node>
                 </node>
-                <node concept="3t7uKx" id="hrqDpJ0" role="2OqNvi">
-                  <node concept="uoxfO" id="hrqDpJ1" role="3t7uKA">
-                    <ref role="uo_Cq" to="tpna:gbs2QO3" />
+                <node concept="21noJN" id="3Ftr4R8N0$e" role="2OqNvi">
+                  <node concept="21nZrQ" id="3Ftr4R8N0$f" role="21noJM">
+                    <ref role="21nZrZ" to="tpna:3Ftr4R6BFHy" resolve="USD" />
                   </node>
                 </node>
               </node>
@@ -310,12 +310,12 @@
                     <ref role="3cqZAo" node="hrqIY3b" resolve="eventVariable" />
                   </node>
                   <node concept="3TrcHB" id="hrqJ0YW" role="2OqNvi">
-                    <ref role="3TsBF5" to="tpna:gbs4N3m" resolve="type" />
+                    <ref role="3TsBF5" to="tpna:3Ftr4R6BHaQ" resolve="type" />
                   </node>
                 </node>
-                <node concept="3t7uKx" id="hrqIY3j" role="2OqNvi">
-                  <node concept="uoxfO" id="hrqIY3k" role="3t7uKA">
-                    <ref role="uo_Cq" to="tpna:gbs1fmB" />
+                <node concept="21noJN" id="3Ftr4R8N0$g" role="2OqNvi">
+                  <node concept="21nZrQ" id="3Ftr4R8N0$h" role="21noJM">
+                    <ref role="21nZrZ" to="tpna:3Ftr4R6BFHt" resolve="Quantity" />
                   </node>
                 </node>
               </node>

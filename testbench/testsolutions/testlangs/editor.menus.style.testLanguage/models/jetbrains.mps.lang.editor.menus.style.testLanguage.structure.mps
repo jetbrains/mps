@@ -2,7 +2,7 @@
 <model ref="r:6ffe895d-c627-4bc6-b29b-11834fa1d0d7(jetbrains.mps.lang.editor.menus.style.testLanguage.structure)">
   <persistence version="9" />
   <languages>
-    <use id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure" version="7" />
+    <use id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure" version="9" />
     <devkit ref="78434eb8-b0e5-444b-850d-e7c4ad2da9ab(jetbrains.mps.devkit.aspect.structure)" />
   </languages>
   <imports>
@@ -10,9 +10,29 @@
   </imports>
   <registry>
     <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
+      <concept id="3348158742936976480" name="jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration" flags="ng" index="25R33">
+        <property id="1421157252384165432" name="memberId" index="3tVfz5" />
+        <property id="672037151186491528" name="presentation" index="1L1pqM" />
+        <reference id="899069222106091871" name="oldMember" index="2wpffI" />
+      </concept>
+      <concept id="3348158742936976479" name="jetbrains.mps.lang.structure.structure.EnumerationDeclartaion" flags="ng" index="25R3W">
+        <reference id="1075010451642646892" name="defaultMember" index="1H5jkz" />
+        <child id="3348158742936976577" name="members" index="25R1y" />
+      </concept>
+      <concept id="6491077959632463275" name="jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo" flags="ng" index="3l_iC">
+        <child id="6491077959632463286" name="oldProperty" index="3l_iP" />
+      </concept>
+      <concept id="1082978164218" name="jetbrains.mps.lang.structure.structure.DataTypeDeclaration" flags="ng" index="AxPO6">
+        <property id="7791109065626895363" name="datatypeId" index="3F6X1D" />
+      </concept>
       <concept id="1082978164219" name="jetbrains.mps.lang.structure.structure.EnumerationDataTypeDeclaration_Old" flags="ng" index="AxPO7">
         <reference id="1083171729157" name="memberDataType" index="M4eZT" />
         <child id="1083172003582" name="member" index="M5hS2" />
+      </concept>
+      <concept id="1588368162884797030" name="jetbrains.mps.lang.structure.structure.EnumMigrationInfo" flags="ng" index="2JgGob">
+        <property id="6491077959634662372" name="valueOpMigration" index="3scbB" />
+        <property id="6491077959634650670" name="nameOpMigration" index="3sfsH" />
+        <child id="6491077959632451996" name="oldEnum" index="3lCyv" />
       </concept>
       <concept id="1083171877298" name="jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration_Old" flags="ig" index="M4N5e">
         <property id="1083923523172" name="externalValue" index="1uS6qo" />
@@ -49,6 +69,7 @@
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
+        <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
@@ -62,13 +83,11 @@
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="41xlIweUVhl" role="1TKVEi">
       <property role="IQ2ns" value="4639084645851051093" />
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="reference" />
       <ref role="20lvS9" node="41xlIweUVhe" resolve="TestCompletionCustomization_ChildToReference" />
     </node>
     <node concept="1TJgyj" id="3jjUuIj4B9$" role="1TKVEi">
       <property role="IQ2ns" value="3806643308052247140" />
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="customActionReference" />
       <ref role="20lvS9" node="41xlIweUVhe" resolve="TestCompletionCustomization_ChildToReference" />
     </node>
@@ -77,15 +96,29 @@
       <property role="TrG5h" value="booleanProperty" />
       <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
     </node>
-    <node concept="1TJgyi" id="4AL49kgHLZL" role="1TKVEl">
-      <property role="IQ2nx" value="5310043668063133681" />
+    <node concept="1TJgyi" id="3Ftr4R6BHcQ" role="1TKVEl">
       <property role="TrG5h" value="enumProperty" />
-      <ref role="AX2Wp" node="4AL49kgHLZO" resolve="TestCompletionCustomization_Enum" />
+      <property role="IQ2nx" value="5310043668063133681" />
+      <ref role="AX2Wp" node="3Ftr4R6BFN7" resolve="TestCompletionCustomization_Enum" />
+      <node concept="3l_iC" id="3Ftr4R6BHcR" role="lGtFl">
+        <node concept="1TJgyi" id="4AL49kgHLZL" role="3l_iP">
+          <property role="IQ2nx" value="5310043668063133681" />
+          <property role="TrG5h" value="enumProperty" />
+          <ref role="AX2Wp" node="4AL49kgHLZO" resolve="TestCompletionCustomization_Enum" />
+        </node>
+      </node>
     </node>
-    <node concept="1TJgyi" id="3jjUuIj4B3E" role="1TKVEl">
-      <property role="IQ2nx" value="3806643308052246762" />
+    <node concept="1TJgyi" id="3Ftr4R6BHcS" role="1TKVEl">
       <property role="TrG5h" value="customActionEnumProperty" />
-      <ref role="AX2Wp" node="4AL49kgHLZO" resolve="TestCompletionCustomization_Enum" />
+      <property role="IQ2nx" value="3806643308052246762" />
+      <ref role="AX2Wp" node="3Ftr4R6BFN7" resolve="TestCompletionCustomization_Enum" />
+      <node concept="3l_iC" id="3Ftr4R6BHcT" role="lGtFl">
+        <node concept="1TJgyi" id="3jjUuIj4B3E" role="3l_iP">
+          <property role="IQ2nx" value="3806643308052246762" />
+          <property role="TrG5h" value="customActionEnumProperty" />
+          <ref role="AX2Wp" node="4AL49kgHLZO" resolve="TestCompletionCustomization_Enum" />
+        </node>
+      </node>
     </node>
     <node concept="1TJgyi" id="41xlIweVLOm" role="1TKVEl">
       <property role="IQ2nx" value="4639084645851274518" />
@@ -94,58 +127,58 @@
     </node>
     <node concept="1TJgyj" id="4AL49kg_TzB" role="1TKVEi">
       <property role="IQ2ns" value="5310043668061067495" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="childNoMenu" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <ref role="20lvS9" node="4AL49kgEJiY" resolve="TestCompletionCustomization_ChildNoMenu" />
     </node>
     <node concept="1TJgyj" id="4AL49kgFbMt" role="1TKVEi">
       <property role="IQ2ns" value="5310043668062452893" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="childSimpleSubstituteMenu" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <ref role="20lvS9" node="4AL49kgF9EG" resolve="TestCompletionCustomization_ChildSimpleSubstituteMenu" />
     </node>
     <node concept="1TJgyj" id="4AL49kgHlZL" role="1TKVEi">
       <property role="IQ2ns" value="5310043668063018993" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="childParameterizedSubstituteMenu" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <ref role="20lvS9" node="4AL49kgHfVD" resolve="TestCompletionCustomization_ChildParameterizedSubstituteMenu" />
     </node>
     <node concept="1TJgyj" id="4AL49kgHAy0" role="1TKVEi">
       <property role="IQ2ns" value="5310043668063086720" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="childWrapSubstituteMenu" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <ref role="20lvS9" node="4AL49kgHsyC" resolve="TestCompletionCustomization_ChildWrapSubstituteMenu" />
     </node>
     <node concept="1TJgyj" id="41xlIweVvl7" role="1TKVEi">
       <property role="IQ2ns" value="4639084645851198791" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="childInMatchingLink" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <ref role="20lvS9" node="41xlIweVvle" resolve="TestCompletionCustomization_ContextMatcherChildInMatchingLink" />
     </node>
     <node concept="1TJgyj" id="77bAwtGS0kO" role="1TKVEi">
       <property role="IQ2ns" value="8199816903240189236" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="childInMatchingLinkInlineMenu" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <ref role="20lvS9" node="41xlIweVvle" resolve="TestCompletionCustomization_ContextMatcherChildInMatchingLink" />
     </node>
     <node concept="1TJgyj" id="41xlIwf34pN" role="1TKVEi">
       <property role="IQ2ns" value="4639084645853185651" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="childToSubstitute" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <ref role="20lvS9" node="41xlIwf2Wwl" resolve="TestCompletionCustomization_ContextMatcherChildToSubstitute" />
     </node>
     <node concept="1TJgyj" id="3jjUuIj4BaK" role="1TKVEi">
       <property role="IQ2ns" value="3806643308052247216" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="customActionChildInMatchingLink" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <ref role="20lvS9" node="41xlIweVvle" resolve="TestCompletionCustomization_ContextMatcherChildInMatchingLink" />
     </node>
   </node>
@@ -184,7 +217,7 @@
     <property role="TrG5h" value="TestCompletionCustomization_ChildWrapSubstituteMenu" />
     <node concept="1TJgyj" id="4AL49kgHszv" role="1TKVEi">
       <property role="IQ2ns" value="5310043668063045855" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="wrapped" />
       <ref role="20lvS9" node="4AL49kgHszs" resolve="TestCompletionCustomization_ConceptToWrap" />
     </node>
@@ -229,19 +262,6 @@
       <ref role="PrY4T" node="4AL49kgHsyC" resolve="TestCompletionCustomization_ChildWrapSubstituteMenu" />
     </node>
   </node>
-  <node concept="AxPO7" id="4AL49kgHLZO">
-    <property role="3GE5qa" value="contextMatcher" />
-    <property role="TrG5h" value="TestCompletionCustomization_Enum" />
-    <ref role="M4eZT" to="tpck:fKAOsGN" resolve="string" />
-    <node concept="M4N5e" id="4AL49kgHLZP" role="M5hS2">
-      <property role="1uS6qv" value="with priority" />
-      <property role="1uS6qo" value="with priority" />
-    </node>
-    <node concept="M4N5e" id="4AL49kgHLZQ" role="M5hS2">
-      <property role="1uS6qv" value="no priority" />
-      <property role="1uS6qo" value="no priority" />
-    </node>
-  </node>
   <node concept="1TIwiD" id="41xlIweUVhd">
     <property role="EcuMT" value="4639084645851051085" />
     <property role="3GE5qa" value="contextMatcher" />
@@ -250,9 +270,9 @@
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="41xlIweUVhh" role="1TKVEi">
       <property role="IQ2ns" value="4639084645851051089" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="children" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <ref role="20lvS9" node="41xlIweUVhe" resolve="TestCompletionCustomization_ChildToReference" />
     </node>
     <node concept="PrWs8" id="41xlIweUVhj" role="PzmwI">
@@ -303,6 +323,42 @@
     <property role="TrG5h" value="TestCompletionCustomization_ParentTestStyle" />
     <property role="3GE5qa" value="contextMatcher" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+  </node>
+  <node concept="25R3W" id="3Ftr4R6BFN7">
+    <property role="TrG5h" value="TestCompletionCustomization_Enum" />
+    <property role="3GE5qa" value="contextMatcher" />
+    <property role="3F6X1D" value="5310043668063133684" />
+    <ref role="1H5jkz" node="3Ftr4R6BFN9" resolve="with_priority" />
+    <node concept="2JgGob" id="3Ftr4R6BFN8" role="lGtFl">
+      <property role="3scbB" value="5CkWgdpp3eZ/string_presentation" />
+      <property role="3sfsH" value="5CkWgdpp0p2/by_presentation" />
+      <node concept="AxPO7" id="4AL49kgHLZO" role="3lCyv">
+        <property role="3GE5qa" value="contextMatcher" />
+        <property role="TrG5h" value="TestCompletionCustomization_Enum" />
+        <property role="3F6X1D" value="5310043668063133684" />
+        <ref role="M4eZT" to="tpck:fKAOsGN" resolve="string" />
+        <node concept="M4N5e" id="4AL49kgHLZP" role="M5hS2">
+          <property role="1uS6qv" value="with priority" />
+          <property role="1uS6qo" value="with priority" />
+        </node>
+        <node concept="M4N5e" id="4AL49kgHLZQ" role="M5hS2">
+          <property role="1uS6qv" value="no priority" />
+          <property role="1uS6qo" value="no priority" />
+        </node>
+      </node>
+    </node>
+    <node concept="25R33" id="3Ftr4R6BFN9" role="25R1y">
+      <property role="TrG5h" value="with_priority" />
+      <property role="1L1pqM" value="with priority" />
+      <property role="3tVfz5" value="5310043668063133685" />
+      <ref role="2wpffI" node="4AL49kgHLZP" />
+    </node>
+    <node concept="25R33" id="3Ftr4R6BFNa" role="25R1y">
+      <property role="TrG5h" value="no_priority" />
+      <property role="1L1pqM" value="no priority" />
+      <property role="3tVfz5" value="5310043668063133686" />
+      <ref role="2wpffI" node="4AL49kgHLZQ" />
+    </node>
   </node>
 </model>
 

@@ -310,6 +310,9 @@
         <reference id="5455284157993910961" name="concept" index="2pJxaS" />
         <child id="5455284157993911099" name="values" index="2pJxcM" />
       </concept>
+      <concept id="4056363777117001481" name="jetbrains.mps.lang.quotation.structure.StringToTypedValueMigrationInfo" flags="ng" index="AAgTk">
+        <property id="2173356959483005420" name="stringValueMigrated" index="3qcH_f" />
+      </concept>
       <concept id="1196866233735" name="jetbrains.mps.lang.quotation.structure.PropertyAntiquotation" flags="ng" index="2EMmih" />
       <concept id="8182547171709752110" name="jetbrains.mps.lang.quotation.structure.NodeBuilderExpression" flags="nn" index="36biLy">
         <child id="8182547171709752112" name="expression" index="36biLW" />
@@ -1532,6 +1535,7 @@
                 <node concept="2EMmih" id="7ERGDLdnxKt" role="lGtFl">
                   <property role="P4ACc" value="ceab5195-25ea-4f22-9b92-103b95ca8c0c/1169194658468/1169194664001" />
                   <property role="2qtEX9" value="name" />
+                  <property role="3qcH_f" value="true" />
                   <node concept="3cpWs3" id="7ERGDLdnxKu" role="2c44t1">
                     <node concept="Xl_RD" id="7ERGDLdnxKv" role="3uHU7w">
                       <property role="Xl_RC" value="_SmartReference" />
@@ -1750,6 +1754,7 @@
                 <node concept="2EMmih" id="2JrNx06eOop" role="lGtFl">
                   <property role="P4ACc" value="c72da2b9-7cce-4447-8389-f407dc1158b7/8842732777748464990/4307758654697524057" />
                   <property role="2qtEX9" value="prefix" />
+                  <property role="3qcH_f" value="true" />
                   <node concept="37vLTw" id="2JrNx06eOq3" role="2c44t1">
                     <ref role="3cqZAo" node="2Bx95kmA0yY" resolve="prefix" />
                   </node>
@@ -1757,6 +1762,7 @@
                 <node concept="2EMmih" id="2JrNx06eOuX" role="lGtFl">
                   <property role="P4ACc" value="c72da2b9-7cce-4447-8389-f407dc1158b7/8842732777748464990/4307758654697524060" />
                   <property role="2qtEX9" value="suffix" />
+                  <property role="3qcH_f" value="true" />
                   <node concept="37vLTw" id="2JrNx06eOw2" role="2c44t1">
                     <ref role="3cqZAo" node="2Bx95kmA0yW" resolve="suffix" />
                   </node>

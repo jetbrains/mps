@@ -2,8 +2,8 @@
 <model ref="r:5b646244-9348-4892-8868-7e2e5cb2c7d9(jetbrains.mps.debugger.java.customViewers.editor)">
   <persistence version="9" />
   <languages>
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="12" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="13" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
   </languages>
   <imports>
@@ -53,9 +53,6 @@
         <property id="1139852716018" name="noTargetText" index="1$x2rV" />
         <property id="1140017977771" name="readOnly" index="1Intyy" />
         <reference id="1140103550593" name="relationDeclaration" index="1NtTu8" />
-      </concept>
-      <concept id="1073389214265" name="jetbrains.mps.lang.editor.structure.EditorCellModel" flags="ng" index="3EYTF0">
-        <property id="1130859485024" name="attractsFocus" index="1cu_pB" />
       </concept>
       <concept id="1073389446423" name="jetbrains.mps.lang.editor.structure.CellModel_Collection" flags="sn" stub="3013115976261988961" index="3EZMnI">
         <child id="1106270802874" name="cellLayout" index="2iSdaV" />
@@ -271,7 +268,7 @@
           <node concept="3F0ifn" id="4s4uRp_lDg_" role="1QoVPY">
             <property role="3F0ifm" value="&lt;no icon&gt;" />
             <node concept="VechU" id="4s4uRp_lDgA" role="3F10Kt">
-              <property role="Vb096" value="lightGray" />
+              <property role="Vb096" value="fLJRk5A/lightGray" />
             </node>
           </node>
           <node concept="3EZMnI" id="4s4uRp_lDgB" role="1QoS34">
@@ -338,7 +335,6 @@
     <property role="3GE5qa" value="types" />
     <ref role="1XX52x" to="kisg:4s4uRp_lDhd" resolve="WatchableType" />
     <node concept="PMmxH" id="2wdLO7KhYar" role="2wV5jI">
-      <property role="1cu_pB" value="0" />
       <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
     </node>
   </node>
@@ -347,7 +343,6 @@
     <ref role="1XX52x" to="kisg:2q5hg4g33e" resolve="HighLevelWatchableCreator" />
     <node concept="3EZMnI" id="2q5hg4g9iv" role="2wV5jI">
       <node concept="PMmxH" id="2wdLO7KhY7d" role="3EZMnx">
-        <property role="1cu_pB" value="0" />
         <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
       </node>
       <node concept="1iCGBv" id="2q5hg4g9ix" role="3EZMnx">
@@ -438,7 +433,6 @@
     <property role="3GE5qa" value="types" />
     <ref role="1XX52x" to="kisg:1AiqN6mKNIN" resolve="WatchableListType" />
     <node concept="PMmxH" id="2wdLO7KhY2f" role="2wV5jI">
-      <property role="1cu_pB" value="0" />
       <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
     </node>
   </node>
@@ -447,7 +441,6 @@
     <ref role="1XX52x" to="kisg:1AiqN6mKNIM" resolve="WatchablesListCreator" />
     <node concept="3EZMnI" id="1AiqN6mKS81" role="2wV5jI">
       <node concept="PMmxH" id="2wdLO7KhY6N" role="3EZMnx">
-        <property role="1cu_pB" value="0" />
         <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
       </node>
       <node concept="2iRfu4" id="1AiqN6mKS82" role="2iSdaV" />
@@ -457,7 +450,6 @@
     <ref role="1XX52x" to="kisg:C1IMQvqnKg" resolve="ToProcessMethod" />
     <node concept="3EZMnI" id="30Q4pYqbC2z" role="2wV5jI">
       <node concept="PMmxH" id="2wdLO7KhY2x" role="3EZMnx">
-        <property role="1cu_pB" value="0" />
         <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
       </node>
       <node concept="2SsqMj" id="30Q4pYqbC2_" role="3EZMnx" />

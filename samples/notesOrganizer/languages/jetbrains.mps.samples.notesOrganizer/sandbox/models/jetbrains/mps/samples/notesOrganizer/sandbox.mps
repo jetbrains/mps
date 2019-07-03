@@ -16,7 +16,6 @@
       <concept id="8908453262579799880" name="jetbrains.mps.samples.notesOrganizer.structure.Category" flags="ng" index="1HB3x3" />
       <concept id="8908453262579799874" name="jetbrains.mps.samples.notesOrganizer.structure.Notes" flags="ng" index="1HB3x9">
         <property id="3892287256989816165" name="selectedCategory" index="1yF7J6" />
-        <property id="8908453262580051923" name="presentation" index="1HSs3o" />
         <child id="8908453262579867207" name="notes" index="1HBN5c" />
       </concept>
       <concept id="8908453262579799877" name="jetbrains.mps.samples.notesOrganizer.structure.NotesConfiguration" flags="ng" index="1HB3xe">
@@ -97,7 +96,6 @@
   </node>
   <node concept="1HB3x9" id="7IxbKGmfxT6">
     <property role="TrG5h" value="My notes" />
-    <property role="1HSs3o" value="default" />
     <property role="1yF7J6" value="" />
     <node concept="1HBdKA" id="7IxbKGmfz9r" role="1HBN5c">
       <ref role="1HBdK_" node="7IxbKGmfvcv" resolve="Critical" />

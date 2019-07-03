@@ -4,7 +4,7 @@
   <languages>
     <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="-1" />
     <use id="13744753-c81f-424a-9c1b-cf8943bf4e86" name="jetbrains.mps.lang.sharedConcepts" version="-1" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
@@ -197,13 +197,13 @@
                       <ref role="3cqZAo" node="JeRNd$Sl$E" resolve="sampleLink" />
                     </node>
                     <node concept="3TrcHB" id="JeRNd$Spwi" role="2OqNvi">
-                      <ref role="3TsBF5" to="tpce:fA0lm$B" resolve="metaClass" />
+                      <ref role="3TsBF5" to="tpce:3Ftr4R6BH8$" resolve="metaClass" />
                     </node>
                   </node>
                   <node concept="2OqwBi" id="JeRNd$SnJT" role="37vLTJ">
                     <node concept="1r4Lsj" id="JeRNd$SnFb" role="2Oq$k0" />
                     <node concept="3TrcHB" id="JeRNd$SohT" role="2OqNvi">
-                      <ref role="3TsBF5" to="tpce:fA0lm$B" resolve="metaClass" />
+                      <ref role="3TsBF5" to="tpce:3Ftr4R6BH8$" resolve="metaClass" />
                     </node>
                   </node>
                 </node>
@@ -215,13 +215,13 @@
                       <ref role="3cqZAo" node="JeRNd$Sl$E" resolve="sampleLink" />
                     </node>
                     <node concept="3TrcHB" id="JeRNd$Snxv" role="2OqNvi">
-                      <ref role="3TsBF5" to="tpce:fA0lbG4" resolve="sourceCardinality" />
+                      <ref role="3TsBF5" to="tpce:3Ftr4R6BH8A" resolve="sourceCardinality" />
                     </node>
                   </node>
                   <node concept="2OqwBi" id="JeRNd$SlUF" role="37vLTJ">
                     <node concept="1r4Lsj" id="JeRNd$SlQv" role="2Oq$k0" />
                     <node concept="3TrcHB" id="JeRNd$Smpb" role="2OqNvi">
-                      <ref role="3TsBF5" to="tpce:fA0lbG4" resolve="sourceCardinality" />
+                      <ref role="3TsBF5" to="tpce:3Ftr4R6BH8A" resolve="sourceCardinality" />
                     </node>
                   </node>
                 </node>

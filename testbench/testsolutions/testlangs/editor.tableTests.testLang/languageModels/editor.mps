@@ -4,8 +4,8 @@
   <languages>
     <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="4" />
     <use id="0272d3b4-4cc8-481e-9e2f-07793fbfcb41" name="jetbrains.mps.lang.editor.table" version="0" />
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="12" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="13" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -328,10 +328,10 @@
       <node concept="3F0ifn" id="2w0jk4vDdGY" role="3EZMnx">
         <property role="3F0ifm" value="Table" />
         <node concept="Vb9p2" id="2w0jk4vDreq" role="3F10Kt">
-          <property role="Vbekb" value="BOLD_ITALIC" />
+          <property role="Vbekb" value="g1_tSyq/BOLD_ITALIC" />
         </node>
         <node concept="VechU" id="2w0jk4vDres" role="3F10Kt">
-          <property role="Vb096" value="DARK_MAGENTA" />
+          <property role="Vb096" value="g1_qVrt/DARK_MAGENTA" />
         </node>
       </node>
       <node concept="3F0A7n" id="3kNr5JazBbR" role="3EZMnx">
@@ -693,10 +693,10 @@
       <node concept="3F0ifn" id="6vrtzn$RlVF" role="3EZMnx">
         <property role="3F0ifm" value="StateMachine" />
         <node concept="Vb9p2" id="6vrtzn$Rm3g" role="3F10Kt">
-          <property role="Vbekb" value="BOLD_ITALIC" />
+          <property role="Vbekb" value="g1_tSyq/BOLD_ITALIC" />
         </node>
         <node concept="VechU" id="6vrtzn$Rm3d" role="3F10Kt">
-          <property role="Vb096" value="DARK_MAGENTA" />
+          <property role="Vb096" value="g1_qVrt/DARK_MAGENTA" />
         </node>
       </node>
       <node concept="3F0A7n" id="6vrtzn$RlVH" role="3EZMnx">
@@ -821,10 +821,10 @@
       <node concept="3F0ifn" id="7oc$KaYHxsB" role="3EZMnx">
         <property role="3F0ifm" value="HierarchycalTable" />
         <node concept="Vb9p2" id="7oc$KaYHxsC" role="3F10Kt">
-          <property role="Vbekb" value="BOLD_ITALIC" />
+          <property role="Vbekb" value="g1_tSyq/BOLD_ITALIC" />
         </node>
         <node concept="VechU" id="7oc$KaYHxsD" role="3F10Kt">
-          <property role="Vb096" value="DARK_MAGENTA" />
+          <property role="Vb096" value="g1_qVrt/DARK_MAGENTA" />
         </node>
       </node>
       <node concept="3F0A7n" id="7oc$KaYHxsE" role="3EZMnx">
@@ -919,7 +919,7 @@
     <ref role="1h_SK9" to="2qyu:2w0jk4vCVU$" resolve="DataCell" />
     <node concept="1hA7zw" id="235TwLWBJiv" role="1h_SK8">
       <property role="1hHO97" value="delete" />
-      <property role="1hAc7j" value="delete_action_id" />
+      <property role="1hAc7j" value="g_hAxAO/delete_action_id" />
       <node concept="1hAIg9" id="235TwLWBJiw" role="1hA7z_">
         <node concept="3clFbS" id="235TwLWBJix" role="2VODD2" />
       </node>
@@ -931,7 +931,7 @@
     <ref role="1h_SK9" to="2qyu:EpZY78hngX" resolve="Transition" />
     <node concept="1hA7zw" id="56hApkpi4gd" role="1h_SK8">
       <property role="1hHO97" value="deleteTransition" />
-      <property role="1hAc7j" value="delete_action_id" />
+      <property role="1hAc7j" value="g_hAxAO/delete_action_id" />
       <node concept="1hAIg9" id="56hApkpi4ge" role="1hA7z_">
         <node concept="3clFbS" id="56hApkpi4gf" role="2VODD2">
           <node concept="3clFbF" id="56hApkpi4gg" role="3cqZAp">
@@ -973,10 +973,10 @@
       <node concept="3F0ifn" id="3N6JpByfK_p" role="3EZMnx">
         <property role="3F0ifm" value="Matrix" />
         <node concept="Vb9p2" id="3N6JpByfK_q" role="3F10Kt">
-          <property role="Vbekb" value="BOLD_ITALIC" />
+          <property role="Vbekb" value="g1_tSyq/BOLD_ITALIC" />
         </node>
         <node concept="VechU" id="3N6JpByfK_r" role="3F10Kt">
-          <property role="Vb096" value="DARK_MAGENTA" />
+          <property role="Vb096" value="g1_qVrt/DARK_MAGENTA" />
         </node>
       </node>
       <node concept="3F0A7n" id="3N6JpByfK_s" role="3EZMnx">

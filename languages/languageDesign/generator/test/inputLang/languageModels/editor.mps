@@ -2,7 +2,7 @@
 <model ref="r:00000000-0000-4000-0000-011c895905f3(jetbrains.mps.transformation.test.inputLang.editor)">
   <persistence version="9" />
   <languages>
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="12" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="13" />
   </languages>
   <imports>
     <import index="tpm0" ref="r:00000000-0000-4000-0000-011c895905f4(jetbrains.mps.transformation.test.inputLang.structure)" />
@@ -100,7 +100,7 @@
           <property role="3F0ifm" value=":" />
         </node>
         <node concept="3F0A7n" id="hvFh4Us" role="3EZMnx">
-          <ref role="1NtTu8" to="tpm0:hvFifRP" resolve="useInTest" />
+          <ref role="1NtTu8" to="tpm0:3Ftr4R6BH6t" resolve="useInTest" />
         </node>
         <node concept="VPM3Z" id="hEU$PDC" role="3F10Kt">
           <property role="VOm3f" value="false" />
@@ -150,7 +150,7 @@
             <property role="3F0ifm" value="option:" />
           </node>
           <node concept="3F0A7n" id="hp5Gi9x" role="3EZMnx">
-            <ref role="1NtTu8" to="tpm0:hp5JQxN" resolve="option" />
+            <ref role="1NtTu8" to="tpm0:3Ftr4R6BH6v" resolve="option" />
           </node>
           <node concept="VPM3Z" id="hEU$P5p" role="3F10Kt">
             <property role="VOm3f" value="false" />
@@ -181,7 +181,7 @@
           <property role="VOm3f" value="true" />
         </node>
         <node concept="VLuvy" id="hEVH_8n" role="3F10Kt">
-          <property role="Vb096" value="gray" />
+          <property role="Vb096" value="fLJRk5_/gray" />
         </node>
         <node concept="2EHx9g" id="i2IQRpA" role="2iSdaV" />
       </node>
@@ -212,7 +212,7 @@
             <property role="3F0ifm" value="option:" />
           </node>
           <node concept="3F0A7n" id="hzABkiP" role="3EZMnx">
-            <ref role="1NtTu8" to="tpm0:hp5JQxN" resolve="option" />
+            <ref role="1NtTu8" to="tpm0:3Ftr4R6BH6v" resolve="option" />
           </node>
           <node concept="VPM3Z" id="hEU$PUr" role="3F10Kt">
             <property role="VOm3f" value="false" />
@@ -243,7 +243,7 @@
           <property role="VOm3f" value="true" />
         </node>
         <node concept="VLuvy" id="hEVH_8r" role="3F10Kt">
-          <property role="Vb096" value="gray" />
+          <property role="Vb096" value="fLJRk5_/gray" />
         </node>
         <node concept="2EHx9g" id="i2IQRpC" role="2iSdaV" />
       </node>
@@ -274,7 +274,7 @@
             <property role="3F0ifm" value="option:" />
           </node>
           <node concept="3F0A7n" id="hzAMVQV" role="3EZMnx">
-            <ref role="1NtTu8" to="tpm0:hp5JQxN" resolve="option" />
+            <ref role="1NtTu8" to="tpm0:3Ftr4R6BH6v" resolve="option" />
           </node>
           <node concept="VPM3Z" id="hEU$P0x" role="3F10Kt">
             <property role="VOm3f" value="false" />
@@ -317,7 +317,7 @@
           <property role="VOm3f" value="true" />
         </node>
         <node concept="VLuvy" id="hEVH_8m" role="3F10Kt">
-          <property role="Vb096" value="gray" />
+          <property role="Vb096" value="fLJRk5_/gray" />
         </node>
         <node concept="2EHx9g" id="i2IQRps" role="2iSdaV" />
       </node>
@@ -352,7 +352,7 @@
           <property role="3F0ifm" value=":" />
         </node>
         <node concept="3F0A7n" id="hA6Vnmy" role="3EZMnx">
-          <ref role="1NtTu8" to="tpm0:hA6Vh$1" resolve="useInTest" />
+          <ref role="1NtTu8" to="tpm0:3Ftr4R6BH6x" resolve="useInTest" />
         </node>
         <node concept="VPM3Z" id="hEU$OY8" role="3F10Kt">
           <property role="VOm3f" value="false" />

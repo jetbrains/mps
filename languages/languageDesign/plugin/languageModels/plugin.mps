@@ -230,7 +230,6 @@
       </concept>
       <concept id="4671800353872995469" name="jetbrains.mps.make.script.structure.ConceptFunctionParameter_progressMonitor" flags="nn" index="EWnkA" />
       <concept id="3668957831723333672" name="jetbrains.mps.make.script.structure.ReportFeedbackStatement" flags="nn" index="1daRAt">
-        <property id="3668957831723333678" name="feedback" index="1daRAr" />
         <child id="3668957831723336680" name="message" index="1daK9t" />
       </concept>
     </language>
@@ -262,7 +261,7 @@
       <property role="1xVfUM" value="10" />
       <property role="TrG5h" value="copyPluginXml" />
       <node concept="15KeVb" id="1sKpG65mBfx" role="15LFui">
-        <property role="3HPxAp" value="AFTER" />
+        <property role="3HPxAp" value="7fB872ucjBA/AFTER" />
         <ref role="15KeV8" to="tpcq:5L5h3brvDHA" resolve="textGen" />
       </node>
       <node concept="15KeVb" id="1sKpG65mBft" role="15LFui">
@@ -461,7 +460,6 @@
                                                       </node>
                                                     </node>
                                                     <node concept="1daRAt" id="Ik4DRK775j" role="3cqZAp">
-                                                      <property role="1daRAr" value="INFO" />
                                                       <node concept="3cpWs3" id="1t1utOFshm4" role="1daK9t">
                                                         <node concept="Xl_RD" id="1t1utOFshm7" role="3uHU7w">
                                                           <property role="Xl_RC" value=" directory." />

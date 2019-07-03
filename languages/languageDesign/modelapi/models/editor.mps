@@ -2,9 +2,9 @@
 <model ref="r:7bd127a5-e641-4c13-b150-b9c9b96f76ae(jetbrains.mps.lang.modelapi.editor)">
   <persistence version="9" />
   <languages>
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="12" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="13" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <devkit ref="2677cb18-f558-4e33-bc38-a5139cee06dc(jetbrains.mps.devkit.language-design)" />
   </languages>
@@ -83,9 +83,7 @@
       <concept id="6718020819487620873" name="jetbrains.mps.lang.editor.structure.TransformationMenuReference_Named" flags="ng" index="A1WHu">
         <reference id="6718020819487620874" name="menu" index="A1WHt" />
       </concept>
-      <concept id="3547227755871693971" name="jetbrains.mps.lang.editor.structure.PredefinedSelector" flags="ng" index="2B6iha">
-        <property id="2162403111523065396" name="cellId" index="1lyBwo" />
-      </concept>
+      <concept id="3547227755871693971" name="jetbrains.mps.lang.editor.structure.PredefinedSelector" flags="ng" index="2B6iha" />
       <concept id="3473224453637651916" name="jetbrains.mps.lang.editor.structure.TransformationLocation_SideTransform_PlaceInCellHolder" flags="ng" index="CtIbL">
         <property id="3473224453637651917" name="placeInCell" index="CtIbK" />
       </concept>
@@ -776,7 +774,7 @@
     <ref role="1XX52x" to="dvox:46J8CTY3nWY" resolve="NamedNodeReference" />
     <node concept="3EZMnI" id="6qMaajV3dlr" role="2wV5jI">
       <node concept="1iCGBv" id="6qMaajV3dlK" role="3EZMnx">
-        <property role="1cu_pB" value="2" />
+        <property role="1cu_pB" value="gtguBGO/2" />
         <property role="39s7Ar" value="true" />
         <property role="1$x2rV" value="&lt;target&gt;" />
         <ref role="1NtTu8" to="dvox:6iN_brIg2YE" resolve="target" />
@@ -852,7 +850,7 @@
     <property role="TrG5h" value="NamedNodeReference_ChildDeleteAction" />
     <ref role="1h_SK9" to="dvox:46J8CTY3nWY" resolve="NamedNodeReference" />
     <node concept="1hA7zw" id="6qMaajVg5mm" role="1h_SK8">
-      <property role="1hAc7j" value="delete_action_id" />
+      <property role="1hAc7j" value="g_hAxAO/delete_action_id" />
       <node concept="1hAIg9" id="6qMaajVg5mn" role="1hA7z_">
         <node concept="3clFbS" id="6qMaajVg5mo" role="2VODD2">
           <node concept="3clFbJ" id="6iN_brIgvbv" role="3cqZAp">
@@ -892,7 +890,7 @@
     <node concept="1Qtc8_" id="6qMaajV3dC2" role="IW6Ez">
       <node concept="3cWJ9i" id="6qMaajV3dC9" role="1Qtc8$">
         <node concept="CtIbL" id="6qMaajV3dCb" role="CtIbM">
-          <property role="CtIbK" value="RIGHT" />
+          <property role="CtIbK" value="30NnNOohrQL/RIGHT" />
         </node>
       </node>
       <node concept="IWgqT" id="6qMaajV3qzD" role="1Qtc8A">
@@ -942,9 +940,7 @@
                 </node>
                 <node concept="1OKiuA" id="6qMaajVjBTV" role="2OqNvi">
                   <node concept="1Q80Hx" id="6qMaajVjBYo" role="lBI5i" />
-                  <node concept="2B6iha" id="JuRUwLLw1n" role="lGT1i">
-                    <property role="1lyBwo" value="first" />
-                  </node>
+                  <node concept="2B6iha" id="JuRUwLLw1n" role="lGT1i" />
                   <node concept="3cmrfG" id="JuRUwLLsfg" role="3dN3m$">
                     <property role="3cmrfH" value="-1" />
                   </node>

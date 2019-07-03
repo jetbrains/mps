@@ -23,7 +23,6 @@
       </concept>
       <concept id="1071489288298" name="jetbrains.mps.lang.structure.structure.LinkDeclaration" flags="ig" index="1TJgyj">
         <property id="1071599776563" name="role" index="20kJfa" />
-        <property id="1071599893252" name="sourceCardinality" index="20lbJX" />
         <property id="1071599937831" name="metaClass" index="20lmBu" />
         <property id="241647608299431140" name="linkId" index="IQ2ns" />
         <reference id="1071599976176" name="target" index="20lvS9" />
@@ -45,21 +44,19 @@
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="5o7iAW5ntGC" role="1TKVEi">
       <property role="IQ2ns" value="6199005252790639400" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="simpleNode" />
-      <property role="20lbJX" value="0..1" />
       <ref role="20lvS9" node="5o7iAW5ntGB" resolve="TestSideTransform_SimpleNode" />
     </node>
     <node concept="1TJgyj" id="3z8xuiBZfLo" role="1TKVEi">
       <property role="IQ2ns" value="4091667478583508056" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="nodeWithReference" />
-      <property role="20lbJX" value="0..1" />
       <ref role="20lvS9" node="3z8xuiBZfIS" resolve="TestSideTransform_NodeWithReference" />
     </node>
     <node concept="1TJgyj" id="3z8xuiBZfua" role="1TKVEi">
       <property role="IQ2ns" value="4091667478583506826" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="nodeToReference" />
       <ref role="20lvS9" node="3z8xuiBZfu8" resolve="TestSideTransform_NodeToReference" />
     </node>
@@ -90,7 +87,6 @@
     </node>
     <node concept="1TJgyj" id="3z8xuiBZfIU" role="1TKVEi">
       <property role="IQ2ns" value="4091667478583507898" />
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="reference" />
       <ref role="20lvS9" node="3z8xuiBZfu8" resolve="TestSideTransform_NodeToReference" />
     </node>
@@ -102,65 +98,56 @@
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="6d5vlMPwfdj" role="1TKVEi">
       <property role="IQ2ns" value="7153261420283491155" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="actionCanSubstitute" />
-      <property role="20lbJX" value="0..1" />
       <ref role="20lvS9" node="7L8dRFxQsvh" resolve="TestTransformExceptionActionCanExecuteChild" />
     </node>
     <node concept="1TJgyj" id="6d5vlMPwHil" role="1TKVEi">
       <property role="IQ2ns" value="7153261420283614357" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="actionDescriptionText" />
-      <property role="20lbJX" value="0..1" />
       <ref role="20lvS9" node="7L8dRFxQsvQ" resolve="TestTransformExceptionActionDescriptionTextChild" />
     </node>
     <node concept="1TJgyj" id="6d5vlMPwHio" role="1TKVEi">
       <property role="IQ2ns" value="7153261420283614360" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="actionIcon" />
-      <property role="20lbJX" value="0..1" />
       <ref role="20lvS9" node="7L8dRFxQsvR" resolve="TestTransformExceptionActionIconChild" />
     </node>
     <node concept="1TJgyj" id="6d5vlMPwHis" role="1TKVEi">
       <property role="IQ2ns" value="7153261420283614364" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="actionText" />
-      <property role="20lbJX" value="0..1" />
       <ref role="20lvS9" node="7L8dRFxQsvS" resolve="TestTransformExceptionActionTextChild" />
     </node>
     <node concept="1TJgyj" id="6d5vlMPwHjE" role="1TKVEi">
       <property role="IQ2ns" value="7153261420283614442" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="group" />
-      <property role="20lbJX" value="0..1" />
       <ref role="20lvS9" node="7L8dRFxQsvU" resolve="TestTransformExceptionActionGroupChild" />
     </node>
     <node concept="1TJgyj" id="6d5vlMPwHjM" role="1TKVEi">
       <property role="IQ2ns" value="7153261420283614450" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="includeMenu" />
-      <property role="20lbJX" value="0..1" />
       <ref role="20lvS9" node="7L8dRFxQsvV" resolve="TestTransformExceptionIncludeMenuChild" />
     </node>
     <node concept="1TJgyj" id="6d5vlMPwHjV" role="1TKVEi">
       <property role="IQ2ns" value="7153261420283614459" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="parameterized" />
-      <property role="20lbJX" value="0..1" />
       <ref role="20lvS9" node="7L8dRFxQsvX" resolve="TestTransformExceptionParameterizedChild" />
     </node>
     <node concept="1TJgyj" id="6d5vlMPwHk5" role="1TKVEi">
       <property role="IQ2ns" value="7153261420283614469" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="submenu" />
-      <property role="20lbJX" value="0..1" />
       <ref role="20lvS9" node="7L8dRFxQAdT" resolve="TestTransformExceptionSubmenuChild" />
     </node>
     <node concept="1TJgyj" id="6d5vlMPwHkg" role="1TKVEi">
       <property role="IQ2ns" value="7153261420283614480" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="wrap" />
-      <property role="20lbJX" value="0..1" />
       <ref role="20lvS9" node="7L8dRFxQBqC" resolve="TestTransformExceptionWrapSubstituteMenuChild" />
     </node>
   </node>

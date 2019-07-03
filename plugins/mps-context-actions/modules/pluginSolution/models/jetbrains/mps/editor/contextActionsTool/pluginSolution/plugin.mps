@@ -12,8 +12,8 @@
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
     <use id="63650c59-16c8-498a-99c8-005c7ee9515d" name="jetbrains.mps.lang.access" version="-1" />
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="-1" />
-    <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="-1" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
+    <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="2" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
   </languages>
   <imports>
     <import index="3a50" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide(MPS.Platform/)" />
@@ -472,7 +472,7 @@
   <node concept="sEfby" id="5tr7YH$U35C">
     <property role="TrG5h" value="ContextActionsTool" />
     <property role="2XNbzY" value="Context Actions" />
-    <property role="2bmUCM" value="RIGHT" />
+    <property role="2bmUCM" value="2aGS$UDXOxV/RIGHT" />
     <node concept="2BZ0e9" id="5tr7YH$U8Tk" role="2XNbBz">
       <property role="TrG5h" value="myComponent" />
       <node concept="3Tm6S6" id="5tr7YH$U8Tl" role="1B3o_S" />
@@ -2809,7 +2809,7 @@
                     <node concept="TDmWw" id="7pClCNY9ruZ" role="TEbGg">
                       <node concept="3clFbS" id="7pClCNY9rv0" role="TDEfX">
                         <node concept="RRSsy" id="3jYQuSB39La" role="3cqZAp">
-                          <property role="RRSoG" value="error" />
+                          <property role="RRSoG" value="gZ5fh_4/error" />
                           <node concept="Xl_RD" id="7pClCNY9rv2" role="RRSoy">
                             <property role="Xl_RC" value="Context actions update failed" />
                           </node>
@@ -8396,7 +8396,7 @@
                 </node>
                 <node concept="3clFbS" id="5Xa7gk5ds7F" role="TDEfX">
                   <node concept="RRSsy" id="3jYQuSB36Xi" role="3cqZAp">
-                    <property role="RRSoG" value="warn" />
+                    <property role="RRSoG" value="gZ5fksE/warn" />
                     <node concept="3cpWs3" id="5Xa7gk5ds_Q" role="RRSoy">
                       <node concept="Xl_RD" id="5Xa7gk5ds_R" role="3uHU7B">
                         <property role="Xl_RC" value="Error trying to get icon for " />
@@ -8420,7 +8420,7 @@
                 </node>
                 <node concept="3clFbS" id="5Xa7gk5chbR" role="TDEfX">
                   <node concept="RRSsy" id="3jYQuSB36Xu" role="3cqZAp">
-                    <property role="RRSoG" value="warn" />
+                    <property role="RRSoG" value="gZ5fksE/warn" />
                     <node concept="3cpWs3" id="5Xa7gk5cigx" role="RRSoy">
                       <node concept="Xl_RD" id="5Xa7gk5chL2" role="3uHU7B">
                         <property role="Xl_RC" value="Exception trying to get icon for " />
@@ -8464,7 +8464,7 @@
                 </node>
                 <node concept="3clFbS" id="5Xa7gk5cl1j" role="TDEfX">
                   <node concept="RRSsy" id="3jYQuSB36XE" role="3cqZAp">
-                    <property role="RRSoG" value="warn" />
+                    <property role="RRSoG" value="gZ5fksE/warn" />
                     <node concept="3cpWs3" id="5Xa7gk5cltL" role="RRSoy">
                       <node concept="Xl_RD" id="5Xa7gk5cltM" role="3uHU7B">
                         <property role="Xl_RC" value="Error trying to get tooltip text for " />
@@ -8488,7 +8488,7 @@
                 </node>
                 <node concept="3clFbS" id="5Xa7gk5dtil" role="TDEfX">
                   <node concept="RRSsy" id="3jYQuSB36XQ" role="3cqZAp">
-                    <property role="RRSoG" value="warn" />
+                    <property role="RRSoG" value="gZ5fksE/warn" />
                     <node concept="3cpWs3" id="5Xa7gk5dtin" role="RRSoy">
                       <node concept="Xl_RD" id="5Xa7gk5dtio" role="3uHU7B">
                         <property role="Xl_RC" value="Exception trying to get tooltip text for " />

@@ -2,8 +2,8 @@
 <model ref="r:363920dc-2dd0-49fc-94ed-f20b88b2ec02(org.jetbrains.mps.samples.Money.editor)">
   <persistence version="9" />
   <languages>
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="12" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="13" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
   </languages>
   <imports>
@@ -250,7 +250,7 @@
         <ref role="1NtTu8" to="v0h4:4IqbYlp4P63" resolve="amount" />
       </node>
       <node concept="1iCGBv" id="38gGBrhh3mE" role="3EZMnx">
-        <property role="1cu_pB" value="1" />
+        <property role="1cu_pB" value="gtgu$YJ/1" />
         <ref role="1NtTu8" to="v0h4:38gGBrhh3mC" resolve="unit" />
         <node concept="1sVBvm" id="38gGBrhh3mF" role="1sWHZn">
           <node concept="3F0A7n" id="38gGBrhh3mH" role="2wV5jI">
@@ -397,7 +397,7 @@
     <node concept="1Qtc8_" id="1wEcoXjJ_Uz" role="IW6Ez">
       <node concept="3cWJ9i" id="1wEcoXjJ_Ux" role="1Qtc8$">
         <node concept="CtIbL" id="1wEcoXjJ_Uy" role="CtIbM">
-          <property role="CtIbK" value="RIGHT" />
+          <property role="CtIbK" value="30NnNOohrQL/RIGHT" />
         </node>
       </node>
       <node concept="IWgqT" id="1wEcoXjJ_U_" role="1Qtc8A">
@@ -608,7 +608,7 @@
                     <node concept="1OKiuA" id="1wEcoXjJ_Wm" role="2OqNvi">
                       <node concept="1Q80Hx" id="1wEcoXjJ_Wn" role="lBI5i" />
                       <node concept="2B6iha" id="1wEcoXjJ_Wo" role="lGT1i">
-                        <property role="1lyBwo" value="last" />
+                        <property role="1lyBwo" value="1S2pyLby17K/last" />
                       </node>
                       <node concept="3cmrfG" id="1wEcoXjJ_Wp" role="3dN3m$">
                         <property role="3cmrfH" value="-1" />
@@ -631,7 +631,7 @@
                 <node concept="1OKiuA" id="1wEcoXjJ_Wg" role="2OqNvi">
                   <node concept="1Q80Hx" id="1wEcoXjJ_Wh" role="lBI5i" />
                   <node concept="2B6iha" id="1wEcoXjJ_Wi" role="lGT1i">
-                    <property role="1lyBwo" value="mostRelevant" />
+                    <property role="1lyBwo" value="59pBc0SIIVt/mostRelevant" />
                   </node>
                   <node concept="3cmrfG" id="1wEcoXjJ_Wj" role="3dN3m$">
                     <property role="3cmrfH" value="-1" />

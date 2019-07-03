@@ -4,8 +4,8 @@
   <languages>
     <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="2" />
     <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="1" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
-    <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="1" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
+    <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="2" />
   </languages>
   <imports>
     <import index="tp5g" ref="r:00000000-0000-4000-0000-011c89590388(jetbrains.mps.lang.test.structure)" />
@@ -135,6 +135,9 @@
         <reference id="5455284157993910961" name="concept" index="2pJxaS" />
         <child id="5455284157993911099" name="values" index="2pJxcM" />
       </concept>
+      <concept id="4056363777117001481" name="jetbrains.mps.lang.quotation.structure.StringToTypedValueMigrationInfo" flags="ng" index="AAgTk">
+        <property id="2173356959483005420" name="stringValueMigrated" index="3qcH_f" />
+      </concept>
       <concept id="1196866233735" name="jetbrains.mps.lang.quotation.structure.PropertyAntiquotation" flags="ng" index="2EMmih" />
       <concept id="8182547171709738802" name="jetbrains.mps.lang.quotation.structure.NodeBuilderList" flags="nn" index="36be1Y">
         <child id="8182547171709738803" name="nodes" index="36be1Z" />
@@ -176,6 +179,9 @@
         <reference id="1145383142433" name="elementConcept" index="2I9WkF" />
       </concept>
       <concept id="1171310072040" name="jetbrains.mps.lang.smodel.structure.Node_GetContainingRootOperation" flags="nn" index="2Rxl7S" />
+      <concept id="1966870290088668512" name="jetbrains.mps.lang.smodel.structure.Enum_MemberLiteral" flags="ng" index="2ViDtV">
+        <reference id="1966870290088668516" name="memberDeclaration" index="2ViDtZ" />
+      </concept>
       <concept id="1180636770613" name="jetbrains.mps.lang.smodel.structure.SNodeCreator" flags="nn" index="3zrR0B">
         <child id="1180636770616" name="createdType" index="3zrR0E" />
       </concept>
@@ -195,6 +201,9 @@
       </concept>
       <concept id="1138056282393" name="jetbrains.mps.lang.smodel.structure.SLinkListAccess" flags="nn" index="3Tsc0h">
         <reference id="1138056546658" name="link" index="3TtcxE" />
+      </concept>
+      <concept id="5779574625830813396" name="jetbrains.mps.lang.smodel.structure.EnumerationIdRefExpression" flags="ng" index="1XH99k">
+        <reference id="5779574625830813397" name="enumDeclaration" index="1XH99l" />
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
@@ -769,8 +778,13 @@
                           <property role="2qtEX9" value="value" />
                           <property role="P4ACc" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1068580320020/1068580320021" />
                           <property role="3hQQBS" value="IntegerConstant" />
-                          <node concept="Xl_RD" id="3v7fNhW5Akj" role="2c44t1">
-                            <property role="Xl_RC" value="566" />
+                          <property role="3qcH_f" value="true" />
+                          <node concept="2YIFZM" id="3Ftr4RaVZD2" role="2c44t1">
+                            <ref role="37wK5l" to="wyt6:~Integer.parseInt(java.lang.String)" resolve="parseInt" />
+                            <ref role="1Pybhc" to="wyt6:~Integer" resolve="Integer" />
+                            <node concept="Xl_RD" id="3v7fNhW5Akj" role="37wK5m">
+                              <property role="Xl_RC" value="566" />
+                            </node>
                           </node>
                         </node>
                       </node>
@@ -1072,7 +1086,7 @@
             <node concept="2c44tf" id="3v7fNhW8RRR" role="33vP2m">
               <node concept="2ShNRf" id="3v7fNhW8RRS" role="2c44tc">
                 <node concept="32Fmki" id="3v7fNhW95qz" role="2ShVmc">
-                  <property role="32RyhT" value="true" />
+                  <property role="32RyhT" value="i32RsHv/true" />
                   <node concept="10Oyi0" id="3v7fNhW95si" role="3rHrn6" />
                   <node concept="10Oyi0" id="3v7fNhW95tg" role="3rHtpV" />
                 </node>
@@ -1092,9 +1106,14 @@
                   <node concept="2pJPED" id="3v7fNhW95Q6" role="2pJxcZ">
                     <ref role="2pJxaS" to="tp2q:i32FmgM" resolve="LinkedHashMapCreator" />
                     <node concept="2pJxcG" id="3v7fNhW95Q7" role="2pJxcM">
-                      <ref role="2pJxcJ" to="tp2q:i32Rylp" resolve="order" />
-                      <node concept="3clFbT" id="3v7fNhW95Q9" role="2pJxcZ">
-                        <property role="3clFbU" value="true" />
+                      <ref role="2pJxcJ" to="tp2q:3Ftr4R6BGZY" resolve="order" />
+                      <node concept="2OqwBi" id="3Ftr4RaW3$D" role="2pJxcZ">
+                        <node concept="1XH99k" id="3Ftr4RaW3$E" role="2Oq$k0">
+                          <ref role="1XH99l" to="tp2q:3Ftr4R6BF2o" resolve="LinkedHashMapOrder" />
+                        </node>
+                        <node concept="2ViDtV" id="3Ftr4RaW3$F" role="2OqNvi">
+                          <ref role="2ViDtZ" to="tp2q:3Ftr4R6BF2r" resolve="access_order" />
+                        </node>
                       </node>
                     </node>
                     <node concept="2pIpSj" id="3v7fNhW95Qa" role="2pJxcM">

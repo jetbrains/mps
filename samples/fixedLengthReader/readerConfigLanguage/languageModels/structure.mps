@@ -49,9 +49,9 @@
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
     <node concept="1TJgyj" id="gfQFMcV" role="1TKVEi">
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="20kJfa" value="mapping" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="IQ2ns" value="1116535202619" />
       <ref role="20lvS9" node="gfQEFKK" resolve="Mapping" />
     </node>
@@ -64,9 +64,9 @@
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
     <node concept="1TJgyj" id="gfQHmRd" role="1TKVEi">
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="20kJfa" value="field" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="IQ2ns" value="1116535614925" />
       <ref role="20lvS9" node="gfQER$9" resolve="Field" />
     </node>

@@ -4,10 +4,10 @@
   <languages>
     <use id="443f4c36-fcf5-4eb6-9500-8d06ed259e3e" name="jetbrains.mps.baseLanguage.classifiers" version="-1" />
     <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="-1" />
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="-1" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="13" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
-    <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="1" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
+    <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="2" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -91,9 +91,7 @@
       <concept id="6718020819487620873" name="jetbrains.mps.lang.editor.structure.TransformationMenuReference_Named" flags="ng" index="A1WHu">
         <reference id="6718020819487620874" name="menu" index="A1WHt" />
       </concept>
-      <concept id="3547227755871693971" name="jetbrains.mps.lang.editor.structure.PredefinedSelector" flags="ng" index="2B6iha">
-        <property id="2162403111523065396" name="cellId" index="1lyBwo" />
-      </concept>
+      <concept id="3547227755871693971" name="jetbrains.mps.lang.editor.structure.PredefinedSelector" flags="ng" index="2B6iha" />
       <concept id="1239814640496" name="jetbrains.mps.lang.editor.structure.CellLayout_VerticalGrid" flags="nn" index="2EHx9g" />
       <concept id="7250830207897895674" name="jetbrains.mps.lang.editor.structure.CompletionCustomizationContextSpecificator_Concept" flags="ng" index="KNhPi">
         <reference id="9115396979021131941" name="conceptDeclaration" index="2RIln$" />
@@ -492,6 +490,12 @@
       </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
+      <concept id="4705942098322609812" name="jetbrains.mps.lang.smodel.structure.EnumMember_IsOperation" flags="ng" index="21noJN">
+        <child id="4705942098322609813" name="member" index="21noJM" />
+      </concept>
+      <concept id="4705942098322467729" name="jetbrains.mps.lang.smodel.structure.EnumMemberReference" flags="ng" index="21nZrQ">
+        <reference id="4705942098322467736" name="decl" index="21nZrZ" />
+      </concept>
       <concept id="1204851882688" name="jetbrains.mps.lang.smodel.structure.LinkRefQualifier" flags="ng" index="26LbJo">
         <reference id="1204851882689" name="link" index="26LbJp" />
       </concept>
@@ -503,9 +507,6 @@
         <child id="1144104376918" name="parameter" index="1xVPHs" />
       </concept>
       <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
-      <concept id="1138676077309" name="jetbrains.mps.lang.smodel.structure.EnumMemberReference_Old" flags="nn" index="uoxfO">
-        <reference id="1138676095763" name="enumMember" index="uo_Cq" />
-      </concept>
       <concept id="4693937538533521280" name="jetbrains.mps.lang.smodel.structure.OfConceptOperation" flags="ng" index="v3k3i">
         <child id="4693937538533538124" name="requestedConcept" index="v3oSu" />
       </concept>
@@ -549,9 +550,6 @@
       <concept id="1139613262185" name="jetbrains.mps.lang.smodel.structure.Node_GetParentOperation" flags="nn" index="1mfA1w" />
       <concept id="1139621453865" name="jetbrains.mps.lang.smodel.structure.Node_IsInstanceOfOperation" flags="nn" index="1mIQ4w">
         <child id="1177027386292" name="conceptArgument" index="cj9EA" />
-      </concept>
-      <concept id="1146171026731" name="jetbrains.mps.lang.smodel.structure.Property_HasValue_Enum" flags="nn" index="3t7uKx">
-        <child id="1146171026732" name="value" index="3t7uKA" />
       </concept>
       <concept id="1171999116870" name="jetbrains.mps.lang.smodel.structure.Node_IsNullOperation" flags="nn" index="3w_OXm" />
       <concept id="1172008320231" name="jetbrains.mps.lang.smodel.structure.Node_IsNotNullOperation" flags="nn" index="3x8VRR" />
@@ -641,10 +639,10 @@
           <property role="VOm3f" value="false" />
         </node>
         <node concept="VechU" id="hEZR8D9" role="3F10Kt">
-          <property role="Vb096" value="DARK_BLUE" />
+          <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
         </node>
         <node concept="30gYXW" id="hF0kJRO" role="3F10Kt">
-          <property role="Vb096" value="lightGray" />
+          <property role="Vb096" value="fLJRk5A/lightGray" />
         </node>
       </node>
       <node concept="3F0ifn" id="gZzI70b" role="3EZMnx">
@@ -656,7 +654,6 @@
         <ref role="PMmxG" node="1WfddY$Vo$b" resolve="AbstractMacro_comment_inspector" />
       </node>
       <node concept="3EZMnI" id="gZzIfuG" role="3EZMnx">
-        <property role="1cu_pB" value="0" />
         <node concept="3F0ifn" id="gZzIgd7" role="3EZMnx">
           <property role="3F0ifm" value="value :" />
           <node concept="VPM3Z" id="hEU$P8W" role="3F10Kt">
@@ -665,7 +662,7 @@
         </node>
         <node concept="3F1sOY" id="gZzIRf2" role="3EZMnx">
           <property role="1$x2rV" value="&lt;none&gt;" />
-          <property role="1cu_pB" value="2" />
+          <property role="1cu_pB" value="gtguBGO/2" />
           <ref role="1NtTu8" to="tpf8:gZzH08Z" resolve="propertyValueFunction" />
         </node>
         <node concept="VPM3Z" id="hEU$PF5" role="3F10Kt">
@@ -731,7 +728,7 @@
           <node concept="3F0ifn" id="hurWYTv" role="3EZMnx">
             <property role="3F0ifm" value="mapping label" />
             <node concept="VechU" id="hEZR8r$" role="3F10Kt">
-              <property role="Vb096" value="red" />
+              <property role="Vb096" value="fLwANPn/red" />
             </node>
           </node>
           <node concept="3F0ifn" id="hurWYTw" role="3EZMnx">
@@ -748,7 +745,7 @@
                 <property role="1Intyy" value="true" />
                 <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
                 <node concept="30gYXW" id="hF0kJRs" role="3F10Kt">
-                  <property role="Vb096" value="orange" />
+                  <property role="Vb096" value="fLwANPp/orange" />
                 </node>
               </node>
             </node>
@@ -786,7 +783,7 @@
         <ref role="1ERwB7" node="gZDQqLq" resolve="MacroSymbol_Actions" />
         <ref role="1k5W1q" node="hG2hEjs" resolve="macroStart" />
         <node concept="VechU" id="hEZR8_K" role="3F10Kt">
-          <property role="Vb096" value="red" />
+          <property role="Vb096" value="fLwANPn/red" />
         </node>
         <node concept="A1WHu" id="6GI$fc4d6XQ" role="3vIgyS">
           <ref role="A1WHt" node="6GI$fc4bPsN" resolve="ReplaceNodeMacro" />
@@ -809,10 +806,10 @@
           <property role="VOm3f" value="false" />
         </node>
         <node concept="VechU" id="hEZR8uI" role="3F10Kt">
-          <property role="Vb096" value="DARK_BLUE" />
+          <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
         </node>
         <node concept="30gYXW" id="hF0kJQZ" role="3F10Kt">
-          <property role="Vb096" value="lightGray" />
+          <property role="Vb096" value="fLJRk5A/lightGray" />
         </node>
       </node>
       <node concept="3F0ifn" id="gZ$yDSd" role="3EZMnx">
@@ -832,7 +829,7 @@
         </node>
         <node concept="3F1sOY" id="gZ$yDSg" role="3EZMnx">
           <property role="1$x2rV" value="&lt;none&gt;" />
-          <property role="1cu_pB" value="2" />
+          <property role="1cu_pB" value="gtguBGO/2" />
           <ref role="1NtTu8" to="tpf8:gZ$ytBY" resolve="referentFunction" />
         </node>
         <node concept="VPM3Z" id="hEU$OUA" role="3F10Kt">
@@ -990,7 +987,7 @@
               </node>
             </node>
             <node concept="30gYXW" id="hF0kJRM" role="3F10Kt">
-              <property role="Vb096" value="yellow" />
+              <property role="Vb096" value="fLwANPq/yellow" />
             </node>
           </node>
           <node concept="VPM3Z" id="hEU$PbV" role="3F10Kt">
@@ -1011,7 +1008,7 @@
                 <property role="1Intyy" value="true" />
                 <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
                 <node concept="VechU" id="hEZR8_A" role="3F10Kt">
-                  <property role="Vb096" value="DARK_MAGENTA" />
+                  <property role="Vb096" value="g1_qVrt/DARK_MAGENTA" />
                 </node>
               </node>
             </node>
@@ -1106,13 +1103,13 @@
         <node concept="3F0ifn" id="hurTx3Y" role="3EZMnx">
           <property role="3F0ifm" value="mapping labels:" />
           <node concept="Vb9p2" id="hEUNQXy" role="3F10Kt">
-            <property role="Vbekb" value="BOLD_ITALIC" />
+            <property role="Vbekb" value="g1_tSyq/BOLD_ITALIC" />
           </node>
           <node concept="VQ3r3" id="hEUVPBK" role="3F10Kt">
-            <property role="2USNnj" value="2" />
+            <property role="2USNnj" value="gtbM8PH/2" />
           </node>
           <node concept="VechU" id="hEZR8lm" role="3F10Kt">
-            <property role="Vb096" value="DARK_BLUE" />
+            <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
           </node>
         </node>
         <node concept="3EZMnI" id="hurT_6j" role="3EZMnx">
@@ -1140,13 +1137,13 @@
         <node concept="3F0ifn" id="28lK$1mBjJ5" role="3EZMnx">
           <property role="3F0ifm" value="parameters:" />
           <node concept="Vb9p2" id="28lK$1mBjJ6" role="3F10Kt">
-            <property role="Vbekb" value="BOLD_ITALIC" />
+            <property role="Vbekb" value="g1_tSyq/BOLD_ITALIC" />
           </node>
           <node concept="VQ3r3" id="28lK$1mBjJ7" role="3F10Kt">
-            <property role="2USNnj" value="2" />
+            <property role="2USNnj" value="gtbM8PH/2" />
           </node>
           <node concept="VechU" id="28lK$1mBjJ8" role="3F10Kt">
-            <property role="Vb096" value="DARK_BLUE" />
+            <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
           </node>
         </node>
         <node concept="3EZMnI" id="28lK$1mBjJ9" role="3EZMnx">
@@ -1170,13 +1167,13 @@
         <node concept="3F0ifn" id="6MF_9TAPpap" role="3EZMnx">
           <property role="3F0ifm" value="is applicable:" />
           <node concept="Vb9p2" id="6MF_9TAPpaq" role="3F10Kt">
-            <property role="Vbekb" value="BOLD_ITALIC" />
+            <property role="Vbekb" value="g1_tSyq/BOLD_ITALIC" />
           </node>
           <node concept="VQ3r3" id="6MF_9TAPpar" role="3F10Kt">
-            <property role="2USNnj" value="2" />
+            <property role="2USNnj" value="gtbM8PH/2" />
           </node>
           <node concept="VechU" id="6MF_9TAPpas" role="3F10Kt">
-            <property role="Vb096" value="DARK_BLUE" />
+            <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
           </node>
         </node>
         <node concept="3EZMnI" id="6MF_9TAPpat" role="3EZMnx">
@@ -1204,13 +1201,13 @@
             <property role="VOm3f" value="false" />
           </node>
           <node concept="Vb9p2" id="hEUNR1q" role="3F10Kt">
-            <property role="Vbekb" value="BOLD_ITALIC" />
+            <property role="Vbekb" value="g1_tSyq/BOLD_ITALIC" />
           </node>
           <node concept="VQ3r3" id="hEUVPBJ" role="3F10Kt">
-            <property role="2USNnj" value="2" />
+            <property role="2USNnj" value="gtbM8PH/2" />
           </node>
           <node concept="VechU" id="hEZR8ub" role="3F10Kt">
-            <property role="Vb096" value="DARK_BLUE" />
+            <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
           </node>
         </node>
         <node concept="3EZMnI" id="hppvUqH" role="3EZMnx">
@@ -1244,13 +1241,13 @@
             <property role="VOm3f" value="false" />
           </node>
           <node concept="Vb9p2" id="hEUNR0o" role="3F10Kt">
-            <property role="Vbekb" value="BOLD_ITALIC" />
+            <property role="Vbekb" value="g1_tSyq/BOLD_ITALIC" />
           </node>
           <node concept="VQ3r3" id="hEUVPBM" role="3F10Kt">
-            <property role="2USNnj" value="2" />
+            <property role="2USNnj" value="gtbM8PH/2" />
           </node>
           <node concept="VechU" id="hEZR8x_" role="3F10Kt">
-            <property role="Vb096" value="DARK_BLUE" />
+            <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
           </node>
         </node>
         <node concept="3EZMnI" id="hppw0sL" role="3EZMnx">
@@ -1284,13 +1281,13 @@
             <property role="VOm3f" value="false" />
           </node>
           <node concept="Vb9p2" id="hEUNR1b" role="3F10Kt">
-            <property role="Vbekb" value="BOLD_ITALIC" />
+            <property role="Vbekb" value="g1_tSyq/BOLD_ITALIC" />
           </node>
           <node concept="VQ3r3" id="hEUVPBN" role="3F10Kt">
-            <property role="2USNnj" value="2" />
+            <property role="2USNnj" value="gtbM8PH/2" />
           </node>
           <node concept="VechU" id="hEZR8yn" role="3F10Kt">
-            <property role="Vb096" value="DARK_BLUE" />
+            <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
           </node>
         </node>
         <node concept="3EZMnI" id="hppw4Kf" role="3EZMnx">
@@ -1324,13 +1321,13 @@
             <property role="VOm3f" value="false" />
           </node>
           <node concept="Vb9p2" id="hEUNR2f" role="3F10Kt">
-            <property role="Vbekb" value="BOLD_ITALIC" />
+            <property role="Vbekb" value="g1_tSyq/BOLD_ITALIC" />
           </node>
           <node concept="VQ3r3" id="hEUVPBQ" role="3F10Kt">
-            <property role="2USNnj" value="2" />
+            <property role="2USNnj" value="gtbM8PH/2" />
           </node>
           <node concept="VechU" id="hEZR8uc" role="3F10Kt">
-            <property role="Vb096" value="DARK_BLUE" />
+            <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
           </node>
         </node>
         <node concept="3EZMnI" id="hppw8pe" role="3EZMnx">
@@ -1364,13 +1361,13 @@
             <property role="VOm3f" value="false" />
           </node>
           <node concept="Vb9p2" id="1$dcvTE5RhT" role="3F10Kt">
-            <property role="Vbekb" value="BOLD_ITALIC" />
+            <property role="Vbekb" value="g1_tSyq/BOLD_ITALIC" />
           </node>
           <node concept="VQ3r3" id="1$dcvTE5RhU" role="3F10Kt">
-            <property role="2USNnj" value="2" />
+            <property role="2USNnj" value="gtbM8PH/2" />
           </node>
           <node concept="VechU" id="1$dcvTE5RhV" role="3F10Kt">
-            <property role="Vb096" value="DARK_BLUE" />
+            <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
           </node>
         </node>
         <node concept="3EZMnI" id="1$dcvTE5RhW" role="3EZMnx">
@@ -1404,13 +1401,13 @@
             <property role="VOm3f" value="false" />
           </node>
           <node concept="Vb9p2" id="7u6$QPxJT95" role="3F10Kt">
-            <property role="Vbekb" value="BOLD_ITALIC" />
+            <property role="Vbekb" value="g1_tSyq/BOLD_ITALIC" />
           </node>
           <node concept="VQ3r3" id="7u6$QPxJT96" role="3F10Kt">
-            <property role="2USNnj" value="2" />
+            <property role="2USNnj" value="gtbM8PH/2" />
           </node>
           <node concept="VechU" id="7u6$QPxJT97" role="3F10Kt">
-            <property role="Vb096" value="DARK_BLUE" />
+            <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
           </node>
         </node>
         <node concept="3EZMnI" id="7u6$QPxJT98" role="3EZMnx">
@@ -1444,13 +1441,13 @@
             <property role="VOm3f" value="false" />
           </node>
           <node concept="Vb9p2" id="hEUNQZY" role="3F10Kt">
-            <property role="Vbekb" value="BOLD_ITALIC" />
+            <property role="Vbekb" value="g1_tSyq/BOLD_ITALIC" />
           </node>
           <node concept="VQ3r3" id="hEUVPBL" role="3F10Kt">
-            <property role="2USNnj" value="2" />
+            <property role="2USNnj" value="gtbM8PH/2" />
           </node>
           <node concept="VechU" id="hEZR8vK" role="3F10Kt">
-            <property role="Vb096" value="DARK_BLUE" />
+            <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
           </node>
         </node>
         <node concept="3EZMnI" id="hKaR6YZ" role="3EZMnx">
@@ -1484,13 +1481,13 @@
             <property role="VOm3f" value="false" />
           </node>
           <node concept="Vb9p2" id="6uPxrhfjwvQ" role="3F10Kt">
-            <property role="Vbekb" value="BOLD_ITALIC" />
+            <property role="Vbekb" value="g1_tSyq/BOLD_ITALIC" />
           </node>
           <node concept="VQ3r3" id="6uPxrhfjwvR" role="3F10Kt">
-            <property role="2USNnj" value="2" />
+            <property role="2USNnj" value="gtbM8PH/2" />
           </node>
           <node concept="VechU" id="6uPxrhfjwvS" role="3F10Kt">
-            <property role="Vb096" value="DARK_BLUE" />
+            <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
           </node>
         </node>
         <node concept="3EZMnI" id="6uPxrhfjwvT" role="3EZMnx">
@@ -1521,13 +1518,13 @@
             <property role="VOm3f" value="false" />
           </node>
           <node concept="Vb9p2" id="hEUNQXs" role="3F10Kt">
-            <property role="Vbekb" value="BOLD_ITALIC" />
+            <property role="Vbekb" value="g1_tSyq/BOLD_ITALIC" />
           </node>
           <node concept="VQ3r3" id="hEUVPBO" role="3F10Kt">
-            <property role="2USNnj" value="2" />
+            <property role="2USNnj" value="gtbM8PH/2" />
           </node>
           <node concept="VechU" id="hEZR8tW" role="3F10Kt">
-            <property role="Vb096" value="DARK_BLUE" />
+            <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
           </node>
         </node>
         <node concept="3EZMnI" id="hppwgAL" role="3EZMnx">
@@ -1561,13 +1558,13 @@
             <property role="VOm3f" value="false" />
           </node>
           <node concept="Vb9p2" id="hEUNQYQ" role="3F10Kt">
-            <property role="Vbekb" value="BOLD_ITALIC" />
+            <property role="Vbekb" value="g1_tSyq/BOLD_ITALIC" />
           </node>
           <node concept="VQ3r3" id="hEUVPBP" role="3F10Kt">
-            <property role="2USNnj" value="2" />
+            <property role="2USNnj" value="gtbM8PH/2" />
           </node>
           <node concept="VechU" id="hEZR8yy" role="3F10Kt">
-            <property role="Vb096" value="DARK_BLUE" />
+            <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
           </node>
         </node>
         <node concept="3EZMnI" id="hppwuqb" role="3EZMnx">
@@ -1603,10 +1600,10 @@
           <property role="VOm3f" value="false" />
         </node>
         <node concept="VechU" id="hEZR8$H" role="3F10Kt">
-          <property role="Vb096" value="DARK_BLUE" />
+          <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
         </node>
         <node concept="30gYXW" id="hF0kJT8" role="3F10Kt">
-          <property role="Vb096" value="lightGray" />
+          <property role="Vb096" value="fLJRk5A/lightGray" />
         </node>
       </node>
       <node concept="3F0ifn" id="hf2dFxR" role="3EZMnx">
@@ -1633,7 +1630,7 @@
                 <property role="1Intyy" value="true" />
                 <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
                 <node concept="30gYXW" id="hF0kJTQ" role="3F10Kt">
-                  <property role="Vb096" value="orange" />
+                  <property role="Vb096" value="fLwANPp/orange" />
                 </node>
               </node>
             </node>
@@ -1661,10 +1658,10 @@
           <property role="VOm3f" value="true" />
         </node>
         <node concept="30gYXW" id="hF0kJUP" role="3F10Kt">
-          <property role="Vb096" value="pink" />
+          <property role="Vb096" value="fLwANPo/pink" />
         </node>
         <node concept="30h1P$" id="hF0kJWw" role="3F10Kt">
-          <property role="Vb096" value="magenta" />
+          <property role="Vb096" value="fLwANPs/magenta" />
         </node>
       </node>
       <node concept="1iCGBv" id="husdPAR" role="3EZMnx">
@@ -1675,7 +1672,7 @@
             <property role="1Intyy" value="true" />
             <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
             <node concept="30gYXW" id="hF0kJTk" role="3F10Kt">
-              <property role="Vb096" value="orange" />
+              <property role="Vb096" value="fLwANPp/orange" />
             </node>
           </node>
         </node>
@@ -1700,7 +1697,7 @@
           <property role="VOm3f" value="true" />
         </node>
         <node concept="VLuvy" id="hEVH_8G" role="3F10Kt">
-          <property role="Vb096" value="pink" />
+          <property role="Vb096" value="fLwANPo/pink" />
         </node>
       </node>
       <node concept="3F0ifn" id="gISVs9o" role="3EZMnx">
@@ -1710,10 +1707,10 @@
           <property role="VOm3f" value="true" />
         </node>
         <node concept="30gYXW" id="hF0kJRo" role="3F10Kt">
-          <property role="Vb096" value="pink" />
+          <property role="Vb096" value="fLwANPo/pink" />
         </node>
         <node concept="30h1P$" id="hF0kJUS" role="3F10Kt">
-          <property role="Vb096" value="magenta" />
+          <property role="Vb096" value="fLwANPs/magenta" />
         </node>
       </node>
       <node concept="2iRfu4" id="i2IBXSR" role="2iSdaV" />
@@ -1870,10 +1867,10 @@
           <property role="VOm3f" value="false" />
         </node>
         <node concept="VechU" id="hEZR8Ch" role="3F10Kt">
-          <property role="Vb096" value="DARK_BLUE" />
+          <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
         </node>
         <node concept="30gYXW" id="hF0kJSb" role="3F10Kt">
-          <property role="Vb096" value="lightGray" />
+          <property role="Vb096" value="fLJRk5A/lightGray" />
         </node>
       </node>
       <node concept="3F0ifn" id="gZEgyO$" role="3EZMnx">
@@ -1903,7 +1900,7 @@
           </node>
           <node concept="3F1sOY" id="gZJ1fEa" role="3EZMnx">
             <property role="1$x2rV" value="&lt;none&gt;" />
-            <property role="1cu_pB" value="2" />
+            <property role="1cu_pB" value="gtguBGO/2" />
             <ref role="1NtTu8" to="tpf8:gZIZSF3" resolve="conditionFunction" />
           </node>
           <node concept="VPM3Z" id="hEU$P7o" role="3F10Kt">
@@ -1947,7 +1944,7 @@
       <node concept="3EZMnI" id="4c226Nmabs6" role="3EZMnx">
         <node concept="3F0ifn" id="4c226Nmabs7" role="3EZMnx">
           <property role="3F0ifm" value="$IF$" />
-          <property role="1cu_pB" value="1" />
+          <property role="1cu_pB" value="gtgu$YJ/1" />
           <ref role="1k5W1q" node="hG2hEjs" resolve="macroStart" />
           <ref role="1ERwB7" node="gZDQqLq" resolve="MacroSymbol_Actions" />
           <node concept="A1WHu" id="6GI$fc4d6sx" role="3vIgyS">
@@ -2034,10 +2031,10 @@
           <property role="VOm3f" value="false" />
         </node>
         <node concept="VechU" id="hEZR8wh" role="3F10Kt">
-          <property role="Vb096" value="DARK_BLUE" />
+          <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
         </node>
         <node concept="30gYXW" id="hF0kJRN" role="3F10Kt">
-          <property role="Vb096" value="lightGray" />
+          <property role="Vb096" value="fLJRk5A/lightGray" />
         </node>
       </node>
       <node concept="3F0ifn" id="h02PzAS" role="3EZMnx">
@@ -2066,7 +2063,7 @@
             </node>
           </node>
           <node concept="3F1sOY" id="h02PzBj" role="3EZMnx">
-            <property role="1cu_pB" value="2" />
+            <property role="1cu_pB" value="gtguBGO/2" />
             <property role="39s7Ar" value="true" />
             <ref role="1NtTu8" to="tpf8:h02P8WO" resolve="sourceNodesQuery" />
           </node>
@@ -2088,7 +2085,7 @@
     <node concept="3EZMnI" id="gITmv62" role="2wV5jI">
       <node concept="3F0ifn" id="gITmvqn" role="3EZMnx">
         <property role="3F0ifm" value="$COPY_SRCL$" />
-        <property role="1cu_pB" value="1" />
+        <property role="1cu_pB" value="gtgu$YJ/1" />
         <ref role="1ERwB7" node="gZDQqLq" resolve="MacroSymbol_Actions" />
         <ref role="1k5W1q" node="hG2hEjs" resolve="macroStart" />
         <node concept="A1WHu" id="6GI$fc4bRZ1" role="3vIgyS">
@@ -2107,7 +2104,7 @@
     <node concept="3EZMnI" id="gITmTHO" role="2wV5jI">
       <node concept="3F0ifn" id="hGCmjau" role="3EZMnx">
         <property role="3F0ifm" value="$COPY_SRC$" />
-        <property role="1cu_pB" value="1" />
+        <property role="1cu_pB" value="gtgu$YJ/1" />
         <ref role="1k5W1q" node="hG2hEjs" resolve="macroStart" />
         <ref role="1ERwB7" node="gZDQqLq" resolve="MacroSymbol_Actions" />
         <node concept="A1WHu" id="6GI$fc4d6fm" role="3vIgyS">
@@ -2126,10 +2123,10 @@
           <property role="VOm3f" value="false" />
         </node>
         <node concept="VechU" id="hEZR8ts" role="3F10Kt">
-          <property role="Vb096" value="DARK_BLUE" />
+          <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
         </node>
         <node concept="30gYXW" id="hF0kJSK" role="3F10Kt">
-          <property role="Vb096" value="lightGray" />
+          <property role="Vb096" value="fLJRk5A/lightGray" />
         </node>
       </node>
       <node concept="3F0ifn" id="heSFwpm" role="3EZMnx">
@@ -2158,7 +2155,7 @@
             </node>
           </node>
           <node concept="3F1sOY" id="heSFwpO" role="3EZMnx">
-            <property role="1cu_pB" value="2" />
+            <property role="1cu_pB" value="gtguBGO/2" />
             <property role="1$x2rV" value="&lt;current source node&gt;" />
             <ref role="1NtTu8" to="tpf8:gZNFE_I" resolve="sourceNodeQuery" />
           </node>
@@ -2188,10 +2185,10 @@
           <property role="VOm3f" value="false" />
         </node>
         <node concept="VechU" id="hEZR8m$" role="3F10Kt">
-          <property role="Vb096" value="DARK_BLUE" />
+          <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
         </node>
         <node concept="30gYXW" id="hF0kJRI" role="3F10Kt">
-          <property role="Vb096" value="lightGray" />
+          <property role="Vb096" value="fLJRk5A/lightGray" />
         </node>
       </node>
       <node concept="3F0ifn" id="gZJoa3j" role="3EZMnx">
@@ -2221,7 +2218,7 @@
           </node>
           <node concept="3F1sOY" id="gZJoa3S" role="3EZMnx">
             <property role="1$x2rV" value="&lt;none&gt;" />
-            <property role="1cu_pB" value="2" />
+            <property role="1cu_pB" value="gtguBGO/2" />
             <ref role="1NtTu8" to="tpf8:gZJn$bn" resolve="sourceNodesQuery" />
           </node>
           <node concept="VPM3Z" id="hEU$Q3i" role="3F10Kt">
@@ -2265,7 +2262,7 @@
     <node concept="3EZMnI" id="gITmPAK" role="2wV5jI">
       <node concept="3F0ifn" id="gITmPOY" role="3EZMnx">
         <property role="3F0ifm" value="$LOOP$" />
-        <property role="1cu_pB" value="1" />
+        <property role="1cu_pB" value="gtgu$YJ/1" />
         <ref role="1ERwB7" node="gZDQqLq" resolve="MacroSymbol_Actions" />
         <ref role="1k5W1q" node="hG2hEjs" resolve="macroStart" />
         <node concept="A1WHu" id="6GI$fc4d6N4" role="3vIgyS">
@@ -2288,10 +2285,10 @@
           <property role="VOm3f" value="false" />
         </node>
         <node concept="VechU" id="hEZR8oZ" role="3F10Kt">
-          <property role="Vb096" value="DARK_BLUE" />
+          <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
         </node>
         <node concept="30gYXW" id="hF0kJTr" role="3F10Kt">
-          <property role="Vb096" value="lightGray" />
+          <property role="Vb096" value="fLJRk5A/lightGray" />
         </node>
       </node>
       <node concept="3F0ifn" id="h031GGk" role="3EZMnx">
@@ -2321,7 +2318,7 @@
           </node>
           <node concept="3F1sOY" id="h031GGD" role="3EZMnx">
             <property role="1$x2rV" value="&lt;current source node&gt;" />
-            <property role="1cu_pB" value="2" />
+            <property role="1cu_pB" value="gtguBGO/2" />
             <ref role="1NtTu8" to="tpf8:h031$YD" resolve="sourceNodeQuery" />
           </node>
           <node concept="VPM3Z" id="hEU$Pw_" role="3F10Kt">
@@ -2386,7 +2383,7 @@
     <node concept="3EZMnI" id="gITmLdB" role="2wV5jI">
       <node concept="3F0ifn" id="gITmLrQ" role="3EZMnx">
         <property role="3F0ifm" value="$MAP_SRC$" />
-        <property role="1cu_pB" value="1" />
+        <property role="1cu_pB" value="gtgu$YJ/1" />
         <ref role="1ERwB7" node="gZDQqLq" resolve="MacroSymbol_Actions" />
         <ref role="1k5W1q" node="hG2hEjs" resolve="macroStart" />
         <node concept="A1WHu" id="6GI$fc4d6N8" role="3vIgyS">
@@ -2409,10 +2406,10 @@
           <property role="VOm3f" value="false" />
         </node>
         <node concept="VechU" id="hEZR8tg" role="3F10Kt">
-          <property role="Vb096" value="DARK_BLUE" />
+          <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
         </node>
         <node concept="30gYXW" id="hF0kJTj" role="3F10Kt">
-          <property role="Vb096" value="lightGray" />
+          <property role="Vb096" value="fLJRk5A/lightGray" />
         </node>
       </node>
       <node concept="3F0ifn" id="h03AM7V" role="3EZMnx">
@@ -2441,7 +2438,7 @@
             </node>
           </node>
           <node concept="3F1sOY" id="h03AM8m" role="3EZMnx">
-            <property role="1cu_pB" value="2" />
+            <property role="1cu_pB" value="gtguBGO/2" />
             <property role="39s7Ar" value="true" />
             <ref role="1NtTu8" to="tpf8:h03_Rp0" resolve="sourceNodesQuery" />
           </node>
@@ -2507,7 +2504,7 @@
     <node concept="3EZMnI" id="gITmmXS" role="2wV5jI">
       <node concept="3F0ifn" id="gITmncQ" role="3EZMnx">
         <property role="3F0ifm" value="$MAP_SRCL$" />
-        <property role="1cu_pB" value="1" />
+        <property role="1cu_pB" value="gtgu$YJ/1" />
         <ref role="1ERwB7" node="gZDQqLq" resolve="MacroSymbol_Actions" />
         <ref role="1k5W1q" node="hG2hEjs" resolve="macroStart" />
         <node concept="A1WHu" id="6GI$fc4d6N6" role="3vIgyS">
@@ -2747,9 +2744,7 @@
               </node>
               <node concept="1OKiuA" id="7of$qLgewQp" role="2OqNvi">
                 <node concept="1Q80Hx" id="7of$qLgewRn" role="lBI5i" />
-                <node concept="2B6iha" id="7of$qLh9vT3" role="lGT1i">
-                  <property role="1lyBwo" value="first" />
-                </node>
+                <node concept="2B6iha" id="7of$qLh9vT3" role="lGT1i" />
                 <node concept="3cmrfG" id="7of$qLgewSL" role="3dN3m$">
                   <property role="3cmrfH" value="1" />
                 </node>
@@ -2868,9 +2863,7 @@
               </node>
               <node concept="1OKiuA" id="7of$qLgisqW" role="2OqNvi">
                 <node concept="1Q80Hx" id="7of$qLgissr" role="lBI5i" />
-                <node concept="2B6iha" id="7of$qLh9qZ5" role="lGT1i">
-                  <property role="1lyBwo" value="first" />
-                </node>
+                <node concept="2B6iha" id="7of$qLh9qZ5" role="lGT1i" />
               </node>
             </node>
           </node>
@@ -2989,9 +2982,7 @@
               </node>
               <node concept="1OKiuA" id="7of$qLgExWf" role="2OqNvi">
                 <node concept="1Q80Hx" id="7of$qLgExWl" role="lBI5i" />
-                <node concept="2B6iha" id="7of$qLh9uDf" role="lGT1i">
-                  <property role="1lyBwo" value="first" />
-                </node>
+                <node concept="2B6iha" id="7of$qLh9uDf" role="lGT1i" />
                 <node concept="3cmrfG" id="7of$qLgEy2c" role="3dN3m$">
                   <property role="3cmrfH" value="2" />
                 </node>
@@ -3098,10 +3089,10 @@
             <property role="1$x2rV" value="&lt;no name&gt;" />
             <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
             <node concept="Vb9p2" id="hEUNQWO" role="3F10Kt">
-              <property role="Vbekb" value="ITALIC" />
+              <property role="Vbekb" value="g1_kEg4/ITALIC" />
             </node>
             <node concept="VechU" id="hEZR8qX" role="3F10Kt">
-              <property role="Vb096" value="DARK_BLUE" />
+              <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
             </node>
             <node concept="2SqB2G" id="60txkN75afh" role="2SqHTX">
               <property role="TrG5h" value="templateName" />
@@ -3123,10 +3114,10 @@
           <property role="VOm3f" value="false" />
         </node>
         <node concept="VechU" id="hEZR8_8" role="3F10Kt">
-          <property role="Vb096" value="DARK_BLUE" />
+          <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
         </node>
         <node concept="30gYXW" id="hF0kJSQ" role="3F10Kt">
-          <property role="Vb096" value="lightGray" />
+          <property role="Vb096" value="fLJRk5A/lightGray" />
         </node>
       </node>
       <node concept="3F0ifn" id="gZlykx5" role="3EZMnx">
@@ -3235,7 +3226,7 @@
               <property role="VOm3f" value="false" />
             </node>
             <node concept="2UZ17K" id="hEV2aHD" role="3F10Kt">
-              <property role="2UZ17L" value="punctuation" />
+              <property role="2UZ17L" value="g$1Qtxb/punctuation" />
             </node>
           </node>
           <node concept="3F1sOY" id="hfgCWMK" role="3EZMnx">
@@ -3254,7 +3245,7 @@
           <property role="VOm3f" value="true" />
         </node>
         <node concept="VLuvy" id="hEVH_8s" role="3F10Kt">
-          <property role="Vb096" value="gray" />
+          <property role="Vb096" value="fLJRk5_/gray" />
         </node>
         <node concept="2EHx9g" id="i2IBXWx" role="2iSdaV" />
       </node>
@@ -3275,10 +3266,10 @@
           <property role="VOm3f" value="false" />
         </node>
         <node concept="VechU" id="hEZR8vA" role="3F10Kt">
-          <property role="Vb096" value="DARK_BLUE" />
+          <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
         </node>
         <node concept="30gYXW" id="hF0kJT7" role="3F10Kt">
-          <property role="Vb096" value="lightGray" />
+          <property role="Vb096" value="fLJRk5A/lightGray" />
         </node>
       </node>
       <node concept="3F0ifn" id="gZlv$wh" role="3EZMnx">
@@ -3328,16 +3319,15 @@
           </node>
         </node>
         <node concept="1iCGBv" id="h1blagB" role="3EZMnx">
-          <property role="1cu_pB" value="2" />
+          <property role="1cu_pB" value="gtguBGO/2" />
           <property role="1$x2rV" value="&lt;choose applicable concept&gt;" />
           <ref role="1NtTu8" to="tpf8:gZ0HIsK" resolve="applicableConcept" />
           <node concept="1sVBvm" id="h1blagC" role="1sWHZn">
             <node concept="3F0A7n" id="h1blagD" role="2wV5jI">
               <property role="1Intyy" value="true" />
-              <property role="1cu_pB" value="0" />
               <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
               <node concept="VechU" id="hEZR8z2" role="3F10Kt">
-                <property role="Vb096" value="DARK_MAGENTA" />
+                <property role="Vb096" value="g1_qVrt/DARK_MAGENTA" />
               </node>
             </node>
           </node>
@@ -3387,7 +3377,7 @@
         <property role="VOm3f" value="true" />
       </node>
       <node concept="VLuvy" id="hEVH_8p" role="3F10Kt">
-        <property role="Vb096" value="gray" />
+        <property role="Vb096" value="fLJRk5_/gray" />
       </node>
       <node concept="2EHx9g" id="i2IBXSP" role="2iSdaV" />
     </node>
@@ -3471,10 +3461,10 @@
           <property role="VOm3f" value="false" />
         </node>
         <node concept="VechU" id="hEZR8xd" role="3F10Kt">
-          <property role="Vb096" value="DARK_BLUE" />
+          <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
         </node>
         <node concept="30gYXW" id="hF0kJRH" role="3F10Kt">
-          <property role="Vb096" value="lightGray" />
+          <property role="Vb096" value="fLJRk5A/lightGray" />
         </node>
       </node>
       <node concept="3F0ifn" id="gZlwKln" role="3EZMnx">
@@ -3505,16 +3495,15 @@
             </node>
           </node>
           <node concept="1iCGBv" id="h93P2$B" role="3EZMnx">
-            <property role="1cu_pB" value="2" />
+            <property role="1cu_pB" value="gtguBGO/2" />
             <property role="1$x2rV" value="&lt;choose applicable concept&gt;" />
             <ref role="1NtTu8" to="tpf8:gZ0HIsK" resolve="applicableConcept" />
             <node concept="1sVBvm" id="h93P2$C" role="1sWHZn">
               <node concept="3F0A7n" id="h93P2$D" role="2wV5jI">
                 <property role="1Intyy" value="true" />
-                <property role="1cu_pB" value="0" />
                 <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
                 <node concept="VechU" id="hEZR8rT" role="3F10Kt">
-                  <property role="Vb096" value="DARK_MAGENTA" />
+                  <property role="Vb096" value="g1_qVrt/DARK_MAGENTA" />
                 </node>
               </node>
             </node>
@@ -3562,7 +3551,7 @@
             <node concept="VPM3Z" id="hHP0cbg" role="3F10Kt" />
           </node>
           <node concept="3F0A7n" id="h93PcS5" role="3EZMnx">
-            <ref role="1NtTu8" to="tpf8:h93Pg6a" resolve="keepSourceRoot" />
+            <ref role="1NtTu8" to="tpf8:3Ftr4R6BH5V" resolve="keepSourceRoot" />
           </node>
           <node concept="VPM3Z" id="hEU$P48" role="3F10Kt">
             <property role="VOm3f" value="false" />
@@ -3576,7 +3565,7 @@
           <property role="VOm3f" value="true" />
         </node>
         <node concept="VLuvy" id="hEVH_81" role="3F10Kt">
-          <property role="Vb096" value="gray" />
+          <property role="Vb096" value="fLJRk5_/gray" />
         </node>
         <node concept="2EHx9g" id="i2IBXSt" role="2iSdaV" />
       </node>
@@ -3648,10 +3637,10 @@
           <property role="VOm3f" value="false" />
         </node>
         <node concept="VechU" id="hEZR8xU" role="3F10Kt">
-          <property role="Vb096" value="DARK_BLUE" />
+          <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
         </node>
         <node concept="30gYXW" id="hF0kJTe" role="3F10Kt">
-          <property role="Vb096" value="lightGray" />
+          <property role="Vb096" value="fLJRk5A/lightGray" />
         </node>
       </node>
       <node concept="3F0ifn" id="gZlrnUD" role="3EZMnx">
@@ -3672,7 +3661,7 @@
     <property role="TrG5h" value="MacroSymbol_Actions" />
     <node concept="1hA7zw" id="gZDTq$k" role="1h_SK8">
       <property role="1hHO97" value="delete macro node" />
-      <property role="1hAc7j" value="delete_action_id" />
+      <property role="1hAc7j" value="g_hAxAO/delete_action_id" />
       <node concept="1hAIg9" id="gZDTq$l" role="1hA7z_">
         <node concept="3clFbS" id="gZDTq$m" role="2VODD2">
           <node concept="3clFbF" id="gZDTDbz" role="3cqZAp">
@@ -3720,7 +3709,7 @@
       <node concept="3F0ifn" id="h1lMJgU" role="3EZMnx">
         <property role="3F0ifm" value="DISMISS TOP RULE" />
         <node concept="VechU" id="hEZR8vv" role="3F10Kt">
-          <property role="Vb096" value="DARK_BLUE" />
+          <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
         </node>
       </node>
       <node concept="3F1sOY" id="h1lMRnZ" role="3EZMnx">
@@ -3759,7 +3748,7 @@
                 <property role="1Intyy" value="true" />
                 <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
                 <node concept="VechU" id="hEZR8pa" role="3F10Kt">
-                  <property role="Vb096" value="DARK_MAGENTA" />
+                  <property role="Vb096" value="g1_qVrt/DARK_MAGENTA" />
                 </node>
               </node>
             </node>
@@ -3781,7 +3770,7 @@
           <property role="VOm3f" value="true" />
         </node>
         <node concept="VLuvy" id="hEVH_85" role="3F10Kt">
-          <property role="Vb096" value="lightGray" />
+          <property role="Vb096" value="fLJRk5A/lightGray" />
         </node>
         <node concept="2iRkQZ" id="i2IBXWa" role="2iSdaV" />
       </node>
@@ -3904,7 +3893,7 @@
             <property role="VOm3f" value="false" />
           </node>
           <node concept="2UZ17K" id="hEV2aHo" role="3F10Kt">
-            <property role="2UZ17L" value="punctuation" />
+            <property role="2UZ17L" value="g$1Qtxb/punctuation" />
           </node>
         </node>
         <node concept="3F1sOY" id="hpa_vtt" role="3EZMnx">
@@ -3929,7 +3918,7 @@
             <property role="VOm3f" value="false" />
           </node>
           <node concept="2UZ17K" id="hEV2aHY" role="3F10Kt">
-            <property role="2UZ17L" value="punctuation" />
+            <property role="2UZ17L" value="g$1Qtxb/punctuation" />
           </node>
         </node>
         <node concept="1QoScp" id="6JoULz$jqnQ" role="3EZMnx">
@@ -3985,12 +3974,12 @@
     <ref role="1XX52x" to="tpf8:h1lLz4x" resolve="GeneratorMessage" />
     <node concept="3EZMnI" id="h1lNaLw" role="2wV5jI">
       <node concept="3F0A7n" id="h1lNcfx" role="3EZMnx">
-        <ref role="1NtTu8" to="tpf8:h1lMjTn" resolve="messageType" />
+        <ref role="1NtTu8" to="tpf8:3Ftr4R6BH5X" resolve="messageType" />
         <node concept="Vb9p2" id="hEUNR0E" role="3F10Kt">
-          <property role="Vbekb" value="BOLD" />
+          <property role="Vbekb" value="g1_k_vY/BOLD" />
         </node>
         <node concept="VechU" id="hEZR8tV" role="3F10Kt">
-          <property role="Vb096" value="DARK_MAGENTA" />
+          <property role="Vb096" value="g1_qVrt/DARK_MAGENTA" />
         </node>
       </node>
       <node concept="3F0ifn" id="h1lNfio" role="3EZMnx">
@@ -4003,7 +3992,7 @@
         <property role="1$x2rV" value="&lt;no text&gt;" />
         <ref role="1NtTu8" to="tpf8:h1lLB5n" resolve="messageText" />
         <node concept="VechU" id="hEZR8nb" role="3F10Kt">
-          <property role="Vb096" value="DARK_GREEN" />
+          <property role="Vb096" value="g1_qRwE/DARK_GREEN" />
         </node>
       </node>
       <node concept="2iRfu4" id="i2IBXTR" role="2iSdaV" />
@@ -4016,10 +4005,10 @@
       <node concept="3F0ifn" id="h8gg4AC" role="3EZMnx">
         <property role="3F0ifm" value="&lt;T " />
         <node concept="30gYXW" id="hF0kJRq" role="3F10Kt">
-          <property role="Vb096" value="pink" />
+          <property role="Vb096" value="fLwANPo/pink" />
         </node>
         <node concept="30h1P$" id="hF0kJUT" role="3F10Kt">
-          <property role="Vb096" value="magenta" />
+          <property role="Vb096" value="fLwANPs/magenta" />
         </node>
       </node>
       <node concept="3F1sOY" id="h8ggjzg" role="3EZMnx">
@@ -4028,10 +4017,10 @@
       <node concept="3F0ifn" id="h8ggeOY" role="3EZMnx">
         <property role="3F0ifm" value=" T&gt;" />
         <node concept="30gYXW" id="hF0kJUm" role="3F10Kt">
-          <property role="Vb096" value="pink" />
+          <property role="Vb096" value="fLwANPo/pink" />
         </node>
         <node concept="30h1P$" id="hF0kJWa" role="3F10Kt">
-          <property role="Vb096" value="magenta" />
+          <property role="Vb096" value="fLwANPs/magenta" />
         </node>
       </node>
       <node concept="2iRfu4" id="i2IBXTd" role="2iSdaV" />
@@ -4064,7 +4053,7 @@
             </node>
           </node>
           <node concept="VechU" id="hQ6rw16" role="3F10Kt">
-            <property role="Vb096" value="red" />
+            <property role="Vb096" value="fLwANPn/red" />
           </node>
         </node>
         <node concept="pkWqt" id="hfvurta" role="pqm2j">
@@ -4121,7 +4110,7 @@
         <property role="VOm3f" value="false" />
       </node>
       <node concept="15ARfc" id="2Pi793DoIjY" role="3F10Kt">
-        <property role="2hoDZC" value="PIXELS" />
+        <property role="2hoDZC" value="hQhnRQp/PIXELS" />
         <property role="3$6WeP" value="3" />
       </node>
       <node concept="2iRfu4" id="i2IBXWT" role="2iSdaV" />
@@ -4133,7 +4122,7 @@
     <node concept="3EZMnI" id="hoxHvTI" role="2wV5jI">
       <node concept="3F0ifn" id="hoxHvTJ" role="3EZMnx">
         <property role="3F0ifm" value="$INCLUDE$" />
-        <property role="1cu_pB" value="1" />
+        <property role="1cu_pB" value="gtgu$YJ/1" />
         <ref role="1ERwB7" node="gZDQqLq" resolve="MacroSymbol_Actions" />
         <ref role="1k5W1q" node="hG2hEjs" resolve="macroStart" />
         <node concept="11LMrY" id="1x7fy1yccfa" role="3F10Kt" />
@@ -4221,10 +4210,10 @@
           <property role="VOm3f" value="false" />
         </node>
         <node concept="VechU" id="hEZR8t5" role="3F10Kt">
-          <property role="Vb096" value="DARK_BLUE" />
+          <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
         </node>
         <node concept="30gYXW" id="hF0kJSe" role="3F10Kt">
-          <property role="Vb096" value="lightGray" />
+          <property role="Vb096" value="fLJRk5A/lightGray" />
         </node>
       </node>
       <node concept="3F0ifn" id="hoxHGC3" role="3EZMnx">
@@ -4281,7 +4270,7 @@
           </node>
           <node concept="1iCGBv" id="hoxHGCQ" role="3EZMnx">
             <property role="1$x2rV" value="&lt;choose template&gt;" />
-            <property role="1cu_pB" value="2" />
+            <property role="1cu_pB" value="gtguBGO/2" />
             <ref role="1NtTu8" to="tpf8:hoxH3iB" resolve="includeTemplate" />
             <node concept="1sVBvm" id="hoxHGCR" role="1sWHZn">
               <node concept="3F0A7n" id="hoxHGCS" role="2wV5jI">
@@ -4313,46 +4302,46 @@
     <node concept="14StLt" id="hOEhO6y" role="V601i">
       <property role="TrG5h" value="GeneratorKeyWord" />
       <node concept="VechU" id="hOEhRg7" role="3F10Kt">
-        <property role="Vb096" value="darkGray" />
+        <property role="Vb096" value="fLJRk5B/darkGray" />
       </node>
       <node concept="Vb9p2" id="hOEhVXw" role="3F10Kt">
-        <property role="Vbekb" value="BOLD" />
+        <property role="Vbekb" value="g1_k_vY/BOLD" />
       </node>
     </node>
     <node concept="14StLt" id="hoxIDwG" role="V601i">
       <property role="TrG5h" value="reference" />
       <node concept="VechU" id="hoxJpVQ" role="3F10Kt">
-        <property role="Vb096" value="DARK_BLUE" />
+        <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
       </node>
       <node concept="Vb9p2" id="hoxJuDT" role="3F10Kt">
-        <property role="Vbekb" value="ITALIC" />
+        <property role="Vbekb" value="g1_kEg4/ITALIC" />
       </node>
     </node>
     <node concept="14StLt" id="hpv47V$" role="V601i">
       <property role="TrG5h" value="constant" />
       <node concept="VechU" id="hpv4dx0" role="3F10Kt">
-        <property role="Vb096" value="DARK_MAGENTA" />
+        <property role="Vb096" value="g1_qVrt/DARK_MAGENTA" />
       </node>
       <node concept="Vb9p2" id="hpv4fV6" role="3F10Kt">
-        <property role="Vbekb" value="BOLD" />
+        <property role="Vbekb" value="g1_k_vY/BOLD" />
       </node>
     </node>
     <node concept="14StLt" id="hrO$H73" role="V601i">
       <property role="TrG5h" value="literal" />
       <node concept="VechU" id="hrO$J4N" role="3F10Kt">
-        <property role="Vb096" value="DARK_BLUE" />
+        <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
       </node>
       <node concept="Vb9p2" id="hrO$J4O" role="3F10Kt">
-        <property role="Vbekb" value="BOLD" />
+        <property role="Vbekb" value="g1_k_vY/BOLD" />
       </node>
     </node>
     <node concept="14StLt" id="hG2hEjs" role="V601i">
       <property role="TrG5h" value="macroStart" />
       <node concept="Vb9p2" id="hG2hHQN" role="3F10Kt">
-        <property role="Vbekb" value="BOLD_ITALIC" />
+        <property role="Vbekb" value="g1_tSyq/BOLD_ITALIC" />
       </node>
       <node concept="VechU" id="hG2hMhN" role="3F10Kt">
-        <property role="Vb096" value="DARK_BLUE" />
+        <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
       </node>
       <node concept="VPxyj" id="hG2hMLz" role="3F10Kt">
         <property role="VOm3f" value="true" />
@@ -4367,34 +4356,34 @@
         <property role="VOm3f" value="true" />
       </node>
       <node concept="VLuvy" id="hG2rrSO" role="3F10Kt">
-        <property role="Vb096" value="LIGHT_BLUE" />
+        <property role="Vb096" value="hGRnIZc/LIGHT_BLUE" />
       </node>
     </node>
     <node concept="14StLt" id="hHcji$G" role="V601i">
       <property role="TrG5h" value="mappingLabelReference" />
       <node concept="30gYXW" id="hHcjrZf" role="3F10Kt">
-        <property role="Vb096" value="orange" />
+        <property role="Vb096" value="fLwANPp/orange" />
       </node>
       <node concept="VechU" id="4E3ayChK2xR" role="3F10Kt">
-        <property role="Vb096" value="black" />
+        <property role="Vb096" value="6cZGtrcKCoS/black" />
       </node>
     </node>
     <node concept="14StLt" id="7yIPXhIhYym" role="V601i">
       <property role="TrG5h" value="macroDescriptionText" />
       <node concept="30gYXW" id="7yIPXhIhYyn" role="3F10Kt">
-        <property role="Vb096" value="LIGHT_BLUE" />
+        <property role="Vb096" value="hGRnIZc/LIGHT_BLUE" />
       </node>
       <node concept="VechU" id="7yIPXhIhYyp" role="3F10Kt">
-        <property role="Vb096" value="DARK_BLUE" />
+        <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
       </node>
     </node>
     <node concept="14StLt" id="2uuOxPo1Vs7" role="V601i">
       <property role="TrG5h" value="mappingRuleDeclaration" />
       <node concept="30gYXW" id="2uuOxPo2jx5" role="3F10Kt">
-        <property role="Vb096" value="orange" />
+        <property role="Vb096" value="fLwANPp/orange" />
       </node>
       <node concept="VechU" id="6iCI9jWX9SY" role="3F10Kt">
-        <property role="Vb096" value="darkGray" />
+        <property role="Vb096" value="fLJRk5B/darkGray" />
       </node>
     </node>
     <node concept="14StLt" id="6iCI9jWX5Q2" role="V601i">
@@ -4443,28 +4432,28 @@
     <node concept="14StLt" id="5Ex$Jzqi8Mt" role="V601i">
       <property role="TrG5h" value="VariableRef" />
       <node concept="Vb9p2" id="4w6U_Q4Qdkh" role="3F10Kt">
-        <property role="Vbekb" value="BOLD" />
+        <property role="Vbekb" value="g1_k_vY/BOLD" />
       </node>
       <node concept="VechU" id="4w6U_Q4Qdki" role="3F10Kt">
-        <property role="Vb096" value="DARK_GREEN" />
+        <property role="Vb096" value="g1_qRwE/DARK_GREEN" />
       </node>
     </node>
     <node concept="14StLt" id="5Ex$Jzqi6o7" role="V601i">
       <property role="TrG5h" value="TemplateParameterRef" />
       <node concept="Vb9p2" id="5Ex$Jzqi8Pr" role="3F10Kt">
-        <property role="Vbekb" value="BOLD" />
+        <property role="Vbekb" value="g1_k_vY/BOLD" />
       </node>
       <node concept="VechU" id="5Ex$Jzqi8Ps" role="3F10Kt">
-        <property role="Vb096" value="DARK_GREEN" />
+        <property role="Vb096" value="g1_qRwE/DARK_GREEN" />
       </node>
     </node>
     <node concept="14StLt" id="5Ex$Jzqi8J0" role="V601i">
       <property role="TrG5h" value="PatternRef" />
       <node concept="Vb9p2" id="5Ex$Jzqi8Pv" role="3F10Kt">
-        <property role="Vbekb" value="BOLD" />
+        <property role="Vbekb" value="g1_k_vY/BOLD" />
       </node>
       <node concept="VechU" id="5Ex$Jzqi8Pw" role="3F10Kt">
-        <property role="Vb096" value="DARK_GREEN" />
+        <property role="Vb096" value="g1_qRwE/DARK_GREEN" />
       </node>
     </node>
     <node concept="14StLt" id="6t_vhrzKdF" role="V601i">
@@ -4473,7 +4462,7 @@
         <property role="VOm3f" value="false" />
       </node>
       <node concept="VechU" id="6t_vhrzKeD" role="3F10Kt">
-        <property role="Vb096" value="lightGray" />
+        <property role="Vb096" value="fLJRk5A/lightGray" />
       </node>
     </node>
   </node>
@@ -4548,7 +4537,7 @@
         <property role="VOm3f" value="true" />
       </node>
       <node concept="VLuvy" id="hEVH_82" role="3F10Kt">
-        <property role="Vb096" value="gray" />
+        <property role="Vb096" value="fLJRk5_/gray" />
       </node>
       <node concept="2iRkQZ" id="i2IBXTK" role="2iSdaV" />
     </node>
@@ -4587,8 +4576,8 @@
             </node>
           </node>
           <node concept="3F0A7n" id="hpv3Z9M" role="3EZMnx">
-            <ref role="1NtTu8" to="tpf8:hpv3f6E" resolve="scriptKind" />
             <ref role="1k5W1q" node="hpv47V$" resolve="constant" />
+            <ref role="1NtTu8" to="tpf8:3Ftr4R6BH5Z" resolve="scriptKind" />
           </node>
           <node concept="VPM3Z" id="hEU$P4A" role="3F10Kt">
             <property role="VOm3f" value="false" />
@@ -4616,12 +4605,12 @@
                   <node concept="2OqwBi" id="hxx$S2Z" role="2Oq$k0">
                     <node concept="pncrf" id="hpv4LOE" role="2Oq$k0" />
                     <node concept="3TrcHB" id="hpv4NwS" role="2OqNvi">
-                      <ref role="3TsBF5" to="tpf8:hpv3f6E" resolve="scriptKind" />
+                      <ref role="3TsBF5" to="tpf8:3Ftr4R6BH5Z" resolve="scriptKind" />
                     </node>
                   </node>
-                  <node concept="3t7uKx" id="hpv4OQS" role="2OqNvi">
-                    <node concept="uoxfO" id="hpv4OQT" role="3t7uKA">
-                      <ref role="uo_Cq" to="tpf8:hpv1Zf2" />
+                  <node concept="21noJN" id="3Ftr4R8p_Zw" role="2OqNvi">
+                    <node concept="21nZrQ" id="3Ftr4R8p_Zx" role="21noJM">
+                      <ref role="21nZrZ" to="tpf8:3Ftr4R6BFlN" resolve="pre_processing" />
                     </node>
                   </node>
                 </node>
@@ -4690,7 +4679,7 @@
             <property role="1Intyy" value="true" />
             <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
             <node concept="VechU" id="hEZR8tf" role="3F10Kt">
-              <property role="Vb096" value="DARK_MAGENTA" />
+              <property role="Vb096" value="g1_qVrt/DARK_MAGENTA" />
             </node>
           </node>
         </node>
@@ -4706,7 +4695,7 @@
             <property role="1Intyy" value="true" />
             <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
             <node concept="VechU" id="hEZR8nF" role="3F10Kt">
-              <property role="Vb096" value="DARK_MAGENTA" />
+              <property role="Vb096" value="g1_qVrt/DARK_MAGENTA" />
             </node>
           </node>
         </node>
@@ -4720,7 +4709,7 @@
     <node concept="3F0ifn" id="hwblrFK" role="2wV5jI">
       <property role="3F0ifm" value="&lt;abandon input&gt;" />
       <node concept="Vb9p2" id="hEUNR28" role="3F10Kt">
-        <property role="Vbekb" value="BOLD" />
+        <property role="Vbekb" value="g1_k_vY/BOLD" />
       </node>
     </node>
   </node>
@@ -4729,14 +4718,13 @@
     <ref role="1XX52x" to="tpf8:hKaNPzJ" resolve="DropRootRule" />
     <node concept="3EZMnI" id="hKaPhvu" role="2wV5jI">
       <node concept="1iCGBv" id="hKaPVNj" role="3EZMnx">
-        <property role="1cu_pB" value="2" />
+        <property role="1cu_pB" value="gtguBGO/2" />
         <property role="1$x2rV" value="&lt;choose concept&gt;" />
         <ref role="1k5W1q" to="tpd3:hwSE21y" resolve="ReferenceOnConcept" />
         <ref role="1NtTu8" to="tpf8:hKaOQmo" resolve="applicableConcept" />
         <node concept="1sVBvm" id="hKaPVNk" role="1sWHZn">
           <node concept="3F0A7n" id="hKaPVNl" role="2wV5jI">
             <property role="1Intyy" value="true" />
-            <property role="1cu_pB" value="0" />
             <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
           </node>
         </node>
@@ -4777,7 +4765,7 @@
     <property role="3GE5qa" value="macro" />
     <ref role="1h_SK9" to="tpf8:fP7UvrK" resolve="PropertyMacro" />
     <node concept="1hA7zw" id="hV6D3BY" role="1h_SK8">
-      <property role="1hAc7j" value="delete_action_id" />
+      <property role="1hAc7j" value="g_hAxAO/delete_action_id" />
       <node concept="1hAIg9" id="hV6D3BZ" role="1hA7z_">
         <node concept="3clFbS" id="hV6D3C0" role="2VODD2">
           <node concept="3cpWs8" id="hV6Dj3E" role="3cqZAp">
@@ -4838,7 +4826,7 @@
       <node concept="3F0A7n" id="1$dcvTE3x8f" role="3EZMnx">
         <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
         <node concept="VechU" id="1$dcvTE3x8g" role="3F10Kt">
-          <property role="Vb096" value="DARK_MAGENTA" />
+          <property role="Vb096" value="g1_qVrt/DARK_MAGENTA" />
         </node>
       </node>
       <node concept="3F0ifn" id="1$dcvTE3x8h" role="3EZMnx">
@@ -4860,10 +4848,10 @@
           <property role="VOm3f" value="false" />
         </node>
         <node concept="VechU" id="1$dcvTE67ku" role="3F10Kt">
-          <property role="Vb096" value="DARK_BLUE" />
+          <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
         </node>
         <node concept="30gYXW" id="1$dcvTE67kv" role="3F10Kt">
-          <property role="Vb096" value="lightGray" />
+          <property role="Vb096" value="fLJRk5A/lightGray" />
         </node>
       </node>
       <node concept="3F0ifn" id="1$dcvTE67kw" role="3EZMnx">
@@ -4937,7 +4925,7 @@
           <property role="VOm3f" value="true" />
         </node>
         <node concept="VLuvy" id="7jvQtjcdUI6" role="3F10Kt">
-          <property role="Vb096" value="gray" />
+          <property role="Vb096" value="fLJRk5_/gray" />
         </node>
         <node concept="2EHx9g" id="7jvQtjcd8Qo" role="2iSdaV" />
       </node>
@@ -5011,7 +4999,7 @@
         <ref role="1k5W1q" node="hFCSAw$" resolve="LeftParen" />
       </node>
       <node concept="3F2HdR" id="1vDgt48Nz57" role="3EZMnx">
-        <property role="1cu_pB" value="2" />
+        <property role="1cu_pB" value="gtguBGO/2" />
         <property role="2czwfO" value="," />
         <ref role="1NtTu8" to="tpf8:1vDgt48Nz4_" resolve="actualArgument" />
         <node concept="3F0ifn" id="1vDgt48Nz58" role="2czzBI">
@@ -5032,7 +5020,7 @@
       </node>
       <node concept="3F0ifn" id="1vDgt48Nz5h" role="3EZMnx">
         <property role="3F0ifm" value=")" />
-        <property role="1cu_pB" value="1" />
+        <property role="1cu_pB" value="gtgu$YJ/1" />
         <ref role="1k5W1q" node="hFCSUmN" resolve="RightParen" />
         <node concept="VPM3Z" id="1vDgt48Nz5i" role="3F10Kt">
           <property role="VOm3f" value="true" />
@@ -5152,7 +5140,7 @@
     <node concept="3EZMnI" id="1jRYachI_an" role="2wV5jI">
       <node concept="3F0ifn" id="1jRYachI_ao" role="3EZMnx">
         <property role="3F0ifm" value="$CALL$" />
-        <property role="1cu_pB" value="1" />
+        <property role="1cu_pB" value="gtgu$YJ/1" />
         <ref role="1ERwB7" node="gZDQqLq" resolve="MacroSymbol_Actions" />
         <ref role="1k5W1q" node="hG2hEjs" resolve="macroStart" />
         <node concept="11LMrY" id="1x7fy1ybyP6" role="3F10Kt" />
@@ -5237,10 +5225,10 @@
           <property role="VOm3f" value="false" />
         </node>
         <node concept="VechU" id="1jRYachIAPL" role="3F10Kt">
-          <property role="Vb096" value="DARK_BLUE" />
+          <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
         </node>
         <node concept="30gYXW" id="1jRYachIAPM" role="3F10Kt">
-          <property role="Vb096" value="lightGray" />
+          <property role="Vb096" value="fLJRk5A/lightGray" />
         </node>
       </node>
       <node concept="3F0ifn" id="1jRYachIAPN" role="3EZMnx">
@@ -5298,7 +5286,7 @@
           <node concept="3EZMnI" id="1jRYachKJQm" role="3EZMnx">
             <node concept="1iCGBv" id="1jRYachIAQl" role="3EZMnx">
               <property role="1$x2rV" value="&lt;choose template&gt;" />
-              <property role="1cu_pB" value="2" />
+              <property role="1cu_pB" value="gtguBGO/2" />
               <ref role="1NtTu8" to="tpf8:1vDgt48Nz5N" resolve="template" />
               <node concept="1sVBvm" id="1jRYachIAQm" role="1sWHZn">
                 <node concept="3F0A7n" id="1jRYachIAQn" role="2wV5jI">
@@ -5336,7 +5324,7 @@
     <ref role="1XX52x" to="tpf8:fP7Vmt2" resolve="NodeMacro" />
     <node concept="OXEIz" id="1XKlXmqe6XB" role="1XvlXI">
       <node concept="1ou48o" id="1XKlXmqe6XC" role="OY2wv">
-        <property role="1ezIyd" value="custom" />
+        <property role="1ezIyd" value="gWZP3tU/custom" />
         <node concept="3bZ5Sz" id="79k837C0OeZ" role="1eyP2E">
           <ref role="3bZ5Sy" to="tpf8:fP7Vmt2" resolve="NodeMacro" />
         </node>
@@ -5417,9 +5405,7 @@
                 </node>
                 <node concept="1OKiuA" id="7of$qLgIxaU" role="2OqNvi">
                   <node concept="1Q80Hx" id="7of$qLgIxby" role="lBI5i" />
-                  <node concept="2B6iha" id="7of$qLgQlH4" role="lGT1i">
-                    <property role="1lyBwo" value="first" />
-                  </node>
+                  <node concept="2B6iha" id="7of$qLgQlH4" role="lGT1i" />
                   <node concept="3cmrfG" id="7of$qLgIxcY" role="3dN3m$">
                     <property role="3cmrfH" value="1" />
                   </node>
@@ -6131,7 +6117,7 @@
     <node concept="3EZMnI" id="4sWLrFSCvNa" role="2wV5jI">
       <node concept="3F0ifn" id="4sWLrFSCvNb" role="3EZMnx">
         <property role="3F0ifm" value="$LABEL$" />
-        <property role="1cu_pB" value="1" />
+        <property role="1cu_pB" value="gtgu$YJ/1" />
         <ref role="1k5W1q" node="hG2hEjs" resolve="macroStart" />
         <ref role="1ERwB7" node="gZDQqLq" resolve="MacroSymbol_Actions" />
         <node concept="11LMrY" id="1x7fy1ybRzT" role="3F10Kt" />
@@ -6154,10 +6140,10 @@
           <property role="VOm3f" value="false" />
         </node>
         <node concept="VechU" id="4sWLrFSCvNo" role="3F10Kt">
-          <property role="Vb096" value="DARK_BLUE" />
+          <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
         </node>
         <node concept="30gYXW" id="4sWLrFSCvNp" role="3F10Kt">
-          <property role="Vb096" value="lightGray" />
+          <property role="Vb096" value="fLJRk5A/lightGray" />
         </node>
       </node>
       <node concept="3F0ifn" id="4sWLrFSCvNq" role="3EZMnx">
@@ -6189,7 +6175,7 @@
     <node concept="3EZMnI" id="18LSMZREuYy" role="2wV5jI">
       <node concept="3F0ifn" id="18LSMZREuYz" role="3EZMnx">
         <property role="3F0ifm" value="$INSERT$" />
-        <property role="1cu_pB" value="1" />
+        <property role="1cu_pB" value="gtgu$YJ/1" />
         <ref role="1ERwB7" node="gZDQqLq" resolve="MacroSymbol_Actions" />
         <ref role="1k5W1q" node="hG2hEjs" resolve="macroStart" />
         <node concept="A1WHu" id="6GI$fc4d6N0" role="3vIgyS">
@@ -6208,10 +6194,10 @@
           <property role="VOm3f" value="false" />
         </node>
         <node concept="VechU" id="18LSMZREuYG" role="3F10Kt">
-          <property role="Vb096" value="DARK_BLUE" />
+          <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
         </node>
         <node concept="30gYXW" id="18LSMZREuYH" role="3F10Kt">
-          <property role="Vb096" value="lightGray" />
+          <property role="Vb096" value="fLJRk5A/lightGray" />
         </node>
       </node>
       <node concept="3F0ifn" id="18LSMZREuYI" role="3EZMnx">
@@ -6241,7 +6227,7 @@
           </node>
           <node concept="3F1sOY" id="18LSMZREuZ6" role="3EZMnx">
             <property role="1$x2rV" value="&lt;none&gt;" />
-            <property role="1cu_pB" value="2" />
+            <property role="1cu_pB" value="gtguBGO/2" />
             <ref role="1NtTu8" to="tpf8:18LSMZREuZd" resolve="createNodeQuery" />
           </node>
           <node concept="VPM3Z" id="18LSMZREuZ7" role="3F10Kt">
@@ -6266,7 +6252,7 @@
     <node concept="3EZMnI" id="30c0HY8gA7N" role="2wV5jI">
       <node concept="3F0ifn" id="30c0HY8gA7P" role="3EZMnx">
         <property role="3F0ifm" value="$WEAVE$" />
-        <property role="1cu_pB" value="1" />
+        <property role="1cu_pB" value="gtgu$YJ/1" />
         <ref role="1ERwB7" node="gZDQqLq" resolve="MacroSymbol_Actions" />
         <ref role="1k5W1q" node="hG2hEjs" resolve="macroStart" />
         <node concept="A1WHu" id="6GI$fc4d7E4" role="3vIgyS">
@@ -6288,10 +6274,10 @@
           <property role="VOm3f" value="false" />
         </node>
         <node concept="VechU" id="30c0HY8gA8q" role="3F10Kt">
-          <property role="Vb096" value="DARK_BLUE" />
+          <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
         </node>
         <node concept="30gYXW" id="30c0HY8gA8r" role="3F10Kt">
-          <property role="Vb096" value="lightGray" />
+          <property role="Vb096" value="fLJRk5A/lightGray" />
         </node>
       </node>
       <node concept="3F0ifn" id="30c0HY8gA8s" role="3EZMnx">
@@ -6321,7 +6307,7 @@
           </node>
           <node concept="3F1sOY" id="30c0HY8gA98" role="3EZMnx">
             <property role="1$x2rV" value="&lt;current source node&gt;" />
-            <property role="1cu_pB" value="2" />
+            <property role="1cu_pB" value="gtguBGO/2" />
             <ref role="1NtTu8" to="tpf8:30c0HY8gA7F" resolve="nodesToWeaveQuery" />
           </node>
           <node concept="VPM3Z" id="30c0HY8gA99" role="3F10Kt">
@@ -6389,7 +6375,7 @@
     <node concept="3EZMnI" id="4mp7qFmD2qM" role="2wV5jI">
       <node concept="3F0ifn" id="4mp7qFmD2qN" role="3EZMnx">
         <property role="3F0ifm" value="$VAR$" />
-        <property role="1cu_pB" value="1" />
+        <property role="1cu_pB" value="gtgu$YJ/1" />
         <ref role="1ERwB7" node="gZDQqLq" resolve="MacroSymbol_Actions" />
         <ref role="1k5W1q" node="hG2hEjs" resolve="macroStart" />
         <node concept="11LMrY" id="1x7fy1ybR_L" role="3F10Kt" />
@@ -6412,7 +6398,7 @@
           </node>
         </node>
         <node concept="Vb9p2" id="4mp7qFmDqPs" role="3F10Kt">
-          <property role="Vbekb" value="BOLD" />
+          <property role="Vbekb" value="g1_k_vY/BOLD" />
         </node>
       </node>
       <node concept="PMmxH" id="4mp7qFmD2qQ" role="3EZMnx">
@@ -6427,10 +6413,10 @@
           <property role="VOm3f" value="false" />
         </node>
         <node concept="VechU" id="4mp7qFmD2qV" role="3F10Kt">
-          <property role="Vb096" value="DARK_BLUE" />
+          <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
         </node>
         <node concept="30gYXW" id="4mp7qFmD2qW" role="3F10Kt">
-          <property role="Vb096" value="lightGray" />
+          <property role="Vb096" value="fLJRk5A/lightGray" />
         </node>
       </node>
       <node concept="3F0ifn" id="4mp7qFmD2qX" role="3EZMnx">
@@ -6499,7 +6485,7 @@
     <node concept="3EZMnI" id="2H5po9pnBex" role="2wV5jI">
       <node concept="3F0ifn" id="2H5po9pnBey" role="3EZMnx">
         <property role="3F0ifm" value="$TRACE$" />
-        <property role="1cu_pB" value="1" />
+        <property role="1cu_pB" value="gtgu$YJ/1" />
         <ref role="1ERwB7" node="gZDQqLq" resolve="MacroSymbol_Actions" />
         <ref role="1k5W1q" node="hG2hEjs" resolve="macroStart" />
         <node concept="A1WHu" id="6GI$fc4d7E0" role="3vIgyS">
@@ -6518,10 +6504,10 @@
           <property role="VOm3f" value="false" />
         </node>
         <node concept="VechU" id="2H5po9pnBeF" role="3F10Kt">
-          <property role="Vb096" value="DARK_BLUE" />
+          <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
         </node>
         <node concept="30gYXW" id="2H5po9pnBeG" role="3F10Kt">
-          <property role="Vb096" value="lightGray" />
+          <property role="Vb096" value="fLJRk5A/lightGray" />
         </node>
       </node>
       <node concept="3F0ifn" id="2H5po9pnBeH" role="3EZMnx">
@@ -6597,7 +6583,7 @@
               <property role="1Intyy" value="true" />
               <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
               <node concept="30gYXW" id="hF0kJSn" role="3F10Kt">
-                <property role="Vb096" value="orange" />
+                <property role="Vb096" value="fLwANPp/orange" />
               </node>
             </node>
           </node>
@@ -6620,7 +6606,7 @@
     <node concept="3EZMnI" id="QzR6ThJinI" role="2wV5jI">
       <node concept="3F0ifn" id="QzR6ThJinJ" role="3EZMnx">
         <property role="3F0ifm" value="$SWITCH$" />
-        <property role="1cu_pB" value="1" />
+        <property role="1cu_pB" value="gtgu$YJ/1" />
         <ref role="1k5W1q" node="hG2hEjs" resolve="macroStart" />
         <ref role="1ERwB7" node="gZDQqLq" resolve="MacroSymbol_Actions" />
         <node concept="11LMrY" id="5lAt$u$8JMZ" role="3F10Kt" />
@@ -6705,10 +6691,10 @@
           <property role="VOm3f" value="false" />
         </node>
         <node concept="VechU" id="QzR6ThJirK" role="3F10Kt">
-          <property role="Vb096" value="DARK_BLUE" />
+          <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
         </node>
         <node concept="30gYXW" id="QzR6ThJirL" role="3F10Kt">
-          <property role="Vb096" value="lightGray" />
+          <property role="Vb096" value="fLJRk5A/lightGray" />
         </node>
       </node>
       <node concept="3F0ifn" id="QzR6ThJirM" role="3EZMnx">
@@ -6766,7 +6752,7 @@
           <node concept="3EZMnI" id="QzR6ThJiuo" role="3EZMnx">
             <node concept="1iCGBv" id="QzR6ThJiup" role="3EZMnx">
               <property role="1$x2rV" value="&lt;choose template&gt;" />
-              <property role="1cu_pB" value="2" />
+              <property role="1cu_pB" value="gtguBGO/2" />
               <ref role="1NtTu8" to="tpf8:1vDgt48Nz5N" resolve="template" />
               <node concept="1sVBvm" id="QzR6ThJiuq" role="1sWHZn">
                 <node concept="3F0A7n" id="QzR6ThJiur" role="2wV5jI">
@@ -6968,14 +6954,13 @@
     <ref role="1XX52x" to="tpf8:6uPxrhfjpgV" resolve="DropAttributeRule" />
     <node concept="3EZMnI" id="6uPxrhfjveY" role="2wV5jI">
       <node concept="1iCGBv" id="6uPxrhfjveZ" role="3EZMnx">
-        <property role="1cu_pB" value="2" />
+        <property role="1cu_pB" value="gtguBGO/2" />
         <property role="1$x2rV" value="&lt;choose concept&gt;" />
         <ref role="1k5W1q" to="tpd3:hwSE21y" resolve="ReferenceOnConcept" />
         <ref role="1NtTu8" to="tpf8:6uPxrhfjpgY" resolve="applicableConcept" />
         <node concept="1sVBvm" id="6uPxrhfjvf0" role="1sWHZn">
           <node concept="3F0A7n" id="6uPxrhfjvf1" role="2wV5jI">
             <property role="1Intyy" value="true" />
-            <property role="1cu_pB" value="0" />
             <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
           </node>
         </node>
@@ -7498,7 +7483,7 @@
             <node concept="1sVBvm" id="7u6$QPxIdZJ" role="1sWHZn">
               <node concept="1HlG4h" id="7u6$QPxIe6b" role="2wV5jI">
                 <node concept="VechU" id="3WrGJHz0qzy" role="3F10Kt">
-                  <property role="Vb096" value="DARK_MAGENTA" />
+                  <property role="Vb096" value="g1_qVrt/DARK_MAGENTA" />
                 </node>
                 <node concept="1HfYo3" id="7u6$QPxIe6d" role="1HlULh">
                   <node concept="3TQlhw" id="7u6$QPxIe6f" role="1Hhtcw">
@@ -7580,7 +7565,7 @@
           <property role="VOm3f" value="true" />
         </node>
         <node concept="VLuvy" id="7u6$QPxLyY4" role="3F10Kt">
-          <property role="Vb096" value="gray" />
+          <property role="Vb096" value="fLJRk5_/gray" />
         </node>
       </node>
       <node concept="3EZMnI" id="7u6$QPxIdZ4" role="3EZMnx">
@@ -7595,7 +7580,7 @@
           </node>
         </node>
         <node concept="3F1sOY" id="2I_OWQOyQ0j" role="3EZMnx">
-          <property role="1cu_pB" value="2" />
+          <property role="1cu_pB" value="gtguBGO/2" />
           <ref role="1NtTu8" to="tpf8:2I_OWQOyPKU" resolve="referentFunction" />
         </node>
       </node>
@@ -7738,9 +7723,7 @@
                     <node concept="3c8USq" id="6GI$fc4bRXl" role="2Oq$k0" />
                     <node concept="1OKiuA" id="6GI$fc4bQip" role="2OqNvi">
                       <node concept="1Q80Hx" id="6GI$fc4bQiq" role="lBI5i" />
-                      <node concept="2B6iha" id="6GI$fc4bQir" role="lGT1i">
-                        <property role="1lyBwo" value="first" />
-                      </node>
+                      <node concept="2B6iha" id="6GI$fc4bQir" role="lGT1i" />
                       <node concept="3cmrfG" id="6GI$fc4bQis" role="3dN3m$">
                         <property role="3cmrfH" value="1" />
                       </node>
@@ -7811,13 +7794,10 @@
     <property role="3GE5qa" value="macro" />
     <ref role="1XX52x" to="tpf8:UesZ_nZ2HY" resolve="VarMacro2" />
     <node concept="3EZMnI" id="UesZ_nZlRy" role="2wV5jI">
-      <property role="1cu_pB" value="0" />
       <node concept="3EZMnI" id="UesZ_nZlZw" role="3EZMnx">
-        <property role="1cu_pB" value="0" />
         <node concept="2iRkQZ" id="UesZ_nZlZx" role="2iSdaV" />
         <node concept="3F0ifn" id="UesZ_nZlRz" role="3EZMnx">
           <property role="3F0ifm" value="$VAR$" />
-          <property role="1cu_pB" value="0" />
           <ref role="1ERwB7" node="gZDQqLq" resolve="MacroSymbol_Actions" />
           <ref role="1k5W1q" node="hG2hEjs" resolve="macroStart" />
           <node concept="11LMrY" id="UesZ_nZlR$" role="3F10Kt" />
@@ -7829,11 +7809,9 @@
           </node>
         </node>
         <node concept="3EZMnI" id="UesZ_nZlZW" role="3EZMnx">
-          <property role="1cu_pB" value="0" />
           <node concept="2iRfu4" id="1PTczGeLPUA" role="2iSdaV" />
           <node concept="3XFhqQ" id="1PTczGeN2CP" role="3EZMnx" />
           <node concept="3F2HdR" id="UesZ_nZlZN" role="3EZMnx">
-            <property role="1cu_pB" value="0" />
             <ref role="1NtTu8" to="tpf8:UesZ_nZ2Id" resolve="variables" />
             <node concept="2iRkQZ" id="UesZ_nZlZP" role="2czzBx" />
           </node>
@@ -7851,10 +7829,10 @@
           <property role="VOm3f" value="false" />
         </node>
         <node concept="VechU" id="UesZ_nZoDd" role="3F10Kt">
-          <property role="Vb096" value="DARK_BLUE" />
+          <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
         </node>
         <node concept="30gYXW" id="UesZ_nZoDe" role="3F10Kt">
-          <property role="Vb096" value="lightGray" />
+          <property role="Vb096" value="fLJRk5A/lightGray" />
         </node>
       </node>
       <node concept="3F0ifn" id="UesZ_nZoDf" role="3EZMnx">
@@ -7884,7 +7862,6 @@
     <property role="3GE5qa" value="macro" />
     <ref role="1XX52x" to="tpf8:UesZ_nZ2I6" resolve="VarDeclaration" />
     <node concept="3F0A7n" id="UesZ_nZoBV" role="2wV5jI">
-      <property role="1cu_pB" value="0" />
       <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
       <ref role="1k5W1q" node="5Ex$Jzqi8Mt" resolve="VariableRef" />
     </node>

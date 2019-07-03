@@ -101,9 +101,6 @@
         <child id="1175517851849" name="errorString" index="2MkJ7o" />
       </concept>
       <concept id="1179832490862" name="jetbrains.mps.lang.typesystem.structure.CreateStrongLessThanInequationStatement" flags="nn" index="2NvLDW" />
-      <concept id="1212056081426" name="jetbrains.mps.lang.typesystem.structure.AbstractInequationStatement" flags="ng" index="Ob1k8">
-        <property id="1212056105818" name="inequationPriority" index="Ob790" />
-      </concept>
       <concept id="1227096620180" name="jetbrains.mps.lang.typesystem.structure.ReferenceMessageTarget" flags="ng" index="2OE7Q9">
         <reference id="1227096645744" name="linkDeclaration" index="2OEe5H" />
       </concept>
@@ -197,7 +194,6 @@
     <property role="TrG5h" value="typeof_UpdateModelProcedure" />
     <node concept="3clFbS" id="hsgMqDA" role="18ibNy">
       <node concept="1ZobV4" id="hsgMz3e" role="3cqZAp">
-        <property role="Ob790" value="0" />
         <node concept="mw_s8" id="hsgMzCE" role="1ZfhKB">
           <node concept="2c44tf" id="hsgMzCF" role="mwGJk">
             <node concept="H_c77" id="hsgM$yB" role="2c44tc" />
@@ -227,7 +223,6 @@
     <property role="3GE5qa" value="RefActions" />
     <node concept="3clFbS" id="hteVZVy" role="18ibNy">
       <node concept="1ZobV4" id="hteW4UH" role="3cqZAp">
-        <property role="Ob790" value="0" />
         <node concept="mw_s8" id="hteW4UI" role="1ZfhKB">
           <node concept="2c44tf" id="hteW4UJ" role="mwGJk">
             <node concept="3Tqbb2" id="hteW4UK" role="2c44tc" />
@@ -271,7 +266,6 @@
     <property role="3GE5qa" value="RefActions" />
     <node concept="3clFbS" id="hteWfd3" role="18ibNy">
       <node concept="1ZobV4" id="hteWg24" role="3cqZAp">
-        <property role="Ob790" value="0" />
         <node concept="mw_s8" id="hteWg25" role="1ZfhKB">
           <node concept="2c44tf" id="hteWg26" role="mwGJk">
             <node concept="_YKpA" id="hteWg27" role="2c44tc">
@@ -319,7 +313,6 @@
     <property role="3GE5qa" value="RefActions" />
     <node concept="3clFbS" id="hteXeQU" role="18ibNy">
       <node concept="1ZobV4" id="hteXfqA" role="3cqZAp">
-        <property role="Ob790" value="0" />
         <node concept="mw_s8" id="hteXfqB" role="1ZfhKB">
           <node concept="2c44tf" id="hteXfqC" role="mwGJk">
             <node concept="H_c77" id="hteXfqD" role="2c44tc" />
@@ -349,7 +342,6 @@
     <property role="3GE5qa" value="RefActions" />
     <node concept="3clFbS" id="hteXK1h" role="18ibNy">
       <node concept="1ZobV4" id="hteXNzR" role="3cqZAp">
-        <property role="Ob790" value="0" />
         <node concept="mw_s8" id="hteXNzS" role="1ZfhKB">
           <node concept="2c44tf" id="hteXNzT" role="mwGJk">
             <node concept="3Tqbb2" id="hteXNzU" role="2c44tc" />
@@ -369,7 +361,6 @@
         </node>
       </node>
       <node concept="1ZobV4" id="hteXN$0" role="3cqZAp">
-        <property role="Ob790" value="0" />
         <node concept="mw_s8" id="hteXN$1" role="1ZfhKB">
           <node concept="2c44tf" id="hteXN$2" role="mwGJk">
             <node concept="17QB3L" id="hP3ccOV" role="2c44tc" />
@@ -399,7 +390,6 @@
     <property role="3GE5qa" value="RefActions" />
     <node concept="3clFbS" id="hteYn$M" role="18ibNy">
       <node concept="1ZobV4" id="hteYo1o" role="3cqZAp">
-        <property role="Ob790" value="0" />
         <node concept="mw_s8" id="hteYo1p" role="1ZfhKB">
           <node concept="2c44tf" id="hteYo1q" role="mwGJk">
             <node concept="H_c77" id="hteYo1r" role="2c44tc" />
@@ -429,7 +419,6 @@
     <property role="3GE5qa" value="RefActions" />
     <node concept="3clFbS" id="hteZ3Zw" role="18ibNy">
       <node concept="1ZobV4" id="hteZ4Z1" role="3cqZAp">
-        <property role="Ob790" value="0" />
         <node concept="mw_s8" id="hteZ4Z2" role="1ZfhKB">
           <node concept="2c44tf" id="hteZ4Z3" role="mwGJk">
             <node concept="3Tqbb2" id="hteZ4Z4" role="2c44tc" />
@@ -449,7 +438,6 @@
         </node>
       </node>
       <node concept="1ZobV4" id="hteZ4Za" role="3cqZAp">
-        <property role="Ob790" value="0" />
         <node concept="mw_s8" id="hteZ4Zb" role="1ZfhKB">
           <node concept="2c44tf" id="hteZ4Zc" role="mwGJk">
             <node concept="17QB3L" id="hP3ccpX" role="2c44tc" />
@@ -630,7 +618,6 @@
     <property role="3GE5qa" value="RefDecl.Target.Module" />
     <node concept="3clFbS" id="3P0Mnt4FwFL" role="18ibNy">
       <node concept="2NvLDW" id="3P0Mnt4FwFW" role="3cqZAp">
-        <property role="Ob790" value="0" />
         <property role="3wDh2S" value="true" />
         <node concept="mw_s8" id="3P0Mnt4FwG0" role="1ZfhKB">
           <node concept="2c44tf" id="3P0Mnt4FwG1" role="mwGJk">

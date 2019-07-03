@@ -2,7 +2,7 @@
 <model ref="r:469ff9d9-5a2e-4029-9891-ce478377a661(testmaterial.moveConcept.SourceLanguage.structure)">
   <persistence version="9" />
   <languages>
-    <use id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure" version="7" />
+    <use id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure" version="9" />
     <devkit ref="78434eb8-b0e5-444b-850d-e7c4ad2da9ab(jetbrains.mps.devkit.aspect.structure)" />
   </languages>
   <imports>
@@ -105,9 +105,9 @@
     <ref role="1TJDcQ" node="Aje6V9mQF4" resolve="MoveConcept_CompletionSuperconcept" />
     <node concept="1TJgyj" id="42N3XtufKXK" role="1TKVEi">
       <property role="IQ2ns" value="4662087456932171632" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="child" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <ref role="20lvS9" node="Aje6V9mQF4" resolve="MoveConcept_CompletionSuperconcept" />
     </node>
     <node concept="PrWs8" id="42N3XtufKYd" role="PzmwI">

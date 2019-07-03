@@ -182,7 +182,6 @@
         <child id="2360002718792622193" name="resource" index="ElOA9" />
       </concept>
       <concept id="3668957831723333672" name="jetbrains.mps.make.script.structure.ReportFeedbackStatement" flags="nn" index="1daRAt">
-        <property id="3668957831723333678" name="feedback" index="1daRAr" />
         <child id="3668957831723336680" name="message" index="1daK9t" />
       </concept>
     </language>
@@ -432,11 +431,10 @@
         </node>
       </node>
       <node concept="15KeVb" id="4Ql6f00WXs1" role="15LFui">
-        <property role="3HPxAp" value="BEFORE" />
         <ref role="15KeV8" to="tpcq:5L5h3brvzcf" resolve="generate" />
       </node>
       <node concept="15KeVb" id="4Ql6f00WXs2" role="15LFui">
-        <property role="3HPxAp" value="AFTER" />
+        <property role="3HPxAp" value="7fB872ucjBA/AFTER" />
         <ref role="15KeV8" to="tpcq:5L5h3brvz8m" resolve="configure" />
       </node>
       <node concept="1aIAsN" id="4Ql6f00WXs3" role="1aI7mi">
@@ -465,7 +463,7 @@
       <property role="1xVfUM" value="1" />
       <property role="TrG5h" value="reportFiles" />
       <node concept="15KeVb" id="1sKpG65mBfx" role="15LFui">
-        <property role="3HPxAp" value="AFTER" />
+        <property role="3HPxAp" value="7fB872ucjBA/AFTER" />
         <ref role="15KeV8" to="tpcq:5L5h3brvDHA" resolve="textGen" />
       </node>
       <node concept="15KeVb" id="1sKpG65mBft" role="15LFui">
@@ -529,7 +527,6 @@
                               </node>
                               <node concept="3clFbS" id="1sKpG65mEjV" role="3clF47">
                                 <node concept="1daRAt" id="1sKpG65mJcE" role="3cqZAp">
-                                  <property role="1daRAr" value="INFO" />
                                   <node concept="3cpWs3" id="1sKpG65mJcH" role="1daK9t">
                                     <node concept="37vLTw" id="2BHiRxglt6j" role="3uHU7w">
                                       <ref role="3cqZAo" node="1sKpG65mEjT" resolve="file" />

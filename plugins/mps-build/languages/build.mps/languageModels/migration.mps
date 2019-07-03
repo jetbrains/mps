@@ -206,6 +206,9 @@
         <reference id="5455284157993910961" name="concept" index="2pJxaS" />
         <child id="5455284157993911099" name="values" index="2pJxcM" />
       </concept>
+      <concept id="4056363777117001481" name="jetbrains.mps.lang.quotation.structure.StringToTypedValueMigrationInfo" flags="ng" index="AAgTk">
+        <property id="2173356959483005420" name="stringValueMigrated" index="3qcH_f" />
+      </concept>
       <concept id="1196866233735" name="jetbrains.mps.lang.quotation.structure.PropertyAntiquotation" flags="ng" index="2EMmih" />
       <concept id="8182547171709752110" name="jetbrains.mps.lang.quotation.structure.NodeBuilderExpression" flags="nn" index="36biLy">
         <child id="8182547171709752112" name="expression" index="36biLW" />
@@ -2588,6 +2591,7 @@
                           <property role="2qtEX9" value="text" />
                           <property role="P4ACc" value="798100da-4f0a-421a-b991-71f8c50ce5d2/4903714810883702019/4903714810883755350" />
                           <property role="3hQQBS" value="BuildTextStringPart" />
+                          <property role="3qcH_f" value="true" />
                           <node concept="37vLTw" id="36cV00CDAXC" role="2c44t1">
                             <ref role="3cqZAo" node="36cV00CD_vC" resolve="name" />
                           </node>
@@ -2859,7 +2863,7 @@
                       <node concept="9aQIb" id="36cV00C$An_" role="9aQIa">
                         <node concept="3clFbS" id="36cV00C$AnA" role="9aQI4">
                           <node concept="2xdQw9" id="36cV00C$ktx" role="3cqZAp">
-                            <property role="2xdLsb" value="error" />
+                            <property role="2xdLsb" value="gZ5fh_4/error" />
                             <node concept="Xl_RD" id="36cV00C$ktz" role="9lYJi">
                               <property role="Xl_RC" value="Discovered unknown content in the BuildMps_IdeaPlugin instance" />
                             </node>

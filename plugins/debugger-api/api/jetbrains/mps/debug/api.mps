@@ -7,7 +7,7 @@
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="-1" />
     <use id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples" version="-1" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
   </languages>
   <imports>
@@ -3714,7 +3714,7 @@
                       </node>
                       <node concept="3clFbS" id="$msJHFI5IO" role="TDEfX">
                         <node concept="RRSsy" id="3jYQuSB32Yz" role="3cqZAp">
-                          <property role="RRSoG" value="error" />
+                          <property role="RRSoG" value="gZ5fh_4/error" />
                           <node concept="Xl_RD" id="$msJHFI5JS" role="RRSoy" />
                           <node concept="37vLTw" id="$msJHFI5JU" role="RRSow">
                             <ref role="3cqZAo" node="$msJHFI5IM" resolve="t" />
@@ -4365,7 +4365,7 @@
                 <node concept="3clFbJ" id="74nKSDp1YNi" role="3cqZAp">
                   <node concept="3clFbS" id="74nKSDp1YNj" role="3clFbx">
                     <node concept="RRSsy" id="3jYQuSB33VA" role="3cqZAp">
-                      <property role="RRSoG" value="warn" />
+                      <property role="RRSoG" value="gZ5fksE/warn" />
                       <node concept="3cpWs3" id="74nKSDp1YNT" role="RRSoy">
                         <node concept="Xl_RD" id="74nKSDp1YNU" role="3uHU7B">
                           <property role="Xl_RC" value="Could not create breakpoint for node " />

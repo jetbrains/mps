@@ -2,7 +2,7 @@
 <model ref="r:5d9868cc-091b-49b3-85eb-87af773e0884(jetbrains.mps.console.ideCommands.editor)">
   <persistence version="9" />
   <languages>
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="12" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="13" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -111,7 +111,6 @@
         <reference id="1140103550593" name="relationDeclaration" index="1NtTu8" />
       </concept>
       <concept id="1073389214265" name="jetbrains.mps.lang.editor.structure.EditorCellModel" flags="ng" index="3EYTF0">
-        <property id="1130859485024" name="attractsFocus" index="1cu_pB" />
         <reference id="1139959269582" name="actionMap" index="1ERwB7" />
       </concept>
       <concept id="1073389446423" name="jetbrains.mps.lang.editor.structure.CellModel_Collection" flags="sn" stub="3013115976261988961" index="3EZMnI">
@@ -336,7 +335,7 @@
     <property role="TrG5h" value="ModelReference_Actions" />
     <ref role="1h_SK9" to="caxt:6M9lfhD$0$C" resolve="ModelReference" />
     <node concept="1hA7zw" id="6M9lfhD$UPY" role="1h_SK8">
-      <property role="1hAc7j" value="delete_action_id" />
+      <property role="1hAc7j" value="g_hAxAO/delete_action_id" />
       <node concept="1hAIg9" id="6M9lfhD$UPZ" role="1hA7z_">
         <node concept="3clFbS" id="6M9lfhD$UQ0" role="2VODD2">
           <node concept="3clFbF" id="6M9lfhD$UQ5" role="3cqZAp">
@@ -374,7 +373,7 @@
     <property role="TrG5h" value="NodeReference_Actions" />
     <ref role="1h_SK9" to="caxt:6M9lfhD_4eJ" resolve="NodeReference" />
     <node concept="1hA7zw" id="6M9lfhD_6B$" role="1h_SK8">
-      <property role="1hAc7j" value="delete_action_id" />
+      <property role="1hAc7j" value="g_hAxAO/delete_action_id" />
       <node concept="1hAIg9" id="6M9lfhD_6B_" role="1hA7z_">
         <node concept="3clFbS" id="6M9lfhD_6BA" role="2VODD2">
           <node concept="3clFbJ" id="14TMHtHdv09" role="3cqZAp">
@@ -579,7 +578,6 @@
     <ref role="1XX52x" to="caxt:59iQg8ryOmC" resolve="OfAspectOperation_old" />
     <node concept="3EZMnI" id="3ZZC$G5C4uw" role="2wV5jI">
       <node concept="PMmxH" id="2wdLO7KhY6T" role="3EZMnx">
-        <property role="1cu_pB" value="0" />
         <ref role="1k5W1q" to="tpen:hgVS8CF" resolve="KeyWord" />
         <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
       </node>

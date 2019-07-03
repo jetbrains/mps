@@ -12,7 +12,7 @@
     <dependency reexport="false">772f6dcd-8c0d-48f7-869c-908e036f7c8e(jetbrains.mps.sampleXML)</dependency>
   </dependencies>
   <languageVersions>
-    <language slang="l:ceab5195-25ea-4f22-9b92-103b95ca8c0c:jetbrains.mps.lang.core" version="1" />
+    <language slang="l:ceab5195-25ea-4f22-9b92-103b95ca8c0c:jetbrains.mps.lang.core" version="2" />
     <language slang="l:772f6dcd-8c0d-48f7-869c-908e036f7c8e:jetbrains.mps.sampleXML" version="0" />
     <language slang="l:82fb751d-f7fb-4b58-a16e-303356f8e0af:jetbrains.mps.samples.generator_demo.demoLang6" version="0" />
     <language slang="l:b1ccc903-f5a9-42d1-add9-80ac0e69d662:jetbrains.mps.samples.generator_demo.demoLang7" version="0" />

@@ -3,12 +3,12 @@
   <persistence version="9" />
   <languages>
     <use id="df345b11-b8c7-4213-ac66-48d2a9b75d88" name="jetbrains.mps.baseLanguageInternal" version="0" />
-    <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="2" />
+    <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="3" />
     <use id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext" version="1" />
-    <use id="d4615e3b-d671-4ba9-af01-2b78369b0ba7" name="jetbrains.mps.lang.pattern" version="1" />
+    <use id="d4615e3b-d671-4ba9-af01-2b78369b0ba7" name="jetbrains.mps.lang.pattern" version="2" />
     <use id="13744753-c81f-424a-9c1b-cf8943bf4e86" name="jetbrains.mps.lang.sharedConcepts" version="0" />
-    <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="1" />
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="12" />
+    <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="2" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="13" />
     <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="2" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
@@ -438,6 +438,9 @@
       <concept id="1196350785112" name="jetbrains.mps.lang.quotation.structure.Antiquotation" flags="ng" index="2c44te" />
       <concept id="1196350785113" name="jetbrains.mps.lang.quotation.structure.Quotation" flags="nn" index="2c44tf">
         <child id="1196350785114" name="quotedNode" index="2c44tc" />
+      </concept>
+      <concept id="4056363777117001481" name="jetbrains.mps.lang.quotation.structure.StringToTypedValueMigrationInfo" flags="ng" index="AAgTk">
+        <property id="2173356959483005420" name="stringValueMigrated" index="3qcH_f" />
       </concept>
       <concept id="1196866233735" name="jetbrains.mps.lang.quotation.structure.PropertyAntiquotation" flags="ng" index="2EMmih" />
     </language>
@@ -6936,7 +6939,7 @@
       <ref role="30HIoZ" to="gbdf:fQU43XxJAR" resolve="LinkArgument" />
       <node concept="j$LIH" id="2nFrfBg7NKQ" role="1lVwrX">
         <node concept="1lLz0L" id="2nFrfBg7Owt" role="1lHHLF">
-          <property role="1lMjX7" value="error" />
+          <property role="1lMjX7" value="h1lM37o/error" />
           <property role="1lLB17" value="LinkArgument instance not allowed here" />
         </node>
       </node>
@@ -7540,7 +7543,7 @@
       <ref role="30HIoZ" to="gbdf:fQU43XxJAR" resolve="LinkArgument" />
       <node concept="j$LIH" id="2nFrfBgil2h" role="1lVwrX">
         <node concept="1lLz0L" id="2nFrfBgil2i" role="1lHHLF">
-          <property role="1lMjX7" value="error" />
+          <property role="1lMjX7" value="h1lM37o/error" />
           <property role="1lLB17" value="LinkArgument instance not allowed here" />
         </node>
       </node>
@@ -7834,7 +7837,7 @@
       <ref role="30HIoZ" to="gbdf:fQU43XL8M5" resolve="PropertyArgument" />
       <node concept="j$LIH" id="6IvYjBznlo0" role="1lVwrX">
         <node concept="1lLz0L" id="6IvYjBznlo3" role="1lHHLF">
-          <property role="1lMjX7" value="error" />
+          <property role="1lMjX7" value="h1lM37o/error" />
           <property role="1lLB17" value="PropertyArgument instance not allowed here" />
         </node>
       </node>
@@ -7925,7 +7928,7 @@
       <ref role="30HIoZ" to="gbdf:fQU43XL8M5" resolve="PropertyArgument" />
       <node concept="j$LIH" id="6IvYjBzE65a" role="1lVwrX">
         <node concept="1lLz0L" id="6IvYjBzE65b" role="1lHHLF">
-          <property role="1lMjX7" value="error" />
+          <property role="1lMjX7" value="h1lM37o/error" />
           <property role="1lLB17" value="PropertyArgument instance not allowed here" />
         </node>
       </node>
@@ -8332,7 +8335,7 @@
       <ref role="30HIoZ" to="gbdf:fQU43XL8M5" resolve="PropertyArgument" />
       <node concept="j$LIH" id="6IvYjB$ox18" role="1lVwrX">
         <node concept="1lLz0L" id="6IvYjB$ox19" role="1lHHLF">
-          <property role="1lMjX7" value="error" />
+          <property role="1lMjX7" value="h1lM37o/error" />
           <property role="1lLB17" value="PropertyArgument instance not allowed here" />
         </node>
       </node>
@@ -8596,7 +8599,7 @@
       <ref role="30HIoZ" to="gbdf:fQU43XxJAR" resolve="LinkArgument" />
       <node concept="j$LIH" id="6IvYjB$yfhH" role="1lVwrX">
         <node concept="1lLz0L" id="6IvYjB$yfhI" role="1lHHLF">
-          <property role="1lMjX7" value="error" />
+          <property role="1lMjX7" value="h1lM37o/error" />
           <property role="1lLB17" value="LinkArgument instance not allowed here" />
         </node>
       </node>
@@ -9922,7 +9925,7 @@
       <ref role="30HIoZ" to="gbdf:fQU43XL8M5" resolve="PropertyArgument" />
       <node concept="j$LIH" id="1gT9jIwr67Y" role="1lVwrX">
         <node concept="1lLz0L" id="1gT9jIwr67Z" role="1lHHLF">
-          <property role="1lMjX7" value="error" />
+          <property role="1lMjX7" value="h1lM37o/error" />
           <property role="1lLB17" value="PropertyArgument instance not allowed here" />
         </node>
       </node>
@@ -11663,7 +11666,7 @@
                   <node concept="1h_SRR" id="4lIfGX81OqF" role="2c44tc">
                     <property role="TrG5h" value="DefaultDiagramElementActionMap" />
                     <node concept="1hA7zw" id="4lIfGX81QPm" role="1h_SK8">
-                      <property role="1hAc7j" value="delete_action_id" />
+                      <property role="1hAc7j" value="g_hAxAO/delete_action_id" />
                       <node concept="1hAIg9" id="4lIfGX81QPn" role="1hA7z_">
                         <node concept="3clFbS" id="4lIfGX82sAd" role="2VODD2">
                           <node concept="3clFbF" id="4lIfGX82sAm" role="3cqZAp">
@@ -11681,6 +11684,7 @@
                     <node concept="2EMmih" id="4lIfGX81Qku" role="lGtFl">
                       <property role="2qtEX9" value="name" />
                       <property role="P4ACc" value="ceab5195-25ea-4f22-9b92-103b95ca8c0c/1169194658468/1169194664001" />
+                      <property role="3qcH_f" value="true" />
                       <node concept="2OqwBi" id="4lIfGX81QOK" role="2c44t1">
                         <node concept="1iwH7S" id="4lIfGX81QOL" role="2Oq$k0" />
                         <node concept="2piZGk" id="4lIfGX81QOM" role="2OqNvi">

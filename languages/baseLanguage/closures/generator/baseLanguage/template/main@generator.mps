@@ -3,11 +3,11 @@
   <persistence version="9" />
   <languages>
     <use id="df345b11-b8c7-4213-ac66-48d2a9b75d88" name="jetbrains.mps.baseLanguageInternal" version="0" />
-    <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="2" />
+    <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="3" />
     <use id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext" version="1" />
     <use id="13744753-c81f-424a-9c1b-cf8943bf4e86" name="jetbrains.mps.lang.sharedConcepts" version="0" />
-    <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="1" />
-    <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="1" />
+    <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="2" />
+    <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="2" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -1599,7 +1599,7 @@
         <node concept="j$LIH" id="4IA0O2zpPEQ" role="14YRTM">
           <node concept="1lLz0L" id="4IA0O2zpPER" role="1lHHLF">
             <property role="1lLB17" value="Initializer expected" />
-            <property role="1lMjX7" value="error" />
+            <property role="1lMjX7" value="h1lM37o/error" />
           </node>
         </node>
       </node>
@@ -3117,7 +3117,7 @@
         <node concept="j$LIH" id="hHq$b5X" role="14YRTM">
           <node concept="1lLz0L" id="hHq$b5Y" role="1lHHLF">
             <property role="1lLB17" value="No adaptable found for classifier type" />
-            <property role="1lMjX7" value="error" />
+            <property role="1lMjX7" value="h1lM37o/error" />
           </node>
         </node>
         <node concept="14ZrTv" id="hHq$b5Z" role="14ZwWg">
@@ -5496,7 +5496,7 @@
   </node>
   <node concept="1pmfR0" id="huxQY5_">
     <property role="TrG5h" value="prep_ClosureLiteral" />
-    <property role="1v3f2W" value="pre_processing" />
+    <property role="1v3f2W" value="hpv1Zf2/pre_processing" />
     <property role="1v3jST" value="true" />
     <node concept="1pplIY" id="huxQY5A" role="1pqMTA">
       <node concept="3clFbS" id="huxQY5B" role="2VODD2">
@@ -10919,7 +10919,7 @@
   </node>
   <node concept="1pmfR0" id="hva6U2w">
     <property role="TrG5h" value="prep_FunctionType_BaseMethodCall_adaptations" />
-    <property role="1v3f2W" value="pre_processing" />
+    <property role="1v3f2W" value="hpv1Zf2/pre_processing" />
     <property role="3GE5qa" value="adaptations" />
     <node concept="1pplIY" id="hva6U2x" role="1pqMTA">
       <node concept="3clFbS" id="hva6U2y" role="2VODD2">
@@ -11439,7 +11439,7 @@
   </node>
   <node concept="1pmfR0" id="hvb5rmz">
     <property role="TrG5h" value="prep_FunctionType_AssignmentExpression_adaptations" />
-    <property role="1v3f2W" value="pre_processing" />
+    <property role="1v3f2W" value="hpv1Zf2/pre_processing" />
     <property role="3GE5qa" value="adaptations" />
     <node concept="1pplIY" id="hvb5A$V" role="1pqMTA">
       <node concept="3clFbS" id="hvb5A$W" role="2VODD2">
@@ -11624,7 +11624,7 @@
   </node>
   <node concept="1pmfR0" id="hvbeufP">
     <property role="TrG5h" value="prep_FunctionType_VariableDeclaration_adaptations" />
-    <property role="1v3f2W" value="pre_processing" />
+    <property role="1v3f2W" value="hpv1Zf2/pre_processing" />
     <property role="3GE5qa" value="adaptations" />
     <node concept="1pplIY" id="hvbe_zA" role="1pqMTA">
       <node concept="3clFbS" id="hvbe_zB" role="2VODD2">
@@ -12516,7 +12516,7 @@
   </node>
   <node concept="1pmfR0" id="hwoB$ZA">
     <property role="TrG5h" value="mod_VariableDeclarations_make_final" />
-    <property role="1v3f2W" value="pre_processing" />
+    <property role="1v3f2W" value="hpv1Zf2/pre_processing" />
     <property role="1v3jST" value="true" />
     <node concept="1pplIY" id="hwoB$ZB" role="1pqMTA">
       <node concept="3clFbS" id="hwoB$ZC" role="2VODD2">
@@ -12596,7 +12596,7 @@
   </node>
   <node concept="1pmfR0" id="hxTZc5H">
     <property role="TrG5h" value="prep_FunctionType_InstanceMethodCallOperation_adaptations" />
-    <property role="1v3f2W" value="pre_processing" />
+    <property role="1v3f2W" value="hpv1Zf2/pre_processing" />
     <property role="3GE5qa" value="adaptations" />
     <node concept="1pplIY" id="hxTZc5I" role="1pqMTA">
       <node concept="3clFbS" id="hxTZc5J" role="2VODD2">
@@ -13483,7 +13483,7 @@
   </node>
   <node concept="1pmfR0" id="h$ftl_n">
     <property role="TrG5h" value="mod_LocalVariableWrappers" />
-    <property role="1v3f2W" value="pre_processing" />
+    <property role="1v3f2W" value="hpv1Zf2/pre_processing" />
     <property role="1v3jST" value="true" />
     <node concept="1pplIY" id="h$ftl_o" role="1pqMTA">
       <node concept="3clFbS" id="h$ftl_p" role="2VODD2">
@@ -14337,7 +14337,7 @@
   </node>
   <node concept="1pmfR0" id="h$gsKvE">
     <property role="TrG5h" value="flag_ThisExpression_remove" />
-    <property role="1v3f2W" value="pre_processing" />
+    <property role="1v3f2W" value="hpv1Zf2/pre_processing" />
     <node concept="1pplIY" id="h$gsKvF" role="1pqMTA">
       <node concept="3clFbS" id="h$gsKvG" role="2VODD2">
         <node concept="1DcWWT" id="4MeD585wjzp" role="3cqZAp">
@@ -14567,7 +14567,7 @@
   </node>
   <node concept="1pmfR0" id="hG2TZ3R">
     <property role="TrG5h" value="prep_FunctionType_ReturnStatement_adaptation" />
-    <property role="1v3f2W" value="pre_processing" />
+    <property role="1v3f2W" value="hpv1Zf2/pre_processing" />
     <property role="3GE5qa" value="adaptations" />
     <node concept="1pplIY" id="hG2TZ3S" role="1pqMTA">
       <node concept="3clFbS" id="hG2TZ3T" role="2VODD2">
@@ -14722,7 +14722,7 @@
   </node>
   <node concept="1pmfR0" id="hJYB6$0">
     <property role="TrG5h" value="prep_FunctionType_ClassCreator_adaptations" />
-    <property role="1v3f2W" value="pre_processing" />
+    <property role="1v3f2W" value="hpv1Zf2/pre_processing" />
     <property role="3GE5qa" value="adaptations" />
     <node concept="1pplIY" id="hJYB6$1" role="1pqMTA">
       <node concept="3clFbS" id="hJYB6$2" role="2VODD2">
@@ -18113,7 +18113,7 @@
           <node concept="j$LIH" id="64Dkk6sKdR5" role="150oIE">
             <node concept="1lLz0L" id="64Dkk6sKdR6" role="1lHHLF">
               <property role="1lLB17" value="Could not find the class concept" />
-              <property role="1lMjX7" value="warning" />
+              <property role="1lMjX7" value="h1lM1mk/warning" />
             </node>
           </node>
         </node>
@@ -18367,7 +18367,7 @@
           <node concept="j$LIH" id="5wbBYSJnO8d" role="150oIE">
             <node concept="1lLz0L" id="5wbBYSJnO8e" role="1lHHLF">
               <property role="1lLB17" value="Could not find the class concept" />
-              <property role="1lMjX7" value="warning" />
+              <property role="1lMjX7" value="h1lM1mk/warning" />
             </node>
           </node>
         </node>
@@ -18858,7 +18858,7 @@
   </node>
   <node concept="1pmfR0" id="4hjzUxVeg_2">
     <property role="TrG5h" value="prep_FunctionType_ExpressionStatement_adaptations" />
-    <property role="1v3f2W" value="pre_processing" />
+    <property role="1v3f2W" value="hpv1Zf2/pre_processing" />
     <property role="3GE5qa" value="adaptations" />
     <node concept="1pplIY" id="4hjzUxVeg_3" role="1pqMTA">
       <node concept="3clFbS" id="4hjzUxVeg_4" role="2VODD2">
@@ -19394,7 +19394,7 @@
   </node>
   <node concept="1pmfR0" id="5cszklvPRwM">
     <property role="TrG5h" value="prep_FunctionType_AnonymousClass_adaptations" />
-    <property role="1v3f2W" value="pre_processing" />
+    <property role="1v3f2W" value="hpv1Zf2/pre_processing" />
     <property role="3GE5qa" value="adaptations" />
     <node concept="1pplIY" id="5cszklvPRwN" role="1pqMTA">
       <node concept="3clFbS" id="5cszklvPRwO" role="2VODD2">
@@ -19587,7 +19587,7 @@
   </node>
   <node concept="1pmfR0" id="4ATCuJslpOa">
     <property role="TrG5h" value="prep_FunctionType_ExtensionMethodCall_adaptations" />
-    <property role="1v3f2W" value="pre_processing" />
+    <property role="1v3f2W" value="hpv1Zf2/pre_processing" />
     <property role="3GE5qa" value="adaptations" />
     <node concept="1pplIY" id="4ATCuJslpOb" role="1pqMTA">
       <node concept="3clFbS" id="4ATCuJslpOc" role="2VODD2">

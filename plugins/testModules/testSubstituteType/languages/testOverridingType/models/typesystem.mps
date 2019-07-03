@@ -57,6 +57,9 @@
       <concept id="1196350785113" name="jetbrains.mps.lang.quotation.structure.Quotation" flags="nn" index="2c44tf">
         <child id="1196350785114" name="quotedNode" index="2c44tc" />
       </concept>
+      <concept id="4056363777117001481" name="jetbrains.mps.lang.quotation.structure.StringToTypedValueMigrationInfo" flags="ng" index="AAgTk">
+        <property id="2173356959483005420" name="stringValueMigrated" index="3qcH_f" />
+      </concept>
       <concept id="1196866233735" name="jetbrains.mps.lang.quotation.structure.PropertyAntiquotation" flags="ng" index="2EMmih" />
     </language>
     <language id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem">
@@ -133,6 +136,7 @@
                     <property role="P4ACc" value="ceab5195-25ea-4f22-9b92-103b95ca8c0c/1169194658468/1169194664001" />
                     <property role="2qtEX9" value="name" />
                     <property role="3hQQBS" value="PresenceCondition" />
+                    <property role="3qcH_f" value="true" />
                     <node concept="2OqwBi" id="5GQb1e$ArDv" role="2c44t1">
                       <node concept="1YBJjd" id="5GQb1e$ArBg" role="2Oq$k0">
                         <ref role="1YBMHb" node="5GQb1e$AjRz" resolve="overridingPrimNumConstant" />

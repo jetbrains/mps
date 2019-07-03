@@ -14,10 +14,10 @@
     <use id="756e911c-3f1f-4a48-bdf5-a2ceb91b723c" name="jetbrains.mps.execution.settings" version="0" />
     <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="4" />
     <use id="ef7bf5ac-d06c-4342-b11d-e42104eb9343" name="jetbrains.mps.lang.plugin.standalone" version="0" />
-    <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="1" />
+    <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="2" />
     <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="2" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
   </languages>
   <imports>
@@ -9888,7 +9888,7 @@
         <node concept="3clFbJ" id="4oL4a6snsrq" role="3cqZAp">
           <node concept="3clFbS" id="4oL4a6snsrt" role="3clFbx">
             <node concept="RRSsy" id="3djbh3AV5du" role="3cqZAp">
-              <property role="RRSoG" value="error" />
+              <property role="RRSoG" value="gZ5fh_4/error" />
               <node concept="Xl_RD" id="3djbh3AV5dw" role="RRSoy">
                 <property role="Xl_RC" value="The script location is empty" />
               </node>
@@ -10078,7 +10078,7 @@
             </node>
             <node concept="3clFbS" id="3KKoaE5GAT9" role="TDEfX">
               <node concept="RRSsy" id="3jYQuSB36B0" role="3cqZAp">
-                <property role="RRSoG" value="error" />
+                <property role="RRSoG" value="gZ5fh_4/error" />
                 <node concept="Xl_RD" id="3KKoaE5GBdU" role="RRSoy">
                   <property role="Xl_RC" value="Cannot assemble plugins" />
                 </node>
@@ -11122,7 +11122,7 @@
             <node concept="3clFbJ" id="4oL4a6sn9kF" role="3cqZAp">
               <node concept="3clFbS" id="4oL4a6sn9kI" role="3clFbx">
                 <node concept="RRSsy" id="3jYQuSB36B8" role="3cqZAp">
-                  <property role="RRSoG" value="error" />
+                  <property role="RRSoG" value="gZ5fh_4/error" />
                   <node concept="Xl_RD" id="4oL4a6spk34" role="RRSoy">
                     <property role="Xl_RC" value="Can not generate deploy script" />
                   </node>
@@ -13140,7 +13140,7 @@
         <node concept="3clFbJ" id="75GAJQ7FZ7c" role="3cqZAp">
           <node concept="3clFbS" id="75GAJQ7FZ7e" role="3clFbx">
             <node concept="RRSsy" id="3jYQuSB36L3" role="3cqZAp">
-              <property role="RRSoG" value="error" />
+              <property role="RRSoG" value="gZ5fh_4/error" />
               <node concept="Xl_RD" id="7RBnpUxvlDk" role="RRSoy">
                 <property role="Xl_RC" value="Already destroyed" />
               </node>
@@ -14142,7 +14142,7 @@
             </node>
             <node concept="3clFbS" id="3L_EFdmAYWH" role="TDEfX">
               <node concept="RRSsy" id="3jYQuSB36L9" role="3cqZAp">
-                <property role="RRSoG" value="error" />
+                <property role="RRSoG" value="gZ5fh_4/error" />
                 <node concept="Xl_RD" id="3L_EFdmAZTK" role="RRSoy">
                   <property role="Xl_RC" value="Process could not be constructed" />
                 </node>
@@ -14517,7 +14517,7 @@
               </node>
               <node concept="3clFbS" id="3L_EFdmAzx6" role="TDEfX">
                 <node concept="RRSsy" id="3jYQuSB36Lh" role="3cqZAp">
-                  <property role="RRSoG" value="info" />
+                  <property role="RRSoG" value="h1akgim/info" />
                   <node concept="Xl_RD" id="3L_EFdmA$m0" role="RRSoy" />
                   <node concept="37vLTw" id="3L_EFdmA$m2" role="RRSow">
                     <ref role="3cqZAo" node="3L_EFdmAzx2" resolve="e" />
@@ -14534,7 +14534,7 @@
               </node>
               <node concept="3clFbS" id="3L_EFdmA$o0" role="TDEfX">
                 <node concept="RRSsy" id="3jYQuSB36Lp" role="3cqZAp">
-                  <property role="RRSoG" value="error" />
+                  <property role="RRSoG" value="gZ5fh_4/error" />
                   <node concept="Xl_RD" id="3L_EFdmA_em" role="RRSoy" />
                   <node concept="37vLTw" id="3L_EFdmA_eo" role="RRSow">
                     <ref role="3cqZAo" node="3L_EFdmA$nY" resolve="e" />
@@ -14554,7 +14554,7 @@
                 <node concept="TDmWw" id="3L_EFdmAOzE" role="TEbGg">
                   <node concept="3clFbS" id="3L_EFdmAOzF" role="TDEfX">
                     <node concept="RRSsy" id="3jYQuSB36Lx" role="3cqZAp">
-                      <property role="RRSoG" value="error" />
+                      <property role="RRSoG" value="gZ5fh_4/error" />
                       <node concept="Xl_RD" id="3L_EFdmAPfn" role="RRSoy">
                         <property role="Xl_RC" value="Cannot close stream" />
                       </node>
@@ -15526,7 +15526,7 @@
                               </node>
                             </node>
                             <node concept="RRSsy" id="3jYQuSB39Jk" role="3cqZAp">
-                              <property role="RRSoG" value="warn" />
+                              <property role="RRSoG" value="gZ5fksE/warn" />
                               <node concept="3cpWs3" id="2MAXfGnRmon" role="RRSoy">
                                 <node concept="Xl_RD" id="2MAXfGnRmA4" role="3uHU7w">
                                   <property role="Xl_RC" value="The code is being executed within the current MPS environment and might do a lot of damage if written without caution." />
@@ -15537,7 +15537,7 @@
                               </node>
                             </node>
                             <node concept="RRSsy" id="3jYQuSB39Ju" role="3cqZAp">
-                              <property role="RRSoG" value="info" />
+                              <property role="RRSoG" value="h1akgim/info" />
                               <node concept="Xl_RD" id="1Q6gjHMsj10" role="RRSoy">
                                 <property role="Xl_RC" value="Executing tests in-process" />
                               </node>
@@ -15804,7 +15804,7 @@
                               </node>
                             </node>
                             <node concept="RRSsy" id="3jYQuSB39J$" role="3cqZAp">
-                              <property role="RRSoG" value="info" />
+                              <property role="RRSoG" value="h1akgim/info" />
                               <node concept="37vLTw" id="KJkipGwCs_" role="RRSoy">
                                 <ref role="3cqZAo" node="4br3RNOQdHx" resolve="terminateMessage" />
                               </node>

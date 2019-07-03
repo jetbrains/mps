@@ -440,7 +440,7 @@
       <property role="2aFKle" value="false" />
       <node concept="3clFbS" id="3eUNqOk7mHy" role="3clF47">
         <node concept="RRSsy" id="3jYQuSB36W4" role="3cqZAp">
-          <property role="RRSoG" value="info" />
+          <property role="RRSoG" value="h1akgim/info" />
           <node concept="Xl_RD" id="5lulEoOd9oU" role="RRSoy">
             <property role="Xl_RC" value="Creating IDEA environment" />
           </node>
@@ -1518,7 +1518,7 @@
       <property role="DiZV1" value="false" />
       <node concept="3clFbS" id="6z7xhWku8L4" role="3clF47">
         <node concept="RRSsy" id="3jYQuSB36Wa" role="3cqZAp">
-          <property role="RRSoG" value="info" />
+          <property role="RRSoG" value="h1akgim/info" />
           <node concept="Xl_RD" id="3HZVFd9gFnC" role="RRSoy">
             <property role="Xl_RC" value="Creating IdeaCmdApplication" />
           </node>
@@ -1879,7 +1879,7 @@
           </node>
         </node>
         <node concept="RRSsy" id="3jYQuSB36Wg" role="3cqZAp">
-          <property role="RRSoG" value="info" />
+          <property role="RRSoG" value="h1akgim/info" />
           <node concept="Xl_RD" id="kMLKV374An" role="RRSoy">
             <property role="Xl_RC" value="Creating an empty project" />
           </node>
@@ -2674,7 +2674,7 @@
                           </node>
                           <node concept="3clFbS" id="5lgc1fDHibk" role="SfCbr">
                             <node concept="RRSsy" id="3jYQuSB36Wm" role="3cqZAp">
-                              <property role="RRSoG" value="info" />
+                              <property role="RRSoG" value="h1akgim/info" />
                               <node concept="3cpWs3" id="5lgc1fDHibm" role="RRSoy">
                                 <node concept="Xl_RD" id="5lgc1fDHibn" role="3uHU7w">
                                   <property role="Xl_RC" value="'" />

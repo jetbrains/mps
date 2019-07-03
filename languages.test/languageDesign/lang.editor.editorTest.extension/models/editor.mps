@@ -2,7 +2,7 @@
 <model ref="r:2c409c47-8bbf-4581-80a0-6efb7238889e(jetbrains.mps.lang.editor.editorTest.extension.editor)">
   <persistence version="9" />
   <languages>
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="12" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="13" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -88,7 +88,7 @@
     <node concept="3yKHl_" id="3XXPjz_Hz$e" role="3yKHlx">
       <ref role="3yKHlE" to="kyx7:3Ds1Q8AqfoH" resolve="ActionMap1" />
       <node concept="1uNiC7" id="3XXPjz_HzAs" role="1uG4Zv">
-        <property role="1uNiC2" value="delete_action_id" />
+        <property role="1uNiC2" value="g_hAxAO/delete_action_id" />
       </node>
     </node>
   </node>

@@ -2,10 +2,10 @@
 <model ref="r:4d41399e-188a-4eca-90a3-97c5f1c5b668(jetbrains.mps.lang.editor.forms.generator.template.main@generator)">
   <persistence version="9" />
   <languages>
-    <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="2" />
+    <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="3" />
     <use id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext" version="1" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="12" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="13" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
   </languages>
   <imports>
@@ -307,14 +307,17 @@
       </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
+      <concept id="4705942098322609812" name="jetbrains.mps.lang.smodel.structure.EnumMember_IsOperation" flags="ng" index="21noJN">
+        <child id="4705942098322609813" name="member" index="21noJM" />
+      </concept>
+      <concept id="4705942098322467729" name="jetbrains.mps.lang.smodel.structure.EnumMemberReference" flags="ng" index="21nZrQ">
+        <reference id="4705942098322467736" name="decl" index="21nZrZ" />
+      </concept>
       <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
         <reference id="1177026940964" name="conceptDeclaration" index="cht4Q" />
       </concept>
       <concept id="1138411891628" name="jetbrains.mps.lang.smodel.structure.SNodeOperation" flags="nn" index="eCIE_">
         <child id="1144104376918" name="parameter" index="1xVPHs" />
-      </concept>
-      <concept id="1138676077309" name="jetbrains.mps.lang.smodel.structure.EnumMemberReference_Old" flags="nn" index="uoxfO">
-        <reference id="1138676095763" name="enumMember" index="uo_Cq" />
       </concept>
       <concept id="2396822768958367367" name="jetbrains.mps.lang.smodel.structure.AbstractTypeCastExpression" flags="nn" index="$5XWr">
         <child id="6733348108486823193" name="leftExpression" index="1m5AlR" />
@@ -325,9 +328,6 @@
       </concept>
       <concept id="1171407110247" name="jetbrains.mps.lang.smodel.structure.Node_GetAncestorOperation" flags="nn" index="2Xjw5R" />
       <concept id="1139613262185" name="jetbrains.mps.lang.smodel.structure.Node_GetParentOperation" flags="nn" index="1mfA1w" />
-      <concept id="1146171026731" name="jetbrains.mps.lang.smodel.structure.Property_HasValue_Enum" flags="nn" index="3t7uKx">
-        <child id="1146171026732" name="value" index="3t7uKA" />
-      </concept>
       <concept id="1144101972840" name="jetbrains.mps.lang.smodel.structure.OperationParm_Concept" flags="ng" index="1xMEDy">
         <child id="1207343664468" name="conceptArgument" index="ri$Ld" />
       </concept>
@@ -556,12 +556,12 @@
                                 <ref role="3cqZAo" node="2gdyhRQsvew" resolve="it" />
                               </node>
                               <node concept="3TrcHB" id="2gdyhRQsvmo" role="2OqNvi">
-                                <ref role="3TsBF5" to="tpc2:g_hAc3q" resolve="actionId" />
+                                <ref role="3TsBF5" to="tpc2:3Ftr4R6BH0B" resolve="actionId" />
                               </node>
                             </node>
-                            <node concept="3t7uKx" id="2gdyhRQsvmp" role="2OqNvi">
-                              <node concept="uoxfO" id="2gdyhRQsvmq" role="3t7uKA">
-                                <ref role="uo_Cq" to="tpc2:1FSxSwWqMNJ" />
+                            <node concept="21noJN" id="3Ftr4R8L06V" role="2OqNvi">
+                              <node concept="21nZrQ" id="3Ftr4R8L06W" role="21noJM">
+                                <ref role="21nZrZ" to="tpc2:3Ftr4R6BFbn" resolve="click_action_id" />
                               </node>
                             </node>
                           </node>
@@ -1049,12 +1049,12 @@
                                 <ref role="3cqZAo" node="2gdyhRQrHqB" resolve="it" />
                               </node>
                               <node concept="3TrcHB" id="2gdyhRQrHq$" role="2OqNvi">
-                                <ref role="3TsBF5" to="tpc2:g_hAc3q" resolve="actionId" />
+                                <ref role="3TsBF5" to="tpc2:3Ftr4R6BH0B" resolve="actionId" />
                               </node>
                             </node>
-                            <node concept="3t7uKx" id="2gdyhRQrHq_" role="2OqNvi">
-                              <node concept="uoxfO" id="2gdyhRQrHqA" role="3t7uKA">
-                                <ref role="uo_Cq" to="tpc2:1FSxSwWqMNJ" />
+                            <node concept="21noJN" id="3Ftr4R8L06X" role="2OqNvi">
+                              <node concept="21nZrQ" id="3Ftr4R8L06Y" role="21noJM">
+                                <ref role="21nZrZ" to="tpc2:3Ftr4R6BFbn" resolve="click_action_id" />
                               </node>
                             </node>
                           </node>
@@ -1452,7 +1452,7 @@
     </node>
     <node concept="j$LIH" id="43TOVRWQswS" role="jxRDz">
       <node concept="1lLz0L" id="43TOVRWQswU" role="1lHHLF">
-        <property role="1lMjX7" value="error" />
+        <property role="1lMjX7" value="h1lM37o/error" />
         <property role="1lLB17" value="Unsupported Checkbox UI" />
       </node>
     </node>
@@ -1540,7 +1540,7 @@
       <ref role="2rZz_L" to="tpc2:g_h_SNY" resolve="CellActionMapDeclaration" />
     </node>
     <node concept="3lhOvk" id="1bmO0L$pQS4" role="3lj3bC">
-      <property role="13Pg2o" value="true" />
+      <property role="13Pg2o" value="h94ayQF/true" />
       <ref role="30HIoZ" to="f55a:hlYdQAfmdS" resolve="CellModel_Checkbox" />
       <ref role="3lhOvi" node="1bmO0L$pRDd" resolve="emptyActionMap" />
       <ref role="2sgKRv" node="1bmO0L$pSQ4" resolve="defaultActionMap" />
@@ -1561,7 +1561,7 @@
       </node>
     </node>
     <node concept="3lhOvk" id="1bmO0L$pU12" role="3lj3bC">
-      <property role="13Pg2o" value="true" />
+      <property role="13Pg2o" value="h94ayQF/true" />
       <ref role="30HIoZ" to="f55a:hlYdQAfmdS" resolve="CellModel_Checkbox" />
       <ref role="3lhOvi" node="1bmO0L$pUUK" resolve="emptyKeyMap" />
       <ref role="2sgKRv" node="1bmO0L$pWja" resolve="defaultKeyMap" />
@@ -1679,7 +1679,7 @@
     <node concept="1h_SRR" id="2gdyhRQrG90" role="13RCb5">
       <property role="TrG5h" value="Container" />
       <node concept="1hA7zw" id="2gdyhRQrGyf" role="1h_SK8">
-        <property role="1hAc7j" value="click_action_id" />
+        <property role="1hAc7j" value="1FSxSwWqMNJ/click_action_id" />
         <property role="1hHO97" value="toggle checkbox" />
         <node concept="1hAIg9" id="2gdyhRQrGyg" role="1hA7z_">
           <node concept="3clFbS" id="2gdyhRQrGyh" role="2VODD2">

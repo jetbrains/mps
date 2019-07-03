@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="-1" />
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="12" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="13" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -144,7 +144,6 @@
         <reference id="7991336459489872009" name="outputConcept" index="3EoQqy" />
       </concept>
       <concept id="1073389214265" name="jetbrains.mps.lang.editor.structure.EditorCellModel" flags="ng" index="3EYTF0">
-        <property id="1130859485024" name="attractsFocus" index="1cu_pB" />
         <child id="1142887637401" name="renderingCondition" index="pqm2j" />
         <child id="1164826688380" name="menuDescriptor" index="P5bDN" />
       </concept>
@@ -342,7 +341,6 @@
       <node concept="2iRkQZ" id="cqRc3G8w2p" role="2iSdaV" />
       <node concept="3EZMnI" id="cqRc3G8w2A" role="3EZMnx">
         <node concept="PMmxH" id="2wdLO7KhY3K" role="3EZMnx">
-          <property role="1cu_pB" value="0" />
           <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
           <ref role="1k5W1q" to="tpen:hgVS8CF" resolve="KeyWord" />
         </node>
@@ -404,7 +402,6 @@
       <node concept="2iRkQZ" id="25jQf71Xii7" role="2iSdaV" />
       <node concept="3EZMnI" id="25jQf71XihO" role="3EZMnx">
         <node concept="PMmxH" id="2wdLO7KhYbj" role="3EZMnx">
-          <property role="1cu_pB" value="0" />
           <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
           <ref role="1k5W1q" to="tpen:hgVS8CF" resolve="KeyWord" />
         </node>
@@ -471,7 +468,7 @@
           <property role="VOm3f" value="true" />
         </node>
         <node concept="VechU" id="2v69eKc7bbH" role="3F10Kt">
-          <property role="Vb096" value="DARK_BLUE" />
+          <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
         </node>
       </node>
       <node concept="3F0ifn" id="2v69eKc7bbI" role="3EZMnx">
@@ -506,7 +503,6 @@
     <node concept="3EZMnI" id="6LlKjXrMspr" role="2wV5jI">
       <node concept="3EZMnI" id="6LlKjXrMsps" role="3EZMnx">
         <node concept="PMmxH" id="2wdLO7KhY85" role="3EZMnx">
-          <property role="1cu_pB" value="0" />
           <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
           <ref role="1k5W1q" to="tpen:hgVS8CF" resolve="KeyWord" />
         </node>
@@ -674,7 +670,6 @@
     <node concept="3EZMnI" id="3MnZbusx2ca" role="2wV5jI">
       <node concept="3EZMnI" id="3MnZbusx2cd" role="3EZMnx">
         <node concept="PMmxH" id="2wdLO7KhY6y" role="3EZMnx">
-          <property role="1cu_pB" value="0" />
           <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
           <ref role="1k5W1q" to="tpen:hgVS8CF" resolve="KeyWord" />
         </node>
@@ -724,7 +719,6 @@
     <node concept="3EZMnI" id="3MnZbusxcQN" role="2wV5jI">
       <node concept="3EZMnI" id="3MnZbusxcQQ" role="3EZMnx">
         <node concept="PMmxH" id="2wdLO7KhY5v" role="3EZMnx">
-          <property role="1cu_pB" value="0" />
           <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
           <ref role="1k5W1q" to="tpen:hgVS8CF" resolve="KeyWord" />
         </node>
@@ -809,7 +803,6 @@
     <ref role="1XX52x" to="uhxm:6liWaRMAihJ" resolve="NodeListSource" />
     <node concept="3EZMnI" id="6liWaRMAiql" role="2wV5jI">
       <node concept="PMmxH" id="2wdLO7KhYa7" role="3EZMnx">
-        <property role="1cu_pB" value="0" />
         <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
         <ref role="1k5W1q" to="tpen:hgVS8CF" resolve="KeyWord" />
       </node>
@@ -846,7 +839,6 @@
       <node concept="2iRkQZ" id="66CJzfk0Vv5" role="2iSdaV" />
       <node concept="3EZMnI" id="66CJzfk0Vv6" role="3EZMnx">
         <node concept="PMmxH" id="2wdLO7KhYaH" role="3EZMnx">
-          <property role="1cu_pB" value="0" />
           <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
           <ref role="1k5W1q" to="tpen:hgVS8CF" resolve="KeyWord" />
         </node>
@@ -901,7 +893,6 @@
     <property role="3GE5qa" value="producer.source" />
     <ref role="1XX52x" to="uhxm:3MnZbusxaYm" resolve="RunConfigurationSource" />
     <node concept="PMmxH" id="2wdLO7KhY71" role="2wV5jI">
-      <property role="1cu_pB" value="0" />
       <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
       <ref role="1k5W1q" to="tpen:hgVS8CF" resolve="KeyWord" />
     </node>
@@ -925,7 +916,6 @@
     <ref role="1XX52x" to="uhxm:6liWaRMAihL" resolve="NodeSource" />
     <node concept="3EZMnI" id="6liWaRMAiq5" role="2wV5jI">
       <node concept="PMmxH" id="2wdLO7KhY7h" role="3EZMnx">
-        <property role="1cu_pB" value="0" />
         <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
         <ref role="1k5W1q" to="tpen:hgVS8CF" resolve="KeyWord" />
       </node>
@@ -1004,7 +994,7 @@
         <ref role="1k5W1q" to="tpen:hY9fg1G" resolve="LeftParenAfterName" />
       </node>
       <node concept="3F2HdR" id="4JYgQwOvPg2" role="3EZMnx">
-        <property role="Q2I2d" value="punctuation" />
+        <property role="Q2I2d" value="g$1Qtxb/punctuation" />
         <property role="2czwfO" value="," />
         <ref role="1NtTu8" to="uhxm:4JYgQwOvPg0" resolve="parameter" />
         <node concept="l2Vlx" id="4JYgQwOvPg3" role="2czzBx" />
@@ -1015,7 +1005,6 @@
       </node>
       <node concept="1QoScp" id="7ArQL0$n5J9" role="3EZMnx">
         <property role="1QpmdY" value="true" />
-        <property role="1cu_pB" value="0" />
         <node concept="3F0ifn" id="7ArQL0$n5Jb" role="1QoS34">
           <property role="3F0ifm" value="enabled by default" />
         </node>
@@ -1203,7 +1192,7 @@
         <node concept="3F0ifn" id="5pE1_aqYtvT" role="3EZMnx">
           <property role="3F0ifm" value="can't run" />
           <node concept="VechU" id="5pE1_aqYtvU" role="3F10Kt">
-            <property role="Vb096" value="lightGray" />
+            <property role="Vb096" value="fLJRk5A/lightGray" />
           </node>
           <node concept="pkWqt" id="5pE1_aqYtvV" role="pqm2j">
             <node concept="3clFbS" id="5pE1_aqYtvW" role="2VODD2">
@@ -1296,7 +1285,7 @@
         <node concept="3F0ifn" id="5pE1_aqYtwz" role="3EZMnx">
           <property role="3F0ifm" value="can't debug" />
           <node concept="VechU" id="5pE1_aqYtw$" role="3F10Kt">
-            <property role="Vb096" value="lightGray" />
+            <property role="Vb096" value="fLJRk5A/lightGray" />
           </node>
           <node concept="pkWqt" id="5pE1_aqYtw_" role="pqm2j">
             <node concept="3clFbS" id="5pE1_aqYtwA" role="2VODD2">
@@ -1401,7 +1390,7 @@
         <node concept="3F0ifn" id="5pE1_aqYtxn" role="3EZMnx">
           <property role="3F0ifm" value="can't run" />
           <node concept="VechU" id="5pE1_aqYtxo" role="3F10Kt">
-            <property role="Vb096" value="lightGray" />
+            <property role="Vb096" value="fLJRk5A/lightGray" />
           </node>
           <node concept="pkWqt" id="5pE1_aqYtxp" role="pqm2j">
             <node concept="3clFbS" id="5pE1_aqYtxq" role="2VODD2">
@@ -1504,7 +1493,7 @@
         <node concept="3F0ifn" id="5pE1_aqYty6" role="3EZMnx">
           <property role="3F0ifm" value="can't debug" />
           <node concept="VechU" id="5pE1_aqYty7" role="3F10Kt">
-            <property role="Vb096" value="lightGray" />
+            <property role="Vb096" value="fLJRk5A/lightGray" />
           </node>
           <node concept="pkWqt" id="5pE1_aqYty8" role="pqm2j">
             <node concept="3clFbS" id="5pE1_aqYty9" role="2VODD2">
@@ -1569,7 +1558,6 @@
     <property role="3GE5qa" value="execution.console" />
     <ref role="1XX52x" to="uhxm:1ovLDatOqMj" resolve="ConsoleType" />
     <node concept="PMmxH" id="2wdLO7KhYd_" role="2wV5jI">
-      <property role="1cu_pB" value="0" />
       <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
       <ref role="1k5W1q" to="tpen:hgVS8CF" resolve="KeyWord" />
     </node>
@@ -1608,7 +1596,6 @@
   <node concept="24kQdi" id="4IJMzQ1z1X$">
     <ref role="1XX52x" to="uhxm:4IJMzQ1z1OE" resolve="GetProjectOperation" />
     <node concept="PMmxH" id="2wdLO7KhYap" role="2wV5jI">
-      <property role="1cu_pB" value="0" />
       <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
       <ref role="1k5W1q" to="jfm4:O$iR4JBsQo" resolve="operation" />
     </node>
@@ -1620,7 +1607,7 @@
       <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
       <ref role="1k5W1q" to="tpen:hgVS8CF" resolve="KeyWord" />
       <node concept="Vb9p2" id="6bBAl1hSXuI" role="3F10Kt">
-        <property role="Vbekb" value="ITALIC" />
+        <property role="Vbekb" value="g1_kEg4/ITALIC" />
       </node>
     </node>
   </node>
@@ -1977,7 +1964,7 @@
       </node>
       <node concept="3cWJ9i" id="1wEcoXjJz3x" role="1Qtc8$">
         <node concept="CtIbL" id="1wEcoXjJz3y" role="CtIbM">
-          <property role="CtIbK" value="RIGHT" />
+          <property role="CtIbK" value="30NnNOohrQL/RIGHT" />
         </node>
       </node>
       <node concept="3eGOoe" id="4k06bsQ3sAF" role="1Qtc8$" />

@@ -102,9 +102,9 @@
     <property role="EcuMT" value="8081432364527514967" />
     <ref role="1TJDcQ" to="tpee:fz12cDA" resolve="ClassConcept" />
     <node concept="1TJgyj" id="70B0YGk0BJ7" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="nested" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="8081432364527549383" />
       <ref role="20lvS9" node="70B0YGk0BJ6" resolve="SubConceptToTransformNested" />
     </node>

@@ -16,12 +16,27 @@
       </concept>
     </language>
     <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
+      <concept id="3348158742936976480" name="jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration" flags="ng" index="25R33">
+        <property id="1421157252384165432" name="memberId" index="3tVfz5" />
+        <property id="672037151186491528" name="presentation" index="1L1pqM" />
+        <reference id="899069222106091871" name="oldMember" index="2wpffI" />
+      </concept>
+      <concept id="3348158742936976479" name="jetbrains.mps.lang.structure.structure.EnumerationDeclartaion" flags="ng" index="25R3W">
+        <reference id="1075010451642646892" name="defaultMember" index="1H5jkz" />
+        <child id="3348158742936976577" name="members" index="25R1y" />
+      </concept>
+      <concept id="6491077959632463275" name="jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo" flags="ng" index="3l_iC">
+        <child id="6491077959632463286" name="oldProperty" index="3l_iP" />
+      </concept>
       <concept id="1224240836180" name="jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation" flags="ig" index="asaX9">
         <property id="1225118929411" name="build" index="YLPcu" />
         <property id="1225118933224" name="comment" index="YLQ7P" />
       </concept>
       <concept id="7862711839422615209" name="jetbrains.mps.lang.structure.structure.DocumentedNodeAnnotation" flags="ng" index="t5JxF">
         <property id="7862711839422615217" name="text" index="t5JxN" />
+      </concept>
+      <concept id="1082978164218" name="jetbrains.mps.lang.structure.structure.DataTypeDeclaration" flags="ng" index="AxPO6">
+        <property id="7791109065626895363" name="datatypeId" index="3F6X1D" />
       </concept>
       <concept id="1082978164219" name="jetbrains.mps.lang.structure.structure.EnumerationDataTypeDeclaration_Old" flags="ng" index="AxPO7">
         <property id="1212080844762" name="hasNoDefaultMember" index="PDuV0" />
@@ -32,6 +47,11 @@
       </concept>
       <concept id="1082978499127" name="jetbrains.mps.lang.structure.structure.ConstrainedDataTypeDeclaration" flags="ng" index="Az7Fb">
         <property id="1083066089218" name="constraint" index="FLfZY" />
+      </concept>
+      <concept id="1588368162884797030" name="jetbrains.mps.lang.structure.structure.EnumMigrationInfo" flags="ng" index="2JgGob">
+        <property id="6491077959634662372" name="valueOpMigration" index="3scbB" />
+        <property id="6491077959634650670" name="nameOpMigration" index="3sfsH" />
+        <child id="6491077959632451996" name="oldEnum" index="3lCyv" />
       </concept>
       <concept id="1083171877298" name="jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration_Old" flags="ig" index="M4N5e">
         <property id="1083923523172" name="externalValue" index="1uS6qo" />
@@ -104,51 +124,50 @@
       <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
     <node concept="1TJgyj" id="5KZfyKsUqLK" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="plugins" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="6647099934206700656" />
       <ref role="20lvS9" node="5KZfyKsUo6u" resolve="BuildPlugin" />
     </node>
     <node concept="1TJgyj" id="4RPz6WoY4C_" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="dependencies" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="5617550519002745381" />
       <ref role="20lvS9" node="4RPz6WoY4Cz" resolve="BuildDependency" />
     </node>
     <node concept="1TJgyj" id="4RPz6WoY4Cy" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="macros" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="5617550519002745378" />
       <ref role="20lvS9" node="4RPz6WoY4Cv" resolve="BuildMacro" />
     </node>
     <node concept="1TJgyj" id="6qcrfIJFfrM" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="parts" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="7389400916848080626" />
       <ref role="20lvS9" node="6qcrfIJFdK8" resolve="BuildProjectPart" />
     </node>
     <node concept="1TJgyj" id="34DbxDwQPuJ" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="aspects" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="3542413272732620719" />
       <ref role="20lvS9" node="34DbxDwRlgt" resolve="BuildAspect" />
     </node>
     <node concept="1TJgyj" id="4RPz6WoY4Cs" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="layout" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="5617550519002745372" />
       <ref role="20lvS9" node="4RPz6WoY4Ck" resolve="BuildLayout" />
     </node>
     <node concept="1TJgyj" id="4ahc858UcqY" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="scriptsDir" />
-      <property role="20lbJX" value="0..1" />
       <property role="IQ2ns" value="4796668409958418110" />
       <ref role="20lvS9" node="6mpuAlRavrV" resolve="BuildRelativePath" />
     </node>
@@ -229,9 +248,9 @@
     <property role="EcuMT" value="7389400916848050060" />
     <ref role="1TJDcQ" node="6qcrfIJEWWc" resolve="BuildLayout_AbstractContainer" />
     <node concept="1TJgyj" id="3NagsOfTPim" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="containerName" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="4380385936562148502" />
       <ref role="20lvS9" node="IFRVVI5ZTn" resolve="BuildStringNotEmpty" />
     </node>
@@ -294,21 +313,21 @@
     <property role="EcuMT" value="7389400916848073784" />
     <ref role="1TJDcQ" node="6qcrfIJFdK8" resolve="BuildProjectPart" />
     <node concept="1TJgyj" id="6qcrfIJFdLy" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="sources" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="7389400916848073826" />
       <ref role="20lvS9" node="4zlO3QTanjW" resolve="BuildSource_JavaSources" />
     </node>
     <node concept="1TJgyj" id="2oUTXgLA9qF" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="dependencies" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="2754769020641646251" />
       <ref role="20lvS9" node="2oUTXgLA9pR" resolve="BuildSource_JavaDependency" />
     </node>
     <node concept="1TJgyj" id="1s8OwvM683U" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="options" />
       <property role="IQ2ns" value="1659807394254323962" />
       <ref role="20lvS9" node="1s8OwvM5SHi" resolve="BuildSource_JavaModuleOptions" />
@@ -337,16 +356,16 @@
     <property role="EcuMT" value="7389400916848073810" />
     <ref role="1TJDcQ" node="4zlO3QTanjW" resolve="BuildSource_JavaSources" />
     <node concept="1TJgyj" id="6qcrfIJFdLj" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="basePath" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="7389400916848073811" />
       <ref role="20lvS9" node="6qcrfIJFdKY" resolve="BuildSourcePath" />
     </node>
     <node concept="1TJgyj" id="2oUTXgL_krd" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="folders" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="2754769020641429197" />
       <ref role="20lvS9" node="2oUTXgL_kr6" resolve="BuildSource_JavaContentFolder" />
     </node>
@@ -359,7 +378,7 @@
     <property role="EcuMT" value="7389400916848136194" />
     <ref role="1TJDcQ" node="4RPz6WoY4Cv" resolve="BuildMacro" />
     <node concept="1TJgyj" id="6qcrfIJFv3E" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="defaultPath" />
       <property role="IQ2ns" value="7389400916848144618" />
       <ref role="20lvS9" node="6qcrfIJFdKY" resolve="BuildSourcePath" />
@@ -374,9 +393,8 @@
     <property role="EcuMT" value="7389400916848153117" />
     <ref role="1TJDcQ" node="6mpuAlRavrV" resolve="BuildRelativePath" />
     <node concept="1TJgyj" id="6qcrfIJFx8E" role="1TKVEi">
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="macro" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="7389400916848153130" />
       <ref role="20lvS9" node="6qcrfIJFt02" resolve="BuildFolderMacro" />
     </node>
@@ -396,10 +414,17 @@
     <property role="34LRSv" value="source" />
     <property role="EcuMT" value="2754769020641429190" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
-    <node concept="1TJgyi" id="4zlO3QTanjV" role="1TKVEl">
+    <node concept="1TJgyi" id="3Ftr4R6BHad" role="1TKVEl">
       <property role="TrG5h" value="kind" />
       <property role="IQ2nx" value="5248329904288265467" />
-      <ref role="AX2Wp" node="4zlO3QTanjR" resolve="BuildSource_JavaContentFolderKind" />
+      <ref role="AX2Wp" node="3Ftr4R6BFDM" resolve="BuildSource_JavaContentFolderKind" />
+      <node concept="3l_iC" id="3Ftr4R6BHae" role="lGtFl">
+        <node concept="1TJgyi" id="4zlO3QTanjV" role="3l_iP">
+          <property role="TrG5h" value="kind" />
+          <property role="IQ2nx" value="5248329904288265467" />
+          <ref role="AX2Wp" node="4zlO3QTanjR" resolve="BuildSource_JavaContentFolderKind" />
+        </node>
+      </node>
     </node>
     <node concept="1TJgyi" id="2oUTXgL_kr7" role="1TKVEl">
       <property role="TrG5h" value="relativePath" />
@@ -429,9 +454,8 @@
       <ref role="PrY4T" node="IFRVVI6zqz" resolve="BuildExternalDependency" />
     </node>
     <node concept="1TJgyj" id="2oUTXgLA9qE" role="1TKVEi">
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="module" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="2754769020641646250" />
       <ref role="20lvS9" node="6qcrfIJFdKS" resolve="BuildSource_JavaModule" />
     </node>
@@ -443,9 +467,9 @@
     <property role="EcuMT" value="6057319140845467763" />
     <ref role="1TJDcQ" node="6qcrfIJFdK8" resolve="BuildProjectPart" />
     <node concept="1TJgyj" id="5gfUUDxhech" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="elements" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="6057319140845478673" />
       <ref role="20lvS9" node="5gfUUDxhecw" resolve="BuildSource_JavaLibraryElement" />
     </node>
@@ -475,9 +499,8 @@
       <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
     </node>
     <node concept="1TJgyj" id="4lbsKRp1TRf" role="1TKVEi">
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="library" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="4993211115183250895" />
       <ref role="20lvS9" node="5gfUUDxhbxN" resolve="BuildSource_JavaLibrary" />
     </node>
@@ -491,15 +514,14 @@
     <property role="EcuMT" value="4993211115183325728" />
     <ref role="1TJDcQ" node="4RPz6WoY4Cz" resolve="BuildDependency" />
     <node concept="1TJgyj" id="3_glsEmonOM" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="artifacts" />
       <property role="IQ2ns" value="4129895186893471026" />
       <ref role="20lvS9" node="6qcrfIJFdKY" resolve="BuildSourcePath" />
     </node>
     <node concept="1TJgyj" id="4RPz6WoY4C$" role="1TKVEi">
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="script" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="5617550519002745380" />
       <ref role="20lvS9" node="4RPz6WoY4Cj" resolve="BuildProject" />
     </node>
@@ -545,14 +567,13 @@
   </node>
   <node concept="1TIwiD" id="7usrAn056vL">
     <property role="TrG5h" value="BuildCompositePath" />
-    <property role="2_RsDV" value="none" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
     <property role="3GE5qa" value="SourcePath" />
     <property role="EcuMT" value="8618885170173601777" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="7usrAn056vM" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="tail" />
-      <property role="20lbJX" value="0..1" />
       <property role="IQ2ns" value="8618885170173601778" />
       <ref role="20lvS9" node="7usrAn056vL" resolve="BuildCompositePath" />
     </node>
@@ -569,9 +590,8 @@
     <property role="EcuMT" value="7321017245476976379" />
     <ref role="1TJDcQ" node="6qcrfIJFdKY" resolve="BuildSourcePath" />
     <node concept="1TJgyj" id="6mpuAlRaIJb" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="compositePart" />
-      <property role="20lbJX" value="0..1" />
       <property role="IQ2ns" value="7321017245477039051" />
       <ref role="20lvS9" node="7usrAn056vL" resolve="BuildCompositePath" />
     </node>
@@ -604,7 +624,7 @@
     <property role="EcuMT" value="3767587139141066978" />
     <ref role="1TJDcQ" node="4RPz6WoY4Cv" resolve="BuildMacro" />
     <node concept="1TJgyj" id="2oW$psGOAa8" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="initialValue" />
       <property role="IQ2ns" value="2755237150521975432" />
       <ref role="20lvS9" node="2oW$psGOu6E" resolve="BuildVariableMacroInitValue" />
@@ -643,16 +663,16 @@
     <property role="EcuMT" value="5248329904287794596" />
     <ref role="1TJDcQ" node="4zlO3QT8mNF" resolve="BuildInputFileSet" />
     <node concept="1TJgyj" id="4zlO3QT8$mA" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="dir" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="5248329904287794598" />
       <ref role="20lvS9" node="6qcrfIJFdKY" resolve="BuildSourcePath" />
     </node>
     <node concept="1TJgyj" id="4zlO3QT8$nR" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="selectors" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="5248329904287794679" />
       <ref role="20lvS9" node="4zlO3QT8$mB" resolve="BuildFileSelector" />
     </node>
@@ -666,9 +686,8 @@
     <property role="EcuMT" value="4903714810883702017" />
     <ref role="1TJDcQ" node="4gdvEeQyRNZ" resolve="BuildStringPart" />
     <node concept="1TJgyj" id="4gdvEeQyRO2" role="1TKVEi">
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="macro" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="4903714810883702018" />
       <ref role="20lvS9" node="3h9a8EwPm3y" resolve="BuildVariableMacro" />
     </node>
@@ -722,26 +741,6 @@
     <property role="EcuMT" value="5248329904287739116" />
     <ref role="1TJDcQ" node="4zlO3QT8mNE" resolve="BuildInputResourceSet" />
   </node>
-  <node concept="AxPO7" id="4zlO3QTanjR">
-    <property role="Q2FuW" value="&lt;no kind&gt;" />
-    <property role="3lZH7k" value="derive_from_internal_value" />
-    <property role="PDuV0" value="true" />
-    <property role="TrG5h" value="BuildSource_JavaContentFolderKind" />
-    <property role="3GE5qa" value="Project.Java.Sources" />
-    <ref role="M4eZT" to="tpck:fKAOsGN" resolve="string" />
-    <node concept="M4N5e" id="4zlO3QTanjS" role="M5hS2">
-      <property role="1uS6qv" value="source" />
-      <property role="1uS6qo" value="source" />
-    </node>
-    <node concept="M4N5e" id="4zlO3QTanjT" role="M5hS2">
-      <property role="1uS6qv" value="test" />
-      <property role="1uS6qo" value="test" />
-    </node>
-    <node concept="M4N5e" id="4zlO3QTanjU" role="M5hS2">
-      <property role="1uS6qv" value="excluded" />
-      <property role="1uS6qo" value="excluded" />
-    </node>
-  </node>
   <node concept="1TIwiD" id="4zlO3QT8NAT">
     <property role="TrG5h" value="BuildLayout_Copy" />
     <property role="3GE5qa" value="Layout.File" />
@@ -759,9 +758,9 @@
     <property role="EcuMT" value="5248329904287794582" />
     <ref role="1TJDcQ" node="4zlO3QT8mNF" resolve="BuildInputFileSet" />
     <node concept="1TJgyj" id="4zlO3QT8$mq" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="path" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="5248329904287794586" />
       <ref role="20lvS9" node="6qcrfIJFdKY" resolve="BuildSourcePath" />
     </node>
@@ -797,9 +796,9 @@
     <property role="EcuMT" value="4380385936562003279" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="4gdvEeQzbDb" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="parts" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="4903714810883783243" />
       <ref role="20lvS9" node="4gdvEeQyRNZ" resolve="BuildStringPart" />
     </node>
@@ -814,14 +813,14 @@
     <property role="EcuMT" value="1258644073388922138" />
     <ref role="1TJDcQ" node="3elU8iQ72g4" resolve="BuildSource_JavaCP" />
     <node concept="1TJgyj" id="3elU8iQ72fy" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="path" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="3717132724152837090" />
       <ref role="20lvS9" node="6qcrfIJFdKY" resolve="BuildSourcePath" />
     </node>
     <node concept="1TJgyj" id="7zkpphtJnL6" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="customLocation" />
       <property role="IQ2ns" value="8706695667516275782" />
       <ref role="20lvS9" node="4RsV8qJGJpc" resolve="BuildSource_JavaExternalJarRef" />
@@ -834,9 +833,9 @@
     <property role="EcuMT" value="1258644073389103449" />
     <ref role="1TJDcQ" node="3elU8iQ72g4" resolve="BuildSource_JavaCP" />
     <node concept="1TJgyj" id="3elU8iQ72h0" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="dir" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="3717132724152837184" />
       <ref role="20lvS9" node="6qcrfIJFdKY" resolve="BuildSourcePath" />
     </node>
@@ -848,9 +847,8 @@
     <property role="EcuMT" value="841011766565753074" />
     <ref role="1TJDcQ" node="6qcrfIJF4M5" resolve="BuildLayout_Node" />
     <node concept="1TJgyj" id="IFRVVI4P3O" role="1TKVEi">
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="target" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="841011766565753076" />
       <ref role="20lvS9" node="6qcrfIJF4M5" resolve="BuildLayout_Node" />
     </node>
@@ -879,9 +877,9 @@
     <property role="EcuMT" value="4701820937132281259" />
     <ref role="1TJDcQ" node="34DbxDwRlgt" resolve="BuildAspect" />
     <node concept="1TJgyj" id="450ejGzgSQG" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="parts" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="4701820937132281260" />
       <ref role="20lvS9" to="8xvf:2pKPpytmAa7" resolve="BwfProjectPart" />
     </node>
@@ -891,9 +889,9 @@
     <property role="3GE5qa" value="Layout" />
     <property role="EcuMT" value="4701820937132344003" />
     <node concept="1TJgyj" id="6qcrfIJF4Me" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="children" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="7389400916848037006" />
       <ref role="20lvS9" node="6qcrfIJF4M5" resolve="BuildLayout_Node" />
     </node>
@@ -917,9 +915,8 @@
     <property role="EcuMT" value="2913098736709465755" />
     <ref role="1TJDcQ" node="2xHpXR_cEa4" resolve="BuildLayout_TransparentContainer" />
     <node concept="1TJgyj" id="2xHpXR_dfqu" role="1TKVEi">
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="library" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="2913098736709465758" />
       <ref role="20lvS9" node="5gfUUDxhbxN" resolve="BuildSource_JavaLibrary" />
     </node>
@@ -931,9 +928,9 @@
     <property role="EcuMT" value="1500819558096177282" />
     <ref role="1TJDcQ" node="4zlO3QTanjW" resolve="BuildSource_JavaSources" />
     <node concept="1TJgyj" id="1jjYQYSi0y3" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="resset" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="1500819558096177283" />
       <ref role="20lvS9" node="1ZTcb8AgV3Z" resolve="BuildInputSingleFolder" />
     </node>
@@ -949,9 +946,9 @@
       <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
     </node>
     <node concept="1TJgyj" id="3elU8iQ65L1" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="jar" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="3717132724152589377" />
       <ref role="20lvS9" node="15RAxQWZPkq" resolve="BuildSource_JavaJar" />
     </node>
@@ -969,9 +966,9 @@
     <property role="EcuMT" value="3717132724152913083" />
     <ref role="1TJDcQ" node="5gfUUDxhecw" resolve="BuildSource_JavaLibraryElement" />
     <node concept="1TJgyj" id="3elU8iQ7kMX" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="classpath" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="3717132724152913085" />
       <ref role="20lvS9" node="3elU8iQ72g4" resolve="BuildSource_JavaCP" />
     </node>
@@ -988,9 +985,9 @@
     <property role="EcuMT" value="3717132724153084007" />
     <ref role="1TJDcQ" node="3elU8iQ72g4" resolve="BuildSource_JavaCP" />
     <node concept="1TJgyj" id="3elU8iQ7YxD" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="jars" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="3717132724153084009" />
       <ref role="20lvS9" node="4zlO3QT8$m$" resolve="BuildInputFiles" />
     </node>
@@ -1005,16 +1002,16 @@
     <property role="EcuMT" value="7866279537988666687" />
     <ref role="1TJDcQ" node="4zlO3QT8mNG" resolve="BuildInputFolderSet" />
     <node concept="1TJgyj" id="6OECSZXJgl2" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="dir" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="7866279537988666690" />
       <ref role="20lvS9" node="6qcrfIJFdKY" resolve="BuildSourcePath" />
     </node>
     <node concept="1TJgyj" id="6OECSZXJgl3" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="selectors" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="7866279537988666691" />
       <ref role="20lvS9" node="4zlO3QT8$mB" resolve="BuildFileSelector" />
     </node>
@@ -1026,9 +1023,9 @@
     <property role="EcuMT" value="2303926226081001727" />
     <ref role="1TJDcQ" node="4zlO3QT8mNG" resolve="BuildInputFolderSet" />
     <node concept="1TJgyj" id="1ZTcb8AgV40" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="path" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="2303926226081001728" />
       <ref role="20lvS9" node="6qcrfIJFdKY" resolve="BuildSourcePath" />
     </node>
@@ -1063,9 +1060,8 @@
     <property role="EcuMT" value="2591537044435828004" />
     <ref role="1TJDcQ" node="6qcrfIJF4M5" resolve="BuildLayout_Node" />
     <node concept="1TJgyj" id="2fQZjorRfOA" role="1TKVEi">
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="module" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="2591537044435828006" />
       <ref role="20lvS9" node="2fQZjorRfOB" resolve="BuildSource_CompilablePart" />
     </node>
@@ -1088,9 +1084,9 @@
     <property role="EcuMT" value="6859736767834557908" />
     <ref role="1TJDcQ" node="2oUTXgLA9pR" resolve="BuildSource_JavaDependency" />
     <node concept="1TJgyj" id="4RsV8qJGJsE" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="extJar" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="5610619299014309674" />
       <ref role="20lvS9" node="4RsV8qJGJpc" resolve="BuildSource_JavaExternalJarRef" />
     </node>
@@ -1129,9 +1125,9 @@
     <property role="EcuMT" value="7181125477683370806" />
     <ref role="1TJDcQ" node="6qcrfIJF4M5" resolve="BuildLayout_Node" />
     <node concept="1TJgyj" id="6eCuTcwOLIk" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="fileName" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="7181125477683370900" />
       <ref role="20lvS9" node="IFRVVI5ZTn" resolve="BuildStringNotEmpty" />
     </node>
@@ -1148,16 +1144,15 @@
     <property role="EcuMT" value="7181125477683417252" />
     <ref role="1TJDcQ" node="4RPz6WoY4Cz" resolve="BuildDependency" />
     <node concept="1TJgyj" id="6eCuTcwOX2B" role="1TKVEi">
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="layout" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="7181125477683417255" />
       <ref role="20lvS9" node="6eCuTcwObZ9" resolve="BuildExternalLayout" />
     </node>
     <node concept="1TJgyj" id="6eCuTcwOX2A" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="artifacts" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="7181125477683417254" />
       <ref role="20lvS9" node="6qcrfIJFdKY" resolve="BuildSourcePath" />
     </node>
@@ -1175,16 +1170,15 @@
     <property role="EcuMT" value="5610619299013057363" />
     <ref role="1TJDcQ" node="6qcrfIJF4M5" resolve="BuildLayout_Node" />
     <node concept="1TJgyj" id="4RsV8qJBXHl" role="1TKVEi">
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="target" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="5610619299013057365" />
       <ref role="20lvS9" node="450ejGzh8b3" resolve="BuildLayout_Container" />
     </node>
     <node concept="1TJgyj" id="5STnHcdgZpq" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="selectors" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="6789562173791401562" />
       <ref role="20lvS9" node="4zlO3QT8$mB" resolve="BuildFileSelector" />
     </node>
@@ -1206,9 +1200,8 @@
     <property role="EcuMT" value="5610619299014309452" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="4RsV8qJGJpd" role="1TKVEi">
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="jar" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="5610619299014309453" />
       <ref role="20lvS9" node="4RsV8qJDnFi" resolve="BuildSource_SingleFile" />
     </node>
@@ -1220,9 +1213,9 @@
     <property role="EcuMT" value="5610619299014446503" />
     <ref role="1TJDcQ" node="3elU8iQ72g4" resolve="BuildSource_JavaCP" />
     <node concept="1TJgyj" id="4RsV8qJHgQC" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="extJar" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="5610619299014446504" />
       <ref role="20lvS9" node="4RsV8qJGJpc" resolve="BuildSource_JavaExternalJarRef" />
     </node>
@@ -1241,9 +1234,8 @@
     <property role="EcuMT" value="5610619299014531647" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="4RsV8qJH_D0" role="1TKVEi">
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="folder" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="5610619299014531648" />
       <ref role="20lvS9" node="4RsV8qJH_Bn" resolve="BuildSource_SingleFolder" />
     </node>
@@ -1260,9 +1252,9 @@
       <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
     </node>
     <node concept="1TJgyj" id="4RsV8qJH_FU" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="extFolder" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="5610619299014531834" />
       <ref role="20lvS9" node="4RsV8qJH_CZ" resolve="BuildSource_JavaExternalJarFolderRef" />
     </node>
@@ -1277,9 +1269,9 @@
     <property role="EcuMT" value="927724900262033858" />
     <ref role="1TJDcQ" node="6qcrfIJFdK8" resolve="BuildProjectPart" />
     <node concept="1TJgyj" id="NvWe6DpNB7" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="resourceSelectors" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="927724900262033863" />
       <ref role="20lvS9" node="4zlO3QT8$mB" resolve="BuildFileSelector" />
     </node>
@@ -1339,7 +1331,6 @@
     <property role="EcuMT" value="1659807394254261074" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="1s8OwvM52kF" role="1TKVEi">
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="compileOptions" />
       <property role="IQ2ns" value="1659807394254038315" />
       <ref role="20lvS9" node="NvWe6DpNB2" resolve="BuildSource_JavaOptions" />
@@ -1352,9 +1343,9 @@
     <property role="EcuMT" value="1659807394254684269" />
     <ref role="1TJDcQ" node="4zlO3QTanjW" resolve="BuildSource_JavaSources" />
     <node concept="1TJgyj" id="1s8OwvM7w1K" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="fileset" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="1659807394254684272" />
       <ref role="20lvS9" node="4zlO3QT8$m$" resolve="BuildInputFiles" />
     </node>
@@ -1371,9 +1362,9 @@
       <ref role="PrY4T" node="Y2EImGIi9D" resolve="BuildLayout_FileSet" />
     </node>
     <node concept="1TJgyj" id="7XQqoCTjyOu" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="handlers" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="9184644532456533278" />
       <ref role="20lvS9" node="7XQqoCTjsKN" resolve="BuildLayout_CopyHandler" />
     </node>
@@ -1385,9 +1376,9 @@
     <property role="EcuMT" value="9184644532456496017" />
     <ref role="1TJDcQ" node="6qcrfIJF4M5" resolve="BuildLayout_Node" />
     <node concept="1TJgyj" id="4zlO3QT8NAU" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="fileset" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="5248329904287857082" />
       <ref role="20lvS9" node="4zlO3QT8mNF" resolve="BuildInputFileSet" />
     </node>
@@ -1421,9 +1412,9 @@
       <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
     <node concept="1TJgyj" id="7XQqoCTkBp8" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="value" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="9184644532456814152" />
       <ref role="20lvS9" node="3NagsOfThPf" resolve="BuildString" />
     </node>
@@ -1432,6 +1423,7 @@
     <property role="TrG5h" value="FileName" />
     <property role="FLfZY" value="[^\\/$!]*" />
     <property role="3GE5qa" value="SourcePath" />
+    <property role="3F6X1D" value="8618885170173708134" />
   </node>
   <node concept="PlHQZ" id="7XQqoCTkVIO">
     <property role="TrG5h" value="BuildStringContainer" />
@@ -1445,9 +1437,9 @@
     <property role="EcuMT" value="9184644532457106504" />
     <ref role="1TJDcQ" node="7XQqoCTkBp3" resolve="BuildLayout_CopyFilter" />
     <node concept="1TJgyj" id="7XQqoCTlILa" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="value" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="9184644532457106506" />
       <ref role="20lvS9" node="3NagsOfThPf" resolve="BuildString" />
     </node>
@@ -1466,6 +1458,7 @@
     <property role="TrG5h" value="AntRegexFlags" />
     <property role="FLfZY" value="[gims]+" />
     <property role="3GE5qa" value="Layout.File.Handlers" />
+    <property role="3F6X1D" value="9184644532457106613" />
   </node>
   <node concept="1TIwiD" id="6CY5wCYZQEk">
     <property role="TrG5h" value="BuildLayout_EchoXml" />
@@ -1474,16 +1467,16 @@
     <property role="EcuMT" value="7655580649838832276" />
     <ref role="1TJDcQ" node="6qcrfIJF4M5" resolve="BuildLayout_Node" />
     <node concept="1TJgyj" id="6CY5wCYZQEm" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="fileName" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="7655580649838832278" />
       <ref role="20lvS9" node="IFRVVI5ZTn" resolve="BuildStringNotEmpty" />
     </node>
     <node concept="1TJgyj" id="6CY5wCYZQER" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="element" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="7655580649838832311" />
       <ref role="20lvS9" to="iuxj:5M4a$b5ikxH" resolve="XmlBaseElement" />
     </node>
@@ -1498,16 +1491,16 @@
     <property role="EcuMT" value="202934866059043946" />
     <ref role="1TJDcQ" node="6qcrfIJF4M5" resolve="BuildLayout_Node" />
     <node concept="1TJgyj" id="bgY2XVZqhG" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="fileName" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="202934866059043948" />
       <ref role="20lvS9" node="IFRVVI5ZTn" resolve="BuildStringNotEmpty" />
     </node>
     <node concept="1TJgyj" id="bgY2XVZqhU" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="entries" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="202934866059043962" />
       <ref role="20lvS9" node="bgY2XVZqhR" resolve="BuildLayout_EchoPropertyEntry" />
     </node>
@@ -1522,9 +1515,9 @@
     <property role="EcuMT" value="202934866059043959" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="bgY2XVZqhT" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="value" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="202934866059043961" />
       <ref role="20lvS9" node="3NagsOfThPf" resolve="BuildString" />
     </node>
@@ -1540,10 +1533,17 @@
     <property role="34LRSv" value="tar" />
     <property role="EcuMT" value="8577651205286814211" />
     <ref role="1TJDcQ" node="6qcrfIJF7Yc" resolve="BuildLayout_NamedContainer" />
-    <node concept="1TJgyi" id="1HQQX4XU8$C" role="1TKVEl">
+    <node concept="1TJgyi" id="3Ftr4R6BHaf" role="1TKVEl">
       <property role="TrG5h" value="compression" />
       <property role="IQ2nx" value="1979010778009209128" />
-      <ref role="AX2Wp" node="1HQQX4XU8$$" resolve="BuildLayout_TarCompression" />
+      <ref role="AX2Wp" node="3Ftr4R6BFDY" resolve="BuildLayout_TarCompression" />
+      <node concept="3l_iC" id="3Ftr4R6BHag" role="lGtFl">
+        <node concept="1TJgyi" id="1HQQX4XU8$C" role="3l_iP">
+          <property role="TrG5h" value="compression" />
+          <property role="IQ2nx" value="1979010778009209128" />
+          <ref role="AX2Wp" node="1HQQX4XU8$$" resolve="BuildLayout_TarCompression" />
+        </node>
+      </node>
     </node>
     <node concept="PrWs8" id="7s9W5cEkA84" role="PzmwI">
       <ref role="PrY4T" node="4zlO3QT9Z8D" resolve="BuildLayout_ContainerAcceptingFileSet" />
@@ -1561,42 +1561,22 @@
     <property role="34LRSv" value="fix eol" />
     <property role="EcuMT" value="4198392933254416812" />
     <ref role="1TJDcQ" node="7XQqoCTkBp3" resolve="BuildLayout_CopyFilter" />
-    <node concept="1TJgyi" id="3D3G23Q8WAQ" role="1TKVEl">
+    <node concept="1TJgyi" id="3Ftr4R6BHah" role="1TKVEl">
       <property role="TrG5h" value="eol" />
       <property role="IQ2nx" value="4198392933254416822" />
-      <ref role="AX2Wp" node="3D3G23Q8WAI" resolve="BuildLayout_CopyFilterEolStyle" />
+      <ref role="AX2Wp" node="3Ftr4R6BFDR" resolve="BuildLayout_CopyFilterEolStyle" />
+      <node concept="3l_iC" id="3Ftr4R6BHai" role="lGtFl">
+        <node concept="1TJgyi" id="3D3G23Q8WAQ" role="3l_iP">
+          <property role="TrG5h" value="eol" />
+          <property role="IQ2nx" value="4198392933254416822" />
+          <ref role="AX2Wp" node="3D3G23Q8WAI" resolve="BuildLayout_CopyFilterEolStyle" />
+        </node>
+      </node>
     </node>
     <node concept="1TJgyi" id="3D3G23Q9t_s" role="1TKVEl">
       <property role="TrG5h" value="removeEOF" />
       <property role="IQ2nx" value="4198392933254551900" />
       <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
-    </node>
-  </node>
-  <node concept="AxPO7" id="3D3G23Q8WAI">
-    <property role="3lZH7k" value="derive_from_internal_value" />
-    <property role="PDuV0" value="false" />
-    <property role="TrG5h" value="BuildLayout_CopyFilterEolStyle" />
-    <property role="3GE5qa" value="Layout.File.Handlers" />
-    <ref role="M4eZT" to="tpck:fKAOsGN" resolve="string" />
-    <node concept="M4N5e" id="3D3G23Q8Zi_" role="M5hS2">
-      <property role="1uS6qv" value="local" />
-      <property role="1uS6qo" value="use local system line separator" />
-    </node>
-    <node concept="M4N5e" id="3D3G23Q8WAJ" role="M5hS2">
-      <property role="1uS6qv" value="asis" />
-      <property role="1uS6qo" value="leave as is" />
-    </node>
-    <node concept="M4N5e" id="3D3G23Q8WAK" role="M5hS2">
-      <property role="1uS6qv" value="cr" />
-      <property role="1uS6qo" value="convert to a single CR" />
-    </node>
-    <node concept="M4N5e" id="3D3G23Q8WAL" role="M5hS2">
-      <property role="1uS6qv" value="lf" />
-      <property role="1uS6qo" value="convert to a single LF" />
-    </node>
-    <node concept="M4N5e" id="3D3G23Q8WAM" role="M5hS2">
-      <property role="1uS6qv" value="crlf" />
-      <property role="1uS6qo" value="convert to the pair CRLF" />
     </node>
   </node>
   <node concept="1TIwiD" id="6L3dtXewST0">
@@ -1628,6 +1608,7 @@
     <property role="TrG5h" value="BuildLayout_UnixFilemode" />
     <property role="FLfZY" value="[0-7]{3}" />
     <property role="3GE5qa" value="Layout.File" />
+    <property role="3F6X1D" value="7801138212747054659" />
   </node>
   <node concept="1TIwiD" id="63lu3g6DRli">
     <property role="R5$K7" value="true" />
@@ -1636,24 +1617,6 @@
     <property role="EcuMT" value="6977615362525721938" />
     <ref role="1TJDcQ" node="7XQqoCTjsKN" resolve="BuildLayout_CopyHandler" />
   </node>
-  <node concept="AxPO7" id="1HQQX4XU8$$">
-    <property role="3lZH7k" value="derive_from_internal_value" />
-    <property role="TrG5h" value="BuildLayout_TarCompression" />
-    <property role="3GE5qa" value="Layout.File" />
-    <ref role="M4eZT" to="tpck:fKAOsGN" resolve="string" />
-    <node concept="M4N5e" id="1HQQX4XU8$_" role="M5hS2">
-      <property role="1uS6qv" value="none" />
-      <property role="1uS6qo" value="none" />
-    </node>
-    <node concept="M4N5e" id="1HQQX4XU8$A" role="M5hS2">
-      <property role="1uS6qv" value="gzip" />
-      <property role="1uS6qo" value="gzip" />
-    </node>
-    <node concept="M4N5e" id="1HQQX4XU8$B" role="M5hS2">
-      <property role="1uS6qv" value="bzip2" />
-      <property role="1uS6qo" value="bzip2" />
-    </node>
-  </node>
   <node concept="1TIwiD" id="6ZfgptGYA5P">
     <property role="TrG5h" value="BuildSource_JavaDependencyFileset" />
     <property role="3GE5qa" value="Project.Java.Dependencies" />
@@ -1661,9 +1624,9 @@
     <property role="EcuMT" value="8056730377013322101" />
     <ref role="1TJDcQ" node="2oUTXgLA9pR" resolve="BuildSource_JavaDependency" />
     <node concept="1TJgyj" id="6S1jmf0x7ox" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="classpath" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="7926701909975791137" />
       <ref role="20lvS9" to="iuxj:5M4a$b5ikxH" resolve="XmlBaseElement" />
     </node>
@@ -1684,9 +1647,8 @@
     <property role="EcuMT" value="7753544965996647428" />
     <ref role="1TJDcQ" node="6qcrfIJF4M5" resolve="BuildLayout_Node" />
     <node concept="1TJgyj" id="6Iq8148fTg6" role="1TKVEi">
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="element" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="7753544965996647430" />
       <ref role="20lvS9" node="6Iq8148fTg2" resolve="BuildSource_FilesetProjectPart" />
     </node>
@@ -1698,9 +1660,9 @@
     <property role="EcuMT" value="3970102152660702410" />
     <ref role="1TJDcQ" node="63lu3g6DRli" resolve="BuildLayout_CopyMapper" />
     <node concept="1TJgyj" id="3soCHYjnnkd" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="to" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="3970102152660874509" />
       <ref role="20lvS9" node="3NagsOfThPf" resolve="BuildString" />
     </node>
@@ -1741,9 +1703,9 @@
     <property role="EcuMT" value="2755237150521975431" />
     <ref role="1TJDcQ" node="2oW$psGOu6E" resolve="BuildVariableMacroInitValue" />
     <node concept="1TJgyj" id="2oW$psGOAad" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="value" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="2755237150521975437" />
       <ref role="20lvS9" node="3NagsOfThPf" resolve="BuildString" />
     </node>
@@ -1772,9 +1734,9 @@
       <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
     <node concept="1TJgyj" id="d_WKSiP3Fo" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="fileName" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="244868996532550360" />
       <ref role="20lvS9" node="6qcrfIJFdKY" resolve="BuildSourcePath" />
     </node>
@@ -1798,16 +1760,16 @@
     <property role="EcuMT" value="9126048691955220717" />
     <ref role="1TJDcQ" node="6qcrfIJF4M5" resolve="BuildLayout_Node" />
     <node concept="1TJgyj" id="7UAfeVQUc4q" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="path" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="9126048691955220762" />
       <ref role="20lvS9" node="6qcrfIJFdKY" resolve="BuildSourcePath" />
     </node>
     <node concept="1TJgyj" id="7UAfeVQUc4A" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="parameters" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="9126048691955220774" />
       <ref role="20lvS9" node="7UAfeVQUc4$" resolve="BuildLayout_CopyParameter" />
     </node>
@@ -1832,16 +1794,16 @@
     <property role="EcuMT" value="2750015747481074431" />
     <ref role="1TJDcQ" node="6qcrfIJF4M5" resolve="BuildLayout_Node" />
     <node concept="1TJgyj" id="2oE1c2blJG0" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="path" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="2750015747481074432" />
       <ref role="20lvS9" node="6qcrfIJFdKY" resolve="BuildSourcePath" />
     </node>
     <node concept="1TJgyj" id="2oE1c2blJG1" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="parameters" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="2750015747481074433" />
       <ref role="20lvS9" node="7UAfeVQUc4$" resolve="BuildLayout_CopyParameter" />
     </node>
@@ -1860,9 +1822,9 @@
     <property role="EcuMT" value="342830306171203038" />
     <ref role="1TJDcQ" node="2oUTXgLA9pR" resolve="BuildSource_JavaDependency" />
     <node concept="1TJgyj" id="j1Y_zp$M$1" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="extFolder" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="342830306171234561" />
       <ref role="20lvS9" node="4RsV8qJH_CZ" resolve="BuildSource_JavaExternalJarFolderRef" />
     </node>
@@ -1888,14 +1850,14 @@
     <property role="EcuMT" value="1251221292903960366" />
     <ref role="1TJDcQ" node="6qcrfIJF4M5" resolve="BuildLayout_Node" />
     <node concept="1TJgyj" id="7ro1Zzt_n6j" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="parts" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="8563603456895840659" />
       <ref role="20lvS9" node="7ro1Zzt_n6e" resolve="BuildLayout_JarManifest_Part" />
     </node>
     <node concept="1TJgyj" id="6uJjF_N$tZ1" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="name" />
       <property role="IQ2ns" value="7471276865245798337" />
       <ref role="20lvS9" node="IFRVVI5ZTn" resolve="BuildStringNotEmpty" />
@@ -1909,16 +1871,16 @@
     <property role="EcuMT" value="1251221292903960368" />
     <ref role="1TJDcQ" node="7ro1Zzt_n6e" resolve="BuildLayout_JarManifest_Part" />
     <node concept="1TJgyj" id="15teMbUWwWL" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="name" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="1251221292903960369" />
       <ref role="20lvS9" node="IFRVVI5ZTn" resolve="BuildStringNotEmpty" />
     </node>
     <node concept="1TJgyj" id="15teMbUWwWM" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="value" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="1251221292903960370" />
       <ref role="20lvS9" node="IFRVVI5ZTn" resolve="BuildStringNotEmpty" />
     </node>
@@ -1934,16 +1896,16 @@
     <property role="EcuMT" value="1251221292904119675" />
     <ref role="1TJDcQ" node="7ro1Zzt_n6e" resolve="BuildLayout_JarManifest_Part" />
     <node concept="1TJgyj" id="15teMbUX7PW" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="attribute" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="1251221292904119676" />
       <ref role="20lvS9" node="15teMbUWwWK" resolve="BuildLayout_JarManifest_Attribute" />
     </node>
     <node concept="1TJgyj" id="5V$ev8kKcto" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="name" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="6837653846148302680" />
       <ref role="20lvS9" node="IFRVVI5ZTn" resolve="BuildStringNotEmpty" />
     </node>
@@ -1956,9 +1918,9 @@
     <property role="R4oN_" value="file inside an archive (zip, jar, war, tar)" />
     <ref role="1TJDcQ" node="6mpuAlRavrV" resolve="BuildRelativePath" />
     <node concept="1TJgyj" id="2cX$JBziBxc" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="archivePath" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="2539347366864648268" />
       <ref role="20lvS9" node="6qcrfIJFdKY" resolve="BuildSourcePath" />
     </node>
@@ -1988,16 +1950,15 @@
     <property role="EcuMT" value="6854204111265764357" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="5Wv1_bQ19g6" role="1TKVEi">
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="for" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="6854204111265764358" />
       <ref role="20lvS9" to="8xvf:2pKPpytmA9N" resolve="BwfTask" />
     </node>
     <node concept="1TJgyj" id="5Wv1_bQ19g7" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="participant" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="6854204111265764359" />
       <ref role="20lvS9" node="5M62Y6Wnc78" resolve="GeneratorInternal_IWorkflowParticipantReference" />
     </node>
@@ -2008,9 +1969,8 @@
     <property role="EcuMT" value="6667029362524340680" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="5M62Y6Wnc79" role="1TKVEi">
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="participant" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="6667029362524340681" />
       <ref role="20lvS9" node="5hFYqIiZwGZ" resolve="IWorkflowParticipant" />
     </node>
@@ -2021,9 +1981,8 @@
     <property role="EcuMT" value="4964617264469642264" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="4j_Rh$Iv0Kp" role="1TKVEi">
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="targetModule" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="4964617264469642265" />
       <ref role="20lvS9" node="6qcrfIJFdKS" resolve="BuildSource_JavaModule" />
     </node>
@@ -2039,9 +1998,8 @@
     <property role="EcuMT" value="4964617264469642570" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="4j_Rh$Iv0Pb" role="1TKVEi">
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="targetFile" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="4964617264469642571" />
       <ref role="20lvS9" node="4RsV8qJDnFi" resolve="BuildSource_SingleFile" />
     </node>
@@ -2052,9 +2010,8 @@
     <property role="EcuMT" value="4964617264469642863" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="4j_Rh$Iv0TK" role="1TKVEi">
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="targetLibrary" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="4964617264469642864" />
       <ref role="20lvS9" node="5gfUUDxhbxN" resolve="BuildSource_JavaLibrary" />
     </node>
@@ -2065,9 +2022,8 @@
     <property role="EcuMT" value="4964617264469642724" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="4j_Rh$Iv0R_" role="1TKVEi">
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="targetJar" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="4964617264469642725" />
       <ref role="20lvS9" node="15RAxQWZPkq" resolve="BuildSource_JavaJar" />
     </node>
@@ -2095,9 +2051,8 @@
       <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
     <node concept="1TJgyj" id="5wKGSSmQ2fj" role="1TKVEi">
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="project" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="6354776497069761491" />
       <ref role="20lvS9" node="4RPz6WoY4Cj" resolve="BuildProject" />
     </node>
@@ -2113,9 +2068,8 @@
       <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
     <node concept="1TJgyj" id="520hcA990bR" role="1TKVEi">
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="targetFolder" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="5800711952433152759" />
       <ref role="20lvS9" node="4RsV8qJH_Bn" resolve="BuildSource_SingleFolder" />
     </node>
@@ -2153,9 +2107,9 @@
     <property role="EcuMT" value="3861025227901286914" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="3ml7vNTSbOv" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="attrs" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="3861025227901287711" />
       <ref role="20lvS9" to="iuxj:5M4a$b5iL2N" resolve="XmlBaseAttribute" />
     </node>
@@ -2168,9 +2122,9 @@
     <ref role="1TJDcQ" node="2oW$psGOu6E" resolve="BuildVariableMacroInitValue" />
     <node concept="1TJgyj" id="7i$e6qc7mrg" role="1TKVEi">
       <property role="IQ2ns" value="8404904817668744912" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="fileName" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <ref role="20lvS9" node="6qcrfIJFdKY" resolve="BuildSourcePath" />
     </node>
   </node>
@@ -2190,6 +2144,163 @@
       <property role="IQ2nx" value="8266314125996864019" />
       <property role="TrG5h" value="path" />
       <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+  </node>
+  <node concept="25R3W" id="3Ftr4R6BFDM">
+    <property role="TrG5h" value="BuildSource_JavaContentFolderKind" />
+    <property role="3GE5qa" value="Project.Java.Sources" />
+    <property role="3F6X1D" value="5248329904288265463" />
+    <node concept="2JgGob" id="3Ftr4R6BFDN" role="lGtFl">
+      <property role="3scbB" value="5CkWgdpp3eY/string_name" />
+      <property role="3sfsH" value="5CkWgdpp0p1/by_name" />
+      <node concept="AxPO7" id="4zlO3QTanjR" role="3lCyv">
+        <property role="Q2FuW" value="&lt;no kind&gt;" />
+        <property role="3lZH7k" value="hrlZj6Q/derive_from_internal_value" />
+        <property role="PDuV0" value="true" />
+        <property role="TrG5h" value="BuildSource_JavaContentFolderKind" />
+        <property role="3GE5qa" value="Project.Java.Sources" />
+        <property role="3F6X1D" value="5248329904288265463" />
+        <ref role="M4eZT" to="tpck:fKAOsGN" resolve="string" />
+        <node concept="M4N5e" id="4zlO3QTanjS" role="M5hS2">
+          <property role="1uS6qv" value="source" />
+          <property role="1uS6qo" value="source" />
+        </node>
+        <node concept="M4N5e" id="4zlO3QTanjT" role="M5hS2">
+          <property role="1uS6qv" value="test" />
+          <property role="1uS6qo" value="test" />
+        </node>
+        <node concept="M4N5e" id="4zlO3QTanjU" role="M5hS2">
+          <property role="1uS6qv" value="excluded" />
+          <property role="1uS6qo" value="excluded" />
+        </node>
+      </node>
+    </node>
+    <node concept="25R33" id="3Ftr4R6BFDO" role="25R1y">
+      <property role="TrG5h" value="source" />
+      <property role="3tVfz5" value="5248329904288265464" />
+      <ref role="2wpffI" node="4zlO3QTanjS" />
+    </node>
+    <node concept="25R33" id="3Ftr4R6BFDP" role="25R1y">
+      <property role="TrG5h" value="test" />
+      <property role="3tVfz5" value="5248329904288265465" />
+      <ref role="2wpffI" node="4zlO3QTanjT" />
+    </node>
+    <node concept="25R33" id="3Ftr4R6BFDQ" role="25R1y">
+      <property role="TrG5h" value="excluded" />
+      <property role="3tVfz5" value="5248329904288265466" />
+      <ref role="2wpffI" node="4zlO3QTanjU" />
+    </node>
+  </node>
+  <node concept="25R3W" id="3Ftr4R6BFDR">
+    <property role="TrG5h" value="BuildLayout_CopyFilterEolStyle" />
+    <property role="3GE5qa" value="Layout.File.Handlers" />
+    <property role="3F6X1D" value="4198392933254416814" />
+    <ref role="1H5jkz" node="3Ftr4R6BFDT" resolve="local" />
+    <node concept="2JgGob" id="3Ftr4R6BFDS" role="lGtFl">
+      <property role="3scbB" value="5CkWgdpp3eY/string_name" />
+      <property role="3sfsH" value="5CkWgdpp0p1/by_name" />
+      <node concept="AxPO7" id="3D3G23Q8WAI" role="3lCyv">
+        <property role="3lZH7k" value="hrlZj6Q/derive_from_internal_value" />
+        <property role="PDuV0" value="false" />
+        <property role="TrG5h" value="BuildLayout_CopyFilterEolStyle" />
+        <property role="3GE5qa" value="Layout.File.Handlers" />
+        <property role="3F6X1D" value="4198392933254416814" />
+        <ref role="M4eZT" to="tpck:fKAOsGN" resolve="string" />
+        <node concept="M4N5e" id="3D3G23Q8Zi_" role="M5hS2">
+          <property role="1uS6qv" value="local" />
+          <property role="1uS6qo" value="use local system line separator" />
+        </node>
+        <node concept="M4N5e" id="3D3G23Q8WAJ" role="M5hS2">
+          <property role="1uS6qv" value="asis" />
+          <property role="1uS6qo" value="leave as is" />
+        </node>
+        <node concept="M4N5e" id="3D3G23Q8WAK" role="M5hS2">
+          <property role="1uS6qv" value="cr" />
+          <property role="1uS6qo" value="convert to a single CR" />
+        </node>
+        <node concept="M4N5e" id="3D3G23Q8WAL" role="M5hS2">
+          <property role="1uS6qv" value="lf" />
+          <property role="1uS6qo" value="convert to a single LF" />
+        </node>
+        <node concept="M4N5e" id="3D3G23Q8WAM" role="M5hS2">
+          <property role="1uS6qv" value="crlf" />
+          <property role="1uS6qo" value="convert to the pair CRLF" />
+        </node>
+      </node>
+    </node>
+    <node concept="25R33" id="3Ftr4R6BFDT" role="25R1y">
+      <property role="TrG5h" value="local" />
+      <property role="1L1pqM" value="use local system line separator" />
+      <property role="3tVfz5" value="4198392933254427813" />
+      <ref role="2wpffI" node="3D3G23Q8Zi_" />
+    </node>
+    <node concept="25R33" id="3Ftr4R6BFDU" role="25R1y">
+      <property role="TrG5h" value="asis" />
+      <property role="1L1pqM" value="leave as is" />
+      <property role="3tVfz5" value="4198392933254416815" />
+      <ref role="2wpffI" node="3D3G23Q8WAJ" />
+    </node>
+    <node concept="25R33" id="3Ftr4R6BFDV" role="25R1y">
+      <property role="TrG5h" value="cr" />
+      <property role="1L1pqM" value="convert to a single CR" />
+      <property role="3tVfz5" value="4198392933254416816" />
+      <ref role="2wpffI" node="3D3G23Q8WAK" />
+    </node>
+    <node concept="25R33" id="3Ftr4R6BFDW" role="25R1y">
+      <property role="TrG5h" value="lf" />
+      <property role="1L1pqM" value="convert to a single LF" />
+      <property role="3tVfz5" value="4198392933254416817" />
+      <ref role="2wpffI" node="3D3G23Q8WAL" />
+    </node>
+    <node concept="25R33" id="3Ftr4R6BFDX" role="25R1y">
+      <property role="TrG5h" value="crlf" />
+      <property role="1L1pqM" value="convert to the pair CRLF" />
+      <property role="3tVfz5" value="4198392933254416818" />
+      <ref role="2wpffI" node="3D3G23Q8WAM" />
+    </node>
+  </node>
+  <node concept="25R3W" id="3Ftr4R6BFDY">
+    <property role="TrG5h" value="BuildLayout_TarCompression" />
+    <property role="3GE5qa" value="Layout.File" />
+    <property role="3F6X1D" value="1979010778009209124" />
+    <ref role="1H5jkz" node="3Ftr4R6BFE0" resolve="none" />
+    <node concept="2JgGob" id="3Ftr4R6BFDZ" role="lGtFl">
+      <property role="3scbB" value="5CkWgdpp3eY/string_name" />
+      <property role="3sfsH" value="5CkWgdpp0p1/by_name" />
+      <node concept="AxPO7" id="1HQQX4XU8$$" role="3lCyv">
+        <property role="3lZH7k" value="hrlZj6Q/derive_from_internal_value" />
+        <property role="TrG5h" value="BuildLayout_TarCompression" />
+        <property role="3GE5qa" value="Layout.File" />
+        <property role="3F6X1D" value="1979010778009209124" />
+        <ref role="M4eZT" to="tpck:fKAOsGN" resolve="string" />
+        <node concept="M4N5e" id="1HQQX4XU8$_" role="M5hS2">
+          <property role="1uS6qv" value="none" />
+          <property role="1uS6qo" value="none" />
+        </node>
+        <node concept="M4N5e" id="1HQQX4XU8$A" role="M5hS2">
+          <property role="1uS6qv" value="gzip" />
+          <property role="1uS6qo" value="gzip" />
+        </node>
+        <node concept="M4N5e" id="1HQQX4XU8$B" role="M5hS2">
+          <property role="1uS6qv" value="bzip2" />
+          <property role="1uS6qo" value="bzip2" />
+        </node>
+      </node>
+    </node>
+    <node concept="25R33" id="3Ftr4R6BFE0" role="25R1y">
+      <property role="TrG5h" value="none" />
+      <property role="3tVfz5" value="1979010778009209125" />
+      <ref role="2wpffI" node="1HQQX4XU8$_" />
+    </node>
+    <node concept="25R33" id="3Ftr4R6BFE1" role="25R1y">
+      <property role="TrG5h" value="gzip" />
+      <property role="3tVfz5" value="1979010778009209126" />
+      <ref role="2wpffI" node="1HQQX4XU8$A" />
+    </node>
+    <node concept="25R33" id="3Ftr4R6BFE2" role="25R1y">
+      <property role="TrG5h" value="bzip2" />
+      <property role="3tVfz5" value="1979010778009209127" />
+      <ref role="2wpffI" node="1HQQX4XU8$B" />
     </node>
   </node>
 </model>

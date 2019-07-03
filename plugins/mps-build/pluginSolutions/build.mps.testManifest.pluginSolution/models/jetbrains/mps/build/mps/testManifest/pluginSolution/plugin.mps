@@ -11,7 +11,7 @@
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="-1" />
     <use id="443f4c36-fcf5-4eb6-9500-8d06ed259e3e" name="jetbrains.mps.baseLanguage.classifiers" version="-1" />
     <use id="63650c59-16c8-498a-99c8-005c7ee9515d" name="jetbrains.mps.lang.access" version="-1" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
@@ -290,6 +290,9 @@
       <concept id="1196350785113" name="jetbrains.mps.lang.quotation.structure.Quotation" flags="nn" index="2c44tf">
         <child id="1196350785114" name="quotedNode" index="2c44tc" />
       </concept>
+      <concept id="4056363777117001481" name="jetbrains.mps.lang.quotation.structure.StringToTypedValueMigrationInfo" flags="ng" index="AAgTk">
+        <property id="2173356959483005420" name="stringValueMigrated" index="3qcH_f" />
+      </concept>
       <concept id="1196866233735" name="jetbrains.mps.lang.quotation.structure.PropertyAntiquotation" flags="ng" index="2EMmih" />
     </language>
     <language id="798100da-4f0a-421a-b991-71f8c50ce5d2" name="jetbrains.mps.build">
@@ -362,6 +365,9 @@
       </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
+      <concept id="4705942098322467729" name="jetbrains.mps.lang.smodel.structure.EnumMemberReference" flags="ng" index="21nZrQ">
+        <reference id="4705942098322467736" name="decl" index="21nZrZ" />
+      </concept>
       <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
         <reference id="1177026940964" name="conceptDeclaration" index="cht4Q" />
       </concept>
@@ -374,9 +380,6 @@
       <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="1138661924179" name="jetbrains.mps.lang.smodel.structure.Property_SetOperation" flags="nn" index="tyxLq">
         <child id="1138662048170" name="value" index="tz02z" />
-      </concept>
-      <concept id="1138676077309" name="jetbrains.mps.lang.smodel.structure.EnumMemberReference_Old" flags="nn" index="uoxfO">
-        <reference id="1138676095763" name="enumMember" index="uo_Cq" />
       </concept>
       <concept id="1138757581985" name="jetbrains.mps.lang.smodel.structure.Link_SetNewChildOperation" flags="nn" index="zfrQC" />
       <concept id="1143226024141" name="jetbrains.mps.lang.smodel.structure.SModelType" flags="in" index="H_c77" />
@@ -1041,7 +1044,7 @@
                       </node>
                       <node concept="3clFbS" id="vgcurb$RBM" role="TDEfX">
                         <node concept="RRSsy" id="3jYQuSB37vX" role="3cqZAp">
-                          <property role="RRSoG" value="error" />
+                          <property role="RRSoG" value="gZ5fh_4/error" />
                           <node concept="Xl_RD" id="vgcurb$RYH" role="RRSoy">
                             <property role="Xl_RC" value="error processing test project" />
                           </node>
@@ -1306,6 +1309,7 @@
                   <node concept="2EMmih" id="7vU6U506kQ7" role="lGtFl">
                     <property role="P4ACc" value="ceab5195-25ea-4f22-9b92-103b95ca8c0c/1169194658468/1169194664001" />
                     <property role="2qtEX9" value="name" />
+                    <property role="3qcH_f" value="true" />
                     <node concept="3cpWs3" id="7vU6U506kQ8" role="2c44t1">
                       <node concept="Xl_RD" id="7vU6U506kQ9" role="3uHU7w">
                         <property role="Xl_RC" value="-test-languages" />
@@ -1347,6 +1351,7 @@
                   <node concept="2EMmih" id="7vU6U506kQo" role="lGtFl">
                     <property role="P4ACc" value="ceab5195-25ea-4f22-9b92-103b95ca8c0c/1169194658468/1169194664001" />
                     <property role="2qtEX9" value="name" />
+                    <property role="3qcH_f" value="true" />
                     <node concept="3cpWs3" id="7vU6U506kQp" role="2c44t1">
                       <node concept="Xl_RD" id="7vU6U506kQq" role="3uHU7w">
                         <property role="Xl_RC" value="-tests" />
@@ -1446,6 +1451,7 @@
                 <node concept="2EMmih" id="7vU6U506kR4" role="lGtFl">
                   <property role="P4ACc" value="798100da-4f0a-421a-b991-71f8c50ce5d2/5617550519002745363/4915877860348071612" />
                   <property role="2qtEX9" value="fileName" />
+                  <property role="3qcH_f" value="true" />
                   <node concept="3cpWs3" id="7vU6U506kR5" role="2c44t1">
                     <node concept="Xl_RD" id="7vU6U506kR6" role="3uHU7w">
                       <property role="Xl_RC" value=".xml" />
@@ -1482,6 +1488,7 @@
                   <node concept="2EMmih" id="7vU6U506kRi" role="lGtFl">
                     <property role="P4ACc" value="ceab5195-25ea-4f22-9b92-103b95ca8c0c/1169194658468/1169194664001" />
                     <property role="2qtEX9" value="name" />
+                    <property role="3qcH_f" value="true" />
                     <node concept="2OqwBi" id="7vU6U506kRj" role="2c44t1">
                       <node concept="37vLTw" id="6DW_AMAxUUB" role="2Oq$k0">
                         <ref role="3cqZAo" node="6DW_AMAxPO9" resolve="conf" />
@@ -1496,6 +1503,7 @@
                 <node concept="2EMmih" id="vgcurbBqrq" role="lGtFl">
                   <property role="P4ACc" value="ceab5195-25ea-4f22-9b92-103b95ca8c0c/1169194658468/1169194664001" />
                   <property role="2qtEX9" value="name" />
+                  <property role="3qcH_f" value="true" />
                   <node concept="2OqwBi" id="vgcurbBqRk" role="2c44t1">
                     <node concept="37vLTw" id="6DW_AMAxRAH" role="2Oq$k0">
                       <ref role="3cqZAo" node="6DW_AMAxPO9" resolve="conf" />
@@ -1568,7 +1576,7 @@
         <node concept="3clFbJ" id="7vU6U502$mf" role="3cqZAp">
           <node concept="3clFbS" id="7vU6U502$mg" role="3clFbx">
             <node concept="RRSsy" id="3jYQuSB39K0" role="3cqZAp">
-              <property role="RRSoG" value="error" />
+              <property role="RRSoG" value="gZ5fh_4/error" />
               <node concept="Xl_RD" id="7vU6U505ua6" role="RRSoy">
                 <property role="Xl_RC" value="project file is null" />
               </node>
@@ -1986,7 +1994,7 @@
                     </node>
                     <node concept="3clFbS" id="1w$c60CEqVd" role="TDEfX">
                       <node concept="RRSsy" id="3jYQuSB39K6" role="3cqZAp">
-                        <property role="RRSoG" value="error" />
+                        <property role="RRSoG" value="gZ5fh_4/error" />
                         <node concept="Xl_RD" id="4WwUR8hvcxY" role="RRSoy">
                           <property role="Xl_RC" value="Failed to build project-relative path" />
                         </node>
@@ -2071,7 +2079,7 @@
         <node concept="3clFbJ" id="7vU6U505wtE" role="3cqZAp">
           <node concept="3clFbS" id="7vU6U505wtF" role="3clFbx">
             <node concept="RRSsy" id="3jYQuSB39Ke" role="3cqZAp">
-              <property role="RRSoG" value="error" />
+              <property role="RRSoG" value="gZ5fh_4/error" />
               <node concept="Xl_RD" id="7vU6U505wtH" role="RRSoy">
                 <property role="Xl_RC" value="project file is null" />
               </node>
@@ -2254,12 +2262,12 @@
                         <ref role="3cqZAo" node="7vU6U505wu7" resolve="sol" />
                       </node>
                       <node concept="3TrcHB" id="7vU6U503dXl" role="2OqNvi">
-                        <ref role="3TsBF5" to="kdzh:eYcmk9RcI2" resolve="sourcesKind" />
+                        <ref role="3TsBF5" to="kdzh:3Ftr4R6BH9R" resolve="sourcesKind" />
                       </node>
                     </node>
                     <node concept="tyxLq" id="7vU6U503f1z" role="2OqNvi">
-                      <node concept="uoxfO" id="7vU6U503fUT" role="tz02z">
-                        <ref role="uo_Cq" to="kdzh:eYcmk9QOlj" />
+                      <node concept="21nZrQ" id="3Ftr4R97HRp" role="tz02z">
+                        <ref role="21nZrZ" to="kdzh:3Ftr4R6BFCA" resolve="sources_and_tests" />
                       </node>
                     </node>
                   </node>
@@ -2538,7 +2546,7 @@
                     </node>
                     <node concept="3clFbS" id="7vU6U505wuH" role="TDEfX">
                       <node concept="RRSsy" id="3jYQuSB39Kk" role="3cqZAp">
-                        <property role="RRSoG" value="error" />
+                        <property role="RRSoG" value="gZ5fh_4/error" />
                         <node concept="Xl_RD" id="7vU6U505wuK" role="RRSoy">
                           <property role="Xl_RC" value="Failed to build project-relative path" />
                         </node>

@@ -2,7 +2,7 @@
 <model ref="r:83d73286-80a4-4a12-bc9a-3d442d5242fa(jetbrains.mps.lang.editor.menus.style.testLanguage.editor)">
   <persistence version="9" />
   <languages>
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="12" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="13" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -340,7 +340,7 @@
           </node>
         </node>
         <node concept="3F0A7n" id="4AL49kgHLXv" role="3EZMnx">
-          <ref role="1NtTu8" to="wrtb:4AL49kgHLZL" resolve="enumProperty" />
+          <ref role="1NtTu8" to="wrtb:3Ftr4R6BHcQ" resolve="enumProperty" />
         </node>
         <node concept="3F0ifn" id="41xlIweVLNk" role="3EZMnx">
           <property role="3F0ifm" value="string property:" />
@@ -567,7 +567,7 @@
           </node>
         </node>
         <node concept="3F0A7n" id="3jjUuIj4B56" role="3EZMnx">
-          <ref role="1NtTu8" to="wrtb:3jjUuIj4B3E" resolve="customActionEnumProperty" />
+          <ref role="1NtTu8" to="wrtb:3Ftr4R6BHcS" resolve="customActionEnumProperty" />
         </node>
         <node concept="3F0ifn" id="3jjUuIj69Vy" role="3EZMnx">
           <property role="3F0ifm" value="reference" />
@@ -898,7 +898,7 @@
     <node concept="KNhPl" id="4AL49kgHQDr" role="KNiz3">
       <ref role="2RIln$" to="wrtb:4AL49kg_Tz7" resolve="TestCompletionCustomization_ParentTestContextMatcher" />
       <node concept="3koIop" id="4AL49kgHQGh" role="3koIrf">
-        <ref role="3koIot" to="wrtb:4AL49kgHLZL" resolve="enumProperty" />
+        <ref role="3koIot" to="wrtb:3Ftr4R6BHcQ" resolve="enumProperty" />
       </node>
     </node>
     <node concept="3lBaaS" id="4AL49kgHQDt" role="3l$a4r">
@@ -1630,7 +1630,7 @@
     <node concept="KNhPl" id="3jjUuIj7Tix" role="KNiz3">
       <ref role="2RIln$" to="wrtb:4AL49kg_Tz7" resolve="TestCompletionCustomization_ParentTestContextMatcher" />
       <node concept="3koIop" id="3jjUuIj7Tl4" role="3koIrf">
-        <ref role="3koIot" to="wrtb:3jjUuIj4B3E" resolve="customActionEnumProperty" />
+        <ref role="3koIot" to="wrtb:3Ftr4R6BHcS" resolve="customActionEnumProperty" />
       </node>
     </node>
     <node concept="3lBaaS" id="3jjUuIj7Tiz" role="3l$a4r">

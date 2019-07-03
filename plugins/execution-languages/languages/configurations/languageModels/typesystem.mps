@@ -139,9 +139,6 @@
         <child id="1175517851849" name="errorString" index="2MkJ7o" />
       </concept>
       <concept id="1179832490862" name="jetbrains.mps.lang.typesystem.structure.CreateStrongLessThanInequationStatement" flags="nn" index="2NvLDW" />
-      <concept id="1212056081426" name="jetbrains.mps.lang.typesystem.structure.AbstractInequationStatement" flags="ng" index="Ob1k8">
-        <property id="1212056105818" name="inequationPriority" index="Ob790" />
-      </concept>
       <concept id="1227096774658" name="jetbrains.mps.lang.typesystem.structure.MessageStatement" flags="ng" index="2OEH$v">
         <child id="1227096802790" name="nodeToReport" index="2OEOjV" />
       </concept>
@@ -613,7 +610,6 @@
           <node concept="3clFbJ" id="1tTdFdvXuIy" role="3cqZAp">
             <node concept="3clFbS" id="1tTdFdvXuI$" role="3clFbx">
               <node concept="2NvLDW" id="4JYgQwOwbNQ" role="3cqZAp">
-                <property role="Ob790" value="0" />
                 <node concept="mw_s8" id="4JYgQwOwbNU" role="1ZfhK$">
                   <node concept="1Z2H0r" id="4JYgQwOwbNA" role="mwGJk">
                     <node concept="37vLTw" id="1tTdFdvXuK7" role="1Z2MuG">
@@ -744,7 +740,6 @@
     <property role="3GE5qa" value="execution" />
     <node concept="3clFbS" id="1ovLDatObEs" role="18ibNy">
       <node concept="2NvLDW" id="1ovLDatObEV" role="3cqZAp">
-        <property role="Ob790" value="0" />
         <node concept="mw_s8" id="1ovLDatObF0" role="1ZfhKB">
           <node concept="2pJPEk" id="67V23qSRO6m" role="mwGJk">
             <node concept="2pJPED" id="67V23qSRO6n" role="2pJPEn">
@@ -1330,7 +1325,6 @@
     <property role="TrG5h" value="checkParam_RunConfigurationInitializer" />
     <node concept="3clFbS" id="1T5iP2as2Yn" role="18ibNy">
       <node concept="2NvLDW" id="63yBSeEXxHj" role="3cqZAp">
-        <property role="Ob790" value="0" />
         <node concept="mw_s8" id="63yBSeEXxHr" role="1ZfhK$">
           <node concept="1Z2H0r" id="63yBSeEXxHs" role="mwGJk">
             <node concept="2OqwBi" id="1T5iP2as3Ow" role="1Z2MuG">

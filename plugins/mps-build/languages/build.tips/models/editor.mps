@@ -2,7 +2,7 @@
 <model ref="r:d2081fa1-b5bb-4dbb-bd64-b1b0a5c5e5eb(jetbrains.mps.build.tips.editor)">
   <persistence version="9" />
   <languages>
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="12" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="13" />
     <devkit ref="2677cb18-f558-4e33-bc38-a5139cee06dc(jetbrains.mps.devkit.language-design)" />
   </languages>
   <imports>
@@ -160,10 +160,10 @@
       <node concept="3F0ifn" id="5Ux$AZvbV$$" role="3EZMnx">
         <property role="3F0ifm" value="Tips &amp; Tricks" />
         <node concept="VechU" id="15sxreck4z9" role="3F10Kt">
-          <property role="Vb096" value="DARK_BLUE" />
+          <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
         </node>
         <node concept="Vb9p2" id="15sxreck4ze" role="3F10Kt">
-          <property role="Vbekb" value="BOLD" />
+          <property role="Vbekb" value="g1_k_vY/BOLD" />
         </node>
       </node>
       <node concept="3F0A7n" id="5Ux$AZvkVRy" role="3EZMnx">
@@ -202,10 +202,10 @@
         <property role="1$x2rV" value="en" />
         <ref role="1NtTu8" to="brwy:5Ux$AZvg79q" resolve="language" />
         <node concept="VechU" id="5Ux$AZveabr" role="3F10Kt">
-          <property role="Vb096" value="DARK_GREEN" />
+          <property role="Vb096" value="g1_qRwE/DARK_GREEN" />
         </node>
         <node concept="Vb9p2" id="15sxreckuY8" role="3F10Kt">
-          <property role="Vbekb" value="BOLD" />
+          <property role="Vbekb" value="g1_k_vY/BOLD" />
         </node>
       </node>
       <node concept="3F0ifn" id="5Ux$AZvg7ao" role="3EZMnx">
@@ -312,10 +312,10 @@
             <property role="VOm3f" value="true" />
           </node>
           <node concept="Vb9p2" id="15sxrecjui3" role="3F10Kt">
-            <property role="Vbekb" value="BOLD" />
+            <property role="Vbekb" value="g1_k_vY/BOLD" />
           </node>
           <node concept="VechU" id="15sxrecjui4" role="3F10Kt">
-            <property role="Vb096" value="DARK_BLUE" />
+            <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
           </node>
         </node>
         <node concept="3F0A7n" id="5Ux$AZvcLBY" role="3EZMnx">
@@ -332,10 +332,10 @@
             <property role="VOm3f" value="true" />
           </node>
           <node concept="Vb9p2" id="15sxrecjuph" role="3F10Kt">
-            <property role="Vbekb" value="BOLD" />
+            <property role="Vbekb" value="g1_k_vY/BOLD" />
           </node>
           <node concept="VechU" id="15sxrecjupi" role="3F10Kt">
-            <property role="Vb096" value="DARK_BLUE" />
+            <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
           </node>
         </node>
         <node concept="3EZMnI" id="1dRlja0Z6do" role="3EZMnx">
@@ -364,10 +364,10 @@
         <node concept="3F0ifn" id="1dRlja0Y6Kt" role="3EZMnx">
           <property role="3F0ifm" value="image:" />
           <node concept="Vb9p2" id="1dRlja0Y6XR" role="3F10Kt">
-            <property role="Vbekb" value="BOLD" />
+            <property role="Vbekb" value="g1_k_vY/BOLD" />
           </node>
           <node concept="VechU" id="1dRlja0Y6XS" role="3F10Kt">
-            <property role="Vb096" value="DARK_BLUE" />
+            <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
           </node>
           <node concept="pVoyu" id="1dRlja0Y6XV" role="3F10Kt">
             <property role="VOm3f" value="true" />
@@ -403,10 +403,10 @@
           <property role="VOm3f" value="true" />
         </node>
         <node concept="Vb9p2" id="1dRlja0XvEO" role="3F10Kt">
-          <property role="Vbekb" value="BOLD" />
+          <property role="Vbekb" value="g1_k_vY/BOLD" />
         </node>
         <node concept="VechU" id="1dRlja0XvEP" role="3F10Kt">
-          <property role="Vb096" value="DARK_MAGENTA" />
+          <property role="Vb096" value="g1_qVrt/DARK_MAGENTA" />
         </node>
       </node>
       <node concept="3F0A7n" id="1dRlja0XvEQ" role="3EZMnx">
@@ -414,13 +414,13 @@
         <property role="1$x2rV" value="&lt;width&gt;" />
         <ref role="1NtTu8" to="brwy:1dRlja0XtIy" resolve="width" />
         <node concept="Vb9p2" id="1dRlja0XvER" role="3F10Kt">
-          <property role="Vbekb" value="BOLD" />
+          <property role="Vbekb" value="g1_k_vY/BOLD" />
         </node>
       </node>
       <node concept="3F0ifn" id="1dRlja0XvES" role="3EZMnx">
         <property role="3F0ifm" value="px" />
         <node concept="VechU" id="1dRlja0XvET" role="3F10Kt">
-          <property role="Vb096" value="DARK_BLUE" />
+          <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
         </node>
       </node>
       <node concept="3F0ifn" id="1dRlja0XvEU" role="3EZMnx">
@@ -432,10 +432,10 @@
           <property role="VOm3f" value="true" />
         </node>
         <node concept="Vb9p2" id="1dRlja0XvEX" role="3F10Kt">
-          <property role="Vbekb" value="BOLD" />
+          <property role="Vbekb" value="g1_k_vY/BOLD" />
         </node>
         <node concept="VechU" id="1dRlja0XvEY" role="3F10Kt">
-          <property role="Vb096" value="DARK_MAGENTA" />
+          <property role="Vb096" value="g1_qVrt/DARK_MAGENTA" />
         </node>
       </node>
       <node concept="3F0A7n" id="1dRlja0XvEZ" role="3EZMnx">
@@ -443,13 +443,13 @@
         <property role="1$x2rV" value="&lt;height&gt;" />
         <ref role="1NtTu8" to="brwy:1dRlja0XtIz" resolve="height" />
         <node concept="Vb9p2" id="1dRlja0XvF0" role="3F10Kt">
-          <property role="Vbekb" value="BOLD" />
+          <property role="Vbekb" value="g1_k_vY/BOLD" />
         </node>
       </node>
       <node concept="3F0ifn" id="1dRlja0XvF1" role="3EZMnx">
         <property role="3F0ifm" value="px" />
         <node concept="VechU" id="1dRlja0XvF2" role="3F10Kt">
-          <property role="Vb096" value="DARK_BLUE" />
+          <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
         </node>
       </node>
       <node concept="3F0ifn" id="1dRlja0XvF3" role="3EZMnx">
@@ -461,16 +461,16 @@
           <property role="VOm3f" value="true" />
         </node>
         <node concept="Vb9p2" id="1dRlja0XvF6" role="3F10Kt">
-          <property role="Vbekb" value="BOLD" />
+          <property role="Vbekb" value="g1_k_vY/BOLD" />
         </node>
         <node concept="VechU" id="1dRlja0XvF7" role="3F10Kt">
-          <property role="Vb096" value="DARK_MAGENTA" />
+          <property role="Vb096" value="g1_qVrt/DARK_MAGENTA" />
         </node>
       </node>
       <node concept="3F0A7n" id="1dRlja0WuD4" role="3EZMnx">
         <ref role="1NtTu8" to="brwy:1dRlja0WnXb" resolve="file" />
         <node concept="Vb9p2" id="1dRlja0XgpB" role="3F10Kt">
-          <property role="Vbekb" value="BOLD" />
+          <property role="Vbekb" value="g1_k_vY/BOLD" />
         </node>
       </node>
       <node concept="l2Vlx" id="1dRlja0WuCU" role="2iSdaV" />
@@ -501,10 +501,10 @@
           <property role="VOm3f" value="true" />
         </node>
         <node concept="Vb9p2" id="1dRlja0XETX" role="3F10Kt">
-          <property role="Vbekb" value="BOLD" />
+          <property role="Vbekb" value="g1_k_vY/BOLD" />
         </node>
         <node concept="VechU" id="1dRlja0XETY" role="3F10Kt">
-          <property role="Vb096" value="DARK_MAGENTA" />
+          <property role="Vb096" value="g1_qVrt/DARK_MAGENTA" />
         </node>
       </node>
       <node concept="3F0ifn" id="1dRlja0XlZo" role="3EZMnx">
@@ -536,7 +536,7 @@
         <node concept="3F0ifn" id="Ib_Fk7zNf_" role="1QoS34">
           <property role="3F0ifm" value="&lt;preview&gt;" />
           <node concept="VechU" id="Ib_Fk7zNfA" role="3F10Kt">
-            <property role="Vb096" value="lightGray" />
+            <property role="Vb096" value="fLJRk5A/lightGray" />
           </node>
         </node>
         <node concept="1QoScp" id="Ib_Fk7zNfB" role="1QoVPY">
@@ -601,7 +601,7 @@
           <node concept="3F0ifn" id="Ib_Fk7zNg4" role="1QoVPY">
             <property role="3F0ifm" value="&lt;invalid path&gt;" />
             <node concept="VechU" id="Ib_Fk7zNg5" role="3F10Kt">
-              <property role="Vb096" value="red" />
+              <property role="Vb096" value="fLwANPn/red" />
             </node>
           </node>
         </node>

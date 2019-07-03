@@ -4,7 +4,7 @@
   <languages>
     <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="2" />
     <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="1" />
-    <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="1" />
+    <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="2" />
     <use id="95f8a3e6-f994-4ca0-a65e-763c9bae2d3b" name="jetbrains.mps.make.script" version="0" />
   </languages>
   <imports>
@@ -97,7 +97,7 @@
     <node concept="bFUmx" id="2QfPYUE$oYZ" role="LiZbd">
       <node concept="3clFbS" id="2QfPYUE$oZ0" role="2VODD2">
         <node concept="3D7k6m" id="2QfPYUE$oZc" role="3cqZAp">
-          <property role="3D7k6l" value="FAILURE" />
+          <property role="3D7k6l" value="230qvwa_7bs/FAILURE" />
           <node concept="LIFWc" id="2QfPYUE$oZe" role="lGtFl">
             <property role="ZRATv" value="true" />
             <property role="OXtK3" value="true" />
@@ -125,7 +125,7 @@
     <node concept="ElOhj" id="2QfPYUE$oYm" role="LiZbd">
       <node concept="3clFbS" id="2QfPYUE$oYn" role="2VODD2">
         <node concept="3D7k6m" id="2QfPYUE$oYo" role="3cqZAp">
-          <property role="3D7k6l" value="FAILURE" />
+          <property role="3D7k6l" value="230qvwa_7bs/FAILURE" />
           <node concept="LIFWc" id="2QfPYUE$oYs" role="lGtFl">
             <property role="ZRATv" value="true" />
             <property role="OXtK3" value="true" />
@@ -335,7 +335,6 @@
     <node concept="bFUmx" id="2QfPYUE$oZo" role="LiZbd">
       <node concept="3clFbS" id="2QfPYUE$oZp" role="2VODD2">
         <node concept="3D7k6m" id="2QfPYUE$oZu" role="3cqZAp">
-          <property role="3D7k6l" value="SUCCESS" />
           <node concept="LIFWc" id="2QfPYUE$oZw" role="lGtFl">
             <property role="ZRATv" value="true" />
             <property role="OXtK3" value="true" />
@@ -363,7 +362,6 @@
     <node concept="ElOhj" id="2QfPYUE$oYG" role="LiZbd">
       <node concept="3clFbS" id="2QfPYUE$oYH" role="2VODD2">
         <node concept="3D7k6m" id="2QfPYUE$oYI" role="3cqZAp">
-          <property role="3D7k6l" value="SUCCESS" />
           <node concept="LIFWc" id="2QfPYUE$oYJ" role="lGtFl">
             <property role="ZRATv" value="true" />
             <property role="OXtK3" value="true" />

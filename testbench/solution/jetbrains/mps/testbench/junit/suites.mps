@@ -6,7 +6,7 @@
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="-1" />
     <use id="63650c59-16c8-498a-99c8-005c7ee9515d" name="jetbrains.mps.lang.access" version="-1" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="-1" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="-1" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="-1" />
   </languages>
@@ -3237,7 +3237,7 @@
                         </node>
                         <node concept="3clFbS" id="4oW2E9aSh9P" role="3clFbx">
                           <node concept="RRSsy" id="3jYQuSB37nJ" role="3cqZAp">
-                            <property role="RRSoG" value="error" />
+                            <property role="RRSoG" value="gZ5fh_4/error" />
                             <node concept="3cpWs3" id="4oW2E9aSh9S" role="RRSoy">
                               <node concept="Xl_RD" id="4oW2E9aSh9T" role="3uHU7B">
                                 <property role="Xl_RC" value="Classloader is not found for the " />
@@ -3329,7 +3329,7 @@
                                 <node concept="TDmWw" id="ECLZhknrtQ" role="TEbGg">
                                   <node concept="3clFbS" id="ECLZhknrtS" role="TDEfX">
                                     <node concept="RRSsy" id="3jYQuSB37nT" role="3cqZAp">
-                                      <property role="RRSoG" value="warn" />
+                                      <property role="RRSoG" value="gZ5fksE/warn" />
                                       <node concept="3cpWs3" id="ECLZhkntQp" role="RRSoy">
                                         <node concept="Xl_RD" id="ECLZhkntSB" role="3uHU7w">
                                           <property role="Xl_RC" value="; will skip this test class" />
@@ -3449,7 +3449,7 @@
                                   </node>
                                   <node concept="3clFbS" id="1Wxy7WpiDXs" role="TDEfX">
                                     <node concept="RRSsy" id="1Wxy7WpiJh_" role="3cqZAp">
-                                      <property role="RRSoG" value="warn" />
+                                      <property role="RRSoG" value="gZ5fksE/warn" />
                                       <node concept="3cpWs3" id="1Wxy7WpiJhC" role="RRSoy">
                                         <node concept="Xl_RD" id="1Wxy7WpiJhD" role="3uHU7B">
                                           <property role="Xl_RC" value="Cannot find the test class " />

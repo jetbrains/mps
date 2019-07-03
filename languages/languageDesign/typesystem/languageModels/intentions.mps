@@ -5,8 +5,8 @@
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="4" />
     <use id="d7a92d38-f7db-40d0-8431-763b0c3c9f20" name="jetbrains.mps.lang.intentions" version="0" />
-    <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="1" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
+    <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="2" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
@@ -15,6 +15,7 @@
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
     <import index="tp2q" ref="r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)" />
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
+    <import index="9cxc" ref="r:ad005773-c03e-4650-b713-903a4cb6eda9(jetbrains.mps.lang.typesystem.enumMigration)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -608,7 +609,7 @@
             <node concept="2OqwBi" id="5VHjC1$dBDr" role="37vLTx">
               <node concept="2Sf5sV" id="5VHjC1$dBDs" role="2Oq$k0" />
               <node concept="3TrcHB" id="5VHjC1$dBDy" role="2OqNvi">
-                <ref role="3TsBF5" to="tpd4:hCOb7dq" resolve="inequationPriority" />
+                <ref role="3TsBF5" to="tpd4:3Ftr4R6BH9i" resolve="inequationPriority" />
               </node>
             </node>
             <node concept="2OqwBi" id="5VHjC1$dBDu" role="37vLTJ">
@@ -616,7 +617,7 @@
                 <ref role="3cqZAo" node="5VHjC1$d$gD" resolve="newNode" />
               </node>
               <node concept="3TrcHB" id="5VHjC1$dBDx" role="2OqNvi">
-                <ref role="3TsBF5" to="tpd4:hCOb7dq" resolve="inequationPriority" />
+                <ref role="3TsBF5" to="tpd4:3Ftr4R6BH9i" resolve="inequationPriority" />
               </node>
             </node>
           </node>

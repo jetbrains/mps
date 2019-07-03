@@ -230,7 +230,6 @@
         <reference id="3344436107830227902" name="target" index="2bn25l" />
       </concept>
       <concept id="6418371274763029565" name="jetbrains.mps.make.facet.structure.TargetDeclaration" flags="ng" index="15KeUm">
-        <property id="1675547159918562088" name="resourcesPolicy" index="2w7fpF" />
         <child id="2360002718792633290" name="job" index="ElM8M" />
         <child id="6418371274763146553" name="dependency" index="15LFui" />
         <child id="7320828025189219295" name="parameters" index="1aI7mi" />
@@ -355,11 +354,11 @@
         <ref role="15KeV8" to="tpcq:5L5h3brvDHA" resolve="textGen" />
       </node>
       <node concept="15KeVb" id="6zsZmIBXueV" role="15LFui">
-        <property role="3HPxAp" value="AFTER" />
+        <property role="3HPxAp" value="7fB872ucjBA/AFTER" />
         <ref role="15KeV8" to="tpcq:5L5h3brvzcf" resolve="generate" />
       </node>
       <node concept="15KeVb" id="5L5h3brvziN" role="15LFui">
-        <property role="3HPxAp" value="AFTER" />
+        <property role="3HPxAp" value="7fB872ucjBA/AFTER" />
         <ref role="15KeV8" to="tpcq:5L5h3brvz8m" resolve="configure" />
       </node>
       <node concept="2aLE7I" id="6zsZmIBWXQt" role="ElM8M">
@@ -1283,7 +1282,7 @@
                                   </node>
                                   <node concept="3clFbS" id="6zsZmIBXJ2a" role="TDEfX">
                                     <node concept="1daRAt" id="6zsZmIBXN0e" role="3cqZAp">
-                                      <property role="1daRAr" value="ERROR" />
+                                      <property role="1daRAr" value="3bEKrlZKrwH/ERROR" />
                                       <node concept="37vLTw" id="6zsZmIBXN2i" role="1daK9t">
                                         <ref role="3cqZAo" node="6zsZmIBXJ28" resolve="ex" />
                                       </node>
@@ -1348,9 +1347,8 @@
     </node>
     <node concept="15KeUm" id="2AYTeDfKryC" role="15LFul">
       <property role="TrG5h" value="compileEvaluator" />
-      <property role="2w7fpF" value="TRANSFORM" />
       <node concept="15KeVb" id="2AYTeDfKrCz" role="15LFui">
-        <property role="3HPxAp" value="AFTER" />
+        <property role="3HPxAp" value="7fB872ucjBA/AFTER" />
         <ref role="15KeV8" to="tpcq:5L5h3brvDMU" resolve="textGenToMemory" />
       </node>
       <node concept="2aLE7I" id="2AYTeDfKryD" role="ElM8M">
@@ -2098,7 +2096,7 @@
                         <node concept="3clFbJ" id="2AYTeDfO3Vn" role="3cqZAp">
                           <node concept="3clFbS" id="2AYTeDfO3Vp" role="3clFbx">
                             <node concept="1daRAt" id="2AYTeDfO3xB" role="3cqZAp">
-                              <property role="1daRAr" value="ERROR" />
+                              <property role="1daRAr" value="3bEKrlZKrwH/ERROR" />
                               <node concept="2YIFZM" id="2AYTeDfO3zV" role="1daK9t">
                                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                                 <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
@@ -2154,7 +2152,6 @@
                           </node>
                         </node>
                         <node concept="RRSsy" id="2AYTeDfNwei" role="3cqZAp">
-                          <property role="RRSoG" value="debug" />
                           <node concept="37vLTw" id="2AYTeDfNwxB" role="RRSoy">
                             <ref role="3cqZAo" node="2AYTeDfNvtW" resolve="unitSource" />
                           </node>
@@ -2175,7 +2172,7 @@
                       <node concept="9aQIb" id="2AYTeDfNJE1" role="9aQIa">
                         <node concept="3clFbS" id="2AYTeDfNJE2" role="9aQI4">
                           <node concept="RRSsy" id="2AYTeDfNJFn" role="3cqZAp">
-                            <property role="RRSoG" value="trace" />
+                            <property role="RRSoG" value="gZ5frni/trace" />
                             <node concept="37vLTw" id="2AYTeDfNJG9" role="RRSoy">
                               <ref role="3cqZAo" node="2AYTeDfNvtW" resolve="unitSource" />
                             </node>
@@ -2285,7 +2282,7 @@
             <node concept="3clFbJ" id="2AYTeDfNTjm" role="3cqZAp">
               <node concept="3clFbS" id="2AYTeDfNTjo" role="3clFbx">
                 <node concept="1daRAt" id="2AYTeDfO014" role="3cqZAp">
-                  <property role="1daRAr" value="ERROR" />
+                  <property role="1daRAr" value="3bEKrlZKrwH/ERROR" />
                   <node concept="2YIFZM" id="2AYTeDfO05U" role="1daK9t">
                     <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                     <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
@@ -2299,7 +2296,7 @@
                   </node>
                 </node>
                 <node concept="3D7k6m" id="2AYTeDfNY1Z" role="3cqZAp">
-                  <property role="3D7k6l" value="FAILURE" />
+                  <property role="3D7k6l" value="230qvwa_7bs/FAILURE" />
                 </node>
               </node>
               <node concept="3clFbC" id="2AYTeDfNW_J" role="3clFbw">
@@ -2650,13 +2647,13 @@
             <node concept="3clFbJ" id="2AYTeDfOgK8" role="3cqZAp">
               <node concept="3clFbS" id="2AYTeDfOgKa" role="3clFbx">
                 <node concept="1daRAt" id="2AYTeDfOlL0" role="3cqZAp">
-                  <property role="1daRAr" value="ERROR" />
+                  <property role="1daRAr" value="3bEKrlZKrwH/ERROR" />
                   <node concept="Xl_RD" id="2AYTeDfOlLe" role="1daK9t">
                     <property role="Xl_RC" value="Compilation did not complete" />
                   </node>
                 </node>
                 <node concept="3D7k6m" id="2AYTeDfOlKD" role="3cqZAp">
-                  <property role="3D7k6l" value="FAILURE" />
+                  <property role="3D7k6l" value="230qvwa_7bs/FAILURE" />
                 </node>
               </node>
               <node concept="2OqwBi" id="2AYTeDfOjZV" role="3clFbw">
@@ -2671,7 +2668,7 @@
             <node concept="3clFbJ" id="2AYTeDfOntO" role="3cqZAp">
               <node concept="3clFbS" id="2AYTeDfOntQ" role="3clFbx">
                 <node concept="1daRAt" id="2AYTeDfOx0C" role="3cqZAp">
-                  <property role="1daRAr" value="ERROR" />
+                  <property role="1daRAr" value="3bEKrlZKrwH/ERROR" />
                   <node concept="Xl_RD" id="2AYTeDfOx1O" role="1daK9t">
                     <property role="Xl_RC" value="Compilation failed:" />
                   </node>
@@ -2682,7 +2679,7 @@
                   </node>
                   <node concept="3clFbS" id="2AYTeDfOxhJ" role="2LFqv$">
                     <node concept="1daRAt" id="2AYTeDfOxuC" role="3cqZAp">
-                      <property role="1daRAr" value="ERROR" />
+                      <property role="1daRAr" value="3bEKrlZKrwH/ERROR" />
                       <node concept="2OqwBi" id="2AYTeDfOz7V" role="1daK9t">
                         <node concept="2GrUjf" id="2AYTeDfOyZM" role="2Oq$k0">
                           <ref role="2Gs0qQ" node="2AYTeDfOxhz" resolve="e" />
@@ -2708,7 +2705,7 @@
                   </node>
                 </node>
                 <node concept="3D7k6m" id="2AYTeDfOuiB" role="3cqZAp">
-                  <property role="3D7k6l" value="FAILURE" />
+                  <property role="3D7k6l" value="230qvwa_7bs/FAILURE" />
                 </node>
               </node>
               <node concept="2OqwBi" id="2AYTeDfOs$z" role="3clFbw">

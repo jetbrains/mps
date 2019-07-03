@@ -8,7 +8,7 @@
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="-1" />
     <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="-1" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="-1" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="-1" />
     <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="-1" />
     <use id="63650c59-16c8-498a-99c8-005c7ee9515d" name="jetbrains.mps.lang.access" version="-1" />
@@ -1361,7 +1361,7 @@
     </node>
   </node>
   <node concept="Zd50a" id="3M9DpEEa3zs">
-    <property role="Zd52Q" value="Mac OS X" />
+    <property role="Zd52Q" value="1mJS7WEAV1T/Mac OS X" />
     <property role="Z2u3V" value="true" />
     <property role="TrG5h" value="Mac" />
     <node concept="Zd509" id="5vlrYGaPd32" role="Zd508">
@@ -9825,7 +9825,7 @@
     </node>
   </node>
   <node concept="Zd50a" id="2HiVo5PaKfH">
-    <property role="Zd52Q" value="Mac OS X 10.5+" />
+    <property role="Zd52Q" value="2HiVo5PakU7/Mac OS X 10.5+" />
     <property role="Z2u3V" value="true" />
     <property role="TrG5h" value="Mac_10_5" />
     <node concept="Zd509" id="2HiVo5PaRdx" role="Zd508">
@@ -9847,7 +9847,7 @@
       <node concept="pLAjd" id="2HiVo5PaRdA" role="Zd501">
         <property role="pLAjf" value="VK_R" />
         <property role="pLAjc" value="ctrl" />
-        <property role="3hacHL" value="replace all" />
+        <property role="3hacHL" value="5SFo3Mf0QpD/replace all" />
       </node>
     </node>
     <node concept="Zd509" id="2d892Y1Pm3B" role="Zd508">
@@ -9956,7 +9956,7 @@
       <node concept="pLAjd" id="2HiVo5PaRe2" role="Zd501">
         <property role="pLAjf" value="VK_UP" />
         <property role="pLAjc" value="alt" />
-        <property role="3hacHL" value="replace all" />
+        <property role="3hacHL" value="5SFo3Mf0QpD/replace all" />
       </node>
     </node>
     <node concept="Zd509" id="7enUb_9G9tI" role="Zd508">
@@ -9964,7 +9964,7 @@
       <node concept="pLAjd" id="7enUb_9G9tK" role="Zd501">
         <property role="pLAjc" value="alt" />
         <property role="pLAjf" value="VK_DOWN" />
-        <property role="3hacHL" value="replace all" />
+        <property role="3hacHL" value="5SFo3Mf0QpD/replace all" />
       </node>
     </node>
     <node concept="Zd509" id="2HiVo5PaRe3" role="Zd508">
@@ -9979,7 +9979,7 @@
       <node concept="pLAjd" id="32_EJN4gfmL" role="Zd501">
         <property role="pLAjf" value="VK_BACK_SPACE" />
         <property role="pLAjc" value="ctrl" />
-        <property role="3hacHL" value="replace all" />
+        <property role="3hacHL" value="5SFo3Mf0QpD/replace all" />
       </node>
     </node>
   </node>

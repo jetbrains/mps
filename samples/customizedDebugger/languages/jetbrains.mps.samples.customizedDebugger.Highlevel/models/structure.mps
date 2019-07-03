@@ -50,16 +50,16 @@
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="77mX7nW$Zsx" role="1TKVEi">
       <property role="IQ2ns" value="8203012558887843617" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="participants" />
-      <property role="20lbJX" value="1..n" />
+      <property role="20lbJX" value="fLJekj6/1..n" />
       <ref role="20lvS9" node="77mX7nW$Zs7" resolve="Participant" />
     </node>
     <node concept="1TJgyj" id="77mX7nW$Zsz" role="1TKVEi">
       <property role="IQ2ns" value="8203012558887843619" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="smallTalk" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <ref role="20lvS9" node="77mX7nW$Zsj" resolve="Message" />
     </node>
     <node concept="PrWs8" id="77mX7nW$Zs5" role="PzmwI">
@@ -83,9 +83,8 @@
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="77mX7nW$Zsv" role="1TKVEi">
       <property role="IQ2ns" value="8203012558887843615" />
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="author" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <ref role="20lvS9" node="77mX7nW$Zs7" resolve="Participant" />
     </node>
     <node concept="1TJgyi" id="77mX7nW$Zst" role="1TKVEl">

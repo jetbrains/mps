@@ -169,7 +169,6 @@
         <child id="2360002718792622193" name="resource" index="ElOA9" />
       </concept>
       <concept id="3668957831723333672" name="jetbrains.mps.make.script.structure.ReportFeedbackStatement" flags="nn" index="1daRAt">
-        <property id="3668957831723333678" name="feedback" index="1daRAr" />
         <child id="3668957831723336680" name="message" index="1daK9t" />
       </concept>
       <concept id="187226666892683650" name="jetbrains.mps.make.script.structure.BeginWorkStatement" flags="ng" index="1u1O0F">
@@ -776,7 +775,6 @@
                                 </node>
                               </node>
                               <node concept="1daRAt" id="3avV6wmo0qO" role="3cqZAp">
-                                <property role="1daRAr" value="INFO" />
                                 <node concept="2YIFZM" id="3avV6wmq1Iv" role="1daK9t">
                                   <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                                   <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
@@ -1022,7 +1020,7 @@
         </node>
       </node>
       <node concept="15KeVb" id="13TYo4FvsSM" role="15LFui">
-        <property role="3HPxAp" value="AFTER" />
+        <property role="3HPxAp" value="7fB872ucjBA/AFTER" />
         <ref role="15KeV8" to="tpcq:5L5h3brvDHA" resolve="textGen" />
       </node>
       <node concept="15KeVb" id="13TYo4Fvt7h" role="15LFui">

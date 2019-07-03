@@ -2,7 +2,7 @@
 <model ref="r:6f104b69-0cfd-4b06-895f-bc1a1b43170f(jetbrains.mps.build.mps.tests.editor)">
   <persistence version="9" />
   <languages>
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="-1" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="13" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -311,7 +311,7 @@
     <property role="TrG5h" value="NoDeleteForOptionsChild" />
     <ref role="1h_SK9" to="5tjl:3X9rC2XzJdH" resolve="BuildMpsLayout_TestModules" />
     <node concept="1hA7zw" id="4yJrsdlBlWG" role="1h_SK8">
-      <property role="1hAc7j" value="delete_action_id" />
+      <property role="1hAc7j" value="g_hAxAO/delete_action_id" />
       <node concept="1hAIg9" id="4yJrsdlBlWH" role="1hA7z_">
         <node concept="3clFbS" id="4yJrsdlBlWI" role="2VODD2" />
       </node>
@@ -326,7 +326,7 @@
       </node>
     </node>
     <node concept="1hA7zw" id="4yJrsdlBmbM" role="1h_SK8">
-      <property role="1hAc7j" value="backspace_action_id" />
+      <property role="1hAc7j" value="7P1WhNABvta/backspace_action_id" />
       <node concept="1hAIg9" id="4yJrsdlBmbN" role="1hA7z_">
         <node concept="3clFbS" id="4yJrsdlBmbO" role="2VODD2" />
       </node>
@@ -341,7 +341,7 @@
       </node>
     </node>
     <node concept="1hA7zw" id="4yJrsdlBrDs" role="1h_SK8">
-      <property role="1hAc7j" value="cut_action_id" />
+      <property role="1hAc7j" value="7P1WhNABBii/cut_action_id" />
       <node concept="1hAIg9" id="4yJrsdlBrDt" role="1hA7z_">
         <node concept="3clFbS" id="4yJrsdlBrDu" role="2VODD2" />
       </node>

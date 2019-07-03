@@ -267,7 +267,7 @@
         <property role="BnDLt" value="true" />
         <property role="TrG5h" value="jetbrains.mps.execution.impl.tests.sandbox" />
         <property role="3LESm3" value="6cbb1052-4510-427f-926c-3476bfd7e801" />
-        <property role="aoJFB" value="tests" />
+        <property role="aoJFB" value="eYcmk9QOls/tests" />
         <node concept="3rtmxn" id="EpEP7iihO$" role="3bR31x">
           <node concept="3LXTmp" id="EpEP7iihO_" role="3rtmxm">
             <node concept="3qWCbU" id="EpEP7iihOA" role="3LXTna">
@@ -383,7 +383,7 @@
         <property role="BnDLt" value="true" />
         <property role="TrG5h" value="jetbrains.mps.execution.impl.tests" />
         <property role="3LESm3" value="7b15492d-a198-43e2-91e3-4a7e9116ce2b" />
-        <property role="aoJFB" value="tests" />
+        <property role="aoJFB" value="eYcmk9QOls/tests" />
         <node concept="3rtmxn" id="EpEP7iiil0" role="3bR31x">
           <node concept="3LXTmp" id="EpEP7iiil1" role="3rtmxm">
             <node concept="3qWCbU" id="EpEP7iiil2" role="3LXTna">
@@ -498,7 +498,7 @@
         <property role="BnDLt" value="true" />
         <property role="TrG5h" value="jetbrains.mps.debugger.java.runtime.tests" />
         <property role="3LESm3" value="70b17f0c-ff72-43e8-9468-eda69efb2b71" />
-        <property role="aoJFB" value="tests" />
+        <property role="aoJFB" value="eYcmk9QOls/tests" />
         <node concept="3rtmxn" id="EpEP7iihS6" role="3bR31x">
           <node concept="3LXTmp" id="EpEP7iihS7" role="3rtmxm">
             <node concept="3qWCbU" id="EpEP7iihS8" role="3LXTna">
@@ -1347,7 +1347,7 @@
         <property role="TrG5h" value="jetbrains.mps.lang.editor.table.tests" />
         <property role="3LESm3" value="69de002c-bbba-40be-be5b-f3a6e61ea828" />
         <property role="2GAjPV" value="false" />
-        <property role="aoJFB" value="tests" />
+        <property role="aoJFB" value="eYcmk9QOls/tests" />
         <node concept="3rtmxn" id="EpEP7iihTz" role="3bR31x">
           <node concept="3LXTmp" id="EpEP7iihT$" role="3rtmxm">
             <node concept="3qWCbU" id="EpEP7iihT_" role="3LXTna">
@@ -1404,7 +1404,7 @@
         <property role="TrG5h" value="jetbrains.mps.lang.actions.test" />
         <property role="3LESm3" value="6ed0339f-b777-4ada-9cf7-73354b12f191" />
         <property role="2GAjPV" value="false" />
-        <property role="aoJFB" value="tests" />
+        <property role="aoJFB" value="eYcmk9QOls/tests" />
         <node concept="3rtmxn" id="EpEP7iiih_" role="3bR31x">
           <node concept="3LXTmp" id="EpEP7iiihA" role="3rtmxm">
             <node concept="3qWCbU" id="EpEP7iiihB" role="3LXTna">
@@ -1461,7 +1461,7 @@
         <property role="TrG5h" value="jetbrains.mps.baseLanguage.test" />
         <property role="3LESm3" value="9c8b4b95-5d89-4201-ad78-0b2db3a22768" />
         <property role="2GAjPV" value="false" />
-        <property role="aoJFB" value="sources and tests" />
+        <property role="aoJFB" value="eYcmk9QOlj/sources and tests" />
         <node concept="3rtmxn" id="EpEP7iihI7" role="3bR31x">
           <node concept="3LXTmp" id="EpEP7iihI8" role="3rtmxm">
             <node concept="3qWCbU" id="EpEP7iihI9" role="3LXTna">
@@ -1560,7 +1560,7 @@
         <property role="TrG5h" value="jetbrains.mps.lang.smodel.query.test" />
         <property role="3LESm3" value="e735f546-7e3c-4043-85a9-9c4792e07c56" />
         <property role="2GAjPV" value="false" />
-        <property role="aoJFB" value="sources and tests" />
+        <property role="aoJFB" value="eYcmk9QOlj/sources and tests" />
         <node concept="3rtmxn" id="EpEP7iii7e" role="3bR31x">
           <node concept="3LXTmp" id="EpEP7iii7f" role="3rtmxm">
             <node concept="3qWCbU" id="EpEP7iii7g" role="3LXTna">
@@ -1902,7 +1902,7 @@
         <property role="TrG5h" value="jetbrains.mps.baseLanguage.unittest" />
         <property role="3LESm3" value="e60b351d-8d80-4c13-8ad4-3e4759e2a3ea" />
         <property role="2GAjPV" value="false" />
-        <property role="aoJFB" value="tests" />
+        <property role="aoJFB" value="eYcmk9QOls/tests" />
         <node concept="3rtmxn" id="EpEP7iihQF" role="3bR31x">
           <node concept="3LXTmp" id="EpEP7iihQG" role="3rtmxm">
             <node concept="3qWCbU" id="EpEP7iihQH" role="3LXTna">
@@ -2054,7 +2054,7 @@
         <property role="TrG5h" value="jetbrains.mps.baseLanguage.closures.unittest" />
         <property role="3LESm3" value="fa54094d-fc7a-4393-885f-13866cecf3f3" />
         <property role="2GAjPV" value="false" />
-        <property role="aoJFB" value="tests" />
+        <property role="aoJFB" value="eYcmk9QOls/tests" />
         <node concept="3rtmxn" id="EpEP7iii0g" role="3bR31x">
           <node concept="3LXTmp" id="EpEP7iii0h" role="3rtmxm">
             <node concept="3qWCbU" id="EpEP7iii0i" role="3LXTna">
@@ -2108,7 +2108,7 @@
         <property role="TrG5h" value="jetbrains.mps.baseLanguage.testRefs" />
         <property role="3LESm3" value="cd870c6a-f4a0-42f2-8e83-195b00a97615" />
         <property role="2GAjPV" value="false" />
-        <property role="aoJFB" value="tests" />
+        <property role="aoJFB" value="eYcmk9QOls/tests" />
         <node concept="55IIr" id="1y5ThBEPhOo" role="3LF7KH">
           <node concept="2Ry0Ak" id="1y5ThBEPhPE" role="iGT6I">
             <property role="2Ry0Am" value="testbench" />
@@ -2239,7 +2239,7 @@
       <property role="TrG5h" value="jetbrains.mps.build.tests" />
       <property role="3LESm3" value="39742b07-848c-43a7-be0a-845055dd3333" />
       <property role="2GAjPV" value="false" />
-      <property role="aoJFB" value="tests" />
+      <property role="aoJFB" value="eYcmk9QOls/tests" />
       <node concept="3rtmxn" id="EpEP7iiifl" role="3bR31x">
         <node concept="3LXTmp" id="EpEP7iiifm" role="3rtmxm">
           <node concept="3qWCbU" id="EpEP7iiifn" role="3LXTna">
@@ -2356,7 +2356,7 @@
       <property role="TrG5h" value="jetbrains.mps.build.mps.runner.test" />
       <property role="3LESm3" value="462dcdf9-0c03-4657-9c3f-0792adcc641c" />
       <property role="2GAjPV" value="false" />
-      <property role="aoJFB" value="tests" />
+      <property role="aoJFB" value="eYcmk9QOls/tests" />
       <node concept="3rtmxn" id="EpEP7iii4L" role="3bR31x">
         <node concept="3LXTmp" id="EpEP7iii4M" role="3rtmxm">
           <node concept="3qWCbU" id="EpEP7iii4N" role="3LXTna">
@@ -2607,7 +2607,7 @@
         <property role="BnDLt" value="true" />
         <property role="TrG5h" value="jetbrains.mps.generator.tests" />
         <property role="3LESm3" value="50fc24f9-2bc9-4702-84ed-7f00cd088aca" />
-        <property role="aoJFB" value="tests" />
+        <property role="aoJFB" value="eYcmk9QOls/tests" />
         <node concept="3rtmxn" id="EpEP7iihTr" role="3bR31x">
           <node concept="3LXTmp" id="EpEP7iihTs" role="3rtmxm">
             <node concept="3qWCbU" id="EpEP7iihTt" role="3LXTna">
@@ -2843,7 +2843,7 @@
         <property role="BnDLt" value="true" />
         <property role="TrG5h" value="jetbrains.mps.traceInfo.testWeaving" />
         <property role="3LESm3" value="dc080be0-da6e-4885-aed0-7d999c120619" />
-        <property role="aoJFB" value="sources and tests" />
+        <property role="aoJFB" value="eYcmk9QOlj/sources and tests" />
         <node concept="3rtmxn" id="EpEP7iihWw" role="3bR31x">
           <node concept="3LXTmp" id="EpEP7iihWx" role="3rtmxm">
             <node concept="3qWCbU" id="EpEP7iihWy" role="3LXTna">
@@ -3023,7 +3023,7 @@
         <property role="BnDLt" value="true" />
         <property role="TrG5h" value="jetbrains.mps.generator.xmodel.build.test" />
         <property role="3LESm3" value="4fd1c6b9-3b55-4e17-938e-d936333af666" />
-        <property role="aoJFB" value="sources and tests" />
+        <property role="aoJFB" value="eYcmk9QOlj/sources and tests" />
         <node concept="3rtmxn" id="EpEP7iii7I" role="3bR31x">
           <node concept="3LXTmp" id="EpEP7iii7J" role="3rtmxm">
             <node concept="3qWCbU" id="EpEP7iii7K" role="3LXTna">
@@ -3221,7 +3221,7 @@
         <property role="BnDLt" value="true" />
         <property role="TrG5h" value="jetbrains.mps.ide.java.tests" />
         <property role="3LESm3" value="c3786d2b-aba2-45e5-8de0-1124fd14259b" />
-        <property role="aoJFB" value="sources and tests" />
+        <property role="aoJFB" value="eYcmk9QOlj/sources and tests" />
         <node concept="3rtmxn" id="EpEP7iihYv" role="3bR31x">
           <node concept="3LXTmp" id="EpEP7iihYw" role="3rtmxm">
             <node concept="3qWCbU" id="EpEP7iihYx" role="3LXTna">
@@ -3447,7 +3447,7 @@
         <property role="TrG5h" value="jetbrains.mps.smodel.test" />
         <property role="3LESm3" value="d2213aeb-6827-43e6-8179-d5886cfd0bb6" />
         <property role="2GAjPV" value="false" />
-        <property role="aoJFB" value="tests" />
+        <property role="aoJFB" value="eYcmk9QOls/tests" />
         <node concept="3rtmxn" id="EpEP7iihNq" role="3bR31x">
           <node concept="3LXTmp" id="EpEP7iihNr" role="3rtmxm">
             <node concept="3qWCbU" id="EpEP7iihNs" role="3LXTna">
@@ -3570,7 +3570,7 @@
         <property role="TrG5h" value="jetbrains.mps.testRead" />
         <property role="3LESm3" value="3d09e340-55d4-4ddc-8195-a92c0c5cf603" />
         <property role="2GAjPV" value="false" />
-        <property role="aoJFB" value="tests" />
+        <property role="aoJFB" value="eYcmk9QOls/tests" />
         <node concept="3rtmxn" id="EpEP7iiiiZ" role="3bR31x">
           <node concept="3LXTmp" id="EpEP7iiij0" role="3rtmxm">
             <node concept="3qWCbU" id="EpEP7iiij1" role="3LXTna">
@@ -3651,7 +3651,7 @@
         <property role="TrG5h" value="jetbrains.mps.test.smodel" />
         <property role="3LESm3" value="494e76b6-a751-488a-8cfa-cbf8aead39e9" />
         <property role="2GAjPV" value="false" />
-        <property role="aoJFB" value="sources and tests" />
+        <property role="aoJFB" value="eYcmk9QOlj/sources and tests" />
         <node concept="55IIr" id="2kP5W5yTHEZ" role="3LF7KH">
           <node concept="2Ry0Ak" id="2kP5W5yTHGV" role="iGT6I">
             <property role="2Ry0Am" value="testbench" />
@@ -3741,7 +3741,7 @@
       <property role="TrG5h" value="jetbrains.mps.testActions" />
       <property role="3LESm3" value="ae6cedf1-e261-45d9-972d-e8cfbc5e7f52" />
       <property role="2GAjPV" value="false" />
-      <property role="aoJFB" value="sources and tests" />
+      <property role="aoJFB" value="eYcmk9QOlj/sources and tests" />
       <node concept="3rtmxn" id="EpEP7iihOX" role="3bR31x">
         <node concept="3LXTmp" id="EpEP7iihOY" role="3rtmxm">
           <node concept="3qWCbU" id="EpEP7iihOZ" role="3LXTna">
@@ -3798,7 +3798,7 @@
       <property role="TrG5h" value="jetbrains.mps.lang.plugin.tests" />
       <property role="3LESm3" value="8dc46c52-5402-4971-bfcd-5a34efb20528" />
       <property role="2GAjPV" value="false" />
-      <property role="aoJFB" value="sources and tests" />
+      <property role="aoJFB" value="eYcmk9QOlj/sources and tests" />
       <node concept="3rtmxn" id="EpEP7iii00" role="3bR31x">
         <node concept="3LXTmp" id="EpEP7iii01" role="3rtmxm">
           <node concept="3qWCbU" id="EpEP7iii02" role="3LXTna">
@@ -3975,7 +3975,7 @@
         <property role="TrG5h" value="jetbrains.mps.lang.editor.diagram.tests" />
         <property role="3LESm3" value="779ae18b-ee98-406e-94fd-dec40c78b92f" />
         <property role="2GAjPV" value="false" />
-        <property role="aoJFB" value="tests" />
+        <property role="aoJFB" value="eYcmk9QOls/tests" />
         <node concept="3rtmxn" id="EpEP7iihLo" role="3bR31x">
           <node concept="3LXTmp" id="EpEP7iihLp" role="3rtmxm">
             <node concept="3qWCbU" id="EpEP7iihLq" role="3LXTna">
@@ -4193,7 +4193,7 @@
         <property role="TrG5h" value="jetbrains.mps.build.stripping.tests" />
         <property role="3LESm3" value="c9bc8834-ad52-4c80-83d0-64827cf13fae" />
         <property role="2GAjPV" value="false" />
-        <property role="aoJFB" value="tests" />
+        <property role="aoJFB" value="eYcmk9QOls/tests" />
         <node concept="3rtmxn" id="EpEP7iiig5" role="3bR31x">
           <node concept="3LXTmp" id="EpEP7iiig6" role="3rtmxm">
             <node concept="3qWCbU" id="EpEP7iiig7" role="3LXTna">
@@ -4587,7 +4587,7 @@
         <property role="TrG5h" value="testPackagedLanguage.test" />
         <property role="3LESm3" value="2f5af9e7-34c8-45f3-b417-4dcbb52409b8" />
         <property role="2GAjPV" value="false" />
-        <property role="aoJFB" value="tests" />
+        <property role="aoJFB" value="eYcmk9QOls/tests" />
         <node concept="3rtmxn" id="EpEP7iihYC" role="3bR31x">
           <node concept="3LXTmp" id="EpEP7iihYD" role="3rtmxm">
             <node concept="3qWCbU" id="EpEP7iihYE" role="3LXTna">
@@ -5387,7 +5387,7 @@
         <property role="TrG5h" value="UtilSolution" />
         <property role="3LESm3" value="6be63454-b482-4f5d-b8b7-d3f627e961a7" />
         <property role="2GAjPV" value="false" />
-        <property role="aoJFB" value="sources" />
+        <property role="aoJFB" value="eYcmk9QOli/sources" />
         <node concept="3rtmxn" id="EpEP7iiieU" role="3bR31x">
           <node concept="3LXTmp" id="EpEP7iiieV" role="3rtmxm">
             <node concept="3qWCbU" id="EpEP7iiieW" role="3LXTna">
@@ -5438,7 +5438,7 @@
         <property role="TrG5h" value="TestBehavior" />
         <property role="3LESm3" value="5de85764-70e6-4e9a-8618-d85dc0eb0843" />
         <property role="2GAjPV" value="false" />
-        <property role="aoJFB" value="sources and tests" />
+        <property role="aoJFB" value="eYcmk9QOlj/sources and tests" />
         <node concept="3rtmxn" id="EpEP7iihX5" role="3bR31x">
           <node concept="3LXTmp" id="EpEP7iihX6" role="3rtmxm">
             <node concept="3qWCbU" id="EpEP7iihX7" role="3LXTna">
@@ -5567,7 +5567,7 @@
         <property role="TrG5h" value="TestBehaviorReflective" />
         <property role="3LESm3" value="beff1186-d062-491c-bb4e-4c63c5bc07f4" />
         <property role="2GAjPV" value="false" />
-        <property role="aoJFB" value="sources and tests" />
+        <property role="aoJFB" value="eYcmk9QOlj/sources and tests" />
         <node concept="3rtmxn" id="EpEP7iiid0" role="3bR31x">
           <node concept="3LXTmp" id="EpEP7iiid1" role="3rtmxm">
             <node concept="3qWCbU" id="EpEP7iiid2" role="3LXTna">
@@ -5875,7 +5875,7 @@
         <property role="TrG5h" value="jetbrains.mps.lang.editor.imageGen.tests" />
         <property role="3LESm3" value="d48febc8-a636-425c-92c3-a2b671b6f363" />
         <property role="2GAjPV" value="false" />
-        <property role="aoJFB" value="tests" />
+        <property role="aoJFB" value="eYcmk9QOls/tests" />
         <node concept="3rtmxn" id="EpEP7iii5w" role="3bR31x">
           <node concept="3LXTmp" id="EpEP7iii5x" role="3rtmxm">
             <node concept="3qWCbU" id="EpEP7iii5y" role="3LXTna">
@@ -5960,7 +5960,7 @@
         <property role="TrG5h" value="analyzers.test" />
         <property role="3LESm3" value="f9665e4e-baa4-42c6-b97d-c49dfa9f7381" />
         <property role="2GAjPV" value="false" />
-        <property role="aoJFB" value="sources and tests" />
+        <property role="aoJFB" value="eYcmk9QOlj/sources and tests" />
         <node concept="3rtmxn" id="EpEP7iii3Y" role="3bR31x">
           <node concept="3LXTmp" id="EpEP7iii3Z" role="3rtmxm">
             <node concept="3qWCbU" id="EpEP7iii40" role="3LXTna">
@@ -6631,7 +6631,7 @@
         <property role="BnDLt" value="true" />
         <property role="TrG5h" value="jetbrains.mps.lang.editor.menus.tests" />
         <property role="3LESm3" value="0aa20195-3c81-4810-b4b6-be1166055d6a" />
-        <property role="aoJFB" value="tests" />
+        <property role="aoJFB" value="eYcmk9QOls/tests" />
         <node concept="3rtmxn" id="EpEP7iihPD" role="3bR31x">
           <node concept="3LXTmp" id="EpEP7iihPE" role="3rtmxm">
             <node concept="3qWCbU" id="EpEP7iihPF" role="3LXTna">
@@ -6760,7 +6760,7 @@
         <property role="BnDLt" value="true" />
         <property role="TrG5h" value="jetbrains.mps.lang.editor.menus.extras.tests" />
         <property role="3LESm3" value="01f0c325-0ad6-43cd-a7cb-1b83961cf69e" />
-        <property role="aoJFB" value="tests" />
+        <property role="aoJFB" value="eYcmk9QOls/tests" />
         <node concept="3rtmxn" id="EpEP7iihVE" role="3bR31x">
           <node concept="3LXTmp" id="EpEP7iihVF" role="3rtmxm">
             <node concept="3qWCbU" id="EpEP7iihVG" role="3LXTna">
@@ -6952,7 +6952,7 @@
         <property role="BnDLt" value="true" />
         <property role="TrG5h" value="jetbrains.mps.lang.editor.menus.contextAssistant.tests" />
         <property role="3LESm3" value="39e0eaec-a754-4bf3-b9e5-fb075e13bcc5" />
-        <property role="aoJFB" value="tests" />
+        <property role="aoJFB" value="eYcmk9QOls/tests" />
         <node concept="3rtmxn" id="EpEP7iiiaN" role="3bR31x">
           <node concept="3LXTmp" id="EpEP7iiiaO" role="3rtmxm">
             <node concept="3qWCbU" id="EpEP7iiiaP" role="3LXTna">
@@ -7008,7 +7008,7 @@
         <property role="BnDLt" value="true" />
         <property role="TrG5h" value="jetbrains.mps.editor.contextActionsTool.tests" />
         <property role="3LESm3" value="5b680985-8194-47f3-94b2-911d0fb5e92a" />
-        <property role="aoJFB" value="tests" />
+        <property role="aoJFB" value="eYcmk9QOls/tests" />
         <node concept="3rtmxn" id="EpEP7iihEv" role="3bR31x">
           <node concept="3LXTmp" id="EpEP7iihEw" role="3rtmxm">
             <node concept="3qWCbU" id="EpEP7iihEx" role="3LXTna">
@@ -7196,7 +7196,7 @@
         <property role="BnDLt" value="true" />
         <property role="TrG5h" value="jetbrains.mps.lang.editor.menus.substitute.tests" />
         <property role="3LESm3" value="808627dc-c34c-42ee-b76d-d12614cad4a7" />
-        <property role="aoJFB" value="tests" />
+        <property role="aoJFB" value="eYcmk9QOls/tests" />
         <node concept="3rtmxn" id="EpEP7iihZc" role="3bR31x">
           <node concept="3LXTmp" id="EpEP7iihZd" role="3rtmxm">
             <node concept="3qWCbU" id="EpEP7iihZe" role="3LXTna">
@@ -7300,7 +7300,7 @@
         <property role="BnDLt" value="true" />
         <property role="TrG5h" value="jetbrains.mps.lang.editor.menus.sideTransform.tests" />
         <property role="3LESm3" value="ee5f06cc-53b8-4415-b1f3-19f5942bedc0" />
-        <property role="aoJFB" value="tests" />
+        <property role="aoJFB" value="eYcmk9QOls/tests" />
         <node concept="3rtmxn" id="EpEP7iihPV" role="3bR31x">
           <node concept="3LXTmp" id="EpEP7iihPW" role="3rtmxm">
             <node concept="3qWCbU" id="EpEP7iihPX" role="3LXTna">
@@ -7413,7 +7413,7 @@
       <node concept="1E1JtA" id="4AL49kgFg$g" role="2G$12L">
         <property role="TrG5h" value="jetbrains.mps.lang.editor.menus.style.tests" />
         <property role="3LESm3" value="f16c447a-f70c-4850-983c-0d3efc4e55a9" />
-        <property role="aoJFB" value="tests" />
+        <property role="aoJFB" value="eYcmk9QOls/tests" />
         <property role="BnDLt" value="true" />
         <node concept="3rtmxn" id="4AL49kgFg$h" role="3bR31x">
           <node concept="3LXTmp" id="4AL49kgFg$i" role="3rtmxm">
@@ -7560,7 +7560,7 @@
         <property role="TrG5h" value="jetbrains.mps.ide.httpsupport.tests" />
         <property role="3LESm3" value="ddcf7bef-759a-45ed-bdb2-9a6f000d043f" />
         <property role="2GAjPV" value="false" />
-        <property role="aoJFB" value="sources and tests" />
+        <property role="aoJFB" value="eYcmk9QOlj/sources and tests" />
         <node concept="3rtmxn" id="EpEP7iiigD" role="3bR31x">
           <node concept="3LXTmp" id="EpEP7iiigE" role="3rtmxm">
             <node concept="3qWCbU" id="EpEP7iiigF" role="3LXTna">
@@ -7705,7 +7705,7 @@
       <property role="TrG5h" value="TestConstraints" />
       <property role="3LESm3" value="fa6333dc-8872-4c44-8576-d45f9752c17d" />
       <property role="2GAjPV" value="false" />
-      <property role="aoJFB" value="sources and tests" />
+      <property role="aoJFB" value="eYcmk9QOlj/sources and tests" />
       <node concept="3rtmxn" id="EpEP7iihHO" role="3bR31x">
         <node concept="3LXTmp" id="EpEP7iihHP" role="3rtmxm">
           <node concept="3qWCbU" id="EpEP7iihHQ" role="3LXTna">
@@ -7845,7 +7845,7 @@
       <property role="TrG5h" value="jetbrains.mps.tests.sraMigration" />
       <property role="3LESm3" value="b2159dbd-e226-4810-9c48-110aabae42e8" />
       <property role="2GAjPV" value="false" />
-      <property role="aoJFB" value="tests" />
+      <property role="aoJFB" value="eYcmk9QOls/tests" />
       <node concept="3rtmxn" id="EpEP7iiiaa" role="3bR31x">
         <node concept="3LXTmp" id="EpEP7iiiab" role="3rtmxm">
           <node concept="3qWCbU" id="EpEP7iiiac" role="3LXTna">
@@ -7972,7 +7972,7 @@
       <property role="TrG5h" value="jetbrains.mps.lang.typesystem.test" />
       <property role="3LESm3" value="2959cdf0-70fb-4b7a-9ca0-49da775dd0cd" />
       <property role="2GAjPV" value="false" />
-      <property role="aoJFB" value="sources and tests" />
+      <property role="aoJFB" value="eYcmk9QOlj/sources and tests" />
       <node concept="55IIr" id="1Ue8MQkfJlX" role="3LF7KH">
         <node concept="2Ry0Ak" id="1Ue8MQkfJlY" role="iGT6I">
           <property role="2Ry0Am" value="testbench" />
@@ -8119,7 +8119,7 @@
         <property role="TrG5h" value="jetbrains.mps.lang.text.test" />
         <property role="3LESm3" value="89271cfe-4a93-440d-b4ab-d21ce7349603" />
         <property role="2GAjPV" value="false" />
-        <property role="aoJFB" value="tests" />
+        <property role="aoJFB" value="eYcmk9QOls/tests" />
         <node concept="3rtmxn" id="3HV74$eh7l5" role="3bR31x">
           <node concept="3LXTmp" id="3HV74$eh7l6" role="3rtmxm">
             <node concept="3qWCbU" id="3HV74$eh7l7" role="3LXTna">
@@ -8221,7 +8221,7 @@
       <property role="TrG5h" value="jetbrains.mps.console.tests" />
       <property role="3LESm3" value="8949b0e7-d938-48ba-8cfc-4a9bb44df0e8" />
       <property role="2GAjPV" value="false" />
-      <property role="aoJFB" value="tests" />
+      <property role="aoJFB" value="eYcmk9QOls/tests" />
       <node concept="3rtmxn" id="7ZKuP1ForyX" role="3bR31x">
         <node concept="3LXTmp" id="7ZKuP1ForyZ" role="3rtmxm">
           <node concept="55IIr" id="7ZKuP1Forz1" role="3LXTmr">

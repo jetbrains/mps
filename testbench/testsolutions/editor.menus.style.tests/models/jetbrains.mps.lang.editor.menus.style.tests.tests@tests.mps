@@ -7,7 +7,7 @@
     <use id="b4a430be-1696-48bf-bb72-4333242e590c" name="jetbrains.mps.lang.editor.menus.style.testLanguage" version="0" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
   </languages>
   <imports>
     <import index="exr9" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor(MPS.Editor/)" />
@@ -267,7 +267,7 @@
       <concept id="1181952871644" name="jetbrains.mps.lang.smodel.structure.Concept_GetAllSubConcepts" flags="nn" index="LSoRf">
         <child id="1182506816063" name="smodel" index="1iTxcG" />
       </concept>
-      <concept id="1240171359678" name="jetbrains.mps.lang.smodel.structure.EnumMember_ValueOperation_Old" flags="nn" index="2ZYiMu" />
+      <concept id="1966870290088668520" name="jetbrains.mps.lang.smodel.structure.Enum_MembersOperation" flags="ng" index="2ViDtN" />
       <concept id="2644386474301421077" name="jetbrains.mps.lang.smodel.structure.LinkIdRefExpression" flags="nn" index="359W_D">
         <reference id="2644386474301421078" name="conceptDeclaration" index="359W_E" />
         <reference id="2644386474301421079" name="linkDeclaration" index="359W_F" />
@@ -283,11 +283,6 @@
         <child id="1177027386292" name="conceptArgument" index="cj9EA" />
       </concept>
       <concept id="6870613620390542976" name="jetbrains.mps.lang.smodel.structure.ConceptAliasOperation" flags="ng" index="3n3YKJ" />
-      <concept id="1240930118027" name="jetbrains.mps.lang.smodel.structure.SEnumOperationInvocation" flags="nn" index="3HcIyF">
-        <reference id="1240930118028" name="enumDeclaration" index="3HcIyG" />
-        <child id="1240930317927" name="operation" index="3Hdvt7" />
-      </concept>
-      <concept id="1240930444980" name="jetbrains.mps.lang.smodel.structure.SEnum_MembersOperation_Old" flags="ng" index="3HdYuk" />
       <concept id="1140131837776" name="jetbrains.mps.lang.smodel.structure.Node_ReplaceWithAnotherOperation" flags="nn" index="1P9Npp">
         <child id="1140131861877" name="replacementNode" index="1P9ThW" />
       </concept>
@@ -303,6 +298,9 @@
       </concept>
       <concept id="1138056282393" name="jetbrains.mps.lang.smodel.structure.SLinkListAccess" flags="nn" index="3Tsc0h">
         <reference id="1138056546658" name="link" index="3TtcxE" />
+      </concept>
+      <concept id="5779574625830813396" name="jetbrains.mps.lang.smodel.structure.EnumerationIdRefExpression" flags="ng" index="1XH99k">
+        <reference id="5779574625830813397" name="enumDeclaration" index="1XH99l" />
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
@@ -1048,7 +1046,7 @@
       </node>
     </node>
     <node concept="1p9Cxi" id="4AL49kgHV16" role="LiZbd">
-      <property role="1p1wX$" value="no priority" />
+      <property role="1p1wX$" value="4AL49kgHLZQ/no priority" />
       <node concept="LIFWc" id="4AL49kgI_4Z" role="lGtFl">
         <property role="ZRATv" value="true" />
         <property role="OXtK3" value="true" />
@@ -1114,7 +1112,7 @@
     <property role="TrG5h" value="TestCompletionCustomization_ContextMatcher_EnumPropertyWithStyling" />
     <property role="3YCmrE" value="if we use styling &quot;with priority&quot; is with priority and comes first" />
     <node concept="1p9Cxi" id="4AL49kgHV1v" role="LiRBU">
-      <property role="1p1wX$" value="no priority" />
+      <property role="1p1wX$" value="4AL49kgHLZQ/no priority" />
       <node concept="LIFWc" id="4AL49kgIe18" role="lGtFl">
         <property role="LIFWa" value="0" />
         <property role="OXtK3" value="true" />
@@ -1124,7 +1122,6 @@
       </node>
     </node>
     <node concept="1p9Cxi" id="4AL49kgHV1x" role="LiZbd">
-      <property role="1p1wX$" value="with priority" />
       <node concept="LIFWc" id="4AL49kgIrUE" role="lGtFl">
         <property role="ZRATv" value="true" />
         <property role="OXtK3" value="true" />
@@ -2441,9 +2438,11 @@
                       <node concept="2GrKxI" id="3jjUuIj5hCN" role="2Gsz3X">
                         <property role="TrG5h" value="member" />
                       </node>
-                      <node concept="3HcIyF" id="3jjUuIj5m3S" role="2GsD0m">
-                        <ref role="3HcIyG" to="wrtb:4AL49kgHLZO" resolve="TestCompletionCustomization_Enum" />
-                        <node concept="3HdYuk" id="3jjUuIj5ntS" role="3Hdvt7" />
+                      <node concept="2OqwBi" id="3Ftr4R9xRYs" role="2GsD0m">
+                        <node concept="1XH99k" id="3Ftr4R9xRYt" role="2Oq$k0">
+                          <ref role="1XH99l" to="wrtb:3Ftr4R6BFN7" resolve="TestCompletionCustomization_Enum" />
+                        </node>
+                        <node concept="2ViDtN" id="3Ftr4R9xRYu" role="2OqNvi" />
                       </node>
                       <node concept="3clFbS" id="3jjUuIj5hCP" role="2LFqv$">
                         <node concept="3clFbF" id="3jjUuIj5hCQ" role="3cqZAp">
@@ -2499,14 +2498,11 @@
                                             <ref role="3cqZAo" node="3jjUuIj5hD4" resolve="parent" />
                                           </node>
                                           <node concept="3TrcHB" id="3jjUuIj5u8L" role="2OqNvi">
-                                            <ref role="3TsBF5" to="wrtb:3jjUuIj4B3E" resolve="customActionEnumProperty" />
+                                            <ref role="3TsBF5" to="wrtb:3Ftr4R6BHcS" resolve="customActionEnumProperty" />
                                           </node>
                                         </node>
-                                        <node concept="2OqwBi" id="3jjUuIj5xf1" role="37vLTx">
-                                          <node concept="2GrUjf" id="3jjUuIj5wUS" role="2Oq$k0">
-                                            <ref role="2Gs0qQ" node="3jjUuIj5hCN" resolve="member" />
-                                          </node>
-                                          <node concept="2ZYiMu" id="3jjUuIj5yGQ" role="2OqNvi" />
+                                        <node concept="2GrUjf" id="3jjUuIj5wUS" role="37vLTx">
+                                          <ref role="2Gs0qQ" node="3jjUuIj5hCN" resolve="member" />
                                         </node>
                                       </node>
                                     </node>
@@ -3599,7 +3595,6 @@
   <node concept="LiM7Y" id="3jjUuIj5yZG">
     <property role="TrG5h" value="TestCompletionCustomization_ContextMatcher_CustomActionEnumNoStyling" />
     <node concept="1p9Cxi" id="3jjUuIj5yZH" role="LiRBU">
-      <property role="2BKp$1" value="with priority" />
       <node concept="LIFWc" id="3jjUuIj6spE" role="lGtFl">
         <property role="LIFWa" value="0" />
         <property role="OXtK3" value="true" />
@@ -3679,7 +3674,7 @@
       </node>
     </node>
     <node concept="1p9Cxi" id="3jjUuIj5z0f" role="LiZbd">
-      <property role="2BKp$1" value="no priority" />
+      <property role="2BKp$1" value="4AL49kgHLZQ/no priority" />
       <node concept="LIFWc" id="3jjUuIj7diU" role="lGtFl">
         <property role="LIFWa" value="0" />
         <property role="OXtK3" value="true" />
@@ -3692,8 +3687,8 @@
   <node concept="LiM7Y" id="3jjUuIj7x$7">
     <property role="TrG5h" value="TestCompletionCustomization_ContextMatcher_CustomActionEnumWithStyling" />
     <node concept="1p9Cxi" id="3jjUuIj7x$8" role="LiRBU">
-      <property role="2BKp$1" value="no priority" />
-      <property role="1p1wX$" value="no priority" />
+      <property role="2BKp$1" value="4AL49kgHLZQ/no priority" />
+      <property role="1p1wX$" value="4AL49kgHLZQ/no priority" />
       <node concept="LIFWc" id="3jjUuIj828b" role="lGtFl">
         <property role="LIFWa" value="0" />
         <property role="OXtK3" value="true" />
@@ -3775,8 +3770,7 @@
       </node>
     </node>
     <node concept="1p9Cxi" id="3jjUuIj7x$C" role="LiZbd">
-      <property role="2BKp$1" value="with priority" />
-      <property role="1p1wX$" value="no priority" />
+      <property role="1p1wX$" value="4AL49kgHLZQ/no priority" />
       <node concept="LIFWc" id="3jjUuIj7zCG" role="lGtFl">
         <property role="LIFWa" value="0" />
         <property role="OXtK3" value="true" />
@@ -3789,7 +3783,6 @@
   <node concept="LiM7Y" id="2o3hTqKRmwv">
     <property role="TrG5h" value="TestCompletionCustomization_ContextMatcher_CustomActionRererenceNoStyling" />
     <node concept="1p9Cxi" id="2o3hTqKRmww" role="LiRBU">
-      <property role="2BKp$1" value="with priority" />
       <node concept="LIFWc" id="2o3hTqKY0xr" role="lGtFl">
         <property role="ZRATv" value="true" />
         <property role="OXtK3" value="true" />
@@ -3875,7 +3868,6 @@
       </node>
     </node>
     <node concept="1p9Cxi" id="2o3hTqKRmx0" role="LiZbd">
-      <property role="2BKp$1" value="with priority" />
       <ref role="2BKpIf" node="41xlIweV9gG" resolve="a" />
       <node concept="LIFWc" id="2o3hTqL25h8" role="lGtFl">
         <property role="ZRATv" value="true" />
@@ -3889,7 +3881,6 @@
   <node concept="LiM7Y" id="2o3hTqKY2Ba">
     <property role="TrG5h" value="TestCompletionCustomization_ContextMatcher_CustomActionRererenceWithStyling" />
     <node concept="1p9Cxi" id="2o3hTqKY2Bb" role="LiRBU">
-      <property role="2BKp$1" value="with priority" />
       <node concept="LIFWc" id="2o3hTqL83ql" role="lGtFl">
         <property role="ZRATv" value="true" />
         <property role="OXtK3" value="true" />
@@ -3977,7 +3968,6 @@
       </node>
     </node>
     <node concept="1p9Cxi" id="2o3hTqKY2BF" role="LiZbd">
-      <property role="2BKp$1" value="with priority" />
       <ref role="2BKpIf" node="41xlIweV9gI" resolve="b" />
       <node concept="LIFWc" id="2o3hTqL9rzl" role="lGtFl">
         <property role="ZRATv" value="true" />
@@ -3991,7 +3981,6 @@
   <node concept="LiM7Y" id="2o3hTqL2Hmk">
     <property role="TrG5h" value="TestCompletionCustomization_ContextMatcher_CustomActionChildLink" />
     <node concept="1p9Cxi" id="2o3hTqL2Hml" role="LiRBU">
-      <property role="2BKp$1" value="with priority" />
       <node concept="LIFWc" id="2o3hTqL7avn" role="lGtFl">
         <property role="ZRATv" value="true" />
         <property role="OXtK3" value="true" />
@@ -4189,7 +4178,6 @@
       </node>
     </node>
     <node concept="1p9Cxi" id="2o3hTqL2HmS" role="LiZbd">
-      <property role="2BKp$1" value="with priority" />
       <node concept="1ezaeV" id="2o3hTqL57N$" role="2BKpHr" />
       <node concept="1ezaeW" id="2o3hTqL57NT" role="2BKpHr">
         <node concept="LIFWc" id="1HK4esQi$S5" role="lGtFl">

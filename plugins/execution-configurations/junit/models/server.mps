@@ -5,7 +5,7 @@
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="-1" />
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="-1" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="-1" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
   </languages>
   <imports>
@@ -2299,7 +2299,6 @@
       </node>
       <node concept="3clFbS" id="5Ti9jVZ8rFP" role="3clF47">
         <node concept="RRSsy" id="3jYQuSB39J8" role="3cqZAp">
-          <property role="RRSoG" value="debug" />
           <node concept="3cpWs3" id="4br3RNONNtq" role="RRSoy">
             <node concept="Xl_RD" id="5Ti9jVZ8rFR" role="3uHU7B">
               <property role="Xl_RC" value="Initializing " />
@@ -2328,7 +2327,6 @@
       </node>
       <node concept="3clFbS" id="5Ti9jVZ8rHE" role="3clF47">
         <node concept="RRSsy" id="3jYQuSB39Je" role="3cqZAp">
-          <property role="RRSoG" value="debug" />
           <node concept="3cpWs3" id="4br3RNONGnJ" role="RRSoy">
             <node concept="2OqwBi" id="4br3RNONGHT" role="3uHU7w">
               <node concept="1rXfSq" id="4br3RNONGqp" role="2Oq$k0">
@@ -2731,7 +2729,7 @@
           <node concept="9aQIb" id="xTUx3LkLcW" role="9aQIa">
             <node concept="3clFbS" id="xTUx3LkLcX" role="9aQI4">
               <node concept="RRSsy" id="xTUx3LkLlc" role="3cqZAp">
-                <property role="RRSoG" value="warn" />
+                <property role="RRSoG" value="gZ5fksE/warn" />
                 <node concept="Xl_RD" id="xTUx3LkLdY" role="RRSoy">
                   <property role="Xl_RC" value="the current runner is not initialized yet which might indicate that the run has not started yet." />
                 </node>
@@ -2809,7 +2807,7 @@
               </node>
             </node>
             <node concept="RRSsy" id="3jYQuSB32Yr" role="3cqZAp">
-              <property role="RRSoG" value="error" />
+              <property role="RRSoG" value="gZ5fh_4/error" />
               <node concept="Xl_RD" id="5Ti9jVZ8rxL" role="RRSoy">
                 <property role="Xl_RC" value="Exception in the test framework" />
               </node>
@@ -5924,7 +5922,7 @@
             </node>
             <node concept="3clFbS" id="6BB1EWXdfFI" role="TDEfX">
               <node concept="RRSsy" id="3jYQuSB34nT" role="3cqZAp">
-                <property role="RRSoG" value="error" />
+                <property role="RRSoG" value="gZ5fh_4/error" />
                 <node concept="3cpWs3" id="5iBqK23NaHR" role="RRSoy">
                   <node concept="3cpWs3" id="5iBqK23NaVN" role="3uHU7B">
                     <node concept="37vLTw" id="5iBqK23Nc$B" role="3uHU7w">

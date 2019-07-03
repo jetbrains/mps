@@ -915,7 +915,7 @@
         <node concept="3clFbJ" id="1ROuiHUGi_" role="3cqZAp">
           <node concept="3clFbS" id="1ROuiHUGiB" role="3clFbx">
             <node concept="RRSsy" id="1ROuiHUJAX" role="3cqZAp">
-              <property role="RRSoG" value="warn" />
+              <property role="RRSoG" value="gZ5fksE/warn" />
               <node concept="2YIFZM" id="1ROuiHUJM7" role="RRSoy">
                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                 <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
@@ -1741,7 +1741,7 @@
       <property role="2aFKle" value="false" />
       <node concept="3clFbS" id="3eUNqOk7hq1" role="3clF47">
         <node concept="RRSsy" id="3jYQuSB37nz" role="3cqZAp">
-          <property role="RRSoG" value="info" />
+          <property role="RRSoG" value="h1akgim/info" />
           <node concept="Xl_RD" id="5lulEoOd9oU" role="RRSoy">
             <property role="Xl_RC" value="Creating MPS environment" />
           </node>
@@ -2502,7 +2502,7 @@
           </node>
         </node>
         <node concept="RRSsy" id="3jYQuSB37nD" role="3cqZAp">
-          <property role="RRSoG" value="info" />
+          <property role="RRSoG" value="h1akgim/info" />
           <node concept="Xl_RD" id="kMLKV374WC" role="RRSoy">
             <property role="Xl_RC" value="Creating an empty project" />
           </node>
@@ -2919,7 +2919,7 @@
         <node concept="3clFbJ" id="35NalRS7iMD" role="3cqZAp">
           <node concept="3clFbS" id="35NalRS7iMF" role="3clFbx">
             <node concept="RRSsy" id="3jYQuSB37rx" role="3cqZAp">
-              <property role="RRSoG" value="warn" />
+              <property role="RRSoG" value="gZ5fksE/warn" />
               <node concept="Xl_RD" id="35NalRS7js_" role="RRSoy">
                 <property role="Xl_RC" value="ProjectContainer is too big" />
               </node>
@@ -3083,7 +3083,7 @@
           <node concept="TDmWw" id="7iFq8OZTgeC" role="TEbGg">
             <node concept="3clFbS" id="7iFq8OZTgeD" role="TDEfX">
               <node concept="RRSsy" id="3jYQuSB37rB" role="3cqZAp">
-                <property role="RRSoG" value="error" />
+                <property role="RRSoG" value="gZ5fh_4/error" />
                 <node concept="Xl_RD" id="7iFq8OZTgeF" role="RRSoy">
                   <property role="Xl_RC" value="Cannot access the project file in container" />
                 </node>
@@ -3429,7 +3429,7 @@
           </node>
         </node>
         <node concept="RRSsy" id="3jYQuSB36Bm" role="3cqZAp">
-          <property role="RRSoG" value="info" />
+          <property role="RRSoG" value="h1akgim/info" />
           <node concept="Xl_RD" id="3HZVFd9gI6h" role="RRSoy">
             <property role="Xl_RC" value="Initializing libraries" />
           </node>
@@ -4265,7 +4265,7 @@
         <node concept="3clFbJ" id="r3D6QYaVAA" role="3cqZAp">
           <node concept="3clFbS" id="r3D6QYaVAB" role="3clFbx">
             <node concept="RRSsy" id="3jYQuSB36Bs" role="3cqZAp">
-              <property role="RRSoG" value="info" />
+              <property role="RRSoG" value="h1akgim/info" />
               <node concept="Xl_RD" id="r3D6QYaVAD" role="RRSoy">
                 <property role="Xl_RC" value="Using the last created project" />
               </node>
@@ -4279,7 +4279,7 @@
           <node concept="9aQIb" id="r3D6QYaVAN" role="9aQIa">
             <node concept="3clFbS" id="r3D6QYaVAO" role="9aQI4">
               <node concept="RRSsy" id="3jYQuSB36By" role="3cqZAp">
-                <property role="RRSoG" value="info" />
+                <property role="RRSoG" value="h1akgim/info" />
                 <node concept="Xl_RD" id="1w0tHxV8MTB" role="RRSoy">
                   <property role="Xl_RC" value="Opening a new project" />
                 </node>
@@ -4406,7 +4406,6 @@
           </node>
         </node>
         <node concept="RRSsy" id="3jYQuSB36BC" role="3cqZAp">
-          <property role="RRSoG" value="debug" />
           <node concept="Xl_RD" id="1K136DJB53w" role="RRSoy">
             <property role="Xl_RC" value="Disposing environment" />
           </node>
@@ -5436,7 +5435,7 @@
       </node>
       <node concept="3clFbS" id="76aXy8jfmWN" role="3clF47">
         <node concept="RRSsy" id="3jYQuSB37rJ" role="3cqZAp">
-          <property role="RRSoG" value="info" />
+          <property role="RRSoG" value="h1akgim/info" />
           <node concept="Xl_RD" id="1LCdstw1GQX" role="RRSoy">
             <property role="Xl_RC" value="Building modules within project" />
           </node>
@@ -5658,7 +5657,7 @@
       <property role="TrG5h" value="reloadAllAfterMake" />
       <node concept="3clFbS" id="43Ra3NM_JfP" role="3clF47">
         <node concept="RRSsy" id="3jYQuSB37rP" role="3cqZAp">
-          <property role="RRSoG" value="info" />
+          <property role="RRSoG" value="h1akgim/info" />
           <node concept="Xl_RD" id="51zp1jJrZoC" role="RRSoy">
             <property role="Xl_RC" value="Reloading built modules" />
           </node>
@@ -7217,7 +7216,6 @@
                 <node concept="3clFbJ" id="2wx9CzvxPBD" role="3cqZAp">
                   <node concept="3clFbS" id="2wx9CzvxPBF" role="3clFbx">
                     <node concept="RRSsy" id="2wx9CzvxQ5Y" role="3cqZAp">
-                      <property role="RRSoG" value="debug" />
                       <node concept="2YIFZM" id="2wx9CzvxS6V" role="RRSoy">
                         <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                         <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
@@ -7264,7 +7262,7 @@
                       <node concept="3clFbJ" id="2wx9CzvxE8S" role="3cqZAp">
                         <node concept="3clFbS" id="2wx9CzvxE8U" role="3clFbx">
                           <node concept="RRSsy" id="2wx9CzvxJy0" role="3cqZAp">
-                            <property role="RRSoG" value="error" />
+                            <property role="RRSoG" value="gZ5fh_4/error" />
                             <node concept="2YIFZM" id="2wx9CzvxVsb" role="RRSoy">
                               <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                               <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
@@ -7480,7 +7478,7 @@
                           </node>
                         </node>
                         <node concept="RRSsy" id="2wx9CzvxK2j" role="3cqZAp">
-                          <property role="RRSoG" value="warn" />
+                          <property role="RRSoG" value="gZ5fksE/warn" />
                           <node concept="2YIFZM" id="2wx9CzvxKi5" role="RRSoy">
                             <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                             <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
@@ -7654,7 +7652,6 @@
               </node>
             </node>
             <node concept="RRSsy" id="1ROuiHW5C4" role="3cqZAp">
-              <property role="RRSoG" value="debug" />
               <node concept="2YIFZM" id="1ROuiHW6wx" role="RRSoy">
                 <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />

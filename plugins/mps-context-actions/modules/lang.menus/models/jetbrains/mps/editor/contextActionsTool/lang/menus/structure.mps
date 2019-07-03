@@ -20,7 +20,6 @@
       </concept>
       <concept id="1071489288298" name="jetbrains.mps.lang.structure.structure.LinkDeclaration" flags="ig" index="1TJgyj">
         <property id="1071599776563" name="role" index="20kJfa" />
-        <property id="1071599893252" name="sourceCardinality" index="20lbJX" />
         <property id="1071599937831" name="metaClass" index="20lmBu" />
         <property id="241647608299431140" name="linkId" index="IQ2ns" />
         <reference id="1071599976176" name="target" index="20lvS9" />
@@ -43,9 +42,8 @@
     <ref role="1TJDcQ" to="tpc2:7L5lpRJH$E_" resolve="TransformationFeature" />
     <node concept="1TJgyj" id="7L5lpRJILQz" role="1TKVEi">
       <property role="IQ2ns" value="8954657570916343203" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="query" />
-      <property role="20lbJX" value="0..1" />
       <ref role="20lvS9" node="7L5lpRJILFa" resolve="QueryFunction_TransformationMenu_Icon" />
     </node>
   </node>
@@ -57,9 +55,8 @@
     <ref role="1TJDcQ" to="tpc2:7L5lpRJH$E_" resolve="TransformationFeature" />
     <node concept="1TJgyj" id="7L5lpRJILQA" role="1TKVEi">
       <property role="IQ2ns" value="8954657570916343206" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="query" />
-      <property role="20lbJX" value="0..1" />
       <ref role="20lvS9" node="6kJcyCQ_seG" resolve="QueryFunction_TransformationMenu_Tooltip" />
     </node>
   </node>

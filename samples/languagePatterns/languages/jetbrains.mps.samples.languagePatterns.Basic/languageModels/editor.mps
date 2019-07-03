@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="4" />
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="12" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="13" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -375,7 +375,7 @@
         <property role="3F0ifm" value="taste:" />
       </node>
       <node concept="3F0A7n" id="3j8xjFBxFJN" role="3EZMnx">
-        <ref role="1NtTu8" to="vseb:3j8xjFBxFIU" resolve="taste" />
+        <ref role="1NtTu8" to="vseb:3Ftr4R6BHbC" resolve="taste" />
       </node>
       <node concept="PMmxH" id="3j8xjFBxFK3" role="3EZMnx">
         <ref role="PMmxG" node="3j8xjFBxFcn" resolve="CommonFruitProperties" />
@@ -904,13 +904,13 @@
         <ref role="1NtTu8" to="vseb:34YubGApK4D" resolve="lineStyle" />
       </node>
       <node concept="3F0ifn" id="7O9XACj05Jq" role="3EZMnx">
-        <property role="1cu_pB" value="1" />
+        <property role="1cu_pB" value="gtgu$YJ/1" />
         <property role="ilYzB" value="&lt;draw command&gt;" />
         <node concept="VPxyj" id="7O9XACj09Ax" role="3F10Kt">
           <property role="VOm3f" value="true" />
         </node>
         <node concept="1I8cUB" id="7O9XACj1sWq" role="3F10Kt">
-          <property role="Vb096" value="red" />
+          <property role="Vb096" value="fLwANPn/red" />
         </node>
         <node concept="OXEIz" id="7O9XACj09Az" role="P5bDN">
           <node concept="UkePV" id="7O9XACj09A_" role="OY2wv">
@@ -1158,7 +1158,7 @@
     <node concept="1Qtc8_" id="41utEALmBSP" role="IW6Ez">
       <node concept="3cWJ9i" id="41utEALmBSV" role="1Qtc8$">
         <node concept="CtIbL" id="41utEALmBSX" role="CtIbM">
-          <property role="CtIbK" value="LEFT" />
+          <property role="CtIbK" value="1A4kJjlVmVt/LEFT" />
         </node>
       </node>
       <node concept="1GhOrh" id="41utEALmDmA" role="1Qtc8A">

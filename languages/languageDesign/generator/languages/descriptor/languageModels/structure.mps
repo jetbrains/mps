@@ -48,9 +48,9 @@
     <property role="EcuMT" value="9020561928507175845" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="1uh_eNRS9kV" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="language" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="1698302279987270971" />
       <ref role="20lvS9" to="hypd:5xDtKQA7vSv" resolve="Language" />
     </node>
@@ -68,9 +68,8 @@
       <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
     <node concept="1TJgyj" id="4r8JClTlfXA" role="1TKVEi">
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="interfaceClass" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="5100536058472628070" />
       <ref role="20lvS9" to="tpee:g7pOWCK" resolve="Classifier" />
     </node>
@@ -82,9 +81,8 @@
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="6$7WZDXZ7wW" role="1TKVEi">
       <property role="IQ2ns" value="7568285956000479292" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="generator" />
-      <property role="20lbJX" value="0..1" />
       <ref role="20lvS9" to="hypd:5xDtKQA7vSx" resolve="Generator" />
     </node>
     <node concept="PrWs8" id="eB6_hfARLz" role="PzmwI">

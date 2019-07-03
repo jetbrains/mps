@@ -55,15 +55,14 @@
     <ref role="1TJDcQ" to="3ior:34DbxDwRlgt" resolve="BuildAspect" />
     <node concept="1TJgyj" id="3a3EL8RMRJt" role="1TKVEi">
       <property role="IQ2ns" value="3639941018579336157" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="requiredPlugin" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <ref role="20lvS9" node="5I1s5NvuWco" resolve="RequiredPlugin" />
     </node>
     <node concept="1TJgyj" id="5iKxrmkn6qh" role="1TKVEi">
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="solution" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="6102524510011680401" />
       <ref role="20lvS9" to="kdzh:2L4pT56gD3R" resolve="BuildMps_Solution" />
     </node>
@@ -81,8 +80,7 @@
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="5I1s5NvuWcp" role="1TKVEi">
       <property role="IQ2ns" value="6593674873635848985" />
-      <property role="20lmBu" value="reference" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="20kJfa" value="plugin" />
       <ref role="20lvS9" to="kdzh:5HVSRHdUrHO" resolve="BuildMps_IdeaPlugin" />
     </node>

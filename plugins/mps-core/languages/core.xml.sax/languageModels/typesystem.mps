@@ -79,9 +79,6 @@
       <concept id="1175517767210" name="jetbrains.mps.lang.typesystem.structure.ReportErrorStatement" flags="nn" index="2MkqsV">
         <child id="1175517851849" name="errorString" index="2MkJ7o" />
       </concept>
-      <concept id="1212056081426" name="jetbrains.mps.lang.typesystem.structure.AbstractInequationStatement" flags="ng" index="Ob1k8">
-        <property id="1212056105818" name="inequationPriority" index="Ob790" />
-      </concept>
       <concept id="1227096620180" name="jetbrains.mps.lang.typesystem.structure.ReferenceMessageTarget" flags="ng" index="2OE7Q9">
         <reference id="1227096645744" name="linkDeclaration" index="2OEe5H" />
       </concept>
@@ -488,7 +485,6 @@
       <node concept="3clFbJ" id="1XGsQcRHuej" role="3cqZAp">
         <node concept="3clFbS" id="1XGsQcRHuek" role="3clFbx">
           <node concept="1ZobV4" id="1XGsQcRHuel" role="3cqZAp">
-            <property role="Ob790" value="0" />
             <node concept="mw_s8" id="1XGsQcRHuem" role="1ZfhKB">
               <node concept="2OqwBi" id="1XGsQcRHuen" role="mwGJk">
                 <node concept="2OqwBi" id="1XGsQcRHueo" role="2Oq$k0">

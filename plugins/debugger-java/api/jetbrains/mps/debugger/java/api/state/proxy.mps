@@ -232,7 +232,6 @@
     </language>
     <language id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging">
       <concept id="2034914114981261497" name="jetbrains.mps.baseLanguage.logging.structure.LogLowLevelStatement" flags="ng" index="RRSsy">
-        <property id="2034914114981261751" name="severity" index="RRSoG" />
         <child id="2034914114981261755" name="throwable" index="RRSow" />
         <child id="2034914114981261753" name="message" index="RRSoy" />
       </concept>
@@ -741,7 +740,6 @@
           <node concept="TDmWw" id="1Ba1dBdGw5u" role="TEbGg">
             <node concept="3clFbS" id="1Ba1dBdGw5v" role="TDEfX">
               <node concept="RRSsy" id="3jYQuSB36Yk" role="3cqZAp">
-                <property role="RRSoG" value="debug" />
                 <node concept="Xl_RD" id="1Ba1dBdGw6L" role="RRSoy">
                   <property role="Xl_RC" value="IncompatibleThreadStateException" />
                 </node>
@@ -767,7 +765,6 @@
             </node>
             <node concept="3clFbS" id="5n7fGGQgeDX" role="TDEfX">
               <node concept="RRSsy" id="3jYQuSB36Ys" role="3cqZAp">
-                <property role="RRSoG" value="debug" />
                 <node concept="Xl_RD" id="5n7fGGQgeE0" role="RRSoy">
                   <property role="Xl_RC" value="AbsecntInformationException" />
                 </node>

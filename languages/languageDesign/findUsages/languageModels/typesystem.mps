@@ -96,7 +96,6 @@
       <concept id="1320713984677695202" name="jetbrains.mps.lang.typesystem.structure.DefaultGroupReference" flags="ng" index="KNH2X" />
       <concept id="1179832490862" name="jetbrains.mps.lang.typesystem.structure.CreateStrongLessThanInequationStatement" flags="nn" index="2NvLDW" />
       <concept id="1212056081426" name="jetbrains.mps.lang.typesystem.structure.AbstractInequationStatement" flags="ng" index="Ob1k8">
-        <property id="1212056105818" name="inequationPriority" index="Ob790" />
         <child id="1320713984677695199" name="inequationGroup" index="KNH20" />
       </concept>
       <concept id="1195213580585" name="jetbrains.mps.lang.typesystem.structure.AbstractCheckingRule" flags="ig" index="18hYwZ">
@@ -226,7 +225,6 @@
     <property role="TrG5h" value="typeof_NodeStatement" />
     <node concept="3clFbS" id="htRS7wt" role="18ibNy">
       <node concept="1ZobV4" id="htRYeRv" role="3cqZAp">
-        <property role="Ob790" value="0" />
         <node concept="mw_s8" id="htRYeRw" role="1ZfhKB">
           <node concept="2c44tf" id="htRYeRx" role="mwGJk">
             <node concept="3uibUv" id="htRYeRy" role="2c44tc">
@@ -257,7 +255,6 @@
     <property role="TrG5h" value="typeof_ResultStatement" />
     <node concept="3clFbS" id="htRSBwo" role="18ibNy">
       <node concept="1ZobV4" id="htRZkjK" role="3cqZAp">
-        <property role="Ob790" value="0" />
         <node concept="mw_s8" id="htRZkjL" role="1ZfhKB">
           <node concept="2c44tf" id="htRZkjM" role="mwGJk">
             <node concept="3uibUv" id="htRZkjN" role="2c44tc">
@@ -417,7 +414,6 @@
         <node concept="KNH2X" id="5$1A31LN78o" role="KNH20" />
       </node>
       <node concept="2NvLDW" id="5xq1uvO4ju2" role="3cqZAp">
-        <property role="Ob790" value="0" />
         <property role="3wDh2S" value="true" />
         <node concept="mw_s8" id="5xq1uvO4ju3" role="1ZfhKB">
           <node concept="2c44tf" id="5xq1uvO4ju4" role="mwGJk">
@@ -440,7 +436,6 @@
         </node>
       </node>
       <node concept="2NvLDW" id="5xq1uvO4juf" role="3cqZAp">
-        <property role="Ob790" value="0" />
         <property role="3wDh2S" value="true" />
         <node concept="mw_s8" id="5xq1uvO4jug" role="1ZfhKB">
           <node concept="2c44tf" id="5xq1uvO4juh" role="mwGJk">
@@ -635,7 +630,6 @@
         <node concept="KNH2X" id="5Xky2$hq8IX" role="KNH20" />
       </node>
       <node concept="2NvLDW" id="5Xky2$hq8IY" role="3cqZAp">
-        <property role="Ob790" value="0" />
         <property role="3wDh2S" value="true" />
         <node concept="mw_s8" id="5Xky2$hq8IZ" role="1ZfhKB">
           <node concept="2c44tf" id="5Xky2$hq8J0" role="mwGJk">
@@ -658,7 +652,6 @@
         </node>
       </node>
       <node concept="2NvLDW" id="5Xky2$hq8J7" role="3cqZAp">
-        <property role="Ob790" value="0" />
         <property role="3wDh2S" value="true" />
         <node concept="mw_s8" id="5Xky2$hq8J8" role="1ZfhKB">
           <node concept="2c44tf" id="5Xky2$hq8J9" role="mwGJk">

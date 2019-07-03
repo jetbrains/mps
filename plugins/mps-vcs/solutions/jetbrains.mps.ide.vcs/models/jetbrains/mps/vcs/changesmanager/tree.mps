@@ -7,7 +7,7 @@
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="-1" />
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="-1" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
   </languages>
   <imports>
@@ -1272,7 +1272,7 @@
                     <node concept="9aQIb" id="4DNDPQS2A8m" role="9aQIa">
                       <node concept="3clFbS" id="4DNDPQS2A8n" role="9aQI4">
                         <node concept="RRSsy" id="3jYQuSB36LD" role="3cqZAp">
-                          <property role="RRSoG" value="error" />
+                          <property role="RRSoG" value="gZ5fh_4/error" />
                           <node concept="Xl_RD" id="7sg$kIGEM3r" role="RRSoy">
                             <property role="Xl_RC" value="Exception on firing featureStateChanged event" />
                           </node>
@@ -1336,7 +1336,7 @@
           </node>
           <node concept="3clFbS" id="312Lf7n$pxT" role="3clFbx">
             <node concept="RRSsy" id="3jYQuSB36LL" role="3cqZAp">
-              <property role="RRSoG" value="error" />
+              <property role="RRSoG" value="gZ5fh_4/error" />
               <node concept="37vLTw" id="2BHiRxgkWkt" role="RRSoy">
                 <ref role="3cqZAo" node="312Lf7n$pxP" resolve="msg" />
               </node>
@@ -3677,7 +3677,7 @@
                   <node concept="9aQIb" id="7X2JJJDQ8Ba" role="9aQIa">
                     <node concept="3clFbS" id="7X2JJJDQ8A_" role="9aQI4">
                       <node concept="RRSsy" id="3jYQuSB39LU" role="3cqZAp">
-                        <property role="RRSoG" value="error" />
+                        <property role="RRSoG" value="gZ5fh_4/error" />
                         <node concept="3cpWs3" id="7X2JJJDQ9ju" role="RRSoy">
                           <node concept="37vLTw" id="3GM_nagT_mO" role="3uHU7w">
                             <ref role="3cqZAo" node="42ljTcHmtG2" resolve="feature" />
@@ -6468,7 +6468,7 @@
         <node concept="3clFbJ" id="15yHJj8kkoW" role="3cqZAp">
           <node concept="3clFbS" id="15yHJj8kkoY" role="3clFbx">
             <node concept="RRSsy" id="3jYQuSB39Mk" role="3cqZAp">
-              <property role="RRSoG" value="warn" />
+              <property role="RRSoG" value="gZ5fksE/warn" />
               <node concept="3cpWs3" id="15yHJj8kvsr" role="RRSoy">
                 <node concept="Xl_RD" id="15yHJj8kvvr" role="3uHU7w">
                   <property role="Xl_RC" value=" must be a project file and managed by IDEA FS" />

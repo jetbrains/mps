@@ -9,7 +9,7 @@
     <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="-1" />
     <use id="ef7bf5ac-d06c-4342-b11d-e42104eb9343" name="jetbrains.mps.lang.plugin.standalone" version="-1" />
     <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="-1" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <use id="69b8a993-9b87-4d96-bf0c-3559f4bb0c63" name="jetbrains.mps.lang.slanguage" version="-1" />
@@ -5770,7 +5770,7 @@
     </node>
   </node>
   <node concept="sEfby" id="7oAN7tz7mpE">
-    <property role="2bmUCM" value="RIGHT" />
+    <property role="2bmUCM" value="2aGS$UDXOxV/RIGHT" />
     <property role="TrG5h" value="TraceTool" />
     <property role="3GE5qa" value="typesystem" />
     <property role="2XNbzY" value="Typesystem Trace" />
@@ -14540,14 +14540,14 @@
   </node>
   <node concept="Zd50a" id="1RsxAOl3Hay">
     <property role="TrG5h" value="MacOSX105" />
-    <property role="Zd52Q" value="Mac OS X 10.5+" />
+    <property role="Zd52Q" value="2HiVo5PakU7/Mac OS X 10.5+" />
     <property role="Z2u3V" value="false" />
     <node concept="Zd509" id="1RsxAOl3Haz" role="Zd508">
       <ref role="1bYAoF" node="1wPwVvaJhqe" resolve="GoToConceptDeclaration" />
       <node concept="pLAjd" id="1RsxAOl3Ha$" role="Zd501">
         <property role="pLAjf" value="VK_S" />
         <property role="pLAjc" value="alt+shift" />
-        <property role="3hacHL" value="replace all" />
+        <property role="3hacHL" value="5SFo3Mf0QpD/replace all" />
       </node>
     </node>
     <node concept="Zd509" id="1RsxAOl3Hss" role="Zd508">
@@ -14555,7 +14555,7 @@
       <node concept="pLAjd" id="1RsxAOl3Hst" role="Zd501">
         <property role="pLAjf" value="VK_I" />
         <property role="pLAjc" value="ctrl" />
-        <property role="3hacHL" value="replace all" />
+        <property role="3hacHL" value="5SFo3Mf0QpD/replace all" />
       </node>
     </node>
     <node concept="Zd509" id="1RsxAOl3HHj" role="Zd508">
@@ -14563,7 +14563,7 @@
       <node concept="pLAjd" id="1RsxAOl3HHk" role="Zd501">
         <property role="pLAjf" value="VK_O" />
         <property role="pLAjc" value="ctrl" />
-        <property role="3hacHL" value="replace all" />
+        <property role="3hacHL" value="5SFo3Mf0QpD/replace all" />
       </node>
     </node>
     <node concept="Zd509" id="oTl4nIRSu8" role="Zd508">
@@ -14571,20 +14571,20 @@
       <node concept="pLAjd" id="oTl4nIRSua" role="Zd501">
         <property role="pLAjc" value="ctrl" />
         <property role="pLAjf" value="VK_X" />
-        <property role="3hacHL" value="replace all" />
+        <property role="3hacHL" value="5SFo3Mf0QpD/replace all" />
       </node>
     </node>
   </node>
   <node concept="Zd50a" id="1RsxAOl3$G9">
     <property role="TrG5h" value="DefaultForGNOME" />
-    <property role="Zd52Q" value="Default for GNOME" />
+    <property role="Zd52Q" value="1E5xVYI0RcL/Default for GNOME" />
     <property role="Z2u3V" value="false" />
     <node concept="Zd509" id="1RsxAOl3$Ga" role="Zd508">
       <ref role="1bYAoF" node="5r64_$Qz1mL" resolve="FindLanguageConceptsUsages" />
       <node concept="pLAjd" id="1RsxAOl3$Gb" role="Zd501">
         <property role="pLAjc" value="alt+shift" />
         <property role="pLAjf" value="VK_8" />
-        <property role="3hacHL" value="replace all" />
+        <property role="3hacHL" value="5SFo3Mf0QpD/replace all" />
       </node>
     </node>
     <node concept="Zd509" id="4YyvUboEVL1" role="Zd508">
@@ -14592,26 +14592,25 @@
       <node concept="pLAjd" id="4YyvUboEVL2" role="Zd501">
         <property role="pLAjc" value="alt+shift" />
         <property role="pLAjf" value="VK_7" />
-        <property role="3hacHL" value="replace all" />
+        <property role="3hacHL" value="5SFo3Mf0QpD/replace all" />
       </node>
     </node>
   </node>
   <node concept="Zd50a" id="oTl4nIRSuC">
     <property role="TrG5h" value="Mac" />
-    <property role="Zd52Q" value="Mac OS X" />
+    <property role="Zd52Q" value="1mJS7WEAV1T/Mac OS X" />
     <node concept="Zd509" id="oTl4nIRSuD" role="Zd508">
       <ref role="1bYAoF" node="7LWFAMfAqWk" resolve="ShowNodeInExplorer" />
       <node concept="pLAjd" id="oTl4nIRSuE" role="Zd501">
         <property role="pLAjc" value="ctrl" />
         <property role="pLAjf" value="VK_X" />
-        <property role="3hacHL" value="replace all" />
+        <property role="3hacHL" value="5SFo3Mf0QpD/replace all" />
       </node>
     </node>
   </node>
   <node concept="2wDNrl" id="7GRes9Q8uis">
     <property role="TrG5h" value="NodeExplorer" />
     <property role="2XNbzY" value="Node Explorer" />
-    <property role="2bmUCM" value="BOTTOM" />
     <property role="3GE5qa" value="Tools" />
     <node concept="2XrIbr" id="2JE3Qz1NDE6" role="2XNbBy">
       <property role="TrG5h" value="showNode" />

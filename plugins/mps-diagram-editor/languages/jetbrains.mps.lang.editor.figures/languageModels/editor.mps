@@ -2,7 +2,7 @@
 <model ref="r:e4d83561-5cd9-4b01-bf95-b441a061d0de(jetbrains.mps.lang.editor.figures.editor)">
   <persistence version="9" />
   <languages>
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="12" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="13" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -216,7 +216,7 @@
     <property role="TrG5h" value="AttributeDelete_Actions" />
     <ref role="1h_SK9" to="tpck:2ULFgo8_XDk" resolve="NodeAttribute" />
     <node concept="1hA7zw" id="4H19mAwGRdg" role="1h_SK8">
-      <property role="1hAc7j" value="delete_action_id" />
+      <property role="1hAc7j" value="g_hAxAO/delete_action_id" />
       <node concept="1hAIg9" id="4H19mAwGRdh" role="1hA7z_">
         <node concept="3clFbS" id="4H19mAwGRdi" role="2VODD2">
           <node concept="3clFbJ" id="14TMHtHg1_y" role="3cqZAp">
@@ -257,7 +257,7 @@
               <node concept="1OKiuA" id="4H19mAwQsTh" role="2OqNvi">
                 <node concept="1Q80Hx" id="4H19mAwQsTY" role="lBI5i" />
                 <node concept="2B6iha" id="4H19mAwQsVs" role="lGT1i">
-                  <property role="1lyBwo" value="firstEditable" />
+                  <property role="1lyBwo" value="1S2pyLby17G/firstEditable" />
                 </node>
               </node>
             </node>

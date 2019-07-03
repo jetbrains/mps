@@ -45,9 +45,9 @@
     <property role="EcuMT" value="3298469228705179778" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="vgcurbAYi0" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="language" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="563004820749542528" />
       <ref role="20lvS9" to="tp25:3wj3sjzR1ta" resolve="LanguageReferenceExpression" />
     </node>
@@ -65,14 +65,14 @@
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
     <node concept="1TJgyj" id="2R6x4AnydJ4" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="manifest" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="3298469228705274820" />
       <ref role="20lvS9" node="2R6x4Anyc74" resolve="TestModuleManifestRef" />
     </node>
     <node concept="1TJgyj" id="6DW_AMA$3Cx" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="target" />
       <property role="IQ2ns" value="7673173258527586849" />
       <ref role="20lvS9" to="dvox:7PoJpZpMbrj" resolve="ModelIdentity" />
@@ -83,9 +83,8 @@
     <property role="EcuMT" value="3298469228705268164" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="2R6x4Anyc75" role="1TKVEi">
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="manifest" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="3298469228705268165" />
       <ref role="20lvS9" node="2R6x4AnxQy2" resolve="TestModuleManifest" />
     </node>

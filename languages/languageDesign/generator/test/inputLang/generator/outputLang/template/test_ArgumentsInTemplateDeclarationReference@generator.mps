@@ -2,10 +2,10 @@
 <model ref="r:b5afdf3a-04e4-43b0-b72c-a4e3b5141a37(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_ArgumentsInTemplateDeclarationReference@generator)">
   <persistence version="9" />
   <languages>
-    <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="2" />
+    <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="3" />
     <use id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext" version="1" />
     <use id="157a9668-bf58-417b-893e-53d86388dc56" name="jetbrains.mps.transformation.test.outputLang" version="0" />
-    <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="1" />
+    <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="2" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
@@ -147,14 +147,14 @@
       <concept id="1195165132070" name="jetbrains.mps.transformation.test.outputLang.structure.OutputNode" flags="ng" index="15pagK" />
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
-      <concept id="1138676077309" name="jetbrains.mps.lang.smodel.structure.EnumMemberReference_Old" flags="nn" index="uoxfO">
-        <reference id="1138676095763" name="enumMember" index="uo_Cq" />
+      <concept id="4705942098322609812" name="jetbrains.mps.lang.smodel.structure.EnumMember_IsOperation" flags="ng" index="21noJN">
+        <child id="4705942098322609813" name="member" index="21noJM" />
+      </concept>
+      <concept id="4705942098322467729" name="jetbrains.mps.lang.smodel.structure.EnumMemberReference" flags="ng" index="21nZrQ">
+        <reference id="4705942098322467736" name="decl" index="21nZrZ" />
       </concept>
       <concept id="1171315804604" name="jetbrains.mps.lang.smodel.structure.Model_RootsOperation" flags="nn" index="2RRcyG">
         <reference id="1171315804605" name="concept" index="2RRcyH" />
-      </concept>
-      <concept id="1146171026731" name="jetbrains.mps.lang.smodel.structure.Property_HasValue_Enum" flags="nn" index="3t7uKx">
-        <child id="1146171026732" name="value" index="3t7uKA" />
       </concept>
       <concept id="1138056022639" name="jetbrains.mps.lang.smodel.structure.SPropertyAccess" flags="nn" index="3TrcHB">
         <reference id="1138056395725" name="property" index="3TsBF5" />
@@ -244,7 +244,7 @@
         </node>
         <node concept="j$LIH" id="6w9IlZTRe8g" role="14YRTM">
           <node concept="1lLz0L" id="6w9IlZTRe8j" role="1lHHLF">
-            <property role="1lMjX7" value="error" />
+            <property role="1lMjX7" value="h1lM37o/error" />
             <property role="1lLB17" value="shall not hit here" />
           </node>
         </node>
@@ -394,12 +394,12 @@
                             <ref role="3cqZAo" node="6w9IlZTQBNq" resolve="it" />
                           </node>
                           <node concept="3TrcHB" id="6w9IlZTQR0D" role="2OqNvi">
-                            <ref role="3TsBF5" to="tpm0:hvFifRP" resolve="useInTest" />
+                            <ref role="3TsBF5" to="tpm0:3Ftr4R6BH6t" resolve="useInTest" />
                           </node>
                         </node>
-                        <node concept="3t7uKx" id="6w9IlZTQVGY" role="2OqNvi">
-                          <node concept="uoxfO" id="6w9IlZTQVH0" role="3t7uKA">
-                            <ref role="uo_Cq" to="tpm0:6w9IlZTQq5Y" />
+                        <node concept="21noJN" id="3Ftr4R8s_sM" role="2OqNvi">
+                          <node concept="21nZrQ" id="3Ftr4R8s_sN" role="21noJM">
+                            <ref role="21nZrZ" to="tpm0:3Ftr4R6BFnk" resolve="argsInTemplDeclRef" />
                           </node>
                         </node>
                       </node>

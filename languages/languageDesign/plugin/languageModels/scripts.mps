@@ -83,7 +83,6 @@
     <language id="0eddeefa-c2d6-4437-bc2c-de50fd4ce470" name="jetbrains.mps.lang.script">
       <concept id="1177457067821" name="jetbrains.mps.lang.script.structure.MigrationScript" flags="ig" index="_UgoZ">
         <property id="1177457669450" name="title" index="_Wzho" />
-        <property id="5299416737274925395" name="type" index="2BwPSy" />
         <child id="1177458178889" name="part" index="_YvDr" />
       </concept>
       <concept id="1177457850499" name="jetbrains.mps.lang.script.structure.MigrationScriptPart_Instance" flags="lg" index="_XfAh">
@@ -150,7 +149,6 @@
   <node concept="_UgoZ" id="ND8l7ISUZf">
     <property role="_Wzho" value="Replace dynamic references with static references" />
     <property role="TrG5h" value="FixDynamicReferences" />
-    <property role="2BwPSy" value="enhancement" />
     <node concept="_XfAh" id="ND8l7ISXYu" role="_YvDr">
       <property role="_XH9r" value="dynamic refs" />
       <ref role="_XDHR" to="tpck:gw2VY9q" resolve="BaseConcept" />

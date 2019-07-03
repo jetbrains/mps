@@ -89,7 +89,6 @@
         <child id="8170824575195151990" name="resource" index="1RVmvv" />
       </concept>
       <concept id="6418371274763029565" name="jetbrains.mps.make.facet.structure.TargetDeclaration" flags="ng" index="15KeUm">
-        <property id="1675547159918562088" name="resourcesPolicy" index="2w7fpF" />
         <reference id="6418371274763029589" name="overrides" index="15KeVY" />
         <child id="2360002718792633290" name="job" index="ElM8M" />
         <child id="6418371274763146553" name="dependency" index="15LFui" />
@@ -166,9 +165,7 @@
         <reference id="682890046602397405" name="workStatement" index="h6dCW" />
       </concept>
       <concept id="3297237684108627658" name="jetbrains.mps.make.script.structure.AllWorkLeftExpression" flags="nn" index="1C$qFY" />
-      <concept id="7077360340906447917" name="jetbrains.mps.make.script.structure.ResultStatement" flags="nn" index="3D7k6m">
-        <property id="7077360340906447918" name="result" index="3D7k6l" />
-      </concept>
+      <concept id="7077360340906447917" name="jetbrains.mps.make.script.structure.ResultStatement" flags="nn" index="3D7k6m" />
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
@@ -183,7 +180,6 @@
     <property role="TrG5h" value="Generate" />
     <node concept="15KeUm" id="7fB872uci8p" role="15LFul">
       <property role="TrG5h" value="GenerateTarget" />
-      <property role="2w7fpF" value="TRANSFORM" />
       <node concept="2aLE7I" id="s2twedLntN" role="ElM8M">
         <node concept="ElOhj" id="s2twedLntO" role="2aLE7H">
           <node concept="3clFbS" id="s2twedLntP" role="2VODD2" />
@@ -258,9 +254,7 @@
                 </node>
               </node>
             </node>
-            <node concept="3D7k6m" id="6mBwVAPiALU" role="3cqZAp">
-              <property role="3D7k6l" value="SUCCESS" />
-            </node>
+            <node concept="3D7k6m" id="6mBwVAPiALU" role="3cqZAp" />
           </node>
         </node>
         <node concept="bFUmx" id="1HN6OkgRjIw" role="bFwIG">
@@ -397,7 +391,7 @@
       <property role="TrG5h" value="QQQ" />
       <ref role="15KeVY" node="7fB872uci8p" resolve="GenerateTarget" />
       <node concept="15KeVb" id="lXLYW0T1qz" role="15LFui">
-        <property role="3HPxAp" value="NOT_AFTER" />
+        <property role="3HPxAp" value="7fB872ucjBB/NOT_AFTER" />
         <ref role="15KeV8" node="7fB872ucjBx" resolve="GenerateSpecialTarget" />
       </node>
       <node concept="2aLE7I" id="s2twedLnt_" role="ElM8M">
@@ -437,9 +431,7 @@
                 </node>
               </node>
             </node>
-            <node concept="3D7k6m" id="s2twedLntG" role="3cqZAp">
-              <property role="3D7k6l" value="SUCCESS" />
-            </node>
+            <node concept="3D7k6m" id="s2twedLntG" role="3cqZAp" />
           </node>
         </node>
       </node>

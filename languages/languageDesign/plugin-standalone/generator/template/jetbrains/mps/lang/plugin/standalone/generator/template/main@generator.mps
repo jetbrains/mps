@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="df345b11-b8c7-4213-ac66-48d2a9b75d88" name="jetbrains.mps.baseLanguageInternal" version="0" />
-    <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="2" />
+    <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="3" />
     <use id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext" version="1" />
     <use id="58f98fef-90ad-4b72-a390-fad66ec7005a" name="jetbrains.mps.core.properties" version="0" />
     <use id="479c7a8c-02f9-43b5-9139-d910cb22f298" name="jetbrains.mps.core.xml" version="0" />
@@ -2817,7 +2817,7 @@
     <property role="TrG5h" value="Plugin" />
     <property role="3GE5qa" value="Plugin" />
     <node concept="3lhOvk" id="6xuWmJ1thWG" role="3lj3bC">
-      <property role="13Pg2o" value="true" />
+      <property role="13Pg2o" value="h94ayQF/true" />
       <ref role="30HIoZ" to="tgbt:6xuWmJ1tgUs" resolve="StandalonePluginDescriptor" />
       <ref role="3lhOvi" node="hFNxLDF" resolve="GeneratedApplicationPlugin" />
       <ref role="2sgKRv" node="KTRK8kRgtx" resolve="AppPluginInitializer" />
@@ -2860,7 +2860,7 @@
       </node>
     </node>
     <node concept="3lhOvk" id="6xuWmJ1thWH" role="3lj3bC">
-      <property role="13Pg2o" value="true" />
+      <property role="13Pg2o" value="h94ayQF/true" />
       <ref role="30HIoZ" to="tgbt:6xuWmJ1tgUs" resolve="StandalonePluginDescriptor" />
       <ref role="3lhOvi" node="hxc3q$f" resolve="GeneratedProjectPlugin" />
       <ref role="2sgKRv" node="KTRK8kRguw" resolve="ProjPluginInitializer" />

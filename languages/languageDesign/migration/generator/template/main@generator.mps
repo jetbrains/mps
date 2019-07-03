@@ -3,11 +3,11 @@
   <persistence version="9" />
   <languages>
     <use id="df345b11-b8c7-4213-ac66-48d2a9b75d88" name="jetbrains.mps.baseLanguageInternal" version="-1" />
-    <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="-1" />
+    <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="3" />
     <use id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext" version="1" />
     <use id="90746344-04fd-4286-97d5-b46ae6a81709" name="jetbrains.mps.lang.migration" version="-1" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
     <use id="c7d5b9dd-a05f-4be2-bc73-f2e16994cc67" name="jetbrains.mps.baseLanguage.lightweightdsl" version="-1" />
     <use id="1a8554c4-eb84-43ba-8c34-6f0d90c6e75a" name="jetbrains.mps.lang.smodel.query" version="-1" />
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="-1" />
@@ -661,7 +661,7 @@
       <ref role="30HIoZ" to="53vh:7fCCGqboGqz" resolve="MigrationScript" />
       <node concept="j$LIH" id="4uVwhQy$eGQ" role="1lVwrX">
         <node concept="1lLz0L" id="4uVwhQy$eJn" role="1lHHLF">
-          <property role="1lMjX7" value="error" />
+          <property role="1lMjX7" value="h1lM37o/error" />
           <property role="1lLB17" value="Cyclic migration script dependency detected. It will cause problem during migration." />
         </node>
       </node>
@@ -5000,7 +5000,7 @@
       </node>
       <node concept="j$LIH" id="2xiZ7_1_y2f" role="1lVwrX">
         <node concept="1lLz0L" id="2xiZ7_1_yaG" role="1lHHLF">
-          <property role="1lMjX7" value="error" />
+          <property role="1lMjX7" value="h1lM37o/error" />
           <property role="1lLB17" value="Cyclic migration script dependency detected. It will cause problem during migration." />
         </node>
       </node>
@@ -5245,7 +5245,7 @@
       </node>
       <node concept="j$LIH" id="2xiZ7_1_rA1" role="1lVwrX">
         <node concept="1lLz0L" id="2xiZ7_1_rIh" role="1lHHLF">
-          <property role="1lMjX7" value="error" />
+          <property role="1lMjX7" value="h1lM37o/error" />
           <property role="1lLB17" value="Cyclic migration script dependency detected. It will cause problem during migration." />
         </node>
       </node>

@@ -99,7 +99,6 @@
     <language id="0eddeefa-c2d6-4437-bc2c-de50fd4ce470" name="jetbrains.mps.lang.script">
       <concept id="1177457067821" name="jetbrains.mps.lang.script.structure.MigrationScript" flags="ig" index="_UgoZ">
         <property id="1177457669450" name="title" index="_Wzho" />
-        <property id="5299416737274925395" name="type" index="2BwPSy" />
         <child id="1177458178889" name="part" index="_YvDr" />
       </concept>
       <concept id="1177457850499" name="jetbrains.mps.lang.script.structure.MigrationScriptPart_Instance" flags="lg" index="_XfAh">
@@ -816,7 +815,6 @@
     </node>
   </node>
   <node concept="_UgoZ" id="4pNK8gjuDy2">
-    <property role="2BwPSy" value="enhancement" />
     <property role="TrG5h" value="SmartRefGeneratedMenuMigration" />
     <property role="_Wzho" value="Update generated menus for smart references" />
     <node concept="_XfAh" id="4pNK8gjwzeF" role="_YvDr">
