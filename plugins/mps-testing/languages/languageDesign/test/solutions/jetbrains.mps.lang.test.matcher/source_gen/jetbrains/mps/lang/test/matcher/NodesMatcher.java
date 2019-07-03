@@ -16,7 +16,6 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SReference;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SDataType;
-import org.jetbrains.mps.openapi.language.SType;
 import java.util.Objects;
 
 /**
@@ -321,8 +320,7 @@ public final class NodesMatcher {
         SDataType type = property.getType();
         Object pa = type.fromString(a.getProperty(property));
         Object pb = type.fromString(b.getProperty(property));
-        if (pa == SType.NOT_A_VALUE || !(Objects.equals(pa, pb))) {
-          // populate an error for incorrect values, even if their persistence texts are equal 
+        if (!(Objects.equals(pa, pb))) {
           myDifferences.add(new PropertyDifference(property, pa, pb));
         }
       }

@@ -61,9 +61,6 @@
         <child id="1081256993305" name="classType" index="2ZW6by" />
         <child id="1081256993304" name="leftExpression" index="2ZW6bz" />
       </concept>
-      <concept id="1070533707846" name="jetbrains.mps.baseLanguage.structure.StaticFieldReference" flags="nn" index="10M0yZ">
-        <reference id="1144433057691" name="classifier" index="1PxDUh" />
-      </concept>
       <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
       <concept id="1070534370425" name="jetbrains.mps.baseLanguage.structure.IntegerType" flags="in" index="10Oyi0" />
       <concept id="1070534644030" name="jetbrains.mps.baseLanguage.structure.BooleanType" flags="in" index="10P_77" />
@@ -4481,49 +4478,6 @@
               </node>
               <node concept="3clFbJ" id="4OzBQ_jpdD$" role="3cqZAp">
                 <node concept="3clFbS" id="4OzBQ_jpdDM" role="3clFbx">
-                  <node concept="3SKdUt" id="375sUWOgNyT" role="3cqZAp">
-                    <node concept="1PaTwC" id="375sUWOgNyU" role="3ndbpf">
-                      <node concept="3oM_SD" id="375sUWOgNFh" role="1PaTwD">
-                        <property role="3oM_SC" value="populate" />
-                      </node>
-                      <node concept="3oM_SD" id="375sUWOgNT5" role="1PaTwD">
-                        <property role="3oM_SC" value="an" />
-                      </node>
-                      <node concept="3oM_SD" id="375sUWOgNTM" role="1PaTwD">
-                        <property role="3oM_SC" value="error" />
-                      </node>
-                      <node concept="3oM_SD" id="375sUWOgNV1" role="1PaTwD">
-                        <property role="3oM_SC" value="for" />
-                      </node>
-                      <node concept="3oM_SD" id="375sUWOgNFs" role="1PaTwD">
-                        <property role="3oM_SC" value="incorrect" />
-                      </node>
-                      <node concept="3oM_SD" id="375sUWOgNGp" role="1PaTwD">
-                        <property role="3oM_SC" value="values," />
-                      </node>
-                      <node concept="3oM_SD" id="375sUWOgNIh" role="1PaTwD">
-                        <property role="3oM_SC" value="even" />
-                      </node>
-                      <node concept="3oM_SD" id="375sUWOgNIC" role="1PaTwD">
-                        <property role="3oM_SC" value="if" />
-                      </node>
-                      <node concept="3oM_SD" id="375sUWOgNLX" role="1PaTwD">
-                        <property role="3oM_SC" value="their" />
-                      </node>
-                      <node concept="3oM_SD" id="375sUWOgNMo" role="1PaTwD">
-                        <property role="3oM_SC" value="persistence" />
-                      </node>
-                      <node concept="3oM_SD" id="375sUWOgNNl" role="1PaTwD">
-                        <property role="3oM_SC" value="texts" />
-                      </node>
-                      <node concept="3oM_SD" id="375sUWOgNOc" role="1PaTwD">
-                        <property role="3oM_SC" value="are" />
-                      </node>
-                      <node concept="3oM_SD" id="375sUWOgNO_" role="1PaTwD">
-                        <property role="3oM_SC" value="equal" />
-                      </node>
-                    </node>
-                  </node>
                   <node concept="3clFbF" id="4OzBQ_jpdDN" role="3cqZAp">
                     <node concept="2OqwBi" id="4OzBQ_jpdDO" role="3clFbG">
                       <node concept="37vLTw" id="39D1ywqZPuE" role="2Oq$k0">
@@ -4549,26 +4503,15 @@
                     </node>
                   </node>
                 </node>
-                <node concept="22lmx$" id="375sUWOgNco" role="3clFbw">
-                  <node concept="3fqX7Q" id="375sUWOgNlM" role="3uHU7w">
-                    <node concept="2YIFZM" id="375sUWOgNnE" role="3fr31v">
-                      <ref role="37wK5l" to="33ny:~Objects.equals(java.lang.Object,java.lang.Object)" resolve="equals" />
-                      <ref role="1Pybhc" to="33ny:~Objects" resolve="Objects" />
-                      <node concept="37vLTw" id="375sUWOgNoJ" role="37wK5m">
-                        <ref role="3cqZAo" node="4OzBQ_jpdD1" resolve="pa" />
-                      </node>
-                      <node concept="37vLTw" id="375sUWOgNtk" role="37wK5m">
-                        <ref role="3cqZAo" node="4OzBQ_jpdD8" resolve="pb" />
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="3clFbC" id="375sUWOgMHO" role="3uHU7B">
-                    <node concept="37vLTw" id="375sUWOgM3X" role="3uHU7B">
+                <node concept="3fqX7Q" id="375sUWOgNlM" role="3clFbw">
+                  <node concept="2YIFZM" id="375sUWOgNnE" role="3fr31v">
+                    <ref role="37wK5l" to="33ny:~Objects.equals(java.lang.Object,java.lang.Object)" resolve="equals" />
+                    <ref role="1Pybhc" to="33ny:~Objects" resolve="Objects" />
+                    <node concept="37vLTw" id="375sUWOgNoJ" role="37wK5m">
                       <ref role="3cqZAo" node="4OzBQ_jpdD1" resolve="pa" />
                     </node>
-                    <node concept="10M0yZ" id="375sUWOgNaf" role="3uHU7w">
-                      <ref role="3cqZAo" to="c17a:~SType.NOT_A_VALUE" resolve="NOT_A_VALUE" />
-                      <ref role="1PxDUh" to="c17a:~SType" resolve="SType" />
+                    <node concept="37vLTw" id="375sUWOgNtk" role="37wK5m">
+                      <ref role="3cqZAo" node="4OzBQ_jpdD8" resolve="pb" />
                     </node>
                   </node>
                 </node>
