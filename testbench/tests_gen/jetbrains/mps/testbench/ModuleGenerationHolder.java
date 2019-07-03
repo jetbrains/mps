@@ -31,6 +31,7 @@ import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import com.intellij.openapi.util.io.FileUtilRt;
+import com.google.common.io.Files;
 import difflib.Patch;
 import difflib.DiffUtils;
 import difflib.Delta;
@@ -191,8 +192,15 @@ public class ModuleGenerationHolder {
             ListSequence.fromList(diffs).addElement(String.format("Content replaced: %s (%d -> %d)", onext.getPath(), onext.length(), rnext.length()));
             continue;
           }
-          if (onext.length() > FileUtilRt.LARGE_FOR_CONTENT_LOADING || rnext.length() > FileUtilRt.LARGE_FOR_CONTENT_LOADING) {
-            ListSequence.fromList(diffs).addElement(String.format("Changes in large file %s", onext.getPath()));
+          if (onext.length() >= FileUtilRt.MEGABYTE || rnext.length() >= FileUtilRt.MEGABYTE) {
+            try {
+              if (!(Files.equal(onext, rnext))) {
+                ListSequence.fromList(diffs).addElement(String.format("Changes in large file %s", onext.getPath()));
+              }
+            } catch (IOException e) {
+              throw new RuntimeException(e);
+            }
+            continue;
           }
           List<String> olines = fileToStrings(onext);
           Patch patch = DiffUtils.diff(olines, fileToStrings(rnext));

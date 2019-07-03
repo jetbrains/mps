@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
   <dependency className="jetbrains.mps.testbench.ModuleGenerationHolder">
+    <classNode dependClassName="com.google.common.io.Files" />
     <classNode dependClassName="com.intellij.openapi.util.io.FileUtilRt" />
     <classNode dependClassName="difflib.Delta" />
     <classNode dependClassName="difflib.DiffUtils" />
