@@ -266,6 +266,54 @@
           </node>
         </node>
       </node>
+      <node concept="1E1JtD" id="3xGNJLNvBHb" role="2G$12L">
+        <property role="TrG5h" value="testOverridingRule" />
+        <property role="3LESm3" value="38be1c36-cdf6-4e3c-b9db-14f88a11fa03" />
+        <node concept="55IIr" id="3xGNJLNvBHc" role="3LF7KH">
+          <node concept="2Ry0Ak" id="3xGNJLNvBHd" role="iGT6I">
+            <property role="2Ry0Am" value="plugins" />
+            <node concept="2Ry0Ak" id="3xGNJLNvBHe" role="2Ry0An">
+              <property role="2Ry0Am" value="testModules" />
+              <node concept="2Ry0Ak" id="3xGNJLNvBHf" role="2Ry0An">
+                <property role="2Ry0Am" value="testSubstituteType" />
+                <node concept="2Ry0Ak" id="3xGNJLNvBHg" role="2Ry0An">
+                  <property role="2Ry0Am" value="languages" />
+                  <node concept="2Ry0Ak" id="3xGNJLNvBHh" role="2Ry0An">
+                    <property role="2Ry0Am" value="testOverridingRule" />
+                    <node concept="2Ry0Ak" id="3xGNJLNvBJL" role="2Ry0An">
+                      <property role="2Ry0Am" value="testOverridingRule.mpl" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3rtmxn" id="3xGNJLNvBHj" role="3bR31x">
+          <node concept="3LXTmp" id="3xGNJLNvBHk" role="3rtmxm">
+            <node concept="55IIr" id="3xGNJLNvBHl" role="3LXTmr">
+              <node concept="2Ry0Ak" id="3xGNJLNvBHm" role="iGT6I">
+                <property role="2Ry0Am" value="plugins" />
+                <node concept="2Ry0Ak" id="3xGNJLNvBHn" role="2Ry0An">
+                  <property role="2Ry0Am" value="testModules" />
+                  <node concept="2Ry0Ak" id="3xGNJLNvBHo" role="2Ry0An">
+                    <property role="2Ry0Am" value="testSubstituteType" />
+                    <node concept="2Ry0Ak" id="3xGNJLNvBHp" role="2Ry0An">
+                      <property role="2Ry0Am" value="languages" />
+                      <node concept="2Ry0Ak" id="3xGNJLNvBHq" role="2Ry0An">
+                        <property role="2Ry0Am" value="testOverridingType" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3qWCbU" id="3xGNJLNvBHr" role="3LXTna">
+              <property role="3qWCbO" value="icons/**, resources/**" />
+            </node>
+          </node>
+        </node>
+      </node>
       <node concept="1E1JtD" id="4rxYtJXJxxY" role="2G$12L">
         <property role="TrG5h" value="testWrappedType" />
         <property role="3LESm3" value="9290638e-635b-4ec6-bcad-945ecb88a928" />
@@ -532,6 +580,11 @@
             <node concept="3qWCbU" id="4rxYtJXJxzi" role="3LXTna">
               <property role="3qWCbO" value="icons/**, resources/**" />
             </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="3xGNJLNvFwt" role="3bR37C">
+          <node concept="3bR9La" id="3xGNJLNvFwu" role="1SiIV1">
+            <ref role="3bR37D" node="3xGNJLNvBHb" resolve="testOverridingRule" />
           </node>
         </node>
       </node>
@@ -1004,6 +1057,9 @@
         </node>
         <node concept="L2wRC" id="4rxYtJXJx$E" role="39821P">
           <ref role="L2wRA" node="4rxYtJXJxxH" resolve="testOverridingType" />
+        </node>
+        <node concept="L2wRC" id="3xGNJLNvBJZ" role="39821P">
+          <ref role="L2wRA" node="3xGNJLNvBHb" resolve="testOverridingRule" />
         </node>
         <node concept="L2wRC" id="4rxYtJXJx$F" role="39821P">
           <ref role="L2wRA" node="4rxYtJXJxxY" resolve="testWrappedType" />

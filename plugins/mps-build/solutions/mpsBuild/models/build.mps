@@ -13099,6 +13099,16 @@
             <ref role="3bR37D" node="5cCcm$KATVz" resolve="jetbrains.mps.lang.migration.runtime" />
           </node>
         </node>
+        <node concept="1SiIV0" id="3xGNJLNvBFF" role="3bR37C">
+          <node concept="3bR9La" id="3xGNJLNvBFG" role="1SiIV1">
+            <ref role="3bR37D" node="mXGwHwhVPj" resolve="JDK" />
+          </node>
+        </node>
+        <node concept="1SiIV0" id="3xGNJLNvBFH" role="3bR37C">
+          <node concept="3bR9La" id="3xGNJLNvBFI" role="1SiIV1">
+            <ref role="3bR37D" node="1d41uYMTVPB" resolve="jetbrains.mps.lang.scopes.runtime" />
+          </node>
+        </node>
       </node>
       <node concept="1E1JtD" id="1d41uYMTVPu" role="2G$12L">
         <property role="BnDLt" value="true" />

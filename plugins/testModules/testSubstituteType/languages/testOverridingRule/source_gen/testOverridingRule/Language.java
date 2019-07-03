@@ -6,7 +6,6 @@ import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.smodel.adapter.ids.SLanguageId;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.language.SLanguage;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.runtime.ILanguageAspect;
 import jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor;
 import testOverridingRule.editor.EditorAspectDescriptorImpl;
@@ -39,7 +38,6 @@ public class Language extends LanguageRuntime {
 
   @Override
   protected void fillExtendedLanguages(Collection<SLanguage> extendedLanguages) {
-    extendedLanguages.add(MetaAdapterFactory.getLanguage(SLanguageId.deserialize("2f74e72e-3e3d-480e-bae1-cc709d588366"), "testAnnotatedType"));
   }
 
   @Override
