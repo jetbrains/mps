@@ -6,7 +6,7 @@ import jetbrains.mps.core.aspects.feedback.api.BaseFeedbackDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.feedback.api.FeedbackProvider;
-import jetbrains.mps.core.context.Context;
+import jetbrains.mps.core.aspects.feedback.messages.FailingPropertyConstraintContext;
 import jetbrains.mps.core.aspects.feedback.messages.BaseMessageProvider;
 import jetbrains.mps.core.aspects.feedback.messages.FailingPropertyConstraintProblemId;
 import org.jetbrains.annotations.NotNull;
@@ -21,11 +21,11 @@ import java.util.stream.Stream;
 public final class A_FeedbackRoot extends BaseFeedbackDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, "multiAspectLang.structure.A");
 
-  private static final FeedbackProvider<Context> MSGPROVIDER_WhenPropertyConstraintFails_a = new BaseMessageProvider<Context>(new FailingPropertyConstraintProblemId(MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0xad0053c7ae9194dL, 0xad0053c7af1bf58L, "anchorTag"))) {
+  private static final FeedbackProvider<FailingPropertyConstraintContext> MSGPROVIDER_WhenPropertyConstraintFails_a = new BaseMessageProvider<FailingPropertyConstraintContext>(new FailingPropertyConstraintProblemId(MetaAdapterFactory.getProperty(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, 0x69addc59a5878ce0L, "prop"))) {
     @NotNull
     @Override
-    public MessageProvider.StringMsg yieldMessage(Context context) {
-      return new MessageProvider.StringMsg("asdfadsfdsf");
+    public MessageProvider.StringMsg yieldMessage(FailingPropertyConstraintContext context) {
+      return new MessageProvider.StringMsg("Property constraints are broken for the property " + String.valueOf(context.getProperty()));
     }
   };
   private static final FeedbackProvider<ContainmentContext> MSGPROVIDER_WhenConstraintRuleFails_b = new BaseMessageProvider<ContainmentContext>(new FailingRuleProblemId(A_Constraints2.Rule_gagag.ID_gagag)) {

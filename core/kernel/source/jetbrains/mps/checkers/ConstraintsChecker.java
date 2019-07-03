@@ -178,7 +178,7 @@ public class ConstraintsChecker extends AbstractNodeCheckerInEditor implements I
           for (Rule<ContainmentContext> rule : failingRules) {
             TypesystemRuleId ruleId = new TypesystemRuleId(rule.getRuleSourceNode());
             FailingConstraintsMessagesFacade facade = getMessageFacade();
-            List<String> messages = facade.findTextMessagesForRule(concept, rule, context);
+            List<String> messages = facade.findTextMessagesForRule(context.getParentConcept(), rule, context);
             for (String message : messages) {
               errorsCollector.addError(new CanBeParentFailedReportItem(childNode, message, ruleId));
             }

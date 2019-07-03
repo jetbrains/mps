@@ -71,6 +71,7 @@ public interface Rule<C extends Context> {
    * @return the applicability condition
    */
   default boolean appliesTo(@NotNull C context) {
-    return Objects.equals(getKind().getLinkedContextGenre(), context.getCategory());
+    return true;
+//    return Objects.equals(getKind().getLinkedContextGenre(), context.getCategory());
   }
 }

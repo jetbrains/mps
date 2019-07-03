@@ -15,6 +15,7 @@
         <child id="1071489727084" name="propertyDeclaration" index="1TKVEl" />
       </concept>
       <concept id="1071489090640" name="jetbrains.mps.lang.structure.structure.ConceptDeclaration" flags="ig" index="1TIwiD">
+        <property id="1096454100552" name="rootable" index="19KtqR" />
         <reference id="1071489389519" name="extends" index="1TJDcQ" />
       </concept>
       <concept id="1071489288299" name="jetbrains.mps.lang.structure.structure.PropertyDeclaration" flags="ig" index="1TJgyi">
@@ -31,6 +32,7 @@
   <node concept="1TIwiD" id="5ca4zTvKOOO">
     <property role="EcuMT" value="5983615114019032372" />
     <property role="TrG5h" value="A" />
+    <property role="19KtqR" value="true" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyi" id="6AHR5A_xSNw" role="1TKVEl">
       <property role="IQ2nx" value="7614984822540700896" />

@@ -23,7 +23,7 @@ public final class A_FeedbackRoot extends BaseFeedbackDescriptor {
     @NotNull
     @Override
     public MessageProvider.StringMsg yieldMessage(MissingPropertyContext context) {
-      return new MessageProvider.StringMsg("asdf");
+      return new MessageProvider.StringMsg("property " + String.valueOf(context.getProperty()) + " does not belong to concept");
     }
   };
 

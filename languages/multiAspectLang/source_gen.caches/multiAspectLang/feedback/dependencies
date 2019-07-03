@@ -2,6 +2,7 @@
 <dependenciesRoot>
   <dependency className="multiAspectLang.feedback.A_FeedbackRoot">
     <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.Arrays" />
     <classNode dependClassName="java.util.Collections" />
     <classNode dependClassName="java.util.List" />

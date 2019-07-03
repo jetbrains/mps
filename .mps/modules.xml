@@ -467,6 +467,7 @@
       <modulePath path="$PROJECT_DIR$/samples/xmlPersistence/languages/jetbrains.mps.samples.xmlPersistence.build/jetbrains.mps.samples.xmlPersistence.build.msd" folder="samples.persistence" />
       <modulePath path="$PROJECT_DIR$/samples/xmlPersistence/languages/jetbrains.mps.samples.xmlPersistence.ideaPlugin/jetbrains.mps.samples.xmlPersistence.ideaPlugin.msd" folder="samples.persistence" />
       <modulePath path="$PROJECT_DIR$/samples/xmlPersistence/languages/jetbrains.mps.samples.xmlPersistence/jetbrains.mps.samples.xmlPersistence.msd" folder="samples.persistence" />
+      <modulePath path="$PROJECT_DIR$/solutions/multiAspectLang.sandbox/multiAspectLang.sandbox.msd" folder="" />
       <modulePath path="$PROJECT_DIR$/solutions/rules.sandbox.sln/rules.sandbox.sln.msd" folder="samplesForNewConstraints" />
       <modulePath path="$PROJECT_DIR$/testbench/build/jetbrains.mps.build.mps.testModules/jetbrains.mps.build.mps.testModules.msd" folder="platform.build" />
       <modulePath path="$PROJECT_DIR$/testbench/ideatestsolutions/ide.vcs.test/jetbrains.mps.ide.vcs.test.msd" folder="platform.vcs" />

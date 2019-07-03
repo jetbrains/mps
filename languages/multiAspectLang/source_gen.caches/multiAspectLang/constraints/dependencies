@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
+  <dependency className="multiAspectLang.constraints.A_Constraints">
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.util.HashMap" />
+    <classNode dependClassName="java.util.Map" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations" />
+    <classNode dependClassName="jetbrains.mps.smodel.SNodePointer" />
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
+    <classNode dependClassName="jetbrains.mps.smodel.runtime.CheckingNodeContext" />
+    <classNode dependClassName="jetbrains.mps.smodel.runtime.ConstraintsDescriptor" />
+    <classNode dependClassName="jetbrains.mps.smodel.runtime.PropertyConstraintsDescriptor" />
+    <classNode dependClassName="jetbrains.mps.smodel.runtime.base.BasePropertyConstraintsDescriptor" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SProperty" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode extendsClassName="jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor" />
+  </dependency>
   <dependency className="multiAspectLang.constraints.A_Constraints2">
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.Arrays" />
@@ -19,6 +35,7 @@
   </dependency>
   <dependency className="multiAspectLang.constraints.A_FeedbackRoot">
     <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.Arrays" />
     <classNode dependClassName="java.util.Collections" />
     <classNode dependClassName="java.util.List" />
@@ -26,10 +43,10 @@
     <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.kinds.ContainmentContext" />
     <classNode dependClassName="jetbrains.mps.core.aspects.feedback.api.FeedbackProvider" />
     <classNode dependClassName="jetbrains.mps.core.aspects.feedback.messages.BaseMessageProvider" />
+    <classNode dependClassName="jetbrains.mps.core.aspects.feedback.messages.FailingPropertyConstraintContext" />
     <classNode dependClassName="jetbrains.mps.core.aspects.feedback.messages.FailingPropertyConstraintProblemId" />
     <classNode dependClassName="jetbrains.mps.core.aspects.feedback.messages.FailingRuleProblemId" />
     <classNode dependClassName="jetbrains.mps.core.aspects.feedback.messages.MessageProvider" />
-    <classNode dependClassName="jetbrains.mps.core.context.Context" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="multiAspectLang.constraints.A_Constraints2" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
@@ -38,8 +55,12 @@
   </dependency>
   <dependency className="multiAspectLang.constraints.ConstraintsAspectDescriptor">
     <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndex" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder" />
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.ids.MetaIdFactory" />
     <classNode dependClassName="jetbrains.mps.smodel.runtime.ConstraintsDescriptor" />
     <classNode dependClassName="jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor" />
+    <classNode dependClassName="multiAspectLang.constraints.A_Constraints" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
     <classNode extendsClassName="jetbrains.mps.smodel.runtime.BaseConstraintsAspectDescriptor" />
   </dependency>

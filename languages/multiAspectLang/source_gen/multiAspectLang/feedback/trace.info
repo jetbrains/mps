@@ -13,7 +13,7 @@
   <root nodeRef="r:ecf311aa-7fee-4454-acdb-4d199fb64430(multiAspectLang.feedback)/5983615114019032371">
     <file name="A_FeedbackRoot.java">
       <node id="5983615114019032371" at="20,0,21,0" concept="3" trace="CONCEPT" />
-      <node id="7716791493893406732" at="25,83,26,51" concept="2" />
+      <node id="7716791493893406732" at="25,83,26,128" concept="2" />
       <node id="5983615114019032371" at="30,0,31,0" concept="3" trace="PROVIDERS" />
       <node id="5983615114019032371" at="32,27,33,19" concept="4" />
       <node id="5983615114019032371" at="38,58,39,30" concept="2" />
@@ -21,7 +21,7 @@
       <node id="7716791493893406732" at="23,0,28,0" concept="1" trace="yieldMessage#(Lmessages/MissingPropertyContext;)Ljetbrains/mps/core/aspects/feedback/messages/MessageProvider/StringMsg;" />
       <node id="5983615114019032371" at="36,0,41,0" concept="1" trace="getDeclaredProviders#()Ljava/util/stream/Stream;" />
       <node id="7716791493893406732" at="22,0,29,0" concept="3" trace="MSGPROVIDER_WhenPropertyDoesNotBelongToTheConcept_a" />
-      <scope id="7716791493893406732" at="25,83,26,51" />
+      <scope id="7716791493893406732" at="25,83,26,128" />
       <scope id="5983615114019032371" at="32,27,33,19" />
       <scope id="5983615114019032371" at="38,58,39,30" />
       <scope id="5983615114019032371" at="32,0,35,0" />

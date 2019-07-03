@@ -54,7 +54,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   private static ConceptDescriptor createDescriptorForA() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("multiAspectLang", "A", 0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L);
-    b.class_(false, false, false);
+    b.class_(false, false, true);
     b.origin("r:7117f6c4-faaf-4889-b5b9-3fe628e41cf8(multiAspectLang.structure)/5983615114019032372");
     b.version(2);
     b.property("prop", 0x69addc59a5878ce0L).type(PrimitiveTypeId.INTEGER).origin("7614984822540700896").done();
