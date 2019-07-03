@@ -4,10 +4,10 @@ package testOverridingRule.typesystem;
 
 import jetbrains.mps.lang.typesystem.runtime.AbstractNonTypesystemRule_Runtime;
 import jetbrains.mps.lang.typesystem.runtime.NonTypesystemRule_Runtime;
-import jetbrains.mps.lang.pattern.GeneratedMatchingPattern;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
+import jetbrains.mps.lang.pattern.GeneratedMatchingPattern;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.messageTargets.PropertyMessageTarget;
@@ -18,7 +18,6 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 
 public class check_ConceptC_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
-  /*package*/ GeneratedMatchingPattern myMatchingPattern;
   public check_ConceptC_NonTypesystemRule() {
   }
   public boolean overrides(NonTypesystemRule_Runtime rule) {
@@ -29,26 +28,31 @@ public class check_ConceptC_NonTypesystemRule extends AbstractNonTypesystemRule_
   }
   public void applyRule(final SNode conceptC, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      MessageTarget errorTarget = new NodeMessageTarget();
-      errorTarget = new PropertyMessageTarget("conceptCProp");
-      IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(conceptC, "error from ConceptC", "r:05c5940c-484d-4321-945d-0e467fc18ae8(testOverridingRule.typesystem)", "8837437332634520611", null, errorTarget);
+      SNode matchedNode_umd1d5_a0 = conceptC;
+      {
+        boolean matches_umd1d5_a0a = false;
+        GeneratedMatchingPattern matchingPattern_umd1d5_a0a = new Pattern_id212q_a0b0b0a0c(_quotation_createNode_id212q_a0a0b0b0a0c());
+        matches_umd1d5_a0a = matchingPattern_umd1d5_a0a.match(matchedNode_umd1d5_a0);
+        if (matches_umd1d5_a0a) {
+          {
+            MessageTarget errorTarget = new NodeMessageTarget();
+            errorTarget = new PropertyMessageTarget("conceptCProp");
+            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(matchedNode_umd1d5_a0, "error from ConceptC", "r:05c5940c-484d-4321-945d-0e467fc18ae8(testOverridingRule.typesystem)", "8837437332634520611", null, errorTarget);
+          }
+        }
+      }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x38be1c36cdf64e3cL, 0xb9db14f88a11fa03L, "testOverridingRule"), 0x7aa4e26e6874caa6L, "ConceptC");
+    return MetaAdapterFactory.getConcept(0x38be1c36cdf64e3cL, 0xb9db14f88a11fa03L, 0x7aa4e26e6874caa6L, "testOverridingRule.structure.ConceptC");
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
-    {
-      GeneratedMatchingPattern pattern = new Pattern_id212q_a0a0a0f(_quotation_createNode_id212q_a0a0a0a0f());
-      this.myMatchingPattern = pattern;
-      boolean b = pattern.match(argument);
-      return new IsApplicableStatus(b, pattern);
-    }
+    return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_id212q_a0a0a0a0f() {
+  private static SNode _quotation_createNode_id212q_a0a0b0b0a0c() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x38be1c36cdf64e3cL, 0xb9db14f88a11fa03L, "testOverridingRule"), 0x7aa4e26e6874caa6L, "ConceptC"), null, null, false);

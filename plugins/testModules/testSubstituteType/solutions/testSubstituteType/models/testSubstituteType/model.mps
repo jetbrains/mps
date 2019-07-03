@@ -27,6 +27,7 @@
       </concept>
       <concept id="1215607067978" name="jetbrains.mps.lang.test.structure.CheckNodeForErrorMessagesOperation" flags="ng" index="7OXhh">
         <property id="852155438140865198" name="allowWarnings" index="G7GLP" />
+        <property id="3743352646565420194" name="includeSelf" index="GvXf4" />
       </concept>
       <concept id="7691029917083872157" name="jetbrains.mps.lang.test.structure.IRuleReference" flags="ng" index="2u4UPC">
         <reference id="8333855927540250453" name="declaration" index="39XzEq" />
@@ -1343,6 +1344,9 @@
       <node concept="iO2xv" id="7E$SATCtg7e" role="1qenE9">
         <property role="iO2wq" value="valueA" />
         <node concept="7CXmI" id="7E$SATCw6WW" role="lGtFl">
+          <node concept="7OXhh" id="3xGNJLMNOEG" role="7EUXB">
+            <property role="GvXf4" value="true" />
+          </node>
           <node concept="1TM$A" id="7E$SATCw6WY" role="7EUXB">
             <node concept="2PYRI3" id="7E$SATCw6WZ" role="3lydEf">
               <ref role="39XzEq" to="t3er:7E$SATCtcEF" />
@@ -1356,6 +1360,9 @@
         <property role="iO2wq" value="valueA" />
         <property role="iO2zb" value="applicableValueB" />
         <node concept="7CXmI" id="7E$SATCw6WN" role="lGtFl">
+          <node concept="7OXhh" id="3xGNJLMNOEz" role="7EUXB">
+            <property role="GvXf4" value="true" />
+          </node>
           <node concept="1TM$A" id="7E$SATCw6WO" role="7EUXB">
             <node concept="2PYRI3" id="7E$SATCw6WP" role="3lydEf">
               <ref role="39XzEq" to="t3er:7E$SATCtcHT" />
@@ -1369,10 +1376,8 @@
         <property role="iO2wq" value="valueA" />
         <property role="iO2zb" value="nonApplicableValueB" />
         <node concept="7CXmI" id="7E$SATCw7pZ" role="lGtFl">
-          <node concept="1TM$A" id="7E$SATCw7q0" role="7EUXB">
-            <node concept="2PYRI3" id="7E$SATCw7q1" role="3lydEf">
-              <ref role="39XzEq" to="t3er:7E$SATCtcEF" />
-            </node>
+          <node concept="7OXhh" id="3xGNJLMNOEq" role="7EUXB">
+            <property role="GvXf4" value="true" />
           </node>
         </node>
       </node>
@@ -1383,6 +1388,9 @@
         <property role="iO2z9" value="applicableValueC" />
         <property role="iO2zb" value="applicableValueB" />
         <node concept="7CXmI" id="7E$SATCw6_2" role="lGtFl">
+          <node concept="7OXhh" id="3xGNJLMNOEh" role="7EUXB">
+            <property role="GvXf4" value="true" />
+          </node>
           <node concept="1TM$A" id="7E$SATCw6_3" role="7EUXB">
             <node concept="2PYRI3" id="7E$SATCw6_4" role="3lydEf">
               <ref role="39XzEq" to="t3er:7E$SATCtcKz" />
@@ -1397,10 +1405,8 @@
         <property role="iO2z9" value="nonApplicableValueC" />
         <property role="iO2zb" value="applicableValueB" />
         <node concept="7CXmI" id="7E$SATCw6XD" role="lGtFl">
-          <node concept="1TM$A" id="7E$SATCw6XE" role="7EUXB">
-            <node concept="2PYRI3" id="7E$SATCw6XF" role="3lydEf">
-              <ref role="39XzEq" to="t3er:7E$SATCtcHT" />
-            </node>
+          <node concept="7OXhh" id="3xGNJLMNOE8" role="7EUXB">
+            <property role="GvXf4" value="true" />
           </node>
         </node>
       </node>
@@ -1411,6 +1417,9 @@
         <property role="iO2z9" value="applicableValueC" />
         <property role="iO2zb" value="nonApplicableValueB" />
         <node concept="7CXmI" id="7E$SATCw7qe" role="lGtFl">
+          <node concept="7OXhh" id="3xGNJLMNODZ" role="7EUXB">
+            <property role="GvXf4" value="true" />
+          </node>
           <node concept="1TM$A" id="7E$SATCw7qf" role="7EUXB">
             <node concept="2PYRI3" id="7E$SATCw7qg" role="3lydEf">
               <ref role="39XzEq" to="t3er:7E$SATCtcKz" />
@@ -1425,10 +1434,8 @@
         <property role="iO2z9" value="nonApplicableValueC" />
         <property role="iO2zb" value="nonApplicableValueB" />
         <node concept="7CXmI" id="7E$SATCw7sM" role="lGtFl">
-          <node concept="1TM$A" id="7E$SATCw7sN" role="7EUXB">
-            <node concept="2PYRI3" id="7E$SATCw7sO" role="3lydEf">
-              <ref role="39XzEq" to="t3er:7E$SATCtcEF" />
-            </node>
+          <node concept="7OXhh" id="3xGNJLMNODP" role="7EUXB">
+            <property role="GvXf4" value="true" />
           </node>
         </node>
       </node>

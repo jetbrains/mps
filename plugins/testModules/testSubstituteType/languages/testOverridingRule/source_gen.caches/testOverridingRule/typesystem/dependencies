@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
-  <dependency className="testOverridingRule.typesystem.Pattern_id212q_a0a0a0f">
+  <dependency className="testOverridingRule.typesystem.Pattern_id212q_a0b0b0a0c">
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.lang.pattern.GeneratedMatcher" />
   </dependency>
-  <dependency className="testOverridingRule.typesystem.Pattern_pcg0eq_a0a0a0f">
+  <dependency className="testOverridingRule.typesystem.Pattern_pcg0eq_a0b0b0a0c">
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.lang.pattern.GeneratedMatcher" />
@@ -43,7 +43,7 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode dependClassName="org.jetbrains.mps.openapi.persistence.PersistenceFacade" />
-    <classNode dependClassName="testOverridingRule.typesystem.Pattern_pcg0eq_a0a0a0f" />
+    <classNode dependClassName="testOverridingRule.typesystem.Pattern_pcg0eq_a0b0b0a0c" />
     <classNode dependClassName="testOverridingRule.typesystem.check_ConceptA_NonTypesystemRule" />
     <classNode extendsClassName="jetbrains.mps.lang.typesystem.runtime.AbstractNonTypesystemRule_Runtime" />
     <classNode extendsClassName="jetbrains.mps.lang.typesystem.runtime.NonTypesystemRule_Runtime" />
@@ -61,7 +61,7 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode dependClassName="org.jetbrains.mps.openapi.persistence.PersistenceFacade" />
-    <classNode dependClassName="testOverridingRule.typesystem.Pattern_id212q_a0a0a0f" />
+    <classNode dependClassName="testOverridingRule.typesystem.Pattern_id212q_a0b0b0a0c" />
     <classNode dependClassName="testOverridingRule.typesystem.check_ConceptB_NonTypesystemRule" />
     <classNode extendsClassName="jetbrains.mps.lang.typesystem.runtime.AbstractNonTypesystemRule_Runtime" />
     <classNode extendsClassName="jetbrains.mps.lang.typesystem.runtime.NonTypesystemRule_Runtime" />

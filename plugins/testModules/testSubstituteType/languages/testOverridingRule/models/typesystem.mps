@@ -46,6 +46,14 @@
       <concept id="2329696648445392942" name="jetbrains.mps.lang.typesystem.structure.CheckingRuleReference" flags="ng" index="dlsrG">
         <reference id="2329696648445392943" name="declaration" index="dlsrH" />
       </concept>
+      <concept id="1177514343197" name="jetbrains.mps.lang.typesystem.structure.MatchStatement" flags="nn" index="DkJCf">
+        <child id="1177514347409" name="item" index="DkKE3" />
+        <child id="1177514369598" name="expression" index="DkQcG" />
+      </concept>
+      <concept id="1177514840044" name="jetbrains.mps.lang.typesystem.structure.MatchStatementItem" flags="ng" index="DmCVY">
+        <child id="1177514849858" name="condition" index="DmFtg" />
+        <child id="1177514864202" name="ifTrue" index="DmIXo" />
+      </concept>
       <concept id="1175517767210" name="jetbrains.mps.lang.typesystem.structure.ReportErrorStatement" flags="nn" index="2MkqsV">
         <child id="1175517851849" name="errorString" index="2MkJ7o" />
       </concept>
@@ -110,33 +118,46 @@
   </node>
   <node concept="18kY7G" id="7E$SATCtcHR">
     <property role="TrG5h" value="check_ConceptB" />
-    <node concept="3clFbS" id="7E$SATCtcHS" role="18ibNy">
-      <node concept="2MkqsV" id="7E$SATCtcHT" role="3cqZAp">
-        <node concept="Xl_RD" id="7E$SATCtcHU" role="2MkJ7o">
-          <property role="Xl_RC" value="error from ConceptB" />
-        </node>
-        <node concept="1YBJjd" id="7E$SATCw70b" role="2OEOjV">
-          <ref role="1YBMHb" node="7E$SATCw6Yb" resolve="conceptB" />
-        </node>
-        <node concept="2ODE4t" id="7E$SATCtyxh" role="2OEWyd">
-          <ref role="2ODJFN" to="bxpv:7E$SATCtcE_" resolve="conceptBProp" />
-        </node>
-      </node>
-    </node>
     <node concept="dlsrG" id="7E$SATCtexN" role="dp_RE">
       <ref role="dlsrH" node="7E$SATCtcDF" resolve="check_ConceptA" />
     </node>
-    <node concept="1Yb3XT" id="7E$SATCw6Yb" role="1YuTPh">
+    <node concept="1YaCAy" id="3xGNJLMNOeJ" role="1YuTPh">
       <property role="TrG5h" value="conceptB" />
-      <node concept="2DMOqp" id="7E$SATCw6Yd" role="1YbcFS">
-        <node concept="2c44tf" id="7E$SATCw6Yf" role="HM535">
-          <node concept="iO2za" id="7E$SATCw6Yz" role="2c44tc">
-            <property role="iO2wq" value="v" />
-            <property role="iO2zb" value="applicableValueB" />
-            <node concept="2DMOqt" id="7E$SATCw6Z9" role="lGtFl">
-              <property role="2qtEX9" value="conceptAProp" />
-              <property role="P4ACc" value="38be1c36-cdf6-4e3c-b9db-14f88a11fa03/8837437332634520113/8837437332634520180" />
-              <property role="2DMOqu" value="aprop" />
+      <ref role="1YaFvo" to="bxpv:7E$SATCtcE$" resolve="ConceptB" />
+    </node>
+    <node concept="3clFbS" id="3xGNJLMNOeK" role="18ibNy">
+      <node concept="DkJCf" id="3xGNJLMNOeL" role="3cqZAp">
+        <node concept="1YBJjd" id="3xGNJLMNOeM" role="DkQcG">
+          <ref role="1YBMHb" node="3xGNJLMNOeJ" resolve="conceptB" />
+        </node>
+        <node concept="DmCVY" id="3xGNJLMNOeN" role="DkKE3">
+          <node concept="1Yb3XT" id="7E$SATCw6Yb" role="DmFtg">
+            <property role="TrG5h" value="conceptB" />
+            <node concept="2DMOqp" id="7E$SATCw6Yd" role="1YbcFS">
+              <node concept="2c44tf" id="7E$SATCw6Yf" role="HM535">
+                <node concept="iO2za" id="7E$SATCw6Yz" role="2c44tc">
+                  <property role="iO2wq" value="v" />
+                  <property role="iO2zb" value="applicableValueB" />
+                  <node concept="2DMOqt" id="7E$SATCw6Z9" role="lGtFl">
+                    <property role="2qtEX9" value="conceptAProp" />
+                    <property role="P4ACc" value="38be1c36-cdf6-4e3c-b9db-14f88a11fa03/8837437332634520113/8837437332634520180" />
+                    <property role="2DMOqu" value="aprop" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbS" id="7E$SATCtcHS" role="DmIXo">
+            <node concept="2MkqsV" id="7E$SATCtcHT" role="3cqZAp">
+              <node concept="Xl_RD" id="7E$SATCtcHU" role="2MkJ7o">
+                <property role="Xl_RC" value="error from ConceptB" />
+              </node>
+              <node concept="1YBJjd" id="7E$SATCw70b" role="2OEOjV">
+                <ref role="1YBMHb" node="7E$SATCw6Yb" resolve="conceptB" />
+              </node>
+              <node concept="2ODE4t" id="7E$SATCtyxh" role="2OEWyd">
+                <ref role="2ODJFN" to="bxpv:7E$SATCtcE_" resolve="conceptBProp" />
+              </node>
             </node>
           </node>
         </node>
@@ -145,38 +166,51 @@
   </node>
   <node concept="18kY7G" id="7E$SATCtcKx">
     <property role="TrG5h" value="check_ConceptC" />
-    <node concept="3clFbS" id="7E$SATCtcKy" role="18ibNy">
-      <node concept="2MkqsV" id="7E$SATCtcKz" role="3cqZAp">
-        <node concept="Xl_RD" id="7E$SATCtcK$" role="2MkJ7o">
-          <property role="Xl_RC" value="error from ConceptC" />
-        </node>
-        <node concept="1YBJjd" id="7E$SATCtvXi" role="2OEOjV">
-          <ref role="1YBMHb" node="7E$SATCtvRz" resolve="conceptC" />
-        </node>
-        <node concept="2ODE4t" id="7E$SATCtyuI" role="2OEWyd">
-          <ref role="2ODJFN" to="bxpv:7E$SATCtcEB" resolve="conceptCProp" />
-        </node>
-      </node>
-    </node>
     <node concept="dlsrG" id="7E$SATCtewy" role="dp_RE">
       <ref role="dlsrH" node="7E$SATCtcHR" resolve="check_ConceptB" />
     </node>
-    <node concept="1Yb3XT" id="7E$SATCtvRz" role="1YuTPh">
+    <node concept="1YaCAy" id="3xGNJLMNOjB" role="1YuTPh">
       <property role="TrG5h" value="conceptC" />
-      <node concept="2DMOqp" id="7E$SATCtvR_" role="1YbcFS">
-        <node concept="2c44tf" id="7E$SATCtvRB" role="HM535">
-          <node concept="iO2z8" id="7E$SATCtvRV" role="2c44tc">
-            <property role="iO2wq" value="sadfsdf" />
-            <property role="iO2z9" value="applicableValueC" />
-            <node concept="2DMOqt" id="7E$SATCtvVz" role="lGtFl">
-              <property role="2qtEX9" value="conceptAProp" />
-              <property role="P4ACc" value="38be1c36-cdf6-4e3c-b9db-14f88a11fa03/8837437332634520113/8837437332634520180" />
-              <property role="2DMOqu" value="aprop" />
+      <ref role="1YaFvo" to="bxpv:7E$SATCtcEA" resolve="ConceptC" />
+    </node>
+    <node concept="3clFbS" id="3xGNJLMNOjC" role="18ibNy">
+      <node concept="DkJCf" id="3xGNJLMNOjD" role="3cqZAp">
+        <node concept="1YBJjd" id="3xGNJLMNOjE" role="DkQcG">
+          <ref role="1YBMHb" node="3xGNJLMNOjB" resolve="conceptC" />
+        </node>
+        <node concept="DmCVY" id="3xGNJLMNOjF" role="DkKE3">
+          <node concept="1Yb3XT" id="7E$SATCtvRz" role="DmFtg">
+            <property role="TrG5h" value="conceptC" />
+            <node concept="2DMOqp" id="7E$SATCtvR_" role="1YbcFS">
+              <node concept="2c44tf" id="7E$SATCtvRB" role="HM535">
+                <node concept="iO2z8" id="7E$SATCtvRV" role="2c44tc">
+                  <property role="iO2wq" value="sadfsdf" />
+                  <property role="iO2z9" value="applicableValueC" />
+                  <node concept="2DMOqt" id="7E$SATCtvVz" role="lGtFl">
+                    <property role="2qtEX9" value="conceptAProp" />
+                    <property role="P4ACc" value="38be1c36-cdf6-4e3c-b9db-14f88a11fa03/8837437332634520113/8837437332634520180" />
+                    <property role="2DMOqu" value="aprop" />
+                  </node>
+                  <node concept="2DMOqt" id="7E$SATCtvVT" role="lGtFl">
+                    <property role="2qtEX9" value="conceptBProp" />
+                    <property role="P4ACc" value="38be1c36-cdf6-4e3c-b9db-14f88a11fa03/8837437332634520228/8837437332634520229" />
+                    <property role="2DMOqu" value="bprop" />
+                  </node>
+                </node>
+              </node>
             </node>
-            <node concept="2DMOqt" id="7E$SATCtvVT" role="lGtFl">
-              <property role="2qtEX9" value="conceptBProp" />
-              <property role="P4ACc" value="38be1c36-cdf6-4e3c-b9db-14f88a11fa03/8837437332634520228/8837437332634520229" />
-              <property role="2DMOqu" value="bprop" />
+          </node>
+          <node concept="3clFbS" id="7E$SATCtcKy" role="DmIXo">
+            <node concept="2MkqsV" id="7E$SATCtcKz" role="3cqZAp">
+              <node concept="Xl_RD" id="7E$SATCtcK$" role="2MkJ7o">
+                <property role="Xl_RC" value="error from ConceptC" />
+              </node>
+              <node concept="1YBJjd" id="7E$SATCtvXi" role="2OEOjV">
+                <ref role="1YBMHb" node="7E$SATCtvRz" resolve="conceptC" />
+              </node>
+              <node concept="2ODE4t" id="7E$SATCtyuI" role="2OEWyd">
+                <ref role="2ODJFN" to="bxpv:7E$SATCtcEB" resolve="conceptCProp" />
+              </node>
             </node>
           </node>
         </node>

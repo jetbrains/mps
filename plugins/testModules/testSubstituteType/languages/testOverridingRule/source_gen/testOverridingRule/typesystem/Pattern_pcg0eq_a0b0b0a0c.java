@@ -6,13 +6,12 @@ import jetbrains.mps.lang.pattern.GeneratedMatcher;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-/*package*/ class Pattern_id212q_a0a0a0f extends GeneratedMatcher {
-  public Pattern_id212q_a0a0a0f(SNode patternNode) {
+/*package*/ class Pattern_pcg0eq_a0b0b0a0c extends GeneratedMatcher {
+  public Pattern_pcg0eq_a0b0b0a0c(SNode patternNode) {
     super(patternNode, false);
 
 
     myTopMatcher.property(MetaAdapterFactory.getProperty(0x38be1c36cdf64e3cL, 0xb9db14f88a11fa03L, 0x7aa4e26e6874ca31L, 0x7aa4e26e6874ca74L, "conceptAProp"), "aprop");
-    myTopMatcher.property(MetaAdapterFactory.getProperty(0x38be1c36cdf64e3cL, 0xb9db14f88a11fa03L, 0x7aa4e26e6874caa4L, 0x7aa4e26e6874caa5L, "conceptBProp"), "bprop");
   }
 
 }
