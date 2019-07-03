@@ -43,7 +43,31 @@ public class RootCustom {
         }
       }
       // Block 
-/* error: statement w/o textGen:extraWork *//* error: statement w/o textGen:myWork1 *//* error: statement w/o textGen:myWork2 */
+
+      {
+        // ss 
+        int var12 = 55;
+      }
+      {
+        int e;
+        e = 5;
+      }
+      {
+        // ss 
+        int var12 = 175 * (1 + e2);
+      }
+      {
+        int e;
+        e = 5;
+      }
+      {
+        // ss 
+        int var12 = 175 * (1 + e2);
+      }
+      {
+        int e;
+        e = 5;
+      }
       int e33 = 42;
       int e32 = (22 + "myWork1".length());
       int e31 = 58 + ("extraWork".length());

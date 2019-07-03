@@ -1435,7 +1435,7 @@
         <node concept="3clFbJ" id="7r" role="3cqZAp">
           <node concept="2ZW3vV" id="7u" role="3clFbw">
             <node concept="3uibUv" id="7x" role="2ZW6by">
-              <ref role="3uigEE" to="d3ym:sOh" resolve="check_switchArgument_NonTypesystemRule" />
+              <ref role="3uigEE" to="d3ym:sPg" resolve="check_switchArgument_NonTypesystemRule" />
               <node concept="cd27G" id="7$" role="lGtFl">
                 <node concept="3u3nmq" id="7_" role="cd27D">
                   <property role="3u3nmv" value="400642802550421653" />

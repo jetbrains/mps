@@ -24,7 +24,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 public class ExtensionPoint_name extends MigrationScriptBase {
   public String getCaption() {
-    return "Move nodes refactoring";
+    return "ExtensionPoint_name";
   }
   @Override
   public boolean isRerunnable() {

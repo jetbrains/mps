@@ -19,7 +19,7 @@
   </root>
   <root nodeRef="r:30687ffb-4921-4796-841c-e217080d600a(jetbrains.mps.lang.extension.migration)/209204644145733812">
     <file name="ExtensionPoint_name.java">
-      <node id="209204644145733812" at="26,30,27,36" concept="7" />
+      <node id="209204644145733812" at="26,30,27,33" concept="7" />
       <node id="209204644145733812" at="30,33,31,16" concept="7" />
       <node id="209204644145733812" at="33,41,34,17" concept="2" />
       <node id="209204644145733812" at="34,17,35,16" concept="7" />
@@ -58,7 +58,7 @@
       <node id="209204644145733812" at="37,0,57,0" concept="5" trace="doExecute#(Lorg/jetbrains/mps/openapi/module/SModule;)V" />
       <node id="209204644145733812" at="58,45,84,5" concept="0" />
       <node id="209204644145733812" at="57,0,86,0" concept="5" trace="check#(Lorg/jetbrains/mps/openapi/module/SModule;)Ljava/lang/Iterable;" />
-      <scope id="209204644145733812" at="26,30,27,36" />
+      <scope id="209204644145733812" at="26,30,27,33" />
       <scope id="209204644145733812" at="30,33,31,16" />
       <scope id="209204644145733812" at="42,52,43,36" />
       <scope id="209204644145733814" at="47,41,48,297" />

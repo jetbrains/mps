@@ -7440,7 +7440,7 @@
                     </node>
                   </node>
                   <node concept="3TrEf2" id="FB" role="2OqNvi">
-                    <ref role="3Tt5mk" to="tp3j:i3dlsyr" resolve="queryBlock" />
+                    <ref role="3Tt5mk" to="tp3j:i3dlsyr" resolve="queryFunction" />
                     <node concept="cd27G" id="FF" role="lGtFl">
                       <node concept="3u3nmq" id="FG" role="cd27D">
                         <property role="3u3nmv" value="8933192351752365893" />
@@ -7501,7 +7501,7 @@
                       </node>
                     </node>
                     <node concept="3TrEf2" id="FZ" role="2OqNvi">
-                      <ref role="3Tt5mk" to="tp3j:i3dlsyr" resolve="queryBlock" />
+                      <ref role="3Tt5mk" to="tp3j:i3dlsyr" resolve="queryFunction" />
                       <node concept="cd27G" id="G3" role="lGtFl">
                         <node concept="3u3nmq" id="G4" role="cd27D">
                           <property role="3u3nmv" value="8933192351752351329" />

@@ -19,7 +19,7 @@
   </root>
   <root nodeRef="r:60b33951-511d-44e5-9c55-248ae53edb1e(jetbrains.mps.lang.intentions.migration)/3982593663455826321">
     <file name="Migrate_ParametrizedIntentions.java">
-      <node id="3982593663455826321" at="29,30,30,36" concept="9" />
+      <node id="3982593663455826321" at="29,30,30,44" concept="9" />
       <node id="3982593663455826321" at="33,33,34,16" concept="9" />
       <node id="3982593663455826321" at="36,41,37,17" concept="4" />
       <node id="3982593663455826321" at="37,17,38,16" concept="9" />
@@ -111,7 +111,7 @@
       <node id="3982593663455826321" at="78,8,162,9" concept="9" />
       <node id="3982593663455826321" at="70,45,163,5" concept="1" />
       <node id="3982593663455826321" at="69,0,165,0" concept="7" trace="check#(Lorg/jetbrains/mps/openapi/module/SModule;)Ljava/lang/Iterable;" />
-      <scope id="3982593663455826321" at="29,30,30,36" />
+      <scope id="3982593663455826321" at="29,30,30,44" />
       <scope id="3982593663455826321" at="33,33,34,16" />
       <scope id="3982593663455826321" at="45,52,46,36" />
       <scope id="3982593663455826329" at="50,41,51,326" />

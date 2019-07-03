@@ -19,7 +19,7 @@
   </root>
   <root nodeRef="r:434ecf17-d4cc-42e0-a652-1b1c8f95ce59(jetbrains.mps.console.ideCommands.migration)/478909786763510662">
     <file name="MigrationScript_1.java">
-      <node id="478909786763510662" at="30,30,31,36" concept="9" />
+      <node id="478909786763510662" at="30,30,31,31" concept="9" />
       <node id="478909786763510662" at="34,33,35,16" concept="9" />
       <node id="478909786763510662" at="37,41,38,17" concept="4" />
       <node id="478909786763510662" at="38,17,39,16" concept="9" />
@@ -110,7 +110,7 @@
       <node id="478909786763510662" at="79,8,166,9" concept="9" />
       <node id="478909786763510662" at="71,45,167,5" concept="1" />
       <node id="478909786763510662" at="70,0,169,0" concept="7" trace="check#(Lorg/jetbrains/mps/openapi/module/SModule;)Ljava/lang/Iterable;" />
-      <scope id="478909786763510662" at="30,30,31,36" />
+      <scope id="478909786763510662" at="30,30,31,31" />
       <scope id="478909786763510662" at="34,33,35,16" />
       <scope id="478909786763510662" at="46,52,47,36" />
       <scope id="478909786763510670" at="51,41,52,318" />

@@ -5,8 +5,8 @@ package testOverridingType.typesystem;
 import jetbrains.mps.lang.typesystem.runtime.AbstractInferenceRule_Runtime;
 import jetbrains.mps.lang.typesystem.runtime.InferenceRule_Runtime;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
+import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import testAnnotatedType.behavior.PresenceCondition__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -18,9 +18,6 @@ import jetbrains.mps.smodel.SModelUtil_new;
 
 public class typeof_UnconditionalOverrideAnnotation_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_UnconditionalOverrideAnnotation_InferenceRule() {
-  }
-  public boolean overrides(final SNode overrideAnnotation, IsApplicableStatus status) {
-    return true;
   }
   public void applyRule(final SNode overrideAnnotation, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if ((boolean) PresenceCondition__BehaviorDescriptor.isSatisfied_id5zzawu2JLe0.invoke(SLinkOperations.getTarget(overrideAnnotation, MetaAdapterFactory.getContainmentLink(0x394e385732564e8bL, 0x96015abe7ad354d9L, 0x391548fac32006d4L, 0x58e32a0782beb1c4L, "condition")))) {
@@ -34,7 +31,7 @@ public class typeof_UnconditionalOverrideAnnotation_InferenceRule extends Abstra
       {
         SNode _nodeToCheck_1029348928467 = SNodeOperations.getParent(overrideAnnotation);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:d8c6e16f-e698-4fc4-9c7f-4a279bcfaaf0(testOverridingType.typesystem)", "1870027727456337691", 0, null);
-        typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:d8c6e16f-e698-4fc4-9c7f-4a279bcfaaf0(testOverridingType.typesystem)", "1870027727456337596", true), (SNode) _quotation_createNode_ldhnbc_a1a0c0a0a0a2(), _info_12389875345);
+        typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:d8c6e16f-e698-4fc4-9c7f-4a279bcfaaf0(testOverridingType.typesystem)", "1870027727456337596", true), (SNode) _quotation_createNode_ldhnbc_a1a0c0a0a0a1(), _info_12389875345);
       }
     }
   }
@@ -44,10 +41,13 @@ public class typeof_UnconditionalOverrideAnnotation_InferenceRule extends Abstra
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
+  public boolean overrides() {
+    return false;
+  }
   public boolean supersedesAttributed(final SNode overrideAnnotation, IsApplicableStatus status) {
     return true;
   }
-  private static SNode _quotation_createNode_ldhnbc_a1a0c0a0a0a2() {
+  private static SNode _quotation_createNode_ldhnbc_a1a0c0a0a0a1() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x394e385732564e8bL, 0x96015abe7ad354d9L, "testOverridingType"), 0x19f3ac4f6f2a7f40L, "ErrorType"), null, null, false);

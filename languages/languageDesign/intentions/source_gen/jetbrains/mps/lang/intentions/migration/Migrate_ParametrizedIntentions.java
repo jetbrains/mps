@@ -27,7 +27,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 public class Migrate_ParametrizedIntentions extends MigrationScriptBase {
   public String getCaption() {
-    return "Move nodes refactoring";
+    return "Migrate_ParametrizedIntentions";
   }
   @Override
   public boolean isRerunnable() {
