@@ -71,15 +71,15 @@
       <concept id="7391008184910224767" name="jetbrains.mps.lang.typesystem.structure.IsApplicableConceptFunction" flags="ig" index="2n1zYR" />
       <concept id="2401040147804061830" name="jetbrains.mps.lang.typesystem.structure.AttributedNodeExpression" flags="ng" index="G0znd" />
       <concept id="1195213580585" name="jetbrains.mps.lang.typesystem.structure.AbstractCheckingRule" flags="ig" index="18hYwZ">
-        <child id="1766949807893591548" name="overridesFun" index="bX4a1" />
         <child id="1195213635060" name="body" index="18ibNy" />
       </concept>
       <concept id="1174642788531" name="jetbrains.mps.lang.typesystem.structure.ConceptReference" flags="ig" index="1YaCAy">
         <reference id="1174642800329" name="concept" index="1YaFvo" />
       </concept>
       <concept id="1174643105530" name="jetbrains.mps.lang.typesystem.structure.InferenceRule" flags="ig" index="1YbPZF">
-        <child id="7307171874933775112" name="supercedesFun" index="2bjP4i" />
+        <child id="7307171874933775112" name="supersedesFun" index="2bjP4i" />
         <child id="7391008184910266275" name="applicableFun" index="2n1DPF" />
+        <child id="422148324487088858" name="overridesFun" index="ujSXK" />
       </concept>
       <concept id="1174648085619" name="jetbrains.mps.lang.typesystem.structure.AbstractRule" flags="ng" index="1YuPPy">
         <child id="1174648101952" name="applicableNode" index="1YuTPh" />
@@ -165,7 +165,7 @@
       <property role="TrG5h" value="overridingPrimNumConstant" />
       <ref role="1YaFvo" to="mdms:5GQb1e$A8ul" resolve="OverridingPrimNumConstant" />
     </node>
-    <node concept="bXqS6" id="5GQb1e$AjSr" role="bX4a1">
+    <node concept="bXqS6" id="5GQb1e$AjSr" role="ujSXK">
       <node concept="3clFbS" id="5GQb1e$AjSs" role="2VODD2">
         <node concept="3clFbF" id="5GQb1e$Ak2A" role="3cqZAp">
           <node concept="2OqwBi" id="5GQb1e$Akah" role="3clFbG">
@@ -293,19 +293,19 @@
       <property role="TrG5h" value="overrideAnnotation" />
       <ref role="1YaFvo" to="mdms:1BNF4XJawka" resolve="UnconditionalOverrideAnnotation" />
     </node>
-    <node concept="bXqS6" id="1BNF4XJaxEX" role="bX4a1">
-      <node concept="3clFbS" id="1BNF4XJaxEY" role="2VODD2">
-        <node concept="3clFbF" id="1BNF4XJazD$" role="3cqZAp">
-          <node concept="3clFbT" id="1BNF4XJazDz" role="3clFbG">
+    <node concept="2bjmSp" id="1BNF4XJazIH" role="2bjP4i">
+      <node concept="3clFbS" id="1BNF4XJazII" role="2VODD2">
+        <node concept="3clFbF" id="1BNF4XJazNJ" role="3cqZAp">
+          <node concept="3clFbT" id="1BNF4XJazNI" role="3clFbG">
             <property role="3clFbU" value="true" />
           </node>
         </node>
       </node>
     </node>
-    <node concept="2bjmSp" id="1BNF4XJazIH" role="2bjP4i">
-      <node concept="3clFbS" id="1BNF4XJazII" role="2VODD2">
-        <node concept="3clFbF" id="1BNF4XJazNJ" role="3cqZAp">
-          <node concept="3clFbT" id="1BNF4XJazNI" role="3clFbG">
+    <node concept="bXqS6" id="1BNF4XJaxEX" role="ujSXK">
+      <node concept="3clFbS" id="1BNF4XJaxEY" role="2VODD2">
+        <node concept="3clFbF" id="1BNF4XJazD$" role="3cqZAp">
+          <node concept="3clFbT" id="1BNF4XJazDz" role="3clFbG">
             <property role="3clFbU" value="true" />
           </node>
         </node>

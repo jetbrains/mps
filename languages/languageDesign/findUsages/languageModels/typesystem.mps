@@ -100,13 +100,14 @@
       </concept>
       <concept id="1195213580585" name="jetbrains.mps.lang.typesystem.structure.AbstractCheckingRule" flags="ig" index="18hYwZ">
         <property id="1195213689297" name="overrides" index="18ip37" />
-        <child id="1766949807893591548" name="overridesFun" index="bX4a1" />
         <child id="1195213635060" name="body" index="18ibNy" />
       </concept>
       <concept id="1174642788531" name="jetbrains.mps.lang.typesystem.structure.ConceptReference" flags="ig" index="1YaCAy">
         <reference id="1174642800329" name="concept" index="1YaFvo" />
       </concept>
-      <concept id="1174643105530" name="jetbrains.mps.lang.typesystem.structure.InferenceRule" flags="ig" index="1YbPZF" />
+      <concept id="1174643105530" name="jetbrains.mps.lang.typesystem.structure.InferenceRule" flags="ig" index="1YbPZF">
+        <child id="422148324487088858" name="overridesFun" index="ujSXK" />
+      </concept>
       <concept id="1174648085619" name="jetbrains.mps.lang.typesystem.structure.AbstractRule" flags="ng" index="1YuPPy">
         <child id="1174648101952" name="applicableNode" index="1YuTPh" />
       </concept>
@@ -703,7 +704,7 @@
       <property role="TrG5h" value="decl" />
       <ref role="1YaFvo" to="tp3b:14FcRCmOTXM" resolve="ForEachNodeFoundClosureParameterDeclaration" />
     </node>
-    <node concept="bXqS6" id="14FcRCmSnrZ" role="bX4a1">
+    <node concept="bXqS6" id="14FcRCmSnrZ" role="ujSXK">
       <node concept="3clFbS" id="14FcRCmSns0" role="2VODD2">
         <node concept="3cpWs6" id="14FcRCmSnWG" role="3cqZAp">
           <node concept="3clFbT" id="14FcRCmSnWM" role="3cqZAk">

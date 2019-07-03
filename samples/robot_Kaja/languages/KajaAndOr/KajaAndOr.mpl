@@ -95,7 +95,7 @@
     <language slang="l:c72da2b9-7cce-4447-8389-f407dc1158b7:jetbrains.mps.lang.structure" version="9" />
     <language slang="l:c7fb639f-be78-4307-89b0-b5959c3fa8c8:jetbrains.mps.lang.text" version="0" />
     <language slang="l:9ded098b-ad6a-4657-bfd9-48636cfe8bc3:jetbrains.mps.lang.traceable" version="0" />
-    <language slang="l:7a5dda62-9140-4668-ab76-d5ed1746f2b2:jetbrains.mps.lang.typesystem" version="3" />
+    <language slang="l:7a5dda62-9140-4668-ab76-d5ed1746f2b2:jetbrains.mps.lang.typesystem" version="4" />
     <language slang="l:049a08c5-1fe5-43cc-bd99-8b46d641d7f5:jetbrains.mps.samples.Kaja" version="0" />
     <language slang="l:44306fd2-ef94-4b56-9806-d9ab509536db:jetbrains.mps.samples.KajaAndOr" version="0" />
   </languageVersions>
