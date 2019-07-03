@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-431ono9p0xio81m3geoccslx0b58z0c">
+<product version="3" modelHash="cq6b1dmz3755w8j79hj6qgstp6ch0f2">
   <files names="TypesystemDescriptor.java:typeof_OverrideAnnotation_InferenceRule.java:typeof_OverridingPrimNumConstant_InferenceRule.java:typeof_UnconditionalOverrideAnnotation_InferenceRule.java" />
 </product>
 

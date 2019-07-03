@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="3l10p48136cyccqgdzzg0yuahrv8ilt">
+<product version="3" modelHash="8vh134gxvffn3n0m9m7mv47cg5g2pw9">
   <files names="BehaviorAspectDescriptor.java:ExtensionDeclaration__BehaviorDescriptor.java:ExtensionFieldReference__BehaviorDescriptor.java:ExtensionFunction__BehaviorDescriptor.java:ExtensionObjectGetter__BehaviorDescriptor.java:ExtensionPointDeclaration__BehaviorDescriptor.java:ExtensionPointExpression__BehaviorDescriptor.java:ExtensionPointType__BehaviorDescriptor.java:Extension__BehaviorDescriptor.java:IRootWithUniqueName__BehaviorDescriptor.java" />
 </product>
 

@@ -5,11 +5,11 @@ package testOverridingType.typesystem;
 import jetbrains.mps.lang.typesystem.runtime.AbstractInferenceRule_Runtime;
 import jetbrains.mps.lang.typesystem.runtime.InferenceRule_Runtime;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
-import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.typesystem.inference.TypeCheckingContext;
+import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
@@ -18,11 +18,14 @@ import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 public class typeof_OverridingPrimNumConstant_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_OverridingPrimNumConstant_InferenceRule() {
   }
+  public boolean overrides(final SNode overridingPrimNumConstant, IsApplicableStatus status) {
+    return SPropertyOperations.getBoolean(overridingPrimNumConstant, MetaAdapterFactory.getProperty(0x394e385732564e8bL, 0x96015abe7ad354d9L, 0x5b362c13a4988795L, 0x5b362c13a498895bL, "isOverriding"));
+  }
   public void applyRule(final SNode overridingPrimNumConstant, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
       SNode _nodeToCheck_1029348928467 = overridingPrimNumConstant;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:d8c6e16f-e698-4fc4-9c7f-4a279bcfaaf0(testOverridingType.typesystem)", "6572489169071355994", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:d8c6e16f-e698-4fc4-9c7f-4a279bcfaaf0(testOverridingType.typesystem)", "6572489169071324671", true), (SNode) _quotation_createNode_kl4nnl_a1a0c0a0b(SPropertyOperations.getString(overridingPrimNumConstant, MetaAdapterFactory.getProperty(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x1469c391a09a5eefL, 0x1469c391a09a5ef0L, "isFloat"))), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:d8c6e16f-e698-4fc4-9c7f-4a279bcfaaf0(testOverridingType.typesystem)", "6572489169071324671", true), (SNode) _quotation_createNode_kl4nnl_a1a0c0a0c(SPropertyOperations.getString(overridingPrimNumConstant, MetaAdapterFactory.getProperty(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x1469c391a09a5eefL, 0x1469c391a09a5ef0L, "isFloat"))), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -31,10 +34,7 @@ public class typeof_OverridingPrimNumConstant_InferenceRule extends AbstractInfe
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
-  public boolean overrides() {
-    return false;
-  }
-  private static SNode _quotation_createNode_kl4nnl_a1a0c0a0b(Object parameter_1) {
+  private static SNode _quotation_createNode_kl4nnl_a1a0c0a0c(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="88r6d7o34ujfkzajelwe8ndqueogqz2">
+<product version="3" modelHash="1ykz4b524cxsr0c416d8kvehq8qlog">
   <files names="FixNamingPolicy_QuickFix.java:FixNamingPolicy_literal_once_QuickFix.java:FixNamingPolicy_property_once_QuickFix.java:PropertyPointer_supertypes_SubtypingRule.java:TypesystemDescriptor.java:check_NamingPolicy_NonTypesystemRule.java:typeof_PropertRefValueOperation_InferenceRule.java:typeof_PropertyRefExpression_InferenceRule.java:typeof_PropertyRefExpression_PropertyRefType_InferenceRule.java:typeof_PropertyRefType_isSubtype_PropertyRef_SubtypingRule.java" />
 </product>
 
