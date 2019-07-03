@@ -30,6 +30,7 @@ import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
+import com.intellij.openapi.util.io.FileUtilRt;
 import difflib.Patch;
 import difflib.DiffUtils;
 import difflib.Delta;
@@ -189,6 +190,9 @@ public class ModuleGenerationHolder {
             //  no reason to dump whole file single diff for a completely replaced file. 
             ListSequence.fromList(diffs).addElement(String.format("Content replaced: %s (%d -> %d)", onext.getPath(), onext.length(), rnext.length()));
             continue;
+          }
+          if (onext.length() > FileUtilRt.LARGE_FOR_CONTENT_LOADING || rnext.length() > FileUtilRt.LARGE_FOR_CONTENT_LOADING) {
+            ListSequence.fromList(diffs).addElement(String.format("Changes in large file %s", onext.getPath()));
           }
           List<String> olines = fileToStrings(onext);
           Patch patch = DiffUtils.diff(olines, fileToStrings(rnext));
