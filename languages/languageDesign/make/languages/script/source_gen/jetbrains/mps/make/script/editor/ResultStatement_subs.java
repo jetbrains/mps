@@ -95,7 +95,7 @@ public class ResultStatement_subs extends SubstituteMenuBase {
       @Nullable
       @Override
       protected Iterable<? extends SEnumerationLiteral> getParameters(SubstituteMenuContext _context) {
-        return SEnumOperations.getMembers(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, "jetbrains.mps.make.script", 0x20c069f80a9472daL, "Result");
+        return SEnumOperations.getMembers(MetaAdapterFactory.getEnumeration(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x20c069f80a9472daL, "jetbrains.mps.make.script.structure.Result"));
       }
       private class SMP_Action_358bbk_a0a extends SingleItemSubstituteMenuPart {
         private final SEnumerationLiteral myParameterObject;
@@ -142,7 +142,7 @@ public class ResultStatement_subs extends SubstituteMenuBase {
           @Override
           public SNode createNode(@NotNull String pattern) {
             SNode rs = SNodeFactoryOperations.createNewNode(_context.getModel(), MetaAdapterFactory.getConcept(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x6237d5bb8b2a942dL, "jetbrains.mps.make.script.structure.ResultStatement"), null);
-            SPropertyOperations.assign(rs, MetaAdapterFactory.getProperty(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x6237d5bb8b2a942dL, 0x6237d5bb8b2a942eL, "result"), SEnumOperations.getMemberValue(myParameterObject));
+            SPropertyOperations.assignEnum(rs, MetaAdapterFactory.getProperty(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x6237d5bb8b2a942dL, 0x6237d5bb8b2a942eL, "result"), SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x20c069f80a9472daL, "jetbrains.mps.make.script.structure.Result"), SEnumOperations.getMemberName0(myParameterObject)));
             return rs;
           }
 
@@ -167,7 +167,7 @@ public class ResultStatement_subs extends SubstituteMenuBase {
           @Nullable
           @Override
           public String getMatchingText(@NotNull String pattern) {
-            return SEnumOperations.getMemberName(myParameterObject);
+            return SEnumOperations.getMemberPresentation(myParameterObject);
           }
         }
       }

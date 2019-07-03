@@ -17,6 +17,7 @@ import jetbrains.mps.lang.editor.menus.MenuPart;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.editor.menus.GroupMenuPart;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Arrays;
@@ -24,7 +25,6 @@ import jetbrains.mps.lang.editor.menus.ParameterizedMenuPart;
 import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.lang.editor.menus.SingleItemMenuPart;
 import org.apache.log4j.Logger;
 import jetbrains.mps.openapi.editor.menus.transformation.ActionItemBase;
@@ -73,8 +73,8 @@ public class add_moduleLocationAndFlags extends TransformationMenuBase {
   public class TMP_Group_vydzh3_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      String sourcesKind = SPropertyOperations.getString(_context.getNode(), MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, 0x3be316509dccb82L, "sourcesKind"));
-      return (sourcesKind == null || sourcesKind.length() == 0) || sourcesKind.equals("sources");
+      String sourcesKind = SEnumOperations.getMemberPresentation(SPropertyOperations.getEnum(_context.getNode(), MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, 0x3be316509dccb82L, "sourcesKind")));
+      return (sourcesKind == null || sourcesKind.length() == 0) || sourcesKind.equals(SEnumOperations.getMemberPresentation(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3be316509db4513L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleSourcesKind"), 0x3be316509db4552L, "sources")));
     }
 
     @NotNull
@@ -103,7 +103,7 @@ public class add_moduleLocationAndFlags extends TransformationMenuBase {
       @Nullable
       @Override
       protected Iterable<? extends SEnumerationLiteral> getParameters(TransformationMenuContext _context) {
-        return Sequence.fromArray(new SEnumerationLiteral[]{SEnumOperations.getMember(0xcf935df46994e9cL, 0xa132fa109541cba3L, "jetbrains.mps.build.mps", 0x3be316509db4513L, "BuildMps_ModuleSourcesKind", 0x3be316509db455cL, "tests"), SEnumOperations.getMember(0xcf935df46994e9cL, 0xa132fa109541cba3L, "jetbrains.mps.build.mps", 0x3be316509db4513L, "BuildMps_ModuleSourcesKind", 0x3be316509db4553L, "sources and tests")});
+        return Sequence.fromArray(new SEnumerationLiteral[]{SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3be316509db4513L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleSourcesKind"), 0x3be316509db455cL, "tests"), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3be316509db4513L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleSourcesKind"), 0x3be316509db4553L, "sources_and_tests")});
       }
       @NotNull
       @Override
@@ -154,12 +154,12 @@ public class add_moduleLocationAndFlags extends TransformationMenuBase {
           @Nullable
           @Override
           public String getLabelText(String pattern) {
-            return "(with " + SEnumOperations.getMemberName(myParameterObject) + ")";
+            return "(with " + SEnumOperations.getMemberPresentation(myParameterObject) + ")";
           }
 
           @Override
           public void execute(@NotNull String pattern) {
-            SPropertyOperations.set(_context.getNode(), MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, 0x3be316509dccb82L, "sourcesKind"), SEnumOperations.getMemberValue(myParameterObject));
+            SPropertyOperations.setEnum(_context.getNode(), MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, 0x3be316509dccb82L, "sourcesKind"), SEnumOperations.getMemberForPresentation(MetaAdapterFactory.getEnumeration(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3be316509db4513L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleSourcesKind"), SEnumOperations.getMemberPresentation(myParameterObject)));
             SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
           }
 

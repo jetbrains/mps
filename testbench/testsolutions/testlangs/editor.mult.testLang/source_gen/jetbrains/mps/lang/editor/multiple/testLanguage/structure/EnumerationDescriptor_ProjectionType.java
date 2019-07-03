@@ -13,20 +13,20 @@ import org.jetbrains.annotations.NotNull;
 public class EnumerationDescriptor_ProjectionType extends EnumerationDescriptorBase {
 
   public EnumerationDescriptor_ProjectionType() {
-    super(0x7a80051c66e94bfcL, 0x9698b12adfed3d9fL, 0x6aae07ffdad120c4L, "ProjectionType", "r:eb859fb0-1cb5-4829-a090-c7f47391d585(jetbrains.mps.lang.editor.multiple.testLanguage.structure)/7687090409437208772", PrimitiveTypeId.STRING);
+    super(0x7a80051c66e94bfcL, 0x9698b12adfed3d9fL, 0x6aae07ffdad120c4L, "ProjectionType", "r:eb859fb0-1cb5-4829-a090-c7f47391d585(jetbrains.mps.lang.editor.multiple.testLanguage.structure)/4241665505353448673", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor myMember__0 = new EnumerationDescriptor.MemberDescriptor(null, "defaultEditor", "r:eb859fb0-1cb5-4829-a090-c7f47391d585(jetbrains.mps.lang.editor.multiple.testLanguage.structure)/7687090409437208773", "defaultEditor");
-  private final EnumerationDescriptor.MemberDescriptor myMember_rich_0 = new EnumerationDescriptor.MemberDescriptor("rich", "rich", "r:eb859fb0-1cb5-4829-a090-c7f47391d585(jetbrains.mps.lang.editor.multiple.testLanguage.structure)/7687090409437208801", "rich");
-  private final EnumerationDescriptor.MemberDescriptor myMember_compact_0 = new EnumerationDescriptor.MemberDescriptor("compact", "compact", "r:eb859fb0-1cb5-4829-a090-c7f47391d585(jetbrains.mps.lang.editor.multiple.testLanguage.structure)/7687090409437208798", "compact");
+  private final EnumerationDescriptor.MemberDescriptor myMember_defaultEditor_0 = new EnumerationDescriptor.MemberDescriptor("defaultEditor", "defaultEditor", 0x6aae07ffdad120c5L, "r:eb859fb0-1cb5-4829-a090-c7f47391d585(jetbrains.mps.lang.editor.multiple.testLanguage.structure)/4241665505353448675", "defaultEditor", null);
+  private final EnumerationDescriptor.MemberDescriptor myMember_rich_0 = new EnumerationDescriptor.MemberDescriptor("rich", "rich", 0x6aae07ffdad120e1L, "r:eb859fb0-1cb5-4829-a090-c7f47391d585(jetbrains.mps.lang.editor.multiple.testLanguage.structure)/4241665505353448676", "rich", "rich");
+  private final EnumerationDescriptor.MemberDescriptor myMember_compact_0 = new EnumerationDescriptor.MemberDescriptor("compact", "compact", 0x6aae07ffdad120deL, "r:eb859fb0-1cb5-4829-a090-c7f47391d585(jetbrains.mps.lang.editor.multiple.testLanguage.structure)/4241665505353448677", "compact", "compact");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x7a80051c66e94bfcL, 0x9698b12adfed3d9fL, 0x6aae07ffdad120c4L, 0x6aae07ffdad120c5L, 0x6aae07ffdad120e1L, 0x6aae07ffdad120deL);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember__0, myMember_rich_0, myMember_compact_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_defaultEditor_0, myMember_rich_0, myMember_compact_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return myMember__0;
+    return myMember_defaultEditor_0;
   }
 
   @NotNull
@@ -37,11 +37,13 @@ public class EnumerationDescriptor_ProjectionType extends EnumerationDescriptorB
 
   @Nullable
   @Override
-  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
-    if (string == null) {
-      return myMember__0;
+  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String memberName) {
+    if (memberName == null) {
+      return null;
     }
-    switch (string) {
+    switch (memberName) {
+      case "defaultEditor":
+        return myMember_defaultEditor_0;
       case "rich":
         return myMember_rich_0;
       case "compact":

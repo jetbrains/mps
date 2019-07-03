@@ -69,7 +69,7 @@ public class CellActionMapImportSelectorByActionId_SubstituteMenu extends Substi
     @Nullable
     @Override
     protected Iterable<? extends SEnumerationLiteral> getParameters(SubstituteMenuContext _context) {
-      return SEnumOperations.getMembers(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, "jetbrains.mps.lang.editor", 0x10951993667L, "CellActionId");
+      return SEnumOperations.getMembers(MetaAdapterFactory.getEnumeration(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10951993667L, "jetbrains.mps.lang.editor.structure.CellActionId"));
     }
     private class SMP_Action_qe8s2c_a0 extends SingleItemSubstituteMenuPart {
       private final SEnumerationLiteral myParameterObject;
@@ -116,7 +116,7 @@ public class CellActionMapImportSelectorByActionId_SubstituteMenu extends Substi
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode result = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4f883d0411451703L, "jetbrains.mps.lang.editor.structure.CellActionMapImportSelectorByActionId"), null);
-          SPropertyOperations.assign(result, MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4f883d0411451703L, 0x4f883d0411451706L, "actionId"), SEnumOperations.getMemberValue(myParameterObject));
+          SPropertyOperations.assignEnum(result, MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4f883d0411451703L, 0x4f883d0411451706L, "actionId"), SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10951993667L, "jetbrains.mps.lang.editor.structure.CellActionId"), SEnumOperations.getMemberName0(myParameterObject)));
 
           return result;
         }

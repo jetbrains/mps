@@ -357,7 +357,7 @@ import jetbrains.mps.lang.structure.editor.structure_StyleSheet.KeywordStyleClas
   private EditorCell createReadOnlyModelAccessor_0() {
     EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new ModelAccessor() {
       public String getText() {
-        return SEnumOperations.getMemberName(SModelUtil.getGenuineLinkSourceCardinality(myNode));
+        return SEnumOperations.getMemberPresentation(SModelUtil.getGenuineLinkSourceCardinality(myNode));
       }
       public void setText(String s) {
       }

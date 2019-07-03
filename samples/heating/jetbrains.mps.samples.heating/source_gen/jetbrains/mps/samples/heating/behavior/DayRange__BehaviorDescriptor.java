@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -30,7 +31,7 @@ public final class DayRange__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
-    return "From " + SPropertyOperations.getString(__thisNode__, MetaAdapterFactory.getProperty(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x40bcae6c0e6bc56bL, 0x40bcae6c0e6bc59fL, "start")) + " to " + SPropertyOperations.getString(__thisNode__, MetaAdapterFactory.getProperty(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x40bcae6c0e6bc56bL, 0x40bcae6c0e6bc5a1L, "end"));
+    return "From " + SEnumOperations.getMemberName0(SPropertyOperations.getEnum(__thisNode__, MetaAdapterFactory.getProperty(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x40bcae6c0e6bc56bL, 0x40bcae6c0e6bc59fL, "start"))) + " to " + SEnumOperations.getMemberName0(SPropertyOperations.getEnum(__thisNode__, MetaAdapterFactory.getProperty(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x40bcae6c0e6bc56bL, 0x40bcae6c0e6bc5a1L, "end")));
   }
 
   /*package*/ DayRange__BehaviorDescriptor() {

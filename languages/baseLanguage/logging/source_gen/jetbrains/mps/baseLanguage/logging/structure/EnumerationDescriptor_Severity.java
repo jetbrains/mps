@@ -13,15 +13,15 @@ import org.jetbrains.annotations.NotNull;
 public class EnumerationDescriptor_Severity extends EnumerationDescriptorBase {
 
   public EnumerationDescriptor_Severity() {
-    super(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x10fc53ae113L, "Severity", "r:00000000-0000-4000-0000-011c8959057f(jetbrains.mps.baseLanguage.logging.structure)/1167245107475", PrimitiveTypeId.STRING);
+    super(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x10fc53ae113L, "Severity", "r:00000000-0000-4000-0000-011c8959057f(jetbrains.mps.baseLanguage.logging.structure)/4241665505353445541", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor myMember_fatal_0 = new EnumerationDescriptor.MemberDescriptor("fatal", "fatal", "r:00000000-0000-4000-0000-011c8959057f(jetbrains.mps.baseLanguage.logging.structure)/1167245107476", "fatal");
-  private final EnumerationDescriptor.MemberDescriptor myMember_error_0 = new EnumerationDescriptor.MemberDescriptor("error", "error", "r:00000000-0000-4000-0000-011c8959057f(jetbrains.mps.baseLanguage.logging.structure)/1167245252932", "error");
-  private final EnumerationDescriptor.MemberDescriptor myMember_warn_0 = new EnumerationDescriptor.MemberDescriptor("warn", "warn", "r:00000000-0000-4000-0000-011c8959057f(jetbrains.mps.baseLanguage.logging.structure)/1167245264682", "warn");
-  private final EnumerationDescriptor.MemberDescriptor myMember_debug_0 = new EnumerationDescriptor.MemberDescriptor("debug", "debug", "r:00000000-0000-4000-0000-011c8959057f(jetbrains.mps.baseLanguage.logging.structure)/1167245288119", "debug");
-  private final EnumerationDescriptor.MemberDescriptor myMember_info_0 = new EnumerationDescriptor.MemberDescriptor("info", "info", "r:00000000-0000-4000-0000-011c8959057f(jetbrains.mps.baseLanguage.logging.structure)/1169477928086", "info");
-  private final EnumerationDescriptor.MemberDescriptor myMember_trace_0 = new EnumerationDescriptor.MemberDescriptor("trace", "trace", "r:00000000-0000-4000-0000-011c8959057f(jetbrains.mps.baseLanguage.logging.structure)/1167245293010", "trace");
+  private final EnumerationDescriptor.MemberDescriptor myMember_fatal_0 = new EnumerationDescriptor.MemberDescriptor("fatal", "fatal", 0x10fc53ae114L, "r:00000000-0000-4000-0000-011c8959057f(jetbrains.mps.baseLanguage.logging.structure)/4241665505353445543", "fatal", "fatal");
+  private final EnumerationDescriptor.MemberDescriptor myMember_error_0 = new EnumerationDescriptor.MemberDescriptor("error", "error", 0x10fc53d1944L, "r:00000000-0000-4000-0000-011c8959057f(jetbrains.mps.baseLanguage.logging.structure)/4241665505353445544", "error", "error");
+  private final EnumerationDescriptor.MemberDescriptor myMember_warn_0 = new EnumerationDescriptor.MemberDescriptor("warn", "warn", 0x10fc53d472aL, "r:00000000-0000-4000-0000-011c8959057f(jetbrains.mps.baseLanguage.logging.structure)/4241665505353445545", "warn", "warn");
+  private final EnumerationDescriptor.MemberDescriptor myMember_debug_0 = new EnumerationDescriptor.MemberDescriptor("debug", "debug", 0x10fc53da2b7L, "r:00000000-0000-4000-0000-011c8959057f(jetbrains.mps.baseLanguage.logging.structure)/4241665505353445546", "debug", "debug");
+  private final EnumerationDescriptor.MemberDescriptor myMember_info_0 = new EnumerationDescriptor.MemberDescriptor("info", "info", 0x1104a510496L, "r:00000000-0000-4000-0000-011c8959057f(jetbrains.mps.baseLanguage.logging.structure)/4241665505353445547", "info", "info");
+  private final EnumerationDescriptor.MemberDescriptor myMember_trace_0 = new EnumerationDescriptor.MemberDescriptor("trace", "trace", 0x10fc53db5d2L, "r:00000000-0000-4000-0000-011c8959057f(jetbrains.mps.baseLanguage.logging.structure)/4241665505353445548", "trace", "trace");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x10fc53ae113L, 0x10fc53ae114L, 0x10fc53d1944L, 0x10fc53d472aL, 0x10fc53da2b7L, 0x1104a510496L, 0x10fc53db5d2L);
   private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_fatal_0, myMember_error_0, myMember_warn_0, myMember_debug_0, myMember_info_0, myMember_trace_0);
@@ -40,11 +40,11 @@ public class EnumerationDescriptor_Severity extends EnumerationDescriptorBase {
 
   @Nullable
   @Override
-  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
-    if (string == null) {
+  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String memberName) {
+    if (memberName == null) {
       return null;
     }
-    switch (string) {
+    switch (memberName) {
       case "fatal":
         return myMember_fatal_0;
       case "error":

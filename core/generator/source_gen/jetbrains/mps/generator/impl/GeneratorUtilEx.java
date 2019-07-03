@@ -15,6 +15,7 @@ import java.util.LinkedList;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 
 public final class GeneratorUtilEx {
   public static String getMappingName_NodeMacro(SNode node, String defaultValue) {
@@ -137,10 +138,10 @@ public final class GeneratorUtilEx {
       // this is how it used to be, although to me default to warn/info might be better 
       return null;
     }
-    if (SPropertyOperations.hasEnumValue(generatorMessage, MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11055c63121L, 0x11055c93e57L, "messageType"), "error")) {
+    if (SEnumOperations.isMember(SPropertyOperations.getEnum(generatorMessage, MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11055c63121L, 0x11055c93e57L, "messageType")), 0x11055c831d8L)) {
       return DismissTopMappingRuleException.MessageType.error;
     } else
-    if (SPropertyOperations.hasEnumValue(generatorMessage, MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11055c63121L, 0x11055c93e57L, "messageType"), "warning")) {
+    if (SEnumOperations.isMember(SPropertyOperations.getEnum(generatorMessage, MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11055c63121L, 0x11055c93e57L, "messageType")), 0x11055c81594L)) {
       return DismissTopMappingRuleException.MessageType.warning;
     } else {
       return DismissTopMappingRuleException.MessageType.info;

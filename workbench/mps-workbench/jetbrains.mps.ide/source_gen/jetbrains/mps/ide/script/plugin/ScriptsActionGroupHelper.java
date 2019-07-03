@@ -14,6 +14,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.workbench.action.BaseGroup;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.util.NameUtil;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.Map;
 import java.util.Set;
@@ -42,7 +43,7 @@ public class ScriptsActionGroupHelper {
   public static void populateByCategoryGroup(List<SNode> migrationScripts, BaseGroup ownerGroup, boolean applyToSelection) {
     _FunctionTypes._return_P1_E0<? extends String, ? super SNode> getCategoryClosure = new _FunctionTypes._return_P1_E0<String, SNode>() {
       public String invoke(SNode script) {
-        String cat = NameUtil.pluralize(NameUtil.capitalize(SPropertyOperations.getString(script, MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, 0x498b4f71ee081153L, "type"))));
+        String cat = NameUtil.pluralize(NameUtil.capitalize(SEnumOperations.getMemberName0(SPropertyOperations.getEnum(script, MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, 0x498b4f71ee081153L, "type")))));
         if (cat == null) {
           cat = "<uncategorized>";
         }

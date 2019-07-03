@@ -13,20 +13,20 @@ import org.jetbrains.annotations.NotNull;
 public class EnumerationDescriptor_InequalityProperty extends EnumerationDescriptorBase {
 
   public EnumerationDescriptor_InequalityProperty() {
-    super(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x6b67310af31422a4L, "InequalityProperty", "r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)/7739208407757103780", PrimitiveTypeId.INTEGER);
+    super(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x6b67310af31422a4L, "InequalityProperty", "r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)/4241665505353447936", PrimitiveTypeId.INTEGER);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor myMember_0_0 = new EnumerationDescriptor.MemberDescriptor("0", "as is", "r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)/7739208407757103781", "as is");
-  private final EnumerationDescriptor.MemberDescriptor myMember_1_0 = new EnumerationDescriptor.MemberDescriptor("1", "same as inequality", "r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)/7739208407757103782", "same as inequality");
-  private final EnumerationDescriptor.MemberDescriptor myMember_2_0 = new EnumerationDescriptor.MemberDescriptor("2", "opposite to inequality", "r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)/7739208407757103783", "opposite to inequality");
+  private final EnumerationDescriptor.MemberDescriptor myMember_as_is_0 = new EnumerationDescriptor.MemberDescriptor("as_is", "as is", 0x6b67310af31422a5L, "r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)/4241665505353447938", "as is", "0");
+  private final EnumerationDescriptor.MemberDescriptor myMember_same_as_inequality_0 = new EnumerationDescriptor.MemberDescriptor("same_as_inequality", "same as inequality", 0x6b67310af31422a6L, "r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)/4241665505353447939", "same as inequality", "1");
+  private final EnumerationDescriptor.MemberDescriptor myMember_opposite_to_inequality_0 = new EnumerationDescriptor.MemberDescriptor("opposite_to_inequality", "opposite to inequality", 0x6b67310af31422a7L, "r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)/4241665505353447940", "opposite to inequality", "2");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x6b67310af31422a4L, 0x6b67310af31422a5L, 0x6b67310af31422a6L, 0x6b67310af31422a7L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_0_0, myMember_1_0, myMember_2_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_as_is_0, myMember_same_as_inequality_0, myMember_opposite_to_inequality_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return myMember_0_0;
+    return myMember_as_is_0;
   }
 
   @NotNull
@@ -37,17 +37,17 @@ public class EnumerationDescriptor_InequalityProperty extends EnumerationDescrip
 
   @Nullable
   @Override
-  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
-    if (string == null) {
+  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String memberName) {
+    if (memberName == null) {
       return null;
     }
-    switch (string) {
-      case "0":
-        return myMember_0_0;
-      case "1":
-        return myMember_1_0;
-      case "2":
-        return myMember_2_0;
+    switch (memberName) {
+      case "as_is":
+        return myMember_as_is_0;
+      case "same_as_inequality":
+        return myMember_same_as_inequality_0;
+      case "opposite_to_inequality":
+        return myMember_opposite_to_inequality_0;
     }
     return null;
   }

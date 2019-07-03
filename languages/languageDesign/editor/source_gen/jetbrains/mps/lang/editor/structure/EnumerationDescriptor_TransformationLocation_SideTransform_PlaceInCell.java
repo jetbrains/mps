@@ -13,11 +13,11 @@ import org.jetbrains.annotations.NotNull;
 public class EnumerationDescriptor_TransformationLocation_SideTransform_PlaceInCell extends EnumerationDescriptorBase {
 
   public EnumerationDescriptor_TransformationLocation_SideTransform_PlaceInCell() {
-    super(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x30335f3d1845bdafL, "TransformationLocation_SideTransform_PlaceInCell", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/3473224453637651887", PrimitiveTypeId.STRING);
+    super(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x30335f3d1845bdafL, "TransformationLocation_SideTransform_PlaceInCell", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353446303", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor myMember_RIGHT_0 = new EnumerationDescriptor.MemberDescriptor("RIGHT", "right", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/3473224453637651889", "RIGHT");
-  private final EnumerationDescriptor.MemberDescriptor myMember_LEFT_0 = new EnumerationDescriptor.MemberDescriptor("LEFT", "left", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1838685759388610269", "LEFT");
+  private final EnumerationDescriptor.MemberDescriptor myMember_RIGHT_0 = new EnumerationDescriptor.MemberDescriptor("RIGHT", "right", 0x30335f3d1845bdb1L, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353446305", "RIGHT", "RIGHT");
+  private final EnumerationDescriptor.MemberDescriptor myMember_LEFT_0 = new EnumerationDescriptor.MemberDescriptor("LEFT", "left", 0x198452f4d5ed6eddL, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353446306", "LEFT", "LEFT");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x30335f3d1845bdafL, 0x30335f3d1845bdb1L, 0x198452f4d5ed6eddL);
   private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_RIGHT_0, myMember_LEFT_0);
@@ -36,11 +36,11 @@ public class EnumerationDescriptor_TransformationLocation_SideTransform_PlaceInC
 
   @Nullable
   @Override
-  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
-    if (string == null) {
+  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String memberName) {
+    if (memberName == null) {
       return null;
     }
-    switch (string) {
+    switch (memberName) {
       case "RIGHT":
         return myMember_RIGHT_0;
       case "LEFT":

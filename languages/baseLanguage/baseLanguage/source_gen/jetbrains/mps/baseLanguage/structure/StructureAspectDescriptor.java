@@ -3581,7 +3581,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.super_("jetbrains.mps.baseLanguage.structure.BaseStringOperation", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d47dc8da1L);
     b.origin("r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)/1225271546410");
     b.version(2);
-    b.property("trimKind", 0x11d47e0122dL).type(MetaIdFactory.dataTypeId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d47df9506L)).origin("1225271546413").done();
+    b.property("trimKind", 0x11d47e0122dL).type(MetaIdFactory.dataTypeId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d47df9506L)).origin("4241665505353453558").done();
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("trim");
     return b.create();

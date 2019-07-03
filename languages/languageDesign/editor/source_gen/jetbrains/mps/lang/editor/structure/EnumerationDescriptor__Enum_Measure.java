@@ -13,11 +13,11 @@ import org.jetbrains.annotations.NotNull;
 public class EnumerationDescriptor__Enum_Measure extends EnumerationDescriptorBase {
 
   public EnumerationDescriptor__Enum_Measure() {
-    super(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11d915f7d98L, "_Enum_Measure", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1226504633752", PrimitiveTypeId.STRING);
+    super(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11d915f7d98L, "_Enum_Measure", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353446266", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor myMember_PIXELS_0 = new EnumerationDescriptor.MemberDescriptor("PIXELS", "pixels", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1226504633753", "pixels");
-  private final EnumerationDescriptor.MemberDescriptor myMember_SPACES_0 = new EnumerationDescriptor.MemberDescriptor("SPACES", "spaces", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1226504706052", "spaces");
+  private final EnumerationDescriptor.MemberDescriptor myMember_PIXELS_0 = new EnumerationDescriptor.MemberDescriptor("PIXELS", "pixels", 0x11d915f7d99L, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353446268", "pixels", "PIXELS");
+  private final EnumerationDescriptor.MemberDescriptor myMember_SPACES_0 = new EnumerationDescriptor.MemberDescriptor("SPACES", "spaces", 0x11d91609804L, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353446269", "spaces", "SPACES");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11d915f7d98L, 0x11d915f7d99L, 0x11d91609804L);
   private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_PIXELS_0, myMember_SPACES_0);
@@ -36,11 +36,11 @@ public class EnumerationDescriptor__Enum_Measure extends EnumerationDescriptorBa
 
   @Nullable
   @Override
-  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
-    if (string == null) {
+  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String memberName) {
+    if (memberName == null) {
       return null;
     }
-    switch (string) {
+    switch (memberName) {
       case "PIXELS":
         return myMember_PIXELS_0;
       case "SPACES":

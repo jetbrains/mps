@@ -95,6 +95,9 @@
     <classNode dependClassName="jetbrains.mps.lang.editor.behavior.StyleKey__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.editor.behavior.StyleSheet__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.editor.behavior.Synchronizeable__BehaviorDescriptor" />
+    <classNode dependClassName="jetbrains.mps.lang.editor.enumMigration._Colors_Enum_MigrationUtils" />
+    <classNode dependClassName="jetbrains.mps.lang.editor.enumMigration._Layout_Constraints_Enum_MigrationUtils" />
+    <classNode dependClassName="jetbrains.mps.lang.editor.enumMigration._NextLine_Enum_MigrationUtils" />
     <classNode dependClassName="jetbrains.mps.lang.editor.generator.baseLanguage.template.util.MenuRoots" />
     <classNode dependClassName="jetbrains.mps.lang.editor.generator.baseLanguage.template.util.QueriesUtil" />
     <classNode dependClassName="jetbrains.mps.lang.modelapi.behavior.ModuleIdentity__BehaviorDescriptor" />

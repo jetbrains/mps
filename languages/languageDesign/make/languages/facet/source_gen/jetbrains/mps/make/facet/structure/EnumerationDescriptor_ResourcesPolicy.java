@@ -13,13 +13,13 @@ import org.jetbrains.annotations.NotNull;
 public class EnumerationDescriptor_ResourcesPolicy extends EnumerationDescriptorBase {
 
   public EnumerationDescriptor_ResourcesPolicy() {
-    super(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x1740bd43b75c4b23L, "ResourcesPolicy", "r:b16ff46d-fa06-479d-9f5c-5b6e17e7f1b2(jetbrains.mps.make.facet.structure)/1675547159918562083", PrimitiveTypeId.STRING);
+    super(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x1740bd43b75c4b23L, "ResourcesPolicy", "r:b16ff46d-fa06-479d-9f5c-5b6e17e7f1b2(jetbrains.mps.make.facet.structure)/4241665505353446922", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor myMember_TRANSFORM_0 = new EnumerationDescriptor.MemberDescriptor("TRANSFORM", "transform", "r:b16ff46d-fa06-479d-9f5c-5b6e17e7f1b2(jetbrains.mps.make.facet.structure)/1675547159918562084", "transform");
-  private final EnumerationDescriptor.MemberDescriptor myMember_PASSTHRU_0 = new EnumerationDescriptor.MemberDescriptor("PASSTHRU", "pass through", "r:b16ff46d-fa06-479d-9f5c-5b6e17e7f1b2(jetbrains.mps.make.facet.structure)/1675547159918562085", "pass through");
-  private final EnumerationDescriptor.MemberDescriptor myMember_CONSUME_0 = new EnumerationDescriptor.MemberDescriptor("CONSUME", "consume", "r:b16ff46d-fa06-479d-9f5c-5b6e17e7f1b2(jetbrains.mps.make.facet.structure)/1675547159918562086", "consume");
-  private final EnumerationDescriptor.MemberDescriptor myMember_PRODUCE_0 = new EnumerationDescriptor.MemberDescriptor("PRODUCE", "produce", "r:b16ff46d-fa06-479d-9f5c-5b6e17e7f1b2(jetbrains.mps.make.facet.structure)/1675547159918562087", "produce");
+  private final EnumerationDescriptor.MemberDescriptor myMember_TRANSFORM_0 = new EnumerationDescriptor.MemberDescriptor("TRANSFORM", "transform", 0x1740bd43b75c4b24L, "r:b16ff46d-fa06-479d-9f5c-5b6e17e7f1b2(jetbrains.mps.make.facet.structure)/4241665505353446924", "transform", "TRANSFORM");
+  private final EnumerationDescriptor.MemberDescriptor myMember_PASSTHRU_0 = new EnumerationDescriptor.MemberDescriptor("PASSTHRU", "pass through", 0x1740bd43b75c4b25L, "r:b16ff46d-fa06-479d-9f5c-5b6e17e7f1b2(jetbrains.mps.make.facet.structure)/4241665505353446925", "pass through", "PASSTHRU");
+  private final EnumerationDescriptor.MemberDescriptor myMember_CONSUME_0 = new EnumerationDescriptor.MemberDescriptor("CONSUME", "consume", 0x1740bd43b75c4b26L, "r:b16ff46d-fa06-479d-9f5c-5b6e17e7f1b2(jetbrains.mps.make.facet.structure)/4241665505353446926", "consume", "CONSUME");
+  private final EnumerationDescriptor.MemberDescriptor myMember_PRODUCE_0 = new EnumerationDescriptor.MemberDescriptor("PRODUCE", "produce", 0x1740bd43b75c4b27L, "r:b16ff46d-fa06-479d-9f5c-5b6e17e7f1b2(jetbrains.mps.make.facet.structure)/4241665505353446927", "produce", "PRODUCE");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x1740bd43b75c4b23L, 0x1740bd43b75c4b24L, 0x1740bd43b75c4b25L, 0x1740bd43b75c4b26L, 0x1740bd43b75c4b27L);
   private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_TRANSFORM_0, myMember_PASSTHRU_0, myMember_CONSUME_0, myMember_PRODUCE_0);
@@ -38,11 +38,11 @@ public class EnumerationDescriptor_ResourcesPolicy extends EnumerationDescriptor
 
   @Nullable
   @Override
-  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
-    if (string == null) {
+  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String memberName) {
+    if (memberName == null) {
       return null;
     }
-    switch (string) {
+    switch (memberName) {
       case "TRANSFORM":
         return myMember_TRANSFORM_0;
       case "PASSTHRU":

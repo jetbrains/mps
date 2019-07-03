@@ -11,9 +11,9 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.editor.behavior.CellActionMapDeclaration__BehaviorDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
@@ -25,10 +25,10 @@ public class check_CellActionMapDeclarationBackspaceWillBeAdded_NonTypesystemRul
   public void applyRule(final SNode cellActionMapDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode deleteItem = ListSequence.fromList(SLinkOperations.getChildren(cellActionMapDeclaration, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10951978cfeL, 0x10951978d01L, "item"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SPropertyOperations.hasEnumValue(it, MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x109519879e9L, 0x1095198c0daL, "actionId"), "delete_action_id");
+        return SEnumOperations.isMember(SPropertyOperations.getEnum(it, MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x109519879e9L, 0x1095198c0daL, "actionId")), 0x109519a19b4L);
       }
     }).first();
-    if ((deleteItem != null) && !((boolean) CellActionMapDeclaration__BehaviorDescriptor.containsItemOfType_id2pg2GNQgnKJ.invoke(cellActionMapDeclaration, SEnumOperations.getMember(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, "jetbrains.mps.lang.editor", 0x10951993667L, "CellActionId", 0x7d41f11ce69df74aL, "backspace_action_id")))) {
+    if ((deleteItem != null) && !((boolean) CellActionMapDeclaration__BehaviorDescriptor.containsItemOfType_id2pg2GNQgnKJ.invoke(cellActionMapDeclaration, SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10951993667L, "jetbrains.mps.lang.editor.structure.CellActionId"), 0x7d41f11ce69df74aL, "backspace_action_id")))) {
       {
         MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(deleteItem, "This action will also be used for BACKSPACE, unless BACKSPACE is defined or imported.", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "4049837364749749023", null, errorTarget);

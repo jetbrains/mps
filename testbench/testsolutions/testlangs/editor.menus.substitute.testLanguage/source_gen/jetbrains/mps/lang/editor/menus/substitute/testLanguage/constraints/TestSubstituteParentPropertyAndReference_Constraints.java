@@ -9,8 +9,10 @@ import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.runtime.CheckingNodeContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
 import java.util.Objects;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.Map;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.runtime.PropertyConstraintsDescriptor;
@@ -46,14 +48,14 @@ public class TestSubstituteParentPropertyAndReference_Constraints extends BaseCo
     private static final SNodePointer validatePropertyBreakingPoint = new SNodePointer("r:0cba60fc-aa17-42ba-b3ca-69b0d1a86fe9(jetbrains.mps.lang.editor.menus.substitute.testLanguage.constraints)", "1588042961787417549");
     @Override
     public boolean validateValue(SNode node, Object propertyValue, CheckingNodeContext checkingNodeContext) {
-      boolean result = staticValidateProperty(node, (String) (SPropertyOperations.downgradeFromEnumMember(MetaAdapterFactory.getProperty(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x69b757bd7bd1801L, 0x1609dca8f165eaafL, "enumPropertyWithIsValidConstraints"), propertyValue)));
+      boolean result = staticValidateProperty(node, (SEnumerationLiteral) (propertyValue));
       if (!(result) && checkingNodeContext != null) {
         checkingNodeContext.setBreakingNode(validatePropertyBreakingPoint);
       }
       return result;
     }
-    private static boolean staticValidateProperty(SNode node, String propertyValue) {
-      return Objects.equals(propertyValue, "myFirstValue");
+    private static boolean staticValidateProperty(SNode node, SEnumerationLiteral propertyValue) {
+      return Objects.equals(propertyValue, SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x69b757bd7bd1807L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteEnumDataType"), 0x69b757bd7bd1808L, "myFirstValue"));
     }
   }
   public static class EnumPropertyWithGetter_Property extends BasePropertyConstraintsDescriptor {
@@ -66,7 +68,7 @@ public class TestSubstituteParentPropertyAndReference_Constraints extends BaseCo
     }
     @Override
     public Object getValue(SNode node) {
-      return "myFirstValue";
+      return SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x69b757bd7bd1807L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteEnumDataType"), 0x69b757bd7bd1808L, "myFirstValue");
     }
   }
   public static class EnumPropertyWithSetter_Property extends BasePropertyConstraintsDescriptor {
@@ -79,9 +81,9 @@ public class TestSubstituteParentPropertyAndReference_Constraints extends BaseCo
     }
     @Override
     public void setPropertyValue(SNode node, Object propertyValue) {
-      staticSetPropertyValue(node, (String) (SPropertyOperations.downgradeFromEnumMember(MetaAdapterFactory.getProperty(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x69b757bd7bd1801L, 0x1609dca8f168f8e1L, "enumPropertyWithSetter"), propertyValue)));
+      staticSetPropertyValue(node, (SEnumerationLiteral) (propertyValue));
     }
-    private static void staticSetPropertyValue(SNode node, String propertyValue) {
+    private static void staticSetPropertyValue(SNode node, SEnumerationLiteral propertyValue) {
       SPropertyOperations.assign(node, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "custom property setter executed");
     }
   }

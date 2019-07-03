@@ -619,7 +619,7 @@
       <node id="3803436373353347898" at="432,34,433,140" concept="1" />
       <node id="3803436373353347898" at="433,140,434,131" concept="1" />
       <node id="3803436373353347898" at="434,131,435,17" concept="1" />
-      <node id="3803436373353348026" at="435,17,436,176" concept="1" />
+      <node id="4241665505353454312" at="435,17,436,176" concept="1" />
       <node id="3803436373353347898" at="436,176,437,22" concept="1" />
       <node id="3803436373353347898" at="437,22,438,22" concept="6" />
       <node id="3803436373353347898" at="430,0,440,0" concept="8" trace="createDescriptorForOrange#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
@@ -628,53 +628,6 @@
         <var name="b" id="3803436373353347898" />
       </scope>
       <scope id="3803436373353347898" at="430,0,440,0" />
-    </file>
-  </root>
-  <root nodeRef="r:150e80ad-a158-4a95-9515-f61f51743da4(jetbrains.mps.samples.languagePatterns.Basic.structure)/3803436373353348028">
-    <file name="EnumerationDescriptor_OrangeTaste.java">
-      <node id="3803436373353348028" at="15,46,16,230" concept="9" />
-      <node id="3803436373353348029" at="19,0,20,0" concept="2" trace="myMember__0" />
-      <node id="3803436373353348030" at="20,0,21,0" concept="2" trace="myMember__1" />
-      <node id="3803436373353348033" at="21,0,22,0" concept="2" trace="myMember__2" />
-      <node id="3803436373353348028" at="23,0,24,0" concept="2" trace="myIndex" />
-      <node id="3803436373353348028" at="24,0,25,0" concept="2" trace="myMembers" />
-      <node id="3803436373353348028" at="28,62,29,23" concept="6" />
-      <node id="3803436373353348028" at="34,68,35,21" concept="6" />
-      <node id="3803436373353348028" at="41,25,42,25" concept="6" />
-      <node id="3803436373353348028" at="45,5,46,16" concept="6" />
-      <node id="3803436373353348028" at="51,73,52,39" concept="5" />
-      <node id="3803436373353348028" at="53,22,54,18" concept="6" />
-      <node id="3803436373353348028" at="55,5,56,32" concept="6" />
-      <node id="3803436373353348028" at="43,5,45,5" concept="10" />
-      <node id="3803436373353348028" at="15,0,18,0" concept="0" trace="EnumerationDescriptor_OrangeTaste#()V" />
-      <node id="3803436373353348028" at="40,84,43,5" concept="3" />
-      <node id="3803436373353348028" at="52,39,55,5" concept="3" />
-      <node id="3803436373353348028" at="26,0,31,0" concept="4" trace="getDefault#()Ljetbrains/mps/smodel/runtime/EnumerationDescriptor/MemberDescriptor;" />
-      <node id="3803436373353348028" at="32,0,37,0" concept="4" trace="getMembers#()Ljava/util/List;" />
-      <node id="3803436373353348028" at="49,0,58,0" concept="4" trace="getMember#(J)Ljetbrains/mps/smodel/runtime/EnumerationDescriptor/MemberDescriptor;" />
-      <node id="3803436373353348028" at="38,0,48,0" concept="4" trace="getMember#(Ljava/lang/String;)Ljetbrains/mps/smodel/runtime/EnumerationDescriptor/MemberDescriptor;" />
-      <scope id="3803436373353348028" at="15,46,16,230" />
-      <scope id="3803436373353348028" at="28,62,29,23" />
-      <scope id="3803436373353348028" at="34,68,35,21" />
-      <scope id="3803436373353348028" at="41,25,42,25" />
-      <scope id="3803436373353348028" at="53,22,54,18" />
-      <scope id="3803436373353348028" at="15,0,18,0" />
-      <scope id="3803436373353348028" at="26,0,31,0" />
-      <scope id="3803436373353348028" at="32,0,37,0" />
-      <scope id="3803436373353348028" at="51,73,56,32">
-        <var name="index" id="3803436373353348028" />
-      </scope>
-      <scope id="3803436373353348028" at="40,84,46,16" />
-      <scope id="3803436373353348028" at="49,0,58,0">
-        <var name="idValue" id="3803436373353348028" />
-      </scope>
-      <scope id="3803436373353348028" at="38,0,48,0">
-        <var name="string" id="3803436373353348028" />
-      </scope>
-      <unit id="3803436373353348028" at="13,0,59,0" name="jetbrains.mps.samples.languagePatterns.Basic.structure.EnumerationDescriptor_OrangeTaste" />
-    </file>
-    <file name="StructureAspectDescriptor.java">
-      <node id="3803436373353348028" at="61,0,62,0" concept="2" trace="myEnumerationOrangeTaste" />
     </file>
   </root>
   <root nodeRef="r:150e80ad-a158-4a95-9515-f61f51743da4(jetbrains.mps.samples.languagePatterns.Basic.structure)/3803436373353520197">
@@ -1031,6 +984,59 @@
         <var name="b" id="3803436373354958785" />
       </scope>
       <scope id="3803436373354958785" at="548,0,558,0" />
+    </file>
+  </root>
+  <root nodeRef="r:150e80ad-a158-4a95-9515-f61f51743da4(jetbrains.mps.samples.languagePatterns.Basic.structure)/4241665505353448359">
+    <file name="EnumerationDescriptor_OrangeTaste.java">
+      <node id="4241665505353448359" at="15,46,16,230" concept="9" />
+      <node id="4241665505353448361" at="19,0,20,0" concept="2" trace="myMember_Sweet_0" />
+      <node id="4241665505353448362" at="20,0,21,0" concept="2" trace="myMember_Sour_0" />
+      <node id="4241665505353448363" at="21,0,22,0" concept="2" trace="myMember_Bitter_0" />
+      <node id="4241665505353448359" at="23,0,24,0" concept="2" trace="myIndex" />
+      <node id="4241665505353448359" at="24,0,25,0" concept="2" trace="myMembers" />
+      <node id="4241665505353448359" at="28,62,29,28" concept="6" />
+      <node id="4241665505353448359" at="34,68,35,21" concept="6" />
+      <node id="4241665505353448359" at="41,29,42,18" concept="6" />
+      <node id="4241665505353448361" at="45,19,46,32" concept="6" />
+      <node id="4241665505353448362" at="47,18,48,31" concept="6" />
+      <node id="4241665505353448363" at="49,20,50,33" concept="6" />
+      <node id="4241665505353448359" at="51,5,52,16" concept="6" />
+      <node id="4241665505353448359" at="57,73,58,39" concept="5" />
+      <node id="4241665505353448359" at="59,22,60,18" concept="6" />
+      <node id="4241665505353448359" at="61,5,62,32" concept="6" />
+      <node id="4241665505353448359" at="15,0,18,0" concept="0" trace="EnumerationDescriptor_OrangeTaste#()V" />
+      <node id="4241665505353448359" at="40,88,43,5" concept="3" />
+      <node id="4241665505353448359" at="58,39,61,5" concept="3" />
+      <node id="4241665505353448359" at="26,0,31,0" concept="4" trace="getDefault#()Ljetbrains/mps/smodel/runtime/EnumerationDescriptor/MemberDescriptor;" />
+      <node id="4241665505353448359" at="32,0,37,0" concept="4" trace="getMembers#()Ljava/util/List;" />
+      <node id="4241665505353448359" at="43,5,51,5" concept="10" />
+      <node id="4241665505353448359" at="55,0,64,0" concept="4" trace="getMember#(J)Ljetbrains/mps/smodel/runtime/EnumerationDescriptor/MemberDescriptor;" />
+      <node id="4241665505353448359" at="38,0,54,0" concept="4" trace="getMember#(Ljava/lang/String;)Ljetbrains/mps/smodel/runtime/EnumerationDescriptor/MemberDescriptor;" />
+      <scope id="4241665505353448359" at="15,46,16,230" />
+      <scope id="4241665505353448359" at="28,62,29,28" />
+      <scope id="4241665505353448359" at="34,68,35,21" />
+      <scope id="4241665505353448359" at="41,29,42,18" />
+      <scope id="4241665505353448361" at="45,19,46,32" />
+      <scope id="4241665505353448362" at="47,18,48,31" />
+      <scope id="4241665505353448363" at="49,20,50,33" />
+      <scope id="4241665505353448359" at="59,22,60,18" />
+      <scope id="4241665505353448359" at="15,0,18,0" />
+      <scope id="4241665505353448359" at="26,0,31,0" />
+      <scope id="4241665505353448359" at="32,0,37,0" />
+      <scope id="4241665505353448359" at="57,73,62,32">
+        <var name="index" id="4241665505353448359" />
+      </scope>
+      <scope id="4241665505353448359" at="55,0,64,0">
+        <var name="idValue" id="4241665505353448359" />
+      </scope>
+      <scope id="4241665505353448359" at="40,88,52,16" />
+      <scope id="4241665505353448359" at="38,0,54,0">
+        <var name="memberName" id="4241665505353448359" />
+      </scope>
+      <unit id="4241665505353448359" at="13,0,65,0" name="jetbrains.mps.samples.languagePatterns.Basic.structure.EnumerationDescriptor_OrangeTaste" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="4241665505353448359" at="61,0,62,0" concept="2" trace="myEnumerationOrangeTaste" />
     </file>
   </root>
   <root nodeRef="r:150e80ad-a158-4a95-9515-f61f51743da4(jetbrains.mps.samples.languagePatterns.Basic.structure)/5235060235297879046">

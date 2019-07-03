@@ -13,11 +13,11 @@ import org.jetbrains.annotations.NotNull;
 public class EnumerationDescriptor_TestEnum_DeriveFromPresentation extends EnumerationDescriptorBase {
 
   public EnumerationDescriptor_TestEnum_DeriveFromPresentation() {
-    super(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x125bc18df9d40ef1L, "TestEnum_DeriveFromPresentation", "r:43b4d418-d4ca-4d97-ab07-31e4f3ddb3e5(jetbrains.mps.lang.smodelTests.structure)/1322863731089346289", PrimitiveTypeId.STRING);
+    super(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x125bc18df9d40ef1L, "TestEnum_DeriveFromPresentation", "r:43b4d418-d4ca-4d97-ab07-31e4f3ddb3e5(jetbrains.mps.lang.smodelTests.structure)/4241665505353448109", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor myMember_value_1_0 = new EnumerationDescriptor.MemberDescriptor("value_1", "presentation_1", "r:43b4d418-d4ca-4d97-ab07-31e4f3ddb3e5(jetbrains.mps.lang.smodelTests.structure)/1322863731089346290", "presentation_1");
-  private final EnumerationDescriptor.MemberDescriptor myMember_value_2_0 = new EnumerationDescriptor.MemberDescriptor("value_2", "presentation_2", "r:43b4d418-d4ca-4d97-ab07-31e4f3ddb3e5(jetbrains.mps.lang.smodelTests.structure)/1322863731089346291", "presentation_2");
+  private final EnumerationDescriptor.MemberDescriptor myMember_value_1_0 = new EnumerationDescriptor.MemberDescriptor("value_1", "presentation_1", 0x125bc18df9d40ef2L, "r:43b4d418-d4ca-4d97-ab07-31e4f3ddb3e5(jetbrains.mps.lang.smodelTests.structure)/4241665505353448111", "presentation_1", "value_1");
+  private final EnumerationDescriptor.MemberDescriptor myMember_value_2_0 = new EnumerationDescriptor.MemberDescriptor("value_2", "presentation_2", 0x125bc18df9d40ef3L, "r:43b4d418-d4ca-4d97-ab07-31e4f3ddb3e5(jetbrains.mps.lang.smodelTests.structure)/4241665505353448112", "presentation_2", "value_2");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x125bc18df9d40ef1L, 0x125bc18df9d40ef2L, 0x125bc18df9d40ef3L);
   private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_value_1_0, myMember_value_2_0);
@@ -36,11 +36,11 @@ public class EnumerationDescriptor_TestEnum_DeriveFromPresentation extends Enume
 
   @Nullable
   @Override
-  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
-    if (string == null) {
+  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String memberName) {
+    if (memberName == null) {
       return null;
     }
-    switch (string) {
+    switch (memberName) {
       case "value_1":
         return myMember_value_1_0;
       case "value_2":

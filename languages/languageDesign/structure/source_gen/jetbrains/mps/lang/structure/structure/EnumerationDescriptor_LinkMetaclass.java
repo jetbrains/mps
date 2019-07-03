@@ -13,11 +13,11 @@ import org.jetbrains.annotations.NotNull;
 public class EnumerationDescriptor_LinkMetaclass extends EnumerationDescriptorBase {
 
   public EnumerationDescriptor_LinkMetaclass() {
-    super(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc6f4e95b7L, "LinkMetaclass", "r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/1084199179703", PrimitiveTypeId.STRING);
+    super(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc6f4e95b7L, "LinkMetaclass", "r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/4241665505353447573", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor myMember_reference_0 = new EnumerationDescriptor.MemberDescriptor("reference", "reference", "r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/1084199179704", "reference");
-  private final EnumerationDescriptor.MemberDescriptor myMember_aggregation_0 = new EnumerationDescriptor.MemberDescriptor("aggregation", "aggregation", "r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/1084199179705", "aggregation");
+  private final EnumerationDescriptor.MemberDescriptor myMember_reference_0 = new EnumerationDescriptor.MemberDescriptor("reference", "reference", 0xfc6f4e95b8L, "r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/4241665505353447575", "reference", "reference");
+  private final EnumerationDescriptor.MemberDescriptor myMember_aggregation_0 = new EnumerationDescriptor.MemberDescriptor("aggregation", "aggregation", 0xfc6f4e95b9L, "r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/4241665505353447576", "aggregation", "aggregation");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc6f4e95b7L, 0xfc6f4e95b8L, 0xfc6f4e95b9L);
   private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_reference_0, myMember_aggregation_0);
@@ -36,11 +36,11 @@ public class EnumerationDescriptor_LinkMetaclass extends EnumerationDescriptorBa
 
   @Nullable
   @Override
-  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
-    if (string == null) {
+  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String memberName) {
+    if (memberName == null) {
       return null;
     }
-    switch (string) {
+    switch (memberName) {
       case "reference":
         return myMember_reference_0;
       case "aggregation":

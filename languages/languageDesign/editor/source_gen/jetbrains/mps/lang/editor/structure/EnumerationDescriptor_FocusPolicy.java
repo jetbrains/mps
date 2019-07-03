@@ -13,21 +13,21 @@ import org.jetbrains.annotations.NotNull;
 public class EnumerationDescriptor_FocusPolicy extends EnumerationDescriptorBase {
 
   public EnumerationDescriptor_FocusPolicy() {
-    super(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1075079c80dL, "FocusPolicy", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1130926557197", PrimitiveTypeId.INTEGER);
+    super(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1075079c80dL, "FocusPolicy", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353445984", PrimitiveTypeId.INTEGER);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor myMember_0_0 = new EnumerationDescriptor.MemberDescriptor("0", "noAttraction", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1130926557292", "noAttraction");
-  private final EnumerationDescriptor.MemberDescriptor myMember_1_0 = new EnumerationDescriptor.MemberDescriptor("1", "attractsFocus", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1130926591919", "attractsFocus");
-  private final EnumerationDescriptor.MemberDescriptor myMember_2_0 = new EnumerationDescriptor.MemberDescriptor("2", "firstEditableCell", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1130926603060", "firstEditableCell");
-  private final EnumerationDescriptor.MemberDescriptor myMember_3_0 = new EnumerationDescriptor.MemberDescriptor("3", "attractsRecursively", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1227082414196", "attractsRecursively");
+  private final EnumerationDescriptor.MemberDescriptor myMember_noAttraction_0 = new EnumerationDescriptor.MemberDescriptor("noAttraction", "noAttraction", 0x1075079c86cL, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353445986", "noAttraction", "0");
+  private final EnumerationDescriptor.MemberDescriptor myMember_attractsFocus_0 = new EnumerationDescriptor.MemberDescriptor("attractsFocus", "attractsFocus", 0x107507a4fafL, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353445987", "attractsFocus", "1");
+  private final EnumerationDescriptor.MemberDescriptor myMember_firstEditableCell_0 = new EnumerationDescriptor.MemberDescriptor("firstEditableCell", "firstEditableCell", 0x107507a7b34L, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353445988", "firstEditableCell", "2");
+  private final EnumerationDescriptor.MemberDescriptor myMember_attractsRecursively_0 = new EnumerationDescriptor.MemberDescriptor("attractsRecursively", "attractsRecursively", 0x11db3cfb874L, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353445989", "attractsRecursively", "3");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1075079c80dL, 0x1075079c86cL, 0x107507a4fafL, 0x107507a7b34L, 0x11db3cfb874L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_0_0, myMember_1_0, myMember_2_0, myMember_3_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_noAttraction_0, myMember_attractsFocus_0, myMember_firstEditableCell_0, myMember_attractsRecursively_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return myMember_0_0;
+    return myMember_noAttraction_0;
   }
 
   @NotNull
@@ -38,19 +38,19 @@ public class EnumerationDescriptor_FocusPolicy extends EnumerationDescriptorBase
 
   @Nullable
   @Override
-  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
-    if (string == null) {
+  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String memberName) {
+    if (memberName == null) {
       return null;
     }
-    switch (string) {
-      case "0":
-        return myMember_0_0;
-      case "1":
-        return myMember_1_0;
-      case "2":
-        return myMember_2_0;
-      case "3":
-        return myMember_3_0;
+    switch (memberName) {
+      case "noAttraction":
+        return myMember_noAttraction_0;
+      case "attractsFocus":
+        return myMember_attractsFocus_0;
+      case "firstEditableCell":
+        return myMember_firstEditableCell_0;
+      case "attractsRecursively":
+        return myMember_attractsRecursively_0;
     }
     return null;
   }

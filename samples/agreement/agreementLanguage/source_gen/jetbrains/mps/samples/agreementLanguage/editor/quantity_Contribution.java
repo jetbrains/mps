@@ -98,7 +98,7 @@ public class quantity_Contribution extends SubstituteMenuBase {
           }
         }
         SNode quantity = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dbf92b68L, "jetbrains.mps.samples.agreementLanguage.structure.Quantity"));
-        SPropertyOperations.set(quantity, MetaAdapterFactory.getProperty(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dbf92b68L, 0x102dc0c5503L, "unit"), "USD");
+        SPropertyOperations.setEnum(quantity, MetaAdapterFactory.getProperty(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dbf92b68L, 0x102dc0c5503L, "unit"), 0x102dc0b6d03L, "USD");
         SLinkOperations.setTarget(quantity, MetaAdapterFactory.getContainmentLink(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dbf92b68L, 0x102dc0c6b1dL, "amount"), fpConstant);
         return quantity;
       }
@@ -176,7 +176,7 @@ public class quantity_Contribution extends SubstituteMenuBase {
           SPropertyOperations.set(fpConstant, MetaAdapterFactory.getProperty(0xb1a9bc478a264792L, 0x8b684660c531090aL, 0x102db8bab3cL, 0x1033349beb2L, "value"), pattern);
         }
         SNode quantity = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dbf92b68L, "jetbrains.mps.samples.agreementLanguage.structure.Quantity"));
-        SPropertyOperations.set(quantity, MetaAdapterFactory.getProperty(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dbf92b68L, 0x102dc0c5503L, "unit"), "USD_KWH");
+        SPropertyOperations.setEnum(quantity, MetaAdapterFactory.getProperty(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dbf92b68L, 0x102dc0c5503L, "unit"), 0x102dc0a9c92L, "USD_KWH");
         SLinkOperations.setTarget(quantity, MetaAdapterFactory.getContainmentLink(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dbf92b68L, 0x102dc0c6b1dL, "amount"), fpConstant);
         return quantity;
       }

@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.plugin.enumMigration.Keymap_MigrationUtils;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -32,7 +33,7 @@ public final class ToolKeystroke__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static String getKeymap_idqbzkx4pM3M(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(__thisNode__, MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b765b0L, 0x68b8d4843b765b6L, "keymap"));
+    return Keymap_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b765b0L, 0x68b8d4843b765b6L, "keymap")));
   }
   /*package*/ static String getKeystroke_idqbzkx4pLZr(@NotNull SNode __thisNode__) {
     return (String) KeyMapKeystroke__BehaviorDescriptor.getKeyStroke_idhEwIlzu.invoke(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b765b0L, 0x68b8d4843b76126L, "keystroke")));

@@ -18,6 +18,7 @@ import jetbrains.mps.util.IconCreationUtil;
 import org.jetbrains.mps.openapi.util.Consumer;
 import java.awt.Color;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.resources.enumMigration.Size_MigrationUtils;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -42,16 +43,16 @@ public final class Rect__BehaviorDescriptor extends BaseBHDescriptor {
         Color fillColor = new Color((int) Color__BehaviorDescriptor.getIntValue_id1BguvjG4ybo.invoke(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b1L, 0x19d079f4ec114c11L, "fillColor"))));
         if ((SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b1L, 0x19d079f4ec114c13L, "borderColor")) == null)) {
           dc.g.setColor(fillColor);
-          dc.g.fillRect(centerX, centerY, SPropertyOperations.getInteger(__thisNode__, MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e61L, 0x26417c37742e0e62L, "r")) * 2, SPropertyOperations.getInteger(__thisNode__, MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e61L, 0x26417c37742e0e62L, "r")) * 2);
+          dc.g.fillRect(centerX, centerY, Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e61L, 0x26417c37742e0e62L, "r"))) * 2, Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e61L, 0x26417c37742e0e62L, "r"))) * 2);
         } else {
           // outer 
           dc.g.setColor(new Color((int) Color__BehaviorDescriptor.getIntValue_id1BguvjG4ybo.invoke(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b1L, 0x19d079f4ec114c13L, "borderColor")))));
-          dc.g.fillRect(centerX, centerY, SPropertyOperations.getInteger(__thisNode__, MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e61L, 0x26417c37742e0e62L, "r")) * 2, SPropertyOperations.getInteger(__thisNode__, MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e61L, 0x26417c37742e0e62L, "r")) * 2);
+          dc.g.fillRect(centerX, centerY, Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e61L, 0x26417c37742e0e62L, "r"))) * 2, Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e61L, 0x26417c37742e0e62L, "r"))) * 2);
 
           // inner 
           int border = 2;
           dc.g.setColor(fillColor);
-          dc.g.fillRect(centerX, centerY, (SPropertyOperations.getInteger(__thisNode__, MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e61L, 0x26417c37742e0e62L, "r")) - border) * 2, (SPropertyOperations.getInteger(__thisNode__, MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e61L, 0x26417c37742e0e62L, "r")) - border) * 2);
+          dc.g.fillRect(centerX, centerY, (Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e61L, 0x26417c37742e0e62L, "r"))) - border) * 2, (Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e61L, 0x26417c37742e0e62L, "r"))) - border) * 2);
         }
       }
     });

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-22or7chwopnx0kc1pc7skxnjpog10g8">
+<product version="3" modelHash="83hsuyxlvgxf0ip5jjyq1egxjwdncpe">
   <files names="MigrationDescriptor.java:RemoveInvisibleConstructorsInBTestCases.java" />
 </product>
 

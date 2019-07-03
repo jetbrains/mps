@@ -13,12 +13,12 @@ import org.jetbrains.annotations.NotNull;
 public class EnumerationDescriptor_TestEnum_NoDefaultValue extends EnumerationDescriptorBase {
 
   public EnumerationDescriptor_TestEnum_NoDefaultValue() {
-    super(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x138cca1e14019342L, "TestEnum_NoDefaultValue", "r:43b4d418-d4ca-4d97-ab07-31e4f3ddb3e5(jetbrains.mps.lang.smodelTests.structure)/1408723013993599810", PrimitiveTypeId.STRING);
+    super(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x138cca1e14019342L, "TestEnum_NoDefaultValue", "r:43b4d418-d4ca-4d97-ab07-31e4f3ddb3e5(jetbrains.mps.lang.smodelTests.structure)/4241665505353448168", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor myMember_a_0 = new EnumerationDescriptor.MemberDescriptor("a", "NotDefault_A", "r:43b4d418-d4ca-4d97-ab07-31e4f3ddb3e5(jetbrains.mps.lang.smodelTests.structure)/1408723013993599811", "a");
-  private final EnumerationDescriptor.MemberDescriptor myMember_b_0 = new EnumerationDescriptor.MemberDescriptor("b", "NotDefault_B", "r:43b4d418-d4ca-4d97-ab07-31e4f3ddb3e5(jetbrains.mps.lang.smodelTests.structure)/1408723013993599812", "b");
-  private final EnumerationDescriptor.MemberDescriptor myMember_c_0 = new EnumerationDescriptor.MemberDescriptor("c", "NotDefault_C", "r:43b4d418-d4ca-4d97-ab07-31e4f3ddb3e5(jetbrains.mps.lang.smodelTests.structure)/1408723013993599815", "c");
+  private final EnumerationDescriptor.MemberDescriptor myMember_a_0 = new EnumerationDescriptor.MemberDescriptor("a", "NotDefault_A", 0x138cca1e14019343L, "r:43b4d418-d4ca-4d97-ab07-31e4f3ddb3e5(jetbrains.mps.lang.smodelTests.structure)/4241665505353448170", "a", "a");
+  private final EnumerationDescriptor.MemberDescriptor myMember_b_0 = new EnumerationDescriptor.MemberDescriptor("b", "NotDefault_B", 0x138cca1e14019344L, "r:43b4d418-d4ca-4d97-ab07-31e4f3ddb3e5(jetbrains.mps.lang.smodelTests.structure)/4241665505353448171", "b", "b");
+  private final EnumerationDescriptor.MemberDescriptor myMember_c_0 = new EnumerationDescriptor.MemberDescriptor("c", "NotDefault_C", 0x138cca1e14019347L, "r:43b4d418-d4ca-4d97-ab07-31e4f3ddb3e5(jetbrains.mps.lang.smodelTests.structure)/4241665505353448172", "c", "c");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x138cca1e14019342L, 0x138cca1e14019343L, 0x138cca1e14019344L, 0x138cca1e14019347L);
   private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_a_0, myMember_b_0, myMember_c_0);
@@ -37,11 +37,11 @@ public class EnumerationDescriptor_TestEnum_NoDefaultValue extends EnumerationDe
 
   @Nullable
   @Override
-  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
-    if (string == null) {
+  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String memberName) {
+    if (memberName == null) {
       return null;
     }
-    switch (string) {
+    switch (memberName) {
       case "a":
         return myMember_a_0;
       case "b":

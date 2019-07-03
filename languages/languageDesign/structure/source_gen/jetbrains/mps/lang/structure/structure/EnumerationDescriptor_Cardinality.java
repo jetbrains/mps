@@ -13,21 +13,21 @@ import org.jetbrains.annotations.NotNull;
 public class EnumerationDescriptor_Cardinality extends EnumerationDescriptorBase {
 
   public EnumerationDescriptor_Cardinality() {
-    super(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc6f3944c2L, "Cardinality", "r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/1084197782722", PrimitiveTypeId.STRING);
+    super(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc6f3944c2L, "Cardinality", "r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/4241665505353447567", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor myMember_01_0 = new EnumerationDescriptor.MemberDescriptor("0..1", "0..1", "r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/1084197782723", "0..1");
-  private final EnumerationDescriptor.MemberDescriptor myMember_1_0 = new EnumerationDescriptor.MemberDescriptor("1", "1", "r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/1084197782724", "1");
-  private final EnumerationDescriptor.MemberDescriptor myMember_0n_0 = new EnumerationDescriptor.MemberDescriptor("0..n", "0..n", "r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/1084197782725", "0..n");
-  private final EnumerationDescriptor.MemberDescriptor myMember_1n_0 = new EnumerationDescriptor.MemberDescriptor("1..n", "1..n", "r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/1084197782726", "1..n");
+  private final EnumerationDescriptor.MemberDescriptor myMember__0__1_0 = new EnumerationDescriptor.MemberDescriptor("_0__1", "0..1", 0xfc6f3944c3L, "r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/4241665505353447569", "0..1", "0..1");
+  private final EnumerationDescriptor.MemberDescriptor myMember__1_0 = new EnumerationDescriptor.MemberDescriptor("_1", "1", 0xfc6f3944c4L, "r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/4241665505353447570", "1", "1");
+  private final EnumerationDescriptor.MemberDescriptor myMember__0__n_0 = new EnumerationDescriptor.MemberDescriptor("_0__n", "0..n", 0xfc6f3944c5L, "r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/4241665505353447571", "0..n", "0..n");
+  private final EnumerationDescriptor.MemberDescriptor myMember__1__n_0 = new EnumerationDescriptor.MemberDescriptor("_1__n", "1..n", 0xfc6f3944c6L, "r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/4241665505353447572", "1..n", "1..n");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc6f3944c2L, 0xfc6f3944c3L, 0xfc6f3944c4L, 0xfc6f3944c5L, 0xfc6f3944c6L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_01_0, myMember_1_0, myMember_0n_0, myMember_1n_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember__0__1_0, myMember__1_0, myMember__0__n_0, myMember__1__n_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return myMember_01_0;
+    return myMember__0__1_0;
   }
 
   @NotNull
@@ -38,19 +38,19 @@ public class EnumerationDescriptor_Cardinality extends EnumerationDescriptorBase
 
   @Nullable
   @Override
-  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
-    if (string == null) {
+  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String memberName) {
+    if (memberName == null) {
       return null;
     }
-    switch (string) {
-      case "0..1":
-        return myMember_01_0;
-      case "1":
-        return myMember_1_0;
-      case "0..n":
-        return myMember_0n_0;
-      case "1..n":
-        return myMember_1n_0;
+    switch (memberName) {
+      case "_0__1":
+        return myMember__0__1_0;
+      case "_1":
+        return myMember__1_0;
+      case "_0__n":
+        return myMember__0__n_0;
+      case "_1__n":
+        return myMember__1__n_0;
     }
     return null;
   }

@@ -29,6 +29,7 @@ import jetbrains.mps.build.util.DependenciesHelper;
 import jetbrains.mps.build.behavior.BuildLayout_PathElement__BehaviorDescriptor;
 import jetbrains.mps.build.behavior.BuildString__BehaviorDescriptor;
 import jetbrains.mps.build.util.Context;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.build.mps.behavior.BuildMps_Tips__BehaviorDescriptor;
 import jetbrains.mps.build.mps.behavior.BuildMps_TipsPackage__BehaviorDescriptor;
@@ -528,9 +529,9 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object propertyMacro_GetValue_10_12(final PropertyMacroContext _context) {
     SNode options = ((SNode) _context.getVariable("var:genOptions"));
-    if (SPropertyOperations.hasEnumValue(options, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3ba296405b6f3b1bL, 0x37b3e610a73b826L, "skipUnmodifiedModels"), "never")) {
+    if (SEnumOperations.isMember(SPropertyOperations.getEnum(options, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3ba296405b6f3b1bL, 0x37b3e610a73b826L, "skipUnmodifiedModels")), 0x37b3e610a73c6cdL)) {
       return "false";
-    } else if (SPropertyOperations.hasEnumValue(options, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3ba296405b6f3b1bL, 0x37b3e610a73b826L, "skipUnmodifiedModels"), null) || isEmptyString(SPropertyOperations.getString(options, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3ba296405b6f3b1bL, 0x37b3e610a73b826L, "skipUnmodifiedModels")))) {
+    } else if (SEnumOperations.isMember(SPropertyOperations.getEnum(options, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3ba296405b6f3b1bL, 0x37b3e610a73b826L, "skipUnmodifiedModels")), 0x37b3e610a73c6ccL) || (SPropertyOperations.getEnum(options, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3ba296405b6f3b1bL, 0x37b3e610a73b826L, "skipUnmodifiedModels")) == null)) {
       return "${mps.generator.skipUnmodifiedModels}";
     }
 
@@ -1733,7 +1734,7 @@ public class QueriesGenerated extends QueryProviderBase {
       SPropertyOperations.assign(defaults, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3ba296405b6f3b1bL, 0x3ba296405b7040e4L, "inplace"), false);
       SPropertyOperations.assign(defaults, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3ba296405b6f3b1bL, 0x36a924c4406d57f3L, "hideWarnings"), false);
       SPropertyOperations.assign(defaults, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3ba296405b6f3b1bL, 0x5ab0fd79b0feb375L, "createStaticRefs"), true);
-      SPropertyOperations.assign(defaults, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3ba296405b6f3b1bL, 0x37b3e610a73b826L, "skipUnmodifiedModels"), "");
+      SPropertyOperations.assignEnum(defaults, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3ba296405b6f3b1bL, 0x37b3e610a73b826L, "skipUnmodifiedModels"), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x37b3e610a73c6cbL, "jetbrains.mps.build.mps.structure.BuildMps_GeneratorOptions_SkipUnmodifiedModels"), 0x37b3e610a73c6ccL, "use_mps_generator_skipUnmodifiedModels_macro"));
       return defaults;
     }
   }

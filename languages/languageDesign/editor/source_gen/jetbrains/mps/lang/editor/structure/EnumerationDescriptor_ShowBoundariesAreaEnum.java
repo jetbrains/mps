@@ -13,11 +13,11 @@ import org.jetbrains.annotations.NotNull;
 public class EnumerationDescriptor_ShowBoundariesAreaEnum extends EnumerationDescriptorBase {
 
   public EnumerationDescriptor_ShowBoundariesAreaEnum() {
-    super(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x49177f9006c13bdaL, "ShowBoundariesAreaEnum", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/5266818545798429658", PrimitiveTypeId.STRING);
+    super(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x49177f9006c13bdaL, "ShowBoundariesAreaEnum", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353446307", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor myMember_GUTTER_0 = new EnumerationDescriptor.MemberDescriptor("GUTTER", "gutter", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/5266818545798429659", "GUTTER");
-  private final EnumerationDescriptor.MemberDescriptor myMember_GUTTER_AND_EDITOR_0 = new EnumerationDescriptor.MemberDescriptor("GUTTER_AND_EDITOR", "gutter-and-editor", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/5266818545798429768", "GUTTER_AND_EDITOR");
+  private final EnumerationDescriptor.MemberDescriptor myMember_GUTTER_0 = new EnumerationDescriptor.MemberDescriptor("GUTTER", "gutter", 0x49177f9006c13bdbL, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353446309", "GUTTER", "GUTTER");
+  private final EnumerationDescriptor.MemberDescriptor myMember_GUTTER_AND_EDITOR_0 = new EnumerationDescriptor.MemberDescriptor("GUTTER_AND_EDITOR", "gutter-and-editor", 0x49177f9006c13c48L, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353446310", "GUTTER_AND_EDITOR", "GUTTER_AND_EDITOR");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x49177f9006c13bdaL, 0x49177f9006c13bdbL, 0x49177f9006c13c48L);
   private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_GUTTER_0, myMember_GUTTER_AND_EDITOR_0);
@@ -36,11 +36,11 @@ public class EnumerationDescriptor_ShowBoundariesAreaEnum extends EnumerationDes
 
   @Nullable
   @Override
-  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
-    if (string == null) {
+  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String memberName) {
+    if (memberName == null) {
       return null;
     }
-    switch (string) {
+    switch (memberName) {
       case "GUTTER":
         return myMember_GUTTER_0;
       case "GUTTER_AND_EDITOR":

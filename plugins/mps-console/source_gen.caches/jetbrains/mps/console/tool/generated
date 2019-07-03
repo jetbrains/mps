@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="33921k37e32tfxz2chl9xt256m9oj4s">
+<product version="3" modelHash="-e53srtmic5qpxz7wgmxur6gaf08ujmv">
   <files names="BaseConsoleTab.java:ConsoleContext.java:ConsoleFileEditor.java:ConsoleStream.java:ConsoleStreamImpl.java:ConsoleTool.java:ConsoleUtil.java:DialogConsoleTab.java:OutputConsoleTab.java" />
 </product>
 

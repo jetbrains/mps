@@ -1019,8 +1019,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         return props_CellMenuPart_ReplaceNode_Group_Create;
       case LanguageConceptSwitch.CellModel_AbstractLabel:
         if (props_CellModel_AbstractLabel == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb4e7c3a4cL);
-          cpb.deprecateProperty(0x116e805ff79L, "defaultCaretPosition");
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           props_CellModel_AbstractLabel = cpb.create();
         }
         return props_CellModel_AbstractLabel;

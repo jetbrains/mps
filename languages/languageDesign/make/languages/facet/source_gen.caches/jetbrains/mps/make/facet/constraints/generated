@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-b209vh7tx3mekgitzld7kh2misxkpiq">
+<product version="3" modelHash="-dm7wz11arv6duym344a5g9g1sppkw06">
   <files names="ConstraintsAspectDescriptor.java:ExtendsFacetReference_Constraints.java:FacetDeclaration_Constraints.java:FacetReference_Constraints.java:FacetsScope.java:ForeignParametersExpression_Constraints.java:NamedFacetReference_Constraints.java:RelatedFacetReference_Constraints.java:ResourceClassifierType_Constraints.java:ResourceTypeDeclaration_Constraints.java:TargetDeclaration_Constraints.java:TargetDependency_Constraints.java:TargetReferenceExpression_Constraints.java" />
 </product>
 

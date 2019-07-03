@@ -28,6 +28,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
@@ -145,7 +146,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private Iterable<String> getEditorHints0() {
-    return (SPropertyOperations.hasEnumValue(myNode, MetaAdapterFactory.getProperty(0x8d18a45bac7e4d84L, 0xa53975f1d720b09bL, 0x3301f82dc7d2e4f6L, 0x3301f82dc7d4ec4cL, "presentation"), "tabular") ? ListSequence.fromListAndArray(new ArrayList<String>(), "jetbrains.mps.samples.multipleProjections.requestTracking.editor.WorkflowPresentations.tabular") : Collections.<String>emptyList());
+    return (SEnumOperations.isMember(SPropertyOperations.getEnum(myNode, MetaAdapterFactory.getProperty(0x8d18a45bac7e4d84L, 0xa53975f1d720b09bL, 0x3301f82dc7d2e4f6L, 0x3301f82dc7d4ec4cL, "presentation")), 0x3301f82dc7d4d8ffL) ? ListSequence.fromListAndArray(new ArrayList<String>(), "jetbrains.mps.samples.multipleProjections.requestTracking.editor.WorkflowPresentations.tabular") : Collections.<String>emptyList());
   }
   private EditorCell createRefNode_0() {
     SingleRoleCellProvider provider = new Workflow_EditorBuilder_a.stateMachineSingleRoleHandler_yhw0dy_a3a(myNode, MetaAdapterFactory.getContainmentLink(0x8d18a45bac7e4d84L, 0xa53975f1d720b09bL, 0x3301f82dc7d2e4f6L, 0x3301f82dc7d2e50fL, "stateMachine"), getEditorContext());

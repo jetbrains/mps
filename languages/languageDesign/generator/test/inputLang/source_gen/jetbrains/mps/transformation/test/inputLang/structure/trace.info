@@ -47,8 +47,8 @@
       <node id="1195168316083" at="146,33,147,71" concept="1" />
       <node id="1195168316083" at="147,71,148,124" concept="1" />
       <node id="1195168316083" at="148,124,149,17" concept="1" />
-      <node id="1202243304949" at="149,17,150,164" concept="1" />
-      <node id="1195169805620" at="150,164,151,186" concept="1" />
+      <node id="4241665505353453981" at="149,17,150,170" concept="1" />
+      <node id="1195169805620" at="150,170,151,186" concept="1" />
       <node id="1195168316083" at="151,186,152,22" concept="6" />
       <node id="1195168316083" at="144,0,154,0" concept="8" trace="createDescriptorForInputRoot#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="1195168316083" at="69,43,70,34" />
@@ -92,59 +92,6 @@
       <scope id="1195169091918" at="109,0,118,0" />
     </file>
   </root>
-  <root nodeRef="r:00000000-0000-4000-0000-011c895905f4(jetbrains.mps.transformation.test.inputLang.structure)/1195169251499">
-    <file name="EnumerationDescriptor_Option.java">
-      <node id="1195169251499" at="15,41,16,213" concept="9" />
-      <node id="1195169251500" at="19,0,20,0" concept="2" trace="myMember_option_default_0" />
-      <node id="1195169295907" at="20,0,21,0" concept="2" trace="myMember_option_1_0" />
-      <node id="1202780730330" at="21,0,22,0" concept="2" trace="myMember_drop_it_0" />
-      <node id="1195169251499" at="23,0,24,0" concept="2" trace="myIndex" />
-      <node id="1195169251499" at="24,0,25,0" concept="2" trace="myMembers" />
-      <node id="1195169251499" at="28,62,29,37" concept="6" />
-      <node id="1195169251499" at="34,68,35,21" concept="6" />
-      <node id="1195169251499" at="41,25,42,18" concept="6" />
-      <node id="1195169251500" at="45,28,46,41" concept="6" />
-      <node id="1195169295907" at="47,22,48,35" concept="6" />
-      <node id="1202780730330" at="49,21,50,34" concept="6" />
-      <node id="1195169251499" at="51,5,52,16" concept="6" />
-      <node id="1195169251499" at="57,73,58,39" concept="5" />
-      <node id="1195169251499" at="59,22,60,18" concept="6" />
-      <node id="1195169251499" at="61,5,62,32" concept="6" />
-      <node id="1195169251499" at="15,0,18,0" concept="0" trace="EnumerationDescriptor_Option#()V" />
-      <node id="1195169251499" at="40,84,43,5" concept="3" />
-      <node id="1195169251499" at="58,39,61,5" concept="3" />
-      <node id="1195169251499" at="26,0,31,0" concept="4" trace="getDefault#()Ljetbrains/mps/smodel/runtime/EnumerationDescriptor/MemberDescriptor;" />
-      <node id="1195169251499" at="32,0,37,0" concept="4" trace="getMembers#()Ljava/util/List;" />
-      <node id="1195169251499" at="43,5,51,5" concept="10" />
-      <node id="1195169251499" at="55,0,64,0" concept="4" trace="getMember#(J)Ljetbrains/mps/smodel/runtime/EnumerationDescriptor/MemberDescriptor;" />
-      <node id="1195169251499" at="38,0,54,0" concept="4" trace="getMember#(Ljava/lang/String;)Ljetbrains/mps/smodel/runtime/EnumerationDescriptor/MemberDescriptor;" />
-      <scope id="1195169251499" at="15,41,16,213" />
-      <scope id="1195169251499" at="28,62,29,37" />
-      <scope id="1195169251499" at="34,68,35,21" />
-      <scope id="1195169251499" at="41,25,42,18" />
-      <scope id="1195169251500" at="45,28,46,41" />
-      <scope id="1195169295907" at="47,22,48,35" />
-      <scope id="1202780730330" at="49,21,50,34" />
-      <scope id="1195169251499" at="59,22,60,18" />
-      <scope id="1195169251499" at="15,0,18,0" />
-      <scope id="1195169251499" at="26,0,31,0" />
-      <scope id="1195169251499" at="32,0,37,0" />
-      <scope id="1195169251499" at="57,73,62,32">
-        <var name="index" id="1195169251499" />
-      </scope>
-      <scope id="1195169251499" at="55,0,64,0">
-        <var name="idValue" id="1195169251499" />
-      </scope>
-      <scope id="1195169251499" at="40,84,52,16" />
-      <scope id="1195169251499" at="38,0,54,0">
-        <var name="string" id="1195169251499" />
-      </scope>
-      <unit id="1195169251499" at="13,0,65,0" name="jetbrains.mps.transformation.test.inputLang.structure.EnumerationDescriptor_Option" />
-    </file>
-    <file name="StructureAspectDescriptor.java">
-      <node id="1195169251499" at="34,0,35,0" concept="2" trace="myEnumerationOption" />
-    </file>
-  </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895905f4(jetbrains.mps.transformation.test.inputLang.structure)/1195171011194">
     <file name="ConceptPresentationAspectImpl.java">
       <node id="1195171011194" at="14,0,15,0" concept="2" trace="props_InputNode_A" />
@@ -170,88 +117,14 @@
       <node id="1195171011194" at="120,34,121,138" concept="1" />
       <node id="1195171011194" at="121,138,122,124" concept="1" />
       <node id="1195171011194" at="122,124,123,17" concept="1" />
-      <node id="1195171080307" at="123,17,124,161" concept="1" />
-      <node id="1195171011194" at="124,161,125,22" concept="6" />
+      <node id="4241665505353453983" at="123,17,124,167" concept="1" />
+      <node id="1195171011194" at="124,167,125,22" concept="6" />
       <node id="1195171011194" at="118,0,127,0" concept="8" trace="createDescriptorForInputNode_A#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="1195171011194" at="63,45,64,36" />
       <scope id="1195171011194" at="118,69,125,22">
         <var name="b" id="1195171011194" />
       </scope>
       <scope id="1195171011194" at="118,0,127,0" />
-    </file>
-  </root>
-  <root nodeRef="r:00000000-0000-4000-0000-011c895905f4(jetbrains.mps.transformation.test.inputLang.structure)/1202242680337">
-    <file name="EnumerationDescriptor_UseInTest.java">
-      <node id="1202242680337" at="15,44,16,216" concept="9" />
-      <node id="1202242680338" at="19,0,20,0" concept="2" trace="myMember_test1_0" />
-      <node id="1202242753917" at="20,0,21,0" concept="2" trace="myMember_getPrevInputTest_0" />
-      <node id="1206459825805" at="21,0,22,0" concept="2" trace="myMember_reduceInheritors_0" />
-      <node id="1209146734796" at="22,0,23,0" concept="2" trace="myMember_reduceExpressionToStatement_0" />
-      <node id="1209603553188" at="23,0,24,0" concept="2" trace="myMember_dontApplyReductionTwice_0" />
-      <node id="1218736527492" at="24,0,25,0" concept="2" trace="myMember_weaveManyToSingularChild_0" />
-      <node id="341670684286865622" at="25,0,26,0" concept="2" trace="myMember_reduceOneToMany_0" />
-      <node id="7496726876599722366" at="26,0,27,0" concept="2" trace="myMember_argsInTemplDeclRef_0" />
-      <node id="207553032706660027" at="27,0,28,0" concept="2" trace="myMember_argsInTemplateCall_0" />
-      <node id="1202242822699" at="28,0,29,0" concept="2" trace="myMember_none_0" />
-      <node id="1202242680337" at="30,0,31,0" concept="2" trace="myIndex" />
-      <node id="1202242680337" at="31,0,32,0" concept="2" trace="myMembers" />
-      <node id="1202242680337" at="35,62,36,27" concept="6" />
-      <node id="1202242680337" at="41,68,42,21" concept="6" />
-      <node id="1202242680337" at="48,25,49,18" concept="6" />
-      <node id="1202242680338" at="52,19,53,32" concept="6" />
-      <node id="1202242753917" at="54,30,55,43" concept="6" />
-      <node id="1206459825805" at="56,30,57,43" concept="6" />
-      <node id="1209146734796" at="58,41,59,54" concept="6" />
-      <node id="1209603553188" at="60,37,61,50" concept="6" />
-      <node id="1218736527492" at="62,38,63,51" concept="6" />
-      <node id="341670684286865622" at="64,29,65,42" concept="6" />
-      <node id="7496726876599722366" at="66,32,67,45" concept="6" />
-      <node id="207553032706660027" at="68,32,69,45" concept="6" />
-      <node id="1202242822699" at="70,18,71,31" concept="6" />
-      <node id="1202242680337" at="72,5,73,16" concept="6" />
-      <node id="1202242680337" at="78,73,79,39" concept="5" />
-      <node id="1202242680337" at="80,22,81,18" concept="6" />
-      <node id="1202242680337" at="82,5,83,32" concept="6" />
-      <node id="1202242680337" at="15,0,18,0" concept="0" trace="EnumerationDescriptor_UseInTest#()V" />
-      <node id="1202242680337" at="47,84,50,5" concept="3" />
-      <node id="1202242680337" at="79,39,82,5" concept="3" />
-      <node id="1202242680337" at="33,0,38,0" concept="4" trace="getDefault#()Ljetbrains/mps/smodel/runtime/EnumerationDescriptor/MemberDescriptor;" />
-      <node id="1202242680337" at="39,0,44,0" concept="4" trace="getMembers#()Ljava/util/List;" />
-      <node id="1202242680337" at="76,0,85,0" concept="4" trace="getMember#(J)Ljetbrains/mps/smodel/runtime/EnumerationDescriptor/MemberDescriptor;" />
-      <node id="1202242680337" at="50,5,72,5" concept="10" />
-      <node id="1202242680337" at="45,0,75,0" concept="4" trace="getMember#(Ljava/lang/String;)Ljetbrains/mps/smodel/runtime/EnumerationDescriptor/MemberDescriptor;" />
-      <scope id="1202242680337" at="15,44,16,216" />
-      <scope id="1202242680337" at="35,62,36,27" />
-      <scope id="1202242680337" at="41,68,42,21" />
-      <scope id="1202242680337" at="48,25,49,18" />
-      <scope id="1202242680338" at="52,19,53,32" />
-      <scope id="1202242753917" at="54,30,55,43" />
-      <scope id="1206459825805" at="56,30,57,43" />
-      <scope id="1209146734796" at="58,41,59,54" />
-      <scope id="1209603553188" at="60,37,61,50" />
-      <scope id="1218736527492" at="62,38,63,51" />
-      <scope id="341670684286865622" at="64,29,65,42" />
-      <scope id="7496726876599722366" at="66,32,67,45" />
-      <scope id="207553032706660027" at="68,32,69,45" />
-      <scope id="1202242822699" at="70,18,71,31" />
-      <scope id="1202242680337" at="80,22,81,18" />
-      <scope id="1202242680337" at="15,0,18,0" />
-      <scope id="1202242680337" at="33,0,38,0" />
-      <scope id="1202242680337" at="39,0,44,0" />
-      <scope id="1202242680337" at="78,73,83,32">
-        <var name="index" id="1202242680337" />
-      </scope>
-      <scope id="1202242680337" at="76,0,85,0">
-        <var name="idValue" id="1202242680337" />
-      </scope>
-      <scope id="1202242680337" at="47,84,73,16" />
-      <scope id="1202242680337" at="45,0,75,0">
-        <var name="string" id="1202242680337" />
-      </scope>
-      <unit id="1202242680337" at="13,0,86,0" name="jetbrains.mps.transformation.test.inputLang.structure.EnumerationDescriptor_UseInTest" />
-    </file>
-    <file name="StructureAspectDescriptor.java">
-      <node id="1202242680337" at="35,0,36,0" concept="2" trace="myEnumerationUseInTest" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895905f4(jetbrains.mps.transformation.test.inputLang.structure)/1206459872650">
@@ -385,8 +258,8 @@
       <node id="1209149421970" at="156,33,157,71" concept="1" />
       <node id="1209149421970" at="157,71,158,124" concept="1" />
       <node id="1209149421970" at="158,124,159,17" concept="1" />
-      <node id="1209149495553" at="159,17,160,164" concept="1" />
-      <node id="1209149449081" at="160,164,161,190" concept="1" />
+      <node id="4241665505353453985" at="159,17,160,170" concept="1" />
+      <node id="1209149449081" at="160,170,161,190" concept="1" />
       <node id="1209149421970" at="161,190,162,22" concept="6" />
       <node id="1209149421970" at="154,0,164,0" concept="8" trace="createDescriptorForInputRootWithStatementList#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="1209149421970" at="71,60,72,51" />
@@ -604,6 +477,133 @@
         <var name="b" id="3315811491560119817" />
       </scope>
       <scope id="3315811491560119817" at="193,0,202,0" />
+    </file>
+  </root>
+  <root nodeRef="r:00000000-0000-4000-0000-011c895905f4(jetbrains.mps.transformation.test.inputLang.structure)/4241665505353446854">
+    <file name="EnumerationDescriptor_Option.java">
+      <node id="4241665505353446854" at="15,41,16,219" concept="9" />
+      <node id="4241665505353446856" at="19,0,20,0" concept="2" trace="myMember_option_default_0" />
+      <node id="4241665505353446857" at="20,0,21,0" concept="2" trace="myMember_option_1_0" />
+      <node id="4241665505353446858" at="21,0,22,0" concept="2" trace="myMember_drop_it_0" />
+      <node id="4241665505353446854" at="23,0,24,0" concept="2" trace="myIndex" />
+      <node id="4241665505353446854" at="24,0,25,0" concept="2" trace="myMembers" />
+      <node id="4241665505353446854" at="28,62,29,37" concept="6" />
+      <node id="4241665505353446854" at="34,68,35,21" concept="6" />
+      <node id="4241665505353446854" at="41,29,42,18" concept="6" />
+      <node id="4241665505353446856" at="45,28,46,41" concept="6" />
+      <node id="4241665505353446857" at="47,22,48,35" concept="6" />
+      <node id="4241665505353446858" at="49,21,50,34" concept="6" />
+      <node id="4241665505353446854" at="51,5,52,16" concept="6" />
+      <node id="4241665505353446854" at="57,73,58,39" concept="5" />
+      <node id="4241665505353446854" at="59,22,60,18" concept="6" />
+      <node id="4241665505353446854" at="61,5,62,32" concept="6" />
+      <node id="4241665505353446854" at="15,0,18,0" concept="0" trace="EnumerationDescriptor_Option#()V" />
+      <node id="4241665505353446854" at="40,88,43,5" concept="3" />
+      <node id="4241665505353446854" at="58,39,61,5" concept="3" />
+      <node id="4241665505353446854" at="26,0,31,0" concept="4" trace="getDefault#()Ljetbrains/mps/smodel/runtime/EnumerationDescriptor/MemberDescriptor;" />
+      <node id="4241665505353446854" at="32,0,37,0" concept="4" trace="getMembers#()Ljava/util/List;" />
+      <node id="4241665505353446854" at="43,5,51,5" concept="10" />
+      <node id="4241665505353446854" at="55,0,64,0" concept="4" trace="getMember#(J)Ljetbrains/mps/smodel/runtime/EnumerationDescriptor/MemberDescriptor;" />
+      <node id="4241665505353446854" at="38,0,54,0" concept="4" trace="getMember#(Ljava/lang/String;)Ljetbrains/mps/smodel/runtime/EnumerationDescriptor/MemberDescriptor;" />
+      <scope id="4241665505353446854" at="15,41,16,219" />
+      <scope id="4241665505353446854" at="28,62,29,37" />
+      <scope id="4241665505353446854" at="34,68,35,21" />
+      <scope id="4241665505353446854" at="41,29,42,18" />
+      <scope id="4241665505353446856" at="45,28,46,41" />
+      <scope id="4241665505353446857" at="47,22,48,35" />
+      <scope id="4241665505353446858" at="49,21,50,34" />
+      <scope id="4241665505353446854" at="59,22,60,18" />
+      <scope id="4241665505353446854" at="15,0,18,0" />
+      <scope id="4241665505353446854" at="26,0,31,0" />
+      <scope id="4241665505353446854" at="32,0,37,0" />
+      <scope id="4241665505353446854" at="57,73,62,32">
+        <var name="index" id="4241665505353446854" />
+      </scope>
+      <scope id="4241665505353446854" at="55,0,64,0">
+        <var name="idValue" id="4241665505353446854" />
+      </scope>
+      <scope id="4241665505353446854" at="40,88,52,16" />
+      <scope id="4241665505353446854" at="38,0,54,0">
+        <var name="memberName" id="4241665505353446854" />
+      </scope>
+      <unit id="4241665505353446854" at="13,0,65,0" name="jetbrains.mps.transformation.test.inputLang.structure.EnumerationDescriptor_Option" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="4241665505353446854" at="34,0,35,0" concept="2" trace="myEnumerationOption" />
+    </file>
+  </root>
+  <root nodeRef="r:00000000-0000-4000-0000-011c895905f4(jetbrains.mps.transformation.test.inputLang.structure)/4241665505353446859">
+    <file name="EnumerationDescriptor_UseInTest.java">
+      <node id="4241665505353446859" at="15,44,16,222" concept="9" />
+      <node id="4241665505353446861" at="19,0,20,0" concept="2" trace="myMember_test1_0" />
+      <node id="4241665505353446862" at="20,0,21,0" concept="2" trace="myMember_getPrevInputTest_0" />
+      <node id="4241665505353446863" at="21,0,22,0" concept="2" trace="myMember_reduceInheritors_0" />
+      <node id="4241665505353446864" at="22,0,23,0" concept="2" trace="myMember_reduceExpressionToStatement_0" />
+      <node id="4241665505353446865" at="23,0,24,0" concept="2" trace="myMember_dontApplyReductionTwice_0" />
+      <node id="4241665505353446866" at="24,0,25,0" concept="2" trace="myMember_weaveManyToSingularChild_0" />
+      <node id="4241665505353446867" at="25,0,26,0" concept="2" trace="myMember_reduceOneToMany_0" />
+      <node id="4241665505353446868" at="26,0,27,0" concept="2" trace="myMember_argsInTemplDeclRef_0" />
+      <node id="4241665505353446869" at="27,0,28,0" concept="2" trace="myMember_argsInTemplateCall_0" />
+      <node id="4241665505353446870" at="28,0,29,0" concept="2" trace="myMember_none_0" />
+      <node id="4241665505353446859" at="30,0,31,0" concept="2" trace="myIndex" />
+      <node id="4241665505353446859" at="31,0,32,0" concept="2" trace="myMembers" />
+      <node id="4241665505353446859" at="35,62,36,27" concept="6" />
+      <node id="4241665505353446859" at="41,68,42,21" concept="6" />
+      <node id="4241665505353446859" at="48,29,49,18" concept="6" />
+      <node id="4241665505353446861" at="52,19,53,32" concept="6" />
+      <node id="4241665505353446862" at="54,30,55,43" concept="6" />
+      <node id="4241665505353446863" at="56,30,57,43" concept="6" />
+      <node id="4241665505353446864" at="58,41,59,54" concept="6" />
+      <node id="4241665505353446865" at="60,37,61,50" concept="6" />
+      <node id="4241665505353446866" at="62,38,63,51" concept="6" />
+      <node id="4241665505353446867" at="64,29,65,42" concept="6" />
+      <node id="4241665505353446868" at="66,32,67,45" concept="6" />
+      <node id="4241665505353446869" at="68,32,69,45" concept="6" />
+      <node id="4241665505353446870" at="70,18,71,31" concept="6" />
+      <node id="4241665505353446859" at="72,5,73,16" concept="6" />
+      <node id="4241665505353446859" at="78,73,79,39" concept="5" />
+      <node id="4241665505353446859" at="80,22,81,18" concept="6" />
+      <node id="4241665505353446859" at="82,5,83,32" concept="6" />
+      <node id="4241665505353446859" at="15,0,18,0" concept="0" trace="EnumerationDescriptor_UseInTest#()V" />
+      <node id="4241665505353446859" at="47,88,50,5" concept="3" />
+      <node id="4241665505353446859" at="79,39,82,5" concept="3" />
+      <node id="4241665505353446859" at="33,0,38,0" concept="4" trace="getDefault#()Ljetbrains/mps/smodel/runtime/EnumerationDescriptor/MemberDescriptor;" />
+      <node id="4241665505353446859" at="39,0,44,0" concept="4" trace="getMembers#()Ljava/util/List;" />
+      <node id="4241665505353446859" at="76,0,85,0" concept="4" trace="getMember#(J)Ljetbrains/mps/smodel/runtime/EnumerationDescriptor/MemberDescriptor;" />
+      <node id="4241665505353446859" at="50,5,72,5" concept="10" />
+      <node id="4241665505353446859" at="45,0,75,0" concept="4" trace="getMember#(Ljava/lang/String;)Ljetbrains/mps/smodel/runtime/EnumerationDescriptor/MemberDescriptor;" />
+      <scope id="4241665505353446859" at="15,44,16,222" />
+      <scope id="4241665505353446859" at="35,62,36,27" />
+      <scope id="4241665505353446859" at="41,68,42,21" />
+      <scope id="4241665505353446859" at="48,29,49,18" />
+      <scope id="4241665505353446861" at="52,19,53,32" />
+      <scope id="4241665505353446862" at="54,30,55,43" />
+      <scope id="4241665505353446863" at="56,30,57,43" />
+      <scope id="4241665505353446864" at="58,41,59,54" />
+      <scope id="4241665505353446865" at="60,37,61,50" />
+      <scope id="4241665505353446866" at="62,38,63,51" />
+      <scope id="4241665505353446867" at="64,29,65,42" />
+      <scope id="4241665505353446868" at="66,32,67,45" />
+      <scope id="4241665505353446869" at="68,32,69,45" />
+      <scope id="4241665505353446870" at="70,18,71,31" />
+      <scope id="4241665505353446859" at="80,22,81,18" />
+      <scope id="4241665505353446859" at="15,0,18,0" />
+      <scope id="4241665505353446859" at="33,0,38,0" />
+      <scope id="4241665505353446859" at="39,0,44,0" />
+      <scope id="4241665505353446859" at="78,73,83,32">
+        <var name="index" id="4241665505353446859" />
+      </scope>
+      <scope id="4241665505353446859" at="76,0,85,0">
+        <var name="idValue" id="4241665505353446859" />
+      </scope>
+      <scope id="4241665505353446859" at="47,88,73,16" />
+      <scope id="4241665505353446859" at="45,0,75,0">
+        <var name="memberName" id="4241665505353446859" />
+      </scope>
+      <unit id="4241665505353446859" at="13,0,86,0" name="jetbrains.mps.transformation.test.inputLang.structure.EnumerationDescriptor_UseInTest" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="4241665505353446859" at="35,0,36,0" concept="2" trace="myEnumerationUseInTest" />
     </file>
   </root>
 </debug-info>

@@ -13,19 +13,19 @@ import org.jetbrains.annotations.NotNull;
 public class EnumerationDescriptor_Options_DefaultCustom extends EnumerationDescriptorBase {
 
   public EnumerationDescriptor_Options_DefaultCustom() {
-    super(0x13744753c81f424aL, 0x9c1bcf8943bf4e86L, 0x10e811b985dL, "Options_DefaultCustom", "r:00000000-0000-4000-0000-011c895902bc(jetbrains.mps.lang.sharedConcepts.structure)/1161807239261", PrimitiveTypeId.STRING);
+    super(0x13744753c81f424aL, 0x9c1bcf8943bf4e86L, 0x10e811b985dL, "Options_DefaultCustom", "r:00000000-0000-4000-0000-011c895902bc(jetbrains.mps.lang.sharedConcepts.structure)/4241665505353447366", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor myMember__0 = new EnumerationDescriptor.MemberDescriptor(null, "default_", "r:00000000-0000-4000-0000-011c895902bc(jetbrains.mps.lang.sharedConcepts.structure)/1161807239262", "default_");
-  private final EnumerationDescriptor.MemberDescriptor myMember_custom_0 = new EnumerationDescriptor.MemberDescriptor("custom", "custom_", "r:00000000-0000-4000-0000-011c895902bc(jetbrains.mps.lang.sharedConcepts.structure)/1161807432013", "custom_");
+  private final EnumerationDescriptor.MemberDescriptor myMember_default__0 = new EnumerationDescriptor.MemberDescriptor("default_", "default_", 0x10e811b985eL, "r:00000000-0000-4000-0000-011c895902bc(jetbrains.mps.lang.sharedConcepts.structure)/4241665505353447368", "default_", null);
+  private final EnumerationDescriptor.MemberDescriptor myMember_custom__0 = new EnumerationDescriptor.MemberDescriptor("custom_", "custom_", 0x10e811e894dL, "r:00000000-0000-4000-0000-011c895902bc(jetbrains.mps.lang.sharedConcepts.structure)/4241665505353447369", "custom_", "custom");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x13744753c81f424aL, 0x9c1bcf8943bf4e86L, 0x10e811b985dL, 0x10e811b985eL, 0x10e811e894dL);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember__0, myMember_custom_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_default__0, myMember_custom__0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return myMember__0;
+    return myMember_default__0;
   }
 
   @NotNull
@@ -36,13 +36,15 @@ public class EnumerationDescriptor_Options_DefaultCustom extends EnumerationDesc
 
   @Nullable
   @Override
-  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
-    if (string == null) {
-      return myMember__0;
+  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String memberName) {
+    if (memberName == null) {
+      return null;
     }
-    switch (string) {
-      case "custom":
-        return myMember_custom_0;
+    switch (memberName) {
+      case "default_":
+        return myMember_default__0;
+      case "custom_":
+        return myMember_custom__0;
     }
     return null;
   }

@@ -13,12 +13,12 @@ import org.jetbrains.annotations.NotNull;
 public class EnumerationDescriptor_Unit extends EnumerationDescriptorBase {
 
   public EnumerationDescriptor_Unit() {
-    super(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dc0a8282L, "Unit", "r:00000000-0000-4000-0000-011c8959040a(jetbrains.mps.samples.agreementLanguage.structure)/1111793238658", PrimitiveTypeId.STRING);
+    super(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dc0a8282L, "Unit", "r:00000000-0000-4000-0000-011c8959040a(jetbrains.mps.samples.agreementLanguage.structure)/4241665505353448287", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor myMember_USD_KWH_0 = new EnumerationDescriptor.MemberDescriptor("USD_KWH", "USD_KWH", "r:00000000-0000-4000-0000-011c8959040a(jetbrains.mps.samples.agreementLanguage.structure)/1111793245330", "USD_KWH");
-  private final EnumerationDescriptor.MemberDescriptor myMember_USD_0 = new EnumerationDescriptor.MemberDescriptor("USD", "USD", "r:00000000-0000-4000-0000-011c8959040a(jetbrains.mps.samples.agreementLanguage.structure)/1111793298691", "USD");
-  private final EnumerationDescriptor.MemberDescriptor myMember_KWH_0 = new EnumerationDescriptor.MemberDescriptor("KWH", "KWH", "r:00000000-0000-4000-0000-011c8959040a(jetbrains.mps.samples.agreementLanguage.structure)/1111793319239", "KWH");
+  private final EnumerationDescriptor.MemberDescriptor myMember_USD_KWH_0 = new EnumerationDescriptor.MemberDescriptor("USD_KWH", "USD_KWH", 0x102dc0a9c92L, "r:00000000-0000-4000-0000-011c8959040a(jetbrains.mps.samples.agreementLanguage.structure)/4241665505353448289", "USD_KWH", "USD_KWH");
+  private final EnumerationDescriptor.MemberDescriptor myMember_USD_0 = new EnumerationDescriptor.MemberDescriptor("USD", "USD", 0x102dc0b6d03L, "r:00000000-0000-4000-0000-011c8959040a(jetbrains.mps.samples.agreementLanguage.structure)/4241665505353448290", "USD", "USD");
+  private final EnumerationDescriptor.MemberDescriptor myMember_KWH_0 = new EnumerationDescriptor.MemberDescriptor("KWH", "KWH", 0x102dc0bbd47L, "r:00000000-0000-4000-0000-011c8959040a(jetbrains.mps.samples.agreementLanguage.structure)/4241665505353448291", "KWH", "KWH");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dc0a8282L, 0x102dc0a9c92L, 0x102dc0b6d03L, 0x102dc0bbd47L);
   private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_USD_KWH_0, myMember_USD_0, myMember_KWH_0);
@@ -37,11 +37,11 @@ public class EnumerationDescriptor_Unit extends EnumerationDescriptorBase {
 
   @Nullable
   @Override
-  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
-    if (string == null) {
+  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String memberName) {
+    if (memberName == null) {
       return null;
     }
-    switch (string) {
+    switch (memberName) {
       case "USD_KWH":
         return myMember_USD_KWH_0;
       case "USD":

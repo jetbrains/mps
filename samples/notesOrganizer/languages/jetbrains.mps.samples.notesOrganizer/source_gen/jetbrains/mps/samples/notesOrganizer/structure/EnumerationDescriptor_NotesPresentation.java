@@ -13,12 +13,12 @@ import org.jetbrains.annotations.NotNull;
 public class EnumerationDescriptor_NotesPresentation extends EnumerationDescriptorBase {
 
   public EnumerationDescriptor_NotesPresentation() {
-    super(0x4b0f115a88684d72L, 0x8d6197071eaaa5f1L, 0x7ba12f0b1640efd5L, "NotesPresentation", "r:d80ddecc-25d5-4844-86af-49ea7b4962af(jetbrains.mps.samples.notesOrganizer.structure)/8908453262580051925", PrimitiveTypeId.STRING);
+    super(0x4b0f115a88684d72L, 0x8d6197071eaaa5f1L, 0x7ba12f0b1640efd5L, "NotesPresentation", "r:d80ddecc-25d5-4844-86af-49ea7b4962af(jetbrains.mps.samples.notesOrganizer.structure)/4241665505353448609", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor myMember_default_0 = new EnumerationDescriptor.MemberDescriptor("default", "default", "r:d80ddecc-25d5-4844-86af-49ea7b4962af(jetbrains.mps.samples.notesOrganizer.structure)/8908453262580051926", "default");
-  private final EnumerationDescriptor.MemberDescriptor myMember_compact_0 = new EnumerationDescriptor.MemberDescriptor("compact", "compact", "r:d80ddecc-25d5-4844-86af-49ea7b4962af(jetbrains.mps.samples.notesOrganizer.structure)/8908453262580051930", "compact");
-  private final EnumerationDescriptor.MemberDescriptor myMember_inspected_0 = new EnumerationDescriptor.MemberDescriptor("inspected", "inspected", "r:d80ddecc-25d5-4844-86af-49ea7b4962af(jetbrains.mps.samples.notesOrganizer.structure)/8908453262580051933", "inspected");
+  private final EnumerationDescriptor.MemberDescriptor myMember_default_0 = new EnumerationDescriptor.MemberDescriptor("default", "default", 0x7ba12f0b1640efd6L, "r:d80ddecc-25d5-4844-86af-49ea7b4962af(jetbrains.mps.samples.notesOrganizer.structure)/4241665505353448611", "default", "default");
+  private final EnumerationDescriptor.MemberDescriptor myMember_compact_0 = new EnumerationDescriptor.MemberDescriptor("compact", "compact", 0x7ba12f0b1640efdaL, "r:d80ddecc-25d5-4844-86af-49ea7b4962af(jetbrains.mps.samples.notesOrganizer.structure)/4241665505353448612", "compact", "compact");
+  private final EnumerationDescriptor.MemberDescriptor myMember_inspected_0 = new EnumerationDescriptor.MemberDescriptor("inspected", "inspected", 0x7ba12f0b1640efddL, "r:d80ddecc-25d5-4844-86af-49ea7b4962af(jetbrains.mps.samples.notesOrganizer.structure)/4241665505353448613", "inspected", "inspected");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x4b0f115a88684d72L, 0x8d6197071eaaa5f1L, 0x7ba12f0b1640efd5L, 0x7ba12f0b1640efd6L, 0x7ba12f0b1640efdaL, 0x7ba12f0b1640efddL);
   private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_default_0, myMember_compact_0, myMember_inspected_0);
@@ -37,11 +37,11 @@ public class EnumerationDescriptor_NotesPresentation extends EnumerationDescript
 
   @Nullable
   @Override
-  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
-    if (string == null) {
+  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String memberName) {
+    if (memberName == null) {
       return null;
     }
-    switch (string) {
+    switch (memberName) {
       case "default":
         return myMember_default_0;
       case "compact":

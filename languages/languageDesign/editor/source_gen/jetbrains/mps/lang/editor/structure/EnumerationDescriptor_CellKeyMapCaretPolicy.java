@@ -13,21 +13,21 @@ import org.jetbrains.annotations.NotNull;
 public class EnumerationDescriptor_CellKeyMapCaretPolicy extends EnumerationDescriptorBase {
 
   public EnumerationDescriptor_CellKeyMapCaretPolicy() {
-    super(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x109ae53b170L, "CellKeyMapCaretPolicy", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1141091053936", PrimitiveTypeId.STRING);
+    super(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x109ae53b170L, "CellKeyMapCaretPolicy", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353446111", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor myMember__0 = new EnumerationDescriptor.MemberDescriptor(null, "ANY_POSITION", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1141091054266", "ANY_POSITION");
-  private final EnumerationDescriptor.MemberDescriptor myMember_caret_at_first_position_0 = new EnumerationDescriptor.MemberDescriptor("caret_at_first_position", "FIRST_POSITION", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1141091172402", "FIRST_POSITION");
-  private final EnumerationDescriptor.MemberDescriptor myMember_caret_at_last_position_0 = new EnumerationDescriptor.MemberDescriptor("caret_at_last_position", "LAST_POSITION", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1141091209420", "LAST_POSITION");
-  private final EnumerationDescriptor.MemberDescriptor myMember_caret_at_intermediate_position_0 = new EnumerationDescriptor.MemberDescriptor("caret_at_intermediate_position", "INTERMEDIATE_POSITION", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1143573566373", "INTERMEDIATE_POSITION");
+  private final EnumerationDescriptor.MemberDescriptor myMember_ANY_POSITION_0 = new EnumerationDescriptor.MemberDescriptor("ANY_POSITION", "ANY_POSITION", 0x109ae53b2baL, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353446113", "ANY_POSITION", null);
+  private final EnumerationDescriptor.MemberDescriptor myMember_FIRST_POSITION_0 = new EnumerationDescriptor.MemberDescriptor("FIRST_POSITION", "FIRST_POSITION", 0x109ae558032L, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353446114", "FIRST_POSITION", "caret_at_first_position");
+  private final EnumerationDescriptor.MemberDescriptor myMember_LAST_POSITION_0 = new EnumerationDescriptor.MemberDescriptor("LAST_POSITION", "LAST_POSITION", 0x109ae5610ccL, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353446115", "LAST_POSITION", "caret_at_last_position");
+  private final EnumerationDescriptor.MemberDescriptor myMember_INTERMEDIATE_POSITION_0 = new EnumerationDescriptor.MemberDescriptor("INTERMEDIATE_POSITION", "INTERMEDIATE_POSITION", 0x10a424bd3a5L, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353446116", "INTERMEDIATE_POSITION", "caret_at_intermediate_position");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x109ae53b170L, 0x109ae53b2baL, 0x109ae558032L, 0x109ae5610ccL, 0x10a424bd3a5L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember__0, myMember_caret_at_first_position_0, myMember_caret_at_last_position_0, myMember_caret_at_intermediate_position_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_ANY_POSITION_0, myMember_FIRST_POSITION_0, myMember_LAST_POSITION_0, myMember_INTERMEDIATE_POSITION_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return myMember__0;
+    return myMember_ANY_POSITION_0;
   }
 
   @NotNull
@@ -38,17 +38,19 @@ public class EnumerationDescriptor_CellKeyMapCaretPolicy extends EnumerationDesc
 
   @Nullable
   @Override
-  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
-    if (string == null) {
-      return myMember__0;
+  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String memberName) {
+    if (memberName == null) {
+      return null;
     }
-    switch (string) {
-      case "caret_at_first_position":
-        return myMember_caret_at_first_position_0;
-      case "caret_at_last_position":
-        return myMember_caret_at_last_position_0;
-      case "caret_at_intermediate_position":
-        return myMember_caret_at_intermediate_position_0;
+    switch (memberName) {
+      case "ANY_POSITION":
+        return myMember_ANY_POSITION_0;
+      case "FIRST_POSITION":
+        return myMember_FIRST_POSITION_0;
+      case "LAST_POSITION":
+        return myMember_LAST_POSITION_0;
+      case "INTERMEDIATE_POSITION":
+        return myMember_INTERMEDIATE_POSITION_0;
     }
     return null;
   }

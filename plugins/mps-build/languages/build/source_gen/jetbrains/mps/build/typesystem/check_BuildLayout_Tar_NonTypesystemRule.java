@@ -10,6 +10,7 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.build.behavior.BuildString__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
@@ -23,9 +24,9 @@ public class check_BuildLayout_Tar_NonTypesystemRule extends AbstractNonTypesyst
   public void applyRule(final SNode tarArchive, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     String approxName = BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(tarArchive, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac7f8cL, 0x3cca41cd0fe75496L, "containerName")), null);
     String ext = ".tar";
-    if (SPropertyOperations.hasEnumValue(tarArchive, MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7709f0532a526203L, 0x1b76dbd13de88928L, "compression"), "bzip2")) {
+    if (SEnumOperations.isMember(SPropertyOperations.getEnum(tarArchive, MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7709f0532a526203L, 0x1b76dbd13de88928L, "compression")), 0x1b76dbd13de88927L)) {
       ext = ".tar.bz2";
-    } else if (SPropertyOperations.hasEnumValue(tarArchive, MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7709f0532a526203L, 0x1b76dbd13de88928L, "compression"), "gzip")) {
+    } else if (SEnumOperations.isMember(SPropertyOperations.getEnum(tarArchive, MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7709f0532a526203L, 0x1b76dbd13de88928L, "compression")), 0x1b76dbd13de88926L)) {
       ext = ".tar.gz";
     }
     if (!(approxName.endsWith("}")) && !(approxName.toLowerCase().endsWith(ext))) {

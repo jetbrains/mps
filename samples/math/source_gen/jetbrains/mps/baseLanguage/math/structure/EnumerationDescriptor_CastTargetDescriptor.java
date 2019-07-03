@@ -13,34 +13,34 @@ import org.jetbrains.annotations.NotNull;
 public class EnumerationDescriptor_CastTargetDescriptor extends EnumerationDescriptorBase {
 
   public EnumerationDescriptor_CastTargetDescriptor() {
-    super(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1200fba5bb0L, "CastTargetDescriptor", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/1237214452656", PrimitiveTypeId.INTEGER);
+    super(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1200fba5bb0L, "CastTargetDescriptor", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/4241665505353448450", PrimitiveTypeId.INTEGER);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor myMember_0_0 = new EnumerationDescriptor.MemberDescriptor("0", "unknown", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/1237537073390", "unknown");
-  private final EnumerationDescriptor.MemberDescriptor myMember_1_0 = new EnumerationDescriptor.MemberDescriptor("1", "primitive->biginteger", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/1237214452657", "primitive->biginteger");
-  private final EnumerationDescriptor.MemberDescriptor myMember_2_0 = new EnumerationDescriptor.MemberDescriptor("2", "primitive->complex", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/1237214465095", "primitive->complex");
-  private final EnumerationDescriptor.MemberDescriptor myMember_3_0 = new EnumerationDescriptor.MemberDescriptor("3", "double->bigdecimal", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/1238313482654", "double->bigdecimal");
-  private final EnumerationDescriptor.MemberDescriptor myMember_4_0 = new EnumerationDescriptor.MemberDescriptor("4", "biginteger->bigdecimal", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/1238400736819", "biginteger->bigdecimal");
-  private final EnumerationDescriptor.MemberDescriptor myMember_5_0 = new EnumerationDescriptor.MemberDescriptor("5", "double->bigcomplex", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/1238419058703", "double->bigcomplex");
-  private final EnumerationDescriptor.MemberDescriptor myMember_6_0 = new EnumerationDescriptor.MemberDescriptor("6", "biginteger->bigcomplex", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/1238419065079", "biginteger->bigcomplex");
-  private final EnumerationDescriptor.MemberDescriptor myMember_7_0 = new EnumerationDescriptor.MemberDescriptor("7", "bigdecimal->bigcomplex", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/1238419087110", "bigdecimal->bigcomplex");
-  private final EnumerationDescriptor.MemberDescriptor myMember_8_0 = new EnumerationDescriptor.MemberDescriptor("8", "complex->bigcomplex", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/1238419103532", "complex->bigcomplex");
-  private final EnumerationDescriptor.MemberDescriptor myMember_9_0 = new EnumerationDescriptor.MemberDescriptor("9", "...->matrix<integer>", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/5217243589490813621", "...->matrix<integer>");
-  private final EnumerationDescriptor.MemberDescriptor myMember_10_0 = new EnumerationDescriptor.MemberDescriptor("10", "...->matrix<long>", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/5217243589490813622", "...->matrix<long>");
-  private final EnumerationDescriptor.MemberDescriptor myMember_11_0 = new EnumerationDescriptor.MemberDescriptor("11", "...->matrix<float>", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/5217243589490813623", "...->matrix<float>");
-  private final EnumerationDescriptor.MemberDescriptor myMember_12_0 = new EnumerationDescriptor.MemberDescriptor("12", "...->matrix<double>", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/5217243589490813624", "...->matrix<double>");
-  private final EnumerationDescriptor.MemberDescriptor myMember_13_0 = new EnumerationDescriptor.MemberDescriptor("13", "...->matrix<biginteger>", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/5217243589490813625", "...->matrix<biginteger>");
-  private final EnumerationDescriptor.MemberDescriptor myMember_14_0 = new EnumerationDescriptor.MemberDescriptor("14", "...->matrix<bigdecimal>", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/5217243589490813626", "...->matrix<bigdecimal>");
-  private final EnumerationDescriptor.MemberDescriptor myMember_15_0 = new EnumerationDescriptor.MemberDescriptor("15", "...->matrix<complex>", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/5217243589490813627", "...->matrix<complex>");
-  private final EnumerationDescriptor.MemberDescriptor myMember_16_0 = new EnumerationDescriptor.MemberDescriptor("16", "...->matrix<bigcomplex>", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/5217243589490813628", "...->matrix<bigcomplex>");
+  private final EnumerationDescriptor.MemberDescriptor myMember_unknown_0 = new EnumerationDescriptor.MemberDescriptor("unknown", "unknown", 0x12022f528eeL, "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/4241665505353448452", "unknown", "0");
+  private final EnumerationDescriptor.MemberDescriptor myMember_primitive__biginteger_0 = new EnumerationDescriptor.MemberDescriptor("primitive__biginteger", "primitive->biginteger", 0x1200fba5bb1L, "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/4241665505353448453", "primitive->biginteger", "1");
+  private final EnumerationDescriptor.MemberDescriptor myMember_primitive__complex_0 = new EnumerationDescriptor.MemberDescriptor("primitive__complex", "primitive->complex", 0x1200fba8c47L, "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/4241665505353448454", "primitive->complex", "2");
+  private final EnumerationDescriptor.MemberDescriptor myMember_double__bigdecimal_0 = new EnumerationDescriptor.MemberDescriptor("double__bigdecimal", "double->bigdecimal", 0x120513c399eL, "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/4241665505353448455", "double->bigdecimal", "3");
+  private final EnumerationDescriptor.MemberDescriptor myMember_biginteger__bigdecimal_0 = new EnumerationDescriptor.MemberDescriptor("biginteger__bigdecimal", "biginteger->bigdecimal", 0x120566f9e33L, "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/4241665505353448456", "biginteger->bigdecimal", "4");
+  private final EnumerationDescriptor.MemberDescriptor myMember_double__bigcomplex_0 = new EnumerationDescriptor.MemberDescriptor("double__bigcomplex", "double->bigcomplex", 0x1205787300fL, "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/4241665505353448457", "double->bigcomplex", "5");
+  private final EnumerationDescriptor.MemberDescriptor myMember_biginteger__bigcomplex_0 = new EnumerationDescriptor.MemberDescriptor("biginteger__bigcomplex", "biginteger->bigcomplex", 0x120578748f7L, "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/4241665505353448458", "biginteger->bigcomplex", "6");
+  private final EnumerationDescriptor.MemberDescriptor myMember_bigdecimal__bigcomplex_0 = new EnumerationDescriptor.MemberDescriptor("bigdecimal__bigcomplex", "bigdecimal->bigcomplex", 0x12057879f06L, "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/4241665505353448459", "bigdecimal->bigcomplex", "7");
+  private final EnumerationDescriptor.MemberDescriptor myMember_complex__bigcomplex_0 = new EnumerationDescriptor.MemberDescriptor("complex__bigcomplex", "complex->bigcomplex", 0x1205787df2cL, "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/4241665505353448460", "complex->bigcomplex", "8");
+  private final EnumerationDescriptor.MemberDescriptor myMember______matrix_integer__0 = new EnumerationDescriptor.MemberDescriptor("_____matrix_integer_", "...->matrix<integer>", 0x48675f670a48aab5L, "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/4241665505353448461", "...->matrix<integer>", "9");
+  private final EnumerationDescriptor.MemberDescriptor myMember______matrix_long__0 = new EnumerationDescriptor.MemberDescriptor("_____matrix_long_", "...->matrix<long>", 0x48675f670a48aab6L, "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/4241665505353448462", "...->matrix<long>", "10");
+  private final EnumerationDescriptor.MemberDescriptor myMember______matrix_float__0 = new EnumerationDescriptor.MemberDescriptor("_____matrix_float_", "...->matrix<float>", 0x48675f670a48aab7L, "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/4241665505353448463", "...->matrix<float>", "11");
+  private final EnumerationDescriptor.MemberDescriptor myMember______matrix_double__0 = new EnumerationDescriptor.MemberDescriptor("_____matrix_double_", "...->matrix<double>", 0x48675f670a48aab8L, "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/4241665505353448464", "...->matrix<double>", "12");
+  private final EnumerationDescriptor.MemberDescriptor myMember______matrix_biginteger__0 = new EnumerationDescriptor.MemberDescriptor("_____matrix_biginteger_", "...->matrix<biginteger>", 0x48675f670a48aab9L, "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/4241665505353448465", "...->matrix<biginteger>", "13");
+  private final EnumerationDescriptor.MemberDescriptor myMember______matrix_bigdecimal__0 = new EnumerationDescriptor.MemberDescriptor("_____matrix_bigdecimal_", "...->matrix<bigdecimal>", 0x48675f670a48aabaL, "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/4241665505353448466", "...->matrix<bigdecimal>", "14");
+  private final EnumerationDescriptor.MemberDescriptor myMember______matrix_complex__0 = new EnumerationDescriptor.MemberDescriptor("_____matrix_complex_", "...->matrix<complex>", 0x48675f670a48aabbL, "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/4241665505353448467", "...->matrix<complex>", "15");
+  private final EnumerationDescriptor.MemberDescriptor myMember______matrix_bigcomplex__0 = new EnumerationDescriptor.MemberDescriptor("_____matrix_bigcomplex_", "...->matrix<bigcomplex>", 0x48675f670a48aabcL, "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/4241665505353448468", "...->matrix<bigcomplex>", "16");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1200fba5bb0L, 0x12022f528eeL, 0x1200fba5bb1L, 0x1200fba8c47L, 0x120513c399eL, 0x120566f9e33L, 0x1205787300fL, 0x120578748f7L, 0x12057879f06L, 0x1205787df2cL, 0x48675f670a48aab5L, 0x48675f670a48aab6L, 0x48675f670a48aab7L, 0x48675f670a48aab8L, 0x48675f670a48aab9L, 0x48675f670a48aabaL, 0x48675f670a48aabbL, 0x48675f670a48aabcL);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_0_0, myMember_1_0, myMember_2_0, myMember_3_0, myMember_4_0, myMember_5_0, myMember_6_0, myMember_7_0, myMember_8_0, myMember_9_0, myMember_10_0, myMember_11_0, myMember_12_0, myMember_13_0, myMember_14_0, myMember_15_0, myMember_16_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_unknown_0, myMember_primitive__biginteger_0, myMember_primitive__complex_0, myMember_double__bigdecimal_0, myMember_biginteger__bigdecimal_0, myMember_double__bigcomplex_0, myMember_biginteger__bigcomplex_0, myMember_bigdecimal__bigcomplex_0, myMember_complex__bigcomplex_0, myMember______matrix_integer__0, myMember______matrix_long__0, myMember______matrix_float__0, myMember______matrix_double__0, myMember______matrix_biginteger__0, myMember______matrix_bigdecimal__0, myMember______matrix_complex__0, myMember______matrix_bigcomplex__0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return myMember_1_0;
+    return myMember_primitive__biginteger_0;
   }
 
   @NotNull
@@ -51,45 +51,45 @@ public class EnumerationDescriptor_CastTargetDescriptor extends EnumerationDescr
 
   @Nullable
   @Override
-  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
-    if (string == null) {
+  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String memberName) {
+    if (memberName == null) {
       return null;
     }
-    switch (string) {
-      case "0":
-        return myMember_0_0;
-      case "1":
-        return myMember_1_0;
-      case "2":
-        return myMember_2_0;
-      case "3":
-        return myMember_3_0;
-      case "4":
-        return myMember_4_0;
-      case "5":
-        return myMember_5_0;
-      case "6":
-        return myMember_6_0;
-      case "7":
-        return myMember_7_0;
-      case "8":
-        return myMember_8_0;
-      case "9":
-        return myMember_9_0;
-      case "10":
-        return myMember_10_0;
-      case "11":
-        return myMember_11_0;
-      case "12":
-        return myMember_12_0;
-      case "13":
-        return myMember_13_0;
-      case "14":
-        return myMember_14_0;
-      case "15":
-        return myMember_15_0;
-      case "16":
-        return myMember_16_0;
+    switch (memberName) {
+      case "unknown":
+        return myMember_unknown_0;
+      case "primitive__biginteger":
+        return myMember_primitive__biginteger_0;
+      case "primitive__complex":
+        return myMember_primitive__complex_0;
+      case "double__bigdecimal":
+        return myMember_double__bigdecimal_0;
+      case "biginteger__bigdecimal":
+        return myMember_biginteger__bigdecimal_0;
+      case "double__bigcomplex":
+        return myMember_double__bigcomplex_0;
+      case "biginteger__bigcomplex":
+        return myMember_biginteger__bigcomplex_0;
+      case "bigdecimal__bigcomplex":
+        return myMember_bigdecimal__bigcomplex_0;
+      case "complex__bigcomplex":
+        return myMember_complex__bigcomplex_0;
+      case "_____matrix_integer_":
+        return myMember______matrix_integer__0;
+      case "_____matrix_long_":
+        return myMember______matrix_long__0;
+      case "_____matrix_float_":
+        return myMember______matrix_float__0;
+      case "_____matrix_double_":
+        return myMember______matrix_double__0;
+      case "_____matrix_biginteger_":
+        return myMember______matrix_biginteger__0;
+      case "_____matrix_bigdecimal_":
+        return myMember______matrix_bigdecimal__0;
+      case "_____matrix_complex_":
+        return myMember______matrix_complex__0;
+      case "_____matrix_bigcomplex_":
+        return myMember______matrix_bigcomplex__0;
     }
     return null;
   }

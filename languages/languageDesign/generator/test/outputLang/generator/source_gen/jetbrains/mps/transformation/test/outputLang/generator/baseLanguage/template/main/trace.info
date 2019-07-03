@@ -938,9 +938,9 @@
       <node id="2681305894288486366" at="11,30,12,0" concept="11" />
       <node id="2681305894288486366" at="12,0,13,0" concept="11" />
       <node id="2681305894288695006" at="13,0,14,179" concept="3" />
-      <node id="6029988945385352762" at="14,179,15,151" concept="3" />
+      <node id="6029988945385352762" at="14,179,15,156" concept="3" />
       <node id="2681305894288486366" at="10,0,17,0" concept="1" trace="Pattern_x583g4_a0a0gb#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <scope id="2681305894288486366" at="10,51,15,151" />
+      <scope id="2681305894288486366" at="10,51,15,156" />
       <scope id="2681305894288486366" at="10,0,17,0">
         <var name="patternNode" id="2681305894288486366" />
       </scope>

@@ -21,7 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic_Group;
 import java.util.List;
 import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
@@ -83,23 +83,23 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
     return editorCell;
   }
   private boolean nodeCondition_qubgco_a1a() {
-    return isNotEmptyString(SPropertyOperations.getString(myNode, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, 0x3be316509dccb82L, "sourcesKind")));
+    return (SPropertyOperations.getEnum(myNode, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, 0x3be316509dccb82L, "sourcesKind")) != null);
   }
   private boolean nodeCondition_qubgco_a2a() {
-    return isEmptyString(SPropertyOperations.getString(myNode, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, 0x3be316509dccb82L, "sourcesKind")));
+    return (SPropertyOperations.getEnum(myNode, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, 0x3be316509dccb82L, "sourcesKind")) == null);
   }
   public static class BuildMps_Solution_generic_cellMenu_qubgco_a0a extends AbstractCellMenuPart_Generic_Group {
     public BuildMps_Solution_generic_cellMenu_qubgco_a0a() {
     }
 
     public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
-      return CollectionSequence.fromCollection(SEnumOperations.getMembers(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build", 0x48d5d03db92974f7L, "BuildSource_JavaContentFolderKind")).toListSequence();
+      return ListSequence.fromList(SEnumOperations.getMembers(MetaAdapterFactory.getEnumeration(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92974f7L, "jetbrains.mps.build.structure.BuildSource_JavaContentFolderKind"))).toListSequence();
     }
     protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
       this.handleAction_impl((SEnumerationLiteral) parameterObject, node, model, operationContext, editorContext);
     }
     public void handleAction_impl(SEnumerationLiteral parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      SPropertyOperations.set(node, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, 0x3be316509dccb82L, "sourcesKind"), SEnumOperations.getMemberValue(parameterObject));
+      SPropertyOperations.setEnum(node, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, 0x3be316509dccb82L, "sourcesKind"), SEnumOperations.getMemberForPresentation(MetaAdapterFactory.getEnumeration(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3be316509db4513L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleSourcesKind"), SEnumOperations.getMemberName0(parameterObject)));
     }
     public boolean isReferentPresentation() {
       return false;
@@ -108,7 +108,7 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
       return this.getMatchingText_internal((SEnumerationLiteral) parameterObject);
     }
     public String getMatchingText_internal(SEnumerationLiteral parameterObject) {
-      return "(with " + SEnumOperations.getMemberName(parameterObject) + ")";
+      return "(with " + SEnumOperations.getMemberName0(parameterObject) + ")";
     }
 
     @Override
@@ -170,13 +170,13 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
     }
 
     public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
-      return CollectionSequence.fromCollection(SEnumOperations.getMembers(0xcf935df46994e9cL, 0xa132fa109541cba3L, "jetbrains.mps.build.mps", 0x3be316509db4513L, "BuildMps_ModuleSourcesKind")).toListSequence();
+      return ListSequence.fromList(SEnumOperations.getMembers(MetaAdapterFactory.getEnumeration(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3be316509db4513L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleSourcesKind"))).toListSequence();
     }
     protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
       this.handleAction_impl((SEnumerationLiteral) parameterObject, node, model, operationContext, editorContext);
     }
     public void handleAction_impl(SEnumerationLiteral parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      SPropertyOperations.set(node, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, 0x3be316509dccb82L, "sourcesKind"), SEnumOperations.getMemberValue(parameterObject));
+      SPropertyOperations.setEnum(node, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, 0x3be316509dccb82L, "sourcesKind"), SEnumOperations.getMemberForPresentation(MetaAdapterFactory.getEnumeration(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3be316509db4513L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleSourcesKind"), SEnumOperations.getMemberPresentation(parameterObject)));
     }
     public boolean isReferentPresentation() {
       return false;
@@ -185,7 +185,7 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
       return this.getMatchingText_internal((SEnumerationLiteral) parameterObject);
     }
     public String getMatchingText_internal(SEnumerationLiteral parameterObject) {
-      return "(with " + SEnumOperations.getMemberName(parameterObject) + ")";
+      return "(with " + SEnumOperations.getMemberPresentation(parameterObject) + ")";
     }
 
     @Override
@@ -202,11 +202,5 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
-  }
-  private static boolean isNotEmptyString(String str) {
-    return str != null && str.length() > 0;
-  }
-  private static boolean isEmptyString(String str) {
-    return str == null || str.length() == 0;
   }
 }

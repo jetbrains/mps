@@ -10,6 +10,7 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
@@ -26,8 +27,8 @@ public class check_EnumerationDataTypeDeclaration_NonTypesystemRule extends Abst
   public check_EnumerationDataTypeDeclaration_NonTypesystemRule() {
   }
   public void applyRule(final SNode enumerationDataTypeDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    final boolean deriveFromExternal = Objects.equals(SPropertyOperations.getString(enumerationDataTypeDeclaration, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0x116d5fed0c2L, "memberIdentifierPolicy")), "derive_from_presentation");
-    final boolean deriveFromInternal = Objects.equals(SPropertyOperations.getString(enumerationDataTypeDeclaration, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0x116d5fed0c2L, "memberIdentifierPolicy")), "derive_from_internal_value");
+    final boolean deriveFromExternal = Objects.equals(SPropertyOperations.getEnum(enumerationDataTypeDeclaration, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0x116d5fed0c2L, "memberIdentifierPolicy")), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x116d5fab105L, "jetbrains.mps.lang.structure.structure.EnumerationMemberIdentifierPolicy"), 0x116d5fab106L, "derive_from_presentation"));
+    final boolean deriveFromInternal = Objects.equals(SPropertyOperations.getEnum(enumerationDataTypeDeclaration, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0x116d5fed0c2L, "memberIdentifierPolicy")), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x116d5fab105L, "jetbrains.mps.lang.structure.structure.EnumerationMemberIdentifierPolicy"), 0x116d5fd31b6L, "derive_from_internal_value"));
 
     // Suggest using internal values, if they are present in all members 
     if (deriveFromExternal && ListSequence.fromList(SLinkOperations.getChildren(enumerationDataTypeDeclaration, MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0xfc32151efeL, "member"))).all(new IWhereFilter<SNode>() {

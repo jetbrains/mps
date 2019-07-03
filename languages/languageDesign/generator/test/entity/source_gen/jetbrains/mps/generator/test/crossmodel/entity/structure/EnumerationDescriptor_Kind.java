@@ -13,19 +13,19 @@ import org.jetbrains.annotations.NotNull;
 public class EnumerationDescriptor_Kind extends EnumerationDescriptorBase {
 
   public EnumerationDescriptor_Kind() {
-    super(0x4d14758c3ecb486dL, 0xb8c8ea5beb8ae408L, 0x3c70a9e3bda9ab86L, "Kind", "r:9b56ed90-436a-4093-aab2-2dfe5d09ce42(jetbrains.mps.generator.test.crossmodel.entity.structure)/4355167635271953286", PrimitiveTypeId.INTEGER);
+    super(0x4d14758c3ecb486dL, 0xb8c8ea5beb8ae408L, 0x3c70a9e3bda9ab86L, "Kind", "r:9b56ed90-436a-4093-aab2-2dfe5d09ce42(jetbrains.mps.generator.test.crossmodel.entity.structure)/4241665505353446794", PrimitiveTypeId.INTEGER);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor myMember_1_0 = new EnumerationDescriptor.MemberDescriptor("1", "ONE", "r:9b56ed90-436a-4093-aab2-2dfe5d09ce42(jetbrains.mps.generator.test.crossmodel.entity.structure)/4355167635271953287", "1");
-  private final EnumerationDescriptor.MemberDescriptor myMember_2_0 = new EnumerationDescriptor.MemberDescriptor("2", "TWO", "r:9b56ed90-436a-4093-aab2-2dfe5d09ce42(jetbrains.mps.generator.test.crossmodel.entity.structure)/4355167635271953288", "2");
+  private final EnumerationDescriptor.MemberDescriptor myMember__1_0 = new EnumerationDescriptor.MemberDescriptor("_1", "ONE", 0x3c70a9e3bda9ab87L, "r:9b56ed90-436a-4093-aab2-2dfe5d09ce42(jetbrains.mps.generator.test.crossmodel.entity.structure)/4241665505353446796", "1", "1");
+  private final EnumerationDescriptor.MemberDescriptor myMember__2_0 = new EnumerationDescriptor.MemberDescriptor("_2", "TWO", 0x3c70a9e3bda9ab88L, "r:9b56ed90-436a-4093-aab2-2dfe5d09ce42(jetbrains.mps.generator.test.crossmodel.entity.structure)/4241665505353446797", "2", "2");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x4d14758c3ecb486dL, 0xb8c8ea5beb8ae408L, 0x3c70a9e3bda9ab86L, 0x3c70a9e3bda9ab87L, 0x3c70a9e3bda9ab88L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_1_0, myMember_2_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember__1_0, myMember__2_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return myMember_1_0;
+    return myMember__1_0;
   }
 
   @NotNull
@@ -36,15 +36,15 @@ public class EnumerationDescriptor_Kind extends EnumerationDescriptorBase {
 
   @Nullable
   @Override
-  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
-    if (string == null) {
+  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String memberName) {
+    if (memberName == null) {
       return null;
     }
-    switch (string) {
-      case "1":
-        return myMember_1_0;
-      case "2":
-        return myMember_2_0;
+    switch (memberName) {
+      case "_1":
+        return myMember__1_0;
+      case "_2":
+        return myMember__2_0;
     }
     return null;
   }

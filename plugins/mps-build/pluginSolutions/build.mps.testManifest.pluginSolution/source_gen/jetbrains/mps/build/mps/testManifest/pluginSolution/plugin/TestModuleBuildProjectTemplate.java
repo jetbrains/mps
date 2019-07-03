@@ -111,7 +111,7 @@ public class TestModuleBuildProjectTemplate {
         SPropertyOperations.set(sol, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), t._0());
         SPropertyOperations.set(sol, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d3868bL, "uuid"), t._2());
 
-        SPropertyOperations.set(sol, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, 0x3be316509dccb82L, "sourcesKind"), "sources and tests");
+        SPropertyOperations.setEnum(sol, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, 0x3be316509dccb82L, "sourcesKind"), 0x3be316509db4553L, "sources_and_tests");
         try {
           PathBuilder pathBuilder = new PathBuilder(target);
           String moduleFile = relativePathHelper.makeRelative(t._1());
@@ -214,8 +214,8 @@ public class TestModuleBuildProjectTemplate {
     SNode quotedNode_45 = null;
     quotedNode_11 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x4df58c6f18f84a13L, "BuildProject"), null, null, false);
     quotedNode_11.setProperty(MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x48387ebae1a07a23L, "internalBaseDirectory"), "../../../../");
-    SNodeAccessUtil.setProperty(quotedNode_11, MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4438b4de59410ebcL, "fileName"), (String) parameter_7);
-    SNodeAccessUtil.setProperty(quotedNode_11, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), (String) parameter_10);
+    SNodeAccessUtil.setPropertyValue(quotedNode_11, MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4438b4de59410ebcL, "fileName"), (String) parameter_7);
+    SNodeAccessUtil.setPropertyValue(quotedNode_11, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), (String) parameter_10);
     quotedNode_12 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0xcdff0e1a96739c2L, "BuildSource_JavaOptions"), null, null, false);
     quotedNode_12.setProperty(MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0xcdff0e1a96739c2L, 0xcdff0e1a96739c5L, "generateDebugInfo"), "true");
     quotedNode_12.setProperty(MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0xcdff0e1a96739c2L, 0xcdff0e1a96739c6L, "copyResources"), "true");
@@ -227,7 +227,7 @@ public class TestModuleBuildProjectTemplate {
     quotedNode_12.addChild(MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0xcdff0e1a96739c2L, 0xcdff0e1a96739c7L, "resourceSelectors"), quotedNode_26);
     quotedNode_11.addChild(MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x668c6cfbafacf6f2L, "parts"), quotedNode_12);
     quotedNode_13 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xcf935df46994e9cL, 0xa132fa109541cba3L, "jetbrains.mps.build.mps"), 0x14d3fb6fb843ebddL, "BuildMps_Group"), null, null, false);
-    SNodeAccessUtil.setProperty(quotedNode_13, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), (String) parameter_1);
+    SNodeAccessUtil.setPropertyValue(quotedNode_13, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), (String) parameter_1);
     {
       List<SNode> nodes = (List<SNode>) parameter_2;
       for (SNode child : nodes) {
@@ -236,7 +236,7 @@ public class TestModuleBuildProjectTemplate {
     }
     quotedNode_11.addChild(MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x668c6cfbafacf6f2L, "parts"), quotedNode_13);
     quotedNode_14 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xcf935df46994e9cL, 0xa132fa109541cba3L, "jetbrains.mps.build.mps"), 0x14d3fb6fb843ebddL, "BuildMps_Group"), null, null, false);
-    SNodeAccessUtil.setProperty(quotedNode_14, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), (String) parameter_3);
+    SNodeAccessUtil.setPropertyValue(quotedNode_14, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), (String) parameter_3);
     {
       List<SNode> nodes = (List<SNode>) parameter_4;
       for (SNode child : nodes) {
@@ -300,7 +300,7 @@ public class TestModuleBuildProjectTemplate {
     quotedNode_23.setProperty(MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5a408fb8c80220a9L, 0x5a408fb8c80270bcL, "bootstrap"), "true");
     quotedNode_11.addChild(MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x31292e1a60db57afL, "aspects"), quotedNode_23);
     quotedNode_24 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x3600cb0a44dd4a5bL, 0x996822924406419eL, "jetbrains.mps.build.mps.tests"), 0x3f496e80bd8ef36dL, "BuildMpsLayout_TestModules"), null, null, false);
-    SNodeAccessUtil.setProperty(quotedNode_24, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), (String) parameter_9);
+    SNodeAccessUtil.setPropertyValue(quotedNode_24, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), (String) parameter_9);
     quotedNode_34 = (SNode) parameter_8;
     if (quotedNode_34 != null) {
       quotedNode_24.addChild(MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36dL, 0x3f496e80bd8ef370L, "modules"), SNodeOperations.copyIfNecessary(quotedNode_34));

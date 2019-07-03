@@ -15,7 +15,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -32,7 +31,7 @@ public final class CellActionMapItem__BehaviorDescriptor extends BaseBHDescripto
   }
 
   /*package*/ static SEnumerationLiteral getActionId_idJCy0JrvU0M(@NotNull SNode __thisNode__) {
-    return SEnumOperations.getMemberForValue(SPropertyOperations.getString(__thisNode__, MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x109519879e9L, 0x1095198c0daL, "actionId")), 0x18bc659203a64e29L, 0xa83a7ff23bde13baL, "jetbrains.mps.lang.editor", 0x10951993667L, "CellActionId");
+    return SPropertyOperations.getEnum(__thisNode__, MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x109519879e9L, 0x1095198c0daL, "actionId"));
   }
 
   /*package*/ CellActionMapItem__BehaviorDescriptor() {

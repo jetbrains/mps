@@ -13,22 +13,22 @@ import org.jetbrains.annotations.NotNull;
 public class EnumerationDescriptor_InequationPriority extends EnumerationDescriptorBase {
 
   public EnumerationDescriptor_InequationPriority() {
-    super(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11a342d9151L, "InequationPriority", "r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)/1212056179025", PrimitiveTypeId.INTEGER);
+    super(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11a342d9151L, "InequationPriority", "r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)/4241665505353447849", PrimitiveTypeId.INTEGER);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor myMember_0_0 = new EnumerationDescriptor.MemberDescriptor("0", "0", "r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)/1212056179026", "0");
-  private final EnumerationDescriptor.MemberDescriptor myMember_1_0 = new EnumerationDescriptor.MemberDescriptor("1", "1", "r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)/1212056190371", "1");
-  private final EnumerationDescriptor.MemberDescriptor myMember_2_0 = new EnumerationDescriptor.MemberDescriptor("2", "2", "r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)/1212056192028", "2");
-  private final EnumerationDescriptor.MemberDescriptor myMember_3_0 = new EnumerationDescriptor.MemberDescriptor("3", "3", "r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)/1212056204513", "3");
-  private final EnumerationDescriptor.MemberDescriptor myMember_500_0 = new EnumerationDescriptor.MemberDescriptor("500", "inf", "r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)/1212056211202", "inf");
+  private final EnumerationDescriptor.MemberDescriptor myMember__0_0 = new EnumerationDescriptor.MemberDescriptor("_0", "0", 0x11a342d9152L, "r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)/4241665505353447851", "0", "0");
+  private final EnumerationDescriptor.MemberDescriptor myMember__1_0 = new EnumerationDescriptor.MemberDescriptor("_1", "1", 0x11a342dbda3L, "r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)/4241665505353447852", "1", "1");
+  private final EnumerationDescriptor.MemberDescriptor myMember__2_0 = new EnumerationDescriptor.MemberDescriptor("_2", "2", 0x11a342dc41cL, "r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)/4241665505353447853", "2", "2");
+  private final EnumerationDescriptor.MemberDescriptor myMember__3_0 = new EnumerationDescriptor.MemberDescriptor("_3", "3", 0x11a342df4e1L, "r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)/4241665505353447854", "3", "3");
+  private final EnumerationDescriptor.MemberDescriptor myMember_inf_0 = new EnumerationDescriptor.MemberDescriptor("inf", "inf", 0x11a342e0f02L, "r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)/4241665505353447855", "inf", "500");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11a342d9151L, 0x11a342d9152L, 0x11a342dbda3L, 0x11a342dc41cL, 0x11a342df4e1L, 0x11a342e0f02L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_0_0, myMember_1_0, myMember_2_0, myMember_3_0, myMember_500_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember__0_0, myMember__1_0, myMember__2_0, myMember__3_0, myMember_inf_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return myMember_0_0;
+    return myMember__0_0;
   }
 
   @NotNull
@@ -39,21 +39,21 @@ public class EnumerationDescriptor_InequationPriority extends EnumerationDescrip
 
   @Nullable
   @Override
-  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
-    if (string == null) {
+  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String memberName) {
+    if (memberName == null) {
       return null;
     }
-    switch (string) {
-      case "0":
-        return myMember_0_0;
-      case "1":
-        return myMember_1_0;
-      case "2":
-        return myMember_2_0;
-      case "3":
-        return myMember_3_0;
-      case "500":
-        return myMember_500_0;
+    switch (memberName) {
+      case "_0":
+        return myMember__0_0;
+      case "_1":
+        return myMember__1_0;
+      case "_2":
+        return myMember__2_0;
+      case "_3":
+        return myMember__3_0;
+      case "inf":
+        return myMember_inf_0;
     }
     return null;
   }

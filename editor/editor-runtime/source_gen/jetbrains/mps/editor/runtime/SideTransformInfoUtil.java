@@ -7,6 +7,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 
@@ -22,16 +23,16 @@ public class SideTransformInfoUtil {
   private static void addTransformInfo(@NotNull SNode node, @NotNull String cellId, boolean isRight) {
     SNode info = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0xad0053c7ae9194dL, "jetbrains.mps.lang.core.structure.SideTransformInfo"));
     SPropertyOperations.assign(info, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0xad0053c7ae9194dL, 0xad0053c7af1b9bbL, "cellId"), cellId);
-    SPropertyOperations.assign(info, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0xad0053c7ae9194dL, 0xad0053c7aee2321L, "side"), (isRight ? "right" : "left"));
+    SPropertyOperations.assignEnum(info, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0xad0053c7ae9194dL, 0xad0053c7aee2321L, "side"), SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0xad0053c7aee25ecL, "jetbrains.mps.lang.core.structure.SideTransformSide"), (isRight ? SEnumOperations.getMemberName0(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0xad0053c7aee25ecL, "jetbrains.mps.lang.core.structure.SideTransformSide"), 0xad0053c7aee25edL, "right")) : SEnumOperations.getMemberName0(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0xad0053c7aee25ecL, "jetbrains.mps.lang.core.structure.SideTransformSide"), 0xad0053c7aee2e4fL, "left")))));
     AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0xad0053c7ae9194dL, "jetbrains.mps.lang.core.structure.SideTransformInfo")), info);
   }
 
   public static boolean hasRightTransformInfo(SNode node) {
-    return SPropertyOperations.hasEnumValue(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0xad0053c7ae9194dL, "jetbrains.mps.lang.core.structure.SideTransformInfo"))), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0xad0053c7ae9194dL, 0xad0053c7aee2321L, "side"), "right");
+    return SEnumOperations.isMember(SPropertyOperations.getEnum(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0xad0053c7ae9194dL, "jetbrains.mps.lang.core.structure.SideTransformInfo"))), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0xad0053c7ae9194dL, 0xad0053c7aee2321L, "side")), 0xad0053c7aee25edL);
   }
 
   public static boolean hasLeftTransformInfo(SNode node) {
-    return SPropertyOperations.hasEnumValue(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0xad0053c7ae9194dL, "jetbrains.mps.lang.core.structure.SideTransformInfo"))), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0xad0053c7ae9194dL, 0xad0053c7aee2321L, "side"), "left");
+    return SEnumOperations.isMember(SPropertyOperations.getEnum(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0xad0053c7ae9194dL, "jetbrains.mps.lang.core.structure.SideTransformInfo"))), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0xad0053c7ae9194dL, 0xad0053c7aee2321L, "side")), 0xad0053c7aee2e4fL);
   }
 
   public static void removeTransformInfo(SNode node) {

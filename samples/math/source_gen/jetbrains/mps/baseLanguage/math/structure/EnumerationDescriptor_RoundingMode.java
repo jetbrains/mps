@@ -13,25 +13,25 @@ import org.jetbrains.annotations.NotNull;
 public class EnumerationDescriptor_RoundingMode extends EnumerationDescriptorBase {
 
   public EnumerationDescriptor_RoundingMode() {
-    super(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x120568e25cfL, "RoundingMode", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/1238402737615", PrimitiveTypeId.INTEGER);
+    super(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x120568e25cfL, "RoundingMode", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/4241665505353448440", PrimitiveTypeId.INTEGER);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor myMember_0_0 = new EnumerationDescriptor.MemberDescriptor("0", "CEILING", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/1238402737616", "CEILING");
-  private final EnumerationDescriptor.MemberDescriptor myMember_1_0 = new EnumerationDescriptor.MemberDescriptor("1", "DOWN", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/1238402766914", "DOWN");
-  private final EnumerationDescriptor.MemberDescriptor myMember_2_0 = new EnumerationDescriptor.MemberDescriptor("2", "FLOOR", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/1238402767056", "FLOOR");
-  private final EnumerationDescriptor.MemberDescriptor myMember_3_0 = new EnumerationDescriptor.MemberDescriptor("3", "HALF_DOWN", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/1238402767229", "HALF_DOWN");
-  private final EnumerationDescriptor.MemberDescriptor myMember_4_0 = new EnumerationDescriptor.MemberDescriptor("4", "HALF_EVEN", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/1238402767339", "HALF_EVEN");
-  private final EnumerationDescriptor.MemberDescriptor myMember_5_0 = new EnumerationDescriptor.MemberDescriptor("5", "HALF_UP", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/1238402799184", "HALF_UP");
-  private final EnumerationDescriptor.MemberDescriptor myMember_6_0 = new EnumerationDescriptor.MemberDescriptor("6", "UNNECCESARY", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/1238402803795", "UNNECCESARY");
-  private final EnumerationDescriptor.MemberDescriptor myMember_7_0 = new EnumerationDescriptor.MemberDescriptor("7", "UP", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/1238402809265", "UP");
+  private final EnumerationDescriptor.MemberDescriptor myMember_CEILING_0 = new EnumerationDescriptor.MemberDescriptor("CEILING", "CEILING", 0x120568e25d0L, "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/4241665505353448442", "CEILING", "0");
+  private final EnumerationDescriptor.MemberDescriptor myMember_DOWN_0 = new EnumerationDescriptor.MemberDescriptor("DOWN", "DOWN", 0x120568e9842L, "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/4241665505353448443", "DOWN", "1");
+  private final EnumerationDescriptor.MemberDescriptor myMember_FLOOR_0 = new EnumerationDescriptor.MemberDescriptor("FLOOR", "FLOOR", 0x120568e98d0L, "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/4241665505353448444", "FLOOR", "2");
+  private final EnumerationDescriptor.MemberDescriptor myMember_HALF_DOWN_0 = new EnumerationDescriptor.MemberDescriptor("HALF_DOWN", "HALF_DOWN", 0x120568e997dL, "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/4241665505353448445", "HALF_DOWN", "3");
+  private final EnumerationDescriptor.MemberDescriptor myMember_HALF_EVEN_0 = new EnumerationDescriptor.MemberDescriptor("HALF_EVEN", "HALF_EVEN", 0x120568e99ebL, "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/4241665505353448446", "HALF_EVEN", "4");
+  private final EnumerationDescriptor.MemberDescriptor myMember_HALF_UP_0 = new EnumerationDescriptor.MemberDescriptor("HALF_UP", "HALF_UP", 0x120568f1650L, "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/4241665505353448447", "HALF_UP", "5");
+  private final EnumerationDescriptor.MemberDescriptor myMember_UNNECCESARY_0 = new EnumerationDescriptor.MemberDescriptor("UNNECCESARY", "UNNECCESARY", 0x120568f2853L, "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/4241665505353448448", "UNNECCESARY", "6");
+  private final EnumerationDescriptor.MemberDescriptor myMember_UP_0 = new EnumerationDescriptor.MemberDescriptor("UP", "UP", 0x120568f3db1L, "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/4241665505353448449", "UP", "7");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x120568e25cfL, 0x120568e25d0L, 0x120568e9842L, 0x120568e98d0L, 0x120568e997dL, 0x120568e99ebL, 0x120568f1650L, 0x120568f2853L, 0x120568f3db1L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_0_0, myMember_1_0, myMember_2_0, myMember_3_0, myMember_4_0, myMember_5_0, myMember_6_0, myMember_7_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_CEILING_0, myMember_DOWN_0, myMember_FLOOR_0, myMember_HALF_DOWN_0, myMember_HALF_EVEN_0, myMember_HALF_UP_0, myMember_UNNECCESARY_0, myMember_UP_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return myMember_4_0;
+    return myMember_HALF_EVEN_0;
   }
 
   @NotNull
@@ -42,27 +42,27 @@ public class EnumerationDescriptor_RoundingMode extends EnumerationDescriptorBas
 
   @Nullable
   @Override
-  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
-    if (string == null) {
+  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String memberName) {
+    if (memberName == null) {
       return null;
     }
-    switch (string) {
-      case "0":
-        return myMember_0_0;
-      case "1":
-        return myMember_1_0;
-      case "2":
-        return myMember_2_0;
-      case "3":
-        return myMember_3_0;
-      case "4":
-        return myMember_4_0;
-      case "5":
-        return myMember_5_0;
-      case "6":
-        return myMember_6_0;
-      case "7":
-        return myMember_7_0;
+    switch (memberName) {
+      case "CEILING":
+        return myMember_CEILING_0;
+      case "DOWN":
+        return myMember_DOWN_0;
+      case "FLOOR":
+        return myMember_FLOOR_0;
+      case "HALF_DOWN":
+        return myMember_HALF_DOWN_0;
+      case "HALF_EVEN":
+        return myMember_HALF_EVEN_0;
+      case "HALF_UP":
+        return myMember_HALF_UP_0;
+      case "UNNECCESARY":
+        return myMember_UNNECCESARY_0;
+      case "UP":
+        return myMember_UP_0;
     }
     return null;
   }

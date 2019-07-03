@@ -766,6 +766,62 @@
       <scope id="3308300503039896127" at="149,0,158,0" />
     </file>
   </root>
+  <root nodeRef="r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/4241665505353448626">
+    <file name="EnumerationDescriptor_LookingDirection.java">
+      <node id="4241665505353448626" at="15,51,16,216" concept="9" />
+      <node id="4241665505353448628" at="19,0,20,0" concept="2" trace="myMember_north_0" />
+      <node id="4241665505353448629" at="20,0,21,0" concept="2" trace="myMember_east_0" />
+      <node id="4241665505353448630" at="21,0,22,0" concept="2" trace="myMember_south_0" />
+      <node id="4241665505353448631" at="22,0,23,0" concept="2" trace="myMember_west_0" />
+      <node id="4241665505353448626" at="24,0,25,0" concept="2" trace="myIndex" />
+      <node id="4241665505353448626" at="25,0,26,0" concept="2" trace="myMembers" />
+      <node id="4241665505353448626" at="29,62,30,16" concept="6" />
+      <node id="4241665505353448626" at="35,68,36,21" concept="6" />
+      <node id="4241665505353448626" at="42,29,43,18" concept="6" />
+      <node id="4241665505353448628" at="46,19,47,32" concept="6" />
+      <node id="4241665505353448629" at="48,18,49,31" concept="6" />
+      <node id="4241665505353448630" at="50,19,51,32" concept="6" />
+      <node id="4241665505353448631" at="52,18,53,31" concept="6" />
+      <node id="4241665505353448626" at="54,5,55,16" concept="6" />
+      <node id="4241665505353448626" at="60,73,61,39" concept="5" />
+      <node id="4241665505353448626" at="62,22,63,18" concept="6" />
+      <node id="4241665505353448626" at="64,5,65,32" concept="6" />
+      <node id="4241665505353448626" at="15,0,18,0" concept="0" trace="EnumerationDescriptor_LookingDirection#()V" />
+      <node id="4241665505353448626" at="41,88,44,5" concept="3" />
+      <node id="4241665505353448626" at="61,39,64,5" concept="3" />
+      <node id="4241665505353448626" at="27,0,32,0" concept="4" trace="getDefault#()Ljetbrains/mps/smodel/runtime/EnumerationDescriptor/MemberDescriptor;" />
+      <node id="4241665505353448626" at="33,0,38,0" concept="4" trace="getMembers#()Ljava/util/List;" />
+      <node id="4241665505353448626" at="58,0,67,0" concept="4" trace="getMember#(J)Ljetbrains/mps/smodel/runtime/EnumerationDescriptor/MemberDescriptor;" />
+      <node id="4241665505353448626" at="44,5,54,5" concept="10" />
+      <node id="4241665505353448626" at="39,0,57,0" concept="4" trace="getMember#(Ljava/lang/String;)Ljetbrains/mps/smodel/runtime/EnumerationDescriptor/MemberDescriptor;" />
+      <scope id="4241665505353448626" at="15,51,16,216" />
+      <scope id="4241665505353448626" at="29,62,30,16" />
+      <scope id="4241665505353448626" at="35,68,36,21" />
+      <scope id="4241665505353448626" at="42,29,43,18" />
+      <scope id="4241665505353448628" at="46,19,47,32" />
+      <scope id="4241665505353448629" at="48,18,49,31" />
+      <scope id="4241665505353448630" at="50,19,51,32" />
+      <scope id="4241665505353448631" at="52,18,53,31" />
+      <scope id="4241665505353448626" at="62,22,63,18" />
+      <scope id="4241665505353448626" at="15,0,18,0" />
+      <scope id="4241665505353448626" at="27,0,32,0" />
+      <scope id="4241665505353448626" at="33,0,38,0" />
+      <scope id="4241665505353448626" at="60,73,65,32">
+        <var name="index" id="4241665505353448626" />
+      </scope>
+      <scope id="4241665505353448626" at="58,0,67,0">
+        <var name="idValue" id="4241665505353448626" />
+      </scope>
+      <scope id="4241665505353448626" at="41,88,55,16" />
+      <scope id="4241665505353448626" at="39,0,57,0">
+        <var name="memberName" id="4241665505353448626" />
+      </scope>
+      <unit id="4241665505353448626" at="13,0,68,0" name="jetbrains.mps.samples.Kaja.structure.EnumerationDescriptor_LookingDirection" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="4241665505353448626" at="48,0,49,0" concept="2" trace="myEnumerationLookingDirection" />
+    </file>
+  </root>
   <root nodeRef="r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/4394627182934741782">
     <file name="ConceptPresentationAspectImpl.java">
       <node id="4394627182934741782" at="25,0,26,0" concept="2" trace="props_Library" />
@@ -979,62 +1035,6 @@
       <scope id="6405700485436287811" at="158,0,168,0" />
     </file>
   </root>
-  <root nodeRef="r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/7060824959893064709">
-    <file name="EnumerationDescriptor_LookingDirection.java">
-      <node id="7060824959893064709" at="15,51,16,216" concept="9" />
-      <node id="7060824959893064772" at="19,0,20,0" concept="2" trace="myMember_north_0" />
-      <node id="7060824959893078070" at="20,0,21,0" concept="2" trace="myMember_east_0" />
-      <node id="7060824959893078073" at="21,0,22,0" concept="2" trace="myMember_south_0" />
-      <node id="7060824959893078077" at="22,0,23,0" concept="2" trace="myMember_west_0" />
-      <node id="7060824959893064709" at="24,0,25,0" concept="2" trace="myIndex" />
-      <node id="7060824959893064709" at="25,0,26,0" concept="2" trace="myMembers" />
-      <node id="7060824959893064709" at="29,62,30,16" concept="6" />
-      <node id="7060824959893064709" at="35,68,36,21" concept="6" />
-      <node id="7060824959893064709" at="42,25,43,18" concept="6" />
-      <node id="7060824959893064772" at="46,19,47,32" concept="6" />
-      <node id="7060824959893078070" at="48,18,49,31" concept="6" />
-      <node id="7060824959893078073" at="50,19,51,32" concept="6" />
-      <node id="7060824959893078077" at="52,18,53,31" concept="6" />
-      <node id="7060824959893064709" at="54,5,55,16" concept="6" />
-      <node id="7060824959893064709" at="60,73,61,39" concept="5" />
-      <node id="7060824959893064709" at="62,22,63,18" concept="6" />
-      <node id="7060824959893064709" at="64,5,65,32" concept="6" />
-      <node id="7060824959893064709" at="15,0,18,0" concept="0" trace="EnumerationDescriptor_LookingDirection#()V" />
-      <node id="7060824959893064709" at="41,84,44,5" concept="3" />
-      <node id="7060824959893064709" at="61,39,64,5" concept="3" />
-      <node id="7060824959893064709" at="27,0,32,0" concept="4" trace="getDefault#()Ljetbrains/mps/smodel/runtime/EnumerationDescriptor/MemberDescriptor;" />
-      <node id="7060824959893064709" at="33,0,38,0" concept="4" trace="getMembers#()Ljava/util/List;" />
-      <node id="7060824959893064709" at="58,0,67,0" concept="4" trace="getMember#(J)Ljetbrains/mps/smodel/runtime/EnumerationDescriptor/MemberDescriptor;" />
-      <node id="7060824959893064709" at="44,5,54,5" concept="10" />
-      <node id="7060824959893064709" at="39,0,57,0" concept="4" trace="getMember#(Ljava/lang/String;)Ljetbrains/mps/smodel/runtime/EnumerationDescriptor/MemberDescriptor;" />
-      <scope id="7060824959893064709" at="15,51,16,216" />
-      <scope id="7060824959893064709" at="29,62,30,16" />
-      <scope id="7060824959893064709" at="35,68,36,21" />
-      <scope id="7060824959893064709" at="42,25,43,18" />
-      <scope id="7060824959893064772" at="46,19,47,32" />
-      <scope id="7060824959893078070" at="48,18,49,31" />
-      <scope id="7060824959893078073" at="50,19,51,32" />
-      <scope id="7060824959893078077" at="52,18,53,31" />
-      <scope id="7060824959893064709" at="62,22,63,18" />
-      <scope id="7060824959893064709" at="15,0,18,0" />
-      <scope id="7060824959893064709" at="27,0,32,0" />
-      <scope id="7060824959893064709" at="33,0,38,0" />
-      <scope id="7060824959893064709" at="60,73,65,32">
-        <var name="index" id="7060824959893064709" />
-      </scope>
-      <scope id="7060824959893064709" at="58,0,67,0">
-        <var name="idValue" id="7060824959893064709" />
-      </scope>
-      <scope id="7060824959893064709" at="41,84,55,16" />
-      <scope id="7060824959893064709" at="39,0,57,0">
-        <var name="string" id="7060824959893064709" />
-      </scope>
-      <unit id="7060824959893064709" at="13,0,68,0" name="jetbrains.mps.samples.Kaja.structure.EnumerationDescriptor_LookingDirection" />
-    </file>
-    <file name="StructureAspectDescriptor.java">
-      <node id="7060824959893064709" at="48,0,49,0" concept="2" trace="myEnumerationLookingDirection" />
-    </file>
-  </root>
   <root nodeRef="r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/7060824959893078082">
     <file name="ConceptPresentationAspectImpl.java">
       <node id="7060824959893078082" at="27,0,28,0" concept="2" trace="props_Looking" />
@@ -1060,7 +1060,7 @@
       <node id="7060824959893078082" at="278,34,279,133" concept="1" />
       <node id="7060824959893078082" at="279,133,280,113" concept="1" />
       <node id="7060824959893078082" at="280,113,281,17" concept="1" />
-      <node id="7060824959893078083" at="281,17,282,179" concept="1" />
+      <node id="4241665505353454371" at="281,17,282,179" concept="1" />
       <node id="7060824959893078082" at="282,179,283,23" concept="1" />
       <node id="7060824959893078082" at="283,23,284,22" concept="6" />
       <node id="7060824959893078082" at="276,0,286,0" concept="8" trace="createDescriptorForLooking#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />

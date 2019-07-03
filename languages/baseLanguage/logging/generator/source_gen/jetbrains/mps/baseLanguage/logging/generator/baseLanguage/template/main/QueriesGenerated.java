@@ -10,6 +10,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.baseLanguage.logging.behavior.IMessage__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.generator.template.PropertyMacroContext;
 import jetbrains.mps.baseLanguage.logging.util.LoggingGenerationUtil;
 import jetbrains.mps.generator.template.ReferenceMacroContext;
@@ -61,22 +62,22 @@ public class QueriesGenerated extends QueryProviderBase {
     return (SNodeOperations.getNodeAncestor(_context.getNode(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"), false, false) != null);
   }
   public static boolean rule_Condition_3_0(final BaseMappingRuleContext _context) {
-    return IMessage__BehaviorDescriptor.getSeverity_id5vyNLjQPuVr.invoke(_context.getNode()).equals("fatal");
+    return IMessage__BehaviorDescriptor.getSeverity_id5vyNLjQPuVr.invoke(_context.getNode()).equals(SEnumOperations.getMemberName0(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x10fc53ae113L, "jetbrains.mps.baseLanguage.logging.structure.Severity"), 0x10fc53ae114L, "fatal")));
   }
   public static boolean rule_Condition_3_1(final BaseMappingRuleContext _context) {
-    return IMessage__BehaviorDescriptor.getSeverity_id5vyNLjQPuVr.invoke(_context.getNode()).equals("error");
+    return IMessage__BehaviorDescriptor.getSeverity_id5vyNLjQPuVr.invoke(_context.getNode()).equals(SEnumOperations.getMemberName0(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x10fc53ae113L, "jetbrains.mps.baseLanguage.logging.structure.Severity"), 0x10fc53d1944L, "error")));
   }
   public static boolean rule_Condition_3_2(final BaseMappingRuleContext _context) {
-    return IMessage__BehaviorDescriptor.getSeverity_id5vyNLjQPuVr.invoke(_context.getNode()).equals("warn");
+    return IMessage__BehaviorDescriptor.getSeverity_id5vyNLjQPuVr.invoke(_context.getNode()).equals(SEnumOperations.getMemberName0(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x10fc53ae113L, "jetbrains.mps.baseLanguage.logging.structure.Severity"), 0x10fc53d472aL, "warn")));
   }
   public static boolean rule_Condition_3_3(final BaseMappingRuleContext _context) {
-    return IMessage__BehaviorDescriptor.getSeverity_id5vyNLjQPuVr.invoke(_context.getNode()).equals("debug");
+    return IMessage__BehaviorDescriptor.getSeverity_id5vyNLjQPuVr.invoke(_context.getNode()).equals(SEnumOperations.getMemberName0(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x10fc53ae113L, "jetbrains.mps.baseLanguage.logging.structure.Severity"), 0x10fc53da2b7L, "debug")));
   }
   public static boolean rule_Condition_3_4(final BaseMappingRuleContext _context) {
-    return IMessage__BehaviorDescriptor.getSeverity_id5vyNLjQPuVr.invoke(_context.getNode()).equals("info");
+    return IMessage__BehaviorDescriptor.getSeverity_id5vyNLjQPuVr.invoke(_context.getNode()).equals(SEnumOperations.getMemberName0(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x10fc53ae113L, "jetbrains.mps.baseLanguage.logging.structure.Severity"), 0x1104a510496L, "info")));
   }
   public static boolean rule_Condition_3_5(final BaseMappingRuleContext _context) {
-    return IMessage__BehaviorDescriptor.getSeverity_id5vyNLjQPuVr.invoke(_context.getNode()).equals("trace");
+    return IMessage__BehaviorDescriptor.getSeverity_id5vyNLjQPuVr.invoke(_context.getNode()).equals(SEnumOperations.getMemberName0(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x10fc53ae113L, "jetbrains.mps.baseLanguage.logging.structure.Severity"), 0x10fc53db5d2L, "trace")));
   }
   public static Object propertyMacro_GetValue_2_0(final PropertyMacroContext _context) {
     return LoggingGenerationUtil.generateUniqueFieldName(_context.getNode(), _context.getTemplateValue());
@@ -89,33 +90,33 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object referenceMacro_GetReferent_4_2(final ReferenceMacroContext _context) {
     SNode method = null;
-    if (SPropertyOperations.hasEnumValue(_context.getNode(), MetaAdapterFactory.getProperty(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1b7L, "severity"), "fatal")) {
+    if (SEnumOperations.isMember(SPropertyOperations.getEnum(_context.getNode(), MetaAdapterFactory.getProperty(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1b7L, "severity")), 0x10fc53ae114L)) {
       method = SLinkOperations.getTarget(_quotation_createNode_x583g4_a0a0a1a31(), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"));
-    } else if (SPropertyOperations.hasEnumValue(_context.getNode(), MetaAdapterFactory.getProperty(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1b7L, "severity"), "error")) {
+    } else if (SEnumOperations.isMember(SPropertyOperations.getEnum(_context.getNode(), MetaAdapterFactory.getProperty(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1b7L, "severity")), 0x10fc53d1944L)) {
       method = SLinkOperations.getTarget(_quotation_createNode_x583g4_a0a0a0b0n(), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"));
-    } else if (SPropertyOperations.hasEnumValue(_context.getNode(), MetaAdapterFactory.getProperty(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1b7L, "severity"), "warn")) {
+    } else if (SEnumOperations.isMember(SPropertyOperations.getEnum(_context.getNode(), MetaAdapterFactory.getProperty(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1b7L, "severity")), 0x10fc53d472aL)) {
       method = SLinkOperations.getTarget(_quotation_createNode_x583g4_a0a0a1b0n(), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"));
-    } else if (SPropertyOperations.hasEnumValue(_context.getNode(), MetaAdapterFactory.getProperty(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1b7L, "severity"), "info")) {
+    } else if (SEnumOperations.isMember(SPropertyOperations.getEnum(_context.getNode(), MetaAdapterFactory.getProperty(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1b7L, "severity")), 0x1104a510496L)) {
       method = SLinkOperations.getTarget(_quotation_createNode_x583g4_a0a0a2b0n(), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"));
-    } else if (SPropertyOperations.hasEnumValue(_context.getNode(), MetaAdapterFactory.getProperty(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1b7L, "severity"), "debug")) {
+    } else if (SEnumOperations.isMember(SPropertyOperations.getEnum(_context.getNode(), MetaAdapterFactory.getProperty(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1b7L, "severity")), 0x10fc53da2b7L)) {
       method = SLinkOperations.getTarget(_quotation_createNode_x583g4_a0a0a3b0n(), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"));
-    } else if (SPropertyOperations.hasEnumValue(_context.getNode(), MetaAdapterFactory.getProperty(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1b7L, "severity"), "trace")) {
+    } else if (SEnumOperations.isMember(SPropertyOperations.getEnum(_context.getNode(), MetaAdapterFactory.getProperty(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1b7L, "severity")), 0x10fc53db5d2L)) {
       method = SLinkOperations.getTarget(_quotation_createNode_x583g4_a0a0a4b0n(), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"));
     }
     return method;
   }
   public static Object referenceMacro_GetReferent_5_0(final ReferenceMacroContext _context) {
-    if (SPropertyOperations.hasEnumValue(_context.getNode(), MetaAdapterFactory.getProperty(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x57e2cf14f6d5d81fL, "severity"), "fatal")) {
+    if (SEnumOperations.isMember(SPropertyOperations.getEnum(_context.getNode(), MetaAdapterFactory.getProperty(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x57e2cf14f6d5d81fL, "severity")), 0x10fc53ae114L)) {
       return "FATAL";
-    } else if (SPropertyOperations.hasEnumValue(_context.getNode(), MetaAdapterFactory.getProperty(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x57e2cf14f6d5d81fL, "severity"), "error")) {
+    } else if (SEnumOperations.isMember(SPropertyOperations.getEnum(_context.getNode(), MetaAdapterFactory.getProperty(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x57e2cf14f6d5d81fL, "severity")), 0x10fc53d1944L)) {
       return "ERROR";
-    } else if (SPropertyOperations.hasEnumValue(_context.getNode(), MetaAdapterFactory.getProperty(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x57e2cf14f6d5d81fL, "severity"), "warn")) {
+    } else if (SEnumOperations.isMember(SPropertyOperations.getEnum(_context.getNode(), MetaAdapterFactory.getProperty(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x57e2cf14f6d5d81fL, "severity")), 0x10fc53d472aL)) {
       return "WARN";
-    } else if (SPropertyOperations.hasEnumValue(_context.getNode(), MetaAdapterFactory.getProperty(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x57e2cf14f6d5d81fL, "severity"), "info")) {
+    } else if (SEnumOperations.isMember(SPropertyOperations.getEnum(_context.getNode(), MetaAdapterFactory.getProperty(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x57e2cf14f6d5d81fL, "severity")), 0x1104a510496L)) {
       return "INFO";
-    } else if (SPropertyOperations.hasEnumValue(_context.getNode(), MetaAdapterFactory.getProperty(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x57e2cf14f6d5d81fL, "severity"), "debug")) {
+    } else if (SEnumOperations.isMember(SPropertyOperations.getEnum(_context.getNode(), MetaAdapterFactory.getProperty(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x57e2cf14f6d5d81fL, "severity")), 0x10fc53da2b7L)) {
       return "DEBUG";
-    } else if (SPropertyOperations.hasEnumValue(_context.getNode(), MetaAdapterFactory.getProperty(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x57e2cf14f6d5d81fL, "severity"), "trace")) {
+    } else if (SEnumOperations.isMember(SPropertyOperations.getEnum(_context.getNode(), MetaAdapterFactory.getProperty(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x57e2cf14f6d5d81fL, "severity")), 0x10fc53db5d2L)) {
       return "TRACE";
     } else {
       return "INFO";

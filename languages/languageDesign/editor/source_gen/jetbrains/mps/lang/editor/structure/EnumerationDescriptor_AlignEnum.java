@@ -13,12 +13,12 @@ import org.jetbrains.annotations.NotNull;
 public class EnumerationDescriptor_AlignEnum extends EnumerationDescriptorBase {
 
   public EnumerationDescriptor_AlignEnum() {
-    super(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11fc752da8aL, "AlignEnum", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1235999709834", PrimitiveTypeId.STRING);
+    super(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11fc752da8aL, "AlignEnum", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353446270", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor myMember_LEFT_0 = new EnumerationDescriptor.MemberDescriptor("LEFT", "left", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1235999709835", "left");
-  private final EnumerationDescriptor.MemberDescriptor myMember_RIGHT_0 = new EnumerationDescriptor.MemberDescriptor("RIGHT", "right", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1235999738057", "right");
-  private final EnumerationDescriptor.MemberDescriptor myMember_CENTER_0 = new EnumerationDescriptor.MemberDescriptor("CENTER", "center", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1235999744266", "center");
+  private final EnumerationDescriptor.MemberDescriptor myMember_LEFT_0 = new EnumerationDescriptor.MemberDescriptor("LEFT", "left", 0x11fc752da8bL, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353446272", "left", "LEFT");
+  private final EnumerationDescriptor.MemberDescriptor myMember_RIGHT_0 = new EnumerationDescriptor.MemberDescriptor("RIGHT", "right", 0x11fc75348c9L, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353446273", "right", "RIGHT");
+  private final EnumerationDescriptor.MemberDescriptor myMember_CENTER_0 = new EnumerationDescriptor.MemberDescriptor("CENTER", "center", 0x11fc753610aL, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353446274", "center", "CENTER");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11fc752da8aL, 0x11fc752da8bL, 0x11fc75348c9L, 0x11fc753610aL);
   private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_LEFT_0, myMember_RIGHT_0, myMember_CENTER_0);
@@ -37,11 +37,11 @@ public class EnumerationDescriptor_AlignEnum extends EnumerationDescriptorBase {
 
   @Nullable
   @Override
-  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
-    if (string == null) {
+  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String memberName) {
+    if (memberName == null) {
       return null;
     }
-    switch (string) {
+    switch (memberName) {
       case "LEFT":
         return myMember_LEFT_0;
       case "RIGHT":

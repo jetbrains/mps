@@ -15,9 +15,9 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.Objects;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -37,14 +37,14 @@ public final class CellActionMapImportSelectorByActionId__BehaviorDescriptor ext
   }
 
   /*package*/ static SEnumerationLiteral getActionId_id3XXPjz_5Jxc(@NotNull SNode __thisNode__) {
-    return SEnumOperations.getMemberForValue(SPropertyOperations.getString(__thisNode__, MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4f883d0411451703L, 0x4f883d0411451706L, "actionId")), 0x18bc659203a64e29L, 0xa83a7ff23bde13baL, "jetbrains.mps.lang.editor", 0x10951993667L, "CellActionId");
+    return SPropertyOperations.getEnum(__thisNode__, MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4f883d0411451703L, 0x4f883d0411451706L, "actionId"));
   }
   /*package*/ static boolean selectsActionId_id3XXPjz_pJfc(@NotNull SNode __thisNode__, SEnumerationLiteral id) {
     return Objects.equals(CellActionMapImportSelectorByActionId__BehaviorDescriptor.getActionId_id3XXPjz_5Jxc.invoke(__thisNode__), id);
   }
   /*package*/ static CheckingResult checkPresenceOfImportee_id3XXPjz_qqny(@NotNull SNode __thisNode__, SNode actionMap) {
     SEnumerationLiteral actionId = CellActionMapImportSelectorByActionId__BehaviorDescriptor.getActionId_id3XXPjz_5Jxc.invoke(__thisNode__);
-    return ((boolean) CellActionMapDeclaration__BehaviorDescriptor.containsItemOfType_id2pg2GNQgnKJ.invoke(actionMap, actionId) ? CheckingResult.success() : CheckingResult.failure("Action map " + SPropertyOperations.getString(actionMap, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " does not define or import " + SEnumOperations.getMemberName(actionId)));
+    return ((boolean) CellActionMapDeclaration__BehaviorDescriptor.containsItemOfType_id2pg2GNQgnKJ.invoke(actionMap, actionId) ? CheckingResult.success() : CheckingResult.failure("Action map " + SPropertyOperations.getString(actionMap, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " does not define or import " + SEnumOperations.getMemberPresentation(actionId)));
   }
   /*package*/ static SNode getNavigatableNodeWithin_id5Sx2dSLnDj7(@NotNull SNode __thisNode__, SNode actionMap) {
     // navigate to the action item of the matching type 

@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.kernel.model.SModelUtil;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Objects;
@@ -54,26 +55,26 @@ public final class LinkDeclaration__BehaviorDescriptor extends BaseBHDescriptor 
   }
   /*package*/ static boolean isSingular_idhEwIfAt(@NotNull SNode __thisNode__) {
     SNode genuineLinkDeclaration = SModelUtil.getGenuineLinkDeclaration(__thisNode__);
-    return SPropertyOperations.hasEnumValue(genuineLinkDeclaration, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98054bb04L, "sourceCardinality"), "0..1") || SPropertyOperations.hasEnumValue(genuineLinkDeclaration, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98054bb04L, "sourceCardinality"), "1");
+    return SEnumOperations.isMember(SPropertyOperations.getEnum(genuineLinkDeclaration, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98054bb04L, "sourceCardinality")), 0xfc6f3944c3L) || SEnumOperations.isMember(SPropertyOperations.getEnum(genuineLinkDeclaration, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98054bb04L, "sourceCardinality")), 0xfc6f3944c4L);
   }
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
     return SPropertyOperations.getString(__thisNode__, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role"));
   }
   /*package*/ static boolean isAtLeastOneCardinality_id2VYdUfnkjmB(@NotNull SNode __thisNode__) {
     SNode genuineLink = LinkDeclaration__BehaviorDescriptor.getGenuineLink_idhEwIf_V.invoke(__thisNode__);
-    return SPropertyOperations.hasEnumValue(genuineLink, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98054bb04L, "sourceCardinality"), "1") || SPropertyOperations.hasEnumValue(genuineLink, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98054bb04L, "sourceCardinality"), "1..n");
+    return SEnumOperations.isMember(SPropertyOperations.getEnum(genuineLink, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98054bb04L, "sourceCardinality")), 0xfc6f3944c4L) || SEnumOperations.isMember(SPropertyOperations.getEnum(genuineLink, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98054bb04L, "sourceCardinality")), 0xfc6f3944c6L);
   }
   /*package*/ static SNode getConceptDeclaration_id7jb4LXpbWaP(@NotNull SNode __thisNode__) {
     return SNodeOperations.getNodeAncestor(__thisNode__, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"), false, false);
   }
   /*package*/ static boolean is_id4MKjpUYniHA(@NotNull SNode __thisNode__, SAbstractLink link) {
-    if (SPropertyOperations.hasEnumValue(__thisNode__, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass"), "aggregation")) {
+    if (SEnumOperations.isMember(SPropertyOperations.getEnum(__thisNode__, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass")), 0xfc6f4e95b9L)) {
       return Objects.equals(MetaAdapterByDeclaration.getContainmentLink(__thisNode__), link);
     }
-    if (SPropertyOperations.hasEnumValue(__thisNode__, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass"), "reference")) {
+    if (SEnumOperations.isMember(SPropertyOperations.getEnum(__thisNode__, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass")), 0xfc6f4e95b8L)) {
       return Objects.equals(MetaAdapterByDeclaration.getReferenceLink(__thisNode__), link);
     }
-    throw new IllegalStateException(SPropertyOperations.getString(__thisNode__, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass")));
+    throw new IllegalStateException(SEnumOperations.getMemberName0(SPropertyOperations.getEnum(__thisNode__, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass"))));
   }
 
   /*package*/ LinkDeclaration__BehaviorDescriptor() {

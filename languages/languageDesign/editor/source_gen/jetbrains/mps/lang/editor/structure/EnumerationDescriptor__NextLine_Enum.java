@@ -13,20 +13,20 @@ import org.jetbrains.annotations.NotNull;
 public class EnumerationDescriptor__NextLine_Enum extends EnumerationDescriptorBase {
 
   public EnumerationDescriptor__NextLine_Enum() {
-    super(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11b31a0f3f8L, "_NextLine_Enum", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1216308376568", PrimitiveTypeId.STRING);
+    super(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11b31a0f3f8L, "_NextLine_Enum", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353446201", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor myMember__0 = new EnumerationDescriptor.MemberDescriptor(null, "right", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1216308507057", "right");
-  private final EnumerationDescriptor.MemberDescriptor myMember_nextline_0 = new EnumerationDescriptor.MemberDescriptor("next-line", "next-line", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1216308502931", "next-line");
-  private final EnumerationDescriptor.MemberDescriptor myMember_indented_0 = new EnumerationDescriptor.MemberDescriptor("indented", "indented", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1216308376569", "indented");
+  private final EnumerationDescriptor.MemberDescriptor myMember_right_0 = new EnumerationDescriptor.MemberDescriptor("right", "right", 0x11b31a2f1b1L, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353446203", "right", null);
+  private final EnumerationDescriptor.MemberDescriptor myMember_next_line_0 = new EnumerationDescriptor.MemberDescriptor("next_line", "next-line", 0x11b31a2e193L, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353446204", "next-line", "next-line");
+  private final EnumerationDescriptor.MemberDescriptor myMember_indented_0 = new EnumerationDescriptor.MemberDescriptor("indented", "indented", 0x11b31a0f3f9L, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353446205", "indented", "indented");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11b31a0f3f8L, 0x11b31a2f1b1L, 0x11b31a2e193L, 0x11b31a0f3f9L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember__0, myMember_nextline_0, myMember_indented_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_right_0, myMember_next_line_0, myMember_indented_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return myMember__0;
+    return myMember_right_0;
   }
 
   @NotNull
@@ -37,13 +37,15 @@ public class EnumerationDescriptor__NextLine_Enum extends EnumerationDescriptorB
 
   @Nullable
   @Override
-  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
-    if (string == null) {
-      return myMember__0;
+  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String memberName) {
+    if (memberName == null) {
+      return null;
     }
-    switch (string) {
-      case "next-line":
-        return myMember_nextline_0;
+    switch (memberName) {
+      case "right":
+        return myMember_right_0;
+      case "next_line":
+        return myMember_next_line_0;
       case "indented":
         return myMember_indented_0;
     }

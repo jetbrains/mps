@@ -171,6 +171,9 @@
       <concept id="1196350785113" name="jetbrains.mps.lang.quotation.structure.Quotation" flags="nn" index="2c44tf">
         <child id="1196350785114" name="quotedNode" index="2c44tc" />
       </concept>
+      <concept id="4056363777117001481" name="jetbrains.mps.lang.quotation.structure.StringToTypedValueMigrationInfo" flags="ng" index="AAgTk">
+        <property id="2173356959483005420" name="stringValueMigrated" index="3qcH_f" />
+      </concept>
       <concept id="1196866233735" name="jetbrains.mps.lang.quotation.structure.PropertyAntiquotation" flags="ng" index="2EMmih" />
     </language>
     <language id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem">
@@ -8582,6 +8585,7 @@
                         <node concept="2EMmih" id="LQ" role="lGtFl">
                           <property role="2qtEX9" value="fqClassName" />
                           <property role="P4ACc" value="df345b11-b8c7-4213-ac66-48d2a9b75d88/1174914042989/1174914081067" />
+                          <property role="3qcH_f" value="true" />
                           <node concept="2OqwBi" id="LT" role="2c44t1">
                             <node concept="37vLTw" id="LV" role="2Oq$k0">
                               <ref role="3cqZAo" node="JB" resolve="internalClassCreator" />
@@ -9890,6 +9894,7 @@
                         <node concept="2EMmih" id="TW" role="lGtFl">
                           <property role="2qtEX9" value="fqClassName" />
                           <property role="P4ACc" value="df345b11-b8c7-4213-ac66-48d2a9b75d88/1174914042989/1174914081067" />
+                          <property role="3qcH_f" value="true" />
                           <node concept="2OqwBi" id="U0" role="2c44t1">
                             <node concept="37vLTw" id="U2" role="2Oq$k0">
                               <ref role="3cqZAo" node="RH" resolve="internalNewExpression" />

@@ -199,7 +199,7 @@ public class AbstractCellSelector_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       protected Iterable<? extends SEnumerationLiteral> getParameters(SubstituteMenuContext _context) {
-        return SEnumOperations.getMembers(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, "jetbrains.mps.lang.editor", 0x1e02662c4b880a97L, "PredefinedCellID");
+        return SEnumOperations.getMembers(MetaAdapterFactory.getEnumeration(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1e02662c4b880a97L, "jetbrains.mps.lang.editor.structure.PredefinedCellID"));
       }
       private class SMP_Action_1rdeze_a0c extends SingleItemSubstituteMenuPart {
         private final SEnumerationLiteral myParameterObject;
@@ -246,7 +246,7 @@ public class AbstractCellSelector_SubstituteMenu extends SubstituteMenuBase {
           @Override
           public SNode createNode(@NotNull String pattern) {
             SNode result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x313a48d996236c93L, "jetbrains.mps.lang.editor.structure.PredefinedSelector"));
-            SPropertyOperations.assign(result, MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x313a48d996236c93L, 0x1e02662c4b881e34L, "cellId"), SEnumOperations.getMemberValue(myParameterObject));
+            SPropertyOperations.assignEnum(result, MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x313a48d996236c93L, 0x1e02662c4b881e34L, "cellId"), SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1e02662c4b880a97L, "jetbrains.mps.lang.editor.structure.PredefinedCellID"), SEnumOperations.getMemberName0(myParameterObject)));
             return result;
           }
 
@@ -271,7 +271,7 @@ public class AbstractCellSelector_SubstituteMenu extends SubstituteMenuBase {
           @Nullable
           @Override
           public String getDescriptionText(@NotNull String pattern) {
-            return SEnumOperations.getMemberValue(myParameterObject) + " cell";
+            return SEnumOperations.getMemberName0(myParameterObject) + " cell";
           }
         }
       }

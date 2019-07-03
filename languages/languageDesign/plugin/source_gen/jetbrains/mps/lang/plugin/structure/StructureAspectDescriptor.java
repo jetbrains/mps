@@ -717,7 +717,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(2);
     b.property("caption", 0x5adc7622e710cedcL).type(PrimitiveTypeId.STRING).origin("6547237850567462620").done();
     b.property("number", 0x5adc7622e710cf2dL).type(MetaIdFactory.dataTypeId(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11a53510287L)).origin("6547237850567462701").done();
-    b.property("position", 0x22ace24ea9f7487cL).type(MetaIdFactory.dataTypeId(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x22ace24ea9f74877L)).origin("2498620720770664572").done();
+    b.property("position", 0x22ace24ea9f7487cL).type(MetaIdFactory.dataTypeId(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x22ace24ea9f74877L)).origin("4241665505353454043").done();
     b.property("icon", 0x5adc7622e710cf6eL).type(PrimitiveTypeId.STRING).origin("6547237850567462766").done();
     b.aggregate("methodDeclaration", 0x5adc7622e710cfc0L).target(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bd6ee3c3L).optional(true).ordered(true).multiple(true).origin("6547237850567462848").done();
     b.aggregate("fieldDeclaration", 0x5adc7622e710cfc1L).target(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x11aa7fc0293L).optional(true).ordered(true).multiple(true).origin("6547237850567462849").done();
@@ -1225,7 +1225,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(2);
     b.property("modifiers", 0x11919c665d5L).type(PrimitiveTypeId.STRING).origin("1207318242773").done();
     b.property("keycode", 0x11919c665d6L).type(PrimitiveTypeId.STRING).origin("1207318242774").done();
-    b.property("change", 0x5e2b603c8f03ab4dL).type(MetaIdFactory.dataTypeId(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x5e2b603c8f036668L)).origin("6785623076777470797").done();
+    b.property("change", 0x5e2b603c8f03ab4dL).type(MetaIdFactory.dataTypeId(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x5e2b603c8f036668L)).origin("4241665505353454039").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForKeyStrokeType() {
@@ -1244,7 +1244,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a3afa8c0dL);
     b.origin("r:00000000-0000-4000-0000-011c89590368(jetbrains.mps.lang.plugin.structure)/1562714432501166197");
     b.version(2);
-    b.property("keymap", 0x15afe07f2a9bb0c9L).type(MetaIdFactory.dataTypeId(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb078L)).origin("1562714432501166281").done();
+    b.property("keymap", 0x15afe07f2a9bb0c9L).type(MetaIdFactory.dataTypeId(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb078L)).origin("4241665505353454041").done();
     b.property("isPluginXmlKeymap", 0x77ff578948f6b772L).type(PrimitiveTypeId.BOOLEAN).origin("8646726056720906098").done();
     b.aggregate("shortcutChange", 0x15afe07f2a9bb077L).target(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x55f30a5d1e092278L).optional(true).ordered(true).multiple(true).origin("1562714432501166199").done();
     return b.create();
@@ -1630,7 +1630,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.super_("jetbrains.mps.lang.plugin.structure.AbstractToolKeystroke", 0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843e384caL);
     b.origin("r:00000000-0000-4000-0000-011c89590368(jetbrains.mps.lang.plugin.structure)/471625927503603120");
     b.version(2);
-    b.property("keymap", 0x68b8d4843b765b6L).type(MetaIdFactory.dataTypeId(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb078L)).origin("471625927503603126").done();
+    b.property("keymap", 0x68b8d4843b765b6L).type(MetaIdFactory.dataTypeId(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb078L)).origin("4241665505353454045").done();
     b.aggregate("keystroke", 0x68b8d4843b76126L).target(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11919c665d4L).optional(false).ordered(true).multiple(false).origin("471625927503601958").done();
     return b.create();
   }

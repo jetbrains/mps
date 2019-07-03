@@ -13,14 +13,14 @@ import org.jetbrains.annotations.NotNull;
 public class EnumerationDescriptor_RuleType extends EnumerationDescriptorBase {
 
   public EnumerationDescriptor_RuleType() {
-    super(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe39L, "RuleType", "r:aa31e43e-9240-4f4d-b6db-5c1c9a86c59e(jetbrains.mps.lang.project.structure)/6370754048397540921", PrimitiveTypeId.STRING);
+    super(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe39L, "RuleType", "r:aa31e43e-9240-4f4d-b6db-5c1c9a86c59e(jetbrains.mps.lang.project.structure)/4241665505353447146", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor myMember_strictly_before_0 = new EnumerationDescriptor.MemberDescriptor("strictly_before", "before (<)", "r:aa31e43e-9240-4f4d-b6db-5c1c9a86c59e(jetbrains.mps.lang.project.structure)/6370754048397540922", "strictly_before");
-  private final EnumerationDescriptor.MemberDescriptor myMember_strictly_together_0 = new EnumerationDescriptor.MemberDescriptor("strictly_together", "together with (=)", "r:aa31e43e-9240-4f4d-b6db-5c1c9a86c59e(jetbrains.mps.lang.project.structure)/6370754048397540923", "strictly_together");
-  private final EnumerationDescriptor.MemberDescriptor myMember_before_or_together_0 = new EnumerationDescriptor.MemberDescriptor("before_or_together", "before or together (<=)", "r:aa31e43e-9240-4f4d-b6db-5c1c9a86c59e(jetbrains.mps.lang.project.structure)/6370754048397540924", "before_or_together");
-  private final EnumerationDescriptor.MemberDescriptor myMember_after_or_together_0 = new EnumerationDescriptor.MemberDescriptor("after_or_together", "after or together (>=)", "r:aa31e43e-9240-4f4d-b6db-5c1c9a86c59e(jetbrains.mps.lang.project.structure)/2643213347103734302", "after_or_together");
-  private final EnumerationDescriptor.MemberDescriptor myMember_strictly_after_0 = new EnumerationDescriptor.MemberDescriptor("strictly_after", "after (>)", "r:aa31e43e-9240-4f4d-b6db-5c1c9a86c59e(jetbrains.mps.lang.project.structure)/2643213347103734303", "strictly_after");
+  private final EnumerationDescriptor.MemberDescriptor myMember_strictly_before_0 = new EnumerationDescriptor.MemberDescriptor("strictly_before", "before (<)", 0x5869770da61dfe3aL, "r:aa31e43e-9240-4f4d-b6db-5c1c9a86c59e(jetbrains.mps.lang.project.structure)/4241665505353447148", "strictly_before", "strictly_before");
+  private final EnumerationDescriptor.MemberDescriptor myMember_strictly_together_0 = new EnumerationDescriptor.MemberDescriptor("strictly_together", "together with (=)", 0x5869770da61dfe3bL, "r:aa31e43e-9240-4f4d-b6db-5c1c9a86c59e(jetbrains.mps.lang.project.structure)/4241665505353447149", "strictly_together", "strictly_together");
+  private final EnumerationDescriptor.MemberDescriptor myMember_before_or_together_0 = new EnumerationDescriptor.MemberDescriptor("before_or_together", "before or together (<=)", 0x5869770da61dfe3cL, "r:aa31e43e-9240-4f4d-b6db-5c1c9a86c59e(jetbrains.mps.lang.project.structure)/4241665505353447150", "before_or_together", "before_or_together");
+  private final EnumerationDescriptor.MemberDescriptor myMember_after_or_together_0 = new EnumerationDescriptor.MemberDescriptor("after_or_together", "after or together (>=)", 0x24ae9488ebb07a1eL, "r:aa31e43e-9240-4f4d-b6db-5c1c9a86c59e(jetbrains.mps.lang.project.structure)/4241665505353447151", "after_or_together", "after_or_together");
+  private final EnumerationDescriptor.MemberDescriptor myMember_strictly_after_0 = new EnumerationDescriptor.MemberDescriptor("strictly_after", "after (>)", 0x24ae9488ebb07a1fL, "r:aa31e43e-9240-4f4d-b6db-5c1c9a86c59e(jetbrains.mps.lang.project.structure)/4241665505353447152", "strictly_after", "strictly_after");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe39L, 0x5869770da61dfe3aL, 0x5869770da61dfe3bL, 0x5869770da61dfe3cL, 0x24ae9488ebb07a1eL, 0x24ae9488ebb07a1fL);
   private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_strictly_before_0, myMember_strictly_together_0, myMember_before_or_together_0, myMember_after_or_together_0, myMember_strictly_after_0);
@@ -39,11 +39,11 @@ public class EnumerationDescriptor_RuleType extends EnumerationDescriptorBase {
 
   @Nullable
   @Override
-  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
-    if (string == null) {
+  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String memberName) {
+    if (memberName == null) {
       return null;
     }
-    switch (string) {
+    switch (memberName) {
       case "strictly_before":
         return myMember_strictly_before_0;
       case "strictly_together":

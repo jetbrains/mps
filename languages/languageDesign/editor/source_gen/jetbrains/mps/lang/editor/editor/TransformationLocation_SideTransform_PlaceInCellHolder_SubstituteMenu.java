@@ -69,7 +69,7 @@ public class TransformationLocation_SideTransform_PlaceInCellHolder_SubstituteMe
     @Nullable
     @Override
     protected Iterable<? extends SEnumerationLiteral> getParameters(SubstituteMenuContext _context) {
-      return SEnumOperations.getMembers(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, "jetbrains.mps.lang.editor", 0x30335f3d1845bdafL, "TransformationLocation_SideTransform_PlaceInCell");
+      return SEnumOperations.getMembers(MetaAdapterFactory.getEnumeration(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x30335f3d1845bdafL, "jetbrains.mps.lang.editor.structure.TransformationLocation_SideTransform_PlaceInCell"));
     }
     private class SMP_Action_nrkshw_a0 extends SingleItemSubstituteMenuPart {
       private final SEnumerationLiteral myParameterObject;
@@ -116,7 +116,7 @@ public class TransformationLocation_SideTransform_PlaceInCellHolder_SubstituteMe
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode node = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x30335f3d1845bdccL, "jetbrains.mps.lang.editor.structure.TransformationLocation_SideTransform_PlaceInCellHolder"));
-          SPropertyOperations.set(node, MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x30335f3d1845bdccL, 0x30335f3d1845bdcdL, "placeInCell"), SEnumOperations.getMemberValue(myParameterObject));
+          SPropertyOperations.setEnum(node, MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x30335f3d1845bdccL, 0x30335f3d1845bdcdL, "placeInCell"), SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x30335f3d1845bdafL, "jetbrains.mps.lang.editor.structure.TransformationLocation_SideTransform_PlaceInCell"), SEnumOperations.getMemberName0(myParameterObject)));
           return node;
         }
 

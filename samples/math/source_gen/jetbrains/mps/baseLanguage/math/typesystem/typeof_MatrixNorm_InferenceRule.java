@@ -15,6 +15,7 @@ import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.baseLanguage.math.behavior.MathUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.pattern.util.MatchingUtil;
 import jetbrains.mps.typesystem.inference.EquationInfo;
@@ -38,7 +39,7 @@ public class typeof_MatrixNorm_InferenceRule extends AbstractInferenceRule_Runti
             }
           } else {
             SNode t = MathUtil.getUnboxedElementType(typeCheckingContext.getExpandedNode(mT));
-            boolean floatResult = SPropertyOperations.getInteger(norm, MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0xcc7e1ce69847db2L, 0xa87de0e72c3a3efL, "deg")) == 2;
+            boolean floatResult = SPropertyOperations.getEnum(norm, MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0xcc7e1ce69847db2L, 0xa87de0e72c3a3efL, "deg")) == SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0xa87de0e72c56776L, "jetbrains.mps.baseLanguage.math.structure.MatrixNormKind"), 0xa87de0e72c56779L, "norm2F");
             if (TypecheckingFacade.getFromContext().isSubtype(t, MathTypeUtil.qBigInteger)) {
               SNode f = null;
               SNode i = null;

@@ -13,20 +13,20 @@ import org.jetbrains.annotations.NotNull;
 public class EnumerationDescriptor_SubstTestEnum extends EnumerationDescriptorBase {
 
   public EnumerationDescriptor_SubstTestEnum() {
-    super(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xd4944c0b03f658cL, "SubstTestEnum", "r:1a7fc406-f263-498c-a126-51036fe6a9da(jetbrains.mps.lang.editor.editorTest.structure)/957371990174295436", PrimitiveTypeId.STRING);
+    super(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xd4944c0b03f658cL, "SubstTestEnum", "r:1a7fc406-f263-498c-a126-51036fe6a9da(jetbrains.mps.lang.editor.editorTest.structure)/4241665505353445421", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor myMember__0 = new EnumerationDescriptor.MemberDescriptor(null, "v1", "r:1a7fc406-f263-498c-a126-51036fe6a9da(jetbrains.mps.lang.editor.editorTest.structure)/957371990174295437", "v1");
-  private final EnumerationDescriptor.MemberDescriptor myMember_v2_0 = new EnumerationDescriptor.MemberDescriptor("v2", "v2", "r:1a7fc406-f263-498c-a126-51036fe6a9da(jetbrains.mps.lang.editor.editorTest.structure)/957371990174295507", "v2");
-  private final EnumerationDescriptor.MemberDescriptor myMember_v3_0 = new EnumerationDescriptor.MemberDescriptor("v3", "v3", "r:1a7fc406-f263-498c-a126-51036fe6a9da(jetbrains.mps.lang.editor.editorTest.structure)/957371990174295510", "v3");
+  private final EnumerationDescriptor.MemberDescriptor myMember_v1_0 = new EnumerationDescriptor.MemberDescriptor("v1", "v1", 0xd4944c0b03f658dL, "r:1a7fc406-f263-498c-a126-51036fe6a9da(jetbrains.mps.lang.editor.editorTest.structure)/4241665505353445423", "v1", null);
+  private final EnumerationDescriptor.MemberDescriptor myMember_v2_0 = new EnumerationDescriptor.MemberDescriptor("v2", "v2", 0xd4944c0b03f65d3L, "r:1a7fc406-f263-498c-a126-51036fe6a9da(jetbrains.mps.lang.editor.editorTest.structure)/4241665505353445424", "v2", "v2");
+  private final EnumerationDescriptor.MemberDescriptor myMember_v3_0 = new EnumerationDescriptor.MemberDescriptor("v3", "v3", 0xd4944c0b03f65d6L, "r:1a7fc406-f263-498c-a126-51036fe6a9da(jetbrains.mps.lang.editor.editorTest.structure)/4241665505353445425", "v3", "v3");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xd4944c0b03f658cL, 0xd4944c0b03f658dL, 0xd4944c0b03f65d3L, 0xd4944c0b03f65d6L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember__0, myMember_v2_0, myMember_v3_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_v1_0, myMember_v2_0, myMember_v3_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return myMember__0;
+    return myMember_v1_0;
   }
 
   @NotNull
@@ -37,11 +37,13 @@ public class EnumerationDescriptor_SubstTestEnum extends EnumerationDescriptorBa
 
   @Nullable
   @Override
-  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
-    if (string == null) {
-      return myMember__0;
+  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String memberName) {
+    if (memberName == null) {
+      return null;
     }
-    switch (string) {
+    switch (memberName) {
+      case "v1":
+        return myMember_v1_0;
       case "v2":
         return myMember_v2_0;
       case "v3":

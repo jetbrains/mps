@@ -15,6 +15,7 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -31,10 +32,10 @@ public final class BuildMps_Solution__BehaviorDescriptor extends BaseBHDescripto
   }
 
   /*package*/ static boolean hasTestsSources_id6ogfLD6evrW(@NotNull SNode __thisNode__) {
-    return isNotEmptyString(SPropertyOperations.getString(__thisNode__, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, 0x3be316509dccb82L, "sourcesKind"))) && (SPropertyOperations.hasEnumValue(__thisNode__, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, 0x3be316509dccb82L, "sourcesKind"), "sources and tests") || SPropertyOperations.hasEnumValue(__thisNode__, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, 0x3be316509dccb82L, "sourcesKind"), "tests"));
+    return (SPropertyOperations.getEnum(__thisNode__, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, 0x3be316509dccb82L, "sourcesKind")) != null) && (SEnumOperations.isMember(SPropertyOperations.getEnum(__thisNode__, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, 0x3be316509dccb82L, "sourcesKind")), 0x3be316509db4553L) || SEnumOperations.isMember(SPropertyOperations.getEnum(__thisNode__, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, 0x3be316509dccb82L, "sourcesKind")), 0x3be316509db455cL));
   }
   /*package*/ static boolean hasSources_id6ogfLD6hwDf(@NotNull SNode __thisNode__) {
-    return isEmptyString(SPropertyOperations.getString(__thisNode__, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, 0x3be316509dccb82L, "sourcesKind"))) || (SPropertyOperations.hasEnumValue(__thisNode__, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, 0x3be316509dccb82L, "sourcesKind"), "sources and tests") || SPropertyOperations.hasEnumValue(__thisNode__, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, 0x3be316509dccb82L, "sourcesKind"), "sources"));
+    return (SPropertyOperations.getEnum(__thisNode__, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, 0x3be316509dccb82L, "sourcesKind")) == null) || (SEnumOperations.isMember(SPropertyOperations.getEnum(__thisNode__, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, 0x3be316509dccb82L, "sourcesKind")), 0x3be316509db4553L) || SEnumOperations.isMember(SPropertyOperations.getEnum(__thisNode__, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, 0x3be316509dccb82L, "sourcesKind")), 0x3be316509db4552L));
   }
 
   /*package*/ BuildMps_Solution__BehaviorDescriptor() {
@@ -83,11 +84,5 @@ public final class BuildMps_Solution__BehaviorDescriptor extends BaseBHDescripto
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
-  }
-  private static boolean isNotEmptyString(String str) {
-    return str != null && str.length() > 0;
-  }
-  private static boolean isEmptyString(String str) {
-    return str == null || str.length() == 0;
   }
 }

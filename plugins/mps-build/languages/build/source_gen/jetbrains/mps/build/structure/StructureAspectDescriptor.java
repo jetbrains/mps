@@ -763,7 +763,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.super_("jetbrains.mps.build.structure.BuildLayout_CopyFilter", 0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a39527643L);
     b.origin("r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/4198392933254416812");
     b.version(2);
-    b.property("eol", 0x3a43b020f623c9b6L).type(MetaIdFactory.dataTypeId(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3a43b020f623c9aeL)).origin("4198392933254416822").done();
+    b.property("eol", 0x3a43b020f623c9b6L).type(MetaIdFactory.dataTypeId(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3a43b020f623c9aeL)).origin("4241665505353454225").done();
     b.property("removeEOF", 0x3a43b020f625d95cL).type(PrimitiveTypeId.BOOLEAN).origin("4198392933254551900").done();
     b.alias("fix eol");
     return b.create();
@@ -1108,7 +1108,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x63a87b9320d0c8fbL);
     b.origin("r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/8577651205286814211");
     b.version(2);
-    b.property("compression", 0x1b76dbd13de88928L).type(MetaIdFactory.dataTypeId(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x1b76dbd13de88924L)).origin("1979010778009209128").done();
+    b.property("compression", 0x1b76dbd13de88928L).type(MetaIdFactory.dataTypeId(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x1b76dbd13de88924L)).origin("4241665505353454223").done();
     b.alias("tar");
     return b.create();
   }
@@ -1293,7 +1293,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, false);
     b.origin("r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/2754769020641429190");
     b.version(2);
-    b.property("kind", 0x48d5d03db92974fbL).type(MetaIdFactory.dataTypeId(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92974f7L)).origin("5248329904288265467").done();
+    b.property("kind", 0x48d5d03db92974fbL).type(MetaIdFactory.dataTypeId(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92974f7L)).origin("4241665505353454221").done();
     b.property("relativePath", 0x263ae7d4319546c7L).type(PrimitiveTypeId.STRING).origin("2754769020641429191").done();
     b.alias("source");
     return b.create();

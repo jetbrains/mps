@@ -7,8 +7,10 @@ import jetbrains.mps.lang.typesystem.runtime.InferenceRule_Runtime;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -17,7 +19,7 @@ public class typeof_MathTypeCast_InferenceRule extends AbstractInferenceRule_Run
   public typeof_MathTypeCast_InferenceRule() {
   }
   public void applyRule(final SNode cast, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    switch (SPropertyOperations.getInteger(cast, MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1200fb8bcedL, 0x1200fbb56e7L, "target"))) {
+    switch (ListSequence.fromList(SEnumOperations.getMembers(MetaAdapterFactory.getEnumeration(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1200fba5bb0L, "jetbrains.mps.baseLanguage.math.structure.CastTargetDescriptor"))).indexOf(SPropertyOperations.getEnum(cast, MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1200fb8bcedL, 0x1200fbb56e7L, "target")))) {
       case 1:
         {
           SNode _nodeToCheck_1029348928467 = cast;

@@ -56,6 +56,7 @@ import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
 import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import java.util.Collections;
 import jetbrains.mps.nodeEditor.selection.NodeRangeSelection;
 
@@ -348,10 +349,10 @@ import jetbrains.mps.nodeEditor.selection.NodeRangeSelection;
       }
     }
     private Iterable<String> getEditorHints0() {
-      if (SPropertyOperations.hasEnumValue(myNode, MetaAdapterFactory.getProperty(0x4b0f115a88684d72L, 0x8d6197071eaaa5f1L, 0x7ba12f0b163d1742L, 0x7ba12f0b1640efd3L, "presentation"), "compact")) {
+      if (SEnumOperations.isMember(SPropertyOperations.getEnum(myNode, MetaAdapterFactory.getProperty(0x4b0f115a88684d72L, 0x8d6197071eaaa5f1L, 0x7ba12f0b163d1742L, 0x7ba12f0b1640efd3L, "presentation")), 0x7ba12f0b1640efdaL)) {
         return ListSequence.fromListAndArray(new ArrayList<String>(), "jetbrains.mps.samples.notesOrganizer.editor.NotesHints.compact");
       }
-      if (SPropertyOperations.hasEnumValue(myNode, MetaAdapterFactory.getProperty(0x4b0f115a88684d72L, 0x8d6197071eaaa5f1L, 0x7ba12f0b163d1742L, 0x7ba12f0b1640efd3L, "presentation"), "inspected")) {
+      if (SEnumOperations.isMember(SPropertyOperations.getEnum(myNode, MetaAdapterFactory.getProperty(0x4b0f115a88684d72L, 0x8d6197071eaaa5f1L, 0x7ba12f0b163d1742L, 0x7ba12f0b1640efd3L, "presentation")), 0x7ba12f0b1640efddL)) {
         return ListSequence.fromListAndArray(new ArrayList<String>(), "jetbrains.mps.samples.notesOrganizer.editor.NotesHints.inspected");
       }
       return Collections.<String>emptyList();

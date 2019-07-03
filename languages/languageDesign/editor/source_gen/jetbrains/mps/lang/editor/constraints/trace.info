@@ -1805,64 +1805,64 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590298(jetbrains.mps.lang.editor.constraints)/5120245198449804925">
     <file name="TransformationMenuPart_IncludeSubstituteMenu_Constraints.java">
-      <node id="5120245198449804925" at="31,69,32,188" concept="12" />
-      <node id="5120245198449804930" at="39,44,40,20" concept="7" />
-      <node id="5120245198449804930" at="47,63,48,57" concept="7" />
-      <node id="6836281137582782561" at="51,122,52,259" concept="6" />
-      <node id="6836281137582782570" at="52,259,53,102" concept="6" />
-      <node id="6836281137582782587" at="55,47,56,192" concept="7" />
-      <node id="6836281137582782609" at="61,69,62,341" concept="7" />
-      <node id="5120245198449804925" at="68,6,69,131" concept="6" />
-      <node id="5120245198449804930" at="69,131,70,42" concept="2" />
-      <node id="5120245198449804925" at="70,42,71,22" concept="7" />
-      <node id="5120245198449804925" at="73,0,74,0" concept="10" trace="breakingNode_bx0s7e_a0a0a0a0a1a0a0a0c" />
-      <node id="5120245198449804925" at="31,0,34,0" concept="0" trace="TransformationMenuPart_IncludeSubstituteMenu_Constraints#()V" />
-      <node id="6836281137582782585" at="55,0,58,0" concept="5" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="5120245198449804930" at="38,0,42,0" concept="5" trace="hasOwnScopeProvider#()Z" />
-      <node id="5120245198449804930" at="46,0,50,0" concept="5" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-      <node id="6836281137582782601" at="60,0,64,0" concept="5" trace="getReferenceText#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
-      <node id="6836281137582782576" at="53,102,58,15" concept="6" />
-      <node id="6836281137582782596" at="58,15,64,14" concept="7" />
-      <node id="5120245198449804930" at="50,0,66,0" concept="5" trace="createScope#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
-      <node id="5120245198449804930" at="44,56,66,10" concept="7" />
-      <node id="5120245198449804930" at="42,0,68,0" concept="5" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
-      <node id="5120245198449804930" at="36,90,68,6" concept="6" />
-      <node id="5120245198449804925" at="35,0,73,0" concept="5" trace="getSpecifiedReferences#()Ljava/util/Map;" />
-      <scope id="5120245198449804925" at="31,69,32,188" />
-      <scope id="5120245198449804930" at="39,44,40,20" />
-      <scope id="5120245198449804930" at="47,63,48,57" />
-      <scope id="6836281137582782586" at="55,47,56,192" />
-      <scope id="6836281137582782608" at="61,69,62,341" />
-      <scope id="5120245198449804925" at="31,0,34,0" />
-      <scope id="6836281137582782585" at="55,0,58,0">
+      <node id="5120245198449804925" at="32,69,33,188" concept="12" />
+      <node id="5120245198449804930" at="40,44,41,20" concept="7" />
+      <node id="5120245198449804930" at="48,63,49,57" concept="7" />
+      <node id="6836281137582782561" at="52,122,53,259" concept="6" />
+      <node id="6836281137582782570" at="53,259,54,102" concept="6" />
+      <node id="6836281137582782587" at="56,47,57,213" concept="7" />
+      <node id="6836281137582782609" at="62,69,63,341" concept="7" />
+      <node id="5120245198449804925" at="69,6,70,131" concept="6" />
+      <node id="5120245198449804930" at="70,131,71,42" concept="2" />
+      <node id="5120245198449804925" at="71,42,72,22" concept="7" />
+      <node id="5120245198449804925" at="74,0,75,0" concept="10" trace="breakingNode_bx0s7e_a0a0a0a0a1a0a0a0c" />
+      <node id="5120245198449804925" at="32,0,35,0" concept="0" trace="TransformationMenuPart_IncludeSubstituteMenu_Constraints#()V" />
+      <node id="6836281137582782585" at="56,0,59,0" concept="5" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="5120245198449804930" at="39,0,43,0" concept="5" trace="hasOwnScopeProvider#()Z" />
+      <node id="5120245198449804930" at="47,0,51,0" concept="5" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="6836281137582782601" at="61,0,65,0" concept="5" trace="getReferenceText#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="6836281137582782576" at="54,102,59,15" concept="6" />
+      <node id="6836281137582782596" at="59,15,65,14" concept="7" />
+      <node id="5120245198449804930" at="51,0,67,0" concept="5" trace="createScope#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
+      <node id="5120245198449804930" at="45,56,67,10" concept="7" />
+      <node id="5120245198449804930" at="43,0,69,0" concept="5" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
+      <node id="5120245198449804930" at="37,90,69,6" concept="6" />
+      <node id="5120245198449804925" at="36,0,74,0" concept="5" trace="getSpecifiedReferences#()Ljava/util/Map;" />
+      <scope id="5120245198449804925" at="32,69,33,188" />
+      <scope id="5120245198449804930" at="40,44,41,20" />
+      <scope id="5120245198449804930" at="48,63,49,57" />
+      <scope id="6836281137582782586" at="56,47,57,213" />
+      <scope id="6836281137582782608" at="62,69,63,341" />
+      <scope id="5120245198449804925" at="32,0,35,0" />
+      <scope id="6836281137582782585" at="56,0,59,0">
         <var name="it" id="6836281137582782585" />
       </scope>
-      <scope id="5120245198449804930" at="38,0,42,0" />
-      <scope id="5120245198449804930" at="46,0,50,0" />
-      <scope id="6836281137582782601" at="60,0,64,0">
+      <scope id="5120245198449804930" at="39,0,43,0" />
+      <scope id="5120245198449804930" at="47,0,51,0" />
+      <scope id="6836281137582782601" at="61,0,65,0">
         <var name="target" id="6836281137582782603" />
       </scope>
-      <scope id="5120245198449804930" at="51,122,64,14">
+      <scope id="5120245198449804930" at="52,122,65,14">
         <var name="concept" id="6836281137582782571" />
         <var name="links" id="6836281137582782577" />
         <var name="menu" id="6836281137582782562" />
       </scope>
-      <scope id="5120245198449804930" at="50,0,66,0">
+      <scope id="5120245198449804930" at="51,0,67,0">
         <var name="_context" id="5120245198449804930" />
         <var name="operationContext" id="5120245198449804930" />
       </scope>
-      <scope id="5120245198449804930" at="44,56,66,10" />
-      <scope id="5120245198449804930" at="42,0,68,0" />
-      <scope id="5120245198449804925" at="36,90,71,22">
+      <scope id="5120245198449804930" at="45,56,67,10" />
+      <scope id="5120245198449804930" at="43,0,69,0" />
+      <scope id="5120245198449804925" at="37,90,72,22">
         <var name="d0" id="5120245198449804930" />
         <var name="references" id="5120245198449804925" />
       </scope>
-      <scope id="5120245198449804925" at="35,0,73,0" />
-      <unit id="6836281137582782585" at="54,162,58,13" name="jetbrains.mps.lang.editor.constraints.TransformationMenuPart_IncludeSubstituteMenu_Constraints$1$1$1" />
-      <unit id="6836281137582782599" at="59,23,64,13" name="jetbrains.mps.lang.editor.constraints.TransformationMenuPart_IncludeSubstituteMenu_Constraints$1$1$2" />
-      <unit id="5120245198449804930" at="45,19,66,9" name="jetbrains.mps.lang.editor.constraints.TransformationMenuPart_IncludeSubstituteMenu_Constraints$1$1" />
-      <unit id="5120245198449804930" at="37,48,68,5" name="jetbrains.mps.lang.editor.constraints.TransformationMenuPart_IncludeSubstituteMenu_Constraints$1" />
-      <unit id="5120245198449804925" at="30,0,75,0" name="jetbrains.mps.lang.editor.constraints.TransformationMenuPart_IncludeSubstituteMenu_Constraints" />
+      <scope id="5120245198449804925" at="36,0,74,0" />
+      <unit id="6836281137582782585" at="55,162,59,13" name="jetbrains.mps.lang.editor.constraints.TransformationMenuPart_IncludeSubstituteMenu_Constraints$1$1$1" />
+      <unit id="6836281137582782599" at="60,23,65,13" name="jetbrains.mps.lang.editor.constraints.TransformationMenuPart_IncludeSubstituteMenu_Constraints$1$1$2" />
+      <unit id="5120245198449804930" at="46,19,67,9" name="jetbrains.mps.lang.editor.constraints.TransformationMenuPart_IncludeSubstituteMenu_Constraints$1$1" />
+      <unit id="5120245198449804930" at="38,48,69,5" name="jetbrains.mps.lang.editor.constraints.TransformationMenuPart_IncludeSubstituteMenu_Constraints$1" />
+      <unit id="5120245198449804925" at="31,0,76,0" name="jetbrains.mps.lang.editor.constraints.TransformationMenuPart_IncludeSubstituteMenu_Constraints" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590298(jetbrains.mps.lang.editor.constraints)/5374238436954737026">

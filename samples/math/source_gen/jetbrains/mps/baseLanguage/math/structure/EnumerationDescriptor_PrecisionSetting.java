@@ -13,22 +13,22 @@ import org.jetbrains.annotations.NotNull;
 public class EnumerationDescriptor_PrecisionSetting extends EnumerationDescriptorBase {
 
   public EnumerationDescriptor_PrecisionSetting() {
-    super(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x12056af4e37L, "PrecisionSetting", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/1238404910647", PrimitiveTypeId.INTEGER);
+    super(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x12056af4e37L, "PrecisionSetting", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/4241665505353448469", PrimitiveTypeId.INTEGER);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor myMember_0_0 = new EnumerationDescriptor.MemberDescriptor("0", "CUSTOM", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/1238404910648", "CUSTOM");
-  private final EnumerationDescriptor.MemberDescriptor myMember_1_0 = new EnumerationDescriptor.MemberDescriptor("1", "DECIMAL32", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/1238404936480", "DECIMAL32");
-  private final EnumerationDescriptor.MemberDescriptor myMember_2_0 = new EnumerationDescriptor.MemberDescriptor("2", "DECIMAL64", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/1238404929837", "DECIMAL64");
-  private final EnumerationDescriptor.MemberDescriptor myMember_3_0 = new EnumerationDescriptor.MemberDescriptor("3", "DECIMAL128", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/1238404929994", "DECIMAL128");
-  private final EnumerationDescriptor.MemberDescriptor myMember_4_0 = new EnumerationDescriptor.MemberDescriptor("4", "UNLIMITED", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/1238404930917", "UNLIMITED");
+  private final EnumerationDescriptor.MemberDescriptor myMember_CUSTOM_0 = new EnumerationDescriptor.MemberDescriptor("CUSTOM", "CUSTOM", 0x12056af4e38L, "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/4241665505353448471", "CUSTOM", "0");
+  private final EnumerationDescriptor.MemberDescriptor myMember_DECIMAL32_0 = new EnumerationDescriptor.MemberDescriptor("DECIMAL32", "DECIMAL32", 0x12056afb320L, "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/4241665505353448472", "DECIMAL32", "1");
+  private final EnumerationDescriptor.MemberDescriptor myMember_DECIMAL64_0 = new EnumerationDescriptor.MemberDescriptor("DECIMAL64", "DECIMAL64", 0x12056af992dL, "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/4241665505353448473", "DECIMAL64", "2");
+  private final EnumerationDescriptor.MemberDescriptor myMember_DECIMAL128_0 = new EnumerationDescriptor.MemberDescriptor("DECIMAL128", "DECIMAL128", 0x12056af99caL, "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/4241665505353448474", "DECIMAL128", "3");
+  private final EnumerationDescriptor.MemberDescriptor myMember_UNLIMITED_0 = new EnumerationDescriptor.MemberDescriptor("UNLIMITED", "UNLIMITED", 0x12056af9d65L, "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/4241665505353448475", "UNLIMITED", "4");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x12056af4e37L, 0x12056af4e38L, 0x12056afb320L, 0x12056af992dL, 0x12056af99caL, 0x12056af9d65L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_0_0, myMember_1_0, myMember_2_0, myMember_3_0, myMember_4_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_CUSTOM_0, myMember_DECIMAL32_0, myMember_DECIMAL64_0, myMember_DECIMAL128_0, myMember_UNLIMITED_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return myMember_0_0;
+    return myMember_CUSTOM_0;
   }
 
   @NotNull
@@ -39,21 +39,21 @@ public class EnumerationDescriptor_PrecisionSetting extends EnumerationDescripto
 
   @Nullable
   @Override
-  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
-    if (string == null) {
+  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String memberName) {
+    if (memberName == null) {
       return null;
     }
-    switch (string) {
-      case "0":
-        return myMember_0_0;
-      case "1":
-        return myMember_1_0;
-      case "2":
-        return myMember_2_0;
-      case "3":
-        return myMember_3_0;
-      case "4":
-        return myMember_4_0;
+    switch (memberName) {
+      case "CUSTOM":
+        return myMember_CUSTOM_0;
+      case "DECIMAL32":
+        return myMember_DECIMAL32_0;
+      case "DECIMAL64":
+        return myMember_DECIMAL64_0;
+      case "DECIMAL128":
+        return myMember_DECIMAL128_0;
+      case "UNLIMITED":
+        return myMember_UNLIMITED_0;
     }
     return null;
   }

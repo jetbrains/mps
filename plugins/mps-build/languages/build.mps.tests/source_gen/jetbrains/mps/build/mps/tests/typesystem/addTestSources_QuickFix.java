@@ -7,6 +7,7 @@ import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 
 public class addTestSources_QuickFix extends QuickFix_Runtime {
   public addTestSources_QuickFix() {
@@ -16,6 +17,6 @@ public class addTestSources_QuickFix extends QuickFix_Runtime {
     return "Add test sources to " + SPropertyOperations.getString(((SNode) addTestSources_QuickFix.this.getField("solution")[0]), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
   }
   public void execute(SNode node) {
-    SPropertyOperations.assign(((SNode) addTestSources_QuickFix.this.getField("solution")[0]), MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, 0x3be316509dccb82L, "sourcesKind"), "sources and tests");
+    SPropertyOperations.assignEnum(((SNode) addTestSources_QuickFix.this.getField("solution")[0]), MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, 0x3be316509dccb82L, "sourcesKind"), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3be316509db4513L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleSourcesKind"), 0x3be316509db4553L, "sources_and_tests"));
   }
 }

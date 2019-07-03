@@ -13,11 +13,11 @@ import org.jetbrains.annotations.NotNull;
 public class EnumerationDescriptor_ScriptType extends EnumerationDescriptorBase {
 
   public EnumerationDescriptor_ScriptType() {
-    super(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x498b4f71ee081150L, "ScriptType", "r:00000000-0000-4000-0000-011c89590323(jetbrains.mps.lang.script.structure)/5299416737274925392", PrimitiveTypeId.STRING);
+    super(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x498b4f71ee081150L, "ScriptType", "r:00000000-0000-4000-0000-011c89590323(jetbrains.mps.lang.script.structure)/4241665505353447353", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor myMember_enhancement_0 = new EnumerationDescriptor.MemberDescriptor("enhancement", "enhancement", "r:00000000-0000-4000-0000-011c89590323(jetbrains.mps.lang.script.structure)/5299416737274925393", "enhancement");
-  private final EnumerationDescriptor.MemberDescriptor myMember_migration_0 = new EnumerationDescriptor.MemberDescriptor("migration", "migration", "r:00000000-0000-4000-0000-011c89590323(jetbrains.mps.lang.script.structure)/5299416737274925394", "migration");
+  private final EnumerationDescriptor.MemberDescriptor myMember_enhancement_0 = new EnumerationDescriptor.MemberDescriptor("enhancement", "enhancement", 0x498b4f71ee081151L, "r:00000000-0000-4000-0000-011c89590323(jetbrains.mps.lang.script.structure)/4241665505353447355", "enhancement", "enhancement");
+  private final EnumerationDescriptor.MemberDescriptor myMember_migration_0 = new EnumerationDescriptor.MemberDescriptor("migration", "migration", 0x498b4f71ee081152L, "r:00000000-0000-4000-0000-011c89590323(jetbrains.mps.lang.script.structure)/4241665505353447356", "migration", "migration");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x498b4f71ee081150L, 0x498b4f71ee081151L, 0x498b4f71ee081152L);
   private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_enhancement_0, myMember_migration_0);
@@ -36,11 +36,11 @@ public class EnumerationDescriptor_ScriptType extends EnumerationDescriptorBase 
 
   @Nullable
   @Override
-  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
-    if (string == null) {
+  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String memberName) {
+    if (memberName == null) {
       return null;
     }
-    switch (string) {
+    switch (memberName) {
       case "enhancement":
         return myMember_enhancement_0;
       case "migration":

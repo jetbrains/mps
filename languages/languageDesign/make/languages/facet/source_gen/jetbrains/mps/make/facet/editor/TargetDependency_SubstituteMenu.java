@@ -101,7 +101,7 @@ __switch__:
                         assert false : "Internal error";
                         return false;
                       case 2:
-                        this._2_em_it = SEnumOperations.getMembers(0x696c11654a59463bL, 0xbc5d902caab85dd0L, "jetbrains.mps.make.facet", 0x73e720709e3139e2L, "TargetDependencyQualifier").iterator();
+                        this._2_em_it = SEnumOperations.getMembers(MetaAdapterFactory.getEnumeration(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x73e720709e3139e2L, "jetbrains.mps.make.facet.structure.TargetDependencyQualifier")).iterator();
                       case 3:
                         if (!(this._2_em_it.hasNext())) {
                           this.__CP__ = 1;
@@ -179,7 +179,7 @@ __switch__:
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode dep = SNodeFactoryOperations.createNewNode(_context.getModel(), MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c60L, "jetbrains.mps.make.facet.structure.TargetDependency"), null);
-          SPropertyOperations.assign(dep, MetaAdapterFactory.getProperty(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c60L, 0x73e720709e3139e9L, "qualifier"), SEnumOperations.getMemberValue(myParameterObject._0()));
+          SPropertyOperations.assignEnum(dep, MetaAdapterFactory.getProperty(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c60L, 0x73e720709e3139e9L, "qualifier"), SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x73e720709e3139e2L, "jetbrains.mps.make.facet.structure.TargetDependencyQualifier"), SEnumOperations.getMemberName0(myParameterObject._0())));
           SLinkOperations.setTarget(dep, MetaAdapterFactory.getReferenceLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c60L, 0x5912a2ab1cd24c63L, "dependsOn"), myParameterObject._1());
           return dep;
         }
@@ -205,7 +205,7 @@ __switch__:
         @Nullable
         @Override
         public String getMatchingText(@NotNull String pattern) {
-          return SEnumOperations.getMemberName(myParameterObject._0()) + " " + SPropertyOperations.getString(myParameterObject._1(), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+          return SEnumOperations.getMemberPresentation(myParameterObject._0()) + " " + SPropertyOperations.getString(myParameterObject._1(), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
         }
       }
     }

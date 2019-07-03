@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="8zwl7qx0kdvwtn4bat3p3xn8c7y6vex">
+<product version="3" modelHash="-a2yberk5zfrv8gxs4vntuugvk9tmh9k">
   <files names="IntentionsDescriptor.java:ReplaceWithConstantValue_Intention.java:ReplaceWithFieldReference_Intention.java:add_parameter_to_InternalClassifierType_Intention.java" />
 </product>
 

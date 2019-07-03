@@ -13,12 +13,12 @@ import org.jetbrains.annotations.NotNull;
 public class EnumerationDescriptor_ScriptSwitchEnum extends EnumerationDescriptorBase {
 
   public EnumerationDescriptor_ScriptSwitchEnum() {
-    super(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x72908ac6c786177eL, "ScriptSwitchEnum", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/8255250703325730686", PrimitiveTypeId.STRING);
+    super(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x72908ac6c786177eL, "ScriptSwitchEnum", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353446280", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor myMember_NORMAL_0 = new EnumerationDescriptor.MemberDescriptor("NORMAL", "plain text", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/8255250703325730687", "plain text");
-  private final EnumerationDescriptor.MemberDescriptor myMember_SUPERSCRIPT_0 = new EnumerationDescriptor.MemberDescriptor("SUPERSCRIPT", "superscript", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/8255250703325731012", "superscript");
-  private final EnumerationDescriptor.MemberDescriptor myMember_SUBSCRIPT_0 = new EnumerationDescriptor.MemberDescriptor("SUBSCRIPT", "subscript", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/8255250703325731013", "subscript");
+  private final EnumerationDescriptor.MemberDescriptor myMember_NORMAL_0 = new EnumerationDescriptor.MemberDescriptor("NORMAL", "plain text", 0x72908ac6c786177fL, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353446282", "plain text", "NORMAL");
+  private final EnumerationDescriptor.MemberDescriptor myMember_SUPERSCRIPT_0 = new EnumerationDescriptor.MemberDescriptor("SUPERSCRIPT", "superscript", 0x72908ac6c78618c4L, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353446283", "superscript", "SUPERSCRIPT");
+  private final EnumerationDescriptor.MemberDescriptor myMember_SUBSCRIPT_0 = new EnumerationDescriptor.MemberDescriptor("SUBSCRIPT", "subscript", 0x72908ac6c78618c5L, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353446284", "subscript", "SUBSCRIPT");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x72908ac6c786177eL, 0x72908ac6c786177fL, 0x72908ac6c78618c4L, 0x72908ac6c78618c5L);
   private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_NORMAL_0, myMember_SUPERSCRIPT_0, myMember_SUBSCRIPT_0);
@@ -37,11 +37,11 @@ public class EnumerationDescriptor_ScriptSwitchEnum extends EnumerationDescripto
 
   @Nullable
   @Override
-  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
-    if (string == null) {
+  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String memberName) {
+    if (memberName == null) {
       return null;
     }
-    switch (string) {
+    switch (memberName) {
       case "NORMAL":
         return myMember_NORMAL_0;
       case "SUPERSCRIPT":

@@ -255,6 +255,12 @@
       </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
+      <concept id="4705942098322609812" name="jetbrains.mps.lang.smodel.structure.EnumMember_IsOperation" flags="ng" index="21noJN">
+        <child id="4705942098322609813" name="member" index="21noJM" />
+      </concept>
+      <concept id="4705942098322467729" name="jetbrains.mps.lang.smodel.structure.EnumMemberReference" flags="ng" index="21nZrQ">
+        <reference id="4705942098322467736" name="decl" index="21nZrZ" />
+      </concept>
       <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
         <reference id="1177026940964" name="conceptDeclaration" index="cht4Q" />
       </concept>
@@ -262,9 +268,6 @@
         <child id="1144104376918" name="parameter" index="1xVPHs" />
       </concept>
       <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
-      <concept id="1138676077309" name="jetbrains.mps.lang.smodel.structure.EnumMemberReference_Old" flags="nn" index="uoxfO">
-        <reference id="1138676095763" name="enumMember" index="uo_Cq" />
-      </concept>
       <concept id="7453996997717780434" name="jetbrains.mps.lang.smodel.structure.Node_GetSConceptOperation" flags="nn" index="2yIwOk" />
       <concept id="1173122760281" name="jetbrains.mps.lang.smodel.structure.Node_GetAncestorsOperation" flags="nn" index="z$bX8" />
       <concept id="2396822768958367367" name="jetbrains.mps.lang.smodel.structure.AbstractTypeCastExpression" flags="nn" index="$5XWr">
@@ -311,9 +314,6 @@
         <child id="6039268229364358387" name="concept" index="1pnPq6" />
       </concept>
       <concept id="334628810661441841" name="jetbrains.mps.lang.smodel.structure.AsSConcept" flags="nn" index="1rGIog" />
-      <concept id="1146171026731" name="jetbrains.mps.lang.smodel.structure.Property_HasValue_Enum" flags="nn" index="3t7uKx">
-        <child id="1146171026732" name="value" index="3t7uKA" />
-      </concept>
       <concept id="1171999116870" name="jetbrains.mps.lang.smodel.structure.Node_IsNullOperation" flags="nn" index="3w_OXm" />
       <concept id="1172008320231" name="jetbrains.mps.lang.smodel.structure.Node_IsNotNullOperation" flags="nn" index="3x8VRR" />
       <concept id="1144100932627" name="jetbrains.mps.lang.smodel.structure.OperationParm_Inclusion" flags="ng" index="1xIGOp" />
@@ -45032,7 +45032,7 @@
                                                       </node>
                                                     </node>
                                                     <node concept="3TrcHB" id="4fK" role="2OqNvi">
-                                                      <ref role="3TsBF5" to="tpce:fA0lm$B" resolve="metaClass" />
+                                                      <ref role="3TsBF5" to="tpce:3Ftr4R6BH8$" resolve="metaClass" />
                                                       <node concept="cd27G" id="4fO" role="lGtFl">
                                                         <node concept="3u3nmq" id="4fP" role="cd27D">
                                                           <property role="3u3nmv" value="6836281137582782591" />
@@ -45045,18 +45045,18 @@
                                                       </node>
                                                     </node>
                                                   </node>
-                                                  <node concept="3t7uKx" id="4fH" role="2OqNvi">
-                                                    <node concept="uoxfO" id="4fR" role="3t7uKA">
-                                                      <ref role="uo_Cq" to="tpce:fLJjDmT" />
+                                                  <node concept="21noJN" id="4fH" role="2OqNvi">
+                                                    <node concept="21nZrQ" id="4fR" role="21noJM">
+                                                      <ref role="21nZrZ" to="tpce:3Ftr4R6BFyo" resolve="aggregation" />
                                                       <node concept="cd27G" id="4fT" role="lGtFl">
                                                         <node concept="3u3nmq" id="4fU" role="cd27D">
-                                                          <property role="3u3nmv" value="6836281137582782593" />
+                                                          <property role="3u3nmv" value="4241665505382005403" />
                                                         </node>
                                                       </node>
                                                     </node>
                                                     <node concept="cd27G" id="4fS" role="lGtFl">
                                                       <node concept="3u3nmq" id="4fV" role="cd27D">
-                                                        <property role="3u3nmv" value="6836281137582782592" />
+                                                        <property role="3u3nmv" value="4241665505382005402" />
                                                       </node>
                                                     </node>
                                                   </node>

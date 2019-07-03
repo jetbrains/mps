@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="6iryloz8i65t4ckuq095uus930vvjy2">
+<product version="3" modelHash="1onk12ryi81aod090ij4s2d26oa9jbo">
   <files names="ConceptPresentationAspectImpl.java:EnumerationDescriptor_TestEnum_CustomDefaultValue.java:EnumerationDescriptor_TestEnum_CustomIdentifier.java:EnumerationDescriptor_TestEnum_DeriveFromInternalValue.java:EnumerationDescriptor_TestEnum_DeriveFromPresentation.java:EnumerationDescriptor_TestEnum_FirstMemberDefaultValue.java:EnumerationDescriptor_TestEnum_NoDefaultValue.java:LanguageConceptSwitch.java:StructureAspectDescriptor.java" />
 </product>
 

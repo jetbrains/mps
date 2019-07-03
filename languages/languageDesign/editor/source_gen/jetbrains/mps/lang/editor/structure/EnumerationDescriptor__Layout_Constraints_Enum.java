@@ -13,20 +13,20 @@ import org.jetbrains.annotations.NotNull;
 public class EnumerationDescriptor__Layout_Constraints_Enum extends EnumerationDescriptorBase {
 
   public EnumerationDescriptor__Layout_Constraints_Enum() {
-    super(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10901d9d75fL, "_Layout_Constraints_Enum", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1138197387103", PrimitiveTypeId.STRING);
+    super(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10901d9d75fL, "_Layout_Constraints_Enum", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353445990", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor myMember_punctuation_0 = new EnumerationDescriptor.MemberDescriptor("punctuation", "punctuation", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1138197387339", "punctuation");
-  private final EnumerationDescriptor.MemberDescriptor myMember_noflow_0 = new EnumerationDescriptor.MemberDescriptor("noflow", "noflow", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1138197619454", "noflow");
-  private final EnumerationDescriptor.MemberDescriptor myMember__0 = new EnumerationDescriptor.MemberDescriptor(null, "none", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1138197631095", "none");
+  private final EnumerationDescriptor.MemberDescriptor myMember_punctuation_0 = new EnumerationDescriptor.MemberDescriptor("punctuation", "punctuation", 0x10901d9d84bL, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353445992", "punctuation", "punctuation");
+  private final EnumerationDescriptor.MemberDescriptor myMember_noflow_0 = new EnumerationDescriptor.MemberDescriptor("noflow", "noflow", 0x10901dd62feL, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353445993", "noflow", "noflow");
+  private final EnumerationDescriptor.MemberDescriptor myMember_none_0 = new EnumerationDescriptor.MemberDescriptor("none", "none", 0x10901dd9077L, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353445994", "none", null);
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10901d9d75fL, 0x10901d9d84bL, 0x10901dd62feL, 0x10901dd9077L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_punctuation_0, myMember_noflow_0, myMember__0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_punctuation_0, myMember_noflow_0, myMember_none_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return myMember__0;
+    return myMember_none_0;
   }
 
   @NotNull
@@ -37,15 +37,17 @@ public class EnumerationDescriptor__Layout_Constraints_Enum extends EnumerationD
 
   @Nullable
   @Override
-  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
-    if (string == null) {
-      return myMember__0;
+  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String memberName) {
+    if (memberName == null) {
+      return null;
     }
-    switch (string) {
+    switch (memberName) {
       case "punctuation":
         return myMember_punctuation_0;
       case "noflow":
         return myMember_noflow_0;
+      case "none":
+        return myMember_none_0;
     }
     return null;
   }

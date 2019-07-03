@@ -94,8 +94,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590296(jetbrains.mps.lang.editor.actions)/1222177296905">
     <file name="StyleClassItem.java">
-      <node id="1222177425047" at="16,201,17,487" concept="0" />
-      <node id="1222177551938" at="17,487,18,496" concept="0" />
+      <node id="1222177425047" at="16,201,17,489" concept="0" />
+      <node id="1222177551938" at="17,489,18,496" concept="0" />
       <node id="1222178817561" at="24,203,25,488" concept="0" />
       <node id="1222179024482" at="31,201,32,487" concept="0" />
       <node id="4088952938557968625" at="38,210,39,525" concept="0" />

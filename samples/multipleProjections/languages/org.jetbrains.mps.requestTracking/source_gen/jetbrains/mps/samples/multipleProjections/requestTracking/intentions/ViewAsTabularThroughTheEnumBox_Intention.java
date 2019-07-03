@@ -12,6 +12,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
@@ -44,7 +45,7 @@ public final class ViewAsTabularThroughTheEnumBox_Intention extends AbstractInte
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      if (!(SPropertyOperations.hasEnumValue(node, MetaAdapterFactory.getProperty(0x8d18a45bac7e4d84L, 0xa53975f1d720b09bL, 0x3301f82dc7d2e4f6L, 0x3301f82dc7d4ec4cL, "presentation"), "tabular"))) {
+      if (!(SEnumOperations.isMember(SPropertyOperations.getEnum(node, MetaAdapterFactory.getProperty(0x8d18a45bac7e4d84L, 0xa53975f1d720b09bL, 0x3301f82dc7d2e4f6L, 0x3301f82dc7d4ec4cL, "presentation")), 0x3301f82dc7d4d8ffL))) {
         return "View As Tabular Through the Enum Box";
       } else {
         return "View As Structural Through the Enum Box";
@@ -52,10 +53,10 @@ public final class ViewAsTabularThroughTheEnumBox_Intention extends AbstractInte
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if (!(SPropertyOperations.hasEnumValue(node, MetaAdapterFactory.getProperty(0x8d18a45bac7e4d84L, 0xa53975f1d720b09bL, 0x3301f82dc7d2e4f6L, 0x3301f82dc7d4ec4cL, "presentation"), "tabular"))) {
-        SPropertyOperations.assign(node, MetaAdapterFactory.getProperty(0x8d18a45bac7e4d84L, 0xa53975f1d720b09bL, 0x3301f82dc7d2e4f6L, 0x3301f82dc7d4ec4cL, "presentation"), "tabular");
+      if (!(SEnumOperations.isMember(SPropertyOperations.getEnum(node, MetaAdapterFactory.getProperty(0x8d18a45bac7e4d84L, 0xa53975f1d720b09bL, 0x3301f82dc7d2e4f6L, 0x3301f82dc7d4ec4cL, "presentation")), 0x3301f82dc7d4d8ffL))) {
+        SPropertyOperations.assignEnum(node, MetaAdapterFactory.getProperty(0x8d18a45bac7e4d84L, 0xa53975f1d720b09bL, 0x3301f82dc7d2e4f6L, 0x3301f82dc7d4ec4cL, "presentation"), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x8d18a45bac7e4d84L, 0xa53975f1d720b09bL, 0x3301f82dc7d4d8f5L, "jetbrains.mps.samples.multipleProjections.requestTracking.structure.WorkflowPresentation"), 0x3301f82dc7d4d8ffL, "tabular"));
       } else {
-        SPropertyOperations.assign(node, MetaAdapterFactory.getProperty(0x8d18a45bac7e4d84L, 0xa53975f1d720b09bL, 0x3301f82dc7d2e4f6L, 0x3301f82dc7d4ec4cL, "presentation"), "structural");
+        SPropertyOperations.assignEnum(node, MetaAdapterFactory.getProperty(0x8d18a45bac7e4d84L, 0xa53975f1d720b09bL, 0x3301f82dc7d2e4f6L, 0x3301f82dc7d4ec4cL, "presentation"), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x8d18a45bac7e4d84L, 0xa53975f1d720b09bL, 0x3301f82dc7d4d8f5L, "jetbrains.mps.samples.multipleProjections.requestTracking.structure.WorkflowPresentation"), 0x3301f82dc7d4d8f6L, "structural"));
       }
     }
     @Override

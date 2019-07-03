@@ -21,6 +21,7 @@ import jetbrains.mps.ide.script.plugin.AbstractMigrationScriptHelper;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.ide.script.plugin.RunMigrationScriptsDialog;
@@ -89,7 +90,7 @@ public class RunMigrationScripts_Action extends BaseAction {
         ScriptsMenuBuilder menuBuilder = new ScriptsMenuBuilder(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")), RunMigrationScripts_Action.this.global);
         allScripts.value = ListSequence.fromList(menuBuilder.getAllScripts()).sort(new ISelector<SNode, String>() {
           public String select(SNode it) {
-            return (SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, 0x498b4f71ee081153L, "type")) == null ? "" : SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, 0x498b4f71ee081153L, "type")));
+            return (SEnumOperations.getMemberName0(SPropertyOperations.getEnum(it, MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, 0x498b4f71ee081153L, "type"))) == null ? "" : SEnumOperations.getMemberName0(SPropertyOperations.getEnum(it, MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, 0x498b4f71ee081153L, "type"))));
           }
         }, true).alsoSort(new ISelector<SNode, String>() {
           public String select(SNode it) {

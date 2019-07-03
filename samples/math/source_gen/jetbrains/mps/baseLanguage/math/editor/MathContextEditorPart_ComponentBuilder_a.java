@@ -11,6 +11,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Collection;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
@@ -62,10 +63,10 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
     return editorCell;
   }
   private boolean nodeCondition_qri1nn_a1a() {
-    return SPropertyOperations.getInteger(myNode, MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1a6fbb5a434b008bL, 0x1a6fbb5a434b3535L, "precisionSetting")) == 0;
+    return SPropertyOperations.getEnum(myNode, MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1a6fbb5a434b008bL, 0x1a6fbb5a434b3535L, "precisionSetting")) == SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x12056af4e37L, "jetbrains.mps.baseLanguage.math.structure.PrecisionSetting"), 0x12056af4e38L, "CUSTOM");
   }
   private boolean nodeCondition_qri1nn_a2a() {
-    return SPropertyOperations.getInteger(myNode, MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1a6fbb5a434b008bL, 0x1a6fbb5a434b3535L, "precisionSetting")) == 0;
+    return SPropertyOperations.getEnum(myNode, MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1a6fbb5a434b008bL, 0x1a6fbb5a434b3535L, "precisionSetting")) == SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x12056af4e37L, "jetbrains.mps.baseLanguage.math.structure.PrecisionSetting"), 0x12056af4e38L, "CUSTOM");
   }
   private EditorCell createCollection_1() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Indent());

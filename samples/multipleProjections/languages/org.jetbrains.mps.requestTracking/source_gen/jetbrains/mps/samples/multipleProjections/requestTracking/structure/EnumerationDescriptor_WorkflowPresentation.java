@@ -13,11 +13,11 @@ import org.jetbrains.annotations.NotNull;
 public class EnumerationDescriptor_WorkflowPresentation extends EnumerationDescriptorBase {
 
   public EnumerationDescriptor_WorkflowPresentation() {
-    super(0x8d18a45bac7e4d84L, 0xa53975f1d720b09bL, 0x3301f82dc7d4d8f5L, "WorkflowPresentation", "r:fa417a98-a00c-4f7c-9ba5-6ec71a5b205a(jetbrains.mps.samples.multipleProjections.requestTracking.structure)/3675491646420867317", PrimitiveTypeId.STRING);
+    super(0x8d18a45bac7e4d84L, 0xa53975f1d720b09bL, 0x3301f82dc7d4d8f5L, "WorkflowPresentation", "r:fa417a98-a00c-4f7c-9ba5-6ec71a5b205a(jetbrains.mps.samples.multipleProjections.requestTracking.structure)/4241665505353448596", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor myMember_structural_0 = new EnumerationDescriptor.MemberDescriptor("structural", "structural", "r:fa417a98-a00c-4f7c-9ba5-6ec71a5b205a(jetbrains.mps.samples.multipleProjections.requestTracking.structure)/3675491646420867318", "structural");
-  private final EnumerationDescriptor.MemberDescriptor myMember_tabular_0 = new EnumerationDescriptor.MemberDescriptor("tabular", "tabular", "r:fa417a98-a00c-4f7c-9ba5-6ec71a5b205a(jetbrains.mps.samples.multipleProjections.requestTracking.structure)/3675491646420867327", "tabular");
+  private final EnumerationDescriptor.MemberDescriptor myMember_structural_0 = new EnumerationDescriptor.MemberDescriptor("structural", "structural", 0x3301f82dc7d4d8f6L, "r:fa417a98-a00c-4f7c-9ba5-6ec71a5b205a(jetbrains.mps.samples.multipleProjections.requestTracking.structure)/4241665505353448598", "structural", "structural");
+  private final EnumerationDescriptor.MemberDescriptor myMember_tabular_0 = new EnumerationDescriptor.MemberDescriptor("tabular", "tabular", 0x3301f82dc7d4d8ffL, "r:fa417a98-a00c-4f7c-9ba5-6ec71a5b205a(jetbrains.mps.samples.multipleProjections.requestTracking.structure)/4241665505353448599", "tabular", "tabular");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x8d18a45bac7e4d84L, 0xa53975f1d720b09bL, 0x3301f82dc7d4d8f5L, 0x3301f82dc7d4d8f6L, 0x3301f82dc7d4d8ffL);
   private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_structural_0, myMember_tabular_0);
@@ -36,11 +36,11 @@ public class EnumerationDescriptor_WorkflowPresentation extends EnumerationDescr
 
   @Nullable
   @Override
-  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
-    if (string == null) {
+  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String memberName) {
+    if (memberName == null) {
       return null;
     }
-    switch (string) {
+    switch (memberName) {
       case "structural":
         return myMember_structural_0;
       case "tabular":

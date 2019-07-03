@@ -13,17 +13,17 @@ import org.jetbrains.annotations.NotNull;
 public class EnumerationDescriptor_PredefinedCellID extends EnumerationDescriptorBase {
 
   public EnumerationDescriptor_PredefinedCellID() {
-    super(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1e02662c4b880a97L, "PredefinedCellID", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/2162403111523060375", PrimitiveTypeId.STRING);
+    super(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1e02662c4b880a97L, "PredefinedCellID", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353446289", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor myMember_first_0 = new EnumerationDescriptor.MemberDescriptor("first", "FIRST", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/2162403111523060376", "FIRST");
-  private final EnumerationDescriptor.MemberDescriptor myMember_last_0 = new EnumerationDescriptor.MemberDescriptor("last", "LAST", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/2162403111523062256", "LAST");
-  private final EnumerationDescriptor.MemberDescriptor myMember_firstEditable_0 = new EnumerationDescriptor.MemberDescriptor("firstEditable", "FIRST_EDITABLE", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/2162403111523062252", "FIRST_EDITABLE");
-  private final EnumerationDescriptor.MemberDescriptor myMember_lastEditable_0 = new EnumerationDescriptor.MemberDescriptor("lastEditable", "LAST_EDITABLE", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/2162403111523062249", "LAST_EDITABLE");
-  private final EnumerationDescriptor.MemberDescriptor myMember_firstError_0 = new EnumerationDescriptor.MemberDescriptor("firstError", "FIRST_ERROR", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/2057482661602002109", "FIRST_ERROR");
-  private final EnumerationDescriptor.MemberDescriptor myMember_lastError_0 = new EnumerationDescriptor.MemberDescriptor("lastError", "LAST_ERROR", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/2057482661602002115", "LAST_ERROR");
-  private final EnumerationDescriptor.MemberDescriptor myMember_focusPolicy_0 = new EnumerationDescriptor.MemberDescriptor("focusPolicy", "FOCUS_POLICY", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/2057482661602002122", "FOCUS_POLICY");
-  private final EnumerationDescriptor.MemberDescriptor myMember_mostRelevant_0 = new EnumerationDescriptor.MemberDescriptor("mostRelevant", "MOST_RELEVANT", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/5933946333436767965", "MOST_RELEVANT");
+  private final EnumerationDescriptor.MemberDescriptor myMember_first_0 = new EnumerationDescriptor.MemberDescriptor("first", "FIRST", 0x1e02662c4b880a98L, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353446291", "FIRST", "first");
+  private final EnumerationDescriptor.MemberDescriptor myMember_last_0 = new EnumerationDescriptor.MemberDescriptor("last", "LAST", 0x1e02662c4b8811f0L, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353446292", "LAST", "last");
+  private final EnumerationDescriptor.MemberDescriptor myMember_firstEditable_0 = new EnumerationDescriptor.MemberDescriptor("firstEditable", "FIRST_EDITABLE", 0x1e02662c4b8811ecL, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353446293", "FIRST_EDITABLE", "firstEditable");
+  private final EnumerationDescriptor.MemberDescriptor myMember_lastEditable_0 = new EnumerationDescriptor.MemberDescriptor("lastEditable", "LAST_EDITABLE", 0x1e02662c4b8811e9L, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353446294", "LAST_EDITABLE", "lastEditable");
+  private final EnumerationDescriptor.MemberDescriptor myMember_firstError_0 = new EnumerationDescriptor.MemberDescriptor("firstError", "FIRST_ERROR", 0x1c8da594685004bdL, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353446295", "FIRST_ERROR", "firstError");
+  private final EnumerationDescriptor.MemberDescriptor myMember_lastError_0 = new EnumerationDescriptor.MemberDescriptor("lastError", "LAST_ERROR", 0x1c8da594685004c3L, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353446296", "LAST_ERROR", "lastError");
+  private final EnumerationDescriptor.MemberDescriptor myMember_focusPolicy_0 = new EnumerationDescriptor.MemberDescriptor("focusPolicy", "FOCUS_POLICY", 0x1c8da594685004caL, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353446297", "FOCUS_POLICY", "focusPolicy");
+  private final EnumerationDescriptor.MemberDescriptor myMember_mostRelevant_0 = new EnumerationDescriptor.MemberDescriptor("mostRelevant", "MOST_RELEVANT", 0x52599cc038baeeddL, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353446298", "MOST_RELEVANT", "mostRelevant");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1e02662c4b880a97L, 0x1e02662c4b880a98L, 0x1e02662c4b8811f0L, 0x1e02662c4b8811ecL, 0x1e02662c4b8811e9L, 0x1c8da594685004bdL, 0x1c8da594685004c3L, 0x1c8da594685004caL, 0x52599cc038baeeddL);
   private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_first_0, myMember_last_0, myMember_firstEditable_0, myMember_lastEditable_0, myMember_firstError_0, myMember_lastError_0, myMember_focusPolicy_0, myMember_mostRelevant_0);
@@ -42,11 +42,11 @@ public class EnumerationDescriptor_PredefinedCellID extends EnumerationDescripto
 
   @Nullable
   @Override
-  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
-    if (string == null) {
+  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String memberName) {
+    if (memberName == null) {
       return null;
     }
-    switch (string) {
+    switch (memberName) {
       case "first":
         return myMember_first_0;
       case "last":

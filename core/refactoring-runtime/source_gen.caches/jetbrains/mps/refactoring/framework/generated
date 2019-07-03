@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-1vfsk69fy45z3pgxtrk36t4nzi7wyka">
+<product version="3" modelHash="9rw93zfx9i1x3zhz7mdg9qtkkw0f99">
   <files names="BaseRefactoring.java:IDescendantsProvider.java:IRefactoring.java:IRefactoringTarget.java:InvalidInputValueException.java:RefactoringContext.java:RefactoringTarget.java:RefactoringUtil.java" />
 </product>
 

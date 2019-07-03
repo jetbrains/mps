@@ -13,21 +13,21 @@ import org.jetbrains.annotations.NotNull;
 public class EnumerationDescriptor_MatrixNormKind extends EnumerationDescriptorBase {
 
   public EnumerationDescriptor_MatrixNormKind() {
-    super(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0xa87de0e72c56776L, "MatrixNormKind", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/758819215871666038", PrimitiveTypeId.INTEGER);
+    super(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0xa87de0e72c56776L, "MatrixNormKind", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/4241665505353448476", PrimitiveTypeId.INTEGER);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor myMember_0_0 = new EnumerationDescriptor.MemberDescriptor("0", "1", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/758819215871666039", "norm1");
-  private final EnumerationDescriptor.MemberDescriptor myMember_1_0 = new EnumerationDescriptor.MemberDescriptor("1", "∞", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/758819215871666040", "normInfty");
-  private final EnumerationDescriptor.MemberDescriptor myMember_2_0 = new EnumerationDescriptor.MemberDescriptor("2", "F", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/758819215871666041", "norm2F");
-  private final EnumerationDescriptor.MemberDescriptor myMember_3_0 = new EnumerationDescriptor.MemberDescriptor("3", "max", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/758819215871666042", "normMax");
+  private final EnumerationDescriptor.MemberDescriptor myMember_norm1_0 = new EnumerationDescriptor.MemberDescriptor("norm1", "1", 0xa87de0e72c56777L, "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/4241665505353448478", "norm1", "0");
+  private final EnumerationDescriptor.MemberDescriptor myMember_normInfty_0 = new EnumerationDescriptor.MemberDescriptor("normInfty", "∞", 0xa87de0e72c56778L, "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/4241665505353448479", "normInfty", "1");
+  private final EnumerationDescriptor.MemberDescriptor myMember_norm2F_0 = new EnumerationDescriptor.MemberDescriptor("norm2F", "F", 0xa87de0e72c56779L, "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/4241665505353448480", "norm2F", "2");
+  private final EnumerationDescriptor.MemberDescriptor myMember_normMax_0 = new EnumerationDescriptor.MemberDescriptor("normMax", "max", 0xa87de0e72c5677aL, "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/4241665505353448481", "normMax", "3");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0xa87de0e72c56776L, 0xa87de0e72c56777L, 0xa87de0e72c56778L, 0xa87de0e72c56779L, 0xa87de0e72c5677aL);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_0_0, myMember_1_0, myMember_2_0, myMember_3_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_norm1_0, myMember_normInfty_0, myMember_norm2F_0, myMember_normMax_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return myMember_1_0;
+    return myMember_normInfty_0;
   }
 
   @NotNull
@@ -38,19 +38,19 @@ public class EnumerationDescriptor_MatrixNormKind extends EnumerationDescriptorB
 
   @Nullable
   @Override
-  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
-    if (string == null) {
+  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String memberName) {
+    if (memberName == null) {
       return null;
     }
-    switch (string) {
-      case "0":
-        return myMember_0_0;
-      case "1":
-        return myMember_1_0;
-      case "2":
-        return myMember_2_0;
-      case "3":
-        return myMember_3_0;
+    switch (memberName) {
+      case "norm1":
+        return myMember_norm1_0;
+      case "normInfty":
+        return myMember_normInfty_0;
+      case "norm2F":
+        return myMember_norm2F_0;
+      case "normMax":
+        return myMember_normMax_0;
     }
     return null;
   }

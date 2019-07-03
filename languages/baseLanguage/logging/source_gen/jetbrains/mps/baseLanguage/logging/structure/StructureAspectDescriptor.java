@@ -80,7 +80,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5eeb6L);
     b.origin("r:00000000-0000-4000-0000-011c8959057f(jetbrains.mps.baseLanguage.logging.structure)/2034914114981261497");
     b.version(2);
-    b.property("severity", 0x1c3d779b2be2f1b7L).type(MetaIdFactory.dataTypeId(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x10fc53ae113L)).origin("2034914114981261751").done();
+    b.property("severity", 0x1c3d779b2be2f1b7L).type(MetaIdFactory.dataTypeId(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x10fc53ae113L)).origin("4241665505353453574").done();
     b.aggregate("message", 0x1c3d779b2be2f1b9L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(false).origin("2034914114981261753").done();
     b.aggregate("throwable", 0x1c3d779b2be2f1bbL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(true).ordered(true).multiple(false).origin("2034914114981261755").done();
     b.alias("log");
@@ -93,7 +93,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5eeb6L);
     b.origin("r:00000000-0000-4000-0000-011c8959057f(jetbrains.mps.baseLanguage.logging.structure)/6332851714983831325");
     b.version(2);
-    b.property("severity", 0x57e2cf14f6d5d81fL).type(MetaIdFactory.dataTypeId(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x10fc53ae113L)).origin("6332851714983843871").done();
+    b.property("severity", 0x57e2cf14f6d5d81fL).type(MetaIdFactory.dataTypeId(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x10fc53ae113L)).origin("4241665505353453576").done();
     b.aggregate("message", 0x4f67298c4630c25eL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(false).origin("5721587534047265374").done();
     b.aggregate("throwable", 0x4f67298c4630c25fL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(true).ordered(true).multiple(false).origin("5721587534047265375").done();
     b.aggregate("project", 0x4f67298c4630c318L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(true).ordered(true).multiple(false).origin("5721587534047265560").done();

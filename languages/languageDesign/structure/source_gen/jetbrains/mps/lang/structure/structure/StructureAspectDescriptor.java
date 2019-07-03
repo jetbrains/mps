@@ -230,7 +230,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(2);
     b.property("rootable", 0xff49c1d648L).type(PrimitiveTypeId.BOOLEAN).origin("1096454100552").done();
     b.property("iconPath", 0x10e328118ddL).type(PrimitiveTypeId.STRING).origin("1160488491229").done();
-    b.property("staticScope", 0x4b014033eedc8a48L).type(MetaIdFactory.dataTypeId(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x4b014033eedc8be7L)).origin("5404671619616246344").done();
+    b.property("staticScope", 0x4b014033eedc8a48L).type(MetaIdFactory.dataTypeId(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x4b014033eedc8be7L)).origin("4241665505353454122").done();
     b.associate("extends", 0xf979be93cfL).target(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L).optional(true).origin("1071489389519").done();
     b.aggregate("implements", 0x110358d693eL).target(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L).optional(true).ordered(true).multiple(true).origin("1169129564478").done();
     b.aggregate("icon", 0x57cf4eb14c4f9ef5L).target(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c3774289eeeL).optional(true).ordered(true).multiple(false).origin("6327362524875300597").done();
@@ -337,7 +337,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xeeb344f64a629e5L);
     b.origin("r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/1082978164219");
     b.version(2);
-    b.property("memberIdentifierPolicy", 0x116d5fed0c2L).type(MetaIdFactory.dataTypeId(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x116d5fab105L)).origin("1197591154882").done();
+    b.property("memberIdentifierPolicy", 0x116d5fed0c2L).type(MetaIdFactory.dataTypeId(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x116d5fab105L)).origin("4241665505353454120").done();
     b.property("hasNoDefaultMember", 0x11a35a5efdaL).type(PrimitiveTypeId.BOOLEAN).origin("1212080844762").done();
     b.property("noValueText", 0x11a360ab6a6L).type(PrimitiveTypeId.STRING).origin("1212087449254").done();
     b.associate("memberDataType", 0xfc3210ef05L).target(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc3652de27L).optional(false).origin("1083171729157").done();
@@ -452,8 +452,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/1071489288298");
     b.version(2);
     b.property("role", 0xf98052f333L).type(PrimitiveTypeId.STRING).origin("1071599776563").done();
-    b.property("metaClass", 0xf980556927L).type(MetaIdFactory.dataTypeId(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc6f4e95b7L)).origin("1071599937831").done();
-    b.property("sourceCardinality", 0xf98054bb04L).type(MetaIdFactory.dataTypeId(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc6f3944c2L)).origin("1071599893252").done();
+    b.property("metaClass", 0xf980556927L).type(MetaIdFactory.dataTypeId(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc6f4e95b7L)).origin("4241665505353454116").done();
+    b.property("sourceCardinality", 0xf98054bb04L).type(MetaIdFactory.dataTypeId(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc6f3944c2L)).origin("4241665505353454118").done();
     b.property("unordered", 0x213ed46fe94fc232L).type(PrimitiveTypeId.BOOLEAN).origin("2395585628928459314").done();
     b.property("linkId", 0x35a81382d82a4e4L).type(MetaIdFactory.dataTypeId(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x3b4187227177134aL)).origin("241647608299431140").done();
     b.associate("specializedLink", 0xf98051c244L).target(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL).optional(true).origin("1071599698500").done();

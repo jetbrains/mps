@@ -14,13 +14,12 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
-import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.smodel.constraints.ModelConstraints;
 import jetbrains.mps.smodel.action.NodeSubstituteActionWrapper;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
@@ -49,10 +48,10 @@ import org.jetbrains.annotations.Nullable;
     return new AbstractNodeSubstituteInfo(editorComponent.getEditorContext()) {
       protected List<SubstituteAction> createActions() {
         ArrayList<SubstituteAction> list = new ArrayList<SubstituteAction>();
-        for (final SEnumerationLiteral member : CollectionSequence.fromCollection(SEnumOperations.getMembers(0xb4a430be169648bfL, 0xbb724333242e590cL, "jetbrains.mps.lang.editor.menus.style.testLanguage", 0x49b1109510b71ff4L, "TestCompletionCustomization_Enum"))) {
+        for (final SEnumerationLiteral member : ListSequence.fromList(SEnumOperations.getMembers(MetaAdapterFactory.getEnumeration(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510b71ff4L, "jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_Enum")))) {
           list.add(createAction(editorComponent, member.getPresentation(), new _FunctionTypes._return_P4_E0<SNode, EditorContext, String, String, SNode>() {
             public SNode invoke(EditorContext context, String pattern, String text, SNode parent) {
-              SPropertyOperations.assign(parent, MetaAdapterFactory.getProperty(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L, 0x34d3e9eb931270eaL, "customActionEnumProperty"), SEnumOperations.getMemberValue(member));
+              SPropertyOperations.assignEnum(parent, MetaAdapterFactory.getProperty(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L, 0x34d3e9eb931270eaL, "customActionEnumProperty"), member);
               return parent;
             }
           }));

@@ -33,7 +33,7 @@ public final class BooleanPropertyInstance__BehaviorDescriptor extends BaseBHDes
   }
 
   /*package*/ static SNode getValueExpression_id3m06Jgserfw(@NotNull SNode __thisNode__) {
-    return _quotation_createNode_uhky7j_a0a0(String.valueOf(SPropertyOperations.getBoolean(__thisNode__, MetaAdapterFactory.getProperty(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e84100ec3L, 0x59e9926e84100ec4L, "value"))));
+    return _quotation_createNode_uhky7j_a0a0(SPropertyOperations.getBoolean(__thisNode__, MetaAdapterFactory.getProperty(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e84100ec3L, 0x59e9926e84100ec4L, "value")));
   }
 
   /*package*/ BooleanPropertyInstance__BehaviorDescriptor() {
@@ -85,7 +85,7 @@ public final class BooleanPropertyInstance__BehaviorDescriptor extends BaseBHDes
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b201L, "BooleanConstant"), null, null, false);
-    SNodeAccessUtil.setProperty(quotedNode_2, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value"), (String) parameter_1);
+    SNodeAccessUtil.setPropertyValue(quotedNode_2, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value"), (boolean) parameter_1);
     return quotedNode_2;
   }
 }

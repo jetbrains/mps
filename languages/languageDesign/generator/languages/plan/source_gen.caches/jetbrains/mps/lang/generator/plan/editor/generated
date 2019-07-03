@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="4araxm5jeaqoa3bcpvnm3htviuk03c7">
+<product version="3" modelHash="aoaa0hwr6117vv3gru10evtkqvp4fz2">
   <files names="ApplyGenerators_Editor.java:ApplyGenerators_EditorBuilder_a.java:ApplyGenerators_InspectorBuilder_a.java:CheckpointDeclaration_Editor.java:CheckpointDeclaration_EditorBuilder_a.java:CheckpointSynchronization_Editor.java:CheckpointSynchronization_EditorBuilder_a.java:Checkpoint_Editor.java:Checkpoint_EditorBuilder_a.java:DeclaredCheckpointSpec_Editor.java:DeclaredCheckpointSpec_EditorBuilder_a.java:DeclaredCheckpointSpec_SubstituteMenu.java:DocumentationStep_Editor.java:DocumentationStep_EditorBuilder_a.java:EditorAspectDescriptorImpl.java:Fork_Editor.java:Fork_EditorBuilder_a.java:InPlaceCheckpointRefSpec_Editor.java:InPlaceCheckpointRefSpec_EditorBuilder_a.java:InPlaceCheckpointRefSpec_SubstituteMenu.java:InPlaceCheckpointSpec_Editor.java:InPlaceCheckpointSpec_EditorBuilder_a.java:IncludePlan_Editor.java:IncludePlan_EditorBuilder_a.java:Plan_Editor.java:Plan_EditorBuilder_a.java:TextDocLine_Editor.java:TextDocLine_EditorBuilder_a.java:Transform_Editor.java:Transform_EditorBuilder_a.java:Transform_InspectorBuilder_a.java" />
 </product>
 

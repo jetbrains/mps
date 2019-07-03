@@ -13,20 +13,20 @@ import org.jetbrains.annotations.NotNull;
 public class EnumerationDescriptor__YesNoDefault_Enum extends EnumerationDescriptorBase {
 
   public EnumerationDescriptor__YesNoDefault_Enum() {
-    super(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfc5f30fc26L, "_YesNoDefault_Enum", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1083928804390", PrimitiveTypeId.STRING);
+    super(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfc5f30fc26L, "_YesNoDefault_Enum", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353445662", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor myMember_true_0 = new EnumerationDescriptor.MemberDescriptor("true", "yes", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1083928804391", "yes");
-  private final EnumerationDescriptor.MemberDescriptor myMember_false_0 = new EnumerationDescriptor.MemberDescriptor("false", "no", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1083928804392", "no");
-  private final EnumerationDescriptor.MemberDescriptor myMember__0 = new EnumerationDescriptor.MemberDescriptor(null, "none", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1083928804393", "none");
+  private final EnumerationDescriptor.MemberDescriptor myMember_yes_0 = new EnumerationDescriptor.MemberDescriptor("yes", "yes", 0xfc5f30fc27L, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353445664", "yes", "true");
+  private final EnumerationDescriptor.MemberDescriptor myMember_no_0 = new EnumerationDescriptor.MemberDescriptor("no", "no", 0xfc5f30fc28L, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353445665", "no", "false");
+  private final EnumerationDescriptor.MemberDescriptor myMember_none_0 = new EnumerationDescriptor.MemberDescriptor("none", "none", 0xfc5f30fc29L, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353445666", "none", null);
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfc5f30fc26L, 0xfc5f30fc27L, 0xfc5f30fc28L, 0xfc5f30fc29L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_true_0, myMember_false_0, myMember__0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_yes_0, myMember_no_0, myMember_none_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return myMember__0;
+    return myMember_none_0;
   }
 
   @NotNull
@@ -37,15 +37,17 @@ public class EnumerationDescriptor__YesNoDefault_Enum extends EnumerationDescrip
 
   @Nullable
   @Override
-  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
-    if (string == null) {
-      return myMember__0;
+  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String memberName) {
+    if (memberName == null) {
+      return null;
     }
-    switch (string) {
-      case "true":
-        return myMember_true_0;
-      case "false":
-        return myMember_false_0;
+    switch (memberName) {
+      case "yes":
+        return myMember_yes_0;
+      case "no":
+        return myMember_no_0;
+      case "none":
+        return myMember_none_0;
     }
     return null;
   }

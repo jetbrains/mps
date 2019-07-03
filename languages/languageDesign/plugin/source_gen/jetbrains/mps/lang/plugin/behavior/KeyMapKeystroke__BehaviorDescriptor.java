@@ -15,6 +15,7 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -54,10 +55,10 @@ public final class KeyMapKeystroke__BehaviorDescriptor extends BaseBHDescriptor 
     return ((boolean) KeyMapKeystroke__BehaviorDescriptor.hasRemove_id4qYinf8$eal.invoke(__thisNode__)) || ((boolean) KeyMapKeystroke__BehaviorDescriptor.hasReplaceAll_id4qYinf8$enm.invoke(__thisNode__));
   }
   /*package*/ static boolean hasRemove_id4qYinf8$eal(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.hasEnumValue(__thisNode__, MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11919c665d4L, 0x5e2b603c8f03ab4dL, "change"), "remove");
+    return SEnumOperations.isMember(SPropertyOperations.getEnum(__thisNode__, MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11919c665d4L, 0x5e2b603c8f03ab4dL, "change")), 0x5e2b603c8f03666aL);
   }
   /*package*/ static boolean hasReplaceAll_id4qYinf8$enm(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.hasEnumValue(__thisNode__, MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11919c665d4L, 0x5e2b603c8f03ab4dL, "change"), "replace all");
+    return SEnumOperations.isMember(SPropertyOperations.getEnum(__thisNode__, MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11919c665d4L, 0x5e2b603c8f03ab4dL, "change")), 0x5e2b603c8f036669L);
   }
 
   /*package*/ KeyMapKeystroke__BehaviorDescriptor() {

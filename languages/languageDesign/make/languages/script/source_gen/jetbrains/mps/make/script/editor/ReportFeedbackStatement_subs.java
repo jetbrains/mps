@@ -94,7 +94,7 @@ public class ReportFeedbackStatement_subs extends SubstituteMenuBase {
       @Nullable
       @Override
       protected Iterable<? extends SEnumerationLiteral> getParameters(SubstituteMenuContext _context) {
-        return SEnumOperations.getMembers(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, "jetbrains.mps.make.script", 0x32eac1b57fc1b82aL, "Feedback");
+        return SEnumOperations.getMembers(MetaAdapterFactory.getEnumeration(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x32eac1b57fc1b82aL, "jetbrains.mps.make.script.structure.Feedback"));
       }
       private class SMP_Action_hskkdq_a0a extends SingleItemSubstituteMenuPart {
         private final SEnumerationLiteral myParameterObject;
@@ -140,7 +140,7 @@ public class ReportFeedbackStatement_subs extends SubstituteMenuBase {
           @Nullable
           @Override
           public SNode createNode(@NotNull String pattern) {
-            return _quotation_createNode_hskkdq_a0a0a0a(SEnumOperations.getMemberValue(myParameterObject));
+            return _quotation_createNode_hskkdq_a0a0a0a(SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x32eac1b57fc1b82aL, "jetbrains.mps.make.script.structure.Feedback"), SEnumOperations.getMemberName0(myParameterObject)));
           }
 
           @Override
@@ -176,7 +176,7 @@ public class ReportFeedbackStatement_subs extends SubstituteMenuBase {
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
     quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, "jetbrains.mps.make.script"), 0x32eac1b57fc1b828L, "ReportFeedbackStatement"), null, null, false);
-    SNodeAccessUtil.setProperty(quotedNode_2, MetaAdapterFactory.getProperty(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x32eac1b57fc1b828L, 0x32eac1b57fc1b82eL, "feedback"), (String) parameter_1);
+    SNodeAccessUtil.setPropertyValue(quotedNode_2, MetaAdapterFactory.getProperty(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x32eac1b57fc1b828L, 0x32eac1b57fc1b82eL, "feedback"), (SEnumerationLiteral) parameter_1);
     quotedNode_3 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c37f506fL, "Expression"), null, null, false);
     quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x32eac1b57fc1b828L, 0x32eac1b57fc1c3e8L, "message"), quotedNode_3);
     return quotedNode_2;

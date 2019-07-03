@@ -38,6 +38,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import javax.swing.table.TableCellRenderer;
 import java.awt.Component;
 import javax.swing.JLabel;
@@ -226,10 +227,10 @@ public class RunMigrationScriptsDialog extends JDialog {
           } else if (column == 1) {
             result.value = "  " + SPropertyOperations.getString(sn, MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, 0x11225f2354aL, "title"));
           } else if (column == 2) {
-            if (SPropertyOperations.hasEnumValue(sn, MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, 0x498b4f71ee081153L, "type"), "migration")) {
-              result.value = SPropertyOperations.getString(sn, MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, 0x498b4f71ee081153L, "type")) + " (" + SPropertyOperations.getString(sn, MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, 0x498b4f71ee081155L, "toBuild")) + ")";
+            if (SEnumOperations.isMember(SPropertyOperations.getEnum(sn, MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, 0x498b4f71ee081153L, "type")), 0x498b4f71ee081152L)) {
+              result.value = SEnumOperations.getMemberName0(SPropertyOperations.getEnum(sn, MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, 0x498b4f71ee081153L, "type"))) + " (" + SPropertyOperations.getString(sn, MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, 0x498b4f71ee081155L, "toBuild")) + ")";
             } else {
-              result.value = SPropertyOperations.getString(sn, MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, 0x498b4f71ee081153L, "type"));
+              result.value = SEnumOperations.getMemberName0(SPropertyOperations.getEnum(sn, MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, 0x498b4f71ee081153L, "type")));
             }
           } else if (column == 3) {
             result.value = SNodeOperations.getModel(sn).getModule().getModuleName();

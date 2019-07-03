@@ -13,20 +13,20 @@ import org.jetbrains.annotations.NotNull;
 public class EnumerationDescriptor_StaticScope extends EnumerationDescriptorBase {
 
   public EnumerationDescriptor_StaticScope() {
-    super(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x4b014033eedc8be7L, "StaticScope", "r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/5404671619616246759", PrimitiveTypeId.STRING);
+    super(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x4b014033eedc8be7L, "StaticScope", "r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/4241665505353447712", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor myMember__0 = new EnumerationDescriptor.MemberDescriptor(null, "global", "r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/5404671619616246760", "global");
-  private final EnumerationDescriptor.MemberDescriptor myMember_root_0 = new EnumerationDescriptor.MemberDescriptor("root", "containing root", "r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/5404671619616246761", "root");
-  private final EnumerationDescriptor.MemberDescriptor myMember_none_0 = new EnumerationDescriptor.MemberDescriptor("none", "none", "r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/5404671619616246764", "none");
+  private final EnumerationDescriptor.MemberDescriptor myMember_global_0 = new EnumerationDescriptor.MemberDescriptor("global", "global", 0x4b014033eedc8be8L, "r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/4241665505353447714", "global", null);
+  private final EnumerationDescriptor.MemberDescriptor myMember_root_0 = new EnumerationDescriptor.MemberDescriptor("root", "containing root", 0x4b014033eedc8be9L, "r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/4241665505353447715", "root", "root");
+  private final EnumerationDescriptor.MemberDescriptor myMember_none_0 = new EnumerationDescriptor.MemberDescriptor("none", "none", 0x4b014033eedc8becL, "r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/4241665505353447716", "none", "none");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x4b014033eedc8be7L, 0x4b014033eedc8be8L, 0x4b014033eedc8be9L, 0x4b014033eedc8becL);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember__0, myMember_root_0, myMember_none_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_global_0, myMember_root_0, myMember_none_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return myMember__0;
+    return myMember_global_0;
   }
 
   @NotNull
@@ -37,11 +37,13 @@ public class EnumerationDescriptor_StaticScope extends EnumerationDescriptorBase
 
   @Nullable
   @Override
-  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
-    if (string == null) {
-      return myMember__0;
+  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String memberName) {
+    if (memberName == null) {
+      return null;
     }
-    switch (string) {
+    switch (memberName) {
+      case "global":
+        return myMember_global_0;
       case "root":
         return myMember_root_0;
       case "none":

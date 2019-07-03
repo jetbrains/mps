@@ -13,13 +13,13 @@ import org.jetbrains.annotations.NotNull;
 public class EnumerationDescriptor_TargetDependencyQualifier extends EnumerationDescriptorBase {
 
   public EnumerationDescriptor_TargetDependencyQualifier() {
-    super(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x73e720709e3139e2L, "TargetDependencyQualifier", "r:b16ff46d-fa06-479d-9f5c-5b6e17e7f1b2(jetbrains.mps.make.facet.structure)/8351679702044326370", PrimitiveTypeId.STRING);
+    super(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x73e720709e3139e2L, "TargetDependencyQualifier", "r:b16ff46d-fa06-479d-9f5c-5b6e17e7f1b2(jetbrains.mps.make.facet.structure)/4241665505353446916", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor myMember_BEFORE_0 = new EnumerationDescriptor.MemberDescriptor("BEFORE", "before", "r:b16ff46d-fa06-479d-9f5c-5b6e17e7f1b2(jetbrains.mps.make.facet.structure)/8351679702044326371", "before");
-  private final EnumerationDescriptor.MemberDescriptor myMember_NOT_BEFORE_0 = new EnumerationDescriptor.MemberDescriptor("NOT_BEFORE", "not before", "r:b16ff46d-fa06-479d-9f5c-5b6e17e7f1b2(jetbrains.mps.make.facet.structure)/8351679702044326373", "not before");
-  private final EnumerationDescriptor.MemberDescriptor myMember_AFTER_0 = new EnumerationDescriptor.MemberDescriptor("AFTER", "after", "r:b16ff46d-fa06-479d-9f5c-5b6e17e7f1b2(jetbrains.mps.make.facet.structure)/8351679702044326374", "after");
-  private final EnumerationDescriptor.MemberDescriptor myMember_NOT_AFTER_0 = new EnumerationDescriptor.MemberDescriptor("NOT_AFTER", "not after", "r:b16ff46d-fa06-479d-9f5c-5b6e17e7f1b2(jetbrains.mps.make.facet.structure)/8351679702044326375", "not after");
+  private final EnumerationDescriptor.MemberDescriptor myMember_BEFORE_0 = new EnumerationDescriptor.MemberDescriptor("BEFORE", "before", 0x73e720709e3139e3L, "r:b16ff46d-fa06-479d-9f5c-5b6e17e7f1b2(jetbrains.mps.make.facet.structure)/4241665505353446918", "before", "BEFORE");
+  private final EnumerationDescriptor.MemberDescriptor myMember_NOT_BEFORE_0 = new EnumerationDescriptor.MemberDescriptor("NOT_BEFORE", "not before", 0x73e720709e3139e5L, "r:b16ff46d-fa06-479d-9f5c-5b6e17e7f1b2(jetbrains.mps.make.facet.structure)/4241665505353446919", "not before", "NOT_BEFORE");
+  private final EnumerationDescriptor.MemberDescriptor myMember_AFTER_0 = new EnumerationDescriptor.MemberDescriptor("AFTER", "after", 0x73e720709e3139e6L, "r:b16ff46d-fa06-479d-9f5c-5b6e17e7f1b2(jetbrains.mps.make.facet.structure)/4241665505353446920", "after", "AFTER");
+  private final EnumerationDescriptor.MemberDescriptor myMember_NOT_AFTER_0 = new EnumerationDescriptor.MemberDescriptor("NOT_AFTER", "not after", 0x73e720709e3139e7L, "r:b16ff46d-fa06-479d-9f5c-5b6e17e7f1b2(jetbrains.mps.make.facet.structure)/4241665505353446921", "not after", "NOT_AFTER");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x73e720709e3139e2L, 0x73e720709e3139e3L, 0x73e720709e3139e5L, 0x73e720709e3139e6L, 0x73e720709e3139e7L);
   private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_BEFORE_0, myMember_NOT_BEFORE_0, myMember_AFTER_0, myMember_NOT_AFTER_0);
@@ -38,11 +38,11 @@ public class EnumerationDescriptor_TargetDependencyQualifier extends Enumeration
 
   @Nullable
   @Override
-  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
-    if (string == null) {
+  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String memberName) {
+    if (memberName == null) {
       return null;
     }
-    switch (string) {
+    switch (memberName) {
       case "BEFORE":
         return myMember_BEFORE_0;
       case "NOT_BEFORE":

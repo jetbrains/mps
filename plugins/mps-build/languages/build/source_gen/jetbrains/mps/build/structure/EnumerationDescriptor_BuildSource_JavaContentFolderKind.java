@@ -13,12 +13,12 @@ import org.jetbrains.annotations.NotNull;
 public class EnumerationDescriptor_BuildSource_JavaContentFolderKind extends EnumerationDescriptorBase {
 
   public EnumerationDescriptor_BuildSource_JavaContentFolderKind() {
-    super(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92974f7L, "BuildSource_JavaContentFolderKind", "r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/5248329904288265463", PrimitiveTypeId.STRING);
+    super(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92974f7L, "BuildSource_JavaContentFolderKind", "r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/4241665505353448050", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor myMember_source_0 = new EnumerationDescriptor.MemberDescriptor("source", "source", "r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/5248329904288265464", "source");
-  private final EnumerationDescriptor.MemberDescriptor myMember_test_0 = new EnumerationDescriptor.MemberDescriptor("test", "test", "r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/5248329904288265465", "test");
-  private final EnumerationDescriptor.MemberDescriptor myMember_excluded_0 = new EnumerationDescriptor.MemberDescriptor("excluded", "excluded", "r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/5248329904288265466", "excluded");
+  private final EnumerationDescriptor.MemberDescriptor myMember_source_0 = new EnumerationDescriptor.MemberDescriptor("source", "source", 0x48d5d03db92974f8L, "r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/4241665505353448052", "source", "source");
+  private final EnumerationDescriptor.MemberDescriptor myMember_test_0 = new EnumerationDescriptor.MemberDescriptor("test", "test", 0x48d5d03db92974f9L, "r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/4241665505353448053", "test", "test");
+  private final EnumerationDescriptor.MemberDescriptor myMember_excluded_0 = new EnumerationDescriptor.MemberDescriptor("excluded", "excluded", 0x48d5d03db92974faL, "r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/4241665505353448054", "excluded", "excluded");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92974f7L, 0x48d5d03db92974f8L, 0x48d5d03db92974f9L, 0x48d5d03db92974faL);
   private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_source_0, myMember_test_0, myMember_excluded_0);
@@ -37,11 +37,11 @@ public class EnumerationDescriptor_BuildSource_JavaContentFolderKind extends Enu
 
   @Nullable
   @Override
-  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
-    if (string == null) {
+  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String memberName) {
+    if (memberName == null) {
       return null;
     }
-    switch (string) {
+    switch (memberName) {
       case "source":
         return myMember_source_0;
       case "test":

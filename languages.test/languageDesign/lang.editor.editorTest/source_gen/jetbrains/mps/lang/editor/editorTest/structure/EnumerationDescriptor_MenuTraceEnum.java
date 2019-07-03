@@ -13,11 +13,11 @@ import org.jetbrains.annotations.NotNull;
 public class EnumerationDescriptor_MenuTraceEnum extends EnumerationDescriptorBase {
 
   public EnumerationDescriptor_MenuTraceEnum() {
-    super(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x326616b1fdb131b2L, "MenuTraceEnum", "r:1a7fc406-f263-498c-a126-51036fe6a9da(jetbrains.mps.lang.editor.editorTest.structure)/3631615103242154418", PrimitiveTypeId.STRING);
+    super(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x326616b1fdb131b2L, "MenuTraceEnum", "r:1a7fc406-f263-498c-a126-51036fe6a9da(jetbrains.mps.lang.editor.editorTest.structure)/4241665505353445486", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor myMember_enum1_0 = new EnumerationDescriptor.MemberDescriptor("enum1", "enum1", "r:1a7fc406-f263-498c-a126-51036fe6a9da(jetbrains.mps.lang.editor.editorTest.structure)/3631615103242154419", "enum1");
-  private final EnumerationDescriptor.MemberDescriptor myMember_enum2_0 = new EnumerationDescriptor.MemberDescriptor("enum2", "enum2", "r:1a7fc406-f263-498c-a126-51036fe6a9da(jetbrains.mps.lang.editor.editorTest.structure)/3631615103242154420", "enum2");
+  private final EnumerationDescriptor.MemberDescriptor myMember_enum1_0 = new EnumerationDescriptor.MemberDescriptor("enum1", "enum1", 0x326616b1fdb131b3L, "r:1a7fc406-f263-498c-a126-51036fe6a9da(jetbrains.mps.lang.editor.editorTest.structure)/4241665505353445488", "enum1", "enum1");
+  private final EnumerationDescriptor.MemberDescriptor myMember_enum2_0 = new EnumerationDescriptor.MemberDescriptor("enum2", "enum2", 0x326616b1fdb131b4L, "r:1a7fc406-f263-498c-a126-51036fe6a9da(jetbrains.mps.lang.editor.editorTest.structure)/4241665505353445489", "enum2", "enum2");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x326616b1fdb131b2L, 0x326616b1fdb131b3L, 0x326616b1fdb131b4L);
   private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_enum1_0, myMember_enum2_0);
@@ -36,11 +36,11 @@ public class EnumerationDescriptor_MenuTraceEnum extends EnumerationDescriptorBa
 
   @Nullable
   @Override
-  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
-    if (string == null) {
+  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String memberName) {
+    if (memberName == null) {
       return null;
     }
-    switch (string) {
+    switch (memberName) {
       case "enum1":
         return myMember_enum1_0;
       case "enum2":

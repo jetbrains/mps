@@ -164,7 +164,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.super_("jetbrains.mps.lang.resources.structure.Primitive", 0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b1L);
     b.origin("r:03d44d4c-3d65-461c-9085-0f48e9569e59(jetbrains.mps.lang.resources.structure)/2756621024541675104");
     b.version(2);
-    b.property("r", 0x26417c37742e28c1L).type(MetaIdFactory.dataTypeId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x15d013b3c3eb278aL)).origin("2756621024541681857").done();
+    b.property("r", 0x26417c37742e28c1L).type(MetaIdFactory.dataTypeId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x15d013b3c3eb278aL)).origin("4241665505353454086").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForColor() {
@@ -315,7 +315,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.super_("jetbrains.mps.lang.resources.structure.Primitive", 0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b1L);
     b.origin("r:03d44d4c-3d65-461c-9085-0f48e9569e59(jetbrains.mps.lang.resources.structure)/2756621024541675105");
     b.version(2);
-    b.property("r", 0x26417c37742e0e62L).type(MetaIdFactory.dataTypeId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x15d013b3c3eb278aL)).origin("2756621024541675106").done();
+    b.property("r", 0x26417c37742e0e62L).type(MetaIdFactory.dataTypeId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x15d013b3c3eb278aL)).origin("4241665505353454088").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForResource() {

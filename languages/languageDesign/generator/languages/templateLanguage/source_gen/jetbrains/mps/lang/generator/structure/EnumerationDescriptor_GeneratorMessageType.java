@@ -13,12 +13,12 @@ import org.jetbrains.annotations.NotNull;
 public class EnumerationDescriptor_GeneratorMessageType extends EnumerationDescriptorBase {
 
   public EnumerationDescriptor_GeneratorMessageType() {
-    super(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11055c71875L, "GeneratorMessageType", "r:00000000-0000-4000-0000-011c895902e8(jetbrains.mps.lang.generator.structure)/1169670215797", PrimitiveTypeId.STRING);
+    super(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11055c71875L, "GeneratorMessageType", "r:00000000-0000-4000-0000-011c895902e8(jetbrains.mps.lang.generator.structure)/4241665505353446764", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor myMember_info_0 = new EnumerationDescriptor.MemberDescriptor("info", "info", "r:00000000-0000-4000-0000-011c895902e8(jetbrains.mps.lang.generator.structure)/1169670215798", "info");
-  private final EnumerationDescriptor.MemberDescriptor myMember_warning_0 = new EnumerationDescriptor.MemberDescriptor("warning", "warning", "r:00000000-0000-4000-0000-011c895902e8(jetbrains.mps.lang.generator.structure)/1169670280596", "warning");
-  private final EnumerationDescriptor.MemberDescriptor myMember_error_0 = new EnumerationDescriptor.MemberDescriptor("error", "error", "r:00000000-0000-4000-0000-011c895902e8(jetbrains.mps.lang.generator.structure)/1169670287832", "error");
+  private final EnumerationDescriptor.MemberDescriptor myMember_info_0 = new EnumerationDescriptor.MemberDescriptor("info", "info", 0x11055c71876L, "r:00000000-0000-4000-0000-011c895902e8(jetbrains.mps.lang.generator.structure)/4241665505353446766", "info", "info");
+  private final EnumerationDescriptor.MemberDescriptor myMember_warning_0 = new EnumerationDescriptor.MemberDescriptor("warning", "warning", 0x11055c81594L, "r:00000000-0000-4000-0000-011c895902e8(jetbrains.mps.lang.generator.structure)/4241665505353446767", "warning", "warning");
+  private final EnumerationDescriptor.MemberDescriptor myMember_error_0 = new EnumerationDescriptor.MemberDescriptor("error", "error", 0x11055c831d8L, "r:00000000-0000-4000-0000-011c895902e8(jetbrains.mps.lang.generator.structure)/4241665505353446768", "error", "error");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11055c71875L, 0x11055c71876L, 0x11055c81594L, 0x11055c831d8L);
   private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_info_0, myMember_warning_0, myMember_error_0);
@@ -37,11 +37,11 @@ public class EnumerationDescriptor_GeneratorMessageType extends EnumerationDescr
 
   @Nullable
   @Override
-  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
-    if (string == null) {
+  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String memberName) {
+    if (memberName == null) {
       return null;
     }
-    switch (string) {
+    switch (memberName) {
       case "info":
         return myMember_info_0;
       case "warning":

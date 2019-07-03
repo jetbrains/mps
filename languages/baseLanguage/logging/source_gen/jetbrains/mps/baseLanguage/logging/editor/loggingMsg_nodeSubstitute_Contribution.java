@@ -76,7 +76,7 @@ public class loggingMsg_nodeSubstitute_Contribution extends SubstituteMenuBase {
     @Nullable
     @Override
     protected Iterable<? extends SEnumerationLiteral> getParameters(SubstituteMenuContext _context) {
-      return SEnumOperations.getMembers(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, "jetbrains.mps.baseLanguage.logging", 0x10fc53ae113L, "Severity");
+      return SEnumOperations.getMembers(MetaAdapterFactory.getEnumeration(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x10fc53ae113L, "jetbrains.mps.baseLanguage.logging.structure.Severity"));
     }
     private class SMP_Action_ax7x23_a0 extends SingleItemSubstituteMenuPart {
       private final SEnumerationLiteral myParameterObject;
@@ -123,7 +123,7 @@ public class loggingMsg_nodeSubstitute_Contribution extends SubstituteMenuBase {
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode logStatement = SNodeFactoryOperations.createNewNode(_context.getModel(), MetaAdapterFactory.getConcept(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, "jetbrains.mps.baseLanguage.logging.structure.MsgStatement"), null);
-          SPropertyOperations.set(logStatement, MetaAdapterFactory.getProperty(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x57e2cf14f6d5d81fL, "severity"), SEnumOperations.getMemberValue(myParameterObject));
+          SPropertyOperations.setEnum(logStatement, MetaAdapterFactory.getProperty(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x57e2cf14f6d5d81fL, "severity"), SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x10fc53ae113L, "jetbrains.mps.baseLanguage.logging.structure.Severity"), SEnumOperations.getMemberName0(myParameterObject)));
           SNodeFactoryOperations.setNewChild(logStatement, MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x4f67298c4630c25eL, "message"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, "jetbrains.mps.baseLanguage.structure.StringLiteral"));
           SNode catchClause = SNodeOperations.getNodeAncestor(_context.getParentNode(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, "jetbrains.mps.baseLanguage.structure.CatchClause"), true, false);
           if ((catchClause != null) && (SLinkOperations.getTarget(catchClause, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, 0x10f39a6a2f1L, "throwable")) != null)) {
@@ -149,7 +149,7 @@ public class loggingMsg_nodeSubstitute_Contribution extends SubstituteMenuBase {
         @Nullable
         @Override
         public String getMatchingText(@NotNull String pattern) {
-          return "message " + SEnumOperations.getMemberValue(myParameterObject);
+          return "message " + SEnumOperations.getMemberName0(myParameterObject);
         }
         @Nullable
         @Override

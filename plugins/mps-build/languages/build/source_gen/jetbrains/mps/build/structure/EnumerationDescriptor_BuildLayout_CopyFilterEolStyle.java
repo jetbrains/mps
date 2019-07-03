@@ -13,14 +13,14 @@ import org.jetbrains.annotations.NotNull;
 public class EnumerationDescriptor_BuildLayout_CopyFilterEolStyle extends EnumerationDescriptorBase {
 
   public EnumerationDescriptor_BuildLayout_CopyFilterEolStyle() {
-    super(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3a43b020f623c9aeL, "BuildLayout_CopyFilterEolStyle", "r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/4198392933254416814", PrimitiveTypeId.STRING);
+    super(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3a43b020f623c9aeL, "BuildLayout_CopyFilterEolStyle", "r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/4241665505353448055", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor myMember_local_0 = new EnumerationDescriptor.MemberDescriptor("local", "use local system line separator", "r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/4198392933254427813", "local");
-  private final EnumerationDescriptor.MemberDescriptor myMember_asis_0 = new EnumerationDescriptor.MemberDescriptor("asis", "leave as is", "r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/4198392933254416815", "asis");
-  private final EnumerationDescriptor.MemberDescriptor myMember_cr_0 = new EnumerationDescriptor.MemberDescriptor("cr", "convert to a single CR", "r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/4198392933254416816", "cr");
-  private final EnumerationDescriptor.MemberDescriptor myMember_lf_0 = new EnumerationDescriptor.MemberDescriptor("lf", "convert to a single LF", "r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/4198392933254416817", "lf");
-  private final EnumerationDescriptor.MemberDescriptor myMember_crlf_0 = new EnumerationDescriptor.MemberDescriptor("crlf", "convert to the pair CRLF", "r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/4198392933254416818", "crlf");
+  private final EnumerationDescriptor.MemberDescriptor myMember_local_0 = new EnumerationDescriptor.MemberDescriptor("local", "use local system line separator", 0x3a43b020f623f4a5L, "r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/4241665505353448057", "local", "local");
+  private final EnumerationDescriptor.MemberDescriptor myMember_asis_0 = new EnumerationDescriptor.MemberDescriptor("asis", "leave as is", 0x3a43b020f623c9afL, "r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/4241665505353448058", "asis", "asis");
+  private final EnumerationDescriptor.MemberDescriptor myMember_cr_0 = new EnumerationDescriptor.MemberDescriptor("cr", "convert to a single CR", 0x3a43b020f623c9b0L, "r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/4241665505353448059", "cr", "cr");
+  private final EnumerationDescriptor.MemberDescriptor myMember_lf_0 = new EnumerationDescriptor.MemberDescriptor("lf", "convert to a single LF", 0x3a43b020f623c9b1L, "r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/4241665505353448060", "lf", "lf");
+  private final EnumerationDescriptor.MemberDescriptor myMember_crlf_0 = new EnumerationDescriptor.MemberDescriptor("crlf", "convert to the pair CRLF", 0x3a43b020f623c9b2L, "r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/4241665505353448061", "crlf", "crlf");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3a43b020f623c9aeL, 0x3a43b020f623f4a5L, 0x3a43b020f623c9afL, 0x3a43b020f623c9b0L, 0x3a43b020f623c9b1L, 0x3a43b020f623c9b2L);
   private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_local_0, myMember_asis_0, myMember_cr_0, myMember_lf_0, myMember_crlf_0);
@@ -39,11 +39,11 @@ public class EnumerationDescriptor_BuildLayout_CopyFilterEolStyle extends Enumer
 
   @Nullable
   @Override
-  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
-    if (string == null) {
+  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String memberName) {
+    if (memberName == null) {
       return null;
     }
-    switch (string) {
+    switch (memberName) {
       case "local":
         return myMember_local_0;
       case "asis":

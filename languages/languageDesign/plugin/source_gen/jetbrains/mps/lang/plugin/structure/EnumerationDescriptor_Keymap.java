@@ -13,23 +13,23 @@ import org.jetbrains.annotations.NotNull;
 public class EnumerationDescriptor_Keymap extends EnumerationDescriptorBase {
 
   public EnumerationDescriptor_Keymap() {
-    super(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb078L, "Keymap", "r:00000000-0000-4000-0000-011c89590368(jetbrains.mps.lang.plugin.structure)/1562714432501166200", PrimitiveTypeId.STRING);
+    super(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb078L, "Keymap", "r:00000000-0000-4000-0000-011c89590368(jetbrains.mps.lang.plugin.structure)/4241665505353446992", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor myMember_MacOSX_0 = new EnumerationDescriptor.MemberDescriptor("Mac OS X", "Mac OS X", "r:00000000-0000-4000-0000-011c89590368(jetbrains.mps.lang.plugin.structure)/1562714432501166201", "Mac OS X");
-  private final EnumerationDescriptor.MemberDescriptor myMember_MacOSX105_0 = new EnumerationDescriptor.MemberDescriptor("Mac OS X 10.5+", "Mac OS X 10.5+", "r:00000000-0000-4000-0000-011c89590368(jetbrains.mps.lang.plugin.structure)/3121818631993380487", "Mac OS X 10.5+");
-  private final EnumerationDescriptor.MemberDescriptor myMember_DefaultforXWin_0 = new EnumerationDescriptor.MemberDescriptor("Default for XWin", "XWin", "r:00000000-0000-4000-0000-011c89590368(jetbrains.mps.lang.plugin.structure)/1911082874216608560", "XWin");
-  private final EnumerationDescriptor.MemberDescriptor myMember_DefaultforGNOME_0 = new EnumerationDescriptor.MemberDescriptor("Default for GNOME", "GNOME", "r:00000000-0000-4000-0000-011c89590368(jetbrains.mps.lang.plugin.structure)/1911082874216608561", "GNOME");
-  private final EnumerationDescriptor.MemberDescriptor myMember_DefaultforKDE_0 = new EnumerationDescriptor.MemberDescriptor("Default for KDE", "KDE", "r:00000000-0000-4000-0000-011c89590368(jetbrains.mps.lang.plugin.structure)/1911082874216608562", "KDE");
-  private final EnumerationDescriptor.MemberDescriptor myMember_$default_0 = new EnumerationDescriptor.MemberDescriptor("$default", "Default", "r:00000000-0000-4000-0000-011c89590368(jetbrains.mps.lang.plugin.structure)/2443880313834664128", "Default");
+  private final EnumerationDescriptor.MemberDescriptor myMember_Mac_OS_X_0 = new EnumerationDescriptor.MemberDescriptor("Mac_OS_X", "Mac OS X", 0x15afe07f2a9bb079L, "r:00000000-0000-4000-0000-011c89590368(jetbrains.mps.lang.plugin.structure)/4241665505353446994", "Mac OS X", "Mac OS X");
+  private final EnumerationDescriptor.MemberDescriptor myMember_Mac_OS_X_10_5__0 = new EnumerationDescriptor.MemberDescriptor("Mac_OS_X_10_5_", "Mac OS X 10.5+", 0x2b52ed8175294e87L, "r:00000000-0000-4000-0000-011c89590368(jetbrains.mps.lang.plugin.structure)/4241665505353446995", "Mac OS X 10.5+", "Mac OS X 10.5+");
+  private final EnumerationDescriptor.MemberDescriptor myMember_XWin_0 = new EnumerationDescriptor.MemberDescriptor("XWin", "XWin", 0x1a8587bfae037330L, "r:00000000-0000-4000-0000-011c89590368(jetbrains.mps.lang.plugin.structure)/4241665505353446996", "XWin", "Default for XWin");
+  private final EnumerationDescriptor.MemberDescriptor myMember_GNOME_0 = new EnumerationDescriptor.MemberDescriptor("GNOME", "GNOME", 0x1a8587bfae037331L, "r:00000000-0000-4000-0000-011c89590368(jetbrains.mps.lang.plugin.structure)/4241665505353446997", "GNOME", "Default for GNOME");
+  private final EnumerationDescriptor.MemberDescriptor myMember_KDE_0 = new EnumerationDescriptor.MemberDescriptor("KDE", "KDE", 0x1a8587bfae037332L, "r:00000000-0000-4000-0000-011c89590368(jetbrains.mps.lang.plugin.structure)/4241665505353446998", "KDE", "Default for KDE");
+  private final EnumerationDescriptor.MemberDescriptor myMember_Default_0 = new EnumerationDescriptor.MemberDescriptor("Default", "Default", 0x21ea68327baf70c0L, "r:00000000-0000-4000-0000-011c89590368(jetbrains.mps.lang.plugin.structure)/4241665505353446999", "Default", "$default");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb078L, 0x15afe07f2a9bb079L, 0x2b52ed8175294e87L, 0x1a8587bfae037330L, 0x1a8587bfae037331L, 0x1a8587bfae037332L, 0x21ea68327baf70c0L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_MacOSX_0, myMember_MacOSX105_0, myMember_DefaultforXWin_0, myMember_DefaultforGNOME_0, myMember_DefaultforKDE_0, myMember_$default_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_Mac_OS_X_0, myMember_Mac_OS_X_10_5__0, myMember_XWin_0, myMember_GNOME_0, myMember_KDE_0, myMember_Default_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return myMember_$default_0;
+    return myMember_Default_0;
   }
 
   @NotNull
@@ -40,23 +40,23 @@ public class EnumerationDescriptor_Keymap extends EnumerationDescriptorBase {
 
   @Nullable
   @Override
-  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
-    if (string == null) {
+  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String memberName) {
+    if (memberName == null) {
       return null;
     }
-    switch (string) {
-      case "Mac OS X":
-        return myMember_MacOSX_0;
-      case "Mac OS X 10.5+":
-        return myMember_MacOSX105_0;
-      case "Default for XWin":
-        return myMember_DefaultforXWin_0;
-      case "Default for GNOME":
-        return myMember_DefaultforGNOME_0;
-      case "Default for KDE":
-        return myMember_DefaultforKDE_0;
-      case "$default":
-        return myMember_$default_0;
+    switch (memberName) {
+      case "Mac_OS_X":
+        return myMember_Mac_OS_X_0;
+      case "Mac_OS_X_10_5_":
+        return myMember_Mac_OS_X_10_5__0;
+      case "XWin":
+        return myMember_XWin_0;
+      case "GNOME":
+        return myMember_GNOME_0;
+      case "KDE":
+        return myMember_KDE_0;
+      case "Default":
+        return myMember_Default_0;
     }
     return null;
   }

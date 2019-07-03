@@ -20,7 +20,7 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
+import jetbrains.mps.lang.plugin.enumMigration.Keymap_MigrationUtils;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
@@ -49,17 +49,17 @@ public final class SimpleShortcutChange__BehaviorDescriptor extends BaseBHDescri
     Sequence.fromIterable(keymaps).visitAll(new IVisitor<SEnumerationLiteral>() {
       public void visit(SEnumerationLiteral it) {
         {
-          final String currentEnum = SEnumOperations.getMemberValue(it);
+          final String currentEnum = Keymap_MigrationUtils.value(it);
           final Wrappers._T<SNode> keyMap = new Wrappers._T<SNode>(ListSequence.fromList(SModelOperations.roots(model, MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb075L, "jetbrains.mps.lang.plugin.structure.KeymapChangesDeclaration"))).findFirst(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
-              return SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb075L, 0x15afe07f2a9bb0c9L, "keymap")).equals(currentEnum);
+              return Keymap_MigrationUtils.value(SPropertyOperations.getEnum(it, MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb075L, 0x15afe07f2a9bb0c9L, "keymap"))).equals(currentEnum);
             }
           }));
           if ((keyMap.value == null)) {
             keyMap.value = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb075L, "jetbrains.mps.lang.plugin.structure.KeymapChangesDeclaration"));
             // Enum value has not got any constraint, so it needs to be converted to valid identifier 
-            SPropertyOperations.set(keyMap.value, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), NameUtil.toValidCamelIdentifier(SEnumOperations.getMemberValue(it)));
-            SPropertyOperations.set(keyMap.value, MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb075L, 0x15afe07f2a9bb0c9L, "keymap"), SEnumOperations.getMemberValue(it));
+            SPropertyOperations.set(keyMap.value, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), NameUtil.toValidCamelIdentifier(Keymap_MigrationUtils.value(it)));
+            SPropertyOperations.setEnum(keyMap.value, MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb075L, 0x15afe07f2a9bb0c9L, "keymap"), it);
             // If IdeaConfigurationXml exists, take it in account 
             SPropertyOperations.set(keyMap.value, MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb075L, 0x77ff578948f6b772L, "isPluginXmlKeymap"), ListSequence.fromList(SModelOperations.roots(model, MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x2c7d36ab0e3b095aL, "jetbrains.mps.lang.plugin.structure.IdeaConfigurationXml"))).isNotEmpty());
             if (ListSequence.fromList(SModelOperations.roots(model, MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x2c7d36ab0e3b095aL, "jetbrains.mps.lang.plugin.structure.IdeaConfigurationXml"))).isNotEmpty()) {

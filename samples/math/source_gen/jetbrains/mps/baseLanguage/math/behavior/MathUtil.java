@@ -7,6 +7,8 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.baseLanguage.behavior.Type__BehaviorDescriptor;
@@ -164,7 +166,7 @@ public class MathUtil {
         }
       }
     }
-    switch (SPropertyOperations.getInteger(mc, MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1a6fbb5a434b008bL, 0x1a6fbb5a434b3535L, "precisionSetting"))) {
+    switch (ListSequence.fromList(SEnumOperations.getMembers(MetaAdapterFactory.getEnumeration(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x12056af4e37L, "jetbrains.mps.baseLanguage.math.structure.PrecisionSetting"))).indexOf(SPropertyOperations.getEnum(mc, MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1a6fbb5a434b008bL, 0x1a6fbb5a434b3535L, "precisionSetting")))) {
       case 1:
         return _quotation_createNode_30uc9x_a0a0c0e();
       case 2:
@@ -176,7 +178,7 @@ public class MathUtil {
       default:
         SNode c = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, "jetbrains.mps.baseLanguage.structure.IntegerConstant"));
         SPropertyOperations.assign(c, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value"), SPropertyOperations.getInteger(mc, MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1a6fbb5a434b008bL, 0x1a6fbb5a434b3534L, "precision")));
-        return _quotation_createNode_30uc9x_a2a2a4(c, MathUtil.getRoundingMode(SPropertyOperations.getInteger(mc, MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1a6fbb5a434b008bL, 0x1a6fbb5a434b3533L, "roundingMode"))));
+        return _quotation_createNode_30uc9x_a2a2a4(c, MathUtil.getRoundingMode(ListSequence.fromList(SEnumOperations.getMembers(MetaAdapterFactory.getEnumeration(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x120568e25cfL, "jetbrains.mps.baseLanguage.math.structure.RoundingMode"))).indexOf(SPropertyOperations.getEnum(mc, MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1a6fbb5a434b008bL, 0x1a6fbb5a434b3533L, "roundingMode")))));
     }
   }
   public static SNode getRoundingMode(int roundingMode) {

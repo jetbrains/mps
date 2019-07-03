@@ -15,7 +15,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryStatement" />
   <root>
     <file name="QueriesGenerated.java">
-      <unit at="14,0,29,0" name="jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_weaveManyToSingularChild.QueriesGenerated" />
+      <unit at="15,0,30,0" name="jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_weaveManyToSingularChild.QueriesGenerated" />
     </file>
     <file name="TemplateModelImpl.java">
       <unit at="21,0,61,0" name="jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_weaveManyToSingularChild.TemplateModelImpl" />
@@ -97,22 +97,22 @@
       <unit id="1218738629621" at="27,0,80,0" name="jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_weaveManyToSingularChild.Mapping_main" />
     </file>
     <file name="QueriesGenerated.java">
-      <node id="1218738691459" at="16,83,17,211" concept="7" />
-      <node id="1218738882048" at="19,83,20,424" concept="7" />
-      <node id="1218739852064" at="25,94,26,311" concept="7" />
-      <node id="1218738676457" at="16,0,19,0" concept="10" trace="rule_Condition_0_0#(Ljetbrains/mps/generator/template/BaseMappingRuleContext;)Z" />
-      <node id="1218738876108" at="19,0,22,0" concept="10" trace="rule_Condition_0_1#(Ljetbrains/mps/generator/template/BaseMappingRuleContext;)Z" />
-      <node id="1218738863685" at="25,0,28,0" concept="10" trace="weavingRule_ContextQuery_0_0#(Ljetbrains/mps/generator/template/WeavingMappingRuleContext;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <scope id="1218738676458" at="16,83,17,211" />
-      <scope id="1218738876109" at="19,83,20,424" />
-      <scope id="1218738863686" at="25,94,26,311" />
-      <scope id="1218738676457" at="16,0,19,0">
+      <node id="1218738691459" at="17,83,18,220" concept="7" />
+      <node id="1218738882048" at="20,83,21,433" concept="7" />
+      <node id="1218739852064" at="26,94,27,311" concept="7" />
+      <node id="1218738676457" at="17,0,20,0" concept="10" trace="rule_Condition_0_0#(Ljetbrains/mps/generator/template/BaseMappingRuleContext;)Z" />
+      <node id="1218738876108" at="20,0,23,0" concept="10" trace="rule_Condition_0_1#(Ljetbrains/mps/generator/template/BaseMappingRuleContext;)Z" />
+      <node id="1218738863685" at="26,0,29,0" concept="10" trace="weavingRule_ContextQuery_0_0#(Ljetbrains/mps/generator/template/WeavingMappingRuleContext;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <scope id="1218738676458" at="17,83,18,220" />
+      <scope id="1218738876109" at="20,83,21,433" />
+      <scope id="1218738863686" at="26,94,27,311" />
+      <scope id="1218738676457" at="17,0,20,0">
         <var name="_context" id="1218738676457" />
       </scope>
-      <scope id="1218738876108" at="19,0,22,0">
+      <scope id="1218738876108" at="20,0,23,0">
         <var name="_context" id="1218738876108" />
       </scope>
-      <scope id="1218738863685" at="25,0,28,0">
+      <scope id="1218738863685" at="26,0,29,0">
         <var name="_context" id="1218738863685" />
       </scope>
     </file>
@@ -206,10 +206,10 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895905fa(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_weaveManyToSingularChild@generator)/1218738992784">
     <file name="QueriesGenerated.java">
-      <node id="1218740174302" at="22,88,23,206" concept="7" />
-      <node id="1218740165112" at="22,0,25,0" concept="10" trace="propertyMacro_GetValue_2_0#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />
-      <scope id="1218740165113" at="22,88,23,206" />
-      <scope id="1218740165112" at="22,0,25,0">
+      <node id="1218740174302" at="23,88,24,206" concept="7" />
+      <node id="1218740165112" at="23,0,26,0" concept="10" trace="propertyMacro_GetValue_2_0#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />
+      <scope id="1218740165113" at="23,88,24,206" />
+      <scope id="1218740165112" at="23,0,26,0">
         <var name="_context" id="1218740165112" />
       </scope>
     </file>

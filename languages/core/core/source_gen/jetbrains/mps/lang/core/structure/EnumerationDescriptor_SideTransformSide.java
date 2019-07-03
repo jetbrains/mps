@@ -13,11 +13,11 @@ import org.jetbrains.annotations.NotNull;
 public class EnumerationDescriptor_SideTransformSide extends EnumerationDescriptorBase {
 
   public EnumerationDescriptor_SideTransformSide() {
-    super(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0xad0053c7aee25ecL, "SideTransformSide", "r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)/779128492853700076", PrimitiveTypeId.STRING);
+    super(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0xad0053c7aee25ecL, "SideTransformSide", "r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)/4241665505353445570", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor myMember_right_0 = new EnumerationDescriptor.MemberDescriptor("right", "right", "r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)/779128492853700077", "right");
-  private final EnumerationDescriptor.MemberDescriptor myMember_left_0 = new EnumerationDescriptor.MemberDescriptor("left", "left", "r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)/779128492853702223", "left");
+  private final EnumerationDescriptor.MemberDescriptor myMember_right_0 = new EnumerationDescriptor.MemberDescriptor("right", "right", 0xad0053c7aee25edL, "r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)/4241665505353445572", "right", "right");
+  private final EnumerationDescriptor.MemberDescriptor myMember_left_0 = new EnumerationDescriptor.MemberDescriptor("left", "left", 0xad0053c7aee2e4fL, "r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)/4241665505353445573", "left", "left");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0xad0053c7aee25ecL, 0xad0053c7aee25edL, 0xad0053c7aee2e4fL);
   private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_right_0, myMember_left_0);
@@ -36,11 +36,11 @@ public class EnumerationDescriptor_SideTransformSide extends EnumerationDescript
 
   @Nullable
   @Override
-  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
-    if (string == null) {
+  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String memberName) {
+    if (memberName == null) {
       return null;
     }
-    switch (string) {
+    switch (memberName) {
       case "right":
         return myMember_right_0;
       case "left":

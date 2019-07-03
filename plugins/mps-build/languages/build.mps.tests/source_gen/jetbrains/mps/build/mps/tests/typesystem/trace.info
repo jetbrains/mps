@@ -131,23 +131,23 @@
   </root>
   <root nodeRef="r:f8814f89-9801-40d6-822f-e0e0a3a2c53d(jetbrains.mps.build.mps.tests.typesystem)/2834134232276404571">
     <file name="addTestSources_QuickFix.java">
-      <node id="2834134232276404571" at="12,36,13,135" concept="9" />
-      <node id="2834134232276405310" at="15,44,16,244" concept="7" />
-      <node id="2834134232276418614" at="18,35,19,245" concept="2" />
-      <node id="2834134232276404571" at="12,0,15,0" concept="1" trace="addTestSources_QuickFix#()V" />
-      <node id="2834134232276404571" at="15,0,18,0" concept="5" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
-      <node id="2834134232276404571" at="18,0,21,0" concept="5" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <scope id="2834134232276404571" at="12,36,13,135" />
-      <scope id="2834134232276404759" at="15,44,16,244" />
-      <scope id="2834134232276404573" at="18,35,19,245" />
-      <scope id="2834134232276404571" at="12,0,15,0" />
-      <scope id="2834134232276404571" at="15,0,18,0">
+      <node id="2834134232276404571" at="13,36,14,135" concept="9" />
+      <node id="2834134232276405310" at="16,44,17,244" concept="7" />
+      <node id="2834134232276418614" at="19,35,20,456" concept="2" />
+      <node id="2834134232276404571" at="13,0,16,0" concept="1" trace="addTestSources_QuickFix#()V" />
+      <node id="2834134232276404571" at="16,0,19,0" concept="5" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="2834134232276404571" at="19,0,22,0" concept="5" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <scope id="2834134232276404571" at="13,36,14,135" />
+      <scope id="2834134232276404759" at="16,44,17,244" />
+      <scope id="2834134232276404573" at="19,35,20,456" />
+      <scope id="2834134232276404571" at="13,0,16,0" />
+      <scope id="2834134232276404571" at="16,0,19,0">
         <var name="node" id="2834134232276404571" />
       </scope>
-      <scope id="2834134232276404571" at="18,0,21,0">
+      <scope id="2834134232276404571" at="19,0,22,0">
         <var name="node" id="2834134232276404571" />
       </scope>
-      <unit id="2834134232276404571" at="11,0,22,0" name="jetbrains.mps.build.mps.tests.typesystem.addTestSources_QuickFix" />
+      <unit id="2834134232276404571" at="12,0,23,0" name="jetbrains.mps.build.mps.tests.typesystem.addTestSources_QuickFix" />
     </file>
   </root>
   <root nodeRef="r:f8814f89-9801-40d6-822f-e0e0a3a2c53d(jetbrains.mps.build.mps.tests.typesystem)/2834134232276458561">

@@ -13,13 +13,13 @@ import org.jetbrains.annotations.NotNull;
 public class EnumerationDescriptor_Feedback extends EnumerationDescriptorBase {
 
   public EnumerationDescriptor_Feedback() {
-    super(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x32eac1b57fc1b82aL, "Feedback", "r:308041c6-80bc-4e26-b4b1-473fd45c9339(jetbrains.mps.make.script.structure)/3668957831723333674", PrimitiveTypeId.STRING);
+    super(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x32eac1b57fc1b82aL, "Feedback", "r:308041c6-80bc-4e26-b4b1-473fd45c9339(jetbrains.mps.make.script.structure)/4241665505353446962", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor myMember_INFO_0 = new EnumerationDescriptor.MemberDescriptor("INFO", "info", "r:308041c6-80bc-4e26-b4b1-473fd45c9339(jetbrains.mps.make.script.structure)/3668957831723333675", "info");
-  private final EnumerationDescriptor.MemberDescriptor myMember_WARNING_0 = new EnumerationDescriptor.MemberDescriptor("WARNING", "warning", "r:308041c6-80bc-4e26-b4b1-473fd45c9339(jetbrains.mps.make.script.structure)/3668957831723333676", "warning");
-  private final EnumerationDescriptor.MemberDescriptor myMember_ERROR_0 = new EnumerationDescriptor.MemberDescriptor("ERROR", "error", "r:308041c6-80bc-4e26-b4b1-473fd45c9339(jetbrains.mps.make.script.structure)/3668957831723333677", "error");
-  private final EnumerationDescriptor.MemberDescriptor myMember_MESSAGE_0 = new EnumerationDescriptor.MemberDescriptor("MESSAGE", "message", "r:308041c6-80bc-4e26-b4b1-473fd45c9339(jetbrains.mps.make.script.structure)/6320856973181134892", "message");
+  private final EnumerationDescriptor.MemberDescriptor myMember_INFO_0 = new EnumerationDescriptor.MemberDescriptor("INFO", "info", 0x32eac1b57fc1b82bL, "r:308041c6-80bc-4e26-b4b1-473fd45c9339(jetbrains.mps.make.script.structure)/4241665505353446964", "info", "INFO");
+  private final EnumerationDescriptor.MemberDescriptor myMember_WARNING_0 = new EnumerationDescriptor.MemberDescriptor("WARNING", "warning", 0x32eac1b57fc1b82cL, "r:308041c6-80bc-4e26-b4b1-473fd45c9339(jetbrains.mps.make.script.structure)/4241665505353446965", "warning", "WARNING");
+  private final EnumerationDescriptor.MemberDescriptor myMember_ERROR_0 = new EnumerationDescriptor.MemberDescriptor("ERROR", "error", 0x32eac1b57fc1b82dL, "r:308041c6-80bc-4e26-b4b1-473fd45c9339(jetbrains.mps.make.script.structure)/4241665505353446966", "error", "ERROR");
+  private final EnumerationDescriptor.MemberDescriptor myMember_MESSAGE_0 = new EnumerationDescriptor.MemberDescriptor("MESSAGE", "message", 0x57b831ed8283282cL, "r:308041c6-80bc-4e26-b4b1-473fd45c9339(jetbrains.mps.make.script.structure)/4241665505353446967", "message", "MESSAGE");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x32eac1b57fc1b82aL, 0x32eac1b57fc1b82bL, 0x32eac1b57fc1b82cL, 0x32eac1b57fc1b82dL, 0x57b831ed8283282cL);
   private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_INFO_0, myMember_WARNING_0, myMember_ERROR_0, myMember_MESSAGE_0);
@@ -38,11 +38,11 @@ public class EnumerationDescriptor_Feedback extends EnumerationDescriptorBase {
 
   @Nullable
   @Override
-  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
-    if (string == null) {
+  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String memberName) {
+    if (memberName == null) {
       return null;
     }
-    switch (string) {
+    switch (memberName) {
       case "INFO":
         return myMember_INFO_0;
       case "WARNING":

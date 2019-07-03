@@ -13,13 +13,13 @@ import org.jetbrains.annotations.NotNull;
 public class EnumerationDescriptor_LookingDirection extends EnumerationDescriptorBase {
 
   public EnumerationDescriptor_LookingDirection() {
-    super(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x61fd16e423a34c05L, "LookingDirection", "r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/7060824959893064709", PrimitiveTypeId.STRING);
+    super(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x61fd16e423a34c05L, "LookingDirection", "r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/4241665505353448626", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor myMember_north_0 = new EnumerationDescriptor.MemberDescriptor("north", "north", "r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/7060824959893064772", "north");
-  private final EnumerationDescriptor.MemberDescriptor myMember_east_0 = new EnumerationDescriptor.MemberDescriptor("east", "east", "r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/7060824959893078070", "east");
-  private final EnumerationDescriptor.MemberDescriptor myMember_south_0 = new EnumerationDescriptor.MemberDescriptor("south", "south", "r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/7060824959893078073", "south");
-  private final EnumerationDescriptor.MemberDescriptor myMember_west_0 = new EnumerationDescriptor.MemberDescriptor("west", "west", "r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/7060824959893078077", "west");
+  private final EnumerationDescriptor.MemberDescriptor myMember_north_0 = new EnumerationDescriptor.MemberDescriptor("north", "north", 0x61fd16e423a34c44L, "r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/4241665505353448628", "north", "north");
+  private final EnumerationDescriptor.MemberDescriptor myMember_east_0 = new EnumerationDescriptor.MemberDescriptor("east", "east", 0x61fd16e423a38036L, "r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/4241665505353448629", "east", "east");
+  private final EnumerationDescriptor.MemberDescriptor myMember_south_0 = new EnumerationDescriptor.MemberDescriptor("south", "south", 0x61fd16e423a38039L, "r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/4241665505353448630", "south", "south");
+  private final EnumerationDescriptor.MemberDescriptor myMember_west_0 = new EnumerationDescriptor.MemberDescriptor("west", "west", 0x61fd16e423a3803dL, "r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/4241665505353448631", "west", "west");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x61fd16e423a34c05L, 0x61fd16e423a34c44L, 0x61fd16e423a38036L, 0x61fd16e423a38039L, 0x61fd16e423a3803dL);
   private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_north_0, myMember_east_0, myMember_south_0, myMember_west_0);
@@ -38,11 +38,11 @@ public class EnumerationDescriptor_LookingDirection extends EnumerationDescripto
 
   @Nullable
   @Override
-  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
-    if (string == null) {
+  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String memberName) {
+    if (memberName == null) {
       return null;
     }
-    switch (string) {
+    switch (memberName) {
       case "north":
         return myMember_north_0;
       case "east":

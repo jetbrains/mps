@@ -13,14 +13,14 @@ import org.jetbrains.annotations.NotNull;
 public class EnumerationDescriptor_KeyMapChange extends EnumerationDescriptorBase {
 
   public EnumerationDescriptor_KeyMapChange() {
-    super(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x5e2b603c8f036668L, "KeyMapChange", "r:00000000-0000-4000-0000-011c89590368(jetbrains.mps.lang.plugin.structure)/6785623076777453160", PrimitiveTypeId.STRING);
+    super(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x5e2b603c8f036668L, "KeyMapChange", "r:00000000-0000-4000-0000-011c89590368(jetbrains.mps.lang.plugin.structure)/4241665505353447097", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor myMember_replaceall_0 = new EnumerationDescriptor.MemberDescriptor("replace all", "replace all", "r:00000000-0000-4000-0000-011c89590368(jetbrains.mps.lang.plugin.structure)/6785623076777453161", "replace all");
-  private final EnumerationDescriptor.MemberDescriptor myMember_remove_0 = new EnumerationDescriptor.MemberDescriptor("remove", "remove", "r:00000000-0000-4000-0000-011c89590368(jetbrains.mps.lang.plugin.structure)/6785623076777453162", "remove");
+  private final EnumerationDescriptor.MemberDescriptor myMember_replace_all_0 = new EnumerationDescriptor.MemberDescriptor("replace_all", "replace all", 0x5e2b603c8f036669L, "r:00000000-0000-4000-0000-011c89590368(jetbrains.mps.lang.plugin.structure)/4241665505353447099", "replace all", "replace all");
+  private final EnumerationDescriptor.MemberDescriptor myMember_remove_0 = new EnumerationDescriptor.MemberDescriptor("remove", "remove", 0x5e2b603c8f03666aL, "r:00000000-0000-4000-0000-011c89590368(jetbrains.mps.lang.plugin.structure)/4241665505353447100", "remove", "remove");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x5e2b603c8f036668L, 0x5e2b603c8f036669L, 0x5e2b603c8f03666aL);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_replaceall_0, myMember_remove_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_replace_all_0, myMember_remove_0);
 
   @Nullable
   @Override
@@ -36,13 +36,13 @@ public class EnumerationDescriptor_KeyMapChange extends EnumerationDescriptorBas
 
   @Nullable
   @Override
-  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
-    if (string == null) {
+  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String memberName) {
+    if (memberName == null) {
       return null;
     }
-    switch (string) {
-      case "replace all":
-        return myMember_replaceall_0;
+    switch (memberName) {
+      case "replace_all":
+        return myMember_replace_all_0;
       case "remove":
         return myMember_remove_0;
     }

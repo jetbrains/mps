@@ -32,7 +32,7 @@ public class PatternProperty_Test extends BaseTransformationTest {
         DefaultMatchingPattern pattern = new Pattern_xihehy_a0b0a0a0a0a0e(_quotation_createNode_xihehy_a0a0b0a0a0a0a0e());
         final boolean matches = pattern.match(nodeToMatch);
         Assert.assertTrue("Pattern match expected", matches);
-        junit.framework.Assert.assertEquals("something", pattern.getMatchedProperty("printed"));
+        junit.framework.Assert.assertEquals("something", (String) pattern.getMatchedPropertyValue("printed"));
       }
     });
   }

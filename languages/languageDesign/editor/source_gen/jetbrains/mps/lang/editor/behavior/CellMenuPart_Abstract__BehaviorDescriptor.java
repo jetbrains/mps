@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -45,7 +46,7 @@ public final class CellMenuPart_Abstract__BehaviorDescriptor extends BaseBHDescr
   }
   /*package*/ static SNode getEditedAggregationLink_idhJEvgUM(@NotNull SNode __thisNode__) {
     SNode editedLink = CellMenuPart_Abstract__BehaviorDescriptor.getEditedLink_idhJEvotS.invoke(__thisNode__);
-    if (SPropertyOperations.hasEnumValue(editedLink, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass"), "aggregation")) {
+    if (SEnumOperations.isMember(SPropertyOperations.getEnum(editedLink, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass")), 0xfc6f4e95b9L)) {
       return editedLink;
     }
     return null;

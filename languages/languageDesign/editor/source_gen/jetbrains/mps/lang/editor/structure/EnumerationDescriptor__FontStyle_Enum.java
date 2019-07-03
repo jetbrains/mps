@@ -13,14 +13,14 @@ import org.jetbrains.annotations.NotNull;
 public class EnumerationDescriptor__FontStyle_Enum extends EnumerationDescriptorBase {
 
   public EnumerationDescriptor__FontStyle_Enum() {
-    super(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1006551b180L, "_FontStyle_Enum", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1101211480448", PrimitiveTypeId.STRING);
+    super(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1006551b180L, "_FontStyle_Enum", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353445972", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor myMember_BOLD_0 = new EnumerationDescriptor.MemberDescriptor("BOLD", "bold", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1101211523070", "bold");
-  private final EnumerationDescriptor.MemberDescriptor myMember_ITALIC_0 = new EnumerationDescriptor.MemberDescriptor("ITALIC", "italic", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1101211542532", "italic");
-  private final EnumerationDescriptor.MemberDescriptor myMember_BOLD_ITALIC_0 = new EnumerationDescriptor.MemberDescriptor("BOLD_ITALIC", "boldItalic", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1101213960346", "boldItalic");
-  private final EnumerationDescriptor.MemberDescriptor myMember_PLAIN_0 = new EnumerationDescriptor.MemberDescriptor("PLAIN", "plain", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1134577855137", "plain");
-  private final EnumerationDescriptor.MemberDescriptor myMember_QUERY_0 = new EnumerationDescriptor.MemberDescriptor("QUERY", "query", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1220973684614", "query");
+  private final EnumerationDescriptor.MemberDescriptor myMember_BOLD_0 = new EnumerationDescriptor.MemberDescriptor("BOLD", "bold", 0x100655257feL, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353445974", "bold", "BOLD");
+  private final EnumerationDescriptor.MemberDescriptor myMember_ITALIC_0 = new EnumerationDescriptor.MemberDescriptor("ITALIC", "italic", 0x1006552a404L, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353445975", "italic", "ITALIC");
+  private final EnumerationDescriptor.MemberDescriptor myMember_BOLD_ITALIC_0 = new EnumerationDescriptor.MemberDescriptor("BOLD_ITALIC", "boldItalic", 0x1006577889aL, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353445976", "boldItalic", "BOLD_ITALIC");
+  private final EnumerationDescriptor.MemberDescriptor myMember_PLAIN_0 = new EnumerationDescriptor.MemberDescriptor("PLAIN", "plain", 0x1082a1c2aa1L, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353445977", "plain", "PLAIN");
+  private final EnumerationDescriptor.MemberDescriptor myMember_QUERY_0 = new EnumerationDescriptor.MemberDescriptor("QUERY", "query", 0x11c47b3e786L, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353445978", "query", "QUERY");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1006551b180L, 0x100655257feL, 0x1006552a404L, 0x1006577889aL, 0x1082a1c2aa1L, 0x11c47b3e786L);
   private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_BOLD_0, myMember_ITALIC_0, myMember_BOLD_ITALIC_0, myMember_PLAIN_0, myMember_QUERY_0);
@@ -39,11 +39,11 @@ public class EnumerationDescriptor__FontStyle_Enum extends EnumerationDescriptor
 
   @Nullable
   @Override
-  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
-    if (string == null) {
+  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String memberName) {
+    if (memberName == null) {
       return null;
     }
-    switch (string) {
+    switch (memberName) {
       case "BOLD":
         return myMember_BOLD_0;
       case "ITALIC":

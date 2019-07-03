@@ -16,6 +16,7 @@ import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.ParameterizedMenuPart;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
 import org.apache.log4j.Logger;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
@@ -68,7 +69,7 @@ public class BuildSource_JavaContentFolder_SubstituteMenu extends SubstituteMenu
     @Nullable
     @Override
     protected Iterable<? extends String> getParameters(SubstituteMenuContext _context) {
-      return Sequence.fromIterable(Sequence.fromArray(new String[]{"source", "test", "excluded"})).toListSequence();
+      return Sequence.fromIterable(Sequence.fromArray(new String[]{SEnumOperations.getMemberName0(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92974f7L, "jetbrains.mps.build.structure.BuildSource_JavaContentFolderKind"), 0x48d5d03db92974f8L, "source")), SEnumOperations.getMemberName0(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92974f7L, "jetbrains.mps.build.structure.BuildSource_JavaContentFolderKind"), 0x48d5d03db92974f9L, "test")), SEnumOperations.getMemberName0(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92974f7L, "jetbrains.mps.build.structure.BuildSource_JavaContentFolderKind"), 0x48d5d03db92974faL, "excluded"))})).toListSequence();
     }
     private class SMP_Action_v1e5qc_a0 extends SingleItemSubstituteMenuPart {
       private final String myParameterObject;
@@ -115,7 +116,7 @@ public class BuildSource_JavaContentFolder_SubstituteMenu extends SubstituteMenu
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode node = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x263ae7d4319546c6L, "jetbrains.mps.build.structure.BuildSource_JavaContentFolder"), null);
-          SPropertyOperations.set(node, MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x263ae7d4319546c6L, 0x48d5d03db92974fbL, "kind"), myParameterObject);
+          SPropertyOperations.setEnum(node, MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x263ae7d4319546c6L, 0x48d5d03db92974fbL, "kind"), SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92974f7L, "jetbrains.mps.build.structure.BuildSource_JavaContentFolderKind"), myParameterObject));
           return node;
         }
 

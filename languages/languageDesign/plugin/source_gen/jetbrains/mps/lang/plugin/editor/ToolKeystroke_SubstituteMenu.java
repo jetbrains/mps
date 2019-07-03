@@ -22,6 +22,7 @@ import org.apache.log4j.Logger;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.plugin.enumMigration.Keymap_MigrationUtils;
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.smodel.runtime.IconResource;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
@@ -69,7 +70,7 @@ public class ToolKeystroke_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected Iterable<? extends SEnumerationLiteral> getParameters(SubstituteMenuContext _context) {
-      return SEnumOperations.getMembers(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, "jetbrains.mps.lang.plugin", 0x15afe07f2a9bb078L, "Keymap");
+      return SEnumOperations.getMembers(MetaAdapterFactory.getEnumeration(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb078L, "jetbrains.mps.lang.plugin.structure.Keymap"));
     }
     private class SMP_Action_846jr0_a0 extends SingleItemSubstituteMenuPart {
       private final SEnumerationLiteral myParameterObject;
@@ -116,7 +117,7 @@ public class ToolKeystroke_SubstituteMenu extends SubstituteMenuBase {
         @Override
         public SNode createNode(@NotNull String pattern) {
           String defaultModifier = (myParameterObject.getName().contains("Mac") ? "meta" : "alt");
-          return createToolKeystroke_846jr0_a1a0a0(myParameterObject.getName(), defaultModifier);
+          return createToolKeystroke_846jr0_a1a0a0(Keymap_MigrationUtils.fromValue(myParameterObject.getName()), defaultModifier);
         }
 
         @Override

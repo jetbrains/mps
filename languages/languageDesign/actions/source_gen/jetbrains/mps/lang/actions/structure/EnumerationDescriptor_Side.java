@@ -13,20 +13,20 @@ import org.jetbrains.annotations.NotNull;
 public class EnumerationDescriptor_Side extends EnumerationDescriptorBase {
 
   public EnumerationDescriptor_Side() {
-    super(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x11b07b3d491L, "Side", "r:00000000-0000-4000-0000-011c895902a8(jetbrains.mps.lang.actions.structure)/1215604970641", PrimitiveTypeId.STRING);
+    super(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x11b07b3d491L, "Side", "r:00000000-0000-4000-0000-011c895902a8(jetbrains.mps.lang.actions.structure)/4241665505353445583", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor myMember__0 = new EnumerationDescriptor.MemberDescriptor(null, "right", "r:00000000-0000-4000-0000-011c895902a8(jetbrains.mps.lang.actions.structure)/1215604970642", "right");
-  private final EnumerationDescriptor.MemberDescriptor myMember_left_0 = new EnumerationDescriptor.MemberDescriptor("left", "left", "r:00000000-0000-4000-0000-011c895902a8(jetbrains.mps.lang.actions.structure)/1215605024347", "left");
-  private final EnumerationDescriptor.MemberDescriptor myMember_both_0 = new EnumerationDescriptor.MemberDescriptor("both", "both sides", "r:00000000-0000-4000-0000-011c895902a8(jetbrains.mps.lang.actions.structure)/3609453419537306772", "both sides");
+  private final EnumerationDescriptor.MemberDescriptor myMember_right_0 = new EnumerationDescriptor.MemberDescriptor("right", "right", 0x11b07b3d492L, "r:00000000-0000-4000-0000-011c895902a8(jetbrains.mps.lang.actions.structure)/4241665505353445585", "right", null);
+  private final EnumerationDescriptor.MemberDescriptor myMember_left_0 = new EnumerationDescriptor.MemberDescriptor("left", "left", 0x11b07b4a65bL, "r:00000000-0000-4000-0000-011c895902a8(jetbrains.mps.lang.actions.structure)/4241665505353445586", "left", "left");
+  private final EnumerationDescriptor.MemberDescriptor myMember_both_sides_0 = new EnumerationDescriptor.MemberDescriptor("both_sides", "both sides", 0x32175ac2e8d71494L, "r:00000000-0000-4000-0000-011c895902a8(jetbrains.mps.lang.actions.structure)/4241665505353445587", "both sides", "both");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x11b07b3d491L, 0x11b07b3d492L, 0x11b07b4a65bL, 0x32175ac2e8d71494L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember__0, myMember_left_0, myMember_both_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_right_0, myMember_left_0, myMember_both_sides_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return myMember__0;
+    return myMember_right_0;
   }
 
   @NotNull
@@ -37,15 +37,17 @@ public class EnumerationDescriptor_Side extends EnumerationDescriptorBase {
 
   @Nullable
   @Override
-  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
-    if (string == null) {
-      return myMember__0;
+  public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String memberName) {
+    if (memberName == null) {
+      return null;
     }
-    switch (string) {
+    switch (memberName) {
+      case "right":
+        return myMember_right_0;
       case "left":
         return myMember_left_0;
-      case "both":
-        return myMember_both_0;
+      case "both_sides":
+        return myMember_both_sides_0;
     }
     return null;
   }
