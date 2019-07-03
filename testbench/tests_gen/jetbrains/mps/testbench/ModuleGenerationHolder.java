@@ -31,14 +31,14 @@ import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import com.intellij.openapi.util.io.FileUtilRt;
-import com.google.common.io.Files;
+import java.util.Arrays;
+import com.intellij.openapi.util.io.FileUtil;
 import difflib.Patch;
 import difflib.DiffUtils;
 import difflib.Delta;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.FileInputStream;
-import jetbrains.mps.util.FileUtil;
 import java.util.Queue;
 import jetbrains.mps.internal.collections.runtime.QueueSequence;
 import java.util.LinkedList;
@@ -194,7 +194,7 @@ public class ModuleGenerationHolder {
           }
           if (onext.length() >= FileUtilRt.MEGABYTE || rnext.length() >= FileUtilRt.MEGABYTE) {
             try {
-              if (!(Files.equal(onext, rnext))) {
+              if (!(Arrays.equals(FileUtil.loadFileBytes(onext), FileUtil.loadFileBytes(rnext)))) {
                 ListSequence.fromList(diffs).addElement(String.format("Changes in large file %s", onext.getPath()));
               }
             } catch (IOException e) {
@@ -235,7 +235,7 @@ public class ModuleGenerationHolder {
     List<String> result = ListSequence.fromList(new ArrayList<String>());
     BufferedReader in = null;
     try {
-      in = new BufferedReader(new InputStreamReader(new FileInputStream(f), FileUtil.DEFAULT_CHARSET));
+      in = new BufferedReader(new InputStreamReader(new FileInputStream(f), jetbrains.mps.util.FileUtil.DEFAULT_CHARSET));
       String line;
       while ((line = in.readLine()) != null) {
         ListSequence.fromList(result).addElement(line);
