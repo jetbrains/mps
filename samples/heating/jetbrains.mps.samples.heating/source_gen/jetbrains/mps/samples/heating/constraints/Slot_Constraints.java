@@ -9,12 +9,12 @@ import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.runtime.CheckingNodeContext;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.Map;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.runtime.PropertyConstraintsDescriptor;
@@ -36,7 +36,7 @@ public class Slot_Constraints extends BaseConstraintsDescriptor {
     private static final SNodePointer validatePropertyBreakingPoint = new SNodePointer("r:85427802-2815-4ede-beac-6d6b51b72018(jetbrains.mps.samples.heating.constraints)", "5726447348463760065");
     @Override
     public boolean validateValue(SNode node, Object propertyValue, CheckingNodeContext checkingNodeContext) {
-      boolean result = staticValidateProperty(node, (int) (propertyValue));
+      boolean result = staticValidateProperty(node, SPropertyOperations.castInteger(propertyValue));
       if (!(result) && checkingNodeContext != null) {
         checkingNodeContext.setBreakingNode(validatePropertyBreakingPoint);
       }

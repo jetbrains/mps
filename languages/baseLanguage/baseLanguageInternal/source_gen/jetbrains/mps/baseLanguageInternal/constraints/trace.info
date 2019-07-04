@@ -98,7 +98,7 @@
       <node id="1213104840457" at="32,40,33,195" concept="6" />
       <node id="1213104840454" at="36,38,37,18" concept="6" />
       <node id="1213104840454" at="39,0,40,0" concept="9" trace="validatePropertyBreakingPoint" />
-      <node id="1213104840454" at="41,109,42,78" concept="5" />
+      <node id="1213104840454" at="41,109,42,99" concept="5" />
       <node id="1213104840454" at="43,53,44,75" concept="1" />
       <node id="1213104840454" at="45,7,46,20" concept="6" />
       <node id="6998584464754772862" at="48,85,49,67" concept="6" />
@@ -107,7 +107,7 @@
       <node id="3421461530438560155" at="55,193,56,22" concept="6" />
       <node id="3421461530438560155" at="19,0,22,0" concept="0" trace="InternalAnonymousClass_Constraints#()V" />
       <node id="1213104840454" at="24,0,27,0" concept="0" trace="Name_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
-      <node id="1213104840454" at="42,78,45,7" concept="3" />
+      <node id="1213104840454" at="42,99,45,7" concept="3" />
       <node id="1213104840454" at="48,0,51,0" concept="10" trace="staticValidateProperty#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/String;)Z" />
       <node id="1213104840454" at="27,0,31,0" concept="4" trace="hasOwnGetter#()Z" />
       <node id="1213104840454" at="31,0,35,0" concept="4" trace="getValue#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Object;" />

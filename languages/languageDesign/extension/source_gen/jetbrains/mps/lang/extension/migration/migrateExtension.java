@@ -19,6 +19,7 @@ import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.List;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.util.Computable;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.Objects;
@@ -89,7 +90,7 @@ public class migrateExtension extends MigrationScriptBase {
           }
           applyTransormMigration(nodeToMigrate, new Computable<SNode>() {
             public SNode compute() {
-              return _quotation_createNode_2kk9yi_a0d0c(MigrationScriptBase.detachNodePatternVariable(pattern.getMatchedNode("type")), pattern.getMatchedProperty("name"));
+              return _quotation_createNode_2kk9yi_a0d0c(MigrationScriptBase.detachNodePatternVariable(pattern.getMatchedNode("type")), SPropertyOperations.castString(pattern.getMatchedPropertyValue("name")));
             }
           }, new _FunctionTypes._void_P2_E0<SNode, SNode>() {
             public void invoke(SNode oldNode, SNode newNode) {
@@ -251,7 +252,7 @@ public class migrateExtension extends MigrationScriptBase {
           }
           applyTransormMigration(nodeToMigrate, new Computable<SNode>() {
             public SNode compute() {
-              return _quotation_createNode_2kk9yi_a0j0c(MigrationScriptBase.detachListPatternVariable(pattern.getMatchedList("fields")), MigrationScriptBase.detachListPatternVariable((ListSequence.fromList(pattern.getMatchedList("activate")).isEmpty() ? ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.copyNode(activatePlaceholder)) : pattern.getMatchedList("activate"))), MigrationScriptBase.detachListPatternVariable((ListSequence.fromList(pattern.getMatchedList("deactivate")).isEmpty() ? ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.copyNode(deactivatePlaceholder)) : pattern.getMatchedList("deactivate"))), MigrationScriptBase.detachListPatternVariable(pattern.getMatchedList("statements")), pattern.getMatchedProperty("name"), pattern.getMatchedNode("ep"));
+              return _quotation_createNode_2kk9yi_a0j0c(MigrationScriptBase.detachListPatternVariable(pattern.getMatchedList("fields")), MigrationScriptBase.detachListPatternVariable((ListSequence.fromList(pattern.getMatchedList("activate")).isEmpty() ? ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.copyNode(activatePlaceholder)) : pattern.getMatchedList("activate"))), MigrationScriptBase.detachListPatternVariable((ListSequence.fromList(pattern.getMatchedList("deactivate")).isEmpty() ? ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.copyNode(deactivatePlaceholder)) : pattern.getMatchedList("deactivate"))), MigrationScriptBase.detachListPatternVariable(pattern.getMatchedList("statements")), SPropertyOperations.castString(pattern.getMatchedPropertyValue("name")), pattern.getMatchedNode("ep"));
             }
           }, new _FunctionTypes._void_P2_E0<SNode, SNode>() {
             public void invoke(SNode oldNode, SNode newNode) {

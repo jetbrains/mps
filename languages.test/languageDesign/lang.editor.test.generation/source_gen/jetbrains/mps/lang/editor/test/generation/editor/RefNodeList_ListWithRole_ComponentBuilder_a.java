@@ -73,6 +73,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.openapi.editor.menus.transformation.SPropertyInfo;
 import jetbrains.mps.lang.editor.cellProviders.PropertyCellProvider;
 import jetbrains.mps.nodeEditor.cells.TransactionalPropertyAccessor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.nodeEditor.EditorManager;
 import jetbrains.mps.nodeEditor.cells.SPropertyAccessor;
 import jetbrains.mps.lang.editor.cellProviders.PropertyCellContext;
@@ -2417,7 +2418,7 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Vertical;
         {
           ModelAccessor modelAccessor = new TransactionalPropertyAccessor(myNode, property, false, false, getEditorContext()) {
             public void doCommit0(final Object oldValue, final Object newValue) {
-              doCommitImpl((String) (oldValue), (String) (newValue));
+              doCommitImpl(SPropertyOperations.castString(oldValue), SPropertyOperations.castString(newValue));
             }
             public void doCommitImpl(final String oldValue, final String newValue) {
             }
@@ -2449,7 +2450,7 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Vertical;
         {
           ModelAccessor modelAccessor = new TransactionalPropertyAccessor(myNode, property, false, true, getEditorContext()) {
             public void doCommit0(final Object oldValue, final Object newValue) {
-              doCommitImpl((String) (oldValue), (String) (newValue));
+              doCommitImpl(SPropertyOperations.castString(oldValue), SPropertyOperations.castString(newValue));
             }
             public void doCommitImpl(final String oldValue, final String newValue) {
               boolean var = getEditorContext() != null || myNode != null || oldValue != null || newValue != null;
@@ -2738,7 +2739,7 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Vertical;
         {
           ModelAccessor modelAccessor = new TransactionalPropertyAccessor(myNode, property, false, false, getEditorContext()) {
             public void doCommit0(final Object oldValue, final Object newValue) {
-              doCommitImpl((String) (oldValue), (String) (newValue));
+              doCommitImpl(SPropertyOperations.castString(oldValue), SPropertyOperations.castString(newValue));
             }
             public void doCommitImpl(final String oldValue, final String newValue) {
             }
@@ -2773,7 +2774,7 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Vertical;
         {
           ModelAccessor modelAccessor = new TransactionalPropertyAccessor(myNode, property, false, false, getEditorContext()) {
             public void doCommit0(final Object oldValue, final Object newValue) {
-              doCommitImpl((String) (oldValue), (String) (newValue));
+              doCommitImpl(SPropertyOperations.castString(oldValue), SPropertyOperations.castString(newValue));
             }
             public void doCommitImpl(final String oldValue, final String newValue) {
             }

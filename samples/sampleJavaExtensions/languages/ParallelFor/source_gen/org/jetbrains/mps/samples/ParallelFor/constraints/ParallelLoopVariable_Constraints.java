@@ -13,6 +13,7 @@ import jetbrains.mps.smodel.runtime.base.BasePropertyConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.Map;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.runtime.PropertyConstraintsDescriptor;
@@ -52,7 +53,7 @@ public class ParallelLoopVariable_Constraints extends BaseConstraintsDescriptor 
     private static final SNodePointer validatePropertyBreakingPoint = new SNodePointer("r:30f28ecb-3abe-411d-8f10-86fc65916e39(org.jetbrains.mps.samples.ParallelFor.constraints)", "7793246093816048070");
     @Override
     public boolean validateValue(SNode node, Object propertyValue, CheckingNodeContext checkingNodeContext) {
-      boolean result = staticValidateProperty(node, (boolean) (propertyValue));
+      boolean result = staticValidateProperty(node, SPropertyOperations.castBoolean(propertyValue));
       if (!(result) && checkingNodeContext != null) {
         checkingNodeContext.setBreakingNode(validatePropertyBreakingPoint);
       }

@@ -90,11 +90,11 @@
   </dependency>
   <dependency className="jetbrains.mps.lang.pattern.test.PatternProperty_Test">
     <classNode dependClassName="java.lang.Runnable" />
-    <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.lang.Throwable" />
     <classNode dependClassName="jetbrains.mps.MPSLaunch" />
     <classNode dependClassName="jetbrains.mps.lang.pattern.DefaultMatchingPattern" />
     <classNode dependClassName="jetbrains.mps.lang.pattern.test.Pattern_xihehy_a0b0a0a0a0a0e" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations" />
     <classNode dependClassName="jetbrains.mps.lang.test.runtime.TestParametersCache" />
     <classNode dependClassName="jetbrains.mps.smodel.SModelUtil_new" />
     <classNode dependClassName="jetbrains.mps.smodel.SReference" />

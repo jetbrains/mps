@@ -16,12 +16,12 @@ import jetbrains.mps.lang.editor.cellProviders.PropertyCellProvider;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Property;
 import jetbrains.mps.nodeEditor.cells.ModelAccessor;
 import jetbrains.mps.nodeEditor.cells.TransactionalPropertyAccessor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.structure.ExtensionPoint;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.nodeEditor.cells.ChangePropertyEditorCommand;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.FieldStyleClass;
@@ -113,7 +113,7 @@ import jetbrains.mps.lang.structure.editor.structure_StyleSheet.KeywordStyleClas
       {
         ModelAccessor modelAccessor = new TransactionalPropertyAccessor(myNode, property, false, false, getEditorContext()) {
           public void doCommit0(final Object oldValue, final Object newValue) {
-            doCommitImpl((String) (oldValue), (String) (newValue));
+            doCommitImpl(SPropertyOperations.castString(oldValue), SPropertyOperations.castString(newValue));
           }
           public void doCommitImpl(final String oldValue, final String newValue) {
             if (!(Sequence.fromIterable(new ExtensionPoint<_FunctionTypes._return_P4_E0<? extends Boolean, ? super EditorContext, ? super SNode, ? super String, ? super String>>("jetbrains.mps.lang.structure.NodeRenamer").getObjects()).any(new IWhereFilter<_FunctionTypes._return_P4_E0<? extends Boolean, ? super EditorContext, ? super SNode, ? super String, ? super String>>() {

@@ -31,7 +31,7 @@ public class RGBColor_Constraints extends BaseConstraintsDescriptor {
     private static final SNodePointer validatePropertyBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c89590298(jetbrains.mps.lang.editor.constraints)", "1225459370423");
     @Override
     public boolean validateValue(SNode node, Object propertyValue, CheckingNodeContext checkingNodeContext) {
-      boolean result = staticValidateProperty(node, (String) (propertyValue));
+      boolean result = staticValidateProperty(node, SPropertyOperations.castString(propertyValue));
       if (!(result) && checkingNodeContext != null) {
         checkingNodeContext.setBreakingNode(validatePropertyBreakingPoint);
       }

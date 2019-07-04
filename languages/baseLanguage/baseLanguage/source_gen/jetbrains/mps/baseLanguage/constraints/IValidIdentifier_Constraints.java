@@ -9,6 +9,7 @@ import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.runtime.CheckingNodeContext;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.util.JavaNameUtil;
 import java.util.Map;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -31,7 +32,7 @@ public class IValidIdentifier_Constraints extends BaseConstraintsDescriptor {
     private static final SNodePointer validatePropertyBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c895902c1(jetbrains.mps.baseLanguage.constraints)", "1213104856607");
     @Override
     public boolean validateValue(SNode node, Object propertyValue, CheckingNodeContext checkingNodeContext) {
-      boolean result = staticValidateProperty(node, (String) (propertyValue));
+      boolean result = staticValidateProperty(node, SPropertyOperations.castString(propertyValue));
       if (!(result) && checkingNodeContext != null) {
         checkingNodeContext.setBreakingNode(validatePropertyBreakingPoint);
       }

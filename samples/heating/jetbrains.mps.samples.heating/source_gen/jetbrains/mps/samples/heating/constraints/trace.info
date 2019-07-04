@@ -59,52 +59,52 @@
   </root>
   <root nodeRef="r:85427802-2815-4ede-beac-6d6b51b72018(jetbrains.mps.samples.heating.constraints)/5063359128232717451">
     <file name="ChangeEvent_Constraints.java">
-      <node id="5063359128232717451" at="18,36,19,159" concept="8" />
-      <node id="5063359128232932337" at="23,66,24,154" concept="8" />
-      <node id="5063359128232932337" at="27,38,28,18" concept="5" />
-      <node id="5063359128232932337" at="30,0,31,0" concept="6" trace="validatePropertyBreakingPoint" />
-      <node id="5063359128232932337" at="32,109,33,75" concept="4" />
-      <node id="5063359128232932337" at="34,53,35,75" concept="1" />
-      <node id="5063359128232932337" at="36,7,37,20" concept="5" />
-      <node id="5063359128232934209" at="39,82,40,56" concept="5" />
-      <node id="5063359128232717451" at="44,84,45,119" concept="4" />
-      <node id="5063359128232932337" at="45,119,46,206" concept="1" />
-      <node id="5063359128232717451" at="46,206,47,22" concept="5" />
-      <node id="5063359128232717451" at="18,0,21,0" concept="0" trace="ChangeEvent_Constraints#()V" />
-      <node id="5063359128232932337" at="23,0,26,0" concept="0" trace="Temperature_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
-      <node id="5063359128232932337" at="33,75,36,7" concept="2" />
-      <node id="5063359128232932337" at="39,0,42,0" concept="7" trace="staticValidateProperty#(Lorg/jetbrains/mps/openapi/model/SNode;I)Z" />
-      <node id="5063359128232932337" at="26,0,30,0" concept="3" trace="hasOwnValidator#()Z" />
-      <node id="5063359128232717451" at="43,0,49,0" concept="3" trace="getSpecifiedProperties#()Ljava/util/Map;" />
-      <node id="5063359128232932337" at="31,0,39,0" concept="3" trace="validateValue#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/Object;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Z" />
-      <scope id="5063359128232717451" at="18,36,19,159" />
-      <scope id="5063359128232932337" at="23,66,24,154" />
-      <scope id="5063359128232932337" at="27,38,28,18" />
-      <scope id="5063359128232932337" at="34,53,35,75" />
-      <scope id="5063359128232933522" at="39,82,40,56" />
-      <scope id="5063359128232717451" at="18,0,21,0" />
-      <scope id="5063359128232932337" at="23,0,26,0">
+      <node id="5063359128232717451" at="19,36,20,159" concept="8" />
+      <node id="5063359128232932337" at="24,66,25,154" concept="8" />
+      <node id="5063359128232932337" at="28,38,29,18" concept="5" />
+      <node id="5063359128232932337" at="31,0,32,0" concept="6" trace="validatePropertyBreakingPoint" />
+      <node id="5063359128232932337" at="33,109,34,100" concept="4" />
+      <node id="5063359128232932337" at="35,53,36,75" concept="1" />
+      <node id="5063359128232932337" at="37,7,38,20" concept="5" />
+      <node id="5063359128232934209" at="40,82,41,56" concept="5" />
+      <node id="5063359128232717451" at="45,84,46,119" concept="4" />
+      <node id="5063359128232932337" at="46,119,47,206" concept="1" />
+      <node id="5063359128232717451" at="47,206,48,22" concept="5" />
+      <node id="5063359128232717451" at="19,0,22,0" concept="0" trace="ChangeEvent_Constraints#()V" />
+      <node id="5063359128232932337" at="24,0,27,0" concept="0" trace="Temperature_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
+      <node id="5063359128232932337" at="34,100,37,7" concept="2" />
+      <node id="5063359128232932337" at="40,0,43,0" concept="7" trace="staticValidateProperty#(Lorg/jetbrains/mps/openapi/model/SNode;I)Z" />
+      <node id="5063359128232932337" at="27,0,31,0" concept="3" trace="hasOwnValidator#()Z" />
+      <node id="5063359128232717451" at="44,0,50,0" concept="3" trace="getSpecifiedProperties#()Ljava/util/Map;" />
+      <node id="5063359128232932337" at="32,0,40,0" concept="3" trace="validateValue#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/Object;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Z" />
+      <scope id="5063359128232717451" at="19,36,20,159" />
+      <scope id="5063359128232932337" at="24,66,25,154" />
+      <scope id="5063359128232932337" at="28,38,29,18" />
+      <scope id="5063359128232932337" at="35,53,36,75" />
+      <scope id="5063359128232933522" at="40,82,41,56" />
+      <scope id="5063359128232717451" at="19,0,22,0" />
+      <scope id="5063359128232932337" at="24,0,27,0">
         <var name="container" id="5063359128232932337" />
       </scope>
-      <scope id="5063359128232932337" at="39,0,42,0">
+      <scope id="5063359128232932337" at="40,0,43,0">
         <var name="node" id="5063359128232932337" />
         <var name="propertyValue" id="5063359128232932337" />
       </scope>
-      <scope id="5063359128232717451" at="44,84,47,22">
+      <scope id="5063359128232717451" at="45,84,48,22">
         <var name="properties" id="5063359128232717451" />
       </scope>
-      <scope id="5063359128232932337" at="26,0,30,0" />
-      <scope id="5063359128232932337" at="32,109,37,20">
+      <scope id="5063359128232932337" at="27,0,31,0" />
+      <scope id="5063359128232932337" at="33,109,38,20">
         <var name="result" id="5063359128232932337" />
       </scope>
-      <scope id="5063359128232717451" at="43,0,49,0" />
-      <scope id="5063359128232932337" at="31,0,39,0">
+      <scope id="5063359128232717451" at="44,0,50,0" />
+      <scope id="5063359128232932337" at="32,0,40,0">
         <var name="checkingNodeContext" id="5063359128232932337" />
         <var name="node" id="5063359128232932337" />
         <var name="propertyValue" id="5063359128232932337" />
       </scope>
-      <unit id="5063359128232932337" at="22,0,43,0" name="jetbrains.mps.samples.heating.constraints.ChangeEvent_Constraints$Temperature_Property" />
-      <unit id="5063359128232717451" at="17,0,50,0" name="jetbrains.mps.samples.heating.constraints.ChangeEvent_Constraints" />
+      <unit id="5063359128232932337" at="23,0,44,0" name="jetbrains.mps.samples.heating.constraints.ChangeEvent_Constraints$Temperature_Property" />
+      <unit id="5063359128232717451" at="18,0,51,0" name="jetbrains.mps.samples.heating.constraints.ChangeEvent_Constraints" />
     </file>
   </root>
   <root nodeRef="r:85427802-2815-4ede-beac-6d6b51b72018(jetbrains.mps.samples.heating.constraints)/5726447348463760016">
@@ -113,7 +113,7 @@
       <node id="5726447348463760063" at="29,60,30,148" concept="8" />
       <node id="5726447348463760063" at="33,38,34,18" concept="5" />
       <node id="5726447348463760063" at="36,0,37,0" concept="6" trace="validatePropertyBreakingPoint" />
-      <node id="5726447348463760063" at="38,109,39,75" concept="4" />
+      <node id="5726447348463760063" at="38,109,39,100" concept="4" />
       <node id="5726447348463760063" at="40,53,41,75" concept="1" />
       <node id="5726447348463760063" at="42,7,43,20" concept="5" />
       <node id="5726447348463760814" at="47,41,48,222" concept="5" />
@@ -122,7 +122,7 @@
       <node id="5726447348463760016" at="56,187,57,22" concept="5" />
       <node id="5726447348463760016" at="24,0,27,0" concept="0" trace="Slot_Constraints#()V" />
       <node id="5726447348463760063" at="29,0,32,0" concept="0" trace="Start_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
-      <node id="5726447348463760063" at="39,75,42,7" concept="2" />
+      <node id="5726447348463760063" at="39,100,42,7" concept="2" />
       <node id="5726447348463760812" at="47,0,50,0" concept="3" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="5726447348463760063" at="32,0,36,0" concept="3" trace="hasOwnValidator#()Z" />
       <node id="5726447348463760801" at="45,94,50,9" concept="5" />

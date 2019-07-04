@@ -171,7 +171,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_ContextAssistantComponent;
       {
         ModelAccessor modelAccessor = new TransactionalPropertyAccessor(myNode, property, false, false, getEditorContext()) {
           public void doCommit0(final Object oldValue, final Object newValue) {
-            doCommitImpl((String) (oldValue), (String) (newValue));
+            doCommitImpl(SPropertyOperations.castString(oldValue), SPropertyOperations.castString(newValue));
           }
           public void doCommitImpl(final String oldValue, final String newValue) {
             if (!(Sequence.fromIterable(new ExtensionPoint<_FunctionTypes._return_P4_E0<? extends Boolean, ? super EditorContext, ? super SNode, ? super String, ? super String>>("jetbrains.mps.lang.structure.NodeRenamer").getObjects()).any(new IWhereFilter<_FunctionTypes._return_P4_E0<? extends Boolean, ? super EditorContext, ? super SNode, ? super String, ? super String>>() {

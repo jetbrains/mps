@@ -9,11 +9,11 @@ import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.runtime.CheckingNodeContext;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.generator.behavior.ContextVariableProvider__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.scope.Scope;
 import java.util.Map;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -36,7 +36,7 @@ public class GenerationContextOp_ContextVarRef_Constraints extends BaseConstrain
     private static final SNodePointer validatePropertyBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c895902ee(jetbrains.mps.lang.generator.generationContext.constraints)", "7430509679014316431");
     @Override
     public boolean validateValue(SNode node, Object propertyValue, CheckingNodeContext checkingNodeContext) {
-      boolean result = staticValidateProperty(node, (String) (propertyValue));
+      boolean result = staticValidateProperty(node, SPropertyOperations.castString(propertyValue));
       if (!(result) && checkingNodeContext != null) {
         checkingNodeContext.setBreakingNode(validatePropertyBreakingPoint);
       }

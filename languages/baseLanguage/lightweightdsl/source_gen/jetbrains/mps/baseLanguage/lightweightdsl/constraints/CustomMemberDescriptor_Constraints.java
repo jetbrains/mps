@@ -8,6 +8,7 @@ import jetbrains.mps.smodel.runtime.base.BasePropertyConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.Map;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.runtime.PropertyConstraintsDescriptor;
@@ -51,7 +52,7 @@ public class CustomMemberDescriptor_Constraints extends BaseConstraintsDescripto
     }
     @Override
     public void setPropertyValue(SNode node, Object propertyValue) {
-      staticSetPropertyValue(node, (String) (propertyValue));
+      staticSetPropertyValue(node, SPropertyOperations.castString(propertyValue));
     }
     private static void staticSetPropertyValue(SNode node, String propertyValue) {
     }

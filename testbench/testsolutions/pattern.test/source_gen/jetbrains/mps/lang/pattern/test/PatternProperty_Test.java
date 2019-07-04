@@ -10,6 +10,7 @@ import org.junit.Test;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.pattern.DefaultMatchingPattern;
 import org.junit.Assert;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -32,7 +33,7 @@ public class PatternProperty_Test extends BaseTransformationTest {
         DefaultMatchingPattern pattern = new Pattern_xihehy_a0b0a0a0a0a0e(_quotation_createNode_xihehy_a0a0b0a0a0a0a0e());
         final boolean matches = pattern.match(nodeToMatch);
         Assert.assertTrue("Pattern match expected", matches);
-        junit.framework.Assert.assertEquals("something", (String) pattern.getMatchedPropertyValue("printed"));
+        junit.framework.Assert.assertEquals("something", SPropertyOperations.castString(pattern.getMatchedPropertyValue("printed")));
       }
     });
   }

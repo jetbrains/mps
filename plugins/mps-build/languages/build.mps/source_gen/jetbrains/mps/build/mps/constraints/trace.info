@@ -947,52 +947,52 @@
   </root>
   <root nodeRef="r:76dda237-5120-4688-b749-201ab5c5059d(jetbrains.mps.build.mps.constraints)/5730480978697088988">
     <file name="BuildMps_Tips_Constraints.java">
-      <node id="5730480978697088988" at="18,38,19,154" concept="10" />
-      <node id="5730480978697088989" at="23,59,24,137" concept="10" />
-      <node id="5730480978697088989" at="27,38,28,18" concept="5" />
-      <node id="5730480978697088989" at="30,0,31,0" concept="8" trace="validatePropertyBreakingPoint" />
-      <node id="5730480978697088989" at="32,109,33,78" concept="4" />
-      <node id="5730480978697088989" at="34,53,35,75" concept="1" />
-      <node id="5730480978697088989" at="36,7,37,20" concept="5" />
-      <node id="5730480978697186224" at="39,85,40,109" concept="5" />
-      <node id="5730480978697088988" at="44,84,45,119" concept="4" />
-      <node id="5730480978697088989" at="45,119,46,184" concept="1" />
-      <node id="5730480978697088988" at="46,184,47,22" concept="5" />
-      <node id="5730480978697088988" at="18,0,21,0" concept="0" trace="BuildMps_Tips_Constraints#()V" />
-      <node id="5730480978697088989" at="23,0,26,0" concept="0" trace="Name_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
-      <node id="5730480978697088989" at="33,78,36,7" concept="2" />
-      <node id="5730480978697088989" at="39,0,42,0" concept="9" trace="staticValidateProperty#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/String;)Z" />
-      <node id="5730480978697088989" at="26,0,30,0" concept="3" trace="hasOwnValidator#()Z" />
-      <node id="5730480978697088988" at="43,0,49,0" concept="3" trace="getSpecifiedProperties#()Ljava/util/Map;" />
-      <node id="5730480978697088989" at="31,0,39,0" concept="3" trace="validateValue#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/Object;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Z" />
-      <scope id="5730480978697088988" at="18,38,19,154" />
-      <scope id="5730480978697088989" at="23,59,24,137" />
-      <scope id="5730480978697088989" at="27,38,28,18" />
-      <scope id="5730480978697088989" at="34,53,35,75" />
-      <scope id="5730480978697088992" at="39,85,40,109" />
-      <scope id="5730480978697088988" at="18,0,21,0" />
-      <scope id="5730480978697088989" at="23,0,26,0">
+      <node id="5730480978697088988" at="19,38,20,154" concept="10" />
+      <node id="5730480978697088989" at="24,59,25,137" concept="10" />
+      <node id="5730480978697088989" at="28,38,29,18" concept="5" />
+      <node id="5730480978697088989" at="31,0,32,0" concept="8" trace="validatePropertyBreakingPoint" />
+      <node id="5730480978697088989" at="33,109,34,99" concept="4" />
+      <node id="5730480978697088989" at="35,53,36,75" concept="1" />
+      <node id="5730480978697088989" at="37,7,38,20" concept="5" />
+      <node id="5730480978697186224" at="40,85,41,109" concept="5" />
+      <node id="5730480978697088988" at="45,84,46,119" concept="4" />
+      <node id="5730480978697088989" at="46,119,47,184" concept="1" />
+      <node id="5730480978697088988" at="47,184,48,22" concept="5" />
+      <node id="5730480978697088988" at="19,0,22,0" concept="0" trace="BuildMps_Tips_Constraints#()V" />
+      <node id="5730480978697088989" at="24,0,27,0" concept="0" trace="Name_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
+      <node id="5730480978697088989" at="34,99,37,7" concept="2" />
+      <node id="5730480978697088989" at="40,0,43,0" concept="9" trace="staticValidateProperty#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/String;)Z" />
+      <node id="5730480978697088989" at="27,0,31,0" concept="3" trace="hasOwnValidator#()Z" />
+      <node id="5730480978697088988" at="44,0,50,0" concept="3" trace="getSpecifiedProperties#()Ljava/util/Map;" />
+      <node id="5730480978697088989" at="32,0,40,0" concept="3" trace="validateValue#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/Object;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Z" />
+      <scope id="5730480978697088988" at="19,38,20,154" />
+      <scope id="5730480978697088989" at="24,59,25,137" />
+      <scope id="5730480978697088989" at="28,38,29,18" />
+      <scope id="5730480978697088989" at="35,53,36,75" />
+      <scope id="5730480978697088992" at="40,85,41,109" />
+      <scope id="5730480978697088988" at="19,0,22,0" />
+      <scope id="5730480978697088989" at="24,0,27,0">
         <var name="container" id="5730480978697088989" />
       </scope>
-      <scope id="5730480978697088989" at="39,0,42,0">
+      <scope id="5730480978697088989" at="40,0,43,0">
         <var name="node" id="5730480978697088989" />
         <var name="propertyValue" id="5730480978697088989" />
       </scope>
-      <scope id="5730480978697088988" at="44,84,47,22">
+      <scope id="5730480978697088988" at="45,84,48,22">
         <var name="properties" id="5730480978697088988" />
       </scope>
-      <scope id="5730480978697088989" at="26,0,30,0" />
-      <scope id="5730480978697088989" at="32,109,37,20">
+      <scope id="5730480978697088989" at="27,0,31,0" />
+      <scope id="5730480978697088989" at="33,109,38,20">
         <var name="result" id="5730480978697088989" />
       </scope>
-      <scope id="5730480978697088988" at="43,0,49,0" />
-      <scope id="5730480978697088989" at="31,0,39,0">
+      <scope id="5730480978697088988" at="44,0,50,0" />
+      <scope id="5730480978697088989" at="32,0,40,0">
         <var name="checkingNodeContext" id="5730480978697088989" />
         <var name="node" id="5730480978697088989" />
         <var name="propertyValue" id="5730480978697088989" />
       </scope>
-      <unit id="5730480978697088989" at="22,0,43,0" name="jetbrains.mps.build.mps.constraints.BuildMps_Tips_Constraints$Name_Property" />
-      <unit id="5730480978697088988" at="17,0,50,0" name="jetbrains.mps.build.mps.constraints.BuildMps_Tips_Constraints" />
+      <unit id="5730480978697088989" at="23,0,44,0" name="jetbrains.mps.build.mps.constraints.BuildMps_Tips_Constraints$Name_Property" />
+      <unit id="5730480978697088988" at="18,0,51,0" name="jetbrains.mps.build.mps.constraints.BuildMps_Tips_Constraints" />
     </file>
   </root>
   <root nodeRef="r:76dda237-5120-4688-b749-201ab5c5059d(jetbrains.mps.build.mps.constraints)/6503355885715456079">

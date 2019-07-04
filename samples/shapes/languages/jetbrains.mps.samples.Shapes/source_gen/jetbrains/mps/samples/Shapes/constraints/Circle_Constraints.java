@@ -28,7 +28,7 @@ public class Circle_Constraints extends BaseConstraintsDescriptor {
     }
     @Override
     public void setPropertyValue(SNode node, Object propertyValue) {
-      staticSetPropertyValue(node, (int) (propertyValue));
+      staticSetPropertyValue(node, SPropertyOperations.castInteger(propertyValue));
     }
     private static void staticSetPropertyValue(SNode node, int propertyValue) {
       SPropertyOperations.assign(node, MetaAdapterFactory.getProperty(0x16bafbb4c6cd4cc5L, 0x83327c6de8729b3fL, 0x51dcaa29974fc198L, 0x51dcaa29974fc19eL, "radius"), 11110);

@@ -9,6 +9,7 @@ import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.runtime.CheckingNodeContext;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import java.util.Map;
@@ -32,7 +33,7 @@ public class ArithmeticSimpleMathExpression_Constraints extends BaseConstraintsD
     private static final SNodePointer validatePropertyBreakingPoint = new SNodePointer("r:c8883f02-cad6-4252-a4e6-ca01d435b80e(jetbrains.mps.samples.Expressions.constraints)", "2073504467208672627");
     @Override
     public boolean validateValue(SNode node, Object propertyValue, CheckingNodeContext checkingNodeContext) {
-      boolean result = staticValidateProperty(node, (String) (propertyValue));
+      boolean result = staticValidateProperty(node, SPropertyOperations.castString(propertyValue));
       if (!(result) && checkingNodeContext != null) {
         checkingNodeContext.setBreakingNode(validatePropertyBreakingPoint);
       }

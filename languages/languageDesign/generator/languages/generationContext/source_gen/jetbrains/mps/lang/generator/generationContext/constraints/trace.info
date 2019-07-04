@@ -364,7 +364,7 @@
       <node id="7430509679014316429" at="29,69,30,157" concept="9" />
       <node id="7430509679014316429" at="33,38,34,18" concept="5" />
       <node id="7430509679014316429" at="36,0,37,0" concept="7" trace="validatePropertyBreakingPoint" />
-      <node id="7430509679014316429" at="38,109,39,78" concept="4" />
+      <node id="7430509679014316429" at="38,109,39,99" concept="4" />
       <node id="7430509679014316429" at="40,53,41,75" concept="1" />
       <node id="7430509679014316429" at="42,7,43,20" concept="5" />
       <node id="7430509679014601691" at="45,91,46,21" concept="4" />
@@ -377,7 +377,7 @@
       <node id="7430509679014316106" at="65,234,66,22" concept="5" />
       <node id="7430509679014316106" at="24,0,27,0" concept="0" trace="GenerationContextOp_ContextVarRef_Constraints#()V" />
       <node id="7430509679014316429" at="29,0,32,0" concept="0" trace="ContextVarName_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
-      <node id="7430509679014316429" at="39,78,42,7" concept="2" />
+      <node id="7430509679014316429" at="39,99,42,7" concept="2" />
       <node id="7430509679014568317" at="50,0,53,0" concept="3" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="7430509679014316429" at="32,0,36,0" concept="3" trace="hasOwnValidator#()Z" />
       <node id="7430509679014316106" at="62,0,68,0" concept="3" trace="getSpecifiedProperties#()Ljava/util/Map;" />

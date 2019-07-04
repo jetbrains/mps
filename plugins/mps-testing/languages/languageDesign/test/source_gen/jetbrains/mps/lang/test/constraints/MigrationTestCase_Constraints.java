@@ -9,6 +9,7 @@ import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.runtime.CheckingNodeContext;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.Map;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.runtime.PropertyConstraintsDescriptor;
@@ -30,7 +31,7 @@ public class MigrationTestCase_Constraints extends BaseConstraintsDescriptor {
     private static final SNodePointer validatePropertyBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c89590382(jetbrains.mps.lang.test.constraints)", "5476670926298732701");
     @Override
     public boolean validateValue(SNode node, Object propertyValue, CheckingNodeContext checkingNodeContext) {
-      boolean result = staticValidateProperty(node, (boolean) (propertyValue));
+      boolean result = staticValidateProperty(node, SPropertyOperations.castBoolean(propertyValue));
       if (!(result) && checkingNodeContext != null) {
         checkingNodeContext.setBreakingNode(validatePropertyBreakingPoint);
       }

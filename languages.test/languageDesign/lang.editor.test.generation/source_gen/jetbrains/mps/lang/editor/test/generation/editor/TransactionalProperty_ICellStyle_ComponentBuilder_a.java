@@ -14,6 +14,7 @@ import jetbrains.mps.lang.editor.cellProviders.PropertyCellProvider;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Property;
 import jetbrains.mps.nodeEditor.cells.ModelAccessor;
 import jetbrains.mps.nodeEditor.cells.TransactionalPropertyAccessor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.lang.editor.test.generation.editor.TestTargetStyleSheet_StyleSheet.testParentStyleStyleClass;
@@ -48,7 +49,7 @@ import jetbrains.mps.nodeEditor.EditorManager;
       {
         ModelAccessor modelAccessor = new TransactionalPropertyAccessor(myNode, property, false, false, getEditorContext()) {
           public void doCommit0(final Object oldValue, final Object newValue) {
-            doCommitImpl((String) (oldValue), (String) (newValue));
+            doCommitImpl(SPropertyOperations.castString(oldValue), SPropertyOperations.castString(newValue));
           }
           public void doCommitImpl(final String oldValue, final String newValue) {
           }

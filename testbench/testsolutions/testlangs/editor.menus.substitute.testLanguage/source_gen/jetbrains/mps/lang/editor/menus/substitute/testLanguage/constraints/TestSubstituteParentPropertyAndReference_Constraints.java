@@ -9,10 +9,10 @@ import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.runtime.CheckingNodeContext;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.Map;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.runtime.PropertyConstraintsDescriptor;
@@ -48,7 +48,7 @@ public class TestSubstituteParentPropertyAndReference_Constraints extends BaseCo
     private static final SNodePointer validatePropertyBreakingPoint = new SNodePointer("r:0cba60fc-aa17-42ba-b3ca-69b0d1a86fe9(jetbrains.mps.lang.editor.menus.substitute.testLanguage.constraints)", "1588042961787417549");
     @Override
     public boolean validateValue(SNode node, Object propertyValue, CheckingNodeContext checkingNodeContext) {
-      boolean result = staticValidateProperty(node, (SEnumerationLiteral) (propertyValue));
+      boolean result = staticValidateProperty(node, SPropertyOperations.castEnummember(propertyValue));
       if (!(result) && checkingNodeContext != null) {
         checkingNodeContext.setBreakingNode(validatePropertyBreakingPoint);
       }
@@ -81,7 +81,7 @@ public class TestSubstituteParentPropertyAndReference_Constraints extends BaseCo
     }
     @Override
     public void setPropertyValue(SNode node, Object propertyValue) {
-      staticSetPropertyValue(node, (SEnumerationLiteral) (propertyValue));
+      staticSetPropertyValue(node, SPropertyOperations.castEnummember(propertyValue));
     }
     private static void staticSetPropertyValue(SNode node, SEnumerationLiteral propertyValue) {
       SPropertyOperations.assign(node, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "custom property setter executed");
