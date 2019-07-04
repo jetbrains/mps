@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.nodeEditor.actions;
 
+import jetbrains.mps.editor.runtime.cells.PredefinedInsertAction;
 import jetbrains.mps.openapi.editor.EditorComponent;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
@@ -59,6 +60,7 @@ class CellActionExecutorFinder {
       CellActionExecuter cellActionExecuter = CellActionExecuter.getExecutableExecuter(currentCell, myActionType, myEditorContext);
       if (cellActionExecuter != null) {
         if (myActionType == CellActionType.INSERT) {
+          // why not doing the same for insert_before?
           myResult = getOverridingRightBoundaryActionExecuter(cellActionExecuter, myEditorCell);
         } else {
           myResult = cellActionExecuter;
@@ -78,17 +80,24 @@ class CellActionExecutorFinder {
     if (parent == null) {
       return result;
     }
-    for (EditorCell_Collection currentCell = editorCell.getParent(); currentCell != null && CellTraversalUtil.getLastLeaf(currentCell) == editorCell;
-         currentCell = currentCell.getParent()) {
-      if (node.equals(currentCell.getSNode()) || node.equals(currentCell.getSNode())) {
-        continue;
-      }
-      CellActionExecuter overridingCellActionExecuter = CellActionExecuter.getExecutableExecuter(currentCell, myActionType, myEditorContext);
-      if (overridingCellActionExecuter != null) {
-        result = overridingCellActionExecuter;
+    for (EditorCell_Collection curCellCollection = editorCell.getParent();
+         curCellCollection != null && CellTraversalUtil.getLastLeaf(curCellCollection) == editorCell;
+         curCellCollection = curCellCollection.getParent()) {
+      if (!node.equals(curCellCollection.getSNode())) {
+        CellActionExecuter overridingCellActionExecuter = CellActionExecuter.getExecutableExecuter(curCellCollection, myActionType, myEditorContext);
+        if (overridingCellActionExecuter == null) {
+          continue;
+        }
+        if (result == null || isPredefined(result) || !isPredefined(overridingCellActionExecuter)) {
+          result = overridingCellActionExecuter;
+        }
       }
     }
     return result;
+  }
+
+  private boolean isPredefined(CellActionExecuter overridingCellActionExecuter) {
+    return overridingCellActionExecuter.getAction() instanceof PredefinedInsertAction;
   }
 }
 

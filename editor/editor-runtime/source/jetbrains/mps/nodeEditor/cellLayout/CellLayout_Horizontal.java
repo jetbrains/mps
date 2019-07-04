@@ -77,11 +77,11 @@ public class CellLayout_Horizontal extends AbstractCellLayout {
     editorCells.setHeight(ascent + descent + topInset + bottomInset);
 
     if (!isInsideGird) {
-      alignCellsToRightGreedy(editorCells);
+      alignCellsToRightGreedily(editorCells);
     }
   }
 
-  private void alignCellsToRightGreedy(EditorCell_Collection editorCells) {
+  private void alignCellsToRightGreedily(EditorCell_Collection editorCells) {
     List<EditorCell> cellsToMove = new ArrayList<>();
     boolean smbWantsToRight = false;
     for (Iterator<EditorCell> rev = editorCells.reverseIterator(); rev.hasNext();) {

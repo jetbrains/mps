@@ -133,7 +133,7 @@ public class EditorComponentKeyboardHandler implements KeyboardHandler {
     }
 
     Collection<Pair<KeyMapAction, EditorCell>> actionCellPairs = myKeymapHandler.getActions(selectedCell, keyEvent, editorContext);
-    if (actionCellPairs.size() == 0) {
+    if (actionCellPairs.isEmpty()) {
       return false;
     }
     Pair<KeyMapAction, EditorCell> first = actionCellPairs.iterator().next();
