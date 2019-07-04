@@ -4435,21 +4435,20 @@
       <node id="7475692990584612119" at="44,52,45,19" concept="12" />
       <node id="7475692990584612120" at="48,63,49,41" concept="2" />
       <node id="7475692990584612155" at="49,41,50,41" concept="2" />
-      <node id="7475692990584676993" at="50,41,51,41" concept="2" />
-      <node id="7475692990584612199" at="51,41,52,416" concept="7" />
-      <node id="7475692990584612209" at="52,416,53,28" concept="2" />
-      <node id="7475692990584612214" at="53,28,54,84" concept="7" />
-      <node id="7475692990584612219" at="54,84,55,23" concept="2" />
-      <node id="7475692990584612223" at="56,7,57,340" concept="7" />
-      <node id="7475692990584612223" at="57,340,58,339" concept="7" />
-      <node id="7475692990584612223" at="58,339,59,160" concept="2" />
+      <node id="7475692990584612199" at="50,41,51,416" concept="7" />
+      <node id="7475692990584612209" at="51,416,52,28" concept="2" />
+      <node id="7475692990584612214" at="52,28,53,84" concept="7" />
+      <node id="7475692990584612219" at="53,84,54,23" concept="2" />
+      <node id="7475692990584612223" at="55,7,56,340" concept="7" />
+      <node id="7475692990584612223" at="56,340,57,339" concept="7" />
+      <node id="7475692990584612223" at="57,339,58,160" concept="2" />
       <node id="7475692990584612119" at="28,0,30,0" concept="10" trace="ourParamCache" />
       <node id="7475692990584612119" at="30,0,32,0" concept="3" trace="myWithCommandRule" />
       <node id="7475692990584612119" at="33,0,36,0" concept="1" trace="ExtractWithFieldReference_Test#()V" />
       <node id="7475692990584612119" at="44,0,47,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
       <node id="7475692990584612196" at="37,0,41,0" concept="6" trace="test_extractFromStatements#()V" />
-      <node id="7475692990584612223" at="55,23,60,7" concept="0" />
-      <node id="7475692990584612196" at="48,0,62,0" concept="6" trace="test_extractFromStatements#()V" />
+      <node id="7475692990584612223" at="54,23,59,7" concept="0" />
+      <node id="7475692990584612196" at="48,0,61,0" concept="6" trace="test_extractFromStatements#()V" />
       <scope id="7475692990584612119" at="33,43,34,25" />
       <scope id="7475692990584612196" at="38,61,39,83" />
       <scope id="7475692990584612119" at="44,52,45,19" />
@@ -4457,18 +4456,18 @@
       <scope id="7475692990584612119" at="44,0,47,0">
         <var name="owner" id="7475692990584612119" />
       </scope>
-      <scope id="7475692990584612223" at="56,7,59,160">
+      <scope id="7475692990584612223" at="55,7,58,160">
         <var name="nodesAfter" id="7475692990584612223" />
         <var name="nodesBefore" id="7475692990584612223" />
       </scope>
       <scope id="7475692990584612196" at="37,0,41,0" />
-      <scope id="7475692990584612196" at="48,63,60,7">
+      <scope id="7475692990584612196" at="48,63,59,7">
         <var name="params" id="7475692990584612200" />
         <var name="ref" id="7475692990584612215" />
       </scope>
-      <scope id="7475692990584612196" at="48,0,62,0" />
-      <unit id="7475692990584612119" at="42,0,65,0" name="jetbrains.mps.refactoringTest.ExtractWithFieldReference_Test$TestBody" />
-      <unit id="7475692990584612119" at="26,0,66,0" name="jetbrains.mps.refactoringTest.ExtractWithFieldReference_Test" />
+      <scope id="7475692990584612196" at="48,0,61,0" />
+      <unit id="7475692990584612119" at="42,0,64,0" name="jetbrains.mps.refactoringTest.ExtractWithFieldReference_Test$TestBody" />
+      <unit id="7475692990584612119" at="26,0,65,0" name="jetbrains.mps.refactoringTest.ExtractWithFieldReference_Test" />
     </file>
   </root>
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/7475692990584681432">
@@ -4478,21 +4477,20 @@
       <node id="7475692990584681432" at="44,52,45,19" concept="12" />
       <node id="7475692990584681433" at="48,63,49,41" concept="2" />
       <node id="7475692990584681453" at="49,41,50,41" concept="2" />
-      <node id="7475692990584681478" at="50,41,51,41" concept="2" />
-      <node id="7475692990584681482" at="51,41,52,416" concept="7" />
-      <node id="7475692990584681490" at="52,416,53,28" concept="2" />
-      <node id="7475692990584681495" at="53,28,54,84" concept="7" />
-      <node id="7475692990584681500" at="54,84,55,23" concept="2" />
-      <node id="7475692990584681504" at="56,7,57,340" concept="7" />
-      <node id="7475692990584681504" at="57,340,58,339" concept="7" />
-      <node id="7475692990584681504" at="58,339,59,160" concept="2" />
+      <node id="7475692990584681482" at="50,41,51,416" concept="7" />
+      <node id="7475692990584681490" at="51,416,52,28" concept="2" />
+      <node id="7475692990584681495" at="52,28,53,84" concept="7" />
+      <node id="7475692990584681500" at="53,84,54,23" concept="2" />
+      <node id="7475692990584681504" at="55,7,56,340" concept="7" />
+      <node id="7475692990584681504" at="56,340,57,339" concept="7" />
+      <node id="7475692990584681504" at="57,339,58,160" concept="2" />
       <node id="7475692990584681432" at="28,0,30,0" concept="10" trace="ourParamCache" />
       <node id="7475692990584681432" at="30,0,32,0" concept="3" trace="myWithCommandRule" />
       <node id="7475692990584681432" at="33,0,36,0" concept="1" trace="ExtractWithStaticFieldReference_Test#()V" />
       <node id="7475692990584681432" at="44,0,47,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
       <node id="7475692990584681479" at="37,0,41,0" concept="6" trace="test_extractFromStatements#()V" />
-      <node id="7475692990584681504" at="55,23,60,7" concept="0" />
-      <node id="7475692990584681479" at="48,0,62,0" concept="6" trace="test_extractFromStatements#()V" />
+      <node id="7475692990584681504" at="54,23,59,7" concept="0" />
+      <node id="7475692990584681479" at="48,0,61,0" concept="6" trace="test_extractFromStatements#()V" />
       <scope id="7475692990584681432" at="33,49,34,25" />
       <scope id="7475692990584681479" at="38,61,39,89" />
       <scope id="7475692990584681432" at="44,52,45,19" />
@@ -4500,18 +4498,18 @@
       <scope id="7475692990584681432" at="44,0,47,0">
         <var name="owner" id="7475692990584681432" />
       </scope>
-      <scope id="7475692990584681504" at="56,7,59,160">
+      <scope id="7475692990584681504" at="55,7,58,160">
         <var name="nodesAfter" id="7475692990584681504" />
         <var name="nodesBefore" id="7475692990584681504" />
       </scope>
       <scope id="7475692990584681479" at="37,0,41,0" />
-      <scope id="7475692990584681479" at="48,63,60,7">
+      <scope id="7475692990584681479" at="48,63,59,7">
         <var name="params" id="7475692990584681483" />
         <var name="ref" id="7475692990584681496" />
       </scope>
-      <scope id="7475692990584681479" at="48,0,62,0" />
-      <unit id="7475692990584681432" at="42,0,65,0" name="jetbrains.mps.refactoringTest.ExtractWithStaticFieldReference_Test$TestBody" />
-      <unit id="7475692990584681432" at="26,0,66,0" name="jetbrains.mps.refactoringTest.ExtractWithStaticFieldReference_Test" />
+      <scope id="7475692990584681479" at="48,0,61,0" />
+      <unit id="7475692990584681432" at="42,0,64,0" name="jetbrains.mps.refactoringTest.ExtractWithStaticFieldReference_Test$TestBody" />
+      <unit id="7475692990584681432" at="26,0,65,0" name="jetbrains.mps.refactoringTest.ExtractWithStaticFieldReference_Test" />
     </file>
   </root>
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/7568753874916167799">
