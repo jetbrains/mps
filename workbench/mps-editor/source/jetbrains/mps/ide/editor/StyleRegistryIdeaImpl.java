@@ -23,6 +23,7 @@ import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.openapi.editor.markup.EffectType;
 import com.intellij.openapi.editor.markup.TextAttributes;
+import com.intellij.ui.ColorUtil;
 import com.intellij.ui.JBColor;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
@@ -100,11 +101,12 @@ public class StyleRegistryIdeaImpl extends StyleRegistry implements EditorColors
       return myColorsMapping.get(colorPair);
     }
 
-    if ((Math.abs(color.getRGB()) - Math.abs(Color.BLACK.getRGB()) / 2) * (Math.abs(bg.getRGB()) - Math.abs(Color.BLACK.getRGB()) / 2) < 0)
+    if ((Math.abs(color.getRGB()) - Math.abs(Color.BLACK.getRGB()) / 2) * (Math.abs(bg.getRGB()) - Math.abs(Color.BLACK.getRGB()) / 2) < 0) {
       color = new Color(255 - color.getRed(), 255 - color.getGreen(), 255 - color.getBlue());
+    }
 
     int counter = 0;
-    while (!isGoodContrastWithBG(color, bg) && counter < colorIterationSteps) {
+    while (!ColorUtil.areContrasting(color, bg) && counter < colorIterationSteps) {
       int deltaR = Math.abs(bg.getRed() - color.getRed());
       int deltaG = Math.abs(bg.getGreen() - color.getGreen());
       int deltaB = Math.abs(bg.getBlue() - color.getBlue());
@@ -121,18 +123,6 @@ public class StyleRegistryIdeaImpl extends StyleRegistry implements EditorColors
 
     myColorsMapping.put(colorPair, color);
     return color;
-  }
-
-  private boolean isGoodContrastWithBG(Color color, final Color bg) {
-    int brightnessColor = (299 * color.getRed() + 587 * color.getGreen() + 114 * color.getBlue()) / 1000;
-    int brightnessBG = (299 * bg.getRed() + 587 * bg.getGreen() + 114 * bg.getBlue()) / 1000;
-
-    int brightnessDiff = brightnessBG - brightnessColor;
-    int colorDiff = Math.abs(color.getRed() - bg.getRed())
-        + Math.abs(color.getGreen() - bg.getGreen())
-        + Math.abs(color.getBlue() - bg.getBlue());
-
-    return Math.abs(brightnessDiff) >= brightnessTH || colorDiff >= colorTH;
   }
 
   @Override

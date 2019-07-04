@@ -15,7 +15,9 @@
  */
 package jetbrains.mps.nodeEditor.cells;
 
-
+import com.intellij.ui.ColorUtil;
+import com.intellij.ui.DarculaColors;
+import com.intellij.ui.JBColor;
 import jetbrains.mps.editor.runtime.style.Measure;
 import jetbrains.mps.editor.runtime.style.Padding;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
@@ -35,9 +37,9 @@ import java.util.Set;
 
 public class TextLine {
   // COLORS: Remove hardcoded color
-  private static final Color ERROR_COLOR =
-      StyleRegistry.getInstance() != null && StyleRegistry.getInstance().isDarkTheme() ? StyleRegistry.getInstance().getEditorBackground() :
-          new Color(255, 220, 220);
+  private static final Color SELECTED_OR_BACKGROUND_ERROR_COLOR =
+      new JBColor(new Color(255, 220, 220, 128), ColorUtil.mix(StyleRegistry.getInstance().getEditorBackground(), DarculaColors.RED, 0.1));
+  private static final Color ERROR_FOREGROUND_COLOR = new JBColor(new Color(168, 30, 30, 255) , DarculaColors.RED);
 
   private String myText;
   private int myDescent = 0;
@@ -65,7 +67,6 @@ public class TextLine {
   private Color myTextSelectedTextColor = EditorSettings.getInstance().getSelectionForegroundColor();
   private Color myTextSelectedBackgroundColor = EditorSettings.getInstance().getSelectionBackgroundColor();
 
-  private Color myErrorColor = Color.red;
 
   private boolean myShowsErrorColor = false;
 
@@ -331,7 +332,7 @@ public class TextLine {
 
   public Color getBackgroundColor() {
     if (myShowsErrorColor) {
-      return ERROR_COLOR;
+      return SELECTED_OR_BACKGROUND_ERROR_COLOR;
     }
     return null;
   }
@@ -351,7 +352,7 @@ public class TextLine {
 
   public Color getEffectiveTextColor() {
     if (myShowsErrorColor) {
-      return myErrorColor;
+      return ERROR_FOREGROUND_COLOR;
     } else {
       return getTextColor();
     }
@@ -359,7 +360,7 @@ public class TextLine {
 
   public Color getEffectiveSelectedTextColor() {
     if (myShowsErrorColor) {
-      return ERROR_COLOR;
+      return SELECTED_OR_BACKGROUND_ERROR_COLOR;
     } else {
       return mySelectedTextColor != null ? mySelectedTextColor : getTextColor();
     }
@@ -368,7 +369,7 @@ public class TextLine {
   public Color getTextBackgroundColor() {
     init();
     if (myShowsErrorColor) {
-      return ERROR_COLOR;
+      return SELECTED_OR_BACKGROUND_ERROR_COLOR;
     } else {
       if (!myNull) {
         return myTextBackground;
