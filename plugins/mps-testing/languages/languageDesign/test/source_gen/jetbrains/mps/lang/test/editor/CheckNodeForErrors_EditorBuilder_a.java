@@ -13,6 +13,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.lang.test.editor.transformationTest_StyleSheet.NodeOperationStyleClass;
+import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.lang.editor.cellProviders.SingleRoleCellProvider;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -59,6 +60,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.SemicolonS
     editorCell.setCellId("Constant_ue6gv5_a0");
     Style style = new StyleImpl();
     new NodeOperationStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    style.set(StyleAttributes.STRIKE_OUT, true);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
@@ -123,6 +125,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.SemicolonS
     editorCell.setCellId("Constant_ue6gv5_c0");
     Style style = new StyleImpl();
     new NodeOperationStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    style.set(StyleAttributes.STRIKE_OUT, true);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;

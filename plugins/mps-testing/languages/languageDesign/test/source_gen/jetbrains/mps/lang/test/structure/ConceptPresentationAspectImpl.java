@@ -192,6 +192,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.CheckNodeForErrors:
         if (props_CheckNodeForErrors == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.deprecated(true);
           cpb.rawPresentation("check nodes error messages");
           props_CheckNodeForErrors = cpb.create();
         }

@@ -184,6 +184,10 @@
       <property role="TrG5h" value="includeSelf" />
       <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
     </node>
+    <node concept="asaX9" id="fM_JX6jvBC" role="lGtFl">
+      <property role="YLPcu" value="2019.2" />
+      <property role="YLQ7P" value="Use CheckNodeForErrorOperation" />
+    </node>
   </node>
   <node concept="1TIwiD" id="hG1TMwX">
     <property role="R5$K7" value="false" />
