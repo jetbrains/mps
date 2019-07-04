@@ -16,6 +16,8 @@ import org.jetbrains.mps.openapi.language.SDataType;
 import jetbrains.mps.smodel.adapter.structure.types.SPrimitiveTypes;
 import jetbrains.mps.references.Reference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.annotations.Nullable;
+import jetbrains.mps.util.annotation.ToRemove;
 
 public class SPropertyOperations {
   public static String assign(SNode node, SProperty property, String propertyValue) {
@@ -170,7 +172,7 @@ public class SPropertyOperations {
     }
     return propertyValue;
   }
-  public static Object downgradeFromEnumMember(SProperty property, Object propertyValue) {
+  private static Object downgradeFromEnumMember(SProperty property, Object propertyValue) {
     SDataType type = property.getType();
     if (propertyValue instanceof SEnumerationLiteral && type instanceof SEnumerationAdapter) {
       return ((SEnumerationAdapter) type).getRawValueFromLiteral((SEnumerationLiteral) propertyValue);
@@ -258,6 +260,47 @@ public class SPropertyOperations {
     SEnumerationAdapter enumeration = as_sbyy7e_a0a0a24(MetaAdapterFactory.getEnumeration(uuidHigh, uuidLow, enumId, fqEnumNameHint), SEnumerationAdapter.class);
     Object value = enumeration.fromString(serializedValue);
     return (value == SType.NOT_A_VALUE ? null : (SEnumerationLiteral) value);
+  }
+
+  public static String castString(@Nullable Object value) {
+    return (String) value;
+  }
+  public static boolean castBoolean(@Nullable Object value) {
+    return (boolean) value;
+  }
+  public static int castInteger(@Nullable Object value) {
+    return (value == null ? 0 : (int) value);
+  }
+  public static SEnumerationLiteral castEnummember(@Nullable Object value) {
+    return (SEnumerationLiteral) value;
+  }
+
+  @Deprecated
+  @ToRemove(version = 19.2)
+  public static String castEnumString(@Nullable Object value) {
+    return castString(getRawValueFromLiteral(value));
+  }
+  @Deprecated
+  @ToRemove(version = 19.2)
+  public static boolean castEnumBoolean(@Nullable Object value) {
+    return castBoolean(getRawValueFromLiteral(value));
+  }
+  @Deprecated
+  @ToRemove(version = 19.2)
+  public static int castEnumInteger(@Nullable Object value) {
+    return castInteger(getRawValueFromLiteral(value));
+  }
+
+  private static Object getRawValueFromLiteral(Object value) {
+    if (value == null) {
+      return null;
+    }
+    SEnumerationLiteral literal = (SEnumerationLiteral) value;
+    SEnumeration enumeration = literal.getEnumeration();
+    if (enumeration instanceof SEnumerationAdapter) {
+      return ((SEnumerationAdapter) enumeration).getRawValueFromLiteral(literal);
+    }
+    return null;
   }
   private static <T> T as_sbyy7e_a0a0a0a9(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);

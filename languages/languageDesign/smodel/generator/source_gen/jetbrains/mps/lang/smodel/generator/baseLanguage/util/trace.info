@@ -231,5 +231,40 @@
       <unit id="2097240597884176496" at="14,0,70,0" name="jetbrains.mps.lang.smodel.generator.baseLanguage.util.ConceptMethodSuperCall" />
     </file>
   </root>
+  <root nodeRef="r:00000000-0000-4000-0000-011c89590302(jetbrains.mps.lang.smodel.generator.baseLanguage.util)/8673913621388594827">
+    <file name="PropertiesUtil.java">
+      <node id="4705942098321264120" at="17,208,18,146" concept="9" />
+      <node id="8673913621388781824" at="20,214,21,379" concept="8" />
+      <node id="8673913621388782309" at="22,159,23,148" concept="9" />
+      <node id="8673913621388782319" at="25,159,26,148" concept="9" />
+      <node id="8673913621388784656" at="27,7,28,146" concept="9" />
+      <node id="5834820604012870139" at="30,151,31,146" concept="9" />
+      <node id="8673913621388780663" at="33,151,34,146" concept="9" />
+      <node id="5834820604012870155" at="35,5,36,144" concept="9" />
+      <node id="8673913621388594989" at="13,0,15,0" concept="2" trace="PropertiesUtil#()V" />
+      <node id="4705942098321253284" at="16,62,19,5" concept="6" />
+      <node id="8673913621388782307" at="21,379,24,7" concept="6" />
+      <node id="8673913621388782317" at="24,7,27,7" concept="6" />
+      <node id="5834820604012870137" at="29,5,32,5" concept="6" />
+      <node id="8673913621388780661" at="32,5,35,5" concept="6" />
+      <node id="8673913621388771319" at="19,5,29,5" concept="6" />
+      <node id="8673913621388595087" at="16,0,38,0" concept="11" trace="getCastMethod#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <scope id="8673913621388594992" at="13,28,13,28" />
+      <scope id="4705942098321253286" at="17,208,18,146" />
+      <scope id="8673913621388782308" at="22,159,23,148" />
+      <scope id="8673913621388782318" at="25,159,26,148" />
+      <scope id="5834820604012870138" at="30,151,31,146" />
+      <scope id="8673913621388780662" at="33,151,34,146" />
+      <scope id="8673913621388594989" at="13,0,15,0" />
+      <scope id="8673913621388771321" at="20,214,28,146">
+        <var name="memberDataType" id="8673913621388781825" />
+      </scope>
+      <scope id="8673913621388595090" at="16,62,36,144" />
+      <scope id="8673913621388595087" at="16,0,38,0">
+        <var name="datatype" id="8673913621388595117" />
+      </scope>
+      <unit id="8673913621388594827" at="12,0,39,0" name="jetbrains.mps.lang.smodel.generator.baseLanguage.util.PropertiesUtil" />
+    </file>
+  </root>
 </debug-info>
 
