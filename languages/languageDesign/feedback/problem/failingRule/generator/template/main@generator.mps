@@ -2,7 +2,6 @@
 <model ref="r:ceb0e0a3-5ad7-4f7d-a062-c5ce1feaf1ee(main@generator)">
   <persistence version="9" />
   <languages>
-    <use id="134c38d4-e3af-4d9e-b069-1c7df0a4005d" name="jetbrains.mps.lang.constraints.rules.skeleton" version="0" />
     <devkit ref="a2eb3a43-fcc2-4200-80dc-c60110c4862d(jetbrains.mps.devkit.templates)" />
   </languages>
   <imports>
@@ -14,7 +13,6 @@
     <import index="qbpv" ref="r:63fc051d-731b-428a-af30-ceee8d76dfaa(jetbrains.mps.lang.constraints.rules.kinds.structure)" />
     <import index="prp3" ref="r:52ea8481-08b2-4cbd-ad9d-1b42825f7d09(jetbrains.mps.lang.constraints.rules.kinds.constraints)" />
     <import index="sis7" ref="r:ff619a2b-8fe7-4627-a515-9b4874d6fc53(jetbrains.mps.lang.feedback.problem.structure)" />
-    <import index="mqj2" ref="r:1d4f6f82-1219-47a2-a4fa-ac3ba14c9fd5(jetbrains.mps.lang.constraints.rules.skeleton.structure)" />
     <import index="4boq" ref="r:724e6e38-de05-4794-9500-38fefe925278(jetbrains.mps.lang.constraints.rules.skeleton.behavior)" implicit="true" />
   </imports>
   <registry>
@@ -359,7 +357,7 @@
                   <node concept="17R0WA" id="1mFJTG74B_" role="3uHU7w">
                     <node concept="2tJFMh" id="1mFJTG74CJ" role="3uHU7w">
                       <node concept="ZC_QK" id="1mFJTG76vj" role="2tJFKM">
-                        <ref role="2aWVGs" to="prp3:1dKt_a0nokQ" resolve="CanBeParent" />
+                        <ref role="2aWVGs" to="prp3:6X8eyFnbIRY" resolve="CanBeParent" />
                       </node>
                     </node>
                     <node concept="37vLTw" id="1mFJTG74mH" role="3uHU7B">
@@ -372,7 +370,7 @@
                     </node>
                     <node concept="2tJFMh" id="7phS86Nkh1z" role="3uHU7w">
                       <node concept="ZC_QK" id="1mFJTG76jT" role="2tJFKM">
-                        <ref role="2aWVGs" to="prp3:1dKt_a0noks" resolve="CanBeChild" />
+                        <ref role="2aWVGs" to="prp3:6X8eyFnbIRR" resolve="CanBeChild" />
                       </node>
                     </node>
                   </node>
@@ -390,6 +388,73 @@
           </node>
           <node concept="3cpWs6" id="6GnzfDRef5z" role="3cqZAp">
             <node concept="3clFbT" id="6GnzfDRef68" role="3cqZAk" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="3aamgX" id="6X8eyFnbNo4" role="3aUrZf">
+      <property role="36QftV" value="true" />
+      <ref role="30HIoZ" to="xjeg:5sUTrySNgNR" resolve="FailingRuleProblem" />
+      <node concept="gft3U" id="6X8eyFnbNo5" role="1lVwrX">
+        <node concept="3uibUv" id="6X8eyFnbNz_" role="gfFT$">
+          <ref role="3uigEE" to="pdwk:~CanBeRootContext" resolve="CanBeRootContext" />
+        </node>
+      </node>
+      <node concept="30G5F_" id="6X8eyFnbNo7" role="30HLyM">
+        <node concept="3clFbS" id="6X8eyFnbNo8" role="2VODD2">
+          <node concept="3clFbJ" id="6X8eyFnbNo9" role="3cqZAp">
+            <node concept="3clFbS" id="6X8eyFnbNoa" role="3clFbx">
+              <node concept="3cpWs8" id="6X8eyFnbNob" role="3cqZAp">
+                <node concept="3cpWsn" id="6X8eyFnbNoc" role="3cpWs9">
+                  <property role="TrG5h" value="pointer" />
+                  <node concept="2sp9CU" id="6X8eyFnbNod" role="1tU5fm">
+                    <ref role="2sp9C9" to="qbpv:6kKc3mjlk98" resolve="RuleKind" />
+                  </node>
+                  <node concept="2OqwBi" id="6X8eyFnbNoe" role="33vP2m">
+                    <node concept="2OqwBi" id="6X8eyFnbNof" role="2Oq$k0">
+                      <node concept="2OqwBi" id="6X8eyFnbNog" role="2Oq$k0">
+                        <node concept="1PxgMI" id="6X8eyFnbNoh" role="2Oq$k0">
+                          <node concept="chp4Y" id="6X8eyFnbNoi" role="3oSUPX">
+                            <ref role="cht4Q" to="xjeg:5sUTrySNgNR" resolve="FailingRuleProblem" />
+                          </node>
+                          <node concept="30H73N" id="6X8eyFnbNoj" role="1m5AlR" />
+                        </node>
+                        <node concept="3TrEf2" id="6X8eyFnbNok" role="2OqNvi">
+                          <ref role="3Tt5mk" to="xjeg:5sUTrySNhio" resolve="rule" />
+                        </node>
+                      </node>
+                      <node concept="2qgKlT" id="6X8eyFnbNol" role="2OqNvi">
+                        <ref role="37wK5l" to="4boq:1BFxp3HHhyj" resolve="getRuleKind" />
+                      </node>
+                    </node>
+                    <node concept="iZEcu" id="6X8eyFnbNom" role="2OqNvi" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3cpWs6" id="6X8eyFnbNon" role="3cqZAp">
+                <node concept="17R0WA" id="6X8eyFnbNot" role="3cqZAk">
+                  <node concept="37vLTw" id="6X8eyFnbNou" role="3uHU7B">
+                    <ref role="3cqZAo" node="6X8eyFnbNoc" resolve="pointer" />
+                  </node>
+                  <node concept="2tJFMh" id="6X8eyFnbNov" role="3uHU7w">
+                    <node concept="ZC_QK" id="6X8eyFnbNtN" role="2tJFKM">
+                      <ref role="2aWVGs" to="prp3:6X8eyFnbGDJ" resolve="CanBeRoot" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="2OqwBi" id="6X8eyFnbNox" role="3clFbw">
+              <node concept="30H73N" id="6X8eyFnbNoy" role="2Oq$k0" />
+              <node concept="1mIQ4w" id="6X8eyFnbNoz" role="2OqNvi">
+                <node concept="chp4Y" id="6X8eyFnbNo$" role="cj9EA">
+                  <ref role="cht4Q" to="xjeg:5sUTrySNgNR" resolve="FailingRuleProblem" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3cpWs6" id="6X8eyFnbNo_" role="3cqZAp">
+            <node concept="3clFbT" id="6X8eyFnbNoA" role="3cqZAk" />
           </node>
         </node>
       </node>

@@ -22,6 +22,8 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
+import jetbrains.mps.openapi.editor.style.StyleRegistry;
+import jetbrains.mps.nodeEditor.MPSColors;
 import jetbrains.mps.editor.runtime.style.Padding;
 import jetbrains.mps.editor.runtime.style.Measure;
 
@@ -51,6 +53,7 @@ import jetbrains.mps.editor.runtime.style.Measure;
     setCellContext(editorCell);
     editorCell.addEditorCell(createRefNode_0());
     editorCell.addEditorCell(createConstant_0());
+    editorCell.addEditorCell(createConstant_1());
     editorCell.addEditorCell(createRefNode_1());
     return editorCell;
   }
@@ -110,24 +113,33 @@ import jetbrains.mps.editor.runtime.style.Measure;
     }
   }
   private EditorCell createConstant_0() {
-    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "show");
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "->");
     editorCell.setCellId("Constant_r9q5r5_b0");
     Style style = new StyleImpl();
-    style.set(StyleAttributes.PADDING_LEFT, new Padding(0.4, Measure.SPACES));
+    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.darkGray));
+    editorCell.getStyle().putAll(style);
+    editorCell.setDefaultText("");
+    return editorCell;
+  }
+  private EditorCell createConstant_1() {
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "show");
+    editorCell.setCellId("Constant_r9q5r5_c0");
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.PADDING_LEFT, new Padding(0.8, Measure.SPACES));
     style.set(StyleAttributes.PADDING_RIGHT, new Padding(0.4, Measure.SPACES));
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new ShowMessage_EditorBuilder_a.messageSingleRoleHandler_r9q5r5_c0(myNode, MetaAdapterFactory.getContainmentLink(0x16e76fe395344defL, 0xafb7925a169a7c0bL, 0x6530303593ae1651L, 0x48f860fc0e362dc8L, "message"), getEditorContext());
+    SingleRoleCellProvider provider = new ShowMessage_EditorBuilder_a.messageSingleRoleHandler_r9q5r5_d0(myNode, MetaAdapterFactory.getContainmentLink(0x16e76fe395344defL, 0xafb7925a169a7c0bL, 0x6530303593ae1651L, 0x48f860fc0e362dc8L, "message"), getEditorContext());
     return provider.createCell();
   }
-  private static class messageSingleRoleHandler_r9q5r5_c0 extends SingleRoleCellProvider {
+  private static class messageSingleRoleHandler_r9q5r5_d0 extends SingleRoleCellProvider {
     @NotNull
     private SNode myNode;
 
-    public messageSingleRoleHandler_r9q5r5_c0(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
+    public messageSingleRoleHandler_r9q5r5_d0(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
       super(containmentLink, context);
       myNode = ownerNode;
     }

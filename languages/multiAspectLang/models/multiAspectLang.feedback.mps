@@ -36,6 +36,9 @@
       <concept id="5258059200642172255" name="jetbrains.mps.lang.messages.structure.CombinedMessageExpression" flags="ng" index="16I2mz">
         <child id="5258059200642172257" name="part" index="16I2mt" />
       </concept>
+      <concept id="5258059200642278562" name="jetbrains.mps.lang.messages.structure.MacroMessageExpression" flags="ng" index="16Iohu">
+        <reference id="5258059200643228831" name="declaration" index="16E0hz" />
+      </concept>
       <concept id="5258059200641510853" name="jetbrains.mps.lang.messages.structure.LiteralMessageExpression" flags="ng" index="16N$OT">
         <property id="5258059200641510854" name="message" index="16N$OU" />
       </concept>
@@ -51,8 +54,11 @@
     <ref role="3Z9TSV" to="pljn:5ca4zTvKOOO" resolve="A" />
     <node concept="3QByp$" id="5jNIJxKTq8h" role="3QBEN7">
       <node concept="16I2mz" id="5jNIJxKTq8i" role="16N$OO">
-        <node concept="16N$OT" id="5jNIJxKTq8A" role="16I2mt">
-          <property role="16N$OU" value="The property does not belong to the concept GAGAGA" />
+        <node concept="16N$OT" id="6X8eyFn9r1q" role="16I2mt">
+          <property role="16N$OU" value="The property does not belong to the concept " />
+        </node>
+        <node concept="16Iohu" id="6X8eyFn9r1r" role="16I2mt">
+          <ref role="16E0hz" to="1wpt:1dKt_a0nok$" resolve="node" />
         </node>
       </node>
       <node concept="ft9Ny" id="5jNIJxKTq8p" role="3JXyrO">

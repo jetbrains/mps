@@ -64,7 +64,6 @@
     <dependency reexport="false">47257bf3-78d3-470b-89d9-8c3261a61d15(jetbrains.mps.lang.constraints.rules)</dependency>
     <dependency reexport="false">517077fd-e44f-4338-a475-1d29781dfdb8(jetbrains.mps.lang.feedback.skeleton)</dependency>
     <dependency reexport="false">5dae8159-ab99-46bb-a40d-0cee30ee7018(jetbrains.mps.lang.constraints.rules.kinds)</dependency>
-    <dependency reexport="false">db2a46c2-ebec-4b6c-b6c2-f9b55b9b6f8a(jetbrains.mps.lang.feedback.problem.failingRule)</dependency>
     <dependency reexport="false">134c38d4-e3af-4d9e-b069-1c7df0a4005d(jetbrains.mps.lang.constraints.rules.skeleton)</dependency>
     <dependency reexport="false">6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)</dependency>
   </dependencies>

@@ -73,7 +73,7 @@ public class ConstraintsRoot2_Constraints extends BaseConstraintsDescriptor {
       } else {
         conceptName = "???";
       }
-      return conceptName + "_Constraints2";
+      return conceptName + "_ConstraintRules";
     }
   }
   @Override

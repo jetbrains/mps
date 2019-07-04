@@ -7,6 +7,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
@@ -14,8 +15,23 @@ import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import java.util.Objects;
 
-public class Message_Delete {
+public class MessageExpression_Actions {
 
+  /*package*/ static AbstractCellAction createAction_INSERT(final SNode node) {
+    return new AbstractCellAction() {
+      public void execute(EditorContext editorContext) {
+        this.execute_internal(editorContext, node);
+      }
+      public void execute_internal(EditorContext editorContext, SNode node) {
+        if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc5L, "jetbrains.mps.lang.messages.structure.LiteralMessageExpression"))) {
+          SNode newMessage = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc5L, "jetbrains.mps.lang.messages.structure.LiteralMessageExpression"));
+          new LiteralMessageSplitHelper(editorContext, SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc5L, "jetbrains.mps.lang.messages.structure.LiteralMessageExpression"))).insertMessageExpr(newMessage);
+          editorContext.selectWRTFocusPolicy(newMessage);
+        }
+      }
+
+    };
+  }
   /*package*/ static AbstractCellAction createAction_DELETE(final SNode node) {
     return new AbstractCellAction() {
       public void execute(EditorContext editorContext) {
@@ -53,6 +69,7 @@ public class Message_Delete {
     // set cell actions from all imported action maps 
 
     // set cell actions defined directly in this action map 
+    editorCell.setAction(CellActionType.INSERT, createAction_INSERT(node));
     editorCell.setAction(CellActionType.DELETE, createAction_DELETE(node));
 
   }
@@ -62,6 +79,9 @@ public class Message_Delete {
     // set cell action(s) of the given type from imported action maps 
 
     // set cell action of the given type defined directly in this action map 
+    if (Objects.equals(actionType, CellActionType.INSERT)) {
+      editorCell.setAction(actionType, createAction_INSERT(node));
+    }
     if (Objects.equals(actionType, CellActionType.DELETE)) {
       editorCell.setAction(actionType, createAction_DELETE(node));
     }

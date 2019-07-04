@@ -30,6 +30,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.shortDesc("define rules here");
           cpb.presentationByName();
+          cpb.icon(IconContainer.RESOURCE_a0a3a0a1b0f);
           props_ConstraintsRoot2 = cpb.create();
         }
         return props_ConstraintsRoot2;

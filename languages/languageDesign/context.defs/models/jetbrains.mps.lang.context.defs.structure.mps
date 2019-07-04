@@ -117,7 +117,7 @@
   <node concept="1TIwiD" id="4JP_D2W1rsP">
     <property role="EcuMT" value="5473446470512654133" />
     <property role="TrG5h" value="ContextConceptParameter" />
-    <property role="34LRSv" value="parametrized by concept" />
+    <property role="34LRSv" value="concept parameter" />
     <node concept="PrWs8" id="4JP_D2W1rsQ" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>

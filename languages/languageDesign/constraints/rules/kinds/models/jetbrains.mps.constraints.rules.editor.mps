@@ -22,7 +22,6 @@
       <concept id="1071666914219" name="jetbrains.mps.lang.editor.structure.ConceptEditorDeclaration" flags="ig" index="24kQdi" />
       <concept id="1226339813308" name="jetbrains.mps.lang.editor.structure.PaddingBottomStyleClassItem" flags="ln" index="27z8qx" />
       <concept id="1140524381322" name="jetbrains.mps.lang.editor.structure.CellModel_ListWithRole" flags="ng" index="2czfm3">
-        <property id="1140524450557" name="separatorText" index="2czwfO" />
         <child id="1140524464360" name="cellLayout" index="2czzBx" />
       </concept>
       <concept id="6089045305654894366" name="jetbrains.mps.lang.editor.structure.SubstituteMenuReference_Default" flags="ng" index="2kknPJ" />
@@ -38,9 +37,13 @@
       <concept id="1186402211651" name="jetbrains.mps.lang.editor.structure.StyleSheet" flags="ng" index="V5hpn">
         <child id="1186402402630" name="styleClass" index="V601i" />
       </concept>
+      <concept id="1186403694788" name="jetbrains.mps.lang.editor.structure.ColorStyleClassItem" flags="ln" index="VaVBg">
+        <property id="1186403713874" name="color" index="Vb096" />
+      </concept>
       <concept id="1186403751766" name="jetbrains.mps.lang.editor.structure.FontStyleStyleClassItem" flags="ln" index="Vb9p2">
         <property id="1186403771423" name="style" index="Vbekb" />
       </concept>
+      <concept id="1186404549998" name="jetbrains.mps.lang.editor.structure.ForegroundColorStyleClassItem" flags="ln" index="VechU" />
       <concept id="1186414536763" name="jetbrains.mps.lang.editor.structure.BooleanStyleSheetItem" flags="ln" index="VOi$J">
         <property id="1186414551515" name="flag" index="VOm3f" />
       </concept>
@@ -66,6 +69,7 @@
         <property id="1215007802031" name="value" index="3$6WeP" />
       </concept>
       <concept id="1139848536355" name="jetbrains.mps.lang.editor.structure.CellModel_WithRole" flags="ng" index="1$h60E">
+        <property id="1140017977771" name="readOnly" index="1Intyy" />
         <reference id="1140103550593" name="relationDeclaration" index="1NtTu8" />
       </concept>
       <concept id="7991336459489871999" name="jetbrains.mps.lang.editor.structure.IOutputConceptSubstituteMenuPart" flags="ng" index="3EoQpk">
@@ -134,25 +138,18 @@
         <property role="3F0ifm" value="parametrized by concept" />
         <ref role="1k5W1q" node="2o8jHTOBKsJ" resolve="RuleKind" />
       </node>
-      <node concept="3F2HdR" id="2o8jHTOBKO7" role="3EZMnx">
-        <property role="2czwfO" value="," />
-        <ref role="1NtTu8" to="qbpv:4JP_D2W1rsM" resolve="parameters" />
-        <node concept="l2Vlx" id="2o8jHTOBKO9" role="2czzBx" />
-        <node concept="ljvvj" id="2o8jHTOBKTa" role="3F10Kt">
-          <property role="VOm3f" value="true" />
-        </node>
-      </node>
-      <node concept="3F2HdR" id="6kKc3mjlkd0" role="3EZMnx">
-        <ref role="1NtTu8" to="qbpv:6kKc3mjlkau" resolve="contextMembers" />
-        <node concept="l2Vlx" id="6kKc3mjlkd1" role="2czzBx" />
-        <node concept="pj6Ft" id="6kKc3mjlkd2" role="3F10Kt">
-          <property role="VOm3f" value="true" />
-        </node>
-        <node concept="lj46D" id="6kKc3mjlkd3" role="3F10Kt">
-          <property role="VOm3f" value="true" />
-        </node>
-        <node concept="ljvvj" id="6kKc3mjlkd4" role="3F10Kt">
-          <property role="VOm3f" value="true" />
+      <node concept="1iCGBv" id="6X8eyFnb3My" role="3EZMnx">
+        <ref role="1NtTu8" to="qbpv:2zJEoOoN6sa" resolve="context" />
+        <node concept="1sVBvm" id="6X8eyFnb3MC" role="1sWHZn">
+          <node concept="1iCGBv" id="6X8eyFnbGDP" role="2wV5jI">
+            <ref role="1NtTu8" to="ceie:6X8eyFnb3Nr" resolve="conceptParameter" />
+            <node concept="1sVBvm" id="6X8eyFnbGDR" role="1sWHZn">
+              <node concept="3F0A7n" id="6X8eyFnbGE1" role="2wV5jI">
+                <property role="1Intyy" value="true" />
+                <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
+              </node>
+            </node>
+          </node>
         </node>
       </node>
       <node concept="1iCGBv" id="2zJEoOoN6tp" role="3EZMnx">
@@ -214,6 +211,9 @@
       </node>
       <node concept="27z8qx" id="1mFJTG6K8q" role="3F10Kt">
         <property role="3$6WeP" value="0.2" />
+      </node>
+      <node concept="VechU" id="6X8eyFncpHJ" role="3F10Kt">
+        <property role="Vb096" value="gray" />
       </node>
     </node>
   </node>

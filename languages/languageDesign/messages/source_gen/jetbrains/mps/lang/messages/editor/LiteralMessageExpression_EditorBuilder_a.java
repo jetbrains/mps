@@ -67,7 +67,7 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
       new MessageLiteralStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
       style.set(StyleAttributes.AUTO_DELETABLE, true);
       editorCell.getStyle().putAll(style);
-      Message_Delete.setCellActions(editorCell, myNode, getEditorContext());
+      MessageExpression_Actions.setCellActions(editorCell, myNode, getEditorContext());
       editorCell.addKeyMap(new LiteralMessageExpression_split());
       editorCell.setTransformationMenuLookup(new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc5L, "jetbrains.mps.lang.messages.structure.LiteralMessageExpression")));
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));

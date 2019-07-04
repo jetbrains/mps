@@ -183,8 +183,8 @@
       <node id="5473446470512654133" at="72,34,73,71" concept="0" />
       <node id="5473446470512654133" at="73,71,74,118" concept="0" />
       <node id="5473446470512654133" at="74,118,75,17" concept="0" />
-      <node id="5473446470512654133" at="75,17,76,39" concept="0" />
-      <node id="5473446470512654133" at="76,39,77,22" concept="4" />
+      <node id="5473446470512654133" at="75,17,76,33" concept="0" />
+      <node id="5473446470512654133" at="76,33,77,22" concept="4" />
       <node id="5473446470512654133" at="70,0,79,0" concept="6" trace="createDescriptorForContextConceptParameter#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="5473446470512654133" at="44,57,45,48" />
       <scope id="5473446470512654133" at="70,81,77,22">

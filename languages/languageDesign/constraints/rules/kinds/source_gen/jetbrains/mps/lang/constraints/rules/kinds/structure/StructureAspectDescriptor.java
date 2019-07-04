@@ -23,7 +23,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public void reportDependencies(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies deps) {
-    deps.aggregatedLanguage(0xea3159bff48e4720L, 0xbde286dba75f0d34L, "jetbrains.mps.lang.context.defs");
     deps.aggregatedLanguage(0x3ad5badc1d9c461cL, 0xb7b1fa2fcd0a0ae7L, "jetbrains.mps.lang.context");
   }
 
@@ -56,12 +55,11 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.constraints.rules.kinds", "RuleKind", 0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, 0x6530303593554248L);
     b.class_(false, false, true);
     b.parent(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a3afa8c0dL);
+    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x33d23ee961a0cbf3L);
     b.origin("r:63fc051d-731b-428a-af30-ceee8d76dfaa(jetbrains.mps.lang.constraints.rules.kinds.structure)/7291380803376071240");
     b.version(2);
-    b.aggregate("parameters", 0x4bf59690bc05b732L).target(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x4bf59690bc05b735L).optional(true).ordered(true).multiple(true).origin("5473446470512654130").done();
-    b.aggregate("contextMembers", 0x653030359355429eL).target(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x126f1320a26d42bdL).optional(true).ordered(true).multiple(true).origin("7291380803376071326").done();
     b.aggregate("context", 0x28efa98d18cc670aL).target(0x3ad5badc1d9c461cL, 0xb7b1fa2fcd0a0ae7L, 0x56aefe6c19b93dL).optional(false).ordered(true).multiple(false).origin("2949762704422496010").done();
-    b.alias("rule kind");
+    b.alias("Rule Kind");
     return b.create();
   }
 }

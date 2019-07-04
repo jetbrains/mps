@@ -15,9 +15,7 @@
       </models>
       <external-templates />
       <dependencies>
-        <dependency reexport="false">8e98f4e2-decf-4e97-bf80-9109e8b759ee(jetbrains.mps.lang.constraints.rules.runtime)</dependency>
         <dependency reexport="false">6e98f4e2-decf-4e97-bf80-9109e8b759ef(jetbrains.mps.lang.feedback.alltogether)</dependency>
-        <dependency reexport="false">956ee187-1d40-4451-93e1-bd13031cf123(jetbrains.mps.lang.constraints.rules.kinds#1867733327984468203)</dependency>
         <dependency reexport="false">033598a4-76a9-47e1-ac89-a300c0fceab8(jetbrains.mps.lang.feedback.problem)</dependency>
         <dependency reexport="false">cd17a113-ca4e-472f-a8de-c49008f9eea8(jetbrains.mps.lang.feedback)</dependency>
         <dependency reexport="false">3f67a24c-17dc-4d34-9ecd-d2790f764ce0(jetbrains.mps.lang.feedback.problem#01)</dependency>
@@ -62,11 +60,9 @@
   </generators>
   <sourcePath />
   <dependencies>
-    <dependency reexport="false">5dae8159-ab99-46bb-a40d-0cee30ee7018(jetbrains.mps.lang.constraints.rules.kinds)</dependency>
-    <dependency reexport="false">134c38d4-e3af-4d9e-b069-1c7df0a4005d(jetbrains.mps.lang.constraints.rules.skeleton)</dependency>
     <dependency reexport="false">cd17a113-ca4e-472f-a8de-c49008f9eea8(jetbrains.mps.lang.feedback)</dependency>
     <dependency reexport="false">ad93155d-79b2-4759-b10c-55123e763903(jetbrains.mps.lang.messages)</dependency>
-    <dependency reexport="false">47257bf3-78d3-470b-89d9-8c3261a61d15(jetbrains.mps.lang.constraints.rules)</dependency>
+    <dependency reexport="false">2d3c70e9-aab2-4870-8d8d-6036800e4103(jetbrains.mps.kernel)</dependency>
   </dependencies>
   <languageVersions>
     <language slang="l:f3061a53-9226-4cc5-a443-f952ceaf5816:jetbrains.mps.baseLanguage" version="9" />

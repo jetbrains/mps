@@ -15,7 +15,7 @@
       <unit at="10,0,28,0" name="jetbrains.mps.lang.constraints.rules.kinds.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
-      <unit at="15,0,68,0" name="jetbrains.mps.lang.constraints.rules.kinds.structure.StructureAspectDescriptor" />
+      <unit at="15,0,66,0" name="jetbrains.mps.lang.constraints.rules.kinds.structure.StructureAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:63fc051d-731b-428a-af30-ceee8d76dfaa(jetbrains.mps.lang.constraints.rules.kinds.structure)/7291380803376071240">
@@ -37,23 +37,22 @@
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="7291380803376071240" at="16,0,17,0" concept="1" trace="myConceptRuleKind" />
-      <node id="7291380803376071240" at="39,42,40,33" concept="4" />
-      <node id="7291380803376071240" at="55,66,56,185" concept="3" />
-      <node id="7291380803376071240" at="56,185,57,33" concept="0" />
-      <node id="7291380803376071240" at="57,33,58,71" concept="0" />
-      <node id="7291380803376071240" at="58,71,59,129" concept="0" />
+      <node id="7291380803376071240" at="38,42,39,33" concept="4" />
+      <node id="7291380803376071240" at="54,66,55,185" concept="3" />
+      <node id="7291380803376071240" at="55,185,56,33" concept="0" />
+      <node id="7291380803376071240" at="56,33,57,71" concept="0" />
+      <node id="7291380803376071240" at="57,71,58,76" concept="0" />
+      <node id="7291380803376071240" at="58,76,59,129" concept="0" />
       <node id="7291380803376071240" at="59,129,60,17" concept="0" />
-      <node id="5473446470512654130" at="60,17,61,202" concept="0" />
-      <node id="7291380803376071326" at="61,202,62,206" concept="0" />
-      <node id="2949762704422496010" at="62,206,63,199" concept="0" />
-      <node id="7291380803376071240" at="63,199,64,25" concept="0" />
-      <node id="7291380803376071240" at="64,25,65,22" concept="4" />
-      <node id="7291380803376071240" at="55,0,67,0" concept="6" trace="createDescriptorForRuleKind#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
-      <scope id="7291380803376071240" at="39,42,40,33" />
-      <scope id="7291380803376071240" at="55,66,65,22">
+      <node id="2949762704422496010" at="60,17,61,199" concept="0" />
+      <node id="7291380803376071240" at="61,199,62,25" concept="0" />
+      <node id="7291380803376071240" at="62,25,63,22" concept="4" />
+      <node id="7291380803376071240" at="54,0,65,0" concept="6" trace="createDescriptorForRuleKind#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="7291380803376071240" at="38,42,39,33" />
+      <scope id="7291380803376071240" at="54,66,63,22">
         <var name="b" id="7291380803376071240" />
       </scope>
-      <scope id="7291380803376071240" at="55,0,67,0" />
+      <scope id="7291380803376071240" at="54,0,65,0" />
     </file>
   </root>
 </debug-info>

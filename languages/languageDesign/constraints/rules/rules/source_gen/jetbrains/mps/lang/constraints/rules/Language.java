@@ -8,6 +8,9 @@ import java.util.Collection;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.runtime.ILanguageAspect;
+import jetbrains.mps.core.aspects.constraints.rules.ConstraintsAspectDescriptor2;
+import jetbrains.mps.lang.constraints.rules.constraints.GeneratedConstraintsAspectDescriptor2;
+import jetbrains.mps.core.aspects.feedback.api.FeedbackAspect;
 import jetbrains.mps.openapi.actions.descriptor.ActionAspectDescriptor;
 import jetbrains.mps.lang.constraints.rules.actions.ActionAspectDescriptorImpl;
 import jetbrains.mps.smodel.runtime.BehaviorAspectDescriptor;
@@ -45,14 +48,22 @@ public class Language extends LanguageRuntime {
 
   @Override
   protected void fillExtendedLanguages(Collection<SLanguage> extendedLanguages) {
-    extendedLanguages.add(MetaAdapterFactory.getLanguage(SLanguageId.deserialize("f3061a53-9226-4cc5-a443-f952ceaf5816"), "jetbrains.mps.baseLanguage"));
-    extendedLanguages.add(MetaAdapterFactory.getLanguage(SLanguageId.deserialize("5dae8159-ab99-46bb-a40d-0cee30ee7018"), "jetbrains.mps.lang.constraints.rules.kinds"));
     extendedLanguages.add(MetaAdapterFactory.getLanguage(SLanguageId.deserialize("134c38d4-e3af-4d9e-b069-1c7df0a4005d"), "jetbrains.mps.lang.constraints.rules.skeleton"));
     extendedLanguages.add(MetaAdapterFactory.getLanguage(SLanguageId.deserialize("ea3159bf-f48e-4720-bde2-86dba75f0d34"), "jetbrains.mps.lang.context.defs"));
+    extendedLanguages.add(MetaAdapterFactory.getLanguage(SLanguageId.deserialize("f3061a53-9226-4cc5-a443-f952ceaf5816"), "jetbrains.mps.baseLanguage"));
   }
 
   @Override
   protected <T extends ILanguageAspect> T createAspect(Class<T> aspectClass) {
+    if (aspectClass.isAssignableFrom(ConstraintsAspectDescriptor2.class)) {
+      return aspectClass.cast(new GeneratedConstraintsAspectDescriptor2());
+    }
+    if (aspectClass.isAssignableFrom(FeedbackAspect.class)) {
+      return aspectClass.cast(FeedbackAspect.combine());
+    }
+
+
+    // AP: legacy part, must be migrated from switch: please use lang.descriptor mapping label 
     if (aspectClass == ActionAspectDescriptor.class) {
       return aspectClass.cast(new ActionAspectDescriptorImpl());
     }

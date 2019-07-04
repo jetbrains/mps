@@ -17,9 +17,10 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.scopes.runtime.NamedElementsScope;
-import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.lang.core.behavior.ScopeProvider__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.scopes.runtime.NamedElementsScope;
+import jetbrains.mps.scope.CompositeScope;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -36,7 +37,9 @@ public final class RuleBlock__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
     if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), MetaAdapterFactory.getInterfaceConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x653030359368062cL, "jetbrains.mps.lang.context.defs.structure.TypedDef"))) {
-      return new NamedElementsScope(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, MetaAdapterFactory.getContainmentLink(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb5174aL, 0x19eb8590edb5174bL, "members")), MetaAdapterFactory.getInterfaceConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x653030359368062cL, "jetbrains.mps.lang.context.defs.structure.TypedDef"))).concat(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getReferenceLink(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb5174aL, 0x19eb8590edb5174cL, "kind")), MetaAdapterFactory.getContainmentLink(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, 0x6530303593554248L, 0x653030359355429eL, "contextMembers")), MetaAdapterFactory.getInterfaceConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x653030359368062cL, "jetbrains.mps.lang.context.defs.structure.TypedDef")))));
+      Scope kindScope = ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getReferenceLink(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb5174aL, 0x19eb8590edb5174cL, "kind")), kind, child);
+      Scope localScope = new NamedElementsScope(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, MetaAdapterFactory.getContainmentLink(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb5174aL, 0x19eb8590edb5174bL, "members")), MetaAdapterFactory.getInterfaceConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x653030359368062cL, "jetbrains.mps.lang.context.defs.structure.TypedDef")));
+      return new CompositeScope(kindScope, localScope);
     } else {
       return null;
     }

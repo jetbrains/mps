@@ -11,6 +11,8 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.nodeEditor.MPSFonts;
 import jetbrains.mps.editor.runtime.style.Padding;
 import jetbrains.mps.editor.runtime.style.Measure;
+import jetbrains.mps.openapi.editor.style.StyleRegistry;
+import jetbrains.mps.nodeEditor.MPSColors;
 
 public class RuleKindStyle_StyleSheet {
   /**
@@ -33,6 +35,7 @@ public class RuleKindStyle_StyleSheet {
     public void apply(Style style, EditorCell editorCell) {
       style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD);
       style.set(StyleAttributes.PADDING_BOTTOM, new Padding(0.2, Measure.SPACES));
+      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.gray));
     }
 
   }

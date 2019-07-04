@@ -14,6 +14,9 @@ import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.util.NameUtil;
 import java.util.Map;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.runtime.PropertyConstraintsDescriptor;
@@ -29,11 +32,9 @@ import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.Language;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.scope.EmptyScope;
 import jetbrains.mps.lang.scopes.runtime.NamedElementsScope;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.smodel.SNodePointer;
 
@@ -73,7 +74,11 @@ public class FeedbackPerConceptRoot_Constraints extends BaseConstraintsDescripto
       } else {
         conceptName = "???";
       }
-      return conceptName + "_FeedbackRoot";
+      if (SModuleOperations.isAspect(SNodeOperations.getModel(node), "feedback")) {
+        return conceptName + "_Feedback";
+      }
+      String simpleName = NameUtil.capitalize(SNodeOperations.getModel(node).getName().getSimpleName());
+      return conceptName + "_" + simpleName + "Feedback";
     }
   }
   @Override

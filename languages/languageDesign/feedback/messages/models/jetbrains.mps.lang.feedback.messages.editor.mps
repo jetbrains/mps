@@ -3,13 +3,10 @@
   <persistence version="9" />
   <languages>
     <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="12" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
     <import index="m19b" ref="r:bce9672d-89d3-47d7-90eb-dde7199917c2(jetbrains.mps.lang.feedback.messages.structure)" />
-    <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
     <import index="z0wo" ref="r:817adc19-0c97-4bd9-994c-b53f2bb0a6a7(jetbrains.mps.lang.feedback.structure)" implicit="true" />
   </imports>
   <registry>
@@ -65,10 +62,16 @@
           </node>
         </node>
       </node>
+      <node concept="3F0ifn" id="6X8eyFn9r1B" role="3EZMnx">
+        <property role="3F0ifm" value="-&gt;" />
+        <node concept="VechU" id="6X8eyFn9rGF" role="3F10Kt">
+          <property role="Vb096" value="darkGray" />
+        </node>
+      </node>
       <node concept="3F0ifn" id="6kKc3mjFxpS" role="3EZMnx">
         <property role="3F0ifm" value="show" />
         <node concept="3$7fVu" id="5sUTrySNjUP" role="3F10Kt">
-          <property role="3$6WeP" value="0.4" />
+          <property role="3$6WeP" value="0.8" />
         </node>
         <node concept="3$7jql" id="1mFJTG69us" role="3F10Kt">
           <property role="3$6WeP" value="0.4" />

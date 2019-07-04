@@ -55,6 +55,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.feedback.problem.failingRule", "FailingRuleProblem", 0xdb2a46c2ebec4b6cL, 0xb6c2f9b55b9b6f8aL, 0x573ae5b8b8cd0cf7L);
     b.class_(true, false, false);
     b.parent(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x573ae5b8b8caf72cL);
+    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x33d23ee961a0cbf3L);
     b.origin("r:99b2bb53-594f-4076-8629-aea0f8ec5bfd(jetbrains.mps.lang.feedback.problem.failingRule.structure)/6285588811486137591");
     b.version(2);
     b.associate("rule", 0x573ae5b8b8cd1498L).target(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L).optional(false).origin("6285588811486139544").done();

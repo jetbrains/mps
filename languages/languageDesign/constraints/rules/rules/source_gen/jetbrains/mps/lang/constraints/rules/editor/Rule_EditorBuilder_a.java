@@ -9,10 +9,6 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Collection;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent;
-import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
-import jetbrains.mps.openapi.editor.style.Style;
-import jetbrains.mps.editor.runtime.style.StyleImpl;
-import jetbrains.mps.lang.constraints.rules.editor.Constraints_Styles_StyleSheet.RuleStyleStyleClass;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.editor.menus.transformation.SPropertyInfo;
@@ -31,6 +27,10 @@ import java.util.Objects;
 import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.EditorManager;
 import jetbrains.mps.openapi.editor.update.AttributeKind;
+import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
+import jetbrains.mps.openapi.editor.style.Style;
+import jetbrains.mps.editor.runtime.style.StyleImpl;
+import jetbrains.mps.lang.constraints.rules.editor.Constraints_Styles_StyleSheet.RuleStyleStyleClass;
 import jetbrains.mps.lang.editor.cellProviders.SingleRoleCellProvider;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
@@ -63,20 +63,10 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     editorCell.setCellId("Collection_z0m96w_a");
     editorCell.setBig(true);
     setCellContext(editorCell);
-    editorCell.addEditorCell(createConstant_0());
     editorCell.addEditorCell(createProperty_0());
-    editorCell.addEditorCell(createConstant_1());
+    editorCell.addEditorCell(createConstant_0());
     editorCell.addEditorCell(createRefNode_0());
     editorCell.addEditorCell(createComponent_0());
-    return editorCell;
-  }
-  private EditorCell createConstant_0() {
-    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "rule");
-    editorCell.setCellId("Constant_z0m96w_a0");
-    Style style = new StyleImpl();
-    new RuleStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
-    editorCell.getStyle().putAll(style);
-    editorCell.setDefaultText("");
     return editorCell;
   }
   private EditorCell createProperty_0() {
@@ -84,11 +74,12 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     try {
       final SProperty property = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
-      EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
-      editorCell.setDefaultText("<no name>");
+      EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, true), myNode);
+      editorCell.setDefaultText("<unnamed>");
       editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSPropertyOrNode(myNode, property, CellAction_DeleteNode.DeleteDirection.FORWARD));
       editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSPropertyOrNode(myNode, property, CellAction_DeleteNode.DeleteDirection.BACKWARD));
       editorCell.setCellId("property_name");
+      DeleteRuleWithBlockAllTogether.setCellActions(editorCell, myNode, getEditorContext());
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
       Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute"));
@@ -106,24 +97,25 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
       getCellFactory().popCellContext();
     }
   }
-  private EditorCell createConstant_1() {
-    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "is");
-    editorCell.setCellId("Constant_z0m96w_c0");
+  private EditorCell createConstant_0() {
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "rule is");
+    editorCell.setCellId("Constant_z0m96w_b0");
     Style style = new StyleImpl();
     new RuleStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
+    DeleteRuleWithBlockAllTogether.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setDefaultText("");
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new Rule_EditorBuilder_a.exprSingleRoleHandler_z0m96w_d0(myNode, MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, 0x126f1320a26da4b8L, "expr"), getEditorContext());
+    SingleRoleCellProvider provider = new Rule_EditorBuilder_a.exprSingleRoleHandler_z0m96w_c0(myNode, MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, 0x126f1320a26da4b8L, "expr"), getEditorContext());
     return provider.createCell();
   }
-  private static class exprSingleRoleHandler_z0m96w_d0 extends SingleRoleCellProvider {
+  private static class exprSingleRoleHandler_z0m96w_c0 extends SingleRoleCellProvider {
     @NotNull
     private SNode myNode;
 
-    public exprSingleRoleHandler_z0m96w_d0(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
+    public exprSingleRoleHandler_z0m96w_c0(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
       super(containmentLink, context);
       myNode = ownerNode;
     }

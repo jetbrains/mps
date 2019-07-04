@@ -19,6 +19,10 @@
   </imports>
   <registry>
     <language id="ea3159bf-f48e-4720-bde2-86dba75f0d34" name="jetbrains.mps.lang.context.defs">
+      <concept id="315923949159026769" name="jetbrains.mps.lang.context.defs.structure.NativeTypedNodeDef" flags="ng" index="1DMZdT">
+        <reference id="315923949159027763" name="conceptParameter" index="1DMZsr" />
+      </concept>
+      <concept id="5473446470512654133" name="jetbrains.mps.lang.context.defs.structure.ContextConceptParameter" flags="ng" index="3RW26_" />
       <concept id="5473446470512342705" name="jetbrains.mps.lang.context.defs.structure.TypedNativeDef" flags="ng" index="3RXm0x">
         <child id="5473446470512342706" name="type" index="3RXm0y" />
       </concept>
@@ -94,6 +98,7 @@
     </language>
     <language id="3ad5badc-1d9c-461c-b7b1-fa2fcd0a0ae7" name="jetbrains.mps.lang.context">
       <concept id="24399255755667773" name="jetbrains.mps.lang.context.structure.Context" flags="ng" index="1GjLv3">
+        <child id="8018723092206206171" name="conceptParameter" index="2Sp0rL" />
         <child id="7291380803376071326" name="defs" index="3QpnaF" />
       </concept>
     </language>
@@ -205,9 +210,9 @@
   <node concept="1Gj5c1" id="1mFJTG7e$j">
     <property role="TrG5h" value="FailingPropertyConstraints" />
     <node concept="1GjLv3" id="1mFJTG7e$k" role="1GjqVN">
-      <node concept="3RXm0x" id="1dKt_a0nok$" role="3QpnaF">
+      <node concept="1DMZdT" id="6X8eyFnbP1D" role="3QpnaF">
         <property role="TrG5h" value="node" />
-        <node concept="3Tqbb2" id="1dKt_a0nokB" role="3RXm0y" />
+        <ref role="1DMZsr" node="6X8eyFnbNCM" resolve="C" />
       </node>
       <node concept="3RXm0x" id="1mFJTG7MCZ" role="3QpnaF">
         <property role="TrG5h" value="property" />
@@ -220,6 +225,9 @@
         <node concept="3uibUv" id="1mFJTG7MDn" role="3RXm0y">
           <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
         </node>
+      </node>
+      <node concept="3RW26_" id="6X8eyFnbNCM" role="2Sp0rL">
+        <property role="TrG5h" value="C" />
       </node>
     </node>
   </node>

@@ -73,7 +73,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:bd012d1c-91a4-4783-a33f-d2037e757f6d(jetbrains.mps.lang.context.defs.structure)/5473446470512654133");
     b.version(2);
-    b.alias("parametrized by concept");
+    b.alias("concept parameter");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForNativeDef() {

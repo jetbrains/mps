@@ -3,9 +3,6 @@
   <persistence version="9" />
   <languages>
     <use id="d7a92d38-f7db-40d0-8431-763b0c3c9f20" name="jetbrains.mps.lang.intentions" version="0" />
-    <use id="f159adf4-3c93-40f9-9c5a-1f245a8697af" name="jetbrains.mps.lang.aspect" version="2" />
-    <use id="69b8a993-9b87-4d96-bf0c-3559f4bb0c63" name="jetbrains.mps.lang.slanguage" version="0" />
-    <use id="47257bf3-78d3-470b-89d9-8c3261a61d15" name="jetbrains.mps.lang.constraints.rules" version="0" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
     <use id="c7d5b9dd-a05f-4be2-bc73-f2e16994cc67" name="jetbrains.mps.baseLanguage.lightweightdsl" version="1" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
@@ -19,7 +16,6 @@
     <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
     <import index="6bz1" ref="r:d3905048-7598-4a84-931a-cbbcbcda146d(jetbrains.mps.lang.intentions.methods)" />
     <import index="cj4x" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor(MPS.Editor/)" />
-    <import index="v0oi" ref="r:52c0a9e8-a4f1-4d97-9c33-d3c28d77688f(jetbrains.mps.lang.constraints.rules.constraints)" />
     <import index="prp3" ref="r:52ea8481-08b2-4cbd-ad9d-1b42825f7d09(jetbrains.mps.lang.constraints.rules.kinds.constraints)" />
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" implicit="true" />
     <import index="mqj2" ref="r:1d4f6f82-1219-47a2-a4fa-ac3ba14c9fd5(jetbrains.mps.lang.constraints.rules.skeleton.structure)" implicit="true" />
@@ -589,8 +585,8 @@
                         <ref role="2pJxaS" to="mqj2:1BFxp3HHhta" resolve="RuleBlock" />
                         <node concept="2pIpSj" id="SlG8On5btt" role="2pJxcM">
                           <ref role="2pIpSl" to="mqj2:1BFxp3HHhtc" resolve="kind" />
-                          <node concept="36bGnv" id="SlG8On5btu" role="2pJxcZ">
-                            <ref role="36bGnp" to="prp3:1dKt_a0noks" resolve="CanBeChild" />
+                          <node concept="36bGnv" id="6X8eyFnbKCH" role="2pJxcZ">
+                            <ref role="36bGnp" to="prp3:6X8eyFnbIRR" resolve="CanBeChild" />
                           </node>
                         </node>
                         <node concept="2pIpSj" id="SlG8On5btw" role="2pJxcM">
@@ -722,7 +718,7 @@
                         <node concept="2pIpSj" id="SlG8On5bg9" role="2pJxcM">
                           <ref role="2pIpSl" to="mqj2:1BFxp3HHhtc" resolve="kind" />
                           <node concept="36bGnv" id="SlG8On5bga" role="2pJxcZ">
-                            <ref role="36bGnp" to="prp3:1dKt_a0nokQ" resolve="CanBeParent" />
+                            <ref role="36bGnp" to="prp3:6X8eyFnbIRY" resolve="CanBeParent" />
                           </node>
                         </node>
                         <node concept="2pIpSj" id="SlG8On5bgc" role="2pJxcM">

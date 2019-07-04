@@ -18,10 +18,12 @@ public final class KindUtil {
     // original copied for the case when we are in the same model where the kind is located 
     kind = SNodeOperations.cast(genContext.getOriginalCopiedInputNode(kind), MetaAdapterFactory.getConcept(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, 0x6530303593554248L, "jetbrains.mps.lang.constraints.rules.kinds.structure.RuleKind"));
     SNodeReference pointer = SNodeOperations.getPointer(kind);
-    if (Objects.equals(pointer, new SNodePointer("r:52ea8481-08b2-4cbd-ad9d-1b42825f7d09(jetbrains.mps.lang.constraints.rules.kinds.constraints)", "1400749580825232668"))) {
+    if (Objects.equals(pointer, new SNodePointer("r:52ea8481-08b2-4cbd-ad9d-1b42825f7d09(jetbrains.mps.lang.constraints.rules.kinds.constraints)", "8018723092206382583"))) {
       return new SNodePointer("8e98f4e2-decf-4e97-bf80-9109e8b759ee/java:jetbrains.mps.core.aspects.constraints.rules.kinds(jetbrains.mps.lang.constraints.rules.runtime/)", "~ContainmentContext");
-    } else if (Objects.equals(pointer, new SNodePointer("r:52ea8481-08b2-4cbd-ad9d-1b42825f7d09(jetbrains.mps.lang.constraints.rules.kinds.constraints)", "1400749580825232694"))) {
+    } else if (Objects.equals(pointer, new SNodePointer("r:52ea8481-08b2-4cbd-ad9d-1b42825f7d09(jetbrains.mps.lang.constraints.rules.kinds.constraints)", "8018723092206382590"))) {
       return new SNodePointer("8e98f4e2-decf-4e97-bf80-9109e8b759ee/java:jetbrains.mps.core.aspects.constraints.rules.kinds(jetbrains.mps.lang.constraints.rules.runtime/)", "~ContainmentContext");
+    } else if (Objects.equals(pointer, new SNodePointer("r:52ea8481-08b2-4cbd-ad9d-1b42825f7d09(jetbrains.mps.lang.constraints.rules.kinds.constraints)", "8018723092206373487"))) {
+      return new SNodePointer("8e98f4e2-decf-4e97-bf80-9109e8b759ee/java:jetbrains.mps.core.aspects.constraints.rules.kinds(jetbrains.mps.lang.constraints.rules.runtime/)", "~CanBeRootContext");
     }
     return null;
   }
@@ -30,10 +32,12 @@ public final class KindUtil {
     // original copied for the case when we are in the same model where the kind is located 
     kind = SNodeOperations.cast(genContext.getOriginalCopiedInputNode(kind), MetaAdapterFactory.getConcept(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, 0x6530303593554248L, "jetbrains.mps.lang.constraints.rules.kinds.structure.RuleKind"));
     SNodeReference pointer = SNodeOperations.getPointer(kind);
-    if (Objects.equals(pointer, new SNodePointer("r:52ea8481-08b2-4cbd-ad9d-1b42825f7d09(jetbrains.mps.lang.constraints.rules.kinds.constraints)", "1400749580825232668"))) {
+    if (Objects.equals(pointer, new SNodePointer("r:52ea8481-08b2-4cbd-ad9d-1b42825f7d09(jetbrains.mps.lang.constraints.rules.kinds.constraints)", "8018723092206382583"))) {
       return new SNodePointer("8e98f4e2-decf-4e97-bf80-9109e8b759ee/java:jetbrains.mps.core.aspects.constraints.rules.kinds(jetbrains.mps.lang.constraints.rules.runtime/)", "~CanBeChildKind");
-    } else if (Objects.equals(pointer, new SNodePointer("r:52ea8481-08b2-4cbd-ad9d-1b42825f7d09(jetbrains.mps.lang.constraints.rules.kinds.constraints)", "1400749580825232694"))) {
+    } else if (Objects.equals(pointer, new SNodePointer("r:52ea8481-08b2-4cbd-ad9d-1b42825f7d09(jetbrains.mps.lang.constraints.rules.kinds.constraints)", "8018723092206382590"))) {
       return new SNodePointer("8e98f4e2-decf-4e97-bf80-9109e8b759ee/java:jetbrains.mps.core.aspects.constraints.rules.kinds(jetbrains.mps.lang.constraints.rules.runtime/)", "~CanBeParentKind");
+    } else if (Objects.equals(pointer, new SNodePointer("r:52ea8481-08b2-4cbd-ad9d-1b42825f7d09(jetbrains.mps.lang.constraints.rules.kinds.constraints)", "8018723092206373487"))) {
+      return new SNodePointer("8e98f4e2-decf-4e97-bf80-9109e8b759ee/java:jetbrains.mps.core.aspects.constraints.rules.kinds(jetbrains.mps.lang.constraints.rules.runtime/)", "~CanBeRootKind");
     }
     return null;
   }

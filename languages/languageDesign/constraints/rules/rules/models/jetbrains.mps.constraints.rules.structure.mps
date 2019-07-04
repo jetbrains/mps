@@ -8,7 +8,6 @@
   <imports>
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
     <import index="tpce" ref="r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)" />
-    <import index="qbpv" ref="r:63fc051d-731b-428a-af30-ceee8d76dfaa(jetbrains.mps.lang.constraints.rules.kinds.structure)" />
     <import index="mqj2" ref="r:1d4f6f82-1219-47a2-a4fa-ac3ba14c9fd5(jetbrains.mps.lang.constraints.rules.skeleton.structure)" />
     <import index="iwhd" ref="r:bd012d1c-91a4-4783-a33f-d2037e757f6d(jetbrains.mps.lang.context.defs.structure)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
@@ -26,9 +25,7 @@
         <child id="1071489727083" name="linkDeclaration" index="1TKVEi" />
         <child id="1071489727084" name="propertyDeclaration" index="1TKVEl" />
       </concept>
-      <concept id="1169125989551" name="jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration" flags="ig" index="PlHQZ">
-        <child id="1169127546356" name="extends" index="PrDN$" />
-      </concept>
+      <concept id="1169125989551" name="jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration" flags="ig" index="PlHQZ" />
       <concept id="1169127622168" name="jetbrains.mps.lang.structure.structure.InterfaceConceptReference" flags="ig" index="PrWs8">
         <reference id="1169127628841" name="intfc" index="PrY4T" />
       </concept>
@@ -77,11 +74,11 @@
     <node concept="PrWs8" id="19J4M2yrmIB" role="PzmwI">
       <ref role="PrY4T" to="mqj2:1BFxp3HHhtg" resolve="RuleBlockMember" />
     </node>
-    <node concept="PrWs8" id="6kKc3mjmAXM" role="PzmwI">
-      <ref role="PrY4T" to="tpee:hCUYCKd" resolve="IValidIdentifier" />
-    </node>
     <node concept="PrWs8" id="hyoMxHJPiQ" role="PzmwI">
       <ref role="PrY4T" node="hyoMxHJPiE" resolve="RuleIdHolder" />
+    </node>
+    <node concept="PrWs8" id="7CK8yHrbaVz" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
     <node concept="1TJgyj" id="19J4M2yrqiS" role="1TKVEi">
       <property role="IQ2ns" value="1328301445982561464" />
@@ -151,9 +148,6 @@
       <property role="TrG5h" value="ruleId" />
       <property role="IQ2nx" value="6714410169261853888" />
       <ref role="AX2Wp" to="tpce:3H1xM9LtLda" resolve="IDNumber" />
-    </node>
-    <node concept="PrWs8" id="hyoMxHMdy3" role="PrDN$">
-      <ref role="PrY4T" to="tpee:hCUYCKd" resolve="IValidIdentifier" />
     </node>
   </node>
   <node concept="1TIwiD" id="35M2kEOxcOG">

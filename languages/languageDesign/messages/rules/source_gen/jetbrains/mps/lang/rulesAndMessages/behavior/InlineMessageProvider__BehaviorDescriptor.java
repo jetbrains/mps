@@ -5,11 +5,21 @@ package jetbrains.mps.lang.rulesAndMessages.behavior;
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import java.util.List;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
+import jetbrains.mps.scope.Scope;
+import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
+import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
+import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
+import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
+import org.jetbrains.mps.openapi.model.SNode;
+import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.core.behavior.ScopeProvider__BehaviorDescriptor;
+import jetbrains.mps.lang.constraints.rules.skeleton.behavior.RuleBlockMember__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -17,12 +27,20 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class InlineMessageProvider__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce81L, "jetbrains.mps.lang.rulesAndMessages.structure.InlineMessageProvider");
 
+  public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("52_Geb4QDV$").build(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList();
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getScope_id52_Geb4QDV$);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
+  /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
+    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), MetaAdapterFactory.getInterfaceConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x653030359368062cL, "jetbrains.mps.lang.context.defs.structure.TypedDef"))) {
+      SNode ruleWithMsg = SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), MetaAdapterFactory.getConcept(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, "jetbrains.mps.lang.rulesAndMessages.structure.RuleWithMessage"));
+      return ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke(RuleBlockMember__BehaviorDescriptor.getBlock_id1BFxp3HHhy9.invoke(SLinkOperations.getTarget(ruleWithMsg, MetaAdapterFactory.getContainmentLink(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, 0x137076528060b0fcL, "rule"))), kind, child);
+    }
+    return null;
+  }
 
   /*package*/ InlineMessageProvider__BehaviorDescriptor() {
   }
@@ -39,6 +57,8 @@ public final class InlineMessageProvider__BehaviorDescriptor extends BaseBHDescr
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
+      case 0:
+        return (T) ((Scope) getScope_id52_Geb4QDV$(node, (SAbstractConcept) parameters[0], (SNode) parameters[1]));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

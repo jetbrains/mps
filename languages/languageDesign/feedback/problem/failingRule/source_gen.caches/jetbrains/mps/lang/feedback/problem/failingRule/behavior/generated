@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="5se60vedzl156tebavn4ifiwvbbt8vo" />
+<product version="3" modelHash="-c0s9nf45for1r7er1jjihqpjesbamzl">
+  <files names="BehaviorAspectDescriptor.java:FailingRuleProblem__BehaviorDescriptor.java" />
+</product>
 

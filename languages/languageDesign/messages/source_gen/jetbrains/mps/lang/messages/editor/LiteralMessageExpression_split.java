@@ -65,7 +65,7 @@ public class LiteralMessageExpression_split extends KeyMapImpl {
       return !(Objects.equals(SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc5L, 0x48f860fc0e362dc6L, "message")).charAt(splitPosition - 1), '\\'));
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      CellSplitUtil.insertMacro(editorContext, node, null);
+      new LiteralMessageSplitHelper(editorContext, node).insertMessageExpr(null);
     }
     public String getKeyStroke() {
       return "any %";

@@ -4,55 +4,10 @@ package jetbrains.mps.lang.context.defs.constraints;
 
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import java.util.Map;
-import org.jetbrains.mps.openapi.language.SReferenceLink;
-import jetbrains.mps.smodel.runtime.ReferenceConstraintsDescriptor;
-import jetbrains.mps.smodel.runtime.base.BaseReferenceConstraintsDescriptor;
-import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
-import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
-import org.jetbrains.mps.openapi.model.SNodeReference;
-import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.scope.ListScope;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import java.util.HashMap;
-import jetbrains.mps.smodel.SNodePointer;
 
 public class NativeTypedConceptDef_Constraints extends BaseConstraintsDescriptor {
   public NativeTypedConceptDef_Constraints() {
     super(MetaAdapterFactory.getConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x26084ede749bc5f2L, "jetbrains.mps.lang.context.defs.structure.NativeTypedConceptDef"));
   }
 
-  @Override
-  protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(MetaAdapterFactory.getReferenceLink(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x26084ede749bc5f2L, 0x26084ede749bc5f3L, "conceptParameter"), this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
-      @Nullable
-      @Override
-      public ReferenceScopeProvider getScopeProvider() {
-        return new BaseScopeProvider() {
-          @Override
-          public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_bz5az7_a0a0a0a0a1a0a0a0c;
-          }
-          @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
-            SNode root = SNodeOperations.as(SNodeOperations.getContainingRoot(_context.getContextNode()), MetaAdapterFactory.getConcept(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, 0x6530303593554248L, "jetbrains.mps.lang.constraints.rules.kinds.structure.RuleKind"));
-            return ListScope.forNamedElements(SLinkOperations.getChildren(root, MetaAdapterFactory.getContainmentLink(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, 0x6530303593554248L, 0x4bf59690bc05b732L, "parameters")));
-          }
-        };
-      }
-    };
-    Map<SReferenceLink, ReferenceConstraintsDescriptor> references = new HashMap<SReferenceLink, ReferenceConstraintsDescriptor>();
-    references.put(d0.getReference(), d0);
-    return references;
-  }
-  private static SNodePointer breakingNode_bz5az7_a0a0a0a0a1a0a0a0c = new SNodePointer("r:fc8253d3-1514-4b9f-addf-88563d82b200(jetbrains.mps.lang.context.defs.constraints)", "2740527090601203675");
 }

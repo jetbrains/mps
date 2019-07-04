@@ -10,8 +10,9 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.runtime.CheckingNodeContext;
 import org.jetbrains.mps.openapi.model.SModel;
-import java.util.Objects;
+import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import java.util.Objects;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SNodePointer;
 
@@ -36,7 +37,8 @@ public class ProblemKindRoot_Constraints extends BaseConstraintsDescriptor {
     };
   }
   private static boolean staticCanBeARoot(SModel model) {
-    return Objects.equals(SModelOperations.getPointer(model), PersistenceFacade.getInstance().createModelReference("r:7a404819-62e4-484e-8389-7ac268c0886e(jetbrains.mps.lang.feedback.problem.constraints)"));
+    SModelReference pointer = SModelOperations.getPointer(model);
+    return Objects.equals(pointer, PersistenceFacade.getInstance().createModelReference("r:5fb5395d-4f7b-4fac-941f-f4bc11c7dac5(jetbrains.mps.lang.feedback.problem.childAndProp.constraints)")) || Objects.equals(pointer, PersistenceFacade.getInstance().createModelReference("r:44de6cb2-b6eb-47d2-bf88-1577a328d3f6(jetbrains.mps.lang.feedback.problem.structural.constraints)"));
   }
   private static SNodePointer canBeRootBreakingPoint = new SNodePointer("r:7a404819-62e4-484e-8389-7ac268c0886e(jetbrains.mps.lang.feedback.problem.constraints)", "24399255755752753");
 }

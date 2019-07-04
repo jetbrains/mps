@@ -18,12 +18,9 @@
       </external-templates>
       <dependencies>
         <dependency reexport="false">6e98f4e2-decf-4e97-bf80-9109e8b759ef(jetbrains.mps.lang.feedback.alltogether)</dependency>
-        <dependency reexport="false">8e98f4e2-decf-4e97-bf80-9109e8b759ee(jetbrains.mps.lang.constraints.rules.runtime)</dependency>
         <dependency reexport="false">ceab5195-25ea-4f22-9b92-103b95ca8c0c(jetbrains.mps.lang.core)</dependency>
         <dependency reexport="false">1158b595-143b-40eb-8ac0-b10007fa8d7f(jetbrains.mps.lang.constraints.rules#01)</dependency>
         <dependency reexport="false">6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)</dependency>
-        <dependency reexport="false">15f44a21-aad0-432e-9f5c-8d1a341448d3(jetbrains.mps.lang.feedback.messages#01)</dependency>
-        <dependency reexport="false">cd17a113-ca4e-472f-a8de-c49008f9eea8(jetbrains.mps.lang.feedback)</dependency>
       </dependencies>
       <languageVersions>
         <language slang="l:f3061a53-9226-4cc5-a443-f952ceaf5816:jetbrains.mps.baseLanguage" version="9" />

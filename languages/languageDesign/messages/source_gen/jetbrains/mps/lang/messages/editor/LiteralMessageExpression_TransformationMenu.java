@@ -133,7 +133,7 @@ public class LiteralMessageExpression_TransformationMenu extends TransformationM
 
         @Override
         public void execute(@NotNull String pattern) {
-          CellSplitUtil.insertMacro(_context.getEditorContext(), _context.getNode(), myParameterObject);
+          new LiteralMessageSplitHelper(_context.getEditorContext(), _context.getNode()).insertMacro(myParameterObject);
         }
 
 

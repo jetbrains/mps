@@ -12,10 +12,16 @@
     <import index="beg" ref="r:09811e4e-aa47-4ea2-ad3d-57b7b9ffc7e3(jetbrains.mps.lang.constraints.plugin)" />
   </imports>
   <registry>
+    <language id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources">
+      <concept id="8974276187400029883" name="jetbrains.mps.lang.resources.structure.FileIcon" flags="ng" index="1QGGSu">
+        <property id="2756621024541341363" name="file" index="1iqoE4" />
+      </concept>
+    </language>
     <language id="f159adf4-3c93-40f9-9c5a-1f245a8697af" name="jetbrains.mps.lang.aspect">
       <concept id="3433054418424672374" name="jetbrains.mps.lang.aspect.structure.SimpleLanguageAspectDescriptor" flags="ng" index="3vrhyV">
         <child id="6106419185511570295" name="mainLanguages" index="QG$2i" />
         <child id="8222125370833980146" name="devkit" index="TkT64" />
+        <child id="3433054418425083029" name="icon" index="3vqPLo" />
         <child id="2343319097654255233" name="order" index="3F_NFc" />
       </concept>
       <concept id="174635545557784815" name="jetbrains.mps.lang.aspect.structure.SimpleAspectOrderRef" flags="ng" index="1SjbrP" />
@@ -85,6 +91,9 @@
     <node concept="T9mpH" id="5ca4zTvKOOL" role="TkT64">
       <property role="T9mpF" value="0845ddb4-34c2-4a32-b2ae-270bffc5b430" />
       <property role="T9mpE" value="jetbrains.mps.devkit.aspect.feedback" />
+    </node>
+    <node concept="1QGGSu" id="7CK8yHrc_jY" role="3vqPLo">
+      <property role="1iqoE4" value="${module}/icons/feedbackModel.png" />
     </node>
   </node>
 </model>

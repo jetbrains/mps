@@ -4,24 +4,18 @@
   <languages>
     <use id="47257bf3-78d3-470b-89d9-8c3261a61d15" name="jetbrains.mps.lang.constraints.rules" version="-1" />
     <use id="ad93155d-79b2-4759-b10c-55123e763903" name="jetbrains.mps.lang.messages" version="1" />
-    <use id="22916f45-e98f-4433-9c1b-1b382cf5bd8d" name="jetbrains.mps.samples.customAspect.documentation" version="0" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
     <use id="517077fd-e44f-4338-a475-1d29781dfdb8" name="jetbrains.mps.lang.feedback.skeleton" version="0" />
     <use id="db2a46c2-ebec-4b6c-b6c2-f9b55b9b6f8a" name="jetbrains.mps.lang.feedback.problem.failingRule" version="0" />
     <use id="16e76fe3-9534-4def-afb7-925a169a7c0b" name="jetbrains.mps.lang.feedback.messages" version="0" />
-    <use id="033598a4-76a9-47e1-ac89-a300c0fceab8" name="jetbrains.mps.lang.feedback.problem" version="0" />
-    <use id="cd17a113-ca4e-472f-a8de-c49008f9eea8" name="jetbrains.mps.lang.feedback" version="0" />
     <devkit ref="a2eb3a43-fcc2-4200-80dc-c60110c4862d(jetbrains.mps.devkit.templates)" />
     <devkit ref="602e7698-0d4d-45a0-8df4-365c7e7e87e8(main-feedback)" />
   </languages>
   <imports>
     <import index="t16r" ref="r:ee5c0e5f-69e3-4669-a4e4-2d16da1e8263(jetbrains.mps.lang.rulesAndMessages.structure)" />
-    <import index="t9po" ref="r:21b4a58c-8629-4511-bd63-7fc9a4e5fc38(jetbrains.mps.lang.messages.structure)" />
     <import index="bm42" ref="r:83f25986-cdbc-469a-a327-db97a2ec5a39(jetbrains.mps.lang.constraints.rules.structure)" />
     <import index="tpce" ref="r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="mqj2" ref="r:1d4f6f82-1219-47a2-a4fa-ac3ba14c9fd5(jetbrains.mps.lang.constraints.rules.skeleton.structure)" />
-    <import index="v0oi" ref="r:52c0a9e8-a4f1-4d97-9c33-d3c28d77688f(jetbrains.mps.lang.constraints.rules.constraints)" />
     <import index="wff5" ref="r:2ac18004-8536-478a-bf05-03a0f407633f(jetbrains.mps.lang.feedback.skeleton.structure)" />
     <import index="prp3" ref="r:52ea8481-08b2-4cbd-ad9d-1b42825f7d09(jetbrains.mps.lang.constraints.rules.kinds.constraints)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
@@ -694,7 +688,7 @@
     <property role="TrG5h" value="reduce_RuleWithMessage" />
     <ref role="3gUMe" to="t16r:hyoMxHKcTB" resolve="RuleWithMessage" />
     <node concept="3OnDbq" id="1dKt_a0opRX" role="13RCb5">
-      <ref role="3OnDbs" to="prp3:1dKt_a0noks" resolve="CanBeChild" />
+      <ref role="3OnDbs" to="prp3:6X8eyFnbIRR" resolve="CanBeChild" />
       <node concept="3Qq5Rn" id="19J4M2yytEK" role="3OnDbr">
         <property role="EcuMT" value="12" />
         <property role="TrG5h" value="AA" />

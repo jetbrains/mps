@@ -5,11 +5,17 @@ package jetbrains.mps.lang.feedback.messages.behavior;
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import java.util.List;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
+import jetbrains.mps.scope.Scope;
+import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
+import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
+import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
+import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
+import org.jetbrains.mps.openapi.model.SNode;
+import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -17,12 +23,16 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class ShowMessage__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x16e76fe395344defL, 0xafb7925a169a7c0bL, 0x6530303593ae1651L, "jetbrains.mps.lang.feedback.messages.structure.ShowMessage");
 
+  public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("52_Geb4QDV$").build(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList();
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getScope_id52_Geb4QDV$);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
+  /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
+    return Scope.getScope(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0xcd17a113ca4e472fL, 0xa8dec49008f9eea8L, 0x573ae5b8b8ccc349L, 0x573ae5b8b8ccc34cL, "problem")), null, kind);
+  }
 
   /*package*/ ShowMessage__BehaviorDescriptor() {
   }
@@ -39,6 +49,8 @@ public final class ShowMessage__BehaviorDescriptor extends BaseBHDescriptor {
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
+      case 0:
+        return (T) ((Scope) getScope_id52_Geb4QDV$(node, (SAbstractConcept) parameters[0], (SNode) parameters[1]));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

@@ -74,6 +74,9 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
   private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "ruleId:");
     editorCell.setCellId("Constant_z0m96w_0");
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.EDITABLE, false);
+    editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
   }

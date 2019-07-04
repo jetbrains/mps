@@ -17,7 +17,6 @@
         <generator generatorUID="3f67a24c-17dc-4d34-9ecd-d2790f764ce0(jetbrains.mps.lang.feedback.problem#01)" />
       </external-templates>
       <dependencies>
-        <dependency reexport="false">2bdcefec-ba49-4b32-ab50-ebc7a41d5090(jetbrains.mps.lang.smodel#1139186730696)</dependency>
         <dependency reexport="false">033598a4-76a9-47e1-ac89-a300c0fceab8(jetbrains.mps.lang.feedback.problem)</dependency>
       </dependencies>
       <languageVersions>

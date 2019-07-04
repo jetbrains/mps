@@ -48,27 +48,13 @@
   <node concept="1TIwiD" id="6kKc3mjlk98">
     <property role="EcuMT" value="7291380803376071240" />
     <property role="TrG5h" value="RuleKind" />
-    <property role="34LRSv" value="rule kind" />
+    <property role="34LRSv" value="Rule Kind" />
     <property role="19KtqR" value="true" />
-    <node concept="1TJgyj" id="4JP_D2W1rsM" role="1TKVEi">
-      <property role="IQ2ns" value="5473446470512654130" />
-      <property role="20lmBu" value="aggregation" />
-      <property role="20kJfa" value="parameters" />
-      <property role="20lbJX" value="0..n" />
-      <ref role="20lvS9" to="iwhd:4JP_D2W1rsP" resolve="ContextConceptParameter" />
-    </node>
     <node concept="PrWs8" id="6kKc3mjmAXJ" role="PzmwI">
       <ref role="PrY4T" to="tpee:hCUYCKd" resolve="IValidIdentifier" />
     </node>
     <node concept="PrWs8" id="2zJEoOoNo$V" role="PzmwI">
       <ref role="PrY4T" to="tpck:3fifI_xCcJN" resolve="ScopeProvider" />
-    </node>
-    <node concept="1TJgyj" id="6kKc3mjlkau" role="1TKVEi">
-      <property role="IQ2ns" value="7291380803376071326" />
-      <property role="20lmBu" value="aggregation" />
-      <property role="20lbJX" value="0..n" />
-      <property role="20kJfa" value="contextMembers" />
-      <ref role="20lvS9" to="iwhd:19J4M2yrkaX" resolve="NativeDef" />
     </node>
     <node concept="1TJgyj" id="2zJEoOoN6sa" role="1TKVEi">
       <property role="IQ2ns" value="2949762704422496010" />

@@ -4,66 +4,82 @@ package jetbrains.mps.lang.messages.editor;
 
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.openapi.editor.selection.Selection;
 import jetbrains.mps.openapi.editor.selection.SingularSelection;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Label;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 
-public class CellSplitUtil {
-  public static void insertMacro(EditorContext editorContext, SNode node, SNode target) {
-    Selection selection = editorContext.getSelectionManager().getSelection();
+public final class LiteralMessageSplitHelper {
+  private final EditorContext myEditorContext;
+  private final SNode myMessage;
+
+  public LiteralMessageSplitHelper(EditorContext editorContext, SNode message) {
+    myEditorContext = editorContext;
+    myMessage = message;
+  }
+
+  public void insertMacro(SNode target) {
+    SNode macro = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e41e4a2L, "jetbrains.mps.lang.messages.structure.MacroMessageExpression"));
+    if ((target != null)) {
+      SLinkOperations.setTarget(macro, MetaAdapterFactory.getReferenceLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e41e4a2L, 0x48f860fc0e50649fL, "declaration"), target);
+    }
+    insertMessageExpr(macro);
+  }
+
+  public void insertMessageExpr(SNode messageExpression) {
+    Selection selection = myEditorContext.getSelectionManager().getSelection();
     if (selection instanceof SingularSelection) {
       EditorCell selectedCell = ((SingularSelection) selection).getEditorCell();
       if (selectedCell instanceof EditorCell_Label) {
         int splitPosition = ((EditorCell_Label) selectedCell).getCaretPosition();
-        String messageToSplit = SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc5L, 0x48f860fc0e362dc6L, "message"));
+        String messageToSplit = SPropertyOperations.getString(myMessage, MetaAdapterFactory.getProperty(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc5L, 0x48f860fc0e362dc6L, "message"));
         List<SNode> messages = ListSequence.fromList(new ArrayList<SNode>());
         if (splitPosition > 0) {
-          ListSequence.fromList(messages).addElement(createLiteralMessageExpression_voocx9_a0a0a3a1a1a0(messageToSplit.substring(0, splitPosition)));
+          ListSequence.fromList(messages).addElement(createLiteralMessageExpression_fsei94_a0a0a3a1a1a7(messageToSplit.substring(0, splitPosition)));
         }
-        SNode macro = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e41e4a2L, "jetbrains.mps.lang.messages.structure.MacroMessageExpression"));
-        if ((target != null)) {
-          SLinkOperations.setTarget(macro, MetaAdapterFactory.getReferenceLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e41e4a2L, 0x48f860fc0e50649fL, "declaration"), target);
+        if (messageExpression != null) {
+          ListSequence.fromList(messages).addElement(messageExpression);
         }
-        ListSequence.fromList(messages).addElement(macro);
         if (splitPosition < messageToSplit.length()) {
-          ListSequence.fromList(messages).addElement(createLiteralMessageExpression_voocx9_a0a0a7a1a1a0(messageToSplit.substring(splitPosition)));
+          ListSequence.fromList(messages).addElement(createLiteralMessageExpression_fsei94_a0a0a5a1a1a7(messageToSplit.substring(splitPosition)));
         }
-        if (SNodeOperations.hasRole(node, MetaAdapterFactory.getContainmentLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e40455fL, 0x48f860fc0e404561L, "part"))) {
-          SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(node), MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e40455fL, "jetbrains.mps.lang.messages.structure.CombinedMessageExpression")), MetaAdapterFactory.getContainmentLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e40455fL, 0x48f860fc0e404561L, "part")).addAll(SNodeOperations.getIndexInParent(node), messages);
-          SNodeOperations.deleteNode(node);
+        if (SNodeOperations.hasRole(myMessage, MetaAdapterFactory.getContainmentLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e40455fL, 0x48f860fc0e404561L, "part"))) {
+          SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(myMessage), MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e40455fL, "jetbrains.mps.lang.messages.structure.CombinedMessageExpression")), MetaAdapterFactory.getContainmentLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e40455fL, 0x48f860fc0e404561L, "part")).addAll(SNodeOperations.getIndexInParent(myMessage), messages);
+          SNodeOperations.deleteNode(myMessage);
         } else {
-          SNodeOperations.replaceWithAnother(node, createCombinedMessageExpression_voocx9_a0a0a0i0b0b0a(messages));
+          SNodeOperations.replaceWithAnother(myMessage, createCombinedMessageExpression_fsei94_a0a0a0g0b0b0h(messages));
         }
-        SelectionUtil.selectCell(editorContext, macro, SelectionManager.FIRST_EDITABLE_CELL);
+        if ((messageExpression != null)) {
+          SelectionUtil.selectCell(myEditorContext, messageExpression, SelectionManager.FIRST_EDITABLE_CELL);
+        }
       }
     }
   }
-  private static SNode createLiteralMessageExpression_voocx9_a0a0a3a1a1a0(Object p0) {
+  private static SNode createLiteralMessageExpression_fsei94_a0a0a3a1a1a7(Object p0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc5L, "jetbrains.mps.lang.messages.structure.LiteralMessageExpression"), null, null, false);
     n1.setProperty(MetaAdapterFactory.getProperty(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc5L, 0x48f860fc0e362dc6L, "message"), p0 + "");
     return n1;
   }
-  private static SNode createLiteralMessageExpression_voocx9_a0a0a7a1a1a0(Object p0) {
+  private static SNode createLiteralMessageExpression_fsei94_a0a0a5a1a1a7(Object p0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc5L, "jetbrains.mps.lang.messages.structure.LiteralMessageExpression"), null, null, false);
     n1.setProperty(MetaAdapterFactory.getProperty(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc5L, 0x48f860fc0e362dc6L, "message"), p0 + "");
     return n1;
   }
-  private static SNode createCombinedMessageExpression_voocx9_a0a0a0i0b0b0a(Iterable<? extends SNode> seq0) {
+  private static SNode createCombinedMessageExpression_fsei94_a0a0a0g0b0b0h(Iterable<? extends SNode> seq0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e40455fL, "jetbrains.mps.lang.messages.structure.CombinedMessageExpression"), null, null, false);
     for (SNode n : seq0) {

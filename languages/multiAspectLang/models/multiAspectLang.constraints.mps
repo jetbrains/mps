@@ -13,6 +13,10 @@
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
+      <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
+        <child id="1197027771414" name="operand" index="2Oq$k0" />
+        <child id="1197027833540" name="operation" index="2OqNvi" />
+      </concept>
       <concept id="1137021947720" name="jetbrains.mps.baseLanguage.structure.ConceptFunction" flags="in" index="2VMwT0">
         <child id="1137022507850" name="body" index="2VODD2" />
       </concept>
@@ -92,6 +96,9 @@
       <concept id="315923949160453290" name="jetbrains.mps.lang.constraints.rules.structure.RuleIdHolder" flags="ng" index="1DRju2">
         <property id="6714410169261853888" name="ruleId" index="EcuMT" />
       </concept>
+      <concept id="7291380803376202513" name="jetbrains.mps.lang.constraints.rules.structure.TypedDefReference" flags="ng" index="3QpRc$">
+        <reference id="7291380803376221790" name="declaration" index="3QpVTF" />
+      </concept>
       <concept id="7291380803376279010" name="jetbrains.mps.lang.constraints.rules.structure.Rule" flags="ng" index="3Qq5Rn">
         <child id="1328301445982561464" name="expr" index="2K0Fuo" />
       </concept>
@@ -106,6 +113,9 @@
       <concept id="5258059200641510853" name="jetbrains.mps.lang.messages.structure.LiteralMessageExpression" flags="ng" index="16N$OT">
         <property id="5258059200641510854" name="message" index="16N$OU" />
       </concept>
+    </language>
+    <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
+      <concept id="1172008320231" name="jetbrains.mps.lang.smodel.structure.Node_IsNotNullOperation" flags="nn" index="3x8VRR" />
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
@@ -122,7 +132,7 @@
   <node concept="3Oh7Pa" id="1mFJTG0Yqe">
     <ref role="3Oh7Pe" to="pljn:5ca4zTvKOOO" resolve="A" />
     <node concept="3OnDbq" id="1mFJTG0Yqf" role="3Oh7Pb">
-      <ref role="3OnDbs" to="prp3:1dKt_a0noks" resolve="CanBeChild" />
+      <ref role="3OnDbs" to="prp3:6X8eyFnbIRR" resolve="CanBeChild" />
       <node concept="1DCEPf" id="1mFJTG5T_v" role="3OnDbr">
         <node concept="3Qq5Rn" id="1mFJTG5T_w" role="2j4cqI">
           <property role="EcuMT" value="24399255755528544" />
@@ -135,11 +145,31 @@
         </node>
         <node concept="1DCEQD" id="1mFJTG5T_z" role="1DCEQI">
           <node concept="16I2mz" id="1mFJTG5TPf" role="16N$OO">
-            <node concept="16N$OT" id="6AHR5A_xSLk" role="16I2mt">
-              <property role="16N$OU" value="sddfg" />
+            <node concept="16N$OT" id="6X8eyFnc_P5" role="16I2mt">
+              <property role="16N$OU" value="sddfg " />
+            </node>
+            <node concept="16Iohu" id="6X8eyFnc_P6" role="16I2mt">
+              <ref role="16E0hz" to="prp3:6X8eyFnbL3m" resolve="childNode" />
+            </node>
+            <node concept="16N$OT" id="6X8eyFnc_PZ" role="16I2mt">
+              <property role="16N$OU" value=" asdfasdfasdf" />
             </node>
           </node>
         </node>
+      </node>
+      <node concept="1DCEPf" id="7CK8yHrci8A" role="3OnDbr">
+        <node concept="3Qq5Rn" id="7CK8yHrci8B" role="2j4cqI">
+          <property role="EcuMT" value="8804574841118204455" />
+          <node concept="2K0Yjh" id="7CK8yHrci8C" role="2K0Fuo">
+            <node concept="2OqwBi" id="7CK8yHrcihX" role="2K0yoH">
+              <node concept="3QpRc$" id="7CK8yHrci9d" role="2Oq$k0">
+                <ref role="3QpVTF" to="prp3:6X8eyFnbL3m" resolve="childNode" />
+              </node>
+              <node concept="3x8VRR" id="7CK8yHrcios" role="2OqNvi" />
+            </node>
+          </node>
+        </node>
+        <node concept="1DCEQD" id="7CK8yHrci8E" role="1DCEQI" />
       </node>
       <node concept="1DCEPf" id="6GnzfDRi8P3" role="3OnDbr">
         <node concept="3Qq5Rn" id="6GnzfDRi8P4" role="2j4cqI">
@@ -154,7 +184,7 @@
         <node concept="1DCEQD" id="6GnzfDRi8P7" role="1DCEQI">
           <node concept="16I2mz" id="6GnzfDRi8P8" role="16N$OO">
             <node concept="16N$OT" id="6GnzfDRi8P9" role="16I2mt">
-              <property role="16N$OU" value="sddfg" />
+              <property role="16N$OU" value="sddf" />
             </node>
           </node>
         </node>

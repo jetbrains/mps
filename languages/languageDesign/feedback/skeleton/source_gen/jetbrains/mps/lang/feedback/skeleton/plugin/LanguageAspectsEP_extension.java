@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.language.LanguageAspectGenerator;
+import jetbrains.mps.smodel.runtime.IconResource;
 import jetbrains.mps.aspects.OrderDescriptor;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
@@ -67,6 +68,10 @@ public class LanguageAspectsEP_extension extends Extension.Default<LanguageAspec
       @Nullable
       public LanguageAspectGenerator getGenerator() {
         return null;
+      }
+      @Nullable
+      public IconResource getIconResource() {
+        return IconContainer.RESOURCE_a0a7a0a0a1;
       }
 
 

@@ -104,8 +104,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.constraints.rules", "Rule", 0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L);
     b.class_(false, false, false);
     b.parent(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb51750L);
-    b.parent(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a3afa8c0dL);
     b.parent(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x46263286dbf54aaL);
+    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:83f25986-cdbc-469a-a327-db97a2ec5a39(jetbrains.mps.lang.constraints.rules.structure)/7291380803376279010");
     b.version(2);
     b.aggregate("expr", 0x126f1320a26da4b8L).target(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x126f1320a26cf7f1L).optional(false).ordered(true).multiple(false).origin("1328301445982561464").done();
@@ -116,7 +116,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForRuleIdHolder() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.constraints.rules", "RuleIdHolder", 0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x46263286dbf54aaL);
     b.interface_();
-    b.parent(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a3afa8c0dL);
     b.origin("r:83f25986-cdbc-469a-a327-db97a2ec5a39(jetbrains.mps.lang.constraints.rules.structure)/315923949160453290");
     b.version(2);
     b.property("ruleId", 0x5d2e6079771f8cc0L).type(MetaIdFactory.dataTypeId(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x3b4187227177134aL)).origin("6714410169261853888").done();

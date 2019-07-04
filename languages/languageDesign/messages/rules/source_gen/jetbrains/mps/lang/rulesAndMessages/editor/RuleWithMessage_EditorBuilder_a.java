@@ -83,6 +83,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
       if (editorCell.getSRole() == null) {
         editorCell.setSRole(MetaAdapterFactory.getContainmentLink(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, 0x137076528060b0fcL, "rule"));
       }
+      RuleActions.setCellActions(editorCell, getNode(), getEditorContext());
     }
     @Override
     protected EditorCell createEmptyCell() {

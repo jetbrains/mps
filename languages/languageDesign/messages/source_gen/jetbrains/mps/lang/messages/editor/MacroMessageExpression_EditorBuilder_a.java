@@ -108,7 +108,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
       editorCell.setReferenceCell(true);
       editorCell.setSRole(MetaAdapterFactory.getReferenceLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e41e4a2L, 0x48f860fc0e50649fL, "declaration"));
     }
-    Message_Delete.setCellActions(editorCell, myNode, getEditorContext());
+    MessageExpression_Actions.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.addKeyMap(new MacroMessageExpression_complete());
     editorCell.setSubstituteInfo(new SReferenceSubstituteInfo(editorCell, referenceLink));
     Iterable<SNode> referenceAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da51L, "jetbrains.mps.lang.core.structure.LinkAttribute"));

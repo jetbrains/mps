@@ -54,11 +54,12 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   private static ConceptDescriptor createDescriptorForContext() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.context", "Context", 0x3ad5badc1d9c461cL, 0xb7b1fa2fcd0a0ae7L, 0x56aefe6c19b93dL);
-    b.class_(false, false, false);
+    b.class_(true, false, false);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x33d23ee961a0cbf3L);
     b.origin("r:bd6fc1e2-c440-4914-8d32-b3c46da52d44(jetbrains.mps.lang.context.structure)/24399255755667773");
     b.version(2);
-    b.aggregate("defs", 0x653030359355429eL).target(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x126f1320a26d42bdL).optional(true).ordered(true).multiple(true).origin("7291380803376071326").done();
+    b.aggregate("defs", 0x653030359355429eL).target(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x126f1320a26d42bdL).optional(false).ordered(true).multiple(true).origin("7291380803376071326").done();
+    b.aggregate("conceptParameter", 0x6f483a2ad72c3cdbL).target(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x4bf59690bc05b735L).optional(true).ordered(true).multiple(false).origin("8018723092206206171").done();
     return b.create();
   }
 }

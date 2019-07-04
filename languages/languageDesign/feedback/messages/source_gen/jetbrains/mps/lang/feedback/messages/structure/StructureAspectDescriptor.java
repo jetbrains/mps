@@ -13,7 +13,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder2;
 
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
-  /*package*/ final ConceptDescriptor myConceptMessageProvider = createDescriptorForMessageProvider();
   /*package*/ final ConceptDescriptor myConceptShowMessage = createDescriptorForShowMessage();
   private final LanguageConceptSwitch myIndexSwitch;
 
@@ -24,21 +23,18 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public void reportDependencies(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies deps) {
-    deps.extendedLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
     deps.aggregatedLanguage(0xad93155d79b24759L, 0xb10c55123e763903L, "jetbrains.mps.lang.messages");
   }
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptMessageProvider, myConceptShowMessage);
+    return Arrays.asList(myConceptShowMessage);
   }
 
   @Override
   @Nullable
   public ConceptDescriptor getDescriptor(SConceptId id) {
     switch (myIndexSwitch.index(id)) {
-      case LanguageConceptSwitch.MessageProvider:
-        return myConceptMessageProvider;
       case LanguageConceptSwitch.ShowMessage:
         return myConceptShowMessage;
       default:
@@ -55,19 +51,11 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     return myIndexSwitch.index(c);
   }
 
-  private static ConceptDescriptor createDescriptorForMessageProvider() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.feedback.messages", "MessageProvider", 0x16e76fe395344defL, 0xafb7925a169a7c0bL, 0x48f860fc0e30f402L);
-    b.interface_();
-    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x33d23ee961a0cbf3L);
-    b.origin("r:bce9672d-89d3-47d7-90eb-dde7199917c2(jetbrains.mps.lang.feedback.messages.structure)/5258059200641168386");
-    b.version(2);
-    return b.create();
-  }
   private static ConceptDescriptor createDescriptorForShowMessage() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.feedback.messages", "ShowMessage", 0x16e76fe395344defL, 0xafb7925a169a7c0bL, 0x6530303593ae1651L);
     b.class_(false, false, false);
-    b.parent(0x16e76fe395344defL, 0xafb7925a169a7c0bL, 0x48f860fc0e30f402L);
     b.parent(0xcd17a113ca4e472fL, 0xa8dec49008f9eea8L, 0x573ae5b8b8ccc349L);
+    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x33d23ee961a0cbf3L);
     b.origin("r:bce9672d-89d3-47d7-90eb-dde7199917c2(jetbrains.mps.lang.feedback.messages.structure)/7291380803381892689");
     b.version(2);
     b.aggregate("message", 0x48f860fc0e362dc8L).target(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e40455fL).optional(false).ordered(true).multiple(false).origin("5258059200641510856").done();

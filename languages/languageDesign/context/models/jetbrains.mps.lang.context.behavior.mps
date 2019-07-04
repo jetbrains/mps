@@ -37,6 +37,9 @@
       <concept id="1137021947720" name="jetbrains.mps.baseLanguage.structure.ConceptFunction" flags="in" index="2VMwT0">
         <child id="1137022507850" name="body" index="2VODD2" />
       </concept>
+      <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
+        <reference id="1144433194310" name="classConcept" index="1Pybhc" />
+      </concept>
       <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
       <concept id="1068498886296" name="jetbrains.mps.baseLanguage.structure.VariableReference" flags="nn" index="37vLTw">
         <reference id="1068581517664" name="variableDeclaration" index="3cqZAo" />
@@ -84,7 +87,12 @@
         <child id="1180031783297" name="conceptArgument" index="2Zo12j" />
       </concept>
       <concept id="6677504323281689838" name="jetbrains.mps.lang.smodel.structure.SConceptType" flags="in" index="3bZ5Sz" />
-      <concept id="1138055754698" name="jetbrains.mps.lang.smodel.structure.SNodeType" flags="in" index="3Tqbb2" />
+      <concept id="1138055754698" name="jetbrains.mps.lang.smodel.structure.SNodeType" flags="in" index="3Tqbb2">
+        <reference id="1138405853777" name="concept" index="ehGHo" />
+      </concept>
+      <concept id="1138056143562" name="jetbrains.mps.lang.smodel.structure.SLinkAccess" flags="nn" index="3TrEf2">
+        <reference id="1138056516764" name="link" index="3Tt5mk" />
+      </concept>
       <concept id="1138056282393" name="jetbrains.mps.lang.smodel.structure.SLinkListAccess" flags="nn" index="3Tsc0h">
         <reference id="1138056546658" name="link" index="3TtcxE" />
       </concept>
@@ -92,6 +100,12 @@
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
+      <concept id="1235573135402" name="jetbrains.mps.baseLanguage.collections.structure.SingletonSequenceCreator" flags="nn" index="2HTt$P">
+        <child id="1235573175711" name="elementType" index="2HTBi0" />
+        <child id="1235573187520" name="singletonValue" index="2HTEbv" />
       </concept>
     </language>
   </registry>
@@ -135,6 +149,39 @@
                     </node>
                   </node>
                 </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="6X8eyFna6fc" role="3cqZAp">
+          <node concept="3clFbS" id="6X8eyFna6fe" role="3clFbx">
+            <node concept="3cpWs6" id="6X8eyFna6TL" role="3cqZAp">
+              <node concept="2YIFZM" id="6X8eyFna71P" role="3cqZAk">
+                <ref role="37wK5l" to="o8zo:4IP40Bi3eAf" resolve="forNamedElements" />
+                <ref role="1Pybhc" to="o8zo:4IP40Bi3e_R" resolve="ListScope" />
+                <node concept="2ShNRf" id="6X8eyFnacgn" role="37wK5m">
+                  <node concept="2HTt$P" id="6X8eyFnadpK" role="2ShVmc">
+                    <node concept="3Tqbb2" id="6X8eyFnadBz" role="2HTBi0">
+                      <ref role="ehGHo" to="iwhd:4JP_D2W1rsP" resolve="ContextConceptParameter" />
+                    </node>
+                    <node concept="2OqwBi" id="6X8eyFna7kw" role="2HTEbv">
+                      <node concept="13iPFW" id="6X8eyFna75t" role="2Oq$k0" />
+                      <node concept="3TrEf2" id="6X8eyFna7ve" role="2OqNvi">
+                        <ref role="3Tt5mk" to="ceie:6X8eyFnb3Nr" resolve="conceptParameter" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="2OqwBi" id="6X8eyFna6x6" role="3clFbw">
+            <node concept="37vLTw" id="6X8eyFna6hZ" role="2Oq$k0">
+              <ref role="3cqZAo" node="2zJEoOoN3wu" resolve="kind" />
+            </node>
+            <node concept="2Zo12i" id="6X8eyFna6O2" role="2OqNvi">
+              <node concept="chp4Y" id="6X8eyFna6Sx" role="2Zo12j">
+                <ref role="cht4Q" to="iwhd:4JP_D2W1rsP" resolve="ContextConceptParameter" />
               </node>
             </node>
           </node>

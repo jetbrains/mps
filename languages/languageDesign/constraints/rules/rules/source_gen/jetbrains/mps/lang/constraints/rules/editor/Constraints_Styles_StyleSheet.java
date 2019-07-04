@@ -10,6 +10,8 @@ import jetbrains.mps.editor.runtime.style.AbstractStyleClass;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.nodeEditor.MPSFonts;
 import jetbrains.mps.openapi.editor.style.StyleRegistry;
+import java.awt.Color;
+import com.intellij.ui.JBColor;
 import jetbrains.mps.nodeEditor.MPSColors;
 
 public class Constraints_Styles_StyleSheet {
@@ -72,9 +74,12 @@ public class Constraints_Styles_StyleSheet {
     @Override
     public void apply(Style style, EditorCell editorCell) {
       style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD);
-      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
+      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_9wr25h_a1a()));
     }
 
+    private Color _StyleParameter_QueryFunction_9wr25h_a1a() {
+      return JBColor.YELLOW.darker();
+    }
   }
   public static class RuleStyleStyleClass extends AbstractStyleClass {
     public RuleStyleStyleClass(EditorContext editorContext, SNode node) {
