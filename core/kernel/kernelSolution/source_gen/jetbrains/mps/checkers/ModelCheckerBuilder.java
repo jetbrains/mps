@@ -82,6 +82,11 @@ public class ModelCheckerBuilder {
       ListSequence.fromList(result.modules).addElement(module);
       return result;
     }
+    public static ModelCheckerBuilder.ItemsToCheck forSingleModel(SModel model) {
+      ModelCheckerBuilder.ItemsToCheck result = new ModelCheckerBuilder.ItemsToCheck();
+      ListSequence.fromList(result.models).addElement(model);
+      return result;
+    }
     public List<SModel> models = ListSequence.fromList(new ArrayList<SModel>());
     public List<SModule> modules = ListSequence.fromList(new ArrayList<SModule>());
   }

@@ -8,6 +8,26 @@ import jetbrains.mps.lang.test.matcher.NodesMatcher;
 import jetbrains.mps.errors.item.NodeReportItem;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.errors.item.RuleIdFlavouredItem;
+import java.util.List;
+import jetbrains.mps.checkers.IChecker;
+import jetbrains.mps.errors.item.IssueKindReportItem;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.ArrayList;
+import jetbrains.mps.typesystemEngine.checker.TypesystemChecker;
+import jetbrains.mps.checkers.ConstraintsChecker;
+import jetbrains.mps.checkers.RefScopeChecker;
+import jetbrains.mps.checkers.TargetConceptChecker;
+import jetbrains.mps.project.validation.StructureChecker;
+import jetbrains.mps.checkers.SuppressErrorsChecker;
+import java.util.Collection;
+import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.util.CollectConsumer;
+import jetbrains.mps.checkers.ModelCheckerBuilder;
+import org.jetbrains.mps.openapi.util.Consumer;
+import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.errors.item.NodeFlavouredItem;
+import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 
 public class NodeCheckerUtil {
@@ -20,13 +40,43 @@ public class NodeCheckerUtil {
     Assert.assertTrue(String.format("node '%s' doesn't have type '%s'!", nodeWithIdToString(node), nodeWithIdToString(type2)), new NodesMatcher(type1, type2).diff().isEmpty());
   }
 
-  public static SNode getRuleNodeFromReporter(NodeReportItem reporter, SRepository contextRepository) {
-    if (RuleIdFlavouredItem.FLAVOUR_RULE_ID.getCollection(reporter).isEmpty() || contextRepository == null) {
+  public static SNode getRuleNodeFromReporter(NodeReportItem reporter, SRepository ruleRepository) {
+    if (RuleIdFlavouredItem.FLAVOUR_RULE_ID.getCollection(reporter).isEmpty() || ruleRepository == null) {
       return null;
     }
-    return RuleIdFlavouredItem.FLAVOUR_RULE_ID.getCollection(reporter).iterator().next().getSourceNode().resolve(contextRepository);
+    return RuleIdFlavouredItem.FLAVOUR_RULE_ID.getCollection(reporter).iterator().next().getSourceNode().resolve(ruleRepository);
   }
 
+  public static List<IChecker<?, ? extends IssueKindReportItem>> getStandardCheckers() {
+    List<IChecker<?, ? extends IssueKindReportItem>> result = ListSequence.fromList(new ArrayList<IChecker<?, ? extends IssueKindReportItem>>());
+    ListSequence.fromList(result).addElement(new TypesystemChecker());
+    ListSequence.fromList(result).addElement(new ConstraintsChecker());
+    ListSequence.fromList(result).addElement(new RefScopeChecker());
+    ListSequence.fromList(result).addElement(new TargetConceptChecker());
+    ListSequence.fromList(result).addElement(new StructureChecker());
+    ListSequence.fromList(result).addElement(new SuppressErrorsChecker());
+    return result;
+  }
+
+  public static Collection<NodeReportItem> checkForNodeMessages(final SNode node) {
+    SModel model = SNodeOperations.getModel(node);
+    final SRepository repository = SNodeOperations.getModel(node).getRepository();
+    final CollectConsumer<NodeReportItem> resultConsumer = new CollectConsumer<NodeReportItem>();
+    new ModelCheckerBuilder(false).createChecker(getStandardCheckers()).check(ModelCheckerBuilder.ItemsToCheck.forSingleModel(model), repository, new Consumer<IssueKindReportItem>() {
+      public void consume(IssueKindReportItem reportItem) {
+        SNodeReference reportedNode = NodeFlavouredItem.FLAVOUR_NODE.tryToGet(reportItem);
+        if (reportedNode != null && ListSequence.fromList(SNodeOperations.getNodeAncestors(((SNode) reportedNode.resolve(repository)), null, true)).contains(node)) {
+          resultConsumer.consume((NodeReportItem) reportItem);
+        }
+      }
+    }, new EmptyProgressMonitor());
+    return resultConsumer.getResult();
+  }
+
+  /**
+   * works with node from original model
+   */
+  @Deprecated
   public static void checkNodeForErrorMessages(final SNode node, final boolean allowErrors, final boolean allowWarnings, boolean includeSelf, CheckExpectedMessageAction... excluded) {
     Runnable checkErrorsAction = new CheckErrorMessagesAction(node, allowWarnings, allowErrors).includeSelf(includeSelf).exclude(Sequence.fromIterable(Sequence.fromArray(excluded)).toListSequence());
     checkErrorsAction.run();
