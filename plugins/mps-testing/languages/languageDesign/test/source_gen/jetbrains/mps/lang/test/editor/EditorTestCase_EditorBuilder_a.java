@@ -189,6 +189,10 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
       editorCell.setReferenceCell(true);
       editorCell.setSRole(MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e314b20e0L, 0x2b9f5f5eae643562L, "testNodeBefore"));
     }
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, true);
+    editorCell.getStyle().putAll(style);
+    EditorTestCase_deleteTestNodes.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setSubstituteInfo(provider.createDefaultSubstituteInfo());
     SNode attributeConcept = provider.getRoleAttribute();
     if (attributeConcept != null) {
@@ -362,6 +366,10 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
       editorCell.setReferenceCell(true);
       editorCell.setSRole(MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e314b20e0L, 0x2b9f5f5eae643585L, "testNodeResult"));
     }
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, true);
+    editorCell.getStyle().putAll(style);
+    EditorTestCase_deleteTestNodes.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setSubstituteInfo(provider.createDefaultSubstituteInfo());
     SNode attributeConcept = provider.getRoleAttribute();
     if (attributeConcept != null) {
