@@ -10910,6 +10910,11 @@
               <ref role="3bR37D" node="7Kfy9QB6L9O" resolve="jetbrains.mps.lang.smodel" />
             </node>
           </node>
+          <node concept="1SiIV0" id="xCCYTBYNqQ" role="3bR37C">
+            <node concept="3bR9La" id="xCCYTBYNqR" role="1SiIV1">
+              <ref role="3bR37D" node="7Kfy9QB6Lg8" resolve="jetbrains.mps.runtime" />
+            </node>
+          </node>
         </node>
         <node concept="1SiIV0" id="6y_T1N8232L" role="3bR37C">
           <node concept="3bR9La" id="6y_T1N8232M" role="1SiIV1">
@@ -13001,6 +13006,11 @@
           <node concept="1SiIV0" id="1arxJRmh8kC" role="3bR37C">
             <node concept="3bR9La" id="1arxJRmh8kD" role="1SiIV1">
               <ref role="3bR37D" node="7YI57w6K0rx" resolve="jetbrains.mps.lang.smodel#1139186730696" />
+            </node>
+          </node>
+          <node concept="1SiIV0" id="xCCYTBYNqS" role="3bR37C">
+            <node concept="3bR9La" id="xCCYTBYNqT" role="1SiIV1">
+              <ref role="3bR37D" node="7Kfy9QB6Lg8" resolve="jetbrains.mps.runtime" />
             </node>
           </node>
         </node>
