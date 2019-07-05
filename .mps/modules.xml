@@ -314,6 +314,8 @@
       <modulePath path="${mps_home}/plugins/testModules/testSubtyping/languages/testSubtypingA/testSubtypingA.mpl" folder="tests.subtyping" />
       <modulePath path="${mps_home}/plugins/testModules/testSubtyping/languages/testSubtypingB/testSubtypingB.mpl" folder="tests.subtyping" />
       <modulePath path="${mps_home}/plugins/testModules/testSubtyping/solutions/testSubtypingTest/testSubtypingTest.msd" folder="tests.subtyping" />
+      <modulePath path="${mps_home}/samples/CustomTestCases/languages/jetbrains.mps.samples.CustomTestCases/jetbrains.mps.samples.CustomTestCases.mpl" folder="" />
+      <modulePath path="${mps_home}/samples/CustomTestCases/languages/jetbrains.mps.samples.CustomTestCases/sandbox/jetbrains.mps.samples.CustomTestCases.sandbox.msd" folder="" />
       <modulePath path="${mps_home}/samples/agreement/agreementLanguage/jetbrains.mps.samples.agreementLanguage.mpl" folder="samples" />
       <modulePath path="${mps_home}/samples/agreement/framework/jetbrains.mps.samples.agreement.framework.msd" folder="samples" />
       <modulePath path="${mps_home}/samples/agreement/sandbox/jetbrains.mps.samples.agreementLanguage.sandbox.msd" folder="samples" />
