@@ -23,10 +23,10 @@ import jetbrains.mps.progress.EmptyProgressMonitor;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
-import jetbrains.mps.lang.test.matcher.NodeDifference;
-import jetbrains.mps.typesystem.inference.TypeContextManager;
-import jetbrains.mps.util.Computable;
+import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.test.matcher.NodesMatcher;
+import jetbrains.mps.lang.test.matcher.NodeDifference;
+import java.util.function.Supplier;
 import jetbrains.mps.java.core.newparser.JavaParseException;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.java.core.sourceStubs.JavaSourceStubModelRoot;
@@ -101,8 +101,13 @@ public class Utils {
 
       final Map<SNode, SNode> nodeMap = MapSequence.fromMap(new HashMap<SNode, SNode>());
       buildClassifierNodeMap(result, expected, nodeMap);
-      List<NodeDifference> diff = TypeContextManager.getInstance().runResolveAction(new Computable<List<NodeDifference>>() {
-        public List<NodeDifference> compute() {
+      TypecheckingFacade.getFromContext().runIsolated(new Runnable() {
+        public void run() {
+          new NodesMatcher(result, expected).diff(nodeMap);
+        }
+      });
+      List<NodeDifference> diff = TypecheckingFacade.getFromContext().runIsolated(new Supplier<List<NodeDifference>>() {
+        public List<NodeDifference> get() {
           return new NodesMatcher(result, expected).diff(nodeMap);
         }
       });
