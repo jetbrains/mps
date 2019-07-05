@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
-  <dependency className="jetbrains.mps.samples.CustomTestCases.sandbox.quality.TestFoo_Test">
+  <dependency className="jetbrains.mps.samples.CustomTestCases.sandbox.quality.SampleTestCase_Test">
     <classNode dependClassName="org.junit.Assert" />
     <classNode dependClassName="org.junit.Test" />
   </dependency>

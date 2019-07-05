@@ -5,7 +5,7 @@ package jetbrains.mps.samples.CustomTestCases.sandbox.quality;
 import org.junit.Test;
 import org.junit.Assert;
 
-public class TestFoo_Test {
+public class SampleTestCase_Test {
   @Test
   public void a() {
     Assert.assertEquals(1, 1);

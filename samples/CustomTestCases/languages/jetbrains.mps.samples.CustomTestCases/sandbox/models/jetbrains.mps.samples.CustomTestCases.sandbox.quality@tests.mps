@@ -26,7 +26,7 @@
     </language>
   </registry>
   <node concept="uqMvU" id="5Q5U9D3VHdK">
-    <property role="TrG5h" value="TestFoo" />
+    <property role="TrG5h" value="SampleTestCase" />
     <node concept="uqI6r" id="5Q5U9D3W7Kl" role="uq_dm">
       <property role="TrG5h" value="a" />
     </node>
