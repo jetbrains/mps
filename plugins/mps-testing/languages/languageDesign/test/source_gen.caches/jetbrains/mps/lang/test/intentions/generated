@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-89ewrmdayjcc82xi9mwdcf7voknuucs">
-  <files names="AddCellAnnotation_Intention.java:AddMessageAnnotation_Intention.java:AddMockAnnotation_Intention.java:AddNodeHasErrorAnnotation_Intention.java:AddNodeHasWarningAnnotation_Intention.java:AddOperationsAnnotation_Intention.java:AddScopeExpectedNodes_Intention.java:AddScopeTestAnnotation_Intention.java:AddTestAnnotation_Intention.java:GenerateOutput_Intention.java:IntentionsDescriptor.java:SpecifyRuleReferences_Intention.java" />
+<product version="3" modelHash="-2l4uwbn8a9gf2j9vw4ani92uciq1ovf">
+  <files names="AddCellAnnotation_Intention.java:AddMessageAnnotation_Intention.java:AddMockAnnotation_Intention.java:AddNodeHasErrorAnnotation_Intention.java:AddNodeHasWarningAnnotation_Intention.java:AddOperationsAnnotation_Intention.java:AddScopeExpectedNodes_Intention.java:AddScopeTestAnnotation_Intention.java:AddTestAnnotation_Intention.java:GenerateOutput_Intention.java:IntentionsDescriptor.java:MoveCheckToContainedNode_Intention.java:MoveToContainedNode_Intention.java:SpecifyRuleReferences_Intention.java" />
 </product>
 

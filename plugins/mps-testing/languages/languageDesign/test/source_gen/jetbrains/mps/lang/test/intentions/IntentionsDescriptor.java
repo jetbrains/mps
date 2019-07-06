@@ -63,7 +63,21 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         if (true) {
           // concept 
           intentions = new IntentionFactory[1];
+          intentions[0] = new MoveCheckToContainedNode_Intention();
+        }
+        break;
+      case 4:
+        if (true) {
+          // concept 
+          intentions = new IntentionFactory[1];
           intentions[0] = new AddScopeExpectedNodes_Intention();
+        }
+        break;
+      case 5:
+        if (true) {
+          // concept 
+          intentions = new IntentionFactory[1];
+          intentions[0] = new MoveToContainedNode_Intention();
         }
         break;
       default:
@@ -75,7 +89,7 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
   @NotNull
   @Override
   public Collection<IntentionFactory> getAllIntentions() {
-    IntentionFactory[] rv = new IntentionFactory[11];
+    IntentionFactory[] rv = new IntentionFactory[13];
     rv[0] = new AddTestAnnotation_Intention();
     rv[1] = new AddOperationsAnnotation_Intention();
     rv[2] = new AddCellAnnotation_Intention();
@@ -87,7 +101,9 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
     rv[8] = new AddMessageAnnotation_Intention();
     rv[9] = new SpecifyRuleReferences_Intention();
     rv[10] = new GenerateOutput_Intention();
+    rv[11] = new MoveToContainedNode_Intention();
+    rv[12] = new MoveCheckToContainedNode_Intention();
     return Arrays.asList(rv);
   }
-  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL), MetaIdFactory.conceptId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4aad802L), MetaIdFactory.conceptId(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x4c010b30d9be4be7L), MetaIdFactory.conceptId(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x7181d929c720809L)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL), MetaIdFactory.conceptId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4aad802L), MetaIdFactory.conceptId(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x4c010b30d9be4be7L), MetaIdFactory.conceptId(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b07a3d4b5L), MetaIdFactory.conceptId(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x7181d929c720809L), MetaIdFactory.conceptId(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x119e1c6609cL)).seal();
 }
