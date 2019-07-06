@@ -157,7 +157,7 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
     }
 
     @Override
-    public void checkRoot(SNode root, Consumer<? super NodeReportItem> errorsConsumer) {
+    public void checkRecursively(SNode root, Consumer<? super NodeReportItem> errorsConsumer) {
       run((tcc) -> {
         // the typechecking context is expected to have been created with the same root node
         if (tcc.getNode() == null || tcc.getNode() != root) return;

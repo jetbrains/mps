@@ -130,10 +130,11 @@ public interface TypecheckingQueries {
   }
 
   /**
-   * Runs typechecking on a root, collecting the errors reported.
+   * Runs typechecking on a node and all its children recursively, collecting the errors reported.
    * The implementation may employ different strategies when deciding whether to run type checking every time or use cached info.
-   * Regardless of whether types were checked or not, the {@param errorsConsumer} must receive all errors in this root.
+   * Regardless of whether types were checked or not, the {@param errorsConsumer} must receive all errors
+   * reported as if root was really checked. 
    */
-  void checkRoot(SNode root, Consumer<? super NodeReportItem> errorsConsumer);
+  void checkRecursively(SNode root, Consumer<? super NodeReportItem> errorsConsumer);
 
 }

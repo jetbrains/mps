@@ -54,7 +54,7 @@
         <var name="repository" id="5231630840089786285" />
         <var name="root" id="5231630840089786283" />
       </scope>
-      <unit id="6603895217780758306" at="27,64,31,9" name="jetbrains.mps.typesystemEngine.checker.TypesystemChecker$1$1" />
+      <unit id="6603895217780758306" at="27,71,31,9" name="jetbrains.mps.typesystemEngine.checker.TypesystemChecker$1$1" />
       <unit id="842888854126507060" at="40,66,44,5" name="jetbrains.mps.typesystemEngine.checker.TypesystemChecker$2" />
       <unit id="8294139113668581819" at="24,111,34,5" name="jetbrains.mps.typesystemEngine.checker.TypesystemChecker$1" />
       <unit id="5231630840089786268" at="19,0,51,0" name="jetbrains.mps.typesystemEngine.checker.TypesystemChecker" />

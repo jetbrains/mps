@@ -25,7 +25,6 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.function.Consumer;
 
 /**
@@ -105,8 +104,8 @@ public abstract class TypecheckingController implements TypecheckingQueries {
   }
 
   @Override
-  public void checkRoot(SNode root, Consumer<? super NodeReportItem> errorsConsumer) {
-    getQueries(root, null, null).checkRoot(root, errorsConsumer);
+  public void checkRecursively(SNode root, Consumer<? super NodeReportItem> errorsConsumer) {
+    getQueries(root, null, null).checkRecursively(root, errorsConsumer);
   }
 
   /**

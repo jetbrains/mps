@@ -109,8 +109,8 @@ public abstract class TypecheckingFacade extends TypecheckingSessionHandler impl
   }
 
   @Override
-  public void checkRoot(SNode root, Consumer<? super NodeReportItem> errorsConsumer) {
-    controller().checkRoot(root, errorsConsumer);
+  public void checkRecursively(SNode root, Consumer<? super NodeReportItem> errorsConsumer) {
+    controller().checkRecursively(root, errorsConsumer);
   }
 
   protected static TypecheckingFacade getContextInstance() {

@@ -24,7 +24,7 @@ public class TypesystemChecker extends IChecker.AbstractRootChecker<NodeReportIt
     TypecheckingFacade.getFromContext().runIsolated(TypecheckingSession.Flags.forRoot(root).incremental(), new Runnable() {
       public void run() {
 
-        TypecheckingFacade.getFromContext().checkRoot(root, new Consumer<NodeReportItem>() {
+        TypecheckingFacade.getFromContext().checkRecursively(root, new Consumer<NodeReportItem>() {
           public void accept(NodeReportItem it) {
             SetSequence.fromSet(errors).addElement(it);
           }

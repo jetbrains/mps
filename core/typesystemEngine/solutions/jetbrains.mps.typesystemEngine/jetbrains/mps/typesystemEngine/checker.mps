@@ -204,7 +204,7 @@
                         <ref role="37wK5l" to="1ka:~TypecheckingFacade.getFromContext()" resolve="getFromContext" />
                       </node>
                       <node concept="liA8E" id="6r0kJXsJnZW" role="2OqNvi">
-                        <ref role="37wK5l" to="1ka:~TypecheckingFacade.checkRoot(org.jetbrains.mps.openapi.model.SNode,java.util.function.Consumer)" resolve="checkRoot" />
+                        <ref role="37wK5l" to="1ka:~TypecheckingFacade.checkRecursively(org.jetbrains.mps.openapi.model.SNode,java.util.function.Consumer)" resolve="checkRecursively" />
                         <node concept="37vLTw" id="6r0kJXsJrMH" role="37wK5m">
                           <ref role="3cqZAo" node="4yqv8vrxVuF" resolve="root" />
                         </node>
