@@ -5,8 +5,8 @@ package jetbrains.mps.lang.pattern.editorTest;
 import jetbrains.mps.lang.pattern.GeneratedMatcher;
 import org.jetbrains.mps.openapi.model.SNode;
 
-/*package*/ class Pattern_sgpsgd_a0a0 extends GeneratedMatcher {
-  public Pattern_sgpsgd_a0a0(SNode patternNode) {
+/*package*/ class Pattern_sgpsgd_a0a0a extends GeneratedMatcher {
+  public Pattern_sgpsgd_a0a0a(SNode patternNode) {
     super(patternNode, false);
 
 

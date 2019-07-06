@@ -11,15 +11,14 @@ import jetbrains.mps.lang.test.runtime.RunWithCommand;
 import org.junit.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
-import jetbrains.mps.lang.test.runtime.NodeCheckerUtil;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.lang.test.runtime.CheckExpectedMessageAction;
-import jetbrains.mps.errors.MessageStatus;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.test.runtime.CheckTypesAction;
-import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import jetbrains.mps.lang.test.runtime.CheckErrorMessagesAction;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
+import jetbrains.mps.lang.test.runtime.CheckExpectedMessageAction;
+import jetbrains.mps.lang.test.runtime.CheckTypesAction;
+import jetbrains.mps.errors.MessageStatus;
+import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 
 @MPSLaunch
 public class Test_Test extends BaseTransformationTest {
@@ -49,16 +48,32 @@ public class Test_Test extends BaseTransformationTest {
     new Test_Test.TestBody(this).test_hasTypeInSet();
   }
   @Test
+  public void test_ErrorMessagesCheck2501421320959199196() throws Throwable {
+    new Test_Test.TestBody(this).test_ErrorMessagesCheck2501421320959199196();
+  }
+  @Test
   public void test_NodeTypeCheck6594325605663849546() throws Throwable {
     new Test_Test.TestBody(this).test_NodeTypeCheck6594325605663849546();
+  }
+  @Test
+  public void test_ErrorMessagesCheck2501421320959199214() throws Throwable {
+    new Test_Test.TestBody(this).test_ErrorMessagesCheck2501421320959199214();
   }
   @Test
   public void test_NodeErrorCheck6594325605663849637() throws Throwable {
     new Test_Test.TestBody(this).test_NodeErrorCheck6594325605663849637();
   }
   @Test
+  public void test_ErrorMessagesCheck2501421320959199232() throws Throwable {
+    new Test_Test.TestBody(this).test_ErrorMessagesCheck2501421320959199232();
+  }
+  @Test
   public void test_NodeTypeSetCheck6594325605663852576() throws Throwable {
     new Test_Test.TestBody(this).test_NodeTypeSetCheck6594325605663852576();
+  }
+  @Test
+  public void test_ErrorMessagesCheck2501421320959199250() throws Throwable {
+    new Test_Test.TestBody(this).test_ErrorMessagesCheck2501421320959199250();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {
@@ -69,31 +84,50 @@ public class Test_Test extends BaseTransformationTest {
 
     public void test_testError() throws Exception {
       addNodeById("6594325605663717987");
-      NodeCheckerUtil.checkNodeForErrorMessages(SNodeOperations.cast(getNodeById("6594325605663831239"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc67c7efL, "LocalVariableDeclaration"))), false, false, false, new CheckExpectedMessageAction.CheckAnyMessageAction(getNodeById("3951985765451224906"), MessageStatus.ERROR, myProject.getRepository()));
+      // Check statement was moved to node annotation 
+      // check <node>error messages 
     }
     public void test_hasType() throws Exception {
       addNodeById("6594325605663717987");
-      NodeCheckerUtil.checkNodeForErrorMessages(SNodeOperations.cast(getNodeById("6594325605663848570"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b213L, "ExpressionStatement"))), false, false, false, new CheckExpectedMessageAction.CheckAnyMessageAction(getNodeById("3951985765451224906"), MessageStatus.ERROR, myProject.getRepository()));
+      // Check statement was moved to node annotation 
+      // check <node>error messages 
     }
     public void test_hasError() throws Exception {
       addNodeById("6594325605663717987");
-      NodeCheckerUtil.checkNodeForErrorMessages(SNodeOperations.cast(getNodeById("6594325605663849632"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c77f1e96L, "AssignmentExpression"))), false, false, false, new CheckExpectedMessageAction.CheckAnyMessageAction(getNodeById("3951985765451224906"), MessageStatus.ERROR, myProject.getRepository()));
+      // Check statement was moved to node annotation 
+      // check <node>error messages 
     }
     public void test_hasTypeInSet() throws Exception {
       addNodeById("6594325605663717987");
-      NodeCheckerUtil.checkNodeForErrorMessages(SNodeOperations.cast(getNodeById("6594325605663849719"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc67c7f0L, "LocalVariableDeclarationStatement"))), false, false, false, new CheckExpectedMessageAction.CheckAnyMessageAction(getNodeById("3951985765451224906"), MessageStatus.ERROR, myProject.getRepository()));
+      // Check statement was moved to node annotation 
+      // check <node>error messages 
     }
 
+    public void test_ErrorMessagesCheck2501421320959199196() throws Exception {
+      SNode nodeToCheck = getRealNodeById("6594325605663831239");
+      SNode operation = getRealNodeById("2501421320959199196");
+      new CheckErrorMessagesAction(nodeToCheck, false, false).includeSelf(false).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageAction>())).run();
+    }
     public void test_NodeTypeCheck6594325605663849546() throws Exception {
       SNode nodeToCheck = getRealNodeById("3951985765451231681");
       SNode operation = getRealNodeById("6594325605663849546");
       addNodeById("6594325605663849548");
       new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("6594325605663849548"));
     }
+    public void test_ErrorMessagesCheck2501421320959199214() throws Exception {
+      SNode nodeToCheck = getRealNodeById("6594325605663848570");
+      SNode operation = getRealNodeById("2501421320959199214");
+      new CheckErrorMessagesAction(nodeToCheck, false, false).includeSelf(false).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageAction>())).run();
+    }
     public void test_NodeErrorCheck6594325605663849637() throws Exception {
       SNode nodeToCheck = getRealNodeById("3951985765451224906");
       SNode operation = getRealNodeById("6594325605663849637");
       new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("3951985765451224906"), MessageStatus.ERROR, myProject.getRepository()).run();
+    }
+    public void test_ErrorMessagesCheck2501421320959199232() throws Exception {
+      SNode nodeToCheck = getRealNodeById("6594325605663849632");
+      SNode operation = getRealNodeById("2501421320959199232");
+      new CheckErrorMessagesAction(nodeToCheck, false, false).includeSelf(false).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageAction>(), new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("3951985765451224906"), MessageStatus.ERROR, myProject.getRepository()))).run();
     }
     public void test_NodeTypeSetCheck6594325605663852576() throws Exception {
       SNode nodeToCheck = getRealNodeById("3951985765451228786");
@@ -101,6 +135,11 @@ public class Test_Test extends BaseTransformationTest {
       addNodeById("6594325605663852582");
       addNodeById("6594325605663852578");
       new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIn(CollectionSequence.fromCollectionAndArray(new ArrayList<SNode>(), getNodeById("6594325605663852582"), getNodeById("6594325605663852578")));
+    }
+    public void test_ErrorMessagesCheck2501421320959199250() throws Exception {
+      SNode nodeToCheck = getRealNodeById("6594325605663849719");
+      SNode operation = getRealNodeById("2501421320959199250");
+      new CheckErrorMessagesAction(nodeToCheck, false, false).includeSelf(false).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageAction>())).run();
     }
 
   }

@@ -11,16 +11,15 @@ import jetbrains.mps.lang.test.runtime.RunWithCommand;
 import org.junit.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import jetbrains.mps.errors.item.NodeReportItem;
 import jetbrains.mps.typesystemEngine.checker.TypesystemChecker;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import junit.framework.Assert;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.checkers.IChecker;
+import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.tempmodel.TemporaryModels;
 import jetbrains.mps.smodel.tempmodel.TempModuleOptions;
@@ -70,24 +69,21 @@ public class SuppressErrorsTest_Test extends BaseTransformationTest {
       addNodeById("6807933448480843367");
       addNodeById("6807933448480841930");
       addNodeById("6807933448482335857");
-      SNode nodeToCheck = SLinkOperations.getTarget(SNodeOperations.cast(getNodeById("6807933448480843367"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, "jetbrains.mps.lang.test"), 0x11b5a38fc01L, "TestNode"))), MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b5a38fc01L, 0x11b5a397b92L, "nodeToCheck"));
-      List<NodeReportItem> errors = this.runChecker(new TypesystemChecker(), nodeToCheck);
+      List<NodeReportItem> errors = this.runChecker(new TypesystemChecker(), SNodeOperations.cast(getNodeById("6807933448482354120"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfb4ed32b7fL, "ParenthesizedExpression"))));
       Assert.assertTrue(ListSequence.fromList(errors).count() == 1 && this.isOurError(ListSequence.fromList(errors).first()));
     }
     public void test_quotationSuppress() throws Exception {
       addNodeById("6807933448480843367");
       addNodeById("6807933448480841930");
       addNodeById("6807933448482335857");
-      SNode nodeToCheck = SLinkOperations.getTarget(SNodeOperations.cast(getNodeById("6807933448480841930"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, "jetbrains.mps.lang.test"), 0x11b5a38fc01L, "TestNode"))), MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b5a38fc01L, 0x11b5a397b92L, "nodeToCheck"));
-      List<NodeReportItem> errors = this.runChecker(new TypesystemChecker(), nodeToCheck);
+      List<NodeReportItem> errors = this.runChecker(new TypesystemChecker(), SNodeOperations.cast(getNodeById("6807933448480842040"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, "jetbrains.mps.lang.quotation"), 0x1168c104659L, "Quotation"))));
       Assert.assertTrue(ListSequence.fromList(errors).isEmpty());
     }
     public void test_antiquotationNoSuppress() throws Exception {
       addNodeById("6807933448480843367");
       addNodeById("6807933448480841930");
       addNodeById("6807933448482335857");
-      SNode nodeToCheck = SLinkOperations.getTarget(SNodeOperations.cast(getNodeById("6807933448482335857"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, "jetbrains.mps.lang.test"), 0x11b5a38fc01L, "TestNode"))), MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b5a38fc01L, 0x11b5a397b92L, "nodeToCheck"));
-      List<NodeReportItem> errors = this.runChecker(new TypesystemChecker(), nodeToCheck);
+      List<NodeReportItem> errors = this.runChecker(new TypesystemChecker(), SNodeOperations.cast(getNodeById("6807933448482338502"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, "jetbrains.mps.lang.quotation"), 0x1168c104659L, "Quotation"))));
       Assert.assertTrue(ListSequence.fromList(errors).count() == 1 && this.isOurError(ListSequence.fromList(errors).first()));
     }
 

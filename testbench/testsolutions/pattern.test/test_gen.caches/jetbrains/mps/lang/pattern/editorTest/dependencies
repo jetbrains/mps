@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
-  <dependency className="jetbrains.mps.lang.pattern.editorTest.Pattern_sgpsgd_a0a0">
+  <dependency className="jetbrains.mps.lang.pattern.editorTest.Pattern_sgpsgd_a0a0a">
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.lang.pattern.GeneratedMatcher" />
   </dependency>
-  <dependency className="jetbrains.mps.lang.pattern.editorTest.Pattern_sgpsgd_a0a0_0">
+  <dependency className="jetbrains.mps.lang.pattern.editorTest.Pattern_sgpsgd_a0a0a_0">
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.lang.pattern.GeneratedMatcher" />

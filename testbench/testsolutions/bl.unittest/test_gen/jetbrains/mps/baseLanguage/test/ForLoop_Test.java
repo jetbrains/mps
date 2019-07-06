@@ -11,9 +11,11 @@ import jetbrains.mps.lang.test.runtime.RunWithCommand;
 import org.junit.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
-import jetbrains.mps.lang.test.runtime.NodeCheckerUtil;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.test.runtime.CheckErrorMessagesAction;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.ArrayList;
+import jetbrains.mps.lang.test.runtime.CheckExpectedMessageAction;
 
 @MPSLaunch
 public class ForLoop_Test extends BaseTransformationTest {
@@ -30,6 +32,10 @@ public class ForLoop_Test extends BaseTransformationTest {
   public void test_ForLoop() throws Throwable {
     new ForLoop_Test.TestBody(this).test_ForLoop();
   }
+  @Test
+  public void test_ErrorMessagesCheck2501421320959199424() throws Throwable {
+    new ForLoop_Test.TestBody(this).test_ErrorMessagesCheck2501421320959199424();
+  }
 
   /*package*/ static class TestBody extends BaseTestBody {
 
@@ -39,9 +45,15 @@ public class ForLoop_Test extends BaseTransformationTest {
 
     public void test_ForLoop() throws Exception {
       addNodeById("1217271585525");
-      NodeCheckerUtil.checkNodeForErrorMessages(SNodeOperations.cast(getNodeById("1215444253196"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b21dL, "InstanceMethodDeclaration"))), false, false, false);
+      // Check statement was moved to node annotation 
+      // check <node>error messages 
     }
 
+    public void test_ErrorMessagesCheck2501421320959199424() throws Exception {
+      SNode nodeToCheck = getRealNodeById("1215444253196");
+      SNode operation = getRealNodeById("2501421320959199424");
+      new CheckErrorMessagesAction(nodeToCheck, false, false).includeSelf(false).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageAction>())).run();
+    }
 
   }
 }

@@ -89,14 +89,14 @@ public class UnusedLocalVariableDeclaration_Test extends BaseTransformationTest 
       new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("215889526509544939"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "215889526508832630"), myProject.getRepository()).run();
     }
     public void test_ErrorMessagesCheck215889526509545709() throws Exception {
-      SNode nodeToCheck = getRealNodeById("215889526509543990");
+      SNode nodeToCheck = getRealNodeById("215889526509544002");
       SNode operation = getRealNodeById("215889526509545709");
-      new CheckErrorMessagesAction(nodeToCheck, false, false).includeSelf(false).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageAction>(), new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("215889526509544986"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "963887337804010668"), myProject.getRepository()), new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("215889526509544939"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "215889526508832630"), myProject.getRepository()))).run();
+      new CheckErrorMessagesAction(nodeToCheck, false, false).includeSelf(true).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageAction>(), new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("215889526509544986"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "963887337804010668"), myProject.getRepository()), new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("215889526509544939"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "215889526508832630"), myProject.getRepository()))).run();
     }
     public void test_ErrorMessagesCheck215889526509546687() throws Exception {
-      SNode nodeToCheck = getRealNodeById("215889526509545003");
+      SNode nodeToCheck = getRealNodeById("215889526509545004");
       SNode operation = getRealNodeById("215889526509546687");
-      new CheckErrorMessagesAction(nodeToCheck, false, false).includeSelf(false).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageAction>())).run();
+      new CheckErrorMessagesAction(nodeToCheck, false, false).includeSelf(true).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageAction>())).run();
     }
     public void test_NodeVariableInitializerIsRedundantWarningCheck215889526509553873() throws Exception {
       SNode nodeToCheck = getRealNodeById("215889526509545053");
@@ -109,24 +109,24 @@ public class UnusedLocalVariableDeclaration_Test extends BaseTransformationTest 
       new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("215889526509545051"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "215889526508832630"), myProject.getRepository()).run();
     }
     public void test_ErrorMessagesCheck215889526509553154() throws Exception {
-      SNode nodeToCheck = getRealNodeById("215889526509545045");
+      SNode nodeToCheck = getRealNodeById("215889526509545046");
       SNode operation = getRealNodeById("215889526509553154");
-      new CheckErrorMessagesAction(nodeToCheck, false, false).includeSelf(false).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageAction>(), new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("215889526509545053"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "963887337804010668"), myProject.getRepository()), new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("215889526509545051"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "215889526508832630"), myProject.getRepository()))).run();
+      new CheckErrorMessagesAction(nodeToCheck, false, false).includeSelf(true).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageAction>(), new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("215889526509545053"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "963887337804010668"), myProject.getRepository()), new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("215889526509545051"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "215889526508832630"), myProject.getRepository()))).run();
     }
     public void test_ErrorMessagesCheck215889526509562440() throws Exception {
-      SNode nodeToCheck = getRealNodeById("215889526509545096");
+      SNode nodeToCheck = getRealNodeById("215889526509545097");
       SNode operation = getRealNodeById("215889526509562440");
-      new CheckErrorMessagesAction(nodeToCheck, false, false).includeSelf(false).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageAction>())).run();
+      new CheckErrorMessagesAction(nodeToCheck, false, false).includeSelf(true).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageAction>())).run();
     }
     public void test_ErrorMessagesCheck215889526509562472() throws Exception {
-      SNode nodeToCheck = getRealNodeById("215889526509562450");
+      SNode nodeToCheck = getRealNodeById("215889526509562451");
       SNode operation = getRealNodeById("215889526509562472");
-      new CheckErrorMessagesAction(nodeToCheck, false, false).includeSelf(false).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageAction>())).run();
+      new CheckErrorMessagesAction(nodeToCheck, false, false).includeSelf(true).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageAction>())).run();
     }
     public void test_ErrorMessagesCheck215889526509563288() throws Exception {
-      SNode nodeToCheck = getRealNodeById("215889526509563266");
+      SNode nodeToCheck = getRealNodeById("215889526509563267");
       SNode operation = getRealNodeById("215889526509563288");
-      new CheckErrorMessagesAction(nodeToCheck, false, false).includeSelf(false).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageAction>())).run();
+      new CheckErrorMessagesAction(nodeToCheck, false, false).includeSelf(true).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageAction>())).run();
     }
 
   }

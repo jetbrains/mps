@@ -46,10 +46,10 @@ public class TestMigrateCommentBlock_Test extends BaseTransformationTest {
     public void test_MigrateBlock() throws Exception {
       addNodeById("494962652073944659");
       addNodeById("494962652073944777");
-      new ReplaceOldCommentWithGenericComment_CommentedStatementsBlock().execute(SNodeOperations.getModel(SNodeOperations.cast(getNodeById("494962652073944659"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, "jetbrains.mps.lang.test"), 0x11b5a38fc01L, "TestNode")))).getModule());
+      new ReplaceOldCommentWithGenericComment_CommentedStatementsBlock().execute(SNodeOperations.getModel(SNodeOperations.cast(getNodeById("494962652073871560"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b21dL, "InstanceMethodDeclaration")))).getModule());
       {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("494962652073944659"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, "jetbrains.mps.lang.test"), 0x11b5a38fc01L, "TestNode"))));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("494962652073944777"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, "jetbrains.mps.lang.test"), 0x11b5a38fc01L, "TestNode"))));
+        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("494962652073871560"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b21dL, "InstanceMethodDeclaration"))));
+        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("494962652073944890"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b21dL, "InstanceMethodDeclaration"))));
         Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
       }
     }

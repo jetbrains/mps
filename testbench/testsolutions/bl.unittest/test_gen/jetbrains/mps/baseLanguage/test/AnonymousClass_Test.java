@@ -11,13 +11,13 @@ import jetbrains.mps.lang.test.runtime.RunWithCommand;
 import org.junit.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
-import jetbrains.mps.lang.test.runtime.NodeCheckerUtil;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageAction;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.smodel.SNodePointer;
-import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.test.runtime.CheckErrorMessagesAction;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.ArrayList;
 
 @MPSLaunch
 public class AnonymousClass_Test extends BaseTransformationTest {
@@ -50,6 +50,10 @@ public class AnonymousClass_Test extends BaseTransformationTest {
   public void test_NodeUnusedLocalVariableCheck215889526511035331() throws Throwable {
     new AnonymousClass_Test.TestBody(this).test_NodeUnusedLocalVariableCheck215889526511035331();
   }
+  @Test
+  public void test_ErrorMessagesCheck2501421320959199514() throws Throwable {
+    new AnonymousClass_Test.TestBody(this).test_ErrorMessagesCheck2501421320959199514();
+  }
 
   /*package*/ static class TestBody extends BaseTestBody {
 
@@ -59,7 +63,8 @@ public class AnonymousClass_Test extends BaseTransformationTest {
 
     public void test_AnonymousClass() throws Exception {
       addNodeById("1217271587076");
-      NodeCheckerUtil.checkNodeForErrorMessages(SNodeOperations.cast(getNodeById("1215444376214"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b204L, "ConstructorDeclaration"))), false, false, false, new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getNodeById("6090235207266878331"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "963887337804010668"), myProject.getRepository()), new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getNodeById("1215444376234"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "215889526508832630"), myProject.getRepository()), new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getNodeById("6090235207266878711"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "963887337804010668"), myProject.getRepository()), new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getNodeById("6090235207266878440"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "215889526508832630"), myProject.getRepository()));
+      // Check statement was moved to node annotation 
+      // check <node>error messages 
     }
 
     public void test_NodeVariableInitializerIsRedundantWarningCheck6923385624927142051() throws Exception {
@@ -81,6 +86,11 @@ public class AnonymousClass_Test extends BaseTransformationTest {
       SNode nodeToCheck = getRealNodeById("6090235207266878440");
       SNode operation = getRealNodeById("215889526511035331");
       new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("6090235207266878440"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "215889526508832630"), myProject.getRepository()).run();
+    }
+    public void test_ErrorMessagesCheck2501421320959199514() throws Exception {
+      SNode nodeToCheck = getRealNodeById("1215444376214");
+      SNode operation = getRealNodeById("2501421320959199514");
+      new CheckErrorMessagesAction(nodeToCheck, false, false).includeSelf(false).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageAction>(), new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("6090235207266878331"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "963887337804010668"), myProject.getRepository()), new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("1215444376234"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "215889526508832630"), myProject.getRepository()), new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("6090235207266878711"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "963887337804010668"), myProject.getRepository()), new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("6090235207266878440"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "215889526508832630"), myProject.getRepository()))).run();
     }
 
   }

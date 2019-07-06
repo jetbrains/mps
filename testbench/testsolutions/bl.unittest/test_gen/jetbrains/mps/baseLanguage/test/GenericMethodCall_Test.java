@@ -50,9 +50,9 @@ public class GenericMethodCall_Test extends BaseTransformationTest {
 
 
     public void test_ErrorMessagesCheck7254243749546905063() throws Exception {
-      SNode nodeToCheck = getRealNodeById("7254243749546841214");
+      SNode nodeToCheck = getRealNodeById("7254243749546841216");
       SNode operation = getRealNodeById("7254243749546905063");
-      new CheckErrorMessagesAction(nodeToCheck, false, false).includeSelf(false).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageAction>())).run();
+      new CheckErrorMessagesAction(nodeToCheck, false, false).includeSelf(true).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageAction>())).run();
     }
     public void test_NodeErrorCheck7254243749547462195() throws Exception {
       SNode nodeToCheck = getRealNodeById("7254243749547456075");
@@ -60,9 +60,9 @@ public class GenericMethodCall_Test extends BaseTransformationTest {
       new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("7254243749547456075"), MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_ErrorMessagesCheck7254243749546905207() throws Exception {
-      SNode nodeToCheck = getRealNodeById("7254243749546905176");
+      SNode nodeToCheck = getRealNodeById("7254243749546905177");
       SNode operation = getRealNodeById("7254243749546905207");
-      new CheckErrorMessagesAction(nodeToCheck, false, false).includeSelf(false).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageAction>(), new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("7254243749547456075"), MessageStatus.ERROR, myProject.getRepository()))).run();
+      new CheckErrorMessagesAction(nodeToCheck, false, false).includeSelf(true).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageAction>(), new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("7254243749547456075"), MessageStatus.ERROR, myProject.getRepository()))).run();
     }
 
   }
