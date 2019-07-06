@@ -36,7 +36,6 @@ import jetbrains.mps.smodel.presentation.NodePresentationUtil;
 import jetbrains.mps.smodel.runtime.IconResource;
 import jetbrains.mps.smodel.runtime.IconResourceUtil;
 import jetbrains.mps.typechecking.TypecheckingFacade;
-import jetbrains.mps.typesystem.inference.TypeChecker;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -44,7 +43,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.HashMap;
 
 public class ReferenceTransformationMenuItem extends ActionItemBase implements BaseCompletionActionItem {
@@ -118,8 +116,7 @@ public class ReferenceTransformationMenuItem extends ActionItemBase implements B
     CopyUtil.copy(Arrays.asList(myNode.getContainingRoot()), mapping);
     SNode sourceNodeCopy = mapping.get(myNode);
     SNode nodeToEquate = myNode;
-    TypeChecker typeChecker = TypeChecker.getInstance();
-    while (nodeToEquate != null && typeChecker.getTypeOf(nodeToEquate) == null) {
+    while (nodeToEquate != null && TypecheckingFacade.getFromContext().getTypeOf(nodeToEquate) == null) {
       nodeToEquate = nodeToEquate.getParent();
     }
     if (nodeToEquate == null) {
