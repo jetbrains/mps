@@ -29,10 +29,10 @@ import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.module.SModule;
-import org.jetbrains.mps.openapi.model.SNode;
-import java.util.ArrayList;
-import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.ArrayList;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.testbench.suite.behavior.IModuleRef__BehaviorDescriptor;
@@ -131,20 +131,26 @@ public class CollectTests_Action extends BaseAction {
     });
 
     int done = 0;
-    for (SModuleReference mref : solutions.value) {
+    for (final SModuleReference mref : solutions.value) {
       if (proInd.isCanceled()) {
         return false;
       }
       proInd.setText("Processing " + mref.getModuleName());
-      final SModule module = mref.resolve(projectRepo);
-      if (module != null) {
-        for (final SModel smodel : module.getModels()) {
+      final Wrappers._T<SModule> module = new Wrappers._T<SModule>(null);
+      final Wrappers._T<List<SModel>> models = new Wrappers._T<List<SModel>>();
+      projectRepo.getModelAccess().runReadAction(new Runnable() {
+        public void run() {
+          module.value = mref.resolve(projectRepo);
+          models.value = ListSequence.fromListWithValues(new ArrayList<SModel>(), (module.value == null ? null : module.value.getModels()));
+        }
+      });
+      if (module.value != null) {
+        for (final SModel smodel : models.value) {
+          final Wrappers._boolean collected = new Wrappers._boolean();
           if (!(CollectTests_Action.this.isUserEditableGeneratableModel(smodel, _params))) {
             continue;
           }
-
           final List<SNode> tests = new ArrayList<SNode>();
-          final Wrappers._boolean collected = new Wrappers._boolean();
           projectRepo.getModelAccess().runReadAction(new Runnable() {
             public void run() {
               collected.value = new TestCollector().collectTests(smodel, tests);
@@ -156,33 +162,27 @@ public class CollectTests_Action extends BaseAction {
               public void run() {
                 projectRepo.getModelAccess().executeCommand(new Runnable() {
                   public void run() {
-                    final Wrappers._T<SNode> suite = new Wrappers._T<SNode>(null);
-                    projectRepo.getModelAccess().runReadAction(new Runnable() {
-                      public void run() {
-                        suite.value = ListSequence.fromList(SModelOperations.roots(model, MetaAdapterFactory.getConcept(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb5L, "jetbrains.mps.testbench.suite.structure.ModuleSuite"))).findFirst(new IWhereFilter<SNode>() {
-                          public boolean accept(SNode it) {
-                            return IModuleRef__BehaviorDescriptor.moduleReference_id173Z5qAOun8.invoke(SLinkOperations.getTarget(it, MetaAdapterFactory.getContainmentLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb5L, 0x11c3fc56a6d1cc88L, "moduleRef"))).equals(module.getModuleReference());
-                          }
-                        });
+                    SNode suite = ListSequence.fromList(SModelOperations.roots(model, MetaAdapterFactory.getConcept(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb5L, "jetbrains.mps.testbench.suite.structure.ModuleSuite"))).findFirst(new IWhereFilter<SNode>() {
+                      public boolean accept(SNode it) {
+                        return IModuleRef__BehaviorDescriptor.moduleReference_id173Z5qAOun8.invoke(SLinkOperations.getTarget(it, MetaAdapterFactory.getContainmentLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb5L, 0x11c3fc56a6d1cc88L, "moduleRef"))).equals(module.value.getModuleReference());
                       }
                     });
-
-                    if (suite.value == null) {
-                      suite.value = SModelOperations.createNewRootNode(model, MetaAdapterFactory.getConcept(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb5L, "jetbrains.mps.testbench.suite.structure.ModuleSuite"));
-                      SNode sref = SLinkOperations.setNewChild(suite.value, MetaAdapterFactory.getContainmentLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb5L, 0x11c3fc56a6d1cc88L, "moduleRef"), MetaAdapterFactory.getConcept(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x11c3fc56a6d1cbdcL, "jetbrains.mps.testbench.suite.structure.SolutionRef"));
-                      SModuleReference mref = module.getModuleReference();
+                    if (suite == null) {
+                      suite = SModelOperations.createNewRootNode(model, MetaAdapterFactory.getConcept(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb5L, "jetbrains.mps.testbench.suite.structure.ModuleSuite"));
+                      SNode sref = SLinkOperations.setNewChild(suite, MetaAdapterFactory.getContainmentLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb5L, 0x11c3fc56a6d1cc88L, "moduleRef"), MetaAdapterFactory.getConcept(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x11c3fc56a6d1cbdcL, "jetbrains.mps.testbench.suite.structure.SolutionRef"));
+                      SModuleReference mref = module.value.getModuleReference();
                       SPropertyOperations.assign(sref, MetaAdapterFactory.getProperty(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x11c3fc56a6d1cbdcL, 0x11c3fc56a6d1cbddL, "moduleFQName"), mref.getModuleName());
                       SPropertyOperations.assign(sref, MetaAdapterFactory.getProperty(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x11c3fc56a6d1cbdcL, 0x11c3fc56a6d1cbdeL, "moduleID"), mref.getModuleId().toString());
                     }
                     for (final SNode tref : tests) {
-                      if (!(ListSequence.fromList(SLinkOperations.getChildren(suite.value, MetaAdapterFactory.getContainmentLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb5L, 0x3e81ed1e2be77cbeL, "testRef"))).any(new IWhereFilter<SNode>() {
+                      if (!(ListSequence.fromList(SLinkOperations.getChildren(suite, MetaAdapterFactory.getContainmentLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb5L, 0x3e81ed1e2be77cbeL, "testRef"))).any(new IWhereFilter<SNode>() {
                         public boolean accept(SNode it) {
                           return (boolean) ITestRef__BehaviorDescriptor.isSame_id1ouvi_ymQH.invoke(it, tref);
                         }
                       }))) {
-                        ListSequence.fromList(SLinkOperations.getChildren(suite.value, MetaAdapterFactory.getContainmentLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb5L, 0x3e81ed1e2be77cbeL, "testRef"))).addElement(SNodeOperations.cast(tref, MetaAdapterFactory.getInterfaceConcept(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cbaL, "jetbrains.mps.testbench.suite.structure.ITestRef")));
+                        ListSequence.fromList(SLinkOperations.getChildren(suite, MetaAdapterFactory.getContainmentLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb5L, 0x3e81ed1e2be77cbeL, "testRef"))).addElement(SNodeOperations.cast(tref, MetaAdapterFactory.getInterfaceConcept(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cbaL, "jetbrains.mps.testbench.suite.structure.ITestRef")));
                         ((SModelInternal) model).addModelImport(smodel.getReference());
-                        ((AbstractModule) ((SModel) MapSequence.fromMap(_params).get("modelDesc")).getModule()).addDependency(module.getModuleReference(), false);
+                        ((AbstractModule) ((SModel) MapSequence.fromMap(_params).get("modelDesc")).getModule()).addDependency(module.value.getModuleReference(), false);
                       }
                     }
                   }
