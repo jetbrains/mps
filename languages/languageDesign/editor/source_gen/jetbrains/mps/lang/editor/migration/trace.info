@@ -1768,7 +1768,7 @@
   </root>
   <root nodeRef="r:85a46d2f-efef-4783-8e02-3976663ecd73(jetbrains.mps.lang.editor.migration)/8267787266002295635">
     <file name="MigrateEnumPropertyUsages.java">
-      <node id="8267787266002295635" at="29,30,30,49" concept="9" />
+      <node id="8267787266002295635" at="29,30,30,59" concept="9" />
       <node id="8267787266002295635" at="33,33,34,16" concept="9" />
       <node id="8267787266002295635" at="36,41,37,17" concept="3" />
       <node id="8267787266002295635" at="37,17,38,16" concept="9" />
@@ -1853,7 +1853,7 @@
       <node id="8267787266002295635" at="40,0,84,0" concept="7" trace="doExecute#(Lorg/jetbrains/mps/openapi/module/SModule;)V" />
       <node id="3899612785644128069" at="85,45,159,5" concept="0" />
       <node id="8267787266002295635" at="84,0,161,0" concept="7" trace="check#(Lorg/jetbrains/mps/openapi/module/SModule;)Ljava/lang/Iterable;" />
-      <scope id="8267787266002295635" at="29,30,30,49" />
+      <scope id="8267787266002295635" at="29,30,30,59" />
       <scope id="8267787266002295635" at="33,33,34,16" />
       <scope id="8267787266002308032" at="45,52,46,36" />
       <scope id="8267787266002308872" at="49,292,50,193" />

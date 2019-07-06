@@ -158,7 +158,7 @@
       <property role="20lbJX" value="fLJekj4/1" />
       <property role="20kJfa" value="value" />
       <property role="IQ2ns" value="1563914226484921016" />
-      <ref role="20lvS9" to="tpee:f$Xl_Og" resolve="StringLiteral" />
+      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
     </node>
   </node>
   <node concept="1TIwiD" id="1mO8VfSO65a">

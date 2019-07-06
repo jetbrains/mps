@@ -196,7 +196,7 @@
     </node>
     <node concept="3tYpXE" id="7aX5bqWzQSj" role="jymVt">
       <property role="TrG5h" value="description" />
-      <property role="3tYpXF" value="Migrate enumeration property usages" />
+      <property role="3tYpXF" value="Migrate enumeration property usages (checked names)" />
       <ref role="25KYV2" to="slm6:1_lSsE3RFpE" resolve="description" />
       <node concept="3Tm1VV" id="7aX5bqWzQSl" role="1B3o_S" />
       <node concept="17QB3L" id="7aX5bqWzQSm" role="1tU5fm" />

@@ -25,7 +25,7 @@ import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 
 public class MigrateEnumPropertyUsages extends MigrationScriptBase {
   public String getCaption() {
-    return "Migrate enumeration property usages";
+    return "Migrate enumeration property usages (property identities)";
   }
   @Override
   public boolean isRerunnable() {

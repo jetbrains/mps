@@ -7077,7 +7077,7 @@
     </node>
     <node concept="3tYpXE" id="5CkWgdpSCIi" role="jymVt">
       <property role="TrG5h" value="description" />
-      <property role="3tYpXF" value="Update property operations to new enumerations" />
+      <property role="3tYpXF" value="Migrate enumeration property usages (smodel expressions)" />
       <ref role="25KYV2" to="slm6:1_lSsE3RFpE" resolve="description" />
       <node concept="3Tm1VV" id="5CkWgdpSCIk" role="1B3o_S" />
       <node concept="17QB3L" id="5CkWgdpSCIl" role="1tU5fm" />
@@ -7387,6 +7387,155 @@
                         <node concept="Rh6nW" id="7KaEUqioPeT" role="1bW2Oz">
                           <property role="TrG5h" value="it" />
                           <node concept="2jxLKc" id="7KaEUqioPeU" role="1tU5fm" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="1KtG1wHTXI2" role="3cqZAp">
+              <node concept="2OqwBi" id="1KtG1wHTXI3" role="3clFbG">
+                <node concept="37vLTw" id="1KtG1wHTXI4" role="2Oq$k0">
+                  <ref role="3cqZAo" node="7KaEUqioAqe" resolve="problems" />
+                </node>
+                <node concept="X8dFx" id="1KtG1wHTXI5" role="2OqNvi">
+                  <node concept="2OqwBi" id="1KtG1wHTXI6" role="25WWJ7">
+                    <node concept="2OqwBi" id="1KtG1wHTYRQ" role="2Oq$k0">
+                      <node concept="qVDSY" id="1KtG1wHTXI7" role="2Oq$k0">
+                        <node concept="chp4Y" id="1KtG1wHTY8C" role="qVDSX">
+                          <ref role="cht4Q" to="tp25:gzTrcDJ" resolve="SPropertyAccess" />
+                        </node>
+                      </node>
+                      <node concept="3zZkjj" id="1KtG1wHTZv6" role="2OqNvi">
+                        <node concept="1bVj0M" id="1KtG1wHTZv8" role="23t8la">
+                          <node concept="3clFbS" id="1KtG1wHTZv9" role="1bW5cS">
+                            <node concept="3clFbF" id="1KtG1wHTZSm" role="3cqZAp">
+                              <node concept="2OqwBi" id="1KtG1wHU3Jr" role="3clFbG">
+                                <node concept="2OqwBi" id="1KtG1wHU1ER" role="2Oq$k0">
+                                  <node concept="2OqwBi" id="1KtG1wHU0nA" role="2Oq$k0">
+                                    <node concept="37vLTw" id="1KtG1wHTZSl" role="2Oq$k0">
+                                      <ref role="3cqZAo" node="1KtG1wHTZva" resolve="it" />
+                                    </node>
+                                    <node concept="3TrEf2" id="1KtG1wHU0Ut" role="2OqNvi">
+                                      <ref role="3Tt5mk" to="tp25:gzTsBJd" resolve="property" />
+                                    </node>
+                                  </node>
+                                  <node concept="1mfA1w" id="1KtG1wHU2Er" role="2OqNvi" />
+                                </node>
+                                <node concept="1mIQ4w" id="1KtG1wHU40$" role="2OqNvi">
+                                  <node concept="chp4Y" id="1KtG1wHU4mk" role="cj9EA">
+                                    <ref role="cht4Q" to="tpce:5CkWgdpgEmF" resolve="EnumPropertyMigrationInfo" />
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="Rh6nW" id="1KtG1wHTZva" role="1bW2Oz">
+                            <property role="TrG5h" value="it" />
+                            <node concept="2jxLKc" id="1KtG1wHTZvb" role="1tU5fm" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="3$u5V9" id="1KtG1wHTXI9" role="2OqNvi">
+                      <node concept="1bVj0M" id="1KtG1wHTXIa" role="23t8la">
+                        <node concept="3clFbS" id="1KtG1wHTXIb" role="1bW5cS">
+                          <node concept="3clFbF" id="1KtG1wHTXIc" role="3cqZAp">
+                            <node concept="2ShNRf" id="1KtG1wHTXId" role="3clFbG">
+                              <node concept="1pGfFk" id="1KtG1wHTXIe" role="2ShVmc">
+                                <ref role="37wK5l" to="6f4m:7KaEUqipM5k" resolve="UsageOfMigrateNodeNotMigratedProblem" />
+                                <node concept="37vLTw" id="1KtG1wHTXIf" role="37wK5m">
+                                  <ref role="3cqZAo" node="1KtG1wHTXIg" resolve="it" />
+                                </node>
+                                <node concept="2OqwBi" id="1KtG1wHU5oS" role="37wK5m">
+                                  <node concept="37vLTw" id="1KtG1wHU52d" role="2Oq$k0">
+                                    <ref role="3cqZAo" node="1KtG1wHTXIg" resolve="it" />
+                                  </node>
+                                  <node concept="3TrEf2" id="1KtG1wHU5ZJ" role="2OqNvi">
+                                    <ref role="3Tt5mk" to="tp25:gzTsBJd" resolve="property" />
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="Rh6nW" id="1KtG1wHTXIg" role="1bW2Oz">
+                          <property role="TrG5h" value="it" />
+                          <node concept="2jxLKc" id="1KtG1wHTXIh" role="1tU5fm" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="1KtG1wHU6Hw" role="3cqZAp">
+              <node concept="2OqwBi" id="1KtG1wHU6Hx" role="3clFbG">
+                <node concept="37vLTw" id="1KtG1wHU6Hy" role="2Oq$k0">
+                  <ref role="3cqZAo" node="7KaEUqioAqe" resolve="problems" />
+                </node>
+                <node concept="X8dFx" id="1KtG1wHU6Hz" role="2OqNvi">
+                  <node concept="2OqwBi" id="1KtG1wHU6H$" role="25WWJ7">
+                    <node concept="2OqwBi" id="1KtG1wHU6H_" role="2Oq$k0">
+                      <node concept="qVDSY" id="1KtG1wHU6HA" role="2Oq$k0">
+                        <node concept="chp4Y" id="1KtG1wHU7wl" role="qVDSX">
+                          <ref role="cht4Q" to="tp25:i2ZThgx" resolve="SEnumerationMemberType" />
+                        </node>
+                      </node>
+                      <node concept="3zZkjj" id="1KtG1wHU6HC" role="2OqNvi">
+                        <node concept="1bVj0M" id="1KtG1wHU6HD" role="23t8la">
+                          <node concept="3clFbS" id="1KtG1wHU6HE" role="1bW5cS">
+                            <node concept="3clFbF" id="1KtG1wHU6HF" role="3cqZAp">
+                              <node concept="2OqwBi" id="1KtG1wHU9Qh" role="3clFbG">
+                                <node concept="2OqwBi" id="1KtG1wHU8P6" role="2Oq$k0">
+                                  <node concept="37vLTw" id="1KtG1wHU8li" role="2Oq$k0">
+                                    <ref role="3cqZAo" node="1KtG1wHU6HO" resolve="it" />
+                                  </node>
+                                  <node concept="3TrEf2" id="1KtG1wHU9f6" role="2OqNvi">
+                                    <ref role="3Tt5mk" to="tp25:i2ZWj0V" resolve="enum" />
+                                  </node>
+                                </node>
+                                <node concept="1mIQ4w" id="1KtG1wHUap6" role="2OqNvi">
+                                  <node concept="chp4Y" id="1KtG1wHUbfo" role="cj9EA">
+                                    <ref role="cht4Q" to="tpce:fKAxPRV" resolve="EnumerationDataTypeDeclaration_Old" />
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="Rh6nW" id="1KtG1wHU6HO" role="1bW2Oz">
+                            <property role="TrG5h" value="it" />
+                            <node concept="2jxLKc" id="1KtG1wHU6HP" role="1tU5fm" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="3$u5V9" id="1KtG1wHU6HQ" role="2OqNvi">
+                      <node concept="1bVj0M" id="1KtG1wHU6HR" role="23t8la">
+                        <node concept="3clFbS" id="1KtG1wHU6HS" role="1bW5cS">
+                          <node concept="3clFbF" id="1KtG1wHU6HT" role="3cqZAp">
+                            <node concept="2ShNRf" id="1KtG1wHU6HU" role="3clFbG">
+                              <node concept="1pGfFk" id="1KtG1wHU6HV" role="2ShVmc">
+                                <ref role="37wK5l" to="6f4m:7KaEUqipM5k" resolve="UsageOfMigrateNodeNotMigratedProblem" />
+                                <node concept="37vLTw" id="1KtG1wHU6HW" role="37wK5m">
+                                  <ref role="3cqZAo" node="1KtG1wHU6I0" resolve="it" />
+                                </node>
+                                <node concept="2OqwBi" id="1KtG1wHU6HX" role="37wK5m">
+                                  <node concept="37vLTw" id="1KtG1wHU6HY" role="2Oq$k0">
+                                    <ref role="3cqZAo" node="1KtG1wHU6I0" resolve="it" />
+                                  </node>
+                                  <node concept="3TrEf2" id="1KtG1wHUclz" role="2OqNvi">
+                                    <ref role="3Tt5mk" to="tp25:i2ZWj0V" resolve="enum" />
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="Rh6nW" id="1KtG1wHU6I0" role="1bW2Oz">
+                          <property role="TrG5h" value="it" />
+                          <node concept="2jxLKc" id="1KtG1wHU6I1" role="1tU5fm" />
                         </node>
                       </node>
                     </node>
@@ -8699,10 +8848,10 @@
               <property role="3oM_SC" value="default" />
             </node>
             <node concept="3oM_SD" id="QobsgS3Emj" role="1PaTwD">
-              <property role="3oM_SC" value="surrond" />
+              <property role="3oM_SC" value="surround" />
             </node>
             <node concept="3oM_SD" id="QobsgS3Emk" role="1PaTwD">
-              <property role="3oM_SC" value="exisiting" />
+              <property role="3oM_SC" value="existing" />
             </node>
             <node concept="3oM_SD" id="QobsgS3Eml" role="1PaTwD">
               <property role="3oM_SC" value="dotExpression" />
@@ -13543,7 +13692,7 @@
     </node>
     <node concept="3tYpXE" id="7lDe6cU2VqB" role="jymVt">
       <property role="TrG5h" value="description" />
-      <property role="3tYpXF" value="Migrate enumeration property usages" />
+      <property role="3tYpXF" value="Migrate enumeration property usages (property identities)" />
       <ref role="25KYV2" to="slm6:1_lSsE3RFpE" resolve="description" />
       <node concept="3Tm1VV" id="7lDe6cU2VqD" role="1B3o_S" />
       <node concept="17QB3L" id="7lDe6cU2VqE" role="1tU5fm" />

@@ -3585,7 +3585,7 @@
     </node>
     <node concept="3tYpXE" id="20cGABpPMbl" role="jymVt">
       <property role="TrG5h" value="description" />
-      <property role="3tYpXF" value="Migrate enumeration property usages" />
+      <property role="3tYpXF" value="Migrate enumeration property usages (constraints)" />
       <ref role="25KYV2" to="slm6:1_lSsE3RFpE" resolve="description" />
       <node concept="3Tm1VV" id="20cGABpPMbn" role="1B3o_S" />
       <node concept="17QB3L" id="20cGABpPMbo" role="1tU5fm" />

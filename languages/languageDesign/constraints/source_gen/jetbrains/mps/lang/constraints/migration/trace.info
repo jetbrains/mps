@@ -99,7 +99,7 @@
   </root>
   <root nodeRef="r:749f16ef-f594-4d61-8683-63fbf8fdef8a(jetbrains.mps.lang.constraints.migration)/2309416876630286921">
     <file name="MigrateEnumPropertyUsages.java">
-      <node id="2309416876630286921" at="27,30,28,49" concept="9" />
+      <node id="2309416876630286921" at="27,30,28,63" concept="9" />
       <node id="2309416876630286921" at="31,33,32,16" concept="9" />
       <node id="2309416876630286921" at="34,41,35,17" concept="3" />
       <node id="2309416876630286921" at="35,17,36,16" concept="9" />
@@ -136,7 +136,7 @@
       <node id="2309416876630300527" at="38,42,58,5" concept="0" />
       <node id="2309416876630286921" at="61,0,82,0" concept="7" trace="check#(Lorg/jetbrains/mps/openapi/module/SModule;)Ljava/lang/Iterable;" />
       <node id="2309416876630286921" at="38,0,61,0" concept="7" trace="doExecute#(Lorg/jetbrains/mps/openapi/module/SModule;)V" />
-      <scope id="2309416876630286921" at="27,30,28,49" />
+      <scope id="2309416876630286921" at="27,30,28,63" />
       <scope id="2309416876630286921" at="31,33,32,16" />
       <scope id="2309416876630300527" at="43,52,44,36" />
       <scope id="10950666310512465" at="53,326,54,85" />

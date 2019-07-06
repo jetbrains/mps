@@ -108,7 +108,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:7336929d-3d95-43d0-b2df-fd38af21ae45(jetbrains.mps.lang.pattern.testLang.structure)/1563914226484921014");
     b.version(2);
     b.aggregate("variable", 0x15b423b3f8d042b7L).target(0x5206c8887c5d4275L, 0xbc0a7c4da12f46e8L, 0x15b423b3f8cfebb8L).optional(false).ordered(true).multiple(false).origin("1563914226484921015").done();
-    b.aggregate("value", 0x15b423b3f8d042b8L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L).optional(false).ordered(true).multiple(false).origin("1563914226484921016").done();
+    b.aggregate("value", 0x15b423b3f8d042b8L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(false).origin("1563914226484921016").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForTestListReference() {

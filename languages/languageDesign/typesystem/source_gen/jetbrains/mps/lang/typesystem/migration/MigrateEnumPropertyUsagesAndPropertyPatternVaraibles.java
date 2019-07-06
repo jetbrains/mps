@@ -12,20 +12,22 @@ import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.structure.migration.EnumUsagesMigration;
+import jetbrains.mps.lang.pattern.migration.PropertyPatternVariableMigration;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.migration.EnumExpressionsMigration;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.migration.runtime.base.UsageOfMigrateNodeNotMigratedProblem;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 
-public class MigrateEnumPropertyUsages extends MigrationScriptBase {
+public class MigrateEnumPropertyUsagesAndPropertyPatternVaraibles extends MigrationScriptBase {
   public String getCaption() {
-    return "Migrate enumeration property usages";
+    return "Migrate enumeration property usages and property pattern variables (typesystems)";
   }
   @Override
   public boolean isRerunnable() {
@@ -37,26 +39,45 @@ public class MigrateEnumPropertyUsages extends MigrationScriptBase {
   }
   public void doExecute(final SModule m) {
     {
-      SearchScope scope_32rjqx_a0d = CommandUtil.createScope(m);
-      final SearchScope scope_32rjqx_a0d_0 = new EditableFilteringScope(scope_32rjqx_a0d);
+      SearchScope scope_qggrhk_a0d = CommandUtil.createScope(m);
+      final SearchScope scope_qggrhk_a0d_0 = new EditableFilteringScope(scope_qggrhk_a0d);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_32rjqx_a0d_0;
+          return scope_qggrhk_a0d_0;
         }
       };
       for (SNode propMessageTarget : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4a6a000L, "jetbrains.mps.lang.typesystem.structure.PropertyMessageTarget"), false))) {
         EnumUsagesMigration.migratePropertyReference(propMessageTarget, MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4a6a000L, 0x11db4a6fbeeL, "propertyDeclaration"));
       }
+      new PropertyPatternVariableMigration<SNode>() {
+        @Override
+        protected Iterable<SNode> getUsagesToMigrate() {
+          return CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11192d97ff9L, "jetbrains.mps.lang.typesystem.structure.PropertyPatternVariableReference"), false);
+        }
+        @Override
+        protected SNode getDeclaration(SNode usage) {
+          return SLinkOperations.getTarget(usage, MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11192d97ff9L, 0x11192d9d83cL, "patternVarDecl"));
+        }
+        @Override
+        protected void migrateRawValue(SNode usage, SNode datatype) {
+          downgradeRawValueType(usage, datatype);
+        }
+        @Override
+        protected void migrateEnumValue(SNode usage, SNode enumeration) {
+          downgradeEnumType(usage, enumeration);
+        }
+      }.migrate();
     }
+    EnumExpressionsMigration.optimize(m);
   }
   @Override
   public Iterable<Problem> check(SModule m) {
     {
-      SearchScope scope_32rjqx_a0e = CommandUtil.createScope(m);
-      final SearchScope scope_32rjqx_a0e_0 = new EditableFilteringScope(scope_32rjqx_a0e);
+      SearchScope scope_qggrhk_a0e = CommandUtil.createScope(m);
+      final SearchScope scope_qggrhk_a0e_0 = new EditableFilteringScope(scope_qggrhk_a0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_32rjqx_a0e_0;
+          return scope_qggrhk_a0e_0;
         }
       };
       List<Problem> problems = ListSequence.fromList(new ArrayList<Problem>());

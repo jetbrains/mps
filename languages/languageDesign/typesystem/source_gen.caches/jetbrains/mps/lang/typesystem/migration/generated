@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-897iwzaxyjcags334njerghbzkq8btl">
-  <files names="InferenceRule_OverridesFun.java:MigrateEnumPropertyUsages.java:MigrationDescriptor.java:NonTypesystemRule_PatternOverrides_check.java:UseDevkit.java" />
+<product version="3" modelHash="-ipii9q4sud8dt7uxxl6zbjay6lyxll">
+  <files names="InferenceRule_OverridesFun.java:MigrateEnumPropertyUsagesAndPropertyPatternVaraibles.java:MigrationDescriptor.java:NonTypesystemRule_PatternOverrides_check.java:UseDevkit.java" />
 </product>
 

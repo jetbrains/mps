@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
-  <dependency className="jetbrains.mps.lang.generator.migration.MigrateEnumPropertyUsages">
+  <dependency className="jetbrains.mps.lang.generator.migration.MigrateEnumPropertyUsagesAndPropertyPatternVariables">
     <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
@@ -13,6 +13,7 @@
     <classNode dependClassName="jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference" />
     <classNode dependClassName="jetbrains.mps.lang.migration.runtime.base.Problem" />
     <classNode dependClassName="jetbrains.mps.lang.migration.runtime.base.UsageOfMigrateNodeNotMigratedProblem" />
+    <classNode dependClassName="jetbrains.mps.lang.pattern.migration.PropertyPatternVariableMigration" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.migration.EnumExpressionsMigration" />
@@ -31,7 +32,7 @@
     <classNode dependClassName="java.util.HashMap" />
     <classNode dependClassName="java.util.Map" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.MapSequence" />
-    <classNode dependClassName="jetbrains.mps.lang.generator.migration.MigrateEnumPropertyUsages" />
+    <classNode dependClassName="jetbrains.mps.lang.generator.migration.MigrateEnumPropertyUsagesAndPropertyPatternVariables" />
     <classNode dependClassName="jetbrains.mps.lang.generator.migration.ReplaceIncludeWithCall" />
     <classNode dependClassName="jetbrains.mps.lang.generator.migration.WeaveEachConsequence" />
     <classNode dependClassName="jetbrains.mps.lang.migration.runtime.base.MigrationScript" />

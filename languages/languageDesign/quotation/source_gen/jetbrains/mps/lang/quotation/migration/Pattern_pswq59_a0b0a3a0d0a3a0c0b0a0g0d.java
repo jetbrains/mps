@@ -6,8 +6,8 @@ import jetbrains.mps.lang.pattern.GeneratedMatcher;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-/*package*/ class Pattern_32rjqx_a0b0a3a0d0a3a0d0b0a0m0k extends GeneratedMatcher {
-  public Pattern_32rjqx_a0b0a3a0d0a3a0d0b0a0m0k(SNode patternNode) {
+/*package*/ class Pattern_pswq59_a0b0a3a0d0a3a0c0b0a0g0d extends GeneratedMatcher {
+  public Pattern_pswq59_a0b0a3a0d0a3a0c0b0a0g0d(SNode patternNode) {
     super(patternNode, false);
 
 

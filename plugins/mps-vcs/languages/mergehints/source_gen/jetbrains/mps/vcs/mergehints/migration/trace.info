@@ -44,7 +44,7 @@
   </root>
   <root nodeRef="r:411dae58-8b2d-4c08-b502-758030ebc145(jetbrains.mps.vcs.mergehints.migration)/8460355373820366624">
     <file name="MigrateEnumPropertyUsages.java">
-      <node id="8460355373820366624" at="26,30,27,49" concept="5" />
+      <node id="8460355373820366624" at="26,30,27,63" concept="5" />
       <node id="8460355373820366624" at="30,33,31,16" concept="5" />
       <node id="8460355373820366624" at="33,41,34,17" concept="1" />
       <node id="8460355373820366624" at="34,17,35,16" concept="5" />
@@ -76,7 +76,7 @@
       <node id="8460355373820366624" at="37,0,51,0" concept="3" trace="doExecute#(Lorg/jetbrains/mps/openapi/module/SModule;)V" />
       <node id="3899612785644128069" at="52,45,70,5" concept="0" />
       <node id="8460355373820366624" at="51,0,72,0" concept="3" trace="check#(Lorg/jetbrains/mps/openapi/module/SModule;)Ljava/lang/Iterable;" />
-      <scope id="8460355373820366624" at="26,30,27,49" />
+      <scope id="8460355373820366624" at="26,30,27,63" />
       <scope id="8460355373820366624" at="30,33,31,16" />
       <scope id="8460355373818951649" at="42,52,43,36" />
       <scope id="8460355373818953860" at="46,301,47,201" />

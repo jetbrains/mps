@@ -22,7 +22,7 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.module.SearchScope" />
     <classNode extendsClassName="jetbrains.mps.lang.migration.runtime.base.MigrationScriptBase" />
   </dependency>
-  <dependency className="jetbrains.mps.lang.quotation.migration.MigrateEnumPropertyUsages">
+  <dependency className="jetbrains.mps.lang.quotation.migration.MigrateEnumPropertyUsagesAndPropertyAntiquotation">
     <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
@@ -37,17 +37,7 @@
     <classNode dependClassName="jetbrains.mps.lang.migration.runtime.base.NotMigratedNode" />
     <classNode dependClassName="jetbrains.mps.lang.migration.runtime.base.Problem" />
     <classNode dependClassName="jetbrains.mps.lang.migration.runtime.base.UsageOfMigrateNodeNotMigratedProblem" />
-    <classNode dependClassName="jetbrains.mps.lang.pattern.GeneratedMatchingPattern" />
-    <classNode dependClassName="jetbrains.mps.lang.quotation.migration.Pattern_32rjqx_a0b0a3a0d0a3a0d0b0a0m0k" />
-    <classNode dependClassName="jetbrains.mps.lang.quotation.migration.Pattern_32rjqx_a0b0a3a0d0a3a0d0b0a0o0k" />
-    <classNode dependClassName="jetbrains.mps.lang.quotation.migration.Pattern_32rjqx_a0b0a3a0d0a3a1a0a21a01" />
-    <classNode dependClassName="jetbrains.mps.lang.quotation.migration.Pattern_32rjqx_a0b0a3a0d0a3a1a0a41a01" />
-    <classNode dependClassName="jetbrains.mps.lang.quotation.migration.Pattern_32rjqx_a0b0a3a0d0b0a0m0k" />
-    <classNode dependClassName="jetbrains.mps.lang.quotation.migration.Pattern_32rjqx_a0b0a3a0d0b0a0o0k" />
-    <classNode dependClassName="jetbrains.mps.lang.quotation.migration.Pattern_32rjqx_a0b0a3a1a0a21a01" />
-    <classNode dependClassName="jetbrains.mps.lang.quotation.migration.Pattern_32rjqx_a0b0a3a1a0a41a01" />
-    <classNode dependClassName="jetbrains.mps.lang.quotation.migration.Pattern_32rjqx_a0b0b0a0m0k" />
-    <classNode dependClassName="jetbrains.mps.lang.quotation.migration.Pattern_32rjqx_a0b0b0a0o0k" />
+    <classNode dependClassName="jetbrains.mps.lang.quotation.migration.RawPropertyValueMigration" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations" />
@@ -56,15 +46,10 @@
     <classNode dependClassName="jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext" />
     <classNode dependClassName="jetbrains.mps.lang.structure.migration.EnumUsagesMigration" />
     <classNode dependClassName="jetbrains.mps.project.EditableFilteringScope" />
-    <classNode dependClassName="jetbrains.mps.smodel.SModelUtil_new" />
-    <classNode dependClassName="jetbrains.mps.smodel.SNodePointer" />
-    <classNode dependClassName="jetbrains.mps.smodel.SReference" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
-    <classNode dependClassName="jetbrains.mps.typechecking.TypecheckingFacade" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode dependClassName="org.jetbrains.mps.openapi.module.SModule" />
     <classNode dependClassName="org.jetbrains.mps.openapi.module.SearchScope" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.persistence.PersistenceFacade" />
     <classNode extendsClassName="jetbrains.mps.lang.migration.runtime.base.MigrationScriptBase" />
   </dependency>
   <dependency className="jetbrains.mps.lang.quotation.migration.MigrationDescriptor">
@@ -74,59 +59,107 @@
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.MapSequence" />
     <classNode dependClassName="jetbrains.mps.lang.migration.runtime.base.MigrationScript" />
     <classNode dependClassName="jetbrains.mps.lang.quotation.migration.LightQuotation_InitLinkExpression" />
-    <classNode dependClassName="jetbrains.mps.lang.quotation.migration.MigrateEnumPropertyUsages" />
+    <classNode dependClassName="jetbrains.mps.lang.quotation.migration.MigrateEnumPropertyUsagesAndPropertyAntiquotation" />
     <classNode dependClassName="jetbrains.mps.lang.quotation.migration.WrapNullLiteral" />
     <classNode extendsClassName="jetbrains.mps.lang.migration.runtime.base.MigrationAspectDescriptor" />
   </dependency>
-  <dependency className="jetbrains.mps.lang.quotation.migration.Pattern_32rjqx_a0b0a3a0d0a3a0d0b0a0m0k">
+  <dependency className="jetbrains.mps.lang.quotation.migration.Pattern_pswq59_a0b0a2a1a0a6a3">
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.lang.pattern.GeneratedMatcher" />
   </dependency>
-  <dependency className="jetbrains.mps.lang.quotation.migration.Pattern_32rjqx_a0b0a3a0d0a3a0d0b0a0o0k">
+  <dependency className="jetbrains.mps.lang.quotation.migration.Pattern_pswq59_a0b0a2a1a0a8a3">
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.lang.pattern.GeneratedMatcher" />
   </dependency>
-  <dependency className="jetbrains.mps.lang.quotation.migration.Pattern_32rjqx_a0b0a3a0d0a3a1a0a21a01">
+  <dependency className="jetbrains.mps.lang.quotation.migration.Pattern_pswq59_a0b0a3a0c0b0a0g0d">
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.lang.pattern.GeneratedMatcher" />
   </dependency>
-  <dependency className="jetbrains.mps.lang.quotation.migration.Pattern_32rjqx_a0b0a3a0d0a3a1a0a41a01">
+  <dependency className="jetbrains.mps.lang.quotation.migration.Pattern_pswq59_a0b0a3a0c0b0a0i0d">
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.lang.pattern.GeneratedMatcher" />
   </dependency>
-  <dependency className="jetbrains.mps.lang.quotation.migration.Pattern_32rjqx_a0b0a3a0d0b0a0m0k">
+  <dependency className="jetbrains.mps.lang.quotation.migration.Pattern_pswq59_a0b0a3a0d0a2a1a0a6a3">
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.lang.pattern.GeneratedMatcher" />
   </dependency>
-  <dependency className="jetbrains.mps.lang.quotation.migration.Pattern_32rjqx_a0b0a3a0d0b0a0o0k">
+  <dependency className="jetbrains.mps.lang.quotation.migration.Pattern_pswq59_a0b0a3a0d0a2a1a0a8a3">
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.lang.pattern.GeneratedMatcher" />
   </dependency>
-  <dependency className="jetbrains.mps.lang.quotation.migration.Pattern_32rjqx_a0b0a3a1a0a21a01">
+  <dependency className="jetbrains.mps.lang.quotation.migration.Pattern_pswq59_a0b0a3a0d0a3a0c0b0a0g0d">
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.lang.pattern.GeneratedMatcher" />
   </dependency>
-  <dependency className="jetbrains.mps.lang.quotation.migration.Pattern_32rjqx_a0b0a3a1a0a41a01">
+  <dependency className="jetbrains.mps.lang.quotation.migration.Pattern_pswq59_a0b0a3a0d0a3a0c0b0a0i0d">
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.lang.pattern.GeneratedMatcher" />
   </dependency>
-  <dependency className="jetbrains.mps.lang.quotation.migration.Pattern_32rjqx_a0b0b0a0m0k">
+  <dependency className="jetbrains.mps.lang.quotation.migration.Pattern_pswq59_a0b0a3a0d0a3a0d0a2a1a0a6a3">
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.lang.pattern.GeneratedMatcher" />
   </dependency>
-  <dependency className="jetbrains.mps.lang.quotation.migration.Pattern_32rjqx_a0b0b0a0o0k">
+  <dependency className="jetbrains.mps.lang.quotation.migration.Pattern_pswq59_a0b0a3a0d0a3a0d0a2a1a0a8a3">
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.lang.pattern.GeneratedMatcher" />
+  </dependency>
+  <dependency className="jetbrains.mps.lang.quotation.migration.Pattern_pswq59_a0b0a3a1a0a9a1">
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode extendsClassName="jetbrains.mps.lang.pattern.GeneratedMatcher" />
+  </dependency>
+  <dependency className="jetbrains.mps.lang.quotation.migration.Pattern_pswq59_a0b0b0a0h0b">
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode extendsClassName="jetbrains.mps.lang.pattern.GeneratedMatcher" />
+  </dependency>
+  <dependency className="jetbrains.mps.lang.quotation.migration.Pattern_pswq59_a0b0b0a0j0b">
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode extendsClassName="jetbrains.mps.lang.pattern.GeneratedMatcher" />
+  </dependency>
+  <dependency className="jetbrains.mps.lang.quotation.migration.RawPropertyValueMigration">
+    <classNode dependClassName="java.lang.Boolean" />
+    <classNode dependClassName="java.lang.Integer" />
+    <classNode dependClassName="java.lang.NumberFormatException" />
+    <classNode dependClassName="java.lang.Object" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
+    <classNode dependClassName="jetbrains.mps.lang.pattern.GeneratedMatchingPattern" />
+    <classNode dependClassName="jetbrains.mps.lang.quotation.migration.Pattern_pswq59_a0b0a2a1a0a6a3" />
+    <classNode dependClassName="jetbrains.mps.lang.quotation.migration.Pattern_pswq59_a0b0a2a1a0a8a3" />
+    <classNode dependClassName="jetbrains.mps.lang.quotation.migration.Pattern_pswq59_a0b0a3a0c0b0a0g0d" />
+    <classNode dependClassName="jetbrains.mps.lang.quotation.migration.Pattern_pswq59_a0b0a3a0c0b0a0i0d" />
+    <classNode dependClassName="jetbrains.mps.lang.quotation.migration.Pattern_pswq59_a0b0a3a0d0a2a1a0a6a3" />
+    <classNode dependClassName="jetbrains.mps.lang.quotation.migration.Pattern_pswq59_a0b0a3a0d0a2a1a0a8a3" />
+    <classNode dependClassName="jetbrains.mps.lang.quotation.migration.Pattern_pswq59_a0b0a3a0d0a3a0c0b0a0g0d" />
+    <classNode dependClassName="jetbrains.mps.lang.quotation.migration.Pattern_pswq59_a0b0a3a0d0a3a0c0b0a0i0d" />
+    <classNode dependClassName="jetbrains.mps.lang.quotation.migration.Pattern_pswq59_a0b0a3a0d0a3a0d0a2a1a0a6a3" />
+    <classNode dependClassName="jetbrains.mps.lang.quotation.migration.Pattern_pswq59_a0b0a3a0d0a3a0d0a2a1a0a8a3" />
+    <classNode dependClassName="jetbrains.mps.lang.quotation.migration.Pattern_pswq59_a0b0a3a1a0a9a1" />
+    <classNode dependClassName="jetbrains.mps.lang.quotation.migration.Pattern_pswq59_a0b0b0a0h0b" />
+    <classNode dependClassName="jetbrains.mps.lang.quotation.migration.Pattern_pswq59_a0b0b0a0j0b" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations" />
+    <classNode dependClassName="jetbrains.mps.smodel.SModelUtil_new" />
+    <classNode dependClassName="jetbrains.mps.smodel.SNodePointer" />
+    <classNode dependClassName="jetbrains.mps.smodel.SReference" />
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
+    <classNode dependClassName="jetbrains.mps.typechecking.TypecheckingFacade" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeAccessUtil" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.persistence.PersistenceFacade" />
   </dependency>
   <dependency className="jetbrains.mps.lang.quotation.migration.WrapNullLiteral">
     <classNode dependClassName="java.lang.Iterable" />

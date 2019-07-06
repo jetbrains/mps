@@ -15,6 +15,7 @@ import jetbrains.mps.lang.structure.migration.EnumUsagesMigration;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.migration.EnumExpressionsMigration;
+import jetbrains.mps.lang.pattern.migration.PropertyPatternVariableMigration;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
@@ -24,9 +25,9 @@ import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 
-public class MigrateEnumPropertyUsages extends MigrationScriptBase {
+public class MigrateEnumPropertyUsagesAndPropertyPatternVariables extends MigrationScriptBase {
   public String getCaption() {
-    return "Migrate enumeration property usages";
+    return "Migrate enumeration property usages and property pattern variables (generator)";
   }
   @Override
   public boolean isRerunnable() {
@@ -38,11 +39,11 @@ public class MigrateEnumPropertyUsages extends MigrationScriptBase {
   }
   public void doExecute(final SModule m) {
     {
-      SearchScope scope_32rjqx_a0d = CommandUtil.createScope(m);
-      final SearchScope scope_32rjqx_a0d_0 = new EditableFilteringScope(scope_32rjqx_a0d);
+      SearchScope scope_sag2ow_a0d = CommandUtil.createScope(m);
+      final SearchScope scope_sag2ow_a0d_0 = new EditableFilteringScope(scope_sag2ow_a0d);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_32rjqx_a0d_0;
+          return scope_sag2ow_a0d_0;
         }
       };
       for (SNode propertyMacro : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47e9f6f0L, "jetbrains.mps.lang.generator.structure.PropertyMacro"), false))) {
@@ -52,17 +53,37 @@ public class MigrateEnumPropertyUsages extends MigrationScriptBase {
           EnumExpressionsMigration.upgradeQueryReturnExpressions(newEnum, SLinkOperations.getTarget(propertyMacro, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47e9f6f0L, 0x10fe3b4023fL, "propertyValueFunction")));
         }
       }
+
+      new PropertyPatternVariableMigration<SNode>() {
+        @Override
+        protected Iterable<SNode> getUsagesToMigrate() {
+          return CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x42d71bfbeb1a5de7L, "jetbrains.mps.lang.generator.structure.TemplateArgumentPropertyPatternRefExpression"), false);
+        }
+        @Override
+        protected SNode getDeclaration(SNode usage) {
+          return SLinkOperations.getTarget(usage, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x42d71bfbeb1a5de7L, 0x42d71bfbeb1a5de9L, "propertyPattern"));
+        }
+        @Override
+        protected void migrateRawValue(SNode usage, SNode datatype) {
+          downgradeRawValueType(usage, datatype);
+        }
+        @Override
+        protected void migrateEnumValue(SNode usage, SNode enumeration) {
+          downgradeEnumType(usage, enumeration);
+        }
+      }.migrate();
     }
+
     EnumExpressionsMigration.optimize(m);
   }
   @Override
   public Iterable<Problem> check(SModule m) {
     {
-      SearchScope scope_32rjqx_a0e = CommandUtil.createScope(m);
-      final SearchScope scope_32rjqx_a0e_0 = new EditableFilteringScope(scope_32rjqx_a0e);
+      SearchScope scope_sag2ow_a0e = CommandUtil.createScope(m);
+      final SearchScope scope_sag2ow_a0e_0 = new EditableFilteringScope(scope_sag2ow_a0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_32rjqx_a0e_0;
+          return scope_sag2ow_a0e_0;
         }
       };
       return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47e9f6f0L, "jetbrains.mps.lang.generator.structure.PropertyMacro"), false)).where(new IWhereFilter<SNode>() {
@@ -82,5 +103,6 @@ public class MigrateEnumPropertyUsages extends MigrationScriptBase {
   public MigrationScriptReference getDescriptor() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xb401a68083254110L, 0x8fd384331ff25befL, "jetbrains.mps.lang.generator"), 2);
   }
+
 
 }
