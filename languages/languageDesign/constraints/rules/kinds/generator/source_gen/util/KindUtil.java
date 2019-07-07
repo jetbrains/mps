@@ -24,21 +24,26 @@ public final class KindUtil {
       return new SNodePointer("8e98f4e2-decf-4e97-bf80-9109e8b759ee/java:jetbrains.mps.core.aspects.constraints.rules.kinds(jetbrains.mps.lang.constraints.rules.runtime/)", "~ContainmentContext");
     } else if (Objects.equals(pointer, new SNodePointer("r:52ea8481-08b2-4cbd-ad9d-1b42825f7d09(jetbrains.mps.lang.constraints.rules.kinds.constraints)", "8018723092206373487"))) {
       return new SNodePointer("8e98f4e2-decf-4e97-bf80-9109e8b759ee/java:jetbrains.mps.core.aspects.constraints.rules.kinds(jetbrains.mps.lang.constraints.rules.runtime/)", "~CanBeRootContext");
+    } else if (Objects.equals(pointer, new SNodePointer("r:52ea8481-08b2-4cbd-ad9d-1b42825f7d09(jetbrains.mps.lang.constraints.rules.kinds.constraints)", "8018723092206382576"))) {
+      return new SNodePointer("8e98f4e2-decf-4e97-bf80-9109e8b759ee/java:jetbrains.mps.core.aspects.constraints.rules.kinds(jetbrains.mps.lang.constraints.rules.runtime/)", "~CanBeAncestorContext");
     }
     return null;
   }
 
-  public static SNodeReference matchKindForRuleKind(SNode kind, TemplateQueryContext genContext) {
+  public static String matchKindForRuleKind(SNode kind, TemplateQueryContext genContext) {
     // original copied for the case when we are in the same model where the kind is located 
     kind = SNodeOperations.cast(genContext.getOriginalCopiedInputNode(kind), MetaAdapterFactory.getConcept(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, 0x6530303593554248L, "jetbrains.mps.lang.constraints.rules.kinds.structure.RuleKind"));
     SNodeReference pointer = SNodeOperations.getPointer(kind);
     if (Objects.equals(pointer, new SNodePointer("r:52ea8481-08b2-4cbd-ad9d-1b42825f7d09(jetbrains.mps.lang.constraints.rules.kinds.constraints)", "8018723092206382583"))) {
-      return new SNodePointer("8e98f4e2-decf-4e97-bf80-9109e8b759ee/java:jetbrains.mps.core.aspects.constraints.rules.kinds(jetbrains.mps.lang.constraints.rules.runtime/)", "~CanBeChildKind");
+      return "CAN_BE_CHILD";
     } else if (Objects.equals(pointer, new SNodePointer("r:52ea8481-08b2-4cbd-ad9d-1b42825f7d09(jetbrains.mps.lang.constraints.rules.kinds.constraints)", "8018723092206382590"))) {
-      return new SNodePointer("8e98f4e2-decf-4e97-bf80-9109e8b759ee/java:jetbrains.mps.core.aspects.constraints.rules.kinds(jetbrains.mps.lang.constraints.rules.runtime/)", "~CanBeParentKind");
+      return "CAN_BE_PARENT";
     } else if (Objects.equals(pointer, new SNodePointer("r:52ea8481-08b2-4cbd-ad9d-1b42825f7d09(jetbrains.mps.lang.constraints.rules.kinds.constraints)", "8018723092206373487"))) {
-      return new SNodePointer("8e98f4e2-decf-4e97-bf80-9109e8b759ee/java:jetbrains.mps.core.aspects.constraints.rules.kinds(jetbrains.mps.lang.constraints.rules.runtime/)", "~CanBeRootKind");
+      return "CAN_BE_ROOT";
+    } else if (Objects.equals(pointer, new SNodePointer("r:52ea8481-08b2-4cbd-ad9d-1b42825f7d09(jetbrains.mps.lang.constraints.rules.kinds.constraints)", "8018723092206382576"))) {
+      return "CAN_BE_ANCESTOR";
     }
+    genContext.showErrorMessage(kind, "Unknown kind");
     return null;
   }
 }

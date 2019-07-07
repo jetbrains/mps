@@ -6,8 +6,8 @@
     <file name="ConstraintsAspectDescriptor.java">
       <unit at="13,0,31,0" name="jetbrains.mps.lang.context.defs.constraints.ConstraintsAspectDescriptor" />
     </file>
-    <file name="GeneratedConstraintsAspectDescriptor2.java">
-      <unit at="17,0,31,0" name="jetbrains.mps.lang.context.defs.constraints.GeneratedConstraintsAspectDescriptor2" />
+    <file name="GeneratedRulesConstraintsAspect.java">
+      <unit at="11,0,19,0" name="jetbrains.mps.lang.context.defs.constraints.GeneratedRulesConstraintsAspect" />
     </file>
   </root>
   <root nodeRef="r:fc8253d3-1514-4b9f-addf-88563d82b200(jetbrains.mps.lang.context.defs.constraints)/2740527090601168261">

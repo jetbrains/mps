@@ -13,117 +13,95 @@
     <file name="ConstraintsAspectDescriptor.java">
       <unit at="13,0,29,0" name="multiAspectLang.constraints.ConstraintsAspectDescriptor" />
     </file>
-    <file name="GeneratedConstraintsAspectDescriptor2.java">
-      <unit at="20,0,40,0" name="multiAspectLang.constraints.GeneratedConstraintsAspectDescriptor2" />
-    </file>
     <file name="GeneratedFeedbackAspectConstraints.java">
       <unit at="10,0,17,0" name="multiAspectLang.constraints.GeneratedFeedbackAspectConstraints" />
+    </file>
+    <file name="GeneratedRulesConstraintsAspect.java">
+      <unit at="14,0,28,0" name="multiAspectLang.constraints.GeneratedRulesConstraintsAspect" />
     </file>
   </root>
   <root nodeRef="r:5dbac061-aef9-4696-88ee-0f21fe5598f3(multiAspectLang.constraints)/24399255754237582">
     <file name="A_ConstraintRules.java">
       <node id="24399255754237582" at="21,0,22,0" concept="6" trace="CONCEPT" />
       <node id="24399255754237582" at="23,35,24,19" concept="8" />
-      <node id="24399255755528544" at="26,0,27,0" concept="6" trace="check_id24399255755528544" />
-      <node id="8804574841118204455" at="27,0,28,0" concept="6" trace="check_id8804574841118204455" />
-      <node id="7716791493893590340" at="28,0,29,0" concept="6" trace="check_id7716791493893590340" />
-      <node id="24399255754237582" at="30,0,31,0" concept="6" trace="RULES" />
-      <node id="24399255754237582" at="34,43,35,17" concept="5" />
-      <node id="24399255755528544" at="39,0,40,0" concept="6" trace="SOURCE_NODE_REF" />
-      <node id="24399255755528544" at="40,0,41,0" concept="6" trace="ID_gagag" />
-      <node id="24399255755528544" at="42,25,43,73" concept="8" />
-      <node id="24399255755528544" at="46,63,47,18" concept="5" />
-      <node id="8804574841118204455" at="51,0,52,0" concept="6" trace="SOURCE_NODE_REF" />
-      <node id="8804574841118204455" at="52,0,53,0" concept="6" trace="ID_check8804574841118204455_b0" />
-      <node id="8804574841118204455" at="54,47,55,95" concept="8" />
-      <node id="8804574841118204455" at="58,63,59,46" concept="5" />
-      <node id="7716791493893590340" at="63,0,64,0" concept="6" trace="SOURCE_NODE_REF" />
-      <node id="7716791493893590340" at="64,0,65,0" concept="6" trace="ID_gagag2" />
-      <node id="7716791493893590340" at="66,26,67,74" concept="8" />
-      <node id="7716791493893590340" at="70,63,71,18" concept="5" />
+      <node id="8804574841118204455" at="26,0,27,0" concept="6" trace="check_id8804574841118204455" />
+      <node id="7716791493893590340" at="27,0,28,0" concept="6" trace="check_id7716791493893590340" />
+      <node id="24399255754237582" at="29,0,30,0" concept="6" trace="RULES" />
+      <node id="24399255754237582" at="33,43,34,17" concept="5" />
+      <node id="8804574841118204455" at="38,0,39,0" concept="6" trace="SOURCE_NODE_REF" />
+      <node id="8804574841118204455" at="39,0,40,0" concept="6" trace="ID_check8804574841118204455_a0" />
+      <node id="8804574841118204455" at="41,47,42,104" concept="8" />
+      <node id="8804574841118204455" at="45,63,46,46" concept="5" />
+      <node id="7716791493893590340" at="50,0,51,0" concept="6" trace="SOURCE_NODE_REF" />
+      <node id="7716791493893590340" at="51,0,52,0" concept="6" trace="ID_gagag2" />
+      <node id="7716791493893590340" at="53,26,54,83" concept="8" />
+      <node id="7716791493893590340" at="57,63,58,18" concept="5" />
       <node id="24399255754237582" at="23,0,26,0" concept="0" trace="A_ConstraintRules#()V" />
-      <node id="24399255755528544" at="42,0,45,0" concept="0" trace="Rule_gagag#()V" />
-      <node id="8804574841118204455" at="54,0,57,0" concept="0" trace="Rule_check8804574841118204455_b0#()V" />
-      <node id="7716791493893590340" at="66,0,69,0" concept="0" trace="Rule_gagag2#()V" />
-      <node id="24399255755528544" at="45,0,49,0" concept="3" trace="check#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/ContainmentContext;)Z" />
-      <node id="8804574841118204455" at="57,0,61,0" concept="3" trace="check#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/ContainmentContext;)Z" />
-      <node id="7716791493893590340" at="69,0,73,0" concept="3" trace="check#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/ContainmentContext;)Z" />
-      <node id="24399255754237582" at="32,0,37,0" concept="3" trace="getDeclaredRules#()Ljava/util/List;" />
+      <node id="8804574841118204455" at="41,0,44,0" concept="0" trace="Rule_check8804574841118204455_a0#()V" />
+      <node id="7716791493893590340" at="53,0,56,0" concept="0" trace="Rule_gagag2#()V" />
+      <node id="8804574841118204455" at="44,0,48,0" concept="3" trace="check#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/ContainmentContext;)Z" />
+      <node id="7716791493893590340" at="56,0,60,0" concept="3" trace="check#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/ContainmentContext;)Z" />
+      <node id="24399255754237582" at="31,0,36,0" concept="3" trace="getDeclaredRules#()Ljava/util/List;" />
       <scope id="24399255754237582" at="23,35,24,19" />
-      <scope id="24399255754237582" at="34,43,35,17" />
-      <scope id="24399255755528544" at="42,25,43,73" />
-      <scope id="24399255755528544" at="46,63,47,18" />
-      <scope id="8804574841118204455" at="54,47,55,95" />
-      <scope id="8804574841118204455" at="58,63,59,46" />
-      <scope id="7716791493893590340" at="66,26,67,74" />
-      <scope id="7716791493893590340" at="70,63,71,18" />
+      <scope id="24399255754237582" at="33,43,34,17" />
+      <scope id="8804574841118204455" at="41,47,42,104" />
+      <scope id="8804574841118204455" at="45,63,46,46" />
+      <scope id="7716791493893590340" at="53,26,54,83" />
+      <scope id="7716791493893590340" at="57,63,58,18" />
       <scope id="24399255754237582" at="23,0,26,0" />
-      <scope id="24399255755528544" at="42,0,45,0" />
-      <scope id="8804574841118204455" at="54,0,57,0" />
-      <scope id="7716791493893590340" at="66,0,69,0" />
-      <scope id="24399255755528544" at="45,0,49,0">
-        <var name="context" id="24399255755528544" />
-      </scope>
-      <scope id="8804574841118204455" at="57,0,61,0">
+      <scope id="8804574841118204455" at="41,0,44,0" />
+      <scope id="7716791493893590340" at="53,0,56,0" />
+      <scope id="8804574841118204455" at="44,0,48,0">
         <var name="context" id="8804574841118204455" />
       </scope>
-      <scope id="7716791493893590340" at="69,0,73,0">
+      <scope id="7716791493893590340" at="56,0,60,0">
         <var name="context" id="7716791493893590340" />
       </scope>
-      <scope id="24399255754237582" at="32,0,37,0" />
-      <unit id="24399255755528544" at="38,0,50,0" name="multiAspectLang.constraints.A_ConstraintRules$Rule_gagag" />
-      <unit id="8804574841118204455" at="50,0,62,0" name="multiAspectLang.constraints.A_ConstraintRules$Rule_check8804574841118204455_b0" />
-      <unit id="7716791493893590340" at="62,0,74,0" name="multiAspectLang.constraints.A_ConstraintRules$Rule_gagag2" />
-      <unit id="24399255754237582" at="20,0,75,0" name="multiAspectLang.constraints.A_ConstraintRules" />
+      <scope id="24399255754237582" at="31,0,36,0" />
+      <unit id="8804574841118204455" at="37,0,49,0" name="multiAspectLang.constraints.A_ConstraintRules$Rule_check8804574841118204455_a0" />
+      <unit id="7716791493893590340" at="49,0,61,0" name="multiAspectLang.constraints.A_ConstraintRules$Rule_gagag2" />
+      <unit id="24399255754237582" at="20,0,62,0" name="multiAspectLang.constraints.A_ConstraintRules" />
     </file>
     <file name="A_ConstraintsFeedback.java">
-      <node id="24399255755528543" at="34,79,35,112" concept="5" />
-      <node id="8804574841118204454" at="41,79,42,47" concept="5" />
-      <node id="7716791493893590339" at="48,79,49,51" concept="5" />
-      <node id="24399255755528543" at="32,0,37,0" concept="3" trace="yieldMessage#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/ContainmentContext;)Ljetbrains/mps/core/aspects/feedback/messages/MessageProvider/StringMsg;" />
-      <node id="8804574841118204454" at="39,0,44,0" concept="3" trace="yieldMessage#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/ContainmentContext;)Ljetbrains/mps/core/aspects/feedback/messages/MessageProvider/StringMsg;" />
-      <node id="7716791493893590339" at="46,0,51,0" concept="3" trace="yieldMessage#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/ContainmentContext;)Ljetbrains/mps/core/aspects/feedback/messages/MessageProvider/StringMsg;" />
-      <node id="24399255755528543" at="31,0,38,0" concept="6" trace="MSGPROVIDER_WhenConstraintRuleFails_b" />
-      <node id="8804574841118204454" at="38,0,45,0" concept="6" trace="MSGPROVIDER_WhenConstraintRuleFails_c" />
-      <node id="7716791493893590339" at="45,0,52,0" concept="6" trace="MSGPROVIDER_WhenConstraintRuleFails_d" />
-      <scope id="24399255755528543" at="34,79,35,112" />
-      <scope id="8804574841118204454" at="41,79,42,47" />
-      <scope id="7716791493893590339" at="48,79,49,51" />
-      <scope id="24399255755528543" at="32,0,37,0">
-        <var name="context" id="24399255755528543" />
-      </scope>
-      <scope id="8804574841118204454" at="39,0,44,0">
+      <node id="8804574841118204454" at="34,79,35,47" concept="5" />
+      <node id="7716791493893590339" at="41,79,42,51" concept="5" />
+      <node id="8804574841118204454" at="32,0,37,0" concept="3" trace="yieldMessage#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/ContainmentContext;)Ljetbrains/mps/core/aspects/feedback/messages/MessageProvider/StringMsg;" />
+      <node id="7716791493893590339" at="39,0,44,0" concept="3" trace="yieldMessage#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/ContainmentContext;)Ljetbrains/mps/core/aspects/feedback/messages/MessageProvider/StringMsg;" />
+      <node id="8804574841118204454" at="31,0,38,0" concept="6" trace="MSGPROVIDER_WhenConstraintRuleFails_b" />
+      <node id="7716791493893590339" at="38,0,45,0" concept="6" trace="MSGPROVIDER_WhenConstraintRuleFails_c" />
+      <scope id="8804574841118204454" at="34,79,35,47" />
+      <scope id="7716791493893590339" at="41,79,42,51" />
+      <scope id="8804574841118204454" at="32,0,37,0">
         <var name="context" id="8804574841118204454" />
       </scope>
-      <scope id="7716791493893590339" at="46,0,51,0">
+      <scope id="7716791493893590339" at="39,0,44,0">
         <var name="context" id="7716791493893590339" />
       </scope>
-      <unit id="24399255755528543" at="31,104,37,3" name="multiAspectLang.constraints.A_ConstraintsFeedback$2" />
-      <unit id="8804574841118204454" at="38,104,44,3" name="multiAspectLang.constraints.A_ConstraintsFeedback$3" />
-      <unit id="7716791493893590339" at="45,104,51,3" name="multiAspectLang.constraints.A_ConstraintsFeedback$4" />
+      <unit id="8804574841118204454" at="31,104,37,3" name="multiAspectLang.constraints.A_ConstraintsFeedback$2" />
+      <unit id="7716791493893590339" at="38,104,44,3" name="multiAspectLang.constraints.A_ConstraintsFeedback$3" />
     </file>
   </root>
   <root nodeRef="r:5dbac061-aef9-4696-88ee-0f21fe5598f3(multiAspectLang.constraints)/7716791493893601226">
     <file name="A_ConstraintsFeedback.java">
       <node id="7716791493893601226" at="22,0,23,0" concept="6" trace="CONCEPT" />
-      <node id="7716791493893652418" at="27,93,28,143" concept="5" />
-      <node id="7716791493893601226" at="53,0,54,0" concept="6" trace="PROVIDERS" />
-      <node id="7716791493893601226" at="55,34,56,19" concept="8" />
-      <node id="7716791493893601226" at="61,58,62,30" concept="5" />
-      <node id="7716791493893601226" at="55,0,58,0" concept="0" trace="A_ConstraintsFeedback#()V" />
+      <node id="7716791493893652418" at="27,93,28,136" concept="5" />
+      <node id="7716791493893601226" at="46,0,47,0" concept="6" trace="PROVIDERS" />
+      <node id="7716791493893601226" at="48,34,49,19" concept="8" />
+      <node id="7716791493893601226" at="54,58,55,30" concept="5" />
+      <node id="7716791493893601226" at="48,0,51,0" concept="0" trace="A_ConstraintsFeedback#()V" />
       <node id="7716791493893652418" at="25,0,30,0" concept="3" trace="yieldMessage#(Ljetbrains/mps/core/aspects/feedback/messages/FailingPropertyConstraintContext;)Ljetbrains/mps/core/aspects/feedback/messages/MessageProvider/StringMsg;" />
-      <node id="7716791493893601226" at="59,0,64,0" concept="3" trace="getDeclaredProviders#()Ljava/util/stream/Stream;" />
+      <node id="7716791493893601226" at="52,0,57,0" concept="3" trace="getDeclaredProviders#()Ljava/util/stream/Stream;" />
       <node id="7716791493893652418" at="24,0,31,0" concept="6" trace="MSGPROVIDER_WhenPropertyConstraintFails_a" />
-      <scope id="7716791493893652418" at="27,93,28,143" />
-      <scope id="7716791493893601226" at="55,34,56,19" />
-      <scope id="7716791493893601226" at="61,58,62,30" />
-      <scope id="7716791493893601226" at="55,0,58,0" />
+      <scope id="7716791493893652418" at="27,93,28,136" />
+      <scope id="7716791493893601226" at="48,34,49,19" />
+      <scope id="7716791493893601226" at="54,58,55,30" />
+      <scope id="7716791493893601226" at="48,0,51,0" />
       <scope id="7716791493893652418" at="25,0,30,0">
         <var name="context" id="7716791493893652418" />
       </scope>
-      <scope id="7716791493893601226" at="59,0,64,0" />
+      <scope id="7716791493893601226" at="52,0,57,0" />
       <unit id="7716791493893652418" at="24,122,30,3" name="multiAspectLang.constraints.A_ConstraintsFeedback$1" />
-      <unit id="7716791493893601226" at="21,0,65,0" name="multiAspectLang.constraints.A_ConstraintsFeedback" />
+      <unit id="7716791493893601226" at="21,0,58,0" name="multiAspectLang.constraints.A_ConstraintsFeedback" />
     </file>
   </root>
   <root nodeRef="r:5dbac061-aef9-4696-88ee-0f21fe5598f3(multiAspectLang.constraints)/8363610719461051385">

@@ -106,7 +106,7 @@ public class ConstraintsChecker extends AbstractNodeCheckerInEditor implements I
   }
 
   private void checkCanBeAncestor(@NotNull SNode child,
-                                  @NotNull SNode parent,
+                                  @Nullable SNode parent,
                                   @NotNull LanguageErrorsCollector errorsCollector) {
     for (SNode ancestor = parent; ancestor != null; ancestor = ancestor.getParent()) {
       final CanBeAncestorContext context = new CanBeAncestorContext.Builder().ancestorNode(ancestor)

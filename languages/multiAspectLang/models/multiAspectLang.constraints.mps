@@ -20,7 +20,6 @@
       <concept id="1137021947720" name="jetbrains.mps.baseLanguage.structure.ConceptFunction" flags="in" index="2VMwT0">
         <child id="1137022507850" name="body" index="2VODD2" />
       </concept>
-      <concept id="1068431790191" name="jetbrains.mps.baseLanguage.structure.Expression" flags="nn" index="33vP2n" />
       <concept id="1068580123155" name="jetbrains.mps.baseLanguage.structure.ExpressionStatement" flags="nn" index="3clFbF">
         <child id="1068580123156" name="expression" index="3clFbG" />
       </concept>
@@ -62,7 +61,7 @@
         <child id="315923949160550022" name="messageProvider" index="1DCEQI" />
       </concept>
       <concept id="315923949160550017" name="jetbrains.mps.lang.rulesAndMessages.structure.InlineMessageProvider" flags="ng" index="1DCEQD">
-        <child id="5258059200641510856" name="message" index="16N$OO" />
+        <child id="5258059200641510856" name="messagesExpr" index="16N$OO" />
       </concept>
     </language>
     <language id="cd17a113-ca4e-472f-a8de-c49008f9eea8" name="jetbrains.mps.lang.feedback">
@@ -134,181 +133,6 @@
     <ref role="3Oh7Pe" to="pljn:5ca4zTvKOOO" resolve="A" />
     <node concept="3OnDbq" id="1mFJTG0Yqf" role="3Oh7Pb">
       <ref role="3OnDbs" to="prp3:6X8eyFnbIRR" resolve="CanBeChild" />
-      <node concept="1DCEPf" id="1mFJTG5T_v" role="3OnDbr">
-        <node concept="3Qq5Rn" id="1mFJTG5T_w" role="2j4cqI">
-          <property role="EcuMT" value="24399255755528544" />
-          <property role="TrG5h" value="gagag" />
-          <node concept="2K0Yjh" id="1mFJTG5T_x" role="2K0Fuo">
-            <node concept="3clFbT" id="1mFJTG6_HP" role="2K0yoH">
-              <property role="3clFbU" value="true" />
-            </node>
-          </node>
-        </node>
-        <node concept="1DCEQD" id="1mFJTG5T_z" role="1DCEQI">
-          <node concept="16I2mz" id="1mFJTG5TPf" role="16N$OO">
-            <node concept="16N$OT" id="6X8eyFnc_P5" role="16I2mt">
-              <property role="16N$OU" value="sddfg " />
-            </node>
-            <node concept="16Iohu" id="6X8eyFnc_P6" role="16I2mt">
-              <ref role="16E0hz" to="prp3:6X8eyFnbL3m" resolve="childNode" />
-            </node>
-            <node concept="16N$OT" id="2b5dIosM7tI" role="16I2mt">
-              <property role="16N$OU" value=" asdfasdfasdf" />
-            </node>
-            <node concept="16N$OT" id="2b5dIosM7tO" role="16I2mt">
-              <property role="16N$OU" value="adsfasdfas" />
-            </node>
-            <node concept="16N$OT" id="2b5dIosM7tV" role="16I2mt">
-              <property role="16N$OU" value="asdfasdf" />
-            </node>
-            <node concept="16N$OT" id="2b5dIosM7tU" role="16I2mt">
-              <property role="16N$OU" value="asdfasdf" />
-            </node>
-            <node concept="16N$OT" id="2b5dIosMaFc" role="16I2mt">
-              <property role="16N$OU" value="asdfasdf" />
-            </node>
-            <node concept="16N$OT" id="2b5dIosMaFk" role="16I2mt">
-              <property role="16N$OU" value="asdfasdfas" />
-            </node>
-            <node concept="16N$OT" id="2b5dIosMaFt" role="16I2mt">
-              <property role="16N$OU" value="fasdfsadfsadfsadfsadfsadfsadfsadfasdf" />
-            </node>
-            <node concept="16N$OT" id="2b5dIosMaFB" role="16I2mt">
-              <property role="16N$OU" value="asfsad" />
-            </node>
-            <node concept="16N$OT" id="2b5dIosMaFM" role="16I2mt">
-              <property role="16N$OU" value="fas" />
-            </node>
-            <node concept="16N$OT" id="2b5dIosMaFY" role="16I2mt">
-              <property role="16N$OU" value="df" />
-            </node>
-            <node concept="16N$OT" id="2b5dIosMaGb" role="16I2mt">
-              <property role="16N$OU" value="sadf" />
-            </node>
-            <node concept="16N$OT" id="2b5dIosMaGp" role="16I2mt">
-              <property role="16N$OU" value="sa" />
-            </node>
-            <node concept="16N$OT" id="2b5dIosMaGC" role="16I2mt">
-              <property role="16N$OU" value="fs" />
-            </node>
-            <node concept="16N$OT" id="2b5dIosMaGS" role="16I2mt">
-              <property role="16N$OU" value="adf" />
-            </node>
-            <node concept="16N$OT" id="2b5dIosMaH9" role="16I2mt">
-              <property role="16N$OU" value="sa" />
-            </node>
-            <node concept="16N$OT" id="2b5dIosMaHr" role="16I2mt">
-              <property role="16N$OU" value="df" />
-            </node>
-            <node concept="16N$OT" id="2b5dIosMaHI" role="16I2mt">
-              <property role="16N$OU" value="asf" />
-            </node>
-            <node concept="16N$OT" id="2b5dIosMaI2" role="16I2mt">
-              <property role="16N$OU" value="ad" />
-            </node>
-            <node concept="16N$OT" id="2b5dIosMaIn" role="16I2mt">
-              <property role="16N$OU" value="fsad" />
-            </node>
-            <node concept="16N$OT" id="2b5dIosMaIH" role="16I2mt">
-              <property role="16N$OU" value="f" />
-            </node>
-            <node concept="16N$OT" id="2b5dIosMaJ4" role="16I2mt">
-              <property role="16N$OU" value="sad" />
-            </node>
-            <node concept="16N$OT" id="2b5dIosMaJs" role="16I2mt">
-              <property role="16N$OU" value="f" />
-            </node>
-            <node concept="16N$OT" id="2b5dIosMaJP" role="16I2mt">
-              <property role="16N$OU" value="asdf" />
-            </node>
-            <node concept="16N$OT" id="2b5dIosMaKf" role="16I2mt">
-              <property role="16N$OU" value="safs" />
-            </node>
-            <node concept="16N$OT" id="2b5dIosMaKE" role="16I2mt">
-              <property role="16N$OU" value="f" />
-            </node>
-            <node concept="16N$OT" id="2b5dIosMaL6" role="16I2mt">
-              <property role="16N$OU" value="asd" />
-            </node>
-            <node concept="16N$OT" id="2b5dIosMaLz" role="16I2mt">
-              <property role="16N$OU" value="fas" />
-            </node>
-            <node concept="16N$OT" id="2b5dIosMaM1" role="16I2mt">
-              <property role="16N$OU" value="df" />
-            </node>
-            <node concept="16N$OT" id="2b5dIosMaMw" role="16I2mt">
-              <property role="16N$OU" value="ads" />
-            </node>
-            <node concept="16N$OT" id="2b5dIosMaN0" role="16I2mt">
-              <property role="16N$OU" value="f" />
-            </node>
-            <node concept="16N$OT" id="2b5dIosMaNx" role="16I2mt">
-              <property role="16N$OU" value="asd" />
-            </node>
-            <node concept="16N$OT" id="2b5dIosMaO3" role="16I2mt">
-              <property role="16N$OU" value="fas" />
-            </node>
-            <node concept="16N$OT" id="2b5dIosMaOA" role="16I2mt">
-              <property role="16N$OU" value="df" />
-            </node>
-            <node concept="16N$OT" id="2b5dIosMaPa" role="16I2mt">
-              <property role="16N$OU" value="ads" />
-            </node>
-            <node concept="16N$OT" id="2b5dIosMaPJ" role="16I2mt">
-              <property role="16N$OU" value="fds" />
-            </node>
-            <node concept="16N$OT" id="2b5dIosMaQl" role="16I2mt">
-              <property role="16N$OU" value="f" />
-            </node>
-            <node concept="16N$OT" id="2b5dIosMaQW" role="16I2mt">
-              <property role="16N$OU" value="f" />
-            </node>
-            <node concept="16N$OT" id="2b5dIosMaR$" role="16I2mt">
-              <property role="16N$OU" value="asd" />
-            </node>
-            <node concept="16N$OT" id="2b5dIosMaSd" role="16I2mt">
-              <property role="16N$OU" value="fs" />
-            </node>
-            <node concept="16N$OT" id="2b5dIosMaSR" role="16I2mt">
-              <property role="16N$OU" value="adf" />
-            </node>
-            <node concept="16N$OT" id="2b5dIosMaTy" role="16I2mt">
-              <property role="16N$OU" value="sadf" />
-            </node>
-            <node concept="16N$OT" id="2b5dIosMaUe" role="16I2mt">
-              <property role="16N$OU" value="sa" />
-            </node>
-            <node concept="16N$OT" id="2b5dIosMaUV" role="16I2mt">
-              <property role="16N$OU" value="df" />
-            </node>
-            <node concept="16N$OT" id="623rix_oiWp" role="16I2mt">
-              <property role="16N$OU" value="saf" />
-            </node>
-            <node concept="16N$OT" id="623rix_oiXB" role="16I2mt">
-              <property role="16N$OU" value="sad" />
-            </node>
-            <node concept="16N$OT" id="623rix_oiYP" role="16I2mt">
-              <property role="16N$OU" value="5" />
-            </node>
-            <node concept="16N$OT" id="623rix_oiYQ" role="16I2mt">
-              <property role="16N$OU" value="fas" />
-            </node>
-            <node concept="16N$OT" id="623rix_oj05" role="16I2mt">
-              <property role="16N$OU" value="dfsd" />
-            </node>
-            <node concept="16N$OT" id="2b5dIosMaYF" role="16I2mt" />
-          </node>
-        </node>
-      </node>
-      <node concept="1DCEPf" id="2b5dIosMaEt" role="3OnDbr">
-        <node concept="3Qq5Rn" id="2b5dIosMaEv" role="2j4cqI">
-          <property role="EcuMT" value="2505469129654839967" />
-          <node concept="2K0Yjh" id="2b5dIosMaEx" role="2K0Fuo">
-            <node concept="33vP2n" id="2b5dIosMaEz" role="2K0yoH" />
-          </node>
-        </node>
-        <node concept="1DCEQD" id="2b5dIosMaE_" role="1DCEQI" />
-      </node>
       <node concept="1DCEPf" id="7CK8yHrci8A" role="3OnDbr">
         <node concept="3Qq5Rn" id="7CK8yHrci8B" role="2j4cqI">
           <property role="EcuMT" value="8804574841118204455" />
@@ -347,84 +171,16 @@
     <ref role="3Z9TSV" to="pljn:5ca4zTvKOOO" resolve="A" />
     <node concept="3QByp$" id="6GnzfDRinZ2" role="3QBEN7">
       <node concept="16I2mz" id="6GnzfDRinZ4" role="16N$OP">
-        <node concept="16N$OT" id="623rix_nLsL" role="16I2mt">
-          <property role="16N$OU" value="Property constraintasds gag" />
-        </node>
-        <node concept="16N$OT" id="623rix_o$Ud" role="16I2mt">
-          <property role="16N$OU" value="aga are" />
-        </node>
-        <node concept="16Iohu" id="623rix_o$Uc" role="16I2mt" />
-        <node concept="16N$OT" id="623rix_o$Ue" role="16I2mt">
-          <property role="16N$OU" value=" broaken" />
-        </node>
-        <node concept="16N$OT" id="2b5dIosHiTl" role="16I2mt">
-          <property role="16N$OU" value=" aksdf" />
-        </node>
-        <node concept="16N$OT" id="2b5dIosHiU5" role="16I2mt">
-          <property role="16N$OU" value=" adsflasdf" />
-        </node>
-        <node concept="16N$OT" id="623rix_m95E" role="16I2mt">
-          <property role="16N$OU" value="asdfasdfsdfd" />
-        </node>
-        <node concept="16N$OT" id="623rix_m95D" role="16I2mt">
-          <property role="16N$OU" value="" />
-        </node>
-        <node concept="16N$OT" id="623rix_osp7" role="16I2mt">
-          <property role="16N$OU" value=" asdfasdfsadfsadfsa" />
-        </node>
-        <node concept="16Iohu" id="623rix_osp6" role="16I2mt" />
-        <node concept="16N$OT" id="623rix_osp8" role="16I2mt">
-          <property role="16N$OU" value="dfasdfsadfsadfsadfdsfasdfasdfasdfsadfsadfsadfsadfsadfsadfsadfasdfa" />
+        <node concept="16N$OT" id="63vaCZf7_6e" role="16I2mt">
+          <property role="16N$OU" value="Property constraints are broken for the property " />
         </node>
         <node concept="16Iohu" id="7ghwUcl80JQ" role="16I2mt">
           <ref role="16E0hz" to="2u14:1mFJTG7MCZ" resolve="property" />
         </node>
-        <node concept="16N$OT" id="2b5dIosM_RO" role="16I2mt">
-          <property role="16N$OU" value=" asdfa" />
-        </node>
-        <node concept="16N$OT" id="2b5dIosMWQY" role="16I2mt" />
       </node>
       <node concept="1GjwBS" id="6GnzfDRiqsF" role="3JXyrO">
         <ref role="sa$J1" to="2u14:1mFJTG7e$j" resolve="FailingPropertyConstraints" />
         <ref role="1Gj$d9" to="pljn:50L3raJA9_o" resolve="prop" />
-      </node>
-    </node>
-    <node concept="3QByp$" id="2b5dIosJssm" role="3QBEN7">
-      <node concept="1GjwBS" id="2b5dIosJssv" role="3JXyrO">
-        <ref role="sa$J1" to="2u14:1mFJTG7e$j" resolve="FailingPropertyConstraints" />
-        <ref role="1Gj$d9" to="pljn:50L3raJA9_o" resolve="prop" />
-      </node>
-      <node concept="16I2mz" id="2b5dIosM7of" role="16N$OP">
-        <node concept="16N$OT" id="sEBnT7g6sW" role="16I2mt">
-          <property role="16N$OU" value="asdfasdfa" />
-        </node>
-        <node concept="16N$OT" id="sEBnT7g6sX" role="16I2mt">
-          <property role="16N$OU" value="sdfafsfa aasdfasdfasdf" />
-        </node>
-        <node concept="16N$OT" id="sEBnT7g6tz" role="16I2mt">
-          <property role="16N$OU" value="asdfasdf" />
-        </node>
-        <node concept="16N$OT" id="sEBnT7g6tI" role="16I2mt">
-          <property role="16N$OU" value="sa" />
-        </node>
-        <node concept="16N$OT" id="sEBnT7grYI" role="16I2mt">
-          <property role="16N$OU" value="asd" />
-        </node>
-        <node concept="16N$OT" id="sEBnT7g6uU" role="16I2mt">
-          <property role="16N$OU" value="kjfh" />
-        </node>
-        <node concept="16N$OT" id="sEBnT7g6vV" role="16I2mt">
-          <property role="16N$OU" value="askdf" />
-        </node>
-        <node concept="16N$OT" id="sEBnT7g3p4" role="16I2mt">
-          <property role="16N$OU" value="hj" />
-        </node>
-        <node concept="16N$OT" id="sEBnT7g3ox" role="16I2mt">
-          <property role="16N$OU" value="saj" />
-        </node>
-        <node concept="16N$OT" id="sEBnT7g3nZ" role="16I2mt">
-          <property role="16N$OU" value="d" />
-        </node>
       </node>
     </node>
   </node>

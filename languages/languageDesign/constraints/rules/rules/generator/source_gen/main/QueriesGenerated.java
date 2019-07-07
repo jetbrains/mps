@@ -459,7 +459,7 @@ public class QueriesGenerated extends QueryProviderBase {
     rtqMethods.put("4636242761502527777", new QueriesGenerated.RTQ(3, "Context"));
     rtqMethods.put("4636242761502555060", new QueriesGenerated.RTQ(4, "Def"));
     rtqMethods.put("4636242761502481039", new QueriesGenerated.RTQ(5, "Context"));
-    rtqMethods.put("4996591504622387070", new QueriesGenerated.RTQ(6, "CanBeChildKind"));
+    rtqMethods.put("7280614907478295696", new QueriesGenerated.RTQ(6, "CAN_BE_CHILD"));
     rtqMethods.put("8556303794924669906", new QueriesGenerated.RTQ(7, "ContainmentContext"));
     rtqMethods.put("3562920471664392960", new QueriesGenerated.RTQ(8, "ContainmentContext"));
     rtqMethods.put("4636242761502992616", new QueriesGenerated.RTQ(9, "Def"));

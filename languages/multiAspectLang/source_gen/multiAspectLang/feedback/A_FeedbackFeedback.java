@@ -23,7 +23,7 @@ public final class A_FeedbackFeedback extends BaseFeedbackDescriptor {
     @NotNull
     @Override
     public MessageProvider.StringMsg yieldMessage(MissingPropertyContext context) {
-      return new MessageProvider.StringMsg("The property does not belong to the concept " + String.valueOf(context.getNode()));
+      return new MessageProvider.StringMsg("The property " + String.valueOf(context.getProperty()) + " does not belong to the node " + String.valueOf(context.getNode()));
     }
   };
 

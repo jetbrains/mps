@@ -1059,14 +1059,14 @@
               <node concept="37vLTw" id="4rknBOXVSS6" role="37wK5m">
                 <ref role="3cqZAo" node="4rknBOXVRDt" resolve="CONCEPT" />
               </node>
-              <node concept="Rm8GO" id="4lnto0oK7QL" role="37wK5m">
-                <ref role="Rm8GQ" to="pdwk:~CanBeChildKind.INSTANCE" resolve="INSTANCE" />
-                <ref role="1Px2BO" to="pdwk:~CanBeChildKind" resolve="CanBeChildKind" />
-                <node concept="1ZhdrF" id="4lnto0oK7XY" role="lGtFl">
-                  <property role="2qtEX8" value="enumClass" />
-                  <property role="P3scX" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1083260308424/1144432896254" />
-                  <node concept="3$xsQk" id="4lnto0oK7XZ" role="3$ytzL">
-                    <node concept="3clFbS" id="4lnto0oK7Y0" role="2VODD2">
+              <node concept="Rm8GO" id="6k9WaWqE4e4" role="37wK5m">
+                <ref role="Rm8GQ" to="pdwk:~PredefinedRuleKinds.CAN_BE_CHILD" resolve="CAN_BE_CHILD" />
+                <ref role="1Px2BO" to="pdwk:~PredefinedRuleKinds" resolve="PredefinedRuleKinds" />
+                <node concept="1ZhdrF" id="6k9WaWqE4ig" role="lGtFl">
+                  <property role="2qtEX8" value="enumConstantDeclaration" />
+                  <property role="P3scX" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1083260308424/1083260308426" />
+                  <node concept="3$xsQk" id="6k9WaWqE4ih" role="3$ytzL">
+                    <node concept="3clFbS" id="6k9WaWqE4ii" role="2VODD2">
                       <node concept="3cpWs6" id="5hCLR$mf_RC" role="3cqZAp">
                         <node concept="2YIFZM" id="5hCLR$mfAfl" role="3cqZAk">
                           <ref role="1Pybhc" to="mo3b:4Np0kcC9DT6" resolve="KindUtil" />
@@ -1709,7 +1709,7 @@
     <property role="TrG5h" value="weave_RulesIntoDescriptor" />
     <ref role="3gUMe" to="mqj2:1BFxp3HFZzq" resolve="ConstraintsRoot2" />
     <node concept="312cEu" id="1BFxp3HIuN5" role="13RCb5">
-      <property role="TrG5h" value="Generated_ConstraintsDescriptor2" />
+      <property role="TrG5h" value="Generated_RulesConstraintsDescriptor" />
       <property role="1EXbeo" value="true" />
       <node concept="Wx3nA" id="1BFxp3HIuNi" role="jymVt">
         <property role="TrG5h" value="RULE" />

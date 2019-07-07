@@ -15,8 +15,8 @@
     <file name="ConstraintsAspectDescriptor.java">
       <unit at="13,0,29,0" name="jetbrains.mps.lang.feedback.skeleton.constraints.ConstraintsAspectDescriptor" />
     </file>
-    <file name="GeneratedConstraintsAspectDescriptor2.java">
-      <unit at="17,0,31,0" name="jetbrains.mps.lang.feedback.skeleton.constraints.GeneratedConstraintsAspectDescriptor2" />
+    <file name="GeneratedRulesConstraintsAspect.java">
+      <unit at="11,0,19,0" name="jetbrains.mps.lang.feedback.skeleton.constraints.GeneratedRulesConstraintsAspect" />
     </file>
   </root>
   <root nodeRef="r:99749b65-b7fc-4566-b6a7-ca55328bd881(jetbrains.mps.lang.feedback.skeleton.constraints)/4754973013260675690">

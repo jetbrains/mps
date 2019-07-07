@@ -22,6 +22,9 @@
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
       </concept>
+      <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
+        <property id="1070475926801" name="value" index="Xl_RC" />
+      </concept>
       <concept id="1081236700938" name="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" flags="ig" index="2YIFZL" />
       <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
       <concept id="1068390468198" name="jetbrains.mps.baseLanguage.structure.ClassConcept" flags="ig" index="312cEu">
@@ -35,6 +38,7 @@
       </concept>
       <concept id="1068498886292" name="jetbrains.mps.baseLanguage.structure.ParameterDeclaration" flags="ir" index="37vLTG" />
       <concept id="1068498886294" name="jetbrains.mps.baseLanguage.structure.AssignmentExpression" flags="nn" index="37vLTI" />
+      <concept id="1225271177708" name="jetbrains.mps.baseLanguage.structure.StringType" flags="in" index="17QB3L" />
       <concept id="1225271283259" name="jetbrains.mps.baseLanguage.structure.NPEEqualsExpression" flags="nn" index="17R0WA" />
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
         <child id="5680397130376446158" name="type" index="1tU5fm" />
@@ -85,6 +89,11 @@
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
     </language>
     <language id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext">
+      <concept id="1217960179967" name="jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_ShowErrorMessage" flags="nn" index="2k5nB$" />
+      <concept id="1217960314443" name="jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_ShowMessageBase" flags="nn" index="2k5Stg">
+        <child id="1217960314448" name="messageText" index="2k5Stb" />
+        <child id="1217960407512" name="referenceNode" index="2k6f33" />
+      </concept>
       <concept id="1229477454423" name="jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_GetOriginalCopiedInputByOutput" flags="nn" index="12$id9">
         <child id="1229477520175" name="outputNode" index="12$y8L" />
       </concept>
@@ -294,6 +303,27 @@
               </node>
             </node>
           </node>
+          <node concept="3eNFk2" id="6k9WaWqE5_m" role="3eNLev">
+            <node concept="3clFbS" id="6k9WaWqE5_o" role="3eOfB_">
+              <node concept="3cpWs6" id="6k9WaWqE5CF" role="3cqZAp">
+                <node concept="2tJFMh" id="6k9WaWqE5D5" role="3cqZAk">
+                  <node concept="ZC_QK" id="6k9WaWqE5Ej" role="2tJFKM">
+                    <ref role="2aWVGs" to="pdwk:~CanBeAncestorContext" resolve="CanBeAncestorContext" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="17R0WA" id="6k9WaWqE5B4" role="3eO9$A">
+              <node concept="37vLTw" id="6k9WaWqE5B5" role="3uHU7B">
+                <ref role="3cqZAo" node="3Y1amMrfPbH" resolve="pointer" />
+              </node>
+              <node concept="2tJFMh" id="6k9WaWqE5B6" role="3uHU7w">
+                <node concept="ZC_QK" id="6k9WaWqE5BL" role="2tJFKM">
+                  <ref role="2aWVGs" to="prp3:6X8eyFnbIRK" resolve="CanBeAncestor" />
+                </node>
+              </node>
+            </node>
+          </node>
         </node>
         <node concept="3cpWs6" id="7phS86Nkh1N" role="3cqZAp">
           <node concept="10Nm6u" id="7phS86Nkh1O" role="3cqZAk" />
@@ -413,10 +443,8 @@
         <node concept="3clFbJ" id="3Y1amMrg0Ev" role="3cqZAp">
           <node concept="3clFbS" id="3Y1amMrg0Ew" role="3clFbx">
             <node concept="3cpWs6" id="3Y1amMrg0Ex" role="3cqZAp">
-              <node concept="2tJFMh" id="3Y1amMrg0Ey" role="3cqZAk">
-                <node concept="ZC_QK" id="1mFJTG6iB8" role="2tJFKM">
-                  <ref role="2aWVGs" to="pdwk:~CanBeChildKind" resolve="CanBeChildKind" />
-                </node>
+              <node concept="Xl_RD" id="6k9WaWqE4Vz" role="3cqZAk">
+                <property role="Xl_RC" value="CAN_BE_CHILD" />
               </node>
             </node>
           </node>
@@ -433,10 +461,8 @@
           <node concept="3eNFk2" id="3Y1amMrg0EC" role="3eNLev">
             <node concept="3clFbS" id="3Y1amMrg0ED" role="3eOfB_">
               <node concept="3cpWs6" id="3Y1amMrg0EE" role="3cqZAp">
-                <node concept="2tJFMh" id="3Y1amMrg0EF" role="3cqZAk">
-                  <node concept="ZC_QK" id="1mFJTG6iF9" role="2tJFKM">
-                    <ref role="2aWVGs" to="pdwk:~CanBeParentKind" resolve="CanBeParentKind" />
-                  </node>
+                <node concept="Xl_RD" id="6k9WaWqE53C" role="3cqZAk">
+                  <property role="Xl_RC" value="CAN_BE_PARENT" />
                 </node>
               </node>
             </node>
@@ -464,11 +490,43 @@
             </node>
             <node concept="3clFbS" id="6X8eyFnbN2f" role="3eOfB_">
               <node concept="3cpWs6" id="6X8eyFnbN2g" role="3cqZAp">
-                <node concept="2tJFMh" id="6X8eyFnbN2h" role="3cqZAk">
-                  <node concept="ZC_QK" id="6X8eyFnbN74" role="2tJFKM">
-                    <ref role="2aWVGs" to="pdwk:~CanBeRootKind" resolve="CanBeRootKind" />
-                  </node>
+                <node concept="Xl_RD" id="6k9WaWqE5eQ" role="3cqZAk">
+                  <property role="Xl_RC" value="CAN_BE_ROOT" />
                 </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3eNFk2" id="6k9WaWqE5h0" role="3eNLev">
+            <node concept="3clFbS" id="6k9WaWqE5h2" role="3eOfB_">
+              <node concept="3cpWs6" id="6k9WaWqE5pv" role="3cqZAp">
+                <node concept="Xl_RD" id="6k9WaWqE5qk" role="3cqZAk">
+                  <property role="Xl_RC" value="CAN_BE_ANCESTOR" />
+                </node>
+              </node>
+            </node>
+            <node concept="17R0WA" id="6k9WaWqE5nS" role="3eO9$A">
+              <node concept="37vLTw" id="6k9WaWqE5nT" role="3uHU7B">
+                <ref role="3cqZAo" node="3Y1amMrg0Eq" resolve="pointer" />
+              </node>
+              <node concept="2tJFMh" id="6k9WaWqE5nU" role="3uHU7w">
+                <node concept="ZC_QK" id="6k9WaWqE5o_" role="2tJFKM">
+                  <ref role="2aWVGs" to="prp3:6X8eyFnbIRK" resolve="CanBeAncestor" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="6k9WaWqFSNu" role="3cqZAp">
+          <node concept="2OqwBi" id="6k9WaWqFSWd" role="3clFbG">
+            <node concept="37vLTw" id="6k9WaWqFSNs" role="2Oq$k0">
+              <ref role="3cqZAo" node="3Y1amMrg0EP" resolve="genContext" />
+            </node>
+            <node concept="2k5nB$" id="6k9WaWqFT12" role="2OqNvi">
+              <node concept="Xl_RD" id="6k9WaWqFT1Q" role="2k5Stb">
+                <property role="Xl_RC" value="Unknown kind" />
+              </node>
+              <node concept="37vLTw" id="6k9WaWqFT4s" role="2k6f33">
+                <ref role="3cqZAo" node="3Y1amMrg0EN" resolve="kind" />
               </node>
             </node>
           </node>
@@ -487,9 +545,7 @@
         <property role="TrG5h" value="genContext" />
         <node concept="1iwH7U" id="3Y1amMrg0EQ" role="1tU5fm" />
       </node>
-      <node concept="2sp9CU" id="3Y1amMrg0ER" role="3clF45">
-        <ref role="2sp9C9" to="tpee:fKQs72_" resolve="EnumClass" />
-      </node>
+      <node concept="17QB3L" id="6k9WaWqE5$7" role="3clF45" />
       <node concept="3Tm1VV" id="3Y1amMrg0ES" role="1B3o_S" />
     </node>
   </node>

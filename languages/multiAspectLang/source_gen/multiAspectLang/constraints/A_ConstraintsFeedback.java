@@ -25,24 +25,17 @@ public final class A_ConstraintsFeedback extends BaseFeedbackDescriptor {
     @NotNull
     @Override
     public MessageProvider.StringMsg yieldMessage(FailingPropertyConstraintContext context) {
-      return new MessageProvider.StringMsg("Property constraints gagaga are broken for the property " + String.valueOf(context.getProperty()));
+      return new MessageProvider.StringMsg("Property constraints are broken for the property " + String.valueOf(context.getProperty()));
     }
   };
-  private static final FeedbackProvider<ContainmentContext> MSGPROVIDER_WhenConstraintRuleFails_b = new BaseMessageProvider<ContainmentContext>(new FailingRuleProblemId(A_ConstraintRules.Rule_gagag.ID_gagag)) {
-    @NotNull
-    @Override
-    public MessageProvider.StringMsg yieldMessage(ContainmentContext context) {
-      return new MessageProvider.StringMsg("sddfg " + String.valueOf(context.getChildNode()) + " asdfasdfasdf");
-    }
-  };
-  private static final FeedbackProvider<ContainmentContext> MSGPROVIDER_WhenConstraintRuleFails_c = new BaseMessageProvider<ContainmentContext>(new FailingRuleProblemId(A_ConstraintRules.Rule_check8804574841118204455_b0.ID_check8804574841118204455_b0)) {
+  private static final FeedbackProvider<ContainmentContext> MSGPROVIDER_WhenConstraintRuleFails_b = new BaseMessageProvider<ContainmentContext>(new FailingRuleProblemId(A_ConstraintRules.Rule_check8804574841118204455_a0.ID_check8804574841118204455_a0)) {
     @NotNull
     @Override
     public MessageProvider.StringMsg yieldMessage(ContainmentContext context) {
       return new MessageProvider.StringMsg("");
     }
   };
-  private static final FeedbackProvider<ContainmentContext> MSGPROVIDER_WhenConstraintRuleFails_d = new BaseMessageProvider<ContainmentContext>(new FailingRuleProblemId(A_ConstraintRules.Rule_gagag2.ID_gagag2)) {
+  private static final FeedbackProvider<ContainmentContext> MSGPROVIDER_WhenConstraintRuleFails_c = new BaseMessageProvider<ContainmentContext>(new FailingRuleProblemId(A_ConstraintRules.Rule_gagag2.ID_gagag2)) {
     @NotNull
     @Override
     public MessageProvider.StringMsg yieldMessage(ContainmentContext context) {
@@ -50,7 +43,7 @@ public final class A_ConstraintsFeedback extends BaseFeedbackDescriptor {
     }
   };
 
-  private static final List<FeedbackProvider> PROVIDERS = Collections.unmodifiableList(Arrays.<FeedbackProvider>asList(MSGPROVIDER_WhenPropertyConstraintFails_a, MSGPROVIDER_WhenConstraintRuleFails_b, MSGPROVIDER_WhenConstraintRuleFails_c, MSGPROVIDER_WhenConstraintRuleFails_d));
+  private static final List<FeedbackProvider> PROVIDERS = Collections.unmodifiableList(Arrays.<FeedbackProvider>asList(MSGPROVIDER_WhenPropertyConstraintFails_a, MSGPROVIDER_WhenConstraintRuleFails_b, MSGPROVIDER_WhenConstraintRuleFails_c));
 
   public A_ConstraintsFeedback() {
     super(CONCEPT);

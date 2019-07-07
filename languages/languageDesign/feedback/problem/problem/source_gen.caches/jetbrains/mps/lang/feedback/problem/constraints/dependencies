@@ -11,19 +11,13 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
     <classNode extendsClassName="jetbrains.mps.smodel.runtime.BaseConstraintsAspectDescriptor" />
   </dependency>
-  <dependency className="jetbrains.mps.lang.feedback.problem.constraints.GeneratedConstraintsAspectDescriptor2">
+  <dependency className="jetbrains.mps.lang.feedback.problem.constraints.GeneratedRulesConstraintsAspect">
     <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="java.util.Arrays" />
-    <classNode dependClassName="java.util.List" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.ConstraintsDescriptor2" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.RuleKind" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeChildKind" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeParentKind" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeRootKind" />
+    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.RulesConstraintsDescriptor" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
-    <classNode extendsClassName="jetbrains.mps.core.aspects.constraints.rules.ConstraintsAspectDescriptor2" />
+    <classNode extendsClassName="jetbrains.mps.core.aspects.constraints.rules.RulesConstraintsAspect" />
   </dependency>
   <dependency className="jetbrains.mps.lang.feedback.problem.constraints.ProblemKindRoot_Constraints">
     <classNode dependClassName="java.lang.Boolean" />

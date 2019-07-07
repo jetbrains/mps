@@ -16,7 +16,6 @@
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
     <import index="mqj2" ref="r:1d4f6f82-1219-47a2-a4fa-ac3ba14c9fd5(jetbrains.mps.lang.constraints.rules.skeleton.structure)" />
-    <import index="10hr" ref="r:d674956e-add1-4c62-993b-3cd157f5ca62(jetbrains.mps.lang.constraints.rules.skeleton.plugin)" />
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
     <import index="beg" ref="r:09811e4e-aa47-4ea2-ad3d-57b7b9ffc7e3(jetbrains.mps.lang.constraints.plugin)" />
     <import index="yv2q" ref="r:cdf8afc0-fdc6-47ca-b829-7b2226168efa(jetbrains.mps.lang.descriptor.structure)" />
@@ -388,7 +387,7 @@
     </node>
     <node concept="2VPoh5" id="5Cioe7RLOha" role="2VS0gm">
       <ref role="2sBCQV" node="5BFePKcKj4n" resolve="constraints2DescriptorClass" />
-      <ref role="2VPoh2" node="5Cioe7RLEwT" resolve="GeneratedConstraintsAspectDescriptor2" />
+      <ref role="2VPoh2" node="5Cioe7RLEwT" resolve="GeneratedRulesConstraintsAspect" />
       <node concept="2VP$b9" id="5Cioe7RLOhc" role="2VPoh3">
         <node concept="3clFbS" id="5Cioe7RLOhd" role="2VODD2">
           <node concept="3clFbF" id="40EGsDCsY$4" role="3cqZAp">
@@ -412,12 +411,12 @@
     </node>
   </node>
   <node concept="312cEu" id="5Cioe7RLEwT">
-    <property role="TrG5h" value="GeneratedConstraintsAspectDescriptor2" />
+    <property role="TrG5h" value="GeneratedRulesConstraintsAspect" />
     <property role="1EXbeo" value="true" />
     <node concept="3Tm1VV" id="5Cioe7RLEwU" role="1B3o_S" />
     <node concept="n94m4" id="5Cioe7RLEwZ" role="lGtFl" />
-    <node concept="3uibUv" id="7w_sh_iETGP" role="EKbjA">
-      <ref role="3uigEE" to="o99v:~ConstraintsAspectDescriptor2" resolve="ConstraintsAspectDescriptor2" />
+    <node concept="3uibUv" id="6k9WaWqCecr" role="EKbjA">
+      <ref role="3uigEE" to="o99v:~RulesConstraintsAspect" resolve="RulesConstraintsAspect" />
     </node>
     <node concept="3clFb_" id="6kKc3mj$H8F" role="jymVt">
       <property role="TrG5h" value="getDescriptor" />
@@ -429,8 +428,8 @@
           <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
         </node>
       </node>
-      <node concept="3uibUv" id="7w_sh_iETR3" role="3clF45">
-        <ref role="3uigEE" to="o99v:~ConstraintsDescriptor2" resolve="ConstraintsDescriptor2" />
+      <node concept="3uibUv" id="6k9WaWqCe8p" role="3clF45">
+        <ref role="3uigEE" to="o99v:~RulesConstraintsDescriptor" resolve="RulesConstraintsDescriptor" />
       </node>
       <node concept="3clFbS" id="6kKc3mj$H8N" role="3clF47">
         <node concept="1_3QMa" id="1CTTqHRaKYf" role="3cqZAp">
@@ -553,7 +552,7 @@
       <node concept="3cqZAl" id="$V5NfaFmcu" role="3clF45" />
       <node concept="3clFbS" id="$V5NfaHhjN" role="3clF47">
         <node concept="XkiVB" id="$V5NfaHnn7" role="3cqZAp">
-          <ref role="37wK5l" to="o99v:~BaseConstraintsDescriptor2.&lt;init&gt;(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="BaseConstraintsDescriptor2" />
+          <ref role="37wK5l" to="o99v:~BaseRulesConstraintsDescriptor.&lt;init&gt;(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="BaseRulesConstraintsDescriptor" />
           <node concept="37vLTw" id="1BFxp3HHDCu" role="37wK5m">
             <ref role="3cqZAo" node="3uq0yNaWR0_" resolve="CONCEPT" />
           </node>
@@ -580,8 +579,8 @@
         </node>
       </node>
     </node>
-    <node concept="3uibUv" id="$V5NfaF76N" role="1zkMxy">
-      <ref role="3uigEE" to="o99v:~BaseConstraintsDescriptor2" resolve="BaseConstraintsDescriptor2" />
+    <node concept="3uibUv" id="6k9WaWqCep1" role="1zkMxy">
+      <ref role="3uigEE" to="o99v:~BaseRulesConstraintsDescriptor" resolve="BaseRulesConstraintsDescriptor" />
     </node>
   </node>
   <node concept="13MO4I" id="1FBVWoju27a">
@@ -617,7 +616,7 @@
                   <node concept="liA8E" id="7GQ_Vdx8_mQ" role="2OqNvi">
                     <ref role="37wK5l" to="wyt6:~Class.isAssignableFrom(java.lang.Class)" resolve="isAssignableFrom" />
                     <node concept="3VsKOn" id="1FBVWojxzzX" role="37wK5m">
-                      <ref role="3VsUkX" to="o99v:~ConstraintsAspectDescriptor2" resolve="ConstraintsAspectDescriptor2" />
+                      <ref role="3VsUkX" to="o99v:~RulesConstraintsAspect" resolve="RulesConstraintsAspect" />
                     </node>
                   </node>
                 </node>
@@ -631,7 +630,7 @@
                         <ref role="37wK5l" to="wyt6:~Class.cast(java.lang.Object)" resolve="cast" />
                         <node concept="2ShNRf" id="1FBVWojxz$4" role="37wK5m">
                           <node concept="HV5vD" id="3ZKqOfp_cqJ" role="2ShVmc">
-                            <ref role="HV5vE" node="5Cioe7RLEwT" resolve="GeneratedConstraintsAspectDescriptor2" />
+                            <ref role="HV5vE" node="5Cioe7RLEwT" resolve="GeneratedRulesConstraintsAspect" />
                             <node concept="1ZhdrF" id="3ZKqOfp_cFe" role="lGtFl">
                               <property role="2qtEX8" value="classifier" />
                               <property role="P3scX" value="f3061a53-9226-4cc5-a443-f952ceaf5816/2820489544401957797/2820489544401957798" />

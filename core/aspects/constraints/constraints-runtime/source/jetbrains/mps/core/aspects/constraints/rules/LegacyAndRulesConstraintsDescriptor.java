@@ -186,7 +186,7 @@ public final class LegacyAndRulesConstraintsDescriptor implements RulesConstrain
     Deque<SAbstractConcept> stack = new ArrayDeque<>();
     stack.addFirst(myConcept);
     while (!stack.isEmpty()) {
-      SAbstractConcept nextConcept = stack.getFirst();
+      SAbstractConcept nextConcept = stack.pollFirst();
       if (!visited.add(nextConcept)) continue;
       LegacyAndRulesConstraintsDescriptor compoDescriptor = getLegacyAndRulesDescriptor(nextConcept);
       List<Rule<?>> legacyRules = compoDescriptor.getDeclaredLegacyRules().stream()
