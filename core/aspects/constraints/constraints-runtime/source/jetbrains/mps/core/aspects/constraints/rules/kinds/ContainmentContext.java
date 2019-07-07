@@ -106,11 +106,6 @@ public final class ContainmentContext implements Context {
       return this;
     }
 
-    public Builder parentConcept(@NotNull SNode parentNode) {
-      this.parentNode = parentNode;
-      return this;
-    }
-
     public Builder childConcept(@NotNull SAbstractConcept childConcept) {
       this.childConcept = childConcept;
       return this;

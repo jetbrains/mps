@@ -15,9 +15,13 @@
  */
 package jetbrains.mps.smodel.constraints;
 
+import jetbrains.mps.core.aspects.constraints.rules.Rule;
+import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeAncestorContext;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeChildKind;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeParentKind;
+import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeRootContext;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeRootKind;
+import jetbrains.mps.core.aspects.constraints.rules.kinds.ContainmentContext;
 import jetbrains.mps.core.aspects.feedback.messages.FailingPropertyConstraintContext;
 import jetbrains.mps.core.aspects.feedback.messages.FailingPropertyConstraintProblem;
 import jetbrains.mps.scope.Scope;
@@ -28,11 +32,11 @@ import jetbrains.mps.smodel.runtime.CheckingNodeContext;
 import jetbrains.mps.smodel.runtime.ConstraintContext_CanBeAncestor;
 import jetbrains.mps.smodel.runtime.ConstraintContext_CanBeChild;
 import jetbrains.mps.smodel.runtime.ConstraintContext_CanBeParent;
-import jetbrains.mps.smodel.runtime.ConstraintContext_CanBeRoot;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
 import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.annotations.Internal;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -44,11 +48,9 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SReference;
 
 import java.util.List;
+import java.util.Optional;
 
 import static jetbrains.mps.smodel.constraints.ConstraintsCanBeFacade.checkPerConceptRulesOfKind;
-import static jetbrains.mps.smodel.constraints.ConstraintsCanBeFacade.legacyCanBeChild;
-import static jetbrains.mps.smodel.constraints.ConstraintsCanBeFacade.legacyCanBeParent;
-import static jetbrains.mps.smodel.constraints.ConstraintsCanBeFacade.legacyCanBeRoot;
 
 /**
  * API for model constraints
@@ -66,29 +68,40 @@ import static jetbrains.mps.smodel.constraints.ConstraintsCanBeFacade.legacyCanB
 public class ModelConstraints {
   // public canBe* section
 
-  public static boolean canBeAncestor(@NotNull SNode parentNode, @NotNull SAbstractConcept childConcept,/*TODO @NotNull*/ SContainmentLink containmentLink,
-      @Nullable CheckingNodeContext checkingNodeContext) {
-    // TODO: make containmentLink @NotNull and expose this parameter inside canBeAncestor constraint in MPS DSL.
-    // TODO: For now I did not expose it because editor is calling this method with null containmentLink from time
-    // TODO: to time -> additional refactoring is required in editor framework in order to achieve it.
-    return canBeAncestor(new ConstraintContext_CanBeAncestor(parentNode, childConcept, parentNode, containmentLink), checkingNodeContext);
-  }
+  /**
+   * it seems that only canBeParentPredicate needs this method
+   * it does canBeAncestor checks for all pairs (node, parentNode)
+   *
+   * TODO: ashatalin: make containmentLink @NotNull and expose this parameter inside canBeAncestor constraint in MPS DSL.
+   * TODO: For now I did not expose it because editor is calling this method with null containmentLink from time
+   * TODO: to time -> additional refactoring is required in editor framework in order to achieve it.
+   */
+  @Deprecated
+  @Internal
+  public static boolean canBeAncestorForEditor(@NotNull SNode parentNode,
+                                               @NotNull SAbstractConcept childConcept,
+                                               @Nullable SContainmentLink containmentLink,
+                                               @Nullable CheckingNodeContext checkingNodeContext) {
 
-  public static boolean canBeAncestor(@NotNull SNode childNode, @Nullable CheckingNodeContext checkingNodeContext) {
-    if (childNode.getParent() == null) {
-      // for root nodes it should return true
-      return true;
+    SNode currentNode = parentNode.getParent();
+    while (currentNode != null) {
+      ConstraintContext_CanBeAncestor context = new ConstraintContext_CanBeAncestor(parentNode, childConcept, parentNode, containmentLink);
+      ConstraintsDescriptor descriptor = ConceptRegistryUtil.getConstraintsDescriptor(currentNode.getConcept());
+
+      if (!descriptor.canBeAncestor(context, checkingNodeContext)) {
+        return false;
+      }
+
+      currentNode = currentNode.getParent();
     }
-    return canBeAncestor(new ConstraintContext_CanBeAncestor(childNode, childNode.getParent()), checkingNodeContext);
+
+    return true;
   }
 
-  public static boolean canBeAncestorDirect(@NotNull SNode ancestor, @NotNull SAbstractConcept childConcept, @NotNull SNode parent,
-      /*TODO @NotNull*/ SContainmentLink containmentLink, @Nullable CheckingNodeContext checkingNodeContext) {
-    return canBeAncestorDirect(new ConstraintContext_CanBeAncestor(ancestor, childConcept, parent, containmentLink), checkingNodeContext);
-  }
-
-  public static boolean canBeAncestorDirect(@NotNull SNode ancestor, @NotNull SNode descendant, @Nullable CheckingNodeContext checkingNodeContext) {
-    return canBeAncestorDirect(new ConstraintContext_CanBeAncestor(ancestor, descendant), checkingNodeContext);
+  public static boolean canBeAncestor(@NotNull SNode ancestor,
+                                      @NotNull SNode descendant,
+                                      @Nullable CheckingNodeContext checkingNodeContext) {
+    return canBeAncestor0(new ConstraintContext_CanBeAncestor(ancestor, descendant), checkingNodeContext);
   }
 
   @Deprecated
@@ -124,44 +137,40 @@ public class ModelConstraints {
   }
 
   @Deprecated
-  public static boolean canBeRoot(@NotNull SAbstractConcept concept, @NotNull SModel model, CheckingNodeContext checkingNodeContext) {
-    ConstraintContext_CanBeRoot context = new ConstraintContext_CanBeRoot(concept, model);
-    boolean legacyResult = legacyCanBeRoot(context, checkingNodeContext);
-    return legacyResult && !checkPerConceptRulesOfKind(concept, CanBeRootKind.INSTANCE, context.adapt()).findAny().isPresent();
+  public static boolean canBeRoot(@NotNull SAbstractConcept concept, @NotNull SModel model, @Nullable CheckingNodeContext debugInfo) {
+    CanBeRootContext context = new CanBeRootContext(concept, model);
+    Optional<Rule<CanBeRootContext>> first = checkPerConceptRulesOfKind(concept, CanBeRootKind.INSTANCE, context).findFirst();
+    if (first.isPresent() && debugInfo != null) {
+      debugInfo.setBreakingNode(first.get().getRuleSourceNode());
+    }
+    return !first.isPresent();
   }
 
   // private canBe* section
 
-  private static boolean canBeAncestor(@NotNull ConstraintContext_CanBeAncestor context, @Nullable CheckingNodeContext checkingNodeContext) {
-    SNode currentNode = context.getNode();
-
-    while (currentNode != null) {
-      context.setNode(currentNode);
-      ConstraintsDescriptor descriptor = ConceptRegistryUtil.getConstraintsDescriptor(currentNode.getConcept());
-
-      if (!descriptor.canBeAncestor(context, checkingNodeContext)) {
-        return false;
-      }
-
-      currentNode = currentNode.getParent();
+  private static boolean canBeAncestor0(@NotNull ConstraintContext_CanBeAncestor context, @Nullable CheckingNodeContext debugInfo) {
+    Optional<Rule<CanBeAncestorContext>> first =
+        checkPerConceptRulesOfKind(context.getNode().getConcept(), CanBeRootKind.INSTANCE, context.adapt()).findFirst();
+    if (first.isPresent() && debugInfo != null) {
+      debugInfo.setBreakingNode(first.get().getRuleSourceNode());
     }
-
-    return true;
+    return !first.isPresent();
   }
 
-  private static boolean canBeAncestorDirect(@NotNull ConstraintContext_CanBeAncestor context, @Nullable CheckingNodeContext checkingNodeContext) {
-    ConstraintsDescriptor descriptor = ConceptRegistryUtil.getConstraintsDescriptor(context.getNode().getConcept());
-    return descriptor.canBeAncestor(context, checkingNodeContext);
+  private static boolean canBeParent0(@NotNull ConstraintContext_CanBeParent context, @Nullable CheckingNodeContext debugInfo) {
+    Optional<Rule<ContainmentContext>> first = checkPerConceptRulesOfKind(context.getConcept(), CanBeParentKind.INSTANCE, context.adapt()).findFirst();
+    if (first.isPresent() && debugInfo != null) {
+      debugInfo.setBreakingNode(first.get().getRuleSourceNode());
+    }
+    return !first.isPresent();
   }
 
-  private static boolean canBeParent0(@NotNull ConstraintContext_CanBeParent context, @Nullable CheckingNodeContext checkingNodeContext) {
-    boolean legacyResult = legacyCanBeParent(context, checkingNodeContext);
-    return legacyResult && !checkPerConceptRulesOfKind(context.getConcept(), CanBeParentKind.INSTANCE, context.adapt()).findAny().isPresent();
-  }
-
-  private static boolean canBeChild0(@NotNull ConstraintContext_CanBeChild context, @Nullable CheckingNodeContext checkingNodeContext) {
-    boolean legacyResult = legacyCanBeChild(context, checkingNodeContext);
-    return legacyResult && !checkPerConceptRulesOfKind(context.getConcept(), CanBeChildKind.INSTANCE, context.adapt()).findAny().isPresent();
+  private static boolean canBeChild0(@NotNull ConstraintContext_CanBeChild context, @Nullable CheckingNodeContext debugInfo) {
+    Optional<Rule<ContainmentContext>> first = checkPerConceptRulesOfKind(context.getConcept(), CanBeChildKind.INSTANCE, context.adapt()).findFirst();
+    if (first.isPresent() && debugInfo != null) {
+      debugInfo.setBreakingNode(first.get().getRuleSourceNode());
+    }
+    return !first.isPresent();
   }
 
   // scopes part

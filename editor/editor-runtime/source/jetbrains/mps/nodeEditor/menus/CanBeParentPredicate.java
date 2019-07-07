@@ -62,6 +62,6 @@ public class CanBeParentPredicate implements Predicate<SAbstractConcept> {
                                                                  .link(myContainmentLink)
                                                                  .build();
     return (myContainmentLink == null || ConstraintsCanBeFacade.checkCanBeParent(context).isEmpty()) &&
-           ModelConstraints.canBeAncestor(myParentNode, concept, myContainmentLink, null);
+           ModelConstraints.canBeAncestorForEditor(myParentNode, concept, myContainmentLink, null);
   }
 }

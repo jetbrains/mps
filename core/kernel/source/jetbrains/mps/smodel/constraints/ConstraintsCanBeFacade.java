@@ -18,6 +18,8 @@ package jetbrains.mps.smodel.constraints;
 import jetbrains.mps.core.aspects.constraints.rules.RulesConstraintsRegistry;
 import jetbrains.mps.core.aspects.constraints.rules.Rule;
 import jetbrains.mps.core.aspects.constraints.rules.RuleKind;
+import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeAncestorContext;
+import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeAncestorKind;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeChildKind;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeParentKind;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeRootContext;
@@ -31,7 +33,6 @@ import jetbrains.mps.smodel.runtime.ConstraintContext_CanBeChild;
 import jetbrains.mps.smodel.runtime.ConstraintContext_CanBeParent;
 import jetbrains.mps.smodel.runtime.ConstraintContext_CanBeRoot;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
-import jetbrains.mps.smodel.runtime.impl.CheckingNodeContextImpl;
 import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -60,6 +61,7 @@ public class ConstraintsCanBeFacade {
   @NotNull
   public static List<Rule<CanBeRootContext>> checkCanBeRoot(@NotNull CanBeRootContext context) {
     SAbstractConcept concept = context.getConcept();
+    // this is the legacy block I do not remove for now
     if (concept.isAbstract()) {
       return Collections.emptyList();
     }
@@ -71,14 +73,8 @@ public class ConstraintsCanBeFacade {
       return Collections.singletonList(new AdaptedLegacyConstraintsRule<>(concept, CanBeRootKind.INSTANCE, concept.getSourceNode()));
     }
 
-    CheckingNodeContextImpl debugInfo = new CheckingNodeContextImpl();
     CanBeRootKind kind = CanBeRootKind.INSTANCE;
-    List<Rule<CanBeRootContext>> constraintsRules = checkPerConceptRulesOfKind(context.getConcept(), kind, context).collect(Collectors.toList());
-    boolean legacyAreOk = legacyCanBeRoot(ConstraintContext_CanBeRoot.convert(context), debugInfo);
-    if (!legacyAreOk) {
-      constraintsRules.add(new AdaptedLegacyConstraintsRule<>(context.getConcept(), kind, debugInfo.getBreakingNode()));
-    }
-    return constraintsRules;
+    return checkPerConceptRulesOfKind(context.getConcept(), kind, context).collect(Collectors.toList());
   }
 
   /**
@@ -90,14 +86,8 @@ public class ConstraintsCanBeFacade {
       // for root nodes it should return true
       return Collections.emptyList();
     }
-    CheckingNodeContextImpl debugInfo = new CheckingNodeContextImpl();
     CanBeParentKind kind = CanBeParentKind.INSTANCE;
-    List<Rule<ContainmentContext>> constraintsRules = checkPerConceptRulesOfKind(context.getParentConcept(), kind, context).collect(Collectors.toList());
-    boolean legacyAreOk = legacyCanBeParent(ConstraintContext_CanBeParent.convert(context), debugInfo);
-    if (!legacyAreOk) {
-      constraintsRules.add(new AdaptedLegacyConstraintsRule<>(context.getParentConcept(), kind, debugInfo.getBreakingNode()));
-    }
-    return constraintsRules;
+    return checkPerConceptRulesOfKind(context.getParentConcept(), kind, context).collect(Collectors.toList());
   }
 
   /**
@@ -105,14 +95,14 @@ public class ConstraintsCanBeFacade {
    */
   @NotNull
   public static List<Rule<ContainmentContext>> checkCanBeChild(@NotNull ContainmentContext context) {
-    CheckingNodeContextImpl debugInfo = new CheckingNodeContextImpl();
     CanBeChildKind kind = CanBeChildKind.INSTANCE;
-    List<Rule<ContainmentContext>> constraintsRules = checkPerConceptRulesOfKind(context.getChildConcept(), kind, context).collect(Collectors.toList());
-    boolean legacyAreOk = legacyCanBeChild(ConstraintContext_CanBeChild.convert(context), debugInfo);
-    if (!legacyAreOk) {
-      constraintsRules.add(new AdaptedLegacyConstraintsRule<>(context.getChildConcept(), kind, debugInfo.getBreakingNode()));
-    }
-    return constraintsRules;
+    return checkPerConceptRulesOfKind(context.getChildConcept(), kind, context).collect(Collectors.toList());
+  }
+
+  @NotNull
+  public static List<Rule<CanBeAncestorContext>> checkCanBeAncestor(@NotNull CanBeAncestorContext context) {
+    CanBeAncestorKind kind = CanBeAncestorKind.INSTANCE;
+    return checkPerConceptRulesOfKind(context.getAncestorNode().getConcept(), kind, context).collect(Collectors.toList());
   }
 
   /**
@@ -122,41 +112,5 @@ public class ConstraintsCanBeFacade {
   static <C extends Context> Stream<Rule<C>> checkPerConceptRulesOfKind(@NotNull SAbstractConcept concept, @NotNull RuleKind kind, @NotNull C context) {
     RulesConstraintsRegistry constraintsRegistry = ConceptRegistry.getInstance().getConstraintsRegistry().getNewRegistry();
     return constraintsRegistry.getPerConceptFailingRulesFor(concept, kind, context);
-  }
-
-  @ToRemove(version = 300)
-  static boolean legacyCanBeRoot(@NotNull ConstraintContext_CanBeRoot context,
-                                 @Nullable CheckingNodeContext checkingNodeContext) {
-    SAbstractConcept concept = context.getConcept();
-    if (concept.isAbstract()) {
-      return false;
-    }
-
-    if (!(concept instanceof SConcept)) {
-      throw new IllegalArgumentException("The argument must be abstract or implement SConcept");
-    }
-    if (!((SConcept) concept).isRootable()) {
-      if (checkingNodeContext != null && concept.getSourceNode() != null) {
-        checkingNodeContext.setBreakingNode(concept.getSourceNode());
-      }
-      return false;
-    }
-
-    ConstraintsDescriptor descriptor = ConceptRegistryUtil.getConstraintsDescriptor(concept);
-    return descriptor.canBeRoot(context, checkingNodeContext);
-  }
-
-  @ToRemove(version = 300)
-  static boolean legacyCanBeChild(@NotNull ConstraintContext_CanBeChild context,
-                                  @Nullable CheckingNodeContext checkingNodeContext) {
-    ConstraintsDescriptor descriptor = ConceptRegistry.getInstance().getConstraintsDescriptor(context.getConcept());
-    return descriptor.canBeChild(context, checkingNodeContext);
-  }
-
-  @ToRemove(version = 300)
-  static boolean legacyCanBeParent(@NotNull ConstraintContext_CanBeParent context,
-                                   @Nullable CheckingNodeContext checkingNodeContext) {
-    ConstraintsDescriptor descriptor = ConceptRegistry.getInstance().getConstraintsDescriptor(context.getConcept());
-    return descriptor.canBeParent(context, checkingNodeContext);
   }
 }

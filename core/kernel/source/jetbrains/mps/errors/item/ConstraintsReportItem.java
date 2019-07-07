@@ -106,9 +106,11 @@ public abstract class ConstraintsReportItem extends NodeReportItemBase implement
   }
 
   public static class CanBeAncestorFailedReportItem extends ConstraintsReportItem {
-    public CanBeAncestorFailedReportItem(@NotNull SNode node, @NotNull SNode ancestor, @NotNull TypesystemRuleId ruleNode) {
-      super(node, "Invalid ancestor: " + ancestor, ruleNode);
+    public CanBeAncestorFailedReportItem(@NotNull SNode ancestor, @NotNull SNode child, @NotNull String message,
+                                         @NotNull TypesystemRuleId ruleNode) {
+      super(child, message, ruleNode);
     }
+
     @Override
     public ItemKind getIssueKind() {
       return IssueKindReportItem.CONSTRAINTS.deriveItemKind("cannot be ancestor");

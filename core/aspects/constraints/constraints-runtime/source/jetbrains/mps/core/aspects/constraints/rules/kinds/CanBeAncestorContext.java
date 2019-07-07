@@ -16,7 +16,6 @@
 package jetbrains.mps.core.aspects.constraints.rules.kinds;
 
 import jetbrains.mps.core.context.Context;
-import jetbrains.mps.core.context.ContextGenre;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
@@ -26,36 +25,40 @@ import org.jetbrains.mps.openapi.model.SNode;
 
 @Immutable
 public final class CanBeAncestorContext implements Context {
-  @NotNull private final SAbstractConcept myChildConcept;
-  // might be root
-  @Nullable private final SNode myChildNode;
-  @Nullable private final SNode myParentNode;
-  @NotNull private final SAbstractConcept myParentConcept;
-  @Nullable/*TODO @NotNull*/ private final SContainmentLink myLink;
+  @NotNull private final SNode myAncestorNode;
 
-  private CanBeAncestorContext(@NotNull SNode childNode) {
-    myChildNode = childNode;
-    myParentNode = childNode.getParent();
-    myParentConcept = myParentNode.getConcept();
-    myChildConcept = childNode.getConcept();
-    myLink = childNode.getContainmentLink();
+  @Nullable private final SNode myDescendantNode;
+  @NotNull private final SNode myParentNode; // the parent of the descendant
+  @NotNull private final SAbstractConcept myDescendantConcept;
+  /*TODO @NotNull*/ private final SContainmentLink myLink;
+
+  private CanBeAncestorContext(@NotNull SNode ancestorNode, @NotNull SNode descendantNode) {
+    myAncestorNode = ancestorNode;
+    myDescendantNode = descendantNode;
+    myParentNode = descendantNode.getParent();
+    myDescendantConcept = descendantNode.getConcept();
+    myLink = descendantNode.getContainmentLink();
   }
 
-  private CanBeAncestorContext(@NotNull SAbstractConcept childConcept,
-                               @Nullable SNode childNode,
-                               @NotNull SAbstractConcept parentConcept,
-                               @Nullable SNode parentNode,
+  private CanBeAncestorContext(@NotNull SNode ancestorNode,
+                               @NotNull SAbstractConcept descendantConcept,
+                               @NotNull SNode parentNode,
                                @Nullable SContainmentLink link) {
-    myChildConcept = childConcept;
-    myChildNode = childNode;
-    myParentConcept = parentConcept;
+    myAncestorNode = ancestorNode;
+    myDescendantNode = null;
     myParentNode = parentNode;
+    myDescendantConcept = descendantConcept;
     myLink = link;
   }
 
+  @NotNull
+  public SNode getAncestorNode() {
+    return myAncestorNode;
+  }
+
   @Nullable
-  public SNode getChildNode() {
-    return myChildNode;
+  public SNode getDescendantNode() {
+    return myDescendantNode;
   }
 
   @NotNull
@@ -63,56 +66,44 @@ public final class CanBeAncestorContext implements Context {
     return myParentNode;
   }
 
-  @Nullable
+  @NotNull
   public SContainmentLink getLink() {
     return myLink;
   }
 
-  public SAbstractConcept getChildConcept() {
-    return myChildConcept;
-  }
-
-  @NotNull
-  @Override
-  public ContextGenre getCategory() {
-    throw new UnsupportedOperationException("GAGAGAGA");
-  }
-
-  @NotNull
-  public SAbstractConcept getParentConcept() {
-    return myParentConcept;
+  public SAbstractConcept getDescendantConcept() {
+    return myDescendantConcept;
   }
 
   public static final class Builder {
-    private SNode childNode;
-    private SAbstractConcept childConcept;
+    private SNode ancestorNode;
+    private SNode descendantNode;
+    private SAbstractConcept descendantConcept;
+    private SNode parentNode; // the parent of the descendant
     private SContainmentLink link;
-    private SNode parentNode;
-    private SAbstractConcept parentConcept;
 
-    public Builder childNode(@Nullable SNode childNode) {
-      this.childNode = childNode;
-      if (childNode != null) {
-        childConcept = childNode.getConcept();
+    public Builder ancestorNode(@Nullable SNode ancestorNode) {
+      this.ancestorNode = ancestorNode;
+      return this;
+    }
+
+    public Builder descendantNode(@Nullable SNode descendantNode) {
+      this.descendantNode = descendantNode;
+      if (descendantNode != null) {
+        descendantConcept = descendantNode.getConcept();
+        parentNode = descendantNode.getParent();
+        link = descendantNode.getContainmentLink();
       }
       return this;
     }
 
     public Builder parentNode(@Nullable SNode parentNode) {
       this.parentNode = parentNode;
-      if (parentNode != null) {
-        parentConcept = parentNode.getConcept();
-      }
-      return this;
-    }
-
-    public Builder parentConcept(@NotNull SNode parentNode) {
-      this.parentNode = parentNode;
       return this;
     }
 
     public Builder childConcept(@NotNull SAbstractConcept childConcept) {
-      this.childConcept = childConcept;
+      this.descendantConcept = childConcept;
       return this;
     }
 
@@ -122,13 +113,9 @@ public final class CanBeAncestorContext implements Context {
     }
 
     @NotNull
-    public CanBeAncestorContext buildFromChildNode(@NotNull SNode childNode) {
-      return new CanBeAncestorContext(childNode);
-    }
-
-    @NotNull
     public CanBeAncestorContext build() {
-      return new CanBeAncestorContext(childConcept, childNode, parentConcept, parentNode, link);
+      return descendantNode != null ? new CanBeAncestorContext(ancestorNode, descendantNode)
+                                    : new CanBeAncestorContext(ancestorNode, descendantConcept, parentNode, link);
     }
   }
 }

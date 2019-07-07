@@ -15,15 +15,10 @@
  */
 package jetbrains.mps.checkers;
 
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes._return_P1_E0;
 import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.core.aspects.constraints.rules.Rule;
-import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeChildKind;
-import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeParentKind;
+import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeAncestorContext;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeRootContext;
-import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeRootKind;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.ContainmentContext;
 import jetbrains.mps.core.aspects.feedback.api.FeedbackAspectRegistry;
 import jetbrains.mps.core.aspects.feedback.messages.FailingPropertyConstraintContext;
@@ -35,16 +30,12 @@ import jetbrains.mps.errors.item.ConstraintsReportItem.CanBeRootFailedReportItem
 import jetbrains.mps.errors.item.ConstraintsReportItem.PropertyConstraintReportItem;
 import jetbrains.mps.errors.item.IssueKindReportItem;
 import jetbrains.mps.errors.item.NodeReportItem;
-import jetbrains.mps.errors.item.RuleIdFlavouredItem;
 import jetbrains.mps.errors.item.RuleIdFlavouredItem.TypesystemRuleId;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.project.validation.ConceptFeatureMissingError;
 import jetbrains.mps.project.validation.ConceptMissingError;
 import jetbrains.mps.smodel.constraints.ConstraintsCanBeFacade;
 import jetbrains.mps.smodel.constraints.ConstraintsChildAndPropFacade;
-import jetbrains.mps.smodel.constraints.ModelConstraints;
-import jetbrains.mps.smodel.runtime.CheckingNodeContext;
-import jetbrains.mps.smodel.runtime.impl.CheckingNodeContextImpl;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -54,7 +45,6 @@ import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
-import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.List;
@@ -76,45 +66,37 @@ public class ConstraintsChecker extends AbstractNodeCheckerInEditor implements I
     return AbstractNodeCheckerInEditor.SKIP_CONSTRAINTS_CONDITION;
   }
 
-  private void runCheck(LanguageErrorsCollector errorsCollector, final _FunctionTypes._return_P1_E0<? extends Boolean, ? super CheckingNodeContext> check, _FunctionTypes._return_P1_E0<? extends NodeReportItem, ? super RuleIdFlavouredItem.TypesystemRuleId> reportItem) {
-    final CheckingNodeContextImpl context = new CheckingNodeContextImpl();
-    boolean success = errorsCollector.runCheckingAction(() -> check.invoke(context));
-    if (!(success)) {
-      SNodeReference breakingNode = context.getBreakingNode();
-      errorsCollector.addError(reportItem.invoke((breakingNode == null ? null : new RuleIdFlavouredItem.TypesystemRuleId(breakingNode))));
-    }
-  }
-
   @Override
-  public void checkNodeInEditor(final SNode node, LanguageErrorsCollector errorsCollector, SRepository repository) {
-    final SAbstractConcept nodeConcept = SNodeOperations.getConcept(node);
+  public void checkNodeInEditor(@NotNull final SNode node, LanguageErrorsCollector errorsCollector, SRepository repository) {
+    final SAbstractConcept concept = node.getConcept();
     final SNode parent = SNodeOperations.getParent(node);
 
-    if (!nodeConcept.isValid()) {
-      errorsCollector.addError(new ConceptMissingError(node, nodeConcept));
+    if (!concept.isValid()) {
+      errorsCollector.addError(new ConceptMissingError(node, concept));
     }
 
-    checkParentChild(node, errorsCollector, nodeConcept, parent);
+    checkParentChild(node, parent, errorsCollector);
 
-    checkCanBeRoot(node, errorsCollector, nodeConcept);
+    checkCanBeRoot(node, errorsCollector);
 
-    checkCanBeAncestor(node, errorsCollector, parent);
+    checkCanBeAncestor(node, parent, errorsCollector);
 
-    checkProperties(node, errorsCollector, nodeConcept);
+    checkProperties(node, errorsCollector);
   }
 
   // rewrite report items so that they respect problems
   // then all these checks will turn into one
 
-  private void checkProperties(@NotNull SNode node, LanguageErrorsCollector errorsCollector, SAbstractConcept concept) {
-    for (SProperty property : concept.getProperties()) {
+  private void checkProperties(@NotNull SNode node,
+                               @NotNull LanguageErrorsCollector errorsCollector) {
+    for (SProperty property : node.getConcept().getProperties()) {
       FailingPropertyConstraintContext context = new FailingPropertyConstraintContext(node, property, SNodeAccessUtil.getPropertyValue(node, property));
       List<? extends Problem> problems = errorsCollector.runCheckingAction(() -> ConstraintsChildAndPropFacade.checkPropertyValue(context));
       if (!problems.isEmpty()) {
         for (Problem problem : problems) {
           TypesystemRuleId ruleId = new TypesystemRuleId(problem.getProblemSource());
           FailingConstraintsMessagesFacade facade = getMessageFacade();
-          List<String> messages = facade.findTextMessagesForProblem(concept, problem, context);
+          List<String> messages = facade.findTextMessagesForProblem(node.getConcept(), problem, context);
           for (String message : messages) {
             errorsCollector.addError(new PropertyConstraintReportItem(node, property, ruleId, message));
           }
@@ -123,67 +105,82 @@ public class ConstraintsChecker extends AbstractNodeCheckerInEditor implements I
     }
   }
 
-  private void checkCanBeAncestor(SNode node, LanguageErrorsCollector errorsCollector, SNode parent) {
-    for (final Wrappers._T<SNode> ancestor = new Wrappers._T<SNode>(parent); ancestor.value != null; ancestor.value = SNodeOperations.getParent(ancestor.value)) {
-      runCheck(errorsCollector, context -> ModelConstraints.canBeAncestorDirect(ancestor.value, node, context),
-               (_return_P1_E0<CanBeAncestorFailedReportItem, TypesystemRuleId>) ruleId -> new CanBeAncestorFailedReportItem(node, ancestor.value, ruleId));
+  private void checkCanBeAncestor(@NotNull SNode child,
+                                  @NotNull SNode parent,
+                                  @NotNull LanguageErrorsCollector errorsCollector) {
+    for (SNode ancestor = parent; ancestor != null; ancestor = ancestor.getParent()) {
+      final CanBeAncestorContext context = new CanBeAncestorContext.Builder().ancestorNode(ancestor)
+                                                                             .descendantNode(child)
+                                                                             .build();
+      List<Rule<CanBeAncestorContext>> failingRules = errorsCollector.runCheckingAction(() -> ConstraintsCanBeFacade.checkCanBeAncestor(context));
+      for (Rule<CanBeAncestorContext> rule : failingRules) {
+        TypesystemRuleId ruleId = new TypesystemRuleId(rule.getRuleSourceNode());
+        FailingConstraintsMessagesFacade facade = getMessageFacade();
+        List<String> messages = facade.findTextMessagesForRule(context.getAncestorNode().getConcept(), rule, context);
+        for (String message : messages) {
+          errorsCollector.addError(new CanBeAncestorFailedReportItem(ancestor, child, message, ruleId));
+        }
+      }
+
     }
   }
 
-  private void checkCanBeRoot(SNode node, LanguageErrorsCollector errorsCollector, SAbstractConcept concept) {
+  private void checkCanBeRoot(@NotNull SNode node,
+                              @NotNull LanguageErrorsCollector errorsCollector) {
     if ((SNodeOperations.getParent(node) == null)) {
+      SAbstractConcept concept = node.getConcept();
       final SModel model = SNodeOperations.getModel(node);
-      {
-        final CanBeRootContext context = new CanBeRootContext(concept, model);
-        List<Rule<CanBeRootContext>> failingRules = errorsCollector.runCheckingAction(() -> ConstraintsCanBeFacade.checkCanBeRoot(context));
-        for (Rule<CanBeRootContext> rule : failingRules) {
-          TypesystemRuleId ruleId = new TypesystemRuleId(rule.getRuleSourceNode());
-          FailingConstraintsMessagesFacade facade = getMessageFacade();
-          List<String> messages = facade.findTextMessagesForRule(concept, rule, context);
-          for (String message : messages) {
-            errorsCollector.addError(new CanBeChildFailedReportItem(node, message, ruleId));
-          }
+      final CanBeRootContext context = new CanBeRootContext(concept, model);
+      List<Rule<CanBeRootContext>> failingRules = errorsCollector.runCheckingAction(() -> ConstraintsCanBeFacade.checkCanBeRoot(context));
+      for (Rule<CanBeRootContext> rule : failingRules) {
+        TypesystemRuleId ruleId = new TypesystemRuleId(rule.getRuleSourceNode());
+        FailingConstraintsMessagesFacade facade = getMessageFacade();
+        List<String> messages = facade.findTextMessagesForRule(concept, rule, context);
+        for (String message : messages) {
+          errorsCollector.addError(new CanBeRootFailedReportItem(node, message, ruleId));
         }
       }
     }
   }
 
-  private void checkParentChild(@NotNull SNode childNode, LanguageErrorsCollector errorsCollector,
-                                @NotNull SAbstractConcept concept, @Nullable SNode parentNode) {
+  private void checkParentChild(@NotNull SNode childNode,
+                                @Nullable SNode parentNode,
+                                @NotNull LanguageErrorsCollector errorsCollector) {
     if (parentNode != null) {
       errorsCollector.addDependency(parentNode);
       SConcept parentConcept = SNodeOperations.getConcept(parentNode);
       if (parentConcept.isValid()) {
-        {
-          if (!checkContainmentLinkIsPresentInConcept(childNode, errorsCollector, parentConcept)) {
-            errorsCollector.addError(new ConceptFeatureMissingError(childNode, childNode.getContainmentLink()));
-          }
+        if (!checkContainmentLinkIsPresentInConcept(childNode, parentConcept, errorsCollector)) {
+          errorsCollector.addError(new ConceptFeatureMissingError(childNode, childNode.getContainmentLink()));
         }
-        {
-          final ContainmentContext context = new ContainmentContext.Builder().buildFromChildNode(childNode);
-          List<Rule<ContainmentContext>> failingRules = errorsCollector.runCheckingAction(() -> ConstraintsCanBeFacade.checkCanBeChild(context));
-          for (Rule<ContainmentContext> rule : failingRules) {
-            TypesystemRuleId ruleId = new TypesystemRuleId(rule.getRuleSourceNode());
-            FailingConstraintsMessagesFacade facade = getMessageFacade();
-            List<String> messages = facade.findTextMessagesForRule(concept, rule, context);
-            for (String message : messages) {
-              errorsCollector.addError(new CanBeChildFailedReportItem(childNode, message, ruleId));
-            }
-          }
-        }
+        checkCanBeChild(childNode, errorsCollector);
+        checkCanBeParent(childNode, errorsCollector);
+      }
+    }
+  }
 
-        {
-          final ContainmentContext context = new ContainmentContext.Builder().buildFromChildNode(childNode);
-          List<Rule<ContainmentContext>> failingRules = errorsCollector.runCheckingAction(() -> ConstraintsCanBeFacade.checkCanBeParent(context));
-          for (Rule<ContainmentContext> rule : failingRules) {
-            TypesystemRuleId ruleId = new TypesystemRuleId(rule.getRuleSourceNode());
-            FailingConstraintsMessagesFacade facade = getMessageFacade();
-            List<String> messages = facade.findTextMessagesForRule(context.getParentConcept(), rule, context);
-            for (String message : messages) {
-              errorsCollector.addError(new CanBeParentFailedReportItem(childNode, message, ruleId));
-            }
-          }
-        }
+  private void checkCanBeChild(@NotNull SNode childNode, @NotNull LanguageErrorsCollector errorsCollector) {
+    final ContainmentContext context = new ContainmentContext.Builder().buildFromChildNode(childNode);
+    List<Rule<ContainmentContext>> failingRules = errorsCollector.runCheckingAction(() -> ConstraintsCanBeFacade.checkCanBeChild(context));
+    for (Rule<ContainmentContext> rule : failingRules) {
+      TypesystemRuleId ruleId = new TypesystemRuleId(rule.getRuleSourceNode());
+      FailingConstraintsMessagesFacade facade = getMessageFacade();
+      List<String> messages = facade.findTextMessagesForRule(childNode.getConcept(), rule, context);
+      for (String message : messages) {
+        errorsCollector.addError(new CanBeChildFailedReportItem(childNode, message, ruleId));
+      }
+    }
+  }
+
+  private void checkCanBeParent(@NotNull SNode childNode, @NotNull LanguageErrorsCollector errorsCollector) {
+    final ContainmentContext context = new ContainmentContext.Builder().buildFromChildNode(childNode);
+    List<Rule<ContainmentContext>> failingRules = errorsCollector.runCheckingAction(() -> ConstraintsCanBeFacade.checkCanBeParent(context));
+    for (Rule<ContainmentContext> rule : failingRules) {
+      TypesystemRuleId ruleId = new TypesystemRuleId(rule.getRuleSourceNode());
+      FailingConstraintsMessagesFacade facade = getMessageFacade();
+      List<String> messages = facade.findTextMessagesForRule(context.getParentConcept(), rule, context);
+      for (String message : messages) {
+        errorsCollector.addError(new CanBeParentFailedReportItem(childNode, message, ruleId));
       }
     }
   }
@@ -202,9 +199,9 @@ public class ConstraintsChecker extends AbstractNodeCheckerInEditor implements I
     return myHost.findComponent(FeedbackAspectRegistry.class);
   }
 
-  private boolean checkContainmentLinkIsPresentInConcept(SNode node, LanguageErrorsCollector errorsCollector, SConcept parentConcept) {
+  private boolean checkContainmentLinkIsPresentInConcept(SNode node, SConcept parentConcept, LanguageErrorsCollector errorsCollector) {
     SContainmentLink link = node.getContainmentLink();
-    if (!(parentConcept.getContainmentLinks().contains(link))) {
+    if (!parentConcept.getContainmentLinks().contains(link)) {
       errorsCollector.addError(new ConceptFeatureMissingError(node, SNodeOperations.getContainingLink(node)));
       return false;
     }

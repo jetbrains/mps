@@ -29,68 +29,64 @@ import org.jetbrains.mps.openapi.model.SNode;
  * @since 3.5
  */
 public final class ConstraintContext_CanBeAncestor {
+  @NotNull private final CanBeAncestorContext myContext;
 
-  @Nullable
-  private final SNode myChildNode;
-
-  @NotNull
-  private final SNode myParentNode;
-
-  @NotNull
-  private SNode myNode;
-
-  @NotNull
-  private final SAbstractConcept myChildConcept;
-
-  /*TODO @NotNull*/
-  private final SContainmentLink myLink;
-
-  public ConstraintContext_CanBeAncestor(@NotNull SNode node, @NotNull SNode childNode) {
-    myChildNode = childNode;
-    myParentNode = childNode.getParent();
-    myNode = node;
-    myChildConcept = childNode.getConcept();
-    myLink = childNode.getContainmentLink();
+  private ConstraintContext_CanBeAncestor(@NotNull CanBeAncestorContext context) {
+    myContext = context;
   }
 
-  public ConstraintContext_CanBeAncestor(@NotNull SNode node, @NotNull SAbstractConcept childConcept, @NotNull SNode parentNode, SContainmentLink link) {
-    myChildNode = null;
-    myParentNode = parentNode;
-    myNode = node;
-    myChildConcept = childConcept;
-    myLink = link;
+  public ConstraintContext_CanBeAncestor(@NotNull SNode ancestor, @NotNull SNode descendant) {
+    this(new CanBeAncestorContext.Builder().ancestorNode(ancestor)
+                                           .descendantNode(descendant)
+                                           .build());
+  }
+
+  public ConstraintContext_CanBeAncestor(@NotNull SNode ancestor,
+                                         @NotNull SAbstractConcept childConcept,
+                                         @NotNull SNode parentNode,
+                                         SContainmentLink link) {
+    this(new CanBeAncestorContext.Builder().ancestorNode(ancestor)
+                                           .childConcept(childConcept)
+                                           .parentNode(parentNode)
+                                           .link(link)
+                                           .build());
   }
 
   @NotNull
   public static ConstraintContext_CanBeAncestor convert(@NotNull CanBeAncestorContext context) {
-    return new ConstraintContext_CanBeAncestor(null, null);
+    return new ConstraintContext_CanBeAncestor(context);
+  }
+
+  @NotNull
+  public CanBeAncestorContext adapt() {
+    return myContext;
   }
 
   @Nullable
   public SNode getChildNode() {
-    return myChildNode;
+    return myContext.getDescendantNode();
   }
 
   @NotNull
   public SNode getParentNode() {
-    return myParentNode;
+    return myContext.getParentNode();
   }
 
+  /**
+   * @return the ancestor node
+   */
   @NotNull
   public SNode getNode() {
-    return myNode;
-  }
-
-  public void setNode(@NotNull SNode node) {
-    myNode = node;
+    return myContext.getAncestorNode();
   }
 
   @NotNull
   public SAbstractConcept getChildConcept() {
-    return myChildConcept;
+    return myContext.getDescendantConcept();
   }
 
+  @Nullable
   public SContainmentLink getLink() {
-    return myLink;
+    return myContext.getLink();
   }
 }

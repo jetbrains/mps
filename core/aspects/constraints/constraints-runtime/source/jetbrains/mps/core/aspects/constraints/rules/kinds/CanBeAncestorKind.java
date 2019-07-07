@@ -38,6 +38,6 @@ public enum CanBeAncestorKind implements RuleKind, LegacyRuleKind<CanBeAncestorC
   @NotNull
   @Override
   public String getDefaultMessage(@NotNull CanBeAncestorContext context) {
-    return MessageFormat.format("Node ''{1}'' cannot be ancestor of node ''{0}''", context.getChildNode(), context.getParentNode());
+    return MessageFormat.format("Node ''{1}'' cannot be ancestor of node ''{0}''", context.getDescendantNode(), context.getParentNode());
   }
 }
