@@ -21,12 +21,10 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 public interface RulesConstraintsAspect extends ILanguageAspect {
-//  List<RuleKind> CORE_KINDS = Arrays.asList(CanBeChildKind.INSTANCE, CanBeParentKind.INSTANCE, CanBeRootKind.INSTANCE);
-
   @Nullable RulesConstraintsDescriptor getDescriptor(@NotNull SAbstractConcept concept);
 
 //  @NotNull
 //  default List<RuleKind> getRegisteredRuleKinds() {
-//    return CORE_KINDS;
+//    return Arrays.asList(PredefinedRuleKinds.values);
 //  }
 }

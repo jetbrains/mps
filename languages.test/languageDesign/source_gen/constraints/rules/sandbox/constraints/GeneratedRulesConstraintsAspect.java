@@ -4,15 +4,9 @@ package constraints.rules.sandbox.constraints;
 
 import jetbrains.mps.core.aspects.constraints.rules.RulesConstraintsAspect;
 import jetbrains.mps.core.aspects.constraints.rules.RulesConstraintsDescriptor;
-import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import java.util.List;
-import jetbrains.mps.core.aspects.constraints.rules.RuleKind;
-import java.util.Arrays;
-import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeChildKind;
-import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeParentKind;
-import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeRootKind;
 
 public final class GeneratedRulesConstraintsAspect implements RulesConstraintsAspect {
   @Nullable
@@ -20,11 +14,5 @@ public final class GeneratedRulesConstraintsAspect implements RulesConstraintsAs
   public RulesConstraintsDescriptor getDescriptor(@NotNull SAbstractConcept concept) {
     SAbstractConcept cncpt = concept;
     return null;
-  }
-
-  @NotNull
-  @Override
-  public List<RuleKind> getRegisteredRuleKinds() {
-    return Arrays.<RuleKind>asList(CanBeChildKind.INSTANCE, CanBeParentKind.INSTANCE, CanBeRootKind.INSTANCE);
   }
 }

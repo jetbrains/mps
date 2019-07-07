@@ -10,9 +10,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import java.util.List;
 import jetbrains.mps.core.aspects.constraints.rules.RuleKind;
 import java.util.Arrays;
-import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeChildKind;
-import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeParentKind;
-import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeRootKind;
+
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
@@ -33,7 +31,7 @@ public final class GeneratedRulesConstraintsAspect implements RulesConstraintsAs
   @NotNull
   @Override
   public List<RuleKind> getRegisteredRuleKinds() {
-    return Arrays.<RuleKind>asList(CanBeChildKind.INSTANCE, CanBeParentKind.INSTANCE, CanBeRootKind.INSTANCE);
+    return Arrays.<RuleKind>asList(PredefinedRuleKinds.CAN_BE_CHILD, PredefinedRuleKinds.CAN_BE_PARENT, PredefinedRuleKinds.CAN_BE_ROOT);
   }
   private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L)).seal();
 }

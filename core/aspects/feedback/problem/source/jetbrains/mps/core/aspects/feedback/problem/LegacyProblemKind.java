@@ -27,6 +27,7 @@ import org.jetbrains.annotations.NotNull;
  */
 public interface LegacyProblemKind {
   /**
+   * will go away
    * @return the default message for the given context
    */
   @NotNull String getDefaultMessage(@NotNull Context context);

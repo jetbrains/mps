@@ -17,11 +17,9 @@ package jetbrains.mps.smodel.constraints;
 
 import jetbrains.mps.core.aspects.constraints.rules.Rule;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeAncestorContext;
-import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeChildKind;
-import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeParentKind;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeRootContext;
-import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeRootKind;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.ContainmentContext;
+import jetbrains.mps.core.aspects.constraints.rules.kinds.PredefinedRuleKinds;
 import jetbrains.mps.core.aspects.feedback.messages.FailingPropertyConstraintContext;
 import jetbrains.mps.core.aspects.feedback.messages.FailingPropertyConstraintProblem;
 import jetbrains.mps.scope.Scope;
@@ -139,7 +137,7 @@ public class ModelConstraints {
   @Deprecated
   public static boolean canBeRoot(@NotNull SAbstractConcept concept, @NotNull SModel model, @Nullable CheckingNodeContext debugInfo) {
     CanBeRootContext context = new CanBeRootContext(concept, model);
-    Optional<Rule<CanBeRootContext>> first = checkPerConceptRulesOfKind(concept, CanBeRootKind.INSTANCE, context).findFirst();
+    Optional<Rule<CanBeRootContext>> first = checkPerConceptRulesOfKind(concept, PredefinedRuleKinds.CAN_BE_ROOT, context).findFirst();
     if (first.isPresent() && debugInfo != null) {
       debugInfo.setBreakingNode(first.get().getRuleSourceNode());
     }
@@ -150,7 +148,7 @@ public class ModelConstraints {
 
   private static boolean canBeAncestor0(@NotNull ConstraintContext_CanBeAncestor context, @Nullable CheckingNodeContext debugInfo) {
     Optional<Rule<CanBeAncestorContext>> first =
-        checkPerConceptRulesOfKind(context.getNode().getConcept(), CanBeRootKind.INSTANCE, context.adapt()).findFirst();
+        checkPerConceptRulesOfKind(context.getNode().getConcept(), PredefinedRuleKinds.CAN_BE_ANCESTOR, context.adapt()).findFirst();
     if (first.isPresent() && debugInfo != null) {
       debugInfo.setBreakingNode(first.get().getRuleSourceNode());
     }
@@ -158,7 +156,7 @@ public class ModelConstraints {
   }
 
   private static boolean canBeParent0(@NotNull ConstraintContext_CanBeParent context, @Nullable CheckingNodeContext debugInfo) {
-    Optional<Rule<ContainmentContext>> first = checkPerConceptRulesOfKind(context.getConcept(), CanBeParentKind.INSTANCE, context.adapt()).findFirst();
+    Optional<Rule<ContainmentContext>> first = checkPerConceptRulesOfKind(context.getConcept(), PredefinedRuleKinds.CAN_BE_PARENT, context.adapt()).findFirst();
     if (first.isPresent() && debugInfo != null) {
       debugInfo.setBreakingNode(first.get().getRuleSourceNode());
     }
@@ -166,7 +164,7 @@ public class ModelConstraints {
   }
 
   private static boolean canBeChild0(@NotNull ConstraintContext_CanBeChild context, @Nullable CheckingNodeContext debugInfo) {
-    Optional<Rule<ContainmentContext>> first = checkPerConceptRulesOfKind(context.getConcept(), CanBeChildKind.INSTANCE, context.adapt()).findFirst();
+    Optional<Rule<ContainmentContext>> first = checkPerConceptRulesOfKind(context.getConcept(), PredefinedRuleKinds.CAN_BE_CHILD, context.adapt()).findFirst();
     if (first.isPresent() && debugInfo != null) {
       debugInfo.setBreakingNode(first.get().getRuleSourceNode());
     }

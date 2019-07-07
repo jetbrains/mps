@@ -15,7 +15,6 @@ import jetbrains.mps.core.aspects.constraints.rules.BaseRule;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.core.aspects.constraints.rules.RuleId;
-import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeChildKind;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 
 public final class ChildConcept_Constraints2 extends BaseRulesConstraintsDescriptor {
@@ -40,7 +39,7 @@ public final class ChildConcept_Constraints2 extends BaseRulesConstraintsDescrip
     public static final RuleId ID_toleranceNotTooHigh = new RuleId(8878450512092605113L, SOURCE_NODE_REF);
 
     public Rule_toleranceNotTooHigh() {
-      super(CONCEPT, CanBeChildKind.INSTANCE, ID_toleranceNotTooHigh, SOURCE_NODE_REF);
+      super(CONCEPT, PredefinedRuleKinds.CAN_BE_CHILD, ID_toleranceNotTooHigh, SOURCE_NODE_REF);
     }
     @Override
     public boolean check(@NotNull ContainmentContext context) {
@@ -52,7 +51,7 @@ public final class ChildConcept_Constraints2 extends BaseRulesConstraintsDescrip
     public static final RuleId ID_toleranceNotTooLow = new RuleId(8878450512092611869L, SOURCE_NODE_REF);
 
     public Rule_toleranceNotTooLow() {
-      super(CONCEPT, CanBeChildKind.INSTANCE, ID_toleranceNotTooLow, SOURCE_NODE_REF);
+      super(CONCEPT, PredefinedRuleKinds.CAN_BE_CHILD, ID_toleranceNotTooLow, SOURCE_NODE_REF);
     }
     @Override
     public boolean check(@NotNull ContainmentContext context) {

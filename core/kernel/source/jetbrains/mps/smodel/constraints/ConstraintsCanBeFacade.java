@@ -19,23 +19,12 @@ import jetbrains.mps.core.aspects.constraints.rules.RulesConstraintsRegistry;
 import jetbrains.mps.core.aspects.constraints.rules.Rule;
 import jetbrains.mps.core.aspects.constraints.rules.RuleKind;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeAncestorContext;
-import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeAncestorKind;
-import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeChildKind;
-import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeParentKind;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeRootContext;
-import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeRootKind;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.ContainmentContext;
+import jetbrains.mps.core.aspects.constraints.rules.kinds.PredefinedRuleKinds;
 import jetbrains.mps.core.context.Context;
 import jetbrains.mps.smodel.language.ConceptRegistry;
-import jetbrains.mps.smodel.language.ConceptRegistryUtil;
-import jetbrains.mps.smodel.runtime.CheckingNodeContext;
-import jetbrains.mps.smodel.runtime.ConstraintContext_CanBeChild;
-import jetbrains.mps.smodel.runtime.ConstraintContext_CanBeParent;
-import jetbrains.mps.smodel.runtime.ConstraintContext_CanBeRoot;
-import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
 
@@ -70,11 +59,10 @@ public class ConstraintsCanBeFacade {
       throw new IllegalArgumentException("The argument must be abstract or implement SConcept");
     }
     if (!((SConcept) concept).isRootable()) {
-      return Collections.singletonList(new AdaptedLegacyConstraintsRule<>(concept, CanBeRootKind.INSTANCE, concept.getSourceNode()));
+      return Collections.singletonList(new AdaptedLegacyConstraintsRule<>(concept, PredefinedRuleKinds.CAN_BE_ROOT, concept.getSourceNode()));
     }
 
-    CanBeRootKind kind = CanBeRootKind.INSTANCE;
-    return checkPerConceptRulesOfKind(context.getConcept(), kind, context).collect(Collectors.toList());
+    return checkPerConceptRulesOfKind(context.getConcept(), PredefinedRuleKinds.CAN_BE_ROOT, context).collect(Collectors.toList());
   }
 
   /**
@@ -86,8 +74,7 @@ public class ConstraintsCanBeFacade {
       // for root nodes it should return true
       return Collections.emptyList();
     }
-    CanBeParentKind kind = CanBeParentKind.INSTANCE;
-    return checkPerConceptRulesOfKind(context.getParentConcept(), kind, context).collect(Collectors.toList());
+    return checkPerConceptRulesOfKind(context.getParentConcept(), PredefinedRuleKinds.CAN_BE_PARENT, context).collect(Collectors.toList());
   }
 
   /**
@@ -95,14 +82,12 @@ public class ConstraintsCanBeFacade {
    */
   @NotNull
   public static List<Rule<ContainmentContext>> checkCanBeChild(@NotNull ContainmentContext context) {
-    CanBeChildKind kind = CanBeChildKind.INSTANCE;
-    return checkPerConceptRulesOfKind(context.getChildConcept(), kind, context).collect(Collectors.toList());
+    return checkPerConceptRulesOfKind(context.getChildConcept(), PredefinedRuleKinds.CAN_BE_CHILD, context).collect(Collectors.toList());
   }
 
   @NotNull
   public static List<Rule<CanBeAncestorContext>> checkCanBeAncestor(@NotNull CanBeAncestorContext context) {
-    CanBeAncestorKind kind = CanBeAncestorKind.INSTANCE;
-    return checkPerConceptRulesOfKind(context.getAncestorNode().getConcept(), kind, context).collect(Collectors.toList());
+    return checkPerConceptRulesOfKind(context.getAncestorNode().getConcept(), PredefinedRuleKinds.CAN_BE_ANCESTOR, context).collect(Collectors.toList());
   }
 
   /**

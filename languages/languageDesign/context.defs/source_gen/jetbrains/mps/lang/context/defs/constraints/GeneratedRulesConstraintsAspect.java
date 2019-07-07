@@ -10,9 +10,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import java.util.List;
 import jetbrains.mps.core.aspects.constraints.rules.RuleKind;
 import java.util.Arrays;
-import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeChildKind;
-import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeParentKind;
-import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeRootKind;
 
 public final class GeneratedRulesConstraintsAspect implements RulesConstraintsAspect {
   @Nullable
@@ -25,6 +22,6 @@ public final class GeneratedRulesConstraintsAspect implements RulesConstraintsAs
   @NotNull
   @Override
   public List<RuleKind> getRegisteredRuleKinds() {
-    return Arrays.<RuleKind>asList(CanBeChildKind.INSTANCE, CanBeParentKind.INSTANCE, CanBeRootKind.INSTANCE);
+    return Arrays.<RuleKind>asList(PredefinedRuleKinds.CAN_BE_CHILD, PredefinedRuleKinds.CAN_BE_PARENT, PredefinedRuleKinds.CAN_BE_ROOT);
   }
 }

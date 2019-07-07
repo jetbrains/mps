@@ -27,7 +27,7 @@ import org.jetbrains.annotations.NotNull;
  * @author apyshkin, mburyakov
  */
 public interface RuleKind {
-  @NotNull String getName();
+//  @NotNull String getName();
 
   /**
    * @return the type of the context which is linked with this kind

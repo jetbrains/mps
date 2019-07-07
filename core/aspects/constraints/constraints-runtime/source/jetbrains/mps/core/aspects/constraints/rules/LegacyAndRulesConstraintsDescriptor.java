@@ -16,12 +16,9 @@
 package jetbrains.mps.core.aspects.constraints.rules;
 
 import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeAncestorContext;
-import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeAncestorKind;
-import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeChildKind;
-import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeParentKind;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeRootContext;
-import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeRootKind;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.ContainmentContext;
+import jetbrains.mps.core.aspects.constraints.rules.kinds.PredefinedRuleKinds;
 import jetbrains.mps.core.context.Context;
 import jetbrains.mps.kernel.model.SModelUtil;
 import jetbrains.mps.smodel.language.ConceptRegistry;
@@ -68,10 +65,6 @@ import java.util.stream.Stream;
 public final class LegacyAndRulesConstraintsDescriptor implements RulesConstraintsDescriptor {
   private static final Logger LOG = LogManager.getLogger(LegacyAndRulesConstraintsDescriptor.class);
 
-  private static final List<RuleKind> CORE_KINDS = Arrays.asList(CanBeChildKind.INSTANCE,
-                                                                 CanBeParentKind.INSTANCE,
-                                                                 CanBeRootKind.INSTANCE,
-                                                                 CanBeAncestorKind.INSTANCE);
   @NotNull private final SAbstractConcept myConcept;
   @NotNull private final RulesConstraintsDescriptor myRulesDescriptor;
 
@@ -134,7 +127,7 @@ public final class LegacyAndRulesConstraintsDescriptor implements RulesConstrain
 
   private void addCanBeAncestor(@Mutable List<Rule<?>> result, ConstraintsDescriptor legacy) {
     if (legacy.canBeAncestorIsDefined()) {
-      result.add(new RuleBasedOnLegacy<CanBeAncestorContext>(myConcept, CanBeAncestorKind.INSTANCE, legacy) {
+      result.add(new RuleBasedOnLegacy<CanBeAncestorContext>(myConcept, PredefinedRuleKinds.CAN_BE_ANCESTOR, legacy) {
         @Override
         public boolean check(@NotNull CanBeAncestorContext context) {
           return legacy.canBeAncestor(ConstraintContext_CanBeAncestor.convert(context), myDebugInfo);
@@ -145,7 +138,7 @@ public final class LegacyAndRulesConstraintsDescriptor implements RulesConstrain
 
   private void addCanBeRoot(@Mutable List<Rule<?>> result, ConstraintsDescriptor legacy) {
     if (legacy.canBeRootIsDefined()) {
-      result.add(new RuleBasedOnLegacy<CanBeRootContext>(myConcept, CanBeRootKind.INSTANCE, legacy) {
+      result.add(new RuleBasedOnLegacy<CanBeRootContext>(myConcept, PredefinedRuleKinds.CAN_BE_ROOT, legacy) {
         @Override
         public boolean check(@NotNull CanBeRootContext context) {
           return legacy.canBeRoot(ConstraintContext_CanBeRoot.convert(context), myDebugInfo);
@@ -156,7 +149,7 @@ public final class LegacyAndRulesConstraintsDescriptor implements RulesConstrain
 
   private void addCanBeParent(@Mutable List<Rule<?>> result, ConstraintsDescriptor legacy) {
     if (legacy.canBeParentIsDefined()) {
-      result.add(new RuleBasedOnLegacy<ContainmentContext>(myConcept, CanBeParentKind.INSTANCE, legacy) {
+      result.add(new RuleBasedOnLegacy<ContainmentContext>(myConcept, PredefinedRuleKinds.CAN_BE_PARENT, legacy) {
         @Override
         public boolean check(@NotNull ContainmentContext context) {
           return legacy.canBeParent(ConstraintContext_CanBeParent.convert(context), myDebugInfo);
@@ -167,7 +160,7 @@ public final class LegacyAndRulesConstraintsDescriptor implements RulesConstrain
 
   private void addCanBeChild(@Mutable List<Rule<?>> result, ConstraintsDescriptor legacy) {
     if (legacy.canBeChildIsDefined()) {
-      result.add(new RuleBasedOnLegacy<ContainmentContext>(myConcept, CanBeChildKind.INSTANCE, legacy) {
+      result.add(new RuleBasedOnLegacy<ContainmentContext>(myConcept, PredefinedRuleKinds.CAN_BE_CHILD, legacy) {
         @Override
         public boolean check(@NotNull ContainmentContext context) {
           return legacy.canBeChild(ConstraintContext_CanBeChild.convert(context), myDebugInfo);
@@ -180,7 +173,7 @@ public final class LegacyAndRulesConstraintsDescriptor implements RulesConstrain
   @Override
   public Stream<Rule<?>> getRules() {
     List<Rule<?>> result = new ArrayList<>();
-    for (RuleKind coreKind : CORE_KINDS) {
+    for (RuleKind coreKind : PredefinedRuleKinds.values()) {
       result.addAll(getRulesOfKind(coreKind));
     }
     return result.stream();

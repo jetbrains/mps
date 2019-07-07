@@ -15,7 +15,6 @@ import jetbrains.mps.core.aspects.constraints.rules.BaseRule;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.core.aspects.constraints.rules.RuleId;
-import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeParentKind;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -42,7 +41,7 @@ public final class ParentConcept_Constraints2 extends BaseRulesConstraintsDescri
     public static final RuleId ID_childConcept = new RuleId(8878450512092601214L, SOURCE_NODE_REF);
 
     public Rule_childConcept() {
-      super(CONCEPT, CanBeParentKind.INSTANCE, ID_childConcept, SOURCE_NODE_REF);
+      super(CONCEPT, PredefinedRuleKinds.CAN_BE_PARENT, ID_childConcept, SOURCE_NODE_REF);
     }
     @Override
     public boolean check(@NotNull ContainmentContext context) {
@@ -54,7 +53,7 @@ public final class ParentConcept_Constraints2 extends BaseRulesConstraintsDescri
     public static final RuleId ID_propIsTrue = new RuleId(8878450512092603199L, SOURCE_NODE_REF);
 
     public Rule_propIsTrue() {
-      super(CONCEPT, CanBeParentKind.INSTANCE, ID_propIsTrue, SOURCE_NODE_REF);
+      super(CONCEPT, PredefinedRuleKinds.CAN_BE_PARENT, ID_propIsTrue, SOURCE_NODE_REF);
     }
     @Override
     public boolean check(@NotNull ContainmentContext context) {

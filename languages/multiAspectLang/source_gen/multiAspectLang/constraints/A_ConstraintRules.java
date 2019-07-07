@@ -15,7 +15,6 @@ import jetbrains.mps.core.aspects.constraints.rules.BaseRule;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.core.aspects.constraints.rules.RuleId;
-import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeChildKind;
 
 public final class A_ConstraintRules extends BaseRulesConstraintsDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, "multiAspectLang.structure.A");
@@ -40,7 +39,7 @@ public final class A_ConstraintRules extends BaseRulesConstraintsDescriptor {
     public static final RuleId ID_gagag = new RuleId(24399255755528544L, SOURCE_NODE_REF);
 
     public Rule_gagag() {
-      super(CONCEPT, CanBeChildKind.INSTANCE, ID_gagag, SOURCE_NODE_REF);
+      super(CONCEPT, PredefinedRuleKinds.CAN_BE_CHILD, ID_gagag, SOURCE_NODE_REF);
     }
     @Override
     public boolean check(@NotNull ContainmentContext context) {
@@ -52,7 +51,7 @@ public final class A_ConstraintRules extends BaseRulesConstraintsDescriptor {
     public static final RuleId ID_check8804574841118204455_b0 = new RuleId(8804574841118204455L, SOURCE_NODE_REF);
 
     public Rule_check8804574841118204455_b0() {
-      super(CONCEPT, CanBeChildKind.INSTANCE, ID_check8804574841118204455_b0, SOURCE_NODE_REF);
+      super(CONCEPT, PredefinedRuleKinds.CAN_BE_CHILD, ID_check8804574841118204455_b0, SOURCE_NODE_REF);
     }
     @Override
     public boolean check(@NotNull ContainmentContext context) {
@@ -64,7 +63,7 @@ public final class A_ConstraintRules extends BaseRulesConstraintsDescriptor {
     public static final RuleId ID_gagag2 = new RuleId(7716791493893590340L, SOURCE_NODE_REF);
 
     public Rule_gagag2() {
-      super(CONCEPT, CanBeChildKind.INSTANCE, ID_gagag2, SOURCE_NODE_REF);
+      super(CONCEPT, PredefinedRuleKinds.CAN_BE_CHILD, ID_gagag2, SOURCE_NODE_REF);
     }
     @Override
     public boolean check(@NotNull ContainmentContext context) {
