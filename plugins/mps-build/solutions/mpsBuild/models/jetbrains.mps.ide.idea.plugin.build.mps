@@ -293,6 +293,9 @@
       <node concept="nCB5N" id="3oXfwtXqIy1" role="nCB5Z">
         <ref role="nCB5Y" to="ffeo:3dkXFAFkSFA" resolve="mps-persistence" />
       </node>
+      <node concept="2sjeV3" id="3UiXxTrMFyB" role="nCB5Z">
+        <ref role="2sjeV2" node="3UiXxTrMxJS" resolve="idea-java-plugin" />
+      </node>
     </node>
     <node concept="2sgV4H" id="2pZ8abj52_O" role="1l3spa">
       <ref role="1l3spb" to="ffeo:6S1jmf0xDFC" resolve="mpsBootstrapCore" />
@@ -606,6 +609,16 @@
         </node>
       </node>
     </node>
+    <node concept="PiPfp" id="3UiXxTrMxJS" role="3989C9">
+      <property role="TrG5h" value="idea-java-plugin" />
+      <node concept="25yagZ" id="3UiXxTrMxJT" role="PiKyV">
+        <node concept="3yqFpY" id="3UiXxTrMxJU" role="25yagT">
+          <node concept="3yqFqT" id="3UiXxTrMxJV" role="3yqFpW">
+            <ref role="3yqFr6" to="ffeo:3UiXxTrwi5u" resolve="lib" />
+          </node>
+        </node>
+      </node>
+    </node>
     <node concept="2sgV4H" id="3ZROizBXGdD" role="1l3spa">
       <ref role="1l3spb" to="ffeo:6S1jmf0xDFC" resolve="mpsBootstrapCore" />
     </node>
@@ -737,6 +750,9 @@
       <node concept="nCB5N" id="2iq3bYVkGIL" role="nCB5Z">
         <ref role="nCB5Y" to="ffeo:7KapL9OAx4G" resolve="mps-ui" />
       </node>
+      <node concept="2sjeV3" id="3UiXxTrMxKT" role="nCB5Z">
+        <ref role="2sjeV2" node="3UiXxTrMxJS" resolve="idea-java-plugin" />
+      </node>
     </node>
     <node concept="2sgV4H" id="611WBGkdzRa" role="1l3spa">
       <ref role="1l3spb" to="ffeo:6S1jmf0xDFC" resolve="mpsBootstrapCore" />
@@ -786,6 +802,9 @@
           </node>
         </node>
         <node concept="398223" id="611WBGkdzRq" role="39821P">
+          <node concept="3_I8Xc" id="3UiXxTrCnri" role="39821P">
+            <ref role="3_I8Xa" to="ffeo:3UiXxTrwi5$" />
+          </node>
           <node concept="3_I8Xc" id="5_PX0Bwmxai" role="39821P">
             <ref role="3_I8Xa" node="3ZROizBXGei" resolve="mps-common.jar" />
           </node>
@@ -1427,6 +1446,9 @@
       <node concept="2sjeV3" id="3L2iO8sKLih" role="nCB5Z">
         <ref role="2sjeV2" node="3L2iO8sIVea" resolve="mps-testing-artifacts" />
       </node>
+      <node concept="2sjeV3" id="3UiXxTrMPkZ" role="nCB5Z">
+        <ref role="2sjeV2" node="3UiXxTrMxJS" resolve="idea-java-plugin" />
+      </node>
     </node>
     <node concept="398b33" id="H87DT7jZis" role="3989C9">
       <property role="TrG5h" value="mps-jps-plugin-tests" />
@@ -1447,6 +1469,9 @@
       </node>
       <node concept="2sjeV3" id="4gzZMp9tuNe" role="nCB5Z">
         <ref role="2sjeV2" node="4gzZMp9tuO_" resolve="idea-jps-tests" />
+      </node>
+      <node concept="2sjeV3" id="3UiXxTrMZ84" role="nCB5Z">
+        <ref role="2sjeV2" node="3UiXxTrMxJS" resolve="idea-java-plugin" />
       </node>
       <node concept="2GAZfH" id="H87DT7k18X" role="398b2p">
         <node concept="TIC1d" id="H87DT7k18Y" role="2GAZfG">
@@ -2055,6 +2080,9 @@
       </node>
       <node concept="nCB5N" id="3oXfwtXqhAt" role="nCB5Z">
         <ref role="nCB5Y" to="ffeo:3dkXFAFkSFA" resolve="mps-persistence" />
+      </node>
+      <node concept="2sjeV3" id="3UiXxTrMeek" role="nCB5Z">
+        <ref role="2sjeV2" node="3UiXxTrMxJS" resolve="idea-java-plugin" />
       </node>
     </node>
     <node concept="398b33" id="3ZROizBXHBA" role="3989C9">

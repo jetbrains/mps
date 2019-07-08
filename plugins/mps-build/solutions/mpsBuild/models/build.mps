@@ -520,6 +520,13 @@
           </node>
         </node>
       </node>
+      <node concept="25yagZ" id="3UiXxTrwi6u" role="PiKyV">
+        <node concept="3yqu4x" id="3UiXxTrwi6q" role="25yagT">
+          <node concept="3yrxFa" id="3UiXxTrwi7g" role="3yqu4I">
+            <ref role="3yrxFb" node="3UiXxTrwi5$" />
+          </node>
+        </node>
+      </node>
     </node>
     <node concept="PiPfp" id="4PRDOPWOqXM" role="3989C9">
       <property role="TrG5h" value="diffutils" />
@@ -16594,6 +16601,41 @@
             <node concept="3_J27D" id="7ad8nWle69t" role="13uQ07">
               <node concept="3Mxwew" id="7ad8nWle6at" role="3MwsjC">
                 <property role="3MwjfP" value="resources_en.jar" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="398223" id="3UiXxTrwi4G" role="39821P">
+        <node concept="3_J27D" id="3UiXxTrwi4I" role="Nbhlr">
+          <node concept="3Mxwew" id="3UiXxTrwi5s" role="3MwsjC">
+            <property role="3MwjfP" value="java" />
+          </node>
+        </node>
+        <node concept="398223" id="3UiXxTrwi5u" role="39821P">
+          <node concept="3_J27D" id="3UiXxTrwi5v" role="Nbhlr">
+            <node concept="3Mxwew" id="3UiXxTrwi5y" role="3MwsjC">
+              <property role="3MwjfP" value="lib" />
+            </node>
+          </node>
+          <node concept="13uQ2_" id="3UiXxTrwi5$" role="39821P">
+            <node concept="3_J27D" id="3UiXxTrwi5_" role="13uQ07">
+              <node concept="3Mxwew" id="3UiXxTrwi5C" role="3MwsjC">
+                <property role="3MwjfP" value="ecj-4.10.jar" />
+              </node>
+            </node>
+          </node>
+          <node concept="13uQ2_" id="3UiXxTrCpr5" role="39821P">
+            <node concept="3_J27D" id="3UiXxTrCpr7" role="13uQ07">
+              <node concept="3Mxwew" id="3UiXxTrCpre" role="3MwsjC">
+                <property role="3MwjfP" value="java-api.jar" />
+              </node>
+            </node>
+          </node>
+          <node concept="13uQ2_" id="3UiXxTrCpro" role="39821P">
+            <node concept="3_J27D" id="3UiXxTrCprq" role="13uQ07">
+              <node concept="3Mxwew" id="3UiXxTrCpr$" role="3MwsjC">
+                <property role="3MwjfP" value="java-impl.jar" />
               </node>
             </node>
           </node>
