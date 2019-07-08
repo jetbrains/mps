@@ -30,9 +30,10 @@ public class HintDefsCustomEditorCell extends AbstractCellProvider {
   @Override
   public EditorCell createEditorCell(EditorContext editorContext) {
     EditorCell_Collection collection = jetbrains.mps.nodeEditor.cells.EditorCell_Collection.createHorizontal(editorContext, myMember);
+    collection.setSelectable(false);
     List<SNode> defRefs = ApplicabilityHelper.getRequiredDefsForCondition(myMember);
     EditorCellFactory cellFactory = editorContext.getEditorComponent().getUpdater().getCurrentUpdateSession().getCellFactory();
-    SNode auxNode = createEditorListOfDefs_igmisa_a0d0e(defRefs);
+    SNode auxNode = createEditorListOfDefs_igmisa_a0e0e(defRefs);
     EditorCell newCell = cellFactory.createEditorComponentCell(auxNode, INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SNodeOperations.getNode("r:c333438f-9631-41c0-a716-72d23eed1ba4(jetbrains.mps.lang.constraints.rules.editor)", "1400793947282053205")));
     newCell.setSelectable(false);
     CellTreeIterable iterateTree = CellTraversalUtil.iterateTree(newCell, newCell, true);
@@ -42,7 +43,7 @@ public class HintDefsCustomEditorCell extends AbstractCellProvider {
     collection.addEditorCell(newCell);
     return collection;
   }
-  private static SNode createEditorListOfDefs_igmisa_a0d0e(Iterable<? extends SNode> seq0) {
+  private static SNode createEditorListOfDefs_igmisa_a0e0e(Iterable<? extends SNode> seq0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6090f0354fe61d2cL, "jetbrains.mps.lang.constraints.rules.structure.EditorListOfDefs"), null, null, false);
     for (SNode n : seq0) {

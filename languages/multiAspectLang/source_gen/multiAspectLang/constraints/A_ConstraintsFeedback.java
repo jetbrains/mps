@@ -11,7 +11,7 @@ import jetbrains.mps.core.aspects.feedback.messages.BaseMessageProvider;
 import jetbrains.mps.core.aspects.feedback.messages.FailingPropertyConstraintProblemId;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.core.aspects.feedback.messages.MessageProvider;
-import jetbrains.mps.core.aspects.constraints.rules.kinds.ContainmentContext;
+import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeRootContext;
 import jetbrains.mps.core.aspects.feedback.messages.FailingRuleProblemId;
 import java.util.List;
 import java.util.Collections;
@@ -25,25 +25,18 @@ public final class A_ConstraintsFeedback extends BaseFeedbackDescriptor {
     @NotNull
     @Override
     public MessageProvider.StringMsg yieldMessage(FailingPropertyConstraintContext context) {
-      return new MessageProvider.StringMsg("Property constraints are broken for the property" + String.valueOf(context.getProperty()));
+      return new MessageProvider.StringMsg("Property constraints are broken for the property" + " " + String.valueOf(context.getProperty()) + ", please do smth " + " ");
     }
   };
-  private static final FeedbackProvider<ContainmentContext> MSGPROVIDER_WhenConstraintRuleFails_b = new BaseMessageProvider<ContainmentContext>(new FailingRuleProblemId(A_ConstraintRules.Rule_check8804574841118204455_a0.ID_check8804574841118204455_a0)) {
+  private static final FeedbackProvider<CanBeRootContext> MSGPROVIDER_WhenConstraintRuleFails_b = new BaseMessageProvider<CanBeRootContext>(new FailingRuleProblemId(A_ConstraintRules.Rule_check7932913038699129641_c0.ID_check7932913038699129641_c0)) {
     @NotNull
     @Override
-    public MessageProvider.StringMsg yieldMessage(ContainmentContext context) {
-      return new MessageProvider.StringMsg("");
-    }
-  };
-  private static final FeedbackProvider<ContainmentContext> MSGPROVIDER_WhenConstraintRuleFails_c = new BaseMessageProvider<ContainmentContext>(new FailingRuleProblemId(A_ConstraintRules.Rule_gagag2.ID_gagag2)) {
-    @NotNull
-    @Override
-    public MessageProvider.StringMsg yieldMessage(ContainmentContext context) {
-      return new MessageProvider.StringMsg("sddf");
+    public MessageProvider.StringMsg yieldMessage(CanBeRootContext context) {
+      return new MessageProvider.StringMsg("The name of the model '" + A_ConstraintRules.Def_AModelName2554379189374271668.getValue(context) + "' " + "" + "must start with 'A'");
     }
   };
 
-  private static final List<FeedbackProvider> PROVIDERS = Collections.unmodifiableList(Arrays.<FeedbackProvider>asList(MSGPROVIDER_WhenPropertyConstraintFails_a, MSGPROVIDER_WhenConstraintRuleFails_b, MSGPROVIDER_WhenConstraintRuleFails_c));
+  private static final List<FeedbackProvider> PROVIDERS = Collections.unmodifiableList(Arrays.<FeedbackProvider>asList(MSGPROVIDER_WhenPropertyConstraintFails_a, MSGPROVIDER_WhenConstraintRuleFails_b));
 
   public A_ConstraintsFeedback() {
     super(CONCEPT);

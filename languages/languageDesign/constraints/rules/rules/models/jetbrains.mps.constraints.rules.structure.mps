@@ -191,6 +191,9 @@
       <property role="20lbJX" value="1..n" />
       <ref role="20lvS9" node="6kKc3mjlOch" resolve="TypedDefReference" />
     </node>
+    <node concept="t5JxF" id="2dMY_rcc7Gw" role="lGtFl">
+      <property role="t5JxN" value="auxiliary concept for the def hint editor" />
+    </node>
   </node>
 </model>
 

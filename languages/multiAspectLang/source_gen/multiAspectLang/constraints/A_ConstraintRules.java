@@ -6,11 +6,13 @@ import jetbrains.mps.core.aspects.constraints.rules.BaseRulesConstraintsDescript
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.constraints.rules.Rule;
-import jetbrains.mps.core.aspects.constraints.rules.kinds.ContainmentContext;
+import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeRootContext;
 import java.util.List;
 import java.util.Collections;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.core.aspects.constraints.rules.BaseRule;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
@@ -23,10 +25,9 @@ public final class A_ConstraintRules extends BaseRulesConstraintsDescriptor {
   /*package*/ A_ConstraintRules() {
     super(CONCEPT);
   }
-  public static final Rule<ContainmentContext> check_id8804574841118204455 = new A_ConstraintRules.Rule_check8804574841118204455_a0();
-  public static final Rule<ContainmentContext> check_id7716791493893590340 = new A_ConstraintRules.Rule_gagag2();
+  public static final Rule<CanBeRootContext> check_id7932913038699129641 = new A_ConstraintRules.Rule_check7932913038699129641_c0();
 
-  private static final List<Rule<?>> RULES = Collections.unmodifiableList(Arrays.<Rule<?>>asList(check_id8804574841118204455, check_id7716791493893590340));
+  private static final List<Rule<?>> RULES = Collections.unmodifiableList(Arrays.<Rule<?>>asList(check_id7932913038699129641));
 
   @NotNull
   @Override
@@ -34,29 +35,45 @@ public final class A_ConstraintRules extends BaseRulesConstraintsDescriptor {
     return RULES;
   }
 
-  public static final class Rule_check8804574841118204455_a0 extends BaseRule<ContainmentContext> {
-    private static final SNodeReference SOURCE_NODE_REF = PersistenceFacade.getInstance().createNodeReference("r:5dbac061-aef9-4696-88ee-0f21fe5598f3(multiAspectLang.constraints)/8804574841118204455");
-    public static final RuleId ID_check8804574841118204455_a0 = new RuleId(8804574841118204455L, SOURCE_NODE_REF);
-
-    public Rule_check8804574841118204455_a0() {
-      super(CONCEPT, PredefinedRuleKinds.CAN_BE_CHILD, ID_check8804574841118204455_a0, SOURCE_NODE_REF);
+  public static final class Def_AModel7932913038696329443 {
+    public static SModel getValue(@NotNull CanBeRootContext context) {
+      return context.getModel();
     }
 
-    @Override
-    public boolean check(@NotNull ContainmentContext context) {
-      return (context.getChildNode() != null);
+    public static boolean isDefined(@NotNull CanBeRootContext context) {
+      return context.getModel() != null;
     }
   }
-  public static final class Rule_gagag2 extends BaseRule<ContainmentContext> {
-    private static final SNodeReference SOURCE_NODE_REF = PersistenceFacade.getInstance().createNodeReference("r:5dbac061-aef9-4696-88ee-0f21fe5598f3(multiAspectLang.constraints)/7716791493893590340");
-    public static final RuleId ID_gagag2 = new RuleId(7716791493893590340L, SOURCE_NODE_REF);
+  public static final class Def_AModelName2554379189374271668 {
+    public static String getValue(@NotNull CanBeRootContext context) {
+      return SModelOperations.getModelName(A_ConstraintRules.Def_AModel7932913038696329443.getValue(context));
+    }
 
-    public Rule_gagag2() {
-      super(CONCEPT, PredefinedRuleKinds.CAN_BE_CHILD, ID_gagag2, SOURCE_NODE_REF);
+    public static boolean isDefined(@NotNull CanBeRootContext context) {
+      if (!(A_ConstraintRules.Def_AModel7932913038696329443.isDefined(context))) {
+        return false;
+      }
+      return true;
+    }
+  }
+  public static final class Rule_check7932913038699129641_c0 extends BaseRule<CanBeRootContext> {
+    private static final SNodeReference SOURCE_NODE_REF = PersistenceFacade.getInstance().createNodeReference("r:5dbac061-aef9-4696-88ee-0f21fe5598f3(multiAspectLang.constraints)/7932913038699129641");
+    public static final RuleId ID_check7932913038699129641_c0 = new RuleId(7932913038699129641L, SOURCE_NODE_REF);
+
+    public Rule_check7932913038699129641_c0() {
+      super(CONCEPT, PredefinedRuleKinds.CAN_BE_ROOT, ID_check7932913038699129641_c0, SOURCE_NODE_REF);
     }
 
     @Override
-    public boolean check(@NotNull ContainmentContext context) {
+    public boolean check(@NotNull CanBeRootContext context) {
+      return SModelOperations.getModelName(A_ConstraintRules.Def_AModel7932913038696329443.getValue(context)).startsWith("A");
+    }
+
+    @Override
+    public boolean appliesTo(@NotNull CanBeRootContext context) {
+      if (!(A_ConstraintRules.Def_AModel7932913038696329443.isDefined(context))) {
+        return false;
+      }
       return true;
     }
   }

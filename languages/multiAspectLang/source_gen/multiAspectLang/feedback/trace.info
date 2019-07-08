@@ -13,40 +13,24 @@
   <root nodeRef="r:ecf311aa-7fee-4454-acdb-4d199fb64430(multiAspectLang.feedback)/5983615114019032371">
     <file name="A_FeedbackFeedback.java">
       <node id="5983615114019032371" at="20,0,21,0" concept="3" trace="CONCEPT" />
-      <node id="6878448148911863670" at="25,83,26,149" concept="2" />
-      <node id="6878448148911858053" at="32,83,33,50" concept="2" />
-      <node id="6121441894735389201" at="39,83,40,137" concept="2" />
-      <node id="5983615114019032371" at="44,0,45,0" concept="3" trace="PROVIDERS" />
-      <node id="5983615114019032371" at="46,31,47,19" concept="4" />
-      <node id="5983615114019032371" at="52,58,53,30" concept="2" />
-      <node id="5983615114019032371" at="46,0,49,0" concept="0" trace="A_FeedbackFeedback#()V" />
+      <node id="6878448148911863670" at="25,83,26,158" concept="2" />
+      <node id="5983615114019032371" at="30,0,31,0" concept="3" trace="PROVIDERS" />
+      <node id="5983615114019032371" at="32,31,33,19" concept="4" />
+      <node id="5983615114019032371" at="38,58,39,30" concept="2" />
+      <node id="5983615114019032371" at="32,0,35,0" concept="0" trace="A_FeedbackFeedback#()V" />
       <node id="6878448148911863670" at="23,0,28,0" concept="1" trace="yieldMessage#(Lmessages/MissingPropertyContext;)Ljetbrains/mps/core/aspects/feedback/messages/MessageProvider/StringMsg;" />
-      <node id="6878448148911858053" at="30,0,35,0" concept="1" trace="yieldMessage#(Lmessages/MissingPropertyContext;)Ljetbrains/mps/core/aspects/feedback/messages/MessageProvider/StringMsg;" />
-      <node id="6121441894735389201" at="37,0,42,0" concept="1" trace="yieldMessage#(Lmessages/MissingPropertyContext;)Ljetbrains/mps/core/aspects/feedback/messages/MessageProvider/StringMsg;" />
-      <node id="5983615114019032371" at="50,0,55,0" concept="1" trace="getDeclaredProviders#()Ljava/util/stream/Stream;" />
+      <node id="5983615114019032371" at="36,0,41,0" concept="1" trace="getDeclaredProviders#()Ljava/util/stream/Stream;" />
       <node id="6878448148911863670" at="22,0,29,0" concept="3" trace="MSGPROVIDER_WhenPropertyDoesNotBelongToTheConcept_a" />
-      <node id="6878448148911858053" at="29,0,36,0" concept="3" trace="MSGPROVIDER_WhenPropertyDoesNotBelongToTheConcept_b" />
-      <node id="6121441894735389201" at="36,0,43,0" concept="3" trace="MSGPROVIDER_WhenPropertyDoesNotBelongToTheConcept_c" />
-      <scope id="6878448148911863670" at="25,83,26,149" />
-      <scope id="6878448148911858053" at="32,83,33,50" />
-      <scope id="6121441894735389201" at="39,83,40,137" />
-      <scope id="5983615114019032371" at="46,31,47,19" />
-      <scope id="5983615114019032371" at="52,58,53,30" />
-      <scope id="5983615114019032371" at="46,0,49,0" />
+      <scope id="6878448148911863670" at="25,83,26,158" />
+      <scope id="5983615114019032371" at="32,31,33,19" />
+      <scope id="5983615114019032371" at="38,58,39,30" />
+      <scope id="5983615114019032371" at="32,0,35,0" />
       <scope id="6878448148911863670" at="23,0,28,0">
         <var name="context" id="6878448148911863670" />
       </scope>
-      <scope id="6878448148911858053" at="30,0,35,0">
-        <var name="context" id="6878448148911858053" />
-      </scope>
-      <scope id="6121441894735389201" at="37,0,42,0">
-        <var name="context" id="6121441894735389201" />
-      </scope>
-      <scope id="5983615114019032371" at="50,0,55,0" />
+      <scope id="5983615114019032371" at="36,0,41,0" />
       <unit id="6878448148911863670" at="22,122,28,3" name="multiAspectLang.feedback.A_FeedbackFeedback$1" />
-      <unit id="6878448148911858053" at="29,122,35,3" name="multiAspectLang.feedback.A_FeedbackFeedback$2" />
-      <unit id="6121441894735389201" at="36,122,42,3" name="multiAspectLang.feedback.A_FeedbackFeedback$3" />
-      <unit id="5983615114019032371" at="19,0,56,0" name="multiAspectLang.feedback.A_FeedbackFeedback" />
+      <unit id="5983615114019032371" at="19,0,42,0" name="multiAspectLang.feedback.A_FeedbackFeedback" />
     </file>
   </root>
 </debug-info>

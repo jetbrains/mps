@@ -113,14 +113,7 @@
       <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
         <reference id="1177026940964" name="conceptDeclaration" index="cht4Q" />
       </concept>
-      <concept id="1138411891628" name="jetbrains.mps.lang.smodel.structure.SNodeOperation" flags="nn" index="eCIE_">
-        <child id="1144104376918" name="parameter" index="1xVPHs" />
-      </concept>
-      <concept id="1171407110247" name="jetbrains.mps.lang.smodel.structure.Node_GetAncestorOperation" flags="nn" index="2Xjw5R" />
       <concept id="6677504323281689838" name="jetbrains.mps.lang.smodel.structure.SConceptType" flags="in" index="3bZ5Sz" />
-      <concept id="1144101972840" name="jetbrains.mps.lang.smodel.structure.OperationParm_Concept" flags="ng" index="1xMEDy">
-        <child id="1207343664468" name="conceptArgument" index="ri$Ld" />
-      </concept>
       <concept id="1172326502327" name="jetbrains.mps.lang.smodel.structure.Concept_IsExactlyOperation" flags="nn" index="3O6GUB">
         <child id="1206733650006" name="conceptArgument" index="3QVz_e" />
       </concept>
@@ -259,33 +252,6 @@
       <node concept="3uibUv" id="6fJcw0tqN0M" role="3clF45">
         <ref role="3uigEE" to="o8zo:3fifI_xCtN$" resolve="Scope" />
       </node>
-    </node>
-  </node>
-  <node concept="13h7C7" id="4JP_D2W1bU0">
-    <ref role="13h7C2" to="bm42:6kKc3mjlOch" resolve="TypedDefReference" />
-    <node concept="13i0hz" id="4JP_D2W1bUb" role="13h7CS">
-      <property role="TrG5h" value="getEnclosingMember" />
-      <node concept="3Tm1VV" id="4JP_D2W1bUc" role="1B3o_S" />
-      <node concept="3Tqbb2" id="4JP_D2W1bUr" role="3clF45">
-        <ref role="ehGHo" to="mqj2:1BFxp3HHhtg" resolve="RuleBlockMember" />
-      </node>
-      <node concept="3clFbS" id="4JP_D2W1bUe" role="3clF47">
-        <node concept="3clFbF" id="4JP_D2W1bVZ" role="3cqZAp">
-          <node concept="2OqwBi" id="4JP_D2W1c5x" role="3clFbG">
-            <node concept="13iPFW" id="4JP_D2W1bVY" role="2Oq$k0" />
-            <node concept="2Xjw5R" id="4JP_D2W1cdv" role="2OqNvi">
-              <node concept="1xMEDy" id="4JP_D2W1cdx" role="1xVPHs">
-                <node concept="chp4Y" id="19J4M2yuqmv" role="ri$Ld">
-                  <ref role="cht4Q" to="mqj2:1BFxp3HHhtg" resolve="RuleBlockMember" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="13hLZK" id="4JP_D2W1bU1" role="13h7CW">
-      <node concept="3clFbS" id="4JP_D2W1bU2" role="2VODD2" />
     </node>
   </node>
 </model>

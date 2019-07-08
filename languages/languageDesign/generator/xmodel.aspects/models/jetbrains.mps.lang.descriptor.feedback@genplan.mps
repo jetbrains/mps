@@ -46,6 +46,14 @@
         <property role="2V$B1T" value="ad93155d-79b2-4759-b10c-55123e763903" />
         <property role="2V$B1Q" value="jetbrains.mps.lang.messages" />
       </node>
+      <node concept="2V$Bhx" id="2dMY_rcc6FN" role="1t_9vn">
+        <property role="2V$B1T" value="3ad5badc-1d9c-461c-b7b1-fa2fcd0a0ae7" />
+        <property role="2V$B1Q" value="jetbrains.mps.lang.context" />
+      </node>
+      <node concept="2V$Bhx" id="2dMY_rcc6G8" role="1t_9vn">
+        <property role="2V$B1T" value="ea3159bf-f48e-4720-bde2-86dba75f0d34" />
+        <property role="2V$B1Q" value="jetbrains.mps.lang.context.defs" />
+      </node>
       <node concept="2V$Bhx" id="5ca4zTvKONX" role="1t_9vn">
         <property role="2V$B1T" value="517077fd-e44f-4338-a475-1d29781dfdb8" />
         <property role="2V$B1Q" value="jetbrains.mps.lang.feedback.skeleton" />

@@ -13193,8 +13193,8 @@
       <property role="TrG5h" value="DEPENDENCY_COLOR" />
       <property role="3TUv4t" value="true" />
       <node concept="10M0yZ" id="cAZ8XCa26j" role="33vP2m">
-        <ref role="1PxDUh" to="z60i:~Color" resolve="Color" />
-        <ref role="3cqZAo" to="z60i:~Color.PINK" resolve="PINK" />
+        <ref role="1PxDUh" to="exr9:~MPSColors" resolve="MPSColors" />
+        <ref role="3cqZAo" to="lzb2:~JBColor.PINK" resolve="PINK" />
       </node>
       <node concept="3uibUv" id="cAZ8XCa26h" role="1tU5fm">
         <ref role="3uigEE" to="z60i:~Color" resolve="Color" />
@@ -13205,8 +13205,8 @@
       <property role="TrG5h" value="NODE_COLOR" />
       <property role="3TUv4t" value="true" />
       <node concept="10M0yZ" id="cAZ8XCa26q" role="33vP2m">
-        <ref role="1PxDUh" to="z60i:~Color" resolve="Color" />
-        <ref role="3cqZAo" to="z60i:~Color.MAGENTA" resolve="MAGENTA" />
+        <ref role="1PxDUh" to="exr9:~MPSColors" resolve="MPSColors" />
+        <ref role="3cqZAo" to="lzb2:~JBColor.MAGENTA" resolve="MAGENTA" />
       </node>
       <node concept="3uibUv" id="cAZ8XCa26p" role="1tU5fm">
         <ref role="3uigEE" to="z60i:~Color" resolve="Color" />
@@ -13220,8 +13220,8 @@
         <ref role="3uigEE" to="z60i:~Color" resolve="Color" />
       </node>
       <node concept="10M0yZ" id="cAZ8XCabUp" role="33vP2m">
-        <ref role="1PxDUh" to="z60i:~Color" resolve="Color" />
-        <ref role="3cqZAo" to="z60i:~Color.BLUE" resolve="BLUE" />
+        <ref role="1PxDUh" to="exr9:~MPSColors" resolve="MPSColors" />
+        <ref role="3cqZAo" to="lzb2:~JBColor.BLUE" resolve="BLUE" />
       </node>
       <node concept="3Tm1VV" id="cAZ8XCabUn" role="1B3o_S" />
     </node>
@@ -13233,8 +13233,8 @@
       </node>
       <node concept="3Tm1VV" id="4NbzjXXKMO$" role="1B3o_S" />
       <node concept="10M0yZ" id="4NbzjXXKMOA" role="33vP2m">
-        <ref role="1PxDUh" to="z60i:~Color" resolve="Color" />
-        <ref role="3cqZAo" to="z60i:~Color.PINK" resolve="PINK" />
+        <ref role="1PxDUh" to="exr9:~MPSColors" resolve="MPSColors" />
+        <ref role="3cqZAo" to="lzb2:~JBColor.PINK" resolve="PINK" />
       </node>
     </node>
     <node concept="3clFbW" id="4zooVZdvj2i" role="jymVt">

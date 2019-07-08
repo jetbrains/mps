@@ -45,7 +45,6 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
     Style style = new StyleImpl();
     new AndDefsAreDefinedHintStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
     style.set(StyleAttributes.SELECTABLE, false);
-    style.set(StyleAttributes.DRAW_BRACKETS, true);
     editorCell.getStyle().putAll(style);
     editorCell.addEditorCell(createCustom_0());
     editorCell.addEditorCell(createAlternation_0());

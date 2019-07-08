@@ -23,25 +23,11 @@ public final class A_FeedbackFeedback extends BaseFeedbackDescriptor {
     @NotNull
     @Override
     public MessageProvider.StringMsg yieldMessage(MissingPropertyContext context) {
-      return new MessageProvider.StringMsg("asdfas asdfasdf" + "asdfasdfa" + "sadf" + "sadfsdfa " + String.valueOf(context.getProperty()) + " asdf");
-    }
-  };
-  private static final FeedbackProvider<MissingPropertyContext> MSGPROVIDER_WhenPropertyDoesNotBelongToTheConcept_b = new BaseMessageProvider<MissingPropertyContext>(new MissingPropertyInConceptProblemId(MetaAdapterFactory.getConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, "multiAspectLang.structure.A"))) {
-    @NotNull
-    @Override
-    public MessageProvider.StringMsg yieldMessage(MissingPropertyContext context) {
-      return new MessageProvider.StringMsg("The");
-    }
-  };
-  private static final FeedbackProvider<MissingPropertyContext> MSGPROVIDER_WhenPropertyDoesNotBelongToTheConcept_c = new BaseMessageProvider<MissingPropertyContext>(new MissingPropertyInConceptProblemId(MetaAdapterFactory.getConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, "multiAspectLang.structure.A"))) {
-    @NotNull
-    @Override
-    public MessageProvider.StringMsg yieldMessage(MissingPropertyContext context) {
-      return new MessageProvider.StringMsg("12" + "34" + "56" + "78" + "90" + " " + String.valueOf(context.getProperty()) + "asdfsadfa");
+      return new MessageProvider.StringMsg("The property '" + String.valueOf(context.getProperty()) + "' does not belong to the concept 'A', please do smth");
     }
   };
 
-  private static final List<FeedbackProvider> PROVIDERS = Collections.unmodifiableList(Arrays.<FeedbackProvider>asList(MSGPROVIDER_WhenPropertyDoesNotBelongToTheConcept_a, MSGPROVIDER_WhenPropertyDoesNotBelongToTheConcept_b, MSGPROVIDER_WhenPropertyDoesNotBelongToTheConcept_c));
+  private static final List<FeedbackProvider> PROVIDERS = Collections.unmodifiableList(Arrays.<FeedbackProvider>asList(MSGPROVIDER_WhenPropertyDoesNotBelongToTheConcept_a));
 
   public A_FeedbackFeedback() {
     super(CONCEPT);

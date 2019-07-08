@@ -6227,14 +6227,14 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/227146524086772103">
     <file name="HighlightConstants.java">
-      <node id="227146524086772109" at="8,0,9,0" concept="16" trace="DEPENDENCY_COLOR" />
-      <node id="227146524086772119" at="9,0,10,0" concept="16" trace="NODE_COLOR" />
-      <node id="227146524086812310" at="10,0,11,0" concept="16" trace="INSTANCES_COLOR" />
-      <node id="5533671870987185443" at="11,0,12,0" concept="16" trace="USAGES_COLOR" />
-      <node id="5249055041137750162" at="12,0,14,0" concept="4" trace="HighlightConstants#()V" />
-      <scope id="5249055041137750164" at="12,31,12,31" />
-      <scope id="5249055041137750162" at="12,0,14,0" />
-      <unit id="227146524086772103" at="7,0,15,0" name="jetbrains.mps.ide.actions.HighlightConstants" />
+      <node id="227146524086772109" at="9,0,10,0" concept="16" trace="DEPENDENCY_COLOR" />
+      <node id="227146524086772119" at="10,0,11,0" concept="16" trace="NODE_COLOR" />
+      <node id="227146524086812310" at="11,0,12,0" concept="16" trace="INSTANCES_COLOR" />
+      <node id="5533671870987185443" at="12,0,13,0" concept="16" trace="USAGES_COLOR" />
+      <node id="5249055041137750162" at="13,0,15,0" concept="4" trace="HighlightConstants#()V" />
+      <scope id="5249055041137750164" at="13,31,13,31" />
+      <scope id="5249055041137750162" at="13,0,15,0" />
+      <unit id="227146524086772103" at="8,0,16,0" name="jetbrains.mps.ide.actions.HighlightConstants" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/227146524086812204">

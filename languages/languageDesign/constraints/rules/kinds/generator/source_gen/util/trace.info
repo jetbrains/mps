@@ -16,46 +16,47 @@
       <node id="8525842417252896874" at="23,180,24,196" concept="4" />
       <node id="8018723092206399386" at="25,180,26,194" concept="4" />
       <node id="7280614907478301227" at="27,180,28,198" concept="4" />
-      <node id="8525842417252896883" at="29,5,30,16" concept="4" />
-      <node id="24399255755766470" at="33,90,34,92" concept="5" />
-      <node id="4575984242823006864" at="34,92,35,236" concept="1" />
-      <node id="4575984242823006873" at="35,236,36,62" concept="3" />
-      <node id="4575984242823006881" at="37,173,38,28" concept="4" />
-      <node id="4575984242823006890" at="39,180,40,29" concept="4" />
-      <node id="8018723092206399632" at="41,180,42,27" concept="4" />
-      <node id="7280614907478300255" at="43,180,44,31" concept="4" />
-      <node id="7280614907478772958" at="45,5,46,54" concept="1" />
-      <node id="4575984242823006897" at="46,54,47,16" concept="4" />
+      <node id="2554379189372372812" at="29,5,30,54" concept="1" />
+      <node id="8525842417252896883" at="30,54,31,16" concept="4" />
+      <node id="24399255755766470" at="34,90,35,92" concept="5" />
+      <node id="4575984242823006864" at="35,92,36,236" concept="1" />
+      <node id="4575984242823006873" at="36,236,37,62" concept="3" />
+      <node id="4575984242823006881" at="38,173,39,28" concept="4" />
+      <node id="4575984242823006890" at="40,180,41,29" concept="4" />
+      <node id="8018723092206399632" at="42,180,43,27" concept="4" />
+      <node id="7280614907478300255" at="44,180,45,31" concept="4" />
+      <node id="7280614907478772958" at="46,5,47,54" concept="1" />
+      <node id="4575984242823006897" at="47,54,48,16" concept="4" />
       <node id="4575984242822876825" at="14,0,16,0" concept="0" trace="KindUtil#()V" />
       <node id="8525842417252896861" at="20,62,29,5" concept="2" />
-      <node id="4575984242823006879" at="36,62,45,5" concept="2" />
-      <node id="5537458604776842939" at="17,0,32,0" concept="6" trace="matchContextForRuleKind#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/generator/template/TemplateQueryContext;)Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-      <node id="4575984242823006862" at="33,0,49,0" concept="6" trace="matchKindForRuleKind#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/generator/template/TemplateQueryContext;)Ljava/lang/String;" />
+      <node id="4575984242823006879" at="37,62,46,5" concept="2" />
+      <node id="5537458604776842939" at="17,0,33,0" concept="6" trace="matchContextForRuleKind#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/generator/template/TemplateQueryContext;)Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="4575984242823006862" at="34,0,50,0" concept="6" trace="matchKindForRuleKind#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/generator/template/TemplateQueryContext;)Ljava/lang/String;" />
       <scope id="4575984242822876828" at="14,22,14,22" />
       <scope id="8525842417252896862" at="21,173,22,196" />
       <scope id="8525842417252896873" at="23,180,24,196" />
       <scope id="8018723092206397515" at="25,180,26,194" />
       <scope id="7280614907478301016" at="27,180,28,198" />
-      <scope id="4575984242823006880" at="37,173,38,28" />
-      <scope id="4575984242823006889" at="39,180,40,29" />
-      <scope id="8018723092206399631" at="41,180,42,27" />
-      <scope id="7280614907478299714" at="43,180,44,31" />
+      <scope id="4575984242823006880" at="38,173,39,28" />
+      <scope id="4575984242823006889" at="40,180,41,29" />
+      <scope id="8018723092206399631" at="42,180,43,27" />
+      <scope id="7280614907478299714" at="44,180,45,31" />
       <scope id="4575984242822876825" at="14,0,16,0" />
-      <scope id="5537458604776791650" at="17,101,30,16">
+      <scope id="5537458604776791650" at="17,101,31,16">
         <var name="pointer" id="4575984242822959853" />
       </scope>
-      <scope id="4575984242823006863" at="33,90,47,16">
+      <scope id="4575984242823006863" at="34,90,48,16">
         <var name="pointer" id="4575984242823006874" />
       </scope>
-      <scope id="5537458604776842939" at="17,0,32,0">
+      <scope id="5537458604776842939" at="17,0,33,0">
         <var name="genContext" id="4575984242822932460" />
         <var name="kind" id="5537458604776816855" />
       </scope>
-      <scope id="4575984242823006862" at="33,0,49,0">
+      <scope id="4575984242823006862" at="34,0,50,0">
         <var name="genContext" id="4575984242823006901" />
         <var name="kind" id="4575984242823006899" />
       </scope>
-      <unit id="5537458604776791622" at="13,0,50,0" name="util.KindUtil" />
+      <unit id="5537458604776791622" at="13,0,51,0" name="util.KindUtil" />
     </file>
   </root>
 </debug-info>

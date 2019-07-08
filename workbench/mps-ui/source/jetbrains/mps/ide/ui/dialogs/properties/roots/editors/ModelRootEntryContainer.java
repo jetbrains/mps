@@ -177,7 +177,7 @@ public final class ModelRootEntryContainer implements ModelRootEntryListener {
       }
     }
     if (!myModelRootEntry.isValid()) {
-      myHeader.setBackground(Color.PINK);
+      myHeader.setBackground(JBColor.PINK);
     }
   }
 

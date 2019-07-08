@@ -1660,6 +1660,7 @@
   </dependency>
   <dependency className="jetbrains.mps.ide.actions.HighlightConstants">
     <classNode dependClassName="java.awt.Color" />
+    <classNode dependClassName="jetbrains.mps.nodeEditor.MPSColors" />
   </dependency>
   <dependency className="jetbrains.mps.ide.actions.HighlightInstances_Action">
     <classNode dependClassName="com.intellij.openapi.actionSystem.AnActionEvent" />

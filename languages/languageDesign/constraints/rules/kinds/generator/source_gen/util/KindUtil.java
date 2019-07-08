@@ -27,6 +27,7 @@ public final class KindUtil {
     } else if (Objects.equals(pointer, new SNodePointer("r:52ea8481-08b2-4cbd-ad9d-1b42825f7d09(jetbrains.mps.lang.constraints.rules.kinds.constraints)", "8018723092206382576"))) {
       return new SNodePointer("8e98f4e2-decf-4e97-bf80-9109e8b759ee/java:jetbrains.mps.core.aspects.constraints.rules.kinds(jetbrains.mps.lang.constraints.rules.runtime/)", "~CanBeAncestorContext");
     }
+    genContext.showErrorMessage(kind, "Unknown kind");
     return null;
   }
 
