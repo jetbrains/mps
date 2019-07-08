@@ -10164,11 +10164,6 @@
             <ref role="3bR37D" node="1TaHNgiIbIZ" resolve="MPS.Editor" />
           </node>
         </node>
-        <node concept="1SiIV0" id="79$JYM7$OyJ" role="3bR37C">
-          <node concept="3bR9La" id="79$JYM7$OyK" role="1SiIV1">
-            <ref role="3bR37D" node="7Kfy9QB6L9O" resolve="jetbrains.mps.lang.smodel" />
-          </node>
-        </node>
       </node>
       <node concept="1E1JtD" id="7Kfy9QB6L6w" role="2G$12L">
         <property role="BnDLt" value="true" />
@@ -12424,6 +12419,7 @@
         </node>
         <node concept="1SiIV0" id="32xT3mnoAjO" role="3bR37C">
           <node concept="3bR9La" id="32xT3mnoAjP" role="1SiIV1">
+            <property role="3bR36h" value="true" />
             <ref role="3bR37D" node="7Kfy9QB6LaO" resolve="jetbrains.mps.lang.structure" />
           </node>
         </node>

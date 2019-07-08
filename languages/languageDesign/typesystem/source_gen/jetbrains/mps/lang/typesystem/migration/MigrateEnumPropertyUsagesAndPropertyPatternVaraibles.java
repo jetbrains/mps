@@ -9,12 +9,11 @@ import org.jetbrains.mps.openapi.module.SearchScope;
 import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
+import jetbrains.mps.lang.structure.migration.EnumUsagesMigration;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.lang.structure.migration.EnumUsagesMigration;
 import jetbrains.mps.lang.pattern.migration.PropertyPatternVariableMigration;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.migration.EnumExpressionsMigration;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -46,8 +45,9 @@ public class MigrateEnumPropertyUsagesAndPropertyPatternVaraibles extends Migrat
           return scope_qggrhk_a0d_0;
         }
       };
+      EnumUsagesMigration migration = new EnumUsagesMigration();
       for (SNode propMessageTarget : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4a6a000L, "jetbrains.mps.lang.typesystem.structure.PropertyMessageTarget"), false))) {
-        EnumUsagesMigration.migratePropertyReference(propMessageTarget, MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4a6a000L, 0x11db4a6fbeeL, "propertyDeclaration"));
+        migration.migratePropertyReference(propMessageTarget, MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4a6a000L, 0x11db4a6fbeeL, "propertyDeclaration"));
       }
       new PropertyPatternVariableMigration<SNode>() {
         @Override
@@ -68,7 +68,6 @@ public class MigrateEnumPropertyUsagesAndPropertyPatternVaraibles extends Migrat
         }
       }.migrate();
     }
-    EnumExpressionsMigration.optimize(m);
   }
   @Override
   public Iterable<Problem> check(SModule m) {

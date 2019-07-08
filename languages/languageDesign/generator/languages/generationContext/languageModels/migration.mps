@@ -17,10 +17,8 @@
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
     <import index="tpf8" ref="r:00000000-0000-4000-0000-011c895902e8(jetbrains.mps.lang.generator.structure)" />
-    <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
     <import index="yf86" ref="r:33eabb60-7192-4d12-ba46-11dacf966b3e(jetbrains.mps.lang.structure.migration)" />
     <import index="3za3" ref="r:fb8463ba-5f0e-4225-9494-4af9d9e2123d(jetbrains.mps.lang.pattern.migration)" />
-    <import index="oie" ref="r:18ddb7a1-bae8-47e8-a653-f672ff99522d(jetbrains.mps.lang.smodel.migration)" />
     <import index="tpf3" ref="r:00000000-0000-4000-0000-011c895902f3(jetbrains.mps.lang.generator.generationContext.structure)" implicit="true" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
     <import index="tp3t" ref="r:00000000-0000-4000-0000-011c89590345(jetbrains.mps.lang.pattern.structure)" implicit="true" />
@@ -1028,15 +1026,6 @@
           </node>
           <node concept="37vLTw" id="1KtG1wHRSae" role="L3pyr">
             <ref role="3cqZAo" node="1KtG1wHRQIu" resolve="m" />
-          </node>
-        </node>
-        <node concept="3clFbF" id="1KtG1wHRW7m" role="3cqZAp">
-          <node concept="2YIFZM" id="1KtG1wHRWVZ" role="3clFbG">
-            <ref role="37wK5l" to="oie:7uRH7BX0j27" resolve="optimize" />
-            <ref role="1Pybhc" to="oie:20cGABpF85i" resolve="EnumExpressionsMigration" />
-            <node concept="37vLTw" id="1KtG1wHRX7q" role="37wK5m">
-              <ref role="3cqZAo" node="1KtG1wHRQIu" resolve="m" />
-            </node>
           </node>
         </node>
       </node>

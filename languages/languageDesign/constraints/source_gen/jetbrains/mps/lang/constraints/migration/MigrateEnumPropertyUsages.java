@@ -5,16 +5,15 @@ package jetbrains.mps.lang.constraints.migration;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptBase;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.lang.smodel.migration.EnumExpressionsMigration;
 import org.jetbrains.mps.openapi.module.SearchScope;
 import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.lang.structure.migration.EnumUsagesMigration;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.migration.EnumExpressionsMigration;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
@@ -36,27 +35,28 @@ public class MigrateEnumPropertyUsages extends MigrationScriptBase {
     return null;
   }
   public void doExecute(final SModule m) {
+    EnumExpressionsMigration migration = new EnumExpressionsMigration();
     {
-      SearchScope scope_32rjqx_a0d = CommandUtil.createScope(m);
-      final SearchScope scope_32rjqx_a0d_0 = new EditableFilteringScope(scope_32rjqx_a0d);
+      SearchScope scope_32rjqx_b0d = CommandUtil.createScope(m);
+      final SearchScope scope_32rjqx_b0d_0 = new EditableFilteringScope(scope_32rjqx_b0d);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_32rjqx_a0d_0;
+          return scope_32rjqx_b0d_0;
         }
       };
       for (SNode propertyConstraint : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b2a5eaa48L, "jetbrains.mps.lang.constraints.structure.NodePropertyConstraint"), false))) {
-        SNode newProperty = EnumUsagesMigration.migratePropertyReference(propertyConstraint, MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b2a5eaa48L, 0x10b2a61697bL, "applicableProperty"));
+        SNode newProperty = migration.migratePropertyReference(propertyConstraint, MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b2a5eaa48L, 0x10b2a61697bL, "applicableProperty"));
         if (newProperty != null) {
           SNode newEnum = SNodeOperations.as(SLinkOperations.getTarget(newProperty, MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType")), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclartaion"));
 
-          EnumExpressionsMigration.upgradeQueryReturnExpressions(newEnum, SLinkOperations.getTarget(propertyConstraint, MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b2a5eaa48L, 0x10b2a75c8ccL, "propertyGetter")));
+          migration.upgradeQueryReturnExpressions(newEnum, SLinkOperations.getTarget(propertyConstraint, MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b2a5eaa48L, 0x10b2a75c8ccL, "propertyGetter")));
           for (SNode propertyValue : ListSequence.fromList(SNodeOperations.getNodeDescendants(propertyConstraint, MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10c7c69f5aeL, "jetbrains.mps.lang.constraints.structure.ConstraintsFunctionParameter_propertyValue"), false, new SAbstractConcept[]{}))) {
-            EnumExpressionsMigration.downgradeExpressionType(newEnum, propertyValue);
+            migration.downgradeExpressionType(newEnum, propertyValue);
           }
         }
       }
     }
-    EnumExpressionsMigration.optimize(m);
+    migration.optimize();
   }
   @Override
   public Iterable<Problem> check(SModule m) {
@@ -82,5 +82,6 @@ public class MigrateEnumPropertyUsages extends MigrationScriptBase {
   public MigrationScriptReference getDescriptor() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, "jetbrains.mps.lang.constraints"), 4);
   }
+
 
 }

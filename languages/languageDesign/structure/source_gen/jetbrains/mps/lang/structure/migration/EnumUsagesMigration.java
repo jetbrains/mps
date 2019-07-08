@@ -11,7 +11,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 
 public class EnumUsagesMigration {
 
-  public static SNode migratePropertyReference(SNode referenceNode, SReferenceLink link) {
+  public SNode migratePropertyReference(SNode referenceNode, SReferenceLink link) {
     SNode targetProperty = SNodeOperations.as(referenceNode.getReferenceTarget(link), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, "jetbrains.mps.lang.structure.structure.PropertyDeclaration"));
     if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(targetProperty), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f1035942a5abL, "jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo"))) {
       SNode newTargetProperty = SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.getParent(targetProperty)), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, "jetbrains.mps.lang.structure.structure.PropertyDeclaration"));
@@ -21,7 +21,7 @@ public class EnumUsagesMigration {
     return null;
   }
 
-  public static SNode migrateEnumReference(SNode referenceNode, SReferenceLink link) {
+  public SNode migrateEnumReference(SNode referenceNode, SReferenceLink link) {
     SNode targetEnumeration = SNodeOperations.as(referenceNode.getReferenceTarget(link), MetaAdapterFactory.getInterfaceConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xeeb344f64a629e5L, "jetbrains.mps.lang.structure.structure.IEnumeration"));
     if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(targetEnumeration), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, "jetbrains.mps.lang.structure.structure.EnumMigrationInfo"))) {
       SNode newTargetEnumeration = SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.getParent(targetEnumeration)), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclartaion"));
@@ -31,7 +31,7 @@ public class EnumUsagesMigration {
     return null;
   }
 
-  public static SNode migrateEnumPropertyAttribute(SNode propertyAttribute) {
+  public SNode migrateEnumPropertyAttribute(SNode propertyAttribute) {
     SNode targetProperty = PropertyAttribute__BehaviorDescriptor.getPropertyDeclaration_id121FNPYBLc9.invoke(propertyAttribute);
     if (SNodeOperations.hasRole(targetProperty, MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f1035942a5abL, 0x5a14f1035942a5b6L, "oldProperty"))) {
       SPropertyOperations.assign(propertyAttribute, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, 0x1081af3d7e9d6a2fL, "enumUsageMigrated"), true);

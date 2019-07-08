@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-8shcg46ngwpilanz0p0evoctjigl75m">
+<product version="3" modelHash="-9078acxzg5rx2bsb8hyxrwgqaewdpq2">
   <files names="MigrateEnumPropertyUsagesAndPropertyPatternVariables.java:MigrationDescriptor.java:ReplaceIncludeWithCall.java:WeaveEachConsequence.java" />
 </product>
 

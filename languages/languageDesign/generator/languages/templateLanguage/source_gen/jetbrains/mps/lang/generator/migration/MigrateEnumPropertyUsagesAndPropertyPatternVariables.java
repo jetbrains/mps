@@ -9,12 +9,11 @@ import org.jetbrains.mps.openapi.module.SearchScope;
 import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
+import jetbrains.mps.lang.smodel.migration.EnumExpressionsMigration;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.lang.structure.migration.EnumUsagesMigration;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.migration.EnumExpressionsMigration;
 import jetbrains.mps.lang.pattern.migration.PropertyPatternVariableMigration;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
@@ -46,13 +45,15 @@ public class MigrateEnumPropertyUsagesAndPropertyPatternVariables extends Migrat
           return scope_sag2ow_a0d_0;
         }
       };
+      EnumExpressionsMigration migration = new EnumExpressionsMigration();
       for (SNode propertyMacro : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47e9f6f0L, "jetbrains.mps.lang.generator.structure.PropertyMacro"), false))) {
-        SNode newProperty = EnumUsagesMigration.migrateEnumPropertyAttribute(propertyMacro);
+        SNode newProperty = migration.migrateEnumPropertyAttribute(propertyMacro);
         if (newProperty != null) {
           SNode newEnum = SNodeOperations.as(SLinkOperations.getTarget(newProperty, MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType")), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclartaion"));
-          EnumExpressionsMigration.upgradeQueryReturnExpressions(newEnum, SLinkOperations.getTarget(propertyMacro, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47e9f6f0L, 0x10fe3b4023fL, "propertyValueFunction")));
+          migration.upgradeQueryReturnExpressions(newEnum, SLinkOperations.getTarget(propertyMacro, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47e9f6f0L, 0x10fe3b4023fL, "propertyValueFunction")));
         }
       }
+      migration.optimize();
 
       new PropertyPatternVariableMigration<SNode>() {
         @Override
@@ -73,8 +74,6 @@ public class MigrateEnumPropertyUsagesAndPropertyPatternVariables extends Migrat
         }
       }.migrate();
     }
-
-    EnumExpressionsMigration.optimize(m);
   }
   @Override
   public Iterable<Problem> check(SModule m) {

@@ -22,7 +22,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.migration.runtime.base.UsageOfMigrateNodeNotMigratedProblem;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
-import jetbrains.mps.lang.structure.migration.EnumUsagesMigration;
 import jetbrains.mps.baseLanguage.behavior.IOperation__BehaviorDescriptor;
 import jetbrains.mps.lang.structure.behavior.EnumerationMemberDeclaration_Old__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -44,8 +43,9 @@ public class MigrateEnumPropertyAccess extends MigrationScriptBase {
     return null;
   }
   public void doExecute(final SModule m) {
-    migrate(m);
-    EnumExpressionsMigration.optimize(m);
+    EnumExpressionsMigration migration = new EnumExpressionsMigration();
+    migrate(m, migration);
+    migration.optimize();
   }
   @Override
   public Iterable<Problem> check(SModule m) {
@@ -124,7 +124,7 @@ public class MigrateEnumPropertyAccess extends MigrationScriptBase {
 
 
 
-  private static void migrate(SModule m) {
+  private void migrate(SModule m, EnumExpressionsMigration migration) {
     {
       SearchScope scope_xqhmgi_a0k = CommandUtil.createScope(m);
       final SearchScope scope_xqhmgi_a0k_0 = new EditableFilteringScope(scope_xqhmgi_a0k);
@@ -136,9 +136,9 @@ public class MigrateEnumPropertyAccess extends MigrationScriptBase {
 
       // node.enumProp 
       for (SNode propertyAccess : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, "jetbrains.mps.lang.smodel.structure.SPropertyAccess"), false))) {
-        SNode newProperty = EnumUsagesMigration.migratePropertyReference(propertyAccess, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, 0x108f9727bcdL, "property"));
+        SNode newProperty = migration.migratePropertyReference(propertyAccess, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, 0x108f9727bcdL, "property"));
         if (newProperty != null) {
-          migratePropertyAccess(propertyAccess);
+          migratePropertyAccess(propertyAccess, migration);
         }
       }
 
@@ -150,7 +150,7 @@ public class MigrateEnumPropertyAccess extends MigrationScriptBase {
         SNode memberExpression = IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(oldEnumMemberNameOp);
         SNode dotExpression = SNodeOperations.as(SNodeOperations.getParent(oldEnumMemberNameOp), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression"));
 
-        SNode res = EnumExpressionsMigration.insertMemberNameOp(getEnumForMigratingEnumMemberOp(oldEnumMemberNameOp), dotExpression, memberExpression);
+        SNode res = migration.insertMemberNameOp(getEnumForMigratingEnumMemberOp(oldEnumMemberNameOp), dotExpression, memberExpression);
         ListSequence.fromList(SLinkOperations.getChildren(res, MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute"))).addSequence(ListSequence.fromList(SLinkOperations.getChildren(dotExpression, MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute"))));
       }
 
@@ -162,7 +162,7 @@ public class MigrateEnumPropertyAccess extends MigrationScriptBase {
         SNode memberExpression = IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(oldEnumMemberValueOp);
         SNode dotExpression = SNodeOperations.as(SNodeOperations.getParent(oldEnumMemberValueOp), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression"));
 
-        SNode res = EnumExpressionsMigration.insertMemberValueOp(getEnumForMigratingEnumMemberOp(oldEnumMemberValueOp), dotExpression, memberExpression);
+        SNode res = migration.insertMemberValueOp(getEnumForMigratingEnumMemberOp(oldEnumMemberValueOp), dotExpression, memberExpression);
         ListSequence.fromList(SLinkOperations.getChildren(res, MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute"))).addSequence(ListSequence.fromList(SLinkOperations.getChildren(dotExpression, MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute"))));
       }
 
@@ -194,12 +194,12 @@ public class MigrateEnumPropertyAccess extends MigrationScriptBase {
         }
 
         if (SNodeOperations.isInstanceOf(operation, MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120ed37e64eL, "jetbrains.mps.lang.smodel.structure.SEnum_MemberForValueOperation_Old"))) {
-          EnumExpressionsMigration.insertMemberForValueOp(newEnum, enumOpInvocation, SLinkOperations.getTarget(SNodeOperations.cast(operation, MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120ed37e64eL, "jetbrains.mps.lang.smodel.structure.SEnum_MemberForValueOperation_Old")), MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120ed37e64eL, 0x120ed37e64fL, "valueExpression")));
+          migration.insertMemberValueOp(newEnum, enumOpInvocation, SLinkOperations.getTarget(SNodeOperations.cast(operation, MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120ed37e64eL, "jetbrains.mps.lang.smodel.structure.SEnum_MemberForValueOperation_Old")), MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120ed37e64eL, 0x120ed37e64fL, "valueExpression")));
           continue;
         }
 
         if (SNodeOperations.isInstanceOf(operation, MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120ed37e60cL, "jetbrains.mps.lang.smodel.structure.SEnum_MemberForNameOperation_Old"))) {
-          EnumExpressionsMigration.insertMemberForNameOp(newEnum, enumOpInvocation, SLinkOperations.getTarget(SNodeOperations.cast(operation, MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120ed37e60cL, "jetbrains.mps.lang.smodel.structure.SEnum_MemberForNameOperation_Old")), MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120ed37e60cL, 0x120ed37e60dL, "nameExpression")));
+          migration.insertMemberForNameOp(newEnum, enumOpInvocation, SLinkOperations.getTarget(SNodeOperations.cast(operation, MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120ed37e60cL, "jetbrains.mps.lang.smodel.structure.SEnum_MemberForNameOperation_Old")), MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120ed37e60cL, 0x120ed37e60dL, "nameExpression")));
           continue;
         }
 
@@ -213,16 +213,16 @@ public class MigrateEnumPropertyAccess extends MigrationScriptBase {
 
         SNode newMember = EnumerationMemberDeclaration_Old__BehaviorDescriptor.findReplacement_id54m$yuDZW0l.invoke(SLinkOperations.getTarget(enumMemberValueRef, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x60c7f83bafd83b5bL, 0x60c7f83bafda1168L, "member")));
 
-        EnumExpressionsMigration.insertMemberValueOp(SNodeOperations.as(SNodeOperations.getParent(newMember), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclartaion")), enumMemberValueRef, _quotation_createNode_xqhmgi_c0e0l0a0k(SNodeOperations.cast(SNodeOperations.getParent(newMember), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclartaion")), newMember));
+        migration.insertMemberValueOp(SNodeOperations.as(SNodeOperations.getParent(newMember), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclartaion")), enumMemberValueRef, _quotation_createNode_xqhmgi_c0a4a11a0a01(SNodeOperations.cast(SNodeOperations.getParent(newMember), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclartaion")), newMember));
       }
 
       for (SNode enumMemberType : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120bfe51421L, "jetbrains.mps.lang.smodel.structure.SEnumerationMemberType"), false))) {
-        EnumUsagesMigration.migrateEnumReference(enumMemberType, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120bfe51421L, 0x120bff1303bL, "enum"));
+        migration.migrateEnumReference(enumMemberType, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120bfe51421L, 0x120bff1303bL, "enum"));
       }
     }
   }
 
-  private static void migratePropertyAccess(SNode propertyAccess) {
+  private static void migratePropertyAccess(SNode propertyAccess, EnumExpressionsMigration migration) {
     SNode dotExpression = SNodeOperations.cast(SNodeOperations.getParent(propertyAccess), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression"));
     SNode newEnum = SNodeOperations.cast(SLinkOperations.getTarget(SLinkOperations.getTarget(propertyAccess, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, 0x108f9727bcdL, "property")), MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType")), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclartaion"));
 
@@ -257,7 +257,7 @@ public class MigrateEnumPropertyAccess extends MigrationScriptBase {
           return;
         }
 
-        EnumExpressionsMigration.upgradeExpressionType(newEnum, value);
+        migration.upgradeExpressionType(newEnum, value);
         return;
       }
     }
@@ -267,12 +267,12 @@ public class MigrateEnumPropertyAccess extends MigrationScriptBase {
       SNode assigmentExpression = SNodeOperations.cast(SNodeOperations.getParent(dotExpression), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e96L, "jetbrains.mps.baseLanguage.structure.AssignmentExpression"));
       SNode value = SLinkOperations.getTarget(assigmentExpression, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue"));
 
-      EnumExpressionsMigration.upgradeExpressionType(newEnum, value);
+      migration.upgradeExpressionType(newEnum, value);
       return;
     }
 
     // by default surround existing dotExpression with member->value conversion code 
-    EnumExpressionsMigration.downgradeExpressionType(newEnum, dotExpression);
+    migration.downgradeExpressionType(newEnum, dotExpression);
   }
 
   private static SNode getEnumForMigratingEnumMemberOp(SNode migratingOp) {
@@ -309,7 +309,7 @@ public class MigrateEnumPropertyAccess extends MigrationScriptBase {
     quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation"), quotedNode_5);
     return quotedNode_3;
   }
-  private static SNode _quotation_createNode_xqhmgi_c0e0l0a0k(Object parameter_1, Object parameter_2) {
+  private static SNode _quotation_createNode_xqhmgi_c0a4a11a0a01(Object parameter_1, Object parameter_2) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;
