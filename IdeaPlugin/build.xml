@@ -313,6 +313,9 @@
         <fileset dir="${ideaPath}/lib">
           <include name="**/*.jar"/>
         </fileset>
+        <fileset dir="${ideaPath}/plugins/java/lib">
+          <include name="**/*.jar"/>
+        </fileset>
         <fileset dir="${test.platform.sandbox.dir}/plugins/mps-core/lib">
           <include name="*.jar"/>
         </fileset>
@@ -353,6 +356,9 @@
         <fileset dir="${ideaPath}/lib">
           <include name="**/*.jar"/>
         </fileset>
+        <fileset dir="${ideaPath}/plugins/java/lib">
+          <include name="**/*.jar"/>
+        </fileset>
         <fileset dir="${test.platform.sandbox.dir}/plugins/mps-core/lib">
           <include name="*.jar"/>
         </fileset>
@@ -381,6 +387,9 @@
         <fileset dir="${ideaPath}/lib">
           <include name="**/*.jar"/>
           <exclude name="rt/jps-plugin-system.jar"/>
+        </fileset>
+        <fileset dir="${ideaPath}/plugins/java/lib">
+          <include name="**/*.jar"/>
         </fileset>
         <fileset dir="${ideaPath}/plugins/devkit/lib">
           <include name="devkit-jps-plugin.jar"/>
@@ -424,6 +433,9 @@
                    value="jetbrains.mps.lang.editor.tests,jetbrains.mps.lang.editor.multiple.tests,jetbrains.mps.console.test,jetbrains.mps.lang.actions.test,jetbrains.mps.lang.editor.table.tests,jetbrains.mps.baseLanguage.test"/>
       <classpath>
         <fileset dir="${ideaPath}/lib">
+          <include name="**/*.jar"/>
+        </fileset>
+        <fileset dir="${ideaPath}/plugins/java/lib">
           <include name="**/*.jar"/>
         </fileset>
         <fileset dir="${test.platform.sandbox.dir}/plugins/mps-core/lib">
