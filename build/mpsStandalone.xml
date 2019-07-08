@@ -60,6 +60,10 @@
     <copy todir="${build.layout}/plugins/terminal">
       <fileset dir="${basedir}/plugins/terminal" />
     </copy>
+    <mkdir dir="${build.layout}/plugins/java" />
+    <copy todir="${build.layout}/plugins/java">
+      <fileset dir="${basedir}/plugins/java" />
+    </copy>
     <echo file="${build.layout}/build.properties">mpsBootstrapCore.version=${mpsBootstrapCore.version}</echo>
   </target>
   

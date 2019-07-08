@@ -27682,6 +27682,23 @@
             </node>
           </node>
         </node>
+        <node concept="398223" id="bjvDw2wKfg" role="39821P">
+          <node concept="3_J27D" id="bjvDw2wKfi" role="Nbhlr">
+            <node concept="3Mxwew" id="bjvDw2wKf_" role="3MwsjC">
+              <property role="3MwjfP" value="java" />
+            </node>
+          </node>
+          <node concept="2HvfSZ" id="bjvDw2wKfB" role="39821P">
+            <node concept="55IIr" id="bjvDw2wKfF" role="2HvfZ0">
+              <node concept="2Ry0Ak" id="bjvDw2wKfJ" role="iGT6I">
+                <property role="2Ry0Am" value="plugins" />
+                <node concept="2Ry0Ak" id="bjvDw2wKfM" role="2Ry0An">
+                  <property role="2Ry0Am" value="java" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
       </node>
     </node>
     <node concept="10PD9b" id="1diLdO26mQa" role="10PD9s" />
