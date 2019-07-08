@@ -697,7 +697,6 @@
   <node concept="24kQdi" id="4zSofKeguiX">
     <ref role="1XX52x" to="t9po:4zSofKeguiy" resolve="MacroMessageExpression" />
     <node concept="3EZMnI" id="3LOLRuvlmwn" role="2wV5jI">
-      <ref role="34QXea" node="5XPa2npPVYI" resolve="MacroMessageExpression_completeTextToLiteralAndPercentToMacro" />
       <ref role="1ERwB7" node="4zSofKejxCn" resolve="MacroMessageExpression_actions" />
       <node concept="3F0ifn" id="5XPa2npRTQA" role="3EZMnx">
         <node concept="11L4FC" id="5XPa2npRTT$" role="3F10Kt">

@@ -67,7 +67,6 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
     editorCell.setBig(true);
     setCellContext(editorCell);
     MacroMessageExpression_actions.setCellActions(editorCell, myNode, getEditorContext());
-    editorCell.addKeyMap(new MacroMessageExpression_completeTextToLiteralAndPercentToMacro());
     editorCell.addEditorCell(createConstant_0());
     editorCell.addEditorCell(createConstant_1());
     editorCell.addEditorCell(createRefCell_0());
