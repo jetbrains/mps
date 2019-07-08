@@ -43,6 +43,7 @@
     <copy todir="${build.layout}/lib">
       <fileset dir="${artifacts.mpsWorkbench}/lib" />
     </copy>
+    <copy file="${artifacts.IDEA}/plugins/java/lib/ecj-4.10.jar" todir="${build.layout}/lib" />
     <mkdir dir="${build.layout}/license" />
     <copy todir="${build.layout}/license">
       <fileset dir="${basedir}/license" />
