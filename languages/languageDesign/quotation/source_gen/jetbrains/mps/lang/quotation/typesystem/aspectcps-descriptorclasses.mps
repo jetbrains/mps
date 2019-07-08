@@ -20,6 +20,7 @@
     <import index="tpce" ref="r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)" />
     <import index="u78q" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typesystem.inference(MPS.Core/)" />
     <import index="tpeq" ref="r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)" />
+    <import index="ii9q" ref="r:1dca5eee-6e62-48f8-9e94-dbbe31be2456(jetbrains.mps.lang.quotation.behavior)" />
     <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
   </imports>
@@ -8041,11 +8042,11 @@
                               </node>
                             </node>
                           </node>
-                          <node concept="3TrEf2" id="Jx" role="2OqNvi">
-                            <ref role="3Tt5mk" to="tp3r:4IP40Bi2KcQ" resolve="expression" />
+                          <node concept="2qgKlT" id="Jx" role="2OqNvi">
+                            <ref role="37wK5l" to="ii9q:1o$2SUuvJqx" resolve="getInitValue" />
                             <node concept="cd27G" id="JA" role="lGtFl">
                               <node concept="3u3nmq" id="JB" role="cd27D">
-                                <property role="3u3nmv" value="1006429225401295814" />
+                                <property role="3u3nmv" value="1595412875168434544" />
                               </node>
                             </node>
                           </node>
@@ -8318,11 +8319,11 @@
                                 </node>
                               </node>
                             </node>
-                            <node concept="3TrEf2" id="Lb" role="2OqNvi">
-                              <ref role="3Tt5mk" to="tp3r:4IP40Bi2KcQ" resolve="expression" />
+                            <node concept="2qgKlT" id="Lb" role="2OqNvi">
+                              <ref role="37wK5l" to="ii9q:1o$2SUuvJqx" resolve="getInitValue" />
                               <node concept="cd27G" id="Lg" role="lGtFl">
                                 <node concept="3u3nmq" id="Lh" role="cd27D">
-                                  <property role="3u3nmv" value="1006429225401295811" />
+                                  <property role="3u3nmv" value="1595412875168434709" />
                                 </node>
                               </node>
                             </node>
@@ -9001,11 +9002,11 @@
                           </node>
                         </node>
                       </node>
-                      <node concept="3TrEf2" id="Pk" role="2OqNvi">
-                        <ref role="3Tt5mk" to="tp3r:4IP40Bi2KcQ" resolve="expression" />
+                      <node concept="2qgKlT" id="Pk" role="2OqNvi">
+                        <ref role="37wK5l" to="ii9q:1o$2SUuvKUZ" resolve="getInitValue" />
                         <node concept="cd27G" id="Pp" role="lGtFl">
                           <node concept="3u3nmq" id="Pq" role="cd27D">
-                            <property role="3u3nmv" value="8182547171709457921" />
+                            <property role="3u3nmv" value="1595412875168435285" />
                           </node>
                         </node>
                       </node>

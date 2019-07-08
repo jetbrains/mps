@@ -14,6 +14,7 @@
     <import index="tpeq" ref="r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" implicit="true" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
+    <import index="ii9q" ref="r:1dca5eee-6e62-48f8-9e94-dbbe31be2456(jetbrains.mps.lang.quotation.behavior)" implicit="true" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -1577,8 +1578,8 @@
                   <node concept="1YBJjd" id="76efOMRBD9q" role="2Oq$k0">
                     <ref role="1YBMHb" node="76efOMRBD9m" resolve="val" />
                   </node>
-                  <node concept="3TrEf2" id="RRzwLnBqf6" role="2OqNvi">
-                    <ref role="3Tt5mk" to="tp3r:4IP40Bi2KcQ" resolve="expression" />
+                  <node concept="2qgKlT" id="1o$2SUuvW_K" role="2OqNvi">
+                    <ref role="37wK5l" to="ii9q:1o$2SUuvJqx" resolve="getInitValue" />
                   </node>
                 </node>
               </node>
@@ -1634,8 +1635,8 @@
                     <node concept="1YBJjd" id="76efOMRBDla" role="2Oq$k0">
                       <ref role="1YBMHb" node="76efOMRBD9m" resolve="val" />
                     </node>
-                    <node concept="3TrEf2" id="RRzwLnBqf3" role="2OqNvi">
-                      <ref role="3Tt5mk" to="tp3r:4IP40Bi2KcQ" resolve="expression" />
+                    <node concept="2qgKlT" id="1o$2SUuvWCl" role="2OqNvi">
+                      <ref role="37wK5l" to="ii9q:1o$2SUuvJqx" resolve="getInitValue" />
                     </node>
                   </node>
                 </node>
@@ -1692,8 +1693,8 @@
               <node concept="1YBJjd" id="76efOMRBDnC" role="2Oq$k0">
                 <ref role="1YBMHb" node="76efOMRBDme" resolve="val" />
               </node>
-              <node concept="3TrEf2" id="76efOMRBDo1" role="2OqNvi">
-                <ref role="3Tt5mk" to="tp3r:4IP40Bi2KcQ" resolve="expression" />
+              <node concept="2qgKlT" id="1o$2SUuvWLl" role="2OqNvi">
+                <ref role="37wK5l" to="ii9q:1o$2SUuvKUZ" resolve="getInitValue" />
               </node>
             </node>
           </node>

@@ -18,15 +18,16 @@ public final class LanguageConceptSwitch {
   public static final int NodeBuilder = 6;
   public static final int NodeBuilderExpression = 7;
   public static final int NodeBuilderInitLink = 8;
-  public static final int NodeBuilderInitPart = 9;
-  public static final int NodeBuilderInitProperty = 10;
-  public static final int NodeBuilderList = 11;
-  public static final int NodeBuilderNode = 12;
-  public static final int NodeBuilderRef = 13;
-  public static final int PropertyAntiquotation = 14;
-  public static final int Quotation = 15;
-  public static final int ReferenceAntiquotation = 16;
-  public static final int StringToTypedValueMigrationInfo = 17;
+  public static final int NodeBuilderInitLinkValue = 9;
+  public static final int NodeBuilderInitPart = 10;
+  public static final int NodeBuilderInitProperty = 11;
+  public static final int NodeBuilderList = 12;
+  public static final int NodeBuilderNode = 13;
+  public static final int NodeBuilderRef = 14;
+  public static final int PropertyAntiquotation = 15;
+  public static final int Quotation = 16;
+  public static final int ReferenceAntiquotation = 17;
+  public static final int StringToTypedValueMigrationInfo = 18;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L);
@@ -39,6 +40,7 @@ public final class LanguageConceptSwitch {
     builder.put(0x4bb51009d20a4a9dL, NodeBuilder);
     builder.put(0x718e3f4cb7a3132eL, NodeBuilderExpression);
     builder.put(0x4bb51009d20c8e1aL, NodeBuilderInitLink);
+    builder.put(0x16240b8e9e79db00L, NodeBuilderInitLinkValue);
     builder.put(0x4bb51009d20b0339L, NodeBuilderInitPart);
     builder.put(0x4bb51009d20b0325L, NodeBuilderInitProperty);
     builder.put(0x718e3f4cb7a2df32L, NodeBuilderList);
