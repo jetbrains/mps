@@ -50,9 +50,6 @@
       <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
         <property id="1070475926801" name="value" index="Xl_RC" />
       </concept>
-      <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
-        <reference id="1144433194310" name="classConcept" index="1Pybhc" />
-      </concept>
       <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
       <concept id="1070534370425" name="jetbrains.mps.baseLanguage.structure.IntegerType" flags="in" index="10Oyi0" />
       <concept id="1070534644030" name="jetbrains.mps.baseLanguage.structure.BooleanType" flags="in" index="10P_77" />
@@ -799,12 +796,8 @@
                           <property role="P4ACc" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1068580320020/1068580320021" />
                           <property role="3hQQBS" value="IntegerConstant" />
                           <property role="3qcH_f" value="true" />
-                          <node concept="2YIFZM" id="3Ftr4RaVZD2" role="2c44t1">
-                            <ref role="37wK5l" to="wyt6:~Integer.parseInt(java.lang.String)" resolve="parseInt" />
-                            <ref role="1Pybhc" to="wyt6:~Integer" resolve="Integer" />
-                            <node concept="Xl_RD" id="3v7fNhW5Akj" role="37wK5m">
-                              <property role="Xl_RC" value="566" />
-                            </node>
+                          <node concept="3cmrfG" id="2ucOSYgcdBQ" role="2c44t1">
+                            <property role="3cmrfH" value="566" />
                           </node>
                         </node>
                       </node>
@@ -868,12 +861,8 @@
                                   <ref role="2pJxaS" to="tpee:fzcmrck" resolve="IntegerConstant" />
                                   <node concept="2pJxcG" id="3v7fNhW46FT" role="2pJxcM">
                                     <ref role="2pJxcJ" to="tpee:fzcmrcl" resolve="value" />
-                                    <node concept="2YIFZM" id="3v7fNhW9QPw" role="28ntcv">
-                                      <ref role="37wK5l" to="wyt6:~Integer.valueOf(java.lang.String)" resolve="valueOf" />
-                                      <ref role="1Pybhc" to="wyt6:~Integer" resolve="Integer" />
-                                      <node concept="Xl_RD" id="3v7fNhW9ZaX" role="37wK5m">
-                                        <property role="Xl_RC" value="566" />
-                                      </node>
+                                    <node concept="3cmrfG" id="2ucOSYgcdCe" role="28ntcv">
+                                      <property role="3cmrfH" value="566" />
                                     </node>
                                   </node>
                                 </node>
