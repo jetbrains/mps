@@ -28,9 +28,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 
 class InequalitySystemFactory {
   static InequalitySystem getInequalitiesSystemForChildCell(EditorCell contextCell, SModel typeCheckingModel) {
@@ -77,9 +77,11 @@ class InequalitySystemFactory {
     return inequationsForHole;
   }
 
-  static InequalitySystem getInequalitiesSystem(SNode node) {
+  static InequalitySystem getInequalitiesSystem(SNode node, SModel typecheckingModel) {
     HashMap<SNode, SNode> mapping = new HashMap<>();
-    CopyUtil.copy(Collections.singletonList(node.getContainingRoot()), mapping);
+    SNode rootCopy = CopyUtil.copy(Collections.singletonList(node.getContainingRoot()), mapping).get(0);
+    typecheckingModel.addRootNode(rootCopy);
+
     SNode nodeToEquatePeer = node;
     TypeChecker typeChecker = TypeChecker.getInstance();
     while (nodeToEquatePeer != null && typeChecker.getTypeOf(nodeToEquatePeer) == null) {

@@ -55,7 +55,7 @@ public class DefaultSReferenceSubstituteInfo extends AbstractNodeSubstituteInfo 
 
   @Override
   protected InequalitySystem getInequalitiesSystem(EditorCell contextCell) {
-    return InequalitySystemFactory.getInequalitiesSystem(contextCell.getSNode());
+    return InequalitySystemFactory.getInequalitiesSystem(contextCell.getSNode(), getModelForTypechecking());
   }
 
   @Override
