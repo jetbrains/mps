@@ -1140,6 +1140,9 @@
     <node concept="lpD6D" id="29gobADrLPw" role="lpD6w">
       <ref role="lpD7u" to="yutu:2ZO5wSvGkY7" resolve="QuotationConverterPreservesSemantics" />
     </node>
+    <node concept="lpD6D" id="gLrprVOLA3" role="lpD6w">
+      <ref role="lpD7u" to="yutu:29gobADrNp5" resolve="LightQuotationFinal" />
+    </node>
   </node>
 </model>
 
