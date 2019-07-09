@@ -2,7 +2,7 @@
 <model ref="r:30687ffb-4921-4796-841c-e217080d600a(jetbrains.mps.lang.extension.migration)">
   <persistence version="9" />
   <languages>
-    <use id="90746344-04fd-4286-97d5-b46ae6a81709" name="jetbrains.mps.lang.migration" version="1" />
+    <use id="90746344-04fd-4286-97d5-b46ae6a81709" name="jetbrains.mps.lang.migration" version="2" />
     <use id="d4615e3b-d671-4ba9-af01-2b78369b0ba7" name="jetbrains.mps.lang.pattern" version="2" />
     <use id="c7d5b9dd-a05f-4be2-bc73-f2e16994cc67" name="jetbrains.mps.baseLanguage.lightweightdsl" version="-1" />
     <use id="1a8554c4-eb84-43ba-8c34-6f0d90c6e75a" name="jetbrains.mps.lang.smodel.query" version="3" />
@@ -238,6 +238,7 @@
       <concept id="3364660638048049750" name="jetbrains.mps.lang.core.structure.PropertyAttribute" flags="ng" index="A9Btg">
         <property id="1757699476691236117" name="name_DebugInfo" index="2qtEX9" />
         <property id="1341860900487648621" name="propertyId" index="P4ACc" />
+        <property id="1189424455254633007" name="enumUsageMigrated" index="1I7cki" />
       </concept>
       <concept id="3364660638048049745" name="jetbrains.mps.lang.core.structure.LinkAttribute" flags="ng" index="A9Btn">
         <property id="1757699476691236116" name="role_DebugInfo" index="2qtEX8" />
@@ -398,6 +399,7 @@
                   <property role="2qtEX9" value="name" />
                   <property role="2DMOqu" value="name" />
                   <property role="3qcH_f" value="true" />
+                  <property role="1I7cki" value="true" />
                 </node>
               </node>
             </node>
@@ -892,6 +894,7 @@
                   <property role="2qtEX9" value="name" />
                   <property role="2DMOqu" value="name" />
                   <property role="3qcH_f" value="true" />
+                  <property role="1I7cki" value="true" />
                 </node>
                 <node concept="20X7yG" id="6oJSkzE9bqE" role="20X7yH">
                   <node concept="3clFbS" id="6oJSkzE9bqF" role="2VODD2" />

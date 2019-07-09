@@ -57,7 +57,7 @@ public class LinkDeclaration_Constraints extends BaseConstraintsDescriptor {
       return result;
     }
     private static boolean staticValidateProperty(SNode node, SEnumerationLiteral propertyValue) {
-      return SEnumOperations.isMember(SPropertyOperations.getEnum(node, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass")), 0xfc6f4e95b9L) || SEnumOperations.getMemberPresentation(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc6f3944c2L, "jetbrains.mps.lang.structure.structure.Cardinality"), 0xfc6f3944c4L, "_1")).equals(SEnumOperations.getMemberPresentation(propertyValue)) || SEnumOperations.getMemberPresentation(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc6f3944c2L, "jetbrains.mps.lang.structure.structure.Cardinality"), 0xfc6f3944c3L, "_0__1")).equals(SEnumOperations.getMemberPresentation(propertyValue));
+      return SEnumOperations.isMember(SPropertyOperations.getEnum(node, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass")), 0xfc6f4e95b9L) || SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc6f3944c2L, "jetbrains.mps.lang.structure.structure.Cardinality"), 0xfc6f3944c4L, "_1") == propertyValue || SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc6f3944c2L, "jetbrains.mps.lang.structure.structure.Cardinality"), 0xfc6f3944c3L, "_0__1") == propertyValue;
     }
   }
   public static class LinkId_Property extends BasePropertyConstraintsDescriptor {

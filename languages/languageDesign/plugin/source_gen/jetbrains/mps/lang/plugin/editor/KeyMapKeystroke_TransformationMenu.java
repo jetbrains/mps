@@ -40,7 +40,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.plugin.behavior.SimpleShortcutChange__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
-import jetbrains.mps.lang.plugin.enumMigration.Keymap_MigrationUtils;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 
@@ -257,7 +256,7 @@ public class KeyMapKeystroke_TransformationMenu extends TransformationMenuBase {
 
         SimpleShortcutChange__BehaviorDescriptor.addToKeymapChanges_id1adAGAvXyr3.invoke(SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb076L, "jetbrains.mps.lang.plugin.structure.SimpleShortcutChange")), shortcut, _context.getModel(), ListSequence.fromList(SEnumOperations.getMembers(MetaAdapterFactory.getEnumeration(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb078L, "jetbrains.mps.lang.plugin.structure.Keymap"))).where(new IWhereFilter<SEnumerationLiteral>() {
           public boolean accept(SEnumerationLiteral it) {
-            return Keymap_MigrationUtils.value(it).equals(Keymap_MigrationUtils.value(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb078L, "jetbrains.mps.lang.plugin.structure.Keymap"), 0x15afe07f2a9bb079L, "Mac_OS_X"))) || Keymap_MigrationUtils.value(it).equals(Keymap_MigrationUtils.value(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb078L, "jetbrains.mps.lang.plugin.structure.Keymap"), 0x2b52ed8175294e87L, "Mac_OS_X_10_5_")));
+            return it == SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb078L, "jetbrains.mps.lang.plugin.structure.Keymap"), 0x15afe07f2a9bb079L, "Mac_OS_X") || it == SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb078L, "jetbrains.mps.lang.plugin.structure.Keymap"), 0x2b52ed8175294e87L, "Mac_OS_X_10_5_");
           }
         }), _context.getEditorContext());
       }
@@ -359,7 +358,7 @@ public class KeyMapKeystroke_TransformationMenu extends TransformationMenuBase {
 
         SimpleShortcutChange__BehaviorDescriptor.addToKeymapChanges_id1adAGAvXyr3.invoke(SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb076L, "jetbrains.mps.lang.plugin.structure.SimpleShortcutChange")), shortcut, _context.getModel(), ListSequence.fromList(SEnumOperations.getMembers(MetaAdapterFactory.getEnumeration(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb078L, "jetbrains.mps.lang.plugin.structure.Keymap"))).where(new IWhereFilter<SEnumerationLiteral>() {
           public boolean accept(SEnumerationLiteral it) {
-            return Keymap_MigrationUtils.value(it).equals(Keymap_MigrationUtils.value(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb078L, "jetbrains.mps.lang.plugin.structure.Keymap"), 0x1a8587bfae037332L, "KDE"))) || Keymap_MigrationUtils.value(it).equals(Keymap_MigrationUtils.value(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb078L, "jetbrains.mps.lang.plugin.structure.Keymap"), 0x1a8587bfae037331L, "GNOME")));
+            return it == SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb078L, "jetbrains.mps.lang.plugin.structure.Keymap"), 0x1a8587bfae037332L, "KDE") || it == SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb078L, "jetbrains.mps.lang.plugin.structure.Keymap"), 0x1a8587bfae037331L, "GNOME");
           }
         }), _context.getEditorContext());
       }

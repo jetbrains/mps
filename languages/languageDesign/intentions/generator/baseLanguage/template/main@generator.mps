@@ -5,7 +5,7 @@
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="-1" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="3" />
-    <use id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext" version="1" />
+    <use id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext" version="2" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
     <use id="df345b11-b8c7-4213-ac66-48d2a9b75d88" name="jetbrains.mps.baseLanguageInternal" version="-1" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
@@ -2256,7 +2256,7 @@
                     <node concept="2OqwBi" id="zWYlCGM0hT" role="2Oq$k0">
                       <node concept="2OqwBi" id="zWYlCGM0hU" role="2Oq$k0">
                         <node concept="3TrEf2" id="1VQ0jyzs1IK" role="2OqNvi">
-                          <ref role="3Tt5mk" to="tp3j:i3dlsyr" resolve="queryBlock" />
+                          <ref role="3Tt5mk" to="tp3j:i3dlsyr" resolve="queryFunction" />
                         </node>
                         <node concept="1PxgMI" id="1VQ0jyzrZ7P" role="2Oq$k0">
                           <node concept="30H73N" id="1VQ0jyzrYn4" role="1m5AlR" />
@@ -2309,7 +2309,7 @@
                       <node concept="2OqwBi" id="zWYlCGM1BH" role="2Oq$k0">
                         <node concept="2OqwBi" id="zWYlCGM1BI" role="2Oq$k0">
                           <node concept="3TrEf2" id="1VQ0jyzs7cO" role="2OqNvi">
-                            <ref role="3Tt5mk" to="tp3j:i3dlsyr" resolve="queryBlock" />
+                            <ref role="3Tt5mk" to="tp3j:i3dlsyr" resolve="queryFunction" />
                           </node>
                           <node concept="1PxgMI" id="1VQ0jyzs5Xk" role="2Oq$k0">
                             <node concept="30H73N" id="zWYlCGM20V" role="1m5AlR" />
@@ -2587,7 +2587,7 @@
                                   <node concept="2OqwBi" id="1VQ0jyzqvm8" role="2Oq$k0">
                                     <node concept="30H73N" id="1VQ0jyzqvm9" role="2Oq$k0" />
                                     <node concept="3TrEf2" id="1VQ0jyzqvma" role="2OqNvi">
-                                      <ref role="3Tt5mk" to="tp3j:i3dlsyr" resolve="queryBlock" />
+                                      <ref role="3Tt5mk" to="tp3j:i3dlsyr" resolve="queryFunction" />
                                     </node>
                                   </node>
                                   <node concept="3TrEf2" id="1VQ0jyzqvmb" role="2OqNvi">
@@ -2656,7 +2656,7 @@
                                     <node concept="2OqwBi" id="1VQ0jyzqvmw" role="2Oq$k0">
                                       <node concept="30H73N" id="1VQ0jyzqvmx" role="2Oq$k0" />
                                       <node concept="3TrEf2" id="1VQ0jyzqvmy" role="2OqNvi">
-                                        <ref role="3Tt5mk" to="tp3j:i3dlsyr" resolve="queryBlock" />
+                                        <ref role="3Tt5mk" to="tp3j:i3dlsyr" resolve="queryFunction" />
                                       </node>
                                     </node>
                                     <node concept="3TrEf2" id="1VQ0jyzqvmz" role="2OqNvi">
@@ -2735,7 +2735,7 @@
                             <node concept="2OqwBi" id="1VQ0jyzqvmT" role="2Oq$k0">
                               <node concept="30H73N" id="1VQ0jyzqvmU" role="2Oq$k0" />
                               <node concept="3TrEf2" id="1VQ0jyzqvmV" role="2OqNvi">
-                                <ref role="3Tt5mk" to="tp3j:i3dlsyr" resolve="queryBlock" />
+                                <ref role="3Tt5mk" to="tp3j:i3dlsyr" resolve="queryFunction" />
                               </node>
                             </node>
                             <node concept="3TrEf2" id="1VQ0jyzqvmW" role="2OqNvi">
@@ -2765,7 +2765,7 @@
                             </node>
                             <node concept="2OqwBi" id="1VQ0jyzqvn7" role="2Oq$k0">
                               <node concept="3TrEf2" id="1VQ0jyzqvn8" role="2OqNvi">
-                                <ref role="3Tt5mk" to="tp3j:i3dlsyr" resolve="queryBlock" />
+                                <ref role="3Tt5mk" to="tp3j:i3dlsyr" resolve="queryFunction" />
                               </node>
                               <node concept="30H73N" id="1VQ0jyzqvn9" role="2Oq$k0" />
                             </node>

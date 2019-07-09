@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="56guy85nwqrd84eh6a91ktlp28lyxty">
+<product version="3" modelHash="-bxozeyn09p0vql5ir5o7rigjuvg6elb">
   <files names="CopyIconsToResources.java:EnumUsagesMigration.java:IntroduceSmartRefAttribute.java:MigrateEnumProperties.java:MigrateHelpURL.java:MigrateToNewEnumration.java:MigrationDescriptor.java:Removing_IDontSubstituteByDefault.java:SetOldConceptIds_Empty.java:SetSIds.java:UseDevkit.java" />
 </product>
 

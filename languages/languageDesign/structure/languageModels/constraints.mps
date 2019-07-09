@@ -318,7 +318,6 @@
       <concept id="1138056282393" name="jetbrains.mps.lang.smodel.structure.SLinkListAccess" flags="nn" index="3Tsc0h">
         <reference id="1138056546658" name="link" index="3TtcxE" />
       </concept>
-      <concept id="5779574625832259537" name="jetbrains.mps.lang.smodel.structure.EnumMember_PresentationOperation" flags="ng" index="1XCIdh" />
       <concept id="5779574625830813396" name="jetbrains.mps.lang.smodel.structure.EnumerationIdRefExpression" flags="ng" index="1XH99k">
         <reference id="5779574625830813397" name="enumDeclaration" index="1XH99l" />
       </concept>
@@ -517,25 +516,16 @@
         <node concept="3clFbS" id="wJ65cZ4ww8" role="2VODD2">
           <node concept="3clFbF" id="wJ65cZ4wwc" role="3cqZAp">
             <node concept="22lmx$" id="wJ65cZ4zmW" role="3clFbG">
-              <node concept="2OqwBi" id="wJ65cZ4znh" role="3uHU7w">
-                <node concept="2OqwBi" id="3Ftr4R8$mJr" role="2Oq$k0">
-                  <node concept="1XCIdh" id="3Ftr4R8$mJt" role="2OqNvi" />
-                  <node concept="2OqwBi" id="3Ftr4R8$mJE" role="2Oq$k0">
-                    <node concept="1XH99k" id="3Ftr4R8$mJF" role="2Oq$k0">
-                      <ref role="1XH99l" to="tpce:3Ftr4R6BFyf" resolve="Cardinality" />
-                    </node>
-                    <node concept="2ViDtV" id="3Ftr4R8$mJG" role="2OqNvi">
-                      <ref role="2ViDtZ" to="tpce:3Ftr4R6BFyh" resolve="_0__1" />
-                    </node>
+              <node concept="3clFbC" id="59AhiqZb6tj" role="3uHU7w">
+                <node concept="2OqwBi" id="3Ftr4R8$mJE" role="3uHU7B">
+                  <node concept="1XH99k" id="3Ftr4R8$mJF" role="2Oq$k0">
+                    <ref role="1XH99l" to="tpce:3Ftr4R6BFyf" resolve="Cardinality" />
+                  </node>
+                  <node concept="2ViDtV" id="3Ftr4R8$mJG" role="2OqNvi">
+                    <ref role="2ViDtZ" to="tpce:3Ftr4R6BFyh" resolve="_0__1" />
                   </node>
                 </node>
-                <node concept="liA8E" id="wJ65cZ4znn" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
-                  <node concept="2OqwBi" id="3Ftr4R72Io6" role="37wK5m">
-                    <node concept="1XCIdh" id="3Ftr4R72Io8" role="2OqNvi" />
-                    <node concept="1Wqviy" id="wJ65cZ4znq" role="2Oq$k0" />
-                  </node>
-                </node>
+                <node concept="1Wqviy" id="wJ65cZ4znq" role="3uHU7w" />
               </node>
               <node concept="22lmx$" id="wJ65cZ4zmB" role="3uHU7B">
                 <node concept="2OqwBi" id="wJ65cZ4zaP" role="3uHU7B">
@@ -551,25 +541,16 @@
                     </node>
                   </node>
                 </node>
-                <node concept="2OqwBi" id="wJ65cZ4zmN" role="3uHU7w">
-                  <node concept="2OqwBi" id="3Ftr4R8$mJB" role="2Oq$k0">
-                    <node concept="1XCIdh" id="3Ftr4R8$mJD" role="2OqNvi" />
-                    <node concept="2OqwBi" id="3Ftr4R8$mJH" role="2Oq$k0">
-                      <node concept="1XH99k" id="3Ftr4R8$mJI" role="2Oq$k0">
-                        <ref role="1XH99l" to="tpce:3Ftr4R6BFyf" resolve="Cardinality" />
-                      </node>
-                      <node concept="2ViDtV" id="3Ftr4R8$mJJ" role="2OqNvi">
-                        <ref role="2ViDtZ" to="tpce:3Ftr4R6BFyi" resolve="_1" />
-                      </node>
+                <node concept="3clFbC" id="59AhiqZb6xG" role="3uHU7w">
+                  <node concept="2OqwBi" id="3Ftr4R8$mJH" role="3uHU7B">
+                    <node concept="1XH99k" id="3Ftr4R8$mJI" role="2Oq$k0">
+                      <ref role="1XH99l" to="tpce:3Ftr4R6BFyf" resolve="Cardinality" />
+                    </node>
+                    <node concept="2ViDtV" id="3Ftr4R8$mJJ" role="2OqNvi">
+                      <ref role="2ViDtZ" to="tpce:3Ftr4R6BFyi" resolve="_1" />
                     </node>
                   </node>
-                  <node concept="liA8E" id="wJ65cZ4zmS" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
-                    <node concept="2OqwBi" id="3Ftr4R72Io9" role="37wK5m">
-                      <node concept="1XCIdh" id="3Ftr4R72Iob" role="2OqNvi" />
-                      <node concept="1Wqviy" id="wJ65cZ4zmU" role="2Oq$k0" />
-                    </node>
-                  </node>
+                  <node concept="1Wqviy" id="wJ65cZ4zmU" role="3uHU7w" />
                 </node>
               </node>
             </node>
