@@ -236,10 +236,12 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
       myModuleDescriptor.updateFacetDescriptor(moduleFacet);
     }
 
-    for (Generator generator : ((Language) myModule).getOwnedGenerators()) {
-      VersionFixer fixer = new VersionFixer(myProject, generator, true);
-      if (!fixer.areDepsSatisfied()) continue; //can't update module versions for a module with broken dep
-      fixer.updateImportVersions();
+    if (myModule instanceof Language) {
+      for (Generator generator : ((Language) myModule).getOwnedGenerators()) {
+        VersionFixer fixer = new VersionFixer(myProject, generator, true);
+        if (!fixer.areDepsSatisfied()) continue; //can't update module versions for a module with broken dep
+        fixer.updateImportVersions();
+      }
     }
 
     // todo: !!!
