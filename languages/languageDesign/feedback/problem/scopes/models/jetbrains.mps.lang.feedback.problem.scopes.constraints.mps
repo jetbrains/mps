@@ -141,7 +141,7 @@
       <concept id="7400021826774799413" name="jetbrains.mps.lang.smodel.structure.NodePointerExpression" flags="ng" index="2tJFMh">
         <child id="7400021826774799510" name="ref" index="2tJFKM" />
       </concept>
-      <concept id="1138676077309" name="jetbrains.mps.lang.smodel.structure.EnumMemberReference" flags="nn" index="uoxfO">
+      <concept id="1138676077309" name="jetbrains.mps.lang.smodel.structure.EnumMemberReference_Old" flags="nn" index="uoxfO">
         <reference id="1138676095763" name="enumMember" index="uo_Cq" />
       </concept>
       <concept id="4065387505485742749" name="jetbrains.mps.lang.smodel.structure.AbstractPointerResolveOperation" flags="ng" index="2yCiFS">
@@ -199,6 +199,12 @@
         <property role="TrG5h" value="reference" />
         <node concept="3uibUv" id="1oq9tin0Yhz" role="3RXm0y">
           <ref role="3uigEE" to="mhbf:~SReference" resolve="SReference" />
+        </node>
+      </node>
+      <node concept="3RXm0x" id="5vZLfeXlpEL" role="3QpnaF">
+        <property role="TrG5h" value="link" />
+        <node concept="3uibUv" id="5vZLfeXlpER" role="3RXm0y">
+          <ref role="3uigEE" to="c17a:~SReferenceLink" resolve="SReferenceLink" />
         </node>
       </node>
       <node concept="3RW26_" id="6X8eyFnbNCM" role="2Sp0rL">

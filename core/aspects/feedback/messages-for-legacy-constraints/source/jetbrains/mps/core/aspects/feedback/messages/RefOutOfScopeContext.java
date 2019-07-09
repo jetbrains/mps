@@ -51,4 +51,9 @@ public final class RefOutOfScopeContext implements Context {
   public SAbstractConcept getConcept() {
     return myConcept;
   }
+
+  @NotNull
+  public SReferenceLink getLink() {
+    return myReference.getLink();
+  }
 }

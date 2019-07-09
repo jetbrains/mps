@@ -98,7 +98,7 @@ public class TestsErrorsChecker {
 
     new TypesystemChecker().check(myRoot, repository, errorCollector, new EmptyProgressMonitor());
     new ConstraintsChecker(null).asRootChecker().check(myRoot, repository, errorCollector, new EmptyProgressMonitor());
-    new RefScopeChecker(null).asRootChecker().check(myRoot, repository, errorCollector, new EmptyProgressMonitor());
+    new RefScopeChecker().asRootChecker().check(myRoot, repository, errorCollector, new EmptyProgressMonitor());
     new TargetConceptChecker().asRootChecker().check(myRoot, repository, errorCollector, new EmptyProgressMonitor());
     new StructureChecker().asRootChecker().check(myRoot, repository, errorCollector, new EmptyProgressMonitor());
 

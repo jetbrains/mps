@@ -157,9 +157,15 @@
       </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
+      <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
+        <reference id="1177026940964" name="conceptDeclaration" index="cht4Q" />
+      </concept>
       <concept id="1143226024141" name="jetbrains.mps.lang.smodel.structure.SModelType" flags="in" index="H_c77" />
       <concept id="1143234257716" name="jetbrains.mps.lang.smodel.structure.Node_GetModelOperation" flags="nn" index="I4A8Y" />
       <concept id="1212008292747" name="jetbrains.mps.lang.smodel.structure.Model_GetLongNameOperation" flags="nn" index="LkI2h" />
+      <concept id="1171323947159" name="jetbrains.mps.lang.smodel.structure.Model_NodesOperation" flags="nn" index="2SmgA7">
+        <child id="1758937410080001570" name="conceptArgument" index="1dBWTz" />
+      </concept>
       <concept id="2644386474300074836" name="jetbrains.mps.lang.smodel.structure.ConceptIdRefExpression" flags="nn" index="35c_gC">
         <reference id="2644386474300074837" name="conceptDeclaration" index="35c_gD" />
       </concept>
@@ -197,6 +203,7 @@
       </concept>
       <concept id="1160600644654" name="jetbrains.mps.baseLanguage.collections.structure.ListCreatorWithInit" flags="nn" index="Tc6Ow" />
       <concept id="1160612413312" name="jetbrains.mps.baseLanguage.collections.structure.AddElementOperation" flags="nn" index="TSZUe" />
+      <concept id="1176501494711" name="jetbrains.mps.baseLanguage.collections.structure.IsNotEmptyOperation" flags="nn" index="3GX2aA" />
     </language>
   </registry>
   <node concept="3Oh7Pa" id="1mFJTG0Yqe">
@@ -231,6 +238,23 @@
               <ref role="3QpVTF" node="6SnnA3pzN3z" resolve="AModel" />
             </node>
             <node concept="LkI2h" id="2dMY_rcjsgL" role="2OqNvi" />
+          </node>
+        </node>
+        <node concept="25XGhA" id="5vZLfeXi2Kf" role="2RBc8G">
+          <node concept="2K0Yjh" id="5vZLfeXi2Kg" role="2K0D5Q">
+            <node concept="2OqwBi" id="5vZLfeXi9gd" role="2K0yoH">
+              <node concept="2OqwBi" id="5vZLfeXi3eR" role="2Oq$k0">
+                <node concept="3QpRc$" id="5vZLfeXi2Kr" role="2Oq$k0">
+                  <ref role="3QpVTF" node="6SnnA3pzN3z" resolve="AModel" />
+                </node>
+                <node concept="2SmgA7" id="5vZLfeXi3ju" role="2OqNvi">
+                  <node concept="chp4Y" id="5vZLfeXi3jE" role="1dBWTz">
+                    <ref role="cht4Q" to="pljn:5ca4zTvKOOO" resolve="TestConcept" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3GX2aA" id="5vZLfeXiaEU" role="2OqNvi" />
+            </node>
           </node>
         </node>
       </node>
@@ -302,10 +326,10 @@
     <node concept="3QByp$" id="1oq9tin1ty6" role="3QBEN7">
       <node concept="16I2mz" id="1oq9tin1ty8" role="16N$OP">
         <node concept="16N$OT" id="7J3GgfrRR02" role="16I2mt">
-          <property role="16N$OU" value="Link is out of scope: hahahahaha " />
+          <property role="16N$OU" value="The link is out of scope: here it goes: " />
         </node>
         <node concept="16Iohu" id="7J3GgfrRR01" role="16I2mt">
-          <ref role="16E0hz" to="ewrq:1mFJTG7MCZ" resolve="reference" />
+          <ref role="16E0hz" to="ewrq:5vZLfeXlpEL" resolve="link" />
         </node>
       </node>
       <node concept="216oCf" id="1oq9tin1$FT" role="3JXyrO">
