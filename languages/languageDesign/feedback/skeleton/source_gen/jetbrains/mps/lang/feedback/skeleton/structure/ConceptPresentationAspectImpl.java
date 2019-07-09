@@ -22,6 +22,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.shortDesc("provides feedback for different problems");
           cpb.presentationByName();
+          cpb.icon(IconContainer.RESOURCE_a0a3a0a0b0d);
           props_FeedbackPerConceptRoot = cpb.create();
         }
         return props_FeedbackPerConceptRoot;

@@ -9,7 +9,10 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <root>
     <file name="ConceptPresentationAspectImpl.java">
-      <unit at="11,0,38,0" name="jetbrains.mps.lang.feedback.skeleton.structure.ConceptPresentationAspectImpl" />
+      <unit at="11,0,39,0" name="jetbrains.mps.lang.feedback.skeleton.structure.ConceptPresentationAspectImpl" />
+    </file>
+    <file name="IconContainer.java">
+      <unit at="7,0,10,0" name="jetbrains.mps.lang.feedback.skeleton.structure.IconContainer" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <unit at="10,0,30,0" name="jetbrains.mps.lang.feedback.skeleton.structure.LanguageConceptSwitch" />
@@ -21,14 +24,14 @@
   <root nodeRef="r:2ac18004-8536-478a-bf05-03a0f407633f(jetbrains.mps.lang.feedback.skeleton.structure)/6285588811486094606">
     <file name="ConceptPresentationAspectImpl.java">
       <node id="6285588811486094606" at="13,0,14,0" concept="1" trace="props_FeedbackRootMember" />
-      <node id="6285588811486094606" at="29,47,30,76" concept="3" />
-      <node id="6285588811486094606" at="30,76,31,50" concept="0" />
-      <node id="6285588811486094606" at="32,9,33,40" concept="4" />
-      <node id="6285588811486094606" at="28,52,32,9" concept="2" />
-      <scope id="6285588811486094606" at="29,47,31,50">
+      <node id="6285588811486094606" at="30,47,31,76" concept="3" />
+      <node id="6285588811486094606" at="31,76,32,50" concept="0" />
+      <node id="6285588811486094606" at="33,9,34,40" concept="4" />
+      <node id="6285588811486094606" at="29,52,33,9" concept="2" />
+      <scope id="6285588811486094606" at="30,47,32,50">
         <var name="cpb" id="6285588811486094606" />
       </scope>
-      <scope id="6285588811486094606" at="28,52,33,40" />
+      <scope id="6285588811486094606" at="29,52,34,40" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <node id="6285588811486094606" at="13,0,14,0" concept="5" trace="FeedbackRootMember" />
@@ -56,13 +59,14 @@
       <node id="7291380803381892615" at="21,51,22,76" concept="3" />
       <node id="7291380803381892615" at="22,76,23,68" concept="0" />
       <node id="7291380803381892615" at="23,68,24,35" concept="0" />
-      <node id="7291380803381892615" at="24,35,25,54" concept="0" />
-      <node id="7291380803381892615" at="26,9,27,44" concept="4" />
-      <node id="7291380803381892615" at="20,56,26,9" concept="2" />
-      <scope id="7291380803381892615" at="21,51,25,54">
+      <node id="7291380803381892615" at="24,35,25,55" concept="0" />
+      <node id="7291380803381892615" at="25,55,26,54" concept="0" />
+      <node id="7291380803381892615" at="27,9,28,44" concept="4" />
+      <node id="7291380803381892615" at="20,56,27,9" concept="2" />
+      <scope id="7291380803381892615" at="21,51,26,54">
         <var name="cpb" id="7291380803381892615" />
       </scope>
-      <scope id="7291380803381892615" at="20,56,27,44" />
+      <scope id="7291380803381892615" at="20,56,28,44" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <node id="7291380803381892615" at="12,0,13,0" concept="5" trace="FeedbackPerConceptRoot" />
