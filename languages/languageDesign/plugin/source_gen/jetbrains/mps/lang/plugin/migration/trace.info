@@ -263,8 +263,8 @@
       <node id="6904920584772662312" at="84,51,85,146" concept="4" />
       <node id="6904920584772882532" at="89,80,90,63" concept="3" />
       <node id="6904920584772882532" at="90,63,91,230" concept="3" />
-      <node id="6904920584772882532" at="91,230,92,152" concept="1" />
-      <node id="6904920584772882532" at="92,152,93,14" concept="4" />
+      <node id="6904920584772882532" at="91,230,92,290" concept="1" />
+      <node id="6904920584772882532" at="92,290,93,14" concept="4" />
       <node id="6904920584772662312" at="27,0,30,0" concept="2" trace="getCaption#()Ljava/lang/String;" />
       <node id="6904920584772847389" at="43,0,46,0" concept="2" trace="getDefaultSearchScope#()Lorg/jetbrains/mps/openapi/module/SearchScope;" />
       <node id="6904920584772852995" at="48,0,51,0" concept="2" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />

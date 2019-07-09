@@ -86,8 +86,8 @@
       <node id="2409421742521905397" at="293,15,294,58" concept="4" />
       <node id="3944198881067742398" at="300,83,301,63" concept="3" />
       <node id="3944198881067742398" at="301,63,302,233" concept="3" />
-      <node id="3944198881067742398" at="302,233,303,149" concept="0" />
-      <node id="3944198881067742398" at="303,149,304,14" concept="4" />
+      <node id="3944198881067742398" at="302,233,303,284" concept="0" />
+      <node id="3944198881067742398" at="303,284,304,14" concept="4" />
       <node id="4608161086085620431" at="53,0,56,0" concept="6" trace="propertyMacro_GetValue_0_0#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />
       <node id="3944198881067747478" at="56,0,59,0" concept="6" trace="propertyMacro_GetValue_0_1#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />
       <node id="4608161086086019487" at="59,0,62,0" concept="6" trace="propertyMacro_GetValue_0_2#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />

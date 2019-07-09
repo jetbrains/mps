@@ -56,9 +56,9 @@
       <node id="1986963296983872657" at="126,5,127,24" concept="5" />
       <node id="6807933448470767091" at="129,90,130,63" concept="4" />
       <node id="6807933448470767091" at="130,63,131,209" concept="4" />
-      <node id="6807933448470767091" at="131,209,132,153" concept="1" />
-      <node id="6807933448470767091" at="132,153,133,153" concept="1" />
-      <node id="6807933448470767091" at="133,153,134,14" concept="5" />
+      <node id="6807933448470767091" at="131,209,132,292" concept="1" />
+      <node id="6807933448470767091" at="132,292,133,292" concept="1" />
+      <node id="6807933448470767091" at="133,292,134,14" concept="5" />
       <node id="1986963296982667681" at="37,0,40,0" concept="3" trace="getCaption#()Ljava/lang/String;" />
       <node id="6807933448471958642" at="51,0,54,0" concept="3" trace="met#(Lorg/jetbrains/mps/openapi/model/SModel;)Z" />
       <node id="6807933448471856633" at="60,0,63,0" concept="3" trace="getDefaultSearchScope#()Lorg/jetbrains/mps/openapi/module/SearchScope;" />

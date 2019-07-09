@@ -127,7 +127,7 @@ public class NumberToolShortcut_SubstituteMenu extends SubstituteMenuBase {
   private static SNode createNumberToolShortcut_33swfs_a0a0b(Object p0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b76107L, "jetbrains.mps.lang.plugin.structure.NumberToolShortcut"), null, null, false);
-    n1.setProperty(MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b76107L, 0x68b8d4843b76123L, "number"), p0 + "");
+    n1.setProperty(MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b76107L, 0x68b8d4843b76123L, "number"), MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b76107L, 0x68b8d4843b76123L, "number").getType().toString(p0));
     return n1;
   }
   private static Pattern REGEXP_33swfs_a0a0a11c5 = Pattern.compile("\\d", 0);

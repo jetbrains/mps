@@ -245,8 +245,8 @@ public class QueriesGenerated extends QueryProviderBase {
   private static SNode createGeneratorInternal_PluginExpanded_x583g4_a0a0a0e0m(Object p0, Object p1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3283ab1237f81c49L, "jetbrains.mps.build.mps.structure.GeneratorInternal_PluginExpanded"), null, null, false);
-    n1.setProperty(MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3283ab1237f81c49L, 0x3283ab1237f81c4aL, "path"), p0 + "");
-    n1.setProperty(MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3283ab1237f81c49L, 0x3283ab1237f81c4bL, "id"), p1 + "");
+    n1.setProperty(MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3283ab1237f81c49L, 0x3283ab1237f81c4aL, "path"), MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3283ab1237f81c49L, 0x3283ab1237f81c4aL, "path").getType().toString(p0));
+    n1.setProperty(MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3283ab1237f81c49L, 0x3283ab1237f81c4bL, "id"), MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3283ab1237f81c49L, 0x3283ab1237f81c4bL, "id").getType().toString(p1));
     return n1;
   }
   private static boolean isNotEmptyString(String str) {

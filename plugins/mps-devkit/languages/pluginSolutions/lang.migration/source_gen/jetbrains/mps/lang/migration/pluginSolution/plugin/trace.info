@@ -398,20 +398,20 @@
       <node id="3947813777275446249" at="133,80,134,63" concept="8" />
       <node id="3947813777275446249" at="134,63,135,230" concept="8" />
       <node id="3947813777275446249" at="135,230,136,158" concept="3" />
-      <node id="3947813777275446249" at="136,158,137,159" concept="3" />
-      <node id="3947813777275446249" at="137,159,138,142" concept="3" />
-      <node id="3947813777275446249" at="138,142,139,14" concept="9" />
+      <node id="3947813777275446249" at="136,158,137,304" concept="3" />
+      <node id="3947813777275446249" at="137,304,138,270" concept="3" />
+      <node id="3947813777275446249" at="138,270,139,14" concept="9" />
       <node id="3628660716137567628" at="141,97,142,63" concept="8" />
       <node id="3628660716137567628" at="142,63,143,231" concept="8" />
-      <node id="3628660716137567628" at="143,231,144,159" concept="3" />
+      <node id="3628660716137567628" at="143,231,144,304" concept="3" />
       <node id="3628660716137567628" at="145,24,146,357" concept="3" />
       <node id="3628660716137567628" at="148,24,149,355" concept="3" />
       <node id="3628660716137567628" at="150,5,151,14" concept="9" />
       <node id="1817798995039488713" at="153,88,154,63" concept="8" />
       <node id="1817798995039488713" at="154,63,155,233" concept="8" />
-      <node id="1817798995039488713" at="155,233,156,156" concept="3" />
-      <node id="1817798995039488713" at="156,156,157,159" concept="3" />
-      <node id="1817798995039488713" at="157,159,158,14" concept="9" />
+      <node id="1817798995039488713" at="155,233,156,298" concept="3" />
+      <node id="1817798995039488713" at="156,298,157,304" concept="3" />
+      <node id="1817798995039488713" at="157,304,158,14" concept="9" />
       <node id="7222086642609120725" at="106,16,108,11" concept="1" />
       <node id="3947813777275489564" at="74,0,77,0" concept="7" trace="translate#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Iterable;" />
       <node id="3947813777275489573" at="78,0,81,0" concept="7" trace="select#(Lorg/jetbrains/mps/openapi/model/SReference;)Lorg/jetbrains/mps/openapi/model/SModelReference;" />
@@ -423,7 +423,7 @@
       <node id="5464540062512861273" at="116,0,119,0" concept="7" trace="getFromVersion#()I" />
       <node id="1817798995039504596" at="119,83,122,5" concept="6" />
       <node id="1817798995039477934" at="125,0,128,0" concept="7" trace="select#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/refactoring/participant/RefactoringParticipant/Option;" />
-      <node id="3628660716137567628" at="144,159,147,5" concept="6" />
+      <node id="3628660716137567628" at="144,304,147,5" concept="6" />
       <node id="3628660716137567628" at="147,5,150,5" concept="6" />
       <node id="3947813777275379052" at="46,115,50,5" concept="6" />
       <node id="3947813777275474856" at="52,94,56,5" concept="6" />

@@ -140,9 +140,7 @@
       </concept>
       <concept id="5455284157994012186" name="jetbrains.mps.lang.quotation.structure.NodeBuilderInitLink" flags="ng" index="2pIpSj">
         <reference id="5455284157994012188" name="link" index="2pIpSl" />
-      </concept>
-      <concept id="5455284157993911097" name="jetbrains.mps.lang.quotation.structure.NodeBuilderInitPart" flags="ng" index="2pJxcK">
-        <child id="5455284157993911094" name="expression" index="2pJxcZ" />
+        <child id="1595412875168045827" name="initValue" index="28nt2d" />
       </concept>
       <concept id="5455284157993863837" name="jetbrains.mps.lang.quotation.structure.NodeBuilder" flags="nn" index="2pJPEk">
         <child id="5455284157993863838" name="quotedNode" index="2pJPEn" />
@@ -2745,7 +2743,7 @@
                         <ref role="2pJxaS" to="tpee:g7uibYu" resolve="ClassifierType" />
                         <node concept="2pIpSj" id="fG" role="2pJxcM">
                           <ref role="2pIpSl" to="tpee:g7uigIF" resolve="classifier" />
-                          <node concept="36bGnv" id="fI" role="2pJxcZ">
+                          <node concept="36bGnv" id="fI" role="28nt2d">
                             <ref role="36bGnp" to="4o98:~Platform" resolve="Platform" />
                             <node concept="cd27G" id="fK" role="lGtFl">
                               <node concept="3u3nmq" id="fL" role="cd27D">

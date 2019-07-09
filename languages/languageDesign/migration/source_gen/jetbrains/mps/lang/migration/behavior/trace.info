@@ -247,8 +247,8 @@
       <node id="2084600659520931389" at="97,40,98,19" concept="5" />
       <node id="8795282871116667275" at="100,79,101,63" concept="4" />
       <node id="8795282871116667275" at="101,63,102,235" concept="4" />
-      <node id="8795282871116667275" at="102,235,103,145" concept="1" />
-      <node id="8795282871116667275" at="103,145,104,14" concept="5" />
+      <node id="8795282871116667275" at="102,235,103,276" concept="1" />
+      <node id="8795282871116667275" at="103,276,104,14" concept="5" />
       <node id="2084600659520931389" at="38,0,40,0" concept="9" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="2084600659520931389" at="52,0,54,0" concept="0" trace="MoveConcept__BehaviorDescriptor#()V" />
       <node id="2084600659520931389" at="41,0,44,0" concept="9" trace="shouldKeepOldNode_id1NHZk5hi$oq#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -418,8 +418,8 @@
       <node id="2084600659521082929" at="92,40,93,19" concept="5" />
       <node id="7217668918195679990" at="95,79,96,63" concept="4" />
       <node id="7217668918195679990" at="96,63,97,235" concept="4" />
-      <node id="7217668918195679990" at="97,235,98,145" concept="1" />
-      <node id="7217668918195679990" at="98,145,99,14" concept="5" />
+      <node id="7217668918195679990" at="97,235,98,276" concept="1" />
+      <node id="7217668918195679990" at="98,276,99,14" concept="5" />
       <node id="2084600659521082929" at="38,0,40,0" concept="9" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="2084600659521082929" at="49,0,51,0" concept="0" trace="MoveContainmentLink__BehaviorDescriptor#()V" />
       <node id="2084600659521082929" at="59,49,62,5" concept="2" />
@@ -511,8 +511,8 @@
       <node id="2084600659521082981" at="92,40,93,19" concept="5" />
       <node id="2705977012592163011" at="95,79,96,63" concept="4" />
       <node id="2705977012592163011" at="96,63,97,235" concept="4" />
-      <node id="2705977012592163011" at="97,235,98,145" concept="1" />
-      <node id="2705977012592163011" at="98,145,99,14" concept="5" />
+      <node id="2705977012592163011" at="97,235,98,276" concept="1" />
+      <node id="2705977012592163011" at="98,276,99,14" concept="5" />
       <node id="2084600659521082981" at="38,0,40,0" concept="9" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="2084600659521082981" at="49,0,51,0" concept="0" trace="MoveProperty__BehaviorDescriptor#()V" />
       <node id="2084600659521082981" at="59,49,62,5" concept="2" />
@@ -604,8 +604,8 @@
       <node id="2084600659521083053" at="92,40,93,19" concept="5" />
       <node id="2705977012592173715" at="95,79,96,63" concept="4" />
       <node id="2705977012592173715" at="96,63,97,235" concept="4" />
-      <node id="2705977012592173715" at="97,235,98,145" concept="1" />
-      <node id="2705977012592173715" at="98,145,99,14" concept="5" />
+      <node id="2705977012592173715" at="97,235,98,276" concept="1" />
+      <node id="2705977012592173715" at="98,276,99,14" concept="5" />
       <node id="2084600659521083053" at="38,0,40,0" concept="9" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="2084600659521083053" at="49,0,51,0" concept="0" trace="MoveReferenceLink__BehaviorDescriptor#()V" />
       <node id="2084600659521083053" at="59,49,62,5" concept="2" />

@@ -186,9 +186,7 @@
       </concept>
       <concept id="5455284157994012186" name="jetbrains.mps.lang.quotation.structure.NodeBuilderInitLink" flags="ng" index="2pIpSj">
         <reference id="5455284157994012188" name="link" index="2pIpSl" />
-      </concept>
-      <concept id="5455284157993911097" name="jetbrains.mps.lang.quotation.structure.NodeBuilderInitPart" flags="ng" index="2pJxcK">
-        <child id="5455284157993911094" name="expression" index="2pJxcZ" />
+        <child id="1595412875168045827" name="initValue" index="28nt2d" />
       </concept>
       <concept id="5455284157993863837" name="jetbrains.mps.lang.quotation.structure.NodeBuilder" flags="nn" index="2pJPEk">
         <child id="5455284157993863838" name="quotedNode" index="2pJPEn" />
@@ -2594,7 +2592,7 @@
               <ref role="2pJxaS" to="fb9u:O$iR4J$g0s" resolve="PersistentConfigurationType" />
               <node concept="2pIpSj" id="bM" role="2pJxcM">
                 <ref role="2pIpSl" to="fb9u:O$iR4J$g0t" resolve="persistentConfiguration" />
-                <node concept="36biLy" id="bO" role="2pJxcZ">
+                <node concept="36biLy" id="bO" role="28nt2d">
                   <node concept="2OqwBi" id="bQ" role="36biLW">
                     <node concept="37vLTw" id="bS" role="2Oq$k0">
                       <ref role="3cqZAo" node="bl" resolve="runConfigurationType" />
@@ -4917,7 +4915,7 @@
                         <ref role="2pJxaS" to="tpee:g7uibYu" resolve="ClassifierType" />
                         <node concept="2pIpSj" id="qP" role="2pJxcM">
                           <ref role="2pIpSl" to="tpee:g7uigIF" resolve="classifier" />
-                          <node concept="36bGnv" id="qR" role="2pJxcZ">
+                          <node concept="36bGnv" id="qR" role="28nt2d">
                             <ref role="36bGnp" to="4nm9:~Project" resolve="Project" />
                             <node concept="cd27G" id="qT" role="lGtFl">
                               <node concept="3u3nmq" id="qU" role="cd27D">
@@ -8069,7 +8067,7 @@
                         <ref role="2pJxaS" to="uhxm:3P4ieJEY6lC" resolve="RunConfigurationType" />
                         <node concept="2pIpSj" id="Im" role="2pJxcM">
                           <ref role="2pIpSl" to="uhxm:O$iR4J$g3Y" resolve="runConfiguration" />
-                          <node concept="36biLy" id="Io" role="2pJxcZ">
+                          <node concept="36biLy" id="Io" role="28nt2d">
                             <node concept="37vLTw" id="Iq" role="36biLW">
                               <ref role="3cqZAo" node="GW" resolve="rc" />
                               <node concept="cd27G" id="Is" role="lGtFl">
@@ -9949,7 +9947,7 @@
                         <ref role="2pJxaS" to="tpee:g7uibYu" resolve="ClassifierType" />
                         <node concept="2pIpSj" id="TR" role="2pJxcM">
                           <ref role="2pIpSl" to="tpee:g7uigIF" resolve="classifier" />
-                          <node concept="36bGnv" id="TT" role="2pJxcZ">
+                          <node concept="36bGnv" id="TT" role="28nt2d">
                             <ref role="36bGnp" to="feyl:~ConfigurationContext" resolve="ConfigurationContext" />
                             <node concept="cd27G" id="TV" role="lGtFl">
                               <node concept="3u3nmq" id="TW" role="cd27D">
@@ -16503,7 +16501,7 @@
                         <ref role="2pJxaS" to="uhxm:3P4ieJEY6lC" resolve="RunConfigurationType" />
                         <node concept="2pIpSj" id="1yd" role="2pJxcM">
                           <ref role="2pIpSl" to="uhxm:O$iR4J$g3Y" resolve="runConfiguration" />
-                          <node concept="36biLy" id="1yf" role="2pJxcZ">
+                          <node concept="36biLy" id="1yf" role="28nt2d">
                             <node concept="2OqwBi" id="1yh" role="36biLW">
                               <node concept="37vLTw" id="1yj" role="2Oq$k0">
                                 <ref role="3cqZAo" node="1x3" resolve="initializer" />
@@ -17052,7 +17050,7 @@
                         <ref role="2pJxaS" to="uhxm:3P4ieJEY6lC" resolve="RunConfigurationType" />
                         <node concept="2pIpSj" id="1_A" role="2pJxcM">
                           <ref role="2pIpSl" to="uhxm:O$iR4J$g3Y" resolve="runConfiguration" />
-                          <node concept="36biLy" id="1_C" role="2pJxcZ">
+                          <node concept="36biLy" id="1_C" role="28nt2d">
                             <node concept="37vLTw" id="1_E" role="36biLW">
                               <ref role="3cqZAo" node="1$s" resolve="runConfiguration" />
                               <node concept="cd27G" id="1_G" role="lGtFl">
@@ -19207,11 +19205,11 @@
                         <ref role="2pJxaS" to="tpd4:hausRW2" resolve="JoinType" />
                         <node concept="2pIpSj" id="1MS" role="2pJxcM">
                           <ref role="2pIpSl" to="tpd4:hausUtE" resolve="argument" />
-                          <node concept="2pJPED" id="1MV" role="2pJxcZ">
+                          <node concept="2pJPED" id="1MV" role="28nt2d">
                             <ref role="2pJxaS" to="cx9y:i2pR1d_" resolve="NamedTupleType" />
                             <node concept="2pIpSj" id="1MX" role="2pJxcM">
                               <ref role="2pIpSl" to="cx9y:i2pR8DE" resolve="tupleDeclaration" />
-                              <node concept="36bGnv" id="1MZ" role="2pJxcZ">
+                              <node concept="36bGnv" id="1MZ" role="28nt2d">
                                 <ref role="36bGnp" to="awpe:1HMPpNJqv3x" resolve="ExecutionTool" />
                                 <node concept="cd27G" id="1N1" role="lGtFl">
                                   <node concept="3u3nmq" id="1N2" role="cd27D">
@@ -19239,7 +19237,7 @@
                         </node>
                         <node concept="2pIpSj" id="1MT" role="2pJxcM">
                           <ref role="2pIpSl" to="tpd4:hausUtE" resolve="argument" />
-                          <node concept="2pJPED" id="1N6" role="2pJxcZ">
+                          <node concept="2pJPED" id="1N6" role="28nt2d">
                             <ref role="2pJxaS" to="uhxm:1ovLDatOqMj" resolve="ConsoleType" />
                             <node concept="cd27G" id="1N8" role="lGtFl">
                               <node concept="3u3nmq" id="1N9" role="cd27D">

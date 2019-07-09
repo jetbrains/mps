@@ -175,9 +175,7 @@
       </concept>
       <concept id="5455284157994012186" name="jetbrains.mps.lang.quotation.structure.NodeBuilderInitLink" flags="ng" index="2pIpSj">
         <reference id="5455284157994012188" name="link" index="2pIpSl" />
-      </concept>
-      <concept id="5455284157993911097" name="jetbrains.mps.lang.quotation.structure.NodeBuilderInitPart" flags="ng" index="2pJxcK">
-        <child id="5455284157993911094" name="expression" index="2pJxcZ" />
+        <child id="1595412875168045827" name="initValue" index="28nt2d" />
       </concept>
       <concept id="5455284157993863837" name="jetbrains.mps.lang.quotation.structure.NodeBuilder" flags="nn" index="2pJPEk">
         <child id="5455284157993863838" name="quotedNode" index="2pJPEn" />
@@ -4655,7 +4653,7 @@
                         <ref role="2pJxaS" to="rzqf:xZAjsdvxUz" resolve="CommandProcessType" />
                         <node concept="2pIpSj" id="q8" role="2pJxcM">
                           <ref role="2pIpSl" to="rzqf:xZAjsdvxU$" resolve="commandDeclaration" />
-                          <node concept="36biLy" id="qa" role="2pJxcZ">
+                          <node concept="36biLy" id="qa" role="28nt2d">
                             <node concept="2OqwBi" id="qc" role="36biLW">
                               <node concept="2OqwBi" id="qe" role="2Oq$k0">
                                 <node concept="37vLTw" id="qh" role="2Oq$k0">
@@ -7336,7 +7334,7 @@
                         <ref role="2pJxaS" to="rzqf:JzCdmU6yJm" resolve="CommandType" />
                         <node concept="2pIpSj" id="EG" role="2pJxcM">
                           <ref role="2pIpSl" to="rzqf:JzCdmU6yJn" resolve="command" />
-                          <node concept="36biLy" id="EI" role="2pJxcZ">
+                          <node concept="36biLy" id="EI" role="28nt2d">
                             <node concept="2OqwBi" id="EK" role="36biLW">
                               <node concept="37vLTw" id="EM" role="2Oq$k0">
                                 <ref role="3cqZAo" node="Dy" resolve="commandReferenceExpression" />
@@ -8063,7 +8061,7 @@
                         <ref role="2pJxaS" to="tpd4:hausRW2" resolve="JoinType" />
                         <node concept="2pIpSj" id="Jd" role="2pJxcM">
                           <ref role="2pIpSl" to="tpd4:hausUtE" resolve="argument" />
-                          <node concept="36be1Y" id="Jf" role="2pJxcZ">
+                          <node concept="36be1Y" id="Jf" role="28nt2d">
                             <node concept="2pJPED" id="Jh" role="36be1Z">
                               <ref role="2pJxaS" to="tpee:hP7QB7G" resolve="StringType" />
                               <node concept="cd27G" id="Jl" role="lGtFl">
@@ -8076,7 +8074,7 @@
                               <ref role="2pJxaS" to="tpee:g7uibYu" resolve="ClassifierType" />
                               <node concept="2pIpSj" id="Jn" role="2pJxcM">
                                 <ref role="2pIpSl" to="tpee:g7uigIF" resolve="classifier" />
-                                <node concept="36bGnv" id="Jp" role="2pJxcZ">
+                                <node concept="36bGnv" id="Jp" role="28nt2d">
                                   <ref role="36bGnp" to="guwi:~File" resolve="File" />
                                   <node concept="cd27G" id="Jr" role="lGtFl">
                                     <node concept="3u3nmq" id="Js" role="cd27D">
@@ -9817,7 +9815,7 @@
                             <ref role="2pJxaS" to="tpd4:hausRW2" resolve="JoinType" />
                             <node concept="2pIpSj" id="TY" role="2pJxcM">
                               <ref role="2pIpSl" to="tpd4:hausUtE" resolve="argument" />
-                              <node concept="36be1Y" id="U0" role="2pJxcZ">
+                              <node concept="36be1Y" id="U0" role="28nt2d">
                                 <node concept="2pJPED" id="U2" role="36be1Z">
                                   <ref role="2pJxaS" to="tpee:hP7QB7G" resolve="StringType" />
                                   <node concept="cd27G" id="U6" role="lGtFl">
@@ -9830,7 +9828,7 @@
                                   <ref role="2pJxaS" to="tpee:g7uibYu" resolve="ClassifierType" />
                                   <node concept="2pIpSj" id="U8" role="2pJxcM">
                                     <ref role="2pIpSl" to="tpee:g7uigIF" resolve="classifier" />
-                                    <node concept="36bGnv" id="Ua" role="2pJxcZ">
+                                    <node concept="36bGnv" id="Ua" role="28nt2d">
                                       <ref role="36bGnp" to="guwi:~File" resolve="File" />
                                       <node concept="cd27G" id="Uc" role="lGtFl">
                                         <node concept="3u3nmq" id="Ud" role="cd27D">

@@ -231,9 +231,7 @@
       </concept>
       <concept id="5455284157994012186" name="jetbrains.mps.lang.quotation.structure.NodeBuilderInitLink" flags="ng" index="2pIpSj">
         <reference id="5455284157994012188" name="link" index="2pIpSl" />
-      </concept>
-      <concept id="5455284157993911097" name="jetbrains.mps.lang.quotation.structure.NodeBuilderInitPart" flags="ng" index="2pJxcK">
-        <child id="5455284157993911094" name="expression" index="2pJxcZ" />
+        <child id="1595412875168045827" name="initValue" index="28nt2d" />
       </concept>
       <concept id="5455284157993863837" name="jetbrains.mps.lang.quotation.structure.NodeBuilder" flags="nn" index="2pJPEk">
         <child id="5455284157993863838" name="quotedNode" index="2pJPEn" />
@@ -10634,7 +10632,7 @@
                   <ref role="2pJxaS" to="cx9y:i2pR1d_" resolve="NamedTupleType" />
                   <node concept="2pIpSj" id="Z0" role="2pJxcM">
                     <ref role="2pIpSl" to="cx9y:i2pR8DE" resolve="tupleDeclaration" />
-                    <node concept="36biLy" id="Z2" role="2pJxcZ">
+                    <node concept="36biLy" id="Z2" role="28nt2d">
                       <node concept="1PxgMI" id="Z4" role="36biLW">
                         <node concept="2OqwBi" id="Z6" role="1m5AlR">
                           <node concept="37vLTw" id="Z9" role="2Oq$k0">

@@ -19,10 +19,10 @@ import junit.framework.Assert;
 import jetbrains.mps.lang.test.matcher.NodesMatcher;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 
 @MPSLaunch
 public class LightQuotationFinal_Test extends BaseTransformationTest {
@@ -67,14 +67,6 @@ public class LightQuotationFinal_Test extends BaseTransformationTest {
   public void test_containmentLinkMultipleListNull() throws Throwable {
     new LightQuotationFinal_Test.TestBody(this).test_containmentLinkMultipleListNull();
   }
-  @Test
-  public void test_referenceLink() throws Throwable {
-    new LightQuotationFinal_Test.TestBody(this).test_referenceLink();
-  }
-  @Test
-  public void test_referenceLinkNull() throws Throwable {
-    new LightQuotationFinal_Test.TestBody(this).test_referenceLinkNull();
-  }
 
   /*package*/ static class TestBody extends BaseTestBody {
 
@@ -84,8 +76,8 @@ public class LightQuotationFinal_Test extends BaseTransformationTest {
 
     public void test_property() throws Exception {
       final boolean value = true;
-      SNode q = _quotation_createNode_3vdjo8_a0b0d61(value);
-      SNode l = createBooleanConstant_3vdjo8_a0c0d61(value);
+      SNode q = _quotation_createNode_3vdjo8_a0b0d41(value);
+      SNode l = createBooleanConstant_3vdjo8_a0c0d41(value);
       {
         List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), q);
         List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), l);
@@ -94,8 +86,8 @@ public class LightQuotationFinal_Test extends BaseTransformationTest {
     }
     public void test_propertyNull() throws Exception {
       final String value = null;
-      SNode q = _quotation_createNode_3vdjo8_a0b0e61(value);
-      SNode l = createStringLiteral_3vdjo8_a0c0e61(value);
+      SNode q = _quotation_createNode_3vdjo8_a0b0e41(value);
+      SNode l = createStringLiteral_3vdjo8_a0c0e41(value);
       {
         List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), q);
         List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), l);
@@ -104,8 +96,8 @@ public class LightQuotationFinal_Test extends BaseTransformationTest {
     }
     public void test_containmentLink() throws Exception {
       final SNode value = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940cd6167L, "jetbrains.mps.baseLanguage.structure.NullLiteral"));
-      SNode q = _quotation_createNode_3vdjo8_a0b0f61(value);
-      SNode l = createReturnStatement_3vdjo8_a0c0f61(value);
+      SNode q = _quotation_createNode_3vdjo8_a0b0f41(value);
+      SNode l = createReturnStatement_3vdjo8_a0c0f41(value);
       {
         List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), q);
         List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), l);
@@ -114,8 +106,8 @@ public class LightQuotationFinal_Test extends BaseTransformationTest {
     }
     public void test_containmentLinkNull() throws Exception {
       final SNode value = null;
-      SNode q = _quotation_createNode_3vdjo8_a0b0g61(value);
-      SNode l = createReturnStatement_3vdjo8_a0c0g61(value);
+      SNode q = _quotation_createNode_3vdjo8_a0b0g41(value);
+      SNode l = createReturnStatement_3vdjo8_a0c0g41(value);
       {
         List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), q);
         List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), l);
@@ -124,8 +116,8 @@ public class LightQuotationFinal_Test extends BaseTransformationTest {
     }
     public void test_containmentLinkMultiple() throws Exception {
       final SNode value = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, "jetbrains.mps.baseLanguage.structure.ReturnStatement"));
-      SNode q = _quotation_createNode_3vdjo8_a0b0h61(value);
-      SNode l = createStatementList_3vdjo8_a0c0h61(value);
+      SNode q = _quotation_createNode_3vdjo8_a0b0h41(value);
+      SNode l = createStatementList_3vdjo8_a0c0h41(value);
       {
         List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), q);
         List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), l);
@@ -134,8 +126,8 @@ public class LightQuotationFinal_Test extends BaseTransformationTest {
     }
     public void test_containmentLinkMultipleNull() throws Exception {
       final SNode value = null;
-      SNode q = _quotation_createNode_3vdjo8_a0b0i61(value);
-      SNode l = createStatementList_3vdjo8_a0c0i61(value);
+      SNode q = _quotation_createNode_3vdjo8_a0b0i41(value);
+      SNode l = createStatementList_3vdjo8_a0c0i41(value);
       {
         List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), q);
         List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), l);
@@ -144,8 +136,8 @@ public class LightQuotationFinal_Test extends BaseTransformationTest {
     }
     public void test_containmentLinkMultipleList() throws Exception {
       final List<SNode> value = ListSequence.fromListAndArray(new ArrayList<SNode>(), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbe39a867fL, "jetbrains.mps.baseLanguage.structure.BreakStatement")), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, "jetbrains.mps.baseLanguage.structure.ReturnStatement")));
-      SNode q = _quotation_createNode_3vdjo8_a0b0j61(value);
-      SNode l = createStatementList_3vdjo8_a0c0j61(value);
+      SNode q = _quotation_createNode_3vdjo8_a0b0j41(value);
+      SNode l = createStatementList_3vdjo8_a0c0j41(value);
       {
         List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), q);
         List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), l);
@@ -155,67 +147,47 @@ public class LightQuotationFinal_Test extends BaseTransformationTest {
     public void test_containmentLinkMultipleListNull() throws Exception {
       final List<SNode> value = null;
       try {
-        SNode q = _quotation_createNode_3vdjo8_a0a1a01q(value);
+        SNode q = _quotation_createNode_3vdjo8_a0a1a01o(value);
         Assert.fail();
       } catch (NullPointerException e) {
         // expected exception 
       }
       try {
-        SNode l = createStatementList_3vdjo8_a0a2a01q(value);
+        SNode l = createStatementList_3vdjo8_a0a2a01o(value);
         Assert.fail();
       } catch (NullPointerException e) {
         // expected exception 
       }
     }
-    public void test_referenceLink() throws Exception {
-      final SNode value = SNodeOperations.getNode("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~String");
-      SNode q = _quotation_createNode_3vdjo8_a0b0l61(value);
-      SNode l = createClassifierType_3vdjo8_a0c0l61(value);
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), q);
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), l);
-        Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
-      }
-    }
-    public void test_referenceLinkNull() throws Exception {
-      final SNode value = null;
-      SNode q = _quotation_createNode_3vdjo8_a0b0m61(value);
-      SNode l = createClassifierType_3vdjo8_a0c0m61(value);
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), q);
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), l);
-        Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
-      }
-    }
 
 
-    private static SNode _quotation_createNode_3vdjo8_a0b0d61(Object parameter_1) {
+    private static SNode _quotation_createNode_3vdjo8_a0b0d41(Object parameter_1) {
       PersistenceFacade facade = PersistenceFacade.getInstance();
       SNode quotedNode_2 = null;
       quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b201L, "BooleanConstant"), null, null, false);
       SNodeAccessUtil.setPropertyValue(quotedNode_2, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value"), (boolean) parameter_1);
       return quotedNode_2;
     }
-    private static SNode createBooleanConstant_3vdjo8_a0c0d61(Object p0) {
+    private static SNode createBooleanConstant_3vdjo8_a0c0d41(Object p0) {
       PersistenceFacade facade = PersistenceFacade.getInstance();
       SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, "jetbrains.mps.baseLanguage.structure.BooleanConstant"), null, null, false);
       n1.setProperty(MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value"), MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value").getType().toString(p0));
       return n1;
     }
-    private static SNode _quotation_createNode_3vdjo8_a0b0e61(Object parameter_1) {
+    private static SNode _quotation_createNode_3vdjo8_a0b0e41(Object parameter_1) {
       PersistenceFacade facade = PersistenceFacade.getInstance();
       SNode quotedNode_2 = null;
       quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf93d565d10L, "StringLiteral"), null, null, false);
       SNodeAccessUtil.setPropertyValue(quotedNode_2, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), (String) parameter_1);
       return quotedNode_2;
     }
-    private static SNode createStringLiteral_3vdjo8_a0c0e61(Object p0) {
+    private static SNode createStringLiteral_3vdjo8_a0c0e41(Object p0) {
       PersistenceFacade facade = PersistenceFacade.getInstance();
       SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, "jetbrains.mps.baseLanguage.structure.StringLiteral"), null, null, false);
       n1.setProperty(MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value").getType().toString(p0));
       return n1;
     }
-    private static SNode _quotation_createNode_3vdjo8_a0b0f61(Object parameter_1) {
+    private static SNode _quotation_createNode_3vdjo8_a0b0f41(Object parameter_1) {
       PersistenceFacade facade = PersistenceFacade.getInstance();
       SNode quotedNode_2 = null;
       SNode quotedNode_3 = null;
@@ -226,7 +198,7 @@ public class LightQuotationFinal_Test extends BaseTransformationTest {
       }
       return quotedNode_2;
     }
-    private static SNode createReturnStatement_3vdjo8_a0c0f61(SNode node0) {
+    private static SNode createReturnStatement_3vdjo8_a0c0f41(SNode node0) {
       PersistenceFacade facade = PersistenceFacade.getInstance();
       SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, "jetbrains.mps.baseLanguage.structure.ReturnStatement"), null, null, false);
       if (node0 != null) {
@@ -234,7 +206,7 @@ public class LightQuotationFinal_Test extends BaseTransformationTest {
       }
       return n1;
     }
-    private static SNode _quotation_createNode_3vdjo8_a0b0g61(Object parameter_1) {
+    private static SNode _quotation_createNode_3vdjo8_a0b0g41(Object parameter_1) {
       PersistenceFacade facade = PersistenceFacade.getInstance();
       SNode quotedNode_2 = null;
       SNode quotedNode_3 = null;
@@ -245,7 +217,7 @@ public class LightQuotationFinal_Test extends BaseTransformationTest {
       }
       return quotedNode_2;
     }
-    private static SNode createReturnStatement_3vdjo8_a0c0g61(SNode node0) {
+    private static SNode createReturnStatement_3vdjo8_a0c0g41(SNode node0) {
       PersistenceFacade facade = PersistenceFacade.getInstance();
       SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, "jetbrains.mps.baseLanguage.structure.ReturnStatement"), null, null, false);
       if (node0 != null) {
@@ -253,7 +225,7 @@ public class LightQuotationFinal_Test extends BaseTransformationTest {
       }
       return n1;
     }
-    private static SNode _quotation_createNode_3vdjo8_a0b0h61(Object parameter_1) {
+    private static SNode _quotation_createNode_3vdjo8_a0b0h41(Object parameter_1) {
       PersistenceFacade facade = PersistenceFacade.getInstance();
       SNode quotedNode_2 = null;
       SNode quotedNode_3 = null;
@@ -264,7 +236,7 @@ public class LightQuotationFinal_Test extends BaseTransformationTest {
       }
       return quotedNode_2;
     }
-    private static SNode createStatementList_3vdjo8_a0c0h61(SNode node0) {
+    private static SNode createStatementList_3vdjo8_a0c0h41(SNode node0) {
       PersistenceFacade facade = PersistenceFacade.getInstance();
       SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList"), null, null, false);
       if (node0 != null) {
@@ -272,7 +244,7 @@ public class LightQuotationFinal_Test extends BaseTransformationTest {
       }
       return n1;
     }
-    private static SNode _quotation_createNode_3vdjo8_a0b0i61(Object parameter_1) {
+    private static SNode _quotation_createNode_3vdjo8_a0b0i41(Object parameter_1) {
       PersistenceFacade facade = PersistenceFacade.getInstance();
       SNode quotedNode_2 = null;
       SNode quotedNode_3 = null;
@@ -283,7 +255,7 @@ public class LightQuotationFinal_Test extends BaseTransformationTest {
       }
       return quotedNode_2;
     }
-    private static SNode createStatementList_3vdjo8_a0c0i61(SNode node0) {
+    private static SNode createStatementList_3vdjo8_a0c0i41(SNode node0) {
       PersistenceFacade facade = PersistenceFacade.getInstance();
       SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList"), null, null, false);
       if (node0 != null) {
@@ -291,7 +263,7 @@ public class LightQuotationFinal_Test extends BaseTransformationTest {
       }
       return n1;
     }
-    private static SNode _quotation_createNode_3vdjo8_a0b0j61(Object parameter_1) {
+    private static SNode _quotation_createNode_3vdjo8_a0b0j41(Object parameter_1) {
       PersistenceFacade facade = PersistenceFacade.getInstance();
       SNode quotedNode_2 = null;
       SNode quotedNode_3 = null;
@@ -304,7 +276,7 @@ public class LightQuotationFinal_Test extends BaseTransformationTest {
       }
       return quotedNode_2;
     }
-    private static SNode createStatementList_3vdjo8_a0c0j61(Iterable<? extends SNode> seq0) {
+    private static SNode createStatementList_3vdjo8_a0c0j41(Iterable<? extends SNode> seq0) {
       PersistenceFacade facade = PersistenceFacade.getInstance();
       SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList"), null, null, false);
       for (SNode n : seq0) {
@@ -312,7 +284,7 @@ public class LightQuotationFinal_Test extends BaseTransformationTest {
       }
       return n1;
     }
-    private static SNode _quotation_createNode_3vdjo8_a0a1a01q(Object parameter_1) {
+    private static SNode _quotation_createNode_3vdjo8_a0a1a01o(Object parameter_1) {
       PersistenceFacade facade = PersistenceFacade.getInstance();
       SNode quotedNode_2 = null;
       SNode quotedNode_3 = null;
@@ -325,38 +297,12 @@ public class LightQuotationFinal_Test extends BaseTransformationTest {
       }
       return quotedNode_2;
     }
-    private static SNode createStatementList_3vdjo8_a0a2a01q(Iterable<? extends SNode> seq0) {
+    private static SNode createStatementList_3vdjo8_a0a2a01o(Iterable<? extends SNode> seq0) {
       PersistenceFacade facade = PersistenceFacade.getInstance();
       SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList"), null, null, false);
       for (SNode n : seq0) {
         n1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"), SNodeOperations.copyIfNecessary(SNodeOperations.cast(n, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement"))));
       }
-      return n1;
-    }
-    private static SNode _quotation_createNode_3vdjo8_a0b0l61(Object parameter_1) {
-      PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode quotedNode_2 = null;
-      quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"), null, null, false);
-      SNodeAccessUtil.setReferenceTarget(quotedNode_2, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), (SNode) parameter_1);
-      return quotedNode_2;
-    }
-    private static SNode createClassifierType_3vdjo8_a0c0l61(SNode node0) {
-      PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"), null, null, false);
-      n1.setReferenceTarget(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), node0);
-      return n1;
-    }
-    private static SNode _quotation_createNode_3vdjo8_a0b0m61(Object parameter_1) {
-      PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode quotedNode_2 = null;
-      quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"), null, null, false);
-      SNodeAccessUtil.setReferenceTarget(quotedNode_2, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), (SNode) parameter_1);
-      return quotedNode_2;
-    }
-    private static SNode createClassifierType_3vdjo8_a0c0m61(SNode node0) {
-      PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"), null, null, false);
-      n1.setReferenceTarget(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), node0);
       return n1;
     }
   }

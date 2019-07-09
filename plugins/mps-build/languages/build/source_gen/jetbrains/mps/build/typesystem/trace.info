@@ -140,8 +140,8 @@
       <node id="1979010778009330298" at="30,12,31,330" concept="2" />
       <node id="8652531395018063620" at="34,78,35,63" concept="6" />
       <node id="8652531395018063620" at="35,63,36,226" concept="6" />
-      <node id="8652531395018063620" at="36,226,37,152" concept="2" />
-      <node id="8652531395018063620" at="37,152,38,14" concept="7" />
+      <node id="8652531395018063620" at="36,226,37,290" concept="2" />
+      <node id="8652531395018063620" at="37,290,38,14" concept="7" />
       <node id="1979010778009330296" at="30,10,32,5" concept="0" />
       <node id="1979010778009329265" at="17,0,20,0" concept="1" trace="fixContainerName_QuickFix#()V" />
       <node id="1979010778009329265" at="20,0,23,0" concept="5" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />

@@ -176,9 +176,7 @@
       </concept>
       <concept id="5455284157994012186" name="jetbrains.mps.lang.quotation.structure.NodeBuilderInitLink" flags="ng" index="2pIpSj">
         <reference id="5455284157994012188" name="link" index="2pIpSl" />
-      </concept>
-      <concept id="5455284157993911097" name="jetbrains.mps.lang.quotation.structure.NodeBuilderInitPart" flags="ng" index="2pJxcK">
-        <child id="5455284157993911094" name="expression" index="2pJxcZ" />
+        <child id="1595412875168045827" name="initValue" index="28nt2d" />
       </concept>
       <concept id="5455284157993863837" name="jetbrains.mps.lang.quotation.structure.NodeBuilder" flags="nn" index="2pJPEk">
         <child id="5455284157993863838" name="quotedNode" index="2pJPEn" />
@@ -2709,7 +2707,7 @@
               <ref role="2pJxaS" to="tpee:g7uibYu" resolve="ClassifierType" />
               <node concept="2pIpSj" id="dM" role="2pJxcM">
                 <ref role="2pIpSl" to="tpee:g7uigIF" resolve="classifier" />
-                <node concept="36bGnv" id="dO" role="2pJxcZ">
+                <node concept="36bGnv" id="dO" role="28nt2d">
                   <ref role="36bGnp" to="ic0f:3oW7HLfqDqW" resolve="IPersistentConfiguration" />
                   <node concept="cd27G" id="dQ" role="lGtFl">
                     <node concept="3u3nmq" id="dR" role="cd27D">
@@ -3588,7 +3586,7 @@
               <ref role="2pJxaS" to="fb9u:O$iR4J$g0s" resolve="PersistentConfigurationType" />
               <node concept="2pIpSj" id="jj" role="2pJxcM">
                 <ref role="2pIpSl" to="fb9u:O$iR4J$g0t" resolve="persistentConfiguration" />
-                <node concept="36biLy" id="jl" role="2pJxcZ">
+                <node concept="36biLy" id="jl" role="28nt2d">
                   <node concept="2OqwBi" id="jn" role="36biLW">
                     <node concept="37vLTw" id="jp" role="2Oq$k0">
                       <ref role="3cqZAo" node="iQ" resolve="templatePersistentPropertyType" />
@@ -5327,7 +5325,7 @@
                         <ref role="2pJxaS" to="fb9u:O$iR4J$g0s" resolve="PersistentConfigurationType" />
                         <node concept="2pIpSj" id="ur" role="2pJxcM">
                           <ref role="2pIpSl" to="fb9u:O$iR4J$g0t" resolve="persistentConfiguration" />
-                          <node concept="36biLy" id="ut" role="2pJxcZ">
+                          <node concept="36biLy" id="ut" role="28nt2d">
                             <node concept="2OqwBi" id="uv" role="36biLW">
                               <node concept="3VmV3z" id="ux" role="2Oq$k0">
                                 <property role="3VnrPo" value="typeCheckingContext" />
@@ -5509,7 +5507,7 @@
                         <ref role="2pJxaS" to="fb9u:O$iR4J$g4U" resolve="SettingsEditorType" />
                         <node concept="2pIpSj" id="vu" role="2pJxcM">
                           <ref role="2pIpSl" to="fb9u:O$iR4J$g4V" resolve="configuration" />
-                          <node concept="36biLy" id="vw" role="2pJxcZ">
+                          <node concept="36biLy" id="vw" role="28nt2d">
                             <node concept="2OqwBi" id="vy" role="36biLW">
                               <node concept="3VmV3z" id="v$" role="2Oq$k0">
                                 <property role="3VnrPo" value="typeCheckingContext" />
@@ -7592,7 +7590,7 @@
                         <ref role="2pJxaS" to="fb9u:O$iR4J$g0s" resolve="PersistentConfigurationType" />
                         <node concept="2pIpSj" id="Gj" role="2pJxcM">
                           <ref role="2pIpSl" to="fb9u:O$iR4J$g0t" resolve="persistentConfiguration" />
-                          <node concept="36biLy" id="Gl" role="2pJxcZ">
+                          <node concept="36biLy" id="Gl" role="28nt2d">
                             <node concept="2OqwBi" id="Gn" role="36biLW">
                               <node concept="3VmV3z" id="Gp" role="2Oq$k0">
                                 <property role="3VnrPo" value="typeCheckingContext" />
@@ -7776,7 +7774,7 @@
                         <ref role="2pJxaS" to="fb9u:O$iR4J$g4U" resolve="SettingsEditorType" />
                         <node concept="2pIpSj" id="Hm" role="2pJxcM">
                           <ref role="2pIpSl" to="fb9u:O$iR4J$g4V" resolve="configuration" />
-                          <node concept="36biLy" id="Ho" role="2pJxcZ">
+                          <node concept="36biLy" id="Ho" role="28nt2d">
                             <node concept="2OqwBi" id="Hq" role="36biLW">
                               <node concept="3VmV3z" id="Hs" role="2Oq$k0">
                                 <property role="3VnrPo" value="typeCheckingContext" />
@@ -9011,7 +9009,7 @@
                         <ref role="2pJxaS" to="fb9u:O$iR4J$g3X" resolve="TemplatePersistentConfigurationType" />
                         <node concept="2pIpSj" id="OY" role="2pJxcM">
                           <ref role="2pIpSl" to="fb9u:O$iR4J$g3Y" resolve="template" />
-                          <node concept="36biLy" id="P0" role="2pJxcZ">
+                          <node concept="36biLy" id="P0" role="28nt2d">
                             <node concept="2OqwBi" id="P2" role="36biLW">
                               <node concept="37vLTw" id="P4" role="2Oq$k0">
                                 <ref role="3cqZAo" node="NM" resolve="configurationTemplateInitializer" />
@@ -10085,7 +10083,7 @@
                         <ref role="2pJxaS" to="fb9u:O$iR4J$g3X" resolve="TemplatePersistentConfigurationType" />
                         <node concept="2pIpSj" id="Vy" role="2pJxcM">
                           <ref role="2pIpSl" to="fb9u:O$iR4J$g3Y" resolve="template" />
-                          <node concept="36biLy" id="V$" role="2pJxcZ">
+                          <node concept="36biLy" id="V$" role="28nt2d">
                             <node concept="37vLTw" id="VA" role="36biLW">
                               <ref role="3cqZAo" node="Uo" resolve="template" />
                               <node concept="cd27G" id="VC" role="lGtFl">
@@ -11573,12 +11571,12 @@
                         <ref role="2pJxaS" to="tpd4:hausRW2" resolve="JoinType" />
                         <node concept="2pIpSj" id="14$" role="2pJxcM">
                           <ref role="2pIpSl" to="tpd4:hausUtE" resolve="argument" />
-                          <node concept="36be1Y" id="14A" role="2pJxcZ">
+                          <node concept="36be1Y" id="14A" role="28nt2d">
                             <node concept="2pJPED" id="14C" role="36be1Z">
                               <ref role="2pJxaS" to="tpee:g7uibYu" resolve="ClassifierType" />
                               <node concept="2pIpSj" id="14P" role="2pJxcM">
                                 <ref role="2pIpSl" to="tpee:g7uigIF" resolve="classifier" />
-                                <node concept="36bGnv" id="14R" role="2pJxcZ">
+                                <node concept="36bGnv" id="14R" role="28nt2d">
                                   <ref role="36bGnp" to="wyt6:~Cloneable" resolve="Cloneable" />
                                   <node concept="cd27G" id="14T" role="lGtFl">
                                     <node concept="3u3nmq" id="14U" role="cd27D">
@@ -11602,7 +11600,7 @@
                               <ref role="2pJxaS" to="tpee:g7uibYu" resolve="ClassifierType" />
                               <node concept="2pIpSj" id="14X" role="2pJxcM">
                                 <ref role="2pIpSl" to="tpee:g7uigIF" resolve="classifier" />
-                                <node concept="36bGnv" id="14Z" role="2pJxcZ">
+                                <node concept="36bGnv" id="14Z" role="28nt2d">
                                   <ref role="36bGnp" to="wyt6:~Enum" resolve="Enum" />
                                   <node concept="cd27G" id="151" role="lGtFl">
                                     <node concept="3u3nmq" id="152" role="cd27D">
@@ -11626,7 +11624,7 @@
                               <ref role="2pJxaS" to="tpee:g7uibYu" resolve="ClassifierType" />
                               <node concept="2pIpSj" id="155" role="2pJxcM">
                                 <ref role="2pIpSl" to="tpee:g7uigIF" resolve="classifier" />
-                                <node concept="36bGnv" id="157" role="2pJxcZ">
+                                <node concept="36bGnv" id="157" role="28nt2d">
                                   <ref role="36bGnp" to="wyt6:~String" resolve="String" />
                                   <node concept="cd27G" id="159" role="lGtFl">
                                     <node concept="3u3nmq" id="15a" role="cd27D">
@@ -12783,7 +12781,7 @@
                         <ref role="2pJxaS" to="tpee:g7uibYu" resolve="ClassifierType" />
                         <node concept="2pIpSj" id="1bX" role="2pJxcM">
                           <ref role="2pIpSl" to="tpee:g7uigIF" resolve="classifier" />
-                          <node concept="36bGnv" id="1bZ" role="2pJxcZ">
+                          <node concept="36bGnv" id="1bZ" role="28nt2d">
                             <ref role="36bGnp" to="z1c3:~Project" resolve="Project" />
                             <node concept="cd27G" id="1c1" role="lGtFl">
                               <node concept="3u3nmq" id="1c2" role="cd27D">

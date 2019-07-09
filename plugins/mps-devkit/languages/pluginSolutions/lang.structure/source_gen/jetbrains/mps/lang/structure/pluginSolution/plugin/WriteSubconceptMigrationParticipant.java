@@ -195,8 +195,8 @@ public class WriteSubconceptMigrationParticipant extends RefactoringParticipantB
     SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x36182c4cf6238c95L, "jetbrains.mps.lang.migration.structure.ConceptMigrationReference"), null, null, false);
     {
       SNode n2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x66eed171c5f83bcaL, "jetbrains.mps.lang.migration.structure.MigrationScriptReference"), null, null, false);
-      n2.setProperty(MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x66eed171c5f83bcaL, 0x66eed171c5f90222L, "fromVersion"), p0 + "");
-      n2.setProperty(MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x66eed171c5f83bcaL, 0x66eed171c602da74L, "module"), p1 + "");
+      n2.setProperty(MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x66eed171c5f83bcaL, 0x66eed171c5f90222L, "fromVersion"), MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x66eed171c5f83bcaL, 0x66eed171c5f90222L, "fromVersion").getType().toString(p0));
+      n2.setProperty(MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x66eed171c5f83bcaL, 0x66eed171c602da74L, "module"), MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x66eed171c5f83bcaL, 0x66eed171c602da74L, "module").getType().toString(p1));
       n1.addChild(MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x36182c4cf6238c95L, 0x36182c4cf6238c96L, "migrationScript"), n2);
       if (node0 != null) {
         n1.addChild(MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x36182c4cf6238c95L, 0x36182c4cf6238c99L, "oldConcept"), SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c1648ccL, "jetbrains.mps.lang.migration.structure.AbstractNodeReference"))));
