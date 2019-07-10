@@ -140,7 +140,7 @@ final class SourcePaths {
     @Override
     @NotNull
     public String getMessage() {
-      return MessageFormat.format("Trying to register the source root: [{1}, kind {2}] whilst [{3}, kind {4}] " +
+      return MessageFormat.format("Trying to register the source root: [{0}, kind {1}] whilst [{2}, kind {3}] " +
                                   "is already registered", myRoot, myPathKind, myExistingRoot, myExistingRootKind);
     }
   }
