@@ -66,6 +66,11 @@ public class DefaultSChildSubstituteInfo extends AbstractNodeSubstituteInfo impl
     return InequalitySystemFactory.getInequalitiesSystemForChildCell(contextCell, AbstractNodeSubstituteInfo.getModelForTypechecking());
   }
 
+  @Override
+  protected SubstitutionTrial getSubstitutionTrial(EditorCell contextCell) {
+    return SubstitutionTrial.forCell(contextCell, getModelForTypechecking());
+  }
+
   protected DefaultSChildSetter createDefaultNodeSetter() {
     return new DefaultSChildSetter(myLink);
   }

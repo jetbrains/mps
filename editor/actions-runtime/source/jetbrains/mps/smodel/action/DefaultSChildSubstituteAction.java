@@ -19,6 +19,7 @@ import jetbrains.mps.actions.runtime.impl.ActionsUtil;
 import jetbrains.mps.nodeEditor.EditorManager;
 import jetbrains.mps.nodeEditor.cellMenu.AbstractNodeSubstituteInfo;
 import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.openapi.editor.menus.substitute.SubstitutionAcceptable;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.Nullable;
@@ -91,19 +92,18 @@ public class DefaultSChildSubstituteAction extends AbstractSubstituteAction {
   }
 
   @Override
-  public SNode getActionType(String pattern) {
+  public boolean isAcceptable(String pattern, SubstitutionAcceptable acceptable) {
+    SNode actionType = getActionType(pattern);
+    if (actionType != null) return acceptable.acceptType(actionType);
+
     SNode node = createChildNode(AbstractNodeSubstituteInfo.getModelForTypechecking());
-    if (node == null) return null;
-    if (ActionsUtil.isInstanceOfIType(node)) return node;
-
-    //the following is for smart-type completion
-
-    //todo add own model for typecheck
-    AbstractNodeSubstituteInfo.getModelForTypechecking().addRootNode(node);
-    try {
-      return TypecheckingFacade.getFromContext().getTypeOf(node);
-    } finally {
-      AbstractNodeSubstituteInfo.getModelForTypechecking().removeRootNode(node);
+    if (node == null) {
+      return false;
+    }
+    if (ActionsUtil.isInstanceOfIType(node)) {
+      return acceptable.acceptType(node);
+    } else {
+      return acceptable.acceptNode(node);
     }
   }
 

@@ -32,6 +32,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
+@Deprecated
 class InequalitySystemFactory {
   static InequalitySystem getInequalitiesSystemForChildCell(EditorCell contextCell, SModel typeCheckingModel) {
     SNodeLocation nodeLocation = null;

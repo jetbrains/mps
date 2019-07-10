@@ -18,6 +18,7 @@ package jetbrains.mps.lang.editor.menus.substitute;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
+import jetbrains.mps.openapi.editor.menus.substitute.SubstitutionAcceptable;
 import jetbrains.mps.smodel.runtime.IconResource;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -38,6 +39,11 @@ public class SubstituteMenuItemWrapper implements SubstituteMenuItem {
   @Override
   public SAbstractConcept getOutputConcept() {
     return myItem.getOutputConcept();
+  }
+
+  @Override
+  public boolean isAcceptable(String pattern, SubstitutionAcceptable acceptable) {
+    return myItem.isAcceptable(pattern, acceptable);
   }
 
   @Nullable

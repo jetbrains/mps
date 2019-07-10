@@ -79,4 +79,9 @@ public class SEmptyContainmentSubstituteInfo extends TransformationMenuSubstitut
   protected InequalitySystem getInequalitiesSystem(EditorCell contextCell) {
     return InequalitySystemFactory.getInequalitiesSystemForChildCell(getEditorCell(), getModelForTypechecking());
   }
+
+  @Override
+  protected SubstitutionTrial getSubstitutionTrial(EditorCell contextCell) {
+    return SubstitutionTrial.forCell(contextCell, getModelForTypechecking());
+  }
 }

@@ -102,4 +102,9 @@ public class SReferenceSubstituteInfo extends TransformationMenuSubstituteInfo i
   protected InequalitySystem getInequalitiesSystem(EditorCell contextCell) {
     return InequalitySystemFactory.getInequalitiesSystem(contextCell.getSNode(), getModelForTypechecking());
   }
+
+  @Override
+  protected SubstitutionTrial getSubstitutionTrial(EditorCell contextCell) {
+    return SubstitutionTrial.forNode(contextCell.getSNode(), getModelForTypechecking());
+  }
 }

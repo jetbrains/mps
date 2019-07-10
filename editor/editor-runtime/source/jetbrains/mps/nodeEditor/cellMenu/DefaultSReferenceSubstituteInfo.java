@@ -59,6 +59,11 @@ public class DefaultSReferenceSubstituteInfo extends AbstractNodeSubstituteInfo 
   }
 
   @Override
+  protected SubstitutionTrial getSubstitutionTrial(EditorCell contextCell) {
+    return SubstitutionTrial.forNode(contextCell.getSNode(), getModelForTypechecking());
+  }
+
+  @Override
   public List<SubstituteAction> createActions() {
     SReference reference = mySourceNode.getReference(myLink);
     return createActions(reference == null ? null : reference.getTargetNode());

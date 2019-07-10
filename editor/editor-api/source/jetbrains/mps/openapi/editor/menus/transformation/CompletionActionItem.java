@@ -16,6 +16,7 @@
 package jetbrains.mps.openapi.editor.menus.transformation;
 
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
+import jetbrains.mps.openapi.editor.menus.substitute.SubstitutionAcceptable;
 import jetbrains.mps.smodel.runtime.IconResource;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -33,6 +34,13 @@ public interface CompletionActionItem extends ActionItem {
   @Nullable
   default String getMatchingText(@NotNull String pattern) {
     return getLabelText(pattern);
+  }
+
+  /**
+   * Checks if the action is acceptable with passed {@param acceptable}.
+   */
+  default boolean isAcceptable(String pattern, SubstitutionAcceptable acceptable) {
+    return false;
   }
 
   /**

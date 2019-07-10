@@ -19,6 +19,7 @@ import jetbrains.mps.lang.editor.menus.transformation.CompletionActionItemUtil;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
+import jetbrains.mps.openapi.editor.menus.substitute.SubstitutionAcceptable;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.openapi.editor.menus.transformation.CommandPolicy;
@@ -77,6 +78,11 @@ public class CompletionActionItemAsSubstituteAction implements SubstituteAction 
       return sourceNode.resolve(myRepository);
     }
     return null;
+  }
+
+  @Override
+  public boolean isAcceptable(String pattern, SubstitutionAcceptable acceptable) {
+    return myActionItem.isAcceptable(pattern, acceptable);
   }
 
   @Override

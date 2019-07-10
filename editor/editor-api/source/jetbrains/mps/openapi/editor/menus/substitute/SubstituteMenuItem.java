@@ -35,6 +35,10 @@ public interface SubstituteMenuItem {
   @Nullable
   SAbstractConcept getOutputConcept();
 
+  default boolean isAcceptable(String pattern, SubstitutionAcceptable acceptable) {
+    return false;
+  }
+
   /**
    * Returns the type of the node which will be created by {@link #createNode(String)}, if known and applicable. Used to filter actions for smart completion.
    *

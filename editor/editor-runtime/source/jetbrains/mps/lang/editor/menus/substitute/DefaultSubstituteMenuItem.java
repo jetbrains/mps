@@ -30,6 +30,7 @@ import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
+import jetbrains.mps.openapi.editor.menus.substitute.SubstitutionAcceptable;
 import jetbrains.mps.smodel.action.NodeFactoryManager;
 import jetbrains.mps.smodel.presentation.NodePresentationUtil;
 import jetbrains.mps.smodel.runtime.IconResource;
@@ -88,6 +89,23 @@ public class DefaultSubstituteMenuItem implements SubstituteMenuItem {
     return myConcept;
   }
 
+  @Override
+  public boolean isAcceptable(String pattern, SubstitutionAcceptable acceptable) {
+    SNode node = createNode(pattern);
+    if (node == null) {
+      return false;
+    }
+    if (node.getParent() != null) {
+      LOG.warn("Node, created by " + this.getClass() + " action already has parent node.", new Throwable());
+    }
+
+    if (ActionsUtil.isInstanceOfIType(node)) {
+      return acceptable.acceptType(node);
+    } else {
+      return acceptable.acceptNode(node);
+    }
+  }
+
   @Nullable
   @Override
   public SNode getType(@NotNull String pattern) {
@@ -103,14 +121,7 @@ public class DefaultSubstituteMenuItem implements SubstituteMenuItem {
       return node;
     }
 
-    //the following is for smart-type completion
-
-    AbstractNodeSubstituteInfo.getModelForTypechecking().addRootNode(node);
-    try {
-      return TypecheckingFacade.getFromContext().getTypeOf(node);
-    } finally {
-      AbstractNodeSubstituteInfo.getModelForTypechecking().removeRootNode(node);
-    }
+    return null;
   }
 
   @Nullable

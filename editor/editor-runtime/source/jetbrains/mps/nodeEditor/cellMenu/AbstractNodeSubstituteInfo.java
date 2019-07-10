@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.nodeEditor.cellMenu;
 
+import jetbrains.mps.newTypesystem.TypesUtil;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
@@ -103,7 +104,12 @@ public abstract class AbstractNodeSubstituteInfo implements SubstituteInfo {
     });
   }
 
+  @Deprecated
   protected InequalitySystem getInequalitiesSystem(EditorCell contextCell) {
+    return null;
+  }
+
+  protected SubstitutionTrial getSubstitutionTrial(EditorCell contextCell) {
     return null;
   }
 
@@ -116,25 +122,27 @@ public abstract class AbstractNodeSubstituteInfo implements SubstituteInfo {
     mdr.usedLanguages(getEditorContext().getModel()).forEach(mi::addUsedLanguage);
 
     try {
-      final InequalitySystem inequalitiesSystem = getInequalitiesSystem(contextCell);
-
       List<SubstituteAction> substituteActionList = getMatchingActions(pattern, strictMatching);
-      if (inequalitiesSystem == null) {
+      SubstitutionTrial substitutionTrial = getSubstitutionTrial(contextCell);
+      if (substitutionTrial == null) {
         return substituteActionList;
       }
 
       List<SubstituteAction> result = new ArrayList<>();
-      for (SubstituteAction nodeSubstituteAction : substituteActionList) {
-        try {
-          SNode type = nodeSubstituteAction.getActionType(pattern);
-          if (type != null && inequalitiesSystem.satisfies(type)) {
-            result.add(nodeSubstituteAction);
+      substitutionTrial.runTrial((acceptable) -> {
+        for (SubstituteAction nodeSubstituteAction : substituteActionList) {
+          try {
+            if (nodeSubstituteAction.isAcceptable(pattern, acceptable)) {
+              result.add(nodeSubstituteAction);
+            }
+
+          } catch (Throwable th) {
+            LOG.error("Exception on checking smart matching conditions for action: " + (nodeSubstituteAction == null ? "null" : nodeSubstituteAction.getClass()),
+                      th);
           }
-        } catch (Throwable th) {
-          LOG.error("Exception on checking smart matching conditions for action: " + (nodeSubstituteAction == null ? "null" : nodeSubstituteAction.getClass()),
-                    th);
         }
-      }
+      });
+
       return result;
     } catch (RuntimeException rte) {
       LOG.error("Exception while building SmartMatchingActions list", rte);

@@ -63,4 +63,13 @@ public class SReferenceSubstituteInfoSmartReferenceDecorator extends AbstractNod
       return myReferenceSubstituteInfo.getInequalitiesSystem(contextCell);
     }
   }
+
+  @Override
+  protected SubstitutionTrial getSubstitutionTrial(EditorCell contextCell) {
+    if (shouldUseChildActions()) {
+      return myChildSubstituteInfo.getSubstitutionTrial(contextCell);
+    } else {
+      return myReferenceSubstituteInfo.getSubstitutionTrial(contextCell);
+    }
+  }
 }
