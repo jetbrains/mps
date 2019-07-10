@@ -26,7 +26,7 @@ public class MergeDriverOptionsDialog extends DialogWrapper {
   private JPanel myMainPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
   private Project myProject;
   private MergeDriverOptionsDialog.InstallerCheckBox<GitGlobalConfigFixesInstaller> myGitFixes;
-  private MergeDriverOptionsDialog.InstallerCheckBox<GitGlobalInstaller> myGitGlobal;
+  private MergeDriverOptionsDialog.InstallerCheckBox<GitMergeDriverInstaller> myGitDriver;
   private MergeDriverOptionsDialog.InstallerCheckBox<GitRepositoriesInstaller> myGitRepos;
   private MergeDriverOptionsDialog.InstallerCheckBox<SvnInstaller> myCommonSvn;
   private MergeDriverOptionsDialog.InstallerCheckBox<SvnInstaller> myIdeSvn;
@@ -36,7 +36,7 @@ public class MergeDriverOptionsDialog extends DialogWrapper {
     // TODO get rid of code duplication 
     myProject = project;
     myGitFixes = new MergeDriverOptionsDialog.InstallerCheckBox<GitGlobalConfigFixesInstaller>(new GitGlobalConfigFixesInstaller(myProject));
-    myGitGlobal = new MergeDriverOptionsDialog.InstallerCheckBox<GitGlobalInstaller>(new GitGlobalInstaller(myProject));
+    myGitDriver = new MergeDriverOptionsDialog.InstallerCheckBox<GitMergeDriverInstaller>(new GitMergeDriverInstaller(myProject));
     myGitRepos = new MergeDriverOptionsDialog.InstallerCheckBox<GitRepositoriesInstaller>(new GitRepositoriesInstaller(myProject));
     myCommonSvn = new MergeDriverOptionsDialog.InstallerCheckBox<SvnInstaller>(new SvnInstaller(myProject, false));
     myIdeSvn = new MergeDriverOptionsDialog.InstallerCheckBox<SvnInstaller>(new SvnInstaller(myProject, true));
@@ -45,12 +45,12 @@ public class MergeDriverOptionsDialog extends DialogWrapper {
     }
 
     myGitFixes.addIfNeeded();
-    myGitGlobal.addItemListener(new ItemListener() {
+    myGitDriver.addItemListener(new ItemListener() {
       public void itemStateChanged(ItemEvent e) {
-        myGitRepos.setEnabled(myGitGlobal.isSelected());
+        myGitRepos.setEnabled(myGitDriver.isSelected());
       }
     });
-    myGitGlobal.addIfNeeded();
+    myGitDriver.addIfNeeded();
     myGitRepos.addIfNeeded();
     if (myIdeSvn != null) {
     }
@@ -74,8 +74,8 @@ public class MergeDriverOptionsDialog extends DialogWrapper {
   @Override
   protected void doOKAction() {
     myGitFixes.installIfNeeded();
-    myGitGlobal.installIfNeeded();
-    if (myGitGlobal.myInstaller.getCurrentState() == AbstractInstaller.State.INSTALLED) {
+    myGitDriver.installIfNeeded();
+    if (myGitDriver.myInstaller.getCurrentState() == AbstractInstaller.State.INSTALLED) {
       myGitRepos.installIfNeeded();
     }
     if (myIdeSvn != null) {

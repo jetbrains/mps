@@ -8,16 +8,13 @@ import com.intellij.openapi.project.Project;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.vcs.platform.util.PluginUtil;
 import git4idea.config.GitConfigUtil;
+import git4idea.crlf.GitCrlfUtil;
 import com.intellij.openapi.vcs.VcsException;
 import org.apache.log4j.Level;
 import com.intellij.openapi.ui.Messages;
-import git4idea.commands.GitSimpleHandler;
-import git4idea.commands.GitCommand;
-import com.intellij.openapi.util.SystemInfo;
 
 /*package*/ class GitGlobalConfigFixesInstaller extends AbstractInstaller {
   private static final Logger LOG = LogManager.getLogger(GitGlobalConfigFixesInstaller.class);
-  private static final String CORE_AUTOCRLF = "core.autocrlf";
   public GitGlobalConfigFixesInstaller(Project project) {
     super(project);
   }
@@ -28,8 +25,8 @@ import com.intellij.openapi.util.SystemInfo;
       return AbstractInstaller.State.NOT_ENABLED;
     }
     try {
-      String currentValue = GitConfigUtil.getValue(myProject, myProject.getBaseDir(), GitGlobalConfigFixesInstaller.CORE_AUTOCRLF);
-      if (getCoreAutocrlfValue().equals(currentValue)) {
+      String currentValue = GitConfigUtil.getValue(myProject, myProject.getBaseDir(), GitConfigUtil.CORE_AUTOCRLF);
+      if (GitCrlfUtil.RECOMMENDED_VALUE.equals(currentValue)) {
         return AbstractInstaller.State.INSTALLED;
       }
     } catch (VcsException e) {
@@ -46,7 +43,7 @@ import com.intellij.openapi.util.SystemInfo;
     }
 
     try {
-      setGlobalProperty(myProject, CORE_AUTOCRLF, getCoreAutocrlfValue());
+      GitConfigUtil.setValue(myProject, myProject.getBaseDir(), GitConfigUtil.CORE_AUTOCRLF, GitCrlfUtil.RECOMMENDED_VALUE, "--global");
       return AbstractInstaller.State.INSTALLED;
     } catch (VcsException e) {
       if (LOG.isEnabledFor(Level.WARN)) {
@@ -67,15 +64,5 @@ import com.intellij.openapi.util.SystemInfo;
   @Override
   public String getAffectedVcsName() {
     return "Git";
-  }
-  private static void setGlobalProperty(Project project, String key, String value) throws VcsException {
-    GitSimpleHandler h = new GitSimpleHandler(project, project.getBaseDir(), GitCommand.CONFIG);
-    h.setSilent(true);
-    h.ignoreErrorCode(1);
-    h.addParameters("--global", key, value);
-    h.run();
-  }
-  private static String getCoreAutocrlfValue() {
-    return (SystemInfo.isWindows ? "true" : "input");
   }
 }
