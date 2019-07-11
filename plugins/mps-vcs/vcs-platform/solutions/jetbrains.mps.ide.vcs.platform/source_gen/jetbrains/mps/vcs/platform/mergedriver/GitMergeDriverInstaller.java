@@ -21,7 +21,6 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import com.intellij.openapi.vcs.ProjectLevelVcsManager;
 import git4idea.GitVcs;
 import jetbrains.mps.internal.collections.runtime.ISelector;
-import git4idea.config.GitConfigUtil;
 import com.intellij.openapi.vcs.VcsException;
 import org.apache.log4j.Level;
 import jetbrains.mps.vcs.core.mergedriver.MergeDriverMain;
@@ -52,7 +51,7 @@ import jetbrains.mps.vcs.core.mergedriver.MergeDriverMain;
     }
 
     List<VcsRoot> gitRoots = getGitRoots();
-    // check if we need something to install
+    // check if we need something to install 
     List<AbstractInstaller.State> states = getAllStates(gitRoots);
 
     if (dryRun) {
@@ -125,7 +124,7 @@ import jetbrains.mps.vcs.core.mergedriver.MergeDriverMain;
 
   private AbstractInstaller.State installForRoot(VcsRoot vcsRoot, boolean dryRun) {
     try {
-      String currentDriver = GitConfigUtil.getValue(myProject, vcsRoot.getPath(), MERGE_DRIVER);
+      String currentDriver = GitConfigUtilWrapped.getValue(myProject, vcsRoot.getPath(), MERGE_DRIVER);
       if ((currentDriver == null || currentDriver.length() == 0) && dryRun) {
         return AbstractInstaller.State.NOT_INSTALLED;
       }

@@ -25,7 +25,7 @@ import com.intellij.openapi.ui.Messages;
       return AbstractInstaller.State.NOT_ENABLED;
     }
     try {
-      String currentValue = GitConfigUtil.getValue(myProject, myProject.getBaseDir(), GitConfigUtil.CORE_AUTOCRLF);
+      String currentValue = GitConfigUtilWrapped.getValue(myProject, myProject.getBaseDir(), GitConfigUtil.CORE_AUTOCRLF);
       if (GitCrlfUtil.RECOMMENDED_VALUE.equals(currentValue)) {
         return AbstractInstaller.State.INSTALLED;
       }
@@ -43,7 +43,7 @@ import com.intellij.openapi.ui.Messages;
     }
 
     try {
-      GitConfigUtil.setValue(myProject, myProject.getBaseDir(), GitConfigUtil.CORE_AUTOCRLF, GitCrlfUtil.RECOMMENDED_VALUE, "--global");
+      GitConfigUtilWrapped.setValue(myProject, myProject.getBaseDir(), GitConfigUtil.CORE_AUTOCRLF, GitCrlfUtil.RECOMMENDED_VALUE, "--global");
       return AbstractInstaller.State.INSTALLED;
     } catch (VcsException e) {
       if (LOG.isEnabledFor(Level.WARN)) {
