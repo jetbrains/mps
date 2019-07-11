@@ -494,7 +494,7 @@ public class ValidationUtil {
         continue;
       }
 
-      String m = String.format("%s shall specify language %s as generation target to include its runtime modules into compilation", sourceLanguageDeployed.getQualifiedName(), lang);
+      String m = String.format("'%s' must specify the language '%s' as a generation target to include its runtime modules into compilation", sourceLanguageDeployed.getQualifiedName(), lang);
       if (!processor.process(new ModuleValidationProblem(generator, MessageStatus.WARNING, m))) {
         return false;
       }
