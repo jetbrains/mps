@@ -166,6 +166,9 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
            .flatMap((pair) -> pair.o2.stream())
            .map(TypesystemReportItemAdapter::new)
            .forEach(errorsConsumer);
+
+        // clear all errors
+        tcc.clear();
       });
     }
 

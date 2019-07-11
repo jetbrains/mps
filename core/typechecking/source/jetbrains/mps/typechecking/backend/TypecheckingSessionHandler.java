@@ -37,7 +37,8 @@ public abstract class TypecheckingSessionHandler {
    * Requests that a new session is initiated with provided flags.
    *
    * All typechecking queries in this context are to be run via this session,
-   * which forwards them to its participants, until the lot is released.
+   * which forwards them to its participants, until the session is released.
+   * 
    *
    * See {@link TypecheckingFacade#getFromContext()} for the discussion of what context is.
    */
@@ -99,7 +100,7 @@ public abstract class TypecheckingSessionHandler {
   public final <T> T runIsolated(Flags flags, Supplier<T> code) {
     T t;
     try {
-      overrideIsolatedController(flags);
+      overrideIsolatedController(flags).requestSession(flags);
       t = code.get();
     }
     finally {
@@ -114,7 +115,8 @@ public abstract class TypecheckingSessionHandler {
    */
   public final void runIsolated(Runnable code) {
     try {
-      overrideIsolatedController(Flags.basic());
+      Flags flags = Flags.basic();
+      overrideIsolatedController(flags).requestSession(flags);
       code.run();
     }
     finally {
@@ -128,7 +130,7 @@ public abstract class TypecheckingSessionHandler {
    */
   public final void runIsolated(Flags flags, Runnable code) {
     try {
-      overrideIsolatedController(flags);
+      overrideIsolatedController(flags).requestSession(flags);
       code.run();
     }
     finally {
@@ -151,10 +153,11 @@ public abstract class TypecheckingSessionHandler {
   protected abstract void overrideSharedController(@NotNull TypecheckingSession session);
 
   /**
-   * Eagerly initialize and install a session for running typechecking queries in isolation.
+   * Eagerly initialize and install a controller for running typechecking queries in isolation.
    * @param flags
+   * @return
    */
-  protected abstract void overrideIsolatedController(Flags flags);
+  protected abstract TypecheckingController overrideIsolatedController(Flags flags);
 
   /**
    * Clears the previously installed override controller.

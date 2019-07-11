@@ -71,7 +71,12 @@ public class TypecheckingFacadeComponent implements CoreComponent {
               }
 
               public TypecheckingController isolated(Flags flags) {
-                return new DefaultTypecheckingController(myTypecheckingBackend, flags);
+                if (flags.getRoot() != null && flags.isIncremental()) {
+                  return new WorkbenchTypecheckingController(myTypecheckingBackend);
+
+                } else {
+                  return new DefaultTypecheckingController(myTypecheckingBackend, flags);
+                }
               }
 
               public TypecheckingController shared(@NotNull TypecheckingSession session) {
@@ -159,8 +164,10 @@ public class TypecheckingFacadeComponent implements CoreComponent {
     }
 
     @Override
-    protected void overrideIsolatedController(Flags flags) {
-      myControllerStack.push(myControllerFactory.isolated(flags));
+    protected TypecheckingController overrideIsolatedController(Flags flags) {
+      TypecheckingController controller = myControllerFactory.isolated(flags);
+      myControllerStack.push(controller);
+      return controller;
     }
 
     @Override

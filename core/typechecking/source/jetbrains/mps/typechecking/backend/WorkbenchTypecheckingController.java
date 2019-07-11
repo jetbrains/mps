@@ -84,6 +84,10 @@ public class WorkbenchTypecheckingController extends DefaultTypecheckingControll
   protected TypecheckingQueries getQueries(@NotNull SNode src, SNode trg, SConcept trgConcept) {
     SNode containingRoot = src.getContainingRoot();
     TypecheckingSession session = myRootSessions.get(new SNodeHandle(containingRoot));
+    if (session == null) {
+      // sometimes root is not the "containing root"
+      session = myRootSessions.get(new SNodeHandle(src));
+    }
     if (session != null) {
       return session.getQueries(selectProvider(src, trg, trgConcept));
 
