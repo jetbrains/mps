@@ -137,8 +137,9 @@ public class StyleRegistryIdeaImpl extends StyleRegistry implements EditorColors
       style = new StyleImpl();
 
       TextAttributes textAttributes = getColorsScheme().getAttributes(TextAttributesKey.find(key));
-      if (textAttributes == null)
+      if (textAttributes == null) {
         textAttributes = new TextAttributes();
+      }
       style.set(StyleAttributes.TEXT_COLOR, textAttributes.getForegroundColor());
       style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, textAttributes.getBackgroundColor());
       style.set(StyleAttributes.FONT_STYLE, textAttributes.getFontType());

@@ -17,7 +17,8 @@ package jetbrains.mps.ide.projectPane.logicalview.highlighting.visitor.updates;
 
 import jetbrains.mps.ide.ui.tree.ErrorState;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
-import jetbrains.mps.util.EqualUtil;
+
+import java.util.Objects;
 
 public class ErrorStateNodeUpdate extends NodeUpdate {
   private final ErrorState myErrorState;
@@ -40,8 +41,8 @@ public class ErrorStateNodeUpdate extends NodeUpdate {
   @Override
   public boolean needed(MPSTreeNode node) {
     return !(
-      EqualUtil.equals(node.getErrorState(), myErrorState) &&
-        EqualUtil.equals(node.getTooltipText(), myTooltipText)
+        node.getErrorState() == myErrorState &&
+        Objects.equals(node.getTooltipText(), myTooltipText)
     );
   }
 

@@ -69,7 +69,10 @@ class ImportsHelper {
   }
 
   public SModelReference getModelReference(@NotNull String index) {
-    assert myIndex2Model.containsKey(index);
+    if (!myIndex2Model.containsKey(index)) {
+      // AP: cannot see a reason why I could not do that
+      return null;
+    }
     return myIndex2Model.get(index);
   }
 

@@ -26,6 +26,7 @@ import java.util.Collections;
 
 public class TargetModuleNotImportedReportItem extends ReferenceReportItem implements EditorQuickfixReportItem, IssueKindReportItem {
   private final EditorQuickFix myQuickFix;
+
   public TargetModuleNotImportedReportItem(@NotNull SReference reference, @NotNull SModuleReference targetModule, @NotNull EditorQuickFix quickFix) {
     super(MessageStatus.ERROR, reference, "Target module " + targetModule.getModuleName() + " should be imported");
     myQuickFix = quickFix;
