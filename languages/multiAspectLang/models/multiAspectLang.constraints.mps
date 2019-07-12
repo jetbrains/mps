@@ -2,16 +2,13 @@
 <model ref="r:5dbac061-aef9-4696-88ee-0f21fe5598f3(multiAspectLang.constraints)">
   <persistence version="9" />
   <languages>
-    <use id="cddf55b3-117e-46ec-837c-ff50eb7b89b0" name="jetbrains.mps.lang.feedback.problem.childAndProp" version="0" />
     <devkit ref="00000000-0000-4000-0000-5604ebd4f22c(jetbrains.mps.devkit.aspect.constraints)" />
   </languages>
   <imports>
     <import index="pljn" ref="r:7117f6c4-faaf-4889-b5b9-3fe628e41cf8(multiAspectLang.structure)" />
-    <import index="2u14" ref="r:5fb5395d-4f7b-4fac-941f-f4bc11c7dac5(jetbrains.mps.lang.feedback.problem.childAndProp.constraints)" />
     <import index="prp3" ref="r:52ea8481-08b2-4cbd-ad9d-1b42825f7d09(jetbrains.mps.lang.constraints.rules.kinds.constraints)" />
     <import index="o8zo" ref="r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
-    <import index="ewrq" ref="r:bb0a30e0-9916-4d29-97fa-68ace0b06403(jetbrains.mps.lang.feedback.problem.scopes.constraints)" implicit="true" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -76,11 +73,6 @@
         <child id="1148687345559" name="searchScopeFactory" index="1N6uqs" />
       </concept>
     </language>
-    <language id="033598a4-76a9-47e1-ac89-a300c0fceab8" name="jetbrains.mps.lang.feedback.problem">
-      <concept id="7716791493892884282" name="jetbrains.mps.lang.feedback.problem.structure.ProblemPointsToKindRoot" flags="ng" index="sa$J0">
-        <reference id="7716791493892884283" name="kind" index="sa$J1" />
-      </concept>
-    </language>
     <language id="b3551702-269c-4f05-ba61-58060cef4292" name="jetbrains.mps.lang.rulesAndMessages">
       <concept id="315923949160549991" name="jetbrains.mps.lang.rulesAndMessages.structure.RuleWithMessage" flags="ng" index="1DCEPf">
         <child id="1400749580825440508" name="rule" index="2j4cqI" />
@@ -88,11 +80,6 @@
       </concept>
       <concept id="315923949160550017" name="jetbrains.mps.lang.rulesAndMessages.structure.InlineMessageProvider" flags="ng" index="1DCEQD">
         <child id="5258059200641510856" name="messagesExpr" index="16N$OO" />
-      </concept>
-    </language>
-    <language id="cd17a113-ca4e-472f-a8de-c49008f9eea8" name="jetbrains.mps.lang.feedback">
-      <concept id="6285588811486118729" name="jetbrains.mps.lang.feedback.structure.Feedback" flags="ng" index="3JXyrL">
-        <child id="6285588811486118732" name="problem" index="3JXyrO" />
       </concept>
     </language>
     <language id="134c38d4-e3af-4d9e-b069-1c7df0a4005d" name="jetbrains.mps.lang.constraints.rules.skeleton">
@@ -103,21 +90,6 @@
       <concept id="1867733327985055562" name="jetbrains.mps.lang.constraints.rules.skeleton.structure.RuleBlock" flags="ng" index="3OnDbq">
         <reference id="1867733327985055564" name="kind" index="3OnDbs" />
         <child id="1867733327985055563" name="members" index="3OnDbr" />
-      </concept>
-    </language>
-    <language id="cddf55b3-117e-46ec-837c-ff50eb7b89b0" name="jetbrains.mps.lang.feedback.problem.childAndProp">
-      <concept id="24399255755597574" name="jetbrains.mps.lang.feedback.problem.childAndProp.structure.FailingPropertyConstraintsProblem" flags="ng" index="1GjwBS">
-        <reference id="24399255755615671" name="property" index="1Gj$d9" />
-      </concept>
-    </language>
-    <language id="16e76fe3-9534-4def-afb7-925a169a7c0b" name="jetbrains.mps.lang.feedback.messages">
-      <concept id="7291380803381892689" name="jetbrains.mps.lang.feedback.messages.structure.ShowMessage" flags="ng" index="3QByp$">
-        <child id="5258059200641510856" name="message" index="16N$OP" />
-      </concept>
-    </language>
-    <language id="feec32f9-bc8f-4da8-8efd-7f3f9dd4101b" name="jetbrains.mps.lang.feedback.problem.scopes">
-      <concept id="1592627013225787355" name="jetbrains.mps.lang.feedback.problem.scopes.structure.RefOutOfScopeProblem" flags="ng" index="216oCf">
-        <reference id="1592627013225788494" name="ref" index="216p6q" />
       </concept>
     </language>
     <language id="47257bf3-78d3-470b-89d9-8c3261a61d15" name="jetbrains.mps.lang.constraints.rules">
@@ -182,12 +154,6 @@
       </concept>
       <concept id="4452961908202556907" name="jetbrains.mps.lang.core.structure.BaseCommentAttribute" flags="ng" index="1X3_iC">
         <child id="3078666699043039389" name="commentedNode" index="8Wnug" />
-      </concept>
-    </language>
-    <language id="517077fd-e44f-4338-a475-1d29781dfdb8" name="jetbrains.mps.lang.feedback.skeleton">
-      <concept id="7291380803381892615" name="jetbrains.mps.lang.feedback.skeleton.structure.FeedbackPerConceptRoot" flags="ng" index="3QByoM">
-        <reference id="7188575577281228125" name="concept" index="3Z9TSV" />
-        <child id="7291380803381927154" name="feedback" index="3QBEN7" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -294,46 +260,6 @@
             </node>
           </node>
         </node>
-      </node>
-    </node>
-  </node>
-  <node concept="3QByoM" id="6GnzfDRibva">
-    <ref role="3Z9TSV" to="pljn:5ca4zTvKOOO" resolve="TestConcept" />
-    <node concept="3QByp$" id="6GnzfDRinZ2" role="3QBEN7">
-      <node concept="16I2mz" id="6GnzfDRinZ4" role="16N$OP">
-        <node concept="16N$OT" id="63vaCZf7_6e" role="16I2mt">
-          <property role="16N$OU" value="Property constraints are broken for the property" />
-        </node>
-        <node concept="16N$OT" id="2dMY_rcisPM" role="16I2mt">
-          <property role="16N$OU" value=" " />
-        </node>
-        <node concept="16Iohu" id="7ghwUcl80JQ" role="16I2mt">
-          <ref role="16E0hz" to="2u14:1mFJTG7MCZ" resolve="property" />
-        </node>
-        <node concept="16N$OT" id="2dMY_rcirvK" role="16I2mt">
-          <property role="16N$OU" value=", please do smth " />
-        </node>
-        <node concept="16N$OT" id="2dMY_rcih5J" role="16I2mt">
-          <property role="16N$OU" value=" " />
-        </node>
-      </node>
-      <node concept="1GjwBS" id="6GnzfDRiqsF" role="3JXyrO">
-        <ref role="sa$J1" to="2u14:1mFJTG7e$j" resolve="FailingPropertyConstraints" />
-        <ref role="1Gj$d9" to="pljn:50L3raJA9_o" resolve="prop" />
-      </node>
-    </node>
-    <node concept="3QByp$" id="1oq9tin1ty6" role="3QBEN7">
-      <node concept="16I2mz" id="1oq9tin1ty8" role="16N$OP">
-        <node concept="16N$OT" id="7J3GgfrRR02" role="16I2mt">
-          <property role="16N$OU" value="The link is out of scope: here it goes: " />
-        </node>
-        <node concept="16Iohu" id="7J3GgfrRR01" role="16I2mt">
-          <ref role="16E0hz" to="ewrq:5vZLfeXlpEL" resolve="link" />
-        </node>
-      </node>
-      <node concept="216oCf" id="1oq9tin1$FT" role="3JXyrO">
-        <ref role="sa$J1" to="ewrq:1mFJTG7e$j" resolve="RefOutOfScope" />
-        <ref role="216p6q" to="pljn:1oq9tin1BEu" resolve="link" />
       </node>
     </node>
   </node>

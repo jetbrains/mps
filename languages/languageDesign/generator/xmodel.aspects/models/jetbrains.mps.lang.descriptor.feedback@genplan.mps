@@ -78,6 +78,10 @@
         <property role="2V$B1T" value="cddf55b3-117e-46ec-837c-ff50eb7b89b0" />
         <property role="2V$B1Q" value="jetbrains.mps.lang.feedback.problem.childAndProp" />
       </node>
+      <node concept="2V$Bhx" id="3f9_B0PO4OS" role="1t_9vn">
+        <property role="2V$B1T" value="feec32f9-bc8f-4da8-8efd-7f3f9dd4101b" />
+        <property role="2V$B1Q" value="jetbrains.mps.lang.feedback.problem.scopes" />
+      </node>
       <node concept="2V$Bhx" id="3qSbET$X7Rh" role="1t_9vn">
         <property role="2V$B1T" value="db2a46c2-ebec-4b6c-b6c2-f9b55b9b6f8a" />
         <property role="2V$B1Q" value="jetbrains.mps.lang.feedback.problem.failingRule" />

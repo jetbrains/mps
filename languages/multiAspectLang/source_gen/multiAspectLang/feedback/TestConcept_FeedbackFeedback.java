@@ -13,6 +13,10 @@ import jetbrains.mps.core.aspects.feedback.messages.PredefinedStructureProblemKi
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.core.aspects.feedback.messages.MessageProvider;
 import jetbrains.mps.core.aspects.feedback.messages.MissingChildContext;
+import jetbrains.mps.core.aspects.feedback.messages.FailingPropertyConstraintContext;
+import jetbrains.mps.core.aspects.feedback.messages.FailingPropertyConstraintProblemId;
+import jetbrains.mps.core.aspects.feedback.messages.RefOutOfScopeContext;
+import jetbrains.mps.core.aspects.feedback.messages.RefOutOfScopeProblemId;
 import java.util.List;
 import java.util.Collections;
 import java.util.Arrays;
@@ -35,8 +39,22 @@ public final class TestConcept_FeedbackFeedback extends BaseFeedbackDescriptor {
       return new MessageProvider.StringMsg("The child '" + String.valueOf(context.getChild()) + "' does not belong to the concept 'TestConcept");
     }
   };
+  private static final FeedbackProvider<FailingPropertyConstraintContext> MSGPROVIDER_WhenPropertyConstraintFails_c = new BaseMessageProvider<FailingPropertyConstraintContext>(new FailingPropertyConstraintProblemId(MetaAdapterFactory.getProperty(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, 0x50310db2af989958L, "prop"))) {
+    @NotNull
+    @Override
+    public MessageProvider.StringMsg yieldMessage(FailingPropertyConstraintContext context) {
+      return new MessageProvider.StringMsg("Property constraints are broken for the property" + " " + String.valueOf(context.getProperty()) + ", please do smth " + " ");
+    }
+  };
+  private static final FeedbackProvider<RefOutOfScopeContext> MSGPROVIDER_WhenReferenceIsOutOfScope_d = new BaseMessageProvider<RefOutOfScopeContext>(new RefOutOfScopeProblemId(MetaAdapterFactory.getReferenceLink(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, 0x161a25d497067a9eL, "link"))) {
+    @NotNull
+    @Override
+    public MessageProvider.StringMsg yieldMessage(RefOutOfScopeContext context) {
+      return new MessageProvider.StringMsg("The reference is out of scope: here it goes: " + String.valueOf(context.getLink()) + " in the node " + String.valueOf(context.getNode()));
+    }
+  };
 
-  private static final List<FeedbackProvider> PROVIDERS = Collections.unmodifiableList(Arrays.<FeedbackProvider>asList(MSGPROVIDER_WhenPropertyDoesNotBelongToTheConcept_a, MSGPROVIDER_WhenChildDoesNotBelongToTheConcept_b));
+  private static final List<FeedbackProvider> PROVIDERS = Collections.unmodifiableList(Arrays.<FeedbackProvider>asList(MSGPROVIDER_WhenPropertyDoesNotBelongToTheConcept_a, MSGPROVIDER_WhenChildDoesNotBelongToTheConcept_b, MSGPROVIDER_WhenPropertyConstraintFails_c, MSGPROVIDER_WhenReferenceIsOutOfScope_d));
 
   public TestConcept_FeedbackFeedback() {
     super(CONCEPT);

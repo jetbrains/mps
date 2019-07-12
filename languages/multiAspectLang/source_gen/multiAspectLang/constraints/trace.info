@@ -19,6 +19,9 @@
     <file name="GeneratedRulesConstraintsAspect.java">
       <unit at="14,0,28,0" name="multiAspectLang.constraints.GeneratedRulesConstraintsAspect" />
     </file>
+    <file name="TestConcept_ConstraintsFeedback.java">
+      <unit at="19,0,42,0" name="multiAspectLang.constraints.TestConcept_ConstraintsFeedback" />
+    </file>
   </root>
   <root nodeRef="r:5dbac061-aef9-4696-88ee-0f21fe5598f3(multiAspectLang.constraints)/24399255754237582">
     <file name="TestConcept_ConstraintRules.java">
@@ -87,45 +90,14 @@
       <unit id="24399255754237582" at="23,0,82,0" name="multiAspectLang.constraints.TestConcept_ConstraintRules" />
     </file>
     <file name="TestConcept_ConstraintsFeedback.java">
-      <node id="7932913038699129639" at="43,77,44,188" concept="5" />
-      <node id="7932913038699129639" at="41,0,46,0" concept="3" trace="yieldMessage#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/CanBeRootContext;)Ljetbrains/mps/core/aspects/feedback/messages/MessageProvider/StringMsg;" />
-      <node id="7932913038699129639" at="40,0,47,0" concept="6" trace="MSGPROVIDER_WhenConstraintRuleFails_c" />
-      <scope id="7932913038699129639" at="43,77,44,188" />
-      <scope id="7932913038699129639" at="41,0,46,0">
+      <node id="7932913038699129639" at="25,77,26,188" concept="5" />
+      <node id="7932913038699129639" at="23,0,28,0" concept="3" trace="yieldMessage#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/CanBeRootContext;)Ljetbrains/mps/core/aspects/feedback/messages/MessageProvider/StringMsg;" />
+      <node id="7932913038699129639" at="22,0,29,0" concept="6" trace="MSGPROVIDER_WhenConstraintRuleFails_a" />
+      <scope id="7932913038699129639" at="25,77,26,188" />
+      <scope id="7932913038699129639" at="23,0,28,0">
         <var name="context" id="7932913038699129639" />
       </scope>
-      <unit id="7932913038699129639" at="40,102,46,3" name="multiAspectLang.constraints.TestConcept_ConstraintsFeedback$3" />
-    </file>
-  </root>
-  <root nodeRef="r:5dbac061-aef9-4696-88ee-0f21fe5598f3(multiAspectLang.constraints)/7716791493893601226">
-    <file name="TestConcept_ConstraintsFeedback.java">
-      <node id="7716791493893601226" at="24,0,25,0" concept="6" trace="CONCEPT" />
-      <node id="7716791493893652418" at="29,93,30,169" concept="5" />
-      <node id="1592627013225928838" at="36,81,37,123" concept="5" />
-      <node id="7716791493893601226" at="48,0,49,0" concept="6" trace="PROVIDERS" />
-      <node id="7716791493893601226" at="50,44,51,19" concept="8" />
-      <node id="7716791493893601226" at="56,58,57,30" concept="5" />
-      <node id="7716791493893601226" at="50,0,53,0" concept="0" trace="TestConcept_ConstraintsFeedback#()V" />
-      <node id="7716791493893652418" at="27,0,32,0" concept="3" trace="yieldMessage#(Ljetbrains/mps/core/aspects/feedback/messages/FailingPropertyConstraintContext;)Ljetbrains/mps/core/aspects/feedback/messages/MessageProvider/StringMsg;" />
-      <node id="1592627013225928838" at="34,0,39,0" concept="3" trace="yieldMessage#(Ljetbrains/mps/core/aspects/feedback/messages/RefOutOfScopeContext;)Ljetbrains/mps/core/aspects/feedback/messages/MessageProvider/StringMsg;" />
-      <node id="7716791493893601226" at="54,0,59,0" concept="3" trace="getDeclaredProviders#()Ljava/util/stream/Stream;" />
-      <node id="7716791493893652418" at="26,0,33,0" concept="6" trace="MSGPROVIDER_WhenPropertyConstraintFails_a" />
-      <node id="1592627013225928838" at="33,0,40,0" concept="6" trace="MSGPROVIDER_WhenReferenceIsOutOfScope_b" />
-      <scope id="7716791493893652418" at="29,93,30,169" />
-      <scope id="1592627013225928838" at="36,81,37,123" />
-      <scope id="7716791493893601226" at="50,44,51,19" />
-      <scope id="7716791493893601226" at="56,58,57,30" />
-      <scope id="7716791493893601226" at="50,0,53,0" />
-      <scope id="7716791493893652418" at="27,0,32,0">
-        <var name="context" id="7716791493893652418" />
-      </scope>
-      <scope id="1592627013225928838" at="34,0,39,0">
-        <var name="context" id="1592627013225928838" />
-      </scope>
-      <scope id="7716791493893601226" at="54,0,59,0" />
-      <unit id="7716791493893652418" at="26,122,32,3" name="multiAspectLang.constraints.TestConcept_ConstraintsFeedback$1" />
-      <unit id="1592627013225928838" at="33,108,39,3" name="multiAspectLang.constraints.TestConcept_ConstraintsFeedback$2" />
-      <unit id="7716791493893601226" at="23,0,60,0" name="multiAspectLang.constraints.TestConcept_ConstraintsFeedback" />
+      <unit id="7932913038699129639" at="22,102,28,3" name="multiAspectLang.constraints.TestConcept_ConstraintsFeedback$1" />
     </file>
   </root>
   <root nodeRef="r:5dbac061-aef9-4696-88ee-0f21fe5598f3(multiAspectLang.constraints)/8918166317255507146">
