@@ -2,9 +2,9 @@
 <model ref="r:9c52f381-93f4-47f9-bd21-f9de8f562b1c(jetbrains.mps.lang.constraints.rules.kinds.editor)">
   <persistence version="9" />
   <languages>
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="12" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="13" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -139,13 +139,13 @@
     <node concept="14StLt" id="2o8jHTOBKsJ" role="V601i">
       <property role="TrG5h" value="RuleKind" />
       <node concept="Vb9p2" id="2o8jHTOBKsR" role="3F10Kt">
-        <property role="Vbekb" value="BOLD" />
+        <property role="Vbekb" value="g1_k_vY/BOLD" />
       </node>
       <node concept="27z8qx" id="1mFJTG6K8q" role="3F10Kt">
         <property role="3$6WeP" value="0.2" />
       </node>
       <node concept="VechU" id="6X8eyFncpHJ" role="3F10Kt">
-        <property role="Vb096" value="gray" />
+        <property role="Vb096" value="fLJRk5_/gray" />
       </node>
     </node>
   </node>

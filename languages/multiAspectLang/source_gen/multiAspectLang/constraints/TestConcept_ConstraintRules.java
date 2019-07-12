@@ -13,6 +13,7 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.core.aspects.constraints.rules.BaseRule;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
@@ -53,7 +54,7 @@ public final class TestConcept_ConstraintRules extends BaseRulesConstraintsDescr
       if (!(TestConcept_ConstraintRules.Def_AModel7932913038696329443.isDefined(context))) {
         return false;
       }
-      return true;
+      return ListSequence.fromList(SModelOperations.nodes(TestConcept_ConstraintRules.Def_AModel7932913038696329443.getValue(context), MetaAdapterFactory.getConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, "multiAspectLang.structure.TestConcept"))).isNotEmpty();
     }
   }
   public static final class Rule_check7932913038699129641_c0 extends BaseRule<CanBeRootContext> {

@@ -2,7 +2,7 @@
 <model ref="r:9664a139-32b8-42a0-b947-36109ce123bf(jetbrains.mps.lang.constraints.rules.skeleton.editor)">
   <persistence version="9" />
   <languages>
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="12" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="13" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
@@ -36,9 +36,7 @@
       <concept id="1186402211651" name="jetbrains.mps.lang.editor.structure.StyleSheet" flags="ng" index="V5hpn">
         <child id="1186402402630" name="styleClass" index="V601i" />
       </concept>
-      <concept id="1186403751766" name="jetbrains.mps.lang.editor.structure.FontStyleStyleClassItem" flags="ln" index="Vb9p2">
-        <property id="1186403771423" name="style" index="Vbekb" />
-      </concept>
+      <concept id="1186403751766" name="jetbrains.mps.lang.editor.structure.FontStyleStyleClassItem" flags="ln" index="Vb9p2" />
       <concept id="1186414536763" name="jetbrains.mps.lang.editor.structure.BooleanStyleSheetItem" flags="ln" index="VOi$J">
         <property id="1186414551515" name="flag" index="VOm3f" />
       </concept>
@@ -145,9 +143,7 @@
     <property role="TrG5h" value="Constraints_Styles" />
     <node concept="14StLt" id="52CT$p9qMd6" role="V601i">
       <property role="TrG5h" value="RootHeading" />
-      <node concept="Vb9p2" id="52CT$p9rdJ3" role="3F10Kt">
-        <property role="Vbekb" value="PLAIN" />
-      </node>
+      <node concept="Vb9p2" id="52CT$p9rdJ3" role="3F10Kt" />
       <node concept="27z8qx" id="52CT$p9v2CL" role="3F10Kt">
         <property role="3$6WeP" value="0.2" />
       </node>
@@ -215,10 +211,10 @@
     <node concept="1Qtc8_" id="7M8nn$ybUdZ" role="IW6Ez">
       <node concept="3cWJ9i" id="7M8nn$ybUe5" role="1Qtc8$">
         <node concept="CtIbL" id="7M8nn$ybUe7" role="CtIbM">
-          <property role="CtIbK" value="LEFT" />
+          <property role="CtIbK" value="1A4kJjlVmVt/LEFT" />
         </node>
         <node concept="CtIbL" id="7M8nn$ybUeb" role="CtIbM">
-          <property role="CtIbK" value="RIGHT" />
+          <property role="CtIbK" value="30NnNOohrQL/RIGHT" />
         </node>
       </node>
     </node>
@@ -227,7 +223,7 @@
     <property role="TrG5h" value="InsertMemberAfterRuleBlock" />
     <ref role="1h_SK9" to="mqj2:1BFxp3HHhta" resolve="RuleBlock" />
     <node concept="1hA7zw" id="2o8jHTO_BzC" role="1h_SK8">
-      <property role="1hAc7j" value="insert_action_id" />
+      <property role="1hAc7j" value="13S4mXuSN7V/insert_action_id" />
       <node concept="1hAIg9" id="2o8jHTO_BzD" role="1hA7z_">
         <node concept="3clFbS" id="2o8jHTO_BzE" role="2VODD2">
           <node concept="3clFbF" id="2o8jHTO_BzR" role="3cqZAp">
@@ -257,7 +253,7 @@
     <property role="TrG5h" value="ConstraintsRoot2_ActionMap" />
     <ref role="1h_SK9" to="mqj2:1BFxp3HFZzq" resolve="RulesConstraintsRoot" />
     <node concept="1hA7zw" id="2o8jHTOAv7Y" role="1h_SK8">
-      <property role="1hAc7j" value="insert_action_id" />
+      <property role="1hAc7j" value="13S4mXuSN7V/insert_action_id" />
       <node concept="1hAIg9" id="2o8jHTOAv7Z" role="1hA7z_">
         <node concept="3clFbS" id="2o8jHTOAv80" role="2VODD2">
           <node concept="3clFbF" id="2o8jHTOAv8d" role="3cqZAp">

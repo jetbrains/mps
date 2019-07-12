@@ -34,7 +34,7 @@ public final class TestConcept_ConstraintsFeedback extends BaseFeedbackDescripto
     @NotNull
     @Override
     public MessageProvider.StringMsg yieldMessage(RefOutOfScopeContext context) {
-      return new MessageProvider.StringMsg("Link is out of scope: hahahahaha " + String.valueOf(context.getReference()));
+      return new MessageProvider.StringMsg("The link is out of scope: here it goes: " + String.valueOf(context.getLink()));
     }
   };
   private static final FeedbackProvider<CanBeRootContext> MSGPROVIDER_WhenConstraintRuleFails_c = new BaseMessageProvider<CanBeRootContext>(new FailingRuleProblemId(TestConcept_ConstraintRules.Rule_check7932913038699129641_c0.ID_check7932913038699129641_c0)) {

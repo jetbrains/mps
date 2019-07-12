@@ -2,7 +2,7 @@
 <model ref="r:bd6fc1e2-c440-4914-8d32-b3c46da52d44(jetbrains.mps.lang.context.structure)">
   <persistence version="9" />
   <languages>
-    <use id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure" version="7" />
+    <use id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure" version="9" />
     <devkit ref="78434eb8-b0e5-444b-850d-e7c4ad2da9ab(jetbrains.mps.devkit.aspect.structure)" />
   </languages>
   <imports>
@@ -44,14 +44,14 @@
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="6kKc3mjlkau" role="1TKVEi">
       <property role="IQ2ns" value="7291380803376071326" />
-      <property role="20lmBu" value="aggregation" />
-      <property role="20lbJX" value="1..n" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20lbJX" value="fLJekj6/_1__n" />
       <property role="20kJfa" value="defs" />
       <ref role="20lvS9" to="iwhd:19J4M2yrkaX" resolve="NativeDef" />
     </node>
     <node concept="1TJgyj" id="6X8eyFnb3Nr" role="1TKVEi">
       <property role="IQ2ns" value="8018723092206206171" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="conceptParameter" />
       <ref role="20lvS9" to="iwhd:4JP_D2W1rsP" resolve="ContextConceptParameter" />
     </node>

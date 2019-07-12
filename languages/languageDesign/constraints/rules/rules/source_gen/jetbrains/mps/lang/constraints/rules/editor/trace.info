@@ -1402,60 +1402,64 @@
   </root>
   <root nodeRef="r:c333438f-9631-41c0-a716-72d23eed1ba4(jetbrains.mps.lang.constraints.rules.editor)/6958325536051759252">
     <file name="HintDefsCustomEditorCell.java">
-      <node id="6958325536051768302" at="23,0,24,0" concept="3" trace="myMember" />
-      <node id="6958325536051797092" at="25,58,26,18" concept="12" />
-      <node id="6958325536051768688" at="26,18,27,22" concept="2" />
-      <node id="6958325536051760532" at="31,67,32,134" concept="7" />
-      <node id="2554379189373556177" at="32,134,33,36" concept="2" />
-      <node id="6958325536051832968" at="33,36,34,84" concept="7" />
-      <node id="6958325536051760543" at="34,84,35,127" concept="7" />
-      <node id="6958325536052029874" at="35,127,36,65" concept="7" />
-      <node id="2554379189369009203" at="36,65,37,269" concept="7" />
-      <node id="2554379189369170180" at="37,269,38,33" concept="2" />
-      <node id="2554379189369421503" at="38,33,39,89" concept="7" />
-      <node id="2554379189369427872" at="40,64,41,32" concept="2" />
-      <node id="6958325536051760555" at="42,5,43,38" concept="2" />
-      <node id="6958325536051760566" at="43,38,44,22" concept="8" />
-      <node id="6958325536052029876" at="46,92,47,63" concept="7" />
-      <node id="6958325536052029876" at="47,63,48,240" concept="7" />
-      <node id="6958325536052029876" at="49,26,50,369" concept="2" />
-      <node id="6958325536052029876" at="51,5,52,14" concept="8" />
-      <node id="2554379189369425240" at="39,89,42,5" concept="4" />
-      <node id="6958325536052029876" at="48,240,51,5" concept="4" />
-      <node id="6958325536051767167" at="25,0,29,0" concept="1" trace="HintDefsCustomEditorCell#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="6958325536052029876" at="46,0,54,0" concept="11" trace="createEditorListOfDefs_igmisa_a0e0e#(Ljava/lang/Iterable;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="6958325536051760526" at="30,0,46,0" concept="6" trace="createEditorCell#(Ljetbrains/mps/openapi/editor/EditorContext;)Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <scope id="2554379189369425249" at="40,64,41,32" />
-      <scope id="6958325536052029876" at="49,26,50,369" />
-      <scope id="6958325536051767171" at="25,58,27,22" />
-      <scope id="2554379189369425240" at="39,89,42,5">
+      <node id="6958325536051768302" at="26,0,27,0" concept="3" trace="myMember" />
+      <node id="6958325536051797092" at="28,58,29,18" concept="12" />
+      <node id="6958325536051768688" at="29,18,30,22" concept="2" />
+      <node id="6958325536051760532" at="34,67,35,134" concept="7" />
+      <node id="2554379189373556177" at="35,134,36,36" concept="2" />
+      <node id="6958325536051832968" at="36,36,37,84" concept="7" />
+      <node id="6958325536051760543" at="37,84,38,127" concept="7" />
+      <node id="6958325536052029874" at="38,127,39,65" concept="7" />
+      <node id="7024465757708486556" at="39,65,40,59" concept="7" />
+      <node id="7024465757708497273" at="40,59,41,193" concept="7" />
+      <node id="2554379189369009203" at="41,193,42,145" concept="7" />
+      <node id="2554379189369170180" at="42,145,43,33" concept="2" />
+      <node id="2554379189369421503" at="43,33,44,89" concept="7" />
+      <node id="2554379189369427872" at="45,64,46,32" concept="2" />
+      <node id="6958325536051760555" at="47,5,48,38" concept="2" />
+      <node id="6958325536051760566" at="48,38,49,22" concept="8" />
+      <node id="6958325536052029876" at="51,92,52,63" concept="7" />
+      <node id="6958325536052029876" at="52,63,53,240" concept="7" />
+      <node id="6958325536052029876" at="54,26,55,369" concept="2" />
+      <node id="6958325536052029876" at="56,5,57,14" concept="8" />
+      <node id="2554379189369425240" at="44,89,47,5" concept="4" />
+      <node id="6958325536052029876" at="53,240,56,5" concept="4" />
+      <node id="6958325536051767167" at="28,0,32,0" concept="1" trace="HintDefsCustomEditorCell#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="6958325536052029876" at="51,0,59,0" concept="11" trace="createEditorListOfDefs_igmisa_a0e0e#(Ljava/lang/Iterable;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="6958325536051760526" at="33,0,51,0" concept="6" trace="createEditorCell#(Ljetbrains/mps/openapi/editor/EditorContext;)Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <scope id="2554379189369425249" at="45,64,46,32" />
+      <scope id="6958325536052029876" at="54,26,55,369" />
+      <scope id="6958325536051767171" at="28,58,30,22" />
+      <scope id="2554379189369425240" at="44,89,47,5">
         <var name="cell" id="2554379189369425243" />
       </scope>
-      <scope id="6958325536052029876" at="48,240,51,5">
+      <scope id="6958325536052029876" at="53,240,56,5">
         <var name="n" id="6958325536052029876" />
       </scope>
-      <scope id="6958325536051767167" at="25,0,29,0">
+      <scope id="6958325536051767167" at="28,0,32,0">
         <var name="member" id="6958325536051767341" />
       </scope>
-      <scope id="6958325536052029876" at="46,92,52,14">
+      <scope id="6958325536052029876" at="51,92,57,14">
         <var name="facade" id="6958325536052029876" />
         <var name="n1" id="6958325536052029876" />
       </scope>
-      <scope id="6958325536052029876" at="46,0,54,0">
+      <scope id="6958325536052029876" at="51,0,59,0">
         <var name="seq0" id="6958325536052029876" />
       </scope>
-      <scope id="6958325536051760531" at="31,67,44,22">
+      <scope id="6958325536051760531" at="34,67,49,22">
         <var name="auxNode" id="6958325536052029875" />
         <var name="cellFactory" id="6958325536051760544" />
         <var name="collection" id="6958325536051760533" />
+        <var name="component" id="7024465757708497274" />
         <var name="defRefs" id="6958325536051832969" />
         <var name="iterateTree" id="2554379189369421504" />
         <var name="newCell" id="2554379189369009204" />
+        <var name="repository" id="7024465757708486557" />
       </scope>
-      <scope id="6958325536051760526" at="30,0,46,0">
+      <scope id="6958325536051760526" at="33,0,51,0">
         <var name="editorContext" id="6958325536051760529" />
       </scope>
-      <unit id="6958325536051759252" at="22,0,55,0" name="jetbrains.mps.lang.constraints.rules.editor.HintDefsCustomEditorCell" />
+      <unit id="6958325536051759252" at="25,0,60,0" name="jetbrains.mps.lang.constraints.rules.editor.HintDefsCustomEditorCell" />
     </file>
   </root>
   <root nodeRef="r:c333438f-9631-41c0-a716-72d23eed1ba4(jetbrains.mps.lang.constraints.rules.editor)/7291380803376071611">

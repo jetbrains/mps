@@ -2,10 +2,10 @@
 <model ref="r:5441ac19-e3a2-4d9e-bc0b-a714425f0db4(jetbrains.mps.lang.context.defs.editor)">
   <persistence version="9" />
   <languages>
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="12" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="13" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
-    <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="1" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
+    <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="3" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -86,9 +86,6 @@
         <property id="1140017977771" name="readOnly" index="1Intyy" />
         <reference id="1140103550593" name="relationDeclaration" index="1NtTu8" />
       </concept>
-      <concept id="1073389214265" name="jetbrains.mps.lang.editor.structure.EditorCellModel" flags="ng" index="3EYTF0">
-        <property id="1130859485024" name="attractsFocus" index="1cu_pB" />
-      </concept>
       <concept id="1073389446423" name="jetbrains.mps.lang.editor.structure.CellModel_Collection" flags="sn" stub="3013115976261988961" index="3EZMnI">
         <child id="1106270802874" name="cellLayout" index="2iSdaV" />
         <child id="1073389446424" name="childCellModel" index="3EZMnx" />
@@ -162,12 +159,11 @@
     <language id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation">
       <concept id="5455284157994012186" name="jetbrains.mps.lang.quotation.structure.NodeBuilderInitLink" flags="ng" index="2pIpSj">
         <reference id="5455284157994012188" name="link" index="2pIpSl" />
+        <child id="1595412875168045827" name="initValue" index="28nt2d" />
       </concept>
       <concept id="5455284157993911077" name="jetbrains.mps.lang.quotation.structure.NodeBuilderInitProperty" flags="ng" index="2pJxcG">
         <reference id="5455284157993911078" name="property" index="2pJxcJ" />
-      </concept>
-      <concept id="5455284157993911097" name="jetbrains.mps.lang.quotation.structure.NodeBuilderInitPart" flags="ng" index="2pJxcK">
-        <child id="5455284157993911094" name="expression" index="2pJxcZ" />
+        <child id="1595412875168045201" name="initValue" index="28ntcv" />
       </concept>
       <concept id="5455284157993863837" name="jetbrains.mps.lang.quotation.structure.NodeBuilder" flags="nn" index="2pJPEk">
         <child id="5455284157993863838" name="quotedNode" index="2pJPEn" />
@@ -250,7 +246,6 @@
           <ref role="1k5W1q" to="tpen:hY9fg1G" resolve="LeftParenAfterName" />
         </node>
         <node concept="1iCGBv" id="2o8jHTOAWKf" role="3EZMnx">
-          <property role="1cu_pB" value="0" />
           <property role="39s7Ar" value="true" />
           <ref role="1k5W1q" to="tpd3:hwSE21y" resolve="ReferenceOnConcept" />
           <ref role="1NtTu8" to="iwhd:2o8jHTOAWnN" resolve="conceptParameter" />
@@ -300,7 +295,6 @@
           <ref role="1k5W1q" to="tpen:hY9fg1G" resolve="LeftParenAfterName" />
         </node>
         <node concept="1iCGBv" id="g$eijOx" role="3EZMnx">
-          <property role="1cu_pB" value="0" />
           <property role="39s7Ar" value="true" />
           <ref role="1NtTu8" to="iwhd:hyoMxHEpgN" resolve="conceptParameter" />
           <ref role="1k5W1q" to="tpd3:hwSE21y" resolve="ReferenceOnConcept" />
@@ -379,11 +373,11 @@
                 <ref role="2pJxaS" to="iwhd:4JP_D2W0fqL" resolve="TypedNativeDef" />
                 <node concept="2pJxcG" id="hyoMxHGwfe" role="2pJxcM">
                   <ref role="2pJxcJ" to="tpck:h0TrG11" resolve="name" />
-                  <node concept="ub8z3" id="hyoMxHGwi2" role="2pJxcZ" />
+                  <node concept="ub8z3" id="hyoMxHGwi2" role="28ntcv" />
                 </node>
                 <node concept="2pIpSj" id="hyoMxHGwpb" role="2pJxcM">
                   <ref role="2pIpSl" to="iwhd:4JP_D2W0fqM" resolve="type" />
-                  <node concept="36biLy" id="hyoMxHGwpO" role="2pJxcZ">
+                  <node concept="36biLy" id="hyoMxHGwpO" role="28nt2d">
                     <node concept="10Nm6u" id="hyoMxHGwpN" role="36biLW" />
                   </node>
                 </node>
@@ -442,7 +436,7 @@
                 <ref role="2pJxaS" to="iwhd:4JP_D2W0fqL" resolve="TypedNativeDef" />
                 <node concept="2pIpSj" id="hyoMxHFAuw" role="2pJxcM">
                   <ref role="2pIpSl" to="iwhd:4JP_D2W0fqM" resolve="type" />
-                  <node concept="36biLy" id="hyoMxHFAzw" role="2pJxcZ">
+                  <node concept="36biLy" id="hyoMxHFAzw" role="28nt2d">
                     <node concept="3N4pyC" id="hyoMxHFAAo" role="36biLW" />
                   </node>
                 </node>
@@ -461,10 +455,10 @@
     <node concept="14StLt" id="40CvJkJ_cEQ" role="V601i">
       <property role="TrG5h" value="NativeDefStyle" />
       <node concept="Vb9p2" id="40CvJkJ_cF9" role="3F10Kt">
-        <property role="Vbekb" value="BOLD" />
+        <property role="Vbekb" value="g1_k_vY/BOLD" />
       </node>
       <node concept="VechU" id="40CvJkJ_cFd" role="3F10Kt">
-        <property role="Vb096" value="DARK_BLUE" />
+        <property role="Vb096" value="g1_eI4o/darkBlue" />
       </node>
     </node>
   </node>

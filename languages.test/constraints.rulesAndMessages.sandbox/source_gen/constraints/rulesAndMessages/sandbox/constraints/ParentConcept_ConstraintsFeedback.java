@@ -26,7 +26,7 @@ public final class ParentConcept_ConstraintsFeedback extends BaseFeedbackDescrip
       return new MessageProvider.StringMsg("");
     }
   };
-  private static final FeedbackProvider<ContainmentContext> MSGPROVIDER_WhenConstraintRuleFails_b_0 = new BaseMessageProvider<ContainmentContext>(new FailingRuleProblemId(ParentConcept_ConstraintRules.Rule_propIsTrue.ID_propIsTrue)) {
+  private static final FeedbackProvider<ContainmentContext> MSGPROVIDER_WhenConstraintRuleFails_b = new BaseMessageProvider<ContainmentContext>(new FailingRuleProblemId(ParentConcept_ConstraintRules.Rule_propIsTrue.ID_propIsTrue)) {
     @NotNull
     @Override
     public MessageProvider.StringMsg yieldMessage(ContainmentContext context) {
@@ -34,7 +34,7 @@ public final class ParentConcept_ConstraintsFeedback extends BaseFeedbackDescrip
     }
   };
 
-  private static final List<FeedbackProvider> PROVIDERS = Collections.unmodifiableList(Arrays.<FeedbackProvider>asList(MSGPROVIDER_WhenConstraintRuleFails_a_0, MSGPROVIDER_WhenConstraintRuleFails_b_0));
+  private static final List<FeedbackProvider> PROVIDERS = Collections.unmodifiableList(Arrays.<FeedbackProvider>asList(MSGPROVIDER_WhenConstraintRuleFails_a_0, MSGPROVIDER_WhenConstraintRuleFails_b));
 
   public ParentConcept_ConstraintsFeedback() {
     super(CONCEPT);

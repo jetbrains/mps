@@ -2,7 +2,7 @@
 <model ref="r:b27aeb14-fefb-4745-88f9-0731c33985d8(jetbrains.mps.lang.rulesAndMessages.editor)">
   <persistence version="9" />
   <languages>
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="12" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="13" />
     <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="4" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
@@ -23,9 +23,6 @@
       </concept>
       <concept id="1071666914219" name="jetbrains.mps.lang.editor.structure.ConceptEditorDeclaration" flags="ig" index="24kQdi">
         <child id="1078153129734" name="inspectedCellModel" index="6VMZX" />
-      </concept>
-      <concept id="1226339938453" name="jetbrains.mps.lang.editor.structure.AbstractPaddingStyleClassItem" flags="ln" index="27zB68">
-        <property id="1226504838901" name="measure" index="2hoDZC" />
       </concept>
       <concept id="1106270549637" name="jetbrains.mps.lang.editor.structure.CellLayout_Horizontal" flags="nn" index="2iRfu4" />
       <concept id="1106270571710" name="jetbrains.mps.lang.editor.structure.CellLayout_Vertical" flags="nn" index="2iRkQZ" />
@@ -253,14 +250,13 @@
     <ref role="1XX52x" to="t16r:hyoMxHKcU1" resolve="InlineMessageProvider" />
     <node concept="3EZMnI" id="40CvJkJzGIY" role="2wV5jI">
       <node concept="37jFXN" id="5jg33KK9Mqt" role="3F10Kt">
-        <property role="37lx6p" value="RIGHT" />
+        <property role="37lx6p" value="hZ7kOz9/RIGHT" />
       </node>
       <node concept="3F0ifn" id="6Q2nboo7HCB" role="3EZMnx">
         <property role="3F0ifm" value=" -&gt; when fails show" />
         <ref role="1k5W1q" to="bgop:5GbbOB11OBg" resolve="WhenHint" />
         <ref role="1ERwB7" node="4zSofKean5_" resolve="InlineMessageProvider_actions" />
         <node concept="3$7jql" id="5XPa2npUf$q" role="3F10Kt">
-          <property role="2hoDZC" value="SPACES" />
           <property role="3$6WeP" value="0.9" />
         </node>
       </node>
@@ -277,7 +273,7 @@
     <property role="TrG5h" value="InlineMessageProvider_actions" />
     <ref role="1h_SK9" to="t16r:hyoMxHKcU1" resolve="InlineMessageProvider" />
     <node concept="1hA7zw" id="4zSofKean5A" role="1h_SK8">
-      <property role="1hAc7j" value="delete_action_id" />
+      <property role="1hAc7j" value="g_hAxAO/delete_action_id" />
       <node concept="1hAIg9" id="4zSofKean5B" role="1hA7z_">
         <node concept="3clFbS" id="4zSofKean5C" role="2VODD2">
           <node concept="3clFbJ" id="45qMCT9iUEP" role="3cqZAp">
@@ -313,7 +309,7 @@
       </node>
     </node>
     <node concept="1hA7zw" id="3LOLRuvm812" role="1h_SK8">
-      <property role="1hAc7j" value="insert_action_id" />
+      <property role="1hAc7j" value="13S4mXuSN7V/insert_action_id" />
       <node concept="1hAIg9" id="3LOLRuvm813" role="1hA7z_">
         <node concept="3clFbS" id="3LOLRuvm814" role="2VODD2">
           <node concept="3clFbF" id="3LOLRuvmaPo" role="3cqZAp">
@@ -336,7 +332,7 @@
       </node>
     </node>
     <node concept="1hA7zw" id="3LOLRuvnB7V" role="1h_SK8">
-      <property role="1hAc7j" value="insert_before_action_id" />
+      <property role="1hAc7j" value="13S4mXuSN7W/insert_before_action_id" />
       <node concept="1hAIg9" id="3LOLRuvnB7W" role="1hA7z_">
         <node concept="3clFbS" id="3LOLRuvnB7X" role="2VODD2">
           <node concept="3clFbF" id="3LOLRuvnB9Q" role="3cqZAp">
@@ -393,7 +389,7 @@
     <property role="TrG5h" value="RuleBlockActions" />
     <ref role="1h_SK9" to="mqj2:1BFxp3HHhta" resolve="RuleBlock" />
     <node concept="1hA7zw" id="5VED60U2Mgu" role="1h_SK8">
-      <property role="1hAc7j" value="insert_action_id" />
+      <property role="1hAc7j" value="13S4mXuSN7V/insert_action_id" />
       <node concept="1hAIg9" id="5VED60U2Mgv" role="1hA7z_">
         <node concept="3clFbS" id="5VED60U2Mgw" role="2VODD2">
           <node concept="3clFbF" id="5VED60U2MgH" role="3cqZAp">
@@ -417,7 +413,7 @@
     <property role="TrG5h" value="RuleActions" />
     <ref role="1h_SK9" to="t16r:hyoMxHKcTB" resolve="RuleWithMessage" />
     <node concept="1hA7zw" id="7CK8yHraG6G" role="1h_SK8">
-      <property role="1hAc7j" value="delete_action_id" />
+      <property role="1hAc7j" value="g_hAxAO/delete_action_id" />
       <node concept="1hAIg9" id="7CK8yHraG6H" role="1hA7z_">
         <node concept="3clFbS" id="7CK8yHraG6I" role="2VODD2">
           <node concept="3clFbJ" id="7CK8yHrc7su" role="3cqZAp">

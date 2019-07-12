@@ -10,14 +10,17 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
 import java.util.List;
 import jetbrains.mps.openapi.editor.cells.EditorCellFactory;
+import org.jetbrains.mps.openapi.module.SRepository;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.editor.cells.traversal.CellTreeIterable;
 import jetbrains.mps.openapi.editor.cells.CellTraversalUtil;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 
 public class HintDefsCustomEditorCell extends AbstractCellProvider {
   private final SNode myMember;
@@ -34,7 +37,9 @@ public class HintDefsCustomEditorCell extends AbstractCellProvider {
     List<SNode> defRefs = ApplicabilityHelper.getRequiredDefsForCondition(myMember);
     EditorCellFactory cellFactory = editorContext.getEditorComponent().getUpdater().getCurrentUpdateSession().getCellFactory();
     SNode auxNode = createEditorListOfDefs_igmisa_a0e0e(defRefs);
-    EditorCell newCell = cellFactory.createEditorComponentCell(auxNode, INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SNodeOperations.getNode("r:c333438f-9631-41c0-a716-72d23eed1ba4(jetbrains.mps.lang.constraints.rules.editor)", "1400793947282053205")));
+    SRepository repository = editorContext.getRepository();
+    SNode component = SPointerOperations.resolveNode(new SNodePointer("r:c333438f-9631-41c0-a716-72d23eed1ba4(jetbrains.mps.lang.constraints.rules.editor)", "1400793947282053205"), repository);
+    EditorCell newCell = cellFactory.createEditorComponentCell(auxNode, INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(component));
     newCell.setSelectable(false);
     CellTreeIterable iterateTree = CellTraversalUtil.iterateTree(newCell, newCell, true);
     for (EditorCell cell : Sequence.fromIterable(iterateTree)) {

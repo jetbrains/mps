@@ -2,7 +2,7 @@
 <model ref="r:21b4a58c-8629-4511-bd63-7fc9a4e5fc38(jetbrains.mps.lang.messages.structure)">
   <persistence version="9" />
   <languages>
-    <use id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure" version="-1" />
+    <use id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure" version="9" />
     <devkit ref="78434eb8-b0e5-444b-850d-e7c4ad2da9ab(jetbrains.mps.devkit.aspect.structure)" />
   </languages>
   <imports>
@@ -68,8 +68,7 @@
     <ref role="1TJDcQ" node="4zSofKedyR4" resolve="MessageExpression" />
     <node concept="1TJgyj" id="4zSofKek6iv" role="1TKVEi">
       <property role="IQ2ns" value="5258059200643228831" />
-      <property role="20lmBu" value="reference" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/_1" />
       <property role="20kJfa" value="declaration" />
       <ref role="20lvS9" to="iwhd:6kKc3mjq0oG" resolve="TypedDef" />
     </node>
@@ -79,9 +78,9 @@
     <property role="TrG5h" value="CombinedMessageExpression" />
     <node concept="1TJgyj" id="4zSofKeg4lx" role="1TKVEi">
       <property role="IQ2ns" value="5258059200642172257" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="part" />
-      <property role="20lbJX" value="1..n" />
+      <property role="20lbJX" value="fLJekj6/_1__n" />
       <ref role="20lvS9" node="4zSofKedyR4" resolve="MessageExpression" />
     </node>
     <node concept="t5JxF" id="4udEn3XIZfJ" role="lGtFl">

@@ -2,7 +2,7 @@
 <model ref="r:1d4f6f82-1219-47a2-a4fa-ac3ba14c9fd5(jetbrains.mps.lang.constraints.rules.skeleton.structure)">
   <persistence version="9" />
   <languages>
-    <use id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure" version="7" />
+    <use id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure" version="9" />
     <devkit ref="78434eb8-b0e5-444b-850d-e7c4ad2da9ab(jetbrains.mps.devkit.aspect.structure)" />
   </languages>
   <imports>
@@ -62,8 +62,8 @@
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="1BFxp3HFZzr" role="1TKVEi">
       <property role="IQ2ns" value="1867733327984720091" />
-      <property role="20lmBu" value="aggregation" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20lbJX" value="fLJekj5/_0__n" />
       <property role="20kJfa" value="block" />
       <ref role="20lvS9" node="1BFxp3HFZzw" resolve="Block" />
     </node>
@@ -75,8 +75,7 @@
     </node>
     <node concept="1TJgyj" id="1BFxp3HFZzu" role="1TKVEi">
       <property role="IQ2ns" value="1867733327984720094" />
-      <property role="20lmBu" value="reference" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/_1" />
       <property role="20kJfa" value="concept" />
       <ref role="20lvS9" to="tpce:h0PkWnZ" resolve="AbstractConceptDeclaration" />
     </node>
@@ -100,16 +99,15 @@
     <property role="34LRSv" value="Add rules for the kind" />
     <node concept="1TJgyj" id="1BFxp3HHhtb" role="1TKVEi">
       <property role="IQ2ns" value="1867733327985055563" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="members" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/_0__n" />
       <ref role="20lvS9" node="1BFxp3HHhtg" resolve="RuleBlockMember" />
     </node>
     <node concept="1TJgyj" id="1BFxp3HHhtc" role="1TKVEi">
       <property role="IQ2ns" value="1867733327985055564" />
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="kind" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/_1" />
       <ref role="20lvS9" to="qbpv:6kKc3mjlk98" resolve="RuleKind" />
     </node>
     <node concept="PrWs8" id="1BFxp3HHhtd" role="PzmwI">

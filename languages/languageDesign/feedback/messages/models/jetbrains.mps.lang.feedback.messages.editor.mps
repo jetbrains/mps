@@ -2,7 +2,7 @@
 <model ref="r:0c439b35-97f7-4a6a-9add-6619e8c46f29(jetbrains.mps.lang.feedback.messages.editor)">
   <persistence version="9" />
   <languages>
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="12" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="13" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -58,14 +58,14 @@
         <node concept="3F0ifn" id="1mFJTG6asB" role="2ruayu">
           <property role="3F0ifm" value="&lt;choose the problem&gt;" />
           <node concept="VechU" id="1mFJTG6asD" role="3F10Kt">
-            <property role="Vb096" value="gray" />
+            <property role="Vb096" value="fLJRk5_/gray" />
           </node>
         </node>
       </node>
       <node concept="3F0ifn" id="6X8eyFn9r1B" role="3EZMnx">
         <property role="3F0ifm" value="-&gt;" />
         <node concept="VechU" id="6X8eyFn9rGF" role="3F10Kt">
-          <property role="Vb096" value="darkGray" />
+          <property role="Vb096" value="fLJRk5B/darkGray" />
         </node>
       </node>
       <node concept="3F0ifn" id="6kKc3mjFxpS" role="3EZMnx">

@@ -2,7 +2,7 @@
 <model ref="r:ff619a2b-8fe7-4627-a515-9b4874d6fc53(jetbrains.mps.lang.feedback.problem.structure)">
   <persistence version="9" />
   <languages>
-    <use id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure" version="7" />
+    <use id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure" version="9" />
     <devkit ref="78434eb8-b0e5-444b-850d-e7c4ad2da9ab(jetbrains.mps.devkit.aspect.structure)" />
   </languages>
   <imports>
@@ -53,9 +53,9 @@
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="1mFJTG6K0d" role="1TKVEi">
       <property role="IQ2ns" value="24399255755751437" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="context" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/_1" />
       <ref role="20lvS9" to="ceie:1mFJTG6r$X" resolve="Context" />
     </node>
     <node concept="PrWs8" id="1mFJTG6K7$" role="PzmwI">
@@ -68,9 +68,8 @@
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="6GnzfDRfssV" role="1TKVEi">
       <property role="IQ2ns" value="7716791493892884283" />
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="kind" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/_1" />
       <ref role="20lvS9" node="1mFJTG6JRZ" resolve="ProblemKindRoot" />
     </node>
     <node concept="PrWs8" id="6GnzfDRhs0$" role="PzmwI">

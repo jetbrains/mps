@@ -49,6 +49,11 @@ public final class ParentConcept_ConstraintRules extends BaseRulesConstraintsDes
     public boolean check(@NotNull ContainmentContext context) {
       return SConceptOperations.isExactly(SNodeOperations.asSConcept(context.getChildConcept()), MetaAdapterFactory.getConcept(0xfc39d7264089464aL, 0x8fc15f71edfdf03bL, 0x7825711952b6d480L, "constraints.rulesAndMessages.sandbox.structure.ChildConcept"));
     }
+
+    @Override
+    public boolean appliesTo(@NotNull ContainmentContext context) {
+      return true;
+    }
   }
   public static final class Rule_propIsTrue extends BaseRule<ContainmentContext> {
     private static final SNodeReference SOURCE_NODE_REF = PersistenceFacade.getInstance().createNodeReference("r:50e6e59b-26e4-4ba1-9996-7aefbabd31cf(constraints.rulesAndMessages.sandbox.constraints)/8878450512092603199");
@@ -61,6 +66,11 @@ public final class ParentConcept_ConstraintRules extends BaseRulesConstraintsDes
     @Override
     public boolean check(@NotNull ContainmentContext context) {
       return SPropertyOperations.getBoolean(context.getParentNode(), MetaAdapterFactory.getProperty(0xfc39d7264089464aL, 0x8fc15f71edfdf03bL, 0x7af41afae28e1a15L, 0x6493b7a43ae22fbaL, "canHaveChildren"));
+    }
+
+    @Override
+    public boolean appliesTo(@NotNull ContainmentContext context) {
+      return true;
     }
   }
 }

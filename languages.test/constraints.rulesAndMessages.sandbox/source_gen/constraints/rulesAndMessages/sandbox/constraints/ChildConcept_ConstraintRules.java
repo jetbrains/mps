@@ -47,6 +47,11 @@ public final class ChildConcept_ConstraintRules extends BaseRulesConstraintsDesc
     public boolean check(@NotNull ContainmentContext context) {
       return SPropertyOperations.getInteger(context.getChildNode(), MetaAdapterFactory.getProperty(0xfc39d7264089464aL, 0x8fc15f71edfdf03bL, 0x74b496bab051d961L, 0x74b496bab051e02eL, "tolerance")) < 100;
     }
+
+    @Override
+    public boolean appliesTo(@NotNull ContainmentContext context) {
+      return true;
+    }
   }
   public static final class Rule_toleranceNotTooLow extends BaseRule<ContainmentContext> {
     private static final SNodeReference SOURCE_NODE_REF = PersistenceFacade.getInstance().createNodeReference("r:50e6e59b-26e4-4ba1-9996-7aefbabd31cf(constraints.rulesAndMessages.sandbox.constraints)/8878450512092611869");
@@ -59,6 +64,11 @@ public final class ChildConcept_ConstraintRules extends BaseRulesConstraintsDesc
     @Override
     public boolean check(@NotNull ContainmentContext context) {
       return SPropertyOperations.getInteger(context.getChildNode(), MetaAdapterFactory.getProperty(0xfc39d7264089464aL, 0x8fc15f71edfdf03bL, 0x74b496bab051d961L, 0x74b496bab051e02eL, "tolerance")) > 1;
+    }
+
+    @Override
+    public boolean appliesTo(@NotNull ContainmentContext context) {
+      return true;
     }
   }
 }

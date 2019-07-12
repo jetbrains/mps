@@ -70,7 +70,11 @@ public class ClassifierScopes {
   }
   public static Scope getVisibleClassifiersScope(@NotNull final SNode contextNode, boolean includeAncestors) {
     SNode clas = SNodeOperations.getNodeAncestor(contextNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), true, false);
-    return filterVisibleClassifiersScope(contextNode, getReachableClassifiersScope(SNodeOperations.getModel(contextNode), clas, includeAncestors));
+    SModel model = SNodeOperations.getModel(contextNode);
+    if (model == null) {
+      return null;
+    }
+    return filterVisibleClassifiersScope(contextNode, getReachableClassifiersScope(model, clas, includeAncestors));
   }
   public static Scope getVisibleClassifiersWithDefaultConstructors(@NotNull final SNode contextNode) {
     return new FilteringScope(ClassifierScopes.getVisibleClassifiersScope(contextNode, false)) {

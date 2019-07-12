@@ -53,7 +53,7 @@ final class AdaptedLegacyConstraintsRule<C extends Context> implements Rule<C> {
   }
 
   @Override
-  @NotNull
+  @Nullable
   public SNodeReference getRuleSourceNode() {
     return myDebugInfo;
   }

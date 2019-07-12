@@ -8,9 +8,12 @@
     <import index="gt7b" ref="r:ecf311aa-7fee-4454-acdb-4d199fb64430(multiAspectLang.feedback)" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
     <import index="1ctc" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.stream(JDK/)" />
+    <import index="j809" ref="a098f3e2-deaa-4e97-bf80-9109efff59dd/java:jetbrains.mps.core.aspects.feedback.messages(jetbrains.mps.lang.feedback.messages.structure/)" />
     <import index="pljn" ref="r:7117f6c4-faaf-4889-b5b9-3fe628e41cf8(multiAspectLang.structure)" />
+    <import index="j80a" ref="9abaaae2-decf-4e97-bf80-9109e8b759cc/java:jetbrains.mps.core.aspects.feedback.messages(jetbrains.mps.lang.messages.api/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
+    <import index="9jwd" ref="9e9ef4e2-decf-4e97-bf80-9109e8b759bb/java:jetbrains.mps.core.aspects.feedback.api(jetbrains.mps.lang.feedback.api/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
   </imports>
   <registry>
@@ -183,8 +186,8 @@
       <node concept="3clFbS" id="6" role="3clF47">
         <node concept="3cpWs6" id="a" role="3cqZAp">
           <node concept="2YIFZM" id="b" role="3cqZAk">
-            <ref role="37wK5l" to="1ctc:~Stream.of(java.lang.Object...)" resolve="of" />
             <ref role="1Pybhc" to="1ctc:~Stream" resolve="Stream" />
+            <ref role="37wK5l" to="1ctc:~Stream.of(java.lang.Object)" resolve="of" />
             <node concept="2ShNRf" id="c" role="37wK5m">
               <node concept="1pGfFk" id="d" role="2ShVmc">
                 <ref role="37wK5l" node="J" resolve="TestConcept_FeedbackFeedback" />
@@ -330,8 +333,8 @@
         <node concept="YeOm9" id="15" role="2ShVmc">
           <node concept="1Y3b0j" id="16" role="YeSDq">
             <property role="2bfB8j" value="true" />
-            <ref role="1Y3XeK" to="j809:~BaseMessageProvider" resolve="BaseMessageProvider" />
-            <ref role="37wK5l" to="j809:~BaseMessageProvider.&lt;init&gt;(jetbrains.mps.core.aspects.feedback.problem.ProblemId)" resolve="BaseMessageProvider" />
+            <ref role="1Y3XeK" to="j80a:~BaseMessageProvider" resolve="BaseMessageProvider" />
+            <ref role="37wK5l" to="j80a:~BaseMessageProvider.&lt;init&gt;(jetbrains.mps.core.aspects.feedback.problem.ProblemId)" resolve="BaseMessageProvider" />
             <node concept="2ShNRf" id="17" role="37wK5m">
               <node concept="1pGfFk" id="1b" role="2ShVmc">
                 <ref role="37wK5l" to="j809:~MissingFeatureInConceptProblemId.&lt;init&gt;(org.jetbrains.mps.openapi.language.SAbstractConcept,jetbrains.mps.core.aspects.feedback.problem.ProblemKind)" resolve="MissingFeatureInConceptProblemId" />
@@ -344,8 +347,8 @@
                   </node>
                 </node>
                 <node concept="Rm8GO" id="1e" role="37wK5m">
-                  <ref role="Rm8GQ" to="j809:~PredefinedStructureProblemKind.MISSING_PROPERTY" resolve="MISSING_PROPERTY" />
                   <ref role="1Px2BO" to="j809:~PredefinedStructureProblemKind" resolve="PredefinedStructureProblemKind" />
+                  <ref role="Rm8GQ" to="j809:~PredefinedStructureProblemKind.MISSING_PROPERTY" resolve="MISSING_PROPERTY" />
                   <node concept="cd27G" id="1i" role="lGtFl">
                     <node concept="3u3nmq" id="1j" role="cd27D">
                       <property role="3u3nmv" value="6878448148911923173" />
@@ -372,7 +375,7 @@
                 <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
               </node>
               <node concept="3uibUv" id="1o" role="3clF45">
-                <ref role="3uigEE" to="j809:~MessageProvider$StringMsg" resolve="MessageProvider.StringMsg" />
+                <ref role="3uigEE" to="j80a:~MessageProvider$StringMsg" resolve="MessageProvider.StringMsg" />
               </node>
               <node concept="37vLTG" id="1p" role="3clF46">
                 <property role="TrG5h" value="context" />
@@ -389,7 +392,7 @@
                 <node concept="3cpWs6" id="1v" role="3cqZAp">
                   <node concept="2ShNRf" id="1w" role="3cqZAk">
                     <node concept="1pGfFk" id="1x" role="2ShVmc">
-                      <ref role="37wK5l" to="j809:~MessageProvider$StringMsg.&lt;init&gt;(java.lang.String)" resolve="MessageProvider.StringMsg" />
+                      <ref role="37wK5l" to="j80a:~MessageProvider$StringMsg.&lt;init&gt;(java.lang.String)" resolve="MessageProvider.StringMsg" />
                       <node concept="3cpWs3" id="1y" role="37wK5m">
                         <node concept="Xl_RD" id="1z" role="3uHU7w">
                           <property role="Xl_RC" value="' does not belong to the concept 'TestConcept', please do smth" />
@@ -476,8 +479,8 @@
         <node concept="YeOm9" id="1W" role="2ShVmc">
           <node concept="1Y3b0j" id="1X" role="YeSDq">
             <property role="2bfB8j" value="true" />
-            <ref role="1Y3XeK" to="j809:~BaseMessageProvider" resolve="BaseMessageProvider" />
-            <ref role="37wK5l" to="j809:~BaseMessageProvider.&lt;init&gt;(jetbrains.mps.core.aspects.feedback.problem.ProblemId)" resolve="BaseMessageProvider" />
+            <ref role="1Y3XeK" to="j80a:~BaseMessageProvider" resolve="BaseMessageProvider" />
+            <ref role="37wK5l" to="j80a:~BaseMessageProvider.&lt;init&gt;(jetbrains.mps.core.aspects.feedback.problem.ProblemId)" resolve="BaseMessageProvider" />
             <node concept="2ShNRf" id="1Y" role="37wK5m">
               <node concept="1pGfFk" id="22" role="2ShVmc">
                 <ref role="37wK5l" to="j809:~MissingFeatureInConceptProblemId.&lt;init&gt;(org.jetbrains.mps.openapi.language.SAbstractConcept,jetbrains.mps.core.aspects.feedback.problem.ProblemKind)" resolve="MissingFeatureInConceptProblemId" />
@@ -490,8 +493,8 @@
                   </node>
                 </node>
                 <node concept="Rm8GO" id="25" role="37wK5m">
-                  <ref role="Rm8GQ" to="j809:~PredefinedStructureProblemKind.MISSING_CHILD" resolve="MISSING_CHILD" />
                   <ref role="1Px2BO" to="j809:~PredefinedStructureProblemKind" resolve="PredefinedStructureProblemKind" />
+                  <ref role="Rm8GQ" to="j809:~PredefinedStructureProblemKind.MISSING_CHILD" resolve="MISSING_CHILD" />
                   <node concept="cd27G" id="29" role="lGtFl">
                     <node concept="3u3nmq" id="2a" role="cd27D">
                       <property role="3u3nmv" value="8918166317255598415" />
@@ -518,7 +521,7 @@
                 <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
               </node>
               <node concept="3uibUv" id="2f" role="3clF45">
-                <ref role="3uigEE" to="j809:~MessageProvider$StringMsg" resolve="MessageProvider.StringMsg" />
+                <ref role="3uigEE" to="j80a:~MessageProvider$StringMsg" resolve="MessageProvider.StringMsg" />
               </node>
               <node concept="37vLTG" id="2g" role="3clF46">
                 <property role="TrG5h" value="context" />
@@ -535,7 +538,7 @@
                 <node concept="3cpWs6" id="2m" role="3cqZAp">
                   <node concept="2ShNRf" id="2n" role="3cqZAk">
                     <node concept="1pGfFk" id="2o" role="2ShVmc">
-                      <ref role="37wK5l" to="j809:~MessageProvider$StringMsg.&lt;init&gt;(java.lang.String)" resolve="MessageProvider.StringMsg" />
+                      <ref role="37wK5l" to="j80a:~MessageProvider$StringMsg.&lt;init&gt;(java.lang.String)" resolve="MessageProvider.StringMsg" />
                       <node concept="3cpWs3" id="2p" role="37wK5m">
                         <node concept="Xl_RD" id="2q" role="3uHU7w">
                           <property role="Xl_RC" value="' does not belong to the concept 'TestConcept" />

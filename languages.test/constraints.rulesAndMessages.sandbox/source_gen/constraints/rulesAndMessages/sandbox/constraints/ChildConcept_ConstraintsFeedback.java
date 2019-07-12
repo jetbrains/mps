@@ -26,7 +26,7 @@ public final class ChildConcept_ConstraintsFeedback extends BaseFeedbackDescript
       return new MessageProvider.StringMsg("The tolerance is too high");
     }
   };
-  private static final FeedbackProvider<ContainmentContext> MSGPROVIDER_WhenConstraintRuleFails_b = new BaseMessageProvider<ContainmentContext>(new FailingRuleProblemId(ChildConcept_ConstraintRules.Rule_toleranceNotTooLow.ID_toleranceNotTooLow)) {
+  private static final FeedbackProvider<ContainmentContext> MSGPROVIDER_WhenConstraintRuleFails_b_0 = new BaseMessageProvider<ContainmentContext>(new FailingRuleProblemId(ChildConcept_ConstraintRules.Rule_toleranceNotTooLow.ID_toleranceNotTooLow)) {
     @NotNull
     @Override
     public MessageProvider.StringMsg yieldMessage(ContainmentContext context) {
@@ -34,7 +34,7 @@ public final class ChildConcept_ConstraintsFeedback extends BaseFeedbackDescript
     }
   };
 
-  private static final List<FeedbackProvider> PROVIDERS = Collections.unmodifiableList(Arrays.<FeedbackProvider>asList(MSGPROVIDER_WhenConstraintRuleFails_a, MSGPROVIDER_WhenConstraintRuleFails_b));
+  private static final List<FeedbackProvider> PROVIDERS = Collections.unmodifiableList(Arrays.<FeedbackProvider>asList(MSGPROVIDER_WhenConstraintRuleFails_a, MSGPROVIDER_WhenConstraintRuleFails_b_0));
 
   public ChildConcept_ConstraintsFeedback() {
     super(CONCEPT);

@@ -781,7 +781,7 @@
                                         <ref role="37wK5l" to="35tq:~Scope.getScope(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.language.SContainmentLink,int,org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="getScope" />
                                         <node concept="2OqwBi" id="45" role="37wK5m">
                                           <node concept="37vLTw" id="4a" role="2Oq$k0">
-                                            <ref role="3cqZAo" to=":^" resolve="_context" />
+                                            <ref role="3cqZAo" node="3B" resolve="_context" />
                                             <node concept="cd27G" id="4d" role="lGtFl">
                                               <node concept="3u3nmq" id="4e" role="cd27D">
                                                 <property role="3u3nmv" value="7291380803378359920" />
@@ -812,7 +812,7 @@
                                             </node>
                                           </node>
                                           <node concept="37vLTw" id="4j" role="2Oq$k0">
-                                            <ref role="3cqZAo" to=":^" resolve="_context" />
+                                            <ref role="3cqZAo" node="3B" resolve="_context" />
                                             <node concept="cd27G" id="4n" role="lGtFl">
                                               <node concept="3u3nmq" id="4o" role="cd27D">
                                                 <property role="3u3nmv" value="7291380803378359920" />
@@ -827,7 +827,7 @@
                                         </node>
                                         <node concept="2OqwBi" id="47" role="37wK5m">
                                           <node concept="37vLTw" id="4q" role="2Oq$k0">
-                                            <ref role="3cqZAo" to=":^" resolve="_context" />
+                                            <ref role="3cqZAo" node="3B" resolve="_context" />
                                             <node concept="cd27G" id="4t" role="lGtFl">
                                               <node concept="3u3nmq" id="4u" role="cd27D">
                                                 <property role="3u3nmv" value="7291380803378359920" />

@@ -2,7 +2,7 @@
 <model ref="r:61c80a02-cc27-4085-b38d-beaf0fede70a(jetbrains.mps.lang.constraints.rules.typesystem)">
   <persistence version="9" />
   <languages>
-    <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="1" />
+    <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="4" />
     <use id="69b8a993-9b87-4d96-bf0c-3559f4bb0c63" name="jetbrains.mps.lang.slanguage" version="0" />
     <devkit ref="00000000-0000-4000-0000-1de82b3a4936(jetbrains.mps.devkit.aspect.typesystem)" />
   </languages>
@@ -244,11 +244,11 @@
             <node concept="3cpWsn" id="19J4M2yurvI" role="3cpWs9">
               <property role="TrG5h" value="root" />
               <node concept="3Tqbb2" id="19J4M2yurvs" role="1tU5fm">
-                <ref role="ehGHo" to="mqj2:1BFxp3HFZzq" resolve="ConstraintsRoot2" />
+                <ref role="ehGHo" to="mqj2:1BFxp3HFZzq" resolve="RulesConstraintsRoot" />
               </node>
               <node concept="1PxgMI" id="19J4M2yurvJ" role="33vP2m">
                 <node concept="chp4Y" id="19J4M2yurvK" role="3oSUPX">
-                  <ref role="cht4Q" to="mqj2:1BFxp3HFZzq" resolve="ConstraintsRoot2" />
+                  <ref role="cht4Q" to="mqj2:1BFxp3HFZzq" resolve="RulesConstraintsRoot" />
                 </node>
                 <node concept="2OqwBi" id="19J4M2yurvL" role="1m5AlR">
                   <node concept="1YBJjd" id="1BFxp3HFXjo" role="2Oq$k0">
