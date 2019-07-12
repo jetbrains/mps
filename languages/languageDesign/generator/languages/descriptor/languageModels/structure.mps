@@ -61,32 +61,32 @@
   <node concept="1TIwiD" id="4r8JClTlfX1">
     <property role="TrG5h" value="GeneratorInternal_Aspect" />
     <property role="EcuMT" value="5100536058472628033" />
-    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <ref role="1TJDcQ" to=":gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyi" id="4r8JClTlfXJ" role="1TKVEl">
       <property role="TrG5h" value="implClass" />
       <property role="IQ2nx" value="5100536058472628079" />
-      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+      <ref role="AX2Wp" to=":fKAOsGN" resolve="string" />
     </node>
     <node concept="1TJgyj" id="4r8JClTlfXA" role="1TKVEi">
       <property role="20kJfa" value="interfaceClass" />
       <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="5100536058472628070" />
-      <ref role="20lvS9" to="tpee:g7pOWCK" resolve="Classifier" />
+      <ref role="20lvS9" to=":g7pOWCK" resolve="Classifier" />
     </node>
   </node>
   <node concept="1TIwiD" id="3pzUVOrWgq3">
     <property role="TrG5h" value="GeneratorDescriptor" />
     <property role="19KtqR" value="true" />
     <property role="EcuMT" value="3919235298192590467" />
-    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <ref role="1TJDcQ" to=":gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="6$7WZDXZ7wW" role="1TKVEi">
       <property role="IQ2ns" value="7568285956000479292" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="generator" />
-      <ref role="20lvS9" to="hypd:5xDtKQA7vSx" resolve="Generator" />
+      <ref role="20lvS9" to=":5xDtKQA7vSx" resolve="Generator" />
     </node>
     <node concept="PrWs8" id="eB6_hfARLz" role="PzmwI">
-      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+      <ref role="PrY4T" to=":h0TrEE$" resolve="INamedConcept" />
     </node>
   </node>
 </model>

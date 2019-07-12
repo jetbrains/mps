@@ -17,7 +17,6 @@
         <generator generatorUID="3ac18869-0828-4401-abad-822a47bf83f1(jetbrains.mps.lang.descriptor#9020561928507175817)" />
       </external-templates>
       <dependencies>
-        <dependency reexport="false">6e98f4e2-decf-4e97-bf80-9109e8b759ef(jetbrains.mps.lang.feedback.alltogether)</dependency>
         <dependency reexport="false">ceab5195-25ea-4f22-9b92-103b95ca8c0c(jetbrains.mps.lang.core)</dependency>
         <dependency reexport="false">1158b595-143b-40eb-8ac0-b10007fa8d7f(jetbrains.mps.lang.constraints.rules#01)</dependency>
         <dependency reexport="false">6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)</dependency>
@@ -47,23 +46,14 @@
         <module reference="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" version="0" />
         <module reference="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" version="0" />
         <module reference="8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)" version="0" />
-        <module reference="f3061a53-9226-4cc5-a443-f952ceaf5816(jetbrains.mps.baseLanguage)" version="0" />
-        <module reference="e39e4a59-8cb6-498e-860e-8fa8361c0d90(jetbrains.mps.baseLanguage.scopes)" version="0" />
-        <module reference="2d3c70e9-aab2-4870-8d8d-6036800e4103(jetbrains.mps.kernel)" version="0" />
         <module reference="1158b595-143b-40eb-8ac0-b10007fa8d7f(jetbrains.mps.lang.constraints.rules#01)" version="0" />
-        <module reference="5dae8159-ab99-46bb-a40d-0cee30ee7018(jetbrains.mps.lang.constraints.rules.kinds)" version="1" />
-        <module reference="8e98f4e2-decf-4e97-bf80-9109e8b759ee(jetbrains.mps.lang.constraints.rules.runtime)" version="0" />
-        <module reference="50b47162-3e2f-4af8-99e4-66b9ad45d05a(jetbrains.mps.lang.constraints.rules.skeleton#1867733327984464082)" version="0" />
+        <module reference="ea3159bf-f48e-4720-bde2-86dba75f0d34(jetbrains.mps.lang.context.defs)" version="0" />
+        <module reference="dada761c-8e21-4cc0-b68c-7043bd551489(jetbrains.mps.lang.context.defs#01)" version="0" />
         <module reference="ceab5195-25ea-4f22-9b92-103b95ca8c0c(jetbrains.mps.lang.core)" version="0" />
-        <module reference="f4ad079d-bc71-4ffb-9600-9328705cf998(jetbrains.mps.lang.descriptor)" version="0" />
         <module reference="3ac18869-0828-4401-abad-822a47bf83f1(jetbrains.mps.lang.descriptor#9020561928507175817)" version="0" />
-        <module reference="cd17a113-ca4e-472f-a8de-c49008f9eea8(jetbrains.mps.lang.feedback)" version="0" />
-        <module reference="6e98f4e2-decf-4e97-bf80-9109e8b759ef(jetbrains.mps.lang.feedback.alltogether)" version="0" />
-        <module reference="16e76fe3-9534-4def-afb7-925a169a7c0b(jetbrains.mps.lang.feedback.messages)" version="0" />
-        <module reference="517077fd-e44f-4338-a475-1d29781dfdb8(jetbrains.mps.lang.feedback.skeleton)" version="0" />
         <module reference="ad93155d-79b2-4759-b10c-55123e763903(jetbrains.mps.lang.messages)" version="1" />
         <module reference="8e484114-7304-41f8-aab2-91a523e078fe(jetbrains.mps.lang.messages#8657450212265151934)" version="0" />
-        <module reference="9ded098b-ad6a-4657-bfd9-48636cfe8bc3(jetbrains.mps.lang.traceable)" version="0" />
+        <module reference="9abaaae2-decf-4e97-bf80-9109e8b759cc(jetbrains.mps.lang.messages.api)" version="0" />
       </dependencyVersions>
       <mapping-priorities />
     </generator>
@@ -127,7 +117,7 @@
     <module reference="9ded098b-ad6a-4657-bfd9-48636cfe8bc3(jetbrains.mps.lang.traceable)" version="0" />
   </dependencyVersions>
   <runtime>
-    <dependency reexport="false">6e98f4e2-decf-4e97-bf80-9109e8b759ef(jetbrains.mps.lang.feedback.alltogether)</dependency>
+    <dependency reexport="false">9abaaae2-decf-4e97-bf80-9109e8b759cc(jetbrains.mps.lang.messages.api)</dependency>
   </runtime>
   <extendedLanguages />
 </language>

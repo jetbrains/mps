@@ -38,8 +38,9 @@
         <module reference="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" version="0" />
         <module reference="8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)" version="0" />
         <module reference="ceab5195-25ea-4f22-9b92-103b95ca8c0c(jetbrains.mps.lang.core)" version="0" />
-        <module reference="6e98f4e2-decf-4e97-bf80-9109e8b759ef(jetbrains.mps.lang.feedback.alltogether)" version="0" />
+        <module reference="9e98f4e2-decf-4e97-bf80-9109e8b759aa(jetbrains.mps.lang.feedback.context)" version="0" />
         <module reference="033598a4-76a9-47e1-ac89-a300c0fceab8(jetbrains.mps.lang.feedback.problem)" version="0" />
+        <module reference="3f98f4e2-decf-4e97-bf80-9109e8b759ab(jetbrains.mps.lang.feedback.problem)" version="0" />
         <module reference="3f67a24c-17dc-4d34-9ecd-d2790f764ce0(jetbrains.mps.lang.feedback.problem#01)" version="0" />
       </dependencyVersions>
       <mapping-priorities />
@@ -95,7 +96,7 @@
     <module reference="033598a4-76a9-47e1-ac89-a300c0fceab8(jetbrains.mps.lang.feedback.problem)" version="0" />
   </dependencyVersions>
   <runtime>
-    <dependency reexport="false">6e98f4e2-decf-4e97-bf80-9109e8b759ef(jetbrains.mps.lang.feedback.alltogether)</dependency>
+    <dependency reexport="false">3f98f4e2-decf-4e97-bf80-9109e8b759ab(jetbrains.mps.lang.feedback.problem)</dependency>
   </runtime>
   <extendedLanguages />
 </language>

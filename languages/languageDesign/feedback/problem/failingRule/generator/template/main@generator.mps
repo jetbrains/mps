@@ -7,12 +7,12 @@
   <imports>
     <import index="xjeg" ref="r:99b2bb53-594f-4076-8629-aea0f8ec5bfd(jetbrains.mps.lang.feedback.problem.failingRule.structure)" />
     <import index="80mx" ref="r:15a53890-cd48-425f-9829-419e5561b668(main@generator)" />
-    <import index="j809" ref="6e98f4e2-decf-4e97-bf80-9109e8b759ef/java:jetbrains.mps.core.aspects.feedback.messages(jetbrains.mps.lang.feedback.alltogether/)" />
     <import index="biba" ref="r:0d1ebc40-50e2-42b7-a78e-20c299d62a43(main@generator)" />
     <import index="pdwk" ref="8e98f4e2-decf-4e97-bf80-9109e8b759ee/java:jetbrains.mps.core.aspects.constraints.rules.kinds(jetbrains.mps.lang.constraints.rules.runtime/)" />
     <import index="qbpv" ref="r:63fc051d-731b-428a-af30-ceee8d76dfaa(jetbrains.mps.lang.constraints.rules.kinds.structure)" />
     <import index="prp3" ref="r:52ea8481-08b2-4cbd-ad9d-1b42825f7d09(jetbrains.mps.lang.constraints.rules.kinds.constraints)" />
     <import index="sis7" ref="r:ff619a2b-8fe7-4627-a515-9b4874d6fc53(jetbrains.mps.lang.feedback.problem.structure)" />
+    <import index="j809" ref="0a98f3e2-decf-4e97-bf80-9109eccc59bb/java:jetbrains.mps.core.aspects.feedback.messages(jetbrains.mps.lang.feedback.messages.rules/)" />
     <import index="4boq" ref="r:724e6e38-de05-4794-9500-38fefe925278(jetbrains.mps.lang.constraints.rules.skeleton.behavior)" implicit="true" />
   </imports>
   <registry>
@@ -179,7 +179,7 @@
               <node concept="2OqwBi" id="4lnto0oJWn6" role="3clFbG">
                 <node concept="2ShNRf" id="4lnto0oJVC2" role="2Oq$k0">
                   <node concept="1pGfFk" id="4lnto0oJVSY" role="2ShVmc">
-                    <ref role="37wK5l" to="j809:~FailingRuleProblemKind.&lt;init&gt;(jetbrains.mps.core.aspects.constraints.rules.RuleKind)" resolve="FailingRuleProblemKind" />
+                    <ref role="37wK5l" to=":~FailingRuleProblemKind.&lt;init&gt;(jetbrains.mps.core.aspects.constraints.rules.RuleKind)" resolve="FailingRuleProblemKind" />
                     <node concept="10M0yZ" id="1ToVZma5Sqg" role="37wK5m">
                       <ref role="1PxDUh" to="80mx:6kKc3mjmPnA" resolve="DescriptorClass.RuleClass" />
                       <ref role="3cqZAo" to="80mx:1Vcdx13cg_B" resolve="ID" />
@@ -231,7 +231,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="4lnto0oJWCD" role="2OqNvi">
-                  <ref role="37wK5l" to="j809:~FailingRuleProblemKind.getId()" resolve="getId" />
+                  <ref role="37wK5l" to=":~FailingRuleProblemKind.getId()" resolve="getId" />
                 </node>
                 <node concept="raruj" id="4lnto0oJWN6" role="lGtFl" />
               </node>

@@ -17,9 +17,9 @@
         <generator generatorUID="3f67a24c-17dc-4d34-9ecd-d2790f764ce0(jetbrains.mps.lang.feedback.problem#01)" />
       </external-templates>
       <dependencies>
-        <dependency reexport="false">6e98f4e2-decf-4e97-bf80-9109e8b759ef(jetbrains.mps.lang.feedback.alltogether)</dependency>
         <dependency reexport="false">2bdcefec-ba49-4b32-ab50-ebc7a41d5090(jetbrains.mps.lang.smodel#1139186730696)</dependency>
         <dependency reexport="false">033598a4-76a9-47e1-ac89-a300c0fceab8(jetbrains.mps.lang.feedback.problem)</dependency>
+        <dependency reexport="false">9e98f4e2-decf-4e97-bf80-9109e8b759aa(jetbrains.mps.lang.feedback.context)</dependency>
       </dependencies>
       <languageVersions>
         <language slang="l:f3061a53-9226-4cc5-a443-f952ceaf5816:jetbrains.mps.baseLanguage" version="9" />
@@ -45,7 +45,7 @@
         <module reference="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" version="0" />
         <module reference="8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)" version="0" />
         <module reference="ceab5195-25ea-4f22-9b92-103b95ca8c0c(jetbrains.mps.lang.core)" version="0" />
-        <module reference="6e98f4e2-decf-4e97-bf80-9109e8b759ef(jetbrains.mps.lang.feedback.alltogether)" version="0" />
+        <module reference="aaaaf3e2-decf-4e97-bf80-9109eab759ee(jetbrains.mps.lang.feedback.messages.legacy-constraints)" version="0" />
         <module reference="033598a4-76a9-47e1-ac89-a300c0fceab8(jetbrains.mps.lang.feedback.problem)" version="0" />
         <module reference="3f67a24c-17dc-4d34-9ecd-d2790f764ce0(jetbrains.mps.lang.feedback.problem#01)" version="0" />
         <module reference="cddf55b3-117e-46ec-837c-ff50eb7b89b0(jetbrains.mps.lang.feedback.problem.childAndProp)" version="0" />
@@ -108,7 +108,7 @@
     <module reference="c72da2b9-7cce-4447-8389-f407dc1158b7(jetbrains.mps.lang.structure)" version="0" />
   </dependencyVersions>
   <runtime>
-    <dependency reexport="false">6e98f4e2-decf-4e97-bf80-9109e8b759ef(jetbrains.mps.lang.feedback.alltogether)</dependency>
+    <dependency reexport="false">aaaaf3e2-decf-4e97-bf80-9109eab759ee(jetbrains.mps.lang.feedback.messages.legacy-constraints)</dependency>
   </runtime>
   <extendedLanguages>
     <extendedLanguage>033598a4-76a9-47e1-ac89-a300c0fceab8(jetbrains.mps.lang.feedback.problem)</extendedLanguage>

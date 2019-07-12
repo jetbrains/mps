@@ -974,9 +974,7 @@
     <node concept="3EZMnI" id="hP3iAmc" role="2wV5jI">
       <node concept="3F0ifn" id="hP3iAmd" role="3EZMnx">
         <property role="3F0ifm" value="super" />
-        <node concept="VechU" id="hP3iAme" role="3F10Kt">
-          <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
-        </node>
+        <ref role="1k5W1q" to="tpen:hgVS8CF" resolve="KeyWord" />
         <node concept="3$7jql" id="hP3iAmf" role="3F10Kt">
           <property role="3$6WeP" value="0.0" />
         </node>

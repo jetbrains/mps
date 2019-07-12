@@ -18,7 +18,7 @@
     <import index="mqj2" ref="r:1d4f6f82-1219-47a2-a4fa-ac3ba14c9fd5(jetbrains.mps.lang.constraints.rules.skeleton.structure)" />
     <import index="wff5" ref="r:2ac18004-8536-478a-bf05-03a0f407633f(jetbrains.mps.lang.feedback.skeleton.structure)" />
     <import index="prp3" ref="r:52ea8481-08b2-4cbd-ad9d-1b42825f7d09(jetbrains.mps.lang.constraints.rules.kinds.constraints)" />
-    <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
+    <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
   </imports>
   <registry>
     <language id="13744753-c81f-424a-9c1b-cf8943bf4e86" name="jetbrains.mps.lang.sharedConcepts">
@@ -325,7 +325,7 @@
                   <node concept="I4A8Y" id="1fOVPpFEWnN" role="2OqNvi" />
                 </node>
                 <node concept="2RRcyG" id="1fOVPpFEWHX" role="2OqNvi">
-                  <ref role="2RRcyH" to="mqj2:1BFxp3HFZzq" resolve="ConstraintsRoot2" />
+                  <ref role="2RRcyH" to="mqj2:1BFxp3HFZzq" resolve="RulesConstraintsRoot" />
                 </node>
               </node>
               <node concept="2HwmR7" id="1fOVPpFFj3K" role="2OqNvi">
@@ -404,7 +404,7 @@
           <node concept="2OqwBi" id="2OM9A8S2wuw" role="2GsD0m">
             <node concept="1Q6Npb" id="2OM9A8S2wmc" role="2Oq$k0" />
             <node concept="2RRcyG" id="2OM9A8S2w$f" role="2OqNvi">
-              <ref role="2RRcyH" to="mqj2:1BFxp3HFZzq" resolve="ConstraintsRoot2" />
+              <ref role="2RRcyH" to="mqj2:1BFxp3HFZzq" resolve="RulesConstraintsRoot" />
             </node>
           </node>
           <node concept="3clFbS" id="2OM9A8S2w8i" role="2LFqv$">
@@ -611,7 +611,7 @@
                           <node concept="I4A8Y" id="6GnzfDRhKHV" role="2OqNvi" />
                         </node>
                         <node concept="2RRcyG" id="6GnzfDRhKHW" role="2OqNvi">
-                          <ref role="2RRcyH" to="mqj2:1BFxp3HFZzq" resolve="ConstraintsRoot2" />
+                          <ref role="2RRcyH" to="mqj2:1BFxp3HFZzq" resolve="RulesConstraintsRoot" />
                         </node>
                       </node>
                       <node concept="3zZkjj" id="6GnzfDRhKHX" role="2OqNvi">
@@ -673,7 +673,7 @@
                       </node>
                     </node>
                     <node concept="3TrEf2" id="6GnzfDRiubM" role="2OqNvi">
-                      <ref role="3Tt5mk" to="t16r:4zSofKedyR8" resolve="message" />
+                      <ref role="3Tt5mk" to="t16r:4zSofKedyR8" resolve="messagesExpr" />
                     </node>
                   </node>
                 </node>

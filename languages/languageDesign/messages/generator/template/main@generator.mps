@@ -8,9 +8,9 @@
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="t9po" ref="r:21b4a58c-8629-4511-bd63-7fc9a4e5fc38(jetbrains.mps.lang.messages.structure)" />
     <import index="tgww" ref="r:7fc220b5-3806-43f7-a6e6-6f3ea2d76c9c(util)" />
-    <import index="tjjq" ref="6e98f4e2-decf-4e97-bf80-9109e8b759ef/java:jetbrains.mps.core.context(jetbrains.mps.lang.feedback.alltogether/)" />
     <import index="iwhd" ref="r:bd012d1c-91a4-4783-a33f-d2037e757f6d(jetbrains.mps.lang.context.defs.structure)" />
     <import index="hfrf" ref="r:fac0d2cd-3d86-4c70-a300-b56f644a41d9(main@generator)" />
+    <import index="tjjq" ref="9e98f4e2-decf-4e97-bf80-9109e8b759aa/java:jetbrains.mps.core.context(jetbrains.mps.lang.feedback.context/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
     <import index="80mx" ref="r:15a53890-cd48-425f-9829-419e5561b668(main@generator)" implicit="true" />
   </imports>

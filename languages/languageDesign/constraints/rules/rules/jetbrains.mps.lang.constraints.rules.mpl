@@ -20,10 +20,10 @@
         <dependency reexport="false">6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)</dependency>
         <dependency reexport="false">5dae8159-ab99-46bb-a40d-0cee30ee7018(jetbrains.mps.lang.constraints.rules.kinds)</dependency>
         <dependency reexport="false">50b47162-3e2f-4af8-99e4-66b9ad45d05a(jetbrains.mps.lang.constraints.rules.skeleton#1867733327984464082)</dependency>
-        <dependency reexport="false">6e98f4e2-decf-4e97-bf80-9109e8b759ef(jetbrains.mps.lang.feedback.alltogether)</dependency>
         <dependency reexport="false">956ee187-1d40-4451-93e1-bd13031cf123(jetbrains.mps.lang.constraints.rules.kinds#1867733327984468203)</dependency>
         <dependency reexport="false">ea3159bf-f48e-4720-bde2-86dba75f0d34(jetbrains.mps.lang.context.defs)</dependency>
         <dependency reexport="false">dada761c-8e21-4cc0-b68c-7043bd551489(jetbrains.mps.lang.context.defs#01)</dependency>
+        <dependency reexport="false">9e98f4e2-decf-4e97-bf80-9109e8b759aa(jetbrains.mps.lang.feedback.context)</dependency>
       </dependencies>
       <languageVersions>
         <language slang="l:f3061a53-9226-4cc5-a443-f952ceaf5816:jetbrains.mps.baseLanguage" version="9" />
@@ -59,7 +59,6 @@
         <module reference="ea3159bf-f48e-4720-bde2-86dba75f0d34(jetbrains.mps.lang.context.defs)" version="0" />
         <module reference="ceab5195-25ea-4f22-9b92-103b95ca8c0c(jetbrains.mps.lang.core)" version="0" />
         <module reference="3ac18869-0828-4401-abad-822a47bf83f1(jetbrains.mps.lang.descriptor#9020561928507175817)" version="0" />
-        <module reference="6e98f4e2-decf-4e97-bf80-9109e8b759ef(jetbrains.mps.lang.feedback.alltogether)" version="0" />
         <module reference="c72da2b9-7cce-4447-8389-f407dc1158b7(jetbrains.mps.lang.structure)" version="0" />
       </dependencyVersions>
       <mapping-priorities />

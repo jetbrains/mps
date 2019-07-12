@@ -156,9 +156,7 @@
     <language id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation">
       <concept id="5455284157994012186" name="jetbrains.mps.lang.quotation.structure.NodeBuilderInitLink" flags="ng" index="2pIpSj">
         <reference id="5455284157994012188" name="link" index="2pIpSl" />
-      </concept>
-      <concept id="5455284157993911097" name="jetbrains.mps.lang.quotation.structure.NodeBuilderInitPart" flags="ng" index="2pJxcK">
-        <child id="5455284157993911094" name="expression" index="2pJxcZ" />
+        <child id="1595412875168045827" name="initValue" index="28nt2d" />
       </concept>
       <concept id="5455284157993863837" name="jetbrains.mps.lang.quotation.structure.NodeBuilder" flags="nn" index="2pJPEk">
         <child id="5455284157993863838" name="quotedNode" index="2pJPEn" />
@@ -433,7 +431,7 @@
           <node concept="3cpWsn" id="1NLt_nKLRsG" role="3cpWs9">
             <property role="TrG5h" value="newRoot" />
             <node concept="3Tqbb2" id="1NLt_nKLRsH" role="1tU5fm">
-              <ref role="ehGHo" to="mqj2:1BFxp3HFZzq" resolve="ConstraintsRoot2" />
+              <ref role="ehGHo" to="mqj2:1BFxp3HFZzq" resolve="RulesConstraintsRoot" />
             </node>
             <node concept="2OqwBi" id="1NLt_nKLRsI" role="33vP2m">
               <node concept="2OqwBi" id="1NLt_nKLRsJ" role="2Oq$k0">
@@ -443,7 +441,7 @@
                 <node concept="I4A8Y" id="1NLt_nKLRsL" role="2OqNvi" />
               </node>
               <node concept="2xF2bX" id="1NLt_nKLRsM" role="2OqNvi">
-                <ref role="I8UWU" to="mqj2:1BFxp3HFZzq" resolve="ConstraintsRoot2" />
+                <ref role="I8UWU" to="mqj2:1BFxp3HFZzq" resolve="RulesConstraintsRoot" />
               </node>
             </node>
           </node>
@@ -585,13 +583,13 @@
                         <ref role="2pJxaS" to="mqj2:1BFxp3HHhta" resolve="RuleBlock" />
                         <node concept="2pIpSj" id="SlG8On5btt" role="2pJxcM">
                           <ref role="2pIpSl" to="mqj2:1BFxp3HHhtc" resolve="kind" />
-                          <node concept="36bGnv" id="6X8eyFnbKCH" role="2pJxcZ">
+                          <node concept="36bGnv" id="ulsZYnhXWY" role="28nt2d">
                             <ref role="36bGnp" to="prp3:6X8eyFnbIRR" resolve="CanBeChild" />
                           </node>
                         </node>
                         <node concept="2pIpSj" id="SlG8On5btw" role="2pJxcM">
                           <ref role="2pIpSl" to="mqj2:1BFxp3HHhtb" resolve="members" />
-                          <node concept="36biLy" id="SlG8On5btv" role="2pJxcZ">
+                          <node concept="36biLy" id="SlG8On5btv" role="28nt2d">
                             <node concept="2OqwBi" id="1FBVWoj$3jp" role="36biLW">
                               <node concept="37vLTw" id="1FBVWoj$3jq" role="2Oq$k0">
                                 <ref role="3cqZAo" node="1NLt_nKLRtg" resolve="analyzerResult" />
@@ -717,13 +715,13 @@
                         <ref role="2pJxaS" to="mqj2:1BFxp3HHhta" resolve="RuleBlock" />
                         <node concept="2pIpSj" id="SlG8On5bg9" role="2pJxcM">
                           <ref role="2pIpSl" to="mqj2:1BFxp3HHhtc" resolve="kind" />
-                          <node concept="36bGnv" id="SlG8On5bga" role="2pJxcZ">
+                          <node concept="36bGnv" id="ulsZYnhXY5" role="28nt2d">
                             <ref role="36bGnp" to="prp3:6X8eyFnbIRY" resolve="CanBeParent" />
                           </node>
                         </node>
                         <node concept="2pIpSj" id="SlG8On5bgc" role="2pJxcM">
                           <ref role="2pIpSl" to="mqj2:1BFxp3HHhtb" resolve="members" />
-                          <node concept="36biLy" id="SlG8On5bgb" role="2pJxcZ">
+                          <node concept="36biLy" id="SlG8On5bgb" role="28nt2d">
                             <node concept="2OqwBi" id="1FBVWoj$8eP" role="36biLW">
                               <node concept="37vLTw" id="1FBVWoj$8eQ" role="2Oq$k0">
                                 <ref role="3cqZAo" node="1NLt_nKLRu4" resolve="analyzerResult" />

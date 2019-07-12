@@ -3482,6 +3482,31 @@
             </node>
           </node>
         </node>
+        <node concept="3cpWs8" id="ulsZYnivxj" role="3cqZAp">
+          <node concept="3cpWsn" id="ulsZYnivxk" role="3cpWs9">
+            <property role="TrG5h" value="model" />
+            <node concept="H_c77" id="ulsZYniu1N" role="1tU5fm" />
+            <node concept="2OqwBi" id="ulsZYnivxl" role="33vP2m">
+              <node concept="I4A8Y" id="ulsZYnivxm" role="2OqNvi" />
+              <node concept="37vLTw" id="ulsZYnivxn" role="2Oq$k0">
+                <ref role="3cqZAo" node="7mWjQkQg3jq" resolve="contextNode" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="ulsZYniyq6" role="3cqZAp">
+          <node concept="3clFbS" id="ulsZYniyq8" role="3clFbx">
+            <node concept="3cpWs6" id="ulsZYniyFW" role="3cqZAp">
+              <node concept="10Nm6u" id="ulsZYnizom" role="3cqZAk" />
+            </node>
+          </node>
+          <node concept="3clFbC" id="ulsZYniyCx" role="3clFbw">
+            <node concept="10Nm6u" id="ulsZYniyDt" role="3uHU7w" />
+            <node concept="37vLTw" id="ulsZYniytY" role="3uHU7B">
+              <ref role="3cqZAo" node="ulsZYnivxk" resolve="model" />
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="cIz_w5KWaW" role="3cqZAp">
           <node concept="1rXfSq" id="4hiugqysr7b" role="3clFbG">
             <ref role="37wK5l" node="cIz_w5KWa5" resolve="filterVisibleClassifiersScope" />
@@ -3490,11 +3515,8 @@
             </node>
             <node concept="1rXfSq" id="4hiugqysiZR" role="37wK5m">
               <ref role="37wK5l" node="7mWjQkQg3iC" resolve="getReachableClassifiersScope" />
-              <node concept="2OqwBi" id="cIz_w5KWbA" role="37wK5m">
-                <node concept="I4A8Y" id="cIz_w5KWbJ" role="2OqNvi" />
-                <node concept="37vLTw" id="2BHiRxgmeWA" role="2Oq$k0">
-                  <ref role="3cqZAo" node="7mWjQkQg3jq" resolve="contextNode" />
-                </node>
+              <node concept="37vLTw" id="ulsZYnivxo" role="37wK5m">
+                <ref role="3cqZAo" node="ulsZYnivxk" resolve="model" />
               </node>
               <node concept="37vLTw" id="2ROYXbqySEu" role="37wK5m">
                 <ref role="3cqZAo" node="2ROYXbqyRIO" resolve="clas" />

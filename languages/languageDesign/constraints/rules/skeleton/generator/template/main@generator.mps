@@ -318,6 +318,10 @@
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
+      <concept id="4222318806802425298" name="jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation" flags="ng" index="15s5l7">
+        <property id="8575328350543493365" name="message" index="huDt6" />
+        <property id="2423417345669755629" name="filter" index="1eyWvh" />
+      </concept>
     </language>
     <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
       <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
@@ -383,7 +387,7 @@
     <node concept="2rT7sh" id="6kKc3mjAnYi" role="2rTMjI">
       <property role="TrG5h" value="constraints2RootClass" />
       <ref role="2rZz_L" to="tpee:fz12cDA" resolve="ClassConcept" />
-      <ref role="2rTdP9" to="mqj2:1BFxp3HFZzq" resolve="ConstraintsRoot2" />
+      <ref role="2rTdP9" to="mqj2:1BFxp3HFZzq" resolve="RulesConstraintsRoot" />
     </node>
     <node concept="2VPoh5" id="5Cioe7RLOha" role="2VS0gm">
       <ref role="2sBCQV" node="5BFePKcKj4n" resolve="constraints2DescriptorClass" />
@@ -407,7 +411,7 @@
     <node concept="3lhOvk" id="6kKc3mjmNTK" role="3lj3bC">
       <ref role="3lhOvi" node="6kKc3mjmw41" resolve="Generated_ConstraintsDescriptor2" />
       <ref role="2sgKRv" node="6kKc3mjAnYi" resolve="constraints2RootClass" />
-      <ref role="30HIoZ" to="mqj2:1BFxp3HFZzq" resolve="ConstraintsRoot2" />
+      <ref role="30HIoZ" to="mqj2:1BFxp3HFZzq" resolve="RulesConstraintsRoot" />
     </node>
   </node>
   <node concept="312cEu" id="5Cioe7RLEwT">
@@ -492,7 +496,7 @@
                         <node concept="1r8y6K" id="1rgpeH9xlt5" role="2OqNvi" />
                       </node>
                       <node concept="2RRcyG" id="5FFmclY2lMP" role="2OqNvi">
-                        <ref role="2RRcyH" to="mqj2:1BFxp3HFZzq" resolve="ConstraintsRoot2" />
+                        <ref role="2RRcyH" to="mqj2:1BFxp3HFZzq" resolve="RulesConstraintsRoot" />
                       </node>
                     </node>
                   </node>
@@ -561,7 +565,7 @@
     </node>
     <node concept="3Tm1VV" id="6kKc3mjmw42" role="1B3o_S" />
     <node concept="n94m4" id="6kKc3mjmw43" role="lGtFl">
-      <ref role="n9lRv" to="mqj2:1BFxp3HFZzq" resolve="ConstraintsRoot2" />
+      <ref role="n9lRv" to="mqj2:1BFxp3HFZzq" resolve="RulesConstraintsRoot" />
     </node>
     <node concept="17Uvod" id="6kKc3mj$_0C" role="lGtFl">
       <property role="2qtEX9" value="name" />
@@ -581,6 +585,10 @@
     </node>
     <node concept="3uibUv" id="6k9WaWqCep1" role="1zkMxy">
       <ref role="3uigEE" to="o99v:~BaseRulesConstraintsDescriptor" resolve="BaseRulesConstraintsDescriptor" />
+    </node>
+    <node concept="15s5l7" id="ulsZYnlIwT" role="lGtFl">
+      <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;typesystem (typesystem)&quot;;FLAVOUR_MESSAGE=&quot;Error: The classifier 'Generated_ConstraintsDescriptor2' must be declared abstract or implement abstract method 'getDeclaredRules' in 'RulesConstraintsDescriptor'&quot;;FLAVOUR_RULE_ID=&quot;[r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)/7861981782410371482]&quot;;" />
+      <property role="huDt6" value="Error: The classifier 'Generated_ConstraintsDescriptor2' must be declared abstract or implement abstract method 'getDeclaredRules' in 'RulesConstraintsDescriptor'" />
     </node>
   </node>
   <node concept="13MO4I" id="1FBVWoju27a">
