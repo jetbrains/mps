@@ -4,19 +4,18 @@
     <projectModules>
       <modulePath path="${mps_home}/core/aspects/behavior/behavior-api/jetbrains.mps.lang.behavior.api.msd" folder="core.aspects.behavior" />
       <modulePath path="${mps_home}/core/aspects/behavior/behavior-runtime/jetbrains.mps.lang.behavior.runtime.msd" folder="core.aspects.behavior" />
-      <modulePath path="$PROJECT_DIR$/core/aspects/constraints/constraints-runtime/jetbrains.mps.lang.constraints.rules.runtime.msd" folder="core.aspects.constraints" />
-      <modulePath path="$PROJECT_DIR$/core/aspects/feedback/jetbrains.mps.lang.feedback.alltogether.msd" folder="core.aspects.feedback" />
-      <modulePath path="$PROJECT_DIR$/core/aspects/feedback/jetbrains.mps.lang.feedback.context.msd" folder="core.aspects.feedback" />
-      <modulePath path="$PROJECT_DIR$/core/aspects/feedback/jetbrains.mps.lang.feedback.problem.msd" folder="core.aspects.feedback" />
-      <modulePath path="$PROJECT_DIR$/core/aspects/feedback/jetbrains.mps.lang.feedback.messages.rules.msd" folder="core.aspects.feedback" />
-      <modulePath path="$PROJECT_DIR$/core/aspects/feedback/jetbrains.mps.lang.feedback.api.msd" folder="core.aspects.feedback" />
-      <modulePath path="$PROJECT_DIR$/core/aspects/feedback/jetbrains.mps.lang.messages.api.msd" folder="core.aspects.feedback" />
-      <modulePath path="$PROJECT_DIR$/core/aspects/feedback/jetbrains.mps.lang.feedback.messages.structure.msd" folder="core.aspects.feedback" />
-      <modulePath path="$PROJECT_DIR$/core/aspects/feedback/jetbrains.mps.lang.feedback.messages.legacy-constraints.msd" folder="core.aspects.feedback" />
+      <modulePath path="${mps_home}/core/aspects/constraints/constraints-runtime/jetbrains.mps.lang.constraints.rules.runtime.msd" folder="core.aspects.constraints" />
+      <modulePath path="${mps_home}/core/aspects/feedback/jetbrains.mps.lang.feedback.api.msd" folder="core.aspects.feedback" />
+      <modulePath path="${mps_home}/core/aspects/feedback/jetbrains.mps.lang.feedback.context.msd" folder="core.aspects.feedback" />
+      <modulePath path="${mps_home}/core/aspects/feedback/jetbrains.mps.lang.feedback.messages.legacy-constraints.msd" folder="core.aspects.feedback" />
+      <modulePath path="${mps_home}/core/aspects/feedback/jetbrains.mps.lang.feedback.messages.rules.msd" folder="core.aspects.feedback" />
+      <modulePath path="${mps_home}/core/aspects/feedback/jetbrains.mps.lang.feedback.messages.structure.msd" folder="core.aspects.feedback" />
+      <modulePath path="${mps_home}/core/aspects/feedback/jetbrains.mps.lang.feedback.problem.msd" folder="core.aspects.feedback" />
+      <modulePath path="${mps_home}/core/aspects/feedback/jetbrains.mps.lang.messages.api.msd" folder="core.aspects.feedback" />
       <modulePath path="${mps_home}/core/dataFlowRuntime/jetbrains.mps.dataFlow.runtime.msd" folder="core.aspects.dataflow" />
       <modulePath path="${mps_home}/core/devkits/jetbrains.mps.devkit.aspect.constraints.devkit" folder="core.aspects.descriptor" />
-      <modulePath path="$PROJECT_DIR$/core/devkits/jetbrains.mps.devkit.aspect.constraints.rules.devkit" folder="core.aspects.descriptor" />
-      <modulePath path="$PROJECT_DIR$/core/devkits/jetbrains.mps.devkit.aspect.constraints.rulesAndMessages.devkit" folder="core.aspects.descriptor" />
+      <modulePath path="${mps_home}/core/devkits/jetbrains.mps.devkit.aspect.constraints.rules.devkit" folder="core.aspects.descriptor" />
+      <modulePath path="${mps_home}/core/devkits/jetbrains.mps.devkit.aspect.constraints.rulesAndMessages.devkit" folder="core.aspects.descriptor" />
       <modulePath path="${mps_home}/core/devkits/jetbrains.mps.devkit.aspect.dataflow.devkit" folder="core.aspects.descriptor" />
       <modulePath path="${mps_home}/core/devkits/jetbrains.mps.devkit.aspect.migration.devkit/jetbrains.mps.devkit.aspect.migration.devkit" folder="core.aspects.descriptor" />
       <modulePath path="${mps_home}/core/devkits/jetbrains.mps.devkit.aspect.structure.devkit" folder="core.aspects.descriptor" />
@@ -47,15 +46,15 @@
       <modulePath path="${mps_home}/core/tool/common/jetbrains.mps.tool.common.msd" folder="core.tool" />
       <modulePath path="${mps_home}/core/tool/environment/jetbrains.mps.core.tool.environment.msd" folder="core.tool" />
       <modulePath path="${mps_home}/core/typesystemEngine/solutions/jetbrains.mps.typesystemEngine/jetbrains.mps.typesystemEngine.msd" folder="core.aspects.typesystem" />
-      <modulePath path="$PROJECT_DIR$/devkits/jetbrains.mps.devkit.aspect.feedback/jetbrains.mps.devkit.aspect.feedback.devkit" folder="core.aspects.descriptor" />
-      <modulePath path="$PROJECT_DIR$/devkits/main-feedback/main-feedback.devkit" folder="core.aspects.feedback" />
+      <modulePath path="${mps_home}/devkits/jetbrains.mps.devkit.aspect.feedback/jetbrains.mps.devkit.aspect.feedback.devkit" folder="core.aspects.descriptor" />
+      <modulePath path="${mps_home}/devkits/main-feedback/main-feedback.devkit" folder="core.aspects.feedback" />
       <modulePath path="${mps_home}/editor/actions-runtime/jetbrains.mps.actions.runtime.msd" folder="core.aspects.actions" />
       <modulePath path="${mps_home}/editor/editing-runtime/jetbrains.mps.editing.runtime.msd" folder="core.aspects.actions" />
       <modulePath path="${mps_home}/editor/editor-runtime/jetbrains.mps.editor.runtime.msd" folder="core.aspects.editor" />
       <modulePath path="${mps_home}/editor/editorlang-runtime/jetbrains.mps.editorlang.runtime.msd" folder="core.aspects.editor" />
       <modulePath path="${mps_home}/editor/typesystemIntegration/typesystemIntegration.msd" folder="core.aspects.editor" />
-      <modulePath path="$PROJECT_DIR$/languages.test/constraints.rulesAndMessages.sandbox/constraints.rulesAndMessages.sandbox.mpl" folder="samplesForNewConstraints" />
-      <modulePath path="$PROJECT_DIR$/languages.test/languageDesign/constraints.rules.sandbox.mpl" folder="samplesForNewConstraints" />
+      <modulePath path="${mps_home}/languages.test/constraints.rulesAndMessages.sandbox/constraints.rulesAndMessages.sandbox.mpl" folder="samplesForNewConstraints" />
+      <modulePath path="${mps_home}/languages.test/languageDesign/constraints.rules.sandbox.mpl" folder="samplesForNewConstraints" />
       <modulePath path="${mps_home}/languages.test/languageDesign/lang.editor.editorTest.extension/jetbrains.mps.lang.editor.editorTest.extension.mpl" folder="core.aspects.editor" />
       <modulePath path="${mps_home}/languages.test/languageDesign/lang.editor.editorTest/jetbrains.mps.lang.editor.editorTest.mpl" folder="core.aspects.editor" />
       <modulePath path="${mps_home}/languages.test/languageDesign/lang.editor.ide.tests/module.msd" folder="core.aspects.editor" />
@@ -123,25 +122,25 @@
       <modulePath path="${mps_home}/languages/languageDesign/behavior/languages/testlang/jetbrains.mps.lang.behavior.test.mpl" folder="core.aspects.behavior" />
       <modulePath path="${mps_home}/languages/languageDesign/checkedName/jetbrains.mps.lang.checkedName.mpl" folder="core.languages" />
       <modulePath path="${mps_home}/languages/languageDesign/constraints/legacy/jetbrains.mps.lang.constraints.mpl" folder="core.aspects.constraints" />
-      <modulePath path="$PROJECT_DIR$/languages/languageDesign/constraints/rules/kinds/jetbrains.mps.lang.constraints.rules.kinds.mpl" folder="core.aspects.constraints" />
-      <modulePath path="$PROJECT_DIR$/languages/languageDesign/constraints/rules/rules/jetbrains.mps.lang.constraints.rules.mpl" folder="core.aspects.constraints" />
-      <modulePath path="$PROJECT_DIR$/languages/languageDesign/constraints/rules/skeleton/jetbrains.mps.lang.constraints.rules.skeleton.mpl" folder="core.aspects.constraints" />
-      <modulePath path="$PROJECT_DIR$/languages/languageDesign/context.defs/jetbrains.mps.lang.context.defs.mpl" folder="core.aspects.constraints" />
-      <modulePath path="$PROJECT_DIR$/languages/languageDesign/context/jetbrains.mps.lang.context.mpl" folder="core.aspects.constraints" />
+      <modulePath path="${mps_home}/languages/languageDesign/constraints/rules/kinds/jetbrains.mps.lang.constraints.rules.kinds.mpl" folder="core.aspects.constraints" />
+      <modulePath path="${mps_home}/languages/languageDesign/constraints/rules/rules/jetbrains.mps.lang.constraints.rules.mpl" folder="core.aspects.constraints" />
+      <modulePath path="${mps_home}/languages/languageDesign/constraints/rules/skeleton/jetbrains.mps.lang.constraints.rules.skeleton.mpl" folder="core.aspects.constraints" />
+      <modulePath path="${mps_home}/languages/languageDesign/context.defs/jetbrains.mps.lang.context.defs.mpl" folder="core.aspects.constraints" />
+      <modulePath path="${mps_home}/languages/languageDesign/context/jetbrains.mps.lang.context.mpl" folder="core.aspects.constraints" />
       <modulePath path="${mps_home}/languages/languageDesign/customAspect/jetbrains.mps.lang.aspect.mpl" folder="core.aspects.aspect" />
       <modulePath path="${mps_home}/languages/languageDesign/dataFlow/jetbrains.mps.lang.dataFlow.mpl" folder="core.aspects.dataflow" />
       <modulePath path="${mps_home}/languages/languageDesign/editor.menus.extras/jetbrains.mps.lang.editor.menus.extras.mpl" folder="core.aspects.editor.menus.extras" />
       <modulePath path="${mps_home}/languages/languageDesign/editor.menus.extras/runtime/jetbrains.mps.lang.editor.menus.extras.runtime.msd" folder="core.aspects.editor.menus.extras" />
       <modulePath path="${mps_home}/languages/languageDesign/editor/jetbrains.mps.lang.editor.mpl" folder="core.aspects.editor" />
       <modulePath path="${mps_home}/languages/languageDesign/extension/jetbrains.mps.lang.extension.mpl" folder="core.aspects.plugin" />
-      <modulePath path="$PROJECT_DIR$/languages/languageDesign/feedback/feedback/jetbrains.mps.lang.feedback.mpl" folder="core.aspects.feedback" />
-      <modulePath path="$PROJECT_DIR$/languages/languageDesign/feedback/messages/jetbrains.mps.lang.feedback.messages.mpl" folder="core.aspects.feedback" />
-      <modulePath path="$PROJECT_DIR$/languages/languageDesign/feedback/problem/childAndProp/jetbrains.mps.lang.feedback.problem.childAndProp.mpl" folder="core.aspects.feedback" />
-      <modulePath path="$PROJECT_DIR$/languages/languageDesign/feedback/problem/failingRule/jetbrains.mps.lang.feedback.problem.failingRule.mpl" folder="core.aspects.feedback" />
-      <modulePath path="$PROJECT_DIR$/languages/languageDesign/feedback/problem/problem/jetbrains.mps.lang.feedback.problem.mpl" folder="core.aspects.feedback" />
-      <modulePath path="$PROJECT_DIR$/languages/languageDesign/feedback/problem/scopes/jetbrains.mps.lang.feedback.problem.scopes.mpl" folder="core.aspects.feedback" />
-      <modulePath path="$PROJECT_DIR$/languages/languageDesign/feedback/problem/structural/jetbrains.mps.lang.feedback.problem.structural.mpl" folder="core.aspects.feedback" />
-      <modulePath path="$PROJECT_DIR$/languages/languageDesign/feedback/skeleton/jetbrains.mps.lang.feedback.skeleton.mpl" folder="core.aspects.feedback" />
+      <modulePath path="${mps_home}/languages/languageDesign/feedback/feedback/jetbrains.mps.lang.feedback.mpl" folder="core.aspects.feedback" />
+      <modulePath path="${mps_home}/languages/languageDesign/feedback/messages/jetbrains.mps.lang.feedback.messages.mpl" folder="core.aspects.feedback" />
+      <modulePath path="${mps_home}/languages/languageDesign/feedback/problem/childAndProp/jetbrains.mps.lang.feedback.problem.childAndProp.mpl" folder="core.aspects.feedback" />
+      <modulePath path="${mps_home}/languages/languageDesign/feedback/problem/failingRule/jetbrains.mps.lang.feedback.problem.failingRule.mpl" folder="core.aspects.feedback" />
+      <modulePath path="${mps_home}/languages/languageDesign/feedback/problem/problem/jetbrains.mps.lang.feedback.problem.mpl" folder="core.aspects.feedback" />
+      <modulePath path="${mps_home}/languages/languageDesign/feedback/problem/scopes/jetbrains.mps.lang.feedback.problem.scopes.mpl" folder="core.aspects.feedback" />
+      <modulePath path="${mps_home}/languages/languageDesign/feedback/problem/structural/jetbrains.mps.lang.feedback.problem.structural.mpl" folder="core.aspects.feedback" />
+      <modulePath path="${mps_home}/languages/languageDesign/feedback/skeleton/jetbrains.mps.lang.feedback.skeleton.mpl" folder="core.aspects.feedback" />
       <modulePath path="${mps_home}/languages/languageDesign/findUsages/jetbrains.mps.lang.findUsages.mpl" folder="core.aspects.findUsages" />
       <modulePath path="${mps_home}/languages/languageDesign/generator/languages/descriptor/jetbrains.mps.lang.descriptor.mpl" folder="core.aspects.descriptor" />
       <modulePath path="${mps_home}/languages/languageDesign/generator/languages/errorReporting/jetbrains.mps.transformation.test.errorReporting.mpl" folder="core.aspects.generator" />
@@ -165,8 +164,8 @@
       <modulePath path="${mps_home}/languages/languageDesign/make/languages/reduced/jetbrains.mps.make.reduced.mpl" folder="platform.make" />
       <modulePath path="${mps_home}/languages/languageDesign/make/languages/script/jetbrains.mps.make.script.mpl" folder="core.make" />
       <modulePath path="${mps_home}/languages/languageDesign/make/solutions/jetbrains.mps.make.sandbox/jetbrains.mps.make.sandbox.msd" folder="core.make" />
-      <modulePath path="$PROJECT_DIR$/languages/languageDesign/messages/jetbrains.mps.lang.messages.mpl" folder="core.aspects.feedback" />
-      <modulePath path="$PROJECT_DIR$/languages/languageDesign/messages/rules/jetbrains.mps.lang.rulesAndMessages.mpl" folder="core.aspects.feedback" />
+      <modulePath path="${mps_home}/languages/languageDesign/messages/jetbrains.mps.lang.messages.mpl" folder="core.aspects.feedback" />
+      <modulePath path="${mps_home}/languages/languageDesign/messages/rules/jetbrains.mps.lang.rulesAndMessages.mpl" folder="core.aspects.feedback" />
       <modulePath path="${mps_home}/languages/languageDesign/migration/jetbrains.mps.lang.migration.mpl" folder="core.aspects.migration" />
       <modulePath path="${mps_home}/languages/languageDesign/migration/solutions/actions/jetbrains.mps.lang.migration.actions.msd" folder="core.aspects.migration" />
       <modulePath path="${mps_home}/languages/languageDesign/migration/util/jetbrains.mps.lang.migration.util.mpl" folder="core.aspects.migration" />
@@ -197,7 +196,7 @@
       <modulePath path="${mps_home}/languages/languageDesign/traceinfo/traceMacro.testlang/jetbrains.mps.traceInfo.tracemacro.testlang.mpl" folder="platform.traceInfo" />
       <modulePath path="${mps_home}/languages/languageDesign/typesystem/jetbrains.mps.lang.typesystem.mpl" folder="core.aspects.typesystem" />
       <modulePath path="${mps_home}/languages/languageDesign/util/jetbrains.mps.lang.util.order/jetbrains.mps.lang.util.order.mpl" folder="core.aspects.util" />
-      <modulePath path="$PROJECT_DIR$/languages/multiAspectLang/multiAspectLang.mpl" folder="samplesForNewConstraints" />
+      <modulePath path="${mps_home}/languages/multiAspectLang/multiAspectLang.mpl" folder="samplesForNewConstraints" />
       <modulePath path="${mps_home}/languages/util/builders/jetbrains.mps.baseLanguage.builders.mpl" folder="core.baseLanguage.builders" />
       <modulePath path="${mps_home}/languages/util/builders/sandbox/jetbrains.mps.baseLanguage.builders.sandbox.msd" folder="core.baseLanguage.builders" />
       <modulePath path="${mps_home}/languages/util/core.text/jetbrains.mps.lang.text.mpl" folder="core.languages.text" />
@@ -476,8 +475,8 @@
       <modulePath path="${mps_home}/samples/xmlPersistence/languages/jetbrains.mps.samples.xmlPersistence.build/jetbrains.mps.samples.xmlPersistence.build.msd" folder="samples.persistence" />
       <modulePath path="${mps_home}/samples/xmlPersistence/languages/jetbrains.mps.samples.xmlPersistence.ideaPlugin/jetbrains.mps.samples.xmlPersistence.ideaPlugin.msd" folder="samples.persistence" />
       <modulePath path="${mps_home}/samples/xmlPersistence/languages/jetbrains.mps.samples.xmlPersistence/jetbrains.mps.samples.xmlPersistence.msd" folder="samples.persistence" />
-      <modulePath path="$PROJECT_DIR$/solutions/multiAspectLang.sandbox/multiAspectLang.sandbox.msd" folder="samplesForNewConstraints" />
-      <modulePath path="$PROJECT_DIR$/solutions/rules.sandbox.sln/rules.sandbox.sln.msd" folder="samplesForNewConstraints" />
+      <modulePath path="${mps_home}/solutions/multiAspectLang.sandbox/multiAspectLang.sandbox.msd" folder="samplesForNewConstraints" />
+      <modulePath path="${mps_home}/solutions/rules.sandbox.sln/rules.sandbox.sln.msd" folder="samplesForNewConstraints" />
       <modulePath path="${mps_home}/testbench/build/jetbrains.mps.build.mps.testModules/jetbrains.mps.build.mps.testModules.msd" folder="platform.build" />
       <modulePath path="${mps_home}/testbench/ideatestsolutions/ide.vcs.test/jetbrains.mps.ide.vcs.test.msd" folder="platform.vcs" />
       <modulePath path="${mps_home}/testbench/languages/jetbrains.mps.testbench.suite.mpl" folder="tests" />
