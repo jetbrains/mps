@@ -4303,7 +4303,7 @@
                     <node concept="3clFbS" id="4ZW4vbPOwOU" role="3eOfB_">
                       <node concept="a7r0C" id="2sxsDnZyDeu" role="3cqZAp">
                         <node concept="Xl_RD" id="2sxsDnZyDev" role="a7wSD">
-                          <property role="Xl_RC" value="Node id and property id differ. It's recommended to keep ids synchronised. Use quickfix to set corrected id" />
+                          <property role="Xl_RC" value="Node id and link id differ. It's recommended to keep ids synchronised. Use quickfix to set corrected id" />
                         </node>
                         <node concept="3Cnw8n" id="2sxsDnZyDex" role="2OEOjU">
                           <ref role="QpYPw" node="4H96pIbEyix" resolve="CorrectDuplicateId" />
