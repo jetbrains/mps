@@ -21,7 +21,6 @@ import com.intellij.openapi.project.IndexNotReadyException;
 import jetbrains.mps.checkers.CheckingSession;
 import jetbrains.mps.checkers.ICheckingPostprocessor;
 import jetbrains.mps.checkers.LanguageErrorsComponent.ApprovableError;
-import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.errors.item.EditorQuickFix;
 import jetbrains.mps.errors.item.FlavouredItem.ReportItemFlavour;
 import jetbrains.mps.errors.item.IssueKindReportItem;
@@ -29,7 +28,6 @@ import jetbrains.mps.errors.item.IssueKindReportItem.PathObject;
 import jetbrains.mps.errors.item.IssueKindReportItem.PathObject.NodePathObject;
 import jetbrains.mps.errors.item.NodeReportItem;
 import jetbrains.mps.errors.item.TypesystemReportItemAdapter;
-import jetbrains.mps.newTypesystem.context.IncrementalTypecheckingContext;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.nodeEditor.EditorMessage;
 import jetbrains.mps.nodeEditor.HighlighterMessage;
@@ -40,11 +38,8 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.message.EditorMessageOwner;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.smodel.event.SModelEvent;
+import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.typechecking.backend.TypecheckingSession;
-import jetbrains.mps.typesystem.LegacyTypecheckingProvider;
-import jetbrains.mps.typesystem.LegacyTypecheckingQueries;
-import jetbrains.mps.typesystem.inference.TypeCheckingContext;
-import jetbrains.mps.typesystem.inference.TypeContextManager;
 import jetbrains.mps.util.Cancellable;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.util.WeakSet;
@@ -82,7 +77,7 @@ public abstract class AbstractTypesystemEditorChecker extends BaseEditorChecker 
   }
 
   @NotNull
-  protected abstract UpdateResult doCreateMessages(TypeCheckingContext context, boolean wasCheckedOnce, EditorContext editorContext,
+  protected abstract UpdateResult doCreateMessages(TypecheckingSession session, boolean wasCheckedOnce, EditorContext editorContext,
                                                    SNode rootNode, Cancellable cancellable, boolean applyQuickFixes);
 
   @Override
@@ -102,40 +97,49 @@ public abstract class AbstractTypesystemEditorChecker extends BaseEditorChecker 
 
   @NotNull
   @Override
-  public UpdateResult update(final EditorComponent editorComponent, final boolean incremental, final boolean applyQuickFixes,
+  public UpdateResult update(final EditorComponent editorComponent, final boolean wasCheckedOnce, final boolean applyQuickFixes,
                              final Cancellable cancellable) {
     try {
       TypecheckingSession session = editorComponent.getTypecheckingSession();
       if (session == null) return UpdateResult.CANCELLED;
       
-      LegacyTypecheckingQueries legacyTypesystemQueries = session.getQueries(LegacyTypecheckingProvider.class);
-      TypeCheckingContext typeCheckingContext = legacyTypesystemQueries.getTypeCheckingContext();
-      return ((IncrementalTypecheckingContext) typeCheckingContext).runTypeCheckingAction(() ->
-          doCreateMessages(typeCheckingContext, incremental, editorComponent.getEditorContext(),
-                           editorComponent.getEditedNode(), cancellable,
-                           applyQuickFixes));
+      return TypecheckingFacade.getFromContext()
+                               .runWithSession(session,
+                                               () ->
+                                                   doCreateMessages(session,
+                                                                    wasCheckedOnce,
+                                                                    editorComponent.getEditorContext(),
+                                                                    editorComponent.getEditedNode(),
+                                                                    cancellable,
+                                                                    applyQuickFixes));
 
     } catch (IndexNotReadyException e) {
-      if (editorComponent.getNodeForTypechecking() != null) {
+
+      final SNode nodeForTypechecking = editorComponent.getNodeForTypechecking();
+      if (nodeForTypechecking != null) {
         TypecheckingSession session = editorComponent.getTypecheckingSession();
-        LegacyTypecheckingQueries legacyTypesystemQueries = session.getQueries(LegacyTypecheckingProvider.class);
-        legacyTypesystemQueries.getTypeCheckingContext().clear();
+        TypecheckingFacade.getFromContext()
+                          .runWithSession(session,
+                                          () -> TypecheckingFacade.getFromContext().clearCache(nodeForTypechecking));
       }
+
       throw e;
     }
   }
 
-  protected Collection<EditorMessage> collectMessagesForNodesWithErrors(TypeCheckingContext context, final EditorContext editorContext,
-                                                                        boolean typesystemErrors, boolean applyQuickFixes) {
+  protected Collection<EditorMessage> collectMessagesForNodesWithErrors(Collection<Pair<SNodeReference, List<NodeReportItem>>> nodeErrorPairs,
+                                                                        final EditorContext editorContext,
+                                                                        boolean applyQuickFixes)
+  {
     Map<NodePathObject, Collection<ApprovableError>> errorMap = new HashMap<>();
     Map<SNodeReference, List<NodeReportItem>> postprocessMap = new HashMap<>();
     Consumer<NodeReportItem> postprocessConsumer = nodeReportItem -> {
       postprocessMap.computeIfAbsent(nodeReportItem.getNode(), k -> new ArrayList<>());
       postprocessMap.get(nodeReportItem.getNode()).add(nodeReportItem);
     };
-    for (Pair<SNode, List<IErrorReporter>> nodeErrors : context.getNodesWithErrors(typesystemErrors)) {
-      List<ApprovableError> nodeErrorList = nodeErrors.o2.stream().map(iErrorReporter -> new ApprovableError(new TypesystemReportItemAdapter(iErrorReporter), true)).collect(Collectors.toList());
-      errorMap.put(new NodePathObject(nodeErrors.o1.getReference()), nodeErrorList);
+    for (Pair<SNodeReference, List<NodeReportItem>> nodeErrors : nodeErrorPairs) {
+      List<ApprovableError> nodeErrorList = nodeErrors.o2.stream().map(nri -> new ApprovableError(nri, true)).collect(Collectors.toList());
+      errorMap.put(new NodePathObject(nodeErrors.o1), nodeErrorList);
     }
     for (ICheckingPostprocessor<NodeReportItem> postprocessor : myPostprocessors) {
       postprocessor.postProcess(myRepository, new EmptyProgressMonitor(), new CheckingSession<NodeReportItem>() {

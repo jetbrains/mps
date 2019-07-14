@@ -16,25 +16,36 @@
 package jetbrains.mps.typesystem.checking;
 
 import jetbrains.mps.checkers.ICheckingPostprocessor;
+import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.errors.item.NodeReportItem;
+import jetbrains.mps.errors.item.TypesystemReportItemAdapter;
 import jetbrains.mps.newTypesystem.context.IncrementalTypecheckingContext;
 import jetbrains.mps.newTypesystem.context.typechecking.IncrementalTypechecking;
 import jetbrains.mps.nodeEditor.EditorMessage;
 import jetbrains.mps.nodeEditor.checking.UpdateResult;
 import jetbrains.mps.nodeEditor.checking.UpdateResult.Completed;
 import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.typechecking.backend.TypecheckingSession;
+import jetbrains.mps.typesystem.LegacyTypecheckingProvider;
+import jetbrains.mps.typesystem.LegacyTypecheckingQueries;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.util.Cancellable;
+import jetbrains.mps.util.Pair;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
+ * Legacy "non-typesystem" checker. Relies on {@link LegacyTypecheckingProvider}.
  * User: fyodor
  * Date: 4/30/13
  */
@@ -52,8 +63,16 @@ public class NonTypesystemEditorChecker extends AbstractTypesystemEditorChecker 
 
   @NotNull
   @Override
-  protected UpdateResult doCreateMessages(final TypeCheckingContext context, final boolean incremental,
-      final EditorContext editorContext, SNode rootNode, final Cancellable cancellable, final boolean applyQuickFixes) {
+  protected UpdateResult doCreateMessages(final TypecheckingSession session,
+                                          final boolean wasCheckedOnce,
+                                          final EditorContext editorContext,
+                                          SNode rootNode,
+                                          final Cancellable cancellable,
+                                          final boolean applyQuickFixes)
+  {
+    LegacyTypecheckingQueries legacyTypesystemQueries = session.getQueries(LegacyTypecheckingProvider.class);
+    TypeCheckingContext context = legacyTypesystemQueries.getTypeCheckingContext();
+
     if (!(context instanceof IncrementalTypecheckingContext)) {
       return UpdateResult.CANCELLED;
     }
@@ -67,7 +86,9 @@ public class NonTypesystemEditorChecker extends AbstractTypesystemEditorChecker 
       boolean messagesChanged = false;
 
       //non-typesystem checks
-      if (!incremental || !typesComponent.isCheckedNonTypesystem()) {
+      if (!(wasCheckedOnce && typesComponent.isChecked(true))) {
+        // first, the types have to be updated, as later non-typesystem rules will rely on them
+        context.checkIfNotChecked(rootNode, false);
         try {
           messagesChanged = true;
           context.setIsNonTypesystemComputation();
@@ -83,7 +104,14 @@ public class NonTypesystemEditorChecker extends AbstractTypesystemEditorChecker 
       }
 
       // highlight nodes with errors
-      Collection<EditorMessage> messages = collectMessagesForNodesWithErrors(context, editorContext, false, applyQuickFixes);
+      Set<Pair<SNode, List<IErrorReporter>>> nodesWithErrors = context.getNodesWithErrors(false);
+      List<Pair<SNodeReference, List<NodeReportItem>>> nodeErrorPairs = nodesWithErrors
+         .stream()
+         .map((pair) -> new Pair<SNodeReference, List<NodeReportItem>>(pair.o1.getReference(),
+                                   pair.o2.stream().map(TypesystemReportItemAdapter::new).collect(Collectors.toList())))
+         .collect(Collectors.toList());
+
+      Collection<EditorMessage> messages = collectMessagesForNodesWithErrors(nodeErrorPairs, editorContext, applyQuickFixes);
       return new Completed(messagesChanged, messages);
     });
   }
