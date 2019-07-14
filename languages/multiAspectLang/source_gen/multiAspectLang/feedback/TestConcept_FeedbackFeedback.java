@@ -29,28 +29,28 @@ public final class TestConcept_FeedbackFeedback extends BaseFeedbackDescriptor {
     @NotNull
     @Override
     public MessageProvider.StringMsg yieldMessage(MissingPropertyContext context) {
-      return new MessageProvider.StringMsg("The property '" + String.valueOf(context.getProperty()) + "' does not belong to the concept 'TestConcept', please do smth");
+      return new MessageProvider.StringMsg("The property '" + context.getProperty() + "' does not belong to the concept 'TestConcept', please do smth");
     }
   };
   private static final FeedbackProvider<MissingChildContext> MSGPROVIDER_WhenChildDoesNotBelongToTheConcept_b = new BaseMessageProvider<MissingChildContext>(new MissingFeatureInConceptProblemId(MetaAdapterFactory.getConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, "multiAspectLang.structure.TestConcept"), PredefinedStructureProblemKind.MISSING_CHILD)) {
     @NotNull
     @Override
     public MessageProvider.StringMsg yieldMessage(MissingChildContext context) {
-      return new MessageProvider.StringMsg("The child '" + String.valueOf(context.getChild()) + "' does not belong to the concept 'TestConcept");
+      return new MessageProvider.StringMsg("The child '" + context.getChild() + "' does not belong to the concept 'TestConcept");
     }
   };
   private static final FeedbackProvider<FailingPropertyConstraintContext> MSGPROVIDER_WhenPropertyConstraintFails_c = new BaseMessageProvider<FailingPropertyConstraintContext>(new FailingPropertyConstraintProblemId(MetaAdapterFactory.getProperty(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, 0x50310db2af989958L, "prop"))) {
     @NotNull
     @Override
     public MessageProvider.StringMsg yieldMessage(FailingPropertyConstraintContext context) {
-      return new MessageProvider.StringMsg("Property constraints are broken for the property" + " " + String.valueOf(context.getProperty()) + ", please do smth " + " ");
+      return new MessageProvider.StringMsg("Property constraints are broken for the property" + " " + context.getProperty() + ", please do smth " + " ");
     }
   };
   private static final FeedbackProvider<RefOutOfScopeContext> MSGPROVIDER_WhenReferenceIsOutOfScope_d = new BaseMessageProvider<RefOutOfScopeContext>(new RefOutOfScopeProblemId(MetaAdapterFactory.getReferenceLink(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, 0x161a25d497067a9eL, "link"))) {
     @NotNull
     @Override
     public MessageProvider.StringMsg yieldMessage(RefOutOfScopeContext context) {
-      return new MessageProvider.StringMsg("The reference is out of scope: here it goes: " + String.valueOf(context.getLink()) + " in the node " + String.valueOf(context.getNode()));
+      return new MessageProvider.StringMsg("The reference is out of scope: here it goes: " + context.getLink() + " in the node " + context.getNode());
     }
   };
 

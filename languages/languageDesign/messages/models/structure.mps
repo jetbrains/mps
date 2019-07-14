@@ -66,12 +66,6 @@
     <property role="TrG5h" value="MacroMessageExpression" />
     <property role="34LRSv" value="%" />
     <ref role="1TJDcQ" node="4zSofKedyR4" resolve="MessageExpression" />
-    <node concept="1TJgyj" id="4zSofKek6iv" role="1TKVEi">
-      <property role="IQ2ns" value="5258059200643228831" />
-      <property role="20lbJX" value="fLJekj4/_1" />
-      <property role="20kJfa" value="declaration" />
-      <ref role="20lvS9" to="iwhd:6kKc3mjq0oG" resolve="TypedDef" />
-    </node>
     <node concept="1TJgyj" id="2mL_UKGiu88" role="1TKVEi">
       <property role="IQ2ns" value="2716118816014328328" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />

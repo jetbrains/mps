@@ -33,7 +33,6 @@
         <property id="1070475926801" name="value" index="Xl_RC" />
       </concept>
       <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
-      <concept id="1070534370425" name="jetbrains.mps.baseLanguage.structure.IntegerType" flags="in" index="10Oyi0" />
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <child id="1068431790190" name="initializer" index="33vP2m" />
       </concept>
@@ -125,7 +124,6 @@
         <child id="5258059200642172257" name="part" index="16I2mt" />
       </concept>
       <concept id="5258059200642278562" name="jetbrains.mps.lang.messages.structure.MacroMessageExpression" flags="ng" index="16Iohu">
-        <reference id="5258059200643228831" name="declaration" index="16E0hz" />
         <child id="2716118816014328328" name="defRef" index="9Y7m$" />
       </concept>
       <concept id="5258059200641510853" name="jetbrains.mps.lang.messages.structure.LiteralMessageExpression" flags="ng" index="16N$OT">
@@ -262,12 +260,11 @@
         </node>
         <node concept="1DCEQD" id="6SnnA3pIuGJ" role="1DCEQI">
           <node concept="16I2mz" id="2dMY_rc30GI" role="16N$OO">
-            <node concept="16N$OT" id="2dMY_rc30GN" role="16I2mt">
+            <node concept="16N$OT" id="2mL_UKGpPAE" role="16I2mt">
               <property role="16N$OU" value="The name of the model '" />
             </node>
-            <node concept="16Iohu" id="2dMY_rc30GM" role="16I2mt">
-              <ref role="16E0hz" node="2dMY_rcjs2O" resolve="AModelName" />
-              <node concept="3QpRc$" id="2mL_UKGoP3g" role="9Y7m$">
+            <node concept="16Iohu" id="2mL_UKGpPAD" role="16I2mt">
+              <node concept="3QpRc$" id="2mL_UKGpPAJ" role="9Y7m$">
                 <ref role="3QpVTF" node="yXuRM1UWCn" resolve="AModelName2" />
               </node>
             </node>
@@ -277,33 +274,6 @@
             <node concept="16N$OT" id="2mL_UKGe1BP" role="16I2mt">
               <property role="16N$OU" value="must start with 'A'" />
             </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3QlHBw" id="2mL_UKGe1D4" role="3OnDbr">
-        <property role="TrG5h" value="def1" />
-        <node concept="10Oyi0" id="2mL_UKGe1Em" role="3RXm0Z" />
-        <node concept="2K0Yjh" id="2mL_UKGe1D8" role="2K0Fub">
-          <node concept="3QpRc$" id="2mL_UKGe1HK" role="2K0yoH">
-            <ref role="3QpVTF" node="2mL_UKGe1FP" resolve="def3" />
-          </node>
-        </node>
-      </node>
-      <node concept="3QlHBw" id="2mL_UKGe1Ey" role="3OnDbr">
-        <property role="TrG5h" value="def2" />
-        <node concept="10Oyi0" id="2mL_UKGe1Ez" role="3RXm0Z" />
-        <node concept="2K0Yjh" id="2mL_UKGe1E$" role="2K0Fub">
-          <node concept="3QpRc$" id="2mL_UKGe1Hq" role="2K0yoH">
-            <ref role="3QpVTF" node="2mL_UKGe1D4" resolve="def1" />
-          </node>
-        </node>
-      </node>
-      <node concept="3QlHBw" id="2mL_UKGe1FP" role="3OnDbr">
-        <property role="TrG5h" value="def3" />
-        <node concept="10Oyi0" id="2mL_UKGe1FQ" role="3RXm0Z" />
-        <node concept="2K0Yjh" id="2mL_UKGe1FR" role="2K0Fub">
-          <node concept="3QpRc$" id="2mL_UKGe1H_" role="2K0yoH">
-            <ref role="3QpVTF" node="2mL_UKGe1Ey" resolve="def2" />
           </node>
         </node>
       </node>

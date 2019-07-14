@@ -15,7 +15,6 @@ import jetbrains.mps.lang.constraints.rules.editor.Rules_Styles_StyleSheet.AndDe
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.nodeEditor.AbstractCellProvider;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
-import jetbrains.mps.lang.constraints.rules.skeleton.behavior.RuleBlockMember__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.constraints.rules.util.RequiredDefsCalculator;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
@@ -53,7 +52,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
   private EditorCell createCustom_0() {
     AbstractCellProvider provider = new _FunctionTypes._return_P0_E0<HintDefsCustomEditorCell>() {
       public HintDefsCustomEditorCell invoke() {
-        return new HintDefsCustomEditorCell(RuleBlockMember__BehaviorDescriptor.getHighestMember_id2mL_UKGkn8G.invoke(myNode));
+        return new HintDefsCustomEditorCell(myNode);
       }
     }.invoke();
     EditorCell editorCell = provider.createEditorCell(getEditorContext());
@@ -79,7 +78,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
     return editorCell;
   }
   private boolean nodeCondition_vdat08_a1a() {
-    return ListSequence.fromList(new RequiredDefsCalculator().calculate(RuleBlockMember__BehaviorDescriptor.getHighestMember_id2mL_UKGkn8G.invoke(myNode))).count() == 1;
+    return ListSequence.fromList(new RequiredDefsCalculator().calculate(myNode)).count() == 1;
   }
   private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "is defined");

@@ -22,7 +22,6 @@ import jetbrains.mps.lang.constraints.rules.editor.Rules_Styles_StyleSheet.RuleS
 import jetbrains.mps.lang.constraints.rules.editor.Rules_Styles_StyleSheet.DefStyleStyleClass;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.constraints.rules.util.RequiredDefsCalculator;
-import jetbrains.mps.lang.constraints.rules.skeleton.behavior.RuleBlockMember__BehaviorDescriptor;
 import jetbrains.mps.lang.editor.cellProviders.SingleRoleCellProvider;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
@@ -130,7 +129,7 @@ import jetbrains.mps.openapi.editor.selection.SelectionManager;
     return editorCell;
   }
   private boolean nodeCondition_gagq4k_a1b0a0() {
-    return ListSequence.fromList(new RequiredDefsCalculator().calculate(RuleBlockMember__BehaviorDescriptor.getHighestMember_id2mL_UKGkn8G.invoke(myNode))).isNotEmpty();
+    return ListSequence.fromList(new RequiredDefsCalculator().calculate(myNode)).isNotEmpty();
   }
   private EditorCell createRefNode_0() {
     SingleRoleCellProvider provider = new IsApplicable_ComponentBuilder_a.conditionSingleRoleHandler_gagq4k_a1a0a(myNode, MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x3bd18bf4b10c3c4aL, 0x6e175e60d98b9c4cL, "condition"), getEditorContext());
@@ -239,7 +238,7 @@ import jetbrains.mps.openapi.editor.selection.SelectionManager;
     return editorCell;
   }
   private boolean nodeCondition_gagq4k_a0a0() {
-    return ListSequence.fromList(new RequiredDefsCalculator().calculate(RuleBlockMember__BehaviorDescriptor.getHighestMember_id2mL_UKGkn8G.invoke(myNode))).isEmpty();
+    return ListSequence.fromList(new RequiredDefsCalculator().calculate(myNode)).isEmpty();
   }
   private EditorCell createConstant_3() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "");

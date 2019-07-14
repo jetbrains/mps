@@ -113,7 +113,7 @@
       <ref role="PrY4T" node="3JhyZiL33La" resolve="RuleBlockMemberWithApplicability" />
     </node>
     <node concept="t5JxF" id="19J4M2yrl9S" role="lGtFl">
-      <property role="t5JxN" value="definition inside the rule block" />
+      <property role="t5JxN" value="definition (variable) inside the rule block; has state defined/not defined. The rules referring to the def are executed only in the case when def is defined." />
     </node>
   </node>
   <node concept="PlHQZ" id="hyoMxHJPiE">

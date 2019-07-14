@@ -14,6 +14,11 @@
     <import index="ewrq" ref="r:bb0a30e0-9916-4d29-97fa-68ace0b06403(jetbrains.mps.lang.feedback.problem.scopes.constraints)" implicit="true" />
   </imports>
   <registry>
+    <language id="ea3159bf-f48e-4720-bde2-86dba75f0d34" name="jetbrains.mps.lang.context.defs">
+      <concept id="7291380803376202513" name="jetbrains.mps.lang.context.defs.structure.TypedDefReference" flags="ng" index="3QpRc$">
+        <reference id="7291380803376221790" name="declaration" index="3QpVTF" />
+      </concept>
+    </language>
     <language id="033598a4-76a9-47e1-ac89-a300c0fceab8" name="jetbrains.mps.lang.feedback.problem">
       <concept id="7716791493892884282" name="jetbrains.mps.lang.feedback.problem.structure.ProblemPointsToKindRoot" flags="ng" index="sa$J0">
         <reference id="7716791493892884283" name="kind" index="sa$J1" />
@@ -52,7 +57,7 @@
         <child id="5258059200642172257" name="part" index="16I2mt" />
       </concept>
       <concept id="5258059200642278562" name="jetbrains.mps.lang.messages.structure.MacroMessageExpression" flags="ng" index="16Iohu">
-        <reference id="5258059200643228831" name="declaration" index="16E0hz" />
+        <child id="2716118816014328328" name="defRef" index="9Y7m$" />
       </concept>
       <concept id="5258059200641510853" name="jetbrains.mps.lang.messages.structure.LiteralMessageExpression" flags="ng" index="16N$OT">
         <property id="5258059200641510854" name="message" index="16N$OU" />
@@ -73,11 +78,13 @@
         <ref role="29jPbC" to="pljn:5ca4zTvKOOO" resolve="TestConcept" />
       </node>
       <node concept="16I2mz" id="5XPa2npPDZc" role="16N$OO">
-        <node concept="16N$OT" id="5XPa2npPDZv" role="16I2mt">
+        <node concept="16N$OT" id="2mL_UKGqpXJ" role="16I2mt">
           <property role="16N$OU" value="The property '" />
         </node>
-        <node concept="16Iohu" id="5XPa2npPDZu" role="16I2mt">
-          <ref role="16E0hz" to="1wpt:1mFJTG7MCZ" resolve="property" />
+        <node concept="16Iohu" id="2mL_UKGqpXI" role="16I2mt">
+          <node concept="3QpRc$" id="2mL_UKGqpXN" role="9Y7m$">
+            <ref role="3QpVTF" to="1wpt:1mFJTG7MCZ" resolve="property" />
+          </node>
         </node>
         <node concept="16N$OT" id="2dMY_rcipX2" role="16I2mt">
           <property role="16N$OU" value="' does not belong to the concept 'TestConcept', please do smth" />
@@ -86,13 +93,15 @@
     </node>
     <node concept="3QByp$" id="7J3GgfrRU4Y" role="3QBEN7">
       <node concept="16I2mz" id="7J3GgfrRU50" role="16N$OO">
-        <node concept="16N$OT" id="7J3GgfrRU5j" role="16I2mt">
+        <node concept="16N$OT" id="2mL_UKGqERK" role="16I2mt">
           <property role="16N$OU" value="The child '" />
         </node>
-        <node concept="16Iohu" id="7J3GgfrRU5i" role="16I2mt">
-          <ref role="16E0hz" to="1wpt:2dMY_rcjEww" resolve="child" />
+        <node concept="16Iohu" id="2mL_UKGqERJ" role="16I2mt">
+          <node concept="3QpRc$" id="2mL_UKGqERP" role="9Y7m$">
+            <ref role="3QpVTF" to="1wpt:2dMY_rcjEww" resolve="child" />
+          </node>
         </node>
-        <node concept="16N$OT" id="7J3GgfrRU5m" role="16I2mt">
+        <node concept="16N$OT" id="2mL_UKGqERL" role="16I2mt">
           <property role="16N$OU" value="' does not belong to the concept 'TestConcept" />
         </node>
       </node>
@@ -106,13 +115,15 @@
         <node concept="16N$OT" id="63vaCZf7_6e" role="16I2mt">
           <property role="16N$OU" value="Property constraints are broken for the property" />
         </node>
-        <node concept="16N$OT" id="2dMY_rcisPM" role="16I2mt">
+        <node concept="16N$OT" id="2mL_UKGqERY" role="16I2mt">
           <property role="16N$OU" value=" " />
         </node>
-        <node concept="16Iohu" id="7ghwUcl80JQ" role="16I2mt">
-          <ref role="16E0hz" to="2u14:1mFJTG7MCZ" resolve="property" />
+        <node concept="16Iohu" id="2mL_UKGqERX" role="16I2mt">
+          <node concept="3QpRc$" id="2mL_UKGqES5" role="9Y7m$">
+            <ref role="3QpVTF" to="2u14:1mFJTG7MCZ" resolve="property" />
+          </node>
         </node>
-        <node concept="16N$OT" id="2dMY_rcirvK" role="16I2mt">
+        <node concept="16N$OT" id="2mL_UKGqERZ" role="16I2mt">
           <property role="16N$OU" value=", please do smth " />
         </node>
         <node concept="16N$OT" id="2dMY_rcih5J" role="16I2mt">
@@ -126,17 +137,24 @@
     </node>
     <node concept="3QByp$" id="1oq9tin1ty6" role="3QBEN7">
       <node concept="16I2mz" id="1oq9tin1ty8" role="16N$OO">
-        <node concept="16N$OT" id="7J3GgfrRR02" role="16I2mt">
+        <node concept="16N$OT" id="2mL_UKGqESd" role="16I2mt">
           <property role="16N$OU" value="The reference is out of scope: here it goes: " />
         </node>
-        <node concept="16Iohu" id="7J3GgfrRR01" role="16I2mt">
-          <ref role="16E0hz" to="ewrq:5vZLfeXlpEL" resolve="link" />
+        <node concept="16N$OT" id="2mL_UKGqIpq" role="16I2mt">
+          <property role="16N$OU" value="the link '" />
         </node>
-        <node concept="16N$OT" id="3f9_B0PNZat" role="16I2mt">
-          <property role="16N$OU" value=" in the node " />
+        <node concept="16Iohu" id="2mL_UKGqESc" role="16I2mt">
+          <node concept="3QpRc$" id="2mL_UKGqESn" role="9Y7m$">
+            <ref role="3QpVTF" to="ewrq:5vZLfeXlpEL" resolve="link" />
+          </node>
         </node>
-        <node concept="16Iohu" id="3f9_B0PNZas" role="16I2mt">
-          <ref role="16E0hz" to="ewrq:6X8eyFnbP1D" resolve="node" />
+        <node concept="16N$OT" id="2mL_UKGqESx" role="16I2mt">
+          <property role="16N$OU" value="in the node " />
+        </node>
+        <node concept="16Iohu" id="2mL_UKGqESw" role="16I2mt">
+          <node concept="3QpRc$" id="2mL_UKGqESB" role="9Y7m$">
+            <ref role="3QpVTF" to="ewrq:6X8eyFnbP1D" resolve="node" />
+          </node>
         </node>
       </node>
       <node concept="216oCf" id="1oq9tin1$FT" role="3JXyrO">

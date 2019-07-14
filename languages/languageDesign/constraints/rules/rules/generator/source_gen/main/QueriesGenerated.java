@@ -17,12 +17,12 @@ import jetbrains.mps.generator.template.ReferenceMacroContext;
 import util.KindUtil;
 import jetbrains.mps.lang.constraints.rules.skeleton.behavior.RuleBlockMember__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.generator.template.IfMacroContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import jetbrains.mps.lang.constraints.rules.util.RequiredDefsCalculator;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.generator.template.WeavingMappingRuleContext;
@@ -92,7 +92,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return KindUtil.matchContextForRuleKind(RuleBlockMember__BehaviorDescriptor.getRuleKind_id1BFxp3HHhyj.invoke(_context.getNode()), _context);
   }
   public static Object referenceMacro_GetReferent_2_3(final ReferenceMacroContext _context) {
-    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x6530303593574311L, 0x6530303593578e5eL, "declaration")), "defClass");
+    return _context.getOutputNodeByInputNodeAndMappingLabel(SNodeOperations.cast(_context.getNode(), MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359366e9d5L, "jetbrains.mps.lang.constraints.rules.structure.DefForRule")), "defClass");
   }
   public static Object referenceMacro_GetReferent_2_4(final ReferenceMacroContext _context) {
     return KindUtil.matchContextForRuleKind(RuleBlockMember__BehaviorDescriptor.getRuleKind_id1BFxp3HHhyj.invoke(_context.getNode()), _context);
@@ -136,7 +136,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return new RequiredDefsCalculator().calculate(_context.getNode());
   }
   public static Iterable<SNode> sourceNodesQuery_2_0(final SourceSubstituteMacroNodesContext _context) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.getNodeDescendants(RuleBlockMember__BehaviorDescriptor.getHighestMember_id2mL_UKGkn8G.invoke(_context.getNode()), MetaAdapterFactory.getConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x6530303593574311L, "jetbrains.mps.lang.context.defs.structure.TypedDefReference"), false, new SAbstractConcept[]{}), MetaAdapterFactory.getReferenceLink(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x6530303593574311L, 0x6530303593578e5eL, "declaration"))).distinct(), MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359366e9d5L, "jetbrains.mps.lang.constraints.rules.structure.DefForRule"))).where(new IWhereFilter<SNode>() {
+    return Sequence.fromIterable(SNodeOperations.ofConcept(Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.getNodeDescendants(_context.getNode(), MetaAdapterFactory.getConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x6530303593574311L, "jetbrains.mps.lang.context.defs.structure.TypedDefReference"), false, new SAbstractConcept[]{}), MetaAdapterFactory.getReferenceLink(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x6530303593574311L, 0x6530303593578e5eL, "declaration"))).distinct(), MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359366e9d5L, "jetbrains.mps.lang.constraints.rules.structure.DefForRule"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return (SLinkOperations.getTarget(it, MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x3bd18bf4b10c3c4aL, 0x6e175e60d98b9c4cL, "condition")) != null);
       }

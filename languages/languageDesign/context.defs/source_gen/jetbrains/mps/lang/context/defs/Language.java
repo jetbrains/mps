@@ -6,10 +6,11 @@ import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.smodel.adapter.ids.SLanguageId;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.language.SLanguage;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.runtime.ILanguageAspect;
-import jetbrains.mps.core.aspects.feedback.api.FeedbackAspect;
 import jetbrains.mps.core.aspects.constraints.rules.RulesConstraintsAspect;
 import jetbrains.mps.lang.context.defs.constraints.GeneratedRulesConstraintsAspect;
+import jetbrains.mps.core.aspects.feedback.api.FeedbackAspect;
 import jetbrains.mps.openapi.actions.descriptor.ActionAspectDescriptor;
 import jetbrains.mps.lang.context.defs.actions.ActionAspectDescriptorImpl;
 import jetbrains.mps.smodel.runtime.BehaviorAspectDescriptor;
@@ -45,15 +46,16 @@ public class Language extends LanguageRuntime {
 
   @Override
   protected void fillExtendedLanguages(Collection<SLanguage> extendedLanguages) {
+    extendedLanguages.add(MetaAdapterFactory.getLanguage(SLanguageId.deserialize("f3061a53-9226-4cc5-a443-f952ceaf5816"), "jetbrains.mps.baseLanguage"));
   }
 
   @Override
   protected <T extends ILanguageAspect> T createAspect(Class<T> aspectClass) {
-    if (aspectClass.isAssignableFrom(FeedbackAspect.class)) {
-      return aspectClass.cast(FeedbackAspect.combine());
-    }
     if (aspectClass.isAssignableFrom(RulesConstraintsAspect.class)) {
       return aspectClass.cast(new GeneratedRulesConstraintsAspect());
+    }
+    if (aspectClass.isAssignableFrom(FeedbackAspect.class)) {
+      return aspectClass.cast(FeedbackAspect.combine());
     }
 
 

@@ -431,7 +431,7 @@
                       <node concept="liA8E" id="1C" role="2OqNvi">
                         <ref role="37wK5l" to="ze1i:~ConceptPresentationBuilder.presentationByName()" resolve="presentationByName" />
                         <node concept="t5JxF" id="1D" role="lGtFl">
-                          <property role="t5JxN" value="definition inside the rule block" />
+                          <property role="t5JxN" value="definition (variable) inside the rule block; has state defined/not defined. The rules referring to the def are executed only in the case when def is defined." />
                           <node concept="cd27G" id="1F" role="lGtFl">
                             <node concept="3u3nmq" id="1G" role="cd27D">
                               <property role="3u3nmv" value="1328301445982540408" />
