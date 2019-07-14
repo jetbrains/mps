@@ -23,8 +23,8 @@ public class MacroMessageExpression_completeTextToLiteralAndPercentToMacro exten
     KeyMapAction action;
     action = new MacroMessageExpression_completeTextToLiteralAndPercentToMacro.MacroMessageExpression_completeTextToLiteralAndPercentToMacro_Action0();
     this.putAction("any", "letter or digit", action);
-    this.putAction("any", " ", action);
-    this.putAction("any", "\'", action);
+    this.putAction("none", " ", action);
+    this.putAction("none", "'", action);
     action = new MacroMessageExpression_completeTextToLiteralAndPercentToMacro.MacroMessageExpression_completeTextToLiteralAndPercentToMacro_Action1();
     this.putAction("any", "%", action);
   }

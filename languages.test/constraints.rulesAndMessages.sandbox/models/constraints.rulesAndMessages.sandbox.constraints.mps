@@ -12,8 +12,8 @@
   </imports>
   <registry>
     <language id="ea3159bf-f48e-4720-bde2-86dba75f0d34" name="jetbrains.mps.lang.context.defs">
-      <concept id="7291380803376202513" name="" flags="ng" index="3QpRc$">
-        <reference id="7291380803376221790" name="" index="3QpVTF" />
+      <concept id="7291380803376202513" name="jetbrains.mps.lang.context.defs.structure.TypedDefReference" flags="ng" index="3QpRc$">
+        <reference id="7291380803376221790" name="declaration" index="3QpVTF" />
       </concept>
     </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -84,7 +84,7 @@
         <child id="5258059200642172257" name="part" index="16I2mt" />
       </concept>
       <concept id="5258059200642278562" name="jetbrains.mps.lang.messages.structure.MacroMessageExpression" flags="ng" index="16Iohu">
-        <reference id="5258059200643228831" name="declaration" index="16E0hz" />
+        <child id="2716118816014328328" name="defRef" index="9Y7m$" />
       </concept>
       <concept id="5258059200641510853" name="jetbrains.mps.lang.messages.structure.LiteralMessageExpression" flags="ng" index="16N$OT">
         <property id="5258059200641510854" name="message" index="16N$OU" />
@@ -212,11 +212,13 @@
         </node>
         <node concept="1DCEQD" id="7GQ_Vdxayd5" role="1DCEQI">
           <node concept="16I2mz" id="7GQ_VdxayBc" role="16N$OO">
-            <node concept="16N$OT" id="7GQ_VdxayBf" role="16I2mt">
+            <node concept="16N$OT" id="2mL_UKGs3Gj" role="16I2mt">
               <property role="16N$OU" value="The property 'canHaveChildren' in the node " />
             </node>
-            <node concept="16Iohu" id="7GQ_VdxayBg" role="16I2mt">
-              <ref role="16E0hz" to="prp3:6X8eyFnbLf8" resolve="parentNode" />
+            <node concept="16Iohu" id="2mL_UKGs3Gh" role="16I2mt">
+              <node concept="3QpRc$" id="2mL_UKGs3Gi" role="9Y7m$">
+                <ref role="3QpVTF" to="prp3:6X8eyFnbLf8" resolve="parentNode" />
+              </node>
             </node>
             <node concept="16N$OT" id="7GQ_VdxayBk" role="16I2mt">
               <property role="16N$OU" value=" must be set to 'true'" />

@@ -19,7 +19,7 @@ import java.util.stream.Stream;
 public final class ParentConcept_ConstraintsFeedback extends BaseFeedbackDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xfc39d7264089464aL, 0x8fc15f71edfdf03bL, 0x7af41afae28e1a15L, "constraints.rulesAndMessages.sandbox.structure.ParentConcept");
 
-  private static final FeedbackProvider<ContainmentContext> MSGPROVIDER_WhenConstraintRuleFails_a_0 = new BaseMessageProvider<ContainmentContext>(new FailingRuleProblemId(ParentConcept_ConstraintRules.Rule_childConcept.ID_childConcept)) {
+  private static final FeedbackProvider<ContainmentContext> MSGPROVIDER_WhenConstraintRuleFails_a = new BaseMessageProvider<ContainmentContext>(new FailingRuleProblemId(ParentConcept_ConstraintRules.Rule_childConcept.ID_childConcept)) {
     @NotNull
     @Override
     public MessageProvider.StringMsg yieldMessage(ContainmentContext context) {
@@ -30,11 +30,11 @@ public final class ParentConcept_ConstraintsFeedback extends BaseFeedbackDescrip
     @NotNull
     @Override
     public MessageProvider.StringMsg yieldMessage(ContainmentContext context) {
-      return new MessageProvider.StringMsg("The property 'canHaveChildren' in the node " + String.valueOf(context.getParentNode()) + " must be set to 'true'");
+      return new MessageProvider.StringMsg("The property 'canHaveChildren' in the node " + context.getParentNode() + " must be set to 'true'");
     }
   };
 
-  private static final List<FeedbackProvider> PROVIDERS = Collections.unmodifiableList(Arrays.<FeedbackProvider>asList(MSGPROVIDER_WhenConstraintRuleFails_a_0, MSGPROVIDER_WhenConstraintRuleFails_b));
+  private static final List<FeedbackProvider> PROVIDERS = Collections.unmodifiableList(Arrays.<FeedbackProvider>asList(MSGPROVIDER_WhenConstraintRuleFails_a, MSGPROVIDER_WhenConstraintRuleFails_b));
 
   public ParentConcept_ConstraintsFeedback() {
     super(CONCEPT);

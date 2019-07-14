@@ -19,7 +19,7 @@ import java.util.stream.Stream;
 public final class ChildConcept_ConstraintsFeedback extends BaseFeedbackDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xfc39d7264089464aL, 0x8fc15f71edfdf03bL, 0x7825711952b6d480L, "constraints.rulesAndMessages.sandbox.structure.ChildConcept");
 
-  private static final FeedbackProvider<ContainmentContext> MSGPROVIDER_WhenConstraintRuleFails_a = new BaseMessageProvider<ContainmentContext>(new FailingRuleProblemId(ChildConcept_ConstraintRules.Rule_toleranceNotTooHigh.ID_toleranceNotTooHigh)) {
+  private static final FeedbackProvider<ContainmentContext> MSGPROVIDER_WhenConstraintRuleFails_a_0 = new BaseMessageProvider<ContainmentContext>(new FailingRuleProblemId(ChildConcept_ConstraintRules.Rule_toleranceNotTooHigh.ID_toleranceNotTooHigh)) {
     @NotNull
     @Override
     public MessageProvider.StringMsg yieldMessage(ContainmentContext context) {
@@ -34,7 +34,7 @@ public final class ChildConcept_ConstraintsFeedback extends BaseFeedbackDescript
     }
   };
 
-  private static final List<FeedbackProvider> PROVIDERS = Collections.unmodifiableList(Arrays.<FeedbackProvider>asList(MSGPROVIDER_WhenConstraintRuleFails_a, MSGPROVIDER_WhenConstraintRuleFails_b_0));
+  private static final List<FeedbackProvider> PROVIDERS = Collections.unmodifiableList(Arrays.<FeedbackProvider>asList(MSGPROVIDER_WhenConstraintRuleFails_a_0, MSGPROVIDER_WhenConstraintRuleFails_b_0));
 
   public ChildConcept_ConstraintsFeedback() {
     super(CONCEPT);

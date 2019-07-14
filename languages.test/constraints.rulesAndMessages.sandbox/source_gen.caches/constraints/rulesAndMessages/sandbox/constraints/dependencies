@@ -112,7 +112,6 @@
   <dependency className="constraints.rulesAndMessages.sandbox.constraints.ParentConcept_ConstraintsFeedback">
     <classNode dependClassName="constraints.rulesAndMessages.sandbox.constraints.ParentConcept_ConstraintRules" />
     <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.Arrays" />
     <classNode dependClassName="java.util.Collections" />
     <classNode dependClassName="java.util.List" />

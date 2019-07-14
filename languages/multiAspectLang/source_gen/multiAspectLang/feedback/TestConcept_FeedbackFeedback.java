@@ -50,7 +50,7 @@ public final class TestConcept_FeedbackFeedback extends BaseFeedbackDescriptor {
     @NotNull
     @Override
     public MessageProvider.StringMsg yieldMessage(RefOutOfScopeContext context) {
-      return new MessageProvider.StringMsg("The reference is out of scope: here it goes: " + context.getLink() + " in the node " + context.getNode());
+      return new MessageProvider.StringMsg("The reference is out of scope: here it goes: " + "the link '" + context.getLink() + "'" + "in the node " + context.getNode());
     }
   };
 
