@@ -170,7 +170,7 @@
     <node concept="3EZMnI" id="1BFxp3HFZ_3" role="2wV5jI">
       <node concept="l2Vlx" id="1BFxp3HFZ_4" role="2iSdaV" />
       <node concept="3F0ifn" id="1BFxp3HFZ_5" role="3EZMnx">
-        <property role="3F0ifm" value="rules constraints for concept" />
+        <property role="3F0ifm" value="constraint rules for" />
         <ref role="1k5W1q" node="52CT$p9qMd6" resolve="RootHeading" />
       </node>
       <node concept="1iCGBv" id="1BFxp3HFZ_6" role="3EZMnx">

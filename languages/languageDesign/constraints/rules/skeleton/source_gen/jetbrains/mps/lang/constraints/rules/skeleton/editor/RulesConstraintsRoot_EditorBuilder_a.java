@@ -77,7 +77,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
     return editorCell;
   }
   private EditorCell createConstant_0() {
-    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "rules constraints for concept");
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "constraint rules for");
     editorCell.setCellId("Constant_ak7rf9_a0");
     Style style = new StyleImpl();
     new RootHeadingStyleClass(getEditorContext(), getNode()).apply(style, editorCell);

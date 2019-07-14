@@ -34,7 +34,7 @@ public final class MPSColors extends JBColor {
 
   public static final Color DARK_BLUE = JBColor.BLUE.darker();
 
-  public static final Color DARK_GREEN = new JBColor(GREEN.darker(), GREEN);
+  public static final Color DARK_GREEN = new JBColor(GREEN.darker().darker(), GREEN);
 
   public static final Color DARK_MAGENTA = new JBColor(JBColor.MAGENTA.darker().darker(), JBColor.MAGENTA);
 

@@ -22,9 +22,7 @@
       <concept id="1068580123136" name="jetbrains.mps.baseLanguage.structure.StatementList" flags="sn" stub="5293379017992965193" index="3clFbS">
         <child id="1068581517665" name="statement" index="3cqZAp" />
       </concept>
-      <concept id="1068580123137" name="jetbrains.mps.baseLanguage.structure.BooleanConstant" flags="nn" index="3clFbT">
-        <property id="1068580123138" name="value" index="3clFbU" />
-      </concept>
+      <concept id="1068580123137" name="jetbrains.mps.baseLanguage.structure.BooleanConstant" flags="nn" index="3clFbT" />
     </language>
     <language id="d7a92d38-f7db-40d0-8431-763b0c3c9f20" name="jetbrains.mps.lang.intentions">
       <concept id="1192794744107" name="jetbrains.mps.lang.intentions.structure.IntentionDeclaration" flags="ig" index="2S6QgY" />
@@ -63,10 +61,8 @@
     </node>
     <node concept="2SaL7w" id="yXuRM1RO3a" role="2ZfVeh">
       <node concept="3clFbS" id="yXuRM1RO3b" role="2VODD2">
-        <node concept="3clFbF" id="2mL_UKGrylp" role="3cqZAp">
-          <node concept="3clFbT" id="2mL_UKGrylo" role="3clFbG">
-            <property role="3clFbU" value="true" />
-          </node>
+        <node concept="3clFbF" id="21iUAs6HlMU" role="3cqZAp">
+          <node concept="3clFbT" id="21iUAs6HlMT" role="3clFbG" />
         </node>
       </node>
     </node>
