@@ -14,6 +14,7 @@ import jetbrains.mps.errors.item.IssueKindReportItem;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.typesystemEngine.checker.TypesystemChecker;
+import jetbrains.mps.typesystemEngine.checker.NonTypesystemChecker;
 import jetbrains.mps.checkers.ConstraintsChecker;
 import jetbrains.mps.checkers.RefScopeChecker;
 import jetbrains.mps.checkers.TargetConceptChecker;
@@ -50,6 +51,7 @@ public class NodeCheckerUtil {
   public static List<IChecker<?, ? extends IssueKindReportItem>> getStandardCheckers() {
     List<IChecker<?, ? extends IssueKindReportItem>> result = ListSequence.fromList(new ArrayList<IChecker<?, ? extends IssueKindReportItem>>());
     ListSequence.fromList(result).addElement(new TypesystemChecker());
+    ListSequence.fromList(result).addElement(new NonTypesystemChecker());
     ListSequence.fromList(result).addElement(new ConstraintsChecker());
     ListSequence.fromList(result).addElement(new RefScopeChecker());
     ListSequence.fromList(result).addElement(new TargetConceptChecker());

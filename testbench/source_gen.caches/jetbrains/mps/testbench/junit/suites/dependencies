@@ -37,6 +37,7 @@
     <classNode dependClassName="jetbrains.mps.errors.item.IssueKindReportItem" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.testbench.PerformanceMessenger" />
+    <classNode dependClassName="jetbrains.mps.typesystemEngine.checker.NonTypesystemChecker" />
     <classNode dependClassName="jetbrains.mps.typesystemEngine.checker.TypesystemChecker" />
     <classNode dependClassName="org.jetbrains.mps.openapi.module.SModule" />
     <classNode dependClassName="org.junit.ClassRule" />

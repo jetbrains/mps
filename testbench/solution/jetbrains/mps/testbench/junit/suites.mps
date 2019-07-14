@@ -1262,6 +1262,11 @@
                     <ref role="37wK5l" to="k8ev:4yqv8vrxVuu" resolve="TypesystemChecker" />
                   </node>
                 </node>
+                <node concept="2ShNRf" id="mDYNhtxVDQ" role="HW$Y0">
+                  <node concept="1pGfFk" id="mDYNhtxVDR" role="2ShVmc">
+                    <ref role="37wK5l" to="k8ev:mDYNhtw$3s" resolve="NonTypesystemChecker" />
+                  </node>
+                </node>
                 <node concept="2ShNRf" id="5DuNfrQNgr1" role="HW$Y0">
                   <node concept="HV5vD" id="5DuNfrQNgr2" role="2ShVmc">
                     <ref role="HV5vE" to="wsw7:4c7y4qc4V7B" resolve="SuppressErrorsChecker" />
