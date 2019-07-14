@@ -30,6 +30,7 @@
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <child id="1068431790190" name="initializer" index="33vP2m" />
       </concept>
+      <concept id="1068431790191" name="jetbrains.mps.baseLanguage.structure.Expression" flags="nn" index="33vP2n" />
       <concept id="1068498886296" name="jetbrains.mps.baseLanguage.structure.VariableReference" flags="nn" index="37vLTw">
         <reference id="1068581517664" name="variableDeclaration" index="3cqZAo" />
       </concept>
@@ -175,6 +176,29 @@
     <ref role="3Oh7Pe" to="pljn:5ca4zTvKOOO" resolve="TestConcept" />
     <node concept="3OnDbq" id="1mFJTG0Yqf" role="3Oh7Pb">
       <ref role="3OnDbs" to="prp3:6X8eyFnbGDJ" resolve="CanBeRoot" />
+      <node concept="1DCEPf" id="yXuRM1QSHU" role="3OnDbr">
+        <node concept="3Qq5Rn" id="yXuRM1QSHW" role="2j4cqI">
+          <property role="EcuMT" value="629795297586547580" />
+          <node concept="2K0Yjh" id="yXuRM1QSHY" role="2K0Fuo">
+            <node concept="33vP2n" id="yXuRM1QSI0" role="2K0yoH" />
+          </node>
+        </node>
+        <node concept="1DCEQD" id="yXuRM1QSI2" role="1DCEQI" />
+      </node>
+      <node concept="1DCEPf" id="3f9_B0PP4eF" role="3OnDbr">
+        <node concept="3Qq5Rn" id="3f9_B0PP4eH" role="2j4cqI">
+          <property role="EcuMT" value="3731679174936773549" />
+          <node concept="2K0Yjh" id="3f9_B0PP4eJ" role="2K0Fuo">
+            <node concept="33vP2n" id="3f9_B0PP4eL" role="2K0yoH" />
+          </node>
+          <node concept="25XGhA" id="yXuRM1QSGu" role="2RBc8G">
+            <node concept="2K0Yjh" id="yXuRM1QSGv" role="2K0D5Q">
+              <node concept="33vP2n" id="yXuRM1QSGw" role="2K0yoH" />
+            </node>
+          </node>
+        </node>
+        <node concept="1DCEQD" id="3f9_B0PP4eN" role="1DCEQI" />
+      </node>
       <node concept="3QlHBw" id="6SnnA3pzN3z" role="3OnDbr">
         <property role="TrG5h" value="AModel" />
         <node concept="H_c77" id="2dMY_rc2ZIO" role="3RXm0Z" />

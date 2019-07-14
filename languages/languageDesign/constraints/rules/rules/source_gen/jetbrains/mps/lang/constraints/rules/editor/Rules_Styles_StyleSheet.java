@@ -8,11 +8,11 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.editor.runtime.style.AbstractStyleClass;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import jetbrains.mps.nodeEditor.MPSFonts;
 import jetbrains.mps.openapi.editor.style.StyleRegistry;
-import java.awt.Color;
-import com.intellij.ui.JBColor;
 import jetbrains.mps.nodeEditor.MPSColors;
+import jetbrains.mps.lang.editor.editor.EditorLanguageKeyPack_KeyPack.KEYWORD_StyleKey;
+import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.FieldStyleClass;
+import jetbrains.mps.nodeEditor.MPSFonts;
 import jetbrains.mps.nodeEditor.EditorSettings;
 
 public class Rules_Styles_StyleSheet {
@@ -94,13 +94,9 @@ public class Rules_Styles_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD);
-      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_xgtt4l_a1a()));
+      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_MAGENTA));
     }
 
-    private Color _StyleParameter_QueryFunction_xgtt4l_a1a() {
-      return JBColor.YELLOW.darker();
-    }
   }
   public static class RuleStyleStyleClass extends AbstractStyleClass {
     public RuleStyleStyleClass(EditorContext editorContext, SNode node) {
@@ -109,8 +105,7 @@ public class Rules_Styles_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD);
-      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.blue));
+      new KEYWORD_StyleKey().apply(style);
     }
 
   }
@@ -121,8 +116,7 @@ public class Rules_Styles_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD);
-      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_BLUE));
+      new FieldStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
     }
 
   }
@@ -133,7 +127,6 @@ public class Rules_Styles_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.gray));
     }
 
   }
@@ -161,7 +154,7 @@ public class Rules_Styles_StyleSheet {
     }
 
     private int _StyleParameter_QueryFunction_xgtt4l_a2f() {
-      return (EditorSettings.getInstance().getFontSize() * 6) / 7;
+      return (EditorSettings.getInstance().getFontSize() * 7) / 8;
     }
   }
   public static class HintStyleClass extends AbstractStyleClass {

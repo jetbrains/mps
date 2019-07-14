@@ -820,7 +820,7 @@
   <node concept="2S6QgY" id="22K8sKDGmAz">
     <property role="TrG5h" value="AddCondition" />
     <property role="2ZfUl0" value="true" />
-    <ref role="2ZfgGC" to="bm42:6kKc3mjm6Ry" resolve="Rule" />
+    <ref role="2ZfgGC" to="bm42:3JhyZiL33La" resolve="IsApplicable" />
     <node concept="2S6ZIM" id="22K8sKDGmA$" role="2ZfVej">
       <node concept="3clFbS" id="22K8sKDGmA_" role="2VODD2">
         <node concept="3clFbF" id="22K8sKDGmFz" role="3cqZAp">

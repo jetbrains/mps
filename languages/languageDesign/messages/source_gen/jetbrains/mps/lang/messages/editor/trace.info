@@ -1195,65 +1195,61 @@
   </root>
   <root nodeRef="r:46037634-9be0-4da8-8dd8-3cb367171177(jetbrains.mps.lang.messages.editor)/5258059200643484630">
     <file name="MessageStyles_StyleSheet.java">
-      <node id="5258059200643484633" at="22,77,23,69" concept="7" />
-      <node id="5258059200643484633" at="23,69,24,88" concept="7" />
-      <node id="5258059200643484633" at="24,88,25,102" concept="2" />
-      <node id="3299718585667277247" at="32,79,33,69" concept="7" />
-      <node id="3299718585667277247" at="33,69,34,88" concept="7" />
-      <node id="3299718585667277247" at="34,88,35,104" concept="2" />
-      <node id="5258059200643484633" at="39,76,40,33" concept="12" />
-      <node id="5258059200642486011" at="44,59,45,132" concept="2" />
-      <node id="8577519913599496579" at="48,62,49,37" concept="8" />
-      <node id="3299718585667277247" at="53,78,54,33" concept="12" />
-      <node id="3299718585667277266" at="58,59,59,110" concept="2" />
-      <node id="5258059200643484633" at="39,0,42,0" concept="1" trace="MessageMacroStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="8577519913599291574" at="48,0,51,0" concept="6" trace="_StyleParameter_QueryFunction_t8xsd0_a0a#()Ljava/awt/Color;" />
-      <node id="3299718585667277247" at="53,0,56,0" concept="1" trace="MessageLiteralStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="5258059200643484633" at="43,0,47,0" concept="6" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
-      <node id="3299718585667277247" at="57,0,61,0" concept="6" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
-      <node id="5258059200643484633" at="21,0,27,0" concept="11" trace="apply_MessageMacro#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
-      <node id="3299718585667277247" at="31,0,37,0" concept="11" trace="apply_MessageLiteral#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
-      <scope id="5258059200643484633" at="39,76,40,33" />
-      <scope id="5258059200643484633" at="44,59,45,132" />
-      <scope id="8577519913599291575" at="48,62,49,37" />
-      <scope id="3299718585667277247" at="53,78,54,33" />
-      <scope id="3299718585667277247" at="58,59,59,110" />
-      <scope id="5258059200643484633" at="22,77,25,102">
+      <node id="5258059200643484633" at="20,77,21,69" concept="7" />
+      <node id="5258059200643484633" at="21,69,22,88" concept="7" />
+      <node id="5258059200643484633" at="22,88,23,102" concept="2" />
+      <node id="3299718585667277247" at="30,79,31,69" concept="7" />
+      <node id="3299718585667277247" at="31,69,32,88" concept="7" />
+      <node id="3299718585667277247" at="32,88,33,104" concept="2" />
+      <node id="5258059200643484633" at="37,76,38,33" concept="12" />
+      <node id="5258059200642486011" at="42,59,43,112" concept="2" />
+      <node id="3299718585667277247" at="48,78,49,33" concept="12" />
+      <node id="3299718585667277266" at="53,59,54,110" concept="2" />
+      <node id="5258059200643484633" at="37,0,40,0" concept="1" trace="MessageMacroStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="3299718585667277247" at="48,0,51,0" concept="1" trace="MessageLiteralStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="5258059200643484633" at="41,0,45,0" concept="6" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
+      <node id="3299718585667277247" at="52,0,56,0" concept="6" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
+      <node id="5258059200643484633" at="19,0,25,0" concept="11" trace="apply_MessageMacro#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
+      <node id="3299718585667277247" at="29,0,35,0" concept="11" trace="apply_MessageLiteral#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
+      <scope id="5258059200643484633" at="37,76,38,33" />
+      <scope id="5258059200643484633" at="42,59,43,112" />
+      <scope id="3299718585667277247" at="48,78,49,33" />
+      <scope id="3299718585667277247" at="53,59,54,110" />
+      <scope id="5258059200643484633" at="20,77,23,102">
         <var name="editorContext" id="5258059200643484633" />
         <var name="node" id="5258059200643484633" />
       </scope>
-      <scope id="3299718585667277247" at="32,79,35,104">
+      <scope id="3299718585667277247" at="30,79,33,104">
         <var name="editorContext" id="3299718585667277247" />
         <var name="node" id="3299718585667277247" />
       </scope>
-      <scope id="5258059200643484633" at="39,0,42,0">
+      <scope id="5258059200643484633" at="37,0,40,0">
         <var name="editorContext" id="5258059200643484633" />
         <var name="node" id="5258059200643484633" />
       </scope>
-      <scope id="8577519913599291574" at="48,0,51,0" />
-      <scope id="3299718585667277247" at="53,0,56,0">
+      <scope id="3299718585667277247" at="48,0,51,0">
         <var name="editorContext" id="3299718585667277247" />
         <var name="node" id="3299718585667277247" />
       </scope>
-      <scope id="5258059200643484633" at="43,0,47,0">
+      <scope id="5258059200643484633" at="41,0,45,0">
         <var name="editorCell" id="5258059200643484633" />
         <var name="style" id="5258059200643484633" />
       </scope>
-      <scope id="3299718585667277247" at="57,0,61,0">
+      <scope id="3299718585667277247" at="52,0,56,0">
         <var name="editorCell" id="3299718585667277247" />
         <var name="style" id="3299718585667277247" />
       </scope>
-      <scope id="5258059200643484633" at="21,0,27,0">
+      <scope id="5258059200643484633" at="19,0,25,0">
         <var name="editorCell" id="5258059200643484633" />
         <var name="style" id="5258059200643484633" />
       </scope>
-      <scope id="3299718585667277247" at="31,0,37,0">
+      <scope id="3299718585667277247" at="29,0,35,0">
         <var name="editorCell" id="3299718585667277247" />
         <var name="style" id="3299718585667277247" />
       </scope>
-      <unit id="3299718585667277247" at="52,0,63,0" name="jetbrains.mps.lang.messages.editor.MessageStyles_StyleSheet$MessageLiteralStyleClass" />
-      <unit id="5258059200643484633" at="38,0,52,0" name="jetbrains.mps.lang.messages.editor.MessageStyles_StyleSheet$MessageMacroStyleClass" />
-      <unit id="5258059200643484630" at="16,0,64,0" name="jetbrains.mps.lang.messages.editor.MessageStyles_StyleSheet" />
+      <unit id="5258059200643484633" at="36,0,47,0" name="jetbrains.mps.lang.messages.editor.MessageStyles_StyleSheet$MessageMacroStyleClass" />
+      <unit id="3299718585667277247" at="47,0,58,0" name="jetbrains.mps.lang.messages.editor.MessageStyles_StyleSheet$MessageLiteralStyleClass" />
+      <unit id="5258059200643484630" at="14,0,59,0" name="jetbrains.mps.lang.messages.editor.MessageStyles_StyleSheet" />
     </file>
   </root>
   <root nodeRef="r:46037634-9be0-4da8-8dd8-3cb367171177(jetbrains.mps.lang.messages.editor)/5258059200643875754">

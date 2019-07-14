@@ -26,11 +26,11 @@
       <node id="5812148508675595148" at="32,69,33,88" concept="5" />
       <node id="5812148508675595148" at="33,88,34,115" concept="1" />
       <node id="5812148508675482438" at="38,75,39,33" concept="10" />
-      <node id="5812148508675595203" at="43,59,44,60" concept="1" />
-      <node id="5812148508676598321" at="44,60,45,82" concept="1" />
+      <node id="5812148508675595203" at="43,59,44,59" concept="1" />
+      <node id="5812148508676598321" at="44,59,45,82" concept="1" />
       <node id="5812148508675595148" at="50,84,51,33" concept="10" />
-      <node id="5812148508675595188" at="55,59,56,60" concept="1" />
-      <node id="5812148508676779736" at="56,60,57,82" concept="1" />
+      <node id="5812148508675595188" at="55,59,56,59" concept="1" />
+      <node id="5812148508676779736" at="56,59,57,82" concept="1" />
       <node id="5812148508676900694" at="57,82,58,79" concept="1" />
       <node id="5812148508675482438" at="38,0,41,0" concept="0" trace="RootHeadingStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="5812148508675595148" at="50,0,53,0" concept="0" trace="RuleBlockDeclarationStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />

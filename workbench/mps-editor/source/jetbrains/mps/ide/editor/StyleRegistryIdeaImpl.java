@@ -210,7 +210,7 @@ public class StyleRegistryIdeaImpl extends StyleRegistry implements EditorColors
 //    myColorsMapping.put(new Pair<>(MPSColors.DARK_BLUE, bg), new Color(204, 120, 50));
 //    myColorsMapping.put(new Pair<>(MPSColors.DARK_GREEN, bg), new Color(98, 151, 85));
 //    myColorsMapping.put(new Pair<>(MPSColors.DARK_MAGENTA, bg), new Color(152, 118, 170));
-////    myColorsMapping.put(new Pair<>(MPSColors.PINK, bg), new Color(90, 100, 126));
+//    myColorsMapping.put(new Pair<>(MPSColors.PINK, bg), new Color(90, 100, 126));
 //    myColorsMapping.put(new Pair<>(MPSColors.ORANGE, bg), new Color(255, 198, 109));
 //    myColorsMapping.put(new Pair<>(MPSColors.YELLOW, bg), new Color(0, 99, 0));
 //    myColorsMapping.put(new Pair<>(MPSColors.GREEN, bg), new Color(0, 128, 0));

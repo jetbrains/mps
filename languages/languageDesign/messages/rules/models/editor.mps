@@ -28,6 +28,9 @@
       <concept id="1106270571710" name="jetbrains.mps.lang.editor.structure.CellLayout_Vertical" flags="nn" index="2iRkQZ" />
       <concept id="6089045305654894366" name="jetbrains.mps.lang.editor.structure.SubstituteMenuReference_Default" flags="ng" index="2kknPJ" />
       <concept id="1237303669825" name="jetbrains.mps.lang.editor.structure.CellLayout_Indent" flags="nn" index="l2Vlx" />
+      <concept id="7651593722933768974" name="jetbrains.mps.lang.editor.structure.MaxWidthStyleClassItem" flags="ln" index="nf9zX">
+        <property id="7651593722933768975" name="value" index="nf9zW" />
+      </concept>
       <concept id="7671875129586001610" name="jetbrains.mps.lang.editor.structure.TransformationMenuPart_IncludeSubstituteMenu" flags="ng" index="ulPW2">
         <child id="6089045305656903122" name="menuReference" index="2ks2uz" />
       </concept>
@@ -251,6 +254,9 @@
     <node concept="3EZMnI" id="40CvJkJzGIY" role="2wV5jI">
       <node concept="37jFXN" id="5jg33KK9Mqt" role="3F10Kt">
         <property role="37lx6p" value="hZ7kOz9/RIGHT" />
+      </node>
+      <node concept="nf9zX" id="4tQ8CttL1oV" role="3F10Kt">
+        <property role="nf9zW" value="200" />
       </node>
       <node concept="3F0ifn" id="6Q2nboo7HCB" role="3EZMnx">
         <property role="3F0ifm" value=" -&gt; when fails show" />

@@ -79,7 +79,6 @@
       </concept>
       <concept id="1186403694788" name="jetbrains.mps.lang.editor.structure.ColorStyleClassItem" flags="ln" index="VaVBg">
         <property id="1186403713874" name="color" index="Vb096" />
-        <child id="1186403803051" name="query" index="VblUZ" />
       </concept>
       <concept id="1186404549998" name="jetbrains.mps.lang.editor.structure.ForegroundColorStyleClassItem" flags="ln" index="VechU" />
       <concept id="1186414536763" name="jetbrains.mps.lang.editor.structure.BooleanStyleSheetItem" flags="ln" index="VOi$J">
@@ -195,7 +194,6 @@
       <concept id="1166049232041" name="jetbrains.mps.lang.editor.structure.AbstractComponent" flags="ng" index="1XWOmA">
         <reference id="1166049300910" name="conceptDeclaration" index="1XX52x" />
       </concept>
-      <concept id="1176809959526" name="jetbrains.mps.lang.editor.structure.QueryFunction_Color" flags="in" index="3ZlJ5R" />
     </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="1224071154655" name="jetbrains.mps.baseLanguage.structure.AsExpression" flags="nn" index="0kSF2">
@@ -231,9 +229,6 @@
       <concept id="1081256982272" name="jetbrains.mps.baseLanguage.structure.InstanceOfExpression" flags="nn" index="2ZW3vV">
         <child id="1081256993305" name="classType" index="2ZW6by" />
         <child id="1081256993304" name="leftExpression" index="2ZW6bz" />
-      </concept>
-      <concept id="1070533707846" name="jetbrains.mps.baseLanguage.structure.StaticFieldReference" flags="nn" index="10M0yZ">
-        <reference id="1144433057691" name="classifier" index="1PxDUh" />
       </concept>
       <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
       <concept id="1070534370425" name="jetbrains.mps.baseLanguage.structure.IntegerType" flags="in" index="10Oyi0" />
@@ -450,22 +445,7 @@
     <node concept="14StLt" id="4zSofKel4Jp" role="V601i">
       <property role="TrG5h" value="MessageMacro" />
       <node concept="VechU" id="4zSofKehgVV" role="3F10Kt">
-        <property role="Vb096" value="fLwANPq/yellow" />
-        <node concept="3ZlJ5R" id="7s9ueDJVd2Q" role="VblUZ">
-          <node concept="3clFbS" id="7s9ueDJVd2R" role="2VODD2">
-            <node concept="3clFbF" id="7s9ueDJVZ63" role="3cqZAp">
-              <node concept="2OqwBi" id="7s9ueDJVZwz" role="3clFbG">
-                <node concept="10M0yZ" id="7s9ueDJVZat" role="2Oq$k0">
-                  <ref role="3cqZAo" to="lzb2:~JBColor.YELLOW" resolve="YELLOW" />
-                  <ref role="1PxDUh" to="lzb2:~JBColor" resolve="JBColor" />
-                </node>
-                <node concept="liA8E" id="7s9ueDJVZSn" role="2OqNvi">
-                  <ref role="37wK5l" to="lzb2:~JBColor.darker()" resolve="darker" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
+        <property role="Vb096" value="g1_qVrt/darkMagenta" />
       </node>
     </node>
     <node concept="14StLt" id="2RaX98HsX6Z" role="V601i">

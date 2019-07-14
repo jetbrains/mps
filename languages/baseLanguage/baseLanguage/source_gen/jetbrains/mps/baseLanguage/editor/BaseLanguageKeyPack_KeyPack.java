@@ -69,6 +69,14 @@ public class BaseLanguageKeyPack_KeyPack {
       super("DEFAULT_CONSTANT", priority);
     }
   }
+  public static class FUNCTION_DECLARATION_StyleKey extends AbstractStyleKey {
+    public FUNCTION_DECLARATION_StyleKey() {
+      super("FUNCTION_DECLARATION");
+    }
+    public FUNCTION_DECLARATION_StyleKey(int priority) {
+      super("FUNCTION_DECLARATION", priority);
+    }
+  }
   public static class STATIC_METHOD_StyleKey extends AbstractStyleKey {
     public STATIC_METHOD_StyleKey() {
       super("STATIC_METHOD");

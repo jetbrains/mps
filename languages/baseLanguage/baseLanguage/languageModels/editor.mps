@@ -12956,6 +12956,14 @@
         </node>
       </node>
     </node>
+    <node concept="14StLt" id="3f9_B0PUyVA" role="V601i">
+      <property role="TrG5h" value="FunctionDeclaration" />
+      <node concept="3Xmtl4" id="3f9_B0PUzK5" role="3F10Kt">
+        <node concept="1wgc9g" id="3f9_B0PUzKM" role="3XvnJa">
+          <ref role="1wgcnl" node="3f9_B0PUzKe" />
+        </node>
+      </node>
+    </node>
     <node concept="14StLt" id="hshO_Yc" role="V601i">
       <property role="TrG5h" value="Comment" />
       <node concept="3Xmtl4" id="3HPX3xRcOHI" role="3F10Kt">
@@ -23214,6 +23222,9 @@
     </node>
     <node concept="2NdhxG" id="aeM1BF$D3T" role="2NdZaQ">
       <property role="Xl_RC" value="DEFAULT_CONSTANT" />
+    </node>
+    <node concept="2NdhxG" id="3f9_B0PUzKe" role="2NdZaQ">
+      <property role="Xl_RC" value="FUNCTION_DECLARATION" />
     </node>
     <node concept="2NdhxG" id="6HlOI92JYyF" role="2NdZaQ">
       <property role="Xl_RC" value="STATIC_METHOD" />

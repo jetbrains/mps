@@ -36,7 +36,9 @@
       <concept id="1186402211651" name="jetbrains.mps.lang.editor.structure.StyleSheet" flags="ng" index="V5hpn">
         <child id="1186402402630" name="styleClass" index="V601i" />
       </concept>
-      <concept id="1186403751766" name="jetbrains.mps.lang.editor.structure.FontStyleStyleClassItem" flags="ln" index="Vb9p2" />
+      <concept id="1186403751766" name="jetbrains.mps.lang.editor.structure.FontStyleStyleClassItem" flags="ln" index="Vb9p2">
+        <property id="1186403771423" name="style" index="Vbekb" />
+      </concept>
       <concept id="1186414536763" name="jetbrains.mps.lang.editor.structure.BooleanStyleSheetItem" flags="ln" index="VOi$J">
         <property id="1186414551515" name="flag" index="VOm3f" />
       </concept>
@@ -143,14 +145,18 @@
     <property role="TrG5h" value="Constraints_Styles" />
     <node concept="14StLt" id="52CT$p9qMd6" role="V601i">
       <property role="TrG5h" value="RootHeading" />
-      <node concept="Vb9p2" id="52CT$p9rdJ3" role="3F10Kt" />
+      <node concept="Vb9p2" id="52CT$p9rdJ3" role="3F10Kt">
+        <property role="Vbekb" value="g1_k_vY/BOLD" />
+      </node>
       <node concept="27z8qx" id="52CT$p9v2CL" role="3F10Kt">
         <property role="3$6WeP" value="0.2" />
       </node>
     </node>
     <node concept="14StLt" id="52CT$p9rdIc" role="V601i">
       <property role="TrG5h" value="RuleBlockDeclaration" />
-      <node concept="Vb9p2" id="52CT$p9rdIO" role="3F10Kt" />
+      <node concept="Vb9p2" id="52CT$p9rdIO" role="3F10Kt">
+        <property role="Vbekb" value="g1_k_vY/BOLD" />
+      </node>
       <node concept="27z8qx" id="52CT$p9vIVo" role="3F10Kt">
         <property role="3$6WeP" value="0.2" />
       </node>
@@ -284,7 +290,7 @@
     <node concept="3EZMnI" id="1BFxp3HHhvE" role="2wV5jI">
       <node concept="l2Vlx" id="1BFxp3HHhvF" role="2iSdaV" />
       <node concept="3F0ifn" id="1BFxp3HHhvG" role="3EZMnx">
-        <property role="3F0ifm" value="rule block for" />
+        <property role="3F0ifm" value="rules block for" />
         <ref role="1k5W1q" node="52CT$p9rdIc" resolve="RuleBlockDeclaration" />
       </node>
       <node concept="1iCGBv" id="1BFxp3HHhvH" role="3EZMnx">
