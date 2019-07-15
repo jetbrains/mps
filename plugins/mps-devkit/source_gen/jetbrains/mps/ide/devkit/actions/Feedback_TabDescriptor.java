@@ -7,6 +7,7 @@ import javax.swing.Icon;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import org.jetbrains.mps.openapi.language.SConcept;
 
 public class Feedback_TabDescriptor extends RelationDescriptor {
-  private static final Icon ICON = null;
+  private static final Icon ICON = IconContainer.ICON_a0;
 
   public Feedback_TabDescriptor() {
   }
@@ -37,6 +38,10 @@ public class Feedback_TabDescriptor extends RelationDescriptor {
   }
   public boolean isApplicable(SNode node) {
     return SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"));
+  }
+  @Nullable
+  public Icon getIcon() {
+    return ICON;
   }
   public List<SNode> getNodes(SNode node) {
     List<SNode> list = ListSequence.fromList(new ArrayList<SNode>());

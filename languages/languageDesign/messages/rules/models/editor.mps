@@ -267,17 +267,11 @@
         </node>
       </node>
       <node concept="l2Vlx" id="3LOLRuvo2vg" role="2iSdaV" />
-      <node concept="3EZMnI" id="yXuRM1SszZ" role="3EZMnx">
-        <node concept="2iRfu4" id="yXuRM1Ss$0" role="2iSdaV" />
-        <node concept="3F1sOY" id="5VED60U2Jx8" role="3EZMnx">
-          <property role="39s7Ar" value="true" />
-          <property role="1$x2rV" value="&lt;default message&gt;" />
-          <ref role="1NtTu8" to="t16r:4zSofKedyR8" resolve="messagesExpr" />
-          <ref role="34QXea" node="2dMY_rc2UlY" resolve="NoMessageKeymap" />
-        </node>
-        <node concept="nf9zX" id="yXuRM1Ss$7" role="3F10Kt">
-          <property role="nf9zW" value="100" />
-        </node>
+      <node concept="3F1sOY" id="5VED60U2Jx8" role="3EZMnx">
+        <property role="39s7Ar" value="true" />
+        <property role="1$x2rV" value="&lt;default message&gt;" />
+        <ref role="1NtTu8" to="t16r:4zSofKedyR8" resolve="messagesExpr" />
+        <ref role="34QXea" node="2dMY_rc2UlY" resolve="NoMessageKeymap" />
       </node>
     </node>
   </node>

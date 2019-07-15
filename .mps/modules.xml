@@ -197,6 +197,7 @@
       <modulePath path="${mps_home}/languages/languageDesign/typesystem/jetbrains.mps.lang.typesystem.mpl" folder="core.aspects.typesystem" />
       <modulePath path="${mps_home}/languages/languageDesign/util/jetbrains.mps.lang.util.order/jetbrains.mps.lang.util.order.mpl" folder="core.aspects.util" />
       <modulePath path="${mps_home}/languages/multiAspectLang/multiAspectLang.mpl" folder="samplesForNewConstraints" />
+      <modulePath path="${mps_home}/languages/multiAspectLang2/multiAspectLang2.mpl" folder="samplesForNewConstraints" />
       <modulePath path="${mps_home}/languages/util/builders/jetbrains.mps.baseLanguage.builders.mpl" folder="core.baseLanguage.builders" />
       <modulePath path="${mps_home}/languages/util/builders/sandbox/jetbrains.mps.baseLanguage.builders.sandbox.msd" folder="core.baseLanguage.builders" />
       <modulePath path="${mps_home}/languages/util/core.text/jetbrains.mps.lang.text.mpl" folder="core.languages.text" />

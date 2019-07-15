@@ -21,11 +21,6 @@ import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.scope.ListScope;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.smodel.Language;
-import jetbrains.mps.scope.EmptyScope;
-import jetbrains.mps.lang.scopes.runtime.NamedElementsScope;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import java.util.HashMap;
 
 public class MissingPropertyInConceptProblem_Constraints extends BaseConstraintsDescriptor {
@@ -56,42 +51,9 @@ public class MissingPropertyInConceptProblem_Constraints extends BaseConstraints
         };
       }
     };
-    BaseReferenceConstraintsDescriptor d1 = new BaseReferenceConstraintsDescriptor(MetaAdapterFactory.getReferenceLink(0x7127d40929f043e8L, 0x917ff016ea288944L, 0x4f7007d340049b31L, 0x5803115ad14c43b2L, "concept"), this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
-      @Nullable
-      @Override
-      public ReferenceScopeProvider getScopeProvider() {
-        return new BaseScopeProvider() {
-          @Override
-          public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_7oncdj_a0a0a0a0a1a0a0b0c;
-          }
-          @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
-            SModel structure = check_7oncdj_a0a0b0a0a0b0a0a1a2(Language.getLanguageForLanguageAspect(SNodeOperations.getModel(_context.getContextNode())));
-            if (structure == null) {
-              return new EmptyScope();
-            }
-
-            return new NamedElementsScope(SModelOperations.roots(structure, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration")));
-          }
-        };
-      }
-    };
     Map<SReferenceLink, ReferenceConstraintsDescriptor> references = new HashMap<SReferenceLink, ReferenceConstraintsDescriptor>();
     references.put(d0.getReference(), d0);
-    references.put(d1.getReference(), d1);
     return references;
   }
-  private static SModel check_7oncdj_a0a0b0a0a0b0a0a1a2(Language checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getStructureModelDescriptor();
-    }
-    return null;
-  }
   private static SNodePointer breakingNode_7oncdj_a0a0a0a0a1a0a0a0c = new SNodePointer("r:44de6cb2-b6eb-47d2-bf88-1577a328d3f6(jetbrains.mps.lang.feedback.problem.structural.constraints)", "7716791493892404456");
-  private static SNodePointer breakingNode_7oncdj_a0a0a0a0a1a0a0b0c = new SNodePointer("r:44de6cb2-b6eb-47d2-bf88-1577a328d3f6(jetbrains.mps.lang.feedback.problem.structural.constraints)", "6836281137582781546");
 }

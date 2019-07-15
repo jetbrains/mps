@@ -24,7 +24,6 @@
     <language id="f159adf4-3c93-40f9-9c5a-1f245a8697af" name="jetbrains.mps.lang.aspect">
       <concept id="3433054418424672374" name="jetbrains.mps.lang.aspect.structure.SimpleLanguageAspectDescriptor" flags="ng" index="3vrhyV">
         <child id="6106419185511570295" name="mainLanguages" index="QG$2i" />
-        <child id="6106419185511570301" name="additionalLanguages" index="QG$2o" />
         <child id="8222125370833980146" name="devkit" index="TkT64" />
         <child id="4726480899534753275" name="helpUrl" index="1fTXyH" />
         <child id="3433054418425083029" name="icon" index="3vqPLo" />
@@ -85,6 +84,14 @@
       <property role="2V$B1T" value="ad93155d-79b2-4759-b10c-55123e763903" />
       <property role="2V$B1Q" value="jetbrains.mps.lang.messages" />
     </node>
+    <node concept="2V$Bhx" id="21iUAs6Id7k" role="QG$2i">
+      <property role="2V$B1T" value="13744753-c81f-424a-9c1b-cf8943bf4e86" />
+      <property role="2V$B1Q" value="jetbrains.mps.lang.sharedConcepts" />
+    </node>
+    <node concept="2V$Bhx" id="7_GILwdCPO2" role="QG$2i">
+      <property role="2V$B1T" value="e51810c5-7308-4642-bcb6-469e61b5dd18" />
+      <property role="2V$B1Q" value="jetbrains.mps.lang.constraints.msgSpecification" />
+    </node>
     <node concept="2vPci8" id="264$spPfZhg" role="3F_NFc">
       <ref role="2vPcib" to="tpcc:264$spPfYX1" resolve="MPSAspects" />
     </node>
@@ -95,14 +102,6 @@
     <node concept="T9mpH" id="6GnzfDRiiE6" role="TkT64">
       <property role="T9mpF" value="00000000-0000-4000-0000-5604ebd4f22c" />
       <property role="T9mpE" value="jetbrains.mps.devkit.aspect.constraints" />
-    </node>
-    <node concept="2V$Bhx" id="21iUAs6Id7k" role="QG$2o">
-      <property role="2V$B1T" value="13744753-c81f-424a-9c1b-cf8943bf4e86" />
-      <property role="2V$B1Q" value="jetbrains.mps.lang.sharedConcepts" />
-    </node>
-    <node concept="2V$Bhx" id="7_GILwdCPO2" role="QG$2o">
-      <property role="2V$B1T" value="e51810c5-7308-4642-bcb6-469e61b5dd18" />
-      <property role="2V$B1Q" value="jetbrains.mps.lang.constraints.msgSpecification" />
     </node>
   </node>
 </model>

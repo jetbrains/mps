@@ -15,7 +15,7 @@
       <unit at="10,0,30,0" name="jetbrains.mps.lang.feedback.problem.structural.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
-      <unit at="15,0,78,0" name="jetbrains.mps.lang.feedback.problem.structural.structure.StructureAspectDescriptor" />
+      <unit at="15,0,76,0" name="jetbrains.mps.lang.feedback.problem.structural.structure.StructureAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:270d7173-b5a9-45a3-a074-68571d20064c(jetbrains.mps.lang.feedback.problem.structural.structure)/2554379189374329844">
@@ -43,15 +43,14 @@
       <node id="2554379189374329844" at="59,33,60,148" concept="0" />
       <node id="2554379189374329844" at="60,148,61,133" concept="0" />
       <node id="2554379189374329844" at="61,133,62,17" concept="0" />
-      <node id="2554379189374329845" at="62,17,63,166" concept="0" />
-      <node id="2554379189374329844" at="63,166,64,57" concept="0" />
-      <node id="2554379189374329844" at="64,57,65,22" concept="4" />
-      <node id="2554379189374329844" at="57,0,67,0" concept="6" trace="createDescriptorForMissingChildInConceptProblem#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <node id="2554379189374329844" at="62,17,63,57" concept="0" />
+      <node id="2554379189374329844" at="63,57,64,22" concept="4" />
+      <node id="2554379189374329844" at="57,0,66,0" concept="6" trace="createDescriptorForMissingChildInConceptProblem#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="2554379189374329844" at="39,62,40,53" />
-      <scope id="2554379189374329844" at="57,86,65,22">
+      <scope id="2554379189374329844" at="57,86,64,22">
         <var name="b" id="2554379189374329844" />
       </scope>
-      <scope id="2554379189374329844" at="57,0,67,0" />
+      <scope id="2554379189374329844" at="57,0,66,0" />
     </file>
   </root>
   <root nodeRef="r:270d7173-b5a9-45a3-a074-68571d20064c(jetbrains.mps.lang.feedback.problem.structural.structure)/5724083730281438001">
@@ -74,20 +73,19 @@
     <file name="StructureAspectDescriptor.java">
       <node id="5724083730281438001" at="17,0,18,0" concept="1" trace="myConceptMissingPropertyInConceptProblem" />
       <node id="5724083730281438001" at="41,65,42,56" concept="4" />
-      <node id="5724083730281438001" at="67,89,68,212" concept="3" />
-      <node id="5724083730281438001" at="68,212,69,33" concept="0" />
-      <node id="5724083730281438001" at="69,33,70,148" concept="0" />
-      <node id="5724083730281438001" at="70,148,71,133" concept="0" />
-      <node id="5724083730281438001" at="71,133,72,17" concept="0" />
-      <node id="6341931782023955378" at="72,17,73,166" concept="0" />
-      <node id="5724083730281438001" at="73,166,74,60" concept="0" />
-      <node id="5724083730281438001" at="74,60,75,22" concept="4" />
-      <node id="5724083730281438001" at="67,0,77,0" concept="6" trace="createDescriptorForMissingPropertyInConceptProblem#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <node id="5724083730281438001" at="66,89,67,212" concept="3" />
+      <node id="5724083730281438001" at="67,212,68,33" concept="0" />
+      <node id="5724083730281438001" at="68,33,69,148" concept="0" />
+      <node id="5724083730281438001" at="69,148,70,133" concept="0" />
+      <node id="5724083730281438001" at="70,133,71,17" concept="0" />
+      <node id="5724083730281438001" at="71,17,72,60" concept="0" />
+      <node id="5724083730281438001" at="72,60,73,22" concept="4" />
+      <node id="5724083730281438001" at="66,0,75,0" concept="6" trace="createDescriptorForMissingPropertyInConceptProblem#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="5724083730281438001" at="41,65,42,56" />
-      <scope id="5724083730281438001" at="67,89,75,22">
+      <scope id="5724083730281438001" at="66,89,73,22">
         <var name="b" id="5724083730281438001" />
       </scope>
-      <scope id="5724083730281438001" at="67,0,77,0" />
+      <scope id="5724083730281438001" at="66,0,75,0" />
     </file>
   </root>
 </debug-info>

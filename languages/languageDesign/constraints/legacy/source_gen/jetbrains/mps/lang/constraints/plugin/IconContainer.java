@@ -5,5 +5,5 @@ package jetbrains.mps.lang.constraints.plugin;
 import jetbrains.mps.smodel.runtime.IconResource;
 
 public class IconContainer {
-  protected static IconResource RESOURCE_a0a8a0a0a1 = new IconResource("constraintsModel.png", IconContainer.class);
+  protected static IconResource RESOURCE_a0a7a0a0a1 = new IconResource("constraintsModel.png", IconContainer.class);
 }

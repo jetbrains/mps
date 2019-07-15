@@ -5,8 +5,9 @@ package main;
 import jetbrains.mps.generator.runtime.Generated;
 import jetbrains.mps.generator.impl.query.QueryProviderBase;
 import jetbrains.mps.generator.template.ReferenceMacroContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.feedback.problem.structural.behavior.MissingPropertyInConceptProblem__BehaviorDescriptor;
+import jetbrains.mps.lang.feedback.problem.structural.behavior.MissingChildInConceptProblem__BehaviorDescriptor;
 import java.util.Map;
 import jetbrains.mps.generator.impl.query.ReferenceTargetQuery;
 import java.util.HashMap;
@@ -21,10 +22,10 @@ public class QueriesGenerated extends QueryProviderBase {
     super(1);
   }
   public static Object referenceMacro_GetReferent_0_0(final ReferenceMacroContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0x7127d40929f043e8L, 0x917ff016ea288944L, 0x4f7007d340049b31L, 0x5803115ad14c43b2L, "concept"));
+    return (SNode) MissingPropertyInConceptProblem__BehaviorDescriptor.getConcept_id224Bjf9ui32.invoke(_context.getNode());
   }
   public static Object referenceMacro_GetReferent_0_1(final ReferenceMacroContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0x7127d40929f043e8L, 0x917ff016ea288944L, 0x2372fa56cc4ea3f4L, 0x2372fa56cc4ea3f5L, "concept"));
+    return (SNode) MissingChildInConceptProblem__BehaviorDescriptor.getConcept_id224Bjf9ukOx.invoke(_context.getNode());
   }
   private final Map<String, ReferenceTargetQuery> rtqMethods = new HashMap<String, ReferenceTargetQuery>();
   {

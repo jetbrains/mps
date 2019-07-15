@@ -13,6 +13,7 @@ import jetbrains.mps.core.aspects.constraints.rules.RulesConstraintsAspect;
 import jetbrains.mps.lang.feedback.problem.structural.constraints.GeneratedRulesConstraintsAspect;
 import jetbrains.mps.openapi.actions.descriptor.ActionAspectDescriptor;
 import jetbrains.mps.lang.feedback.problem.structural.actions.ActionAspectDescriptorImpl;
+import jetbrains.mps.smodel.runtime.BehaviorAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsAspectDescriptor;
 import jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor;
 import jetbrains.mps.lang.feedback.problem.structural.editor.EditorAspectDescriptorImpl;
@@ -59,6 +60,9 @@ public class Language extends LanguageRuntime {
     // AP: legacy part, must be migrated from switch: please use lang.descriptor mapping label 
     if (aspectClass == ActionAspectDescriptor.class) {
       return aspectClass.cast(new ActionAspectDescriptorImpl());
+    }
+    if (aspectClass == BehaviorAspectDescriptor.class) {
+      return aspectClass.cast(new jetbrains.mps.lang.feedback.problem.structural.behavior.BehaviorAspectDescriptor());
     }
     if (aspectClass == ConstraintsAspectDescriptor.class) {
       return aspectClass.cast(new jetbrains.mps.lang.feedback.problem.structural.constraints.ConstraintsAspectDescriptor());

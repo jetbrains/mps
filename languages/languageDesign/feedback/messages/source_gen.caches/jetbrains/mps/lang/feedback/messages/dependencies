@@ -10,11 +10,9 @@
     <classNode dependClassName="jetbrains.mps.lang.feedback.messages.behavior.BehaviorAspectDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.feedback.messages.constraints.GeneratedRulesConstraintsAspect" />
     <classNode dependClassName="jetbrains.mps.lang.feedback.messages.editor.EditorAspectDescriptorImpl" />
-    <classNode dependClassName="jetbrains.mps.lang.feedback.messages.intentions.IntentionsDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.feedback.messages.structure.ConceptPresentationAspectImpl" />
     <classNode dependClassName="jetbrains.mps.lang.feedback.messages.structure.StructureAspectDescriptor" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor" />
-    <classNode dependClassName="jetbrains.mps.openapi.intentions.IntentionAspectDescriptor" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.ids.SLanguageId" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="jetbrains.mps.smodel.runtime.BehaviorAspectDescriptor" />

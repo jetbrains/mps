@@ -15,16 +15,9 @@
         <property id="6714410169261853888" name="conceptId" index="EcuMT" />
         <property id="4628067390765956807" name="final" index="R5$K2" />
         <property id="5092175715804935370" name="conceptAlias" index="34LRSv" />
-        <child id="1071489727083" name="linkDeclaration" index="1TKVEi" />
       </concept>
       <concept id="1071489090640" name="jetbrains.mps.lang.structure.structure.ConceptDeclaration" flags="ig" index="1TIwiD">
         <reference id="1071489389519" name="extends" index="1TJDcQ" />
-      </concept>
-      <concept id="1071489288298" name="jetbrains.mps.lang.structure.structure.LinkDeclaration" flags="ig" index="1TJgyj">
-        <property id="1071599776563" name="role" index="20kJfa" />
-        <property id="1071599893252" name="sourceCardinality" index="20lbJX" />
-        <property id="241647608299431140" name="linkId" index="IQ2ns" />
-        <reference id="1071599976176" name="target" index="20lvS9" />
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
@@ -39,12 +32,6 @@
     <property role="34LRSv" value="when property does not belong to the concept" />
     <property role="R5$K2" value="true" />
     <ref role="1TJDcQ" to="sis7:6GnzfDRfssU" resolve="ProblemPointsToKindRoot" />
-    <node concept="1TJgyj" id="5w34lFhj4eM" role="1TKVEi">
-      <property role="IQ2ns" value="6341931782023955378" />
-      <property role="20kJfa" value="concept" />
-      <property role="20lbJX" value="fLJekj4/_1" />
-      <ref role="20lvS9" to="tpce:h0PkWnZ" resolve="AbstractConceptDeclaration" />
-    </node>
   </node>
   <node concept="1TIwiD" id="2dMY_rcjEfO">
     <property role="EcuMT" value="2554379189374329844" />
@@ -52,12 +39,6 @@
     <property role="34LRSv" value="when child does not belong to the concept" />
     <property role="R5$K2" value="true" />
     <ref role="1TJDcQ" to="sis7:6GnzfDRfssU" resolve="ProblemPointsToKindRoot" />
-    <node concept="1TJgyj" id="2dMY_rcjEfP" role="1TKVEi">
-      <property role="IQ2ns" value="2554379189374329845" />
-      <property role="20kJfa" value="concept" />
-      <property role="20lbJX" value="fLJekj4/_1" />
-      <ref role="20lvS9" to="tpce:h0PkWnZ" resolve="AbstractConceptDeclaration" />
-    </node>
   </node>
 </model>
 

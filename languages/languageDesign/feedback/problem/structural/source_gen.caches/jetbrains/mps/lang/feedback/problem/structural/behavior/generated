@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-6cueyvnir6i6qh21k43eufrnjb0lia8" />
+<product version="3" modelHash="-dzk5uemblcbgcp1ifgfxnwjevkzw7ls">
+  <files names="BehaviorAspectDescriptor.java:MissingChildInConceptProblem__BehaviorDescriptor.java:MissingPropertyInConceptProblem__BehaviorDescriptor.java" />
+</product>
 
