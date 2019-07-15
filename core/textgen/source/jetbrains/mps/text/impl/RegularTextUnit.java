@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -187,6 +187,9 @@ public class RegularTextUnit implements TextUnit, CompatibilityTextUnit {
       // generally, client are expected to ask #getState() first, and handle Empty case as appropriate.
       // However, if they do not, there's no reason to fail with NPE.
       return new byte[0];
+    }
+    if (myOutcome == null) {
+      return String.format("Errors while generating text outcome (%s), please check log file for exceptions", myState).getBytes(getEncoding());
     }
     // FIXME Handling of binary/base64 encoded strings missing?!
 //    if (myEncoding == null && "binary".equals(getLegacyEncoding())) {
