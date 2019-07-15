@@ -162,15 +162,12 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
       run((tcc) -> {
         // the typechecking context is expected to have been created with the same root node
         if (tcc.getNode() == null || tcc.getNode() != root) return;
-        tcc.checkRoot(true);
-        tcc.checkRootAndGetErrors(true)
+        tcc.checkIfNotChecked(root, false);
+        tcc.getNodesWithErrors(true)
            .stream()
            .flatMap((pair) -> pair.o2.stream())
            .map(TypesystemReportItemAdapter::new)
            .forEach(errorsConsumer);
-
-        // clear all errors
-        tcc.clear();
       });
     }
 
@@ -206,23 +203,6 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
     @Override
     public TypeCheckingContext getTypeCheckingContext() {
       return myTypecheckingContext;
-    }
-
-    @Override
-    public void checkRecursively(SNode root, Consumer<? super NodeReportItem> errorsConsumer) {
-      run((tcc) -> {
-        // the typechecking context is expected to have been created with the same root node
-        if (tcc.getNode() == null || tcc.getNode() != root) return;
-        tcc.checkIfNotChecked(root, false);
-        tcc.getNodesWithErrors(true)
-           .stream()
-           .flatMap((pair) -> pair.o2.stream())
-           .map(TypesystemReportItemAdapter::new)
-           .forEach(errorsConsumer);
-
-        // clear all errors
-//        tcc.clear();
-      });
     }
 
     @Override

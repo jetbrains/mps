@@ -167,8 +167,9 @@ public class SubstitutionTrial {
 
     private void runTrial(Consumer<SubstitutionAcceptable> trialHandler) {
       TypecheckingFacade.getFromContext().runIsolated(
-          Flags.forRoot(myTypecheckingRoot).incremental(), () ->
-                                                               trialHandler.accept(this));
+          Flags.forRoot(myTypecheckingRoot).incremental(),
+          () ->
+              trialHandler.accept(this));
     }
 
     /**
@@ -188,6 +189,8 @@ public class SubstitutionTrial {
         if (type == null || TypesUtil.isVariable(type)) return false;
 
         TypecheckingFacade.getFromContext().checkRecursively(myTypecheckingRoot, errorTracker);
+        // ensure all errors are cleared before the nodes get replaced
+        TypecheckingFacade.getFromContext().clearCache(myTypecheckingRoot);
 
       } finally {
         replaceWithAnother(replacement, myTarget);
@@ -208,7 +211,9 @@ public class SubstitutionTrial {
       ErrorTracker errorTracker = createErrorTracker(myTypecheckingRoot, replacement);
       try {
         TypecheckingFacade.getFromContext().checkRecursively(myTypecheckingRoot, errorTracker);
-
+        // ensure all errors are cleared before the nodes get replaced
+        TypecheckingFacade.getFromContext().clearCache(myTypecheckingRoot);
+        
       } finally {
         replaceWithAnother(replacement, myTarget);
       }
