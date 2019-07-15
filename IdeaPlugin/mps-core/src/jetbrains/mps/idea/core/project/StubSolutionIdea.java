@@ -29,6 +29,7 @@ import jetbrains.mps.extapi.module.SRepositoryExt;
 import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
 import jetbrains.mps.idea.core.project.stubs.JdkStubSolutionManager;
 import jetbrains.mps.idea.core.project.stubs.StubModuleNameTakenException;
+import jetbrains.mps.java.stub.PackageScopeControl;
 import jetbrains.mps.module.SDependencyImpl;
 import jetbrains.mps.persistence.MementoImpl;
 import jetbrains.mps.persistence.PersistenceRegistry;
@@ -41,7 +42,12 @@ import jetbrains.mps.project.structure.modules.ModuleFacetDescriptor;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
 import jetbrains.mps.smodel.MPSModuleOwner;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
+import jetbrains.mps.util.ClassType;
+import jetbrains.mps.util.MacroHelper.MacroNoHelper;
 import jetbrains.mps.vfs.FileSystem;
+import jetbrains.mps.vfs.IFileSystem;
+import jetbrains.mps.vfs.QualifiedPath;
+import jetbrains.mps.vfs.VFSManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SDependency;
@@ -51,6 +57,7 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
@@ -90,17 +97,17 @@ public abstract class StubSolutionIdea extends StubSolution {
     if (namespace != null && !new ModuleRepositoryFacade(repository).getModulesByName(namespace).isEmpty()) {
       throw new StubModuleNameTakenException(library.getName(), namespace);
     }
-    SolutionDescriptor descriptor = createDescriptor(namespace, library.getFiles(OrderRootType.CLASSES));
+    SolutionDescriptor descriptor = createDescriptor(namespace, library.getFiles(OrderRootType.CLASSES), false);
     return register(repository, moduleOwner, new LibraryStubSolution(descriptor, library));
   }
 
   public static Solution newInstance(Sdk sdk, Sdk baseJdk, MPSModuleOwner moduleOwner, SRepositoryExt repository) {
-    SolutionDescriptor descriptor = createDescriptor(sdk.getName(), ((SdkModificator) sdk).getRoots(OrderRootType.CLASSES));
+    SolutionDescriptor descriptor = createDescriptor(sdk.getName(), ((SdkModificator) sdk).getRoots(OrderRootType.CLASSES), false);
     return register(repository, moduleOwner, new SdkStubSolution(descriptor, sdk, baseJdk));
   }
 
   public static Solution newInstanceForJdk(Sdk sdk, MPSModuleOwner moduleOwner, SRepositoryExt repository) {
-    SolutionDescriptor descriptor = createDescriptor("JDK", ((SdkModificator) sdk).getRoots(OrderRootType.CLASSES));
+    SolutionDescriptor descriptor = createDescriptor("JDK", ((SdkModificator) sdk).getRoots(OrderRootType.CLASSES), true);
 
     // giving the SDK the hard-coded module id
     ModuleId jdkId = ModuleId.regular(UUID.fromString("6354ebe7-c22a-4a0f-ac54-50b52ab9b065"));
@@ -118,7 +125,7 @@ public abstract class StubSolutionIdea extends StubSolution {
   }
 
   public static Solution newInstanceForRoots(Sdk sdk, Sdk baseJdk, VirtualFile[] roots, MPSModuleOwner moduleOwner, SRepositoryExt repository) {
-    SolutionDescriptor descriptor = createDescriptor(sdk.getName(), roots);
+    SolutionDescriptor descriptor = createDescriptor(sdk.getName(), roots, false);
     return register(repository, moduleOwner, new SdkStubSolution(descriptor, sdk, baseJdk));
   }
 
@@ -132,14 +139,33 @@ public abstract class StubSolutionIdea extends StubSolution {
     return null;
   }
 
-  private static SolutionDescriptor createDescriptor(String name, VirtualFile[] roots) {
+  private static SolutionDescriptor createDescriptor(String name, VirtualFile[] roots, boolean isJdk) {
     SolutionDescriptor sd = new SolutionDescriptor();
     sd.setNamespace(name);
     sd.setId(ModuleId.foreign(name));
     sd.setCompileInMPS(false);
     sd.getModuleFacetDescriptors().add(new ModuleFacetDescriptor(IdeaPluginModuleFacet.FACET_TYPE, new MementoImpl()));
-    addModelRoots(sd, roots);
+    if (!isJdk) {
+      addModelRoots(sd, roots);
+    } else {
+      MementoImpl memento = new MementoImpl();
+      for (VirtualFile f : roots) {
+        //todo good conversion
+        memento.createChild("path").put("value", file2QP(f).serialize(new MacroNoHelper()));
+      }
+      //todo [MM] this was not here , still, seems to be actually reequired
+      //      PackageScopeControl psc = getPackageScopeControl(ClassType.JDK);
+      //      if (psc != null) {
+      //        psc.save(memento.createChild("PackageScope"));
+      //      }
+      sd.getModelRootDescriptors().add(new ModelRootDescriptor(PersistenceRegistry.JDK_CLASSES_ROOT, memento));
+    }
     return sd;
+  }
+
+  @NotNull
+  private static QualifiedPath file2QP(VirtualFile f) {
+    return new QualifiedPath(VFSManager.JRT_FS, f.getPath());
   }
 
   protected void attachRootsListener() {
@@ -166,7 +192,6 @@ public abstract class StubSolutionIdea extends StubSolution {
     Set<String> seenPaths = new LinkedHashSet<String>();
     for (ModelRootDescriptor d : solutionDescriptor.getModelRootDescriptors()) {
       if (!PersistenceRegistry.JAVA_CLASSES_ROOT.equals(d.getType())) continue;
-
       seenPaths.add(d.getMemento().get("path"));
     }
     for (VirtualFile f : roots) {
