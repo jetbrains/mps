@@ -63,7 +63,7 @@ import java.util.UUID;
 public class JdkStubSolutionManager extends AbstractJavaStubSolutionManager implements ApplicationComponent, Listener {
   private final Object LOCK = new Object();
 
-  private static final String JAVA_SDK_TYPE = "JavaSDK";
+  public static final String JAVA_SDK_TYPE = "JavaSDK";
   private static final String IDEA_SDK_TYPE = "IDEA JDK";
 
   private ProjectJdkTable myTable;
