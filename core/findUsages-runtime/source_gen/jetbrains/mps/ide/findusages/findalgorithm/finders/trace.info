@@ -31,43 +31,39 @@
   </root>
   <root nodeRef="r:1a2b3027-99d2-4946-917b-f185130ac75d(jetbrains.mps.ide.findusages.findalgorithm.finders)/7241723264099933722">
     <file name="SearchedObjects.java">
-      <node id="7241723264099933786" at="15,0,16,0" concept="3" trace="mySearchedNodes" />
-      <node id="7241723264099933798" at="17,61,18,55" concept="2" />
-      <node id="7241723264099933830" at="21,31,22,56" concept="8" />
-      <node id="5022521356431329911" at="31,32,32,27" concept="8" />
-      <node id="7241723264099933840" at="35,32,36,39" concept="8" />
-      <node id="7241723264099933856" at="40,75,41,50" concept="7" />
-      <node id="7241723264099933863" at="42,46,43,52" concept="2" />
-      <node id="7241723264099933871" at="44,5,45,49" concept="8" />
-      <node id="7241723264099933791" at="17,0,20,0" concept="1" trace="SearchedObjects#(Ljava/util/Collection;)V" />
-      <node id="7241723264099933828" at="21,0,24,0" concept="6" trace="getElements#()Ljava/util/Set;" />
-      <node id="7241723264099933836" at="35,0,38,0" concept="6" trace="contains#(null)Z" />
-      <node id="7241723264099933860" at="41,50,44,5" concept="4" />
-      <node id="5022521356431329909" at="29,0,34,0" concept="6" trace="getElements0#()Ljava/util/Set;" />
-      <node id="7241723264099933847" at="39,0,47,0" concept="11" trace="union#(null)Ljetbrains/mps/ide/findusages/findalgorithm/finders/SearchedObjects;" />
-      <scope id="7241723264099933797" at="17,61,18,55" />
-      <scope id="7241723264099933829" at="21,31,22,56" />
-      <scope id="5022521356431329910" at="31,32,32,27" />
-      <scope id="7241723264099933839" at="35,32,36,39" />
-      <scope id="7241723264099933862" at="42,46,43,52" />
-      <scope id="7241723264099933791" at="17,0,20,0">
+      <node id="7241723264099933786" at="14,0,15,0" concept="3" trace="mySearchedNodes" />
+      <node id="7241723264099933798" at="16,61,17,84" concept="2" />
+      <node id="7241723264099933830" at="20,31,21,27" concept="8" />
+      <node id="7241723264099933840" at="24,32,25,39" concept="8" />
+      <node id="7241723264099933856" at="29,85,30,50" concept="7" />
+      <node id="7241723264099933863" at="31,56,32,52" concept="2" />
+      <node id="7241723264099933871" at="33,5,34,49" concept="8" />
+      <node id="7241723264099933791" at="16,0,19,0" concept="1" trace="SearchedObjects#(Ljava/util/Collection;)V" />
+      <node id="7241723264099933828" at="20,0,23,0" concept="6" trace="getElements#()Ljava/util/Set;" />
+      <node id="7241723264099933836" at="24,0,27,0" concept="6" trace="contains#(null)Z" />
+      <node id="7241723264099933860" at="30,50,33,5" concept="4" />
+      <node id="7241723264099933847" at="28,0,36,0" concept="11" trace="union#(null)Ljetbrains/mps/ide/findusages/findalgorithm/finders/SearchedObjects;" />
+      <scope id="7241723264099933797" at="16,61,17,84" />
+      <scope id="7241723264099933829" at="20,31,21,27" />
+      <scope id="7241723264099933839" at="24,32,25,39" />
+      <scope id="7241723264099933862" at="31,56,32,52" />
+      <scope id="7241723264099933791" at="16,0,19,0">
         <var name="collection" id="7241723264099933793" />
       </scope>
-      <scope id="7241723264099933828" at="21,0,24,0" />
-      <scope id="7241723264099933836" at="35,0,38,0">
+      <scope id="7241723264099933828" at="20,0,23,0" />
+      <scope id="7241723264099933836" at="24,0,27,0">
         <var name="k" id="7241723264099933837" />
       </scope>
-      <scope id="7241723264099933860" at="41,50,44,5">
+      <scope id="7241723264099933860" at="30,50,33,5">
         <var name="element" id="7241723264099933866" />
       </scope>
-      <scope id="5022521356431329909" at="29,0,34,0" />
-      <scope id="7241723264099933854" at="40,75,45,49">
+      <scope id="7241723264099933854" at="29,85,34,49">
         <var name="searchedNodes" id="7241723264099933855" />
       </scope>
-      <scope id="7241723264099933847" at="39,0,47,0">
+      <scope id="7241723264099933847" at="28,0,36,0">
         <var name="array" id="7241723264099933850" />
       </scope>
-      <unit id="7241723264099933722" at="13,0,48,0" name="jetbrains.mps.ide.findusages.findalgorithm.finders.SearchedObjects" />
+      <unit id="7241723264099933722" at="12,0,37,0" name="jetbrains.mps.ide.findusages.findalgorithm.finders.SearchedObjects" />
     </file>
   </root>
   <root nodeRef="r:1a2b3027-99d2-4946-917b-f185130ac75d(jetbrains.mps.ide.findusages.findalgorithm.finders)/7241723264100158065">

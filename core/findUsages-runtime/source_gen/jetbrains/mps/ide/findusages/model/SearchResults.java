@@ -38,6 +38,9 @@ public class SearchResults<T> implements UsagesList {
   }
 
   public SearchResults(Collection<?> searchedObjects, List<SearchResult<T>> searchResults) {
+    // searchedObjects lists elements we looked for; elements our results are 'derived' from. They are not necessarily of the same 
+    // kind as our results, hence we use <?>, not <T> (I don't feel there's reason introduce <E> as it 
+    // (a) limits where we can look; (b) complicates the code 
     mySearchedObjects = new SearchedObjects(searchedObjects);
     mySearchResults = searchResults;
   }
@@ -59,19 +62,6 @@ public class SearchResults<T> implements UsagesList {
   @NotNull
   public SearchedObjects<?> getSearchedObjects() {
     return mySearchedObjects;
-  }
-
-  /**
-   * @deprecated need to remove this since it exposes the internals too much.
-   *             in my view the provided constructors of the class must be enough
-   * use #getSearchedObjects instead
-   */
-  @Deprecated
-  public Set<Object> getSearchedNodes() {
-    // mySearchNodes lists elements we looked for; elements our results 'derived' from. They are not necessarily of the same 
-    // kind as our results, hence we use <?>, not <T> (I don't feel there's reason introduce <E> as it 
-    // (a) limits where we can look; (b) complicates the code 
-    return (Set<Object>) mySearchedObjects.getElements0();
   }
 
   /**
