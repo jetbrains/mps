@@ -41,6 +41,7 @@ public class JavaClassesPersistence implements CoreComponent {
   @Override
   public void dispose() {
     myFacade.setModelIdFactory(LanguageID.JAVA, null);
+    myFacade.setModelRootFactory(PersistenceRegistry.JDK_CLASSES_ROOT, null);
     myFacade.setModelRootFactory(JavaClassStubConstants.STUB_TYPE, null);
   }
 }
