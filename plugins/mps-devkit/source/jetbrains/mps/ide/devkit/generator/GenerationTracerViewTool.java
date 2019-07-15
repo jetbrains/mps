@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,6 +36,7 @@ import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.workbench.action.ActionUtils;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
@@ -74,11 +75,11 @@ public class GenerationTracerViewTool extends BaseProjectTool {
     };
     return new ModelAccessHelper(myTransientModelsOwner.getRepository()).runReadAction(r);
   }
-  public boolean hasTraceInputData(SModelReference modelReference) {
-    return myTransientModelsOwner.getTrace(modelReference) != null;
+  public boolean hasTraceInputData(@Nullable SModelReference modelReference) {
+    return modelReference != null && myTransientModelsOwner.getTrace(modelReference) != null;
   }
-  public boolean hasTracebackData(SModelReference modelReference) {
-    return myTransientModelsOwner.getTrace(modelReference) != null;
+  public boolean hasTracebackData(@Nullable SModelReference modelReference) {
+    return modelReference != null && myTransientModelsOwner.getTrace(modelReference) != null;
   }
   public boolean showTraceInputData(@NotNull SNode node) {
     int index = getTabIndex(GenerationTracerView.Kind.TraceForward, node.getReference());
