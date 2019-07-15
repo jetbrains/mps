@@ -25,6 +25,9 @@ import jetbrains.mps.ide.findusages.model.scopes.ProjectScope;
 import jetbrains.mps.ide.findusages.view.FindUtils;
 import jetbrains.mps.ide.findusages.model.SearchQuery;
 import jetbrains.mps.ide.findusages.model.holders.GenericHolder;
+import com.intellij.openapi.actionSystem.DataContext;
+import com.intellij.ide.DataManager;
+import com.intellij.openapi.actionSystem.Presentation;
 import com.intellij.openapi.actionSystem.ActionPlaces;
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.NodeRepresentatorBase;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -34,12 +37,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.TextOptions;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.ide.icons.IdeIcons;
-import java.util.List;
-import jetbrains.mps.ide.findusages.model.CategoryKind;
-import java.util.Arrays;
-import org.jdom.Element;
-import jetbrains.mps.ide.findusages.CantLoadSomethingException;
-import jetbrains.mps.ide.findusages.CantSaveSomethingException;
 
 public class TodoViewer extends JPanel {
   public static final Icon TODO_ICON = AllIcons.Toolwindows.ToolWindowTodo;
@@ -98,7 +95,11 @@ public class TodoViewer extends JPanel {
     });
     searchTodoAction.setRunOptions(FindUtils.makeProvider(new TodoFinder()), new SearchQuery(new GenericHolder<Project>(myProject), scope.value));
     myUsagesView.setCustomNodeRepresentator(new TodoViewer.MyNodeRepresentator());
-    searchTodoAction.actionPerformed(AnActionEvent.createFromInputEvent(searchTodoAction, null, ActionPlaces.TODO_VIEW_TOOLBAR));
+    DataContext dataContext = DataManager.getInstance().getDataContext(myUsagesView.getComponent());
+    // no idea why clone(), just copied from AnActionEvent.createFromAnAction() 
+    Presentation presentation = searchTodoAction.getTemplatePresentation().clone();
+    AnActionEvent actionEvent = AnActionEvent.createFromInputEvent(null, ActionPlaces.TODO_VIEW_TOOLBAR, presentation, dataContext, false, true);
+    searchTodoAction.actionPerformed(actionEvent);
     getTool().openToolLater(true);
   }
   public static class MyNodeRepresentator extends NodeRepresentatorBase<SNode> {
@@ -128,17 +129,8 @@ public class TodoViewer extends JPanel {
     }
     @Override
     public Icon getCategoryIcon(String category) {
+      // by default, DEFAULT_KATEGORY_KIND goes with 'Filter' icon 
       return IdeIcons.CLOSED_FOLDER;
-    }
-    @Override
-    public List<CategoryKind> getCategoryKinds() {
-      return Arrays.asList(CategoryKind.DEFAULT_CATEGORY_KIND);
-    }
-    @Override
-    public void read(Element element, Project project) throws CantLoadSomethingException {
-    }
-    @Override
-    public void write(Element element, Project project) throws CantSaveSomethingException {
     }
   }
 }
