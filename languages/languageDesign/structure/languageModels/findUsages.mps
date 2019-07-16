@@ -1575,7 +1575,7 @@
                 <ref role="3cqZAo" node="172ROKPzva1" resolve="methodResolutionOrder" />
               </node>
               <node concept="liA8E" id="172ROKPzETp" role="2OqNvi">
-                <ref role="37wK5l" to="9r19:~CachingMethodResolutionOrder.calcLinearization(jetbrains.mps.core.aspects.behaviour.api.AbstractConceptLike)" resolve="calcLinearization" />
+                <ref role="37wK5l" to="9r19:~CachingAncestorResolutionOrder.calcLinearization(jetbrains.mps.core.aspects.behaviour.api.AbstractConceptLike)" resolve="calcLinearization" />
                 <node concept="37vLTw" id="172ROKPzGhx" role="37wK5m">
                   <ref role="3cqZAo" node="172ROKPzGhs" resolve="wrapper" />
                 </node>
@@ -2185,7 +2185,7 @@
     <node concept="2tJIrI" id="6PYrBB1jpEk" role="jymVt" />
     <node concept="3Tm1VV" id="6i$L4D_fwg8" role="1B3o_S" />
     <node concept="3uibUv" id="6i$L4D_fA4O" role="1zkMxy">
-      <ref role="3uigEE" to="manl:~C3StarMethodResolutionOrder" resolve="C3StarMethodResolutionOrder" />
+      <ref role="3uigEE" to="manl:~C3StarAncestorResolutionOrder" resolve="C3StarAncestorResolutionOrder" />
       <node concept="3uibUv" id="172ROKPxaox" role="11_B2D">
         <ref role="3uigEE" node="6i$L4D_fAml" resolve="AbstractConceptWrap" />
       </node>
@@ -2252,7 +2252,7 @@
               <node concept="1pGfFk" id="6PYrBB1jt9q" role="2ShVmc">
                 <ref role="37wK5l" to="33ny:~ArrayList.&lt;init&gt;(java.util.Collection)" resolve="ArrayList" />
                 <node concept="3nyPlj" id="6PYrBB1jrCD" role="37wK5m">
-                  <ref role="37wK5l" to="manl:~AbstractC3StarMethodResolutionOrder.calcLinearization0(jetbrains.mps.core.aspects.behaviour.api.AbstractConceptLike)" resolve="calcLinearization0" />
+                  <ref role="37wK5l" to="manl:~AbstractC3StarAncestorResolutionOrder.calcLinearization0(jetbrains.mps.core.aspects.behaviour.api.AbstractConceptLike)" resolve="calcLinearization0" />
                   <node concept="37vLTw" id="6PYrBB1jrCE" role="37wK5m">
                     <ref role="3cqZAo" node="6PYrBB1jnfq" resolve="concept" />
                   </node>

@@ -94,7 +94,7 @@
     <classNode dependClassName="jetbrains.mps.lang.structure.findUsages.AbstractConceptWrap" />
     <classNode dependClassName="jetbrains.mps.lang.structure.findUsages.ConceptWrap" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
-    <classNode extendsClassName="jetbrains.mps.core.aspects.behaviour.C3StarMethodResolutionOrder" />
+    <classNode extendsClassName="jetbrains.mps.core.aspects.behaviour.C3StarAncestorResolutionOrder" />
   </dependency>
   <dependency className="jetbrains.mps.lang.structure.findUsages.ConceptWrap">
     <classNode dependClassName="java.lang.Override" />
