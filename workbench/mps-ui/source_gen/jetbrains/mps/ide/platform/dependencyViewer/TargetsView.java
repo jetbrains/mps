@@ -24,9 +24,9 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import jetbrains.mps.ide.findusages.model.CategoryKind;
 import java.util.Collections;
-import jetbrains.mps.ide.findusages.view.treeholder.tree.TextOptions;
 import javax.swing.Icon;
 import jetbrains.mps.ide.icons.IdeIcons;
+import jetbrains.mps.ide.findusages.view.treeholder.tree.TextOptions;
 
 public class TargetsView extends UsagesView {
   private final DependenciesPanel myParent;
@@ -121,16 +121,12 @@ public class TargetsView extends UsagesView {
       return Collections.emptyList();
     }
     @Override
-    public String getCategoryText(TextOptions options, String string, boolean b) {
-      return "Targets";
-    }
-    @Override
     public Icon getResultsIcon() {
       return IdeIcons.REFERENCE_ICON;
     }
     @Override
     public String getResultsText(TextOptions options) {
-      String presentation = check_w7qo2b_a0a0e41(myParent.getCurrentScope());
+      String presentation = check_w7qo2b_a0a0d41(myParent.getCurrentScope());
       if ((presentation == null || presentation.length() == 0)) {
         presentation = "the left tree scope selection";
       }
@@ -138,7 +134,7 @@ public class TargetsView extends UsagesView {
       return ((myParent.isMeta() ? "Used languages in " : "Dependencies of ")) + presentation;
     }
   }
-  private static String check_w7qo2b_a0a0e41(DependencyViewerScope checkedDotOperand) {
+  private static String check_w7qo2b_a0a0d41(DependencyViewerScope checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getPresentation();
     }

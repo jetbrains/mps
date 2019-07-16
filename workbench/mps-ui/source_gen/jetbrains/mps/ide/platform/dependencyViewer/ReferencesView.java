@@ -11,9 +11,9 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import jetbrains.mps.ide.findusages.model.CategoryKind;
 import java.util.Collections;
-import jetbrains.mps.ide.findusages.view.treeholder.tree.TextOptions;
 import javax.swing.Icon;
 import jetbrains.mps.ide.icons.IdeIcons;
+import jetbrains.mps.ide.findusages.view.treeholder.tree.TextOptions;
 
 public class ReferencesView extends UsagesView {
   public ReferencesView(Project project, DependenciesPanel component) {
@@ -30,10 +30,6 @@ public class ReferencesView extends UsagesView {
     @Override
     public List<CategoryKind> getCategoryKinds() {
       return Collections.emptyList();
-    }
-    @Override
-    public String getCategoryText(TextOptions options, String string, boolean b) {
-      return "References";
     }
     @Override
     public Icon getResultsIcon() {

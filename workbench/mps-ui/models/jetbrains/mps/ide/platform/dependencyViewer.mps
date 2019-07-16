@@ -4032,37 +4032,6 @@
           <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
       </node>
-      <node concept="3clFb_" id="7ctIhG_bUDl" role="jymVt">
-        <property role="1EzhhJ" value="false" />
-        <property role="TrG5h" value="getCategoryText" />
-        <property role="DiZV1" value="false" />
-        <node concept="3Tm1VV" id="7ctIhG_bUDm" role="1B3o_S" />
-        <node concept="17QB3L" id="75BB0NbE1$y" role="3clF45" />
-        <node concept="37vLTG" id="7ctIhG_bUDo" role="3clF46">
-          <property role="TrG5h" value="options" />
-          <node concept="3uibUv" id="7ctIhG_bUDp" role="1tU5fm">
-            <ref role="3uigEE" to="gkle:~TextOptions" resolve="TextOptions" />
-          </node>
-        </node>
-        <node concept="37vLTG" id="7ctIhG_bUDq" role="3clF46">
-          <property role="TrG5h" value="string" />
-          <node concept="17QB3L" id="75BB0NbE1$_" role="1tU5fm" />
-        </node>
-        <node concept="37vLTG" id="7ctIhG_bUDs" role="3clF46">
-          <property role="TrG5h" value="b" />
-          <node concept="10P_77" id="7ctIhG_bUDt" role="1tU5fm" />
-        </node>
-        <node concept="3clFbS" id="7ctIhG_bUDu" role="3clF47">
-          <node concept="3clFbF" id="7ctIhG_bUDv" role="3cqZAp">
-            <node concept="Xl_RD" id="7ctIhG_bUDw" role="3clFbG">
-              <property role="Xl_RC" value="References" />
-            </node>
-          </node>
-        </node>
-        <node concept="2AHcQZ" id="3tYsUK_RZ8t" role="2AJF6D">
-          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-        </node>
-      </node>
       <node concept="3clFb_" id="7ctIhG_bUDx" role="jymVt">
         <property role="1EzhhJ" value="false" />
         <property role="TrG5h" value="getResultsIcon" />
@@ -6299,37 +6268,6 @@
           </node>
         </node>
         <node concept="2AHcQZ" id="3tYsUK_RUk8" role="2AJF6D">
-          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-        </node>
-      </node>
-      <node concept="3clFb_" id="7ctIhG_bUO5" role="jymVt">
-        <property role="1EzhhJ" value="false" />
-        <property role="TrG5h" value="getCategoryText" />
-        <property role="DiZV1" value="false" />
-        <node concept="3Tm1VV" id="7ctIhG_bUO6" role="1B3o_S" />
-        <node concept="17QB3L" id="75BB0NbE1$A" role="3clF45" />
-        <node concept="37vLTG" id="7ctIhG_bUO8" role="3clF46">
-          <property role="TrG5h" value="options" />
-          <node concept="3uibUv" id="7ctIhG_bUO9" role="1tU5fm">
-            <ref role="3uigEE" to="gkle:~TextOptions" resolve="TextOptions" />
-          </node>
-        </node>
-        <node concept="37vLTG" id="7ctIhG_bUOa" role="3clF46">
-          <property role="TrG5h" value="string" />
-          <node concept="17QB3L" id="75BB0NbE1$C" role="1tU5fm" />
-        </node>
-        <node concept="37vLTG" id="7ctIhG_bUOc" role="3clF46">
-          <property role="TrG5h" value="b" />
-          <node concept="10P_77" id="7ctIhG_bUOd" role="1tU5fm" />
-        </node>
-        <node concept="3clFbS" id="7ctIhG_bUOe" role="3clF47">
-          <node concept="3clFbF" id="7ctIhG_bUOf" role="3cqZAp">
-            <node concept="Xl_RD" id="7ctIhG_bUOg" role="3clFbG">
-              <property role="Xl_RC" value="Targets" />
-            </node>
-          </node>
-        </node>
-        <node concept="2AHcQZ" id="3tYsUK_RUkc" role="2AJF6D">
           <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
       </node>
