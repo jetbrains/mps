@@ -17,7 +17,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryStatement" />
   <root>
     <file name="EditorAspectDescriptorImpl.java">
-      <unit at="23,0,149,0" name="jetbrains.mps.lang.core.editor.EditorAspectDescriptorImpl" />
+      <unit at="24,0,155,0" name="jetbrains.mps.lang.core.editor.EditorAspectDescriptorImpl" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590284(jetbrains.mps.lang.core.editor)/1960260476749651797">
@@ -773,6 +773,82 @@
       <scope id="3078666699043620377" at="98,0,112,0" />
       <unit id="3078666699043620377" at="54,0,116,0" name="jetbrains.mps.lang.core.editor.BaseCommentAttribute_EditorBuilder_a$commentedNodeSingleRoleHandler_si1ien_a0" />
       <unit id="3078666699043620377" at="22,0,117,0" name="jetbrains.mps.lang.core.editor.BaseCommentAttribute_EditorBuilder_a" />
+    </file>
+  </root>
+  <root nodeRef="r:00000000-0000-4000-0000-011c89590284(jetbrains.mps.lang.core.editor)/3094148920980408918">
+    <file name="StrikeOutActionsOfDeprecatedConcept.java">
+      <node id="3094148920980408918" at="23,98,24,13" concept="8" />
+      <node id="3094148920980408918" at="25,5,26,183" concept="7" />
+      <node id="3094148920980408918" at="27,38,28,51" concept="2" />
+      <node id="3094148920980409153" at="34,72,35,272" concept="8" />
+      <node id="3094148920980409153" at="39,77,40,81" concept="8" />
+      <node id="3094148920980409153" at="42,72,43,83" concept="8" />
+      <node id="3094148920980409153" at="45,82,46,86" concept="8" />
+      <node id="3094148920980409153" at="48,112,49,93" concept="8" />
+      <node id="3094148920980409153" at="53,98,54,124" concept="2" />
+      <node id="3094148920980411337" at="56,171,57,68" concept="7" />
+      <node id="3094148920980438328" at="57,68,58,106" concept="7" />
+      <node id="3094148920980439702" at="59,45,60,29" concept="2" />
+      <node id="5847724903320069850" at="60,29,61,30" concept="2" />
+      <node id="3094148920980408918" at="22,104,25,5" concept="5" />
+      <node id="3094148920980408918" at="26,183,29,5" concept="5" />
+      <node id="3094148920980409153" at="34,0,37,0" concept="6" trace="matches#(Ljetbrains/mps/openapi/editor/menus/style/EditorMenuItemCustomizationContext;)Z" />
+      <node id="3094148920980409153" at="39,0,42,0" concept="6" trace="getParentNode#(Ljetbrains/mps/openapi/editor/menus/style/EditorMenuItemCustomizationContext;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="3094148920980409153" at="42,0,45,0" concept="6" trace="getChild#(Ljetbrains/mps/openapi/editor/menus/style/EditorMenuItemCustomizationContext;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="3094148920980409153" at="45,0,48,0" concept="6" trace="getLink#(Ljetbrains/mps/openapi/editor/menus/style/EditorMenuItemCustomizationContext;)Lorg/jetbrains/mps/openapi/language/SContainmentLink;" />
+      <node id="3094148920980409153" at="48,0,51,0" concept="6" trace="getCompletionItemInformation#(Ljetbrains/mps/openapi/editor/menus/style/EditorMenuItemCustomizationContext;)Ljetbrains/mps/editor/runtime/completion/CompletionItemInformation;" />
+      <node id="3094148920980409153" at="52,0,56,0" concept="6" trace="customize#(Ljetbrains/mps/openapi/editor/menus/style/EditorMenuItemStyle;Ljetbrains/mps/openapi/editor/menus/style/EditorMenuItemCustomizationContext;)V" />
+      <node id="3094148920980438587" at="58,106,62,7" concept="5" />
+      <node id="3094148920980409153" at="56,0,64,0" concept="6" trace="customize_#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SContainmentLink;Ljetbrains/mps/openapi/editor/menus/style/EditorMenuItemStyle;Ljetbrains/mps/editor/runtime/completion/CompletionItemInformation;)V" />
+      <node id="3094148920980408918" at="21,0,31,0" concept="6" trace="customize#(Ljetbrains/mps/openapi/editor/menus/style/EditorMenuItemStyle;Ljetbrains/mps/openapi/editor/menus/style/EditorMenuItemCustomizationContext;)V" />
+      <scope id="3094148920980408918" at="23,98,24,13" />
+      <scope id="3094148920980408918" at="27,38,28,51" />
+      <scope id="3094148920980409153" at="34,72,35,272" />
+      <scope id="3094148920980409153" at="39,77,40,81" />
+      <scope id="3094148920980409153" at="42,72,43,83" />
+      <scope id="3094148920980409153" at="45,82,46,86" />
+      <scope id="3094148920980409153" at="48,112,49,93" />
+      <scope id="3094148920980409153" at="53,98,54,124" />
+      <scope id="3094148920980438589" at="59,45,61,30" />
+      <scope id="3094148920980409153" at="34,0,37,0">
+        <var name="context" id="3094148920980409153" />
+      </scope>
+      <scope id="3094148920980409153" at="39,0,42,0">
+        <var name="context" id="3094148920980409153" />
+      </scope>
+      <scope id="3094148920980409153" at="42,0,45,0">
+        <var name="context" id="3094148920980409153" />
+      </scope>
+      <scope id="3094148920980409153" at="45,0,48,0">
+        <var name="context" id="3094148920980409153" />
+      </scope>
+      <scope id="3094148920980409153" at="48,0,51,0">
+        <var name="context" id="3094148920980409153" />
+      </scope>
+      <scope id="3094148920980409153" at="52,0,56,0">
+        <var name="context" id="3094148920980409153" />
+        <var name="style" id="3094148920980409153" />
+      </scope>
+      <scope id="3094148920980408922" at="56,171,62,7">
+        <var name="concept" id="3094148920980411338" />
+        <var name="conceptProperties" id="3094148920980438329" />
+      </scope>
+      <scope id="3094148920980408918" at="22,104,29,5">
+        <var name="customizer" id="3094148920980408918" />
+      </scope>
+      <scope id="3094148920980409153" at="56,0,64,0">
+        <var name="containmentLink" id="3094148920980409153" />
+        <var name="currentChild" id="3094148920980409153" />
+        <var name="itemInformation" id="3094148920980409153" />
+        <var name="parentNode" id="3094148920980409153" />
+        <var name="style" id="3094148920980409153" />
+      </scope>
+      <scope id="3094148920980408918" at="21,0,31,0">
+        <var name="context" id="3094148920980408918" />
+        <var name="customization" id="3094148920980408918" />
+      </scope>
+      <unit id="3094148920980409153" at="32,0,65,0" name="jetbrains.mps.lang.core.editor.StrikeOutActionsOfDeprecatedConcept$StrikeOutActionsOfDeprecatedConceptSpecific" />
+      <unit id="3094148920980408918" at="19,0,68,0" name="jetbrains.mps.lang.core.editor.StrikeOutActionsOfDeprecatedConcept" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590284(jetbrains.mps.lang.core.editor)/3159007378192292491">
