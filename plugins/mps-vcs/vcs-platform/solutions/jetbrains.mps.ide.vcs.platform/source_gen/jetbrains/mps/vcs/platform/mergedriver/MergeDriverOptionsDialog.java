@@ -109,7 +109,6 @@ public class MergeDriverOptionsDialog extends DialogWrapper {
       assert ThreadUtils.isInEDT();
       if (isSelected() && isEnabled()) {
         myInstaller.install();
-        MergeDriverNotification.getInstance(myProject).setNotificationsSuppressed(false);
       }
     }
   }

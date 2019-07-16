@@ -122,7 +122,6 @@
   </dependency>
   <dependency className="jetbrains.mps.vcs.platform.mergedriver.MergeDriverNotification">
     <classNode dependClassName="com.intellij.ide.BrowserUtil" />
-    <classNode dependClassName="com.intellij.ide.util.PropertiesComponent" />
     <classNode dependClassName="com.intellij.notification.Notification" />
     <classNode dependClassName="com.intellij.notification.NotificationListener" />
     <classNode dependClassName="com.intellij.notification.NotificationType" />
@@ -131,7 +130,6 @@
     <classNode dependClassName="com.intellij.openapi.vcs.ProjectLevelVcsManager" />
     <classNode dependClassName="com.intellij.openapi.vcs.VcsDirectoryMapping" />
     <classNode dependClassName="com.intellij.openapi.vcs.impl.projectlevelman.AllVcses" />
-    <classNode dependClassName="java.lang.Boolean" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.Runnable" />
     <classNode dependClassName="java.lang.String" />
@@ -139,7 +137,6 @@
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="java.util.Set" />
     <classNode dependClassName="javax.swing.event.HyperlinkEvent" />
-    <classNode dependClassName="jetbrains.mps.InternalFlag" />
     <classNode dependClassName="jetbrains.mps.ide.ThreadUtils" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ISelector" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />
@@ -173,7 +170,6 @@
     <classNode dependClassName="jetbrains.mps.vcs.platform.mergedriver.GitGlobalConfigFixesInstaller" />
     <classNode dependClassName="jetbrains.mps.vcs.platform.mergedriver.GitMergeDriverInstaller" />
     <classNode dependClassName="jetbrains.mps.vcs.platform.mergedriver.GitRepositoriesInstaller" />
-    <classNode dependClassName="jetbrains.mps.vcs.platform.mergedriver.MergeDriverNotification" />
     <classNode dependClassName="jetbrains.mps.vcs.platform.mergedriver.SvnInstaller" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />

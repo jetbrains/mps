@@ -1223,20 +1223,19 @@
       <node id="6124943338883990587" at="104,55,105,71" concept="5" />
       <node id="6331978077867726392" at="108,36,109,35" concept="0" />
       <node id="6124943338883990602" at="110,40,111,30" concept="5" />
-      <node id="6124943338883990606" at="111,30,112,89" concept="5" />
       <node id="6124943338883990773" at="54,29,56,5" concept="9" />
       <node id="6124943338884031680" at="80,5,82,5" concept="9" />
       <node id="6124943338883990727" at="42,111,45,5" concept="9" />
       <node id="6124943338883990750" at="49,0,52,0" concept="10" trace="itemStateChanged#(Ljava/awt/event/ItemEvent;)V" />
       <node id="4375293574971932294" at="58,92,61,5" concept="9" />
       <node id="6124943338884031663" at="77,34,80,5" concept="9" />
+      <node id="6124943338883990597" at="109,35,112,7" concept="9" />
       <node id="8376450845472322321" at="70,0,74,0" concept="10" trace="getDimensionServiceKey#()Ljava/lang/String;" />
       <node id="6124943338883990616" at="95,0,99,0" concept="3" trace="InstallerCheckBox#(null)V" />
-      <node id="6124943338883990597" at="109,35,113,7" concept="9" />
       <node id="6124943338883990746" at="47,29,52,7" concept="5" />
       <node id="6124943338884031611" at="65,0,70,0" concept="10" trace="createCenterPanel#()Ljavax/swing/JComponent;" />
       <node id="6124943338883990562" at="100,75,106,7" concept="9" />
-      <node id="6124943338883990593" at="108,0,115,0" concept="10" trace="installIfNeeded#()V" />
+      <node id="6124943338883990593" at="108,0,114,0" concept="10" trace="installIfNeeded#()V" />
       <node id="708166622413837346" at="85,0,93,0" concept="10" trace="createActions#()[Ljavax/swing/Action;" />
       <node id="6124943338883990552" at="99,0,108,0" concept="10" trace="addIfNeeded#()V" />
       <node id="6124943338884031636" at="74,0,85,0" concept="10" trace="doOKAction#()V" />
@@ -1249,8 +1248,8 @@
       <scope id="6124943338884031615" at="67,44,68,23" />
       <scope id="8376450845472322324" at="71,42,72,68" />
       <scope id="6124943338884031664" at="78,89,79,35" />
+      <scope id="6124943338883990601" at="110,40,111,30" />
       <scope id="6124943338883990619" at="95,43,97,30" />
-      <scope id="6124943338883990601" at="110,40,112,89" />
       <scope id="6124943338883990750" at="49,0,52,0">
         <var name="e" id="6124943338883990750" />
       </scope>
@@ -1262,12 +1261,12 @@
         <var name="installer" id="6124943338883990638" />
       </scope>
       <scope id="6124943338883990563" at="101,64,105,71" />
+      <scope id="6124943338883990596" at="108,36,112,7" />
       <scope id="6124943338884031611" at="65,0,70,0" />
-      <scope id="6124943338883990596" at="108,36,113,7" />
+      <scope id="6124943338883990593" at="108,0,114,0" />
       <scope id="6124943338883990555" at="99,32,106,7">
         <var name="currentState" id="6124943338883990557" />
       </scope>
-      <scope id="6124943338883990593" at="108,0,115,0" />
       <scope id="6124943338884031639" at="75,31,83,38" />
       <scope id="708166622413837346" at="85,0,93,0" />
       <scope id="6124943338883990552" at="99,0,108,0" />
@@ -1279,8 +1278,8 @@
         <var name="project" id="6124943338883990787" />
       </scope>
       <unit id="6124943338883990750" at="48,36,52,5" name="jetbrains.mps.vcs.platform.mergedriver.MergeDriverOptionsDialog$1" />
-      <unit id="6124943338883990551" at="93,0,116,0" name="jetbrains.mps.vcs.platform.mergedriver.MergeDriverOptionsDialog$InstallerCheckBox" />
-      <unit id="6124943338883990550" at="24,0,117,0" name="jetbrains.mps.vcs.platform.mergedriver.MergeDriverOptionsDialog" />
+      <unit id="6124943338883990551" at="93,0,115,0" name="jetbrains.mps.vcs.platform.mergedriver.MergeDriverOptionsDialog$InstallerCheckBox" />
+      <unit id="6124943338883990550" at="24,0,116,0" name="jetbrains.mps.vcs.platform.mergedriver.MergeDriverOptionsDialog" />
     </file>
   </root>
   <root nodeRef="r:36539f52-7ec3-4937-98bf-1fbc1fbe99fc(jetbrains.mps.vcs.platform.mergedriver)/6590770702563546491">
@@ -1439,116 +1438,97 @@
   </root>
   <root nodeRef="r:36539f52-7ec3-4937-98bf-1fbc1fbe99fc(jetbrains.mps.vcs.platform.mergedriver)/6989360587247930283">
     <file name="MergeDriverNotification.java">
-      <node id="6989360587247930326" at="30,0,31,0" concept="15" trace="SUPPRESSED_PROPERTY_NAME" />
-      <node id="6989360587247930296" at="31,0,32,0" concept="6" trace="myProject" />
-      <node id="4355241322422981954" at="32,0,33,0" concept="6" trace="myCompositeState" />
-      <node id="7307809004211494603" at="33,0,34,0" concept="6" trace="myLastNotification" />
-      <node id="6989360587247930311" at="34,52,35,24" concept="5" />
-      <node id="6989360587248001322" at="37,46,38,95" concept="12" />
-      <node id="6989360587248001335" at="40,57,41,98" concept="5" />
-      <node id="4355241322422981963" at="43,42,44,80" concept="5" />
-      <node id="6989360587248001361" at="47,37,48,13" concept="12" />
-      <node id="7307809004211496306" at="50,74,51,13" concept="12" />
-      <node id="4355241322423085282" at="52,5,53,30" concept="5" />
-      <node id="4355241322423085268" at="54,123,55,13" concept="12" />
-      <node id="4355241322423085280" at="57,96,58,13" concept="12" />
-      <node id="6989360587248012828" at="59,5,60,24" concept="5" />
-      <node id="1190974551626681721" at="64,52,65,27" concept="12" />
-      <node id="4495307634210966572" at="68,40,69,47" concept="12" />
-      <node id="1190974551626682340" at="75,43,76,82" concept="12" />
-      <node id="6989360587248027499" at="78,19,79,312" concept="11" />
-      <node id="3950500378509769953" at="83,73,84,21" concept="12" />
-      <node id="7794712048471426907" at="86,37,87,69" concept="5" />
-      <node id="7794712048471458660" at="87,69,88,21" concept="12" />
-      <node id="4981199229398013507" at="90,55,91,65" concept="5" />
-      <node id="4981199229398013512" at="92,62,93,47" concept="5" />
-      <node id="4981199229398013523" at="94,20,95,27" concept="0" />
-      <node id="6989360587248027519" at="96,13,97,34" concept="5" />
-      <node id="6989360587248025509" at="99,11,100,64" concept="5" />
-      <node id="6989360587247930306" at="104,70,105,48" concept="12" />
-      <node id="4981199229398013521" at="94,18,96,13" concept="1" />
-      <node id="6989360587247930285" at="34,0,37,0" concept="3" trace="MergeDriverNotification#(Lcom/intellij/openapi/project/Project;)V" />
-      <node id="6989360587247930339" at="37,0,40,0" concept="10" trace="isNotificationSuppressed#()Z" />
-      <node id="6989360587248001330" at="40,0,43,0" concept="10" trace="setNotificationsSuppressed#(Z)V" />
-      <node id="4355241322422981958" at="43,0,46,0" concept="10" trace="calculateCompositeState#()V" />
-      <node id="6989360587248001357" at="46,42,49,5" concept="9" />
-      <node id="7307809004211494616" at="49,5,52,5" concept="9" />
-      <node id="4355241322423085259" at="53,30,56,5" concept="9" />
-      <node id="4355241322423014669" at="56,5,59,5" concept="9" />
-      <node id="1190974551626681719" at="64,0,67,0" concept="10" trace="select#(Lcom/intellij/openapi/vcs/VcsDirectoryMapping;)Ljava/lang/String;" />
-      <node id="4495307634210966568" at="68,0,71,0" concept="10" trace="accept#(Ljava/lang/String;)Z" />
-      <node id="1190974551626681729" at="75,0,78,0" concept="10" trace="select#(Ljava/lang/String;)Ljava/lang/String;" />
-      <node id="3950500378509661215" at="82,102,85,13" concept="9" />
-      <node id="6989360587247930300" at="104,0,107,0" concept="16" trace="getInstance#(Lcom/intellij/openapi/project/Project;)Ljetbrains/mps/vcs/platform/mergedriver/MergeDriverNotification;" />
-      <node id="6989360587248026904" at="73,25,78,19" concept="11" />
-      <node id="4981199229398013505" at="89,18,96,13" concept="9" />
-      <node id="1190974551626681702" at="62,36,71,8" concept="11" />
-      <node id="4981199229398013498" at="85,13,96,13" concept="9" />
-      <node id="6989360587247930317" at="46,0,62,0" concept="10" trace="showNotificationIfNeeded#()V" />
-      <node id="6989360587248026806" at="81,0,99,0" concept="10" trace="hyperlinkUpdate#(Lcom/intellij/notification/Notification;Ljavax/swing/event/HyperlinkEvent;)V" />
-      <node id="7307809004211494608" at="79,312,99,11" concept="5" />
-      <node id="6989360587248025276" at="73,0,102,0" concept="10" trace="run#()V" />
-      <node id="6989360587248025273" at="71,8,102,7" concept="5" />
-      <node id="6989360587248012822" at="62,0,104,0" concept="10" trace="showNotifications#()V" />
-      <scope id="6989360587247930288" at="34,52,35,24" />
-      <scope id="6989360587247930342" at="37,46,38,95" />
-      <scope id="6989360587248001333" at="40,57,41,98" />
-      <scope id="4355241322422981961" at="43,42,44,80" />
-      <scope id="6989360587248001359" at="47,37,48,13" />
-      <scope id="7307809004211494617" at="50,74,51,13" />
-      <scope id="4355241322423085261" at="54,123,55,13" />
-      <scope id="4355241322423014670" at="57,96,58,13" />
-      <scope id="1190974551626681720" at="64,52,65,27" />
-      <scope id="4495307634210966569" at="68,40,69,47" />
-      <scope id="1190974551626681730" at="75,43,76,82" />
-      <scope id="3950500378509661216" at="83,73,84,21" />
-      <scope id="4981199229398013506" at="90,55,91,65" />
-      <scope id="4981199229398013511" at="92,62,93,47" />
-      <scope id="4981199229398013522" at="94,20,95,27" />
-      <scope id="6989360587247930303" at="104,70,105,48" />
-      <scope id="4981199229398013499" at="86,37,88,21" />
-      <scope id="6989360587247930285" at="34,0,37,0">
+      <node id="6989360587247930296" at="28,0,29,0" concept="6" trace="myProject" />
+      <node id="4355241322422981954" at="29,0,30,0" concept="6" trace="myCompositeState" />
+      <node id="7307809004211494603" at="30,0,31,0" concept="6" trace="myLastNotification" />
+      <node id="6989360587247930311" at="31,52,32,24" concept="5" />
+      <node id="4355241322422981963" at="34,42,35,80" concept="5" />
+      <node id="7307809004211496306" at="38,74,39,13" concept="12" />
+      <node id="4355241322423085282" at="40,5,41,30" concept="5" />
+      <node id="4355241322423085268" at="42,123,43,13" concept="12" />
+      <node id="6989360587248012828" at="44,5,45,24" concept="5" />
+      <node id="1190974551626681721" at="49,52,50,27" concept="12" />
+      <node id="4495307634210966572" at="53,40,54,47" concept="12" />
+      <node id="1190974551626682340" at="60,43,61,82" concept="12" />
+      <node id="6989360587248027499" at="63,19,64,260" concept="11" />
+      <node id="3950500378509769953" at="68,73,69,21" concept="12" />
+      <node id="7794712048471426907" at="71,37,72,69" concept="5" />
+      <node id="7794712048471458660" at="72,69,73,21" concept="12" />
+      <node id="4981199229398013507" at="75,55,76,65" concept="5" />
+      <node id="4981199229398013523" at="77,20,78,27" concept="0" />
+      <node id="6989360587248027519" at="79,13,80,34" concept="5" />
+      <node id="6989360587248025509" at="82,11,83,64" concept="5" />
+      <node id="6989360587247930306" at="87,70,88,48" concept="12" />
+      <node id="4981199229398013521" at="77,18,79,13" concept="1" />
+      <node id="6989360587247930285" at="31,0,34,0" concept="3" trace="MergeDriverNotification#(Lcom/intellij/openapi/project/Project;)V" />
+      <node id="4355241322422981958" at="34,0,37,0" concept="10" trace="calculateCompositeState#()V" />
+      <node id="7307809004211494616" at="37,42,40,5" concept="9" />
+      <node id="4355241322423085259" at="41,30,44,5" concept="9" />
+      <node id="1190974551626681719" at="49,0,52,0" concept="10" trace="select#(Lcom/intellij/openapi/vcs/VcsDirectoryMapping;)Ljava/lang/String;" />
+      <node id="4495307634210966568" at="53,0,56,0" concept="10" trace="accept#(Ljava/lang/String;)Z" />
+      <node id="1190974551626681729" at="60,0,63,0" concept="10" trace="select#(Ljava/lang/String;)Ljava/lang/String;" />
+      <node id="3950500378509661215" at="67,102,70,13" concept="9" />
+      <node id="6989360587247930300" at="87,0,90,0" concept="16" trace="getInstance#(Lcom/intellij/openapi/project/Project;)Ljetbrains/mps/vcs/platform/mergedriver/MergeDriverNotification;" />
+      <node id="6989360587248026904" at="58,25,63,19" concept="11" />
+      <node id="4981199229398013505" at="74,18,79,13" concept="9" />
+      <node id="1190974551626681702" at="47,36,56,8" concept="11" />
+      <node id="4981199229398013498" at="70,13,79,13" concept="9" />
+      <node id="6989360587247930317" at="37,0,47,0" concept="10" trace="showNotificationIfNeeded#()V" />
+      <node id="6989360587248026806" at="66,0,82,0" concept="10" trace="hyperlinkUpdate#(Lcom/intellij/notification/Notification;Ljavax/swing/event/HyperlinkEvent;)V" />
+      <node id="7307809004211494608" at="64,260,82,11" concept="5" />
+      <node id="6989360587248025276" at="58,0,85,0" concept="10" trace="run#()V" />
+      <node id="6989360587248025273" at="56,8,85,7" concept="5" />
+      <node id="6989360587248012822" at="47,0,87,0" concept="10" trace="showNotifications#()V" />
+      <scope id="6989360587247930288" at="31,52,32,24" />
+      <scope id="4355241322422981961" at="34,42,35,80" />
+      <scope id="7307809004211494617" at="38,74,39,13" />
+      <scope id="4355241322423085261" at="42,123,43,13" />
+      <scope id="1190974551626681720" at="49,52,50,27" />
+      <scope id="4495307634210966569" at="53,40,54,47" />
+      <scope id="1190974551626681730" at="60,43,61,82" />
+      <scope id="3950500378509661216" at="68,73,69,21" />
+      <scope id="4981199229398013506" at="75,55,76,65" />
+      <scope id="4981199229398013522" at="77,20,78,27" />
+      <scope id="6989360587247930303" at="87,70,88,48" />
+      <scope id="4981199229398013499" at="71,37,73,21" />
+      <scope id="6989360587247930285" at="31,0,34,0">
         <var name="project" id="6989360587247930293" />
       </scope>
-      <scope id="6989360587247930339" at="37,0,40,0" />
-      <scope id="6989360587248001330" at="40,0,43,0">
-        <var name="value" id="6989360587248001351" />
-      </scope>
-      <scope id="4355241322422981958" at="43,0,46,0" />
-      <scope id="1190974551626681719" at="64,0,67,0">
+      <scope id="4355241322422981958" at="34,0,37,0" />
+      <scope id="1190974551626681719" at="49,0,52,0">
         <var name="dm" id="1190974551626681719" />
       </scope>
-      <scope id="4495307634210966568" at="68,0,71,0">
+      <scope id="4495307634210966568" at="53,0,56,0">
         <var name="vn" id="4495307634210966568" />
       </scope>
-      <scope id="1190974551626681729" at="75,0,78,0">
+      <scope id="1190974551626681729" at="60,0,63,0">
         <var name="vn" id="1190974551626681729" />
       </scope>
-      <scope id="6989360587247930300" at="104,0,107,0">
+      <scope id="6989360587247930300" at="87,0,90,0">
         <var name="project" id="6989360587247930304" />
       </scope>
-      <scope id="6989360587247930320" at="46,42,60,24" />
-      <scope id="6989360587248026815" at="82,102,97,34" />
-      <scope id="6989360587247930317" at="46,0,62,0" />
-      <scope id="6989360587248026806" at="81,0,99,0">
+      <scope id="6989360587247930320" at="37,42,45,24" />
+      <scope id="6989360587247930317" at="37,0,47,0" />
+      <scope id="6989360587248026815" at="67,102,80,34" />
+      <scope id="6989360587248026806" at="66,0,82,0">
         <var name="e" id="6989360587248026812" />
         <var name="notification" id="6989360587248026809" />
       </scope>
-      <scope id="6989360587248025277" at="73,25,100,64">
+      <scope id="6989360587248025277" at="58,25,83,64">
         <var name="message" id="6989360587248027500" />
         <var name="whichVcses" id="6989360587248026905" />
       </scope>
-      <scope id="6989360587248025276" at="73,0,102,0" />
-      <scope id="6989360587248012825" at="62,36,102,7">
+      <scope id="6989360587248025276" at="58,0,85,0" />
+      <scope id="6989360587248012825" at="47,36,85,7">
         <var name="vcsNames" id="1190974551626681703" />
       </scope>
-      <scope id="6989360587248012822" at="62,0,104,0" />
-      <unit id="1190974551626681719" at="63,219,67,5" name="jetbrains.mps.vcs.platform.mergedriver.MergeDriverNotification$1" />
-      <unit id="4495307634210966568" at="67,17,71,5" name="jetbrains.mps.vcs.platform.mergedriver.MergeDriverNotification$2" />
-      <unit id="1190974551626681729" at="74,88,78,9" name="jetbrains.mps.vcs.platform.mergedriver.MergeDriverNotification$3$1" />
-      <unit id="6989360587248026804" at="80,114,99,9" name="jetbrains.mps.vcs.platform.mergedriver.MergeDriverNotification$3$2" />
-      <unit id="6989360587248025276" at="72,40,102,5" name="jetbrains.mps.vcs.platform.mergedriver.MergeDriverNotification$3" />
-      <unit id="6989360587247930283" at="29,0,108,0" name="jetbrains.mps.vcs.platform.mergedriver.MergeDriverNotification" />
+      <scope id="6989360587248012822" at="47,0,87,0" />
+      <unit id="1190974551626681719" at="48,219,52,5" name="jetbrains.mps.vcs.platform.mergedriver.MergeDriverNotification$1" />
+      <unit id="4495307634210966568" at="52,17,56,5" name="jetbrains.mps.vcs.platform.mergedriver.MergeDriverNotification$2" />
+      <unit id="1190974551626681729" at="59,88,63,9" name="jetbrains.mps.vcs.platform.mergedriver.MergeDriverNotification$3$1" />
+      <unit id="6989360587248026804" at="65,114,82,9" name="jetbrains.mps.vcs.platform.mergedriver.MergeDriverNotification$3$2" />
+      <unit id="6989360587248025276" at="57,40,85,5" name="jetbrains.mps.vcs.platform.mergedriver.MergeDriverNotification$3" />
+      <unit id="6989360587247930283" at="27,0,91,0" name="jetbrains.mps.vcs.platform.mergedriver.MergeDriverNotification" />
     </file>
   </root>
 </debug-info>

@@ -4,8 +4,6 @@ package jetbrains.mps.vcs.platform.mergedriver;
 
 import com.intellij.openapi.project.Project;
 import com.intellij.notification.Notification;
-import com.intellij.ide.util.PropertiesComponent;
-import jetbrains.mps.InternalFlag;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
@@ -27,34 +25,21 @@ import com.intellij.ide.BrowserUtil;
 import com.intellij.notification.Notifications;
 
 public class MergeDriverNotification {
-  private static final String SUPPRESSED_PROPERTY_NAME = "merge.driver.suppressed.notification";
   private Project myProject;
   private AbstractInstaller.State myCompositeState;
   private Notification myLastNotification;
   private MergeDriverNotification(Project project) {
     myProject = project;
   }
-  private boolean isNotificationSuppressed() {
-    return "true".equals(PropertiesComponent.getInstance().getValue(SUPPRESSED_PROPERTY_NAME));
-  }
-  public void setNotificationsSuppressed(boolean value) {
-    PropertiesComponent.getInstance().setValue(SUPPRESSED_PROPERTY_NAME, Boolean.toString(value));
-  }
   private void calculateCompositeState() {
     myCompositeState = MergeDriverInstaller.getCompositeState(myProject, false);
   }
   public void showNotificationIfNeeded() {
-    if (isNotificationSuppressed()) {
-      return;
-    }
     if (myLastNotification != null && !(myLastNotification.isExpired())) {
       return;
     }
     calculateCompositeState();
     if (myCompositeState == AbstractInstaller.State.NOT_ENABLED || myCompositeState == AbstractInstaller.State.INSTALLED) {
-      return;
-    }
-    if (InternalFlag.isInternalMode() && myCompositeState == AbstractInstaller.State.OUTDATED) {
       return;
     }
     showNotifications();
@@ -76,7 +61,7 @@ public class MergeDriverNotification {
             return AllVcses.getInstance(myProject).getByName(vn).getDisplayName();
           }
         }), "and");
-        String message = "<p>This project uses " + whichVcses + ". For better integration with MPS, it is recommended to update global VCS settings (<a href=\"" + LanguageAspect.CONFLUENCE_BASE + "Version+Control\">More info</a>).<p><a href=\"install\">Update</a>&nbsp;&nbsp;<a href=\"dismiss\">Dismiss</a></p>";
+        String message = "<p>This project uses " + whichVcses + ". For better integration with MPS, it is necessary to update VCS settings (<a href=\"" + LanguageAspect.CONFLUENCE_BASE + "Version+Control\">More info</a>).<p><a href=\"install\">Update</a></p>";
         myLastNotification = new Notification("MergeDriver", "VCS Addons", message, NotificationType.WARNING, new NotificationListener() {
           @Override
           public void hyperlinkUpdate(@NotNull Notification notification, @NotNull HyperlinkEvent e) {
@@ -89,8 +74,6 @@ public class MergeDriverNotification {
             } else
             if ("install".equals(e.getDescription())) {
               MergeDriverInstaller.installWhereNeeded(myProject);
-            } else if ("dismiss".equals(e.getDescription())) {
-              setNotificationsSuppressed(true);
             } else {
               assert false;
             }

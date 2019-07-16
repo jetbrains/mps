@@ -5879,15 +5879,6 @@
   <node concept="312cEu" id="63ZcAL21OIF">
     <property role="TrG5h" value="MergeDriverNotification" />
     <node concept="3Tm1VV" id="63ZcAL21OIG" role="1B3o_S" />
-    <node concept="Wx3nA" id="63ZcAL21OJm" role="jymVt">
-      <property role="TrG5h" value="SUPPRESSED_PROPERTY_NAME" />
-      <property role="3TUv4t" value="true" />
-      <node concept="3Tm6S6" id="63ZcAL21OJn" role="1B3o_S" />
-      <node concept="17QB3L" id="63ZcAL21OJp" role="1tU5fm" />
-      <node concept="Xl_RD" id="63ZcAL21OJs" role="33vP2m">
-        <property role="Xl_RC" value="merge.driver.suppressed.notification" />
-      </node>
-    </node>
     <node concept="312cEg" id="63ZcAL21OIS" role="jymVt">
       <property role="TrG5h" value="myProject" />
       <node concept="3Tm6S6" id="63ZcAL21OIT" role="1B3o_S" />
@@ -5931,67 +5922,6 @@
         </node>
       </node>
     </node>
-    <node concept="3clFb_" id="63ZcAL21OJz" role="jymVt">
-      <property role="TrG5h" value="isNotificationSuppressed" />
-      <node concept="10P_77" id="63ZcAL21OJC" role="3clF45" />
-      <node concept="3Tm6S6" id="63ZcAL21OJB" role="1B3o_S" />
-      <node concept="3clFbS" id="63ZcAL21OJA" role="3clF47">
-        <node concept="3clFbF" id="63ZcAL2264E" role="3cqZAp">
-          <node concept="2OqwBi" id="63ZcAL2264G" role="3clFbG">
-            <node concept="Xl_RD" id="63ZcAL2264F" role="2Oq$k0">
-              <property role="Xl_RC" value="true" />
-            </node>
-            <node concept="liA8E" id="63ZcAL2264K" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
-              <node concept="2OqwBi" id="63ZcAL21PU4" role="37wK5m">
-                <node concept="2YIFZM" id="63ZcAL21PU2" role="2Oq$k0">
-                  <ref role="37wK5l" to="jmi8:~PropertiesComponent.getInstance()" resolve="getInstance" />
-                  <ref role="1Pybhc" to="jmi8:~PropertiesComponent" resolve="PropertiesComponent" />
-                </node>
-                <node concept="liA8E" id="63ZcAL21PUa" role="2OqNvi">
-                  <ref role="37wK5l" to="jmi8:~PropertiesComponent.getValue(java.lang.String)" resolve="getValue" />
-                  <node concept="37vLTw" id="2BHiRxeomwT" role="37wK5m">
-                    <ref role="3cqZAo" node="63ZcAL21OJm" resolve="SUPPRESSED_PROPERTY_NAME" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="3clFb_" id="63ZcAL2264M" role="jymVt">
-      <property role="TrG5h" value="setNotificationsSuppressed" />
-      <node concept="3cqZAl" id="63ZcAL2264N" role="3clF45" />
-      <node concept="3Tm1VV" id="63ZcAL2264O" role="1B3o_S" />
-      <node concept="3clFbS" id="63ZcAL2264P" role="3clF47">
-        <node concept="3clFbF" id="63ZcAL2264R" role="3cqZAp">
-          <node concept="2OqwBi" id="63ZcAL2264Z" role="3clFbG">
-            <node concept="2YIFZM" id="63ZcAL2264S" role="2Oq$k0">
-              <ref role="37wK5l" to="jmi8:~PropertiesComponent.getInstance()" resolve="getInstance" />
-              <ref role="1Pybhc" to="jmi8:~PropertiesComponent" resolve="PropertiesComponent" />
-            </node>
-            <node concept="liA8E" id="63ZcAL22653" role="2OqNvi">
-              <ref role="37wK5l" to="jmi8:~PropertiesComponent.setValue(java.lang.String,java.lang.String)" resolve="setValue" />
-              <node concept="37vLTw" id="2BHiRxeorye" role="37wK5m">
-                <ref role="3cqZAo" node="63ZcAL21OJm" resolve="SUPPRESSED_PROPERTY_NAME" />
-              </node>
-              <node concept="2YIFZM" id="63ZcAL2265b" role="37wK5m">
-                <ref role="1Pybhc" to="wyt6:~Boolean" resolve="Boolean" />
-                <ref role="37wK5l" to="wyt6:~Boolean.toString(boolean)" resolve="toString" />
-                <node concept="37vLTw" id="2BHiRxgmyTO" role="37wK5m">
-                  <ref role="3cqZAo" node="63ZcAL22657" resolve="value" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="37vLTG" id="63ZcAL22657" role="3clF46">
-        <property role="TrG5h" value="value" />
-        <node concept="10P_77" id="63ZcAL22658" role="1tU5fm" />
-      </node>
-    </node>
     <node concept="3clFb_" id="3LKVexu7Xl6" role="jymVt">
       <property role="TrG5h" value="calculateCompositeState" />
       <node concept="3cqZAl" id="3LKVexu7Xl7" role="3clF45" />
@@ -6021,14 +5951,6 @@
       <node concept="3cqZAl" id="63ZcAL21OJe" role="3clF45" />
       <node concept="3Tm1VV" id="63ZcAL21OJf" role="1B3o_S" />
       <node concept="3clFbS" id="63ZcAL21OJg" role="3clF47">
-        <node concept="3clFbJ" id="63ZcAL2265d" role="3cqZAp">
-          <node concept="1rXfSq" id="4hiugqyz3m3" role="3clFbw">
-            <ref role="37wK5l" node="63ZcAL21OJz" resolve="isNotificationSuppressed" />
-          </node>
-          <node concept="3clFbS" id="63ZcAL2265f" role="3clFbx">
-            <node concept="3cpWs6" id="63ZcAL2265h" role="3cqZAp" />
-          </node>
-        </node>
         <node concept="3clFbJ" id="6lEzp8ArlVo" role="3cqZAp">
           <node concept="3clFbS" id="6lEzp8ArlVp" role="3clFbx">
             <node concept="3cpWs6" id="6lEzp8ArmlM" role="3cqZAp" />
@@ -6080,26 +6002,6 @@
           </node>
           <node concept="3clFbS" id="3LKVexu8mzd" role="3clFbx">
             <node concept="3cpWs6" id="3LKVexu8mzk" role="3cqZAp" />
-          </node>
-        </node>
-        <node concept="3clFbJ" id="3LKVexu85kd" role="3cqZAp">
-          <node concept="3clFbS" id="3LKVexu85ke" role="3clFbx">
-            <node concept="3cpWs6" id="3LKVexu8mzw" role="3cqZAp" />
-          </node>
-          <node concept="1Wc70l" id="3LKVexu8mzl" role="3clFbw">
-            <node concept="3clFbC" id="3LKVexu8mzp" role="3uHU7w">
-              <node concept="Rm8GO" id="3LKVexu8mzu" role="3uHU7w">
-                <ref role="Rm8GQ" node="1crbmp8Of6r" resolve="OUTDATED" />
-                <ref role="1Px2BO" node="1crbmp8Of6p" resolve="AbstractInstaller.State" />
-              </node>
-              <node concept="37vLTw" id="2BHiRxeu_8F" role="3uHU7B">
-                <ref role="3cqZAo" node="3LKVexu7Xl2" resolve="myCompositeState" />
-              </node>
-            </node>
-            <node concept="2YIFZM" id="3LKVexu85kb" role="3uHU7B">
-              <ref role="37wK5l" to="fyhk:~InternalFlag.isInternalMode()" resolve="isInternalMode" />
-              <ref role="1Pybhc" to="fyhk:~InternalFlag" resolve="InternalFlag" />
-            </node>
           </node>
         </node>
         <node concept="3clFbF" id="63ZcAL228Ss" role="3cqZAp">
@@ -6252,7 +6154,7 @@
                     <node concept="17QB3L" id="63ZcAL22ctM" role="1tU5fm" />
                     <node concept="3cpWs3" id="3fU80iE1zWk" role="33vP2m">
                       <node concept="Xl_RD" id="3fU80iE1xd8" role="3uHU7w">
-                        <property role="Xl_RC" value="Version+Control\&quot;&gt;More info&lt;/a&gt;).&lt;p&gt;&lt;a href=\&quot;install\&quot;&gt;Update&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;a href=\&quot;dismiss\&quot;&gt;Dismiss&lt;/a&gt;&lt;/p&gt;" />
+                        <property role="Xl_RC" value="Version+Control\&quot;&gt;More info&lt;/a&gt;).&lt;p&gt;&lt;a href=\&quot;install\&quot;&gt;Update&lt;/a&gt;&lt;/p&gt;" />
                       </node>
                       <node concept="3cpWs3" id="3fU80iE1ukt" role="3uHU7B">
                         <node concept="3cpWs3" id="14CscpcLAjN" role="3uHU7B">
@@ -6265,7 +6167,7 @@
                             </node>
                           </node>
                           <node concept="Xl_RD" id="14CscpcLAjV" role="3uHU7w">
-                            <property role="Xl_RC" value=". For better integration with MPS, it is recommended to update global VCS settings (&lt;a href=\&quot;" />
+                            <property role="Xl_RC" value=". For better integration with MPS, it is necessary to update VCS settings (&lt;a href=\&quot;" />
                           </node>
                         </node>
                         <node concept="10M0yZ" id="3fU80iE1WfY" role="3uHU7w">
@@ -6379,34 +6281,6 @@
                                             <ref role="37wK5l" node="3OxOldILLP6" resolve="installWhereNeeded" />
                                             <node concept="37vLTw" id="2BHiRxeuh$m" role="37wK5m">
                                               <ref role="3cqZAo" node="63ZcAL21OIS" resolve="myProject" />
-                                            </node>
-                                          </node>
-                                        </node>
-                                      </node>
-                                      <node concept="3eNFk2" id="4kwL$UZHXp6" role="3eNLev">
-                                        <node concept="3clFbS" id="4kwL$UZHXp7" role="3eOfB_">
-                                          <node concept="3clFbF" id="4kwL$UZHXp8" role="3cqZAp">
-                                            <node concept="1rXfSq" id="4hiugqyyZSi" role="3clFbG">
-                                              <ref role="37wK5l" node="63ZcAL2264M" resolve="setNotificationsSuppressed" />
-                                              <node concept="3clFbT" id="4kwL$UZHXpa" role="37wK5m">
-                                                <property role="3clFbU" value="true" />
-                                              </node>
-                                            </node>
-                                          </node>
-                                        </node>
-                                        <node concept="2OqwBi" id="4kwL$UZHXpb" role="3eO9$A">
-                                          <node concept="Xl_RD" id="4kwL$UZHXpc" role="2Oq$k0">
-                                            <property role="Xl_RC" value="dismiss" />
-                                          </node>
-                                          <node concept="liA8E" id="4kwL$UZHXpd" role="2OqNvi">
-                                            <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
-                                            <node concept="2OqwBi" id="4kwL$UZHXpe" role="37wK5m">
-                                              <node concept="37vLTw" id="2BHiRxglr$Y" role="2Oq$k0">
-                                                <ref role="3cqZAo" node="63ZcAL22ciW" resolve="e" />
-                                              </node>
-                                              <node concept="liA8E" id="4kwL$UZHXpg" role="2OqNvi">
-                                                <ref role="37wK5l" to="gsia:~HyperlinkEvent.getDescription()" resolve="getDescription" />
-                                              </node>
                                             </node>
                                           </node>
                                         </node>
@@ -7740,21 +7614,6 @@
                   </node>
                   <node concept="liA8E" id="5k0aSfJ$Ohd" role="2OqNvi">
                     <ref role="37wK5l" node="1crbmp8Of71" resolve="install" />
-                  </node>
-                </node>
-              </node>
-              <node concept="3clFbF" id="5k0aSfJ$Ohe" role="3cqZAp">
-                <node concept="2OqwBi" id="5k0aSfJ$Ohf" role="3clFbG">
-                  <node concept="2YIFZM" id="5k0aSfJ$Ohg" role="2Oq$k0">
-                    <ref role="37wK5l" node="63ZcAL21OIW" resolve="getInstance" />
-                    <ref role="1Pybhc" node="63ZcAL21OIF" resolve="MergeDriverNotification" />
-                    <node concept="37vLTw" id="2BHiRxeuW0N" role="37wK5m">
-                      <ref role="3cqZAo" node="5k0aSfJ$Oi4" resolve="myProject" />
-                    </node>
-                  </node>
-                  <node concept="liA8E" id="5k0aSfJ$Ohi" role="2OqNvi">
-                    <ref role="37wK5l" node="63ZcAL2264M" resolve="setNotificationsSuppressed" />
-                    <node concept="3clFbT" id="5k0aSfJ$Ohj" role="37wK5m" />
                   </node>
                 </node>
               </node>
