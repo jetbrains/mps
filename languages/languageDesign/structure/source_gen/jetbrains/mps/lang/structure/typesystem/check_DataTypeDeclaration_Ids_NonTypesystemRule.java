@@ -9,8 +9,8 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
@@ -26,6 +26,10 @@ public class check_DataTypeDeclaration_Ids_NonTypesystemRule extends AbstractNon
   }
   public void applyRule(final SNode dtd, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (!(SModuleOperations.isAspect(SNodeOperations.getModel(dtd), "structure"))) {
+      return;
+    }
+
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(dtd), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, "jetbrains.mps.lang.structure.structure.EnumMigrationInfo"))) {
       return;
     }
 
