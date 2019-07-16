@@ -36,6 +36,7 @@ import java.awt.Color;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.build.behavior.BuildCompositePath__BehaviorDescriptor;
 import jetbrains.mps.build.util.Context;
+import jetbrains.mps.nodeEditor.MPSColors;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_PropertyValues;
 import java.util.List;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
@@ -135,7 +136,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     if (f.exists()) {
       return new Color(0, 0, 0x80);
     }
-    return Color.RED;
+    return MPSColors.RED;
   }
   public static class BuildCompositePath_head_cellMenu_n78otj_a0a0 extends AbstractCellMenuPart_PropertyValues {
     public BuildCompositePath_head_cellMenu_n78otj_a0a0() {

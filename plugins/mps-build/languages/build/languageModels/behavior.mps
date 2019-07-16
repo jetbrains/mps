@@ -28,6 +28,7 @@
     <import index="arit" ref="r:0d66e868-9778-4307-b6f9-4795c00f662f(jetbrains.mps.build.workflow.preset.general)" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
+    <import index="lzb2" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ui(MPS.IDEA/)" implicit="true" />
   </imports>
   <registry>
     <language id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples">
@@ -13548,10 +13549,10 @@
               <node concept="2OqwBi" id="5hFYqIiZoWB" role="3cqZAk">
                 <node concept="10M0yZ" id="5hFYqIiYDdv" role="2Oq$k0">
                   <ref role="1PxDUh" to="exr9:~MPSColors" resolve="MPSColors" />
-                  <ref role="3cqZAo" to="z60i:~Color.DARK_GRAY" resolve="DARK_GRAY" />
+                  <ref role="3cqZAo" to="lzb2:~JBColor.DARK_GRAY" resolve="DARK_GRAY" />
                 </node>
                 <node concept="liA8E" id="5hFYqIiZoWH" role="2OqNvi">
-                  <ref role="37wK5l" to="z60i:~Color.darker()" resolve="darker" />
+                  <ref role="37wK5l" to="lzb2:~JBColor.darker()" resolve="darker" />
                 </node>
               </node>
             </node>
