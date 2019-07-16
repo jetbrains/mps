@@ -14,7 +14,6 @@
       <module fileurl="file://$PROJECT_DIR$/languages/baseLanguage/closures/runtime/closures-runtime.iml" filepath="$PROJECT_DIR$/languages/baseLanguage/closures/runtime/closures-runtime.iml" group="languages" />
       <module fileurl="file://$PROJECT_DIR$/languages/baseLanguage/collections/runtime/collections-runtime.iml" filepath="$PROJECT_DIR$/languages/baseLanguage/collections/runtime/collections-runtime.iml" group="languages" />
       <module fileurl="file://$PROJECT_DIR$/core/components/components.iml" filepath="$PROJECT_DIR$/core/components/components.iml" group="core" />
-      <module fileurl="file://$PROJECT_DIR$/core/aspects/constraints/constraints-api/constraints-api.iml" filepath="$PROJECT_DIR$/core/aspects/constraints/constraints-api/constraints-api.iml" group="core/aspects/constraints" />
       <module fileurl="file://$PROJECT_DIR$/core/aspects/constraints/constraints-runtime/constraints-runtime.iml" filepath="$PROJECT_DIR$/core/aspects/constraints/constraints-runtime/constraints-runtime.iml" group="core/aspects/constraints" />
       <module fileurl="file://$PROJECT_DIR$/core/aspects/feedback/context/context.iml" filepath="$PROJECT_DIR$/core/aspects/feedback/context/context.iml" group="core/aspects/feedback" />
       <module fileurl="file://$PROJECT_DIR$/core/dataFlowRuntime/dataflow-rt.iml" filepath="$PROJECT_DIR$/core/dataFlowRuntime/dataflow-rt.iml" group="core" />

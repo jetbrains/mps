@@ -10,7 +10,7 @@
     <facet pluginId="com.intellij" type="ideaPlugin" />
   </facets>
   <stubModelEntries>
-    <stubModelEntry path="${module}/messages-api/classes" />
+    <stubModelEntry path="${module}/classes/messages-api.jar" />
   </stubModelEntries>
   <sourcePath />
   <dependencies>

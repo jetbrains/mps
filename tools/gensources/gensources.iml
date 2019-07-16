@@ -2,7 +2,9 @@
 <module type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
-    <content url="file://$MODULE_DIR$/../../core" />
+    <content url="file://$MODULE_DIR$/../../core">
+      <excludeFolder url="file://$MODULE_DIR$/../../core/aspects/feedback/classes" />
+    </content>
     <content url="file://$MODULE_DIR$/../../languages">
       <sourceFolder url="file://$MODULE_DIR$/../../languages/baseLanguage/baseLanguage/generator/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../languages/baseLanguage/baseLanguage/sandbox/source_gen" isTestSource="false" />
@@ -1550,4 +1552,3 @@
     <orderEntry type="module" module-name="messages-for-structure" />
   </component>
 </module>
-

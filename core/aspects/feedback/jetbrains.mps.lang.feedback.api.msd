@@ -10,7 +10,7 @@
     <facet pluginId="com.intellij" type="ideaPlugin" />
   </facets>
   <stubModelEntries>
-    <stubModelEntry path="${module}/feedback-api/classes" />
+    <stubModelEntry path="${module}/classes/feedback-api.jar" />
   </stubModelEntries>
   <sourcePath />
   <dependencies>

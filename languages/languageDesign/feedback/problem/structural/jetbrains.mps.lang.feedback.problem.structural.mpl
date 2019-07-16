@@ -44,12 +44,12 @@
         <module reference="8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)" version="0" />
         <module reference="ceab5195-25ea-4f22-9b92-103b95ca8c0c(jetbrains.mps.lang.core)" version="0" />
         <module reference="9e98f4e2-decf-4e97-bf80-9109e8b759aa(jetbrains.mps.lang.feedback.context)" version="0" />
-        <module reference="a098f3e2-deaa-4e97-bf80-9109efff59dd(jetbrains.mps.lang.feedback.messages.structure)" version="0" />
         <module reference="033598a4-76a9-47e1-ac89-a300c0fceab8(jetbrains.mps.lang.feedback.problem)" version="0" />
         <module reference="3f98f4e2-decf-4e97-bf80-9109e8b759ab(jetbrains.mps.lang.feedback.problem)" version="0" />
         <module reference="3f67a24c-17dc-4d34-9ecd-d2790f764ce0(jetbrains.mps.lang.feedback.problem#01)" version="0" />
         <module reference="7127d409-29f0-43e8-917f-f016ea288944(jetbrains.mps.lang.feedback.problem.structural)" version="0" />
         <module reference="19e75a65-d825-4d66-b7ba-7461f27fffc1(jetbrains.mps.lang.feedback.problem.structural#01)" version="0" />
+        <module reference="a098f3e2-deaa-4e97-bf80-9109efff59dd(jetbrains.mps.lang.feedback.problem.structure)" version="0" />
       </dependencyVersions>
       <mapping-priorities />
     </generator>
@@ -116,7 +116,7 @@
     <module reference="c72da2b9-7cce-4447-8389-f407dc1158b7(jetbrains.mps.lang.structure)" version="0" />
   </dependencyVersions>
   <runtime>
-    <dependency reexport="false">a098f3e2-deaa-4e97-bf80-9109efff59dd(jetbrains.mps.lang.feedback.messages.structure)</dependency>
+    <dependency reexport="false">a098f3e2-deaa-4e97-bf80-9109efff59dd(jetbrains.mps.lang.feedback.problem.structure)</dependency>
   </runtime>
   <extendedLanguages>
     <extendedLanguage>033598a4-76a9-47e1-ac89-a300c0fceab8(jetbrains.mps.lang.feedback.problem)</extendedLanguage>

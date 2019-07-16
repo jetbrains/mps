@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<solution name="jetbrains.mps.lang.feedback.messages.legacy-constraints" uuid="aaaaf3e2-decf-4e97-bf80-9109eab759ee" moduleVersion="0" compileInMPS="false">
+<solution name="jetbrains.mps.lang.feedback.problem.structure" uuid="a098f3e2-deaa-4e97-bf80-9109efff59dd" moduleVersion="0" compileInMPS="false">
   <compileInIDEA />
   <models>
     <modelRoot contentPath="${module}" type="java_classes">
-      <sourceRoot location="messages-for-legacy-constraints/classes" />
+      <sourceRoot location="messages-for-structure/classes" />
     </modelRoot>
   </models>
   <facets>
     <facet pluginId="com.intellij" type="ideaPlugin" />
   </facets>
   <stubModelEntries>
-    <stubModelEntry path="${module}/messages-for-legacy-constraints/classes" />
+    <stubModelEntry path="${module}/classes/messages-for-structure.jar" />
   </stubModelEntries>
   <sourcePath />
   <dependencies>
     <dependency reexport="false">3f233e7f-b8a6-46d2-a57f-795d56775243(Annotations)</dependency>
-    <dependency reexport="false">6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)</dependency>
-    <dependency reexport="false">3f98f4e2-decf-4e97-bf80-9109e8b759ab(jetbrains.mps.lang.feedback.problem)</dependency>
+    <dependency reexport="true">6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)</dependency>
+    <dependency reexport="true">3f98f4e2-decf-4e97-bf80-9109e8b759ab(jetbrains.mps.lang.feedback.problem)</dependency>
+    <dependency reexport="true">9e98f4e2-decf-4e97-bf80-9109e8b759aa(jetbrains.mps.lang.feedback.context)</dependency>
+    <dependency reexport="false">8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)</dependency>
   </dependencies>
   <languageVersions>
     <language slang="l:f3061a53-9226-4cc5-a443-f952ceaf5816:jetbrains.mps.baseLanguage" version="9" />
@@ -28,8 +30,8 @@
     <module reference="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" version="0" />
     <module reference="8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)" version="0" />
     <module reference="9e98f4e2-decf-4e97-bf80-9109e8b759aa(jetbrains.mps.lang.feedback.context)" version="0" />
-    <module reference="aaaaf3e2-decf-4e97-bf80-9109eab759ee(jetbrains.mps.lang.feedback.messages.legacy-constraints)" version="0" />
     <module reference="3f98f4e2-decf-4e97-bf80-9109e8b759ab(jetbrains.mps.lang.feedback.problem)" version="0" />
+    <module reference="a098f3e2-deaa-4e97-bf80-9109efff59dd(jetbrains.mps.lang.feedback.problem.structure)" version="0" />
   </dependencyVersions>
 </solution>
 

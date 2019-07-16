@@ -10,7 +10,7 @@
     <facet pluginId="com.intellij" type="ideaPlugin" />
   </facets>
   <stubModelEntries>
-    <stubModelEntry path="${module}/context/classes" />
+    <stubModelEntry path="${module}/classes/context.jar" />
   </stubModelEntries>
   <sourcePath />
   <dependencies>

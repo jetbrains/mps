@@ -7,16 +7,17 @@
       <modulePath path="${mps_home}/core/aspects/constraints/constraints-runtime/jetbrains.mps.lang.constraints.rules.runtime.msd" folder="core.aspects.constraints" />
       <modulePath path="${mps_home}/core/aspects/feedback/jetbrains.mps.lang.feedback.api.msd" folder="core.aspects.feedback" />
       <modulePath path="${mps_home}/core/aspects/feedback/jetbrains.mps.lang.feedback.context.msd" folder="core.aspects.feedback" />
-      <modulePath path="${mps_home}/core/aspects/feedback/jetbrains.mps.lang.feedback.messages.legacy-constraints.msd" folder="core.aspects.feedback" />
-      <modulePath path="${mps_home}/core/aspects/feedback/jetbrains.mps.lang.feedback.messages.rules.msd" folder="core.aspects.feedback" />
-      <modulePath path="${mps_home}/core/aspects/feedback/jetbrains.mps.lang.feedback.messages.structure.msd" folder="core.aspects.feedback" />
+      <modulePath path="${mps_home}/core/aspects/feedback/jetbrains.mps.lang.feedback.problem.legacy-constraints.msd" folder="core.aspects.feedback" />
       <modulePath path="${mps_home}/core/aspects/feedback/jetbrains.mps.lang.feedback.problem.msd" folder="core.aspects.feedback" />
+      <modulePath path="${mps_home}/core/aspects/feedback/jetbrains.mps.lang.feedback.problem.rules.msd" folder="core.aspects.feedback" />
+      <modulePath path="${mps_home}/core/aspects/feedback/jetbrains.mps.lang.feedback.problem.structure.msd" folder="core.aspects.feedback" />
       <modulePath path="${mps_home}/core/aspects/feedback/jetbrains.mps.lang.messages.api.msd" folder="core.aspects.feedback" />
       <modulePath path="${mps_home}/core/dataFlowRuntime/jetbrains.mps.dataFlow.runtime.msd" folder="core.aspects.dataflow" />
       <modulePath path="${mps_home}/core/devkits/jetbrains.mps.devkit.aspect.constraints.devkit" folder="core.aspects.descriptor" />
       <modulePath path="${mps_home}/core/devkits/jetbrains.mps.devkit.aspect.constraints.rules.devkit" folder="core.aspects.descriptor" />
       <modulePath path="${mps_home}/core/devkits/jetbrains.mps.devkit.aspect.constraints.rulesAndMessages.devkit" folder="core.aspects.descriptor" />
       <modulePath path="${mps_home}/core/devkits/jetbrains.mps.devkit.aspect.dataflow.devkit" folder="core.aspects.descriptor" />
+      <modulePath path="${mps_home}/core/devkits/jetbrains.mps.devkit.aspect.feedback/jetbrains.mps.devkit.aspect.feedback.devkit" folder="core.aspects.descriptor" />
       <modulePath path="${mps_home}/core/devkits/jetbrains.mps.devkit.aspect.migration.devkit/jetbrains.mps.devkit.aspect.migration.devkit" folder="core.aspects.descriptor" />
       <modulePath path="${mps_home}/core/devkits/jetbrains.mps.devkit.aspect.structure.devkit" folder="core.aspects.descriptor" />
       <modulePath path="${mps_home}/core/devkits/jetbrains.mps.devkit.aspect.textgen.devkit" folder="core.aspects.descriptor" />
@@ -26,6 +27,7 @@
       <modulePath path="${mps_home}/core/devkits/jetbrains.mps.devkit.language-descriptor.devkit" folder="core.aspects.descriptor" />
       <modulePath path="${mps_home}/core/devkits/jetbrains.mps.devkit.language-design.devkit" folder="core.devkits" />
       <modulePath path="${mps_home}/core/devkits/jetbrains.mps.devkit.templates.devkit" folder="core.devkits" />
+      <modulePath path="${mps_home}/core/devkits/main-feedback/main-feedback.devkit" folder="core.aspects.feedback" />
       <modulePath path="${mps_home}/core/findUsages-runtime/jetbrains.mps.findUsages.runtime.msd" folder="core.aspects.findUsages" />
       <modulePath path="${mps_home}/core/generator/solutions/generator/jetbrains.mps.generator.msd" folder="core.aspects.generator" />
       <modulePath path="${mps_home}/core/java-stub/jetbrains.mps.java.stub.msd" folder="core.kernel" />
@@ -46,8 +48,6 @@
       <modulePath path="${mps_home}/core/tool/common/jetbrains.mps.tool.common.msd" folder="core.tool" />
       <modulePath path="${mps_home}/core/tool/environment/jetbrains.mps.core.tool.environment.msd" folder="core.tool" />
       <modulePath path="${mps_home}/core/typesystemEngine/solutions/jetbrains.mps.typesystemEngine/jetbrains.mps.typesystemEngine.msd" folder="core.aspects.typesystem" />
-      <modulePath path="${mps_home}/devkits/jetbrains.mps.devkit.aspect.feedback/jetbrains.mps.devkit.aspect.feedback.devkit" folder="core.aspects.descriptor" />
-      <modulePath path="${mps_home}/devkits/main-feedback/main-feedback.devkit" folder="core.aspects.feedback" />
       <modulePath path="${mps_home}/editor/actions-runtime/jetbrains.mps.actions.runtime.msd" folder="core.aspects.actions" />
       <modulePath path="${mps_home}/editor/editing-runtime/jetbrains.mps.editing.runtime.msd" folder="core.aspects.actions" />
       <modulePath path="${mps_home}/editor/editor-runtime/jetbrains.mps.editor.runtime.msd" folder="core.aspects.editor" />
