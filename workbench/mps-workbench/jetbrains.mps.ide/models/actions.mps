@@ -4630,7 +4630,7 @@
                   <node concept="2OqwBi" id="2L$bc_FYxWn" role="2Oq$k0">
                     <node concept="2WthIp" id="2L$bc_FYxWo" role="2Oq$k0" />
                     <node concept="1DTwFV" id="2L$bc_FYxWp" role="2OqNvi">
-                      <ref role="2WH_rO" node="hHNVe9W" />
+                      <ref role="2WH_rO" node="hHNVe9W" resolve="node" />
                     </node>
                   </node>
                   <node concept="liA8E" id="5z503Qb_mv0" role="2OqNvi">
@@ -4642,7 +4642,7 @@
           </node>
           <node concept="2OqwBi" id="2L$bc_FYxWk" role="3clFbw">
             <node concept="37vLTw" id="2L$bc_FYxWl" role="2Oq$k0">
-              <ref role="3cqZAo" node="hGAFBmi" />
+              <ref role="3cqZAo" node="hGAFBmi" resolve="pane" />
             </node>
             <node concept="liA8E" id="2L$bc_FYxWm" role="2OqNvi">
               <ref role="37wK5l" to="rvbb:~BaseLogicalViewProjectPane.showNodeStructure()" resolve="showNodeStructure" />
@@ -4679,7 +4679,7 @@
                                 <node concept="2OqwBi" id="2L$bc_FYxWr" role="2Oq$k0">
                                   <node concept="2WthIp" id="2L$bc_FYxWs" role="2Oq$k0" />
                                   <node concept="1DTwFV" id="2L$bc_FYxWt" role="2OqNvi">
-                                    <ref role="2WH_rO" node="hHNVe9W" />
+                                    <ref role="2WH_rO" node="hHNVe9W" resolve="node" />
                                   </node>
                                 </node>
                                 <node concept="liA8E" id="2L$bc_FYxWu" role="2OqNvi">
@@ -13461,7 +13461,7 @@
       <property role="3TUv4t" value="true" />
       <node concept="10M0yZ" id="cAZ8XCa26j" role="33vP2m">
         <ref role="1PxDUh" to="exr9:~MPSColors" resolve="MPSColors" />
-        <ref role="3cqZAo" to="lzb2:~JBColor.PINK" resolve="PINK" />
+        <ref role="3cqZAo" to="exr9:~MPSColors.PINK" resolve="PINK" />
       </node>
       <node concept="3uibUv" id="cAZ8XCa26h" role="1tU5fm">
         <ref role="3uigEE" to="z60i:~Color" resolve="Color" />
@@ -13501,7 +13501,7 @@
       <node concept="3Tm1VV" id="4NbzjXXKMO$" role="1B3o_S" />
       <node concept="10M0yZ" id="4NbzjXXKMOA" role="33vP2m">
         <ref role="1PxDUh" to="exr9:~MPSColors" resolve="MPSColors" />
-        <ref role="3cqZAo" to="lzb2:~JBColor.PINK" resolve="PINK" />
+        <ref role="3cqZAo" to="exr9:~MPSColors.PINK" resolve="PINK" />
       </node>
     </node>
     <node concept="3clFbW" id="4zooVZdvj2i" role="jymVt">
@@ -37600,8 +37600,8 @@
             <node concept="liA8E" id="7oZWe8SV199" role="2OqNvi">
               <ref role="37wK5l" to="z60i:~Graphics.setColor(java.awt.Color)" resolve="setColor" />
               <node concept="10M0yZ" id="7oZWe8SV1ik" role="37wK5m">
-                <ref role="3cqZAo" to="z60i:~Color.LIGHT_GRAY" resolve="LIGHT_GRAY" />
-                <ref role="1PxDUh" to="z60i:~Color" resolve="Color" />
+                <ref role="1PxDUh" to="exr9:~MPSColors" resolve="MPSColors" />
+                <ref role="3cqZAo" to="lzb2:~JBColor.LIGHT_GRAY" resolve="LIGHT_GRAY" />
               </node>
             </node>
           </node>

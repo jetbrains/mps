@@ -13,6 +13,7 @@
     <import index="3767" ref="r:7f24d329-a444-4288-af92-f8ef91dfd241(jetbrains.mps.lang.resources.behavior)" />
     <import index="tpco" ref="r:00000000-0000-4000-0000-011c89590284(jetbrains.mps.lang.core.editor)" />
     <import index="7a0s" ref="r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)" />
+    <import index="exr9" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor(MPS.Editor/)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" implicit="true" />
   </imports>
@@ -385,8 +386,8 @@
                   <ref role="3cqZAo" to="z60i:~Color.BLACK" resolve="BLACK" />
                 </node>
                 <node concept="10M0yZ" id="7Mb2akaesrZ" role="3K4GZi">
-                  <ref role="1PxDUh" to="z60i:~Color" resolve="Color" />
-                  <ref role="3cqZAo" to="z60i:~Color.RED" resolve="RED" />
+                  <ref role="1PxDUh" to="exr9:~MPSColors" resolve="MPSColors" />
+                  <ref role="3cqZAo" to="exr9:~MPSColors.RED" resolve="RED" />
                 </node>
               </node>
             </node>

@@ -4209,8 +4209,8 @@
             <node concept="liA8E" id="XwFeF7ZdNR" role="2OqNvi">
               <ref role="37wK5l" to="z60i:~Graphics.setColor(java.awt.Color)" resolve="setColor" />
               <node concept="10M0yZ" id="XwFeF7ZdNS" role="37wK5m">
-                <ref role="3cqZAo" to="z60i:~Color.GRAY" resolve="GRAY" />
-                <ref role="1PxDUh" to="z60i:~Color" resolve="Color" />
+                <ref role="1PxDUh" to="exr9:~MPSColors" resolve="MPSColors" />
+                <ref role="3cqZAo" to="lzb2:~JBColor.GRAY" resolve="GRAY" />
               </node>
             </node>
           </node>

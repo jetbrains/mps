@@ -28,6 +28,8 @@
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="tzxy" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.debugger.core(MPS.Platform/)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
+    <import index="exr9" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor(MPS.Editor/)" />
+    <import index="lzb2" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ui(MPS.IDEA/)" implicit="true" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -1977,8 +1979,8 @@
             <node concept="liA8E" id="1ijklmZVU3X" role="2OqNvi">
               <ref role="37wK5l" to="8m69:~TextAttributes.setForegroundColor(java.awt.Color)" resolve="setForegroundColor" />
               <node concept="10M0yZ" id="1ijklmZVU3Y" role="37wK5m">
-                <ref role="1PxDUh" to="z60i:~Color" resolve="Color" />
-                <ref role="3cqZAo" to="z60i:~Color.WHITE" resolve="WHITE" />
+                <ref role="1PxDUh" to="exr9:~MPSColors" resolve="MPSColors" />
+                <ref role="3cqZAo" to="lzb2:~JBColor.WHITE" resolve="WHITE" />
               </node>
             </node>
           </node>
@@ -1991,8 +1993,8 @@
             <node concept="liA8E" id="1ijklmZVU42" role="2OqNvi">
               <ref role="37wK5l" to="8m69:~TextAttributes.setBackgroundColor(java.awt.Color)" resolve="setBackgroundColor" />
               <node concept="10M0yZ" id="1ijklmZVU43" role="37wK5m">
-                <ref role="1PxDUh" to="z60i:~Color" resolve="Color" />
-                <ref role="3cqZAo" to="z60i:~Color.BLUE" resolve="BLUE" />
+                <ref role="1PxDUh" to="exr9:~MPSColors" resolve="MPSColors" />
+                <ref role="3cqZAo" to="lzb2:~JBColor.BLUE" resolve="BLUE" />
               </node>
             </node>
           </node>

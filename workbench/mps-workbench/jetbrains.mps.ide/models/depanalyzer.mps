@@ -40,6 +40,7 @@
     <import index="y49u" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.util(MPS.OpenAPI/)" />
     <import index="alof" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.project(MPS.Platform/)" />
     <import index="kz9k" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.navigation(MPS.Editor/)" />
+    <import index="exr9" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor(MPS.Editor/)" />
   </imports>
   <registry>
     <language id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples">
@@ -857,8 +858,8 @@
               <node concept="1pGfFk" id="3KdzVirhOm4" role="2ShVmc">
                 <ref role="37wK5l" to="7e8u:~TreeMessage.&lt;init&gt;(java.awt.Color,java.lang.String,jetbrains.mps.ide.ui.tree.TreeMessageOwner)" resolve="TreeMessage" />
                 <node concept="10M0yZ" id="7K7yXoRkPNz" role="37wK5m">
-                  <ref role="3cqZAo" to="z60i:~Color.RED" resolve="RED" />
-                  <ref role="1PxDUh" to="z60i:~Color" resolve="Color" />
+                  <ref role="1PxDUh" to="exr9:~MPSColors" resolve="MPSColors" />
+                  <ref role="3cqZAo" to="exr9:~MPSColors.RED" resolve="RED" />
                 </node>
                 <node concept="Xl_RD" id="3KdzVirhOm6" role="37wK5m">
                   <property role="Xl_RC" value="dependency cycle" />
@@ -911,8 +912,8 @@
               <node concept="1pGfFk" id="5rWr1P$liS7" role="2ShVmc">
                 <ref role="37wK5l" to="7e8u:~TreeMessage.&lt;init&gt;(java.awt.Color,java.lang.String,jetbrains.mps.ide.ui.tree.TreeMessageOwner)" resolve="TreeMessage" />
                 <node concept="10M0yZ" id="5rWr1P$liS8" role="37wK5m">
-                  <ref role="1PxDUh" to="z60i:~Color" resolve="Color" />
-                  <ref role="3cqZAo" to="z60i:~Color.RED" resolve="RED" />
+                  <ref role="1PxDUh" to="exr9:~MPSColors" resolve="MPSColors" />
+                  <ref role="3cqZAo" to="exr9:~MPSColors.RED" resolve="RED" />
                 </node>
                 <node concept="Xl_RD" id="5rWr1P$liSa" role="37wK5m">
                   <property role="Xl_RC" value="language with bootstrap dependency" />

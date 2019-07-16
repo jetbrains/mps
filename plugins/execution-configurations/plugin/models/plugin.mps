@@ -108,6 +108,7 @@
     <import index="eurq" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs.path(MPS.Core/)" />
     <import index="z0rn" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util.xmlb.annotations(MPS.IDEA/)" />
     <import index="ifj7" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs.util(MPS.Core/)" />
+    <import index="exr9" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor(MPS.Editor/)" />
     <import index="tprs" ref="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)" implicit="true" />
     <import index="v23q" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi(MPS.IDEA/)" implicit="true" />
     <import index="hypd" ref="r:aa31e43e-9240-4f4d-b6db-5c1c9a86c59e(jetbrains.mps.lang.project.structure)" implicit="true" />
@@ -7229,8 +7230,8 @@
                     </node>
                   </node>
                   <node concept="10M0yZ" id="5yNeVI8Lrt3" role="3K4GZi">
-                    <ref role="1PxDUh" to="z60i:~Color" resolve="Color" />
                     <ref role="3cqZAo" to="z60i:~Color.RED" resolve="RED" />
+                    <ref role="1PxDUh" to="exr9:~MPSColors" resolve="MPSColors" />
                   </node>
                   <node concept="2OqwBi" id="5yNeVI8LrsZ" role="3K4Cdx">
                     <node concept="liA8E" id="5yNeVI8Lrt1" role="2OqNvi">

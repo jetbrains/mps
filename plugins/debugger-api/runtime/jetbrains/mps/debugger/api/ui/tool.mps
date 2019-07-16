@@ -36,6 +36,7 @@
     <import index="gsia" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:javax.swing.event(JDK/)" />
     <import index="z60i" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.awt(JDK/)" />
     <import index="ddhc" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ide(MPS.IDEA/)" />
+    <import index="exr9" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor(MPS.Editor/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
     <import index="7e8u" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.ui.tree(MPS.Platform/)" implicit="true" />
   </imports>
@@ -2782,8 +2783,8 @@
                                   <node concept="1rXfSq" id="4hiugqyyYfS" role="3clFbG">
                                     <ref role="37wK5l" to="dxuu:~JComponent.setForeground(java.awt.Color)" resolve="setForeground" />
                                     <node concept="10M0yZ" id="3SnNvqCby2j" role="37wK5m">
-                                      <ref role="1PxDUh" to="z60i:~Color" resolve="Color" />
                                       <ref role="3cqZAo" to="z60i:~Color.gray" resolve="gray" />
+                                      <ref role="1PxDUh" to="exr9:~MPSColors" resolve="MPSColors" />
                                     </node>
                                   </node>
                                 </node>

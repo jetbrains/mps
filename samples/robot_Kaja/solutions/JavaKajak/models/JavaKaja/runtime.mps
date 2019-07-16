@@ -13,6 +13,7 @@
     <import index="zf81" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.net(JDK/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="9z78" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:javax.swing.border(JDK/)" />
+    <import index="exr9" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor(MPS.Editor/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -2107,8 +2108,8 @@
                     <node concept="3clFbF" id="2RDssu5UZvE" role="3cqZAp">
                       <node concept="37vLTI" id="2RDssu5UZvM" role="3clFbG">
                         <node concept="10M0yZ" id="2RDssu5V1Qo" role="37vLTx">
-                          <ref role="1PxDUh" to="z60i:~Color" resolve="Color" />
                           <ref role="3cqZAo" to="z60i:~Color.RED" resolve="RED" />
+                          <ref role="1PxDUh" to="exr9:~MPSColors" resolve="MPSColors" />
                         </node>
                         <node concept="37vLTw" id="3GM_nagTBoC" role="37vLTJ">
                           <ref role="3cqZAo" node="2RDssu5UZuP" resolve="cell" />

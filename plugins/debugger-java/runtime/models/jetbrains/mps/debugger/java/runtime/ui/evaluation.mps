@@ -50,6 +50,7 @@
     <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" implicit="true" />
+    <import index="lzb2" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ui(MPS.IDEA/)" implicit="true" />
   </imports>
   <registry>
     <language id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin">
@@ -3201,8 +3202,8 @@
             <node concept="1rXfSq" id="4hiugqyzesy" role="3clFbG">
               <ref role="37wK5l" to="7e8u:~MPSTreeNode.setColor(java.awt.Color)" resolve="setColor" />
               <node concept="10M0yZ" id="6ra8WUbIhgJ" role="37wK5m">
-                <ref role="3cqZAo" to="z60i:~Color.RED" resolve="RED" />
-                <ref role="1PxDUh" to="z60i:~Color" resolve="Color" />
+                <ref role="1PxDUh" to="exr9:~MPSColors" resolve="MPSColors" />
+                <ref role="3cqZAo" to="exr9:~MPSColors.RED" resolve="RED" />
               </node>
             </node>
           </node>
@@ -3457,8 +3458,8 @@
             <node concept="1rXfSq" id="4hiugqyz9Ec" role="3clFbG">
               <ref role="37wK5l" to="7e8u:~MPSTreeNode.setColor(java.awt.Color)" resolve="setColor" />
               <node concept="10M0yZ" id="6ra8WUbIhir" role="37wK5m">
-                <ref role="1PxDUh" to="z60i:~Color" resolve="Color" />
-                <ref role="3cqZAo" to="z60i:~Color.GRAY" resolve="GRAY" />
+                <ref role="1PxDUh" to="exr9:~MPSColors" resolve="MPSColors" />
+                <ref role="3cqZAo" to="lzb2:~JBColor.GRAY" resolve="GRAY" />
               </node>
             </node>
           </node>

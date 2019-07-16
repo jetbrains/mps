@@ -48,6 +48,7 @@
     <import index="hyam" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.awt.event(JDK/)" />
     <import index="j0b4" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor.keyboard(MPS.Editor/)" />
     <import index="hox0" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.style(MPS.Editor/)" implicit="true" />
+    <import index="lzb2" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ui(MPS.IDEA/)" implicit="true" />
     <import index="tpfp" ref="r:00000000-0000-4000-0000-011c89590519(jetbrains.mps.baseLanguage.regexp.jetbrains.mps.regexp.accessory)" implicit="true" />
     <import index="tpch" ref="r:00000000-0000-4000-0000-011c8959028d(jetbrains.mps.lang.structure.editor)" implicit="true" />
     <import index="1i04" ref="r:3270011d-8b2d-4938-8dff-d256a759e017(jetbrains.mps.lang.behavior.structure)" implicit="true" />
@@ -10587,8 +10588,8 @@
                 <node concept="3clFbS" id="42hlkH_nPU4" role="3clFbx">
                   <node concept="3cpWs6" id="42hlkH_nPU5" role="3cqZAp">
                     <node concept="10M0yZ" id="42hlkH_nPU6" role="3cqZAk">
-                      <ref role="1PxDUh" to="z60i:~Color" resolve="Color" />
-                      <ref role="3cqZAo" to="z60i:~Color.BLUE" resolve="BLUE" />
+                      <ref role="1PxDUh" to="exr9:~MPSColors" resolve="MPSColors" />
+                      <ref role="3cqZAo" to="lzb2:~JBColor.BLUE" resolve="BLUE" />
                     </node>
                   </node>
                 </node>
@@ -10596,8 +10597,8 @@
                   <node concept="3clFbS" id="42hlkH_nPU8" role="9aQI4">
                     <node concept="3cpWs6" id="42hlkH_nPU9" role="3cqZAp">
                       <node concept="10M0yZ" id="42hlkH_nPUa" role="3cqZAk">
-                        <ref role="1PxDUh" to="z60i:~Color" resolve="Color" />
-                        <ref role="3cqZAo" to="z60i:~Color.GRAY" resolve="GRAY" />
+                        <ref role="1PxDUh" to="exr9:~MPSColors" resolve="MPSColors" />
+                        <ref role="3cqZAo" to="lzb2:~JBColor.GRAY" resolve="GRAY" />
                       </node>
                     </node>
                   </node>

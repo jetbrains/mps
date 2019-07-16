@@ -60,6 +60,7 @@
     <import index="yiza" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.execution.testframework.ui(MPS.IDEA/)" />
     <import index="9z78" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:javax.swing.border(JDK/)" />
     <import index="drih" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.editor.colors(MPS.IDEA/)" />
+    <import index="exr9" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor(MPS.Editor/)" />
     <import index="tprs" ref="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)" implicit="true" />
     <import index="qq03" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.actions(MPS.Platform/)" implicit="true" />
   </imports>
@@ -4490,8 +4491,8 @@
             <node concept="liA8E" id="36vIONTtPL_" role="2OqNvi">
               <ref role="37wK5l" to="dxuu:~JComponent.setForeground(java.awt.Color)" resolve="setForeground" />
               <node concept="10M0yZ" id="36vIONTtPLA" role="37wK5m">
-                <ref role="1PxDUh" to="z60i:~Color" resolve="Color" />
-                <ref role="3cqZAo" to="z60i:~Color.GRAY" resolve="GRAY" />
+                <ref role="1PxDUh" to="exr9:~MPSColors" resolve="MPSColors" />
+                <ref role="3cqZAo" to="lzb2:~JBColor.GRAY" resolve="GRAY" />
               </node>
             </node>
           </node>
@@ -4677,8 +4678,8 @@
             <node concept="liA8E" id="36vIONTtPMW" role="2OqNvi">
               <ref role="37wK5l" to="dxuu:~JComponent.setForeground(java.awt.Color)" resolve="setForeground" />
               <node concept="10M0yZ" id="36vIONTtPMX" role="37wK5m">
-                <ref role="1PxDUh" to="z60i:~Color" resolve="Color" />
-                <ref role="3cqZAo" to="z60i:~Color.RED" resolve="RED" />
+                <ref role="1PxDUh" to="exr9:~MPSColors" resolve="MPSColors" />
+                <ref role="3cqZAo" to="exr9:~MPSColors.RED" resolve="RED" />
               </node>
             </node>
           </node>
@@ -4723,9 +4724,9 @@
             </node>
             <node concept="liA8E" id="36vIONTtPNk" role="2OqNvi">
               <ref role="37wK5l" to="dxuu:~JComponent.setForeground(java.awt.Color)" resolve="setForeground" />
-              <node concept="10M0yZ" id="36vIONTtPNl" role="37wK5m">
-                <ref role="1PxDUh" to="z60i:~Color" resolve="Color" />
-                <ref role="3cqZAo" to="z60i:~Color.RED" resolve="RED" />
+              <node concept="10M0yZ" id="3qkjbZn66lS" role="37wK5m">
+                <ref role="1PxDUh" to="exr9:~MPSColors" resolve="MPSColors" />
+                <ref role="3cqZAo" to="exr9:~MPSColors.RED" resolve="RED" />
               </node>
             </node>
           </node>
@@ -4917,8 +4918,8 @@
             <node concept="liA8E" id="36vIONTtPOP" role="2OqNvi">
               <ref role="37wK5l" to="dxuu:~JComponent.setForeground(java.awt.Color)" resolve="setForeground" />
               <node concept="10M0yZ" id="36vIONTtPOQ" role="37wK5m">
-                <ref role="1PxDUh" to="z60i:~Color" resolve="Color" />
-                <ref role="3cqZAo" to="z60i:~Color.RED" resolve="RED" />
+                <ref role="1PxDUh" to="exr9:~MPSColors" resolve="MPSColors" />
+                <ref role="3cqZAo" to="exr9:~MPSColors.RED" resolve="RED" />
               </node>
             </node>
           </node>
@@ -4964,8 +4965,8 @@
             <node concept="liA8E" id="36vIONTtPPd" role="2OqNvi">
               <ref role="37wK5l" to="dxuu:~JComponent.setForeground(java.awt.Color)" resolve="setForeground" />
               <node concept="10M0yZ" id="36vIONTtPPe" role="37wK5m">
-                <ref role="1PxDUh" to="z60i:~Color" resolve="Color" />
-                <ref role="3cqZAo" to="z60i:~Color.RED" resolve="RED" />
+                <ref role="1PxDUh" to="exr9:~MPSColors" resolve="MPSColors" />
+                <ref role="3cqZAo" to="exr9:~MPSColors.RED" resolve="RED" />
               </node>
             </node>
           </node>
