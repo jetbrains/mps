@@ -16,6 +16,7 @@
     <import index="cj4x" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor(MPS.Editor/)" />
     <import index="h228" ref="r:edc2e1a3-c4ab-4f36-a908-e29e4c77f1bb(jetbrains.mps.core.xml.constraints)" />
     <import index="t7at" ref="r:d4d8dc74-6f4e-4494-bacc-55342de185e1(jetbrains.mps.core.xml.behavior)" />
+    <import index="exr9" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor(MPS.Editor/)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
     <import index="tpfp" ref="r:00000000-0000-4000-0000-011c89590519(jetbrains.mps.baseLanguage.regexp.jetbrains.mps.regexp.accessory)" implicit="true" />
@@ -1107,9 +1108,7 @@
     <node concept="14StLt" id="7gcenJszaZD" role="V601i">
       <property role="TrG5h" value="xmlAttributeName" />
       <node concept="VechU" id="7gcenJszaZE" role="3F10Kt">
-        <node concept="1iSF2X" id="7gcenJszaZF" role="VblUZ">
-          <property role="1iTho6" value="0000ff" />
-        </node>
+        <property role="Vb096" value="g1_eI4o/darkBlue" />
       </node>
     </node>
     <node concept="14StLt" id="5M4a$b5iSSb" role="V601i">
