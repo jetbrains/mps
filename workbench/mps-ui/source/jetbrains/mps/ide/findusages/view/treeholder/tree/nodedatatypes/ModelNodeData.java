@@ -35,22 +35,22 @@ public class ModelNodeData extends AbstractResultNodeData {
   private static final String MODEL = "model";
   private static final String UID = "uid";
 
-  public SModelReference myModelReference;
+  private SModelReference myModelReference;
 
-  public ModelNodeData(PathItemRole role, @Nullable String caption, @Nullable String info, @NotNull SModelReference modelReference, boolean isResult, boolean resultsSection) {
-    super(role, caption != null ? caption : modelReference.getModelName(), info, isResult, resultsSection);
+  public ModelNodeData(PathItemRole role, @NotNull SModelReference modelReference, @Nullable Object presentationObject, boolean isResult, boolean resultsSection) {
+    super(role, modelReference.getModelName(), null, presentationObject, isResult, resultsSection);
     myModelReference = modelReference;
   }
 
   public ModelNodeData(Element element, Project project) throws CantLoadSomethingException {
-    read(element, project);
+    super(element, project);
   }
 
   @Override
   public Icon getIcon(PresentationContext presentationContext) {
-    SModel modelDescriptor = myModelReference.resolve(presentationContext.getRepository());
-    if (modelDescriptor != null) {
-      return GlobalIconManager.getInstance().getIconFor(modelDescriptor);
+    SModel model = myModelReference.resolve(presentationContext.getRepository());
+    if (model != null) {
+      return GlobalIconManager.getInstance().getIconFor(model);
     }
     return IdeIcons.MODEL_ICON;
   }

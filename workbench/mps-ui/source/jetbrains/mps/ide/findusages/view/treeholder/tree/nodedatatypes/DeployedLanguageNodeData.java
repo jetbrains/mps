@@ -31,13 +31,18 @@ import javax.swing.Icon;
 
 /**
  * @author Artem Tikhomirov
+ * @since 2019.2
  */
 public final class DeployedLanguageNodeData extends AbstractResultNodeData {
   private SLanguage myLanguage;
 
-  public DeployedLanguageNodeData(PathItemRole role, @Nullable String caption, @Nullable String additionalInfo, @NotNull SLanguage l, boolean isPathTail, boolean resultsSection) {
-    super(role, caption == null ? l.getQualifiedName() : caption, additionalInfo, isPathTail, resultsSection);
+  public DeployedLanguageNodeData(PathItemRole role, @NotNull SLanguage l, @Nullable Object presentationObject, boolean isPathTail, boolean resultsSection) {
+    super(role, l.getQualifiedName(), null, presentationObject, isPathTail, resultsSection);
     myLanguage = l;
+  }
+
+  public DeployedLanguageNodeData(Element element, Project project) throws CantLoadSomethingException {
+    super(element, project);
   }
 
   @Override

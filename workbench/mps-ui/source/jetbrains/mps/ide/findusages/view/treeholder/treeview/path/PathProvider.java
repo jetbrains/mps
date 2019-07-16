@@ -17,17 +17,14 @@ package jetbrains.mps.ide.findusages.view.treeholder.treeview.path;
 
 import jetbrains.mps.ide.findusages.model.CategoryKind;
 import jetbrains.mps.ide.findusages.model.SearchResult;
-import jetbrains.mps.ide.findusages.view.treeholder.tree.TextOptions;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.CategoryNodeData;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.DeployedLanguageNodeData;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.ModelNodeData;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.ModuleNodeData;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.NodeNodeData;
-import jetbrains.mps.ide.findusages.view.treeholder.treeview.INodeRepresentator;
 import jetbrains.mps.util.Pair;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
@@ -35,11 +32,9 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 
-import javax.swing.Icon;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.function.Function;
 
 public class PathProvider {
   private static final Logger LOG = LogManager.getLogger(PathProvider.class);
@@ -49,24 +44,11 @@ public class PathProvider {
   private final PathItem.Factory<SLanguage> myLanguageElementFactory;
   private final PathItem.Factory<Pair<CategoryKind, String>> myCategoryElementFactory;
 
-  public PathProvider(@Nullable final INodeRepresentator<? super Object> presentationProvider, final boolean resultsSection) {
-    final Function<PathItem<?>, String> caption = o -> {
-      if (presentationProvider != null && o.isTail() && o.getPresentationObject() != null) {
-        return presentationProvider.getPresentation(o.getPresentationObject());
-      }
-      return null;
-    };
-    final Function<PathItem<?>, String> info = o -> {
-        if (presentationProvider != null && o.isTail() && o.getPresentationObject() != null) {
-          return presentationProvider.getAdditionalInfo(o.getPresentationObject());
-        }
-        return null;
-    };
-
-    myNodeElementFactory = c -> new NodeNodeData(c.getRole(), caption.apply(c), info.apply(c), c.getIdObject(), c.isTail(), resultsSection);
-    myModelElementFactory = c -> new ModelNodeData(c.getRole(), caption.apply(c), info.apply(c), c.getIdObject(), c.isTail(), resultsSection);
-    myModuleElementFactory = c -> new ModuleNodeData(c.getRole(), caption.apply(c), info.apply(c), c.getIdObject(), c.isTail(), resultsSection);
-    myLanguageElementFactory = c -> new DeployedLanguageNodeData(c.getRole(), caption.apply(c), info.apply(c), c.getIdObject(), c.isTail(), resultsSection);
+  public PathProvider(final boolean resultsSection) {
+    myNodeElementFactory = c -> new NodeNodeData(c.getRole(), c.getIdObject(), c.getPresentationObject(), c.isTail(), resultsSection);
+    myModelElementFactory = c -> new ModelNodeData(c.getRole(), c.getIdObject(), c.getPresentationObject(), c.isTail(), resultsSection);
+    myModuleElementFactory = c -> new ModuleNodeData(c.getRole(), c.getIdObject(), c.getPresentationObject(), c.isTail(), resultsSection);
+    myLanguageElementFactory = c -> new DeployedLanguageNodeData(c.getRole(), c.getIdObject(), c.getPresentationObject(), c.isTail(), resultsSection);
     myCategoryElementFactory = creator -> {
       Pair<CategoryKind, String> category = creator.getIdObject();
       return new CategoryNodeData(creator.getRole(), category.o1, category.o2, resultsSection);

@@ -43,16 +43,14 @@ public class NodeNodeData extends AbstractResultNodeData {
   private SNodeReference myNodePointer;
   private boolean myIsRootNode;
 
-  public NodeNodeData(PathItemRole role, @Nullable String caption, @Nullable String info, @NotNull SNode pathObject, boolean isPathTail,
-                      boolean resultsSection) {
-    super(role, caption != null ? caption : snodeRepresentation(pathObject), info != null ? info : nodeAdditionalInfo(pathObject), isPathTail,
-          resultsSection);
+  public NodeNodeData(PathItemRole role, @NotNull SNode pathObject, @Nullable Object presentationObject, boolean isPathTail, boolean resultsSection) {
+    super(role, snodeRepresentation(pathObject), nodeAdditionalInfo(pathObject), presentationObject, isPathTail, resultsSection);
     myNodePointer = pathObject.getReference();
     myIsRootNode = pathObject.getModel() != null && pathObject.getParent() == null;
   }
 
   public NodeNodeData(Element element, Project project) throws CantLoadSomethingException {
-    read(element, project);
+    super(element, project);
   }
 
   public SNodeReference getNodePointer() {

@@ -106,6 +106,14 @@ public abstract class BaseNodeData implements IExternalizeable {
     return myAdditionalInfo;
   }
 
+  protected final void caption(@NotNull String text) {
+    myCaption = text;
+  }
+
+  protected final void additionalInfo(@Nullable String text) {
+    myAdditionalInfo = text;
+  }
+
   /**
    * @deprecated use {@link #getCaption()}  instead. there are no longer html tags in the values
    */

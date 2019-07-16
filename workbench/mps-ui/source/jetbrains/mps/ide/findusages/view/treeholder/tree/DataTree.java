@@ -27,7 +27,6 @@ import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.ModuleNod
 import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.NodeNodeData;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.ResultsNodeData;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.SearchedNodesNodeData;
-import jetbrains.mps.ide.findusages.view.treeholder.treeview.INodeRepresentator;
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.path.PathItem;
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.path.PathItemRole;
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.path.PathProvider;
@@ -110,8 +109,8 @@ public class DataTree implements IExternalizeable, IChangeListener {
 
   //----CONTENT MANAGEMENT----
 
-  public void setContents(SearchResults results, INodeRepresentator nodeRepresentator) {
-    setContents(build(results, nodeRepresentator));
+  public void setContents(SearchResults results) {
+    setContents(build(results));
   }
 
   protected void setContents(MainNodeData root) {
@@ -154,7 +153,7 @@ public class DataTree implements IExternalizeable, IChangeListener {
 
   //----TREE BUILD STUFF----
 
-  private MainNodeData build(final SearchResults<?> results, final INodeRepresentator nodeRepresentator) {
+  private MainNodeData build(final SearchResults<?> results) {
     myRebuildCache = new HashMap<>();
 
     MainNodeData root = new MainNodeData(PathItemRole.ROLE_MAIN_ROOT);
@@ -163,7 +162,7 @@ public class DataTree implements IExternalizeable, IChangeListener {
     root.addChild(nodesRoot);
     // XXX null INodeRepresentator in PP, below, is important as we don't want to use custom presentation for look up elements, just for results
     //     not that I fully understand or approve the idea, it's the way it used to be for years.
-    final PathProvider pp1 = new PathProvider(null, false);
+    final PathProvider pp1 = new PathProvider(false);
     for (Object node : results.getSearchedObjects().getElements()) {
       if (node != null) {
         createPath(pp1, nodesRoot, new SearchResult<>(node, SearchedNodesNodeData.CATEGORY_NAME));
@@ -172,10 +171,12 @@ public class DataTree implements IExternalizeable, IChangeListener {
 
     final List<? extends SearchResult<?>> notNullResults = results.getNotNullResults();
     final Icon i = null; // use default
+    // XXX as there's still no 'default' INodeRepresentator impl, have to keep this code to provide at least some indication, even though it's likely
+    //     plain wrong (due to duplicated results in different categories)
     final String c = NameUtil.formatNumericalString(notNullResults.size(), "usage") + " found";
     ResultsNodeData resultsRoot = new ResultsNodeData(PathItemRole.ROLE_MAIN_RESULTS, i, c);
     root.addChild(resultsRoot);
-    final PathProvider pp2 = new PathProvider(nodeRepresentator, true);
+    final PathProvider pp2 = new PathProvider(true);
     for (SearchResult<?> result : notNullResults) {
       createPath(pp2, resultsRoot, result);
     }

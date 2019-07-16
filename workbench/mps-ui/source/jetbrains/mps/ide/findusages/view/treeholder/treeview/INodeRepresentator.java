@@ -23,7 +23,10 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.Icon;
 import java.util.List;
 
+// FIXME this interface design is ugly and poor, let alone misuse of generics. We shall abandon it.
 public interface INodeRepresentator<N> extends IExternalizeable {
+  // THERE'S NO GUARANTEE WHATSOEVER THAT THE node INSTANCE WOULD BE OF KIND <N>
+  // Implementation shall expect Object and perform instanceof check, and respond with null if unknown
   @Nullable
   String getPresentation(N node);
 

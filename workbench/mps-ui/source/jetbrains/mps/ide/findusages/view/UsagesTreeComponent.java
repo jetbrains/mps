@@ -26,7 +26,6 @@ import jetbrains.mps.ide.findusages.CantLoadSomethingException;
 import jetbrains.mps.ide.findusages.CantSaveSomethingException;
 import jetbrains.mps.ide.findusages.model.CategoryKind;
 import jetbrains.mps.ide.findusages.model.SearchResults;
-import jetbrains.mps.ide.findusages.view.icons.IconManager;
 import jetbrains.mps.ide.findusages.view.icons.Icons;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.DataTree;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.DataTreeChangesNotifier;
@@ -121,8 +120,8 @@ public class UsagesTreeComponent extends JPanel implements IChangeListener {
     // XXX no idea what to pass as type, id into Progress cons here
     // final Progress p = new Progress("setContents", getClass().getName());
     // UiActivityMonitor.getInstance().addActivity(ProjectHelper.toIdeaProject(myProject), p);
-    // XXX no idea if there's real need to have read action here, just refactored ModelAccess static out of DataTree here.
-    myProject.getModelAccess().runReadAction(() -> myContents.setContents(contents, myTree.getPresentationProvider()));
+    // Need model read here, as DataTree builds its NodeNodeData elements with access to SNode, as well accessing model/module to figure out path.
+    myProject.getModelAccess().runReadAction(() -> myContents.setContents(contents));
     // UiActivityMonitor.getInstance().removeActivity(ProjectHelper.toIdeaProject(myProject), p);
   }
 

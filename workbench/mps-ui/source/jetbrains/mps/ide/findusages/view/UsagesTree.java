@@ -242,6 +242,7 @@ public class UsagesTree extends MPSTree {
 
   //this is not recursive
   //use only for top-level nodes
+  // this method might require model read if presentationProvider is present (xxNodeData.updatePresentation() resolves wrapped elements) !
   private UsagesTreeNode buildTree(BaseNodeData root, HashSet<PathItemRole> nodeCategories) {
     UsagesTreeNode child = newTreeNode(root);
     buildSubtreeStructure(child, root, nodeCategories);
@@ -363,13 +364,14 @@ public class UsagesTree extends MPSTree {
     //       we show counters if UsagesTreeNode has children, it's sort of information we can not get at construction time
     //       XXX what about renewPresentation/doUpdatePresentation() - perhaps, could utilize onAdd() event if subtree is built completely
     //       before adding to MPSTree(UsagesTree). I don't want to use renewPresentation() here as it sends out event for each node, which is too much
-    if (root.getUsageData() instanceof CategoryNodeData) {
+    final BaseNodeData usageData = root.getUsageData();
+    if (usageData instanceof CategoryNodeData) {
       // TextOptions arguments are from original setUIProperties()
       TextOptions to = new TextOptions(myAdditionalInfoNeeded, !root.isLeaf(), root.getSubresultsCount());
       // used to be in CategoryNodeData.getText
       // CategoryNodeData.myCategory == BaseNodeData.caption, hence getPlainText
-      final String text = myPresentationProvider.getCategoryText(to, root.getUsageData().getCaption(), root.getUsageData().isResultsSection());
-      root.setIcon(myPresentationProvider.getCategoryIcon(root.getUsageData().getCaption()));
+      final String text = myPresentationProvider.getCategoryText(to, usageData.getCaption(), usageData.isResultsSection());
+      root.setIcon(myPresentationProvider.getCategoryIcon(usageData.getCaption()));
       if (text != null) {
         root.setText(text);
         // assume INodeRepresentator could use count in caption, if needed
@@ -377,7 +379,7 @@ public class UsagesTree extends MPSTree {
         // not every INodeRepresentator.getResultsText uses <strong>, but I don't care
         root.setFontStyle(Font.BOLD);
       }
-    } else if (root.getUsageData() instanceof ResultsNodeData) {
+    } else if (usageData instanceof ResultsNodeData) {
       // used to be in ResultsNodeData.getText
       final String text = myPresentationProvider.getResultsText(new TextOptions(myAdditionalInfoNeeded, !root.isLeaf(), root.getSubresultsCount()));
       root.setIcon(myPresentationProvider.getResultsIcon());
@@ -388,6 +390,10 @@ public class UsagesTree extends MPSTree {
         // not every INodeRepresentator.getResultsText uses <strong>, but I don't care
         root.setFontStyle(Font.BOLD);
       }
+    } else if (usageData instanceof AbstractResultNodeData && usageData.isResultNode()) {
+      @SuppressWarnings("unchecked")
+      final INodeRepresentator<Object> pp = (INodeRepresentator<Object>) myPresentationProvider;
+      ((AbstractResultNodeData) usageData).updatePresentation(() -> myProject.getRepository(), pp);
     }
 
     for (UsagesTreeNode tn : root.getChildren()) {
