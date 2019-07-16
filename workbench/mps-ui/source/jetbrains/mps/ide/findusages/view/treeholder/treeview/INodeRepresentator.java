@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,25 +18,32 @@ package jetbrains.mps.ide.findusages.view.treeholder.treeview;
 import jetbrains.mps.ide.findusages.IExternalizeable;
 import jetbrains.mps.ide.findusages.model.CategoryKind;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.TextOptions;
-import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import javax.swing.Icon;
 import java.util.List;
 
 public interface INodeRepresentator<N> extends IExternalizeable {
+  @Nullable
   String getPresentation(N node);
 
+  @Nullable
   default String getAdditionalInfo(N node){
     return null;
   }
 
+  @Nullable
   String getResultsText(TextOptions options);
 
+  @Nullable
   Icon getResultsIcon();
 
+  @Nullable
   String getCategoryText(TextOptions options, String category, boolean isResultsSection);
 
+  @Nullable
   Icon getCategoryIcon(String category);
 
+  @Nullable
   List<CategoryKind> getCategoryKinds();
 }

@@ -24,12 +24,9 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import jetbrains.mps.ide.findusages.model.CategoryKind;
 import java.util.Collections;
-import javax.swing.Icon;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.TextOptions;
+import javax.swing.Icon;
 import jetbrains.mps.ide.icons.IdeIcons;
-import org.jdom.Element;
-import jetbrains.mps.ide.findusages.CantLoadSomethingException;
-import jetbrains.mps.ide.findusages.CantSaveSomethingException;
 
 public class TargetsView extends UsagesView {
   private final DependenciesPanel myParent;
@@ -124,10 +121,6 @@ public class TargetsView extends UsagesView {
       return Collections.emptyList();
     }
     @Override
-    public Icon getCategoryIcon(String string) {
-      return null;
-    }
-    @Override
     public String getCategoryText(TextOptions options, String string, boolean b) {
       return "Targets";
     }
@@ -137,26 +130,15 @@ public class TargetsView extends UsagesView {
     }
     @Override
     public String getResultsText(TextOptions options) {
-      String presentation = check_w7qo2b_a0a0f41(myParent.getCurrentScope());
+      String presentation = check_w7qo2b_a0a0e41(myParent.getCurrentScope());
       if ((presentation == null || presentation.length() == 0)) {
         presentation = "the left tree scope selection";
       }
 
       return ((myParent.isMeta() ? "Used languages in " : "Dependencies of ")) + presentation;
     }
-    @NotNull
-    @Override
-    public String getPresentation(SNode node) {
-      return node.getPresentation();
-    }
-    @Override
-    public void read(Element element, jetbrains.mps.project.Project project) throws CantLoadSomethingException {
-    }
-    @Override
-    public void write(Element element, jetbrains.mps.project.Project project) throws CantSaveSomethingException {
-    }
   }
-  private static String check_w7qo2b_a0a0f41(DependencyViewerScope checkedDotOperand) {
+  private static String check_w7qo2b_a0a0e41(DependencyViewerScope checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getPresentation();
     }
