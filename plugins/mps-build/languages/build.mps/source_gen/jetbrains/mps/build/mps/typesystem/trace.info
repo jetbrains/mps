@@ -507,108 +507,112 @@
       </scope>
     </file>
     <file name="check_PackagingOfCompiledOutOfMPSModulesInPlugin_NonTypesystemRule.java">
-      <node id="6170485468608121576" at="31,119,32,93" concept="8" />
-      <node id="6170485468608105962" at="32,93,33,358" concept="8" />
-      <node id="6170485468608141850" at="35,206,36,415" concept="3" />
-      <node id="6170485468608364673" at="37,212,38,599" concept="3" />
-      <node id="4051861013017260570" at="40,5,41,84" concept="8" />
-      <node id="4051861013017330265" at="41,84,42,71" concept="8" />
-      <node id="4051861013017261735" at="42,71,43,73" concept="8" />
-      <node id="4051861013017346193" at="44,66,45,465" concept="3" />
-      <node id="6170485468613124401" at="46,5,47,0" concept="11" />
-      <node id="6170485468613121907" at="48,66,49,468" concept="3" />
-      <node id="4051861013018346376" at="50,5,51,0" concept="11" />
-      <node id="6170485468620352561" at="51,0,52,115" concept="10" />
-      <node id="6170485468620396276" at="52,115,53,82" concept="10" />
-      <node id="6170485468611171954" at="53,82,54,238" concept="8" />
-      <node id="4051861013018411140" at="56,225,57,17" concept="2" />
-      <node id="4051861013015736703" at="59,358,60,361" concept="8" />
-      <node id="4051861013017265330" at="62,11,63,64" concept="8" />
-      <node id="4051861013017265330" at="63,64,64,239" concept="8" />
-      <node id="6170485468608473144" at="68,5,69,0" concept="11" />
-      <node id="6170485468608480769" at="69,0,70,62" concept="10" />
-      <node id="6170485468608462324" at="70,62,71,52" concept="8" />
-      <node id="6170485468609772091" at="71,52,72,113" concept="3" />
-      <node id="6170485468609752465" at="74,39,75,531" concept="9" />
-      <node id="6170485468608487833" at="80,11,81,64" concept="8" />
-      <node id="6170485468608487833" at="81,64,82,265" concept="8" />
-      <node id="4051861013014639126" at="88,50,89,162" concept="9" />
-      <node id="4051861013014639126" at="91,68,92,102" concept="9" />
-      <node id="4051861013014639126" at="94,30,95,17" concept="9" />
+      <node id="1021706998816474661" at="34,62,35,13" concept="9" />
+      <node id="6170485468608121576" at="36,5,37,93" concept="8" />
+      <node id="6170485468608105962" at="37,93,38,358" concept="8" />
+      <node id="6170485468608141850" at="40,206,41,415" concept="3" />
+      <node id="6170485468608364673" at="42,212,43,599" concept="3" />
+      <node id="4051861013017260570" at="45,5,46,84" concept="8" />
+      <node id="4051861013017330265" at="46,84,47,71" concept="8" />
+      <node id="4051861013017261735" at="47,71,48,73" concept="8" />
+      <node id="4051861013017346193" at="49,66,50,465" concept="3" />
+      <node id="6170485468613124401" at="51,5,52,0" concept="11" />
+      <node id="6170485468613121907" at="53,66,54,468" concept="3" />
+      <node id="4051861013018346376" at="55,5,56,0" concept="11" />
+      <node id="6170485468620352561" at="56,0,57,115" concept="10" />
+      <node id="6170485468620396276" at="57,115,58,82" concept="10" />
+      <node id="6170485468611171954" at="58,82,59,238" concept="8" />
+      <node id="4051861013018411140" at="61,225,62,17" concept="2" />
+      <node id="4051861013015736703" at="64,358,65,361" concept="8" />
+      <node id="4051861013017265330" at="67,11,68,64" concept="8" />
+      <node id="4051861013017265330" at="68,64,69,239" concept="8" />
+      <node id="6170485468608473144" at="73,5,74,0" concept="11" />
+      <node id="6170485468608480769" at="74,0,75,62" concept="10" />
+      <node id="6170485468608462324" at="75,62,76,52" concept="8" />
+      <node id="6170485468609772091" at="76,52,77,113" concept="3" />
+      <node id="6170485468609752465" at="79,39,80,531" concept="9" />
+      <node id="6170485468608487833" at="85,11,86,64" concept="8" />
+      <node id="6170485468608487833" at="86,64,87,265" concept="8" />
+      <node id="4051861013014639126" at="93,50,94,162" concept="9" />
+      <node id="4051861013014639126" at="96,68,97,102" concept="9" />
+      <node id="4051861013014639126" at="99,30,100,17" concept="9" />
       <node id="4051861013014639126" at="29,0,31,0" concept="1" trace="check_PackagingOfCompiledOutOfMPSModulesInPlugin_NonTypesystemRule#()V" />
-      <node id="4051861013017264251" at="43,73,46,5" concept="5" />
-      <node id="6170485468613121903" at="47,0,50,5" concept="5" />
-      <node id="4051861013018351451" at="55,287,58,7" concept="6" />
-      <node id="6170485468609749215" at="74,0,77,0" concept="7" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="4051861013014639126" at="88,0,91,0" concept="7" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="4051861013014639126" at="91,0,94,0" concept="7" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-      <node id="4051861013014639126" at="94,0,97,0" concept="7" trace="overrides#()Z" />
-      <node id="4051861013017265330" at="61,184,65,11" concept="0" />
-      <node id="6170485468608487833" at="79,138,83,11" concept="0" />
-      <node id="6170485468608140364" at="34,64,39,7" concept="6" />
-      <node id="4051861013015744832" at="60,361,66,9" concept="6" />
-      <node id="6170485468609436835" at="78,66,84,9" concept="6" />
-      <node id="6170485468608137116" at="33,358,40,5" concept="5" />
-      <node id="6170485468609411513" at="77,9,85,7" concept="5" />
-      <node id="4051861013015827543" at="58,7,67,7" concept="6" />
-      <node id="4051861013014639147" at="54,238,68,5" concept="5" />
-      <node id="6170485468608443811" at="72,113,86,5" concept="5" />
-      <node id="4051861013014639126" at="31,0,88,0" concept="7" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <node id="1021706998816474673" at="32,15,34,62" concept="10" />
+      <node id="4051861013017264251" at="48,73,51,5" concept="5" />
+      <node id="6170485468613121903" at="52,0,55,5" concept="5" />
+      <node id="4051861013018351451" at="60,287,63,7" concept="6" />
+      <node id="6170485468609749215" at="79,0,82,0" concept="7" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="4051861013014639126" at="93,0,96,0" concept="7" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="4051861013014639126" at="96,0,99,0" concept="7" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="4051861013014639126" at="99,0,102,0" concept="7" trace="overrides#()Z" />
+      <node id="4051861013017265330" at="66,184,70,11" concept="0" />
+      <node id="6170485468608487833" at="84,138,88,11" concept="0" />
+      <node id="1021706998816464662" at="31,119,36,5" concept="6" />
+      <node id="6170485468608140364" at="39,64,44,7" concept="6" />
+      <node id="4051861013015744832" at="65,361,71,9" concept="6" />
+      <node id="6170485468609436835" at="83,66,89,9" concept="6" />
+      <node id="6170485468608137116" at="38,358,45,5" concept="5" />
+      <node id="6170485468609411513" at="82,9,90,7" concept="5" />
+      <node id="4051861013015827543" at="63,7,72,7" concept="6" />
+      <node id="4051861013014639147" at="59,238,73,5" concept="5" />
+      <node id="6170485468608443811" at="77,113,91,5" concept="5" />
+      <node id="4051861013014639126" at="31,0,93,0" concept="7" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
       <scope id="4051861013014639126" at="29,79,29,79" />
-      <scope id="6170485468608140366" at="35,206,36,415" />
-      <scope id="6170485468608178651" at="37,212,38,599" />
-      <scope id="4051861013017264257" at="44,66,45,465" />
-      <scope id="6170485468613121906" at="48,66,49,468" />
-      <scope id="4051861013018351453" at="56,225,57,17" />
-      <scope id="6170485468609749216" at="74,39,75,531" />
-      <scope id="4051861013014639126" at="88,50,89,162" />
-      <scope id="4051861013014639126" at="91,68,92,102" />
-      <scope id="4051861013014639126" at="94,30,95,17" />
+      <scope id="6170485468608140366" at="40,206,41,415" />
+      <scope id="6170485468608178651" at="42,212,43,599" />
+      <scope id="4051861013017264257" at="49,66,50,465" />
+      <scope id="6170485468613121906" at="53,66,54,468" />
+      <scope id="4051861013018351453" at="61,225,62,17" />
+      <scope id="6170485468609749216" at="79,39,80,531" />
+      <scope id="4051861013014639126" at="93,50,94,162" />
+      <scope id="4051861013014639126" at="96,68,97,102" />
+      <scope id="4051861013014639126" at="99,30,100,17" />
       <scope id="4051861013014639126" at="29,0,31,0" />
-      <scope id="4051861013017265330" at="62,11,64,239">
+      <scope id="4051861013017265330" at="67,11,69,239">
         <var name="_reporter_2309309498" id="4051861013017265330" />
         <var name="errorTarget" id="4051861013017265330" />
       </scope>
-      <scope id="6170485468608487833" at="80,11,82,265">
+      <scope id="6170485468608487833" at="85,11,87,265">
         <var name="_reporter_2309309498" id="6170485468608487833" />
         <var name="errorTarget" id="6170485468608487833" />
       </scope>
-      <scope id="4051861013017264251" at="43,73,46,5">
+      <scope id="1021706998816464664" at="32,15,35,13" />
+      <scope id="4051861013017264251" at="48,73,51,5">
         <var name="libFolder" id="4051861013017264253" />
       </scope>
-      <scope id="6170485468613121903" at="47,0,50,5">
+      <scope id="6170485468613121903" at="52,0,55,5">
         <var name="libFolder" id="6170485468613121904" />
       </scope>
-      <scope id="6170485468609749215" at="74,0,77,0">
+      <scope id="6170485468609749215" at="79,0,82,0">
         <var name="it" id="6170485468609749215" />
       </scope>
-      <scope id="4051861013014639126" at="88,0,91,0" />
-      <scope id="4051861013014639126" at="91,0,94,0">
+      <scope id="4051861013014639126" at="93,0,96,0" />
+      <scope id="4051861013014639126" at="96,0,99,0">
         <var name="argument" id="4051861013014639126" />
       </scope>
-      <scope id="4051861013014639126" at="94,0,97,0" />
-      <scope id="4051861013015744834" at="61,184,65,11" />
-      <scope id="6170485468609436837" at="79,138,83,11" />
-      <scope id="6170485468608137122" at="34,64,39,7" />
-      <scope id="6170485468609411516" at="78,66,84,9" />
-      <scope id="6170485468608137116" at="33,358,40,5">
+      <scope id="4051861013014639126" at="99,0,102,0" />
+      <scope id="4051861013015744834" at="66,184,70,11" />
+      <scope id="6170485468609436837" at="84,138,88,11" />
+      <scope id="6170485468608137122" at="39,64,44,7" />
+      <scope id="6170485468609411516" at="83,66,89,9" />
+      <scope id="6170485468608137116" at="38,358,45,5">
         <var name="element" id="6170485468608137118" />
       </scope>
-      <scope id="4051861013015827545" at="59,358,66,9">
+      <scope id="4051861013015827545" at="64,358,71,9">
         <var name="module" id="4051861013015736706" />
       </scope>
-      <scope id="6170485468608443817" at="77,9,85,7" />
-      <scope id="6170485468609411513" at="77,9,85,7">
+      <scope id="6170485468608443817" at="82,9,90,7" />
+      <scope id="6170485468609411513" at="82,9,90,7">
         <var name="element" id="6170485468609411514" />
       </scope>
-      <scope id="4051861013014639150" at="55,287,67,7" />
-      <scope id="4051861013014639147" at="54,238,68,5">
+      <scope id="4051861013014639150" at="60,287,72,7" />
+      <scope id="4051861013014639147" at="59,238,73,5">
         <var name="layoutModule" id="4051861013014639148" />
       </scope>
-      <scope id="6170485468608443811" at="72,113,86,5">
+      <scope id="6170485468608443811" at="77,113,91,5">
         <var name="notFineDeclaredPluginModule" id="6170485468608443813" />
       </scope>
-      <scope id="4051861013014639127" at="31,119,86,5">
+      <scope id="4051861013014639127" at="31,119,91,5">
         <var name="allLibFolders" id="4051861013017261736" />
         <var name="declaredPluginContentModules" id="6170485468608121579" />
         <var name="fineModuleSources" id="6170485468608462325" />
@@ -617,13 +621,13 @@
         <var name="msg" id="6170485468611171955" />
         <var name="pluginContent" id="6170485468608105963" />
       </scope>
-      <scope id="4051861013014639126" at="31,0,88,0">
+      <scope id="4051861013014639126" at="31,0,93,0">
         <var name="plugin" id="4051861013014639126" />
         <var name="status" id="4051861013014639126" />
         <var name="typeCheckingContext" id="4051861013014639126" />
       </scope>
-      <unit id="6170485468609749215" at="73,107,77,5" name="jetbrains.mps.build.mps.typesystem.check_PackagingOfCompiledOutOfMPSModulesInPlugin_NonTypesystemRule$1" />
-      <unit id="4051861013014639126" at="28,0,98,0" name="jetbrains.mps.build.mps.typesystem.check_PackagingOfCompiledOutOfMPSModulesInPlugin_NonTypesystemRule" />
+      <unit id="6170485468609749215" at="78,107,82,5" name="jetbrains.mps.build.mps.typesystem.check_PackagingOfCompiledOutOfMPSModulesInPlugin_NonTypesystemRule$1" />
+      <unit id="4051861013014639126" at="28,0,103,0" name="jetbrains.mps.build.mps.typesystem.check_PackagingOfCompiledOutOfMPSModulesInPlugin_NonTypesystemRule" />
     </file>
   </root>
   <root nodeRef="r:473be7a1-ec10-4475-89b9-397d2558ecb0(jetbrains.mps.build.mps.typesystem)/4051861013016346287">

@@ -105,7 +105,8 @@ public final class BuildMPSPlugin__BehaviorDescriptor extends BaseBHDescriptor {
     // fetch gentest language 
     VisibleModules visibleModules = new VisibleModules(artifacts.getProject());
     visibleModules.collect();
-    SNode gentest = SNodeOperations.cast(visibleModules.resolve("jetbrains.mps.tool.gentest", "3ba7b7cf-6a5a-4981-ba0b-3302e59ffef7"), MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, "jetbrains.mps.build.mps.structure.BuildMps_Module"));
+    // jetbrains.mps.tool.gentest 
+    SNode gentest = SNodeOperations.cast(visibleModules.resolveById("3ba7b7cf-6a5a-4981-ba0b-3302e59ffef7"), MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, "jetbrains.mps.build.mps.structure.BuildMps_Module"));
 
     if ((gentest != null)) {
       if (SNodeOperations.getContainingRoot(gentest) != SNodeOperations.getContainingRoot(__thisNode__)) {

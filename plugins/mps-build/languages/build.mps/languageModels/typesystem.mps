@@ -3316,6 +3316,86 @@
   <node concept="18kY7G" id="3wV6xYBZv8m">
     <property role="TrG5h" value="check_PackagingOfCompiledOutOfMPSModulesInPlugin" />
     <node concept="3clFbS" id="3wV6xYBZv8n" role="18ibNy">
+      <node concept="3clFbJ" id="SHPhCCZ5Wm" role="3cqZAp">
+        <node concept="3clFbS" id="SHPhCCZ5Wo" role="3clFbx">
+          <node concept="3SKdUt" id="SHPhCCZ8oL" role="3cqZAp">
+            <node concept="1PaTwC" id="SHPhCCZ8oM" role="3ndbpf">
+              <node concept="3oM_SD" id="SHPhCCZ8oU" role="1PaTwD">
+                <property role="3oM_SC" value="temporarily" />
+              </node>
+              <node concept="3oM_SD" id="SHPhCCZ8oW" role="1PaTwD">
+                <property role="3oM_SC" value="disabling" />
+              </node>
+              <node concept="3oM_SD" id="SHPhCCZ8oZ" role="1PaTwD">
+                <property role="3oM_SC" value="since" />
+              </node>
+              <node concept="3oM_SD" id="SHPhCCZ8p3" role="1PaTwD">
+                <property role="3oM_SC" value="Michael" />
+              </node>
+              <node concept="3oM_SD" id="SHPhCCZ8p8" role="1PaTwD">
+                <property role="3oM_SC" value="Muhin" />
+              </node>
+              <node concept="3oM_SD" id="SHPhCCZ8pe" role="1PaTwD">
+                <property role="3oM_SC" value="is" />
+              </node>
+              <node concept="3oM_SD" id="SHPhCCZ8pl" role="1PaTwD">
+                <property role="3oM_SC" value="pushing" />
+              </node>
+              <node concept="3oM_SD" id="SHPhCCZ8pt" role="1PaTwD">
+                <property role="3oM_SC" value="another" />
+              </node>
+              <node concept="3oM_SD" id="SHPhCCZ8pA" role="1PaTwD">
+                <property role="3oM_SC" value="solution" />
+              </node>
+              <node concept="3oM_SD" id="SHPhCCZ8pK" role="1PaTwD">
+                <property role="3oM_SC" value="to" />
+              </node>
+              <node concept="3oM_SD" id="SHPhCCZ8qk" role="1PaTwD">
+                <property role="3oM_SC" value="pack" />
+              </node>
+              <node concept="3oM_SD" id="SHPhCCZ8qw" role="1PaTwD">
+                <property role="3oM_SC" value="the" />
+              </node>
+              <node concept="3oM_SD" id="SHPhCCZ8rD" role="1PaTwD">
+                <property role="3oM_SC" value="plugin" />
+              </node>
+              <node concept="3oM_SD" id="SHPhCCZ8rR" role="1PaTwD">
+                <property role="3oM_SC" value="code" />
+              </node>
+            </node>
+            <node concept="1PaTwC" id="SHPhCCZ8s7" role="3ndbpf">
+              <node concept="3oM_SD" id="SHPhCCZ8s6" role="1PaTwD">
+                <property role="3oM_SC" value="it" />
+              </node>
+              <node concept="3oM_SD" id="SHPhCCZ8sp" role="1PaTwD">
+                <property role="3oM_SC" value="involves" />
+              </node>
+              <node concept="3oM_SD" id="SHPhCCZ8s_" role="1PaTwD">
+                <property role="3oM_SC" value="another" />
+              </node>
+              <node concept="3oM_SD" id="SHPhCCZ8sD" role="1PaTwD">
+                <property role="3oM_SC" value="root" />
+              </node>
+              <node concept="3oM_SD" id="SHPhCCZ8sI" role="1PaTwD">
+                <property role="3oM_SC" value="creation" />
+              </node>
+              <node concept="3oM_SD" id="SHPhCCZ8sO" role="1PaTwD">
+                <property role="3oM_SC" value="but" />
+              </node>
+              <node concept="3oM_SD" id="SHPhCCZ8sV" role="1PaTwD">
+                <property role="3oM_SC" value="still" />
+              </node>
+              <node concept="3oM_SD" id="SHPhCCZ8t3" role="1PaTwD">
+                <property role="3oM_SC" value="possible" />
+              </node>
+            </node>
+          </node>
+          <node concept="3cpWs6" id="SHPhCCZ8o_" role="3cqZAp" />
+        </node>
+        <node concept="3clFbT" id="SHPhCCZ8ot" role="3clFbw">
+          <property role="3clFbU" value="true" />
+        </node>
+      </node>
       <node concept="3cpWs8" id="5mxXXtg6cFC" role="3cqZAp">
         <node concept="3cpWsn" id="5mxXXtg6cFF" role="3cpWs9">
           <property role="TrG5h" value="declaredPluginContentModules" />

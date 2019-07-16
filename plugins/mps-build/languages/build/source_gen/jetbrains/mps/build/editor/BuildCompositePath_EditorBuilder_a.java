@@ -131,7 +131,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
   private Color _StyleParameter_QueryFunction_n78otj_a0a0() {
     IFile f = BuildCompositePath__BehaviorDescriptor.getFile_idIG8oXsODon.invoke(getNode(), Context.defaultContext());
     if (f == null) {
-      return Color.BLACK;
+      return MPSColors.BLACK;
     }
     if (f.exists()) {
       return new Color(0, 0, 0x80);

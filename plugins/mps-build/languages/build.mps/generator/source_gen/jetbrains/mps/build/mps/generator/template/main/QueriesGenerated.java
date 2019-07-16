@@ -1761,7 +1761,8 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Object varMacro_Value_10_8(final TemplateVarContext _context) {
     VisibleModules visibleModules = new VisibleModules(_context.getNode());
     visibleModules.collect();
-    SNode gentest = visibleModules.resolve("jetbrains.mps.tool.gentest", "3ba7b7cf-6a5a-4981-ba0b-3302e59ffef7");
+    // jetbrains.mps.tool.gentest 
+    SNode gentest = visibleModules.resolveById("3ba7b7cf-6a5a-4981-ba0b-3302e59ffef7");
     MPSModulesClosure closure = new MPSModulesClosure(SNodeOperations.cast(gentest, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, "jetbrains.mps.build.mps.structure.BuildMps_Module")));
     Iterable<SNode> allModules = Sequence.fromIterable(closure.runtimeClosure().getAllModules()).union(Sequence.fromIterable(((MPSModulesPartitioner) _context.getVariable("var:closure")).getExternal())).union(Sequence.fromIterable(Sequence.<SNode>singleton(gentest)));
     return ModuleFinder.findModules(allModules, _context, _context.getNode());

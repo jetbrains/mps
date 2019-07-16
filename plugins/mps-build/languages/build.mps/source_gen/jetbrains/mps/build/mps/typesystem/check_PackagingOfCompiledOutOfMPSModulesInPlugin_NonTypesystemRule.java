@@ -29,6 +29,11 @@ public class check_PackagingOfCompiledOutOfMPSModulesInPlugin_NonTypesystemRule 
   public check_PackagingOfCompiledOutOfMPSModulesInPlugin_NonTypesystemRule() {
   }
   public void applyRule(final SNode plugin, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
+    if (true) {
+      // temporarily disabling since Michael Muhin is pushing another solution to pack the plugin code 
+      // it involves another root creation but still possible 
+      return;
+    }
     List<SNode> declaredPluginContentModules = ListSequence.fromList(new ArrayList<SNode>());
     List<SNode> pluginContent = SLinkOperations.getChildren(SLinkOperations.getTarget(plugin, MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb6eL, 0x5b7be37b4dee5919L, "plugin")), MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4de9bbeaL, "content"));
     for (SNode element : ListSequence.fromList(pluginContent)) {

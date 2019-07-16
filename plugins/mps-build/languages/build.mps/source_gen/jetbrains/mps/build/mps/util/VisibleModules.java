@@ -32,9 +32,10 @@ import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
 import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModelReference;
 
-public class VisibleModules {
+public final class VisibleModules {
   private List<SNode> myModules = new ArrayList<SNode>();
   private Map<String, SNode> myName2Module = new HashMap<String, SNode>();
   private Map<String, SNode> myId2Module = new HashMap<String, SNode>();
@@ -99,7 +100,7 @@ public class VisibleModules {
   private void checkName(final SNode newModule, SNode project) {
     SNode existing = ListSequence.fromList(myModules).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), SPropertyOperations.getString(newModule, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
+        return Objects.equals(SNodeOperations.getConcept(it), SNodeOperations.getConcept(newModule)) && Objects.equals(SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), SPropertyOperations.getString(newModule, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
       }
     });
     if (existing != null) {
@@ -118,8 +119,10 @@ public class VisibleModules {
       myId2Module.put(SPropertyOperations.getString(module, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d3868bL, "uuid")), module);
       if (myName2Module.containsKey(SPropertyOperations.getString(module, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")))) {
         SNode other = myName2Module.get(SPropertyOperations.getString(module, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
-        SNode otherProj = SNodeOperations.getNodeAncestor(other, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject"), false, false);
-        report("There are two visible modules with the name '" + SPropertyOperations.getString(module, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "'. The first module is '" + SPropertyOperations.getString(module, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d3868bL, "uuid")) + "'[" + currProj + "]" + ", the second module is '" + SPropertyOperations.getString(other, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d3868bL, "uuid")) + "'[" + otherProj + "]", other);
+        if (Objects.equals(SNodeOperations.getConcept(module), SNodeOperations.getConcept(other))) {
+          SNode otherProj = SNodeOperations.getNodeAncestor(other, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject"), false, false);
+          report("There are two visible modules with the name '" + SPropertyOperations.getString(module, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "'. The first module is '" + SPropertyOperations.getString(module, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d3868bL, "uuid")) + "'[" + currProj + "]" + ", the second module is '" + SPropertyOperations.getString(other, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d3868bL, "uuid")) + "'[" + otherProj + "]", other);
+        }
       }
       myName2Module.put(SPropertyOperations.getString(module, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), module);
     }
@@ -134,12 +137,11 @@ public class VisibleModules {
     // solutions and generators, so that I can find by SLanguageId object 
     // i.e. take SLanguageId from SModuleReference from module descriptor, and use it as a map key instead of string 
     ModuleId langModuleId = ModuleId.regular(MetaIdHelper.getLanguage(language).getIdValue());
-    return SNodeOperations.as(resolve(language.getQualifiedName(), langModuleId.toString()), MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, "jetbrains.mps.build.mps.structure.BuildMps_Language"));
+    return SNodeOperations.as(resolveById(langModuleId.toString()), MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, "jetbrains.mps.build.mps.structure.BuildMps_Language"));
   }
 
   public SNode resolve(SModuleReference moduleRef) {
-    String targetName = moduleRef.getModuleName();
-    return this.resolve(targetName, moduleRef.getModuleId().toString());
+    return resolveById(moduleRef.getModuleId().toString());
   }
 
   public SNode resolveLanguage(SModuleReference moduleRef) {
@@ -150,6 +152,10 @@ public class VisibleModules {
     return SNodeOperations.as(resolve(moduleRef), MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4c6db07d2e56a8b4L, "jetbrains.mps.build.mps.structure.BuildMps_Generator"));
   }
 
+  /**
+   * use the one below
+   */
+  @Deprecated
   public SNode resolve(String moduleName, String moduleId) {
     SNode result = null;
     if (moduleId != null) {
@@ -157,6 +163,15 @@ public class VisibleModules {
     }
     if (result == null && moduleName != null) {
       result = myName2Module.get(moduleName);
+    }
+    return result;
+  }
+
+  @Nullable
+  public SNode resolveById(String moduleId) {
+    SNode result = null;
+    if (moduleId != null) {
+      result = myId2Module.get(moduleId);
     }
     return result;
   }

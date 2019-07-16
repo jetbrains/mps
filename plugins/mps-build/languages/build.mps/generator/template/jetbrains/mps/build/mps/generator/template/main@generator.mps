@@ -16022,6 +16022,13 @@
                               </node>
                             </node>
                           </node>
+                          <node concept="3SKdUt" id="1eB9FcFCDYa" role="3cqZAp">
+                            <node concept="1PaTwC" id="1eB9FcFCDYb" role="3ndbpf">
+                              <node concept="3oM_SD" id="1eB9FcFCDZ7" role="1PaTwD">
+                                <property role="3oM_SC" value="jetbrains.mps.tool.gentest" />
+                              </node>
+                            </node>
+                          </node>
                           <node concept="3cpWs8" id="7MPX9wYK40l" role="3cqZAp">
                             <node concept="3cpWsn" id="7MPX9wYK40m" role="3cpWs9">
                               <property role="TrG5h" value="gentest" />
@@ -16033,10 +16040,7 @@
                                   <ref role="3cqZAo" node="7MPX9wYK40c" resolve="visibleModules" />
                                 </node>
                                 <node concept="liA8E" id="7MPX9wYK40q" role="2OqNvi">
-                                  <ref role="37wK5l" to="tken:50RHf4RGXG2" resolve="resolve" />
-                                  <node concept="Xl_RD" id="7MPX9wYK40r" role="37wK5m">
-                                    <property role="Xl_RC" value="jetbrains.mps.tool.gentest" />
-                                  </node>
+                                  <ref role="37wK5l" to="tken:1eB9FcFALLJ" resolve="resolveById" />
                                   <node concept="Xl_RD" id="7MPX9wYK40s" role="37wK5m">
                                     <property role="Xl_RC" value="3ba7b7cf-6a5a-4981-ba0b-3302e59ffef7" />
                                   </node>
