@@ -37,7 +37,7 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         if (true) {
           // concept 
           intentions = new IntentionFactory[1];
-          intentions[0] = new NodeTransformerBasedIntentionFactory(new ConvertConstraints(), NodeTransformer.Kind.INTENTION);
+          intentions[0] = new NodeTransformerBasedIntentionFactory(new ConvertConstraintsToRulesAutomatically(), NodeTransformer.Kind.INTENTION);
         }
         break;
       case 1:
@@ -58,7 +58,7 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
   public Collection<IntentionFactory> getAllIntentions() {
     IntentionFactory[] rv = new IntentionFactory[2];
     rv[0] = new AddWhenCondition_Intention();
-    rv[1] = new NodeTransformerBasedIntentionFactory(new ConvertConstraints(), NodeTransformer.Kind.INTENTION);
+    rv[1] = new NodeTransformerBasedIntentionFactory(new ConvertConstraintsToRulesAutomatically(), NodeTransformer.Kind.INTENTION);
     return Arrays.asList(rv);
   }
   private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL), MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x3bd18bf4b10c3c4aL)).seal();

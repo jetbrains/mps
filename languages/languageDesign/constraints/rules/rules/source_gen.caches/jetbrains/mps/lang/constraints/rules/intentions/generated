@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-cb1nhul2pnsrvpyz1835dt3q90jufrc">
-  <files names="AddWhenCondition_Intention.java:ConvertConstraints.java:IntentionsDescriptor.java" />
+<product version="3" modelHash="5d0hl5wggzc7qe8amxsi6xalirrnlb5">
+  <files names="AddWhenCondition_Intention.java:ConvertConstraintsToRulesAutomatically.java:IntentionsDescriptor.java" />
 </product>
 
