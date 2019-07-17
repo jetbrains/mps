@@ -6,8 +6,8 @@ import jetbrains.mps.lang.pattern.GeneratedMatcher;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-/*package*/ class Pattern_hz3823_a0a0b0j extends GeneratedMatcher {
-  public Pattern_hz3823_a0a0b0j(SNode patternNode) {
+/*package*/ class Pattern_hz3823_a0a0b0l extends GeneratedMatcher {
+  public Pattern_hz3823_a0a0b0l(SNode patternNode) {
     super(patternNode, true);
 
 

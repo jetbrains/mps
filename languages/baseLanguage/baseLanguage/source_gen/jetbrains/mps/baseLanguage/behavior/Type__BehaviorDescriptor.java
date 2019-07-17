@@ -21,6 +21,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
+import java.util.Collections;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -39,6 +40,7 @@ public final class Type__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<List<String>> getVariableSuffixes_idhEwIzNo = new SMethodBuilder<List<String>>(new SJavaCompoundTypeImpl((Class<List<String>>) ((Class) Object.class))).name("getVariableSuffixes").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIzNo").build();
   public static final SMethod<Boolean> hasPluralVariableSuffixes_id1gn9ujF3bz3 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasPluralVariableSuffixes").modifiers(SModifiersImpl.create(8, AccessPrivileges.PROTECTED)).concept(CONCEPT).id("1gn9ujF3bz3").build();
+  public static final SMethod<List<SNode>> getSupertypes_id4w2h6RLlygH = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getSupertypes").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4w2h6RLlygH").build();
   public static final SMethod<String> getErasureSignature_idhEwIzNx = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getErasureSignature").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIzNx").build();
   public static final SMethod<SNode> getErasure_idB1mAlA38Mq = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getErasure").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("B1mAlA38Mq").build();
   public static final SMethod<Boolean> isReifiable_id2soW6EObTNQ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isReifiable").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2soW6EObTNQ").build();
@@ -59,7 +61,7 @@ public final class Type__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> canBeCoerced_id5uUZ$FUUb6B = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeCoerced").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5uUZ$FUUb6B").build(SMethodBuilder.createJavaParameter(String.class, ""));
   public static final SMethod<Boolean> canBeCoerced_id476YRQvP9l3 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeCoerced").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("476YRQvP9l3").build(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getVariableSuffixes_idhEwIzNo, hasPluralVariableSuffixes_id1gn9ujF3bz3, getErasureSignature_idhEwIzNx, getErasure_idB1mAlA38Mq, isReifiable_id2soW6EObTNQ, isValueType_id4ctkEngAqej, getBoxedType_idhEwIzNC, getAbstractCreator_idhEwIzNW, getAbstractCreators_idhQFCQT0, getAbstractCreators_id6A07P3f4z36, getJavaType_idhEwIzO1, selectOnVariableCreation_idhEwIzO8, getClassExpression_idhEwIzOd, isSupersetOf_idhKBOZqh, isSupersetOf_id7PgshREdQKp, createDefaultTypeExpression_id2UvJdVpqUA4, hasMissingParameters_id32KZwowVoMu, getLooseType_id4YTQtEKnnzf, jniSignature_id7F81Cd2C7e3, canBeCoerced_id5uUZ$FUUb6B, canBeCoerced_id476YRQvP9l3);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getVariableSuffixes_idhEwIzNo, hasPluralVariableSuffixes_id1gn9ujF3bz3, getSupertypes_id4w2h6RLlygH, getErasureSignature_idhEwIzNx, getErasure_idB1mAlA38Mq, isReifiable_id2soW6EObTNQ, isValueType_id4ctkEngAqej, getBoxedType_idhEwIzNC, getAbstractCreator_idhEwIzNW, getAbstractCreators_idhQFCQT0, getAbstractCreators_id6A07P3f4z36, getJavaType_idhEwIzO1, selectOnVariableCreation_idhEwIzO8, getClassExpression_idhEwIzOd, isSupersetOf_idhKBOZqh, isSupersetOf_id7PgshREdQKp, createDefaultTypeExpression_id2UvJdVpqUA4, hasMissingParameters_id32KZwowVoMu, getLooseType_id4YTQtEKnnzf, jniSignature_id7F81Cd2C7e3, canBeCoerced_id5uUZ$FUUb6B, canBeCoerced_id476YRQvP9l3);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -78,6 +80,9 @@ public final class Type__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static boolean hasPluralVariableSuffixes_id1gn9ujF3bz3(@NotNull SNode __thisNode__) {
     return false;
+  }
+  /*package*/ static List<SNode> getSupertypes_id4w2h6RLlygH(@NotNull SNode __thisNode__) {
+    return Collections.emptyList();
   }
   /*package*/ static String getErasureSignature_idhEwIzNx(@NotNull SNode __thisNode__) {
     SNode javaType = Type__BehaviorDescriptor.getErasure_idB1mAlA38Mq.invoke(__thisNode__);
@@ -126,9 +131,9 @@ public final class Type__BehaviorDescriptor extends BaseBHDescriptor {
   @Deprecated
   /*package*/ static SNode getClassExpression_idhEwIzOd(@NotNull SNode __thisNode__) {
     {
-      SNode coercedNode_smb55n_a0m = TypecheckingFacade.getFromContext().coerceType(__thisNode__, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"));
-      if (coercedNode_smb55n_a0m != null) {
-        return _quotation_createNode_smb55n_a0a1a0a21(SLinkOperations.getTarget(coercedNode_smb55n_a0m, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier")));
+      SNode coercedNode_smb55n_a0n = TypecheckingFacade.getFromContext().coerceType(__thisNode__, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"));
+      if (coercedNode_smb55n_a0n != null) {
+        return _quotation_createNode_smb55n_a0a1a0a31(SLinkOperations.getTarget(coercedNode_smb55n_a0n, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier")));
       } else {
         throw new UnsupportedOperationException();
       }
@@ -136,9 +141,9 @@ public final class Type__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static boolean isSupersetOf_idhKBOZqh(@NotNull SNode __thisNode__, SNode t) {
     {
-      GeneratedMatchingPattern pattern_smb55n_a0n = new Pattern_smb55n_a0a0a0n(_quotation_createNode_smb55n_a0a0a0a0n(__thisNode__));
-      SNode coercedNode_smb55n_a0n = TypecheckingFacade.getFromContext().coerceType(t, pattern_smb55n_a0n);
-      if (coercedNode_smb55n_a0n != null) {
+      GeneratedMatchingPattern pattern_smb55n_a0o = new Pattern_smb55n_a0a0a0o(_quotation_createNode_smb55n_a0a0a0a0o(__thisNode__));
+      SNode coercedNode_smb55n_a0o = TypecheckingFacade.getFromContext().coerceType(t, pattern_smb55n_a0o);
+      if (coercedNode_smb55n_a0o != null) {
         return true;
       } else {
       }
@@ -201,42 +206,44 @@ public final class Type__BehaviorDescriptor extends BaseBHDescriptor {
       case 1:
         return (T) ((Boolean) hasPluralVariableSuffixes_id1gn9ujF3bz3(node));
       case 2:
-        return (T) ((String) getErasureSignature_idhEwIzNx(node));
+        return (T) ((List<SNode>) getSupertypes_id4w2h6RLlygH(node));
       case 3:
-        return (T) ((SNode) getErasure_idB1mAlA38Mq(node));
+        return (T) ((String) getErasureSignature_idhEwIzNx(node));
       case 4:
-        return (T) ((Boolean) isReifiable_id2soW6EObTNQ(node));
+        return (T) ((SNode) getErasure_idB1mAlA38Mq(node));
       case 5:
-        return (T) ((Boolean) isValueType_id4ctkEngAqej(node));
+        return (T) ((Boolean) isReifiable_id2soW6EObTNQ(node));
       case 6:
-        return (T) ((SNode) getBoxedType_idhEwIzNC(node));
+        return (T) ((Boolean) isValueType_id4ctkEngAqej(node));
       case 7:
-        return (T) ((SNode) getAbstractCreator_idhEwIzNW(node));
+        return (T) ((SNode) getBoxedType_idhEwIzNC(node));
       case 8:
-        return (T) ((List<SNode>) getAbstractCreators_idhQFCQT0(node));
+        return (T) ((SNode) getAbstractCreator_idhEwIzNW(node));
       case 9:
-        return (T) ((List<SNode>) getAbstractCreators_id6A07P3f4z36(node, (SModel) parameters[0]));
+        return (T) ((List<SNode>) getAbstractCreators_idhQFCQT0(node));
       case 10:
-        return (T) ((SNode) getJavaType_idhEwIzO1(node));
+        return (T) ((List<SNode>) getAbstractCreators_id6A07P3f4z36(node, (SModel) parameters[0]));
       case 11:
-        return (T) ((Boolean) selectOnVariableCreation_idhEwIzO8(node));
+        return (T) ((SNode) getJavaType_idhEwIzO1(node));
       case 12:
-        return (T) ((SNode) getClassExpression_idhEwIzOd(node));
+        return (T) ((Boolean) selectOnVariableCreation_idhEwIzO8(node));
       case 13:
-        return (T) ((Boolean) isSupersetOf_idhKBOZqh(node, (SNode) parameters[0]));
+        return (T) ((SNode) getClassExpression_idhEwIzOd(node));
       case 14:
-        return (T) ((Boolean) isSupersetOf_id7PgshREdQKp(node, (SNode) parameters[0], (Map<SNode, SNode>) parameters[1]));
+        return (T) ((Boolean) isSupersetOf_idhKBOZqh(node, (SNode) parameters[0]));
       case 15:
-        return (T) ((SNode) createDefaultTypeExpression_id2UvJdVpqUA4(node));
+        return (T) ((Boolean) isSupersetOf_id7PgshREdQKp(node, (SNode) parameters[0], (Map<SNode, SNode>) parameters[1]));
       case 16:
-        return (T) ((Boolean) hasMissingParameters_id32KZwowVoMu(node));
+        return (T) ((SNode) createDefaultTypeExpression_id2UvJdVpqUA4(node));
       case 17:
-        return (T) ((SNode) getLooseType_id4YTQtEKnnzf(node, (Set<SNode>) parameters[0]));
+        return (T) ((Boolean) hasMissingParameters_id32KZwowVoMu(node));
       case 18:
-        return (T) ((String) jniSignature_id7F81Cd2C7e3(node));
+        return (T) ((SNode) getLooseType_id4YTQtEKnnzf(node, (Set<SNode>) parameters[0]));
       case 19:
-        return (T) ((Boolean) canBeCoerced_id5uUZ$FUUb6B(node, (String) parameters[0]));
+        return (T) ((String) jniSignature_id7F81Cd2C7e3(node));
       case 20:
+        return (T) ((Boolean) canBeCoerced_id5uUZ$FUUb6B(node, (String) parameters[0]));
+      case 21:
         return (T) ((Boolean) canBeCoerced_id476YRQvP9l3(node, (SAbstractConcept) parameters[0]));
       default:
         throw new BHMethodNotFoundException(this, method);
@@ -266,14 +273,14 @@ public final class Type__BehaviorDescriptor extends BaseBHDescriptor {
   public SAbstractConcept getConcept() {
     return CONCEPT;
   }
-  private static SNode _quotation_createNode_smb55n_a0a1a0a21(Object parameter_1) {
+  private static SNode _quotation_createNode_smb55n_a0a1a0a31(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x103fb730c14L, "ClassifierClassExpression"), null, null, false);
     SNodeAccessUtil.setReferenceTarget(quotedNode_2, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x103fb730c14L, 0x103fb73a43eL, "classifier"), (SNode) parameter_1);
     return quotedNode_2;
   }
-  private static SNode _quotation_createNode_smb55n_a0a0a0a0n(Object parameter_1) {
+  private static SNode _quotation_createNode_smb55n_a0a0a0a0o(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     quotedNode_2 = (SNode) parameter_1;
