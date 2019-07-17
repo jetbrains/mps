@@ -23,6 +23,7 @@ import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.openapi.editor.EditorPanelManager;
+import jetbrains.mps.project.ModelImporter;
 
 public class MessageIntentionHelper {
   private final SNode myProblem;
@@ -67,7 +68,10 @@ public class MessageIntentionHelper {
       editorPanelManager.openEditor(newFeedbackRoot);
       context.selectWRTFocusPolicy(SLinkOperations.getTarget(newMessage, MetaAdapterFactory.getContainmentLink(0x16e76fe395344defL, 0xafb7925a169a7c0bL, 0x6530303593ae1651L, 0x48f860fc0e362dc8L, "message")));
     }
-
+    SModel structureModel = SNodeOperations.getModel(myConcept);
+    ModelImporter importer = new ModelImporter(SNodeOperations.getModel(newMessage));
+    importer.prepare(SModelOperations.getPointer(structureModel));
+    importer.execute();
     return newMessage;
   }
 }

@@ -30,6 +30,7 @@
     <import index="t9po" ref="r:21b4a58c-8629-4511-bd63-7fc9a4e5fc38(jetbrains.mps.lang.messages.structure)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="bb70" ref="r:47656d18-dbba-45c4-80e3-b6a073fd7710(jetbrains.mps.lang.feedback.problem.childAndProp.structure)" />
+    <import index="z1c3" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.project(MPS.Platform/)" />
     <import index="sis7" ref="r:ff619a2b-8fe7-4627-a515-9b4874d6fc53(jetbrains.mps.lang.feedback.problem.structure)" implicit="true" />
     <import index="tpce" ref="r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)" implicit="true" />
   </imports>
@@ -97,7 +98,6 @@
       <concept id="1068580123155" name="jetbrains.mps.baseLanguage.structure.ExpressionStatement" flags="nn" index="3clFbF">
         <child id="1068580123156" name="expression" index="3clFbG" />
       </concept>
-      <concept id="1068580123157" name="jetbrains.mps.baseLanguage.structure.Statement" flags="nn" index="3clFbH" />
       <concept id="1068580123159" name="jetbrains.mps.baseLanguage.structure.IfStatement" flags="nn" index="3clFbJ">
         <child id="1068580123160" name="condition" index="3clFbw" />
         <child id="1068580123161" name="ifTrue" index="3clFbx" />
@@ -165,6 +165,7 @@
       <concept id="767145758118872833" name="jetbrains.mps.lang.actions.structure.NF_LinkList_AddNewChildOperation" flags="nn" index="2DeJg1" />
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
+      <concept id="3506770386464365589" name="jetbrains.mps.lang.smodel.structure.Model_PointerOperation" flags="ng" index="aIX43" />
       <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
         <reference id="1177026940964" name="conceptDeclaration" index="cht4Q" />
       </concept>
@@ -888,7 +889,63 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbH" id="3qkjbZlMJaH" role="3cqZAp" />
+        <node concept="3cpWs8" id="UzCO9pkRdy" role="3cqZAp">
+          <node concept="3cpWsn" id="UzCO9pkRdz" role="3cpWs9">
+            <property role="TrG5h" value="structureModel" />
+            <node concept="H_c77" id="UzCO9pkQND" role="1tU5fm" />
+            <node concept="2OqwBi" id="UzCO9pkRd$" role="33vP2m">
+              <node concept="37vLTw" id="UzCO9pkRd_" role="2Oq$k0">
+                <ref role="3cqZAo" node="3qkjbZlMDox" resolve="myConcept" />
+              </node>
+              <node concept="I4A8Y" id="UzCO9pkRdA" role="2OqNvi" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="UzCO9pkNr5" role="3cqZAp">
+          <node concept="3cpWsn" id="UzCO9pkNr6" role="3cpWs9">
+            <property role="TrG5h" value="importer" />
+            <node concept="3uibUv" id="UzCO9pkNr7" role="1tU5fm">
+              <ref role="3uigEE" to="z1c3:~ModelImporter" resolve="ModelImporter" />
+            </node>
+            <node concept="2ShNRf" id="UzCO9pkNOP" role="33vP2m">
+              <node concept="1pGfFk" id="UzCO9pkPBj" role="2ShVmc">
+                <ref role="37wK5l" to="z1c3:~ModelImporter.&lt;init&gt;(org.jetbrains.mps.openapi.model.SModel)" resolve="ModelImporter" />
+                <node concept="2OqwBi" id="UzCO9pkSvm" role="37wK5m">
+                  <node concept="37vLTw" id="UzCO9pkSjA" role="2Oq$k0">
+                    <ref role="3cqZAo" node="3qkjbZlMgzg" resolve="newMessage" />
+                  </node>
+                  <node concept="I4A8Y" id="UzCO9pkSEZ" role="2OqNvi" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="UzCO9pkTC6" role="3cqZAp">
+          <node concept="2OqwBi" id="UzCO9pkUi7" role="3clFbG">
+            <node concept="37vLTw" id="UzCO9pkTC4" role="2Oq$k0">
+              <ref role="3cqZAo" node="UzCO9pkNr6" resolve="importer" />
+            </node>
+            <node concept="liA8E" id="UzCO9pkV0J" role="2OqNvi">
+              <ref role="37wK5l" to="z1c3:~ModelImporter.prepare(org.jetbrains.mps.openapi.model.SModelReference)" resolve="prepare" />
+              <node concept="2OqwBi" id="UzCO9pkVaK" role="37wK5m">
+                <node concept="37vLTw" id="UzCO9pkV1S" role="2Oq$k0">
+                  <ref role="3cqZAo" node="UzCO9pkRdz" resolve="structureModel" />
+                </node>
+                <node concept="aIX43" id="UzCO9pkVho" role="2OqNvi" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="UzCO9pkViu" role="3cqZAp">
+          <node concept="2OqwBi" id="UzCO9pkVXm" role="3clFbG">
+            <node concept="37vLTw" id="UzCO9pkVis" role="2Oq$k0">
+              <ref role="3cqZAo" node="UzCO9pkNr6" resolve="importer" />
+            </node>
+            <node concept="liA8E" id="UzCO9pkWV7" role="2OqNvi">
+              <ref role="37wK5l" to="z1c3:~ModelImporter.execute()" resolve="execute" />
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs6" id="3qkjbZlMFqN" role="3cqZAp">
           <node concept="37vLTw" id="3qkjbZlMFtk" role="3cqZAk">
             <ref role="3cqZAo" node="3qkjbZlMgzg" resolve="newMessage" />
