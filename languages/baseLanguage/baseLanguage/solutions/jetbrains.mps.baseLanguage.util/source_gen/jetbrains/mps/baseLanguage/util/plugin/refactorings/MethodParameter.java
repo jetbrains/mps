@@ -11,11 +11,18 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.typesystem.inference.SubtypingManager;
-import jetbrains.mps.typesystem.inference.TypeChecker;
-import jetbrains.mps.typesystem.inference.util.StructuralNodeSet;
+import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
+import java.util.HashSet;
+import java.util.Deque;
+import jetbrains.mps.internal.collections.runtime.LinkedListSequence;
+import java.util.LinkedList;
+import jetbrains.mps.smodel.behaviour.BHReflection;
+import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.pattern.util.MatchingUtil;
+import jetbrains.mps.lang.pattern.util.IMatchModifier;
 
 public class MethodParameter extends MethodParameterModel {
   private SNode myDeclaration;
@@ -41,21 +48,23 @@ public class MethodParameter extends MethodParameterModel {
       List<String> result = ListSequence.fromList(new ArrayList<String>());
       return result;
     }
-    SubtypingManager manager = TypeChecker.getInstance().getSubtypingManager();
-    StructuralNodeSet<?> frontier = new StructuralNodeSet();
     List<SNode> found = new ArrayList<SNode>();
-    frontier.add(this.myType);
-    while (!(frontier.isEmpty())) {
-      StructuralNodeSet<?> ancestors = new StructuralNodeSet();
-      for (SNode node : SetSequence.fromSet(frontier)) {
-        ancestors.addAllStructurally(manager.collectImmediateSupertypes(node, false));
-        ListSequence.fromList(found).addElement(node);
+    Set<MethodParameter.NodeWrapper> visited = SetSequence.fromSet(new HashSet<MethodParameter.NodeWrapper>());
+    final Deque<SNode> queue = LinkedListSequence.fromListAndArrayNew(new LinkedList<SNode>(), myType);
+    while (!(LinkedListSequence.fromLinkedListNew(queue).isEmpty())) {
+      SNode t = LinkedListSequence.fromLinkedListNew(queue).removeElementAt(0);
+      if (SetSequence.fromSet(visited).contains(new MethodParameter.NodeWrapper(t))) {
+        continue;
       }
-      for (SNode passed : ListSequence.fromList(found)) {
-        ancestors.removeStructurally(passed);
-      }
-      frontier = ancestors;
+      ListSequence.fromList(found).addElement(t);
+      SetSequence.fromSet(visited).addElement(new MethodParameter.NodeWrapper(t));
+      ListSequence.fromList(((List<SNode>) BHReflection.invoke0(t, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type"), SMethodTrimmedId.create("getSupertypes", null, "4w2h6RLlygH")))).visitAll(new IVisitor<SNode>() {
+        public void visit(SNode it) {
+          LinkedListSequence.fromLinkedListNew(queue).addElement(it);
+        }
+      });
     }
+
     List<String> result = ListSequence.fromList(new ArrayList<String>());
     for (SNode node : ListSequence.fromList(found)) {
       ListSequence.fromList(result).addElement(node.getPresentation());
@@ -95,4 +104,29 @@ public class MethodParameter extends MethodParameterModel {
     }
     return false;
   }
+
+  private static class NodeWrapper {
+    private int myHash;
+    private SNode myNode;
+
+    public NodeWrapper(SNode node) {
+      this.myNode = node;
+      this.myHash = MatchingUtil.hash(node);
+    }
+
+    @Override
+    public int hashCode() {
+      return myHash;
+    }
+
+    @Override
+    public boolean equals(Object that) {
+      if (!(that instanceof MethodParameter.NodeWrapper)) {
+        return false;
+      }
+      // ignore attributes while matching types 
+      return MatchingUtil.matchNodes(this.myNode, ((MethodParameter.NodeWrapper) that).myNode, IMatchModifier.DEFAULT, false);
+    }
+  }
+
 }
