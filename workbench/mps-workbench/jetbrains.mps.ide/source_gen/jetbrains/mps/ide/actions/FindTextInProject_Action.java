@@ -8,22 +8,7 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.annotations.NotNull;
-import com.intellij.openapi.actionSystem.PlatformDataKeys;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.ui.Messages;
-import jetbrains.mps.ide.findusages.view.UsageToolOptions;
-import jetbrains.mps.ide.findusages.model.IResultProvider;
-import jetbrains.mps.ide.findusages.findalgorithm.resultproviders.treenodes.BaseNode;
-import jetbrains.mps.ide.findusages.model.SearchQuery;
-import jetbrains.mps.ide.findusages.findalgorithm.finders.IFinder;
-import org.jetbrains.mps.openapi.util.ProgressMonitor;
-import jetbrains.mps.ide.findusages.model.holders.StringHolder;
-import java.util.function.Consumer;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.ide.findusages.model.SearchResult;
-import jetbrains.mps.workbench.index.PropertyValueIndex;
-import jetbrains.mps.scope.EmptySearchScope;
-import jetbrains.mps.ide.findusages.view.UsagesViewTool;
+import jetbrains.mps.ide.ui.FindTextInModelDialog;
 
 public class FindTextInProject_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -52,34 +37,10 @@ public class FindTextInProject_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    String predefText = PlatformDataKeys.PREDEFINED_TEXT.getData(event.getDataContext());
     final MPSProject mpsProject = event.getData(MPSCommonDataKeys.MPS_PROJECT);
-    final Project ideaProject = mpsProject.getProject();
-    String text = Messages.showInputDialog(ideaProject, "Search text:", event.getPresentation().getText(), event.getPresentation().getIcon(), predefText, null);
-    if (text == null || text.isEmpty()) {
-      return;
-    }
-    // FIXME transient == true just because result provider (and, perhaps, search query) could not get serialized 
-    UsageToolOptions opt = new UsageToolOptions().navigateIfSingle(true).notFoundMessage("No matching property values found").transientView(true);
-    IResultProvider rp = new BaseNode() {
-      @Override
-      protected void doFindResults(@NotNull SearchQuery q, @NotNull final IFinder.FindCallback cb, @NotNull ProgressMonitor pm) {
-        String t = as_heai83_a0a0a0a0a0a7a5(q.getObjectHolder(), StringHolder.class).getObject();
-        Consumer<SNode> c = new Consumer<SNode>() {
-
-          @Override
-          public void accept(SNode n) {
-            // FIXME look up particular property and match it against text, index just gives 'possible' locations 
-            cb.onUsageFound(new SearchResult<SNode>(n, "property value"));
-          }
-        };
-        PropertyValueIndex.processValues(t, c, mpsProject);
-      }
-    };
-    SearchQuery sq = new SearchQuery(new StringHolder(text), new EmptySearchScope());
-    UsagesViewTool.showUsages(ideaProject, rp, sq, opt);
-  }
-  private static <T> T as_heai83_a0a0a0a0a0a7a5(Object o, Class<T> type) {
-    return (type.isInstance(o) ? (T) o : null);
+    FindTextInModelDialog dlg = new FindTextInModelDialog(mpsProject);
+    // no idea what's the proper way to use active selection, but PlatformDataKeys.PREDEFINED_TEXT key doesn't work. 
+    // There's IDEA's FindUtil.getSelectedText(Editor), no idea what's MPS way to do the same 
+    dlg.show();
   }
 }

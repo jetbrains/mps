@@ -1134,31 +1134,15 @@
   </dependency>
   <dependency className="jetbrains.mps.ide.actions.FindTextInProject_Action">
     <classNode dependClassName="com.intellij.openapi.actionSystem.AnActionEvent" />
-    <classNode dependClassName="com.intellij.openapi.actionSystem.PlatformDataKeys" />
-    <classNode dependClassName="com.intellij.openapi.project.Project" />
-    <classNode dependClassName="com.intellij.openapi.ui.Messages" />
-    <classNode dependClassName="java.lang.Class" />
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.Map" />
-    <classNode dependClassName="java.util.function.Consumer" />
     <classNode dependClassName="javax.swing.Icon" />
     <classNode dependClassName="jetbrains.mps.ide.actions.MPSCommonDataKeys" />
-    <classNode dependClassName="jetbrains.mps.ide.findusages.findalgorithm.finders.IFinder" />
-    <classNode dependClassName="jetbrains.mps.ide.findusages.findalgorithm.resultproviders.treenodes.BaseNode" />
-    <classNode dependClassName="jetbrains.mps.ide.findusages.model.IResultProvider" />
-    <classNode dependClassName="jetbrains.mps.ide.findusages.model.SearchQuery" />
-    <classNode dependClassName="jetbrains.mps.ide.findusages.model.SearchResult" />
-    <classNode dependClassName="jetbrains.mps.ide.findusages.model.holders.StringHolder" />
-    <classNode dependClassName="jetbrains.mps.ide.findusages.view.UsageToolOptions" />
-    <classNode dependClassName="jetbrains.mps.ide.findusages.view.UsagesViewTool" />
+    <classNode dependClassName="jetbrains.mps.ide.ui.FindTextInModelDialog" />
     <classNode dependClassName="jetbrains.mps.project.MPSProject" />
-    <classNode dependClassName="jetbrains.mps.scope.EmptySearchScope" />
-    <classNode dependClassName="jetbrains.mps.workbench.index.PropertyValueIndex" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.util.ProgressMonitor" />
     <classNode extendsClassName="jetbrains.mps.workbench.action.BaseAction" />
   </dependency>
   <dependency className="jetbrains.mps.ide.actions.FindUnusedAndDeprecatedConcepts_Action">
