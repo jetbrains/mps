@@ -25,8 +25,13 @@ import jetbrains.mps.jps.make.fileUtil.SimpleFileReader;
 import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.jps.builders.JpsBuildTestCase;
+import org.jetbrains.jps.cmdline.ClasspathBootstrap;
+import org.jetbrains.jps.model.JpsDummyElement;
+import org.jetbrains.jps.model.JpsElement;
 import org.jetbrains.jps.model.java.JpsJavaExtensionService;
+import org.jetbrains.jps.model.library.sdk.JpsSdk;
 import org.jetbrains.jps.model.module.JpsModule;
 import org.jetbrains.jps.model.serialization.JpsProjectLoader;
 import org.jetbrains.jps.model.serialization.PathMacroUtil;
@@ -119,6 +124,11 @@ public abstract class MpsJpsBuildTestCase extends JpsBuildTestCase {
   protected void setUp() throws Exception {
     super.setUp();
     myBuildParams.clear();
+  }
+
+  @Override
+  protected JpsSdk<JpsDummyElement> addJdk(String name) {
+    return super.addJdk(name,null);
   }
 
   @Override
