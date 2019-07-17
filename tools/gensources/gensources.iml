@@ -70,6 +70,7 @@
       <sourceFolder url="file://$MODULE_DIR$/../../languages/languageDesign/constraints/legacy/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../languages/languageDesign/constraints/rules/kinds/generator/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../languages/languageDesign/constraints/rules/kinds/source_gen" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../languages/languageDesign/constraints/rules/rules/generator/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../languages/languageDesign/constraints/rules/rules/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../languages/languageDesign/constraints/rules/skeleton/generator/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../languages/languageDesign/constraints/rules/skeleton/source_gen" isTestSource="false" />
@@ -202,8 +203,6 @@
       <sourceFolder url="file://$MODULE_DIR$/../../languages/languageDesign/util/jetbrains.mps.lang.util.order/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../languages/multiAspectLang/generator/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../languages/multiAspectLang/source_gen" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../../languages/multiAspectLang2/generator/source_gen" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../../languages/multiAspectLang2/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../languages/util/builders/generator/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../languages/util/builders/sandbox/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../languages/util/builders/source_gen" isTestSource="false" />
@@ -417,8 +416,6 @@
       <excludeFolder url="file://$MODULE_DIR$/../../languages/languageDesign/util/jetbrains.mps.lang.util.order/generator/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../languages/multiAspectLang/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../languages/multiAspectLang/generator/classes_gen" />
-      <excludeFolder url="file://$MODULE_DIR$/../../languages/multiAspectLang2/classes_gen" />
-      <excludeFolder url="file://$MODULE_DIR$/../../languages/multiAspectLang2/generator/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../languages/util/builders/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../languages/util/builders/generator/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../languages/util/builders/sandbox/classes_gen" />
