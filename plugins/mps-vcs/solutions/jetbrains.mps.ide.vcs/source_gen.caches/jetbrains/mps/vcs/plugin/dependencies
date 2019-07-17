@@ -49,6 +49,13 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SModel" />
     <classNode extendsClassName="jetbrains.mps.workbench.action.BaseAction" />
   </dependency>
+  <dependency className="jetbrains.mps.vcs.plugin.Default_KeymapChanges">
+    <classNode dependClassName="com.intellij.openapi.actionSystem.KeyboardShortcut" />
+    <classNode dependClassName="com.intellij.openapi.actionSystem.Shortcut" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="javax.swing.KeyStroke" />
+    <classNode extendsClassName="jetbrains.mps.plugins.actions.BaseKeymapChanges" />
+  </dependency>
   <dependency className="jetbrains.mps.vcs.plugin.IgnoreModuleInVcs_Action">
     <classNode dependClassName="com.intellij.openapi.actionSystem.AnActionEvent" />
     <classNode dependClassName="com.intellij.openapi.actionSystem.CommonDataKeys" />
@@ -290,11 +297,16 @@
   </dependency>
   <dependency className="jetbrains.mps.vcs.plugin.Vcs_ApplicationPlugin">
     <classNode dependClassName="com.intellij.openapi.extensions.PluginId" />
+    <classNode dependClassName="java.util.ArrayList" />
+    <classNode dependClassName="java.util.List" />
     <classNode dependClassName="jetbrains.mps.ide.actions.CommonModuleActions_ActionGroup" />
     <classNode dependClassName="jetbrains.mps.ide.actions.ModelActions_ActionGroup" />
     <classNode dependClassName="jetbrains.mps.ide.actions.NodeActions_ActionGroup" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
+    <classNode dependClassName="jetbrains.mps.plugins.actions.BaseKeymapChanges" />
     <classNode dependClassName="jetbrains.mps.vcs.plugin.AddModuleToVcs_Action" />
     <classNode dependClassName="jetbrains.mps.vcs.plugin.CompareTransientModels_Action" />
+    <classNode dependClassName="jetbrains.mps.vcs.plugin.Default_KeymapChanges" />
     <classNode dependClassName="jetbrains.mps.vcs.plugin.IgnoreModuleInVcs_Action" />
     <classNode dependClassName="jetbrains.mps.vcs.plugin.MakeFromChangesView_ActionGroup" />
     <classNode dependClassName="jetbrains.mps.vcs.plugin.ModuleVcsActions_ActionGroup" />

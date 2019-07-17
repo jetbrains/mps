@@ -14,13 +14,14 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/6329021646629104954:jetbrains.mps.baseLanguage.structure.SingleLineComment" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
   <root nodeRef="r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)/1156564534683188476">
     <file name="MakeOrRebuildModelsFromChangeList_Action.java">
       <node id="1156564534683188476" at="39,0,40,0" concept="13" trace="ICON" />
       <node id="3903119074522538562" at="41,0,42,0" concept="5" trace="rebuild" />
-      <node id="1156564534683188476" at="42,72,43,35" concept="14" />
+      <node id="1156564534683188476" at="42,72,43,35" concept="15" />
       <node id="1156564534683188476" at="43,35,44,31" concept="4" />
       <node id="1156564534683188476" at="44,31,45,35" concept="4" />
       <node id="1156564534683188476" at="45,35,46,40" concept="4" />
@@ -199,7 +200,7 @@
   <root nodeRef="r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)/1156564534683228178">
     <file name="MakeFromChangesView_ActionGroup.java">
       <node id="1156564534683228178" at="11,0,12,0" concept="13" trace="ID" />
-      <node id="1156564534683228178" at="13,78,14,45" concept="14" />
+      <node id="1156564534683228178" at="13,78,14,45" concept="15" />
       <node id="1156564534683228178" at="14,45,15,25" concept="4" />
       <node id="1156564534683228178" at="15,25,16,20" concept="4" />
       <node id="5964066876626835162" at="16,20,17,56" concept="4" />
@@ -213,8 +214,8 @@
       <unit id="1156564534683228178" at="10,0,22,0" name="jetbrains.mps.vcs.plugin.MakeFromChangesView_ActionGroup" />
     </file>
     <file name="Vcs_ApplicationPlugin.java">
-      <node id="1156564534683228178" at="33,14,34,56" concept="4" />
-      <node id="1156564534683228184" at="41,37,42,93" concept="4" />
+      <node id="1156564534683228178" at="37,14,38,56" concept="4" />
+      <node id="1156564534683228184" at="45,37,46,93" concept="4" />
     </file>
   </root>
   <root nodeRef="r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)/3531023421907347091">
@@ -225,7 +226,7 @@
   <root nodeRef="r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)/3877003870834324810">
     <file name="CompareTransientModels_Action.java">
       <node id="3877003870834324810" at="30,0,31,0" concept="13" trace="ICON" />
-      <node id="3877003870834324810" at="32,42,33,38" concept="14" />
+      <node id="3877003870834324810" at="32,42,33,38" concept="15" />
       <node id="3877003870834324810" at="33,38,34,35" concept="4" />
       <node id="3877003870834324810" at="34,35,35,40" concept="4" />
       <node id="3877003870834324810" at="38,32,39,16" concept="10" />
@@ -310,14 +311,39 @@
       <unit id="3877003870834324810" at="29,0,87,0" name="jetbrains.mps.vcs.plugin.CompareTransientModels_Action" />
     </file>
     <file name="Vcs_ApplicationPlugin.java">
-      <node id="3877003870834324810" at="25,43,26,51" concept="4" />
+      <node id="3877003870834324810" at="29,43,30,51" concept="4" />
+    </file>
+  </root>
+  <root nodeRef="r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)/4327451095998425293">
+    <file name="Default_KeymapChanges.java">
+      <node id="4327451095998425293" at="11,34,12,14" concept="11" />
+      <node id="4327451095998425296" at="12,14,13,99" concept="4" />
+      <node id="4327451095998425293" at="13,99,14,28" concept="11" />
+      <node id="4327451095998425293" at="14,28,15,15" concept="11" />
+      <node id="4327451095998425293" at="17,29,18,22" concept="10" />
+      <node id="4327451095998425293" at="20,53,21,70" concept="10" />
+      <node id="4327451095998425293" at="17,0,20,0" concept="8" trace="getScheme#()Ljava/lang/String;" />
+      <node id="4327451095998425293" at="20,0,23,0" concept="14" trace="getShortcut#(Ljava/lang/String;)Lcom/intellij/openapi/actionSystem/Shortcut;" />
+      <node id="4327451095998425293" at="11,0,17,0" concept="2" trace="Default_KeymapChanges#()V" />
+      <scope id="4327451095998425293" at="17,29,18,22" />
+      <scope id="4327451095998425293" at="20,53,21,70" />
+      <scope id="4327451095998425293" at="17,0,20,0" />
+      <scope id="4327451095998425293" at="20,0,23,0">
+        <var name="stroke" id="4327451095998425293" />
+      </scope>
+      <scope id="4327451095998425293" at="11,34,15,15" />
+      <scope id="4327451095998425293" at="11,0,17,0" />
+      <unit id="4327451095998425293" at="10,0,24,0" name="jetbrains.mps.vcs.plugin.Default_KeymapChanges" />
+    </file>
+    <file name="Vcs_ApplicationPlugin.java">
+      <node id="4327451095998425293" at="52,92,53,71" concept="4" />
     </file>
   </root>
   <root nodeRef="r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)/5047908084943665620">
     <file name="TestMergeAction_Action.java">
       <node id="5047908084943665620" at="38,0,39,0" concept="13" trace="LOG" />
       <node id="5047908084943665620" at="39,0,40,0" concept="13" trace="ICON" />
-      <node id="5047908084943665620" at="41,35,42,48" concept="14" />
+      <node id="5047908084943665620" at="41,35,42,48" concept="15" />
       <node id="5047908084943665620" at="42,48,43,35" concept="4" />
       <node id="5047908084943665620" at="43,35,44,40" concept="4" />
       <node id="5047908084943665620" at="47,32,48,16" concept="10" />
@@ -358,8 +384,8 @@
       <node id="5047908084943703423" at="72,96,78,6" concept="9" />
       <node id="5047908084943673174" at="54,5,61,5" concept="1" />
       <node id="1444496069592276368" at="61,5,68,5" concept="1" />
-      <node id="5047908084943919062" at="87,24,94,9" concept="15" />
-      <node id="4915141521380953057" at="98,136,106,9" concept="15" />
+      <node id="5047908084943919062" at="87,24,94,9" concept="16" />
+      <node id="4915141521380953057" at="98,136,106,9" concept="16" />
       <node id="5047908084943665620" at="50,0,71,0" concept="8" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
       <node id="5047908084943708029" at="83,0,108,0" concept="8" trace="run#()V" />
       <node id="1092784201483719405" at="81,52,108,7" concept="4" />
@@ -420,38 +446,45 @@
       <unit id="5047908084943665620" at="37,0,111,0" name="jetbrains.mps.vcs.plugin.TestMergeAction_Action" />
     </file>
     <file name="Vcs_ApplicationPlugin.java">
-      <node id="5047908084943665620" at="31,47,32,44" concept="4" />
+      <node id="5047908084943665620" at="35,47,36,44" concept="4" />
     </file>
   </root>
   <root nodeRef="r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)/7162597690968188471">
     <file name="Vcs_ApplicationPlugin.java">
-      <node id="7162597690968188471" at="13,0,14,0" concept="5" trace="myId" />
-      <node id="7162597690968188471" at="19,27,20,16" concept="10" />
-      <node id="7162597690968188471" at="23,30,24,30" concept="11" />
-      <node id="7162597690968188471" at="32,44,33,14" concept="11" />
-      <node id="7162597690968188471" at="15,0,17,0" concept="2" trace="Vcs_ApplicationPlugin#()V" />
-      <node id="7162597690968188471" at="39,0,41,0" concept="8" trace="adjustInterfaceGroups#()V" />
-      <node id="7162597690968188471" at="18,0,22,0" concept="8" trace="getId#()Lcom/intellij/openapi/extensions/PluginId;" />
-      <node id="7162597690968188471" at="41,0,47,0" concept="8" trace="adjustRegularGroups#()V" />
-      <node id="7162597690968188471" at="23,0,39,0" concept="8" trace="createGroups#()V" />
-      <scope id="7162597690968188471" at="15,34,15,34" />
-      <scope id="7162597690968188471" at="39,39,39,39" />
-      <scope id="7162597690968188471" at="19,27,20,16" />
-      <scope id="7162597690968188471" at="15,0,17,0" />
-      <scope id="7162597690968188471" at="39,0,41,0" />
-      <scope id="7162597690968188471" at="18,0,22,0" />
-      <scope id="7162597690968188471" at="41,37,45,146" />
-      <scope id="7162597690968188471" at="41,0,47,0" />
-      <scope id="7162597690968188471" at="23,30,37,52" />
-      <scope id="7162597690968188471" at="23,0,39,0" />
-      <unit id="7162597690968188471" at="12,0,48,0" name="jetbrains.mps.vcs.plugin.Vcs_ApplicationPlugin" />
+      <node id="7162597690968188471" at="17,0,18,0" concept="5" trace="myId" />
+      <node id="7162597690968188471" at="23,27,24,16" concept="10" />
+      <node id="7162597690968188471" at="27,30,28,30" concept="11" />
+      <node id="7162597690968188471" at="36,44,37,14" concept="11" />
+      <node id="7162597690968188471" at="51,48,52,92" concept="9" />
+      <node id="7162597690968188471" at="53,71,54,15" concept="10" />
+      <node id="7162597690968188471" at="19,0,21,0" concept="2" trace="Vcs_ApplicationPlugin#()V" />
+      <node id="7162597690968188471" at="43,0,45,0" concept="8" trace="adjustInterfaceGroups#()V" />
+      <node id="7162597690968188471" at="22,0,26,0" concept="8" trace="getId#()Lcom/intellij/openapi/extensions/PluginId;" />
+      <node id="7162597690968188471" at="51,0,56,0" concept="8" trace="initKeymaps#()Ljava/util/List;" />
+      <node id="7162597690968188471" at="45,0,51,0" concept="8" trace="adjustRegularGroups#()V" />
+      <node id="7162597690968188471" at="27,0,43,0" concept="8" trace="createGroups#()V" />
+      <scope id="7162597690968188471" at="19,34,19,34" />
+      <scope id="7162597690968188471" at="43,39,43,39" />
+      <scope id="7162597690968188471" at="23,27,24,16" />
+      <scope id="7162597690968188471" at="19,0,21,0" />
+      <scope id="7162597690968188471" at="43,0,45,0" />
+      <scope id="7162597690968188471" at="51,48,54,15">
+        <var name="res" id="7162597690968188471" />
+      </scope>
+      <scope id="7162597690968188471" at="22,0,26,0" />
+      <scope id="7162597690968188471" at="45,37,49,146" />
+      <scope id="7162597690968188471" at="51,0,56,0" />
+      <scope id="7162597690968188471" at="45,0,51,0" />
+      <scope id="7162597690968188471" at="27,30,41,52" />
+      <scope id="7162597690968188471" at="27,0,43,0" />
+      <unit id="7162597690968188471" at="16,0,57,0" name="jetbrains.mps.vcs.plugin.Vcs_ApplicationPlugin" />
     </file>
   </root>
   <root nodeRef="r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)/7545884443035896082">
     <file name="ReRunMergeFromBackup_Action.java">
       <node id="7545884443035896082" at="49,0,50,0" concept="13" trace="LOG" />
       <node id="7545884443035896082" at="50,0,51,0" concept="13" trace="ICON" />
-      <node id="7545884443035896082" at="52,40,53,47" concept="14" />
+      <node id="7545884443035896082" at="52,40,53,47" concept="15" />
       <node id="7545884443035896082" at="53,47,54,35" concept="4" />
       <node id="7545884443035896082" at="54,35,55,40" concept="4" />
       <node id="7545884443035896082" at="58,32,59,16" concept="10" />
@@ -538,7 +571,7 @@
       <node id="1619763311840986297" at="161,110,176,5" concept="7" />
       <node id="7545884443035896213" at="161,0,178,0" concept="8" trace="selectMineModel#(Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)Ljava/lang/String;" />
       <node id="7545884443035896082" at="80,0,104,0" concept="8" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
-      <node id="7545884443035896308" at="118,109,151,7" concept="15" />
+      <node id="7545884443035896308" at="118,109,151,7" concept="16" />
       <node id="7545884443035896304" at="117,0,152,5" concept="6" />
       <node id="7545884443035896082" at="104,0,155,0" concept="8" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
       <scope id="7545884443035896082" at="58,32,59,16" />
@@ -641,13 +674,13 @@
       <unit id="7545884443035896082" at="48,0,179,0" name="jetbrains.mps.vcs.plugin.ReRunMergeFromBackup_Action" />
     </file>
     <file name="Vcs_ApplicationPlugin.java">
-      <node id="7545884443035896082" at="27,46,28,49" concept="4" />
+      <node id="7545884443035896082" at="31,46,32,49" concept="4" />
     </file>
   </root>
   <root nodeRef="r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)/7545884443035896373">
     <file name="ShowDifferencesWithModelOnDisk_Action.java">
       <node id="7545884443035896373" at="29,0,30,0" concept="13" trace="ICON" />
-      <node id="7545884443035896373" at="31,50,32,59" concept="14" />
+      <node id="7545884443035896373" at="31,50,32,59" concept="15" />
       <node id="7545884443035896373" at="32,59,33,35" concept="4" />
       <node id="7545884443035896373" at="33,35,34,41" concept="4" />
       <node id="7545884443035896373" at="37,32,38,16" concept="10" />
@@ -717,13 +750,13 @@
       <unit id="7545884443035896373" at="28,0,79,0" name="jetbrains.mps.vcs.plugin.ShowDifferencesWithModelOnDisk_Action" />
     </file>
     <file name="Vcs_ApplicationPlugin.java">
-      <node id="7545884443035896373" at="28,49,29,59" concept="4" />
+      <node id="7545884443035896373" at="32,49,33,59" concept="4" />
     </file>
   </root>
   <root nodeRef="r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)/7545884443035896622">
     <file name="VCSModelActions_ActionGroup.java">
       <node id="7545884443035896622" at="10,0,11,0" concept="13" trace="ID" />
-      <node id="7545884443035896622" at="12,74,13,41" concept="14" />
+      <node id="7545884443035896622" at="12,74,13,41" concept="15" />
       <node id="7545884443035896622" at="13,41,14,25" concept="4" />
       <node id="7545884443035896622" at="14,25,15,20" concept="4" />
       <node id="7545884443035896626" at="15,20,16,113" concept="4" />
@@ -737,14 +770,14 @@
       <unit id="7545884443035896622" at="9,0,21,0" name="jetbrains.mps.vcs.plugin.VCSModelActions_ActionGroup" />
     </file>
     <file name="Vcs_ApplicationPlugin.java">
-      <node id="7545884443035896622" at="36,56,37,52" concept="4" />
-      <node id="7545884443035896624" at="42,93,43,130" concept="4" />
+      <node id="7545884443035896622" at="40,56,41,52" concept="4" />
+      <node id="7545884443035896624" at="46,93,47,130" concept="4" />
     </file>
   </root>
   <root nodeRef="r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)/7545884443035919781">
     <file name="ShowDiffererenceWithCurrentRevision_Action.java">
       <node id="7545884443035919781" at="26,0,27,0" concept="13" trace="ICON" />
-      <node id="7545884443035919781" at="28,55,29,64" concept="14" />
+      <node id="7545884443035919781" at="28,55,29,64" concept="15" />
       <node id="7545884443035919781" at="29,64,30,35" concept="4" />
       <node id="7545884443035919781" at="30,35,31,40" concept="4" />
       <node id="7545884443035919781" at="34,32,35,16" concept="10" />
@@ -849,13 +882,13 @@
       <unit id="7545884443035919781" at="25,0,101,0" name="jetbrains.mps.vcs.plugin.ShowDiffererenceWithCurrentRevision_Action" />
     </file>
     <file name="Vcs_ApplicationPlugin.java">
-      <node id="7545884443035919781" at="29,59,30,64" concept="4" />
+      <node id="7545884443035919781" at="33,59,34,64" concept="4" />
     </file>
   </root>
   <root nodeRef="r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)/7545884443035919872">
     <file name="ShowDiffWithCurrRev_ActionGroup.java">
       <node id="7545884443035919872" at="10,0,11,0" concept="13" trace="ID" />
-      <node id="7545884443035919872" at="12,78,13,45" concept="14" />
+      <node id="7545884443035919872" at="12,78,13,45" concept="15" />
       <node id="7545884443035919872" at="13,45,14,25" concept="4" />
       <node id="7545884443035919872" at="14,25,15,20" concept="4" />
       <node id="7545884443035919875" at="15,20,16,122" concept="4" />
@@ -868,14 +901,14 @@
       <unit id="7545884443035919872" at="9,0,20,0" name="jetbrains.mps.vcs.plugin.ShowDiffWithCurrRev_ActionGroup" />
     </file>
     <file name="Vcs_ApplicationPlugin.java">
-      <node id="7545884443035919872" at="35,53,36,56" concept="4" />
-      <node id="7545884443035919877" at="43,130,44,130" concept="4" />
+      <node id="7545884443035919872" at="39,53,40,56" concept="4" />
+      <node id="7545884443035919877" at="47,130,48,130" concept="4" />
     </file>
   </root>
   <root nodeRef="r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)/7545884443035924707">
     <file name="ModuleVcsActions_ActionGroup.java">
       <node id="7545884443035924707" at="10,0,11,0" concept="13" trace="ID" />
-      <node id="7545884443035924707" at="12,75,13,42" concept="14" />
+      <node id="7545884443035924707" at="12,75,13,42" concept="15" />
       <node id="7545884443035924707" at="13,42,14,25" concept="4" />
       <node id="7545884443035924707" at="14,25,15,20" concept="4" />
       <node id="7545884443035924709" at="15,20,16,98" concept="4" />
@@ -888,14 +921,14 @@
       <unit id="7545884443035924707" at="9,0,20,0" name="jetbrains.mps.vcs.plugin.ModuleVcsActions_ActionGroup" />
     </file>
     <file name="Vcs_ApplicationPlugin.java">
-      <node id="7545884443035924707" at="34,56,35,53" concept="4" />
-      <node id="7545884443035924711" at="44,130,45,146" concept="4" />
+      <node id="7545884443035924707" at="38,56,39,53" concept="4" />
+      <node id="7545884443035924711" at="48,130,49,146" concept="4" />
     </file>
   </root>
   <root nodeRef="r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)/7545884443035924713">
     <file name="IgnoreModuleInVcs_Action.java">
       <node id="7545884443035924713" at="21,0,22,0" concept="13" trace="ICON" />
-      <node id="7545884443035924713" at="23,37,24,40" concept="14" />
+      <node id="7545884443035924713" at="23,37,24,40" concept="15" />
       <node id="7545884443035924713" at="24,40,25,35" concept="4" />
       <node id="7545884443035924713" at="25,35,26,40" concept="4" />
       <node id="7545884443035924713" at="29,32,30,16" concept="10" />
@@ -958,13 +991,13 @@
       <unit id="7545884443035924713" at="20,0,65,0" name="jetbrains.mps.vcs.plugin.IgnoreModuleInVcs_Action" />
     </file>
     <file name="Vcs_ApplicationPlugin.java">
-      <node id="7545884443035924713" at="26,51,27,46" concept="4" />
+      <node id="7545884443035924713" at="30,51,31,46" concept="4" />
     </file>
   </root>
   <root nodeRef="r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)/7545884443035924748">
     <file name="AddModuleToVcs_Action.java">
       <node id="7545884443035924748" at="23,0,24,0" concept="13" trace="ICON" />
-      <node id="7545884443035924748" at="25,34,26,41" concept="14" />
+      <node id="7545884443035924748" at="25,34,26,41" concept="15" />
       <node id="7545884443035924748" at="26,41,27,35" concept="4" />
       <node id="7545884443035924748" at="27,35,28,40" concept="4" />
       <node id="7545884443035924748" at="31,32,32,16" concept="10" />
@@ -1029,13 +1062,13 @@
       <unit id="7545884443035924748" at="22,0,68,0" name="jetbrains.mps.vcs.plugin.AddModuleToVcs_Action" />
     </file>
     <file name="Vcs_ApplicationPlugin.java">
-      <node id="7545884443035924748" at="24,30,25,43" concept="4" />
+      <node id="7545884443035924748" at="28,30,29,43" concept="4" />
     </file>
   </root>
   <root nodeRef="r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)/8199015172308449938">
     <file name="ShowNodeDifference_Action.java">
       <node id="8199015172308449938" at="19,0,20,0" concept="13" trace="ICON" />
-      <node id="8199015172308449938" at="21,38,22,98" concept="14" />
+      <node id="8199015172308449938" at="21,38,22,98" concept="15" />
       <node id="8199015172308449938" at="22,98,23,35" concept="4" />
       <node id="8199015172308449938" at="23,35,24,40" concept="4" />
       <node id="8199015172308449938" at="27,32,28,16" concept="10" />
@@ -1113,7 +1146,7 @@
       <unit id="8199015172308449938" at="18,0,74,0" name="jetbrains.mps.vcs.plugin.ShowNodeDifference_Action" />
     </file>
     <file name="Vcs_ApplicationPlugin.java">
-      <node id="8199015172308449938" at="30,64,31,47" concept="4" />
+      <node id="8199015172308449938" at="34,64,35,47" concept="4" />
     </file>
   </root>
 </debug-info>

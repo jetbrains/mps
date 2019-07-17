@@ -8,6 +8,10 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.actions.ModelActions_ActionGroup;
 import jetbrains.mps.ide.actions.NodeActions_ActionGroup;
 import jetbrains.mps.ide.actions.CommonModuleActions_ActionGroup;
+import java.util.List;
+import jetbrains.mps.plugins.actions.BaseKeymapChanges;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.ArrayList;
 
 public class Vcs_ApplicationPlugin extends BaseApplicationPlugin {
   private final PluginId myId = PluginId.getId("jetbrains.mps.ide.vcs");
@@ -43,5 +47,10 @@ public class Vcs_ApplicationPlugin extends BaseApplicationPlugin {
     insertGroupIntoAnother(VCSModelActions_ActionGroup.ID, ModelActions_ActionGroup.ID, ModelActions_ActionGroup.LABEL_ID_mpsvcs);
     insertGroupIntoAnother(ShowDiffWithCurrRev_ActionGroup.ID, NodeActions_ActionGroup.ID, NodeActions_ActionGroup.LABEL_ID_diff);
     insertGroupIntoAnother(ModuleVcsActions_ActionGroup.ID, CommonModuleActions_ActionGroup.ID, CommonModuleActions_ActionGroup.LABEL_ID_ideavcs);
+  }
+  public List<BaseKeymapChanges> initKeymaps() {
+    List<BaseKeymapChanges> res = ListSequence.fromList(new ArrayList<BaseKeymapChanges>());
+    ListSequence.fromList(res).addElement(new Default_KeymapChanges());
+    return res;
   }
 }
