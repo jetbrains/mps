@@ -4634,7 +4634,7 @@
                 <node concept="TSZUe" id="7dLX2A2MqdD" role="2OqNvi">
                   <node concept="2ShNRf" id="7dLX2A2MqdE" role="25WWJ7">
                     <node concept="1pGfFk" id="7dLX2A2MrGm" role="2ShVmc">
-                      <ref role="37wK5l" to="6if8:~ConceptMissingError.&lt;init&gt;(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.language.SConcept)" resolve="ConceptMissingError" />
+                      <ref role="37wK5l" to="6if8:~ConceptMissingError.&lt;init&gt;(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="ConceptMissingError" />
                       <node concept="37vLTw" id="7dLX2A2MsBm" role="37wK5m">
                         <ref role="3cqZAo" node="7iyppy3KgGV" resolve="node" />
                       </node>

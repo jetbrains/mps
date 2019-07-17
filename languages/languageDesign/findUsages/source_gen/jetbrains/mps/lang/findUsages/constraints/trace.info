@@ -14,6 +14,9 @@
     <file name="ConstraintsAspectDescriptor.java">
       <unit at="13,0,41,0" name="jetbrains.mps.lang.findUsages.constraints.ConstraintsAspectDescriptor" />
     </file>
+    <file name="GeneratedRulesConstraintsAspect.java">
+      <unit at="11,0,19,0" name="jetbrains.mps.lang.findUsages.constraints.GeneratedRulesConstraintsAspect" />
+    </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590358(jetbrains.mps.lang.findUsages.constraints)/1213107435774">
     <file name="ResultStatement_Constraints.java">

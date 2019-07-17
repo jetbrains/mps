@@ -7,11 +7,14 @@
     <classNode dependClassName="java.util.Collection" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.constructors.behavior.BehaviorAspectDescriptor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.constructors.constraints.ConstraintsAspectDescriptor" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.constructors.constraints.GeneratedRulesConstraintsAspect" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.constructors.dataFlow.DataFlowAspectDescriptorImpl" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.constructors.editor.EditorAspectDescriptorImpl" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.constructors.structure.ConceptPresentationAspectImpl" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.constructors.structure.StructureAspectDescriptor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.constructors.typesystem.TypesystemDescriptor" />
+    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.RulesConstraintsAspect" />
+    <classNode dependClassName="jetbrains.mps.core.aspects.feedback.api.FeedbackAspect" />
     <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.DataFlowAspectDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.typesystem.runtime.IHelginsDescriptor" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor" />

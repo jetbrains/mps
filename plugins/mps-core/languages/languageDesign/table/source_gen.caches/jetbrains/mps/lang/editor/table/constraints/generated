@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <product version="3" modelHash="cjhtqmet21ek5kt8us3afucsu42wsdx">
-  <files names="CellModel_HierarchycalTable_Constraints.java:ConstraintsAspectDescriptor.java" />
+  <files names="CellModel_HierarchycalTable_Constraints.java:ConstraintsAspectDescriptor.java:GeneratedRulesConstraintsAspect.java" />
 </product>
 

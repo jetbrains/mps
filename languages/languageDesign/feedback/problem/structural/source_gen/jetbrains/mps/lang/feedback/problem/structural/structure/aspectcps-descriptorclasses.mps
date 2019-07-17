@@ -289,7 +289,7 @@
                       <node concept="liA8E" id="M" role="2OqNvi">
                         <ref role="37wK5l" to="ze1i:~ConceptPresentationBuilder.rawPresentation(java.lang.String)" resolve="rawPresentation" />
                         <node concept="Xl_RD" id="N" role="37wK5m">
-                          <property role="Xl_RC" value="when child does not belong to the concept" />
+                          <property role="Xl_RC" value="when child is not in concept" />
                           <node concept="cd27G" id="P" role="lGtFl">
                             <node concept="3u3nmq" id="Q" role="cd27D">
                               <property role="3u3nmv" value="2554379189374329844" />
@@ -363,7 +363,7 @@
                       <node concept="liA8E" id="1f" role="2OqNvi">
                         <ref role="37wK5l" to="ze1i:~ConceptPresentationBuilder.rawPresentation(java.lang.String)" resolve="rawPresentation" />
                         <node concept="Xl_RD" id="1g" role="37wK5m">
-                          <property role="Xl_RC" value="when property does not belong to the concept" />
+                          <property role="Xl_RC" value="when property is not defined concept" />
                           <node concept="cd27G" id="1i" role="lGtFl">
                             <node concept="3u3nmq" id="1j" role="cd27D">
                               <property role="3u3nmv" value="5724083730281438001" />
@@ -959,7 +959,7 @@
             <node concept="liA8E" id="4O" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.alias(java.lang.String)" resolve="alias" />
               <node concept="Xl_RD" id="4P" role="37wK5m">
-                <property role="Xl_RC" value="when child does not belong to the concept" />
+                <property role="Xl_RC" value="when child is not in concept" />
               </node>
             </node>
           </node>
@@ -1085,7 +1085,7 @@
             <node concept="liA8E" id="5z" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.alias(java.lang.String)" resolve="alias" />
               <node concept="Xl_RD" id="5$" role="37wK5m">
-                <property role="Xl_RC" value="when property does not belong to the concept" />
+                <property role="Xl_RC" value="when property is not defined concept" />
               </node>
             </node>
           </node>

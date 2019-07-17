@@ -5,7 +5,10 @@
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.Collection" />
+    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.RulesConstraintsAspect" />
+    <classNode dependClassName="jetbrains.mps.core.aspects.feedback.api.FeedbackAspect" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor" />
+    <classNode dependClassName="jetbrains.mps.samples.mindmaps.constraints.GeneratedRulesConstraintsAspect" />
     <classNode dependClassName="jetbrains.mps.samples.mindmaps.editor.EditorAspectDescriptorImpl" />
     <classNode dependClassName="jetbrains.mps.samples.mindmaps.structure.ConceptPresentationAspectImpl" />
     <classNode dependClassName="jetbrains.mps.samples.mindmaps.structure.StructureAspectDescriptor" />

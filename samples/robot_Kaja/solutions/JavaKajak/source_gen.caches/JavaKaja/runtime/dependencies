@@ -30,6 +30,7 @@
     <classNode dependClassName="javax.swing.UIManager" />
     <classNode dependClassName="javax.swing.UnsupportedLookAndFeelException" />
     <classNode dependClassName="javax.swing.plaf.metal.MetalLookAndFeel" />
+    <classNode dependClassName="jetbrains.mps.nodeEditor.MPSColors" />
   </dependency>
   <dependency className="JavaKaja.runtime.VisualCell">
     <classNode dependClassName="java.awt.BorderLayout" />

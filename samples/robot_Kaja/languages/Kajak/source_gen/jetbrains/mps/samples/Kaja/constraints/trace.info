@@ -14,6 +14,9 @@
     <file name="ConstraintsAspectDescriptor.java">
       <unit at="13,0,33,0" name="jetbrains.mps.samples.Kaja.constraints.ConstraintsAspectDescriptor" />
     </file>
+    <file name="GeneratedRulesConstraintsAspect.java">
+      <unit at="11,0,19,0" name="jetbrains.mps.samples.Kaja.constraints.GeneratedRulesConstraintsAspect" />
+    </file>
   </root>
   <root nodeRef="r:6c66d6ce-c8f4-4daf-92c4-a518b78006a8(jetbrains.mps.samples.Kaja.constraints)/3308300503039782402">
     <file name="RoutineDefinition_Constraints.java">

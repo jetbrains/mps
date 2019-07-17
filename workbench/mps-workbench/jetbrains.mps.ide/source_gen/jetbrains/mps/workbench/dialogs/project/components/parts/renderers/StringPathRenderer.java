@@ -6,7 +6,7 @@ import javax.swing.DefaultListCellRenderer;
 import java.awt.Component;
 import javax.swing.JList;
 import jetbrains.mps.ide.ui.dialogs.properties.StateUtil;
-import java.awt.Color;
+import jetbrains.mps.nodeEditor.MPSColors;
 
 public class StringPathRenderer extends DefaultListCellRenderer {
   public StringPathRenderer() {
@@ -22,7 +22,7 @@ public class StringPathRenderer extends DefaultListCellRenderer {
       return result;
     }
     if (!(StateUtil.isAvailable(path))) {
-      setForeground(Color.RED);
+      setForeground(MPSColors.RED);
     }
     return result;
   }

@@ -25,12 +25,8 @@
       </concept>
     </language>
     <language id="7127d409-29f0-43e8-917f-f016ea288944" name="jetbrains.mps.lang.feedback.problem.structural">
-      <concept id="5724083730281438001" name="jetbrains.mps.lang.feedback.problem.structural.structure.MissingPropertyInConceptProblem" flags="ng" index="ft9Ny">
-        <reference id="6341931782023955378" name="concept" index="29jPbC" />
-      </concept>
-      <concept id="2554379189374329844" name="jetbrains.mps.lang.feedback.problem.structural.structure.MissingChildInConceptProblem" flags="ng" index="3Jf5Ay">
-        <reference id="2554379189374329845" name="concept" index="3Jf5Az" />
-      </concept>
+      <concept id="5724083730281438001" name="jetbrains.mps.lang.feedback.problem.structural.structure.MissingPropertyInConceptProblem" flags="ng" index="ft9Ny" />
+      <concept id="2554379189374329844" name="jetbrains.mps.lang.feedback.problem.structural.structure.MissingChildInConceptProblem" flags="ng" index="3Jf5Ay" />
     </language>
     <language id="cd17a113-ca4e-472f-a8de-c49008f9eea8" name="jetbrains.mps.lang.feedback">
       <concept id="6285588811486118729" name="jetbrains.mps.lang.feedback.structure.Feedback" flags="ng" index="3JXyrL">
@@ -66,16 +62,15 @@
     <language id="517077fd-e44f-4338-a475-1d29781dfdb8" name="jetbrains.mps.lang.feedback.skeleton">
       <concept id="7291380803381892615" name="jetbrains.mps.lang.feedback.skeleton.structure.FeedbackPerConceptRoot" flags="ng" index="3QByoM">
         <reference id="7188575577281228125" name="concept" index="3Z9TSV" />
-        <child id="7291380803381927154" name="feedback" index="3QBEN7" />
+        <child id="7291380803381927154" name="feedbacks" index="3QBEN7" />
       </concept>
     </language>
   </registry>
   <node concept="3QByoM" id="5ca4zTvKOON">
     <ref role="3Z9TSV" to="pljn:5ca4zTvKOOO" resolve="TestConcept" />
-    <node concept="3QByp$" id="5XPa2npPrtQ" role="3QBEN7">
-      <node concept="ft9Ny" id="5XPa2npPDZ_" role="3JXyrO">
+    <node concept="3QByp$" id="3ost_8W_IE1" role="3QBEN7">
+      <node concept="ft9Ny" id="3ost_8W_IDZ" role="3JXyrO">
         <ref role="sa$J1" to="1wpt:4XK1Xd019ID" resolve="MissingProperty" />
-        <ref role="29jPbC" to="pljn:5ca4zTvKOOO" resolve="TestConcept" />
       </node>
       <node concept="16I2mz" id="5XPa2npPDZc" role="16N$OO">
         <node concept="16N$OT" id="2mL_UKGqpXJ" role="16I2mt">
@@ -91,7 +86,10 @@
         </node>
       </node>
     </node>
-    <node concept="3QByp$" id="7J3GgfrRU4Y" role="3QBEN7">
+    <node concept="3QByp$" id="3ost_8W_IxD" role="3QBEN7">
+      <node concept="3Jf5Ay" id="3ost_8W_IxB" role="3JXyrO">
+        <ref role="sa$J1" to="1wpt:2dMY_rcjEws" resolve="MissingChild" />
+      </node>
       <node concept="16I2mz" id="7J3GgfrRU50" role="16N$OO">
         <node concept="16N$OT" id="2mL_UKGqERK" role="16I2mt">
           <property role="16N$OU" value="The child '" />
@@ -104,10 +102,6 @@
         <node concept="16N$OT" id="2mL_UKGqERL" role="16I2mt">
           <property role="16N$OU" value="' does not belong to the concept 'TestConcept" />
         </node>
-      </node>
-      <node concept="3Jf5Ay" id="7J3GgfrRU5f" role="3JXyrO">
-        <ref role="sa$J1" to="1wpt:2dMY_rcjEws" resolve="MissingChild" />
-        <ref role="3Jf5Az" to="pljn:5ca4zTvKOOO" resolve="TestConcept" />
       </node>
     </node>
     <node concept="3QByp$" id="6GnzfDRinZ2" role="3QBEN7">

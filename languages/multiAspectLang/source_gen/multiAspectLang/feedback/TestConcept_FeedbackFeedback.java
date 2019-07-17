@@ -25,14 +25,14 @@ import java.util.stream.Stream;
 public final class TestConcept_FeedbackFeedback extends BaseFeedbackDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, "multiAspectLang.structure.TestConcept");
 
-  private static final FeedbackProvider<MissingPropertyContext> MSGPROVIDER_WhenPropertyDoesNotBelongToTheConcept_a = new BaseMessageProvider<MissingPropertyContext>(new MissingFeatureInConceptProblemId(MetaAdapterFactory.getConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, "multiAspectLang.structure.TestConcept"), PredefinedStructureProblemKind.MISSING_PROPERTY)) {
+  private static final FeedbackProvider<MissingPropertyContext> MSGPROVIDER_WhenPropertyIsNotDefinedConcept_a = new BaseMessageProvider<MissingPropertyContext>(new MissingFeatureInConceptProblemId(MetaAdapterFactory.getConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, "multiAspectLang.structure.TestConcept"), PredefinedStructureProblemKind.MISSING_PROPERTY)) {
     @NotNull
     @Override
     public MessageProvider.StringMsg yieldMessage(MissingPropertyContext context) {
       return new MessageProvider.StringMsg("The property '" + context.getProperty() + "' does not belong to the concept 'TestConcept', please do smth");
     }
   };
-  private static final FeedbackProvider<MissingChildContext> MSGPROVIDER_WhenChildDoesNotBelongToTheConcept_b = new BaseMessageProvider<MissingChildContext>(new MissingFeatureInConceptProblemId(MetaAdapterFactory.getConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, "multiAspectLang.structure.TestConcept"), PredefinedStructureProblemKind.MISSING_CHILD)) {
+  private static final FeedbackProvider<MissingChildContext> MSGPROVIDER_WhenChildIsNotInConcept_b = new BaseMessageProvider<MissingChildContext>(new MissingFeatureInConceptProblemId(MetaAdapterFactory.getConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, "multiAspectLang.structure.TestConcept"), PredefinedStructureProblemKind.MISSING_CHILD)) {
     @NotNull
     @Override
     public MessageProvider.StringMsg yieldMessage(MissingChildContext context) {
@@ -54,7 +54,7 @@ public final class TestConcept_FeedbackFeedback extends BaseFeedbackDescriptor {
     }
   };
 
-  private static final List<FeedbackProvider> PROVIDERS = Collections.unmodifiableList(Arrays.<FeedbackProvider>asList(MSGPROVIDER_WhenPropertyDoesNotBelongToTheConcept_a, MSGPROVIDER_WhenChildDoesNotBelongToTheConcept_b, MSGPROVIDER_WhenPropertyConstraintFails_c, MSGPROVIDER_WhenReferenceIsOutOfScope_d));
+  private static final List<FeedbackProvider> PROVIDERS = Collections.unmodifiableList(Arrays.<FeedbackProvider>asList(MSGPROVIDER_WhenPropertyIsNotDefinedConcept_a, MSGPROVIDER_WhenChildIsNotInConcept_b, MSGPROVIDER_WhenPropertyConstraintFails_c, MSGPROVIDER_WhenReferenceIsOutOfScope_d));
 
   public TestConcept_FeedbackFeedback() {
     super(CONCEPT);

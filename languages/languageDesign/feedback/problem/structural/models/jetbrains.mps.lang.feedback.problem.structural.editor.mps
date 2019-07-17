@@ -7,6 +7,7 @@
   </languages>
   <imports>
     <import index="uj7v" ref="r:270d7173-b5a9-45a3-a074-68571d20064c(jetbrains.mps.lang.feedback.problem.structural.structure)" implicit="true" />
+    <import index="tpco" ref="r:00000000-0000-4000-0000-011c89590284(jetbrains.mps.lang.core.editor)" implicit="true" />
     <import index="sis7" ref="r:ff619a2b-8fe7-4627-a515-9b4874d6fc53(jetbrains.mps.lang.feedback.problem.structure)" implicit="true" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
   </imports>
@@ -20,6 +21,9 @@
       <concept id="1237308012275" name="jetbrains.mps.lang.editor.structure.IndentLayoutNewLineStyleClassItem" flags="ln" index="ljvvj" />
       <concept id="1080736578640" name="jetbrains.mps.lang.editor.structure.BaseEditorComponent" flags="ig" index="2wURMF">
         <child id="1080736633877" name="cellModel" index="2wV5jI" />
+      </concept>
+      <concept id="1078939183254" name="jetbrains.mps.lang.editor.structure.CellModel_Component" flags="sg" stub="3162947552742194261" index="PMmxH">
+        <reference id="1078939183255" name="editorComponent" index="PMmxG" />
       </concept>
       <concept id="1186414536763" name="jetbrains.mps.lang.editor.structure.BooleanStyleSheetItem" flags="ln" index="VOi$J">
         <property id="1186414551515" name="flag" index="VOm3f" />
@@ -52,8 +56,8 @@
   <node concept="24kQdi" id="4XK1Xd019Ia">
     <ref role="1XX52x" to="uj7v:4XK1Xd019GL" resolve="MissingPropertyInConceptProblem" />
     <node concept="3EZMnI" id="5sUTrySNjU1" role="2wV5jI">
-      <node concept="3F0ifn" id="1mFJTG6708" role="3EZMnx">
-        <property role="3F0ifm" value="when property is not defined in concept" />
+      <node concept="PMmxH" id="3ost_8W_IEF" role="3EZMnx">
+        <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
       </node>
       <node concept="2iRfu4" id="5sUTrySNjU2" role="2iSdaV" />
     </node>
@@ -80,8 +84,8 @@
   <node concept="24kQdi" id="2dMY_rcjEfQ">
     <ref role="1XX52x" to="uj7v:2dMY_rcjEfO" resolve="MissingChildInConceptProblem" />
     <node concept="3EZMnI" id="2dMY_rcjEfR" role="2wV5jI">
-      <node concept="3F0ifn" id="2dMY_rcjEfS" role="3EZMnx">
-        <property role="3F0ifm" value="when child is not in concept" />
+      <node concept="PMmxH" id="3ost_8W_Iyj" role="3EZMnx">
+        <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
       </node>
       <node concept="2iRfu4" id="2dMY_rcjEfW" role="2iSdaV" />
     </node>

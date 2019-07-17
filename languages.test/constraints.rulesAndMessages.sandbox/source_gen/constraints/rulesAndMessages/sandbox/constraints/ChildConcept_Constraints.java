@@ -4,10 +4,22 @@ package constraints.rulesAndMessages.sandbox.constraints;
 
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import java.util.Map;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
+import jetbrains.mps.smodel.runtime.ReferenceConstraintsDescriptor;
+import jetbrains.mps.smodel.runtime.base.BaseReferenceConstraintsDescriptor;
+import java.util.HashMap;
 
 public class ChildConcept_Constraints extends BaseConstraintsDescriptor {
   public ChildConcept_Constraints() {
     super(MetaAdapterFactory.getConcept(0xfc39d7264089464aL, 0x8fc15f71edfdf03bL, 0x7825711952b6d480L, "constraints.rulesAndMessages.sandbox.structure.ChildConcept"));
   }
 
+  @Override
+  protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(MetaAdapterFactory.getReferenceLink(0xfc39d7264089464aL, 0x8fc15f71edfdf03bL, 0x7825711952b6d480L, 0x796cbb180da115eeL, "a"), this) {};
+    Map<SReferenceLink, ReferenceConstraintsDescriptor> references = new HashMap<SReferenceLink, ReferenceConstraintsDescriptor>();
+    references.put(d0.getReference(), d0);
+    return references;
+  }
 }

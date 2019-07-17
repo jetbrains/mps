@@ -896,7 +896,6 @@
     <classNode extendsClassName="javax.swing.JPanel" />
   </dependency>
   <dependency className="jetbrains.mps.execution.configurations.implementation.plugin.plugin.RemoteSettingsEditor">
-    <classNode dependClassName="java.awt.Color" />
     <classNode dependClassName="java.awt.GridBagLayout" />
     <classNode dependClassName="java.awt.event.KeyAdapter" />
     <classNode dependClassName="java.awt.event.KeyEvent" />
@@ -915,6 +914,7 @@
     <classNode dependClassName="jetbrains.mps.debugger.java.api.settings.DebugConnectionSettings" />
     <classNode dependClassName="jetbrains.mps.debugger.java.api.settings.RemoteConnectionSettings" />
     <classNode dependClassName="jetbrains.mps.ide.common.LayoutUtil" />
+    <classNode dependClassName="jetbrains.mps.nodeEditor.MPSColors" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.style.StyleRegistry" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode extendsClassName="javax.swing.JPanel" />

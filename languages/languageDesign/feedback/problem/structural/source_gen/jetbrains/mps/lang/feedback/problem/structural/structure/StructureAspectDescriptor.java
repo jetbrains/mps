@@ -60,7 +60,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.super_("jetbrains.mps.lang.feedback.problem.structure.ProblemPointsToKindRoot", 0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x6b178cfa773dc73aL);
     b.origin("r:270d7173-b5a9-45a3-a074-68571d20064c(jetbrains.mps.lang.feedback.problem.structural.structure)/2554379189374329844");
     b.version(2);
-    b.alias("when child does not belong to the concept");
+    b.alias("when child is not in concept");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForMissingPropertyInConceptProblem() {
@@ -69,7 +69,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.super_("jetbrains.mps.lang.feedback.problem.structure.ProblemPointsToKindRoot", 0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x6b178cfa773dc73aL);
     b.origin("r:270d7173-b5a9-45a3-a074-68571d20064c(jetbrains.mps.lang.feedback.problem.structural.structure)/5724083730281438001");
     b.version(2);
-    b.alias("when property does not belong to the concept");
+    b.alias("when property is not defined concept");
     return b.create();
   }
 }

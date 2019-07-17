@@ -10,7 +10,7 @@
     <import index="o8zo" ref="r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)" />
     <import index="j809" ref="9abaaae2-decf-4e97-bf80-9109e8b759cc/java:jetbrains.mps.core.aspects.feedback.messages(jetbrains.mps.lang.messages.api/)" />
     <import index="79pl" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.runtime.base(MPS.Core/)" />
-    <import index="j80a" ref="0a98f3e2-decf-4e97-bf80-9109eccc59bb/java:jetbrains.mps.core.aspects.feedback.messages(jetbrains.mps.lang.feedback.messages.rules/)" />
+    <import index="j80a" ref="0a98f3e2-decf-4e97-bf80-9109eccc59bb/java:jetbrains.mps.core.aspects.feedback.messages(jetbrains.mps.lang.feedback.problem.rules/)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="o99v" ref="8e98f4e2-decf-4e97-bf80-9109e8b759ee/java:jetbrains.mps.core.aspects.constraints.rules(jetbrains.mps.lang.constraints.rules.runtime/)" />
@@ -595,9 +595,9 @@
       <property role="39e3Y2" value="feedbackDescriptorClass" />
       <node concept="39e2AG" id="1S" role="39e3Y0">
         <node concept="385nmt" id="1T" role="385vvn">
-          <property role="385vuF" value="TestConcept_ConstraintsFeedback" />
+          <property role="385vuF" value="TestConcept_Feedback" />
           <node concept="2$VJBW" id="1V" role="385v07">
-            <property role="2$VJBR" value="2716118816016797649" />
+            <property role="2$VJBR" value="3899121472993829800" />
             <node concept="2x4n5u" id="1W" role="3iCydw">
               <property role="2x4mPI" value="FeedbackPerConceptRoot" />
               <property role="2x4n5l" value="1je9us34c2ih3" />
@@ -620,7 +620,7 @@
         <node concept="385nmt" id="20" role="385vvn">
           <property role="385vuF" value="show message" />
           <node concept="2$VJBW" id="22" role="385v07">
-            <property role="2$VJBR" value="2716118816016797652" />
+            <property role="2$VJBR" value="3899121472993829803" />
             <node concept="2x4n5u" id="23" role="3iCydw">
               <property role="2x4mPI" value="ShowMessage" />
               <property role="2x4n5l" value="1je9us34c2ij5" />
@@ -640,7 +640,7 @@
         <node concept="385nmt" id="25" role="385vvn">
           <property role="385vuF" value="show message" />
           <node concept="2$VJBW" id="27" role="385v07">
-            <property role="2$VJBR" value="2716118816016797650" />
+            <property role="2$VJBR" value="3899121472993829801" />
             <node concept="2x4n5u" id="28" role="3iCydw">
               <property role="2x4mPI" value="ShowMessage" />
               <property role="2x4n5l" value="1je9us34c2ij5" />

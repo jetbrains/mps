@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
   <dependency className="MultiTarget.Language">
+    <classNode dependClassName="MultiTarget.constraints.GeneratedRulesConstraintsAspect" />
     <classNode dependClassName="MultiTarget.editor.EditorAspectDescriptorImpl" />
     <classNode dependClassName="MultiTarget.structure.ConceptPresentationAspectImpl" />
     <classNode dependClassName="MultiTarget.structure.StructureAspectDescriptor" />
@@ -8,6 +9,8 @@
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.Collection" />
+    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.RulesConstraintsAspect" />
+    <classNode dependClassName="jetbrains.mps.core.aspects.feedback.api.FeedbackAspect" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.ids.SLanguageId" />
     <classNode dependClassName="jetbrains.mps.smodel.runtime.ConceptPresentationAspect" />

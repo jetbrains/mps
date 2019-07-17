@@ -14,6 +14,9 @@
     <file name="ConstraintsAspectDescriptor.java">
       <unit at="13,0,31,0" name="jetbrains.mps.lang.editor.forms.constraints.ConstraintsAspectDescriptor" />
     </file>
+    <file name="GeneratedRulesConstraintsAspect.java">
+      <unit at="11,0,19,0" name="jetbrains.mps.lang.editor.forms.constraints.GeneratedRulesConstraintsAspect" />
+    </file>
   </root>
   <root nodeRef="r:de912216-b4aa-4118-a243-c861c965b4d9(jetbrains.mps.lang.editor.forms.constraints)/332515575062128737">
     <file name="CheckboxUI_Text_Constraints.java">

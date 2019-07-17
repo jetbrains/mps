@@ -11,6 +11,9 @@
     <file name="ConstraintsAspectDescriptor.java">
       <unit at="13,0,31,0" name="jetbrains.mps.vcs.mergehints.constraints.ConstraintsAspectDescriptor" />
     </file>
+    <file name="GeneratedRulesConstraintsAspect.java">
+      <unit at="11,0,19,0" name="jetbrains.mps.vcs.mergehints.constraints.GeneratedRulesConstraintsAspect" />
+    </file>
   </root>
   <root nodeRef="r:db2ce397-cf4f-423c-9613-b88195c6529a(jetbrains.mps.vcs.mergehints.constraints)/4382682660187986727">
     <file name="PropertyVCSDescriptor_Constraints.java">

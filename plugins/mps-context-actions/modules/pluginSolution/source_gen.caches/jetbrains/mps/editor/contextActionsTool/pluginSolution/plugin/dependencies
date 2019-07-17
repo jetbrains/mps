@@ -55,12 +55,12 @@
     <classNode extendsClassName="javax.swing.Icon" />
   </dependency>
   <dependency className="jetbrains.mps.editor.contextActionsTool.pluginSolution.plugin.ExpandCollapseIcon">
-    <classNode dependClassName="java.awt.Color" />
     <classNode dependClassName="java.awt.Component" />
     <classNode dependClassName="java.awt.Graphics" />
     <classNode dependClassName="java.awt.Graphics2D" />
     <classNode dependClassName="java.awt.geom.GeneralPath" />
     <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="jetbrains.mps.nodeEditor.MPSColors" />
     <classNode extendsClassName="javax.swing.Icon" />
   </dependency>
   <dependency className="jetbrains.mps.editor.contextActionsTool.pluginSolution.plugin.ExpandingFlowLayout">

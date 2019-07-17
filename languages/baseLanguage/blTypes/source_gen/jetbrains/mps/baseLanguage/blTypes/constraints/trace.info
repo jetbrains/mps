@@ -6,6 +6,9 @@
     <file name="ConstraintsAspectDescriptor.java">
       <unit at="13,0,29,0" name="jetbrains.mps.baseLanguage.blTypes.constraints.ConstraintsAspectDescriptor" />
     </file>
+    <file name="GeneratedRulesConstraintsAspect.java">
+      <unit at="11,0,19,0" name="jetbrains.mps.baseLanguage.blTypes.constraints.GeneratedRulesConstraintsAspect" />
+    </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902db(jetbrains.mps.baseLanguage.blTypes.constraints)/1227084833325">
     <file name="PrimitiveTypeDescriptor_Constraints.java">

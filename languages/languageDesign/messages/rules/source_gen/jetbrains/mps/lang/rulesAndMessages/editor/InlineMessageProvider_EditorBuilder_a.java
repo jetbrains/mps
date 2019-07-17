@@ -17,7 +17,6 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.lang.constraints.rules.editor.Rules_Styles_StyleSheet.WhenHintStyleClass;
 import jetbrains.mps.editor.runtime.style.Padding;
 import jetbrains.mps.editor.runtime.style.Measure;
-import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Horizontal;
 import jetbrains.mps.lang.editor.cellProviders.SingleRoleCellProvider;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -57,7 +56,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     style.set(StyleAttributes.HORIZONTAL_ALIGN, CellAlign.RIGHT);
     editorCell.getStyle().putAll(style);
     editorCell.addEditorCell(createConstant_0());
-    editorCell.addEditorCell(createCollection_1());
+    editorCell.addEditorCell(createRefNode_0());
     return editorCell;
   }
   private EditorCell createConstant_0() {
@@ -71,24 +70,15 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     editorCell.setDefaultText("");
     return editorCell;
   }
-  private EditorCell createCollection_1() {
-    EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Horizontal());
-    editorCell.setCellId("Collection_mv64ie_b0");
-    Style style = new StyleImpl();
-    style.set(StyleAttributes.MAX_WIDTH, 100);
-    editorCell.getStyle().putAll(style);
-    editorCell.addEditorCell(createRefNode_0());
-    return editorCell;
-  }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new InlineMessageProvider_EditorBuilder_a.messagesExprSingleRoleHandler_mv64ie_a1a(myNode, MetaAdapterFactory.getContainmentLink(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce81L, 0x48f860fc0e362dc8L, "messagesExpr"), getEditorContext());
+    SingleRoleCellProvider provider = new InlineMessageProvider_EditorBuilder_a.messagesExprSingleRoleHandler_mv64ie_b0(myNode, MetaAdapterFactory.getContainmentLink(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce81L, 0x48f860fc0e362dc8L, "messagesExpr"), getEditorContext());
     return provider.createCell();
   }
-  private static class messagesExprSingleRoleHandler_mv64ie_a1a extends SingleRoleCellProvider {
+  private static class messagesExprSingleRoleHandler_mv64ie_b0 extends SingleRoleCellProvider {
     @NotNull
     private SNode myNode;
 
-    public messagesExprSingleRoleHandler_mv64ie_a1a(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
+    public messagesExprSingleRoleHandler_mv64ie_b0(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
       super(containmentLink, context);
       myNode = ownerNode;
     }

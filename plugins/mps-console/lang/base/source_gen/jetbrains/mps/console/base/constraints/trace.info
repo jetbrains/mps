@@ -15,6 +15,9 @@
     <file name="ConstraintsAspectDescriptor.java">
       <unit at="13,0,33,0" name="jetbrains.mps.console.base.constraints.ConstraintsAspectDescriptor" />
     </file>
+    <file name="GeneratedRulesConstraintsAspect.java">
+      <unit at="11,0,19,0" name="jetbrains.mps.console.base.constraints.GeneratedRulesConstraintsAspect" />
+    </file>
   </root>
   <root nodeRef="r:a35e9456-af18-4589-b3c4-ed9896a657c9(jetbrains.mps.console.base.constraints)/5286186381820932750">
     <file name="AbstractPrintExpression_Constraints.java">

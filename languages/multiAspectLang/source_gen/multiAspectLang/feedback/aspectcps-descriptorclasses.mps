@@ -6,10 +6,10 @@
   <languages />
   <imports>
     <import index="gt7b" ref="r:ecf311aa-7fee-4454-acdb-4d199fb64430(multiAspectLang.feedback)" />
-    <import index="j809" ref="aaaaf3e2-decf-4e97-bf80-9109eab759ee/java:jetbrains.mps.core.aspects.feedback.messages(jetbrains.mps.lang.feedback.messages.legacy-constraints/)" />
+    <import index="j809" ref="aaaaf3e2-decf-4e97-bf80-9109eab759ee/java:jetbrains.mps.core.aspects.feedback.messages(jetbrains.mps.lang.feedback.problem.legacy-constraints/)" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
     <import index="1ctc" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.stream(JDK/)" />
-    <import index="j80a" ref="a098f3e2-deaa-4e97-bf80-9109efff59dd/java:jetbrains.mps.core.aspects.feedback.messages(jetbrains.mps.lang.feedback.messages.structure/)" />
+    <import index="j80a" ref="a098f3e2-deaa-4e97-bf80-9109efff59dd/java:jetbrains.mps.core.aspects.feedback.messages(jetbrains.mps.lang.feedback.problem.structure/)" />
     <import index="2k9e" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.structure(MPS.Core/)" />
     <import index="pljn" ref="r:7117f6c4-faaf-4889-b5b9-3fe628e41cf8(multiAspectLang.structure)" />
     <import index="j80b" ref="9abaaae2-decf-4e97-bf80-9109e8b759cc/java:jetbrains.mps.core.aspects.feedback.messages(jetbrains.mps.lang.messages.api/)" />
@@ -215,7 +215,7 @@
       <node concept="39e2AG" id="i" role="39e3Y0">
         <ref role="39e2AK" to="gt7b:5ca4zTvKOON" resolve="TestConcept_Feedback" />
         <node concept="385nmt" id="j" role="385vvn">
-          <property role="385vuF" value="TestConcept_FeedbackFeedback" />
+          <property role="385vuF" value="TestConcept_Feedback" />
           <node concept="2$VJBW" id="l" role="385v07">
             <property role="2$VJBR" value="5983615114019032371" />
             <node concept="2x4n5u" id="m" role="3iCydw">
@@ -256,11 +256,11 @@
         </node>
       </node>
       <node concept="39e2AG" id="p" role="39e3Y0">
-        <ref role="39e2AK" to="gt7b:5XPa2npPrtQ" />
+        <ref role="39e2AK" to="gt7b:3ost_8W_IxD" />
         <node concept="385nmt" id="x" role="385vvn">
           <property role="385vuF" value="show message" />
           <node concept="2$VJBW" id="z" role="385v07">
-            <property role="2$VJBR" value="6878448148911863670" />
+            <property role="2$VJBR" value="3899121472971925609" />
             <node concept="2x4n5u" id="$" role="3iCydw">
               <property role="2x4mPI" value="ShowMessage" />
               <property role="2x4n5l" value="1je9us34c2ij5" />
@@ -272,15 +272,15 @@
           </node>
         </node>
         <node concept="39e2AT" id="y" role="39e2AY">
-          <ref role="39e2AS" node="P" resolve="MSGPROVIDER_WhenPropertyDoesNotBelongToTheConcept_a" />
+          <ref role="39e2AS" node="Q" resolve="MSGPROVIDER_WhenChildIsNotInConcept_b" />
         </node>
       </node>
       <node concept="39e2AG" id="q" role="39e3Y0">
-        <ref role="39e2AK" to="gt7b:6GnzfDRinZ2" />
+        <ref role="39e2AK" to="gt7b:3ost_8W_IE1" />
         <node concept="385nmt" id="A" role="385vvn">
           <property role="385vuF" value="show message" />
           <node concept="2$VJBW" id="C" role="385v07">
-            <property role="2$VJBR" value="7716791493893652418" />
+            <property role="2$VJBR" value="3899121472971926145" />
             <node concept="2x4n5u" id="D" role="3iCydw">
               <property role="2x4mPI" value="ShowMessage" />
               <property role="2x4n5l" value="1je9us34c2ij5" />
@@ -292,15 +292,15 @@
           </node>
         </node>
         <node concept="39e2AT" id="B" role="39e2AY">
-          <ref role="39e2AS" node="R" resolve="MSGPROVIDER_WhenPropertyConstraintFails_c" />
+          <ref role="39e2AS" node="P" resolve="MSGPROVIDER_WhenPropertyIsNotDefinedConcept_a" />
         </node>
       </node>
       <node concept="39e2AG" id="r" role="39e3Y0">
-        <ref role="39e2AK" to="gt7b:7J3GgfrRU4Y" />
+        <ref role="39e2AK" to="gt7b:6GnzfDRinZ2" />
         <node concept="385nmt" id="F" role="385vvn">
           <property role="385vuF" value="show message" />
           <node concept="2$VJBW" id="H" role="385v07">
-            <property role="2$VJBR" value="8918166317255598398" />
+            <property role="2$VJBR" value="7716791493893652418" />
             <node concept="2x4n5u" id="I" role="3iCydw">
               <property role="2x4mPI" value="ShowMessage" />
               <property role="2x4n5l" value="1je9us34c2ij5" />
@@ -312,7 +312,7 @@
           </node>
         </node>
         <node concept="39e2AT" id="G" role="39e2AY">
-          <ref role="39e2AS" node="Q" resolve="MSGPROVIDER_WhenChildDoesNotBelongToTheConcept_b" />
+          <ref role="39e2AS" node="R" resolve="MSGPROVIDER_WhenPropertyConstraintFails_c" />
         </node>
       </node>
     </node>
@@ -372,7 +372,7 @@
     </node>
     <node concept="Wx3nA" id="P" role="jymVt">
       <property role="3TUv4t" value="true" />
-      <property role="TrG5h" value="MSGPROVIDER_WhenPropertyDoesNotBelongToTheConcept_a" />
+      <property role="TrG5h" value="MSGPROVIDER_WhenPropertyIsNotDefinedConcept_a" />
       <node concept="3Tm6S6" id="1f" role="1B3o_S" />
       <node concept="2ShNRf" id="1g" role="33vP2m">
         <node concept="YeOm9" id="1j" role="2ShVmc">
@@ -387,7 +387,7 @@
                   <ref role="35c_gD" to="pljn:5ca4zTvKOOO" resolve="TestConcept" />
                   <node concept="cd27G" id="1u" role="lGtFl">
                     <node concept="3u3nmq" id="1v" role="cd27D">
-                      <property role="3u3nmv" value="6878448148911923173" />
+                      <property role="3u3nmv" value="3899121472971926143" />
                     </node>
                   </node>
                 </node>
@@ -396,19 +396,19 @@
                   <ref role="Rm8GQ" to="j80a:~PredefinedStructureProblemKind.MISSING_PROPERTY" resolve="MISSING_PROPERTY" />
                   <node concept="cd27G" id="1w" role="lGtFl">
                     <node concept="3u3nmq" id="1x" role="cd27D">
-                      <property role="3u3nmv" value="6878448148911923173" />
+                      <property role="3u3nmv" value="3899121472971926143" />
                     </node>
                   </node>
                 </node>
                 <node concept="cd27G" id="1t" role="lGtFl">
                   <node concept="3u3nmq" id="1y" role="cd27D">
-                    <property role="3u3nmv" value="6878448148911923173" />
+                    <property role="3u3nmv" value="3899121472971926143" />
                   </node>
                 </node>
               </node>
               <node concept="cd27G" id="1q" role="lGtFl">
                 <node concept="3u3nmq" id="1z" role="cd27D">
-                  <property role="3u3nmv" value="6878448148911923173" />
+                  <property role="3u3nmv" value="3899121472971926143" />
                 </node>
               </node>
             </node>
@@ -428,7 +428,7 @@
                   <ref role="3uigEE" to="j80a:~MissingPropertyContext" resolve="MissingPropertyContext" />
                   <node concept="cd27G" id="1F" role="lGtFl">
                     <node concept="3u3nmq" id="1G" role="cd27D">
-                      <property role="3u3nmv" value="6878448148911923173" />
+                      <property role="3u3nmv" value="3899121472971926143" />
                     </node>
                   </node>
                 </node>
@@ -488,7 +488,7 @@
               <ref role="3uigEE" to="j80a:~MissingPropertyContext" resolve="MissingPropertyContext" />
               <node concept="cd27G" id="1Z" role="lGtFl">
                 <node concept="3u3nmq" id="20" role="cd27D">
-                  <property role="3u3nmv" value="6878448148911923173" />
+                  <property role="3u3nmv" value="3899121472971926143" />
                 </node>
               </node>
             </node>
@@ -501,20 +501,20 @@
           <ref role="3uigEE" to="j80a:~MissingPropertyContext" resolve="MissingPropertyContext" />
           <node concept="cd27G" id="22" role="lGtFl">
             <node concept="3u3nmq" id="23" role="cd27D">
-              <property role="3u3nmv" value="6878448148911923173" />
+              <property role="3u3nmv" value="3899121472971926143" />
             </node>
           </node>
         </node>
       </node>
       <node concept="cd27G" id="1i" role="lGtFl">
         <node concept="3u3nmq" id="24" role="cd27D">
-          <property role="3u3nmv" value="6878448148911863670" />
+          <property role="3u3nmv" value="3899121472971926145" />
         </node>
       </node>
     </node>
     <node concept="Wx3nA" id="Q" role="jymVt">
       <property role="3TUv4t" value="true" />
-      <property role="TrG5h" value="MSGPROVIDER_WhenChildDoesNotBelongToTheConcept_b" />
+      <property role="TrG5h" value="MSGPROVIDER_WhenChildIsNotInConcept_b" />
       <node concept="3Tm6S6" id="25" role="1B3o_S" />
       <node concept="2ShNRf" id="26" role="33vP2m">
         <node concept="YeOm9" id="29" role="2ShVmc">
@@ -529,7 +529,7 @@
                   <ref role="35c_gD" to="pljn:5ca4zTvKOOO" resolve="TestConcept" />
                   <node concept="cd27G" id="2k" role="lGtFl">
                     <node concept="3u3nmq" id="2l" role="cd27D">
-                      <property role="3u3nmv" value="8918166317255598415" />
+                      <property role="3u3nmv" value="3899121472971925607" />
                     </node>
                   </node>
                 </node>
@@ -538,19 +538,19 @@
                   <ref role="Rm8GQ" to="j80a:~PredefinedStructureProblemKind.MISSING_CHILD" resolve="MISSING_CHILD" />
                   <node concept="cd27G" id="2m" role="lGtFl">
                     <node concept="3u3nmq" id="2n" role="cd27D">
-                      <property role="3u3nmv" value="8918166317255598415" />
+                      <property role="3u3nmv" value="3899121472971925607" />
                     </node>
                   </node>
                 </node>
                 <node concept="cd27G" id="2j" role="lGtFl">
                   <node concept="3u3nmq" id="2o" role="cd27D">
-                    <property role="3u3nmv" value="8918166317255598415" />
+                    <property role="3u3nmv" value="3899121472971925607" />
                   </node>
                 </node>
               </node>
               <node concept="cd27G" id="2g" role="lGtFl">
                 <node concept="3u3nmq" id="2p" role="cd27D">
-                  <property role="3u3nmv" value="8918166317255598415" />
+                  <property role="3u3nmv" value="3899121472971925607" />
                 </node>
               </node>
             </node>
@@ -570,7 +570,7 @@
                   <ref role="3uigEE" to="j80a:~MissingChildContext" resolve="MissingChildContext" />
                   <node concept="cd27G" id="2x" role="lGtFl">
                     <node concept="3u3nmq" id="2y" role="cd27D">
-                      <property role="3u3nmv" value="8918166317255598415" />
+                      <property role="3u3nmv" value="3899121472971925607" />
                     </node>
                   </node>
                 </node>
@@ -630,7 +630,7 @@
               <ref role="3uigEE" to="j80a:~MissingChildContext" resolve="MissingChildContext" />
               <node concept="cd27G" id="2P" role="lGtFl">
                 <node concept="3u3nmq" id="2Q" role="cd27D">
-                  <property role="3u3nmv" value="8918166317255598415" />
+                  <property role="3u3nmv" value="3899121472971925607" />
                 </node>
               </node>
             </node>
@@ -643,14 +643,14 @@
           <ref role="3uigEE" to="j80a:~MissingChildContext" resolve="MissingChildContext" />
           <node concept="cd27G" id="2S" role="lGtFl">
             <node concept="3u3nmq" id="2T" role="cd27D">
-              <property role="3u3nmv" value="8918166317255598415" />
+              <property role="3u3nmv" value="3899121472971925607" />
             </node>
           </node>
         </node>
       </node>
       <node concept="cd27G" id="28" role="lGtFl">
         <node concept="3u3nmq" id="2U" role="cd27D">
-          <property role="3u3nmv" value="8918166317255598398" />
+          <property role="3u3nmv" value="3899121472971925609" />
         </node>
       </node>
     </node>
@@ -1112,7 +1112,7 @@
             </node>
           </node>
           <node concept="37vLTw" id="5B" role="37wK5m">
-            <ref role="3cqZAo" node="P" resolve="MSGPROVIDER_WhenPropertyDoesNotBelongToTheConcept_a" />
+            <ref role="3cqZAo" node="P" resolve="MSGPROVIDER_WhenPropertyIsNotDefinedConcept_a" />
             <node concept="cd27G" id="5I" role="lGtFl">
               <node concept="3u3nmq" id="5J" role="cd27D">
                 <property role="3u3nmv" value="5983615114019032371" />
@@ -1120,7 +1120,7 @@
             </node>
           </node>
           <node concept="37vLTw" id="5C" role="37wK5m">
-            <ref role="3cqZAo" node="Q" resolve="MSGPROVIDER_WhenChildDoesNotBelongToTheConcept_b" />
+            <ref role="3cqZAo" node="Q" resolve="MSGPROVIDER_WhenChildIsNotInConcept_b" />
             <node concept="cd27G" id="5K" role="lGtFl">
               <node concept="3u3nmq" id="5L" role="cd27D">
                 <property role="3u3nmv" value="5983615114019032371" />

@@ -276,8 +276,8 @@
       <node id="1108075632710704348" at="37,10,38,29" concept="4" />
       <node id="1108075632710704356" at="38,29,39,39" concept="4" />
       <node id="1108075632710704368" at="40,5,41,22" concept="4" />
-      <node id="1108075632710704372" at="41,22,42,27" concept="4" />
-      <node id="1108075632710704377" at="42,27,43,18" concept="4" />
+      <node id="1108075632710704372" at="41,22,42,31" concept="4" />
+      <node id="1108075632710704377" at="42,31,43,18" concept="4" />
       <node id="1108075632710704255" at="14,0,17,0" concept="2" trace="ExpandCollapseIcon#(Z)V" />
       <node id="1108075632710704267" at="17,0,21,0" concept="8" trace="getIconHeight#()I" />
       <node id="1108075632710704273" at="21,0,25,0" concept="8" trace="getIconWidth#()I" />

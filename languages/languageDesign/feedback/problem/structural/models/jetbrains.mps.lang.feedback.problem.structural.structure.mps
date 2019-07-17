@@ -29,14 +29,14 @@
   <node concept="1TIwiD" id="4XK1Xd019GL">
     <property role="EcuMT" value="5724083730281438001" />
     <property role="TrG5h" value="MissingPropertyInConceptProblem" />
-    <property role="34LRSv" value="when property does not belong to the concept" />
+    <property role="34LRSv" value="when property is not defined concept" />
     <property role="R5$K2" value="true" />
     <ref role="1TJDcQ" to="sis7:6GnzfDRfssU" resolve="ProblemPointsToKindRoot" />
   </node>
   <node concept="1TIwiD" id="2dMY_rcjEfO">
     <property role="EcuMT" value="2554379189374329844" />
     <property role="TrG5h" value="MissingChildInConceptProblem" />
-    <property role="34LRSv" value="when child does not belong to the concept" />
+    <property role="34LRSv" value="when child is not in concept" />
     <property role="R5$K2" value="true" />
     <ref role="1TJDcQ" to="sis7:6GnzfDRfssU" resolve="ProblemPointsToKindRoot" />
   </node>

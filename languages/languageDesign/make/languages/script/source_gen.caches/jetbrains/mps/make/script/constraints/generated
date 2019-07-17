@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <product version="3" modelHash="4zq2ps6lp3cv7o6k6t6nm4j49nzisd7">
-  <files names="AdvanceWorkStatement_Constraints.java:ConfigDefinition_Constraints.java:ConstraintsAspectDescriptor.java:FinishWorkStatement_Constraints.java:GetMakeSessionExpression_Constraints.java:JobDefinition_Constraints.java:RelayQueryExpression_Constraints.java:ResourceType_Constraints.java:ResultStatement_Constraints.java" />
+  <files names="AdvanceWorkStatement_Constraints.java:ConfigDefinition_Constraints.java:ConstraintsAspectDescriptor.java:FinishWorkStatement_Constraints.java:GeneratedRulesConstraintsAspect.java:GetMakeSessionExpression_Constraints.java:JobDefinition_Constraints.java:RelayQueryExpression_Constraints.java:ResourceType_Constraints.java:ResultStatement_Constraints.java" />
 </product>
 

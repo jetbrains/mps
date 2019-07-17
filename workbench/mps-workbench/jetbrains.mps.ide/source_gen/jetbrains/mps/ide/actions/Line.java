@@ -5,7 +5,7 @@ package jetbrains.mps.ide.actions;
 import javax.swing.JComponent;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Color;
+import jetbrains.mps.nodeEditor.MPSColors;
 
 public class Line extends JComponent {
   public Line() {
@@ -13,7 +13,7 @@ public class Line extends JComponent {
   }
   @Override
   protected void paintComponent(Graphics g) {
-    g.setColor(Color.LIGHT_GRAY);
+    g.setColor(MPSColors.LIGHT_GRAY);
     g.drawLine(0, 0, this.getWidth(), 0);
   }
 }

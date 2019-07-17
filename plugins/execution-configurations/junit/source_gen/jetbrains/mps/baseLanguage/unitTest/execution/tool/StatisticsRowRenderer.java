@@ -6,9 +6,10 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import java.awt.BorderLayout;
-import java.awt.Color;
+import jetbrains.mps.nodeEditor.MPSColors;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.Component;
 import javax.swing.JTable;
@@ -36,7 +37,7 @@ public class StatisticsRowRenderer implements TableCellRenderer {
     myText = new JLabel();
     myTextPanel.add(myText, BorderLayout.WEST);
     myAdvancedText = new JLabel();
-    myAdvancedText.setForeground(Color.GRAY);
+    myAdvancedText.setForeground(MPSColors.GRAY);
     myTextPanel.add(myAdvancedText, BorderLayout.CENTER);
     mySimpleField = new JLabel("", SwingConstants.RIGHT);
 
@@ -49,11 +50,11 @@ public class StatisticsRowRenderer implements TableCellRenderer {
     mySuccess.setFont(boldFont);
 
     myFailure = new JLabel("", SwingConstants.RIGHT);
-    myFailure.setForeground(Color.RED);
+    myFailure.setForeground(MPSColors.RED);
     myFailure.setFont(boldFont);
 
     myError = new JLabel("", SwingConstants.RIGHT);
-    myError.setForeground(Color.RED);
+    myError.setForeground(MPSColors.RED);
     myError.setFont(boldFont);
 
     myStatePanel = new JPanel(new GridLayout(1, 3));
@@ -68,11 +69,11 @@ public class StatisticsRowRenderer implements TableCellRenderer {
     myAloneSuccess.setFont(boldFont);
 
     myAloneFailure = new JLabel("Failed", SwingConstants.RIGHT);
-    myAloneFailure.setForeground(Color.RED);
+    myAloneFailure.setForeground(MPSColors.RED);
     myAloneFailure.setFont(boldFont);
 
     myAloneError = new JLabel("Error", SwingConstants.RIGHT);
-    myAloneError.setForeground(Color.RED);
+    myAloneError.setForeground(MPSColors.RED);
     myAloneError.setFont(boldFont);
   }
   @Override

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <product version="3" modelHash="51xkpqw9y8bhqrkur84ryf5dn2576fu">
-  <files names="BTestCase_Constraints.java:ConstraintsAspectDescriptor.java:TestMethod_Constraints.java" />
+  <files names="BTestCase_Constraints.java:ConstraintsAspectDescriptor.java:GeneratedRulesConstraintsAspect.java:TestMethod_Constraints.java" />
 </product>
 

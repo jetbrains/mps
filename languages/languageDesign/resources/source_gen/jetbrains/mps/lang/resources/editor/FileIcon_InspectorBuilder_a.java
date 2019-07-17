@@ -28,6 +28,7 @@ import jetbrains.mps.nodeEditor.EditorManager;
 import jetbrains.mps.openapi.editor.update.AttributeKind;
 import java.awt.Color;
 import jetbrains.mps.lang.resources.behavior.FileIcon__BehaviorDescriptor;
+import jetbrains.mps.nodeEditor.MPSColors;
 
 /*package*/ class FileIcon_InspectorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -79,6 +80,6 @@ import jetbrains.mps.lang.resources.behavior.FileIcon__BehaviorDescriptor;
     }
   }
   private Color _StyleParameter_QueryFunction_tl1n57_a0a() {
-    return ((boolean) FileIcon__BehaviorDescriptor.isValid_id7Mb2akaestJ.invoke(getNode()) ? Color.BLACK : Color.RED);
+    return ((boolean) FileIcon__BehaviorDescriptor.isValid_id7Mb2akaestJ.invoke(getNode()) ? Color.BLACK : MPSColors.RED);
   }
 }

@@ -49,7 +49,7 @@ public class CheckProjectStructure extends BaseCheckerTest {
   @Test
   @Order(value = 3)
   public void checkStructure() {
-    super.runCheck(ListSequence.fromListAndArray(new ArrayList<IChecker<?, ? extends IssueKindReportItem>>(), (AbstractNodeCheckerInEditor) new StructureChecker(null).withoutBrokenReferences(), new SuppressErrorsChecker()), null, "Structure errors:");
+    super.runCheck(ListSequence.fromListAndArray(new ArrayList<IChecker<?, ? extends IssueKindReportItem>>(), (AbstractNodeCheckerInEditor) (AbstractNodeCheckerInEditor) new StructureChecker(null).withoutBrokenReferences(), new SuppressErrorsChecker()), null, "Structure errors:");
   }
 
   @Test

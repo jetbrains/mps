@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
+  <root>
+    <file name="ConstraintsAspectDescriptor.java">
+      <unit at="13,0,29,0" name="multiAspectLang2.constraints.ConstraintsAspectDescriptor" />
+    </file>
+    <file name="GeneratedRulesConstraintsAspect.java">
+      <unit at="11,0,19,0" name="multiAspectLang2.constraints.GeneratedRulesConstraintsAspect" />
+    </file>
+  </root>
+  <root nodeRef="r:4780bf3e-ceda-40cc-a77b-669d5a617b8d(multiAspectLang2.constraints)/2343170551888281322">
+    <file name="A_Constraints.java">
+      <node id="2343170551888281322" at="16,26,17,136" concept="5" />
+      <node id="2343170551888281322" at="21,84,22,119" concept="3" />
+      <node id="2343170551888281322" at="22,119,23,22" concept="4" />
+      <node id="2343170551888281325" at="26,90,27,220" concept="3" />
+      <node id="2343170551888281322" at="27,220,28,131" concept="3" />
+      <node id="2343170551888281325" at="28,131,29,42" concept="1" />
+      <node id="2343170551888281322" at="29,42,30,22" concept="4" />
+      <node id="2343170551888281322" at="16,0,19,0" concept="0" trace="A_Constraints#()V" />
+      <node id="2343170551888281322" at="20,0,25,0" concept="2" trace="getSpecifiedProperties#()Ljava/util/Map;" />
+      <node id="2343170551888281322" at="25,0,32,0" concept="2" trace="getSpecifiedReferences#()Ljava/util/Map;" />
+      <scope id="2343170551888281322" at="16,26,17,136" />
+      <scope id="2343170551888281322" at="21,84,23,22">
+        <var name="properties" id="2343170551888281322" />
+      </scope>
+      <scope id="2343170551888281322" at="16,0,19,0" />
+      <scope id="2343170551888281322" at="26,90,30,22">
+        <var name="d0" id="2343170551888281325" />
+        <var name="references" id="2343170551888281322" />
+      </scope>
+      <scope id="2343170551888281322" at="20,0,25,0" />
+      <scope id="2343170551888281322" at="25,0,32,0" />
+      <unit id="2343170551888281325" at="27,48,27,219" name="multiAspectLang2.constraints.A_Constraints$1" />
+      <unit id="2343170551888281322" at="15,0,33,0" name="multiAspectLang2.constraints.A_Constraints" />
+    </file>
+  </root>
+</debug-info>
+

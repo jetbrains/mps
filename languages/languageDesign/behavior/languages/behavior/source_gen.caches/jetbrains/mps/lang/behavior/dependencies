@@ -10,7 +10,7 @@
     <classNode dependClassName="jetbrains.mps.lang.behavior.actions.ActionAspectDescriptorImpl" />
     <classNode dependClassName="jetbrains.mps.lang.behavior.behavior.BehaviorAspectDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.behavior.constraints.ConstraintsAspectDescriptor" />
-    <classNode dependClassName="jetbrains.mps.lang.behavior.constraints.GeneratedConstraintsAspectDescriptor2" />
+    <classNode dependClassName="jetbrains.mps.lang.behavior.constraints.GeneratedRulesConstraintsAspect" />
     <classNode dependClassName="jetbrains.mps.lang.behavior.editor.EditorAspectDescriptorImpl" />
     <classNode dependClassName="jetbrains.mps.lang.behavior.findUsages.FindUsagesDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.behavior.intentions.IntentionsDescriptor" />

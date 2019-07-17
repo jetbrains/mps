@@ -6,6 +6,8 @@ import jetbrains.mps.generator.runtime.Generated;
 import jetbrains.mps.generator.impl.query.QueryProviderBase;
 import jetbrains.mps.generator.template.ReferenceMacroContext;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.feedback.problem.structural.behavior.MissingPropertyInConceptProblem__BehaviorDescriptor;
 import jetbrains.mps.lang.feedback.problem.structural.behavior.MissingChildInConceptProblem__BehaviorDescriptor;
 import java.util.Map;
@@ -22,10 +24,12 @@ public class QueriesGenerated extends QueryProviderBase {
     super(1);
   }
   public static Object referenceMacro_GetReferent_0_0(final ReferenceMacroContext _context) {
-    return (SNode) MissingPropertyInConceptProblem__BehaviorDescriptor.getConcept_id224Bjf9ui32.invoke(_context.getNode());
+    SNode node0 = SNodeOperations.cast(_context.getOriginalCopiedInputNode(_context.getNode()), MetaAdapterFactory.getConcept(0x7127d40929f043e8L, 0x917ff016ea288944L, 0x4f7007d340049b31L, "jetbrains.mps.lang.feedback.problem.structural.structure.MissingPropertyInConceptProblem"));
+    return (SNode) MissingPropertyInConceptProblem__BehaviorDescriptor.getConcept_id224Bjf9ui32.invoke(node0);
   }
   public static Object referenceMacro_GetReferent_0_1(final ReferenceMacroContext _context) {
-    return (SNode) MissingChildInConceptProblem__BehaviorDescriptor.getConcept_id224Bjf9ukOx.invoke(_context.getNode());
+    SNode node0 = SNodeOperations.cast(_context.getOriginalCopiedInputNode(_context.getNode()), MetaAdapterFactory.getConcept(0x7127d40929f043e8L, 0x917ff016ea288944L, 0x2372fa56cc4ea3f4L, "jetbrains.mps.lang.feedback.problem.structural.structure.MissingChildInConceptProblem"));
+    return (SNode) MissingChildInConceptProblem__BehaviorDescriptor.getConcept_id224Bjf9ukOx.invoke(node0);
   }
   private final Map<String, ReferenceTargetQuery> rtqMethods = new HashMap<String, ReferenceTargetQuery>();
   {

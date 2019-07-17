@@ -110,9 +110,9 @@ import java.awt.Color;
   }
   private Color _StyleParameter_QueryFunction_2kc2ry_a1b0() {
     if ((boolean) RemarkStatement__BehaviorDescriptor.isTodo_idhEwITPs.invoke(getNode())) {
-      return Color.BLUE;
+      return MPSColors.BLUE;
     } else {
-      return Color.GRAY;
+      return MPSColors.GRAY;
     }
   }
 }

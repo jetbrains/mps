@@ -2936,70 +2936,70 @@
       <unit id="8974276187400029900" at="39,0,236,0" name="jetbrains.mps.lang.resources.editor.FileIcon_EditorBuilder_a" />
     </file>
     <file name="FileIcon_InspectorBuilder_a.java">
-      <node id="8974276187400029900" at="36,91,37,19" concept="10" />
-      <node id="8974276187400029900" at="37,19,38,18" concept="2" />
-      <node id="8974276187400029900" at="43,26,44,18" concept="7" />
-      <node id="8974276187400029900" at="47,39,48,30" concept="7" />
-      <node id="8974276187400029900" at="51,41,52,39" concept="2" />
-      <node id="8974276187400029900" at="53,9,54,156" concept="6" />
-      <node id="8974276187400029900" at="54,156,55,76" concept="2" />
-      <node id="8974276187400029900" at="55,76,56,149" concept="6" />
-      <node id="8974276187400029900" at="56,149,57,45" concept="2" />
-      <node id="8974276187400029900" at="57,45,58,44" concept="2" />
-      <node id="8974276187400029900" at="58,44,59,30" concept="2" />
-      <node id="8974276187400029900" at="59,30,60,33" concept="2" />
-      <node id="8974276187400029900" at="60,33,61,36" concept="6" />
-      <node id="8974276187400029942" at="61,36,62,132" concept="2" />
-      <node id="8974276187400029900" at="62,132,63,42" concept="2" />
-      <node id="8974276187400029900" at="63,42,64,86" concept="2" />
-      <node id="8974276187400029900" at="64,86,65,33" concept="2" />
-      <node id="8974276187400029900" at="65,33,66,306" concept="6" />
-      <node id="8974276187400029900" at="68,41,69,118" concept="7" />
-      <node id="8974276187400029900" at="72,74,73,89" concept="6" />
-      <node id="8974276187400029900" at="73,89,74,145" concept="7" />
-      <node id="8974276187400029900" at="75,12,76,24" concept="7" />
-      <node id="8974276187400029900" at="77,15,78,40" concept="2" />
-      <node id="8974276187400029945" at="81,60,82,118" concept="7" />
-      <node id="8974276187400029900" at="33,0,35,0" concept="3" trace="myNode" />
-      <node id="8974276187400029900" at="47,0,50,0" concept="5" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <node id="8974276187400029900" at="68,0,71,0" concept="5" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="8974276187400029943" at="81,0,84,0" concept="5" trace="_StyleParameter_QueryFunction_tl1n57_a0a#()Ljava/awt/Color;" />
-      <node id="8974276187400029900" at="36,0,40,0" concept="1" trace="FileIcon_InspectorBuilder_a#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="8974276187400029900" at="41,0,46,0" concept="5" trace="getNode#()Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="8974276187400029900" at="66,306,71,9" concept="6" />
-      <node id="8974276187400029900" at="71,9,76,24" concept="4" />
-      <node id="8974276187400029900" at="52,39,79,5" concept="12" />
-      <node id="8974276187400029900" at="51,0,81,0" concept="5" trace="createProperty_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <scope id="8974276187400029900" at="43,26,44,18" />
-      <scope id="8974276187400029900" at="47,39,48,30" />
-      <scope id="8974276187400029900" at="68,41,69,118" />
-      <scope id="8974276187400029900" at="77,15,78,40" />
-      <scope id="8974276187400029944" at="81,60,82,118" />
-      <scope id="8974276187400029900" at="36,91,38,18" />
-      <scope id="8974276187400029900" at="72,74,74,145">
+      <node id="8974276187400029900" at="37,91,38,19" concept="10" />
+      <node id="8974276187400029900" at="38,19,39,18" concept="2" />
+      <node id="8974276187400029900" at="44,26,45,18" concept="7" />
+      <node id="8974276187400029900" at="48,39,49,30" concept="7" />
+      <node id="8974276187400029900" at="52,41,53,39" concept="2" />
+      <node id="8974276187400029900" at="54,9,55,156" concept="6" />
+      <node id="8974276187400029900" at="55,156,56,76" concept="2" />
+      <node id="8974276187400029900" at="56,76,57,149" concept="6" />
+      <node id="8974276187400029900" at="57,149,58,45" concept="2" />
+      <node id="8974276187400029900" at="58,45,59,44" concept="2" />
+      <node id="8974276187400029900" at="59,44,60,30" concept="2" />
+      <node id="8974276187400029900" at="60,30,61,33" concept="2" />
+      <node id="8974276187400029900" at="61,33,62,36" concept="6" />
+      <node id="8974276187400029942" at="62,36,63,132" concept="2" />
+      <node id="8974276187400029900" at="63,132,64,42" concept="2" />
+      <node id="8974276187400029900" at="64,42,65,86" concept="2" />
+      <node id="8974276187400029900" at="65,86,66,33" concept="2" />
+      <node id="8974276187400029900" at="66,33,67,306" concept="6" />
+      <node id="8974276187400029900" at="69,41,70,118" concept="7" />
+      <node id="8974276187400029900" at="73,74,74,89" concept="6" />
+      <node id="8974276187400029900" at="74,89,75,145" concept="7" />
+      <node id="8974276187400029900" at="76,12,77,24" concept="7" />
+      <node id="8974276187400029900" at="78,15,79,40" concept="2" />
+      <node id="8974276187400029945" at="82,60,83,122" concept="7" />
+      <node id="8974276187400029900" at="34,0,36,0" concept="3" trace="myNode" />
+      <node id="8974276187400029900" at="48,0,51,0" concept="5" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="8974276187400029900" at="69,0,72,0" concept="5" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="8974276187400029943" at="82,0,85,0" concept="5" trace="_StyleParameter_QueryFunction_tl1n57_a0a#()Ljava/awt/Color;" />
+      <node id="8974276187400029900" at="37,0,41,0" concept="1" trace="FileIcon_InspectorBuilder_a#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="8974276187400029900" at="42,0,47,0" concept="5" trace="getNode#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="8974276187400029900" at="67,306,72,9" concept="6" />
+      <node id="8974276187400029900" at="72,9,77,24" concept="4" />
+      <node id="8974276187400029900" at="53,39,80,5" concept="12" />
+      <node id="8974276187400029900" at="52,0,82,0" concept="5" trace="createProperty_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <scope id="8974276187400029900" at="44,26,45,18" />
+      <scope id="8974276187400029900" at="48,39,49,30" />
+      <scope id="8974276187400029900" at="69,41,70,118" />
+      <scope id="8974276187400029900" at="78,15,79,40" />
+      <scope id="8974276187400029944" at="82,60,83,122" />
+      <scope id="8974276187400029900" at="37,91,39,18" />
+      <scope id="8974276187400029900" at="73,74,75,145">
         <var name="manager" id="8974276187400029900" />
       </scope>
-      <scope id="8974276187400029900" at="47,0,50,0" />
-      <scope id="8974276187400029900" at="68,0,71,0">
+      <scope id="8974276187400029900" at="48,0,51,0" />
+      <scope id="8974276187400029900" at="69,0,72,0">
         <var name="it" id="8974276187400029900" />
       </scope>
-      <scope id="8974276187400029943" at="81,0,84,0" />
-      <scope id="8974276187400029900" at="36,0,40,0">
+      <scope id="8974276187400029943" at="82,0,85,0" />
+      <scope id="8974276187400029900" at="37,0,41,0">
         <var name="context" id="8974276187400029900" />
         <var name="node" id="8974276187400029900" />
       </scope>
-      <scope id="8974276187400029900" at="41,0,46,0" />
-      <scope id="8974276187400029900" at="53,9,76,24">
+      <scope id="8974276187400029900" at="42,0,47,0" />
+      <scope id="8974276187400029900" at="54,9,77,24">
         <var name="currentPropertyAttributes" id="8974276187400029900" />
         <var name="editorCell" id="8974276187400029900" />
         <var name="property" id="8974276187400029900" />
         <var name="propertyAttributes" id="8974276187400029900" />
         <var name="style" id="8974276187400029900" />
       </scope>
-      <scope id="8974276187400029900" at="51,41,79,5" />
-      <scope id="8974276187400029900" at="51,0,81,0" />
-      <unit id="8974276187400029900" at="67,102,71,7" name="jetbrains.mps.lang.resources.editor.FileIcon_InspectorBuilder_a$1" />
-      <unit id="8974276187400029900" at="32,0,85,0" name="jetbrains.mps.lang.resources.editor.FileIcon_InspectorBuilder_a" />
+      <scope id="8974276187400029900" at="52,41,80,5" />
+      <scope id="8974276187400029900" at="52,0,82,0" />
+      <unit id="8974276187400029900" at="68,102,72,7" name="jetbrains.mps.lang.resources.editor.FileIcon_InspectorBuilder_a$1" />
+      <unit id="8974276187400029900" at="33,0,86,0" name="jetbrains.mps.lang.resources.editor.FileIcon_InspectorBuilder_a" />
     </file>
   </root>
   <root nodeRef="r:dc468d7c-ca2d-45f7-ace9-6f81e4694f66(jetbrains.mps.lang.resources.editor)/8974276187400029952">

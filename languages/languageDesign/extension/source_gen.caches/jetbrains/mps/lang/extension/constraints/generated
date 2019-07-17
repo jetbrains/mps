@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <product version="3" modelHash="-ccm3i5b5njcgr6u5tjd0iubu5oqowtc">
-  <files names="ConstraintsAspectDescriptor.java:ExtensionDeclaration_Constraints.java:ExtensionFieldDeclaration_Constraints.java:ExtensionPointDeclaration_Constraints.java:GetExtensionObjectsOperation_Constraints.java:IRootWithUniqueName_Constraints.java" />
+  <files names="ConstraintsAspectDescriptor.java:ExtensionDeclaration_Constraints.java:ExtensionFieldDeclaration_Constraints.java:ExtensionPointDeclaration_Constraints.java:GeneratedRulesConstraintsAspect.java:GetExtensionObjectsOperation_Constraints.java:IRootWithUniqueName_Constraints.java" />
 </product>
 

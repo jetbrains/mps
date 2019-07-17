@@ -15,8 +15,6 @@ import jetbrains.mps.smodel.runtime.BehaviorAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsAspectDescriptor;
 import jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor;
 import jetbrains.mps.lang.constraints.editor.EditorAspectDescriptorImpl;
-import jetbrains.mps.openapi.intentions.IntentionAspectDescriptor;
-import jetbrains.mps.lang.constraints.intentions.IntentionsDescriptor;
 import jetbrains.mps.lang.migration.runtime.base.MigrationAspectDescriptor;
 import jetbrains.mps.lang.constraints.migration.MigrationDescriptor;
 import jetbrains.mps.lang.script.runtime.ScriptAspectDescriptor;
@@ -74,9 +72,6 @@ public class Language extends LanguageRuntime {
     }
     if (aspectClass == EditorAspectDescriptor.class) {
       return aspectClass.cast(new EditorAspectDescriptorImpl());
-    }
-    if (aspectClass == IntentionAspectDescriptor.class) {
-      return aspectClass.cast(new IntentionsDescriptor());
     }
     if (aspectClass == MigrationAspectDescriptor.class) {
       return aspectClass.cast(new MigrationDescriptor());

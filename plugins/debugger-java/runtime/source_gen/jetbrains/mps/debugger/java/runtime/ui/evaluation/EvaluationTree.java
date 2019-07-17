@@ -35,7 +35,7 @@ import jetbrains.mps.debugger.java.api.state.watchables.CalculatedWatchable;
 import jetbrains.mps.debugger.api.ui.tree.WatchableNode;
 import jetbrains.mps.debug.api.programState.IWatchable;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.awt.Color;
+import jetbrains.mps.nodeEditor.MPSColors;
 import jetbrains.mps.ide.messages.Icons;
 
 /*package*/ class EvaluationTree extends MPSTree implements DataProvider {
@@ -279,7 +279,7 @@ import jetbrains.mps.ide.messages.Icons;
           ListSequence.fromList(myExtendedMessage).addElement(extendedMessage[i]);
         }
       }
-      setColor(Color.RED);
+      setColor(MPSColors.RED);
       setIcon(Icons.ERROR_ICON);
 
       doInit();
@@ -313,7 +313,7 @@ import jetbrains.mps.ide.messages.Icons;
     public EvaluatingTreeNode(IEvaluationContainer model) {
       super(model.getPresentation() + " = " + "evaluating...");
       myModel = model;
-      setColor(Color.GRAY);
+      setColor(MPSColors.GRAY);
       setIcon(Icons.INFORMATION_ICON);
     }
     @Override

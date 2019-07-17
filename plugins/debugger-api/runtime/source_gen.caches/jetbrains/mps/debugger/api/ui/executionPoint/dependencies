@@ -35,7 +35,6 @@
     <classNode dependClassName="com.intellij.openapi.project.Project" />
     <classNode dependClassName="com.intellij.openapi.vfs.VirtualFile" />
     <classNode dependClassName="com.intellij.util.messages.MessageBusConnection" />
-    <classNode dependClassName="java.awt.Color" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.Runnable" />
     <classNode dependClassName="java.lang.String" />
@@ -49,6 +48,7 @@
     <classNode dependClassName="jetbrains.mps.debug.api.source.SourcePosition" />
     <classNode dependClassName="jetbrains.mps.debug.api.source.TextSourcePosition" />
     <classNode dependClassName="jetbrains.mps.ide.common.FileOpenUtil" />
+    <classNode dependClassName="jetbrains.mps.nodeEditor.MPSColors" />
     <classNode dependClassName="org.jetbrains.annotations.NonNls" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <product version="3" modelHash="7klv9bkom0lpzi0c82nik57haz3w8kh">
-  <files names="AbstractPrintExpression_Constraints.java:CommandHolder_Constraints.java:ConstraintsAspectDescriptor.java:HelpConceptReference_Constraints.java" />
+  <files names="AbstractPrintExpression_Constraints.java:CommandHolder_Constraints.java:ConstraintsAspectDescriptor.java:GeneratedRulesConstraintsAspect.java:HelpConceptReference_Constraints.java" />
 </product>
 

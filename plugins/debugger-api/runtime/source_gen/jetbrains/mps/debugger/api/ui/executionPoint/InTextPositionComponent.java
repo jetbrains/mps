@@ -26,7 +26,7 @@ import jetbrains.mps.debug.api.source.PositionProvider;
 import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.fileEditor.FileDocumentManager;
 import com.intellij.openapi.editor.markup.TextAttributes;
-import java.awt.Color;
+import jetbrains.mps.nodeEditor.MPSColors;
 import com.intellij.openapi.editor.ex.MarkupModelEx;
 import com.intellij.openapi.editor.impl.DocumentMarkupModel;
 import com.intellij.openapi.editor.markup.HighlighterLayer;
@@ -183,8 +183,8 @@ public class InTextPositionComponent implements ProjectComponent {
     }
 
     TextAttributes attributes = new TextAttributes();
-    attributes.setForegroundColor(Color.WHITE);
-    attributes.setBackgroundColor(Color.BLUE);
+    attributes.setForegroundColor(MPSColors.WHITE);
+    attributes.setBackgroundColor(MPSColors.BLUE);
 
     RangeHighlighter highlighter = ((MarkupModelEx) DocumentMarkupModel.forDocument(document, myProject, true)).addPersistentLineHighlighter(location.getLineNumber() - 1, HighlighterLayer.SELECTION - 1, attributes);
     if (highlighter == null || !(highlighter.isValid())) {

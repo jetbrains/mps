@@ -10,6 +10,9 @@
     <file name="ConstraintsAspectDescriptor.java">
       <unit at="13,0,29,0" name="jetbrains.mps.lang.editor.menus.testMetaLanguage.constraints.ConstraintsAspectDescriptor" />
     </file>
+    <file name="GeneratedRulesConstraintsAspect.java">
+      <unit at="11,0,19,0" name="jetbrains.mps.lang.editor.menus.testMetaLanguage.constraints.GeneratedRulesConstraintsAspect" />
+    </file>
   </root>
   <root nodeRef="r:29f946fc-e462-4cfb-bd80-b586452ce9d0(jetbrains.mps.lang.editor.menus.testMetaLanguage.constraints)/5297342121660704383">
     <file name="TransformationMenu_Test_Constraints.java">

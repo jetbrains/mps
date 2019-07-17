@@ -13,6 +13,9 @@
     <file name="ConstraintsAspectDescriptor.java">
       <unit at="13,0,37,0" name="jetbrains.mps.samples.heating.constraints.ConstraintsAspectDescriptor" />
     </file>
+    <file name="GeneratedRulesConstraintsAspect.java">
+      <unit at="11,0,19,0" name="jetbrains.mps.samples.heating.constraints.GeneratedRulesConstraintsAspect" />
+    </file>
   </root>
   <root nodeRef="r:85427802-2815-4ede-beac-6d6b51b72018(jetbrains.mps.samples.heating.constraints)/2161719505004861768">
     <file name="Applicability_Constraints.java">

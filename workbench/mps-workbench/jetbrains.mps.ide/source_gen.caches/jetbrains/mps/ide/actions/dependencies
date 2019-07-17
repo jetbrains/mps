@@ -1947,10 +1947,10 @@
     <classNode extendsClassName="jetbrains.mps.plugins.actions.GeneratedActionGroup" />
   </dependency>
   <dependency className="jetbrains.mps.ide.actions.Line">
-    <classNode dependClassName="java.awt.Color" />
     <classNode dependClassName="java.awt.Dimension" />
     <classNode dependClassName="java.awt.Graphics" />
     <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="jetbrains.mps.nodeEditor.MPSColors" />
     <classNode extendsClassName="javax.swing.JComponent" />
   </dependency>
   <dependency className="jetbrains.mps.ide.actions.MPSProjectPaths_Action">

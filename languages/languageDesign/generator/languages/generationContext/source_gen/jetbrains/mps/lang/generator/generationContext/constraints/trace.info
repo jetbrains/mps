@@ -15,6 +15,9 @@
     <file name="ConstraintsAspectDescriptor.java">
       <unit at="13,0,43,0" name="jetbrains.mps.lang.generator.generationContext.constraints.ConstraintsAspectDescriptor" />
     </file>
+    <file name="GeneratedRulesConstraintsAspect.java">
+      <unit at="11,0,19,0" name="jetbrains.mps.lang.generator.generationContext.constraints.GeneratedRulesConstraintsAspect" />
+    </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902ee(jetbrains.mps.lang.generator.generationContext.constraints)/1048903277984813908">
     <file name="GenerationContextOp_VarRef2_Constraints.java">

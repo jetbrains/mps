@@ -58,7 +58,6 @@
     <classNode dependClassName="com.intellij.ui.components.JBScrollPane" />
     <classNode dependClassName="com.intellij.ui.content.Content" />
     <classNode dependClassName="java.awt.BorderLayout" />
-    <classNode dependClassName="java.awt.Color" />
     <classNode dependClassName="java.awt.Component" />
     <classNode dependClassName="java.awt.LayoutManager" />
     <classNode dependClassName="java.lang.Object" />
@@ -86,6 +85,7 @@
     <classNode dependClassName="jetbrains.mps.debugger.api.ui.icons.Icons" />
     <classNode dependClassName="jetbrains.mps.debugger.api.ui.tool.DebuggerToolContent" />
     <classNode dependClassName="jetbrains.mps.debugger.api.ui.tree.VariablesTree" />
+    <classNode dependClassName="jetbrains.mps.nodeEditor.MPSColors" />
     <classNode dependClassName="org.jetbrains.annotations.NonNls" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />

@@ -6,9 +6,12 @@
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.Collection" />
     <classNode dependClassName="jetbrains.mps.build.tips.behavior.BehaviorAspectDescriptor" />
+    <classNode dependClassName="jetbrains.mps.build.tips.constraints.GeneratedRulesConstraintsAspect" />
     <classNode dependClassName="jetbrains.mps.build.tips.editor.EditorAspectDescriptorImpl" />
     <classNode dependClassName="jetbrains.mps.build.tips.structure.ConceptPresentationAspectImpl" />
     <classNode dependClassName="jetbrains.mps.build.tips.structure.StructureAspectDescriptor" />
+    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.RulesConstraintsAspect" />
+    <classNode dependClassName="jetbrains.mps.core.aspects.feedback.api.FeedbackAspect" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.ids.SLanguageId" />
     <classNode dependClassName="jetbrains.mps.smodel.runtime.BehaviorAspectDescriptor" />

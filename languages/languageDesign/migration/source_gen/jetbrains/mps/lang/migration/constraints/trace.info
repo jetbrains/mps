@@ -14,6 +14,9 @@
     <file name="ConstraintsAspectDescriptor.java">
       <unit at="13,0,41,0" name="jetbrains.mps.lang.migration.constraints.ConstraintsAspectDescriptor" />
     </file>
+    <file name="GeneratedRulesConstraintsAspect.java">
+      <unit at="11,0,19,0" name="jetbrains.mps.lang.migration.constraints.GeneratedRulesConstraintsAspect" />
+    </file>
   </root>
   <root nodeRef="r:973d936b-3327-48c9-8c54-368bfb7ea31c(jetbrains.mps.lang.migration.constraints)/3220955710218065205">
     <file name="PropertyPatternVariableReference_Constraints.java">

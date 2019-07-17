@@ -7,6 +7,9 @@
     <file name="ConstraintsAspectDescriptor.java">
       <unit at="10,0,20,0" name="SourceLanguage.constraints.ConstraintsAspectDescriptor" />
     </file>
+    <file name="GeneratedRulesConstraintsAspect.java">
+      <unit at="11,0,19,0" name="SourceLanguage.constraints.GeneratedRulesConstraintsAspect" />
+    </file>
   </root>
   <root nodeRef="r:bd146201-753a-4f62-9de3-080d0101373f(SourceLanguage.constraints)/3794080752246611243">
     <file name="ClassToMove_UpdateRefs.java">

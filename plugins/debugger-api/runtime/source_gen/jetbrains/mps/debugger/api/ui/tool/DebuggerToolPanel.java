@@ -34,7 +34,7 @@ import java.awt.Component;
 import jetbrains.mps.debug.api.programState.IStackFrame;
 import jetbrains.mps.debug.api.programState.ILocation;
 import jetbrains.mps.debug.api.programState.NullLocation;
-import java.awt.Color;
+import jetbrains.mps.nodeEditor.MPSColors;
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.debug.api.SessionChangeAdapter;
 import javax.swing.AbstractListModel;
@@ -139,7 +139,7 @@ public class DebuggerToolPanel {
           }
           setText(framePresentation);
           if (!(myDebugSession.getDebuggableFramesSelector().isDebuggableFrame(frame))) {
-            setForeground(Color.gray);
+            setForeground(MPSColors.gray);
           }
         }
         return defaultComponent;

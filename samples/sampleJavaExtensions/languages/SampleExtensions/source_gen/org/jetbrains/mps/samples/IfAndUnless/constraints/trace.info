@@ -4,6 +4,9 @@
     <file name="ConstraintsAspectDescriptor.java">
       <unit at="10,0,20,0" name="org.jetbrains.mps.samples.IfAndUnless.constraints.ConstraintsAspectDescriptor" />
     </file>
+    <file name="GeneratedRulesConstraintsAspect.java">
+      <unit at="11,0,19,0" name="org.jetbrains.mps.samples.IfAndUnless.constraints.GeneratedRulesConstraintsAspect" />
+    </file>
   </root>
 </debug-info>
 

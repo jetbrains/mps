@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <product version="3" modelHash="-8taqc49wnyratsxd5z1wkbccpu7g76w">
-  <files names="ConstraintsAspectDescriptor.java:Dependency_Constraints.java" />
+  <files names="ConstraintsAspectDescriptor.java:Dependency_Constraints.java:GeneratedRulesConstraintsAspect.java" />
 </product>
 

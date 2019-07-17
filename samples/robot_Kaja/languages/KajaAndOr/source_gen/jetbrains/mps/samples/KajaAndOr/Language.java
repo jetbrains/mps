@@ -8,6 +8,9 @@ import java.util.Collection;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.runtime.ILanguageAspect;
+import jetbrains.mps.core.aspects.constraints.rules.RulesConstraintsAspect;
+import jetbrains.mps.samples.KajaAndOr.constraints.GeneratedRulesConstraintsAspect;
+import jetbrains.mps.core.aspects.feedback.api.FeedbackAspect;
 import jetbrains.mps.openapi.actions.descriptor.ActionAspectDescriptor;
 import jetbrains.mps.samples.KajaAndOr.actions.ActionAspectDescriptorImpl;
 import jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor;
@@ -44,6 +47,15 @@ public class Language extends LanguageRuntime {
 
   @Override
   protected <T extends ILanguageAspect> T createAspect(Class<T> aspectClass) {
+    if (aspectClass.isAssignableFrom(RulesConstraintsAspect.class)) {
+      return aspectClass.cast(new GeneratedRulesConstraintsAspect());
+    }
+    if (aspectClass.isAssignableFrom(FeedbackAspect.class)) {
+      return aspectClass.cast(FeedbackAspect.combine());
+    }
+
+
+    // AP: legacy part, must be migrated from switch: please use lang.descriptor mapping label 
     if (aspectClass == ActionAspectDescriptor.class) {
       return aspectClass.cast(new ActionAspectDescriptorImpl());
     }

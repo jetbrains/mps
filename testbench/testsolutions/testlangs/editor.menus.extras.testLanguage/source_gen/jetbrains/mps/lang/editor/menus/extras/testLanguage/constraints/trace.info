@@ -4,6 +4,9 @@
     <file name="ConstraintsAspectDescriptor.java">
       <unit at="10,0,20,0" name="jetbrains.mps.lang.editor.menus.extras.testLanguage.constraints.ConstraintsAspectDescriptor" />
     </file>
+    <file name="GeneratedRulesConstraintsAspect.java">
+      <unit at="11,0,19,0" name="jetbrains.mps.lang.editor.menus.extras.testLanguage.constraints.GeneratedRulesConstraintsAspect" />
+    </file>
   </root>
 </debug-info>
 
