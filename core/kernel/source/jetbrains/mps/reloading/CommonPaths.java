@@ -76,7 +76,9 @@ public final class CommonPaths {
   }
 
   public static List<String> getJDKPath() {
-    return getJDKPathInternal().stream().map(qualifiedPath -> qualifiedPath.getPath()).collect(Collectors.toList());
+    return getJDKPathInternal().stream()
+                               .map(QualifiedPath::getPath)
+                               .collect(Collectors.toList());
   }
 
   private static List<QualifiedPath> getJDKPathInternal() {
@@ -101,6 +103,7 @@ public final class CommonPaths {
     addIfExists(result, "lib/mps-boot-util.jar");
     addIfExists(result, "lib/mps-closures.jar");
     addIfExists(result, "lib/mps-collections.jar");
+    addIfExists(result, "lib/mps-constraints-runtime.jar");
     addIfExists(result, "lib/mps-tuples.jar");
     addIfExists(result, "lib/mps-project-check.jar");
     // classes of [java-stub] and [persistence] have been exposed though MPS.Core; even though they got bundled into distinct jar now, and both
