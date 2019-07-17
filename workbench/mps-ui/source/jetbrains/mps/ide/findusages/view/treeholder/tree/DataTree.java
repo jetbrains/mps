@@ -31,7 +31,6 @@ import jetbrains.mps.ide.findusages.view.treeholder.treeview.path.PathItem;
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.path.PathItemRole;
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.path.PathProvider;
 import jetbrains.mps.project.Project;
-import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.util.Pair;
 import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
@@ -39,7 +38,6 @@ import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 
-import javax.swing.Icon;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -158,7 +156,7 @@ public class DataTree implements IExternalizeable, IChangeListener {
 
     MainNodeData root = new MainNodeData(PathItemRole.ROLE_MAIN_ROOT);
 
-    SearchedNodesNodeData nodesRoot = new SearchedNodesNodeData(PathItemRole.ROLE_MAIN_SEARCHED_NODES);
+    SearchedNodesNodeData nodesRoot = new SearchedNodesNodeData();
     root.addChild(nodesRoot);
     // XXX null INodeRepresentator in PP, below, is important as we don't want to use custom presentation for look up elements, just for results
     //     not that I fully understand or approve the idea, it's the way it used to be for years.
@@ -170,11 +168,7 @@ public class DataTree implements IExternalizeable, IChangeListener {
     }
 
     final List<? extends SearchResult<?>> notNullResults = results.getNotNullResults();
-    final Icon i = null; // use default
-    // XXX as there's still no 'default' INodeRepresentator impl, have to keep this code to provide at least some indication, even though it's likely
-    //     plain wrong (due to duplicated results in different categories)
-    final String c = NameUtil.formatNumericalString(notNullResults.size(), "usage") + " found";
-    ResultsNodeData resultsRoot = new ResultsNodeData(PathItemRole.ROLE_MAIN_RESULTS, i, c);
+    ResultsNodeData resultsRoot = new ResultsNodeData();
     root.addChild(resultsRoot);
     final PathProvider pp2 = new PathProvider(true);
     for (SearchResult<?> result : notNullResults) {

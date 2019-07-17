@@ -36,6 +36,7 @@ import jetbrains.mps.ide.ui.tree.MPSTree;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.smodel.ModelReadRunnable;
+import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -247,7 +248,6 @@ public class UsagesTree extends MPSTree {
     UsagesTreeNode child = newTreeNode(root);
     buildSubtreeStructure(child, root, nodeCategories);
 
-    buildCounters(child);
     sortByCaption(child.getChildren(), new Comparator<UsagesTreeNode>() {
       private boolean isIgnored(UsagesTreeNode node) {
         // need to keep order of non-root nodes as they seen in an editor (see MPS-6113)
@@ -267,13 +267,21 @@ public class UsagesTree extends MPSTree {
         return s1.compareTo(s2);
       }
     });
-    if (getPresentationProvider() != null) {
-      // XXX INodeRepresentation may override text for certain elements, let's give it a chance
-      // though this is not something I'd like to do, just can not refactor every piece of this mess at once
-      // we need to keep this as long as DataTree.build() can not evaluate proper text at construction time
-      // FIXME introduce default presentation provider to give category/result nodes to reflect actual counter state. Even though we buildCounters() properly
-      //       we don't show them unless there's non-null presentation provider
-      setUIProperties(child);
+    if (root.isResultsSection()) {
+      buildCounters(child);
+      if (getPresentationProvider() != null) {
+        // XXX INodeRepresentation may override text for certain elements, let's give it a chance
+        // though this is not something I'd like to do, just can not refactor every piece of this mess at once
+        // we need to keep this as long as DataTree.build() can not evaluate proper text at construction time
+        setUIProperties(child);
+      } else {
+        // reflect actual number of usages, which depends on nodes actually visible (duplicated results were merged)
+        // Alternatively, introduce default presentation provider to give category/result nodes chance to reflect actual counter state.
+        // Here, we don't care about category elements as there's no counter in their name, and a regular 'counter' in additional field is shown for them
+        assert root instanceof ResultsNodeData;
+        child.showCounter(false);
+        child.setText(NameUtil.formatNumericalString(child.getSubresultsCount(), "usage") + " found");
+      }
     }
 
     return child;
@@ -390,6 +398,8 @@ public class UsagesTree extends MPSTree {
         // not every INodeRepresentator.getResultsText uses <strong>, but I don't care
         root.setFontStyle(Font.BOLD);
       }
+      // generally, we show counter for all BaseNodeData.isResultsSection(), however, assume presentationProvider decides whether to use counter itself.
+      root.showCounter(false);
     } else if (usageData instanceof AbstractResultNodeData && usageData.isResultNode()) {
       @SuppressWarnings("unchecked")
       final INodeRepresentator<Object> pp = (INodeRepresentator<Object>) myPresentationProvider;

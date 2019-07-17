@@ -20,22 +20,16 @@ import jetbrains.mps.ide.findusages.CantLoadSomethingException;
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.path.PathItemRole;
 import jetbrains.mps.project.Project;
 import org.jdom.Element;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import javax.swing.Icon;
 
 public class ResultsNodeData extends BaseNodeData {
-  private final Icon myIcon;
-
-  public ResultsNodeData(PathItemRole role, @Nullable Icon icon, @NotNull String text) {
-    super(role, text, null, false, false);
-    myIcon = icon;
+  public ResultsNodeData() {
+    super(PathItemRole.ROLE_MAIN_RESULTS, "Usages", null, false, true);
   }
 
   public ResultsNodeData(Element element, Project project) throws CantLoadSomethingException {
     read(element, project);
-    myIcon = null;
   }
 
   @Override
@@ -45,6 +39,6 @@ public class ResultsNodeData extends BaseNodeData {
 
   @Override
   public Icon getIcon(PresentationContext presentationContext) {
-    return myIcon == null ? Nodes.UsagesFinder : myIcon;
+    return Nodes.UsagesFinder;
   }
 }
