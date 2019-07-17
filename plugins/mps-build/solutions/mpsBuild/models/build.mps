@@ -17827,7 +17827,7 @@
               </node>
             </node>
             <node concept="3ygNvl" id="AwiPu7jIu4" role="39821P">
-              <ref role="3ygNvj" node="1NXhbnOpTEu" resolve="jbsdk_windows_x64.tar.gz" />
+              <ref role="3ygNvj" node="5aru7HX9JU6" resolve="jbrsdk-windows-x64.tar.gz" />
             </node>
           </node>
           <node concept="3_J27D" id="AwiPu7jHU6" role="Nbhlr">
@@ -30732,6 +30732,22 @@
         <node concept="3_J27D" id="1NXhbnOpTEw" role="Nbhlr">
           <node concept="3Mxwew" id="1NXhbnOpTEE" role="3MwsjC">
             <property role="3MwjfP" value="jbsdk_windows_x64.tar.gz" />
+          </node>
+        </node>
+      </node>
+      <node concept="1tmT9g" id="5aru7HX9JUi" role="39821P">
+        <property role="AB_bT" value="gzip" />
+        <node concept="3_J27D" id="5aru7HX9JUj" role="Nbhlr">
+          <node concept="3Mxwew" id="5aru7HX9JUk" role="3MwsjC">
+            <property role="3MwjfP" value="jbrsdk-osx-x64.tar.gz" />
+          </node>
+        </node>
+      </node>
+      <node concept="1tmT9g" id="5aru7HX9JU6" role="39821P">
+        <property role="AB_bT" value="gzip" />
+        <node concept="3_J27D" id="5aru7HX9JU7" role="Nbhlr">
+          <node concept="3Mxwew" id="5aru7HX9JU8" role="3MwsjC">
+            <property role="3MwjfP" value="jbrsdk-windows-x64.tar.gz" />
           </node>
         </node>
       </node>
