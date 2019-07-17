@@ -8930,19 +8930,9 @@
             </node>
           </node>
         </node>
-        <node concept="1SiIV0" id="3qkjbZn895P" role="3bR37C">
-          <node concept="3bR9La" id="3qkjbZn895Q" role="1SiIV1">
-            <ref role="3bR37D" node="7Kfy9QB6L4x" resolve="jetbrains.mps.lang.constraints" />
-          </node>
-        </node>
         <node concept="1SiIV0" id="3qkjbZn895R" role="3bR37C">
           <node concept="3bR9La" id="3qkjbZn895S" role="1SiIV1">
             <ref role="3bR37D" node="7Kfy9QB6LfQ" resolve="jetbrains.mps.kernel" />
-          </node>
-        </node>
-        <node concept="1SiIV0" id="3qkjbZn895T" role="3bR37C">
-          <node concept="3bR9La" id="3qkjbZn895U" role="1SiIV1">
-            <ref role="3bR37D" node="7Kfy9QB6L8Y" resolve="jetbrains.mps.lang.project" />
           </node>
         </node>
         <node concept="1yeLz9" id="3qkjbZn895V" role="1TViLv">
@@ -9325,6 +9315,11 @@
           <node concept="1SiIV0" id="3qkjbZn8ooH" role="3bR37C">
             <node concept="3bR9La" id="3qkjbZn8ooI" role="1SiIV1">
               <ref role="3bR37D" node="7YI57w6K0rx" resolve="jetbrains.mps.lang.smodel#1139186730696" />
+            </node>
+          </node>
+          <node concept="1SiIV0" id="UzCO9pLxmN" role="3bR37C">
+            <node concept="3bR9La" id="UzCO9pLxmO" role="1SiIV1">
+              <ref role="3bR37D" node="3qkjbZn8c2m" resolve="jetbrains.mps.lang.feedback.context" />
             </node>
           </node>
         </node>
