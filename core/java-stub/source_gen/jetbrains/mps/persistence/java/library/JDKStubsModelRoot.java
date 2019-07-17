@@ -6,6 +6,7 @@ import jetbrains.mps.extapi.persistence.ModelRootBase;
 import java.util.List;
 import jetbrains.mps.vfs.QualifiedPath;
 import jetbrains.mps.java.stub.PackageScopeControl;
+import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.persistence.PersistenceRegistry;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -15,7 +16,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.persistence.Memento;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -28,9 +28,12 @@ import jetbrains.mps.util.MacroHelper;
 public class JDKStubsModelRoot extends ModelRootBase {
   private List<QualifiedPath> myJrtPaths;
   private PackageScopeControl myScopeControl;
+  private VFSManager myVfsManager;
 
-  public JDKStubsModelRoot() {
+  public JDKStubsModelRoot(VFSManager vfsManager) {
+    myVfsManager = vfsManager;
   }
+
   @Override
   public String getType() {
     return PersistenceRegistry.JDK_CLASSES_ROOT;
@@ -47,7 +50,7 @@ public class JDKStubsModelRoot extends ModelRootBase {
     // todo decide whether to use IdeaFS here 
     for (IFile file : ListSequence.fromList(myJrtPaths).select(new ISelector<QualifiedPath, IFile>() {
       public IFile select(QualifiedPath it) {
-        return VFSManager.getDefaultInstance().getFile(it);
+        return myVfsManager.getFile(it);
       }
     })) {
       JavaClassStubsModelRoot.getModelDescriptors_(result, file, "", getModule(), myScopeControl, this);
@@ -93,5 +96,12 @@ public class JDKStubsModelRoot extends ModelRootBase {
         return QualifiedPath.deserialize(it.get("value"), new MacroHelper.MacroNoHelper());
       }
     }).toListSequence();
+  }
+
+  public void addPath(QualifiedPath qp) {
+    if (myJrtPaths == null) {
+      myJrtPaths = ListSequence.fromList(new ArrayList<QualifiedPath>());
+    }
+    ListSequence.fromList(myJrtPaths).addElement(qp);
   }
 }

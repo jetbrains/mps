@@ -3,6 +3,7 @@
   <dependency className="jetbrains.mps.persistence.java.library.JDKClassStubModelRootFactory">
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="jetbrains.mps.persistence.java.library.JDKStubsModelRoot" />
+    <classNode dependClassName="jetbrains.mps.vfs.VFSManager" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.mps.openapi.persistence.ModelRoot" />
     <classNode extendsClassName="org.jetbrains.mps.openapi.persistence.ModelRootFactory" />

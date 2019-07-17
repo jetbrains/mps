@@ -3356,12 +3356,37 @@
         <ref role="3uigEE" to="i290:~PackageScopeControl" resolve="PackageScopeControl" />
       </node>
     </node>
-    <node concept="2tJIrI" id="7aqpU4HwfWd" role="jymVt" />
-    <node concept="3clFbW" id="7aqpU4HvU6B" role="jymVt">
-      <node concept="3cqZAl" id="7aqpU4HvU6C" role="3clF45" />
-      <node concept="3clFbS" id="7aqpU4HvU6G" role="3clF47" />
-      <node concept="3Tm1VV" id="7aqpU4HvU6H" role="1B3o_S" />
+    <node concept="312cEg" id="6KsDlhvq3Ob" role="jymVt">
+      <property role="TrG5h" value="myVfsManager" />
+      <node concept="3uibUv" id="6KsDlhvq3Od" role="1tU5fm">
+        <ref role="3uigEE" to="3ju5:~VFSManager" resolve="VFSManager" />
+      </node>
+      <node concept="3Tm6S6" id="6KsDlhvq3Oe" role="1B3o_S" />
     </node>
+    <node concept="2tJIrI" id="6KsDlhvq4Bc" role="jymVt" />
+    <node concept="3clFbW" id="6KsDlhvq3Of" role="jymVt">
+      <node concept="3cqZAl" id="6KsDlhvq3Og" role="3clF45" />
+      <node concept="37vLTG" id="6KsDlhvq3Oh" role="3clF46">
+        <property role="TrG5h" value="vfsManager" />
+        <node concept="3uibUv" id="6KsDlhvq3Oi" role="1tU5fm">
+          <ref role="3uigEE" to="3ju5:~VFSManager" resolve="VFSManager" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="6KsDlhvq3Oj" role="3clF47">
+        <node concept="3clFbF" id="6KsDlhvq3Ok" role="3cqZAp">
+          <node concept="37vLTI" id="6KsDlhvq3Ol" role="3clFbG">
+            <node concept="37vLTw" id="6KsDlhvq3Om" role="37vLTJ">
+              <ref role="3cqZAo" node="6KsDlhvq3Ob" resolve="myVfsManager" />
+            </node>
+            <node concept="37vLTw" id="6KsDlhvq3On" role="37vLTx">
+              <ref role="3cqZAo" node="6KsDlhvq3Oh" resolve="vfsManager" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="6KsDlhvq3Oo" role="1B3o_S" />
+    </node>
+    <node concept="2tJIrI" id="7aqpU4HwfWd" role="jymVt" />
     <node concept="3clFb_" id="7aqpU4HvU6R" role="jymVt">
       <property role="TrG5h" value="getType" />
       <node concept="2AHcQZ" id="7aqpU4HvU6S" role="2AJF6D">
@@ -3475,9 +3500,8 @@
                           <ref role="3cqZAo" node="7aqpU4Hwh0V" resolve="it" />
                         </node>
                       </node>
-                      <node concept="2YIFZM" id="21LLI_RtXC" role="2Oq$k0">
-                        <ref role="37wK5l" to="3ju5:~VFSManager.getDefaultInstance()" resolve="getDefaultInstance" />
-                        <ref role="1Pybhc" to="3ju5:~VFSManager" resolve="VFSManager" />
+                      <node concept="37vLTw" id="6KsDlhvq68Y" role="2Oq$k0">
+                        <ref role="3cqZAo" node="6KsDlhvq3Ob" resolve="myVfsManager" />
                       </node>
                     </node>
                   </node>
@@ -3879,6 +3903,56 @@
       <node concept="3Tm1VV" id="7aqpU4HvU7N" role="1B3o_S" />
       <node concept="3cqZAl" id="7aqpU4HvU7O" role="3clF45" />
     </node>
+    <node concept="2tJIrI" id="6KsDlhvqj$6" role="jymVt" />
+    <node concept="3clFb_" id="6KsDlhvqlmR" role="jymVt">
+      <property role="TrG5h" value="addPath" />
+      <node concept="37vLTG" id="6KsDlhvqlmS" role="3clF46">
+        <property role="TrG5h" value="qp" />
+        <node concept="3uibUv" id="6KsDlhvqlmT" role="1tU5fm">
+          <ref role="3uigEE" to="3ju5:~QualifiedPath" resolve="QualifiedPath" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="6KsDlhvqlmU" role="3clF47">
+        <node concept="3clFbJ" id="6KsDlhvqlmV" role="3cqZAp">
+          <node concept="3clFbC" id="6KsDlhvqlmW" role="3clFbw">
+            <node concept="37vLTw" id="6KsDlhvqlmX" role="3uHU7B">
+              <ref role="3cqZAo" node="7aqpU4Hwe5i" resolve="myJrtPaths" />
+            </node>
+            <node concept="10Nm6u" id="6KsDlhvqlmY" role="3uHU7w" />
+          </node>
+          <node concept="3clFbS" id="6KsDlhvqln0" role="3clFbx">
+            <node concept="3clFbF" id="6KsDlhvqln1" role="3cqZAp">
+              <node concept="37vLTI" id="6KsDlhvqln2" role="3clFbG">
+                <node concept="37vLTw" id="6KsDlhvqln3" role="37vLTJ">
+                  <ref role="3cqZAo" node="7aqpU4Hwe5i" resolve="myJrtPaths" />
+                </node>
+                <node concept="2ShNRf" id="6KsDlhvqm1W" role="37vLTx">
+                  <node concept="Tc6Ow" id="6KsDlhvqpBs" role="2ShVmc">
+                    <node concept="3uibUv" id="6KsDlhvqqcO" role="HW$YZ">
+                      <ref role="3uigEE" to="3ju5:~QualifiedPath" resolve="QualifiedPath" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="6KsDlhvqln5" role="3cqZAp">
+          <node concept="2OqwBi" id="6KsDlhvqm26" role="3clFbG">
+            <node concept="37vLTw" id="6KsDlhvqm25" role="2Oq$k0">
+              <ref role="3cqZAo" node="7aqpU4Hwe5i" resolve="myJrtPaths" />
+            </node>
+            <node concept="TSZUe" id="6KsDlhvqriC" role="2OqNvi">
+              <node concept="37vLTw" id="6KsDlhvqrn3" role="25WWJ7">
+                <ref role="3cqZAo" node="6KsDlhvqlmS" resolve="qp" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="6KsDlhvqln8" role="1B3o_S" />
+      <node concept="3cqZAl" id="6KsDlhvqln9" role="3clF45" />
+    </node>
     <node concept="3UR2Jj" id="7aqpU4Hwppz" role="lGtFl">
       <node concept="TZ5HA" id="7aqpU4Hwpp$" role="TZ5H$">
         <node concept="1dT_AC" id="7aqpU4Hwpp_" role="1dT_Ay">
@@ -3894,34 +3968,64 @@
   </node>
   <node concept="312cEu" id="1j8Vt1q4rGM">
     <property role="TrG5h" value="JDKClassStubModelRootFactory" />
-    <node concept="3uibUv" id="1j8Vt1q4rGN" role="EKbjA">
-      <ref role="3uigEE" to="dush:~ModelRootFactory" resolve="ModelRootFactory" />
-    </node>
-    <node concept="3Tm1VV" id="1j8Vt1q4rGO" role="1B3o_S" />
-    <node concept="3clFb_" id="1j8Vt1q4rGP" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="create" />
-      <property role="DiZV1" value="false" />
-      <node concept="3Tm1VV" id="1j8Vt1q4rGQ" role="1B3o_S" />
-      <node concept="3uibUv" id="1j8Vt1q4rGR" role="3clF45">
-        <ref role="3uigEE" to="dush:~ModelRoot" resolve="ModelRoot" />
+    <node concept="312cEg" id="6KsDlhvpXxT" role="jymVt">
+      <property role="TrG5h" value="myVfsManager" />
+      <node concept="3uibUv" id="6KsDlhvpXxV" role="1tU5fm">
+        <ref role="3uigEE" to="3ju5:~VFSManager" resolve="VFSManager" />
       </node>
-      <node concept="3clFbS" id="1j8Vt1q4rGS" role="3clF47">
-        <node concept="3clFbF" id="21LLI_RtN$" role="3cqZAp">
-          <node concept="2ShNRf" id="21LLI_RtVD" role="3clFbG">
-            <node concept="1pGfFk" id="21LLI_RtVS" role="2ShVmc">
-              <ref role="37wK5l" node="7aqpU4HvU6B" resolve="JDKStubsModelRoot" />
+      <node concept="3Tm6S6" id="6KsDlhvpXxW" role="1B3o_S" />
+    </node>
+    <node concept="3clFbW" id="6KsDlhvpXxX" role="jymVt">
+      <node concept="3cqZAl" id="6KsDlhvpXxY" role="3clF45" />
+      <node concept="37vLTG" id="6KsDlhvpXxZ" role="3clF46">
+        <property role="TrG5h" value="vfsManager" />
+        <node concept="3uibUv" id="6KsDlhvpXy0" role="1tU5fm">
+          <ref role="3uigEE" to="3ju5:~VFSManager" resolve="VFSManager" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="6KsDlhvpXy1" role="3clF47">
+        <node concept="3clFbF" id="6KsDlhvpXy2" role="3cqZAp">
+          <node concept="37vLTI" id="6KsDlhvpXy3" role="3clFbG">
+            <node concept="37vLTw" id="6KsDlhvpXy4" role="37vLTJ">
+              <ref role="3cqZAo" node="6KsDlhvpXxT" resolve="myVfsManager" />
+            </node>
+            <node concept="37vLTw" id="6KsDlhvpXy5" role="37vLTx">
+              <ref role="3cqZAo" node="6KsDlhvpXxZ" resolve="vfsManager" />
             </node>
           </node>
         </node>
       </node>
-      <node concept="2AHcQZ" id="1j8Vt1q4rGW" role="2AJF6D">
+      <node concept="3Tm1VV" id="6KsDlhvpXy6" role="1B3o_S" />
+    </node>
+    <node concept="3clFb_" id="6KsDlhvpXy7" role="jymVt">
+      <property role="TrG5h" value="create" />
+      <node concept="2AHcQZ" id="6KsDlhvpXy8" role="2AJF6D">
         <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
       </node>
-      <node concept="2AHcQZ" id="1j8Vt1q4rGX" role="2AJF6D">
+      <node concept="2AHcQZ" id="6KsDlhvpXy9" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
+      <node concept="3clFbS" id="6KsDlhvpXya" role="3clF47">
+        <node concept="3cpWs6" id="6KsDlhvpXyb" role="3cqZAp">
+          <node concept="2ShNRf" id="6KsDlhvq1I2" role="3cqZAk">
+            <node concept="1pGfFk" id="6KsDlhvq1Ic" role="2ShVmc">
+              <ref role="37wK5l" node="6KsDlhvq3Of" resolve="JDKStubsModelRoot" />
+              <node concept="37vLTw" id="6KsDlhvq1Id" role="37wK5m">
+                <ref role="3cqZAo" node="6KsDlhvpXxT" resolve="myVfsManager" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="6KsDlhvpXye" role="1B3o_S" />
+      <node concept="3uibUv" id="6KsDlhvpXyf" role="3clF45">
+        <ref role="3uigEE" to="dush:~ModelRoot" resolve="ModelRoot" />
+      </node>
     </node>
+    <node concept="3uibUv" id="1j8Vt1q4rGN" role="EKbjA">
+      <ref role="3uigEE" to="dush:~ModelRootFactory" resolve="ModelRootFactory" />
+    </node>
+    <node concept="3Tm1VV" id="1j8Vt1q4rGO" role="1B3o_S" />
   </node>
 </model>
 

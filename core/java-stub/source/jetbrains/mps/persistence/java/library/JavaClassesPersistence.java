@@ -19,6 +19,7 @@ import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.java.stub.JavaPackageModelId;
 import jetbrains.mps.persistence.PersistenceRegistry;
 import jetbrains.mps.smodel.LanguageID;
+import jetbrains.mps.vfs.VFSManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
@@ -27,14 +28,16 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
  */
 public class JavaClassesPersistence implements CoreComponent {
   private final PersistenceFacade myFacade;
+  private VFSManager myVfsManager;
 
-  public JavaClassesPersistence(@NotNull PersistenceFacade persistenceFacade) {
+  public JavaClassesPersistence(@NotNull PersistenceFacade persistenceFacade, VFSManager vfsManager) {
     myFacade = persistenceFacade;
+    myVfsManager = vfsManager;
   }
   @Override
   public void init() {
     myFacade.setModelRootFactory(JavaClassStubConstants.STUB_TYPE, new JavaClassStubModelRootFactory());
-    myFacade.setModelRootFactory(PersistenceRegistry.JDK_CLASSES_ROOT, new JDKClassStubModelRootFactory());
+    myFacade.setModelRootFactory(PersistenceRegistry.JDK_CLASSES_ROOT, new JDKClassStubModelRootFactory(myVfsManager));
     myFacade.setModelIdFactory(LanguageID.JAVA, new JavaPackageModelId.Factory());
   }
 
