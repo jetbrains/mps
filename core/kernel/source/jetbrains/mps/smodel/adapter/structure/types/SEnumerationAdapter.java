@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.smodel.adapter.structure.types;
 
-import gnu.trove.TLongObjectHashMap;
 import jetbrains.mps.smodel.JavaFriendlyBase64;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.adapter.ids.SDataTypeId;
@@ -42,6 +41,7 @@ import java.util.AbstractList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author Radimir.Sorokin
@@ -51,7 +51,7 @@ public final class SEnumerationAdapter extends SNamedElementAdapter implements S
 
   private final SDataTypeId myId;
 
-  private final TLongObjectHashMap<SEnumerationLiteral> myLiteralsCache = new TLongObjectHashMap<>();
+  private final ConcurrentHashMap<Long, SEnumerationLiteral> myLiteralsCache = new ConcurrentHashMap<>();
 
   public SEnumerationAdapter(SDataTypeId id, String fqName) {
     super(fqName);
@@ -212,13 +212,7 @@ public final class SEnumerationAdapter extends SNamedElementAdapter implements S
   }
 
   public SEnumerationLiteral getLiteralById(long literalId, @Nullable String nameHint) {
-    SEnumerationLiteral cachedLiteral = myLiteralsCache.get(literalId);
-    if (cachedLiteral != null) {
-      return cachedLiteral;
-    }
-    SEnumLiteralAdapter literal = new SEnumLiteralAdapter(literalId, nameHint);
-    myLiteralsCache.put(literalId, literal);
-    return literal;
+    return myLiteralsCache.computeIfAbsent(literalId, it -> new SEnumLiteralAdapter(literalId, nameHint));
   }
 
   @Deprecated
