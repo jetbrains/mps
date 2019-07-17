@@ -53,7 +53,7 @@
       <modulePath path="${mps_home}/editor/editor-runtime/jetbrains.mps.editor.runtime.msd" folder="core.aspects.editor" />
       <modulePath path="${mps_home}/editor/editorlang-runtime/jetbrains.mps.editorlang.runtime.msd" folder="core.aspects.editor" />
       <modulePath path="${mps_home}/editor/typesystemIntegration/typesystemIntegration.msd" folder="core.aspects.editor" />
-      <modulePath path="${mps_home}/languages.test/constraints.rulesAndMessages.sandbox/constraints.rulesAndMessages.sandbox.mpl" folder="samplesForNewConstraints" />
+      <modulePath path="${mps_home}/languages.test/constraints.rulesAndMessages.sandbox/constraints.rulesAndMessages.sandbox.mpl" folder="samples.constraintsAndMessages" />
       <modulePath path="${mps_home}/languages.test/languageDesign/lang.editor.editorTest.extension/jetbrains.mps.lang.editor.editorTest.extension.mpl" folder="core.aspects.editor" />
       <modulePath path="${mps_home}/languages.test/languageDesign/lang.editor.editorTest/jetbrains.mps.lang.editor.editorTest.mpl" folder="core.aspects.editor" />
       <modulePath path="${mps_home}/languages.test/languageDesign/lang.editor.ide.tests/module.msd" folder="core.aspects.editor" />
@@ -196,8 +196,7 @@
       <modulePath path="${mps_home}/languages/languageDesign/traceinfo/traceMacro.testlang/jetbrains.mps.traceInfo.tracemacro.testlang.mpl" folder="platform.traceInfo" />
       <modulePath path="${mps_home}/languages/languageDesign/typesystem/jetbrains.mps.lang.typesystem.mpl" folder="core.aspects.typesystem" />
       <modulePath path="${mps_home}/languages/languageDesign/util/jetbrains.mps.lang.util.order/jetbrains.mps.lang.util.order.mpl" folder="core.aspects.util" />
-      <modulePath path="${mps_home}/languages/multiAspectLang/multiAspectLang.mpl" folder="samplesForNewConstraints" />
-      <modulePath path="${mps_home}/languages/multiAspectLang2/multiAspectLang2.mpl" folder="samplesForNewConstraints" />
+      <modulePath path="${mps_home}/languages/multiAspectLang/multiAspectLang.mpl" folder="samples.constraintsAndMessages" />
       <modulePath path="${mps_home}/languages/util/builders/jetbrains.mps.baseLanguage.builders.mpl" folder="core.baseLanguage.builders" />
       <modulePath path="${mps_home}/languages/util/builders/sandbox/jetbrains.mps.baseLanguage.builders.sandbox.msd" folder="core.baseLanguage.builders" />
       <modulePath path="${mps_home}/languages/util/core.text/jetbrains.mps.lang.text.mpl" folder="core.languages.text" />
@@ -476,7 +475,7 @@
       <modulePath path="${mps_home}/samples/xmlPersistence/languages/jetbrains.mps.samples.xmlPersistence.build/jetbrains.mps.samples.xmlPersistence.build.msd" folder="samples.persistence" />
       <modulePath path="${mps_home}/samples/xmlPersistence/languages/jetbrains.mps.samples.xmlPersistence.ideaPlugin/jetbrains.mps.samples.xmlPersistence.ideaPlugin.msd" folder="samples.persistence" />
       <modulePath path="${mps_home}/samples/xmlPersistence/languages/jetbrains.mps.samples.xmlPersistence/jetbrains.mps.samples.xmlPersistence.msd" folder="samples.persistence" />
-      <modulePath path="${mps_home}/solutions/multiAspectLang.sandbox/multiAspectLang.sandbox.msd" folder="samplesForNewConstraints" />
+      <modulePath path="${mps_home}/solutions/multiAspectLang.sandbox/multiAspectLang.sandbox.msd" folder="samples.constraintsAndMessages" />
       <modulePath path="${mps_home}/testbench/build/jetbrains.mps.build.mps.testModules/jetbrains.mps.build.mps.testModules.msd" folder="platform.build" />
       <modulePath path="${mps_home}/testbench/ideatestsolutions/ide.vcs.test/jetbrains.mps.ide.vcs.test.msd" folder="platform.vcs" />
       <modulePath path="${mps_home}/testbench/languages/jetbrains.mps.testbench.suite.mpl" folder="tests" />
