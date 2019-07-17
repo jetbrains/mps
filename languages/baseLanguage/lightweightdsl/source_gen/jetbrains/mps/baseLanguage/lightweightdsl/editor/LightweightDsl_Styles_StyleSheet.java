@@ -8,9 +8,8 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.editor.runtime.style.AbstractStyleClass;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import jetbrains.mps.openapi.editor.style.StyleRegistry;
-import jetbrains.mps.nodeEditor.MPSColors;
 import jetbrains.mps.nodeEditor.MPSFonts;
+import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.METHOD_DECLARATION_StyleKey;
 
 public class LightweightDsl_Styles_StyleSheet {
   /**
@@ -34,8 +33,8 @@ public class LightweightDsl_Styles_StyleSheet {
       style.set(StyleAttributes.SELECTABLE, 1, true);
       style.set(StyleAttributes.READ_ONLY, 1, true);
       style.set(StyleAttributes.EDITABLE, 1, false);
-      style.set(StyleAttributes.TEXT_COLOR, 1, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_BLUE));
       style.set(StyleAttributes.FONT_STYLE, 1, MPSFonts.PLAIN);
+      new METHOD_DECLARATION_StyleKey(1).apply(style);
     }
 
   }

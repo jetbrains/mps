@@ -1926,10 +1926,12 @@
       <node concept="VPxyj" id="64YAEufV$ZC" role="3F10Kt">
         <property role="VOm3f" value="false" />
       </node>
-      <node concept="VechU" id="3geGFOI14vg" role="3F10Kt">
-        <property role="Vb096" value="g1_eI4o/DARK_BLUE" />
-      </node>
       <node concept="Vb9p2" id="5RxcuCvxqiJ" role="3F10Kt" />
+      <node concept="3Xmtl4" id="UzCO9pk7tn" role="3F10Kt">
+        <node concept="1wgc9g" id="UzCO9pk7tx" role="3XvnJa">
+          <ref role="1wgcnl" to="tpen:6HlOI92Mcte" />
+        </node>
+      </node>
       <node concept="2lhJJ2" id="5RxcuCvxgBi" role="14Sbyx" />
     </node>
   </node>
