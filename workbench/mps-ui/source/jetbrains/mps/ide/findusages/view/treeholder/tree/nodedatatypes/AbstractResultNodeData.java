@@ -38,12 +38,12 @@ public abstract class AbstractResultNodeData extends BaseNodeData {
   }
 
   // UsagesTree might ask certain result node to refresh its presentation using information kept and externally supplied (client) presentation mechanism
-  // At the moment, both parameters are not null, and the method is invoked only when there's INodeRepresentator instance supplied by client, AND
+  // At the moment, parameter is not null, and the method is invoked only when there's INodeRepresentator instance supplied by client, AND
   // isResultNode == true to mimic legacy behavior.
   // Once/if default INodeRepresentator implementation is there, the contract likely to change. As it's implementation method, I don't bother with API.
   // Note, this is one-time operation, there's no mechanism to serialize information about 'presentation object'. Once processed, presentation object is
   // discarded and only its caption/additional info is kept
-  public void updatePresentation(PresentationContext context, INodeRepresentator<Object> presentation) {
+  public final void updatePresentation(INodeRepresentator<Object> presentation) {
     if (myPresentationObject != null) {
       updateCaptionAndInfo(presentation, myPresentationObject);
       myPresentationObject = null;

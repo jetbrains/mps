@@ -403,7 +403,7 @@ public class UsagesTree extends MPSTree {
     } else if (usageData instanceof AbstractResultNodeData && usageData.isResultNode()) {
       @SuppressWarnings("unchecked")
       final INodeRepresentator<Object> pp = (INodeRepresentator<Object>) myPresentationProvider;
-      ((AbstractResultNodeData) usageData).updatePresentation(() -> myProject.getRepository(), pp);
+      ((AbstractResultNodeData) usageData).updatePresentation(pp);
     }
 
     for (UsagesTreeNode tn : root.getChildren()) {
