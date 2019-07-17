@@ -18,6 +18,7 @@ import org.jetbrains.mps.openapi.util.Consumer;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.typesystemEngine.checker.TypesystemChecker;
 import jetbrains.mps.progress.EmptyProgressMonitor;
+import jetbrains.mps.typesystemEngine.checker.NonTypesystemChecker;
 import jetbrains.mps.checkers.ConstraintsChecker;
 import jetbrains.mps.checkers.RefScopeChecker;
 import jetbrains.mps.checkers.TargetConceptChecker;
@@ -97,6 +98,7 @@ public class TestsErrorsChecker {
     final SRepository repository = myRoot.getModel().getRepository();
 
     new TypesystemChecker().check(myRoot, repository, errorCollector, new EmptyProgressMonitor());
+    new NonTypesystemChecker().check(myRoot, repository, errorCollector, new EmptyProgressMonitor());
     new ConstraintsChecker(null).asRootChecker().check(myRoot, repository, errorCollector, new EmptyProgressMonitor());
     new RefScopeChecker().asRootChecker().check(myRoot, repository, errorCollector, new EmptyProgressMonitor());
     new TargetConceptChecker().asRootChecker().check(myRoot, repository, errorCollector, new EmptyProgressMonitor());
