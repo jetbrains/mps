@@ -8852,7 +8852,7 @@
                                       </node>
                                     </node>
                                     <node concept="Xl_RD" id="Nb" role="37wK5m">
-                                      <property role="Xl_RC" value="Node id and property id differ. It's recommended to keep ids synchronised. Use quickfix to set corrected id" />
+                                      <property role="Xl_RC" value="Node id and link id differ. It's recommended to keep ids synchronised. Use quickfix to set corrected id" />
                                       <node concept="cd27G" id="Ni" role="lGtFl">
                                         <node concept="3u3nmq" id="Nj" role="cd27D">
                                           <property role="3u3nmv" value="2819660830273606559" />

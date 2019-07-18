@@ -57,8 +57,8 @@
     <file name="ConceptPresentationAspectImpl.java">
       <node id="5724083730281438001" at="13,0,14,0" concept="1" trace="props_MissingPropertyInConceptProblem" />
       <node id="5724083730281438001" at="28,60,29,76" concept="3" />
-      <node id="5724083730281438001" at="29,76,30,70" concept="0" />
-      <node id="5724083730281438001" at="30,70,31,63" concept="0" />
+      <node id="5724083730281438001" at="29,76,30,73" concept="0" />
+      <node id="5724083730281438001" at="30,73,31,63" concept="0" />
       <node id="5724083730281438001" at="32,9,33,53" concept="4" />
       <node id="5724083730281438001" at="27,65,32,9" concept="2" />
       <scope id="5724083730281438001" at="28,60,31,63">
@@ -78,8 +78,8 @@
       <node id="5724083730281438001" at="68,33,69,148" concept="0" />
       <node id="5724083730281438001" at="69,148,70,133" concept="0" />
       <node id="5724083730281438001" at="70,133,71,17" concept="0" />
-      <node id="5724083730281438001" at="71,17,72,52" concept="0" />
-      <node id="5724083730281438001" at="72,52,73,22" concept="4" />
+      <node id="5724083730281438001" at="71,17,72,55" concept="0" />
+      <node id="5724083730281438001" at="72,55,73,22" concept="4" />
       <node id="5724083730281438001" at="66,0,75,0" concept="6" trace="createDescriptorForMissingPropertyInConceptProblem#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="5724083730281438001" at="41,65,42,56" />
       <scope id="5724083730281438001" at="66,89,73,22">

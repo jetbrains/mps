@@ -27,7 +27,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.MissingPropertyInConceptProblem:
         if (props_MissingPropertyInConceptProblem == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.rawPresentation("when property is not defined concept");
+          cpb.rawPresentation("when property is not defined in concept");
           props_MissingPropertyInConceptProblem = cpb.create();
         }
         return props_MissingPropertyInConceptProblem;

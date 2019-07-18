@@ -363,7 +363,7 @@
                       <node concept="liA8E" id="1f" role="2OqNvi">
                         <ref role="37wK5l" to="ze1i:~ConceptPresentationBuilder.rawPresentation(java.lang.String)" resolve="rawPresentation" />
                         <node concept="Xl_RD" id="1g" role="37wK5m">
-                          <property role="Xl_RC" value="when property is not defined concept" />
+                          <property role="Xl_RC" value="when property is not defined in concept" />
                           <node concept="cd27G" id="1i" role="lGtFl">
                             <node concept="3u3nmq" id="1j" role="cd27D">
                               <property role="3u3nmv" value="5724083730281438001" />
@@ -1085,7 +1085,7 @@
             <node concept="liA8E" id="5z" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.alias(java.lang.String)" resolve="alias" />
               <node concept="Xl_RD" id="5$" role="37wK5m">
-                <property role="Xl_RC" value="when property is not defined concept" />
+                <property role="Xl_RC" value="when property is not defined in concept" />
               </node>
             </node>
           </node>
