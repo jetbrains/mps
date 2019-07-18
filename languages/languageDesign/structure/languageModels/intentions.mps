@@ -1376,7 +1376,7 @@
   </node>
   <node concept="2S6QgY" id="nddphzBs1Q">
     <property role="TrG5h" value="AddExperimentalApiAnnotation" />
-    <ref role="2ZfgGC" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <ref role="2ZfgGC" to="tpce:h0PkWnZ" resolve="AbstractConceptDeclaration" />
     <node concept="2S6ZIM" id="nddphzBs1R" role="2ZfVej">
       <node concept="3clFbS" id="nddphzBs1S" role="2VODD2">
         <node concept="3clFbJ" id="nddphzBs1T" role="3cqZAp">
