@@ -3818,23 +3818,24 @@
       <node id="6997653033586475516" at="29,52,30,19" concept="8" />
       <node id="6997653033586475516" at="34,51,35,72" concept="1" />
       <node id="6997653033586475525" at="35,72,36,69" concept="1" />
+      <node id="4622342125579048304" at="36,69,37,69" concept="1" />
       <node id="6997653033586475516" at="15,0,17,0" concept="7" trace="ourParamCache" />
       <node id="6997653033586475516" at="18,0,21,0" concept="0" trace="InsertNodeInsteadOfPlaceholder_Test#()V" />
       <node id="6997653033586475516" at="29,0,32,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
       <node id="6997653033586475516" at="22,0,26,0" concept="3" trace="test_InsertNodeInsteadOfPlaceholder#()V" />
-      <node id="6997653033586475516" at="33,0,38,0" concept="3" trace="testMethodImpl#()V" />
+      <node id="6997653033586475516" at="33,0,39,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="6997653033586475516" at="18,48,19,25" />
       <scope id="6997653033586475516" at="23,70,24,72" />
       <scope id="6997653033586475516" at="29,52,30,19" />
-      <scope id="6997653033586475516" at="34,51,36,69" />
       <scope id="6997653033586475516" at="18,0,21,0" />
       <scope id="6997653033586475516" at="29,0,32,0">
         <var name="owner" id="6997653033586475516" />
       </scope>
+      <scope id="6997653033586475516" at="34,51,37,69" />
       <scope id="6997653033586475516" at="22,0,26,0" />
-      <scope id="6997653033586475516" at="33,0,38,0" />
-      <unit id="6997653033586475516" at="27,0,39,0" name="jetbrains.mps.lang.editor.actions.test.InsertNodeInsteadOfPlaceholder_Test$TestBody" />
-      <unit id="6997653033586475516" at="13,0,40,0" name="jetbrains.mps.lang.editor.actions.test.InsertNodeInsteadOfPlaceholder_Test" />
+      <scope id="6997653033586475516" at="33,0,39,0" />
+      <unit id="6997653033586475516" at="27,0,40,0" name="jetbrains.mps.lang.editor.actions.test.InsertNodeInsteadOfPlaceholder_Test$TestBody" />
+      <unit id="6997653033586475516" at="13,0,41,0" name="jetbrains.mps.lang.editor.actions.test.InsertNodeInsteadOfPlaceholder_Test" />
     </file>
   </root>
   <root nodeRef="r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)/6997653033586569893">

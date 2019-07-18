@@ -24,9 +24,7 @@
     <import index="4boq" ref="r:724e6e38-de05-4794-9500-38fefe925278(jetbrains.mps.lang.constraints.rules.skeleton.behavior)" />
     <import index="w3ru" ref="r:0a75cbc0-11b2-43e7-9663-13020b577a3f(jetbrains.mps.lang.constraints.rules.skeleton.main@generator)" />
     <import index="mo3b" ref="r:693e7312-21d7-4b8c-bc92-c79ef99b1277(util)" />
-    <import index="4d13" ref="r:bfef6725-b58e-47c1-9fba-6e80a685f593(jetbrains.mps.lang.context.defs.behavior)" />
     <import index="iwhd" ref="r:bd012d1c-91a4-4783-a33f-d2037e757f6d(jetbrains.mps.lang.context.defs.structure)" />
-    <import index="wq9u" ref="dada761c-8e21-4cc0-b68c-7043bd551489/i:f020202(jetbrains.mps.lang.context.defs#01/jetbrains.mps.lang.context.defs@descriptor)" />
     <import index="hfrf" ref="r:fac0d2cd-3d86-4c70-a300-b56f644a41d9(jetbrains.mps.lang.context.defs.main@generator)" />
     <import index="tjjq" ref="9e98f4e2-decf-4e97-bf80-9109e8b759aa/java:jetbrains.mps.core.context(jetbrains.mps.lang.feedback.context/)" />
     <import index="9xu5" ref="r:2375bfe1-47cd-48de-8bde-6170425d6ec2(jetbrains.mps.lang.constraints.rules.util)" />

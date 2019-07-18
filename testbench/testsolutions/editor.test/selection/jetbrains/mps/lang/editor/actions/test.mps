@@ -265,6 +265,7 @@
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
+      <concept id="4058177569375150038" name="jetbrains.mps.lang.core.structure.IPlaceholderContent" flags="ng" index="2MgtkD" />
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
@@ -272,7 +273,9 @@
         <property id="8575328350543493365" name="message" index="huDt6" />
         <property id="2423417345669755629" name="filter" index="1eyWvh" />
       </concept>
-      <concept id="3717301156197626279" name="jetbrains.mps.lang.core.structure.BasePlaceholder" flags="ng" index="3DQ70j" />
+      <concept id="3717301156197626279" name="jetbrains.mps.lang.core.structure.BasePlaceholder" flags="ng" index="3DQ70j">
+        <child id="3717301156197626301" name="content" index="3DQ709" />
+      </concept>
       <concept id="709746936026466394" name="jetbrains.mps.lang.core.structure.ChildAttribute" flags="ng" index="3VBwX9">
         <property id="709746936026609031" name="linkId" index="3V$3ak" />
         <property id="709746936026609029" name="role_DebugInfo" index="3V$3am" />
@@ -7805,6 +7808,11 @@
           <ref role="1iFR8X" to="ekwn:6KwcZ1G3Pjm" resolve="Insert" />
         </node>
       </node>
+      <node concept="2HxZob" id="40_QUL9tDlK" role="3cqZAp">
+        <node concept="1iFQzN" id="40_QUL9tDlL" role="3iKnsn">
+          <ref role="1iFR8X" to="ekwn:6KwcZ1G3Pjm" resolve="Insert" />
+        </node>
+      </node>
     </node>
     <node concept="1qefOq" id="2aQPn0PnlF0" role="25YQCW">
       <node concept="30quMj" id="64sE5JwmO7X" role="1qenE9">
@@ -7826,6 +7834,7 @@
         <node concept="3DQ70j" id="64sE5JwoG05" role="lGtFl">
           <property role="3V$3am" value="multipleChildren" />
           <property role="3V$3ak" value="81f0abb8-d71e-4d13-a0c1-d2291fbb28b7/6866182640452532264/6866182640452532268" />
+          <node concept="2MgtkD" id="40_QUL9tx62" role="3DQ709" />
         </node>
         <node concept="30quMi" id="64sE5JwmObs" role="30quMn">
           <node concept="LIFWc" id="64sE5JwoG0n" role="lGtFl">

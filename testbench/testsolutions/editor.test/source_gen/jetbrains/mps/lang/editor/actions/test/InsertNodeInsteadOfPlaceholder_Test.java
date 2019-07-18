@@ -34,6 +34,7 @@ public class InsertNodeInsteadOfPlaceholder_Test extends BaseTransformationTest 
     public void testMethodImpl() throws Exception {
       initEditorComponent("6997653033586475517", "6997653033586475520");
       invokeAction("jetbrains.mps.ide.editor.actions.Insert_Action");
+      invokeAction("jetbrains.mps.ide.editor.actions.Insert_Action");
     }
   }
 }
