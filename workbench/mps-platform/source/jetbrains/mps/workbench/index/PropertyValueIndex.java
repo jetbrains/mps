@@ -17,13 +17,9 @@ package jetbrains.mps.workbench.index;
 
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.fileTypes.FileType;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.util.CommonProcessors.CollectProcessor;
 import com.intellij.util.indexing.DataIndexer;
 import com.intellij.util.indexing.DefaultFileTypeSpecificInputFilter;
-import com.intellij.util.indexing.FileBasedIndex;
 import com.intellij.util.indexing.FileBasedIndex.InputFilter;
-import com.intellij.util.indexing.FileBasedIndex.ValueProcessor;
 import com.intellij.util.indexing.FileBasedIndexExtension;
 import com.intellij.util.indexing.FileContent;
 import com.intellij.util.indexing.ID;
@@ -37,17 +33,15 @@ import jetbrains.mps.core.platform.Platform;
 import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import jetbrains.mps.fileTypes.MPSFileTypeFactory;
 import jetbrains.mps.ide.MPSCoreComponents;
-import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.persistence.IndexAwareModelFactory;
+import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.smodel.SModelFileTracker;
 import jetbrains.mps.smodel.adapter.ids.SConceptId;
-import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.workbench.findusages.MPSModelsIndexer;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeId;
@@ -79,69 +73,18 @@ import java.util.regex.Pattern;
  * @since 2019.2
  */
 public class PropertyValueIndex extends FileBasedIndexExtension<WordIndexEntry, ModelNodesData> {
-  private static final ID<WordIndexEntry, ModelNodesData> NAME = ID.create("mps.propvalue");
+  /*package*/ static final ID<WordIndexEntry, ModelNodesData> NAME = ID.create("mps.propvalue");
 
   private final Map<FileType, IndexAwareModelFactory> myIndexAwareFileTypes = new HashMap<>();
 
+  public static PropertyValueProcessor processor(String text, final Consumer<SNode> sink, MPSProject mpsProject) {
+    return new PropertyValueProcessor(mpsProject, sink, text);
+  }
+
+  @Deprecated
+  @ToRemove(version = 0)
   public static void processValues(String text, final Consumer<SNode> sink, MPSProject mpsProject) {
-    final ProjectScope scope = new ProjectScope(mpsProject);
-    THashSet<WordIndexEntry> keys = new THashSet<>();
-    for (String word : text.split("\\s")) {
-      if (word.isEmpty()) {
-        continue;
-      }
-      keys.add(new WordIndexEntry(word, 0, word.length()));
-    }
-    ArrayList<VirtualFile> files = new ArrayList<>();
-    FileBasedIndex.getInstance().processFilesContainingAllKeys(NAME, keys, scope, null, new CollectProcessor<>(files));
-    if (files.isEmpty()) {
-      return;
-    }
-    SModelFileTracker modelFileTracker = SModelFileTracker.getInstance(mpsProject.getRepository());
-    class IntersectDataProcessor implements ValueProcessor<ModelNodesData> {
-      /*package*/ ModelNodesData intersection;
-
-      @Override
-      public boolean process(@NotNull VirtualFile file, ModelNodesData value) {
-        if (intersection == null) {
-          intersection = value;
-        } else  {
-          intersection = intersection.intersect(value);
-        }
-        return true;
-      }
-    };
-    for (VirtualFile vf : files) {
-      // only nodes that are mentioned for all keys
-
-      IntersectDataProcessor valueProcessor = new IntersectDataProcessor();
-      for (WordIndexEntry w : keys) {
-        FileBasedIndex.getInstance().processValues(NAME, w, vf, valueProcessor, scope);
-      }
-      if (valueProcessor.intersection.count() == 0) {
-        // though vf has to contain all keys (I assume #processFilesContainingAllKeys() does that)
-        // it's still possible that the values belong to different nodes
-        continue;
-      }
-      IdeaFileSystem fs = mpsProject.getFileSystem();
-      if (!fs.canConvert(vf)) {
-        return;
-      }
-      final IFile mpsFile = fs.fromVirtualFile(vf);
-      mpsProject.getModelAccess().runReadAction(() -> {
-        final SModel model = modelFileTracker.findModel(mpsFile);
-        if (model == null) {
-          return;
-        }
-        for (SNodeId nid : valueProcessor.intersection.elements()) {
-          final SNode node = model.getNode(nid);
-          if (node == null) {
-            continue;
-          }
-          sink.accept(node);
-        }
-      });
-    }
+    processor(text, sink, mpsProject).run(new EmptyProgressMonitor());
   }
 
   public PropertyValueIndex() {
