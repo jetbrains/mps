@@ -7,7 +7,6 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.editor.runtime.style.AbstractStyleClass;
-import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.FirstLevelStyleClass;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.editor.runtime.style.Padding;
 import jetbrains.mps.editor.runtime.style.Measure;
@@ -31,7 +30,6 @@ public class RuleKindStyle_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      new FirstLevelStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
       style.set(StyleAttributes.PADDING_BOTTOM, new Padding(0.2, Measure.SPACES));
     }
 
