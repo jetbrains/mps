@@ -23,6 +23,11 @@
       <option name="BuildArtifacts" enabled="true">
         <artifact name="context" />
         <artifact name="feedback-api" />
+        <artifact name="messages-api" />
+        <artifact name="messages-for-legacy-constraints" />
+        <artifact name="messages-for-rules" />
+        <artifact name="messages-for-structure" />
+        <artifact name="problem" />
       </option>
       <option name="AntTarget" enabled="true" antfile="file://$PROJECT_DIR$/testbench/cleanup.xml" target="cleanup" />
     </method>
