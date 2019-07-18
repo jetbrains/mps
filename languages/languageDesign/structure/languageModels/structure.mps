@@ -32,6 +32,9 @@
         <property id="1225118929411" name="build" index="YLPcu" />
         <property id="1225118933224" name="comment" index="YLQ7P" />
       </concept>
+      <concept id="7862711839422615209" name="jetbrains.mps.lang.structure.structure.DocumentedNodeAnnotation" flags="ng" index="t5JxF">
+        <property id="7862711839422615217" name="text" index="t5JxN" />
+      </concept>
       <concept id="6054523464626862044" name="jetbrains.mps.lang.structure.structure.AttributeInfo_IsMultiple" flags="ng" index="tn0Fv">
         <property id="6054523464626875854" name="value" index="tnX3d" />
       </concept>
@@ -1260,6 +1263,9 @@
       <node concept="trNpa" id="nddphzEnSj" role="EQaZv">
         <ref role="trN6q" node="h0PkWnZ" resolve="AbstractConceptDeclaration" />
       </node>
+    </node>
+    <node concept="t5JxF" id="6WJr2NngPmT" role="lGtFl">
+      <property role="t5JxN" value="Use this attribtue with those concept declarations which offer some non-stable or early-access functionality" />
     </node>
   </node>
 </model>
