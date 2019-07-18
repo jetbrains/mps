@@ -5346,12 +5346,6 @@
       </node>
     </node>
   </node>
-  <node concept="13h7C7" id="1653mnvB5XK">
-    <ref role="13h7C2" to="tpce:hOasaTk" resolve="DeprecatedNodeAnnotation" />
-    <node concept="13hLZK" id="1653mnvB5XL" role="13h7CW">
-      <node concept="3clFbS" id="1653mnvB5XM" role="2VODD2" />
-    </node>
-  </node>
   <node concept="13h7C7" id="2A8AB0r$FE9">
     <property role="3GE5qa" value="attribute" />
     <ref role="13h7C2" to="tpce:2A8AB0r$C6l" resolve="AttributeInfo" />

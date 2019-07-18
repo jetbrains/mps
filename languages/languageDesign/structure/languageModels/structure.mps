@@ -1233,5 +1233,34 @@
       <ref role="2wpffI" node="4G1g3fIR8JG" />
     </node>
   </node>
+  <node concept="1TIwiD" id="nddphzyHx5">
+    <property role="TrG5h" value="ExperimentalApiNodeAnnotation" />
+    <property role="3GE5qa" value="deprecatedAnnotation" />
+    <property role="EcuMT" value="418049251856799813" />
+    <property role="R5$K2" value="true" />
+    <ref role="1TJDcQ" to="tpck:2ULFgo8_XDk" resolve="NodeAttribute" />
+    <node concept="PrWs8" id="nddphzyHx6" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
+    <node concept="PrWs8" id="nddphzyHx7" role="PzmwI">
+      <ref role="PrY4T" to="tpck:19gBtYEAf4C" resolve="InterfacePart" />
+    </node>
+    <node concept="1TJgyi" id="nddphzyHx8" role="1TKVEl">
+      <property role="TrG5h" value="build" />
+      <property role="IQ2nx" value="418049251856799816" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+    <node concept="1TJgyi" id="nddphzyHx9" role="1TKVEl">
+      <property role="TrG5h" value="comment" />
+      <property role="IQ2nx" value="418049251856799817" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+    <node concept="M6xJ_" id="nddphzyHxa" role="lGtFl">
+      <property role="Hh88m" value="experimentalAttribute" />
+      <node concept="trNpa" id="nddphzEnSj" role="EQaZv">
+        <ref role="trN6q" node="h0PkWnZ" resolve="AbstractConceptDeclaration" />
+      </node>
+    </node>
+  </node>
 </model>
 

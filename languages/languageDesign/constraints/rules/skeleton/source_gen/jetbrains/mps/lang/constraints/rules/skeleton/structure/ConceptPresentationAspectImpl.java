@@ -41,9 +41,10 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.RulesConstraintsRoot:
         if (props_RulesConstraintsRoot == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.deprecated(true);
           cpb.shortDesc("define rules here");
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a3a0a3b0f);
+          cpb.icon(IconContainer.RESOURCE_a0a4a0a3b0f);
           props_RulesConstraintsRoot = cpb.create();
         }
         return props_RulesConstraintsRoot;

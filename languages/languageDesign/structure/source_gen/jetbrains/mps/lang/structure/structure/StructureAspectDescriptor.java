@@ -39,6 +39,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptEnumerationDeclartaion = createDescriptorForEnumerationDeclartaion();
   /*package*/ final ConceptDescriptor myConceptEnumerationMemberDeclaration = createDescriptorForEnumerationMemberDeclaration();
   /*package*/ final ConceptDescriptor myConceptEnumerationMemberDeclaration_Old = createDescriptorForEnumerationMemberDeclaration_Old();
+  /*package*/ final ConceptDescriptor myConceptExperimentalApiNodeAnnotation = createDescriptorForExperimentalApiNodeAnnotation();
   /*package*/ final ConceptDescriptor myConceptIConceptAspect = createDescriptorForIConceptAspect();
   /*package*/ final ConceptDescriptor myConceptIEnumeration = createDescriptorForIEnumeration();
   /*package*/ final ConceptDescriptor myConceptILanguageElement = createDescriptorForILanguageElement();
@@ -77,7 +78,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptAbstractConceptDeclaration, myConceptAggregationLinkDeclarationScopeKind, myConceptAttributeInfo, myConceptAttributeInfo_AttributedConcept, myConceptAttributeInfo_IsMultiple, myConceptConceptDeclaration, myConceptConstrainedDataTypeDeclaration, myConceptDataTypeDeclaration, myConceptDeprecatedNodeAnnotation, myConceptDocumentationObjective, myConceptDocumentationObjectiveRef, myConceptDocumentedNodeAnnotation, myConceptEnumCustomMethodReplacementInfo, myConceptEnumMigrationInfo, myConceptEnumPropertyMigrationInfo, myConceptEnumerationDataTypeDeclaration_Old, myConceptEnumerationDeclartaion, myConceptEnumerationMemberDeclaration, myConceptEnumerationMemberDeclaration_Old, myConceptIConceptAspect, myConceptIEnumeration, myConceptILanguageElement, myConceptINamedLanguageElement, myConceptIStructureDeprecatable, myConceptInterfaceConceptDeclaration, myConceptInterfaceConceptReference, myConceptLinkDeclaration, myConceptPrimitiveDataTypeDeclaration, myConceptPropertyDeclaration, myConceptRefPresentationTemplate, myConceptReferenceLinkDeclartionScopeKind, myConceptSmartReferenceAttribute);
+    return Arrays.asList(myConceptAbstractConceptDeclaration, myConceptAggregationLinkDeclarationScopeKind, myConceptAttributeInfo, myConceptAttributeInfo_AttributedConcept, myConceptAttributeInfo_IsMultiple, myConceptConceptDeclaration, myConceptConstrainedDataTypeDeclaration, myConceptDataTypeDeclaration, myConceptDeprecatedNodeAnnotation, myConceptDocumentationObjective, myConceptDocumentationObjectiveRef, myConceptDocumentedNodeAnnotation, myConceptEnumCustomMethodReplacementInfo, myConceptEnumMigrationInfo, myConceptEnumPropertyMigrationInfo, myConceptEnumerationDataTypeDeclaration_Old, myConceptEnumerationDeclartaion, myConceptEnumerationMemberDeclaration, myConceptEnumerationMemberDeclaration_Old, myConceptExperimentalApiNodeAnnotation, myConceptIConceptAspect, myConceptIEnumeration, myConceptILanguageElement, myConceptINamedLanguageElement, myConceptIStructureDeprecatable, myConceptInterfaceConceptDeclaration, myConceptInterfaceConceptReference, myConceptLinkDeclaration, myConceptPrimitiveDataTypeDeclaration, myConceptPropertyDeclaration, myConceptRefPresentationTemplate, myConceptReferenceLinkDeclartionScopeKind, myConceptSmartReferenceAttribute);
   }
 
   @Override
@@ -122,6 +123,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptEnumerationMemberDeclaration;
       case LanguageConceptSwitch.EnumerationMemberDeclaration_Old:
         return myConceptEnumerationMemberDeclaration_Old;
+      case LanguageConceptSwitch.ExperimentalApiNodeAnnotation:
+        return myConceptExperimentalApiNodeAnnotation;
       case LanguageConceptSwitch.IConceptAspect:
         return myConceptIConceptAspect;
       case LanguageConceptSwitch.IEnumeration:
@@ -379,6 +382,19 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.property("internalValue", 0xfc5ee06663L).type(PrimitiveTypeId.STRING).origin("1083923523171").done();
     b.property("externalValue", 0xfc5ee06664L).type(PrimitiveTypeId.STRING).origin("1083923523172").done();
     b.property("javaIdentifier", 0x1158fb58479L).type(PrimitiveTypeId.STRING).origin("1192116978809").done();
+    b.kind(ConceptKind.INTERFACE, StaticScope.GLOBAL);
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForExperimentalApiNodeAnnotation() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.structure", "ExperimentalApiNodeAnnotation", 0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5cd3594638ad845L);
+    b.class_(true, false, false);
+    b.super_("jetbrains.mps.lang.core.structure.NodeAttribute", 0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da54L);
+    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
+    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x12509ddfaa98f128L);
+    b.origin("r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/418049251856799813");
+    b.version(2);
+    b.property("build", 0x5cd3594638ad848L).type(PrimitiveTypeId.STRING).origin("418049251856799816").done();
+    b.property("comment", 0x5cd3594638ad849L).type(PrimitiveTypeId.STRING).origin("418049251856799817").done();
     b.kind(ConceptKind.INTERFACE, StaticScope.GLOBAL);
     return b.create();
   }

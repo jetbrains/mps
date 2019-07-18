@@ -28,19 +28,20 @@ public final class LanguageConceptSwitch {
   public static final int EnumerationDeclartaion = 16;
   public static final int EnumerationMemberDeclaration = 17;
   public static final int EnumerationMemberDeclaration_Old = 18;
-  public static final int IConceptAspect = 19;
-  public static final int IEnumeration = 20;
-  public static final int ILanguageElement = 21;
-  public static final int INamedLanguageElement = 22;
-  public static final int IStructureDeprecatable = 23;
-  public static final int InterfaceConceptDeclaration = 24;
-  public static final int InterfaceConceptReference = 25;
-  public static final int LinkDeclaration = 26;
-  public static final int PrimitiveDataTypeDeclaration = 27;
-  public static final int PropertyDeclaration = 28;
-  public static final int RefPresentationTemplate = 29;
-  public static final int ReferenceLinkDeclartionScopeKind = 30;
-  public static final int SmartReferenceAttribute = 31;
+  public static final int ExperimentalApiNodeAnnotation = 19;
+  public static final int IConceptAspect = 20;
+  public static final int IEnumeration = 21;
+  public static final int ILanguageElement = 22;
+  public static final int INamedLanguageElement = 23;
+  public static final int IStructureDeprecatable = 24;
+  public static final int InterfaceConceptDeclaration = 25;
+  public static final int InterfaceConceptReference = 26;
+  public static final int LinkDeclaration = 27;
+  public static final int PrimitiveDataTypeDeclaration = 28;
+  public static final int PropertyDeclaration = 29;
+  public static final int RefPresentationTemplate = 30;
+  public static final int ReferenceLinkDeclartionScopeKind = 31;
+  public static final int SmartReferenceAttribute = 32;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0xc72da2b97cce4447L, 0x8389f407dc1158b7L);
@@ -63,6 +64,7 @@ public final class LanguageConceptSwitch {
     builder.put(0x2e770ca32c607c5fL, EnumerationDeclartaion);
     builder.put(0x2e770ca32c607c60L, EnumerationMemberDeclaration);
     builder.put(0xfc321331b2L, EnumerationMemberDeclaration_Old);
+    builder.put(0x5cd3594638ad845L, ExperimentalApiNodeAnnotation);
     builder.put(0x24614259e94f0c84L, IConceptAspect);
     builder.put(0xeeb344f64a629e5L, IEnumeration);
     builder.put(0x160b046db90b56deL, ILanguageElement);
