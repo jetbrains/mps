@@ -14,8 +14,8 @@ import jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder2;
 
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptBlock = createDescriptorForBlock();
-  /*package*/ final ConceptDescriptor myConceptRuleBlock = createDescriptorForRuleBlock();
   /*package*/ final ConceptDescriptor myConceptRuleBlockMember = createDescriptorForRuleBlockMember();
+  /*package*/ final ConceptDescriptor myConceptRulesBlock = createDescriptorForRulesBlock();
   /*package*/ final ConceptDescriptor myConceptRulesConstraintsRoot = createDescriptorForRulesConstraintsRoot();
   private final LanguageConceptSwitch myIndexSwitch;
 
@@ -31,7 +31,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptBlock, myConceptRuleBlock, myConceptRuleBlockMember, myConceptRulesConstraintsRoot);
+    return Arrays.asList(myConceptBlock, myConceptRuleBlockMember, myConceptRulesBlock, myConceptRulesConstraintsRoot);
   }
 
   @Override
@@ -40,10 +40,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     switch (myIndexSwitch.index(id)) {
       case LanguageConceptSwitch.Block:
         return myConceptBlock;
-      case LanguageConceptSwitch.RuleBlock:
-        return myConceptRuleBlock;
       case LanguageConceptSwitch.RuleBlockMember:
         return myConceptRuleBlockMember;
+      case LanguageConceptSwitch.RulesBlock:
+        return myConceptRulesBlock;
       case LanguageConceptSwitch.RulesConstraintsRoot:
         return myConceptRulesConstraintsRoot;
       default:
@@ -67,8 +67,15 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(2);
     return b.create();
   }
-  private static ConceptDescriptor createDescriptorForRuleBlock() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.constraints.rules.skeleton", "RuleBlock", 0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb5174aL);
+  private static ConceptDescriptor createDescriptorForRuleBlockMember() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.constraints.rules.skeleton", "RuleBlockMember", 0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb51750L);
+    b.interface_();
+    b.origin("r:1d4f6f82-1219-47a2-a4fa-ac3ba14c9fd5(jetbrains.mps.lang.constraints.rules.skeleton.structure)/1867733327985055568");
+    b.version(2);
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForRulesBlock() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.constraints.rules.skeleton", "RulesBlock", 0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb5174aL);
     b.class_(false, false, false);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x33d23ee961a0cbf3L);
     b.parent(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edaff8e0L);
@@ -77,13 +84,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.associate("kind", 0x19eb8590edb5174cL).target(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, 0x6530303593554248L).optional(false).origin("1867733327985055564").done();
     b.aggregate("members", 0x19eb8590edb5174bL).target(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb51750L).optional(true).ordered(true).multiple(true).origin("1867733327985055563").done();
     b.alias("Add rules for the kind");
-    return b.create();
-  }
-  private static ConceptDescriptor createDescriptorForRuleBlockMember() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.constraints.rules.skeleton", "RuleBlockMember", 0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb51750L);
-    b.interface_();
-    b.origin("r:1d4f6f82-1219-47a2-a4fa-ac3ba14c9fd5(jetbrains.mps.lang.constraints.rules.skeleton.structure)/1867733327985055568");
-    b.version(2);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForRulesConstraintsRoot() {

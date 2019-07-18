@@ -2,7 +2,7 @@
 <dependenciesRoot>
   <dependency className="jetbrains.mps.lang.constraints.rules.skeleton.constraints.ConstraintsAspectDescriptor">
     <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="jetbrains.mps.lang.constraints.rules.skeleton.constraints.RuleBlock_Constraints" />
+    <classNode dependClassName="jetbrains.mps.lang.constraints.rules.skeleton.constraints.RulesBlock_Constraints" />
     <classNode dependClassName="jetbrains.mps.lang.constraints.rules.skeleton.constraints.RulesConstraintsRoot_Constraints" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndex" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder" />
@@ -20,7 +20,7 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
     <classNode extendsClassName="jetbrains.mps.core.aspects.constraints.rules.RulesConstraintsAspect" />
   </dependency>
-  <dependency className="jetbrains.mps.lang.constraints.rules.skeleton.constraints.RuleBlock_Constraints">
+  <dependency className="jetbrains.mps.lang.constraints.rules.skeleton.constraints.RulesBlock_Constraints">
     <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.HashMap" />

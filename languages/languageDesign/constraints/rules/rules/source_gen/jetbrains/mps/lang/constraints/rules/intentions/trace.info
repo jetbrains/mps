@@ -34,24 +34,24 @@
       <node id="2085578213933152061" at="72,211,73,326" concept="1" />
       <node id="2085578213933152069" at="73,326,74,325" concept="1" />
       <node id="2085578213933152079" at="75,184,76,262" concept="6" />
-      <node id="1938781798617048440" at="76,262,77,283" concept="6" />
+      <node id="1938781798617048440" at="76,262,77,284" concept="6" />
       <node id="2085578213933152108" at="78,284,79,254" concept="1" />
       <node id="2085578213933152131" at="82,185,83,263" concept="6" />
-      <node id="1938781798617073095" at="83,263,84,283" concept="6" />
+      <node id="1938781798617073095" at="83,263,84,284" concept="6" />
       <node id="2085578213933152160" at="85,284,86,254" concept="1" />
       <node id="2085578213933152041" at="90,70,91,33" concept="7" />
       <node id="2085578213933151994" at="94,112,95,109" concept="6" />
       <node id="2085578213933151994" at="97,71,98,81" concept="1" />
       <node id="2085578213933151994" at="100,80,101,92" concept="7" />
       <node id="2085578213933151994" at="103,7,104,18" concept="7" />
-      <node id="1014911411066025825" at="106,89,107,63" concept="6" />
-      <node id="1014911411066025825" at="107,63,108,242" concept="6" />
-      <node id="1014911411066025825" at="108,242,109,472" concept="1" />
+      <node id="1014911411066025825" at="106,90,107,63" concept="6" />
+      <node id="1014911411066025825" at="107,63,108,243" concept="6" />
+      <node id="1014911411066025825" at="108,243,109,472" concept="1" />
       <node id="1014911411066025825" at="110,26,111,388" concept="1" />
       <node id="1014911411066025825" at="112,5,113,14" concept="7" />
-      <node id="1014911411066024973" at="115,89,116,63" concept="6" />
-      <node id="1014911411066024973" at="116,63,117,242" concept="6" />
-      <node id="1014911411066024973" at="117,242,118,472" concept="1" />
+      <node id="1014911411066024973" at="115,90,116,63" concept="6" />
+      <node id="1014911411066024973" at="116,63,117,243" concept="6" />
+      <node id="1014911411066024973" at="117,243,118,472" concept="1" />
       <node id="1014911411066024973" at="119,26,120,388" concept="1" />
       <node id="1014911411066024973" at="121,5,122,14" concept="7" />
       <node id="2085578213933152053" at="124,67,125,47" concept="7" />
@@ -64,8 +64,8 @@
       <node id="2085578213933151994" at="47,0,50,0" concept="5" trace="getDeclarationNode#()Ljetbrains/mps/smodel/SNodePointer;" />
       <node id="2085578213933151994" at="60,0,63,0" concept="5" trace="isAvailableInChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Z" />
       <node id="2085578213933151994" at="64,0,67,0" concept="5" trace="isApplicable#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Z" />
-      <node id="2085578213933152105" at="77,283,80,7" concept="3" />
-      <node id="2085578213933152157" at="84,283,87,7" concept="3" />
+      <node id="2085578213933152105" at="77,284,80,7" concept="3" />
+      <node id="2085578213933152157" at="84,284,87,7" concept="3" />
       <node id="2085578213933152002" at="90,0,93,0" concept="5" trace="description#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Ljava/lang/String;" />
       <node id="2085578213933151994" at="97,0,100,0" concept="5" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)V" />
       <node id="2085578213933151994" at="100,0,103,0" concept="5" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Ljava/lang/String;" />
@@ -77,8 +77,8 @@
       <node id="2085578213933152077" at="74,325,81,5" concept="4" />
       <node id="2085578213933152129" at="81,5,88,5" concept="4" />
       <node id="2085578213933151994" at="95,109,103,7" concept="1" />
-      <node id="1014911411066025825" at="106,0,115,0" concept="9" trace="createRuleBlock_dji8hx_a0a0b0f0h#(Ljava/lang/Iterable;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="1014911411066024973" at="115,0,124,0" concept="9" trace="createRuleBlock_dji8hx_a0a0b0g0h#(Ljava/lang/Iterable;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="1014911411066025825" at="106,0,115,0" concept="9" trace="createRulesBlock_dji8hx_a0a0b0f0h#(Ljava/lang/Iterable;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="1014911411066024973" at="115,0,124,0" concept="9" trace="createRulesBlock_dji8hx_a0a0b0g0h#(Ljava/lang/Iterable;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="2085578213933151994" at="94,0,106,0" concept="5" trace="getTreeTransformers#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Ljava/util/Collection;" />
       <node id="2085578213933152015" at="69,0,90,0" concept="5" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)V" />
       <scope id="2085578213933151994" at="28,51,28,51" />
@@ -114,10 +114,10 @@
         <var name="editorContext" id="2085578213933151994" />
         <var name="node" id="2085578213933151994" />
       </scope>
-      <scope id="2085578213933152105" at="77,283,80,7">
+      <scope id="2085578213933152105" at="77,284,80,7">
         <var name="ew" id="2085578213933152106" />
       </scope>
-      <scope id="2085578213933152157" at="84,283,87,7">
+      <scope id="2085578213933152157" at="84,284,87,7">
         <var name="ew" id="2085578213933152158" />
       </scope>
       <scope id="2085578213933152002" at="90,0,93,0">
@@ -158,11 +158,11 @@
         <var name="analyzerResult" id="2085578213933152132" />
         <var name="block" id="1938781798617073098" />
       </scope>
-      <scope id="1014911411066025825" at="106,89,113,14">
+      <scope id="1014911411066025825" at="106,90,113,14">
         <var name="facade" id="1014911411066025825" />
         <var name="n1" id="1014911411066025825" />
       </scope>
-      <scope id="1014911411066024973" at="115,89,122,14">
+      <scope id="1014911411066024973" at="115,90,122,14">
         <var name="facade" id="1014911411066024973" />
         <var name="n1" id="1014911411066024973" />
       </scope>

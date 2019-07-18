@@ -138,31 +138,31 @@
     </file>
   </root>
   <root nodeRef="r:38d66f13-43df-406f-957b-078b52f2a2b9(jetbrains.mps.lang.constraints.rules.skeleton.constraints)/1867733327985055635">
-    <file name="RuleBlock_Constraints.java">
-      <node id="1867733327985055635" at="30,34,31,173" concept="10" />
+    <file name="RulesBlock_Constraints.java">
+      <node id="1867733327985055635" at="30,35,31,174" concept="10" />
       <node id="1867733327985055636" at="38,44,39,20" concept="6" />
       <node id="1867733327985055636" at="46,63,47,57" concept="6" />
       <node id="1867733327985055639" at="50,122,51,288" concept="5" />
-      <node id="1867733327985055649" at="51,288,52,245" concept="5" />
+      <node id="1867733327985055649" at="51,288,52,60" concept="5" />
       <node id="1867733327985055674" at="54,47,55,54" concept="6" />
       <node id="1867733327985055693" at="60,53,61,254" concept="6" />
       <node id="1867733327985055635" at="67,6,68,131" concept="5" />
       <node id="1867733327985055636" at="68,131,69,42" concept="2" />
       <node id="1867733327985055635" at="69,42,70,22" concept="6" />
-      <node id="1867733327985055635" at="72,0,73,0" concept="8" trace="breakingNode_1iroic_a0a0a0a0a1a0a0a0c" />
-      <node id="1867733327985055635" at="30,0,33,0" concept="1" trace="RuleBlock_Constraints#()V" />
+      <node id="1867733327985055635" at="72,0,73,0" concept="8" trace="breakingNode_tqi8py_a0a0a0a0a1a0a0a0c" />
+      <node id="1867733327985055635" at="30,0,33,0" concept="1" trace="RulesBlock_Constraints#()V" />
       <node id="1867733327985055672" at="54,0,57,0" concept="4" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="1867733327985055636" at="37,0,41,0" concept="4" trace="hasOwnScopeProvider#()Z" />
       <node id="1867733327985055636" at="45,0,49,0" concept="4" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
       <node id="1867733327985055687" at="59,0,63,0" concept="4" trace="isExcluded#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="1867733327985055655" at="52,245,57,145" concept="5" />
+      <node id="1867733327985055655" at="52,60,57,145" concept="5" />
       <node id="1867733327985055681" at="57,145,63,14" concept="6" />
       <node id="1867733327985055636" at="49,0,65,0" concept="4" trace="createScope#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
       <node id="1867733327985055636" at="43,56,65,10" concept="6" />
       <node id="1867733327985055636" at="41,0,67,0" concept="4" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
       <node id="1867733327985055636" at="35,90,67,6" concept="5" />
       <node id="1867733327985055635" at="34,0,72,0" concept="4" trace="getSpecifiedReferences#()Ljava/util/Map;" />
-      <scope id="1867733327985055635" at="30,34,31,173" />
+      <scope id="1867733327985055635" at="30,35,31,174" />
       <scope id="1867733327985055636" at="38,44,39,20" />
       <scope id="1867733327985055636" at="46,63,47,57" />
       <scope id="1867733327985055673" at="54,47,55,54" />
@@ -192,11 +192,11 @@
         <var name="references" id="1867733327985055635" />
       </scope>
       <scope id="1867733327985055635" at="34,0,72,0" />
-      <unit id="1867733327985055672" at="53,703,57,13" name="jetbrains.mps.lang.constraints.rules.skeleton.constraints.RuleBlock_Constraints$1$1$1" />
-      <unit id="1867733327985055684" at="58,23,63,13" name="jetbrains.mps.lang.constraints.rules.skeleton.constraints.RuleBlock_Constraints$1$1$2" />
-      <unit id="1867733327985055636" at="44,19,65,9" name="jetbrains.mps.lang.constraints.rules.skeleton.constraints.RuleBlock_Constraints$1$1" />
-      <unit id="1867733327985055636" at="36,48,67,5" name="jetbrains.mps.lang.constraints.rules.skeleton.constraints.RuleBlock_Constraints$1" />
-      <unit id="1867733327985055635" at="29,0,74,0" name="jetbrains.mps.lang.constraints.rules.skeleton.constraints.RuleBlock_Constraints" />
+      <unit id="1867733327985055672" at="53,703,57,13" name="jetbrains.mps.lang.constraints.rules.skeleton.constraints.RulesBlock_Constraints$1$1$1" />
+      <unit id="1867733327985055684" at="58,23,63,13" name="jetbrains.mps.lang.constraints.rules.skeleton.constraints.RulesBlock_Constraints$1$1$2" />
+      <unit id="1867733327985055636" at="44,19,65,9" name="jetbrains.mps.lang.constraints.rules.skeleton.constraints.RulesBlock_Constraints$1$1" />
+      <unit id="1867733327985055636" at="36,48,67,5" name="jetbrains.mps.lang.constraints.rules.skeleton.constraints.RulesBlock_Constraints$1" />
+      <unit id="1867733327985055635" at="29,0,74,0" name="jetbrains.mps.lang.constraints.rules.skeleton.constraints.RulesBlock_Constraints" />
     </file>
   </root>
 </debug-info>

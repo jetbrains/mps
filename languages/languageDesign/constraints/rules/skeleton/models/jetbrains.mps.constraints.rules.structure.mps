@@ -30,7 +30,7 @@
       <concept id="1169127622168" name="jetbrains.mps.lang.structure.structure.InterfaceConceptReference" flags="ig" index="PrWs8">
         <reference id="1169127628841" name="intfc" index="PrY4T" />
       </concept>
-      <concept id="418049251856799813" name="jetbrains.mps.lang.structure.structure.ExperimentalApiNodeAnnotation" flags="ig" index="1AhYRh">
+      <concept id="418049251856799813" name="jetbrains.mps.lang.structure.structure.ExperimentalAPINodeAttribute" flags="ig" index="1AhYRh">
         <property id="418049251856799816" name="build" index="1AhYRs" />
         <property id="418049251856799817" name="comment" index="1AhYRt" />
       </concept>
@@ -103,7 +103,7 @@
   </node>
   <node concept="1TIwiD" id="1BFxp3HHhta">
     <property role="EcuMT" value="1867733327985055562" />
-    <property role="TrG5h" value="RuleBlock" />
+    <property role="TrG5h" value="RulesBlock" />
     <property role="34LRSv" value="Add rules for the kind" />
     <node concept="1TJgyj" id="1BFxp3HHhtb" role="1TKVEi">
       <property role="IQ2ns" value="1867733327985055563" />

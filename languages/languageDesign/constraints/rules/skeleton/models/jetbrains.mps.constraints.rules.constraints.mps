@@ -198,6 +198,7 @@
         <reference id="2644386474300074837" name="conceptDeclaration" index="35c_gD" />
       </concept>
       <concept id="1172008320231" name="jetbrains.mps.lang.smodel.structure.Node_IsNotNullOperation" flags="nn" index="3x8VRR" />
+      <concept id="1144100932627" name="jetbrains.mps.lang.smodel.structure.OperationParm_Inclusion" flags="ng" index="1xIGOp" />
       <concept id="1144101972840" name="jetbrains.mps.lang.smodel.structure.OperationParm_Concept" flags="ng" index="1xMEDy">
         <child id="1207343664468" name="conceptArgument" index="ri$Ld" />
       </concept>
@@ -387,7 +388,7 @@
     </node>
   </node>
   <node concept="1M2fIO" id="1BFxp3HHhuj">
-    <ref role="1M2myG" to="mqj2:1BFxp3HHhta" resolve="RuleBlock" />
+    <ref role="1M2myG" to="mqj2:1BFxp3HHhta" resolve="RulesBlock" />
     <node concept="1N5Pfh" id="1BFxp3HHhuk" role="1Mr941">
       <ref role="1N5Vy1" to="mqj2:1BFxp3HHhtc" resolve="kind" />
       <node concept="3dgokm" id="1BFxp3HHhul" role="1N6uqs">
@@ -418,15 +419,8 @@
           <node concept="3cpWs8" id="1BFxp3HHhux" role="3cqZAp">
             <node concept="3cpWsn" id="1BFxp3HHhuy" role="3cpWs9">
               <property role="TrG5h" value="myBlock" />
-              <node concept="3Tqbb2" id="1BFxp3HHhuz" role="1tU5fm">
-                <ref role="ehGHo" to="mqj2:1BFxp3HHhta" resolve="RuleBlock" />
-              </node>
-              <node concept="1PxgMI" id="1BFxp3HHhu$" role="33vP2m">
-                <node concept="chp4Y" id="1BFxp3HHhu_" role="3oSUPX">
-                  <ref role="cht4Q" to="mqj2:1BFxp3HHhta" resolve="RuleBlock" />
-                </node>
-                <node concept="2rP1CM" id="1BFxp3HHhuA" role="1m5AlR" />
-              </node>
+              <node concept="3Tqbb2" id="1BFxp3HHhuz" role="1tU5fm" />
+              <node concept="2rP1CM" id="1BFxp3HHhuA" role="33vP2m" />
             </node>
           </node>
           <node concept="3cpWs8" id="1BFxp3HHhuB" role="3cqZAp">
@@ -450,6 +444,7 @@
                               <ref role="cht4Q" to="mqj2:1BFxp3HFZzq" resolve="RulesConstraintsRoot" />
                             </node>
                           </node>
+                          <node concept="1xIGOp" id="6WJr2NneS1s" role="1xVPHs" />
                         </node>
                       </node>
                       <node concept="3Tsc0h" id="1BFxp3HHhuO" role="2OqNvi">
@@ -458,7 +453,7 @@
                     </node>
                     <node concept="v3k3i" id="1BFxp3HHhuP" role="2OqNvi">
                       <node concept="chp4Y" id="1BFxp3HHhuQ" role="v3oSu">
-                        <ref role="cht4Q" to="mqj2:1BFxp3HHhta" resolve="RuleBlock" />
+                        <ref role="cht4Q" to="mqj2:1BFxp3HHhta" resolve="RulesBlock" />
                       </node>
                     </node>
                   </node>

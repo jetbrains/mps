@@ -213,7 +213,7 @@
     </node>
   </node>
   <node concept="13h7C7" id="1BFxp3HHhw_">
-    <ref role="13h7C2" to="mqj2:1BFxp3HHhta" resolve="RuleBlock" />
+    <ref role="13h7C2" to="mqj2:1BFxp3HHhta" resolve="RulesBlock" />
     <node concept="13i0hz" id="1BFxp3HHhwA" role="13h7CS">
       <property role="TrG5h" value="getScope" />
       <ref role="13i0hy" to="tpcu:52_Geb4QDV$" resolve="getScope" />
@@ -327,7 +327,7 @@
       <property role="TrG5h" value="getBlock" />
       <node concept="3Tm1VV" id="1BFxp3HHhya" role="1B3o_S" />
       <node concept="3Tqbb2" id="1BFxp3HHhyb" role="3clF45">
-        <ref role="ehGHo" to="mqj2:1BFxp3HHhta" resolve="RuleBlock" />
+        <ref role="ehGHo" to="mqj2:1BFxp3HHhta" resolve="RulesBlock" />
       </node>
       <node concept="3clFbS" id="1BFxp3HHhyc" role="3clF47">
         <node concept="3clFbF" id="1BFxp3HHhyd" role="3cqZAp">
@@ -336,7 +336,7 @@
             <node concept="2Xjw5R" id="1GUSN3kAAf0" role="2OqNvi">
               <node concept="1xMEDy" id="1GUSN3kAAf2" role="1xVPHs">
                 <node concept="chp4Y" id="1GUSN3kAAiB" role="ri$Ld">
-                  <ref role="cht4Q" to="mqj2:1BFxp3HHhta" resolve="RuleBlock" />
+                  <ref role="cht4Q" to="mqj2:1BFxp3HHhta" resolve="RulesBlock" />
                 </node>
               </node>
             </node>

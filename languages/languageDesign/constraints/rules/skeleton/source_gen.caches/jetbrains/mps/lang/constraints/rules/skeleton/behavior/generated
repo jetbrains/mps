@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="4a8hab1rozyw4z5nrembcpugv1odnl0">
-  <files names="BehaviorAspectDescriptor.java:RuleBlockMember__BehaviorDescriptor.java:RuleBlock__BehaviorDescriptor.java:RulesConstraintsRoot__BehaviorDescriptor.java" />
+<product version="3" modelHash="-6d7ckh1wfvol3upc748vt56s8bidb9m">
+  <files names="BehaviorAspectDescriptor.java:RuleBlockMember__BehaviorDescriptor.java:RulesBlock__BehaviorDescriptor.java:RulesConstraintsRoot__BehaviorDescriptor.java" />
 </product>
 

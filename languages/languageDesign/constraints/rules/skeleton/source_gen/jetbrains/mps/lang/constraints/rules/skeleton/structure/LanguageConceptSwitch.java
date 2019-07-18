@@ -10,15 +10,15 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 public final class LanguageConceptSwitch {
   private final LanguageConceptIndex myIndex;
   public static final int Block = 0;
-  public static final int RuleBlock = 1;
-  public static final int RuleBlockMember = 2;
+  public static final int RuleBlockMember = 1;
+  public static final int RulesBlock = 2;
   public static final int RulesConstraintsRoot = 3;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL);
     builder.put(0x19eb8590edaff8e0L, Block);
-    builder.put(0x19eb8590edb5174aL, RuleBlock);
     builder.put(0x19eb8590edb51750L, RuleBlockMember);
+    builder.put(0x19eb8590edb5174aL, RulesBlock);
     builder.put(0x19eb8590edaff8daL, RulesConstraintsRoot);
     myIndex = builder.seal();
   }

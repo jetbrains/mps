@@ -13,7 +13,7 @@ import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 
 public final class BehaviorAspectDescriptor extends BaseBehaviorAspectDescriptor {
   private final BHDescriptor myRulesConstraintsRoot__BehaviorDescriptor = new RulesConstraintsRoot__BehaviorDescriptor();
-  private final BHDescriptor myRuleBlock__BehaviorDescriptor = new RuleBlock__BehaviorDescriptor();
+  private final BHDescriptor myRulesBlock__BehaviorDescriptor = new RulesBlock__BehaviorDescriptor();
   private final BHDescriptor myRuleBlockMember__BehaviorDescriptor = new RuleBlockMember__BehaviorDescriptor();
 
   public BehaviorAspectDescriptor() {
@@ -24,14 +24,14 @@ public final class BehaviorAspectDescriptor extends BaseBehaviorAspectDescriptor
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return myRuleBlock__BehaviorDescriptor;
-      case 1:
         return myRuleBlockMember__BehaviorDescriptor;
+      case 1:
+        return myRulesBlock__BehaviorDescriptor;
       case 2:
         return myRulesConstraintsRoot__BehaviorDescriptor;
       default:
     }
     return null;
   }
-  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb5174aL), MetaIdFactory.conceptId(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb51750L), MetaIdFactory.conceptId(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edaff8daL)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb51750L), MetaIdFactory.conceptId(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb5174aL), MetaIdFactory.conceptId(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edaff8daL)).seal();
 }

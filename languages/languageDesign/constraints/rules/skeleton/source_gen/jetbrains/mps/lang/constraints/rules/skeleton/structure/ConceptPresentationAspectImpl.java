@@ -10,8 +10,8 @@ import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
   private ConceptPresentation props_Block;
-  private ConceptPresentation props_RuleBlock;
   private ConceptPresentation props_RuleBlockMember;
+  private ConceptPresentation props_RulesBlock;
   private ConceptPresentation props_RulesConstraintsRoot;
 
   @Override
@@ -25,19 +25,19 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_Block = cpb.create();
         }
         return props_Block;
-      case LanguageConceptSwitch.RuleBlock:
-        if (props_RuleBlock == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.rawPresentation("Add rules for the kind");
-          props_RuleBlock = cpb.create();
-        }
-        return props_RuleBlock;
       case LanguageConceptSwitch.RuleBlockMember:
         if (props_RuleBlockMember == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           props_RuleBlockMember = cpb.create();
         }
         return props_RuleBlockMember;
+      case LanguageConceptSwitch.RulesBlock:
+        if (props_RulesBlock == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("Add rules for the kind");
+          props_RulesBlock = cpb.create();
+        }
+        return props_RulesBlock;
       case LanguageConceptSwitch.RulesConstraintsRoot:
         if (props_RulesConstraintsRoot == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
