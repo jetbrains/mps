@@ -17,9 +17,7 @@ package jetbrains.mps.workbench.index;
 
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.fileTypes.FileType;
-import com.intellij.openapi.module.Module;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.psi.search.GlobalSearchScope;
 import com.intellij.util.CommonProcessors.CollectProcessor;
 import com.intellij.util.indexing.DataIndexer;
 import com.intellij.util.indexing.DefaultFileTypeSpecificInputFilter;
@@ -86,25 +84,7 @@ public class PropertyValueIndex extends FileBasedIndexExtension<WordIndexEntry, 
   private final Map<FileType, IndexAwareModelFactory> myIndexAwareFileTypes = new HashMap<>();
 
   public static void processValues(String text, final Consumer<SNode> sink, MPSProject mpsProject) {
-    // Can not use ProjectAndLibrariesScope as MPS project sources are not recognized as part of IDEA projects
-    // see RootIndex#buildRootInfo(). It's unfortunate as the RootIndex (suddenly!) knows about excluded classes_gen and source_gen locations
-    // and as such is capable to exclude checkpoint models
-    final GlobalSearchScope scope = new GlobalSearchScope(mpsProject.getProject()) {
-      @Override
-      public boolean isSearchInModuleContent(@NotNull Module aModule) {
-        return false;
-      }
-
-      @Override
-      public boolean isSearchInLibraries() {
-        return false;
-      }
-
-      @Override
-      public boolean contains(@NotNull VirtualFile file) {
-        return true;
-      }
-    };
+    final ProjectScope scope = new ProjectScope(mpsProject);
     THashSet<WordIndexEntry> keys = new THashSet<>();
     for (String word : text.split("\\s")) {
       if (word.isEmpty()) {
