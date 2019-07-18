@@ -946,7 +946,7 @@
     <classNode dependClassName="jetbrains.mps.lang.structure.editor.EnumerationDeclartaion_Editor" />
     <classNode dependClassName="jetbrains.mps.lang.structure.editor.EnumerationMemberDeclaration_Editor" />
     <classNode dependClassName="jetbrains.mps.lang.structure.editor.EnumerationMemberDeclaration_Old_Editor" />
-    <classNode dependClassName="jetbrains.mps.lang.structure.editor.ExperimentalApiNodeAnnotation_Editor" />
+    <classNode dependClassName="jetbrains.mps.lang.structure.editor.ExperimentalAPINodeAttribute_Editor" />
     <classNode dependClassName="jetbrains.mps.lang.structure.editor.InterfaceConceptDeclaration_ApplySideTransforms" />
     <classNode dependClassName="jetbrains.mps.lang.structure.editor.InterfaceConceptDeclaration_ApplySideTransforms_1" />
     <classNode dependClassName="jetbrains.mps.lang.structure.editor.InterfaceConceptDeclaration_ApplySideTransforms_2" />
@@ -1378,26 +1378,15 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.editor.runtime.descriptor.AbstractEditorBuilder" />
   </dependency>
-  <dependency className="jetbrains.mps.lang.structure.editor.ExperimentalApiNodeAnnotation_ActionMap">
-    <classNode dependClassName="java.util.Objects" />
-    <classNode dependClassName="jetbrains.mps.editor.runtime.cells.AbstractCellAction" />
-    <classNode dependClassName="jetbrains.mps.editor.runtime.deletionApprover.DeletionApproverUtil" />
-    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
-    <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />
-    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.CellAction" />
-    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.CellActionType" />
-    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
-  </dependency>
-  <dependency className="jetbrains.mps.lang.structure.editor.ExperimentalApiNodeAnnotation_Editor">
-    <classNode dependClassName="jetbrains.mps.lang.structure.editor.ExperimentalApiNodeAnnotation_EditorBuilder_a" />
-    <classNode dependClassName="jetbrains.mps.lang.structure.editor.ExperimentalApiNodeAnnotation_InspectorBuilder_a" />
+  <dependency className="jetbrains.mps.lang.structure.editor.ExperimentalAPINodeAttribute_Editor">
+    <classNode dependClassName="jetbrains.mps.lang.structure.editor.ExperimentalAPINodeAttribute_EditorBuilder_a" />
+    <classNode dependClassName="jetbrains.mps.lang.structure.editor.ExperimentalAPINodeAttribute_InspectorBuilder_a" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.nodeEditor.DefaultNodeEditor" />
   </dependency>
-  <dependency className="jetbrains.mps.lang.structure.editor.ExperimentalApiNodeAnnotation_EditorBuilder_a">
+  <dependency className="jetbrains.mps.lang.structure.editor.ExperimentalAPINodeAttribute_EditorBuilder_a">
     <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.Objects" />
@@ -1435,7 +1424,7 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.editor.runtime.descriptor.AbstractEditorBuilder" />
   </dependency>
-  <dependency className="jetbrains.mps.lang.structure.editor.ExperimentalApiNodeAnnotation_InspectorBuilder_a">
+  <dependency className="jetbrains.mps.lang.structure.editor.ExperimentalAPINodeAttribute_InspectorBuilder_a">
     <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.Objects" />
@@ -1469,6 +1458,17 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SProperty" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.editor.runtime.descriptor.AbstractEditorBuilder" />
+  </dependency>
+  <dependency className="jetbrains.mps.lang.structure.editor.ExperimentalApiNodeAnnotation_ActionMap">
+    <classNode dependClassName="java.util.Objects" />
+    <classNode dependClassName="jetbrains.mps.editor.runtime.cells.AbstractCellAction" />
+    <classNode dependClassName="jetbrains.mps.editor.runtime.deletionApprover.DeletionApproverUtil" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.CellAction" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.CellActionType" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
   </dependency>
   <dependency className="jetbrains.mps.lang.structure.editor.IdEditorHelper">
     <classNode dependClassName="jetbrains.mps.generator.TransientModelsModule" />

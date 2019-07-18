@@ -34,11 +34,11 @@ import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.EditorManager;
 import jetbrains.mps.openapi.editor.update.AttributeKind;
 
-/*package*/ class ExperimentalApiNodeAnnotation_InspectorBuilder_a extends AbstractEditorBuilder {
+/*package*/ class ExperimentalAPINodeAttribute_InspectorBuilder_a extends AbstractEditorBuilder {
   @NotNull
   private SNode myNode;
 
-  public ExperimentalApiNodeAnnotation_InspectorBuilder_a(@NotNull EditorContext context, @NotNull SNode node) {
+  public ExperimentalAPINodeAttribute_InspectorBuilder_a(@NotNull EditorContext context, @NotNull SNode node) {
     super(context);
     myNode = node;
   }
@@ -55,7 +55,7 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
 
   private EditorCell createCollection_0() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Vertical());
-    editorCell.setCellId("Collection_2vndv8_0");
+    editorCell.setCellId("Collection_nvueaq_0");
     editorCell.setBig(true);
     setCellContext(editorCell);
     editorCell.setGridLayout(true);
@@ -65,7 +65,7 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
   }
   private EditorCell createCollection_1() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Horizontal());
-    editorCell.setCellId("Collection_2vndv8_1");
+    editorCell.setCellId("Collection_nvueaq_1");
     Style style = new StyleImpl();
     style.set(StyleAttributes.SELECTABLE, false);
     editorCell.getStyle().putAll(style);
@@ -75,7 +75,7 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
   }
   private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "comment");
-    editorCell.setCellId("Constant_2vndv8_0");
+    editorCell.setCellId("Constant_nvueaq_0");
     Style style = new StyleImpl();
     style.set(StyleAttributes.PADDING_RIGHT, new Padding(1.0, Measure.SPACES));
     editorCell.getStyle().putAll(style);
@@ -112,14 +112,14 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
   }
   private EditorCell createCollection_2() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Horizontal());
-    editorCell.setCellId("Collection_2vndv8_2");
+    editorCell.setCellId("Collection_nvueaq_2");
     editorCell.addEditorCell(createConstant_1());
     editorCell.addEditorCell(createProperty_1());
     return editorCell;
   }
   private EditorCell createConstant_1() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "since build");
-    editorCell.setCellId("Constant_2vndv8_1");
+    editorCell.setCellId("Constant_nvueaq_1");
     Style style = new StyleImpl();
     style.set(StyleAttributes.PADDING_RIGHT, new Padding(1.0, Measure.SPACES));
     editorCell.getStyle().putAll(style);

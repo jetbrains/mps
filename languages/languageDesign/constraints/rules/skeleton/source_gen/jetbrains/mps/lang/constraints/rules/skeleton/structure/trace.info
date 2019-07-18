@@ -25,8 +25,8 @@
     <file name="ConceptPresentationAspectImpl.java">
       <node id="1867733327984720090" at="15,0,16,0" concept="1" trace="props_RulesConstraintsRoot" />
       <node id="1867733327984720090" at="42,49,43,76" concept="3" />
-      <node id="1867733327984720090" at="43,76,44,31" concept="0" />
-      <node id="1867733327984720090" at="44,31,45,45" concept="0" />
+      <node id="1867733327984720090" at="43,76,44,33" concept="0" />
+      <node id="1867733327984720090" at="44,33,45,45" concept="0" />
       <node id="1867733327984720090" at="45,45,46,35" concept="0" />
       <node id="1867733327984720090" at="46,35,47,55" concept="0" />
       <node id="1867733327984720090" at="47,55,48,52" concept="0" />

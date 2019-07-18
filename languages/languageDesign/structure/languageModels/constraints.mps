@@ -2807,5 +2807,9 @@
       </node>
     </node>
   </node>
+  <node concept="1M2fIO" id="nddphzEM0Q">
+    <property role="3GE5qa" value="deprecatedAnnotation" />
+    <ref role="1M2myG" to="tpce:nddphzyHx5" resolve="ExperimentalAPINodeAttribute" />
+  </node>
 </model>
 

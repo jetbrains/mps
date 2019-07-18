@@ -441,7 +441,7 @@
       <property role="eg7rD" value="false" />
       <property role="34CwA1" value="false" />
       <property role="3TUv4t" value="false" />
-      <property role="TrG5h" value="props_ExperimentalApiNodeAnnotation" />
+      <property role="TrG5h" value="props_ExperimentalAPINodeAttribute" />
       <node concept="3uibUv" id="1c" role="1tU5fm">
         <ref role="3uigEE" to="ze1i:~ConceptPresentation" resolve="ConceptPresentation" />
       </node>
@@ -2417,7 +2417,7 @@
                       <node concept="liA8E" id="dr" role="2OqNvi">
                         <ref role="37wK5l" to="ze1i:~ConceptPresentationBuilder.presentationByName()" resolve="presentationByName" />
                         <node concept="M6xJ_" id="ds" role="lGtFl">
-                          <property role="Hh88m" value="experimentalAttribute" />
+                          <property role="Hh88m" value="experimentalAPIAttribute" />
                           <node concept="trNpa" id="du" role="EQaZv">
                             <ref role="trN6q" to=":^" resolve="AbstractConceptDeclaration" />
                             <node concept="cd27G" id="dw" role="lGtFl">
@@ -2451,7 +2451,7 @@
                         </node>
                       </node>
                       <node concept="37vLTw" id="dA" role="37vLTJ">
-                        <ref role="3cqZAo" node="l" resolve="props_ExperimentalApiNodeAnnotation" />
+                        <ref role="3cqZAo" node="l" resolve="props_ExperimentalAPINodeAttribute" />
                       </node>
                     </node>
                   </node>
@@ -2459,19 +2459,19 @@
                 <node concept="3clFbC" id="dh" role="3clFbw">
                   <node concept="10Nm6u" id="dD" role="3uHU7w" />
                   <node concept="37vLTw" id="dE" role="3uHU7B">
-                    <ref role="3cqZAo" node="l" resolve="props_ExperimentalApiNodeAnnotation" />
+                    <ref role="3cqZAo" node="l" resolve="props_ExperimentalAPINodeAttribute" />
                   </node>
                 </node>
               </node>
               <node concept="3cpWs6" id="df" role="3cqZAp">
                 <node concept="37vLTw" id="dF" role="3cqZAk">
-                  <ref role="3cqZAo" node="l" resolve="props_ExperimentalApiNodeAnnotation" />
+                  <ref role="3cqZAo" node="l" resolve="props_ExperimentalAPINodeAttribute" />
                 </node>
               </node>
             </node>
             <node concept="10M0yZ" id="dd" role="3Kbmr1">
               <ref role="1PxDUh" node="1pY" resolve="LanguageConceptSwitch" />
-              <ref role="3cqZAo" node="1qj" resolve="ExperimentalApiNodeAnnotation" />
+              <ref role="3cqZAo" node="1qj" resolve="ExperimentalAPINodeAttribute" />
             </node>
           </node>
           <node concept="3KbdKl" id="2f" role="3KbHQx">
@@ -15352,7 +15352,7 @@
       <property role="2dlcS1" value="false" />
       <property role="2dld4O" value="false" />
       <property role="3TUv4t" value="true" />
-      <property role="TrG5h" value="ExperimentalApiNodeAnnotation" />
+      <property role="TrG5h" value="ExperimentalAPINodeAttribute" />
       <node concept="3Tm1VV" id="1rz" role="1B3o_S" />
       <node concept="10Oyi0" id="1r$" role="1tU5fm" />
       <node concept="3cmrfG" id="1r_" role="33vP2m">
@@ -15841,7 +15841,7 @@
                 <property role="1adDun" value="0x5cd3594638ad845L" />
               </node>
               <node concept="37vLTw" id="1us" role="37wK5m">
-                <ref role="3cqZAo" node="1qj" resolve="ExperimentalApiNodeAnnotation" />
+                <ref role="3cqZAo" node="1qj" resolve="ExperimentalAPINodeAttribute" />
               </node>
             </node>
           </node>
@@ -16363,12 +16363,12 @@
       <property role="eg7rD" value="false" />
       <property role="34CwA1" value="false" />
       <property role="3TUv4t" value="true" />
-      <property role="TrG5h" value="myConceptExperimentalApiNodeAnnotation" />
+      <property role="TrG5h" value="myConceptExperimentalAPINodeAttribute" />
       <node concept="3uibUv" id="1xU" role="1tU5fm">
         <ref role="3uigEE" to="ze1i:~ConceptDescriptor" resolve="ConceptDescriptor" />
       </node>
       <node concept="1rXfSq" id="1xV" role="33vP2m">
-        <ref role="37wK5l" node="1x6" resolve="createDescriptorForExperimentalApiNodeAnnotation" />
+        <ref role="37wK5l" node="1x6" resolve="createDescriptorForExperimentalAPINodeAttribute" />
       </node>
     </node>
     <node concept="312cEg" id="1wc" role="jymVt">
@@ -16838,7 +16838,7 @@
               <ref role="3cqZAo" node="1wa" resolve="myConceptEnumerationMemberDeclaration_Old" />
             </node>
             <node concept="37vLTw" id="1zL" role="37wK5m">
-              <ref role="3cqZAo" node="1wb" resolve="myConceptExperimentalApiNodeAnnotation" />
+              <ref role="3cqZAo" node="1wb" resolve="myConceptExperimentalAPINodeAttribute" />
             </node>
             <node concept="37vLTw" id="1zM" role="37wK5m">
               <ref role="3cqZAo" node="1wc" resolve="myConceptIConceptAspect" />
@@ -17159,13 +17159,13 @@
             <node concept="3clFbS" id="1_R" role="3Kbo56">
               <node concept="3cpWs6" id="1_T" role="3cqZAp">
                 <node concept="37vLTw" id="1_U" role="3cqZAk">
-                  <ref role="3cqZAo" node="1wb" resolve="myConceptExperimentalApiNodeAnnotation" />
+                  <ref role="3cqZAo" node="1wb" resolve="myConceptExperimentalAPINodeAttribute" />
                 </node>
               </node>
             </node>
             <node concept="10M0yZ" id="1_S" role="3Kbmr1">
               <ref role="1PxDUh" node="1pY" resolve="LanguageConceptSwitch" />
-              <ref role="3cqZAo" node="1qj" resolve="ExperimentalApiNodeAnnotation" />
+              <ref role="3cqZAo" node="1qj" resolve="ExperimentalAPINodeAttribute" />
             </node>
           </node>
           <node concept="3KbdKl" id="1$s" role="3KbHQx">
@@ -22434,7 +22434,7 @@
       <property role="od$2w" value="false" />
       <property role="DiZV1" value="false" />
       <property role="2aFKle" value="false" />
-      <property role="TrG5h" value="createDescriptorForExperimentalApiNodeAnnotation" />
+      <property role="TrG5h" value="createDescriptorForExperimentalAPINodeAttribute" />
       <node concept="3clFbS" id="24n" role="3clF47">
         <node concept="3cpWs8" id="24q" role="3cqZAp">
           <node concept="3cpWsn" id="24_" role="3cpWs9">
@@ -22449,7 +22449,7 @@
                   <property role="Xl_RC" value="jetbrains.mps.lang.structure" />
                 </node>
                 <node concept="Xl_RD" id="24E" role="37wK5m">
-                  <property role="Xl_RC" value="ExperimentalApiNodeAnnotation" />
+                  <property role="Xl_RC" value="ExperimentalAPINodeAttribute" />
                 </node>
                 <node concept="1adDum" id="24F" role="37wK5m">
                   <property role="1adDun" value="0xc72da2b97cce4447L" />

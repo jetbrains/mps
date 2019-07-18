@@ -17,7 +17,6 @@
       </concept>
     </language>
     <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
-      <concept id="1224240836180" name="jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation" flags="ig" index="asaX9" />
       <concept id="7862711839422615209" name="jetbrains.mps.lang.structure.structure.DocumentedNodeAnnotation" flags="ng" index="t5JxF">
         <property id="7862711839422615217" name="text" index="t5JxN" />
       </concept>
@@ -90,7 +89,6 @@
     <node concept="1QGGSu" id="6X8eyFnc_oV" role="rwd14">
       <property role="1iqoE4" value="${module}/icons/constraint-rules.png" />
     </node>
-    <node concept="asaX9" id="nddphzB_3v" role="lGtFl" />
     <node concept="1AhYRh" id="nddphzCL1f" role="lGtFl">
       <property role="1AhYRt" value="In 2019.2 this concept does not support some mandatory features like scopes for references and property constraints. So for now please use the old ConceptConstraints" />
       <property role="1AhYRs" value="2019.2" />

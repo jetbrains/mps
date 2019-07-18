@@ -36,11 +36,11 @@ import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.EditorManager;
 import jetbrains.mps.openapi.editor.update.AttributeKind;
 
-/*package*/ class ExperimentalApiNodeAnnotation_EditorBuilder_a extends AbstractEditorBuilder {
+/*package*/ class ExperimentalAPINodeAttribute_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
   private SNode myNode;
 
-  public ExperimentalApiNodeAnnotation_EditorBuilder_a(@NotNull EditorContext context, @NotNull SNode node) {
+  public ExperimentalAPINodeAttribute_EditorBuilder_a(@NotNull EditorContext context, @NotNull SNode node) {
     super(context);
     myNode = node;
   }
@@ -57,7 +57,7 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
 
   private EditorCell createCollection_0() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Vertical());
-    editorCell.setCellId("Collection_2vndv8_a");
+    editorCell.setCellId("Collection_nvueaq_a");
     editorCell.setBig(true);
     setCellContext(editorCell);
     editorCell.addEditorCell(createCollection_1());
@@ -71,23 +71,23 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
     style.set(StyleAttributes.SELECTABLE, false);
     editorCell.getStyle().putAll(style);
     editorCell.addEditorCell(createConstant_0());
-    if (nodeCondition_2vndv8_a1a0()) {
+    if (nodeCondition_nvueaq_a1a0()) {
       editorCell.addEditorCell(createCollection_2());
     }
-    if (nodeCondition_2vndv8_a2a0()) {
+    if (nodeCondition_nvueaq_a2a0()) {
       editorCell.addEditorCell(createCollection_3());
     }
     return editorCell;
   }
-  private boolean nodeCondition_2vndv8_a1a0() {
+  private boolean nodeCondition_nvueaq_a1a0() {
     return SPropertyOperations.getString(myNode, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5cd3594638ad845L, 0x5cd3594638ad849L, "comment")) != null;
   }
-  private boolean nodeCondition_2vndv8_a2a0() {
-    return SPropertyOperations.getString(myNode, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x11d0a70ae54L, 0x11d3ec75203L, "build")) != null;
+  private boolean nodeCondition_nvueaq_a2a0() {
+    return SPropertyOperations.getString(myNode, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5cd3594638ad845L, 0x5cd3594638ad848L, "build")) != null;
   }
   private EditorCell createConstant_0() {
-    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "@Experimental");
-    editorCell.setCellId("Constant_2vndv8_a0a");
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "@API.Experimental");
+    editorCell.setCellId("Constant_nvueaq_a0a");
     Style style = new StyleImpl();
     new AnnotationNodeStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
     style.set(StyleAttributes.PADDING_RIGHT, new Padding(1.0, Measure.SPACES));
@@ -98,7 +98,7 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
   }
   private EditorCell createCollection_2() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Horizontal());
-    editorCell.setCellId("Collection_2vndv8_b0a");
+    editorCell.setCellId("Collection_nvueaq_b0a");
     Style style = new StyleImpl();
     style.set(StyleAttributes.SELECTABLE, false);
     editorCell.getStyle().putAll(style);
@@ -109,7 +109,7 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
   }
   private EditorCell createConstant_1() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "(");
-    editorCell.setCellId("Constant_2vndv8_a1a0");
+    editorCell.setCellId("Constant_nvueaq_a1a0");
     Style style = new StyleImpl();
     style.set(StyleAttributes.MATCHING_LABEL, "brace");
     style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
@@ -150,7 +150,7 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
   }
   private EditorCell createConstant_2() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, ")");
-    editorCell.setCellId("Constant_2vndv8_c1a0");
+    editorCell.setCellId("Constant_nvueaq_c1a0");
     Style style = new StyleImpl();
     style.set(StyleAttributes.MATCHING_LABEL, "brace");
     style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
@@ -161,7 +161,7 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
   }
   private EditorCell createCollection_3() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Horizontal());
-    editorCell.setCellId("Collection_2vndv8_c0a");
+    editorCell.setCellId("Collection_nvueaq_c0a");
     Style style = new StyleImpl();
     style.set(StyleAttributes.SELECTABLE, false);
     editorCell.getStyle().putAll(style);
@@ -171,7 +171,7 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
   }
   private EditorCell createConstant_3() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "since build");
-    editorCell.setCellId("Constant_2vndv8_a2a0");
+    editorCell.setCellId("Constant_nvueaq_a2a0");
     Style style = new StyleImpl();
     style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
     style.set(StyleAttributes.PADDING_RIGHT, new Padding(1.0, Measure.SPACES));

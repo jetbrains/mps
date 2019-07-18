@@ -1385,7 +1385,7 @@
               <node concept="2Sf5sV" id="nddphzBs1W" role="2Oq$k0" />
               <node concept="3CFZ6_" id="nddphzBs1X" role="2OqNvi">
                 <node concept="3CFYIy" id="nddphzBsUM" role="3CFYIz">
-                  <ref role="3CFYIx" to="tpce:nddphzyHx5" resolve="ExperimentalApiNodeAnnotation" />
+                  <ref role="3CFYIx" to="tpce:nddphzyHx5" resolve="ExperimentalAPINodeAttribute" />
                 </node>
               </node>
             </node>
@@ -1414,12 +1414,12 @@
               <node concept="3cpWsn" id="nddphzBs2a" role="3cpWs9">
                 <property role="TrG5h" value="annotation" />
                 <node concept="3Tqbb2" id="nddphzBs2b" role="1tU5fm">
-                  <ref role="ehGHo" to="tpce:nddphzyHx5" resolve="ExperimentalApiNodeAnnotation" />
+                  <ref role="ehGHo" to="tpce:nddphzyHx5" resolve="ExperimentalAPINodeAttribute" />
                 </node>
                 <node concept="2ShNRf" id="nddphzBs2c" role="33vP2m">
                   <node concept="2fJWfE" id="nddphzBs2d" role="2ShVmc">
                     <node concept="3Tqbb2" id="nddphzBs2e" role="3zrR0E">
-                      <ref role="ehGHo" to="tpce:nddphzyHx5" resolve="ExperimentalApiNodeAnnotation" />
+                      <ref role="ehGHo" to="tpce:nddphzyHx5" resolve="ExperimentalAPINodeAttribute" />
                     </node>
                   </node>
                 </node>
@@ -1434,7 +1434,7 @@
                   <node concept="2Sf5sV" id="nddphzBs2j" role="2Oq$k0" />
                   <node concept="3CFZ6_" id="nddphzBs2k" role="2OqNvi">
                     <node concept="3CFYIy" id="nddphzBwhh" role="3CFYIz">
-                      <ref role="3CFYIx" to="tpce:nddphzyHx5" resolve="ExperimentalApiNodeAnnotation" />
+                      <ref role="3CFYIx" to="tpce:nddphzyHx5" resolve="ExperimentalAPINodeAttribute" />
                     </node>
                   </node>
                 </node>
@@ -1446,7 +1446,7 @@
               <node concept="2Sf5sV" id="nddphzBs2o" role="2Oq$k0" />
               <node concept="3CFZ6_" id="nddphzBs2p" role="2OqNvi">
                 <node concept="3CFYIy" id="nddphzBvY_" role="3CFYIz">
-                  <ref role="3CFYIx" to="tpce:nddphzyHx5" resolve="ExperimentalApiNodeAnnotation" />
+                  <ref role="3CFYIx" to="tpce:nddphzyHx5" resolve="ExperimentalAPINodeAttribute" />
                 </node>
               </node>
             </node>
@@ -1460,7 +1460,7 @@
                     <node concept="2Sf5sV" id="nddphzBs2x" role="2Oq$k0" />
                     <node concept="3CFZ6_" id="nddphzBs2y" role="2OqNvi">
                       <node concept="3CFYIy" id="nddphzBwoh" role="3CFYIz">
-                        <ref role="3CFYIx" to="tpce:nddphzyHx5" resolve="ExperimentalApiNodeAnnotation" />
+                        <ref role="3CFYIx" to="tpce:nddphzyHx5" resolve="ExperimentalAPINodeAttribute" />
                       </node>
                     </node>
                   </node>

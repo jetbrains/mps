@@ -11805,13 +11805,13 @@
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959028d(jetbrains.mps.lang.structure.editor)/418049251857059108">
-    <file name="ExperimentalApiNodeAnnotation_Editor.java">
-      <node id="418049251857059108" at="11,79,12,95" concept="10" />
-      <node id="418049251857059108" at="14,82,15,98" concept="10" />
+    <file name="ExperimentalAPINodeAttribute_Editor.java">
+      <node id="418049251857059108" at="11,79,12,94" concept="10" />
+      <node id="418049251857059108" at="14,82,15,97" concept="10" />
       <node id="418049251857059108" at="11,0,14,0" concept="8" trace="createEditorCell#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="418049251857059108" at="14,0,17,0" concept="8" trace="createInspectedCell#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <scope id="418049251857059108" at="11,79,12,95" />
-      <scope id="418049251857059108" at="14,82,15,98" />
+      <scope id="418049251857059108" at="11,79,12,94" />
+      <scope id="418049251857059108" at="14,82,15,97" />
       <scope id="418049251857059108" at="11,0,14,0">
         <var name="editorContext" id="418049251857059108" />
         <var name="node" id="418049251857059108" />
@@ -11820,10 +11820,10 @@
         <var name="editorContext" id="418049251857059108" />
         <var name="node" id="418049251857059108" />
       </scope>
-      <unit id="418049251857059108" at="10,0,18,0" name="jetbrains.mps.lang.structure.editor.ExperimentalApiNodeAnnotation_Editor" />
+      <unit id="418049251857059108" at="10,0,18,0" name="jetbrains.mps.lang.structure.editor.ExperimentalAPINodeAttribute_Editor" />
     </file>
-    <file name="ExperimentalApiNodeAnnotation_EditorBuilder_a.java">
-      <node id="418049251857059108" at="43,109,44,19" concept="14" />
+    <file name="ExperimentalAPINodeAttribute_EditorBuilder_a.java">
+      <node id="418049251857059108" at="43,108,44,19" concept="14" />
       <node id="418049251857059108" at="44,19,45,18" concept="4" />
       <node id="418049251857059108" at="50,26,51,18" concept="10" />
       <node id="418049251857059108" at="54,39,55,32" concept="10" />
@@ -11844,9 +11844,9 @@
       <node id="418049251857059139" at="77,38,78,53" concept="4" />
       <node id="418049251857059108" at="79,5,80,22" concept="10" />
       <node id="418049251857059132" at="82,47,83,182" concept="10" />
-      <node id="418049251857059149" at="85,47,86,172" concept="10" />
-      <node id="418049251857059113" at="88,41,89,106" concept="9" />
-      <node id="418049251857059113" at="89,106,90,48" concept="4" />
+      <node id="418049251857059149" at="85,47,86,180" concept="10" />
+      <node id="418049251857059113" at="88,41,89,110" concept="9" />
+      <node id="418049251857059113" at="89,110,90,48" concept="4" />
       <node id="418049251857059113" at="90,48,91,34" concept="9" />
       <node id="418049251857059113" at="91,34,92,89" concept="4" />
       <node id="418049251857059114" at="92,89,93,79" concept="4" />
@@ -11940,11 +11940,11 @@
       <node id="418049251857059108" at="54,0,57,0" concept="8" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="418049251857059115" at="73,49,76,5" concept="7" />
       <node id="418049251857059139" at="76,5,79,5" concept="7" />
-      <node id="418049251857059130" at="82,0,85,0" concept="8" trace="nodeCondition_2vndv8_a1a0#()Z" />
-      <node id="418049251857059147" at="85,0,88,0" concept="8" trace="nodeCondition_2vndv8_a2a0#()Z" />
+      <node id="418049251857059130" at="82,0,85,0" concept="8" trace="nodeCondition_nvueaq_a1a0#()Z" />
+      <node id="418049251857059147" at="85,0,88,0" concept="8" trace="nodeCondition_nvueaq_a2a0#()Z" />
       <node id="418049251857059121" at="138,0,141,0" concept="8" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="418049251857059144" at="197,0,200,0" concept="8" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="418049251857059108" at="43,0,47,0" concept="2" trace="ExperimentalApiNodeAnnotation_EditorBuilder_a#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="418049251857059108" at="43,0,47,0" concept="2" trace="ExperimentalAPINodeAttribute_EditorBuilder_a#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="418049251857059108" at="48,0,53,0" concept="8" trace="getNode#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="418049251857059121" at="136,306,141,9" concept="9" />
       <node id="418049251857059121" at="141,9,146,24" concept="7" />
@@ -11968,12 +11968,12 @@
       <scope id="418049251857059115" at="74,38,75,53" />
       <scope id="418049251857059139" at="77,38,78,53" />
       <scope id="418049251857059131" at="82,47,83,182" />
-      <scope id="418049251857059148" at="85,47,86,172" />
+      <scope id="418049251857059148" at="85,47,86,180" />
       <scope id="418049251857059121" at="138,41,139,118" />
       <scope id="418049251857059121" at="147,15,148,40" />
       <scope id="418049251857059144" at="197,41,198,118" />
       <scope id="418049251857059144" at="206,15,207,40" />
-      <scope id="418049251857059108" at="43,109,45,18" />
+      <scope id="418049251857059108" at="43,108,45,18" />
       <scope id="418049251857059121" at="142,74,144,145">
         <var name="manager" id="418049251857059121" />
       </scope>
@@ -12056,12 +12056,12 @@
       <scope id="418049251857059121" at="121,41,149,5" />
       <scope id="418049251857059144" at="182,0,210,0" />
       <scope id="418049251857059121" at="121,0,151,0" />
-      <unit id="418049251857059121" at="137,102,141,7" name="jetbrains.mps.lang.structure.editor.ExperimentalApiNodeAnnotation_EditorBuilder_a$1" />
-      <unit id="418049251857059144" at="196,102,200,7" name="jetbrains.mps.lang.structure.editor.ExperimentalApiNodeAnnotation_EditorBuilder_a$2" />
-      <unit id="418049251857059108" at="39,0,216,0" name="jetbrains.mps.lang.structure.editor.ExperimentalApiNodeAnnotation_EditorBuilder_a" />
+      <unit id="418049251857059121" at="137,102,141,7" name="jetbrains.mps.lang.structure.editor.ExperimentalAPINodeAttribute_EditorBuilder_a$1" />
+      <unit id="418049251857059144" at="196,102,200,7" name="jetbrains.mps.lang.structure.editor.ExperimentalAPINodeAttribute_EditorBuilder_a$2" />
+      <unit id="418049251857059108" at="39,0,216,0" name="jetbrains.mps.lang.structure.editor.ExperimentalAPINodeAttribute_EditorBuilder_a" />
     </file>
-    <file name="ExperimentalApiNodeAnnotation_InspectorBuilder_a.java">
-      <node id="418049251857059108" at="41,112,42,19" concept="14" />
+    <file name="ExperimentalAPINodeAttribute_InspectorBuilder_a.java">
+      <node id="418049251857059108" at="41,111,42,19" concept="14" />
       <node id="418049251857059108" at="42,19,43,18" concept="4" />
       <node id="418049251857059108" at="48,26,49,18" concept="10" />
       <node id="418049251857059108" at="52,39,53,32" concept="10" />
@@ -12138,7 +12138,7 @@
       <node id="418049251857059108" at="52,0,55,0" concept="8" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="418049251857059164" at="100,0,103,0" concept="8" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="418049251857059171" at="144,0,147,0" concept="8" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="418049251857059108" at="41,0,45,0" concept="2" trace="ExperimentalApiNodeAnnotation_InspectorBuilder_a#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="418049251857059108" at="41,0,45,0" concept="2" trace="ExperimentalAPINodeAttribute_InspectorBuilder_a#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="418049251857059108" at="46,0,51,0" concept="8" trace="getNode#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="418049251857059164" at="98,306,103,9" concept="9" />
       <node id="418049251857059164" at="103,9,108,24" concept="7" />
@@ -12159,7 +12159,7 @@
       <scope id="418049251857059164" at="109,15,110,40" />
       <scope id="418049251857059171" at="144,41,145,118" />
       <scope id="418049251857059171" at="153,15,154,40" />
-      <scope id="418049251857059108" at="41,112,43,18" />
+      <scope id="418049251857059108" at="41,111,43,18" />
       <scope id="418049251857059164" at="104,74,106,145">
         <var name="manager" id="418049251857059164" />
       </scope>
@@ -12219,9 +12219,9 @@
       <scope id="418049251857059171" at="129,41,155,5" />
       <scope id="418049251857059164" at="85,0,113,0" />
       <scope id="418049251857059171" at="129,0,157,0" />
-      <unit id="418049251857059164" at="99,102,103,7" name="jetbrains.mps.lang.structure.editor.ExperimentalApiNodeAnnotation_InspectorBuilder_a$1" />
-      <unit id="418049251857059171" at="143,102,147,7" name="jetbrains.mps.lang.structure.editor.ExperimentalApiNodeAnnotation_InspectorBuilder_a$2" />
-      <unit id="418049251857059108" at="37,0,158,0" name="jetbrains.mps.lang.structure.editor.ExperimentalApiNodeAnnotation_InspectorBuilder_a" />
+      <unit id="418049251857059164" at="99,102,103,7" name="jetbrains.mps.lang.structure.editor.ExperimentalAPINodeAttribute_InspectorBuilder_a$1" />
+      <unit id="418049251857059171" at="143,102,147,7" name="jetbrains.mps.lang.structure.editor.ExperimentalAPINodeAttribute_InspectorBuilder_a$2" />
+      <unit id="418049251857059108" at="37,0,158,0" name="jetbrains.mps.lang.structure.editor.ExperimentalAPINodeAttribute_InspectorBuilder_a" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959028d(jetbrains.mps.lang.structure.editor)/418049251857068540">

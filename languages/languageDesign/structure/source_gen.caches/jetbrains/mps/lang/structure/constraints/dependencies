@@ -89,6 +89,7 @@
     <classNode dependClassName="jetbrains.mps.lang.structure.constraints.EnumerationDataTypeDeclaration_Old_Constraints" />
     <classNode dependClassName="jetbrains.mps.lang.structure.constraints.EnumerationDeclartaion_Constraints" />
     <classNode dependClassName="jetbrains.mps.lang.structure.constraints.EnumerationMemberDeclaration_Constraints" />
+    <classNode dependClassName="jetbrains.mps.lang.structure.constraints.ExperimentalAPINodeAttribute_Constraints" />
     <classNode dependClassName="jetbrains.mps.lang.structure.constraints.INamedLanguageElement_Constraints" />
     <classNode dependClassName="jetbrains.mps.lang.structure.constraints.InterfaceConceptDeclaration_Constraints" />
     <classNode dependClassName="jetbrains.mps.lang.structure.constraints.LinkDeclaration_Constraints" />
@@ -241,6 +242,10 @@
     <classNode dependClassName="jetbrains.mps.smodel.runtime.base.BasePropertyConstraintsDescriptor" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SProperty" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode extendsClassName="jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor" />
+  </dependency>
+  <dependency className="jetbrains.mps.lang.structure.constraints.ExperimentalAPINodeAttribute_Constraints">
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode extendsClassName="jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor" />
   </dependency>
   <dependency className="jetbrains.mps.lang.structure.constraints.FullyQualifiedNamedElementsScope">

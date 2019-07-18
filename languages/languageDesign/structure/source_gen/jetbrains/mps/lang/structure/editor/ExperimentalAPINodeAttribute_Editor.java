@@ -7,11 +7,11 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
 
-public class ExperimentalApiNodeAnnotation_Editor extends DefaultNodeEditor {
+public class ExperimentalAPINodeAttribute_Editor extends DefaultNodeEditor {
   public EditorCell createEditorCell(EditorContext editorContext, SNode node) {
-    return new ExperimentalApiNodeAnnotation_EditorBuilder_a(editorContext, node).createCell();
+    return new ExperimentalAPINodeAttribute_EditorBuilder_a(editorContext, node).createCell();
   }
   public EditorCell createInspectedCell(EditorContext editorContext, SNode node) {
-    return new ExperimentalApiNodeAnnotation_InspectorBuilder_a(editorContext, node).createCell();
+    return new ExperimentalAPINodeAttribute_InspectorBuilder_a(editorContext, node).createCell();
   }
 }

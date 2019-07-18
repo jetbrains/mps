@@ -19,6 +19,7 @@ import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import jetbrains.mps.smodel.adapter.ids.SConceptId;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.util.annotation.ToRemove;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SConceptFeature;
 
 import java.util.ArrayList;
@@ -30,7 +31,8 @@ public final class ConceptPresentationBuilder {
   private String myHelpUrl;
   private String myShortDescription;
   private IconResource myIcon;
-  private boolean myIsDeprecated;
+  private boolean myDeprecated;
+  private boolean myExperimental;
   private List<SConceptFeature> myDeprecatedFeatures;
   private NodePresentationProvider myPresentationProvider = NodePresentationProviders.LEGACY;
 
@@ -70,8 +72,13 @@ public final class ConceptPresentationBuilder {
     return this;
   }
 
-  public ConceptPresentationBuilder deprecated(boolean deprecated) {
-    myIsDeprecated = deprecated;
+  public ConceptPresentationBuilder deprecated(boolean value) {
+    myDeprecated = value;
+    return this;
+  }
+
+  public ConceptPresentationBuilder experimental(boolean value) {
+    myExperimental = value;
     return this;
   }
 
@@ -113,7 +120,7 @@ public final class ConceptPresentationBuilder {
 
   private void initDeprecatedFeaturesList() {
     if (myDeprecatedFeatures == null) {
-      myDeprecatedFeatures = new ArrayList<>(4);
+      myDeprecatedFeatures = new ArrayList<>();
     }
   }
 
@@ -136,7 +143,8 @@ public final class ConceptPresentationBuilder {
     return this;
   }
 
+  @NotNull
   public ConceptPresentation create(){
-    return new ConceptPresentation(myHelpUrl, myShortDescription, myIcon, myIsDeprecated, myDeprecatedFeatures, myPresentationProvider);
+    return new ConceptPresentation(myHelpUrl, myShortDescription, myIcon, myDeprecated, myExperimental, myDeprecatedFeatures, myPresentationProvider);
   }
 }

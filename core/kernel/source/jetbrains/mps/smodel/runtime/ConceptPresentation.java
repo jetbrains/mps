@@ -15,27 +15,49 @@
  */
 package jetbrains.mps.smodel.runtime;
 
+import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.openapi.language.SConceptFeature;
 import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.Collection;
 
+@Immutable
 public final class ConceptPresentation {
-  private String myHelpUrl;
-  private String myShortDescription;
-  private IconResource myIcon;
-  private boolean myIsDeprecated;
-  private Collection<SConceptFeature> myDeprecatedFeatures; // could be null
-  private NodePresentationProvider myNodePresentationProvider;
+  private final String myHelpUrl;
+  private final String myShortDescription;
+  private final IconResource myIcon;
+  private final boolean myDeprecated;
+  private final boolean myExperimental;
+  private final Collection<SConceptFeature> myDeprecatedFeatures; // could be null
+  private final NodePresentationProvider myNodePresentationProvider;
 
-  /*package*/ ConceptPresentation(String helpUrl, String shortDescription, IconResource icon, boolean isDeprecated, Collection<SConceptFeature> deprecatedFeatures, NodePresentationProvider nodePresentationProvider) {
+  @ToRemove(version = 192)
+  @Deprecated
+  /*package*/ ConceptPresentation(String helpUrl,
+                                  String shortDescription,
+                                  IconResource icon,
+                                  boolean deprecated,
+                                  Collection<SConceptFeature> deprecatedFeatures,
+                                  NodePresentationProvider presentationProvider) {
+    this(helpUrl, shortDescription, icon, deprecated, false, deprecatedFeatures, presentationProvider);
+  }
+
+  /*package*/ ConceptPresentation(String helpUrl,
+                                  String shortDescription,
+                                  IconResource icon,
+                                  boolean deprecated,
+                                  boolean experimental,
+                                  Collection<SConceptFeature> deprecatedFeatures,
+                                  NodePresentationProvider presentationProvider) {
     myHelpUrl = helpUrl;
     myShortDescription = shortDescription;
     myIcon = icon;
-    myIsDeprecated = isDeprecated;
+    myDeprecated = deprecated;
+    myExperimental = experimental;
     myDeprecatedFeatures = deprecatedFeatures;
-    myNodePresentationProvider = nodePresentationProvider;
+    myNodePresentationProvider = presentationProvider;
   }
 
   public String getHelpUrl() {
@@ -56,7 +78,11 @@ public final class ConceptPresentation {
   }
 
   public boolean isDeprecated() {
-    return myIsDeprecated;
+    return myDeprecated;
+  }
+
+  public boolean isExperimental() {
+    return myExperimental;
   }
 
   public boolean isDeprecated(SConceptFeature f) {

@@ -27,6 +27,7 @@ import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.smodel.constraints.ModelConstraints;
 import jetbrains.mps.smodel.language.ConceptRegistry;
 import jetbrains.mps.smodel.language.LanguageAspectSupport;
+import jetbrains.mps.smodel.runtime.ConceptPresentation;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.util.ToStringComparator;
 import jetbrains.mps.workbench.action.BaseGroup;
@@ -180,10 +181,15 @@ public class CreateRootNodeGroup extends BaseGroup {
     }
   }
 
-  private boolean shouldAddActionForConcept(SAbstractConcept concept, SModel target, boolean forDeprecated) {
+  private boolean shouldAddActionForConcept(SAbstractConcept concept, SModel target, boolean deprecatedOrExperimental) {
     return ModelConstraints.canBeRoot(concept, target)
            && !CreateRootFilterEP.getInstance().shouldBeRemoved(concept)
-           && ConceptRegistry.getInstance().getConceptProperties(concept).isDeprecated() == forDeprecated;
+           && (getConceptProperties(concept).isDeprecated() ||
+               getConceptProperties(concept).isExperimental() == deprecatedOrExperimental);
+  }
+
+  private ConceptPresentation getConceptProperties(SAbstractConcept concept) {
+    return ConceptRegistry.getInstance().getConceptProperties(concept);
   }
 
   private void addAction(SAbstractConcept concept, SModel target, DefaultActionGroup group) {

@@ -1234,7 +1234,7 @@
     </node>
   </node>
   <node concept="1TIwiD" id="nddphzyHx5">
-    <property role="TrG5h" value="ExperimentalApiNodeAnnotation" />
+    <property role="TrG5h" value="ExperimentalAPINodeAttribute" />
     <property role="3GE5qa" value="deprecatedAnnotation" />
     <property role="EcuMT" value="418049251856799813" />
     <property role="R5$K2" value="true" />
@@ -1256,7 +1256,7 @@
       <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
     <node concept="M6xJ_" id="nddphzyHxa" role="lGtFl">
-      <property role="Hh88m" value="experimentalAttribute" />
+      <property role="Hh88m" value="experimentalAPIAttribute" />
       <node concept="trNpa" id="nddphzEnSj" role="EQaZv">
         <ref role="trN6q" node="h0PkWnZ" resolve="AbstractConceptDeclaration" />
       </node>

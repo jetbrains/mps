@@ -15,8 +15,6 @@
  */
 package jetbrains.mps.ide.projectPane;
 
-import com.intellij.icons.AllIcons;
-import com.intellij.icons.AllIcons.General;
 import com.intellij.ide.FileEditorProvider;
 import com.intellij.ide.SelectInContext;
 import com.intellij.ide.SelectInTarget;
@@ -26,11 +24,8 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.Presentation;
 import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.ui.LayeredIcon;
-import com.intellij.ui.SizedIcon;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.ide.icons.GlobalIconManager;
-import jetbrains.mps.ide.messages.Icons;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.nodefs.NodeVirtualFileSystem;
 import jetbrains.mps.openapi.navigation.NavigationSupport;
@@ -55,8 +50,6 @@ import org.jetbrains.mps.openapi.module.ModelAccess;
 import org.jetbrains.mps.openapi.module.SRepository;
 
 import javax.swing.Icon;
-import java.awt.Component;
-import java.awt.Graphics;
 import java.util.Map;
 
 public class NewRootNodeAction extends BaseAction implements DumbAware {
@@ -80,6 +73,8 @@ public class NewRootNodeAction extends BaseAction implements DumbAware {
     }
     if (conceptPresentation.isDeprecated()) {
       name = "(deprecated) " + name;
+    } else if (conceptPresentation.isExperimental()) {
+      name = "[experimental] " + name;
     }
     templatePresentation.setText(name);
 

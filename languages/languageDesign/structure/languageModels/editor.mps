@@ -10264,14 +10264,14 @@
   </node>
   <node concept="24kQdi" id="nddphzzGO$">
     <property role="3GE5qa" value="deprecatedAnnotation" />
-    <ref role="1XX52x" to="tpce:nddphzyHx5" resolve="ExperimentalApiNodeAnnotation" />
+    <ref role="1XX52x" to="tpce:nddphzyHx5" resolve="ExperimentalAPINodeAttribute" />
     <node concept="3EZMnI" id="nddphzzGO_" role="2wV5jI">
       <node concept="3EZMnI" id="nddphzzGOA" role="3EZMnx">
         <node concept="VPM3Z" id="nddphzzGOC" role="3F10Kt">
           <property role="VOm3f" value="false" />
         </node>
         <node concept="3F0ifn" id="nddphzzGOD" role="3EZMnx">
-          <property role="3F0ifm" value="@Experimental" />
+          <property role="3F0ifm" value="@API.Experimental" />
           <ref role="1k5W1q" node="hOawUFH" resolve="AnnotationNode" />
           <ref role="1ERwB7" node="nddphzzJ7W" resolve="ExperimentalApiNodeAnnotation_ActionMap" />
           <node concept="3$7jql" id="nddphzzGOE" role="3F10Kt">
@@ -10364,7 +10364,7 @@
                   <node concept="2OqwBi" id="nddphzzGPg" role="3uHU7B">
                     <node concept="pncrf" id="nddphzzGPh" role="2Oq$k0" />
                     <node concept="3TrcHB" id="nddphzzGPi" role="2OqNvi">
-                      <ref role="3TsBF5" to="tpce:hOYLP83" resolve="build" />
+                      <ref role="3TsBF5" to="tpce:nddphzyHx8" resolve="build" />
                     </node>
                   </node>
                 </node>
@@ -10423,7 +10423,7 @@
   <node concept="1h_SRR" id="nddphzzJ7W">
     <property role="TrG5h" value="ExperimentalApiNodeAnnotation_ActionMap" />
     <property role="3GE5qa" value="deprecatedAnnotation" />
-    <ref role="1h_SK9" to="tpce:nddphzyHx5" resolve="ExperimentalApiNodeAnnotation" />
+    <ref role="1h_SK9" to="tpce:nddphzyHx5" resolve="ExperimentalAPINodeAttribute" />
     <node concept="1hA7zw" id="nddphzzJ7X" role="1h_SK8">
       <property role="1hAc7j" value="g_hAxAO/delete_action_id" />
       <node concept="1hAIg9" id="nddphzzJ7Y" role="1hA7z_">

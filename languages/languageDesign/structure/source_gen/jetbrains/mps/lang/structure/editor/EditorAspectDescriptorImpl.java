@@ -52,7 +52,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
       case 14:
         return Collections.<ConceptEditor>singletonList(new EnumerationMemberDeclaration_Old_Editor());
       case 15:
-        return Collections.<ConceptEditor>singletonList(new ExperimentalApiNodeAnnotation_Editor());
+        return Collections.<ConceptEditor>singletonList(new ExperimentalAPINodeAttribute_Editor());
       case 16:
         return Collections.<ConceptEditor>singletonList(new InterfaceConceptDeclaration_Editor());
       case 17:

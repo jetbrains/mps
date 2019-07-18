@@ -28,7 +28,7 @@ public final class LanguageConceptSwitch {
   public static final int EnumerationDeclartaion = 16;
   public static final int EnumerationMemberDeclaration = 17;
   public static final int EnumerationMemberDeclaration_Old = 18;
-  public static final int ExperimentalApiNodeAnnotation = 19;
+  public static final int ExperimentalAPINodeAttribute = 19;
   public static final int IConceptAspect = 20;
   public static final int IEnumeration = 21;
   public static final int ILanguageElement = 22;
@@ -64,7 +64,7 @@ public final class LanguageConceptSwitch {
     builder.put(0x2e770ca32c607c5fL, EnumerationDeclartaion);
     builder.put(0x2e770ca32c607c60L, EnumerationMemberDeclaration);
     builder.put(0xfc321331b2L, EnumerationMemberDeclaration_Old);
-    builder.put(0x5cd3594638ad845L, ExperimentalApiNodeAnnotation);
+    builder.put(0x5cd3594638ad845L, ExperimentalAPINodeAttribute);
     builder.put(0x24614259e94f0c84L, IConceptAspect);
     builder.put(0xeeb344f64a629e5L, IEnumeration);
     builder.put(0x160b046db90b56deL, ILanguageElement);

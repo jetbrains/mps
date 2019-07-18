@@ -28,7 +28,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_EnumerationDeclartaion;
   private ConceptPresentation props_EnumerationMemberDeclaration;
   private ConceptPresentation props_EnumerationMemberDeclaration_Old;
-  private ConceptPresentation props_ExperimentalApiNodeAnnotation;
+  private ConceptPresentation props_ExperimentalAPINodeAttribute;
   private ConceptPresentation props_IConceptAspect;
   private ConceptPresentation props_IEnumeration;
   private ConceptPresentation props_ILanguageElement;
@@ -188,13 +188,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_EnumerationMemberDeclaration_Old = cpb.create();
         }
         return props_EnumerationMemberDeclaration_Old;
-      case LanguageConceptSwitch.ExperimentalApiNodeAnnotation:
-        if (props_ExperimentalApiNodeAnnotation == null) {
+      case LanguageConceptSwitch.ExperimentalAPINodeAttribute:
+        if (props_ExperimentalAPINodeAttribute == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          props_ExperimentalApiNodeAnnotation = cpb.create();
+          props_ExperimentalAPINodeAttribute = cpb.create();
         }
-        return props_ExperimentalApiNodeAnnotation;
+        return props_ExperimentalAPINodeAttribute;
       case LanguageConceptSwitch.IConceptAspect:
         if (props_IConceptAspect == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

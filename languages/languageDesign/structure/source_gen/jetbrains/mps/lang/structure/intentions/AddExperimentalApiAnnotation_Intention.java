@@ -53,18 +53,18 @@ public final class AddExperimentalApiAnnotation_Intention extends AbstractIntent
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5cd3594638ad845L, "jetbrains.mps.lang.structure.structure.ExperimentalApiNodeAnnotation"))) == null)) {
+      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5cd3594638ad845L, "jetbrains.mps.lang.structure.structure.ExperimentalAPINodeAttribute"))) == null)) {
         return "Add Experimental API Attribute";
       }
       return "Remove Experimental API Attribute";
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5cd3594638ad845L, "jetbrains.mps.lang.structure.structure.ExperimentalApiNodeAnnotation"))) == null)) {
-        SNode annotation = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5cd3594638ad845L, "jetbrains.mps.lang.structure.structure.ExperimentalApiNodeAnnotation"), null);
-        AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5cd3594638ad845L, "jetbrains.mps.lang.structure.structure.ExperimentalApiNodeAnnotation")), annotation);
+      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5cd3594638ad845L, "jetbrains.mps.lang.structure.structure.ExperimentalAPINodeAttribute"))) == null)) {
+        SNode annotation = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5cd3594638ad845L, "jetbrains.mps.lang.structure.structure.ExperimentalAPINodeAttribute"), null);
+        AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5cd3594638ad845L, "jetbrains.mps.lang.structure.structure.ExperimentalAPINodeAttribute")), annotation);
       } else {
-        SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5cd3594638ad845L, "jetbrains.mps.lang.structure.structure.ExperimentalApiNodeAnnotation"))));
+        SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5cd3594638ad845L, "jetbrains.mps.lang.structure.structure.ExperimentalAPINodeAttribute"))));
       }
     }
     @Override

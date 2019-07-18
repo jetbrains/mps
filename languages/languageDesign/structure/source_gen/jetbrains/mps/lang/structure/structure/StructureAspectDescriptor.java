@@ -39,7 +39,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptEnumerationDeclartaion = createDescriptorForEnumerationDeclartaion();
   /*package*/ final ConceptDescriptor myConceptEnumerationMemberDeclaration = createDescriptorForEnumerationMemberDeclaration();
   /*package*/ final ConceptDescriptor myConceptEnumerationMemberDeclaration_Old = createDescriptorForEnumerationMemberDeclaration_Old();
-  /*package*/ final ConceptDescriptor myConceptExperimentalApiNodeAnnotation = createDescriptorForExperimentalApiNodeAnnotation();
+  /*package*/ final ConceptDescriptor myConceptExperimentalAPINodeAttribute = createDescriptorForExperimentalAPINodeAttribute();
   /*package*/ final ConceptDescriptor myConceptIConceptAspect = createDescriptorForIConceptAspect();
   /*package*/ final ConceptDescriptor myConceptIEnumeration = createDescriptorForIEnumeration();
   /*package*/ final ConceptDescriptor myConceptILanguageElement = createDescriptorForILanguageElement();
@@ -78,7 +78,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptAbstractConceptDeclaration, myConceptAggregationLinkDeclarationScopeKind, myConceptAttributeInfo, myConceptAttributeInfo_AttributedConcept, myConceptAttributeInfo_IsMultiple, myConceptConceptDeclaration, myConceptConstrainedDataTypeDeclaration, myConceptDataTypeDeclaration, myConceptDeprecatedNodeAnnotation, myConceptDocumentationObjective, myConceptDocumentationObjectiveRef, myConceptDocumentedNodeAnnotation, myConceptEnumCustomMethodReplacementInfo, myConceptEnumMigrationInfo, myConceptEnumPropertyMigrationInfo, myConceptEnumerationDataTypeDeclaration_Old, myConceptEnumerationDeclartaion, myConceptEnumerationMemberDeclaration, myConceptEnumerationMemberDeclaration_Old, myConceptExperimentalApiNodeAnnotation, myConceptIConceptAspect, myConceptIEnumeration, myConceptILanguageElement, myConceptINamedLanguageElement, myConceptIStructureDeprecatable, myConceptInterfaceConceptDeclaration, myConceptInterfaceConceptReference, myConceptLinkDeclaration, myConceptPrimitiveDataTypeDeclaration, myConceptPropertyDeclaration, myConceptRefPresentationTemplate, myConceptReferenceLinkDeclartionScopeKind, myConceptSmartReferenceAttribute);
+    return Arrays.asList(myConceptAbstractConceptDeclaration, myConceptAggregationLinkDeclarationScopeKind, myConceptAttributeInfo, myConceptAttributeInfo_AttributedConcept, myConceptAttributeInfo_IsMultiple, myConceptConceptDeclaration, myConceptConstrainedDataTypeDeclaration, myConceptDataTypeDeclaration, myConceptDeprecatedNodeAnnotation, myConceptDocumentationObjective, myConceptDocumentationObjectiveRef, myConceptDocumentedNodeAnnotation, myConceptEnumCustomMethodReplacementInfo, myConceptEnumMigrationInfo, myConceptEnumPropertyMigrationInfo, myConceptEnumerationDataTypeDeclaration_Old, myConceptEnumerationDeclartaion, myConceptEnumerationMemberDeclaration, myConceptEnumerationMemberDeclaration_Old, myConceptExperimentalAPINodeAttribute, myConceptIConceptAspect, myConceptIEnumeration, myConceptILanguageElement, myConceptINamedLanguageElement, myConceptIStructureDeprecatable, myConceptInterfaceConceptDeclaration, myConceptInterfaceConceptReference, myConceptLinkDeclaration, myConceptPrimitiveDataTypeDeclaration, myConceptPropertyDeclaration, myConceptRefPresentationTemplate, myConceptReferenceLinkDeclartionScopeKind, myConceptSmartReferenceAttribute);
   }
 
   @Override
@@ -123,8 +123,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptEnumerationMemberDeclaration;
       case LanguageConceptSwitch.EnumerationMemberDeclaration_Old:
         return myConceptEnumerationMemberDeclaration_Old;
-      case LanguageConceptSwitch.ExperimentalApiNodeAnnotation:
-        return myConceptExperimentalApiNodeAnnotation;
+      case LanguageConceptSwitch.ExperimentalAPINodeAttribute:
+        return myConceptExperimentalAPINodeAttribute;
       case LanguageConceptSwitch.IConceptAspect:
         return myConceptIConceptAspect;
       case LanguageConceptSwitch.IEnumeration:
@@ -385,8 +385,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.kind(ConceptKind.INTERFACE, StaticScope.GLOBAL);
     return b.create();
   }
-  private static ConceptDescriptor createDescriptorForExperimentalApiNodeAnnotation() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.structure", "ExperimentalApiNodeAnnotation", 0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5cd3594638ad845L);
+  private static ConceptDescriptor createDescriptorForExperimentalAPINodeAttribute() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.structure", "ExperimentalAPINodeAttribute", 0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5cd3594638ad845L);
     b.class_(true, false, false);
     b.super_("jetbrains.mps.lang.core.structure.NodeAttribute", 0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da54L);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
