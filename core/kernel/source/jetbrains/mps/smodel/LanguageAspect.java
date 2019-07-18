@@ -17,6 +17,8 @@ package jetbrains.mps.smodel;
 
 import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.smodel.language.LanguageAspectDescriptor;
+import jetbrains.mps.smodel.language.LanguageAspectSupport;
 import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -31,6 +33,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 public enum LanguageAspect {
   //mostly migrated
@@ -43,7 +48,20 @@ public enum LanguageAspect {
   ACTIONS("actions", BootstrapLanguages.actionsLanguageRef(), LanguageAspect.CONFLUENCE_BASE + "editor-actions.html"),
 
   //mostly migrated
-  CONSTRAINTS("constraints", BootstrapLanguages.constraintsLanguageRef(), LanguageAspect.CONFLUENCE_BASE + "constraints.html"),
+  CONSTRAINTS("constraints", BootstrapLanguages.constraintsLanguageRef(), LanguageAspect.CONFLUENCE_BASE + "constraints.html") {
+    @Override
+    public Collection<SLanguage> getMainLanguages() {
+      Collection<SLanguage> mainLanguages = new ArrayList<>();
+      LanguageAspectDescriptor aspectDescriptor = LanguageAspectSupport.getAspectDescriptorById(getName());
+      if (aspectDescriptor != null) {
+        mainLanguages.addAll(aspectDescriptor.getMainLanguages());
+      }
+      SLanguage bootstrapLang = MetaAdapterFactory.getLanguage(getMainLanguage());
+      return Stream.concat(mainLanguages.stream(), Stream.of(bootstrapLang))
+                   .distinct()
+                   .collect(Collectors.toList());
+    }
+  },
 
   //mostly migrated
   BEHAVIOR("behavior", BootstrapLanguages.behaviorLanguageRef(), LanguageAspect.CONFLUENCE_BASE + "behavior.html"),
