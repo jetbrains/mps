@@ -41,6 +41,7 @@
     <import index="v23q" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi(MPS.IDEA/)" />
     <import index="ncw5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util.annotation(MPS.Core/)" />
     <import index="asz6" ref="r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)" />
+    <import index="z60i" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.awt(JDK/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -1563,6 +1564,73 @@
                   <ref role="3cqZAo" node="2Tuefk2gna8" resolve="oldValue" />
                 </node>
                 <node concept="10Nm6u" id="2Tuefk2gwJU" role="3uHU7w" />
+              </node>
+            </node>
+            <node concept="3SKdUt" id="3brbVNVVH$p" role="3cqZAp">
+              <node concept="1PaTwC" id="3brbVNVVH$q" role="3ndbpf">
+                <node concept="3oM_SD" id="3brbVNVVH$s" role="1PaTwD">
+                  <property role="3oM_SC" value="Force" />
+                </node>
+                <node concept="3oM_SD" id="3brbVNVVHO3" role="1PaTwD">
+                  <property role="3oM_SC" value="GraphicsEnvironment" />
+                </node>
+                <node concept="3oM_SD" id="3brbVNVVHO$" role="1PaTwD">
+                  <property role="3oM_SC" value="to" />
+                </node>
+                <node concept="3oM_SD" id="3brbVNVVHOK" role="1PaTwD">
+                  <property role="3oM_SC" value="cache" />
+                </node>
+                <node concept="3oM_SD" id="3brbVNVVHPd" role="1PaTwD">
+                  <property role="3oM_SC" value="headless" />
+                </node>
+                <node concept="3oM_SD" id="3brbVNVVHPr" role="1PaTwD">
+                  <property role="3oM_SC" value="false" />
+                </node>
+                <node concept="3oM_SD" id="3brbVNVVHPM" role="1PaTwD">
+                  <property role="3oM_SC" value="state" />
+                </node>
+                <node concept="3oM_SD" id="3brbVNVVHQ2" role="1PaTwD">
+                  <property role="3oM_SC" value="before" />
+                </node>
+                <node concept="3oM_SD" id="3brbVNVVHQj" role="1PaTwD">
+                  <property role="3oM_SC" value="IdeaTestApplication" />
+                </node>
+                <node concept="3oM_SD" id="3brbVNVVHQH" role="1PaTwD">
+                  <property role="3oM_SC" value="resets" />
+                </node>
+                <node concept="3oM_SD" id="3brbVNVVHR8" role="1PaTwD">
+                  <property role="3oM_SC" value="it" />
+                </node>
+                <node concept="3oM_SD" id="3brbVNVVHRs" role="1PaTwD">
+                  <property role="3oM_SC" value="to" />
+                </node>
+                <node concept="3oM_SD" id="3brbVNVVHRL" role="1PaTwD">
+                  <property role="3oM_SC" value="true" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="4H7lDQI3ewa" role="3cqZAp">
+              <node concept="2YIFZM" id="4H7lDQI3eHr" role="3clFbG">
+                <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
+                <ref role="37wK5l" to="wyt6:~System.setProperty(java.lang.String,java.lang.String)" resolve="setProperty" />
+                <node concept="Xl_RD" id="4H7lDQI3eHs" role="37wK5m">
+                  <property role="Xl_RC" value="java.awt.headless" />
+                </node>
+                <node concept="2OqwBi" id="4H7lDQI3eHt" role="37wK5m">
+                  <node concept="10M0yZ" id="4H7lDQI3eHu" role="2Oq$k0">
+                    <ref role="1PxDUh" to="wyt6:~Boolean" resolve="Boolean" />
+                    <ref role="3cqZAo" to="wyt6:~Boolean.FALSE" resolve="FALSE" />
+                  </node>
+                  <node concept="liA8E" id="4H7lDQI3eHv" role="2OqNvi">
+                    <ref role="37wK5l" to="wyt6:~Boolean.toString()" resolve="toString" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="3brbVNVVyxn" role="3cqZAp">
+              <node concept="2YIFZM" id="3brbVNVVH6u" role="3clFbG">
+                <ref role="1Pybhc" to="z60i:~GraphicsEnvironment" resolve="GraphicsEnvironment" />
+                <ref role="37wK5l" to="z60i:~GraphicsEnvironment.isHeadless()" resolve="isHeadless" />
               </node>
             </node>
             <node concept="3clFbF" id="65UowUML9kL" role="3cqZAp">

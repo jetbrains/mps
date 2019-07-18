@@ -18,6 +18,7 @@ import jetbrains.mps.util.FileUtil;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import com.intellij.openapi.application.ApplicationManager;
+import java.awt.GraphicsEnvironment;
 import com.intellij.util.PlatformUtils;
 import com.intellij.ide.plugins.PluginManagerCore;
 import com.intellij.openapi.application.ex.ApplicationManagerEx;
@@ -177,6 +178,9 @@ public final class IdeaEnvironment extends EnvironmentBase implements Disposable
       if (oldValue == null) {
         System.setProperty(CREATE_PLUGIN_CLASSLOADERS, myConfig.doesCreatePluginClassLoaders() + "");
       }
+      // Force GraphicsEnvironment to cache headless false state before IdeaTestApplication resets it to true 
+      System.setProperty("java.awt.headless", Boolean.FALSE.toString());
+      GraphicsEnvironment.isHeadless();
       myIdeaTestApplication = IdeaTestApplication.getInstance();
     } else {
       myCommandLineApplication = createCommandLineApplication0();
