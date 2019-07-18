@@ -16,19 +16,19 @@ import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-public class check_InstanceOfDeprecated_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
-  public check_InstanceOfDeprecated_NonTypesystemRule() {
+public class check_InstanceOfExperimental_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
+  public check_InstanceOfExperimental_NonTypesystemRule() {
   }
   public void applyRule(final SNode node, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    ConceptPresentation conceptPres = ConceptAspectsHelper.getPresentationAspect(node);
-    if (conceptPres == null) {
+    ConceptPresentation conceptPresentation = ConceptAspectsHelper.getPresentationAspect(node);
+    if (conceptPresentation == null) {
       return;
     }
 
-    if (conceptPres.isDeprecated()) {
+    if (conceptPresentation.isExperimental()) {
       {
         MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(node, "The node '" + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(node) + "' is an instance of deprecated concept", "r:cec599e3-51d2-48a7-af31-989e3cbd593c(jetbrains.mps.lang.core.typesystem)", "8524227390952646895", null, errorTarget);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(node, "The node '" + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(node) + "' is an instance of concept marked with API.Experimental attribute", "r:cec599e3-51d2-48a7-af31-989e3cbd593c(jetbrains.mps.lang.core.typesystem)", "7881641160411827657", null, errorTarget);
       }
     }
   }

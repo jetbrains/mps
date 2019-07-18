@@ -25,10 +25,13 @@ import jetbrains.mps.plugins.relations.RelationDescriptor;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.SNodeUtil;
+import jetbrains.mps.smodel.language.ConceptRegistry;
+import jetbrains.mps.smodel.runtime.ConceptPresentation;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
@@ -106,19 +109,36 @@ public class CreateGroupsBuilder {
     return group;
   }
 
+  @NotNull
+  private static String getActionText(@NotNull SConcept concept) {
+    String noUnderScores = concept.getConceptAlias().replaceAll("_", "__");
+    String result = noUnderScores.isEmpty() ? concept.getName() : noUnderScores;
+    ConceptPresentation conceptProperties = getConceptProperties(concept);
+    // duplication with NewRootNodeAction, very sorry
+    if (conceptProperties.isDeprecated()) {
+      result = "(deprecated) " + result;
+    } else if (conceptProperties.isExperimental()) {
+      result = "[experimental] " + result;
+    }
+    return result;
+  }
+
+  private static ConceptPresentation getConceptProperties(@NotNull SAbstractConcept concept) {
+    return ConceptRegistry.getInstance().getConceptProperties(concept);
+  }
+
   private class CreateAction extends AnAction {
     private final SConcept myConcept;
     private final RelationDescriptor myDescriptor;
 
     public CreateAction(SConcept concept, RelationDescriptor descriptor) {
       //todo pass concepts instead of nodes
-      super(!concept.getConceptAlias().replaceAll("_", "__").isEmpty()
-              ? concept.getConceptAlias().replaceAll("_", "__") : concept.getName(),
-            "", GlobalIconManager.getInstance().getIconFor(concept)
+      super(getActionText(concept), "Create aspect", GlobalIconManager.getInstance().getIconFor(concept)
       );
       myConcept = concept;
       myDescriptor = descriptor;
     }
+
 
     @Override
     public void actionPerformed(AnActionEvent e) {

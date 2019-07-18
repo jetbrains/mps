@@ -10,6 +10,7 @@
     <import index="tpd3" ref="r:00000000-0000-4000-0000-011c895902bb(jetbrains.mps.lang.sharedConcepts.editor)" />
     <import index="mqj2" ref="r:1d4f6f82-1219-47a2-a4fa-ac3ba14c9fd5(jetbrains.mps.lang.constraints.rules.skeleton.structure)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
+    <import index="tpch" ref="r:00000000-0000-4000-0000-011c8959028d(jetbrains.mps.lang.structure.editor)" implicit="true" />
   </imports>
   <registry>
     <language id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor">
@@ -169,6 +170,14 @@
     <ref role="1XX52x" to="mqj2:1BFxp3HFZzq" resolve="RulesConstraintsRoot" />
     <node concept="3EZMnI" id="1BFxp3HFZ_3" role="2wV5jI">
       <node concept="l2Vlx" id="1BFxp3HFZ_4" role="2iSdaV" />
+      <node concept="3F0ifn" id="2USgBev7WCa" role="3EZMnx">
+        <property role="3F0ifm" value="@API.Experimental" />
+        <ref role="1k5W1q" to="tpch:hOawUFH" resolve="AnnotationNode" />
+        <node concept="Vb9p2" id="2USgBev88EO" role="3F10Kt" />
+        <node concept="ljvvj" id="2USgBev7WCo" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+      </node>
       <node concept="3F0ifn" id="1BFxp3HFZ_5" role="3EZMnx">
         <property role="3F0ifm" value="constraint rules for" />
         <ref role="1k5W1q" node="52CT$p9qMd6" resolve="RootHeading" />
