@@ -13,12 +13,17 @@
     <ConfigurationWrapper RunnerId="Run" />
     <method v="2">
       <option name="Make" enabled="true" />
-      <option name="AntTarget" enabled="true" antfile="file://$PROJECT_DIR$/testbench/cleanup.xml" target="cleanup" />
       <option name="BuildArtifacts" enabled="true">
-        <artifact name="migration-platform" />
         <artifact name="context" />
         <artifact name="feedback-api" />
+        <artifact name="messages-api" />
+        <artifact name="messages-for-legacy-constraints" />
+        <artifact name="messages-for-rules" />
+        <artifact name="messages-for-structure" />
+        <artifact name="migration-platform" />
+        <artifact name="problem" />
       </option>
+      <option name="AntTarget" enabled="true" antfile="file://$PROJECT_DIR$/testbench/cleanup.xml" target="cleanup" />
     </method>
   </configuration>
 </component>
