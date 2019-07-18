@@ -106,8 +106,8 @@
       <node id="8878450512092611868" at="32,79,33,71" concept="5" />
       <node id="8878450512092605112" at="23,0,28,0" concept="3" trace="yieldMessage#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/ContainmentContext;)Ljetbrains/mps/core/aspects/feedback/messages/MessageProvider/StringMsg;" />
       <node id="8878450512092611868" at="30,0,35,0" concept="3" trace="yieldMessage#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/ContainmentContext;)Ljetbrains/mps/core/aspects/feedback/messages/MessageProvider/StringMsg;" />
-      <node id="8878450512092605112" at="22,0,29,0" concept="7" trace="MSGPROVIDER_WhenConstraintRuleFails_a_0" />
-      <node id="8878450512092611868" at="29,0,36,0" concept="7" trace="MSGPROVIDER_WhenConstraintRuleFails_b_0" />
+      <node id="8878450512092605112" at="22,0,29,0" concept="7" trace="MSGPROVIDER_WhenConstraintRuleFails_a" />
+      <node id="8878450512092611868" at="29,0,36,0" concept="7" trace="MSGPROVIDER_WhenConstraintRuleFails_b" />
       <scope id="8878450512092605112" at="25,79,26,72" />
       <scope id="8878450512092611868" at="32,79,33,71" />
       <scope id="8878450512092605112" at="23,0,28,0">
@@ -116,8 +116,8 @@
       <scope id="8878450512092611868" at="30,0,35,0">
         <var name="context" id="8878450512092611868" />
       </scope>
-      <unit id="8878450512092605112" at="22,106,28,3" name="constraints.rulesAndMessages.sandbox.constraints.ChildConcept_ConstraintsFeedback$1" />
-      <unit id="8878450512092611868" at="29,106,35,3" name="constraints.rulesAndMessages.sandbox.constraints.ChildConcept_ConstraintsFeedback$2" />
+      <unit id="8878450512092605112" at="22,104,28,3" name="constraints.rulesAndMessages.sandbox.constraints.ChildConcept_ConstraintsFeedback$1" />
+      <unit id="8878450512092611868" at="29,104,35,3" name="constraints.rulesAndMessages.sandbox.constraints.ChildConcept_ConstraintsFeedback$2" />
     </file>
   </root>
   <root nodeRef="r:50e6e59b-26e4-4ba1-9996-7aefbabd31cf(constraints.rulesAndMessages.sandbox.constraints)/7247338141359841462">
@@ -179,8 +179,8 @@
       <node id="8878450512092603198" at="32,79,33,143" concept="5" />
       <node id="8878450512092601213" at="23,0,28,0" concept="3" trace="yieldMessage#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/ContainmentContext;)Ljetbrains/mps/core/aspects/feedback/messages/MessageProvider/StringMsg;" />
       <node id="8878450512092603198" at="30,0,35,0" concept="3" trace="yieldMessage#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/ContainmentContext;)Ljetbrains/mps/core/aspects/feedback/messages/MessageProvider/StringMsg;" />
-      <node id="8878450512092601213" at="22,0,29,0" concept="7" trace="MSGPROVIDER_WhenConstraintRuleFails_a" />
-      <node id="8878450512092603198" at="29,0,36,0" concept="7" trace="MSGPROVIDER_WhenConstraintRuleFails_b" />
+      <node id="8878450512092601213" at="22,0,29,0" concept="7" trace="MSGPROVIDER_WhenConstraintRuleFails_a_0" />
+      <node id="8878450512092603198" at="29,0,36,0" concept="7" trace="MSGPROVIDER_WhenConstraintRuleFails_b_0" />
       <scope id="8878450512092601213" at="25,79,26,47" />
       <scope id="8878450512092603198" at="32,79,33,143" />
       <scope id="8878450512092601213" at="23,0,28,0">
@@ -189,8 +189,8 @@
       <scope id="8878450512092603198" at="30,0,35,0">
         <var name="context" id="8878450512092603198" />
       </scope>
-      <unit id="8878450512092601213" at="22,104,28,3" name="constraints.rulesAndMessages.sandbox.constraints.ParentConcept_ConstraintsFeedback$1" />
-      <unit id="8878450512092603198" at="29,104,35,3" name="constraints.rulesAndMessages.sandbox.constraints.ParentConcept_ConstraintsFeedback$2" />
+      <unit id="8878450512092601213" at="22,106,28,3" name="constraints.rulesAndMessages.sandbox.constraints.ParentConcept_ConstraintsFeedback$1" />
+      <unit id="8878450512092603198" at="29,106,35,3" name="constraints.rulesAndMessages.sandbox.constraints.ParentConcept_ConstraintsFeedback$2" />
     </file>
   </root>
   <root nodeRef="r:50e6e59b-26e4-4ba1-9996-7aefbabd31cf(constraints.rulesAndMessages.sandbox.constraints)/8409512132773796220">
