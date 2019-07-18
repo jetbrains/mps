@@ -450,7 +450,6 @@
       <modulePath path="${mps_home}/samples/robot_Kaja/languages/Kajak/Kajak.mpl" folder="samples.robotKaja" />
       <modulePath path="${mps_home}/samples/robot_Kaja/solutions/JavaKajak/JavaKajak.msd" folder="samples.robotKaja" />
       <modulePath path="${mps_home}/samples/robot_Kaja/solutions/Kajak.sandbox/Kajak.sandbox.msd" folder="samples.robotKaja" />
-      <modulePath path="${mps_home}/samples/sampleAspectLang.sandbox/sampleAspectLang.sandbox.msd" folder="" />
       <modulePath path="${mps_home}/samples/sampleFacet/sampleFacet.mpl" folder="samples.sampleFacet" />
       <modulePath path="${mps_home}/samples/sampleFacet/solutions/sampleFacet.sandbox/sampleFacet.sandbox.msd" folder="samples.sampleFacet" />
       <modulePath path="${mps_home}/samples/sampleJavaExtensions/languages/Constants/org.jetbrains.mps.samples.Constants.mpl" folder="samples.sampleJavaExtensions" />
