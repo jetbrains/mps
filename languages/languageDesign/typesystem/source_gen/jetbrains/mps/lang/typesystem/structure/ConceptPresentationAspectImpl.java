@@ -394,6 +394,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.ImmediateSupertypesExpression:
         if (props_ImmediateSupertypesExpression == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.deprecated(true);
           cpb.rawPresentation("immediateSupertypes()");
           props_ImmediateSupertypesExpression = cpb.create();
         }
