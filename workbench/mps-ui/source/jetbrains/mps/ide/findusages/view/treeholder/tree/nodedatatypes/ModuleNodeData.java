@@ -51,12 +51,6 @@ public class ModuleNodeData extends AbstractResultNodeData {
     return module == null ? null : GlobalIconManager.getInstance().getIconFor(module);
   }
 
-  @Override
-  public void updatePresentation(PresentationContext context, INodeRepresentator<Object> presentation) {
-    SModule module = myModuleReference.resolve(context.getRepository());
-    updateCaptionAndInfo(presentation, module);
-  }
-
   public SModuleReference getModuleReference() {
     return myModuleReference;
   }

@@ -2006,6 +2006,9 @@
     </node>
     <node concept="m$_wf" id="6NEiZqQxZ2K" role="3989C9">
       <property role="m$_wk" value="jetbrains.mps.lang.editor.tests" />
+      <node concept="m$_yC" id="3vzbfNfkXMT" role="m$_yJ">
+        <ref role="m$_y1" to="ffeo:4k71ibbKLe8" resolve="jetbrains.mps.core" />
+      </node>
       <node concept="3_J27D" id="6NEiZqQxZ2L" role="m$_yQ">
         <node concept="3Mxwew" id="6NEiZqQxZ4l" role="3MwsjC">
           <property role="3MwjfP" value="jetbrains.mps.lang.editor.tests" />

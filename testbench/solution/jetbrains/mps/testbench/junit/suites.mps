@@ -3117,7 +3117,7 @@
               <ref role="37wK5l" to="wyt6:~System.getProperties()" resolve="getProperties" />
             </node>
             <node concept="liA8E" id="8knae4MO8j" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~Hashtable.entrySet()" resolve="entrySet" />
+              <ref role="37wK5l" to="33ny:~Properties.entrySet()" resolve="entrySet" />
             </node>
           </node>
         </node>

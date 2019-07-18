@@ -9729,7 +9729,7 @@
                       <ref role="3cqZAo" node="6SL1vERvj8U" resolve="fqueue" />
                     </node>
                     <node concept="liA8E" id="6SL1vERvqgQ" role="2OqNvi">
-                      <ref role="37wK5l" to="33ny:~AbstractCollection.addAll(java.util.Collection)" resolve="addAll" />
+                      <ref role="37wK5l" to="33ny:~ArrayDeque.addAll(java.util.Collection)" resolve="addAll" />
                       <node concept="2OqwBi" id="6SL1vERvqpF" role="37wK5m">
                         <node concept="37vLTw" id="6SL1vERvqkN" role="2Oq$k0">
                           <ref role="3cqZAo" node="6SL1vERvoD9" resolve="f" />

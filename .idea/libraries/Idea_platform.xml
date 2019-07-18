@@ -96,6 +96,8 @@
       <root url="jar://$PROJECT_DIR$/lib/intellij-dvcs.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/intellij-xml.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/java-compatibility-1.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/java-api.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/java-impl.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

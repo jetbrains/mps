@@ -46,7 +46,7 @@ public class MigrationAnnotation_Constraints extends BaseConstraintsDescriptor {
         int ix = migrationScriptReference.indexOf('(');
         SLanguage language = MetaAdapterFactory.getLanguage(SLanguageId.deserialize(migrationScriptReference.substring(0, ix)), migrationScriptReference.substring(ix + 1, migrationScriptReference.indexOf(')', ix)));
         return true;
-      } catch (IllegalArgumentException _) {
+      } catch (IllegalArgumentException ignored) {
         return false;
       }
     }

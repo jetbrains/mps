@@ -7757,7 +7757,7 @@
                   <ref role="3cqZAo" node="2wx9Czvxq9f" resolve="cb" />
                 </node>
                 <node concept="liA8E" id="2wx9CzvxsKc" role="2OqNvi">
-                  <ref role="37wK5l" to="zfbc:~Buffer.flip()" resolve="flip" />
+                  <ref role="37wK5l" to="zfbc:~CharBuffer.flip()" resolve="flip" />
                 </node>
               </node>
             </node>

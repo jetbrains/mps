@@ -211,9 +211,9 @@
             </node>
             <node concept="liA8E" id="hS4cXSJ" role="2OqNvi">
               <ref role="37wK5l" to="dxuu:~JFrame.setDefaultCloseOperation(int)" resolve="setDefaultCloseOperation" />
-              <node concept="10M0yZ" id="hS4cZoH" role="37wK5m">
+              <node concept="10M0yZ" id="3IVsgaJ01eD" role="37wK5m">
+                <ref role="3cqZAo" to="dxuu:~WindowConstants.EXIT_ON_CLOSE" resolve="EXIT_ON_CLOSE" />
                 <ref role="1PxDUh" to="dxuu:~JFrame" resolve="JFrame" />
-                <ref role="3cqZAo" to="dxuu:~JFrame.EXIT_ON_CLOSE" resolve="EXIT_ON_CLOSE" />
               </node>
             </node>
           </node>

@@ -138,7 +138,7 @@ public class check_AbstractConceptDeclaration_Ids_NonTypesystemRule extends Abst
         } else if (!(Objects.equals(SPropertyOperations.getString(l, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0x35a81382d82a4e4L, "linkId")), ConceptIdHelper.getNodeIdString(l)))) {
           {
             MessageTarget errorTarget = new NodeMessageTarget();
-            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(l, "Node id and property id differ. It's recommended to keep ids synchronised. Use quickfix to set corrected id", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "2819660830273606558", null, errorTarget);
+            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(l, "Node id and link id differ. It's recommended to keep ids synchronised. Use quickfix to set corrected id", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "2819660830273606558", null, errorTarget);
             {
               BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.structure.typesystem.CorrectDuplicateId_QuickFix", false);
               intentionProvider.putArgument("l", l);

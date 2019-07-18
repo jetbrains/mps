@@ -31,6 +31,7 @@ public class MPSGlobalLibImporter extends BaseLibImporter implements Application
   private final MPSCoreComponents myCoreComponents;
 
   public MPSGlobalLibImporter(MPSCoreComponents core, ApplicationLibraryTable table) {
+    super(core);
     myCoreComponents = core;
     myTable = table;
   }

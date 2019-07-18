@@ -40,6 +40,7 @@ import java.util.Set;
 public class MultipleSdkProblemNotifier implements ProjectComponent {
   private final Project myProject;
   private Data myDataToReport;
+  private Map<Module, String> myBadJdks = new HashMap<>();
 
   public MultipleSdkProblemNotifier(Project project) {
     myProject = project;
@@ -91,6 +92,33 @@ public class MultipleSdkProblemNotifier implements ProjectComponent {
 
     myDataToReport.unluckyModules.put(unluckyModule, exc.getRequestedSdk());
     myDataToReport.sdkInUse = exc.getCurrentSdk();
+  }
+
+  public void reportIncorrectJDK(Module module, String versionString) {
+    ApplicationManager.getApplication().assertWriteAccessAllowed();
+
+    myBadJdks.put(module, versionString);
+
+    ApplicationManager.getApplication().addApplicationListener(new ApplicationAdapter() {
+      @Override
+      public void afterWriteActionFinished(@NotNull Object action) {
+        if (myBadJdks.isEmpty()){
+          return;
+        }
+        String title = "Modules with MPS facet only support JDK 11 and later";
+        new Notification("MPS facet", title, getBadJdksMessage(myBadJdks), NotificationType.WARNING).notify(myProject);
+        myBadJdks.clear();
+        ApplicationManager.getApplication().removeApplicationListener(this);
+      }
+    });
+  }
+
+  private String getBadJdksMessage(Map<Module, String> badJdks) {
+    StringBuilder sb = new StringBuilder();
+    for (Module m: badJdks.keySet()){
+      sb.append(m.getName()+" - " + badJdks.get(m));
+    }
+    return sb.toString();
   }
 
   private class Data {

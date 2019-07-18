@@ -20,9 +20,16 @@ import com.intellij.openapi.roots.libraries.Library;
 import com.intellij.openapi.roots.libraries.LibraryTable;
 import com.intellij.openapi.roots.libraries.LibraryTable.Listener;
 import jetbrains.mps.extapi.module.SRepositoryExt;
+import jetbrains.mps.ide.MPSCoreComponents;
+import jetbrains.mps.vfs.VFSManager;
 
 public abstract class BaseLibImporter extends AbstractJavaStubSolutionManager {
   private final Listener myListener = new MyListener();
+  private final MPSCoreComponents myCore;
+
+  public BaseLibImporter(MPSCoreComponents core) {
+    myCore = core;
+  }
 
   @Override
   protected void init() {
@@ -48,7 +55,7 @@ public abstract class BaseLibImporter extends AbstractJavaStubSolutionManager {
   protected abstract LibraryTable getLibTable();
 
   protected void addModuleForLibrary(Library l) {
-    addSolution(l, getRepository());
+    addSolution(l, getRepository(), myCore.getPlatform().findComponent(VFSManager.class));
   }
 
   protected void removeModuleForLibrary(Library l) {

@@ -21,10 +21,12 @@ import com.intellij.compiler.instrumentation.InstrumenterClassWriter;
 import com.intellij.compiler.notNullVerification.NotNullVerifyingInstrumenter;
 import jetbrains.mps.make.CompilationErrorsHandler.ClassesErrorsTracker;
 import jetbrains.mps.project.MPSExtentions;
+import jetbrains.mps.reloading.SDKDiscovery;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.vfs.IFile;
 import org.eclipse.jdt.internal.compiler.ClassFile;
 import org.eclipse.jdt.internal.compiler.CompilationResult;
+import org.eclipse.jdt.internal.compiler.util.Util;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.org.objectweb.asm.ClassWriter;
@@ -96,6 +98,14 @@ public class ClassFileWriter {
       } catch (MalformedURLException e) {
         e.printStackTrace();
       }
+    }
+    try {
+      String homePath = Util.getJavaHome().getPath();
+      if (SDKDiscovery.isModularRuntime(new File(homePath))) {
+        urls.add(InstrumentationClassFinder.createJDKPlatformUrl(homePath));
+      }
+    } catch (MalformedURLException e) {
+      e.printStackTrace();
     }
     return urls.toArray(new URL[0]);
   }

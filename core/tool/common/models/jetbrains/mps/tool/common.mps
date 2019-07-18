@@ -10529,7 +10529,7 @@
                 <ref role="3cqZAo" node="4937uxYQnoG" resolve="props" />
               </node>
               <node concept="liA8E" id="4937uxYQnoO" role="2OqNvi">
-                <ref role="37wK5l" to="33ny:~Hashtable.keySet()" resolve="keySet" />
+                <ref role="37wK5l" to="33ny:~Properties.keySet()" resolve="keySet" />
               </node>
             </node>
           </node>

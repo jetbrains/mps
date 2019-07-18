@@ -146,8 +146,8 @@ public final class CommonPaths {
     addIfExists(result, "lib/intellij-xml.jar");
     addIfExists(result, "lib/spellchecker.jar");
     addIfExists(result, "lib/images.jar");
-    addIfExists(result, "plugins/java/lib/java-api.jar");
-    addIfExists(result, "plugins/java/lib/java-impl.jar");
+    addIfExists(result, "lib/java-api.jar");
+    addIfExists(result, "lib/java-impl.jar");
   }
 
   private static void addIdeaJars(Collection<QualifiedPath> result) {

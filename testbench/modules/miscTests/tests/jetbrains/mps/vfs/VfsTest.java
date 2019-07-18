@@ -65,7 +65,7 @@ public class VfsTest implements EnvironmentAware {
     try {
       FileSystemListenersContainer lc = new FileSystemListenersContainer();
       // XXX what's the reason to initialize IdeaFileSystem app component this way?
-      FileSystemExtPoint.setFS(new IdeaFileSystem(ApplicationManager.getApplication().getComponent(MPSCoreComponents.class), lc, null, null));
+      FileSystemExtPoint.setFS(new IdeaFileSystem(ApplicationManager.getApplication().getComponent(MPSCoreComponents.class), lc, null, null, null));
       final Throwable[] ex = new Throwable[1];
       ApplicationManager.getApplication().invokeAndWait(new Runnable() {
         @Override

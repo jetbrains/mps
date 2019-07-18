@@ -38,7 +38,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import org.jetbrains.mps.openapi.module.SRepository;
-import sun.awt.image.ImageWatched.Link;
 
 import java.util.ArrayList;
 import java.util.Collection;

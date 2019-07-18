@@ -1482,7 +1482,7 @@
                     <ref role="3cqZAo" node="5Ffu4tBUwIY" resolve="deque" />
                   </node>
                   <node concept="liA8E" id="5Ffu4tBUwJq" role="2OqNvi">
-                    <ref role="37wK5l" to="33ny:~Collection.addAll(java.util.Collection)" resolve="addAll" />
+                    <ref role="37wK5l" to="33ny:~Deque.addAll(java.util.Collection)" resolve="addAll" />
                     <node concept="10QFUN" id="5Ffu4tBUwJr" role="37wK5m">
                       <node concept="37vLTw" id="2BHiRxgmakU" role="10QFUP">
                         <ref role="3cqZAo" node="5Ffu4tBUwI_" resolve="it" />
@@ -1836,7 +1836,7 @@
                     <ref role="3cqZAo" node="3lc436X4UoU" resolve="deque" />
                   </node>
                   <node concept="liA8E" id="3lc436X4Uqa" role="2OqNvi">
-                    <ref role="37wK5l" to="33ny:~Collection.addAll(java.util.Collection)" resolve="addAll" />
+                    <ref role="37wK5l" to="33ny:~Deque.addAll(java.util.Collection)" resolve="addAll" />
                     <node concept="37vLTw" id="3lc436X4Uqb" role="37wK5m">
                       <ref role="3cqZAo" node="3lc436X4UpY" resolve="input" />
                     </node>
@@ -2176,7 +2176,7 @@
                     <ref role="3cqZAo" node="3lc436X5lU0" resolve="tmp" />
                   </node>
                   <node concept="liA8E" id="3lc436X5lUV" role="2OqNvi">
-                    <ref role="37wK5l" to="33ny:~Collection.addAll(java.util.Collection)" resolve="addAll" />
+                    <ref role="37wK5l" to="33ny:~Deque.addAll(java.util.Collection)" resolve="addAll" />
                     <node concept="10QFUN" id="3lc436X5lUW" role="37wK5m">
                       <node concept="37vLTw" id="3lc436X5lUX" role="10QFUP">
                         <ref role="3cqZAo" node="3lc436X5lTU" resolve="it" />

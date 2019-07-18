@@ -34,6 +34,7 @@ public class MPSProjectLibImporter extends BaseLibImporter implements ProjectCom
 
   @SuppressWarnings("UnusedParameters") //creation time dependency
   public MPSProjectLibImporter(MPSCoreComponents core, Project project, ProjectLibraryTable libTable) {
+    super(core);
     myProject = project;
     myLibTable = libTable;
   }

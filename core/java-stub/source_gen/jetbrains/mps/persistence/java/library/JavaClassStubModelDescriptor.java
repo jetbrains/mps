@@ -86,7 +86,7 @@ public class JavaClassStubModelDescriptor extends RegularModelDescriptor impleme
           return;
         }
         myIsLoadInProgress = true;
-        ASMModelLoader loader = new ASMModelLoader(getModule(), getSource().getPaths());
+        ASMModelLoader loader = new ASMModelLoader(getModule(), getSource().getAffectedFiles());
         loader.skipPrivateMembers(mySkipPrivate);
         SModel completeModelData = new SModel(getReference(), new MigratingJavaStubRefsNodeIdMap());
         Collection<SModelReference> imports = loader.completeModel(this, completeModelData);
@@ -112,7 +112,7 @@ public class JavaClassStubModelDescriptor extends RegularModelDescriptor impleme
     for (SLanguage l : getLanguagesToImport()) {
       model.addLanguage(l);
     }
-    ASMModelLoader loader = new ASMModelLoader(getModule(), getSource().getPaths());
+    ASMModelLoader loader = new ASMModelLoader(getModule(), getSource().getAffectedFiles());
     loader.skipPrivateMembers(mySkipPrivate);
     loader.populateRoots(model);
     return new ModelLoadResult<SModel>(model, ModelLoadingState.INTERFACE_LOADED);

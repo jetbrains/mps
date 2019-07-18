@@ -169,7 +169,7 @@ public class SDKDiscovery {
 
   //-------------------------------------copied from JdkUtil----------------------------------
 
-  private static boolean isModularRuntime(@NotNull File homePath) {
+  public static boolean isModularRuntime(@NotNull File homePath) {
     return new File(homePath, "lib/jrt-fs.jar").isFile() || isExplodedModularRuntime(homePath.getPath());
   }
 

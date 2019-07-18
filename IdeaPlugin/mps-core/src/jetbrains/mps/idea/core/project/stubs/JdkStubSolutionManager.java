@@ -43,6 +43,7 @@ import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.reloading.CommonPaths;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
+import jetbrains.mps.vfs.VFSManager;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SRepository;
 
@@ -63,8 +64,9 @@ import java.util.UUID;
 public class JdkStubSolutionManager extends AbstractJavaStubSolutionManager implements ApplicationComponent, Listener {
   private final Object LOCK = new Object();
 
-  private static final String JAVA_SDK_TYPE = "JavaSDK";
+  public static final String JAVA_SDK_TYPE = "JavaSDK";
   private static final String IDEA_SDK_TYPE = "IDEA JDK";
+  private final MPSCoreComponents myComponents;
 
   private ProjectJdkTable myTable;
   private MessageBusConnection myListenerConnection;
@@ -86,6 +88,7 @@ public class JdkStubSolutionManager extends AbstractJavaStubSolutionManager impl
   @SuppressWarnings("UnusedParameters")
   public JdkStubSolutionManager(MPSCoreComponents core, ProjectJdkTable table) {
     myTable = table;
+    myComponents = core;
   }
 
   public Solution getModuleSdkSolution(Module module) {
@@ -153,10 +156,14 @@ public class JdkStubSolutionManager extends AbstractJavaStubSolutionManager impl
 
       } else {
         // TODO pull out jdk that can be (or must be?) beneath this sdk
-        addSolution(sdk, (SRepositoryExt) repository);
+        addSolution(sdk, (SRepositoryExt) repository, getVFSManager());
       }
     }
 
+  }
+
+  private VFSManager getVFSManager() {
+    return myComponents.getPlatform().findComponent(VFSManager.class);
   }
 
   public void releaseSdk(Module module) {
@@ -207,7 +214,7 @@ public class JdkStubSolutionManager extends AbstractJavaStubSolutionManager impl
   }
 
   private void setUpJdk(Sdk sdk, SRepository repository) {
-    myJavaSdkSolution = replaceJdkSolution(sdk, (SRepositoryExt) repository);
+    myJavaSdkSolution = replaceJdkSolution(sdk, (SRepositoryExt) repository, getVFSManager());
     myJavaSdk = sdk;
   }
 
@@ -280,7 +287,7 @@ public class JdkStubSolutionManager extends AbstractJavaStubSolutionManager impl
       ((Solution) mpsPlatform).setModuleDescriptor(mpsPlatfromDesc);
     }
 
-    myIdeaSdkSolution = StubSolutionIdea.newInstanceForRoots(sdk, jdk, roots, this, (SRepositoryExt) repository);
+    myIdeaSdkSolution = StubSolutionIdea.newInstanceForRoots(sdk, jdk, roots, this, (SRepositoryExt) repository, getVFSManager());
     myIdeaSdk = sdk;
   }
 

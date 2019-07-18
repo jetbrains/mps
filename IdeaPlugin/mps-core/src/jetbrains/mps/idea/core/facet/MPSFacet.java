@@ -20,8 +20,10 @@ import com.intellij.facet.Facet;
 import com.intellij.facet.FacetType;
 import com.intellij.ide.plugins.IdeaPluginDescriptor;
 import com.intellij.ide.plugins.PluginManager;
+import com.intellij.openapi.application.PathManager;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.module.Module;
+import com.intellij.openapi.util.registry.Registry;
 import jetbrains.mps.extapi.module.SRepositoryExt;
 import jetbrains.mps.ide.messages.MessagesViewTool;
 import jetbrains.mps.ide.project.ProjectHelper;
@@ -85,6 +87,10 @@ public class MPSFacet extends Facet<MPSFacetConfiguration> {
       LOG.info(MPSBundle.message("facet.module.loaded", MPSFacet.this.mySolution.getModuleName()));
       IdeaPluginDescriptor descriptor = PluginManager.getPlugin(PluginManager.getPluginByClassName(MPSFacet.class.getName()));
     });
+
+    String jHome = System.getProperty("java.home");
+    LOG.info("Java home for starting compiler is set to " + jHome);
+    Registry.get("compiler.process.jdk").setValue(jHome);
   }
 
   @Override

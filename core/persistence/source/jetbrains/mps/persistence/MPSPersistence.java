@@ -21,6 +21,7 @@ import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryRuleService;
 import jetbrains.mps.persistence.java.library.JavaClassesPersistence;
+import jetbrains.mps.vfs.VFSManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
@@ -32,11 +33,13 @@ public final class MPSPersistence extends ComponentPlugin implements ComponentHo
   private final PersistenceFacade myPersistenceFacade;
   private final ModelFactoryService myModelFactoryService;
   private final DataSourceFactoryRuleService myDataSourceService;
+  private final VFSManager myVfsManager;
 
   public MPSPersistence(@NotNull ComponentHost mpsCore) {
     myModelFactoryService = mpsCore.findComponent(ModelFactoryService.class);
     myDataSourceService = mpsCore.findComponent(DataSourceFactoryRuleService.class);
     myPersistenceFacade = mpsCore.findComponent(PersistenceRegistry.class);
+    myVfsManager = mpsCore.findComponent(VFSManager.class);
   }
 
   @Override
@@ -44,7 +47,7 @@ public final class MPSPersistence extends ComponentPlugin implements ComponentHo
     super.init();
     init(new DataSourceFactoryRuleCoreService(myDataSourceService));
     init(new ModelFactoryCoreService(myModelFactoryService));
-    init(new JavaClassesPersistence(myPersistenceFacade));
+    init(new JavaClassesPersistence(myPersistenceFacade, myVfsManager));
   }
 
   @Nullable

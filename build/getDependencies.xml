@@ -187,6 +187,12 @@
       </patternset>
     </unzip>
 
+    <!-- We need this to initialize JRT FS before repository to read JDK solution later.
+    It's quite impossible to change loading of modules/models to lazy variant.
+    Also a possible solution is to load JRT roots with IO FS -->
+    <copy file="${basedir}/../plugins/java/lib/java-api.jar" todir="${basedir}/../lib/"/>
+    <copy file="${basedir}/../plugins/java/lib/java-impl.jar" todir="${basedir}/../lib/"/>
+
     <!-- Set executable flag to binaries -->
     <chmod file="${basedir}/../bin/mac/fsnotifier" perm="755"/>
     <chmod file="${basedir}/../bin/mac/restarter" perm="755"/>

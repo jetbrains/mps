@@ -4303,7 +4303,7 @@
                     <node concept="3clFbS" id="4ZW4vbPOwOU" role="3eOfB_">
                       <node concept="a7r0C" id="2sxsDnZyDeu" role="3cqZAp">
                         <node concept="Xl_RD" id="2sxsDnZyDev" role="a7wSD">
-                          <property role="Xl_RC" value="Node id and property id differ. It's recommended to keep ids synchronised. Use quickfix to set corrected id" />
+                          <property role="Xl_RC" value="Node id and link id differ. It's recommended to keep ids synchronised. Use quickfix to set corrected id" />
                         </node>
                         <node concept="3Cnw8n" id="2sxsDnZyDex" role="2OEOjU">
                           <ref role="QpYPw" node="4H96pIbEyix" resolve="CorrectDuplicateId" />
@@ -5355,14 +5355,14 @@
                 </node>
                 <node concept="3clFbS" id="VFd4X$xFN0" role="2LFqv$">
                   <node concept="2MkqsV" id="VFd4X$xFOX" role="3cqZAp">
-                    <node concept="2ODE4t" id="6aKHLXbmfM0" role="2OEWyd">
-                      <ref role="2ODJFN" to="tpck:h0TrG11" resolve="name" />
-                    </node>
                     <node concept="Xl_RD" id="VFd4X$xFOY" role="2MkJ7o">
                       <property role="Xl_RC" value="Duplicate member name" />
                     </node>
                     <node concept="2GrUjf" id="VFd4X$xFOZ" role="2OEOjV">
                       <ref role="2Gs0qQ" node="VFd4X$xFMW" resolve="member" />
+                    </node>
+                    <node concept="2ODE4t" id="6aKHLXbmfM0" role="2OEWyd">
+                      <ref role="2ODJFN" to="tpck:h0TrG11" resolve="name" />
                     </node>
                   </node>
                 </node>
@@ -5424,14 +5424,14 @@
                 </node>
                 <node concept="3clFbS" id="VFd4X$xFS2" role="2LFqv$">
                   <node concept="2MkqsV" id="VFd4X$xFS3" role="3cqZAp">
-                    <node concept="2ODE4t" id="6aKHLXbmfNO" role="2OEWyd">
-                      <ref role="2ODJFN" to="tpce:_jzzDSlxy8" resolve="presentation" />
-                    </node>
                     <node concept="Xl_RD" id="VFd4X$xFS4" role="2MkJ7o">
                       <property role="Xl_RC" value="Duplicate member presentation" />
                     </node>
                     <node concept="2GrUjf" id="VFd4X$xFS5" role="2OEOjV">
                       <ref role="2Gs0qQ" node="VFd4X$xFS0" resolve="member" />
+                    </node>
+                    <node concept="2ODE4t" id="6aKHLXbmfNO" role="2OEWyd">
+                      <ref role="2ODJFN" to="tpce:_jzzDSlxy8" resolve="presentation" />
                     </node>
                   </node>
                 </node>

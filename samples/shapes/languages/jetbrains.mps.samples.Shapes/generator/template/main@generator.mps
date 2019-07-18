@@ -333,9 +333,9 @@
             <node concept="Xjq3P" id="57sEyAnmo5e" role="2Oq$k0" />
             <node concept="liA8E" id="57sEyAnmqjf" role="2OqNvi">
               <ref role="37wK5l" to="dxuu:~JFrame.setDefaultCloseOperation(int)" resolve="setDefaultCloseOperation" />
-              <node concept="10M0yZ" id="57sEyAnmqmT" role="37wK5m">
+              <node concept="10M0yZ" id="41sr59Qd0jA" role="37wK5m">
+                <ref role="3cqZAo" to="dxuu:~WindowConstants.EXIT_ON_CLOSE" resolve="EXIT_ON_CLOSE" />
                 <ref role="1PxDUh" to="dxuu:~JFrame" resolve="JFrame" />
-                <ref role="3cqZAo" to="dxuu:~JFrame.EXIT_ON_CLOSE" resolve="EXIT_ON_CLOSE" />
               </node>
             </node>
           </node>

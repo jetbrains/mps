@@ -21,6 +21,9 @@ import com.intellij.facet.FacetManager;
 import com.intellij.facet.FacetManagerAdapter;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.module.Module;
+import com.intellij.openapi.projectRoots.JavaSdkVersion;
+import com.intellij.openapi.projectRoots.Sdk;
+import com.intellij.openapi.projectRoots.SdkModificator;
 import com.intellij.openapi.roots.CompilerModuleExtension;
 import com.intellij.openapi.roots.JdkOrderEntry;
 import com.intellij.openapi.roots.LibraryOrderEntry;
@@ -141,6 +144,23 @@ public class SolutionIdea extends Solution {
     newDescriptor.setNamespace(myModule.getName());
 //    addLibs(newDescriptor);
     super.doSetModuleDescriptor(newDescriptor);
+
+    updateJDKSolutionIfNeeded();
+  }
+
+  private void updateJDKSolutionIfNeeded() {
+    Sdk sdk = ModuleRootManager.getInstance(myModule).getSdk();
+    String sdkType = sdk.getSdkType().getName();
+    if (!JdkStubSolutionManager.JAVA_SDK_TYPE.equals(sdkType)) {
+      return;
+    }
+
+    String versionString = sdk.getVersionString();
+    JavaSdkVersion sdkVersion = JavaSdkVersion.fromVersionString(versionString);
+    if (sdkVersion==null || !sdkVersion.isAtLeast(JavaSdkVersion.JDK_11)) {
+      myModule.getProject().getComponent(MultipleSdkProblemNotifier.class).reportIncorrectJDK(myModule, versionString);
+      return;
+    }
 
     try {
       ApplicationManager.getApplication().getComponent(JdkStubSolutionManager.class).claimSdk(myModule);

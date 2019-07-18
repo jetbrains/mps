@@ -17,6 +17,7 @@
         <id>jetbrains.mps.lang.editor.tests</id>
         <name>jetbrains.mps.lang.editor.tests</name>
         <version>${mpsBootstrapCore.version}</version>
+        <depends>jetbrains.mps.core</depends>
         
         <extensions defaultExtensionNs="com.intellij">
           <mps.LanguageLibrary dir="/languages" />

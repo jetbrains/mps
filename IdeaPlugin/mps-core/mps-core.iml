@@ -75,5 +75,6 @@
     <orderEntry type="library" scope="TEST" name="mps-editor-runtime" level="project" />
     <orderEntry type="library" scope="TEST" name="mps-test" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="mps-stubs" level="project" />
+    <orderEntry type="library" name="ideaJavaPlugin" level="project" />
   </component>
 </module>

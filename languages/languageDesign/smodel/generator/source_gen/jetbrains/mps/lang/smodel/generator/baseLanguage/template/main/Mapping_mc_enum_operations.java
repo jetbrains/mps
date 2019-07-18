@@ -283,7 +283,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
   }
   /*package*/ static final class ReductionRule8 extends ReductionRuleBase {
     public ReductionRule8() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2453008993631669060"), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1fdcc9L, "jetbrains.mps.lang.smodel.structure.StatementListEnumBody"), false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2453008993631669060"), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1fdcc9L, "jetbrains.mps.lang.smodel.structure.EnumSwitchCaseBody_StatementList"), false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -452,7 +452,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
   }
   /*package*/ static final class ReductionRule9 extends ReductionRuleBase {
     public ReductionRule9() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4981982948207420576"), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1fdcc5L, "jetbrains.mps.lang.smodel.structure.ExpressionEnumBody"), false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4981982948207420576"), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1fdcc5L, "jetbrains.mps.lang.smodel.structure.EnumSwitchCaseBody_Expression"), false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {

@@ -18,6 +18,8 @@ package jetbrains.mps.project;
 import jetbrains.mps.classloading.CustomClassLoadingFacet;
 import jetbrains.mps.java.stub.PackageScopeControl;
 import jetbrains.mps.module.ReloadableModuleBase;
+import jetbrains.mps.persistence.MementoImpl;
+import jetbrains.mps.persistence.PersistenceRegistry;
 import jetbrains.mps.project.facets.TestsFacet;
 import jetbrains.mps.project.io.DescriptorIO;
 import jetbrains.mps.project.io.DescriptorIOFacade;
@@ -28,23 +30,24 @@ import jetbrains.mps.project.structure.modules.SolutionKind;
 import jetbrains.mps.reloading.CommonPaths;
 import jetbrains.mps.smodel.BootstrapLanguages;
 import jetbrains.mps.util.ClassType;
+import jetbrains.mps.util.MacroHelper.MacroNoHelper;
 import jetbrains.mps.util.annotation.Hack;
 import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.vfs.QualifiedPath;
+import jetbrains.mps.vfs.VFSManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.persistence.Memento;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * Igor Alshannikov
- * Aug 26, 2005
- */
 public class Solution extends ReloadableModuleBase {
   private SolutionDescriptor mySolutionDescriptor;
   public static final String SOLUTION_MODELS = "models";
@@ -83,7 +86,17 @@ public class Solution extends ReloadableModuleBase {
     setModuleReference(descriptor.getModuleReference());
   }
 
-  private static void populateModelRoot(ClassType classType, ModelRootDescriptor javaStubsModelRoot) {
+  private static void populateModelRoot(ClassType classType, Memento m) {
+    PackageScopeControl psc = getPackageScopeControl(classType);
+    if (psc == null) {
+      return;
+    }
+
+    psc.save(m.createChild("PackageScope"));
+  }
+
+  @Nullable
+  public static PackageScopeControl getPackageScopeControl(ClassType classType) {
     PackageScopeControl psc = null;
     switch (classType) {
       case JDK:
@@ -101,7 +114,7 @@ public class Solution extends ReloadableModuleBase {
         break;
       case JDK_TOOLS:
         psc = new PackageScopeControl();
-        psc.isSkipPrivate();
+        psc.setSkipPrivate(true);
         psc.includeWithPrefix("com.sun.codemodel.");
         psc.includeWithPrefix("com.sun.source.");
         psc.includeWithPrefix("com.sun.tools.");
@@ -123,11 +136,7 @@ public class Solution extends ReloadableModuleBase {
         psc = platformPackages;
         break;
     }
-
-    if (psc != null) {
-      final Memento m = javaStubsModelRoot.getMemento().createChild("PackageScope");
-      psc.save(m);
-    }
+    return psc;
   }
 
   @NotNull
@@ -196,16 +205,30 @@ public class Solution extends ReloadableModuleBase {
     if (classType == null) return;
 
     // do it only for first time
+    List<QualifiedPath> jrtPaths = new ArrayList<>();
     if (descriptor.getModelRootDescriptors().isEmpty()) {
-      for (String path : CommonPaths.getMPSPaths(classType)) {
+      for (QualifiedPath path : CommonPaths.getPaths(classType)) {
         final Collection<ModelRootDescriptor> modelRootDescriptors = descriptor.getModelRootDescriptors();
-        IFile pathFile = getFileSystem().getFile(path);
-        final ModelRootDescriptor javaStubsModelRoot = ModelRootDescriptor.addSourceRoot(pathFile, modelRootDescriptors);
-        if (javaStubsModelRoot != null) {
-          modelRootDescriptors.add(javaStubsModelRoot);
-          populateModelRoot(classType, javaStubsModelRoot);
+
+        if (!path.getFsId().equals(VFSManager.JRT_FS)){
+          IFile pathFile = getFileSystem().getFile(path.getPath());
+          final ModelRootDescriptor javaStubsModelRoot = ModelRootDescriptor.addSourceRoot(pathFile, modelRootDescriptors);
+          if (javaStubsModelRoot != null) {
+            modelRootDescriptors.add(javaStubsModelRoot);
+            populateModelRoot(classType, javaStubsModelRoot.getMemento());
+          }
+          descriptor.getJavaLibs().add(path.getPath());
+        } else {
+          jrtPaths.add(path);
         }
-        descriptor.getJavaLibs().add(path);
+      }
+      if (!jrtPaths.isEmpty()){
+        MementoImpl memento = new MementoImpl();
+        for(QualifiedPath jp: jrtPaths){
+          memento.createChild("path").put("value", jp.serialize(new MacroNoHelper()));
+        }
+        populateModelRoot(classType, memento);
+        descriptor.getModelRootDescriptors().add(new ModelRootDescriptor(PersistenceRegistry.JDK_CLASSES_ROOT, memento));
       }
     }
   }

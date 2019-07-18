@@ -43,6 +43,7 @@ import jetbrains.mps.smodel.BaseMPSModuleOwner;
 import jetbrains.mps.smodel.MPSModuleOwner;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import jetbrains.mps.util.io.ModelInputStream;
+import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.vfs.refresh.FileRefresh;
 import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.IFile;
@@ -341,7 +342,7 @@ public class JpsMPSRepositoryFacade implements MPSModuleOwner {
     } else {
       desc.setId(ModuleId.foreign(name));
     }
-    return new JpsLibSolution(desc, lib, jdk, ctx);
+    return new JpsLibSolution(desc, lib, jdk, ctx, myPlatform.findComponent(VFSManager.class));
   }
 
 

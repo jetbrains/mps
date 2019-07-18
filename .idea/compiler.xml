@@ -965,7 +965,11 @@
   </component>
   <component name="JavacSettings">
     <option name="DEPRECATION" value="false" />
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="debugger-java-api" options="--add-modules jdk.jdi" />
+      <module name="debugger-java-customViewers" options="--add-modules jdk.jdi" />
+      <module name="debugger-java-runtime" options="--add-modules jdk.jdi" />
+    </option>
     <option name="MAXIMUM_HEAP_SIZE" value="1024" />
   </component>
 </project>
-
