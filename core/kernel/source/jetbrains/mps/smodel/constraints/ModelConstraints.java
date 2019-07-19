@@ -76,10 +76,10 @@ public class ModelConstraints {
    */
   @Deprecated
   @Internal
-  public static boolean canBeAncestorForEditor(@NotNull SNode parentNode,
-                                               @NotNull SAbstractConcept childConcept,
-                                               @Nullable SContainmentLink containmentLink,
-                                               @Nullable CheckingNodeContext checkingNodeContext) {
+  public static boolean canBeAncestor(@NotNull SNode parentNode,
+                                      @NotNull SAbstractConcept childConcept,
+                                      @Nullable SContainmentLink containmentLink,
+                                      @Nullable CheckingNodeContext checkingNodeContext) {
 
     SNode currentNode = parentNode.getParent();
     while (currentNode != null) {
