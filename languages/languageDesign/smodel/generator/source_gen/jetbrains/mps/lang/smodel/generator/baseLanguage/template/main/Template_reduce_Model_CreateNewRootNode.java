@@ -40,13 +40,13 @@ public class Template_reduce_Model_CreateNewRootNode extends TemplateDeclaration
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
     try {
-      tnode1.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode1, PersistenceFacade.getInstance().createModelReference("r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)"), PersistenceFacade.getInstance().createNodeId("6599163591527280390")));
-      tnode1.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode1, PersistenceFacade.getInstance().createModelReference("r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)"), PersistenceFacade.getInstance().createNodeId("9116031298985583863")));
+      tnode1.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode1, PersistenceFacade.getInstance().createModelReference("r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)"), PersistenceFacade.getInstance().createNodeId("3470264887695889144")));
+      tnode1.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode1, PersistenceFacade.getInstance().createModelReference("r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)"), PersistenceFacade.getInstance().createNodeId("6599163591527280390")));
       TemplateContext context1 = context.subContext();
       {
         Collection<SNode> tlist2 = null;
         final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_20_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_vvu7kv_b0a0c0d0c0g));
-        tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_vvu7kv_b0a0c0d0c0g, "tpl/r:00000000-0000-4000-0000-011c89590303/1166648267352", context1);
+        tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_vvu7kv_b0a0c0d0c0g, "tpl/r:00000000-0000-4000-0000-011c89590303/3470264887695907505", context1);
         for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
           tnode1.addChild(myAggregationLinks[0], child3);
         }
@@ -54,14 +54,23 @@ public class Template_reduce_Model_CreateNewRootNode extends TemplateDeclaration
       }
       {
         Collection<SNode> tlist4 = null;
-        SNode callInputNode4 = QueriesGenerated.sourceNodeQuery_20_1(new SourceSubstituteMacroNodeContext(context1, callMacro_vvu7kv_b0a0a1a4a2a6));
-        TemplateContext context2;
-        context2 = context1.subContext(null, callInputNode4);
-        if (callInputNode4 != null) {
-          tlist4 = new Template_reduce_ConceptDeclaration2SConcept().apply(environment, context2);
-        }
+        final SNode copySrcInput4 = QueriesGenerated.sourceNodeQuery_20_1(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_vvu7kv_b0a0c0e0c0g));
+        tlist4 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput4), copySrcMacro_vvu7kv_b0a0c0e0c0g, "tpl/r:00000000-0000-4000-0000-011c89590303/3470264887695907513", context1);
         for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
           tnode1.addChild(myAggregationLinks[0], child5);
+        }
+        // TODO validate child 
+      }
+      {
+        Collection<SNode> tlist6 = null;
+        SNode callInputNode6 = QueriesGenerated.sourceNodeQuery_20_2(new SourceSubstituteMacroNodeContext(context1, callMacro_vvu7kv_b0a0a1a5a2a6));
+        TemplateContext context2;
+        context2 = context1.subContext(null, callInputNode6);
+        if (callInputNode6 != null) {
+          tlist6 = new Template_reduce_ConceptDeclaration2SConcept().apply(environment, context2);
+        }
+        for (SNode child7 : TemplateUtil.asNotNull(tlist6)) {
+          tnode1.addChild(myAggregationLinks[0], child7);
         }
         // TODO validate child 
       }
@@ -92,8 +101,8 @@ public class Template_reduce_Model_CreateNewRootNode extends TemplateDeclaration
   @Override
   protected SReferenceLink[] initAssociationLinks() {
     SReferenceLink[] rv = new SReferenceLink[2];
-    rv[0] = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept");
-    rv[1] = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    rv[0] = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    rv[1] = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept");
     return rv;
   }
   @Override
@@ -103,6 +112,7 @@ public class Template_reduce_Model_CreateNewRootNode extends TemplateDeclaration
     rv[1] = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, 0xfe43de823bL, "contentNode");
     return rv;
   }
-  private static SNodePointer copySrcMacro_vvu7kv_b0a0c0d0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1166648267353");
-  private static SNodePointer callMacro_vvu7kv_b0a0a1a4a2a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145291");
+  private static SNodePointer copySrcMacro_vvu7kv_b0a0c0d0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3470264887695907506");
+  private static SNodePointer copySrcMacro_vvu7kv_b0a0c0e0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3470264887695907514");
+  private static SNodePointer callMacro_vvu7kv_b0a0a1a5a2a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3470264887695907522");
 }

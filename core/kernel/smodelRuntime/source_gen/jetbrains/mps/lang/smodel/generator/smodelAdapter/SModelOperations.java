@@ -28,6 +28,7 @@ import org.jetbrains.mps.openapi.model.SModelReference;
 public final class SModelOperations {
   public SModelOperations() {
   }
+
   public static List<SNode> roots(SModel model, final SAbstractConcept concept) {
     if (model == null) {
       return Collections.emptyList();
@@ -43,6 +44,7 @@ public final class SModelOperations {
     }
     return list;
   }
+
   @NotNull
   public static List<SNode> rootsIncludingImported(@Nullable SModel model, @Nullable SAbstractConcept concept) {
     if (model == null) {
@@ -50,6 +52,7 @@ public final class SModelOperations {
     }
     return allNodesIncludingImported(model, true, concept);
   }
+
   @NotNull
   public static List<SNode> nodesIncludingImported(@Nullable SModel model, @Nullable SAbstractConcept concept) {
     if (model == null) {
@@ -57,6 +60,7 @@ public final class SModelOperations {
     }
     return allNodesIncludingImported(model, false, concept);
   }
+
   private static List<SNode> allNodesIncludingImported(SModel sModel, boolean roots, @Nullable SAbstractConcept concept) {
     List<SModel> modelsList = new ArrayList<SModel>();
     modelsList.add(sModel);
@@ -76,6 +80,7 @@ public final class SModelOperations {
     }
     return resultNodes;
   }
+
   public static List<SNode> nodes(SModel model, final SAbstractConcept concept) {
     if (model == null) {
       return new ArrayList<SNode>();
@@ -89,6 +94,7 @@ public final class SModelOperations {
     }
     return result;
   }
+
   public static SNode createNewNode(SModel model, SNodeId id, SAbstractConcept concept) {
     if (concept == null) {
       return null;
@@ -108,23 +114,31 @@ public final class SModelOperations {
     BHReflection.initNode(result);
     return result;
   }
+
   public static SNode createNewRootNode(SModel model, SConcept concept) {
-    SNode newNode = createNewNode(model, null, concept);
+    return createNewRootNode(model, null, concept);
+  }
+
+  public static SNode createNewRootNode(SModel model, SNodeId nodeId, SConcept concept) {
+    SNode newNode = createNewNode(model, nodeId, concept);
     model.addRootNode(newNode);
     return newNode;
   }
+
   public static SNode addRootNode(SModel model, SNode node) {
     if (model != null && node != null) {
       model.addRootNode(node);
     }
     return node;
   }
+
   public static String getModelName(SModel model) {
     if (model == null) {
       return null;
     }
     return model.getName().getLongName();
   }
+
   public static SNode getModuleStub(SModel model) {
     SModule module = model.getModule();
     // FIXME  we have to reference javastub classes, as we don't want j.m.runtime solution to depend from j.m.project 
@@ -139,6 +153,7 @@ public final class SModelOperations {
     }
     return null;
   }
+
   public static SModelReference getPointer(SModel model) {
     if (model == null) {
       return null;
