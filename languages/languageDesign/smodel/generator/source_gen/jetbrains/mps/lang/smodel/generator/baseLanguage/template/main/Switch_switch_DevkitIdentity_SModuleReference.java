@@ -92,5 +92,5 @@ public class Switch_switch_DevkitIdentity_SModuleReference extends TemplateSwitc
       return TemplateUtil.singletonList(tnode1);
     }
   }
-  private static SNodePointer propertyMacro_yjqism_c0a0c0a0b0c0b0c0c0b7 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "7764131598616918128");
+  private static final SNodePointer propertyMacro_yjqism_c0a0c0a0b0c0b0c0c0b7 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "7764131598616918128");
 }

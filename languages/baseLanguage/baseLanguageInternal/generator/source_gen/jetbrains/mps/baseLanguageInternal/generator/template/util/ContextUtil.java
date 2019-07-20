@@ -13,8 +13,9 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 
 public class ContextUtil {
-  public ContextUtil() {
+  private ContextUtil() {
   }
+
   public static SNode getContextForConstant(TemplateQueryContext genContext, SNode node, boolean topmost) {
     SNode usage = genContext.getOutputNodeByInputNodeAndMappingLabel(node, "exprUsage");
     if ((usage != null)) {
@@ -35,6 +36,7 @@ public class ContextUtil {
     }
     return null;
   }
+
   public static SNode getContextForMethod(TemplateQueryContext genContext, SNode node, boolean topmost) {
     SNode usage = genContext.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x31c3f88088ea0ac4L, 0x31c3f88088ea0ac5L, "inner")), "methUsageExpr");
     if ((usage != null)) {
@@ -55,6 +57,7 @@ public class ContextUtil {
     }
     return null;
   }
+
   public static SNode getContextForInnerClass(TemplateQueryContext genContext, SNode node, boolean topmost) {
     SNode usage = genContext.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x6b63d4344723dac8L, 0x6b63d434472420ceL, "inner")), "classUsageExpr");
     if ((usage != null)) {

@@ -39,7 +39,7 @@ public class Template_reduce_EnumMember2Id extends TemplateDeclarationBase imple
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
     try {
-      SNodeAccessUtil.setProperty(tnode1, myProperties[0], TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_139_0(new PropertyMacroContext(context, "0L", propertyMacro_9r6wmn_c0a0c0a0c0g))));
+      SNodeAccessUtil.setProperty(tnode1, myProperties[0], TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_140_0(new PropertyMacroContext(context, "0L", propertyMacro_9r6wmn_c0a0c0a0c0g))));
     } finally {
     }
     FragmentResult rv = nodeFragment(0, tnode1);
@@ -76,5 +76,5 @@ public class Template_reduce_EnumMember2Id extends TemplateDeclarationBase imple
     rv[0] = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, 0xfe43de823bL, "contentNode");
     return rv;
   }
-  private static SNodePointer propertyMacro_9r6wmn_c0a0c0a0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1310636635388393994");
+  private static final SNodePointer propertyMacro_9r6wmn_c0a0c0a0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1310636635388393994");
 }

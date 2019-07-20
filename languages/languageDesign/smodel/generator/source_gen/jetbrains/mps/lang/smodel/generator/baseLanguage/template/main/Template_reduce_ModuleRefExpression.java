@@ -91,6 +91,6 @@ public class Template_reduce_ModuleRefExpression extends TemplateDeclarationBase
     rv[0] = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, 0xfe43de823bL, "contentNode");
     return rv;
   }
-  private static SNodePointer switchMacroRef_vqpu91_b0a0a0a2a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1678062499343218964");
-  private static SNodePointer templateSwitchNode_vqpu91_a0a0c0a1a2a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1678062499342605304");
+  private static final SNodePointer switchMacroRef_vqpu91_b0a0a0a2a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1678062499343218964");
+  private static final SNodePointer templateSwitchNode_vqpu91_a0a0c0a1a2a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1678062499342605304");
 }

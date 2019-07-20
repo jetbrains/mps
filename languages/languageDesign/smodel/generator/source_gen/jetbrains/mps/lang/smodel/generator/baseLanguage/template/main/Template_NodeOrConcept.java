@@ -97,5 +97,5 @@ public class Template_NodeOrConcept extends TemplateDeclarationBase implements T
     rv[0] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
     return rv;
   }
-  private static SNodePointer ifMacroRef_uearkf_b0a0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "8560627202335350385");
+  private static final SNodePointer ifMacroRef_uearkf_b0a0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "8560627202335350385");
 }

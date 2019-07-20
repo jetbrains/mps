@@ -108,7 +108,7 @@ public class Mapping_mc_pointer_operations extends MapConfigBase implements Temp
       return TemplateUtil.singletonList(tnode1);
     }
   }
-  private static SNodePointer switchMacroRef_bhg3pv_b0a0a0a2a2d = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4065387505485822923");
-  private static SNodePointer templateSwitchNode_bhg3pv_a0a0c0a1a2a2d = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4065387505485799728");
-  private static SNodePointer copySrcMacro_bhg3pv_b0a0c0d0c0c4 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "465010144943864831");
+  private static final SNodePointer switchMacroRef_bhg3pv_b0a0a0a2a2d = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4065387505485822923");
+  private static final SNodePointer templateSwitchNode_bhg3pv_a0a0c0a1a2a2d = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4065387505485799728");
+  private static final SNodePointer copySrcMacro_bhg3pv_b0a0c0d0c0c4 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "465010144943864831");
 }

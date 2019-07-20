@@ -160,8 +160,8 @@ public class Template_reduce_invokeWithThis extends TemplateDeclarationBase impl
     rv[5] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
     return rv;
   }
-  private static SNodePointer callMacro_peulco_b0a0a1a2a1a1a2a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3099391750892152245");
-  private static SNodePointer propertyMacro_peulco_c0a0c0a0b0c0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3099391750892152298");
-  private static SNodePointer propertyMacro_peulco_c0a0c0b0b0c0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3099391750892152316");
-  private static SNodePointer copySrcMacro_peulco_b0a0c0c0b0d0b0c0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3099391750892152284");
+  private static final SNodePointer callMacro_peulco_b0a0a1a2a1a1a2a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3099391750892152245");
+  private static final SNodePointer propertyMacro_peulco_c0a0c0a0b0c0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3099391750892152298");
+  private static final SNodePointer propertyMacro_peulco_c0a0c0b0b0c0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3099391750892152316");
+  private static final SNodePointer copySrcMacro_peulco_b0a0c0c0b0d0b0c0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3099391750892152284");
 }

@@ -73,6 +73,6 @@ public class Switch_switch_ILinkAccessQualifier_toSLink extends TemplateSwitchBa
       return tlist1;
     }
   }
-  private static SNodePointer copySrcMacro_xmgu17_b0a0d0b7 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3902354333653082207");
-  private static SNodePointer callMacro_xmgu17_b0a0a2a1i = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145323");
+  private static final SNodePointer copySrcMacro_xmgu17_b0a0d0b7 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3902354333653082207");
+  private static final SNodePointer callMacro_xmgu17_b0a0a2a1i = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145323");
 }

@@ -73,6 +73,6 @@ public class Switch_switch_INodePointerArg extends TemplateSwitchBase implements
       return tlist1;
     }
   }
-  private static SNodePointer copySrcMacro_230kvm_b0a0d0b7 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3320646261222008453");
-  private static SNodePointer callMacro_230kvm_b0a0a2a1i = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3320646261222259361");
+  private static final SNodePointer copySrcMacro_230kvm_b0a0d0b7 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3320646261222008453");
+  private static final SNodePointer callMacro_230kvm_b0a0a2a1i = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3320646261222259361");
 }

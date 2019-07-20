@@ -109,6 +109,6 @@ public class Template_reduce_GetAllSiblingsOperation extends TemplateDeclaration
     rv[1] = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, 0xfe43de823bL, "contentNode");
     return rv;
   }
-  private static SNodePointer copySrcMacro_qcgeyz_b0a0c0d0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1145573721937");
-  private static SNodePointer propertyMacro_qcgeyz_c0a0c0a0b0e0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1145573721939");
+  private static final SNodePointer copySrcMacro_qcgeyz_b0a0c0d0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1145573721937");
+  private static final SNodePointer propertyMacro_qcgeyz_c0a0c0a0b0e0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1145573721939");
 }

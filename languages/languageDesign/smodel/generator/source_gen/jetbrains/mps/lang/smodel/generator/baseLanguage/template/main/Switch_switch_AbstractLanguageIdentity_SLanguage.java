@@ -73,5 +73,5 @@ public class Switch_switch_AbstractLanguageIdentity_SLanguage extends TemplateSw
       return tlist1;
     }
   }
-  private static SNodePointer callMacro_9oew2a_b0a0a2a1i = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2469893808086103396");
+  private static final SNodePointer callMacro_9oew2a_b0a0a2a1i = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2469893808086103396");
 }

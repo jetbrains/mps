@@ -95,6 +95,6 @@ public class Template_reduce_ConceptMethodCallCommon extends TemplateDeclaration
     rv[2] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
     return rv;
   }
-  private static SNodePointer copySrcMacro_2swv9b_b0a0c0b0b0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4598718932037728539");
-  private static SNodePointer ifMacroRef_2swv9b_b0a0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4598718932037623336");
+  private static final SNodePointer copySrcMacro_2swv9b_b0a0c0b0b0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4598718932037728539");
+  private static final SNodePointer ifMacroRef_2swv9b_b0a0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4598718932037623336");
 }

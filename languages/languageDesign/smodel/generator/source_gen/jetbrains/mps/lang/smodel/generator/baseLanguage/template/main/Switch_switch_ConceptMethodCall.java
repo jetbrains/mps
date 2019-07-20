@@ -114,9 +114,9 @@ public class Switch_switch_ConceptMethodCall extends TemplateSwitchBase implemen
       return tlist1;
     }
   }
-  private static SNodePointer callMacro_vddlfn_b0a0a1a5 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6862765979525743283");
-  private static SNodePointer callMacro_vddlfn_b0a0a2a1h = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6862765979525741554");
-  private static SNodePointer callMacro_vddlfn_b0a0a2a1i = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2926695023080033605");
-  private static SNodePointer callMacro_vddlfn_b0a0a2a1j = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6862765979525743045");
-  private static SNodePointer callMacro_vddlfn_b0a0a2a1k = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2926695023080034666");
+  private static final SNodePointer callMacro_vddlfn_b0a0a1a5 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6862765979525743283");
+  private static final SNodePointer callMacro_vddlfn_b0a0a2a1h = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6862765979525741554");
+  private static final SNodePointer callMacro_vddlfn_b0a0a2a1i = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2926695023080033605");
+  private static final SNodePointer callMacro_vddlfn_b0a0a2a1j = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6862765979525743045");
+  private static final SNodePointer callMacro_vddlfn_b0a0a2a1k = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2926695023080034666");
 }

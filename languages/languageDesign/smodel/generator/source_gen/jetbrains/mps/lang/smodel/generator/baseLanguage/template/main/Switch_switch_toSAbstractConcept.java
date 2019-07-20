@@ -88,6 +88,6 @@ public class Switch_switch_toSAbstractConcept extends TemplateSwitchBase impleme
       return tlist1;
     }
   }
-  private static SNodePointer copySrcMacro_594pev_b0a0c0d0c0b7 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6677504323281106684");
-  private static SNodePointer callMacro_594pev_b0a0a2a1i = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145324");
+  private static final SNodePointer copySrcMacro_594pev_b0a0c0d0c0b7 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6677504323281106684");
+  private static final SNodePointer callMacro_594pev_b0a0a2a1i = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145324");
 }

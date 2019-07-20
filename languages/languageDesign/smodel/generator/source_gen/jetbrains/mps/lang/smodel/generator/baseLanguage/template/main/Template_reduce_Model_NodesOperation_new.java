@@ -129,8 +129,8 @@ public class Template_reduce_Model_NodesOperation_new extends TemplateDeclaratio
     rv[1] = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, 0xfe43de823bL, "contentNode");
     return rv;
   }
-  private static SNodePointer copySrcMacro_68un6o_b0a0c0d0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1171324442830");
-  private static SNodePointer switchMacroRef_68un6o_b0a0a0a1a1a4a2a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "7665380792460609837");
-  private static SNodePointer templateSwitchNode_68un6o_a0a0c0a1a1a1a4a2a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3902354333653355606");
-  private static SNodePointer ifMacroRef_68un6o_b0a0b0e0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "7665380792460614343");
+  private static final SNodePointer copySrcMacro_68un6o_b0a0c0d0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1171324442830");
+  private static final SNodePointer switchMacroRef_68un6o_b0a0a0a1a1a4a2a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "7665380792460609837");
+  private static final SNodePointer templateSwitchNode_68un6o_a0a0c0a1a1a1a4a2a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3902354333653355606");
+  private static final SNodePointer ifMacroRef_68un6o_b0a0b0e0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "7665380792460614343");
 }

@@ -88,6 +88,6 @@ public class Switch_switch_toConceptNameStringExpr extends TemplateSwitchBase im
       return TemplateUtil.singletonList(tnode1);
     }
   }
-  private static SNodePointer copySrcMacro_thr6xb_b0a0c0d0c0b7 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1206660454912");
-  private static SNodePointer propertyMacro_thr6xb_c0a0c0a0c0b8 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1206653862744");
+  private static final SNodePointer copySrcMacro_thr6xb_b0a0c0d0c0b7 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1206660454912");
+  private static final SNodePointer propertyMacro_thr6xb_c0a0c0a0c0b8 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1206653862744");
 }

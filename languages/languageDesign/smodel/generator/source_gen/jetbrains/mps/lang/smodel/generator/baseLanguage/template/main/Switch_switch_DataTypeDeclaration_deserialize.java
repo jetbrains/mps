@@ -58,13 +58,13 @@ public class Switch_switch_DataTypeDeclaration_deserialize extends TemplateSwitc
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
-      return QueriesGenerated.rule_Condition_140_0(new ReductionRuleQueryContext(context, getRuleNode()));
+      return QueriesGenerated.rule_Condition_137_0(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
-      final SNode copySrcInput1 = QueriesGenerated.sourceNodeQuery_140_0(new SourceSubstituteMacroNodeContext(context, copySrcMacro_s05n17_b0a0d0c7));
+      final SNode copySrcInput1 = QueriesGenerated.sourceNodeQuery_137_0(new SourceSubstituteMacroNodeContext(context, copySrcMacro_s05n17_b0a0d0c7));
       tlist1 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput1), copySrcMacro_s05n17_b0a0d0c7, "tpl/r:00000000-0000-4000-0000-011c89590303/6373819377344864768", context);
       return tlist1;
     }
@@ -75,7 +75,7 @@ public class Switch_switch_DataTypeDeclaration_deserialize extends TemplateSwitc
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
-      return QueriesGenerated.rule_Condition_140_1(new ReductionRuleQueryContext(context, getRuleNode()));
+      return QueriesGenerated.rule_Condition_137_1(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -87,7 +87,7 @@ public class Switch_switch_DataTypeDeclaration_deserialize extends TemplateSwitc
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;
-          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_140_1(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_s05n17_b0a0c0d0c0c8));
+          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_137_1(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_s05n17_b0a0c0d0c0c8));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_s05n17_b0a0c0d0c0c8, "tpl/r:00000000-0000-4000-0000-011c89590303/6373819377344864786", context1);
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child3);
@@ -105,7 +105,7 @@ public class Switch_switch_DataTypeDeclaration_deserialize extends TemplateSwitc
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
-      return QueriesGenerated.rule_Condition_140_2(new ReductionRuleQueryContext(context, getRuleNode()));
+      return QueriesGenerated.rule_Condition_137_2(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -117,7 +117,7 @@ public class Switch_switch_DataTypeDeclaration_deserialize extends TemplateSwitc
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;
-          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_140_2(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_s05n17_b0a0c0d0c0c9));
+          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_137_2(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_s05n17_b0a0c0d0c0c9));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_s05n17_b0a0c0d0c0c9, "tpl/r:00000000-0000-4000-0000-011c89590303/6373819377344912472", context1);
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child3);
@@ -137,7 +137,7 @@ public class Switch_switch_DataTypeDeclaration_deserialize extends TemplateSwitc
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
-      final SNode copySrcInput1 = QueriesGenerated.sourceNodeQuery_140_3(new SourceSubstituteMacroNodeContext(context, copySrcMacro_s05n17_b0a0d0b01));
+      final SNode copySrcInput1 = QueriesGenerated.sourceNodeQuery_137_3(new SourceSubstituteMacroNodeContext(context, copySrcMacro_s05n17_b0a0d0b01));
       tlist1 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput1), copySrcMacro_s05n17_b0a0d0b01, "tpl/r:00000000-0000-4000-0000-011c89590303/6373819377344864806", context);
       return tlist1;
     }
@@ -157,7 +157,7 @@ public class Switch_switch_DataTypeDeclaration_deserialize extends TemplateSwitc
         {
           final SNode tnode2 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x3b418722717710b4L, "LongLiteral"));
           try {
-            SNodeAccessUtil.setProperty(tnode2, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b418722717710b4L, 0x3b418722717710b5L, "value"), TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_140_0(new PropertyMacroContext(context1, "0l", propertyMacro_s05n17_c0a0c0a0b0d0c0b11))));
+            SNodeAccessUtil.setProperty(tnode2, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b418722717710b4L, 0x3b418722717710b5L, "value"), TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_137_0(new PropertyMacroContext(context1, "0l", propertyMacro_s05n17_c0a0c0a0b0d0c0b11))));
           } finally {
           }
           tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), tnode2);
@@ -166,7 +166,7 @@ public class Switch_switch_DataTypeDeclaration_deserialize extends TemplateSwitc
         {
           final SNode tnode3 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x3b418722717710b4L, "LongLiteral"));
           try {
-            SNodeAccessUtil.setProperty(tnode3, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b418722717710b4L, 0x3b418722717710b5L, "value"), TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_140_1(new PropertyMacroContext(context1, "0l", propertyMacro_s05n17_c0a0c0a0b0e0c0b11))));
+            SNodeAccessUtil.setProperty(tnode3, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b418722717710b4L, 0x3b418722717710b5L, "value"), TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_137_1(new PropertyMacroContext(context1, "0l", propertyMacro_s05n17_c0a0c0a0b0e0c0b11))));
           } finally {
           }
           tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), tnode3);
@@ -175,7 +175,7 @@ public class Switch_switch_DataTypeDeclaration_deserialize extends TemplateSwitc
         {
           final SNode tnode4 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x3b418722717710b4L, "LongLiteral"));
           try {
-            SNodeAccessUtil.setProperty(tnode4, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b418722717710b4L, 0x3b418722717710b5L, "value"), TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_140_2(new PropertyMacroContext(context1, "0l", propertyMacro_s05n17_c0a0c0a0b0f0c0b11))));
+            SNodeAccessUtil.setProperty(tnode4, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b418722717710b4L, 0x3b418722717710b5L, "value"), TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_137_2(new PropertyMacroContext(context1, "0l", propertyMacro_s05n17_c0a0c0a0b0f0c0b11))));
           } finally {
           }
           tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), tnode4);
@@ -184,7 +184,7 @@ public class Switch_switch_DataTypeDeclaration_deserialize extends TemplateSwitc
         {
           final SNode tnode5 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf93d565d10L, "StringLiteral"));
           try {
-            SNodeAccessUtil.setProperty(tnode5, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_140_3(new PropertyMacroContext(context1, "fqName", propertyMacro_s05n17_c0a0c0a0b0g0c0b11))));
+            SNodeAccessUtil.setProperty(tnode5, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_137_3(new PropertyMacroContext(context1, "fqName", propertyMacro_s05n17_c0a0c0a0b0g0c0b11))));
           } finally {
           }
           tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), tnode5);
@@ -192,7 +192,7 @@ public class Switch_switch_DataTypeDeclaration_deserialize extends TemplateSwitc
         }
         {
           Collection<SNode> tlist6 = null;
-          final SNode copySrcInput6 = QueriesGenerated.sourceNodeQuery_140_4(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_s05n17_b0a0c0h0c0b11));
+          final SNode copySrcInput6 = QueriesGenerated.sourceNodeQuery_137_4(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_s05n17_b0a0c0h0c0b11));
           tlist6 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput6), copySrcMacro_s05n17_b0a0c0h0c0b11, "tpl/r:00000000-0000-4000-0000-011c89590303/6373819377345134039", context1);
           for (SNode child7 : TemplateUtil.asNotNull(tlist6)) {
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child7);
@@ -213,7 +213,7 @@ public class Switch_switch_DataTypeDeclaration_deserialize extends TemplateSwitc
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
       {
-        final SNode switchInput1 = QueriesGenerated.sourceNodeQuery_140_5(new SourceSubstituteMacroNodeContext(context, switchMacroRef_s05n17_b0a0a0a2a1m));
+        final SNode switchInput1 = QueriesGenerated.sourceNodeQuery_137_5(new SourceSubstituteMacroNodeContext(context, switchMacroRef_s05n17_b0a0a0a2a1m));
         if (switchInput1 == null) {
           tlist1 = Collections.emptyList();
         } else {
@@ -240,15 +240,15 @@ public class Switch_switch_DataTypeDeclaration_deserialize extends TemplateSwitc
       return tlist1;
     }
   }
-  private static SNodePointer copySrcMacro_s05n17_b0a0d0c7 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377344864769");
-  private static SNodePointer copySrcMacro_s05n17_b0a0c0d0c0c8 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377344864787");
-  private static SNodePointer copySrcMacro_s05n17_b0a0c0d0c0c9 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377344912473");
-  private static SNodePointer copySrcMacro_s05n17_b0a0d0b01 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377344864807");
-  private static SNodePointer propertyMacro_s05n17_c0a0c0a0b0d0c0b11 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377345133971");
-  private static SNodePointer propertyMacro_s05n17_c0a0c0a0b0e0c0b11 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377345133993");
-  private static SNodePointer propertyMacro_s05n17_c0a0c0a0b0f0c0b11 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377345134015");
-  private static SNodePointer propertyMacro_s05n17_c0a0c0a0b0g0c0b11 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377345134033");
-  private static SNodePointer copySrcMacro_s05n17_b0a0c0h0c0b11 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377345134040");
-  private static SNodePointer switchMacroRef_s05n17_b0a0a0a2a1m = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377344864823");
-  private static SNodePointer templateSwitchNode_s05n17_a0a0c0a1a2a1m = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377344864763");
+  private static final SNodePointer copySrcMacro_s05n17_b0a0d0c7 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377344864769");
+  private static final SNodePointer copySrcMacro_s05n17_b0a0c0d0c0c8 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377344864787");
+  private static final SNodePointer copySrcMacro_s05n17_b0a0c0d0c0c9 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377344912473");
+  private static final SNodePointer copySrcMacro_s05n17_b0a0d0b01 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377344864807");
+  private static final SNodePointer propertyMacro_s05n17_c0a0c0a0b0d0c0b11 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377345133971");
+  private static final SNodePointer propertyMacro_s05n17_c0a0c0a0b0e0c0b11 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377345133993");
+  private static final SNodePointer propertyMacro_s05n17_c0a0c0a0b0f0c0b11 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377345134015");
+  private static final SNodePointer propertyMacro_s05n17_c0a0c0a0b0g0c0b11 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377345134033");
+  private static final SNodePointer copySrcMacro_s05n17_b0a0c0h0c0b11 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377345134040");
+  private static final SNodePointer switchMacroRef_s05n17_b0a0a0a2a1m = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377344864823");
+  private static final SNodePointer templateSwitchNode_s05n17_a0a0c0a1a2a1m = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377344864763");
 }

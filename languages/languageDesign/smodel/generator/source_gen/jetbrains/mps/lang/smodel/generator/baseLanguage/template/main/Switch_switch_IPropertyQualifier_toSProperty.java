@@ -73,6 +73,6 @@ public class Switch_switch_IPropertyQualifier_toSProperty extends TemplateSwitch
       return tlist1;
     }
   }
-  private static SNodePointer copySrcMacro_2s2e5_b0a0d0b7 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1757699476691451326");
-  private static SNodePointer callMacro_2s2e5_b0a0a2a1i = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145325");
+  private static final SNodePointer copySrcMacro_2s2e5_b0a0d0b7 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1757699476691451326");
+  private static final SNodePointer callMacro_2s2e5_b0a0a2a1i = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145325");
 }
