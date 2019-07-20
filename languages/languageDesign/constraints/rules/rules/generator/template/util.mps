@@ -11,7 +11,6 @@
     <import index="18ew" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util(MPS.Core/)" />
     <import index="iwhd" ref="r:bd012d1c-91a4-4783-a33f-d2037e757f6d(jetbrains.mps.lang.context.defs.structure)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
-    <import index="zezp" ref="r:7991a70a-e27d-498f-be5b-c967b5f29e47(jetbrains.mps.lang.constraints.rules.behavior)" implicit="true" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -110,7 +109,6 @@
       <concept id="1216860049633" name="jetbrains.mps.lang.generator.generationContext.structure.GenerationContextType" flags="in" index="1iwH7U" />
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
-      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="1138055754698" name="jetbrains.mps.lang.smodel.structure.SNodeType" flags="in" index="3Tqbb2">
         <reference id="1138405853777" name="concept" index="ehGHo" />
       </concept>
@@ -290,8 +288,8 @@
               <node concept="37vLTw" id="2o8jHTODmFX" role="2Oq$k0">
                 <ref role="3cqZAo" node="3F9xXv_6vx" resolve="myRuleDecl" />
               </node>
-              <node concept="2qgKlT" id="2o8jHTODndp" role="2OqNvi">
-                <ref role="37wK5l" to="zezp:6kKc3mjG9Hb" resolve="getRuleId" />
+              <node concept="3TrcHB" id="2sJQBg6VtAi" role="2OqNvi">
+                <ref role="3TsBF5" to="bm42:5OIo7_R7SN0" resolve="ruleId" />
               </node>
             </node>
           </node>
@@ -301,8 +299,8 @@
             <node concept="37vLTw" id="$V5NfaGPiK" role="2Oq$k0">
               <ref role="3cqZAo" node="3F9xXv_6vx" resolve="myRuleDecl" />
             </node>
-            <node concept="2qgKlT" id="$V5NfaGPND" role="2OqNvi">
-              <ref role="37wK5l" to="zezp:6kKc3mjG9Hb" resolve="getRuleId" />
+            <node concept="3TrcHB" id="2sJQBg6VtMq" role="2OqNvi">
+              <ref role="3TsBF5" to="bm42:5OIo7_R7SN0" resolve="ruleId" />
             </node>
           </node>
         </node>

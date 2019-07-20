@@ -34,7 +34,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Object propertyMacro_GetValue_1_0(final PropertyMacroContext _context) {
     String baseName = "MSGPROVIDER_ " + SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xcd17a113ca4e472fL, 0xa8dec49008f9eea8L, 0x573ae5b8b8ccc349L, 0x573ae5b8b8ccc34cL, "problem"));
     String capitalizedWithoutSpaces = NameUtil.multiWordCapitalize(baseName).replaceAll("\\s+", "");
-    return _context.createUniqueName(capitalizedWithoutSpaces, null);
+    return _context.createUniqueName(capitalizedWithoutSpaces, _context.getNode());
   }
   public static boolean ifMacro_Condition_1_0(final IfMacroContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x16e76fe395344defL, 0xafb7925a169a7c0bL, 0x6530303593ae1651L, 0x48f860fc0e362dc8L, "message")) != null;

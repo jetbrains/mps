@@ -271,6 +271,7 @@
       <concept id="1217969995796" name="jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_ShowWarningMessage" flags="nn" index="2kEO4f" />
       <concept id="1218047638031" name="jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_CreateUniqueName" flags="nn" index="2piZGk">
         <child id="1218047638032" name="baseName" index="2piZGb" />
+        <child id="1218049772449" name="contextNode" index="2pr8EU" />
       </concept>
       <concept id="1216860049627" name="jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_GetOutputByLabelAndInput" flags="nn" index="1iwH70">
         <reference id="1216860049628" name="label" index="1iwH77" />
@@ -932,8 +933,8 @@
                           </node>
                           <node concept="2OqwBi" id="1Vcdx13cts5" role="3uHU7B">
                             <node concept="30H73N" id="1Vcdx13ctcK" role="2Oq$k0" />
-                            <node concept="2qgKlT" id="1Vcdx13ctVd" role="2OqNvi">
-                              <ref role="37wK5l" to="zezp:6kKc3mjG9Hb" resolve="getRuleId" />
+                            <node concept="3TrcHB" id="2sJQBg6VtpX" role="2OqNvi">
+                              <ref role="3TsBF5" to="bm42:5OIo7_R7SN0" resolve="ruleId" />
                             </node>
                           </node>
                         </node>
@@ -1591,6 +1592,7 @@
                                 <property role="Xl_RC" value="check" />
                               </node>
                             </node>
+                            <node concept="30H73N" id="30CQStN_YlS" role="2pr8EU" />
                           </node>
                         </node>
                         <node concept="37vLTw" id="7CK8yHrcllr" role="37vLTJ">
@@ -1729,7 +1731,7 @@
                         </node>
                         <node concept="v3k3i" id="1BFxp3HIN3w" role="2OqNvi">
                           <node concept="chp4Y" id="1BFxp3HIN3x" role="v3oSu">
-                            <ref role="cht4Q" to="mqj2:1BFxp3HHhta" resolve="RuleBlock" />
+                            <ref role="cht4Q" to="mqj2:1BFxp3HHhta" resolve="RulesBlock" />
                           </node>
                         </node>
                       </node>
@@ -1842,7 +1844,7 @@
                         </node>
                         <node concept="v3k3i" id="1BFxp3HJn8n" role="2OqNvi">
                           <node concept="chp4Y" id="1BFxp3HJn8o" role="v3oSu">
-                            <ref role="cht4Q" to="mqj2:1BFxp3HHhta" resolve="RuleBlock" />
+                            <ref role="cht4Q" to="mqj2:1BFxp3HHhta" resolve="RulesBlock" />
                           </node>
                         </node>
                       </node>
@@ -1926,7 +1928,7 @@
                     </node>
                     <node concept="v3k3i" id="1BFxp3HIuP0" role="2OqNvi">
                       <node concept="chp4Y" id="1BFxp3HIuP1" role="v3oSu">
-                        <ref role="cht4Q" to="mqj2:1BFxp3HHhta" resolve="RuleBlock" />
+                        <ref role="cht4Q" to="mqj2:1BFxp3HHhta" resolve="RulesBlock" />
                       </node>
                     </node>
                   </node>

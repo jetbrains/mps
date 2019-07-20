@@ -219,7 +219,7 @@ public class QueriesGenerated extends QueryProviderBase {
     int i = 0;
     snsqMethods.put("8878450512091070114", new QueriesGenerated.SNsQ(i++));
     snsqMethods.put("4996591504622268461", new QueriesGenerated.SNsQ(i++));
-    snsqMethods.put("6285588811486335815", new QueriesGenerated.SNsQ(i++));
+    snsqMethods.put("2823715683251121880", new QueriesGenerated.SNsQ(i++));
     snsqMethods.put("6285588811486475822", new QueriesGenerated.SNsQ(i++));
   }
   @NotNull

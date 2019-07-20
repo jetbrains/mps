@@ -7,7 +7,6 @@ import jetbrains.mps.generator.template.TemplateQueryContext;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.lang.constraints.rules.behavior.RuleIdHolder__BehaviorDescriptor;
 
 public final class NameHelper {
   private final SNode myRuleDecl;
@@ -33,9 +32,9 @@ public final class NameHelper {
 
   @NotNull
   public String getGeneratedId() {
-    if (RuleIdHolder__BehaviorDescriptor.getRuleId_id6kKc3mjG9Hb.invoke(myRuleDecl) == null) {
+    if (SPropertyOperations.getString(myRuleDecl, MetaAdapterFactory.getProperty(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x46263286dbf54aaL, 0x5d2e6079771f8cc0L, "ruleId")) == null) {
       myGenContext.showErrorMessage(myRuleDecl, "Id of the rule cannot be null");
     }
-    return RuleIdHolder__BehaviorDescriptor.getRuleId_id6kKc3mjG9Hb.invoke(myRuleDecl);
+    return SPropertyOperations.getString(myRuleDecl, MetaAdapterFactory.getProperty(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x46263286dbf54aaL, 0x5d2e6079771f8cc0L, "ruleId"));
   }
 }

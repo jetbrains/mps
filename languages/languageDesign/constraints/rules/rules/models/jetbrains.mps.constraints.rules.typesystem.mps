@@ -108,11 +108,6 @@
         <child id="1199569916463" name="body" index="1bW5cS" />
       </concept>
     </language>
-    <language id="69b8a993-9b87-4d96-bf0c-3559f4bb0c63" name="jetbrains.mps.lang.slanguage">
-      <concept id="2030416617761226491" name="jetbrains.mps.lang.slanguage.structure.Model_IsAspectOperation" flags="nn" index="3zA4fs">
-        <reference id="2030416617761226680" name="aspect" index="3zA4av" />
-      </concept>
-    </language>
     <language id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation">
       <concept id="1196350785110" name="jetbrains.mps.lang.quotation.structure.AbstractAntiquotation" flags="ng" index="2c44t0">
         <child id="1196350785111" name="expression" index="2c44t1" />
@@ -282,25 +277,6 @@
   <node concept="18kY7G" id="hyoMxHIWh2">
     <property role="TrG5h" value="check_ConstraintsRuleId" />
     <node concept="3clFbS" id="hyoMxHIWh3" role="18ibNy">
-      <node concept="3clFbJ" id="hyoMxHKqwA" role="3cqZAp">
-        <node concept="3clFbS" id="hyoMxHKqwB" role="3clFbx">
-          <node concept="3cpWs6" id="hyoMxHKqwC" role="3cqZAp" />
-        </node>
-        <node concept="3fqX7Q" id="hyoMxHKqwD" role="3clFbw">
-          <node concept="2OqwBi" id="hyoMxHKqwE" role="3fr31v">
-            <node concept="2OqwBi" id="hyoMxHKqwF" role="2Oq$k0">
-              <node concept="1YBJjd" id="hyoMxHKqwG" role="2Oq$k0">
-                <ref role="1YBMHb" node="hyoMxHIWh5" resolve="rule" />
-              </node>
-              <node concept="I4A8Y" id="hyoMxHKqwH" role="2OqNvi" />
-            </node>
-            <node concept="3zA4fs" id="hyoMxHKqwI" role="2OqNvi">
-              <ref role="3zA4av" to="beg:2LiUEk8oQ$g" resolve="constraints" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3clFbH" id="EPN70N9cQQ" role="3cqZAp" />
       <node concept="3clFbJ" id="1o9qxtfa_CH" role="3cqZAp">
         <node concept="9aQIb" id="4H96pIbEkfg" role="9aQIa">
           <node concept="3clFbS" id="4H96pIbEkfh" role="9aQI4">

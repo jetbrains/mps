@@ -58,7 +58,6 @@
         <reference id="1068581517664" name="variableDeclaration" index="3cqZAo" />
       </concept>
       <concept id="1068498886292" name="jetbrains.mps.baseLanguage.structure.ParameterDeclaration" flags="ir" index="37vLTG" />
-      <concept id="1225271177708" name="jetbrains.mps.baseLanguage.structure.StringType" flags="in" index="17QB3L" />
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
         <child id="5680397130376446158" name="type" index="1tU5fm" />
       </concept>
@@ -120,9 +119,6 @@
       <concept id="1138055754698" name="jetbrains.mps.lang.smodel.structure.SNodeType" flags="in" index="3Tqbb2">
         <reference id="1138405853777" name="concept" index="ehGHo" />
       </concept>
-      <concept id="1138056022639" name="jetbrains.mps.lang.smodel.structure.SPropertyAccess" flags="nn" index="3TrcHB">
-        <reference id="1138056395725" name="property" index="3TsBF5" />
-      </concept>
       <concept id="1138056143562" name="jetbrains.mps.lang.smodel.structure.SLinkAccess" flags="nn" index="3TrEf2">
         <reference id="1138056516764" name="link" index="3Tt5mk" />
       </concept>
@@ -133,27 +129,6 @@
       </concept>
     </language>
   </registry>
-  <node concept="13h7C7" id="6kKc3mjG9H0">
-    <ref role="13h7C2" to="bm42:hyoMxHJPiE" resolve="RuleIdHolder" />
-    <node concept="13i0hz" id="6kKc3mjG9Hb" role="13h7CS">
-      <property role="TrG5h" value="getRuleId" />
-      <node concept="3Tm1VV" id="6kKc3mjG9Hc" role="1B3o_S" />
-      <node concept="17QB3L" id="6kKc3mjG9Hr" role="3clF45" />
-      <node concept="3clFbS" id="6kKc3mjG9He" role="3clF47">
-        <node concept="3clFbF" id="hyoMxHJqlW" role="3cqZAp">
-          <node concept="2OqwBi" id="hyoMxHII5Z" role="3clFbG">
-            <node concept="13iPFW" id="hyoMxHIHUK" role="2Oq$k0" />
-            <node concept="3TrcHB" id="hyoMxHIIiB" role="2OqNvi">
-              <ref role="3TsBF5" to="bm42:5OIo7_R7SN0" resolve="ruleId" />
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="13hLZK" id="6kKc3mjG9H1" role="13h7CW">
-      <node concept="3clFbS" id="6kKc3mjG9H2" role="2VODD2" />
-    </node>
-  </node>
   <node concept="13h7C7" id="4JP_D2W1blV">
     <ref role="13h7C2" to="bm42:6kKc3mjpIBl" resolve="DefForRule" />
     <node concept="13hLZK" id="4JP_D2W1blW" role="13h7CW">

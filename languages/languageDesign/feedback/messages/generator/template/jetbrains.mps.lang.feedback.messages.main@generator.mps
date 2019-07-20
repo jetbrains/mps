@@ -162,6 +162,7 @@
     <language id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext">
       <concept id="1218047638031" name="jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_CreateUniqueName" flags="nn" index="2piZGk">
         <child id="1218047638032" name="baseName" index="2piZGb" />
+        <child id="1218049772449" name="contextNode" index="2pr8EU" />
       </concept>
       <concept id="1216860049635" name="jetbrains.mps.lang.generator.generationContext.structure.TemplateFunctionParameter_generationContext" flags="nn" index="1iwH7S" />
     </language>
@@ -404,9 +405,7 @@
             <node concept="3cpWs8" id="6GnzfDRhABz" role="3cqZAp">
               <node concept="3cpWsn" id="6GnzfDRhAB$" role="3cpWs9">
                 <property role="TrG5h" value="capitalizedWithoutSpaces" />
-                <node concept="3uibUv" id="6GnzfDRhA$p" role="1tU5fm">
-                  <ref role="3uigEE" to="wyt6:~String" resolve="String" />
-                </node>
+                <node concept="17QB3L" id="2sJQBg6VxdG" role="1tU5fm" />
                 <node concept="2OqwBi" id="6GnzfDRhAB_" role="33vP2m">
                   <node concept="2YIFZM" id="6GnzfDRhABA" role="2Oq$k0">
                     <ref role="37wK5l" to="18ew:~NameUtil.multiWordCapitalize(java.lang.String)" resolve="multiWordCapitalize" />
@@ -434,6 +433,7 @@
                   <node concept="37vLTw" id="6GnzfDRhABF" role="2piZGb">
                     <ref role="3cqZAo" node="6GnzfDRhAB$" resolve="capitalizedWithoutSpaces" />
                   </node>
+                  <node concept="30H73N" id="30CQStN_V6k" role="2pr8EU" />
                 </node>
               </node>
             </node>
