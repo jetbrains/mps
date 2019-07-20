@@ -56,7 +56,7 @@ public class StrikeOutActionsOfDeprecatedConcept implements EditorMenuItemCustom
     private void customize_(SNode parentNode, SNode currentChild, SContainmentLink containmentLink, EditorMenuItemStyle style, CompletionItemInformation itemInformation) {
       SAbstractConcept concept = itemInformation.getOutputConcept();
       ConceptPresentation conceptProperties = ConceptRegistry.getInstance().getConceptProperties(concept);
-      if (conceptProperties.isDeprecated()) {
+      if (conceptProperties != null && conceptProperties.isDeprecated()) {
         style.setStrikeout();
         style.setPriority(-1);
       }

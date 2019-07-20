@@ -366,6 +366,7 @@
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
+      <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
     </language>
     <language id="774bf8a0-62e5-41e1-af63-f4812e60e48b" name="jetbrains.mps.baseLanguage.checkedDots">
       <concept id="4079382982702596667" name="jetbrains.mps.baseLanguage.checkedDots.structure.CheckedDotExpression" flags="nn" index="2EnYce" />
@@ -2007,12 +2008,20 @@
               </node>
             </node>
           </node>
-          <node concept="2OqwBi" id="2FKC0NlcC27" role="3clFbw">
-            <node concept="37vLTw" id="2FKC0NlcBUD" role="2Oq$k0">
-              <ref role="3cqZAo" node="2FKC0NlcBOT" resolve="conceptProperties" />
+          <node concept="1Wc70l" id="30CQStNAX9k" role="3clFbw">
+            <node concept="3y3z36" id="30CQStNAXz_" role="3uHU7B">
+              <node concept="10Nm6u" id="30CQStNAX$H" role="3uHU7w" />
+              <node concept="37vLTw" id="30CQStNAXiY" role="3uHU7B">
+                <ref role="3cqZAo" node="2FKC0NlcBOT" resolve="conceptProperties" />
+              </node>
             </node>
-            <node concept="liA8E" id="2FKC0NlcC9z" role="2OqNvi">
-              <ref role="37wK5l" to="ze1i:~ConceptPresentation.isDeprecated()" resolve="isDeprecated" />
+            <node concept="2OqwBi" id="2FKC0NlcC27" role="3uHU7w">
+              <node concept="37vLTw" id="2FKC0NlcBUD" role="2Oq$k0">
+                <ref role="3cqZAo" node="2FKC0NlcBOT" resolve="conceptProperties" />
+              </node>
+              <node concept="liA8E" id="2FKC0NlcC9z" role="2OqNvi">
+                <ref role="37wK5l" to="ze1i:~ConceptPresentation.isDeprecated()" resolve="isDeprecated" />
+              </node>
             </node>
           </node>
         </node>
