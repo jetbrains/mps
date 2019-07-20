@@ -25,28 +25,28 @@ import java.util.stream.Stream;
 public final class TestConcept_FeedbackFeedback extends BaseFeedbackDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, "multiAspectLang.structure.TestConcept");
 
-  private static final FeedbackProvider<MissingPropertyContext> MSGPROVIDER_WhenPropertyIsNotDefinedInConcept_a = new BaseMessageProvider<MissingPropertyContext>(new MissingFeatureInConceptProblemId(MetaAdapterFactory.getConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, "multiAspectLang.structure.TestConcept"), PredefinedStructureProblemKind.MISSING_PROPERTY)) {
+  private static final FeedbackProvider<MissingPropertyContext> MSGPROVIDER_WhenPropertyIsNotDefinedInConcept_pavl6x_a = new BaseMessageProvider<MissingPropertyContext>(new MissingFeatureInConceptProblemId(MetaAdapterFactory.getConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, "multiAspectLang.structure.TestConcept"), PredefinedStructureProblemKind.MISSING_PROPERTY)) {
     @NotNull
     @Override
     public MessageProvider.StringMsg yieldMessage(MissingPropertyContext context) {
       return new MessageProvider.StringMsg("The property '" + context.getProperty() + "' does not belong to the concept 'TestConcept', please do smth");
     }
   };
-  private static final FeedbackProvider<MissingChildContext> MSGPROVIDER_WhenChildIsNotInConcept_b = new BaseMessageProvider<MissingChildContext>(new MissingFeatureInConceptProblemId(MetaAdapterFactory.getConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, "multiAspectLang.structure.TestConcept"), PredefinedStructureProblemKind.MISSING_CHILD)) {
+  private static final FeedbackProvider<MissingChildContext> MSGPROVIDER_WhenChildIsNotInConcept_pavl6x_b = new BaseMessageProvider<MissingChildContext>(new MissingFeatureInConceptProblemId(MetaAdapterFactory.getConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, "multiAspectLang.structure.TestConcept"), PredefinedStructureProblemKind.MISSING_CHILD)) {
     @NotNull
     @Override
     public MessageProvider.StringMsg yieldMessage(MissingChildContext context) {
       return new MessageProvider.StringMsg("The child '" + context.getChild() + "' does not belong to the concept 'TestConcept");
     }
   };
-  private static final FeedbackProvider<FailingPropertyConstraintContext> MSGPROVIDER_WhenPropertyConstraintFails_c = new BaseMessageProvider<FailingPropertyConstraintContext>(new FailingPropertyConstraintProblemId(MetaAdapterFactory.getProperty(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, 0x50310db2af989958L, "prop"))) {
+  private static final FeedbackProvider<FailingPropertyConstraintContext> MSGPROVIDER_WhenPropertyConstraintFails_pavl6x_c = new BaseMessageProvider<FailingPropertyConstraintContext>(new FailingPropertyConstraintProblemId(MetaAdapterFactory.getProperty(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, 0x50310db2af989958L, "prop"))) {
     @NotNull
     @Override
     public MessageProvider.StringMsg yieldMessage(FailingPropertyConstraintContext context) {
       return new MessageProvider.StringMsg("Property constraints are broken for the property" + " " + context.getProperty() + ", please do smth " + " ");
     }
   };
-  private static final FeedbackProvider<RefOutOfScopeContext> MSGPROVIDER_WhenReferenceIsOutOfScope_d = new BaseMessageProvider<RefOutOfScopeContext>(new RefOutOfScopeProblemId(MetaAdapterFactory.getReferenceLink(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, 0x161a25d497067a9eL, "link"))) {
+  private static final FeedbackProvider<RefOutOfScopeContext> MSGPROVIDER_WhenReferenceIsOutOfScope_pavl6x_d = new BaseMessageProvider<RefOutOfScopeContext>(new RefOutOfScopeProblemId(MetaAdapterFactory.getReferenceLink(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, 0x161a25d497067a9eL, "link"))) {
     @NotNull
     @Override
     public MessageProvider.StringMsg yieldMessage(RefOutOfScopeContext context) {
@@ -54,7 +54,7 @@ public final class TestConcept_FeedbackFeedback extends BaseFeedbackDescriptor {
     }
   };
 
-  private static final List<FeedbackProvider> PROVIDERS = Collections.unmodifiableList(Arrays.<FeedbackProvider>asList(MSGPROVIDER_WhenPropertyIsNotDefinedInConcept_a, MSGPROVIDER_WhenChildIsNotInConcept_b, MSGPROVIDER_WhenPropertyConstraintFails_c, MSGPROVIDER_WhenReferenceIsOutOfScope_d));
+  private static final List<FeedbackProvider> PROVIDERS = Collections.unmodifiableList(Arrays.<FeedbackProvider>asList(MSGPROVIDER_WhenPropertyIsNotDefinedInConcept_pavl6x_a, MSGPROVIDER_WhenChildIsNotInConcept_pavl6x_b, MSGPROVIDER_WhenPropertyConstraintFails_pavl6x_c, MSGPROVIDER_WhenReferenceIsOutOfScope_pavl6x_d));
 
   public TestConcept_FeedbackFeedback() {
     super(CONCEPT);

@@ -87,7 +87,6 @@
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="java.util.stream.Stream" />
     <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeRootContext" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.kinds.ContainmentContext" />
     <classNode dependClassName="jetbrains.mps.core.aspects.feedback.api.FeedbackProvider" />
     <classNode dependClassName="jetbrains.mps.core.aspects.feedback.messages.BaseMessageProvider" />
     <classNode dependClassName="jetbrains.mps.core.aspects.feedback.messages.FailingRuleProblemId" />
