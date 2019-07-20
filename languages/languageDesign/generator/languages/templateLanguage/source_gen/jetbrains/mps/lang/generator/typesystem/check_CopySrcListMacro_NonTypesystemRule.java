@@ -26,7 +26,7 @@ public class check_CopySrcListMacro_NonTypesystemRule extends AbstractNonTypesys
       return;
     }
     SContainmentLink l = SNodeOperations.getContainingLink(attributedNode);
-    if (l.isValid()) {
+    if (l != null && l.isValid()) {
       if (!(l.isMultiple())) {
         {
           MessageTarget errorTarget = new NodeMessageTarget();
