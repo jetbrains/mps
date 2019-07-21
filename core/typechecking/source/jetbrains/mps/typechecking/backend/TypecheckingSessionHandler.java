@@ -79,7 +79,7 @@ public abstract class TypecheckingSessionHandler {
 
   /**
    * Requests that the code is launched in isolation from the currently active session.  
-   * A new transient typechecking session with the default flags.
+   * A new transient typechecking is setup session with the default flags.
    */
   public final <T> T runIsolated(Supplier<T> code) {
     T t;
@@ -95,7 +95,7 @@ public abstract class TypecheckingSessionHandler {
 
   /**
    * Requests that the code is launched in isolation from the currently active session.
-   * A new transient typechecking session with the specified flags.
+   * A new transient typechecking session is setup with the specified flags.
    */
   public final <T> T runIsolated(Flags flags, Supplier<T> code) {
     T t;
@@ -111,7 +111,7 @@ public abstract class TypecheckingSessionHandler {
 
   /**
    * Requests that the code is launched in isolation from the currently active session.
-   * A new transient typechecking session with the default flags.
+   * A new transient typechecking session is setup with the default flags.
    */
   public final void runIsolated(Runnable code) {
     try {
@@ -126,7 +126,7 @@ public abstract class TypecheckingSessionHandler {
 
   /**
    * Requests that the code is launched in isolation from the currently active session.
-   * A new transient typechecking session with the specified flags.
+   * A new transient typechecking session is setup with the specified flags.
    */
   public final void runIsolated(Flags flags, Runnable code) {
     try {
@@ -145,7 +145,7 @@ public abstract class TypecheckingSessionHandler {
   protected abstract TypecheckingController controller();
 
   /**
-   * Eagerly initialize and install an instance of {@link TypecheckingController} that is constructed
+   * Eagerly initializes and installs an instance of {@link TypecheckingController} that is constructed
    * from the specified session, independently of the current context.
    * Later calls to {@link TypecheckingSessionHandler#controller()} will return this
    * newly constructed instance, until a call to {@link TypecheckingSessionHandler#resetOverride()}.
@@ -153,9 +153,7 @@ public abstract class TypecheckingSessionHandler {
   protected abstract void overrideSharedController(@NotNull TypecheckingSession session);
 
   /**
-   * Eagerly initialize and install a controller for running typechecking queries in isolation.
-   * @param flags
-   * @return
+   * Eagerly initializes and installs a controller for running typechecking queries in isolation.
    */
   protected abstract TypecheckingController overrideIsolatedController(Flags flags);
 

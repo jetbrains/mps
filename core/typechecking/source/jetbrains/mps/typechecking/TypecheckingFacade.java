@@ -28,19 +28,25 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 /**
- * The façade to all things related to type checking.
- *
- * This class is the main entry point for executing typechecking queries.
+ * The façade to launching typechecking operations. This is the entry point for executing typechecking queries, requesting new sessions,
+ * and running special computations either in "isolation" or reusing a shared session.
+ * <p/>
+ * This class is a mixin of {@link TypecheckingSessionHandler} and {@link TypecheckingQueries} and provides the implementation for the latter, which
+ * uses the backend API for selecting the correct provider and then forwards the query to it.
+ * <p/>
+ * One should not try to cache instances of this class, rather the method {@link TypecheckingFacade#getFromContext()} should be used
+ * exclusively, and the instance management is up to the implementation.
  *
  * @author Fedor Isakov
  */
 public abstract class TypecheckingFacade extends TypecheckingSessionHandler implements TypecheckingQueries {
 
   /**
-   * Provides access to an instance of {@code TypecheckingFacade} that is made available by the environment.
-   * @throws IllegalStateException if no instance is available in the current context.
+   * Provides access to an instance of {@code TypecheckingFacade} that is available from the environment.
+   * The implementation is responsible for selecting the correct facade instance depending on the context, such as
+   * whether the current thread is a UI thread etc.
    *
-   * TODO provide definition of Context.
+   * @throws IllegalStateException if no instance is available in the current context.
    */
   @NotNull
   public static TypecheckingFacade getFromContext() {

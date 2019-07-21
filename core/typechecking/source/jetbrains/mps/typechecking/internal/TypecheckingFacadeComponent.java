@@ -60,7 +60,6 @@ public class TypecheckingFacadeComponent implements CoreComponent {
 
   @Override
   public void init() {
-    // TODO: context instance is supposed to be provided by the environment running the user code, it's not meant to be a static field
     ContextTypecheckingFacade.setFactoryInstance(
         () -> {
           if (SwingUtilities.isEventDispatchThread()) {
