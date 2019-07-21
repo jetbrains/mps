@@ -7,11 +7,12 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_Uncomment;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import java.util.Objects;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BaseConcept_comment_Actions {
 
@@ -28,7 +29,7 @@ public class BaseConcept_comment_Actions {
         return this.canExecute_internal(editorContext, node);
       }
       public boolean canExecute_internal(EditorContext editorContext, SNode node) {
-        return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute"));
+        return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), BaseConcept_comment_Actions.AUX_hg1nqy.BaseCommentAttribute_id4452961908202556907);
       }
 
     };
@@ -46,7 +47,7 @@ public class BaseConcept_comment_Actions {
         return this.canExecute_internal(editorContext, node);
       }
       public boolean canExecute_internal(EditorContext editorContext, SNode node) {
-        return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute"));
+        return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), BaseConcept_comment_Actions.AUX_hg1nqy.BaseCommentAttribute_id4452961908202556907);
       }
 
     };
@@ -89,5 +90,8 @@ public class BaseConcept_comment_Actions {
     if (Objects.equals(actionType, CellActionType.DELETE)) {
       editorCell.setAction(actionType, createAction_DELETE(node));
     }
+  }
+  public static final class AUX_hg1nqy {
+    /*package*/ static final SConcept BaseCommentAttribute_id4452961908202556907 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute");
   }
 }

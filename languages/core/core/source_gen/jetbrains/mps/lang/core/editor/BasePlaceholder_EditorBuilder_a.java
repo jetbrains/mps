@@ -24,6 +24,7 @@ import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.lang.editor.menus.transformation.NamedTransformationMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class BasePlaceholder_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -109,10 +110,13 @@ import jetbrains.mps.smodel.language.LanguageRegistry;
       style.set(StyleAttributes.EDITABLE, true);
       editorCell.getStyle().putAll(style);
       BasePlaceholderEmptyCell_ActionMap.setCellActions(editorCell, myNode, getEditorContext());
-      editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x339681b4da4ef1a7L, "jetbrains.mps.lang.core.structure.BasePlaceholder"), "jetbrains.mps.lang.core.editor.BasePlaceholder_TransformationMenu"));
+      editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), BasePlaceholder_EditorBuilder_a.AUX_b89va1.BasePlaceholder_id3717301156197626279, "jetbrains.mps.lang.core.editor.BasePlaceholder_TransformationMenu"));
       editorCell.setDefaultText("");
       editorCell.setSubstituteInfo(new SChildSubstituteInfo(editorCell));
       return editorCell;
     }
+  }
+  public static final class AUX_b89va1 {
+    /*package*/ static final SConcept BasePlaceholder_id3717301156197626279 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x339681b4da4ef1a7L, "jetbrains.mps.lang.core.structure.BasePlaceholder");
   }
 }

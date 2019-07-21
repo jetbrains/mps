@@ -322,6 +322,7 @@
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
         <child id="5680397130376446158" name="type" index="1tU5fm" />
       </concept>
+      <concept id="1068580123152" name="jetbrains.mps.baseLanguage.structure.EqualsExpression" flags="nn" index="3clFbC" />
       <concept id="1068580123155" name="jetbrains.mps.baseLanguage.structure.ExpressionStatement" flags="nn" index="3clFbF">
         <child id="1068580123156" name="expression" index="3clFbG" />
       </concept>
@@ -1963,6 +1964,17 @@
               <node concept="liA8E" id="2FKC0Nlcxfd" role="2OqNvi">
                 <ref role="37wK5l" to="fulz:6MqJAGngeyC" resolve="getOutputConcept" />
               </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="3AtIBSEQ$Df" role="3cqZAp">
+          <node concept="3clFbS" id="3AtIBSEQ$Dh" role="3clFbx">
+            <node concept="3cpWs6" id="3AtIBSEQ_fM" role="3cqZAp" />
+          </node>
+          <node concept="3clFbC" id="3AtIBSEQ_2X" role="3clFbw">
+            <node concept="10Nm6u" id="3AtIBSEQ_ff" role="3uHU7w" />
+            <node concept="37vLTw" id="3AtIBSEQ$Gd" role="3uHU7B">
+              <ref role="3cqZAo" node="2FKC0Nlcxfa" resolve="concept" />
             </node>
           </node>
         </node>
