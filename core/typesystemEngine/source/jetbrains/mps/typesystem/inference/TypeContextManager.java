@@ -119,30 +119,58 @@ public class TypeContextManager implements CoreComponent {
     INSTANCE = null;
   }
 
+  /**
+   *  @deprecated use {@link jetbrains.mps.typechecking.TypecheckingFacade} for launching typechecking actions.
+   */
+  @Deprecated
   public void runTypeCheckingAction(SNode node, ITypechecking.Action r) {
     new Executor<>(node, r).execute();
   }
 
+  /**
+   *  @deprecated use {@link jetbrains.mps.typechecking.TypecheckingFacade} for launching typechecking actions.
+   */
+  @Deprecated
   public void runTypeCheckingAction(@NotNull final ITypeContextOwner contextOwner, SNode node, ITypechecking.Action r) {
     new Executor<>(contextOwner, node, r).execute();
   }
 
+  /**
+   *  @deprecated use {@link jetbrains.mps.typechecking.TypecheckingFacade} for launching typechecking actions.
+   */
+  @Deprecated
   public <T> T runTypeCheckingComputation(@NotNull final ITypeContextOwner contextOwner, SNode node, Computation<T> r) {
     return new Executor<>(contextOwner, node, r).execute();
   }
 
+  /**
+   *  @deprecated use {@link jetbrains.mps.typechecking.TypecheckingFacade} for launching typechecking actions.
+   */
+  @Deprecated
   public void runResolveAction(Runnable r) {
     runTypecheckingAction(new NonReusableTypecheckingContextOwner(), r);
   }
 
+  /**
+   *  @deprecated use {@link jetbrains.mps.typechecking.TypecheckingFacade} for launching typechecking actions.
+   */
+  @Deprecated
   public <T> T runResolveAction(Computable<T> computable) {
     return runTypecheckingAction(new NonReusableTypecheckingContextOwner(), computable);
   }
 
+  /**
+   *  @deprecated use {@link jetbrains.mps.typechecking.TypecheckingFacade} for launching typechecking actions.
+   */
+  @Deprecated
   public void runTypecheckingAction(ITypeContextOwner contextOwner, Runnable r) {
     new Executor<>(contextOwner, r).execute();
   }
 
+  /**
+   *  @deprecated use {@link jetbrains.mps.typechecking.TypecheckingFacade} for launching typechecking actions.
+   */
+  @Deprecated
   public <T> T runTypecheckingAction(ITypeContextOwner contextOwner, Computable<T> computable) {
     return new Executor<>(contextOwner, computable).execute();
   }
