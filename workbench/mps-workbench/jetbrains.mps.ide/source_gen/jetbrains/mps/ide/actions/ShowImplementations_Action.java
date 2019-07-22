@@ -20,9 +20,6 @@ import java.util.List;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import com.intellij.openapi.ui.popup.ComponentPopupBuilder;
-import com.intellij.openapi.ui.popup.JBPopupFactory;
-import com.intellij.openapi.util.Computable;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.ide.findusages.model.SearchResults;
 import org.jetbrains.mps.openapi.module.SearchScope;
@@ -30,6 +27,9 @@ import jetbrains.mps.ide.findusages.model.scopes.GlobalScope;
 import jetbrains.mps.ide.findusages.view.FindUtils;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.ide.findusages.model.SearchResult;
+import com.intellij.openapi.ui.popup.ComponentPopupBuilder;
+import com.intellij.openapi.ui.popup.JBPopupFactory;
+import com.intellij.openapi.util.Computable;
 import com.intellij.openapi.ui.popup.JBPopup;
 import com.intellij.ui.awt.RelativePoint;
 import java.awt.Point;
@@ -96,23 +96,13 @@ public class ShowImplementations_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final List<SNode> nodes = new ArrayList<SNode>();
     final ModelAccess modelAccess = ((MPSProject) MapSequence.fromMap(_params).get("project")).getModelAccess();
-    final Wrappers._T<ShowImplementationComponent> component = new Wrappers._T<ShowImplementationComponent>(null);
-    final ComponentPopupBuilder pb = JBPopupFactory.getInstance().createComponentPopupBuilder(component.value, component.value.getPreferredFocusableComponent()).setRequestFocus(true).setProject(((MPSProject) MapSequence.fromMap(_params).get("project")).getProject()).setMovable(true).setResizable(true).setCancelCallback(new Computable<Boolean>() {
-      @Override
-      public Boolean compute() {
-        // XXX no idea whether model write is really necessary for dispose there (EDT likely yes), just replaces executeCommandInEDT as I'm confident there's no need for command when dealing with node copies 
-        modelAccess.runWriteInEDT(new Runnable() {
-          public void run() {
-            component.value.dispose();
-          }
-        });
-        return Boolean.TRUE;
-      }
-    });
+
+    final Wrappers._T<ShowImplementationComponent> component = new Wrappers._T<ShowImplementationComponent>();
+    final Wrappers._T<String> title = new Wrappers._T<String>();
+
     modelAccess.runReadAction(new Runnable() {
       public void run() {
         ListSequence.fromList(nodes).addElement(((SNode) MapSequence.fromMap(_params).get("node")));
-
         SearchResults<SNode> results;
         SearchScope scope = new GlobalScope(((MPSProject) MapSequence.fromMap(_params).get("project")));
         if (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface"))) {
@@ -126,18 +116,25 @@ public class ShowImplementations_Action extends BaseAction {
         } else {
           return;
         }
-        for (SearchResult<SNode> searchResult : results.getSearchResults()) {
+        for (SearchResult<SNode> searchResult : results.getSearchResults2()) {
           SNode foundNode = searchResult.getObject();
           if ((foundNode != null)) {
             ListSequence.fromList(nodes).addElement(foundNode);
           }
         }
+
         component.value = new ShowImplementationComponent(nodes, ((MPSProject) MapSequence.fromMap(_params).get("project")));
-        String title = "Definition of " + ((SNode) MapSequence.fromMap(_params).get("node")).getPresentation();
-        pb.setTitle(title);
+        title.value = "Implementations of " + ((SNode) MapSequence.fromMap(_params).get("node")).getPresentation();
       }
     });
 
+    final ComponentPopupBuilder pb = JBPopupFactory.getInstance().createComponentPopupBuilder(component.value, component.value.getPreferredFocusableComponent()).setRequestFocus(true).setProject(((MPSProject) MapSequence.fromMap(_params).get("project")).getProject()).setMovable(true).setResizable(true).setCancelCallback(new Computable<Boolean>() {
+      public Boolean compute() {
+        component.value.dispose();
+        return true;
+      }
+    });
+    pb.setTitle(title.value);
     JBPopup popup = pb.createPopup();
     popup.show(new RelativePoint(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")), new Point(((EditorCell) MapSequence.fromMap(_params).get("cell")).getX(), ((EditorCell) MapSequence.fromMap(_params).get("cell")).getY())));
     component.value.getPreferredFocusableComponent().setRequestFocusEnabled(true);

@@ -10,7 +10,9 @@ import com.intellij.openapi.ui.popup.JBPopup;
 import jetbrains.mps.project.Project;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
+import java.util.Collections;
 import java.util.ArrayList;
+import com.intellij.ui.CollectionComboBoxModel;
 import javax.swing.JComponent;
 import com.intellij.openapi.actionSystem.ActionToolbar;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
@@ -28,16 +30,14 @@ import java.awt.BorderLayout;
 import javax.swing.BorderFactory;
 import com.intellij.ui.IdeBorderFactory;
 import com.intellij.ui.SideBorder;
+import com.intellij.util.ui.JBUI;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import com.intellij.ui.CollectionComboBoxModel;
 import com.intellij.ui.ColoredListCellRenderer;
 import javax.swing.JList;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
 import java.awt.Dimension;
-import com.intellij.openapi.Disposable;
 import javax.swing.Icon;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -57,6 +57,11 @@ public class ShowImplementationComponent extends JPanel {
   private JBPopup myPopup;
   private Project myProject;
   private List<ShowImplementationComponent.ImplementationNode> myImplNodes;
+
+  public ShowImplementationComponent(SNode singleNode, Project project) {
+    this(Collections.singletonList(singleNode), project);
+  }
+
   public ShowImplementationComponent(List<SNode> nodes, Project project) {
     project.getModelAccess().checkReadAccess();
     myImplNodes = new ArrayList<ShowImplementationComponent.ImplementationNode>(nodes.size());
@@ -64,30 +69,30 @@ public class ShowImplementationComponent extends JPanel {
       myImplNodes.add(new ShowImplementationComponent.ImplementationNode(node));
     }
     myProject = project;
-    myEditor = new EmbeddableEditor(myProject, false);
-    myEditor.editNode(myImplNodes.get(0).myNode);
-    init();
+    myNodeChooser = new ComboBox(new CollectionComboBoxModel(myImplNodes, null));
     if (myImplNodes.size() > 0) {
       myNodeChooser.setSelectedIndex(0);
     }
+    myEditor = new EmbeddableEditor(myProject, false);
+    init();
+    updateControls();
   }
+
   public void setPopup(JBPopup popup) {
     myPopup = popup;
   }
+
   public JComponent getPreferredFocusableComponent() {
     return myNodeChooser;
   }
+
   private boolean isDisposed = false;
+
   public void dispose() {
-    if (isDisposed) {
-      return;
-    }
     isDisposed = true;
-    for (ShowImplementationComponent.ImplementationNode node : myImplNodes) {
-      node.dispose();
-    }
     myEditor.disposeEditor();
   }
+
   private ActionToolbar createToolbar() {
     DefaultActionGroup group = new DefaultActionGroup();
     ShowImplementationComponent.BackAction back = new ShowImplementationComponent.BackAction();
@@ -105,6 +110,7 @@ public class ShowImplementationComponent extends JPanel {
     group.add(showSource);
     return ActionManager.getInstance().createActionToolbar(ActionPlaces.UNKNOWN, group, true);
   }
+
   private void updateControls() {
     final int index = myNodeChooser.getSelectedIndex();
     if (index == -1) {
@@ -114,12 +120,12 @@ public class ShowImplementationComponent extends JPanel {
       return;
     }
     myProject.getModelAccess().executeCommandInEDT(new Runnable() {
-      @Override
       public void run() {
-        myLocationLabel.setText(myImplNodes.get(index).myModuleName);
-        myLocationLabel.setIcon(myImplNodes.get(index).myModuleIcon);
+        ShowImplementationComponent.ImplementationNode node = myImplNodes.get(index);
+        myLocationLabel.setText(node.myModuleName);
+        myLocationLabel.setIcon(node.myModuleIcon);
         myCountLabel.setText((index + 1) + " of " + myImplNodes.size());
-        myEditor.editNode(myImplNodes.get(index).myNode);
+        myEditor.editNode(node.myNode);
         myEditor.setBackground((StyleRegistry.getInstance().isDarkTheme() ? StyleRegistry.getInstance().getEditorBackground() : new Color(255, 255, 215)));
         mySelectedIndex = index;
         myEditor.repaint();
@@ -127,15 +133,15 @@ public class ShowImplementationComponent extends JPanel {
       }
     });
   }
+
   private void init() {
     setLayout(new BorderLayout());
     add(myEditor, BorderLayout.CENTER);
     JPanel northPanel = new JPanel(new BorderLayout(2, 0));
-    northPanel.setBorder(BorderFactory.createCompoundBorder(IdeBorderFactory.createBorder(SideBorder.BOTTOM), IdeBorderFactory.createEmptyBorder(0, 0, 0, 5)));
+    northPanel.setBorder(BorderFactory.createCompoundBorder(IdeBorderFactory.createBorder(SideBorder.BOTTOM), JBUI.Borders.emptyRight(5)));
     JPanel toolbarPanel = new JPanel(new GridBagLayout());
-    final GridBagConstraints gc = new GridBagConstraints(GridBagConstraints.RELATIVE, 0, 1, 1, 0, 0, GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 2, 0, 0), 0, 0);
+    final GridBagConstraints gc = new GridBagConstraints(GridBagConstraints.RELATIVE, 0, 1, 1, 0, 0, GridBagConstraints.WEST, GridBagConstraints.NONE, JBUI.insetsLeft(2), 0, 0);
     toolbarPanel.add(createToolbar().getComponent(), gc);
-    this.myNodeChooser = new ComboBox(new CollectionComboBoxModel(myImplNodes, null));
     myNodeChooser.setRenderer(new ColoredListCellRenderer() {
       @Override
       protected void customizeCellRenderer(JList list, Object value, int index, boolean selected, boolean hasFocus) {
@@ -153,6 +159,9 @@ public class ShowImplementationComponent extends JPanel {
         ShowImplementationComponent.this.updateControls();
       }
     });
+    if (myImplNodes.size() == 1) {
+      myNodeChooser.setEnabled(false);
+    }
     gc.fill = GridBagConstraints.HORIZONTAL;
     gc.weightx = 1;
     toolbarPanel.add(myNodeChooser, gc);
@@ -162,64 +171,70 @@ public class ShowImplementationComponent extends JPanel {
     northPanel.add(toolbarPanel, BorderLayout.CENTER);
     northPanel.add(myLocationLabel, BorderLayout.EAST);
     add(northPanel, BorderLayout.NORTH);
-    setPreferredSize(new Dimension(600, 400));
+    setPreferredSize(new Dimension(600, 300));
   }
-  private class ImplementationNode implements Disposable {
+
+  private class ImplementationNode {
     public final SNode myNode;
     public final String myNodePresentation;
     public final Icon myNodeIcon;
     public final String myModuleName;
     public final Icon myModuleIcon;
     public final SNodeReference myOriginalNodePointer;
+
     public ImplementationNode(SNode node) {
-      myNode = SNodeOperations.copyNode(((SNode) node));
+      myNode = node;
       myNodePresentation = (SNodeOperations.isInstanceOf(((SNode) node), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration")) && node.getParent() != null ? node.getParent() + "." + node.getPresentation() : node.getPresentation());
       myNodeIcon = GlobalIconManager.getInstance().getIconFor(node);
       myModuleName = node.getModel().getModule().getModuleName();
       myModuleIcon = GlobalIconManager.getInstance().getIconFor(node.getModel().getModule());
       myOriginalNodePointer = node.getReference();
     }
-    @Override
-    public void dispose() {
-      myNode.delete();
-    }
   }
+
   private class BackAction extends AnAction {
     public BackAction() {
       super("Back", null, AllIcons.Actions.Back);
     }
+
     @Override
     public void actionPerformed(AnActionEvent e) {
       assert myNodeChooser.getSelectedIndex() > 0;
       myNodeChooser.setSelectedIndex(myNodeChooser.getSelectedIndex() - 1);
       updateControls();
     }
+
     @Override
     public void update(AnActionEvent e) {
       e.getPresentation().setEnabled(myNodeChooser != null && myNodeChooser.getSelectedIndex() > 0);
     }
   }
+
   private class ForwardAction extends AnAction {
     public ForwardAction() {
       super("Forward", null, AllIcons.Actions.Forward);
     }
+
     @Override
     public void actionPerformed(AnActionEvent e) {
       assert myNodeChooser.getSelectedIndex() < myNodeChooser.getItemCount() - 1;
       myNodeChooser.setSelectedIndex(myNodeChooser.getSelectedIndex() + 1);
       updateControls();
     }
+
     @Override
     public void update(AnActionEvent e) {
       e.getPresentation().setEnabled(myNodeChooser != null && myNodeChooser.getSelectedIndex() < myNodeChooser.getItemCount() - 1);
     }
   }
+
   private class ShowSourceAction extends AnAction {
     private boolean myClosePopup;
     public ShowSourceAction(String name, Icon icon, boolean closePopup) {
       super(name, null, icon);
       myClosePopup = closePopup;
     }
+
     @Override
     public void actionPerformed(AnActionEvent e) {
       int selectedIndex = myNodeChooser.getSelectedIndex();
