@@ -140,6 +140,7 @@
     <import index="m5dg" ref="r:cc9efe31-86c5-4ceb-80d1-8a8efeb255e0(jetbrains.mps.lang.feedback.skeleton.plugin)" />
     <import index="b2d5" ref="r:1a2b3027-99d2-4946-917b-f185130ac75d(jetbrains.mps.ide.findusages.findalgorithm.finders)" />
     <import index="k4i4" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.ide.findusages.findalgorithm.finders(MPS.Core/)" />
+    <import index="zce0" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.smodel.action(MPS.Editor/)" />
     <import index="wff5" ref="r:2ac18004-8536-478a-bf05-03a0f407633f(jetbrains.mps.lang.feedback.skeleton.structure)" implicit="true" />
   </imports>
   <registry>
@@ -8474,25 +8475,123 @@
       </node>
       <node concept="1YUSOF" id="6u50yCpt$oo" role="1YUSOD">
         <node concept="3clFbS" id="6u50yCpt$op" role="2VODD2">
-          <node concept="3clFbF" id="2erTeUVFa3d" role="3cqZAp">
-            <node concept="2YIFZM" id="2erTeUVFa3e" role="3clFbG">
-              <ref role="1Pybhc" to="ryx4:yfdOY36$xf" resolve="ConceptAspectsHelper" />
-              <ref role="37wK5l" to="ryx4:2$SWsiCtx0b" resolve="attachNewConceptAspect" />
-              <node concept="Rm8GO" id="2erTeUVFa3f" role="37wK5m">
+          <node concept="3cpWs8" id="osMNWieEmI" role="3cqZAp">
+            <node concept="3cpWsn" id="osMNWieEmH" role="3cpWs9">
+              <property role="TrG5h" value="language" />
+              <node concept="3uibUv" id="osMNWieEmJ" role="1tU5fm">
+                <ref role="3uigEE" to="w1kc:~Language" resolve="Language" />
+              </node>
+              <node concept="2YIFZM" id="osMNWieFH1" role="33vP2m">
+                <ref role="1Pybhc" to="iwwu:i0YipgJ" resolve="SModelUtil" />
+                <ref role="37wK5l" to="iwwu:i0YipiN" resolve="getDeclaringLanguage" />
+                <node concept="1beSmn" id="osMNWieFYc" role="37wK5m" />
+              </node>
+            </node>
+          </node>
+          <node concept="1gVbGN" id="osMNWieEmS" role="3cqZAp">
+            <node concept="3y3z36" id="osMNWieEmM" role="1gVkn0">
+              <node concept="37vLTw" id="osMNWieEmN" role="3uHU7B">
+                <ref role="3cqZAo" node="osMNWieEmH" resolve="language" />
+              </node>
+              <node concept="10Nm6u" id="osMNWieEmO" role="3uHU7w" />
+            </node>
+            <node concept="3cpWs3" id="osMNWieEmP" role="1gVpfI">
+              <node concept="Xl_RD" id="osMNWieEmQ" role="3uHU7B">
+                <property role="Xl_RC" value="Language cannot be null for " />
+              </node>
+              <node concept="1beSmn" id="osMNWieGlM" role="3uHU7w" />
+            </node>
+          </node>
+          <node concept="3cpWs8" id="osMNWieKYo" role="3cqZAp">
+            <node concept="3cpWsn" id="osMNWieKYp" role="3cpWs9">
+              <property role="TrG5h" value="aspect" />
+              <node concept="3uibUv" id="osMNWieKJ9" role="1tU5fm">
+                <ref role="3uigEE" to="w1kc:~LanguageAspect" resolve="LanguageAspect" />
+              </node>
+              <node concept="Rm8GO" id="osMNWieKYq" role="33vP2m">
                 <ref role="Rm8GQ" to="w1kc:~LanguageAspect.CONSTRAINTS" resolve="CONSTRAINTS" />
                 <ref role="1Px2BO" to="w1kc:~LanguageAspect" resolve="LanguageAspect" />
               </node>
-              <node concept="1beSmn" id="2erTeUVFa3g" role="37wK5m" />
-              <node concept="2OqwBi" id="1oq9tin3a7B" role="37wK5m">
-                <node concept="1eOMI4" id="1oq9tin3a7C" role="2Oq$k0">
-                  <node concept="10QFUN" id="1oq9tin3a7D" role="1eOMHV">
-                    <node concept="3bZ5Sz" id="1oq9tin3a7E" role="10QFUM">
-                      <ref role="3bZ5Sy" to="tpce:2hxg_BDjKM4" resolve="IConceptAspect" />
-                    </node>
-                    <node concept="1YUXGS" id="1oq9tin3a7F" role="10QFUP" />
+            </node>
+          </node>
+          <node concept="3cpWs8" id="osMNWieEmU" role="3cqZAp">
+            <node concept="3cpWsn" id="osMNWieEmT" role="3cpWs9">
+              <property role="TrG5h" value="md" />
+              <node concept="H_c77" id="osMNWieH1L" role="1tU5fm" />
+              <node concept="2OqwBi" id="osMNWieJcx" role="33vP2m">
+                <node concept="37vLTw" id="osMNWieKYr" role="2Oq$k0">
+                  <ref role="3cqZAo" node="osMNWieKYp" resolve="aspect" />
+                </node>
+                <node concept="liA8E" id="osMNWieK8N" role="2OqNvi">
+                  <ref role="37wK5l" to="w1kc:~LanguageAspect.get(jetbrains.mps.smodel.Language)" resolve="get" />
+                  <node concept="37vLTw" id="osMNWieKxD" role="37wK5m">
+                    <ref role="3cqZAo" node="osMNWieEmH" resolve="language" />
                   </node>
                 </node>
-                <node concept="q_SaT" id="1oq9tin3a7G" role="2OqNvi" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbJ" id="osMNWieEmY" role="3cqZAp">
+            <node concept="3clFbC" id="osMNWieEmZ" role="3clFbw">
+              <node concept="37vLTw" id="osMNWieEn0" role="3uHU7B">
+                <ref role="3cqZAo" node="osMNWieEmT" resolve="md" />
+              </node>
+              <node concept="10Nm6u" id="osMNWieEn1" role="3uHU7w" />
+            </node>
+            <node concept="3clFbS" id="osMNWieEn3" role="3clFbx">
+              <node concept="3clFbF" id="osMNWieEn4" role="3cqZAp">
+                <node concept="37vLTI" id="osMNWieEn5" role="3clFbG">
+                  <node concept="37vLTw" id="osMNWieEn6" role="37vLTJ">
+                    <ref role="3cqZAo" node="osMNWieEmT" resolve="md" />
+                  </node>
+                  <node concept="2OqwBi" id="osMNWieLoi" role="37vLTx">
+                    <node concept="37vLTw" id="osMNWieLoh" role="2Oq$k0">
+                      <ref role="3cqZAo" node="osMNWieKYp" resolve="aspect" />
+                    </node>
+                    <node concept="liA8E" id="osMNWieLoj" role="2OqNvi">
+                      <ref role="37wK5l" to="w1kc:~LanguageAspect.createNew(jetbrains.mps.smodel.Language)" resolve="createNew" />
+                      <node concept="37vLTw" id="osMNWieLok" role="37wK5m">
+                        <ref role="3cqZAo" node="osMNWieEmH" resolve="language" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3cpWs8" id="osMNWieZNy" role="3cqZAp">
+            <node concept="3cpWsn" id="osMNWieZNz" role="3cpWs9">
+              <property role="TrG5h" value="newConceptAspectRoot" />
+              <node concept="3Tqbb2" id="osMNWif2w9" role="1tU5fm">
+                <ref role="ehGHo" to="tpce:2hxg_BDjKM4" resolve="IConceptAspect" />
+              </node>
+              <node concept="10QFUN" id="osMNWif4mJ" role="33vP2m">
+                <node concept="3Tqbb2" id="osMNWif4zS" role="10QFUM">
+                  <ref role="ehGHo" to="tpce:2hxg_BDjKM4" resolve="IConceptAspect" />
+                </node>
+                <node concept="2YIFZM" id="osMNWieZN$" role="10QFUP">
+                  <ref role="1Pybhc" to="zce0:~NodeFactoryManager" resolve="NodeFactoryManager" />
+                  <ref role="37wK5l" to="zce0:~NodeFactoryManager.createNode(org.jetbrains.mps.openapi.language.SAbstractConcept,org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SModel)" resolve="createNode" />
+                  <node concept="1YUXGS" id="osMNWieZN_" role="37wK5m" />
+                  <node concept="10Nm6u" id="osMNWieZNA" role="37wK5m" />
+                  <node concept="10Nm6u" id="osMNWieZNB" role="37wK5m" />
+                  <node concept="37vLTw" id="osMNWieZNC" role="37wK5m">
+                    <ref role="3cqZAo" node="osMNWieEmT" resolve="md" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="osMNWieLTV" role="3cqZAp">
+            <node concept="2YIFZM" id="osMNWif265" role="3clFbG">
+              <ref role="37wK5l" to="ryx4:2$SWsiCtwZI" resolve="attachNewConceptAspect" />
+              <ref role="1Pybhc" to="ryx4:yfdOY36$xf" resolve="ConceptAspectsHelper" />
+              <node concept="1beSmn" id="osMNWif266" role="37wK5m" />
+              <node concept="37vLTw" id="osMNWif267" role="37wK5m">
+                <ref role="3cqZAo" node="osMNWieZNz" resolve="newConceptAspectRoot" />
+              </node>
+              <node concept="37vLTw" id="osMNWif268" role="37wK5m">
+                <ref role="3cqZAo" node="osMNWieEmT" resolve="md" />
               </node>
             </node>
           </node>

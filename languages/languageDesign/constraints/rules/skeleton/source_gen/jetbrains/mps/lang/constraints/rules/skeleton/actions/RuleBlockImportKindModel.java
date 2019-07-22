@@ -11,6 +11,9 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 public class RuleBlockImportKindModel {
   public static class NodeFactory_6878448148913190351 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+      if (model == null) {
+        return;
+      }
       ModelImporter importer = new ModelImporter(model);
       importer.prepare(PersistenceFacade.getInstance().createModelReference("r:52ea8481-08b2-4cbd-ad9d-1b42825f7d09(jetbrains.mps.lang.constraints.rules.kinds.constraints)"));
       importer.execute();

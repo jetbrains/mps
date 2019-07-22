@@ -22,8 +22,9 @@ import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.LanguageAspect;
+import jetbrains.mps.kernel.model.SModelUtil;
+import jetbrains.mps.smodel.action.NodeFactoryManager;
 import jetbrains.mps.kernel.language.ConceptAspectsHelper;
-import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 
 public class Constraints_TabDescriptor extends RelationDescriptor {
   private static final Icon ICON = MPSIcons.Nodes.Constraint;
@@ -73,6 +74,14 @@ public class Constraints_TabDescriptor extends RelationDescriptor {
     return ConceptEditorHelper.getAvailableConceptAspects(LanguageAspect.CONSTRAINTS, node);
   }
   public SNode createAspect(final SNode node, final SConcept concept) {
-    return ConceptAspectsHelper.attachNewConceptAspect(LanguageAspect.CONSTRAINTS, node, SNodeFactoryOperations.createNewNode(((SAbstractConcept) concept), null));
+    Language language = SModelUtil.getDeclaringLanguage(node);
+    assert language != null : "Language cannot be null for " + node;
+    LanguageAspect aspect = LanguageAspect.CONSTRAINTS;
+    SModel md = aspect.get(language);
+    if (md == null) {
+      md = aspect.createNew(language);
+    }
+    SNode newConceptAspectRoot = (SNode) NodeFactoryManager.createNode(concept, null, null, md);
+    return ConceptAspectsHelper.attachNewConceptAspect(node, newConceptAspectRoot, md);
   }
 }

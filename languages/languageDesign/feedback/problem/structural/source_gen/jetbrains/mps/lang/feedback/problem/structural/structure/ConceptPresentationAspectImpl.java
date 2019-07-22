@@ -20,7 +20,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.MissingChildInConceptProblem:
         if (props_MissingChildInConceptProblem == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.rawPresentation("when child is not in concept");
+          cpb.rawPresentation("when child is not defined in concept");
           props_MissingChildInConceptProblem = cpb.create();
         }
         return props_MissingChildInConceptProblem;

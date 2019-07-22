@@ -36,7 +36,7 @@
   <node concept="1TIwiD" id="2dMY_rcjEfO">
     <property role="EcuMT" value="2554379189374329844" />
     <property role="TrG5h" value="MissingChildInConceptProblem" />
-    <property role="34LRSv" value="when child is not in concept" />
+    <property role="34LRSv" value="when child is not defined in concept" />
     <property role="R5$K2" value="true" />
     <ref role="1TJDcQ" to="sis7:6GnzfDRfssU" resolve="ProblemPointsToKindRoot" />
   </node>
